@@ -109,23 +109,30 @@ function isDetailEntry(
   );
 }
 
-// ── Remote data fetching (ISR-aware) ──────────────────────────────────────
-// In development: reads from the local filesystem.
-// In production:  fetches from GitHub raw content URL so ISR revalidation
-//                 picks up new puzzle JSON files without a full rebuild.
+// ── Data fetching (ISR-aware) ─────────────────────────────────────────────
+// Strategy: filesystem first (fast, works at build time and for deployed files),
+// fall back to GitHub raw fetch for new puzzles added after the last deployment.
 
 const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
-  if (process.env.NODE_ENV === "development") {
-    return bundledRegistryEntries;
+  // Try local filesystem first (available during build and for existing deployments)
+  try {
+    const filePath = resolve(resolveDataDir(), "registry.json");
+    if (existsSync(filePath)) {
+      const raw = readFileSync(filePath, "utf8");
+      return registrySchema
+        .parse(JSON.parse(raw))
+        .slice()
+        .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+    }
+  } catch {
+    // fall through to GitHub fetch
   }
 
+  // Filesystem unavailable (e.g. serverless runtime after ISR) — fetch from GitHub
   const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
     next: { tags: ["registry"], revalidate: 3600 },
   });
-  if (!res.ok) {
-    // Fallback to bundled registry on fetch error
-    return bundledRegistryEntries;
-  }
+  if (!res.ok) return bundledRegistryEntries;
   const json = await res.json();
   return registrySchema
     .parse(json)
@@ -135,17 +142,21 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
 
 const fetchPuzzleContent = cache(
   async (slug: string): Promise<PuzzleDetailContentRecord> => {
-    if (process.env.NODE_ENV === "development") {
-      return loadDetailContentFromFilesystem(slug);
+    // Try local filesystem first (fast, works during build and for deployed files)
+    try {
+      const filePath = resolve(resolveDataDir(), `${slug}.json`);
+      if (existsSync(filePath)) {
+        return loadDetailContentFromFilesystem(slug);
+      }
+    } catch {
+      // fall through to GitHub fetch
     }
 
+    // File not in current deployment (new puzzle added after build) — fetch from GitHub
     const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
       next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
     });
-    if (!res.ok) {
-      // Fallback to filesystem (works during build / current deployment)
-      return loadDetailContentFromFilesystem(slug);
-    }
+    if (!res.ok) throw new Error(`Puzzle ${slug} not found (status ${res.status})`);
     const json = await res.json();
     return puzzleDetailContentSchema.parse(json);
   },
