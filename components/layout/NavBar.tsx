@@ -25,7 +25,14 @@ export function NavBar() {
     <header className="nav">
       <div className="container nav-inner">
         <Link className="brand" href={routes.home}>
-          <Image src="/favicon.svg" alt="" className="brand-mark" aria-hidden width={22} height={22} />
+          <Image
+            src="/favicon/favicon.svg"
+            alt=""
+            className="brand-mark"
+            aria-hidden
+            width={22}
+            height={22}
+          />
           Pinpoint Answer Today
         </Link>
         <nav className="nav-links">

@@ -3,16 +3,20 @@ import { ArchiveExplorer } from "@/components/archive/ArchiveExplorer";
 import { ArchiveHeader } from "@/components/archive/ArchiveHeader";
 import { getArchiveEntriesGrouped } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
-import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
+import {
+  absoluteUrl,
+  ARCHIVE_SEO_DESCRIPTION,
+  ARCHIVE_SEO_TITLE,
+  buildPageMetadata,
+} from "@/lib/seo/metadata";
 import { StructuredData } from "@/components/seo/StructuredData";
 
 export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: "All Pinpoint Answers Archive",
-    description:
-      "Browse recent and older Pinpoint answers in one English-only archive, grouped by month and linked to full explanation pages.",
+    title: ARCHIVE_SEO_TITLE,
+    description: ARCHIVE_SEO_DESCRIPTION,
     path: routes.archive,
   });
 }
@@ -24,7 +28,7 @@ export default async function ArchivePage() {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      name: "All Pinpoint Answers Archive",
+      name: ARCHIVE_SEO_TITLE,
       url: absoluteUrl(routes.archive),
       hasPart: archiveEntries.slice(0, 20).map((item) => ({
         "@type": "WebPage",

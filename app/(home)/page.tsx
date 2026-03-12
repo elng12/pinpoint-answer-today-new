@@ -10,16 +10,19 @@ import { HomeWhatIs } from "@/components/home/HomeWhatIs";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { getArchiveEntries, getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
-import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
+import {
+  absoluteUrl,
+  buildPageMetadata,
+  HOME_SEO_DESCRIPTION,
+  HOME_SEO_TITLE,
+} from "@/lib/seo/metadata";
 
 export const revalidate = 86400;
 
-export async function generateMetadata(): Promise<Metadata> {
-  const current = await getCurrentPuzzle();
-
+export function generateMetadata(): Metadata {
   return buildPageMetadata({
-    title: `Pinpoint Answer Today for Puzzle ${current.number}`,
-    description: `${current.shortSummary} Reveal the answer fast, then open the full explanation page for Puzzle ${current.number}.`,
+    title: HOME_SEO_TITLE,
+    description: HOME_SEO_DESCRIPTION,
     path: routes.home,
   });
 }

@@ -4,7 +4,12 @@ import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { getAllDetailSlugs, getNextPreview, getPuzzleBySlug, getRecentEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
-import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
+import {
+  absoluteUrl,
+  buildPageMetadata,
+  buildPuzzleSeoDescription,
+  buildPuzzleSeoTitle,
+} from "@/lib/seo/metadata";
 
 // Pre-render only the most recent 50 slugs at build time.
 // Older pages and new puzzles are rendered on first request (ISR fallback).
@@ -33,15 +38,16 @@ export async function generateMetadata({
     });
   }
 
-  const clueList = puzzle.clues.join(", ");
-  const seoTitle = `LinkedIn Pinpoint ${puzzle.number}: ${clueList}`;
-  const seoDescription = `Explore LinkedIn Pinpoint ${puzzle.number} with clues: ${clueList}. Get spoiler-safe hints, a walkthrough, and an archive recap.`;
+  const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
+  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues);
 
   return buildPageMetadata({
     title: seoTitle,
     description: seoDescription,
     path: routes.detail(puzzle.slug),
     type: "article",
+    socialImagePath: `${routes.detail(puzzle.slug)}/opengraph-image`,
+    socialImageAlt: `LinkedIn Pinpoint #${puzzle.number} social preview`,
   });
 }
 
@@ -61,9 +67,8 @@ export default async function DetailPage({
     notFound();
   }
 
-  const clueList = puzzle.clues.join(", ");
-  const seoHeadline = `LinkedIn Pinpoint ${puzzle.number}: ${clueList}`;
-  const seoDescription = `Explore LinkedIn Pinpoint ${puzzle.number} with clues: ${clueList}. Get spoiler-safe hints, a walkthrough, and an archive recap.`;
+  const seoHeadline = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
+  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues);
 
   const structuredDataItems = [
     {

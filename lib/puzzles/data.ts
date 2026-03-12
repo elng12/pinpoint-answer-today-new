@@ -129,15 +129,22 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
   }
 
   // Filesystem unavailable (e.g. serverless runtime after ISR) — fetch from GitHub
-  const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
-    next: { tags: ["registry"], revalidate: 3600 },
-  });
-  if (!res.ok) return bundledRegistryEntries;
-  const json = await res.json();
-  return registrySchema
-    .parse(json)
-    .slice()
-    .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+  try {
+    const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
+      next: { tags: ["registry"], revalidate: 3600 },
+    });
+    if (!res.ok) {
+      throw new Error(`registry fetch failed with status ${res.status}`);
+    }
+    const json = await res.json();
+    return registrySchema
+      .parse(json)
+      .slice()
+      .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+  } catch (error) {
+    warnRemoteFallback("Falling back to bundled registry", error);
+    return bundledRegistryEntries;
+  }
 });
 
 const fetchPuzzleContent = cache(
@@ -153,12 +160,19 @@ const fetchPuzzleContent = cache(
     }
 
     // File not in current deployment (new puzzle added after build) — fetch from GitHub
-    const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
-      next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
-    });
-    if (!res.ok) throw new Error(`Puzzle ${slug} not found (status ${res.status})`);
-    const json = await res.json();
-    return puzzleDetailContentSchema.parse(json);
+    try {
+      const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
+        next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
+      });
+      if (!res.ok) {
+        throw new Error(`detail fetch failed with status ${res.status}`);
+      }
+      const json = await res.json();
+      return puzzleDetailContentSchema.parse(json);
+    } catch (error) {
+      warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
+      return loadDetailContentFromFilesystem(slug);
+    }
   },
 );
 
@@ -173,6 +187,16 @@ function loadDetailContentFromFilesystem(slug: string): PuzzleDetailContentRecor
   const filePath = resolve(resolveDataDir(), `${slug}.json`);
   const raw = readFileSync(filePath, "utf8");
   return puzzleDetailContentSchema.parse(JSON.parse(raw));
+}
+
+function warnRemoteFallback(message: string, error: unknown) {
+  const detail =
+    error instanceof Error
+      ? error.message
+      : typeof error === "string"
+        ? error
+        : "";
+  console.warn(`[puzzles] ${message}${detail ? `: ${detail}` : ""}`);
 }
 
 // ── Transformers ───────────────────────────────────────────────────────────
@@ -247,6 +271,18 @@ export async function getPuzzleBySlug(slug: string): Promise<PuzzleDetail | null
   const entry = entries.find((e) => e.slug === slug);
   if (!entry) return null;
   return toPuzzleDetail(entry);
+}
+
+export async function getPuzzleSlugByNumber(number: number): Promise<string | null> {
+  const entries = await getDetailEntries();
+  const entry = entries.find((e) => e.puzzleNumber === number);
+  return entry?.slug ?? null;
+}
+
+export async function getPuzzleSlugByPublishDate(isoDate: string): Promise<string | null> {
+  const entries = await getDetailEntries();
+  const entry = entries.find((e) => e.publishDate === isoDate);
+  return entry?.slug ?? null;
 }
 
 export async function getRecentEntries(

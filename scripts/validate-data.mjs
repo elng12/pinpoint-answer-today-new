@@ -1,43 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
-import { z } from "zod";
-
-const puzzleStatusSchema = z.enum(["draft", "preview", "live", "archived"]);
-const difficultyLevelSchema = z.enum(["Easy", "Moderate", "Hard"]);
-
-const puzzleRegistryEntrySchema = z.object({
-  puzzleNumber: z.number().int().positive(),
-  slug: z.string().min(1),
-  publishDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  status: puzzleStatusSchema,
-  clues: z.array(z.string().min(1)).min(1),
-  mainAnswer: z.string().min(1).nullable(),
-  category: z.string().min(1).nullable(),
-  difficultyLevel: difficultyLevelSchema.optional(),
-  shortSummary: z.string().min(1),
-  updatedAt: z.string().datetime(),
-});
-
-const registrySchema = z.array(puzzleRegistryEntrySchema);
-
-const puzzleDetailContentSchema = z.object({
-  slug: z.string().min(1),
-  fullAnalysis: z.array(z.string().min(1)).min(1),
-  wordHints: z.record(z.string().min(1)),
-  lessons: z.array(z.union([
-    z.string().min(1),
-    z.object({ title: z.string().min(1), body: z.string().min(1) }),
-  ])).min(1),
-  faqs: z
-    .array(
-      z.object({
-        question: z.string().min(1),
-        answer: z.string().min(1),
-      }),
-    )
-    .min(1),
-});
+import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
 
 async function main() {
   const dataDir = resolve(process.cwd(), "data", "puzzles");

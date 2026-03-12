@@ -40,3 +40,8 @@ tmp/
 *.png
 *.jpg
 *.jpeg
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+.vercel
+.env*.local
