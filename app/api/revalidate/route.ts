@@ -17,8 +17,12 @@ import { type NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get("secret");
 
-  if (!process.env.REVALIDATE_SECRET || secret !== process.env.REVALIDATE_SECRET) {
-    return NextResponse.json({ error: "Invalid secret" }, { status: 401 });
+  const stored = (process.env.REVALIDATE_SECRET ?? "").trim();
+  if (!stored || secret !== stored) {
+    return NextResponse.json({
+      error: "Invalid secret",
+      debug: { storedLen: stored.length, receivedLen: secret?.length ?? 0 },
+    }, { status: 401 });
   }
 
   const slug = request.nextUrl.searchParams.get("slug");
