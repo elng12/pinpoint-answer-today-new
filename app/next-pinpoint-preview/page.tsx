@@ -9,6 +9,7 @@ import { PreviewPlaybook } from "@/components/preview/PreviewPlaybook";
 import { PreviewQuickLinks } from "@/components/preview/PreviewQuickLinks";
 import { PreviewTipLibrary } from "@/components/preview/PreviewTipLibrary";
 import { PreviewValueProps } from "@/components/preview/PreviewValueProps";
+import { HomeCtaFooter } from "@/components/home/HomeCtaFooter";
 import { getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 import { buildPageMetadata } from "@/lib/seo/metadata";
@@ -54,6 +55,9 @@ export default function PreviewPage() {
         <PreviewTipLibrary />
         <PreviewGlossary />
         <PreviewFaq />
+        {latestEntry ? (
+          <HomeCtaFooter currentPuzzleNumber={latestEntry.number} currentSlug={latestEntry.slug} />
+        ) : null}
       </div>
     </main>
   );
