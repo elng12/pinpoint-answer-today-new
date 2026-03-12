@@ -1,19 +1,19 @@
 {
   "slug": "pinpoint-answer-681",
   "fullAnalysis": [
-    "Puzzle #681 places five clues on the board — House, Field, Optical, Mickey, and Cat and — that span biology, technology, pop culture, and idiom. On the surface they have nothing in common: a dwelling, a landscape, a hardware descriptor, a cartoon name, and half a phrase. That surface scatter is the puzzle's main defence.",
-    "The connector is a single word appended to every clue: mouse. House mouse is a common household rodent; field mouse is the small vole-like creature found in grasslands; optical mouse is the everyday computer peripheral; Mickey Mouse is the Disney icon; and cat-and-mouse is a fixed English idiom describing a pursuit game. Every clue — including the unusual 'Cat and' — produces a recognizable, unambiguous phrase when mouse follows it."
+    "Puzzle #681 places five clues on the board — House, Field, Optical, Mickey, and Cat and 🐭 — that span biology, technology, pop culture, and idiom. On the surface they have nothing in common: a dwelling, a landscape, a hardware descriptor, a cartoon name, and a half-phrase paired with a visual hint. That surface scatter is the puzzle's main defence.",
+    "The connector is a single word appended to every clue: mouse. House mouse is a common household rodent; field mouse is the small vole-like creature found in grasslands; optical mouse is the everyday computer peripheral; Mickey Mouse is the Disney icon; and cat-and-mouse is a fixed English idiom describing a pursuit game. Every clue — including the unusual 'Cat and 🐭' — produces a recognizable, unambiguous phrase when mouse follows it."
   ],
   "solutionNarrative": [
     "I looked at Optical first because it felt the most specific. 'Optical what?' I asked myself, and mouse came to mind immediately — optical mouse is the standard name for the light-based computer peripheral. That gave me a direction to test.",
-    "I tried House next: house mouse, absolutely standard. Then Field: field mouse, a real species name. Mickey was obvious once the pattern was set — Mickey Mouse is one of the most recognized names in the world. Cat and was the last piece and the trickiest, but 'cat-and-mouse' as a single idiom locked it in. The whole board resolved in well under a minute once optical mouse gave me the pivot."
+    "I tried House next: house mouse, absolutely standard. Then Field: field mouse, a real species name. Mickey was obvious once the pattern was set — Mickey Mouse is one of the most recognized names in the world. Cat and 🐭 was the last piece and the trickiest, but 'cat-and-mouse' as a single idiom locked it in. The whole board resolved in well under a minute once optical mouse gave me the pivot."
   ],
   "wordHints": {
     "House": "House mouse is a common household rodent — a familiar phrase that confirms the pattern early.",
     "Field": "Field mouse refers to small rodents found in open countryside; the compound is a real species name.",
     "Optical": "Optical mouse is the standard name for the computer peripheral that uses light sensors instead of a rolling ball.",
     "Mickey": "Mickey Mouse is the Disney cartoon character created in 1928 — one of the most recognized compound names in the world.",
-    "Cat and": "Cat-and-mouse is a fixed English idiom for a pursuit or power game; 'Cat and' is the clue because the full idiom is 'cat-and-mouse'."
+    "Cat and 🐭": "Cat-and-mouse is a fixed English idiom for a pursuit or power game; the mouse icon completes the visual clue and points straight to the idiom."
   },
   "lessons": [
     {
@@ -26,17 +26,17 @@
     },
     {
       "title": "Partial phrases are valid clues",
-      "body": "'Cat and' looks incomplete, but it maps cleanly to the fixed idiom 'cat-and-mouse'. Pinpoint sometimes uses the first part of a set phrase as a clue. If a clue ends with a conjunction or preposition, ask what fixed expression it starts."
+      "body": "'Cat and 🐭' looks playful rather than literal, but it maps cleanly to the fixed idiom 'cat-and-mouse'. Pinpoint sometimes mixes words with visual symbols to point at a set phrase. If a clue feels half-written, check whether an icon is supplying the missing word."
     }
   ],
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #681?",
-      "answer": "The answer to Puzzle #681 is 'Words that come before mouse'. The five clues — House, Field, Optical, Mickey, and Cat and — all form recognizable phrases when the word mouse follows them."
+      "answer": "The answer to Puzzle #681 is 'Words that come before mouse'. The five clues — House, Field, Optical, Mickey, and Cat and 🐭 — all form recognizable phrases when the word mouse follows them."
     },
     {
-      "question": "Why is 'Cat and' a clue instead of just 'Cat'?",
-      "answer": "The target phrase is 'cat-and-mouse', a fixed English idiom meaning a pursuit game. Writing just 'Cat' would be ambiguous; 'Cat and' signals that the full compound requires the conjunction, pointing directly to the idiom."
+      "question": "Why is 'Cat and 🐭' shown that way?",
+      "answer": "The target phrase is 'cat-and-mouse', a fixed English idiom meaning a pursuit game. The clue uses the mouse icon as a visual shortcut for the missing word, so the phrase clicks immediately once you test mouse across the board."
     },
     {
       "question": "Which clue is easiest to solve first on this board?",

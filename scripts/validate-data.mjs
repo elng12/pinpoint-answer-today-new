@@ -3,6 +3,77 @@ import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
 
+const htmlTagPattern = /<\/?[a-z][^>]*>/i;
+const minFullAnalysisWords = 80;
+
+function countWords(value) {
+  return value.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function assertNoHtml(label, value) {
+  if (htmlTagPattern.test(value)) {
+    throw new Error(`${label} contains HTML markup and must be plain text.`);
+  }
+}
+
+function validateDetailContent(entry, detail) {
+  const hintKeys = Object.keys(detail.wordHints);
+  const missingHintKeys = entry.clues.filter((clue) => !hintKeys.includes(clue));
+  const extraHintKeys = hintKeys.filter((key) => !entry.clues.includes(key));
+
+  if (missingHintKeys.length > 0 || extraHintKeys.length > 0) {
+    const parts = [];
+    if (missingHintKeys.length > 0) {
+      parts.push(`missing hints for [${missingHintKeys.join(", ")}]`);
+    }
+    if (extraHintKeys.length > 0) {
+      parts.push(`unexpected hint keys [${extraHintKeys.join(", ")}]`);
+    }
+    throw new Error(`wordHints clue mismatch for ${entry.slug}: ${parts.join("; ")}`);
+  }
+
+  const orderMismatchIndex = entry.clues.findIndex((clue, index) => clue !== hintKeys[index]);
+  if (orderMismatchIndex !== -1) {
+    throw new Error(
+      `wordHints clue order mismatch for ${entry.slug}: expected "${entry.clues[orderMismatchIndex]}", received "${hintKeys[orderMismatchIndex]}" at position ${orderMismatchIndex + 1}`,
+    );
+  }
+
+  const fullAnalysisWordCount = countWords(detail.fullAnalysis.join(" "));
+  if (fullAnalysisWordCount < minFullAnalysisWords) {
+    throw new Error(
+      `${entry.slug} fullAnalysis is too thin (${fullAnalysisWordCount} words; expected at least ${minFullAnalysisWords}).`,
+    );
+  }
+
+  detail.fullAnalysis.forEach((paragraph, index) => {
+    assertNoHtml(`${entry.slug} fullAnalysis[${index}]`, paragraph);
+  });
+
+  detail.solutionNarrative?.forEach((paragraph, index) => {
+    assertNoHtml(`${entry.slug} solutionNarrative[${index}]`, paragraph);
+  });
+
+  Object.entries(detail.wordHints).forEach(([clue, hint]) => {
+    assertNoHtml(`${entry.slug} wordHints.${clue}`, hint);
+  });
+
+  detail.lessons.forEach((lesson, index) => {
+    if (typeof lesson === "string") {
+      assertNoHtml(`${entry.slug} lessons[${index}]`, lesson);
+      return;
+    }
+
+    assertNoHtml(`${entry.slug} lessons[${index}].title`, lesson.title);
+    assertNoHtml(`${entry.slug} lessons[${index}].body`, lesson.body);
+  });
+
+  detail.faqs.forEach((faq, index) => {
+    assertNoHtml(`${entry.slug} faqs[${index}].question`, faq.question);
+    assertNoHtml(`${entry.slug} faqs[${index}].answer`, faq.answer);
+  });
+}
+
 async function main() {
   const dataDir = resolve(process.cwd(), "data", "puzzles");
   const registryPath = resolve(dataDir, "registry.json");
@@ -51,6 +122,7 @@ async function main() {
       if (detail.slug !== entry.slug) {
         throw new Error(`Detail file slug mismatch for ${entry.slug}`);
       }
+      validateDetailContent(entry, detail);
     }
   }
 

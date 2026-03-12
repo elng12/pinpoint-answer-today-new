@@ -199,6 +199,22 @@ function warnRemoteFallback(message: string, error: unknown) {
   console.warn(`[puzzles] ${message}${detail ? `: ${detail}` : ""}`);
 }
 
+function resolveDetailClues(
+  registryClues: string[],
+  detailContent: PuzzleDetailContentRecord,
+): string[] {
+  const detailClues = Object.keys(detailContent.wordHints);
+
+  if (
+    detailClues.length === registryClues.length &&
+    detailClues.every((clue) => registryClues.includes(clue))
+  ) {
+    return detailClues;
+  }
+
+  return registryClues;
+}
+
 // ── Transformers ───────────────────────────────────────────────────────────
 
 function toArchiveEntry(entry: PuzzleRegistryEntryRecord): ArchiveEntry {
@@ -226,6 +242,8 @@ async function toPuzzleDetail(
   },
 ): Promise<PuzzleDetail> {
   const detailContent = await fetchPuzzleContent(entry.slug);
+  const detailClues = resolveDetailClues(entry.clues, detailContent);
+
   return {
     number: entry.puzzleNumber,
     slug: entry.slug,
@@ -234,7 +252,7 @@ async function toPuzzleDetail(
     isoDate: entry.publishDate,
     answer: entry.mainAnswer,
     category: entry.category,
-    clues: entry.clues,
+    clues: detailClues,
     difficulty: entry.difficultyLevel ?? "Moderate",
     shortSummary: entry.shortSummary,
     fullAnalysis: detailContent.fullAnalysis,
