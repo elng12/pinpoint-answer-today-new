@@ -1,28 +1,32 @@
 {
   "slug": "pinpoint-answer-675",
   "fullAnalysis": [
-    "Puzzle #675 points to \"Types of signs\" because each clue naturally becomes a sign phrase that people already recognize.",
-    "Street sign, warning sign, and peace sign make the rule obvious quickly. Vital signs and equal sign widen the board into health and math, but the shared connector still holds cleanly."
+    "Puzzle #675 offers five clues — Warning, Street, Vital, Peace, and Equal — that seem to span safety, geography, medicine, culture, and mathematics. The surface categories appear unrelated, which creates a momentary sense of difficulty. But the shared connector is hiding in plain sight: every clue forms a well-known phrase when you place the word 'sign' after it.",
+    "Warning sign and street sign are so common they barely need testing. Peace sign and equal sign are fixed cultural and mathematical terms. Vital signs, the one plural form in the set, refers to the standard medical measurements of pulse, blood pressure, and temperature. All five phrases are in active daily use across completely different domains, which is exactly what makes this category clean despite the wide variety of clues."
+  ],
+  "solutionNarrative": [
+    "I started with the two most obvious phrases: warning sign and street sign. Both landed immediately and I had a working hypothesis within seconds. From there I tested the remaining three against 'sign' in sequence — peace sign, equal sign, vital signs — and each one produced a phrase I already knew. No false starts, no backtracking.",
+    "The only moment of hesitation came with Vital, because vital signs is plural while the others use the singular form. I almost dismissed it, then reminded myself that the conventional phrase is vital signs, not vital sign. That was enough. Once all five clues checked out, I stopped second-guessing and committed to the answer."
   ],
   "wordHints": {
-    "warning": "Warning sign is a direct and very common phrase.",
-    "street": "Street sign is one of the easiest anchors in the set.",
-    "vital": "Vital signs belongs to the same family in a medical context.",
-    "peace": "Peace sign is a fixed cultural symbol phrase.",
-    "equal": "Equal sign completes the set in a mathematical context."
+    "warning": "Warning sign is a direct, everyday phrase and one of the fastest anchors in this set.",
+    "street": "Street sign is another common phrase that confirms the 'sign' connector quickly.",
+    "vital": "Vital signs is the standard medical term for pulse, blood pressure, and other key measurements.",
+    "peace": "Peace sign is a fixed cultural phrase referring to the well-known symbol.",
+    "equal": "Equal sign is the standard mathematical term for the = symbol."
   },
   "lessons": [
     {
-      "title": "Test the most ordinary phrase ending first",
-      "body": "Easy boards often rely on very common phrase endings. When clues feel everyday and familiar, reach for the simplest connector rather than hunting for something clever."
+      "title": "Start with the most obvious phrase and test outward",
+      "body": "Warning sign and street sign are so familiar that they almost solve themselves. Once two clues confirm a connector, apply it to the remaining three before considering any other hypothesis. Common phrases are usually the right path."
     },
     {
       "title": "Different domains can share one clean connector",
-      "body": "Street, warning, peace, vital, and equal come from traffic, safety, culture, medicine, and maths — but sign works for all of them. A puzzle stays clean even if the clues span different areas of life."
+      "body": "Street comes from geography, vital from medicine, peace from culture, equal from mathematics — yet 'sign' works for all five. A connector does not need every clue to come from the same field. Focus on the shared word, not the shared topic."
     },
     {
-      "title": "Vital signs is plural — and that's fine",
-      "body": "Vital signs uses the plural form while the other clues pair with a singular sign. Pinpoint allows this variation; the connector still counts if the compound phrase is standard."
+      "title": "Plural forms are still valid",
+      "body": "Vital signs uses the plural while the other clues pair with a singular sign. Pinpoint accepts this variation as long as the compound phrase is a recognised term in standard usage. Do not discard a good hypothesis just because one clue takes a slightly different grammatical form."
     }
   ],
   "faqs": [
@@ -32,11 +36,11 @@
     },
     {
       "question": "Why does vital belong with sign?",
-      "answer": "Vital signs is a standard phrase in medicine, which keeps sign as the shared connector."
+      "answer": "Vital signs is the standard medical phrase for measurements like pulse and blood pressure, which makes it a valid member of the signs category."
     },
     {
       "question": "Was this an easier puzzle than recent boards?",
-      "answer": "Yes, the common phrase set is much more direct than the trickier phrase-family boards around it."
+      "answer": "Yes — warning sign and street sign are so common that they lock in the connector very quickly, making this one of the more accessible boards in recent weeks."
     }
   ]
 }

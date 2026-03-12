@@ -1,28 +1,32 @@
 {
   "slug": "pinpoint-answer-676",
   "fullAnalysis": [
-    "Puzzle #676 resolves to \"Words that come after mega\" because every clue becomes a familiar mega compound once you test the prefix instead of chasing a loose science theme.",
-    "Megaphone, megahit, megastar, megabyte, and megavolt all work cleanly. Once two of those land, the rest of the board verifies the same mega pattern without exceptions."
+    "Puzzle #676 presents five clues — Phone, Hit, Star, Byte, and Volt — that look completely unrelated at first glance. You have a communication device, a chart success, a celebrity, a computing unit, and an electrical measure. The surface meanings scatter across technology, entertainment, and science with nothing obvious to tie them together.",
+    "The hidden connector is the prefix 'mega'. Megaphone, megahit, megastar, megabyte, and megavolt are all established terms in everyday English. The cross-domain breadth is deliberate — when clues look like they belong to completely different worlds, a shared prefix or suffix is a strong candidate for the connector."
+  ],
+  "solutionNarrative": [
+    "I spent a moment trying to group the clues by subject — gadgets, entertainment, science — before realising that approach was going nowhere. The shift came when I tried putting a word in front of Phone. Megaphone came to mind immediately, and that unlocked everything.",
+    "I tested mega against the remaining four clues in sequence: megahit, megastar, megabyte, megavolt. Every single one produced a real, widely-used word without exception. When a hypothesis works for all five clues without a single misfit, there is nothing left to debate. I confirmed the answer and moved on."
   ],
   "wordHints": {
-    "Phone": "Megaphone is the loudest anchor in the set and usually gives the pattern away first.",
-    "Hit": "Megahit is a standard term for a very large commercial success.",
-    "Star": "Megastar fits the same prefix rule in entertainment language.",
-    "Byte": "Megabyte confirms that the pattern also works in computing.",
-    "Volt": "Megavolt closes the loop with a science term that still uses the same mega prefix."
+    "Phone": "Megaphone is the most familiar mega compound in the set and typically the first clue to unlock the prefix pattern.",
+    "Hit": "Megahit is a standard entertainment term for a song or film with massive commercial success.",
+    "Star": "Megastar fits the same prefix in celebrity and entertainment language.",
+    "Byte": "Megabyte is the standard computing unit confirming that the mega prefix works across technical fields.",
+    "Volt": "Megavolt closes the set with a physics term that uses the same prefix."
   },
   "lessons": [
     {
-      "title": "Prefix boards look random until you test one starter word",
-      "body": "Phone, hit, and star seem completely unrelated until you try mega in front of each one. When a board mixes entertainment, tech, and science words, a shared prefix is a strong candidate."
+      "title": "Test a shared prefix when clues span different domains",
+      "body": "Phone, Hit, Star, Byte, and Volt belong to five different fields. When clues scatter like that, stop grouping by subject and instead ask: what word goes in front of all of them? Mega in front of each clue produces a real, familiar word every time."
     },
     {
-      "title": "Megaphone is the fastest unlock",
-      "body": "Megaphone is such a familiar everyday word that it rarely requires a second thought. Once it points you to mega, apply the same prefix to the rest of the board before exploring other options."
+      "title": "Megaphone is the fastest unlock on prefix boards",
+      "body": "Megaphone is such an everyday word that it comes to mind almost automatically. Once one clue reveals the prefix, apply it to the others immediately rather than continuing to search for a thematic connection between the surface meanings."
     },
     {
-      "title": "Cross-domain prefixes are a classic Pinpoint trick",
-      "body": "Mega appears in pop culture (megastar), computing (megabyte), and physics (megavolt). Pinpoint uses cross-domain word families because they are genuinely tricky — the clues feel unrelated until the shared prefix clicks."
+      "title": "Zero exceptions means you have the right answer",
+      "body": "When a hypothesis works for all five clues without a single misfit, stop second-guessing. Megaphone, megahit, megastar, megabyte, and megavolt are all real English words — five for five is a clean confirmation."
     }
   ],
   "faqs": [
@@ -32,11 +36,11 @@
     },
     {
       "question": "What clue unlocks this puzzle fastest?",
-      "answer": "Phone is usually the fastest clue because megaphone is so familiar."
+      "answer": "Phone is usually the fastest clue because megaphone is such a familiar everyday word."
     },
     {
       "question": "Why does Byte fit with mega?",
-      "answer": "Megabyte is a standard computing unit, so it confirms the same prefix rule."
+      "answer": "Megabyte is the standard computing unit for file size, confirming that the mega prefix works across technical and scientific fields too."
     }
   ]
 }

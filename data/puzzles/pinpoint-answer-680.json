@@ -1,10 +1,12 @@
 {
   "slug": "pinpoint-answer-680",
   "fullAnalysis": [
-    "Puzzle #680 presents five clues — Cobalt, Powder, Baby, Navy, and Sky — that at first glance look like a random mix of a metal, a material, an age, a military term, and a weather word. The surface meanings point in completely different directions, which is exactly how the designers disguise a very clean category.",
-    "The key insight is that each clue is a well-known modifier for a single color word. Cobalt blue, powder blue, baby blue, navy blue, and sky blue are all fixed phrases that appear in paint swatches, fashion catalogues, and everyday conversation. Once you try appending 'blue' to any one of them, the entire board snaps into place immediately.",
-    "I started with Navy because navy blue is one of the most common color names in clothing. That sent me straight to Sky, then Baby, and within a few seconds all five clues had confirmed the same category without a single misfit. This is the kind of puzzle where the answer feels obvious in hindsight — but only after you make the mental jump from 'things that are blue' to 'words that precede blue'.",
-    "What makes this board slightly tricky is Cobalt, which sounds more like a chemistry element than a color modifier. If you approach the clues purely by category (metals, weather, military) rather than by compound phrase, you might miss the connector. The board rewards players who test prefix or suffix relationships early rather than grouping by subject matter."
+    "Puzzle #680 presents five clues — Cobalt, Powder, Baby, Navy, and Sky — that at first glance look like a random mix of a metal, a material, an age, a military rank, and a weather word. The surface meanings point in completely different directions, which is exactly how the designers disguise a very clean category.",
+    "The key insight is that each clue is a well-known modifier for a single color word. Cobalt blue, powder blue, baby blue, navy blue, and sky blue are all fixed phrases that appear in paint swatches, fashion catalogues, and everyday conversation. The board rewards players who test prefix or suffix word relationships early rather than grouping by surface subject matter."
+  ],
+  "solutionNarrative": [
+    "I started with Navy because navy blue is one of the most common color names in clothing — it came to mind almost immediately. That sent me to Sky, then Baby, and within a few seconds the pattern was clear. I went back and tested Cobalt and Powder to confirm, and both produced familiar shade names without any stretching.",
+    "The whole board resolved cleanly in under a minute. This is the kind of puzzle where the answer feels obvious in hindsight, but only after you make the mental jump from 'things that are blue' to 'words that precede blue'. Once that shift happens, every clue falls into place instantly."
   ],
   "wordHints": {
     "Cobalt": "Cobalt blue is a standard shade name found in art and design — a strong anchor once you test the 'blue' suffix.",

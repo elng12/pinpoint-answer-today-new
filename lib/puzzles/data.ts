@@ -23,6 +23,7 @@ export type PuzzleDetail = {
   difficulty: string;
   shortSummary: string;
   fullAnalysis: string[];
+  solutionNarrative: string[];
   wordHints: Record<string, string>;
   lessons: LessonItem[];
   faqs: FaqItem[];
@@ -158,6 +159,7 @@ function toPuzzleDetail(
     difficulty: entry.difficultyLevel ?? "Moderate",
     shortSummary: entry.shortSummary,
     fullAnalysis: detailContent.fullAnalysis,
+    solutionNarrative: detailContent.solutionNarrative ?? [],
     wordHints: detailContent.wordHints,
     lessons: detailContent.lessons,
     faqs: detailContent.faqs,

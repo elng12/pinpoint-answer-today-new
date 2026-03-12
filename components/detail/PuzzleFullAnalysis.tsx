@@ -98,6 +98,20 @@ export function PuzzleFullAnalysis({
             </ul>
           </section>
 
+          {puzzle.solutionNarrative.length > 0 && (
+            <section className="legacy-analysis-section">
+              <div className="legacy-section-title-row">
+                <Lightbulb className="legacy-section-icon" aria-hidden />
+                <h2 className="legacy-section-title">How I solved it</h2>
+              </div>
+              <div className="legacy-prose-stack">
+                {puzzle.solutionNarrative.map((paragraph, index) => (
+                  <p key={`${puzzle.slug}-narrative-${index}`}>{paragraph}</p>
+                ))}
+              </div>
+            </section>
+          )}
+
           <section className="legacy-analysis-section">
             <div className="legacy-clue-table-shell">
               <div className="legacy-table-kicker-row">

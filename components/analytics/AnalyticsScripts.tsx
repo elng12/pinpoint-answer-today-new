@@ -2,6 +2,7 @@ import Script from "next/script";
 
 const ENABLE_GA = process.env.NEXT_PUBLIC_ENABLE_GA === "true";
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID?.trim() || "";
+const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_ID?.trim() || "";
 
 export function AnalyticsScripts() {
   if (!ENABLE_GA || !GA_MEASUREMENT_ID) {
@@ -10,6 +11,14 @@ export function AnalyticsScripts() {
 
   return (
     <>
+      {ADSENSE_CLIENT_ID ? (
+        <Script
+          id="adsense-loader"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+      ) : null}
       <Script
         id="gtag-loader"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}

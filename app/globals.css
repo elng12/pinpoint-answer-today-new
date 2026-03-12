@@ -2524,6 +2524,18 @@ a {
   margin-top: 4px;
 }
 
+.legacy-prose-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.legacy-prose-stack p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
 .legacy-lesson-body {
   display: grid;
   gap: 4px;

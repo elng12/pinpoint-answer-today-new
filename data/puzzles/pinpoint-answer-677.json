@@ -1,28 +1,32 @@
 {
   "slug": "pinpoint-answer-677",
   "fullAnalysis": [
-    "Puzzle #677 points to \"Types of dresses\" because every clue completes a dress phrase people already know.",
-    "Sundress, wrap dress, cocktail dress, wedding dress, and little black dress all fit naturally. Once you spot two or three, the rest of the board becomes a clean clothing category instead of a vague event theme."
+    "Puzzle #677 gives you five clues — Sun, Wrap, Cocktail, Wedding, and Little black — that look like a mix of weather, cooking, events, and colours. The surface meanings could easily point toward party themes or seasonal occasions, which is a deliberate misdirect. The actual connector is the word 'dress': every clue forms a specific, named dress style.",
+    "Sundress, wrap dress, cocktail dress, wedding dress, and little black dress are all established fashion terms that appear regularly in magazines, retail, and everyday conversation. None of them require obscure fashion knowledge — these are mainstream phrases that most people encounter routinely."
+  ],
+  "solutionNarrative": [
+    "I tried the event angle first. Cocktail and Wedding both felt like occasions, which sent me toward party themes and formal events. But Sun and Wrap didn't belong in that framing at all. I stepped back and changed the question from 'what occasions?' to 'what type of dress?' — and the whole board resolved instantly.",
+    "Sundress, wrap dress, cocktail dress, wedding dress, little black dress. Every clue confirmed the pattern cleanly, including Little black, which I initially read as two separate words rather than one compound modifier. Once I treated it as a single unit, the connection was obvious. Five for five with no exceptions."
   ],
   "wordHints": {
-    "Sun": "Sundress is a standard clothing term and often the quickest anchor here.",
-    "Wrap": "Wrap dress is a classic fashion phrase.",
-    "Cocktail": "Cocktail dress locks in the same clothing family.",
-    "Wedding": "Wedding dress confirms the pattern immediately.",
-    "Little black": "Little black dress is the famous phrase that finishes the set."
+    "Sun": "Sundress is a standard warm-weather clothing term and often the quickest anchor on this board.",
+    "Wrap": "Wrap dress is a well-known fashion silhouette that confirms the dress category.",
+    "Cocktail": "Cocktail dress is a classic formal-wear phrase — despite sounding like an event clue, it names a specific dress style.",
+    "Wedding": "Wedding dress is one of the most fixed fashion phrases in everyday language.",
+    "Little black": "Little black dress is the iconic fashion phrase, making it the final clean confirmation of the category."
   },
   "lessons": [
     {
-      "title": "Event clues can point to objects, not occasions",
-      "body": "Cocktail and wedding feel like events, but they complete dress phrases instead. If multiple clues sound like settings, test whether they all point to the same type of object."
+      "title": "Event clues can name objects, not occasions",
+      "body": "Cocktail and Wedding both sound like events, but they complete dress phrases rather than pointing to occasion themes. If multiple clues feel like occasions or settings, test whether they all name the same type of object instead."
     },
     {
-      "title": "Fashion phrases use everyday two-word compounds",
-      "body": "Style categories like wrap dress and little black dress are fixed phrases in everyday language. Pinpoint favors these well-known compounds because they leave no ambiguity once you test the right suffix."
+      "title": "Switching the frame unlocks the board",
+      "body": "The clues only make sense as a group once you ask 'what type of dress?' instead of 'what occasion?'. When one framing produces mixed results across the clues, change the question you are asking — the right connector becomes obvious immediately."
     },
     {
-      "title": "Three confirming clues are enough to commit",
-      "body": "Sun, wrap, and wedding all complete dress cleanly. Once three clues verify a pattern, apply it to the remaining two rather than second-guessing the category."
+      "title": "Multi-word clues are tested as a single unit",
+      "body": "Little black is two words, but little black dress is a single, fixed cultural phrase. Pinpoint uses multi-word fragments occasionally; treat them as one compound modifier and apply the connector to the whole phrase, not just the last word."
     }
   ],
   "faqs": [
@@ -32,11 +36,11 @@
     },
     {
       "question": "Which clue gives the answer away fastest?",
-      "answer": "Wedding is usually the fastest clue because wedding dress is such a fixed phrase."
+      "answer": "Wedding is usually the fastest clue because wedding dress is such a universally known phrase."
     },
     {
       "question": "Why does Little black fit?",
-      "answer": "Little black dress is the well-known phrase that confirms the category."
+      "answer": "Little black dress is a fixed fashion phrase — one of the most culturally recognised style names in the category."
     }
   ]
 }

@@ -1,28 +1,32 @@
 {
   "slug": "pinpoint-answer-678",
   "fullAnalysis": [
-    "Puzzle #678 resolves to \"Words that come before phone\" because each clue forms a familiar phone compound instead of pointing to a broad technology category.",
-    "Camera phone, smartphone, pay phone, touch-tone phone, and cellular phone all fit. Once you stop testing gadgets and instead test the shared word phone, the whole board locks quickly."
+    "Puzzle #678 presents five clues — Camera, Smart, Pay, Touch-tone, and Cellular — that look like a scattered collection of technology and finance terms. Camera makes you think of photography, Smart suggests intelligence or consumer tech, Pay looks financial, Touch-tone is an old telecom reference, and Cellular sounds like biology or mobile networks. The surface meanings do not group neatly by era or function.",
+    "The connector is the word 'phone' placed after each clue. Camera phone, smartphone, pay phone, touch-tone phone, and cellular phone are all standard English terms spanning very different decades. The fact that they span generations is the point — Pinpoint is testing the shared word, not the shared era."
+  ],
+  "solutionNarrative": [
+    "I tried grouping by technology category first: cameras, payment systems, networks. None of those frames covered all five clues. The shift came when I tried appending 'phone' to Smart — smartphone is so common that it surfaced immediately. Camera phone followed, then pay phone locked in the pattern.",
+    "Touch-tone and cellular gave me a brief pause because both feel dated. But touch-tone phone and cellular phone are perfectly standard terms — they just belong to an earlier generation of the same product. Once I accepted that the connector works across eras, all five clues confirmed cleanly and I committed to the answer."
   ],
   "wordHints": {
-    "Camera": "Camera phone is a direct device phrase and one of the cleanest anchors.",
-    "Smart": "Smartphone confirms the same word family from consumer tech.",
-    "Pay": "Pay phone widens the pattern beyond modern devices.",
-    "Touch-tone": "Touch-tone phone keeps the same connector in an older telecom phrase.",
-    "Cellular": "Cellular phone verifies the category with a more formal term."
+    "Camera": "Camera phone is a direct device phrase — once smartphones gained built-in cameras, the term became standard.",
+    "Smart": "Smartphone is the most modern term in the set and usually the fastest anchor for this board.",
+    "Pay": "Pay phone widens the pattern to include obsolete public infrastructure, confirming phone works across eras.",
+    "Touch-tone": "Touch-tone phone is a standard telecom phrase for push-button landlines — older but still a real compound.",
+    "Cellular": "Cellular phone is a more formal term for mobile phones, confirming that phone is the consistent connector."
   },
   "lessons": [
     {
       "title": "Tech clues often share a single connecting noun",
-      "body": "Camera, smart, pay, and cellular all feel tech-adjacent but they don't share a gadget type. When clues point at a broad domain, test whether they all pair with the same everyday noun instead."
+      "body": "Camera, Smart, Pay, and Cellular all feel tech-adjacent but belong to different product categories. When clues cluster around a broad field without a clear shared product, test whether they all combine with one everyday noun — here, phone fits all five cleanly."
     },
     {
       "title": "Old and new terms on the same board signal a word family",
-      "body": "Pay phone is decades older than smartphone, yet both work here. Whenever old-fashioned and modern clues coexist, the connector is usually a shared word rather than a product era."
+      "body": "Touch-tone and cellular are decades older than smartphone, yet both belong here. When a puzzle mixes contemporary and dated terms from the same general field, the connector is almost always a shared word that has persisted across multiple product generations."
     },
     {
-      "title": "Verify with the least obvious clue last",
-      "body": "Touch-tone is the most dated phrase in the set, but touch-tone phone is a perfectly standard term. Use your strongest anchors first, then confirm with the tricky clue — don't lead with the edge case."
+      "title": "Confirm with the least obvious clue last",
+      "body": "Touch-tone is the most dated and unexpected phrase in the set, so it is the best clue to use as a final verification rather than a starting anchor. Lead with your strongest match — smartphone — then work toward the edge cases."
     }
   ],
   "faqs": [
@@ -32,11 +36,11 @@
     },
     {
       "question": "What clue helps solve this fastest?",
-      "answer": "Smart is usually the fastest anchor because smartphone is so common."
+      "answer": "Smart is usually the fastest anchor because smartphone is one of the most-used words in tech vocabulary."
     },
     {
       "question": "Why does Touch-tone fit the answer phone?",
-      "answer": "Touch-tone phone is a standard telecom phrase, which confirms phone as the shared connector."
+      "answer": "Touch-tone phone is a standard term for push-button landlines from the pre-mobile era, confirming that phone is the shared connector across multiple generations of telephone technology."
     }
   ]
 }

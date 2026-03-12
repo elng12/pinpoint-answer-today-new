@@ -31,6 +31,7 @@ export const lessonItemSchema = z.union([
 export const puzzleDetailContentSchema = z.object({
   slug: z.string().min(1),
   fullAnalysis: z.array(z.string().min(1)).min(1),
+  solutionNarrative: z.array(z.string().min(1)).optional(),
   wordHints: z.record(z.string().min(1)),
   lessons: z.array(lessonItemSchema).min(1),
   faqs: z.array(faqItemSchema).min(1),
