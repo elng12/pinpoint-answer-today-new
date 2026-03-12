@@ -25,7 +25,10 @@ const puzzleDetailContentSchema = z.object({
   slug: z.string().min(1),
   fullAnalysis: z.array(z.string().min(1)).min(1),
   wordHints: z.record(z.string().min(1)),
-  lessons: z.array(z.string().min(1)).min(1),
+  lessons: z.array(z.union([
+    z.string().min(1),
+    z.object({ title: z.string().min(1), body: z.string().min(1) }),
+  ])).min(1),
   faqs: z
     .array(
       z.object({
