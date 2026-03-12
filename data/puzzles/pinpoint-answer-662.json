@@ -9,9 +9,9 @@
   "wordHints": {
     "Screwdriver": "Screwdriver (Tool + Component): Uses driver bits for different screw types",
     "Drill": "Drill (Power + Tool): Requires various bits for different materials",
-    "Horse when bridled": "Horse Bit (Equestrian + Equipment): Metal mouthpiece used for control",
+    "Horse (when bridled)": "Horse Bit (Equestrian + Equipment): Metal mouthpiece used for control",
     "Comedy sketch show": "Comedy Bit (Entertainment + Segment): Short comedic performance piece",
-    "Computer memory": "Memory Bit (Digital + Unit): Basic unit of computer information"
+    "Computer memory (groups of 64)": "Memory Bit (Digital + Unit): Basic unit of computer information"
   },
   "lessons": [
     "Consider multiple meanings of common terms. Words like 'bit' can have entirely different meanings across various contexts.",

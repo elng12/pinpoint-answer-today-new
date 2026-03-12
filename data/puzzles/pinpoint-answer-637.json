@@ -11,7 +11,7 @@
     "Calendars": "Calendars (Time Management Tool): Date-tracking device typically mounted on walls",
     "Mirrors": "Mirrors (Reflective Surface): Glass panels mounted vertically for reflection",
     "Pennants": "Pennants (Team Merchandise): Triangular flags displaying team or school symbols",
-    "Televisions": "Televisions (Electronic Display): Screen devices that can be wall-mounted"
+    "Televisions (if not on stands)": "Televisions (Electronic Display): Screen devices that can be wall-mounted"
   },
   "lessons": [
     "Pay attention to qualifying statements in parentheses. The note about TVs 'if not on stands' was a crucial hint about mounting method.",

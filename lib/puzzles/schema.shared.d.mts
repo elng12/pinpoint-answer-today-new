@@ -1,9 +1,9 @@
 import { z } from "zod";
 
-export const puzzleStatusSchema: z.ZodEnum<["draft", "preview", "live", "archived"]>;
-export const difficultyLevelSchema: z.ZodEnum<["Easy", "Moderate", "Hard"]>;
+export declare const puzzleStatusSchema: z.ZodEnum<["draft", "preview", "live", "archived"]>;
+export declare const difficultyLevelSchema: z.ZodEnum<["Easy", "Moderate", "Hard"]>;
 
-export const puzzleRegistryEntrySchema: z.ZodObject<{
+export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   puzzleNumber: z.ZodNumber;
   slug: z.ZodString;
   publishDate: z.ZodString;
@@ -16,18 +16,18 @@ export const puzzleRegistryEntrySchema: z.ZodObject<{
   updatedAt: z.ZodString;
 }>;
 
-export const registrySchema: z.ZodArray<typeof puzzleRegistryEntrySchema>;
+export declare const registrySchema: z.ZodArray<typeof puzzleRegistryEntrySchema>;
 
-export const faqItemSchema: z.ZodObject<{
+export declare const faqItemSchema: z.ZodObject<{
   question: z.ZodString;
   answer: z.ZodString;
 }>;
 
-export const lessonItemSchema: z.ZodUnion<
+export declare const lessonItemSchema: z.ZodUnion<
   [z.ZodString, z.ZodObject<{ title: z.ZodString; body: z.ZodString }>]
 >;
 
-export const puzzleDetailContentSchema: z.ZodObject<{
+export declare const puzzleDetailContentSchema: z.ZodObject<{
   slug: z.ZodString;
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;

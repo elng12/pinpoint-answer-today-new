@@ -10,8 +10,8 @@
     "A": "The green face button on the right side of the Xbox controller, typically used for primary actions like jumping, confirming selections, or interacting with objects.",
     "X": "The blue face button on the left side of the Xbox controller, commonly mapped to reloading weapons, opening inventories, or context-sensitive actions.",
     "RB": "The right shoulder button on top of the controller, often used for aiming down sights, cycling weapons, or accessing secondary abilities.",
-    "LT": "The left analog trigger on the back of the controller, measuring pressure sensitivity. Commonly used for braking in racing games or aiming in shooters.",
-    "D-Pad": "The four-directional cross-shaped pad on the left side of the controller face, used for menu navigation, weapon switching, or movement in classic-style games."
+    "LT (left trigger)": "The left analog trigger on the back of the controller, measuring pressure sensitivity. Commonly used for braking in racing games or aiming in shooters.",
+    "D-Pad (used for four different inputs)": "The four-directional cross-shaped pad on the left side of the controller face, used for menu navigation, weapon switching, or movement in classic-style games."
   },
   "lessons": [
     "Parenthetical clues are crucial context. When clues include explanations like '(left trigger)' or '(used for four different inputs)', they're telling you exactly what category to think about.",

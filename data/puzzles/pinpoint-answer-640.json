@@ -10,8 +10,8 @@
     "Rigid": "Set (Adjective + State): Fixed or rigid in position",
     "Prearranged": "Set (Verb + Action): To arrange or establish beforehand",
     "Backdrop": "Set (Noun + Theater): The scenery and props forming the background of a stage",
-    "Establish a record": "Set (Verb + Achievement): To establish or create a record",
-    "Collection of objects": "Set (Noun + Group): A collection of similar or related items"
+    "Establish (a record)": "Set (Verb + Achievement): To establish or create a record",
+    "{Collection of objects}": "Set (Noun + Group): A collection of similar or related items"
   },
   "lessons": [
     "Consider multiple parts of speech. Words can function as nouns, verbs, or adjectives, expanding their potential meanings.",

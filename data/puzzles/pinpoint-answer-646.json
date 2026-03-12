@@ -11,7 +11,7 @@
     "Hand truck": "Hand truck (Material Handler): Two-wheeled cart for moving heavy items",
     "Hoverboard": "Hoverboard (Self-Balancing Scooter): Two-wheeled personal transport device",
     "Motorcycle": "Motorcycle (Motor Vehicle): Two-wheeled powered vehicle",
-    "Bicycle": "Bicycle (Human-Powered Vehicle): Two-wheeled pedal-powered transport"
+    "Bicycle (but not a tricycle)": "Bicycle (Human-Powered Vehicle): Two-wheeled pedal-powered transport"
   },
   "lessons": [
     "Pay attention to explicit exclusions. When a clue specifically excludes something, it often highlights the key characteristic you're looking for.",

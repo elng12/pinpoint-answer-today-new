@@ -6,10 +6,10 @@
   ],
   "wordHints": {
     "Artemis": "Artemis (Artemis + Space Program): NASA's current program aimed at returning humans to the Moon and establishing sustainable lunar exploration.",
-    "Chang'e": "Chang'e (Chang'e + Lunar Program): China's series of lunar exploration missions including orbiters, landers, and rovers.",
+    "Chang’e": "Chang'e (Chang'e + Lunar Program): China's series of lunar exploration missions including orbiters, landers, and rovers.",
     "Chandrayaan": "Chandrayaan (Chandrayaan + Mission Series): India's lunar exploration program with multiple successful orbital and landing missions.",
     "Luna": "Luna (Luna + Space Program): The Soviet Union's pioneering lunar exploration program with numerous firsts in space exploration.",
-    "Apollo": "Apollo (Apollo + Space Program): NASA's historic program that achieved the first human Moon landing in 1969."
+    "Apollo (a \"first\" in 1969)": "Apollo (Apollo + Space Program): NASA's historic program that achieved the first human Moon landing in 1969."
   },
   "lessons": [
     "Look beyond obvious mythological connections. When you see mythological names, consider whether they might also reference modern programs or projects named after those figures.",

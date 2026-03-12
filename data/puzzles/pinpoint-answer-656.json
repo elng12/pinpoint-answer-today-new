@@ -10,7 +10,7 @@
     "Tailfin": "Tailfin (Control Surface): Vertical stabilizer that provides directional stability and control",
     "Gondola": "Gondola (Passenger Compartment): Suspended cabin that carries crew and passengers",
     "Propeller": "Propeller (Propulsion Device): Rotating blade system that provides thrust",
-    "Ballonets": "Ballonets (Air Chamber): Internal air bags that help control buoyancy",
+    "Ballonets (inflatable bags)": "Ballonets (Air Chamber): Internal air bags that help control buoyancy",
     "Helium gas envelope": "Helium gas envelope (Containment Structure): Outer shell that holds the lifting gas"
   },
   "lessons": [

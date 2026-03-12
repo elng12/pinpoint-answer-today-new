@@ -10,8 +10,8 @@
     "Spiral": "Spiral (Figure Skating Element): A move where the skater glides on one foot while raising the free leg above hip level",
     "Toe loop": "Toe loop (Jump Element): A figure skating jump taking off from the back outside edge of one foot using the toe pick",
     "Triple Axel": "Triple Axel (Advanced Jump): A forward-takeoff jump with three and a half rotations",
-    "Deductions": "Deductions (Scoring Component): Points subtracted from a skater's score for errors or falls",
-    "Kiss and cry": "Kiss and cry (Venue Area): The rinkside seating where skaters await their scores"
+    "Deductions (after falls)": "Deductions (Scoring Component): Points subtracted from a skater's score for errors or falls",
+    "Kiss and cry (rink area)": "Kiss and cry (Venue Area): The rinkside seating where skaters await their scores"
   },
   "lessons": [
     "Consider sport-specific terminology when multiple elements point to athletics. Technical terms often cluster within specific sports",

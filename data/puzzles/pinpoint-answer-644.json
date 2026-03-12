@@ -11,7 +11,7 @@
     "Eagle": "Eagle (Golf Score): Two strokes under par on a single hole",
     "Birdie": "Birdie (Golf Score): One stroke under par on a single hole",
     "Par": "Par (Golf Score): Standard number of strokes expected for a hole",
-    "Bogey or worse": "Bogey (Golf Score): One stroke over par on a single hole"
+    "Bogey (or worse)": "Bogey (Golf Score): One stroke over par on a single hole"
   },
   "lessons": [
     "Consider the progression from best to worst. Notice how clues are arranged in descending order of desirability.",
