@@ -19,10 +19,7 @@ export async function POST(request: NextRequest) {
 
   const stored = (process.env.REVALIDATE_SECRET ?? "").trim();
   if (!stored || secret !== stored) {
-    return NextResponse.json({
-      error: "Invalid secret",
-      debug: { storedLen: stored.length, receivedLen: secret?.length ?? 0 },
-    }, { status: 401 });
+    return NextResponse.json({ error: "Invalid secret" }, { status: 401 });
   }
 
   const slug = request.nextUrl.searchParams.get("slug");
