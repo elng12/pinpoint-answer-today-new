@@ -1,9 +1,21 @@
 [
   {
+    "puzzleNumber": 681,
+    "slug": "pinpoint-answer-681",
+    "publishDate": "2026-03-12",
+    "status": "live",
+    "clues": ["House", "Field", "Optical", "Mickey", "Cat and"],
+    "mainAnswer": "Words that come before mouse",
+    "category": "Words that come before mouse",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Five clues united by a single suffix: every one precedes the word \"mouse,\" from the humble house mouse to the iconic Mickey.",
+    "updatedAt": "2026-03-12T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 680,
     "slug": "pinpoint-answer-680",
     "publishDate": "2026-03-11",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Cobalt",
       "Powder",

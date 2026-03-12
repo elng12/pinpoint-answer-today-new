@@ -2168,9 +2168,9 @@ a {
 
 .legacy-detail-title {
   margin: 8px 0 0;
-  font-size: clamp(40px, 4.4vw, 60px);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   font-weight: 700;
 }
 
@@ -2754,11 +2754,11 @@ body:has(.legacy-detail-page) .footer-badge-wall {
   }
 
   .legacy-detail-title {
-    font-size: 34px;
+    font-size: 26px;
   }
 
   .legacy-analysis-title {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .legacy-reveal-clue-grid,

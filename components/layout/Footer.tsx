@@ -15,7 +15,6 @@ export function Footer({ recentEntries }: { recentEntries: ArchiveEntry[] }) {
         { label: "Next puzzle", href: routes.preview },
         { label: "Archive", href: routes.archive },
         { label: "How it works", href: "/#faq" },
-        { label: "Media & Featured In", href: routes.featured },
         { label: "About", href: routes.about },
       ]
     : [
