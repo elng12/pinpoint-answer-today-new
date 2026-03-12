@@ -13,18 +13,20 @@ export const metadata: Metadata = buildSiteMetadata({
   description: "Daily LinkedIn Pinpoint answers with spoiler-safe hints, full walkthroughs, and an archive of past puzzles.",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const recentEntries = await getRecentEntries(10);
+
   return (
     <html lang="en">
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${inter.className}`}>
         <div className="shell">
           <NavBar />
           {children}
-          <Footer recentEntries={getRecentEntries(10)} />
+          <Footer recentEntries={recentEntries} />
         </div>
         <AnalyticsScripts />
       </body>

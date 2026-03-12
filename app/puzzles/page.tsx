@@ -6,6 +6,8 @@ import { routes } from "@/lib/paths/routes";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
 import { StructuredData } from "@/components/seo/StructuredData";
 
+export const revalidate = 86400;
+
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
     title: "All Pinpoint Answers Archive",
@@ -15,8 +17,8 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function ArchivePage() {
-  const groups = getArchiveEntriesGrouped();
+export default async function ArchivePage() {
+  const groups = await getArchiveEntriesGrouped();
   const archiveEntries = groups.flatMap((group) => group.items);
   const structuredDataItems = [
     {

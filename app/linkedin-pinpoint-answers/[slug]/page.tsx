@@ -6,9 +6,16 @@ import { getAllDetailSlugs, getNextPreview, getPuzzleBySlug, getRecentEntries } 
 import { routes } from "@/lib/paths/routes";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
 
+// Pre-render only the most recent 50 slugs at build time.
+// Older pages and new puzzles are rendered on first request (ISR fallback).
 export function generateStaticParams() {
-  return getAllDetailSlugs().map((slug) => ({ slug }));
+  return getAllDetailSlugs()
+    .slice(0, 50)
+    .map((slug) => ({ slug }));
 }
+
+export const revalidate = 86400;
+export const dynamicParams = true;
 
 export async function generateMetadata({
   params,
@@ -16,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const puzzle = getPuzzleBySlug(slug);
+  const puzzle = await getPuzzleBySlug(slug);
 
   if (!puzzle) {
     return buildPageMetadata({
@@ -44,7 +51,11 @@ export default async function DetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const puzzle = getPuzzleBySlug(slug);
+  const [puzzle, recentPuzzles, nextPreview] = await Promise.all([
+    getPuzzleBySlug(slug),
+    getRecentEntries(10, slug),
+    getNextPreview(),
+  ]);
 
   if (!puzzle) {
     notFound();
@@ -53,7 +64,6 @@ export default async function DetailPage({
   const clueList = puzzle.clues.join(", ");
   const seoHeadline = `LinkedIn Pinpoint ${puzzle.number}: ${clueList}`;
   const seoDescription = `Explore LinkedIn Pinpoint ${puzzle.number} with clues: ${clueList}. Get spoiler-safe hints, a walkthrough, and an archive recap.`;
-  const recentPuzzles = getRecentEntries(10, puzzle.slug);
 
   const structuredDataItems = [
     {
@@ -196,7 +206,7 @@ export default async function DetailPage({
       <PuzzleDetail
         puzzle={puzzle}
         recentPuzzles={recentPuzzles}
-        nextPreview={getNextPreview()}
+        nextPreview={nextPreview}
       />
     </main>
   );

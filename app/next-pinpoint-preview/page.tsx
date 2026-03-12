@@ -14,8 +14,10 @@ import { getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzle
 import { routes } from "@/lib/paths/routes";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export function generateMetadata(): Metadata {
-  const preview = getNextPreview();
+export const revalidate = 86400;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const preview = await getNextPreview();
   const puzzleLabel = preview ? `#${preview.number}` : "the next puzzle";
 
   return buildPageMetadata({
@@ -27,14 +29,15 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function PreviewPage() {
-  const preview = getNextPreview();
-  const archive = getRecentEntries(6);
+export default async function PreviewPage() {
+  const [preview, archive] = await Promise.all([
+    getNextPreview(),
+    getRecentEntries(6),
+  ]);
 
-  // Try to get latest live puzzle for the "answer is here" chip
-  let latestEntry: ReturnType<typeof getRecentEntries>[number] | null = null;
+  let latestEntry: Awaited<ReturnType<typeof getRecentEntries>>[number] | null = null;
   try {
-    const live = getCurrentPuzzle();
+    const live = await getCurrentPuzzle();
     latestEntry = archive.find((e) => e.slug === live.slug) ?? archive[0] ?? null;
   } catch {
     latestEntry = archive[0] ?? null;

@@ -12,8 +12,10 @@ import { getArchiveEntries, getCurrentPuzzle, getNextPreview, getRecentEntries }
 import { routes } from "@/lib/paths/routes";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
 
-export function generateMetadata(): Metadata {
-  const current = getCurrentPuzzle();
+export const revalidate = 86400;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const current = await getCurrentPuzzle();
 
   return buildPageMetadata({
     title: `Pinpoint Answer Today for Puzzle ${current.number}`,
@@ -22,11 +24,14 @@ export function generateMetadata(): Metadata {
   });
 }
 
-export default function HomePage() {
-  const current = getCurrentPuzzle();
-  const preview = getNextPreview();
-  const archive = getRecentEntries(8, current.slug);
-  const allArchiveEntries = getArchiveEntries();
+export default async function HomePage() {
+  const [current, preview, archive, allArchiveEntries] = await Promise.all([
+    getCurrentPuzzle(),
+    getNextPreview(),
+    getRecentEntries(8),
+    getArchiveEntries(),
+  ]);
+
   const previousEntry = allArchiveEntries.find((entry) => entry.number < current.number) ?? null;
   const structuredDataItems = [
     {

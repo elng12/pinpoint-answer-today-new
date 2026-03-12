@@ -2,7 +2,9 @@ import type { MetadataRoute } from "next";
 import { getSitemapDetailEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 86400;
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
   const staticRoutes = [
     routes.home,
@@ -19,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  const detailEntries = getSitemapDetailEntries().map((item) => ({
+  const detailEntries = (await getSitemapDetailEntries()).map((item) => ({
     url: `${siteUrl}${routes.detail(item.slug)}`,
     lastModified: new Date(item.updatedAt),
   }));

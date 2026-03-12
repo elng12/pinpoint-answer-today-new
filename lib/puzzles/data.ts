@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { cache } from "react";
 import registryJson from "@/data/puzzles/registry.json";
 import {
   puzzleDetailContentSchema,
@@ -59,19 +60,19 @@ export type NextPreview = {
   shortSummary: string;
 };
 
-const registryEntries = registrySchema
+// ── Constants ──────────────────────────────────────────────────────────────
+
+const GITHUB_RAW_BASE =
+  process.env.GITHUB_RAW_BASE ??
+  "https://raw.githubusercontent.com/elng12/pinpoint-answer-today-new/main";
+
+// Used only for generateStaticParams (build-time pre-rendering of known slugs)
+const bundledRegistryEntries = registrySchema
   .parse(registryJson)
   .slice()
-  .sort((left, right) => right.puzzleNumber - left.puzzleNumber);
+  .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
 
-function resolveDataDir(): string {
-  const cwd = process.cwd();
-  const directDir = resolve(cwd, "data", "puzzles");
-  if (existsSync(resolve(directDir, "registry.json"))) {
-    return directDir;
-  }
-  return resolve(cwd, "new-pinpoint-site", "data", "puzzles");
-}
+// ── Helpers ────────────────────────────────────────────────────────────────
 
 function formatDisplayDate(input: string): string {
   return new Intl.DateTimeFormat("en-US", {
@@ -94,17 +95,6 @@ function buildTitle(entry: PuzzleRegistryEntryRecord): string {
   return `Pinpoint #${entry.puzzleNumber}`;
 }
 
-function formatClueList(clues: string[]): string {
-  if (clues.length <= 1) {
-    return clues.join("");
-  }
-  if (clues.length === 2) {
-    return `${clues[0]} and ${clues[1]}`;
-  }
-  return `${clues.slice(0, -1).join(", ")}, and ${clues[clues.length - 1]}`;
-}
-
-
 function isDetailEntry(
   entry: PuzzleRegistryEntryRecord,
 ): entry is PuzzleRegistryEntryRecord & {
@@ -112,18 +102,72 @@ function isDetailEntry(
   category: string;
   status: "live" | "archived";
 } {
-  return (entry.status === "live" || entry.status === "archived") && !!entry.mainAnswer && !!entry.category;
+  return (
+    (entry.status === "live" || entry.status === "archived") &&
+    !!entry.mainAnswer &&
+    !!entry.category
+  );
 }
 
-function loadDetailContent(slug: string): PuzzleDetailContentRecord {
+// ── Remote data fetching (ISR-aware) ──────────────────────────────────────
+// In development: reads from the local filesystem.
+// In production:  fetches from GitHub raw content URL so ISR revalidation
+//                 picks up new puzzle JSON files without a full rebuild.
+
+const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
+  if (process.env.NODE_ENV === "development") {
+    return bundledRegistryEntries;
+  }
+
+  const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
+    next: { tags: ["registry"], revalidate: 3600 },
+  });
+  if (!res.ok) {
+    // Fallback to bundled registry on fetch error
+    return bundledRegistryEntries;
+  }
+  const json = await res.json();
+  return registrySchema
+    .parse(json)
+    .slice()
+    .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+});
+
+const fetchPuzzleContent = cache(
+  async (slug: string): Promise<PuzzleDetailContentRecord> => {
+    if (process.env.NODE_ENV === "development") {
+      return loadDetailContentFromFilesystem(slug);
+    }
+
+    const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
+      next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
+    });
+    if (!res.ok) {
+      // Fallback to filesystem (works during build / current deployment)
+      return loadDetailContentFromFilesystem(slug);
+    }
+    const json = await res.json();
+    return puzzleDetailContentSchema.parse(json);
+  },
+);
+
+function resolveDataDir(): string {
+  const cwd = process.cwd();
+  const directDir = resolve(cwd, "data", "puzzles");
+  if (existsSync(resolve(directDir, "registry.json"))) return directDir;
+  return resolve(cwd, "new-pinpoint-site", "data", "puzzles");
+}
+
+function loadDetailContentFromFilesystem(slug: string): PuzzleDetailContentRecord {
   const filePath = resolve(resolveDataDir(), `${slug}.json`);
   const raw = readFileSync(filePath, "utf8");
   return puzzleDetailContentSchema.parse(JSON.parse(raw));
 }
 
+// ── Transformers ───────────────────────────────────────────────────────────
+
 function toArchiveEntry(entry: PuzzleRegistryEntryRecord): ArchiveEntry {
   const detailEntry = isDetailEntry(entry) ? entry : null;
-
   return {
     number: entry.puzzleNumber,
     slug: entry.slug,
@@ -139,14 +183,14 @@ function toArchiveEntry(entry: PuzzleRegistryEntryRecord): ArchiveEntry {
   };
 }
 
-function toPuzzleDetail(
+async function toPuzzleDetail(
   entry: PuzzleRegistryEntryRecord & {
     mainAnswer: string;
     category: string;
     status: "live" | "archived";
   },
-): PuzzleDetail {
-  const detailContent = loadDetailContent(entry.slug);
+): Promise<PuzzleDetail> {
+  const detailContent = await fetchPuzzleContent(entry.slug);
   return {
     number: entry.puzzleNumber,
     slug: entry.slug,
@@ -168,69 +212,64 @@ function toPuzzleDetail(
   };
 }
 
-function getDetailEntries(): Array<
-  PuzzleRegistryEntryRecord & {
-    mainAnswer: string;
-    category: string;
-    status: "live" | "archived";
-  }
-> {
-  return registryEntries.filter(isDetailEntry);
+async function getDetailEntries() {
+  const entries = await fetchRegistry();
+  return entries.filter(isDetailEntry);
 }
 
+// ── Public API (async) ─────────────────────────────────────────────────────
+
+/** Used only by generateStaticParams — reads bundled registry at build time. */
 export function getAllDetailSlugs(): string[] {
-  return getDetailEntries().map((entry) => entry.slug);
+  return bundledRegistryEntries.filter(isDetailEntry).map((e) => e.slug);
 }
 
-export function getCurrentPuzzle(): PuzzleDetail {
-  const current = getDetailEntries().find((entry) => entry.status === "live");
-  if (!current) {
-    throw new Error("Expected one live puzzle in the registry.");
-  }
+export async function getCurrentPuzzle(): Promise<PuzzleDetail> {
+  const entries = await getDetailEntries();
+  const current = entries.find((e) => e.status === "live");
+  if (!current) throw new Error("Expected one live puzzle in the registry.");
   return toPuzzleDetail(current);
 }
 
-export function getPuzzleBySlug(slug: string): PuzzleDetail | null {
-  const entry = getDetailEntries().find((item) => item.slug === slug);
-  if (!entry) {
-    return null;
-  }
+export async function getPuzzleBySlug(slug: string): Promise<PuzzleDetail | null> {
+  const entries = await getDetailEntries();
+  const entry = entries.find((e) => e.slug === slug);
+  if (!entry) return null;
   return toPuzzleDetail(entry);
 }
 
-export function getRecentEntries(limit: number, excludeSlug?: string): ArchiveEntry[] {
-  return getDetailEntries()
-    .filter((entry) => entry.slug !== excludeSlug)
+export async function getRecentEntries(
+  limit: number,
+  excludeSlug?: string,
+): Promise<ArchiveEntry[]> {
+  const entries = await getDetailEntries();
+  return entries
+    .filter((e) => e.slug !== excludeSlug)
     .slice(0, limit)
     .map(toArchiveEntry);
 }
 
-export function getArchiveEntries(): ArchiveEntry[] {
-  return getDetailEntries().map(toArchiveEntry);
+export async function getArchiveEntries(): Promise<ArchiveEntry[]> {
+  const entries = await getDetailEntries();
+  return entries.map(toArchiveEntry);
 }
 
-export function getArchiveEntriesGrouped(): ArchiveGroup[] {
+export async function getArchiveEntriesGrouped(): Promise<ArchiveGroup[]> {
+  const archiveEntries = await getArchiveEntries();
   const grouped = new Map<string, ArchiveEntry[]>();
-
-  getArchiveEntries().forEach((entry) => {
+  for (const entry of archiveEntries) {
     const label = formatMonthLabel(entry.isoDate);
     const current = grouped.get(label) ?? [];
     current.push(entry);
     grouped.set(label, current);
-  });
-
-  return Array.from(grouped.entries()).map(([label, items]) => ({
-    label,
-    items,
-  }));
+  }
+  return Array.from(grouped.entries()).map(([label, items]) => ({ label, items }));
 }
 
-export function getNextPreview(): NextPreview | null {
-  const previewEntry = registryEntries.find((entry) => entry.status === "preview");
-  if (!previewEntry) {
-    return null;
-  }
-
+export async function getNextPreview(): Promise<NextPreview | null> {
+  const entries = await fetchRegistry();
+  const previewEntry = entries.find((e) => e.status === "preview");
+  if (!previewEntry) return null;
   return {
     number: previewEntry.puzzleNumber,
     slug: previewEntry.slug,
@@ -241,9 +280,7 @@ export function getNextPreview(): NextPreview | null {
   };
 }
 
-export function getSitemapDetailEntries() {
-  return getDetailEntries().map((entry) => ({
-    slug: entry.slug,
-    updatedAt: entry.updatedAt,
-  }));
+export async function getSitemapDetailEntries() {
+  const entries = await getDetailEntries();
+  return entries.map((e) => ({ slug: e.slug, updatedAt: e.updatedAt }));
 }
