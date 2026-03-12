@@ -1,0 +1,42 @@
+{
+  "slug": "pinpoint-answer-677",
+  "fullAnalysis": [
+    "Puzzle #677 points to \"Types of dresses\" because every clue completes a dress phrase people already know.",
+    "Sundress, wrap dress, cocktail dress, wedding dress, and little black dress all fit naturally. Once you spot two or three, the rest of the board becomes a clean clothing category instead of a vague event theme."
+  ],
+  "wordHints": {
+    "Sun": "Sundress is a standard clothing term and often the quickest anchor here.",
+    "Wrap": "Wrap dress is a classic fashion phrase.",
+    "Cocktail": "Cocktail dress locks in the same clothing family.",
+    "Wedding": "Wedding dress confirms the pattern immediately.",
+    "Little black": "Little black dress is the famous phrase that finishes the set."
+  },
+  "lessons": [
+    {
+      "title": "Event clues can point to objects, not occasions",
+      "body": "Cocktail and wedding feel like events, but they complete dress phrases instead. If multiple clues sound like settings, test whether they all point to the same type of object."
+    },
+    {
+      "title": "Fashion phrases use everyday two-word compounds",
+      "body": "Style categories like wrap dress and little black dress are fixed phrases in everyday language. Pinpoint favors these well-known compounds because they leave no ambiguity once you test the right suffix."
+    },
+    {
+      "title": "Three confirming clues are enough to commit",
+      "body": "Sun, wrap, and wedding all complete dress cleanly. Once three clues verify a pattern, apply it to the remaining two rather than second-guessing the category."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the LinkedIn Pinpoint answer for Puzzle #677?",
+      "answer": "The answer for Puzzle #677 is Types of dresses."
+    },
+    {
+      "question": "Which clue gives the answer away fastest?",
+      "answer": "Wedding is usually the fastest clue because wedding dress is such a fixed phrase."
+    },
+    {
+      "question": "Why does Little black fit?",
+      "answer": "Little black dress is the well-known phrase that confirms the category."
+    }
+  ]
+}

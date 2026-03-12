@@ -1,0 +1,42 @@
+{
+  "slug": "pinpoint-answer-676",
+  "fullAnalysis": [
+    "Puzzle #676 resolves to \"Words that come after mega\" because every clue becomes a familiar mega compound once you test the prefix instead of chasing a loose science theme.",
+    "Megaphone, megahit, megastar, megabyte, and megavolt all work cleanly. Once two of those land, the rest of the board verifies the same mega pattern without exceptions."
+  ],
+  "wordHints": {
+    "Phone": "Megaphone is the loudest anchor in the set and usually gives the pattern away first.",
+    "Hit": "Megahit is a standard term for a very large commercial success.",
+    "Star": "Megastar fits the same prefix rule in entertainment language.",
+    "Byte": "Megabyte confirms that the pattern also works in computing.",
+    "Volt": "Megavolt closes the loop with a science term that still uses the same mega prefix."
+  },
+  "lessons": [
+    {
+      "title": "Prefix boards look random until you test one starter word",
+      "body": "Phone, hit, and star seem completely unrelated until you try mega in front of each one. When a board mixes entertainment, tech, and science words, a shared prefix is a strong candidate."
+    },
+    {
+      "title": "Megaphone is the fastest unlock",
+      "body": "Megaphone is such a familiar everyday word that it rarely requires a second thought. Once it points you to mega, apply the same prefix to the rest of the board before exploring other options."
+    },
+    {
+      "title": "Cross-domain prefixes are a classic Pinpoint trick",
+      "body": "Mega appears in pop culture (megastar), computing (megabyte), and physics (megavolt). Pinpoint uses cross-domain word families because they are genuinely tricky — the clues feel unrelated until the shared prefix clicks."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the LinkedIn Pinpoint answer for Puzzle #676?",
+      "answer": "The answer for Puzzle #676 is Words that come after mega."
+    },
+    {
+      "question": "What clue unlocks this puzzle fastest?",
+      "answer": "Phone is usually the fastest clue because megaphone is so familiar."
+    },
+    {
+      "question": "Why does Byte fit with mega?",
+      "answer": "Megabyte is a standard computing unit, so it confirms the same prefix rule."
+    }
+  ]
+}

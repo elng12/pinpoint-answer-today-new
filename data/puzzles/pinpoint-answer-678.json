@@ -1,0 +1,42 @@
+{
+  "slug": "pinpoint-answer-678",
+  "fullAnalysis": [
+    "Puzzle #678 resolves to \"Words that come before phone\" because each clue forms a familiar phone compound instead of pointing to a broad technology category.",
+    "Camera phone, smartphone, pay phone, touch-tone phone, and cellular phone all fit. Once you stop testing gadgets and instead test the shared word phone, the whole board locks quickly."
+  ],
+  "wordHints": {
+    "Camera": "Camera phone is a direct device phrase and one of the cleanest anchors.",
+    "Smart": "Smartphone confirms the same word family from consumer tech.",
+    "Pay": "Pay phone widens the pattern beyond modern devices.",
+    "Touch-tone": "Touch-tone phone keeps the same connector in an older telecom phrase.",
+    "Cellular": "Cellular phone verifies the category with a more formal term."
+  },
+  "lessons": [
+    {
+      "title": "Tech clues often share a single connecting noun",
+      "body": "Camera, smart, pay, and cellular all feel tech-adjacent but they don't share a gadget type. When clues point at a broad domain, test whether they all pair with the same everyday noun instead."
+    },
+    {
+      "title": "Old and new terms on the same board signal a word family",
+      "body": "Pay phone is decades older than smartphone, yet both work here. Whenever old-fashioned and modern clues coexist, the connector is usually a shared word rather than a product era."
+    },
+    {
+      "title": "Verify with the least obvious clue last",
+      "body": "Touch-tone is the most dated phrase in the set, but touch-tone phone is a perfectly standard term. Use your strongest anchors first, then confirm with the tricky clue — don't lead with the edge case."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the LinkedIn Pinpoint answer for Puzzle #678?",
+      "answer": "The answer for Puzzle #678 is Words that come before phone."
+    },
+    {
+      "question": "What clue helps solve this fastest?",
+      "answer": "Smart is usually the fastest anchor because smartphone is so common."
+    },
+    {
+      "question": "Why does Touch-tone fit the answer phone?",
+      "answer": "Touch-tone phone is a standard telecom phrase, which confirms phone as the shared connector."
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "pinpoint-answer-580",
+  "fullAnalysis": [
+    "Today's Pinpoint puzzle lines up five words that span naval warfare, gaming, warfare tactics, medieval weapons, and patriotic songs: Ship, Royale, Cry, Axe, and Hymn of the Republic. At first glance, they might point to games, weapons, or military themes, but none of those categories cleanly captures all five. The real connection emerges when you add the same word before each clue, revealing a pattern that links board games, video games, warfare, and history under one shared category.",
+    "When Ship appeared first, my mind went straight to transportation—things you can board or vehicles. I confidently submitted \"boarded\" as my guess for the connecting category. Wrong! The game instantly humbled me with the second word: Royale. My \"boarded\" theory sank immediately. \"Royale\" doesn't fit that at all. But in that moment of resetting, the real connection became blindingly obvious. \"Battle Royale\" is a massive gaming and pop culture term. And then I looked back at \"Ship\"... \"Battleship\"! That was it. Both words follow \"Battle\" to form well-known compound names. I typed in \"Battle\" and finally got that satisfying green checkmark.",
+    "If you found this puzzle challenging, pay attention to how the connector behaves as a phrase. Saying each clue aloud with the connector appended or prepended often reveals which ideas sound fluent and which feel forced. Keeping a small mental library of past connectors will also make it easier to recognise similar patterns in future puzzles."
+  ],
+  "wordHints": {
+    "Ship": "The phrase 'ship shape' refers to something being in good order or well organized, akin to how a ship must be properly maintained and arranged for safe sailing.",
+    "Royale": "A 'Battle Royale' is a genre of game or competition where a large number of players compete against each other until only one remains, reflecting the 'royale' aspect of grandeur and high stakes.",
+    "Cry": "This phrase is commonly used to describe a situation where someone is signaling that they need assistance or support.",
+    "Axe": "This phrase refers to having a personal motivation or grievance that one seeks to express or act upon.",
+    "Hymn of the Republic": "This is the full title of the famous song written during the American Civil War, which reflects themes of justice and righteousness."
+  },
+  "lessons": [
+    "Beware the First-Clue Trap. The first word often sets a tempting but misleading path. Use it to generate ideas, but be ready to completely abandon your theory when the second clue arrives. Flexibility is key to solving these puzzles quickly.",
+    "Think in Phrases, Not Just Categories. Sometimes the link isn't a semantic category (like \"vehicles\") but a linguistic one. Look for common prefixes or suffixes that create famous compound words, titles, or names.",
+    "Pop Culture is a Valid Clue. Don't ignore connections from games (\"Battleship,\" \"Battle Royale\"), history (\"Battle Axe\"), or music (\"Battle Hymn\"). Pinpoint draws from a wide cultural vocabulary spanning entertainment, history, and everyday life.",
+    "The 'Aha!' Moment is a Reset. Being proven wrong forces you to look at the clues from a fresh, more creative angle, which is where the solution is often hiding. Wrong guesses are necessary learning steps."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Ship, Royale, Cry, Axe, and Hymn of the Republic in Pinpoint #580?",
+      "answer": "They are all words that come after \"battle\" in common phrases: Battleship, Battle Royale, Battle Cry, Battle Axe, and The Battle Hymn of the Republic. Each clue becomes a natural expression once you add the same word before it."
+    },
+    {
+      "question": "Was 'Hymn of the Republic' a fair clue?",
+      "answer": "Absolutely! While it's a longer phrase, the core operative word is \"Hymn.\" The full title \"The Battle Hymn of the Republic\" is a very well-known song, especially in the US, making it a strong and clever final clue for the category."
+    },
+    {
+      "question": "Why isn't 'War' the answer?",
+      "answer": "While related, 'War' doesn't fit all phrases naturally. 'War Royale' or 'War Hymn of the Republic' are not established terms. 'Battle' is the specific word that completes every phrase perfectly."
+    },
+    {
+      "question": "Is 'Battleship' always a game?",
+      "answer": "No, it historically refers to a class of heavy warships. However, the puzzle allows for multiple interpretations (game or ship) as long as the word 'Battle' precedes it."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "pinpoint-answer-672",
+  "fullAnalysis": [
+    "LinkedIn Pinpoint #672 looks scattered at first because Boat, Insurance, Expectancy, Preserver, and Sciences (biology studies it) do not share an obvious topic. The faster route is to treat each clue as half of a familiar phrase. Once I tested whether every clue could sit after the same connector, the pattern became stable. Words that come after \"life\" works because each clue forms a phrase people already recognize in everyday language, which is exactly the kind of clean phrase-building pattern Pinpoint likes to hide behind mixed domains and uneven clue styles.",
+    "I first treated the clues as separate domains, which made the board feel wider than it really was. Boat, Insurance, Expectancy, Preserver, and Sciences (biology studies it) seemed to point toward science, government, rescue gear, or geography depending on which clue I looked at first. I reset and tested whether one starter word could sit in front of every clue. \"life\" held up immediately: life boat, life insurance, and the rest all read like established compounds or phrases. That was the key moment, because once the connector survived every clue instead of just two or three, Words that come after \"life\" became the only explanation worth keeping.",
+    "After checking Boat, Insurance, Expectancy, Preserver, and Sciences (biology studies it) against Words that come after \"life\", the board resolves cleanly without any leftover clue."
+  ],
+  "wordHints": {
+    "Boat": "life boat is a standard expression or compound, which is why Boat fits the answer Words that come after \"life\".",
+    "Insurance": "life insurance is a standard expression or compound, which is why Insurance fits the answer Words that come after \"life\".",
+    "Expectancy": "life expectancy is a standard expression or compound, which is why Expectancy fits the answer Words that come after \"life\".",
+    "Preserver": "life preserver is a standard expression or compound, which is why Preserver fits the answer Words that come after \"life\".",
+    "Sciences (biology studies it)": "life sciences is a standard expression or compound, which is why Sciences (biology studies it) fits the answer Words that come after \"life\"."
+  },
+  "lessons": [
+    "Start with the cleanest shared structure. This puzzle rewards solvers who test prefix-based phrases across both literal and abstract clues before chasing a clever but unstable guess. Words that come after \"life\" works because the structure stays consistent across all five clues.",
+    "Verify every clue before locking the answer. A promising guess is not enough on its own. keep going even when one clue feels scientific and another feels practical so the answer holds for the entire board instead of only the easiest clues.",
+    "Prefer precision over breadth. When several broad answers feel possible, use the common starter word only after both noun phrases and compounds fit. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #672?",
+      "answer": "The answer is Words that come after \"life\". The five clues are Boat, Insurance, Expectancy, Preserver, and Sciences (biology studies it)."
+    },
+    {
+      "question": "How can I verify the answer quickly?",
+      "answer": "Run through all five clues again and make sure Words that come after \"life\" explains each one cleanly. If even one clue feels forced, keep searching."
+    },
+    {
+      "question": "What solving habit helps on puzzles like this?",
+      "answer": "The fastest habit is to test the narrowest clean answer against every clue instead of committing to a broad theme after only one or two matches."
+    }
+  ]
+}

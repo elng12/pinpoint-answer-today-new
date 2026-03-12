@@ -1,0 +1,35 @@
+{
+  "slug": "pinpoint-answer-646",
+  "fullAnalysis": [
+    "Today's puzzle revolves around modes of personal transportation that share a distinctive characteristic. Looking at the Segway and motorcycle initially suggests motorized vehicles, but the hand truck throws that theory off. The inclusion of a bicycle alongside modern innovations like the hoverboard points toward a more fundamental connection. The explicit exclusion of tricycles provides a crucial hint about the specific feature we're seeking in these diverse transportation devices.",
+    "I first focused on motorized versus non-motorized transportation, but the hand truck didn't fit that pattern cleanly. Looking deeper, I noticed these devices all help move things or people efficiently. The tricycle exclusion suddenly caught my attention - it specifically has three wheels. Checking each item again, I realized every device listed operates on exactly two wheels. This explains why tricycles were explicitly excluded - they break the pattern. To verify, I mentally visualized each item: Segway (two wheels), hand truck (two main wheels), hoverboard (two side-by-side wheels), motorcycle and bicycle (two wheels in line).",
+    "The puzzle presents five different vehicles or transport devices: Segway, hand truck, hoverboard, motorcycle, and bicycle. The key connection is that each has exactly two wheels, which is emphasized by the explicit exclusion of tricycles (three-wheeled vehicles).",
+    "Today's puzzle focused on two-wheeled vehicles and devices. Each item listed - Segway, hand truck, hoverboard, motorcycle, and bicycle - operates on exactly two wheels, which explains why tricycles were specifically excluded."
+  ],
+  "wordHints": {
+    "Segway": "Segway (Personal Transport Device): Self-balancing two-wheeled electric vehicle",
+    "Hand truck": "Hand truck (Material Handler): Two-wheeled cart for moving heavy items",
+    "Hoverboard": "Hoverboard (Self-Balancing Scooter): Two-wheeled personal transport device",
+    "Motorcycle": "Motorcycle (Motor Vehicle): Two-wheeled powered vehicle",
+    "Bicycle": "Bicycle (Human-Powered Vehicle): Two-wheeled pedal-powered transport"
+  },
+  "lessons": [
+    "Pay attention to explicit exclusions. When a clue specifically excludes something, it often highlights the key characteristic you're looking for.",
+    "Consider physical characteristics. Sometimes the connection is about a simple physical feature rather than function or purpose.",
+    "Visualize each item carefully. Mental imagery can help identify common physical traits across different objects."
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #646?",
+      "answer": "The answer is Two-wheeled vehicles: Segway, Hand truck, Hoverboard, Motorcycle, Bicycle."
+    },
+    {
+      "question": "Why isn't a tricycle included?",
+      "answer": "A tricycle has three wheels, which breaks the pattern of two-wheeled vehicles."
+    },
+    {
+      "question": "Are all these vehicles motorized?",
+      "answer": "No, the hand truck and bicycle are non-motorized, while the others typically have motors."
+    }
+  ]
+}

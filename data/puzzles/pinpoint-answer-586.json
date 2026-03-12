@@ -1,0 +1,40 @@
+{
+  "slug": "pinpoint-answer-586",
+  "fullAnalysis": [
+    "Today's board is a tour of one word wearing many hats. Sweet wine suggests food and drink, Harbor town points to geography, Hardware interface drags you into computing, while Left side (of an aircraft) feels nautical or aviation-specific. The link isn't a category; it's a shared word meaning: they are all senses of \"port\".",
+    "The early clues feel incompatible: wine vs city vs hardware. The pivot is to test a simple substitution: replace each clue with a phrase containing the same headword. 'Port wine', 'port city', 'USB port', and 'port side' all click. The clue about games points to 'porting'—adapting a game to a new platform—which fits the same headword. The solution emerges when you stop chasing a single category and instead map the same word across domains.",
+    "At first, the board looks like a category mashup: wine, cities, hardware, and aircraft. Instead of forcing a single topic, test whether a common word bridges them. Port wine covers the drink, a port city handles geography, a USB/HDMI port covers hardware, and the port side covers directionality in navigation. The clue about games points to 'porting'—adapting a game to a new platform—which locks the pattern: each clue is a legitimate sense of the word 'port'. The solve comes from recognizing polysemy and rejecting narrow themes that drop clues.",
+    "Today's connector is polysemy: multiple meanings of 'port' across wine, place, hardware, and navigation."
+  ],
+  "wordHints": {
+    "Sweet wine": "A fortified sweet wine originating from Portugal.",
+    "Video game port": "Adapt a game to run on a different platform.",
+    "Harbor town": "A city with a harbor used for shipping and trade.",
+    "Hardware interface": "A physical interface where devices connect.",
+    "Left side (of an aircraft)": "The left-hand side of a ship or aircraft when facing forward."
+  },
+  "lessons": [
+    "Test simple substitutions. Replace each clue with a natural phrase using the same headword to reveal polysemy.",
+    "Avoid over-narrow categories. If some clues fit a niche but others don't, consider a multi-sense word link.",
+    "Map meanings across domains. Words like 'port' span food, places, tech, and travel—check broad senses.",
+    "Think about homonyms. Often the connection is a single word (like 'port') that has distinct, unrelated definitions across different fields."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Sweet wine, Video game port, Harbor town, Hardware interface, and the left side of an aircraft?",
+      "answer": "Each clue is a natural phrase containing the same word—'port'—showing different meanings."
+    },
+    {
+      "question": "Why isn't 'Harbors' the answer?",
+      "answer": "It excludes Port wine and USB/HDMI ports. The connector is the word 'port' across domains."
+    },
+    {
+      "question": "How can I spot multi-sense connectors faster?",
+      "answer": "Try substituting a shared headword into natural phrases and see if all clues click cleanly."
+    },
+    {
+      "question": "Does 'port' always mean left?",
+      "answer": "Only in navigation (ships/planes). In computing or wine, the direction is irrelevant, which hints that the word itself is the key."
+    }
+  ]
+}

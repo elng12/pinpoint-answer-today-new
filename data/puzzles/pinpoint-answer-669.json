@@ -1,0 +1,34 @@
+{
+  "slug": "pinpoint-answer-669",
+  "fullAnalysis": [
+    "LinkedIn Pinpoint #669 looks scattered at first because Sea, Mountain, African, Cowardly, and March comes in like a do not share an obvious topic. The faster route is to treat each clue as half of a familiar phrase. Once I tested whether every clue could sit before the same connector, the pattern became stable. Words that come before \"lion\" works because each clue forms a phrase people already recognize in everyday language, which is exactly the kind of clean phrase-building pattern Pinpoint likes to hide behind mixed domains and uneven clue styles.",
+    "I started this puzzle by looking for a topical grouping, but Sea, Mountain, African, Cowardly, and March comes in like a refused to stay in one subject area. That pushed me toward a phrase puzzle instead of a category puzzle. I tried a few loose connectors and immediately discarded them because they only worked for part of the board. The breakthrough came when I tested \"lion\" after each clue. Foul lion, horse lion, one-act lion, child's lion, and plug and lion all land as familiar phrases. Once every clue passed that check, Words that come before \"lion\" stopped feeling speculative and became the only answer that explained the full board cleanly.",
+    "After checking Sea, Mountain, African, Cowardly, and March comes in like a against Words that come before \"lion\", the board resolves cleanly without any leftover clue."
+  ],
+  "wordHints": {
+    "Sea": "Sea lion is a familiar expression or compound, so Sea belongs in the set Words that come before \"lion\".",
+    "Mountain": "Mountain lion is a familiar expression or compound, so Mountain belongs in the set Words that come before \"lion\".",
+    "African": "African lion is a familiar expression or compound, so African belongs in the set Words that come before \"lion\".",
+    "Cowardly": "Cowardly lion is a familiar expression or compound, so Cowardly belongs in the set Words that come before \"lion\".",
+    "March comes in like a": "March comes in like a lion is a familiar expression or compound, so March comes in like a belongs in the set Words that come before \"lion\"."
+  },
+  "lessons": [
+    "Start with the cleanest shared structure. This puzzle rewards solvers who watch for idioms mixing with animal names in phrase puzzles before chasing a clever but unstable guess. Words that come before \"lion\" works because the structure stays consistent across all five clues.",
+    "Verify every clue before locking the answer. A promising guess is not enough on its own. check whether one connector creates both literal and figurative expressions so the answer holds for the entire board instead of only the easiest clues.",
+    "Prefer precision over breadth. When several broad answers feel possible, do not reject a connector just because one clue becomes an idiom. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #669?",
+      "answer": "The answer is Words that come before \"lion\". The five clues are Sea, Mountain, African, Cowardly, and March comes in like a."
+    },
+    {
+      "question": "How can I verify the answer quickly?",
+      "answer": "Run through all five clues again and make sure Words that come before \"lion\" explains each one cleanly. If even one clue feels forced, keep searching."
+    },
+    {
+      "question": "What solving habit helps on puzzles like this?",
+      "answer": "The fastest habit is to test the narrowest clean answer against every clue instead of committing to a broad theme after only one or two matches."
+    }
+  ]
+}

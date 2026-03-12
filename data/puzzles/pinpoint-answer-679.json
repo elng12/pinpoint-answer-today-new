@@ -1,0 +1,44 @@
+{
+  "slug": "pinpoint-answer-679",
+  "fullAnalysis": [
+    "Puzzle #679 gives you five clues — Toad, Piranha Plant, Bowser, Luigi, and Princess Peach — that land on a clean franchise category: Characters in Super Mario. The board mixes a friendly mushroom-person, a dangerous plant species, the main villain, a hero brother, and a royal princess, which makes the surface read feel jumbled until you recognize the shared universe.",
+    "The solving path is straightforward once any two of the clues click. Bowser is Mario's most iconic antagonist, and Luigi is Mario's brother — those two together are as strong an anchor pair as any Pinpoint board ever offers. From that point, pressure-testing the remaining three against the Mario franchise takes only seconds.",
+    "Piranha Plant is the clue most likely to cause a brief pause. It is a species rather than a named individual, and its presence alongside personality-driven characters like Peach and Luigi can make the category feel inconsistent. But Pinpoint regularly includes enemy types and creature families as representatives of a fictional world, so species membership in the Mario universe is enough to qualify.",
+    "The broader lesson from this board is that franchise puzzles never require every clue to play the same role. Heroes, villains, allies, and generic enemies can all belong to the same answer as long as they inhabit the same fictional world. Resist the urge to narrow the category to 'Mario heroes' or 'Mario villains' — the correct answer is always the most inclusive shared rule that fits all five clues."
+  ],
+  "wordHints": {
+    "Toad": "Toad is a core Mario character and one of the clearest franchise anchors in the set.",
+    "Piranha Plant": "Piranha Plant is a recurring Mario enemy type — its presence confirms the board uses the full cast, not just named heroes.",
+    "Bowser": "Bowser is Mario's most recognizable villain and typically the fastest clue for identifying the franchise.",
+    "Luigi": "Luigi is Mario's brother and co-star, making the Mario connection unmistakable alongside Bowser.",
+    "Princess Peach": "Princess Peach is a central Mario character who closes the set with a final, unambiguous franchise confirmation."
+  },
+  "lessons": [
+    {
+      "title": "Franchise boards mix heroes and villains on purpose",
+      "body": "Toad and Princess Peach are heroes; Bowser and Piranha Plant are antagonists. Designers blend character types to disguise the shared universe, so always check whether a fictional world — not a character role — is what connects the clues."
+    },
+    {
+      "title": "Lock the franchise with your two strongest clues first",
+      "body": "Bowser and Luigi together are an almost unbeatable anchor pair for Mario. When two clues point unmistakably to one franchise, apply that franchise to the other three before exploring any other hypothesis."
+    },
+    {
+      "title": "Species and enemy types count as characters",
+      "body": "Piranha Plant is a species, not a named individual, yet it qualifies as a Mario character. Pinpoint regularly uses generic enemy types and creature families as representatives of a franchise, so do not disqualify a clue just because it lacks a personal name."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the LinkedIn Pinpoint answer for Puzzle #679?",
+      "answer": "The answer for Puzzle #679 is Characters in Super Mario."
+    },
+    {
+      "question": "Why does Piranha Plant fit this board?",
+      "answer": "Piranha Plant is a well-known recurring enemy in the Mario series, so it belongs in the same character family as Bowser, Luigi, and Princess Peach."
+    },
+    {
+      "question": "What clue makes the answer easiest to spot?",
+      "answer": "Bowser and Luigi together are the strongest anchor pair — both are central Mario characters, and the franchise is immediately obvious once you see them side by side."
+    }
+  ]
+}

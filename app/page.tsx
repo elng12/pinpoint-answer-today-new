@@ -1,0 +1,81 @@
+import type { Metadata } from "next";
+import { HomeBenefitsFaq } from "@/components/home/HomeBenefitsFaq";
+import { HomeBookmarkStrip } from "@/components/home/HomeBookmarkStrip";
+import { HomeCtaFooter } from "@/components/home/HomeCtaFooter";
+import { HomeHero } from "@/components/home/HomeHero";
+import { HomeNextUnlock } from "@/components/home/HomeNextUnlock";
+import { HomeRecentAnswers } from "@/components/home/HomeRecentAnswers";
+import { HomeRevealSection } from "@/components/home/HomeRevealSection";
+import { HomeWhatIs } from "@/components/home/HomeWhatIs";
+import { StructuredData } from "@/components/seo/StructuredData";
+import { getArchiveEntries, getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzles/data";
+import { routes } from "@/lib/paths/routes";
+import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
+
+export function generateMetadata(): Metadata {
+  const current = getCurrentPuzzle();
+
+  return buildPageMetadata({
+    title: `Pinpoint Answer Today for Puzzle ${current.number}`,
+    description: `${current.shortSummary} Reveal the answer fast, then open the full explanation page for Puzzle ${current.number}.`,
+    path: routes.home,
+  });
+}
+
+export default function HomePage() {
+  const current = getCurrentPuzzle();
+  const preview = getNextPreview();
+  const archive = getRecentEntries(8, current.slug);
+  const allArchiveEntries = getArchiveEntries();
+  const previousEntry = allArchiveEntries.find((entry) => entry.number < current.number) ?? null;
+  const structuredDataItems = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Pinpoint Answer Today",
+      url: absoluteUrl(routes.home),
+      inLanguage: "en-US",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          question: `What is the Pinpoint answer today for Puzzle ${current.number}?`,
+          answer: `The answer for Puzzle ${current.number} is ${current.answer}.`,
+        },
+        {
+          question: "Where can I browse older Pinpoint answers?",
+          answer: "Use the archive page to review recent and older puzzles.",
+        },
+        {
+          question: "What is LinkedIn Pinpoint?",
+          answer: "It is a daily word-association puzzle built around a shared connection.",
+        },
+      ].map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ];
+
+  return (
+    <main className="container" style={{ padding: "48px 0 72px" }}>
+      <StructuredData items={structuredDataItems} />
+      <div className="stack">
+        <HomeHero puzzle={current} />
+        <HomeBookmarkStrip />
+        <HomeRevealSection puzzle={current} previousEntry={previousEntry} preview={preview} />
+        <HomeNextUnlock preview={preview} />
+        <HomeRecentAnswers entries={archive} />
+        <HomeWhatIs />
+        <HomeBenefitsFaq puzzle={current} />
+        <HomeCtaFooter currentPuzzleNumber={current.number} currentSlug={current.slug} />
+      </div>
+    </main>
+  );
+}

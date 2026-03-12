@@ -1,0 +1,34 @@
+{
+  "slug": "pinpoint-answer-674",
+  "fullAnalysis": [
+    "LinkedIn Pinpoint #674 initially feels broad because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes) seem to point in different directions. The solve gets easier when I stop hunting for a pun and instead ask what narrow category can hold every clue without exceptions. Places with benches is the clean fit because each item is a place where benches commonly appear. That makes the board cohesive, specific, and strong enough to explain all five clues with one answer instead of a loose vibe or an overly broad theme.",
+    "I began by splitting the clues into smaller buckets, because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes) did not look unified on a first pass. My early guesses were all too broad and kept leaving one clue behind. The breakthrough came when I asked what exact category each clue could belong to without any stretching. One by one, the pieces snapped into place: every clue is one of the place where benches commonly appear. After that, I reread the full set and checked whether any clue felt forced. None did. That final verification mattered because it showed Places with benches was not just plausible, it was precise enough to explain the board cleanly from start to finish.",
+    "After checking Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes) against Places with benches, the board resolves cleanly without any leftover clue."
+  ],
+  "wordHints": {
+    "Parks": "Parks fits because it is a place where benches commonly appear, matching the category Places with benches.",
+    "Courtrooms": "Courtrooms fits because it is a place where benches commonly appear, matching the category Places with benches.",
+    "Piano lounges": "Piano lounges fits because it is a place where benches commonly appear, matching the category Places with benches.",
+    "Bus stops": "Bus stops fits because it is a place where benches commonly appear, matching the category Places with benches.",
+    "Stadiums (for team substitutes)": "Stadiums (for team substitutes) fits because it is a place where benches commonly appear, matching the category Places with benches."
+  },
+  "lessons": [
+    "Start with the cleanest shared structure. This puzzle rewards solvers who look for a shared object that appears in several different venues before chasing a clever but unstable guess. Places with benches works because the structure stays consistent across all five clues.",
+    "Verify every clue before locking the answer. A promising guess is not enough on its own. treat parenthetical notes as clues about a special bench use case so the answer holds for the entire board instead of only the easiest clues.",
+    "Prefer precision over breadth. When several broad answers feel possible, prefer location-based answers when every clue names a setting. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #674?",
+      "answer": "The answer is Places with benches. The five clues are Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes)."
+    },
+    {
+      "question": "How can I verify the answer quickly?",
+      "answer": "Run through all five clues again and make sure Places with benches explains each one cleanly. If even one clue feels forced, keep searching."
+    },
+    {
+      "question": "What solving habit helps on puzzles like this?",
+      "answer": "The fastest habit is to test the narrowest clean answer against every clue instead of committing to a broad theme after only one or two matches."
+    }
+  ]
+}

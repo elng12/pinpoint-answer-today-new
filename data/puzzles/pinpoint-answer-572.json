@@ -1,0 +1,40 @@
+{
+  "slug": "pinpoint-answer-572",
+  "fullAnalysis": [
+    "When I saw today's clues, I thought I'd walked into a fantasy convention. Puff? That's the song my parents sang to me. Toothless? The adorable Night Fury from those Viking movies. But then Smaug and Drogon showed up and suddenly things got a lot more dangerous. How do you connect a gentle lullaby dragon with a treasure-hoarding Tolkien villain and Daenerys's apex predator? The answer was hiding in plain sight—I just needed to stop thinking about their personalities and focus on what they literally are.",
+    "My first instinct was to group them by 'good vs evil'—Puff and Toothless are friendly, Smaug is villainous, and Drogon is... complicated. That didn't work. Then I tried 'animated vs live-action', but Draco is Sean Connery doing voice work, which muddied that theory.\n\nI stared at the list again. Puff. Toothless. Draco. Smaug. Drogon. What do they all DO? They fly. They breathe fire (or plasma, in Toothless's case). They have scales and wings and... wait. They're all DRAGONS. Not 'reptiles', not 'fantasy creatures', not 'fictional characters'—specifically dragons, with proper names, from famous stories.\n\nThe genius of this puzzle is that it spans 60 years of storytelling. Puff emerged in 1963, Dragonheart came out in 1996, the How to Train Your Dragon books started in 2003, Smaug has been around since 1937, and Drogon arrived with Game of Thrones in 2011. The connector isn't era or medium—it's the mythological archetype itself.",
+    "Today's puzzle brings together five legendary dragons from across different storytelling traditions. From Peter, Paul and Mary's folk classic to Tolkien's Middle-earth to Westeros, each name represents a distinct vision of what a dragon can be. The key insight is recognizing that despite their wildly different temperaments and origins, they all share one essential trait: they're dragons.",
+    "When multiple clues are character names spanning different franchises and media, check if they share a species or archetype. Here, a children's song dragon sits alongside a Tolkien villain and a Targaryen war beast—the connector is the creature type itself."
+  ],
+  "wordHints": {
+    "Puff": "This is the title of a famous song that features a dragon named Puff, making it a recognizable name in fictional dragon lore.",
+    "Toothless": "Toothless is a well-known dragon character from the 'How to Train Your Dragon' series, recognized for his distinctive appearance and friendly demeanor.",
+    "Draco": "Draco Malfoy is a prominent character in the Harry Potter series, and his name reflects the use of 'Draco' as a common name for dragons in fiction.",
+    "Smaug": "Smaug is a well-known fictional dragon from J.R.R. Tolkien's 'The Hobbit', recognized for his cunning and destructive nature.",
+    "Drogon": "Drogon is one of the three dragons owned by Daenerys Targaryen in the fantasy series 'Game of Thrones', making him a notable example of a fictional dragon."
+  },
+  "lessons": [
+    "Scan for proper nouns first. When every clue starts with a capital letter and looks like a character name, assume you are dealing with named entities before chasing abstract traits.",
+    "Validate across media formats. If the clues span music, books, film, and TV, your connector must transcend any one medium. That realization kept me from overfitting on Tolkien alone.",
+    "Use extremes to test the umbrella. Puff and Drogon live at opposite tonal extremes. Any connector that accommodates both is probably the right one, because edge cases stress-test your theory.",
+    "Species beats personality. Good dragon, evil dragon, neutral dragon—doesn't matter. When the connector is biological (or mythological), temperament is irrelevant."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Puff, Toothless, Draco, Smaug, and Drogon in Pinpoint #572?",
+      "answer": "They are all named dragons from famous stories: Puff from the 1963 folk song, Toothless from How to Train Your Dragon, Draco from Dragonheart, Smaug from The Hobbit, and Drogon from Game of Thrones."
+    },
+    {
+      "question": "How hard is Pinpoint #572?",
+      "answer": "It sits around a 2.5/5 on our difficulty scale. You need broad pop-culture awareness, but the clues are famous enough that most solvers can land the answer quickly once they recognize the pattern."
+    },
+    {
+      "question": "Why isn't 'dragons' alone an acceptable answer?",
+      "answer": "The precise connector is 'Names of fictional dragons'—emphasizing that these are famous, named characters rather than generic depictions of the species. The specificity matters for Pinpoint answers."
+    },
+    {
+      "question": "How can I use this insight on future puzzles?",
+      "answer": "Whenever you see multiple proper nouns from different franchises, test whether they share a species or role. Character-based connectors are common in Pinpoint, and this tactic uncovers them quickly."
+    }
+  ]
+}

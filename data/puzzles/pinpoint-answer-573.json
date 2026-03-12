@@ -1,0 +1,40 @@
+{
+  "slug": "pinpoint-answer-573",
+  "fullAnalysis": [
+    "Pinpoint 573 features Highlight, Underline, Bold, Italic, and Strikethrough—five interface verbs you click when dressing up text. Each clue hints at a different kind of emphasis or revision, so the puzzle dares you to name the single toolbar that keeps them in one row. Can you figure out which shared menu ties them together?",
+    "I first guessed these might be proofreading marks, but italics and bold live in the main font ribbon, not the editor’s margin. Listing the clues in the order I see them on the Word toolbar made it obvious: every word is a formatting toggle that changes presentation without altering wording. Once I pictured the ribbon, highlight and strikethrough slotted into place and the answer wrote itself: ways to format text.",
+    "Highlight adds a background glow to call attention; underline draws a line beneath text for emphasis; bold increases weight to make words stand out; italic tilts the letters to signal titles or nuance; strikethrough draws a line through text to mark revisions without deleting the content. The common connector is not the text itself but the formatting tools that change its presentation. These actions live together in Word, Google Docs, and most CMS editors, which makes \"ways to format text in a word processor\" the shared idea.",
+    "I first grouped the clues as editing verbs and briefly considered proofreading symbols or revision stages, but italic and bold did not fit those categories. Listing them in order made it obvious they are all toggles in the formatting menu of a word processor. Whenever multiple UI verbs sit next to each other on the same toolbar, they often belong to a single functional category—here, text formatting options."
+  ],
+  "wordHints": {
+    "Highlight": "A highlight reel is a compilation of the best moments from a performance or event, showcasing the most exciting or important parts.",
+    "Underline": "To underline something means to emphasize its significance or to highlight its importance in a discussion.",
+    "Bold": "A 'bold move' refers to a daring or courageous action taken, often in a challenging situation.",
+    "Italic": "Italic refers to a style of typeface where the letters slant to the right, often used for emphasis or titles.",
+    "Strikethrough": "Strikethrough is a formatting option used to indicate that text has been crossed out, often to signify deletion or incorrectness."
+  },
+  "lessons": [
+    "Group UI verbs by location. If several actions live on the same toolbar, the menu itself may be the connector.",
+    "Separate editing from styling. When a clue changes appearance instead of wording, think of formatting categories.",
+    "Look for full coverage. Correct connectors explain all five clues; partial themes such as “proofreading” fell apart quickly here.",
+    "Function over Form. Bold makes text thick, Strikethrough crosses it out. Visually they are opposites, but functionally they are both 'formatting toggles'."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Highlight, Underline, Bold, Italic, and Strikethrough in Pinpoint #573?",
+      "answer": "They are the core formatting toggles you find on every word processor’s toolbar. The walkthrough shows how each one adjusts presentation without changing the text."
+    },
+    {
+      "question": "Why aren’t these treated as proofreading marks?",
+      "answer": "Proofreading symbols live in the margins. These actions sit in the formatting ribbon and restyle text directly."
+    },
+    {
+      "question": "Does strikethrough count as deleting text?",
+      "answer": "No. It keeps the characters visible while signaling they are removed, which is why it fits the formatting theme."
+    },
+    {
+      "question": "Are there other formatting options?",
+      "answer": "Yes, subscript, superscript, small caps etc. exist, but these five are the most standard ones found in almost every editor."
+    }
+  ]
+}
