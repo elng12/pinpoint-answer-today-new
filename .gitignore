@@ -31,6 +31,7 @@ Thumbs.db
 
 # playwright / tool logs
 .playwright-mcp/
+.playwright-cli/
 
 # TypeScript build info
 tsconfig.tsbuildinfo
