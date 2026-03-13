@@ -53,6 +53,56 @@ export function AnswerReveal({
     };
   }, []);
 
+  const clearHint = () => {
+    if (hintTimerRef.current !== null) {
+      window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+    }
+    setActiveHint(null);
+  };
+
+  const getHintText = (clue: string) => {
+    const normalizedClue = normalizeKey(clue);
+    const directHint = normalizedHints[normalizedClue];
+    const fallbackHint = `${clue} points back to ${category}.`;
+    return directHint || fallbackHint;
+  };
+
+  const showHint = (
+    clue: string,
+    options?: {
+      persist?: boolean;
+      track?: boolean;
+    },
+  ) => {
+    const hint = getHintText(clue);
+
+    if (options?.track) {
+      trackClientEvent("clue_hint_click", {
+        event_category: "engagement",
+        event_label: `${clue} · Puzzle ${puzzleNumber}`,
+        value: puzzleNumber,
+      });
+    }
+
+    if (hintTimerRef.current !== null) {
+      window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+    }
+
+    setActiveHint({
+      clue,
+      text: revealed ? `${hint} Shared connection: ${category}.` : hint,
+    });
+
+    if (options?.persist) {
+      hintTimerRef.current = window.setTimeout(() => {
+        setActiveHint(null);
+        hintTimerRef.current = null;
+      }, 4000);
+    }
+  };
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(answer);
@@ -80,33 +130,6 @@ export function AnswerReveal({
     });
   };
 
-  const handleClueClick = (clue: string) => {
-    const normalizedClue = normalizeKey(clue);
-    const directHint = normalizedHints[normalizedClue];
-    const fallbackHint = `${clue} points back to ${category}.`;
-    const hint = directHint || fallbackHint;
-
-    trackClientEvent("clue_hint_click", {
-      event_category: "engagement",
-      event_label: `${clue} · Puzzle ${puzzleNumber}`,
-      value: puzzleNumber,
-    });
-
-    setActiveHint({
-      clue,
-      text: revealed ? `${hint} Shared connection: ${category}.` : hint,
-    });
-
-    if (hintTimerRef.current !== null) {
-      window.clearTimeout(hintTimerRef.current);
-    }
-
-    hintTimerRef.current = window.setTimeout(() => {
-      setActiveHint(null);
-      hintTimerRef.current = null;
-    }, 4000);
-  };
-
   return (
     <div className="reveal-shell">
       <p className="reveal-tip" id={revealTipId}>
@@ -119,9 +142,12 @@ export function AnswerReveal({
             key={`${clue}-${index}`}
             type="button"
             className="reveal-clue-card"
-            onClick={() => handleClueClick(clue)}
+            onClick={() => showHint(clue, { persist: true, track: true })}
+            onMouseEnter={() => showHint(clue)}
+            onMouseLeave={clearHint}
+            onFocus={() => showHint(clue)}
+            onBlur={clearHint}
             aria-describedby={revealTipId}
-            title={normalizedHints[normalizeKey(clue)] || `${clue} points back to ${category}.`}
           >
             <span className="reveal-clue-index">{index + 1}</span>
             <span className="reveal-clue-word">{clue}</span>
@@ -138,7 +164,9 @@ export function AnswerReveal({
 
       <div id="answer-reveal" className="reveal-answer-panel">
         <p className="sr-only">
-          LinkedIn Pinpoint {puzzleNumber} answer: {answer}. Shared connection: {category}.
+          {revealed
+            ? `LinkedIn Pinpoint ${puzzleNumber} answer: ${answer}. Shared connection: ${category}.`
+            : `LinkedIn Pinpoint ${puzzleNumber} answer is hidden until you press the reveal button.`}
         </p>
         <p className="eyebrow">Answer</p>
         <h3 className="reveal-answer-title">

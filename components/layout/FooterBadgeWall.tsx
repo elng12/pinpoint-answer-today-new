@@ -55,7 +55,6 @@ export function FooterBadgeWall({ badges, heading }: FooterBadgeWallProps) {
                 href={badge.url}
                 target={openInNewTab ? "_blank" : undefined}
                 rel={openInNewTab ? rel : undefined}
-                title={badge.title}
                 aria-label={badge.alt}
                 className={className}
               >
