@@ -179,10 +179,14 @@ export function buildSiteMetadata({
     metadataBase: new URL(baseUrl),
     title,
     description,
+    alternates: {
+      canonical: absoluteUrl("/"),
+    },
     openGraph: {
       title,
       description,
       type: "website",
+      url: absoluteUrl("/"),
       siteName,
       images: [socialImage],
     },

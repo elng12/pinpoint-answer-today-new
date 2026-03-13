@@ -1,15 +1,16 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FooterBadgeWall } from "@/components/layout/FooterBadgeWall";
 import { routes } from "@/lib/paths/routes";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { footerBadges } from "@/lib/site/badges";
+import { supportMailto } from "@/lib/site/config";
 
-export function Footer({ recentEntries }: { recentEntries: ArchiveEntry[] }) {
-  const pathname = usePathname();
-  const isDetailPage = pathname.startsWith("/linkedin-pinpoint-answers/");
+type FooterProps = {
+  recentEntries: ArchiveEntry[];
+  isDetailPage?: boolean;
+};
+
+export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
   const quickLinks = isDetailPage
     ? [
         { label: "Next puzzle", href: routes.preview },
@@ -22,7 +23,7 @@ export function Footer({ recentEntries }: { recentEntries: ArchiveEntry[] }) {
         { label: "View All Pinpoint Answers and Solutions", href: routes.archive },
       ];
   const supportLinks = [
-    { label: "Email Support", href: "mailto:support@pinpointanswertoday.app" },
+    { label: "Email Support", href: supportMailto },
     { label: "Contact", href: routes.contact },
     { label: "Share Feedback", href: routes.contact },
     { label: "Request a Feature", href: routes.contact },
@@ -42,7 +43,7 @@ export function Footer({ recentEntries }: { recentEntries: ArchiveEntry[] }) {
             <p className="footer-copy">
               {isDetailPage
                 ? "Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. We deliver rapid solutions, thoughtful analysis, and strategy guides while operating independently from any organization."
-                : "Fast daily answers, deeper puzzle explanations, and a cleaner English-only archive built for people who want today&apos;s solution without wading through legacy clutter."}
+                : "Fast daily answers, deeper puzzle explanations, and a cleaner English-only archive built for people who want today's solution without wading through legacy clutter."}
             </p>
           </div>
 
@@ -62,7 +63,7 @@ export function Footer({ recentEntries }: { recentEntries: ArchiveEntry[] }) {
               <h3 className="eyebrow">Quick Links</h3>
               <ul className="footer-link-list footer-link-list-compact">
                 {quickLinks.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.label}-${link.href}`}>
                     <Link href={link.href}>{link.label}</Link>
                   </li>
                 ))}
@@ -99,7 +100,7 @@ export function Footer({ recentEntries }: { recentEntries: ArchiveEntry[] }) {
 
         {isDetailPage ? null : <FooterBadgeWall badges={footerBadges} heading="Media & Featured In" />}
         <div className="footer-copyright">
-          © 2026 Pinpoint Answer Today. All rights reserved. All names, trademarks, and registered marks belong to their respective owners.
+          © {new Date().getFullYear()} Pinpoint Answer Today. All rights reserved. All names, trademarks, and registered marks belong to their respective owners.
         </div>
       </div>
     </footer>

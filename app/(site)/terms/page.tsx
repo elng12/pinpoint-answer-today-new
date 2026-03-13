@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { supportEmail, supportMailto } from "@/lib/site/config";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
@@ -7,7 +8,6 @@ export function generateMetadata(): Metadata {
     description:
       "Review the Terms of Use governing Pinpoint Answer Today, including acceptable conduct, intellectual property, and liability limits.",
     path: "/terms",
-    noIndex: true,
   });
 }
 
@@ -18,7 +18,7 @@ export default function TermsPage() {
         <section className="surface" style={{ padding: 32 }}>
           <p className="eyebrow">Legal &amp; Privacy</p>
           <h1 className="section-title">Terms of Use</h1>
-          <p className="copy" style={{ marginTop: 4 }}>Last updated: October 16, 2025</p>
+          <p className="copy" style={{ marginTop: 4 }}>Last updated: March 12, 2026</p>
         </section>
 
         <section className="surface" style={{ padding: 28 }}>
@@ -84,7 +84,7 @@ export default function TermsPage() {
           <p className="eyebrow">Contact</p>
           <p className="copy" style={{ marginTop: 12 }}>
             Reach us at{" "}
-            <a href="mailto:hello@pinpointanswertoday.app">hello@pinpointanswertoday.app</a>{" "}
+            <a href={supportMailto}>{supportEmail}</a>{" "}
             if you have questions about these terms or the service.
           </p>
         </section>

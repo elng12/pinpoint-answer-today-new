@@ -3,10 +3,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { trackClientEvent } from "@/lib/analytics";
 
+const EMPTY_REMAINING = { hours: 0, minutes: 0, seconds: 0 };
+
 function getRemaining(targetIso: string) {
   const diff = new Date(targetIso).getTime() - Date.now();
   if (diff <= 0) {
-    return { hours: 0, minutes: 0, seconds: 0 };
+    return EMPTY_REMAINING;
   }
 
   const totalSeconds = Math.floor(diff / 1000);
@@ -17,9 +19,24 @@ function getRemaining(targetIso: string) {
   return { hours, minutes, seconds };
 }
 
+function getUserTimeZoneLabel() {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const offsetMinutes = new Date().getTimezoneOffset();
+    const sign = offsetMinutes > 0 ? "-" : "+";
+    const absoluteMinutes = Math.abs(offsetMinutes);
+    const hours = String(Math.floor(absoluteMinutes / 60)).padStart(2, "0");
+    const minutes = String(absoluteMinutes % 60).padStart(2, "0");
+    return `${tz} (UTC${sign}${hours}:${minutes})`;
+  } catch {
+    return null;
+  }
+}
+
 export function Countdown({ targetLabel, targetIso }: { targetLabel: string; targetIso: string }) {
   const hasTrackedRef = useRef(false);
-  const [remaining, setRemaining] = useState(() => getRemaining(targetIso));
+  const [remaining, setRemaining] = useState(EMPTY_REMAINING);
+  const [userTimeZone, setUserTimeZone] = useState<string | null>(null);
 
   useEffect(() => {
     if (hasTrackedRef.current) {
@@ -35,6 +52,7 @@ export function Countdown({ targetLabel, targetIso }: { targetLabel: string; tar
 
   useEffect(() => {
     setRemaining(getRemaining(targetIso));
+    setUserTimeZone(getUserTimeZoneLabel());
     const timer = window.setInterval(() => {
       setRemaining(getRemaining(targetIso));
     }, 1000);
@@ -59,20 +77,6 @@ export function Countdown({ targetLabel, targetIso }: { targetLabel: string; tar
     ],
     [remaining],
   );
-
-  const userTimeZone = useMemo(() => {
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      const offsetMinutes = new Date().getTimezoneOffset();
-      const sign = offsetMinutes > 0 ? "-" : "+";
-      const absoluteMinutes = Math.abs(offsetMinutes);
-      const hours = String(Math.floor(absoluteMinutes / 60)).padStart(2, "0");
-      const minutes = String(absoluteMinutes % 60).padStart(2, "0");
-      return `${tz} (UTC${sign}${hours}:${minutes})`;
-    } catch {
-      return null;
-    }
-  }, []);
 
   return (
     <div className="countdown-shell" role="timer" aria-live="polite">

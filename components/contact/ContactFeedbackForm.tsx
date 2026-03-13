@@ -9,6 +9,7 @@ type FormState = {
   phone: string;
   puzzleNumber: string;
   message: string;
+  website: string;
 };
 
 const INITIAL_STATE: FormState = {
@@ -17,6 +18,7 @@ const INITIAL_STATE: FormState = {
   phone: "",
   puzzleNumber: "",
   message: "",
+  website: "",
 };
 
 export function ContactFeedbackForm() {
@@ -145,6 +147,28 @@ export function ContactFeedbackForm() {
           required
         />
       </label>
+
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+        }}
+      >
+        <label>
+          Website
+          <input
+            autoComplete="off"
+            name="website"
+            tabIndex={-1}
+            value={form.website}
+            onChange={(event) => updateField("website", event.target.value)}
+          />
+        </label>
+      </div>
 
       <div className="contact-submit-row">
         <p className="muted-small">No login required. Keep personal details minimal.</p>

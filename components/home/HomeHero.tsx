@@ -31,8 +31,7 @@ export function HomeHero({
           </Link>
         </div>
         <p className="home-hero-detail">
-          Today&apos;s clue board: {puzzle.clues.join(", ")}. Open the detail page for the exact
-          answer and the full clue-by-clue breakdown.
+          Today&apos;s clues: {puzzle.clues.join(", ")}. Open the full breakdown for the verified answer.
         </p>
       </div>
     </section>

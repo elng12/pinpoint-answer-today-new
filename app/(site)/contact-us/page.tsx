@@ -3,6 +3,7 @@ import { ContactFeedbackForm } from "@/components/contact/ContactFeedbackForm";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { routes } from "@/lib/paths/routes";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
+import { supportEmail, supportMailto } from "@/lib/site/config";
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
@@ -14,7 +15,6 @@ export function generateMetadata(): Metadata {
 }
 
 export default function ContactPage() {
-  const supportEmail = "support@pinpointanswertoday.app";
   const detailItems = [
     "Include the puzzle number if you know it.",
     "Tell us where the walkthrough felt thin, confusing, or too late.",
@@ -56,7 +56,7 @@ export default function ContactPage() {
             <div className="contact-card-row">
               <div className="contact-info-card">
                 <p className="detail-overview-kicker">Email</p>
-                <a className="contact-email-link" href={`mailto:${supportEmail}`}>
+                <a className="contact-email-link" href={supportMailto}>
                   {supportEmail}
                 </a>
                 <p className="copy contact-email-copy">

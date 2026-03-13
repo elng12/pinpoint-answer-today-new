@@ -221,6 +221,16 @@ a {
   border-color: var(--brand-line);
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid color-mix(in oklch, var(--primary) 26%, white 4%);
+  outline-offset: 2px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -392,8 +402,9 @@ a {
   justify-self: center;
   padding: 8px 14px;
   border-radius: 999px;
-  background: color-mix(in oklch, white 18%, var(--primary) 82%);
-  border: 1px solid color-mix(in oklch, white 28%, var(--primary) 72%);
+  background: color-mix(in oklch, var(--primary) 88%, black 12%);
+  border: 1px solid color-mix(in oklch, var(--primary) 78%, black 22%);
+  color: white;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -469,10 +480,10 @@ a {
 }
 
 .home-hero-detail {
-  max-width: 720px;
+  max-width: 600px;
   margin: 0 auto;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 15px;
+  line-height: 1.6;
   color: color-mix(in oklch, white 82%, var(--primary) 18%);
 }
 
@@ -577,7 +588,7 @@ a {
   border: 1px solid var(--brand-line);
   background: color-mix(in oklch, var(--secondary) 82%, white 18%);
   text-align: center;
-  color: var(--muted);
+  color: color-mix(in oklch, var(--muted) 76%, var(--text) 24%);
   font-size: 16px;
   line-height: 1.5;
 }
@@ -722,7 +733,7 @@ a {
   margin: 0;
   font-size: 18px;
   line-height: 1.7;
-  color: var(--muted);
+  color: color-mix(in oklch, var(--muted) 76%, var(--text) 24%);
 }
 
 .countdown-shell {
@@ -768,7 +779,7 @@ a {
 .countdown-timezone {
   margin: 0;
   font-size: 16px;
-  color: var(--muted);
+  color: color-mix(in oklch, var(--muted) 76%, var(--text) 24%);
 }
 
 .countdown-timezone-strong {
@@ -784,7 +795,7 @@ a {
   margin: 0;
   font-size: 16px;
   line-height: 1.7;
-  color: var(--muted);
+  color: color-mix(in oklch, var(--muted) 76%, var(--text) 24%);
 }
 
 .home-search-heading {
@@ -2242,7 +2253,7 @@ a {
   border: 1px solid var(--brand-line);
   background: color-mix(in oklch, var(--surface) 94%, white 6%);
   font-size: 12px;
-  color: var(--muted);
+  color: color-mix(in oklch, var(--muted) 76%, var(--text) 24%);
 }
 
 .legacy-reveal-clue-grid {
@@ -2639,7 +2650,7 @@ a {
   padding: 18px 20px;
 }
 
-.legacy-faq-card h4 {
+.legacy-faq-question {
   margin: 0;
   font-size: 16px;
   line-height: 1.35;

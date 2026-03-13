@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { trackClientEvent } from "@/lib/analytics";
 
 type AnswerRevealProps = {
@@ -31,6 +31,7 @@ export function AnswerReveal({
   const [copied, setCopied] = useState(false);
   const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
   const hintTimerRef = useRef<number | null>(null);
+  const revealTipId = useId();
 
   const normalizedHints = useMemo(() => {
     const map: Record<string, string> = {};
@@ -108,7 +109,7 @@ export function AnswerReveal({
 
   return (
     <div className="reveal-shell">
-      <p className="reveal-tip">
+      <p className="reveal-tip" id={revealTipId}>
         Hover (desktop) or tap (mobile) each clue to see how it connects to the answer
       </p>
 
@@ -119,7 +120,7 @@ export function AnswerReveal({
             type="button"
             className="reveal-clue-card"
             onClick={() => handleClueClick(clue)}
-            aria-label={`Clue ${index + 1}: ${clue}`}
+            aria-describedby={revealTipId}
             title={normalizedHints[normalizeKey(clue)] || `${clue} points back to ${category}.`}
           >
             <span className="reveal-clue-index">{index + 1}</span>
