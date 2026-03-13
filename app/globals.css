@@ -284,6 +284,7 @@ summary:focus-visible {
 
 .stack {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -389,6 +390,7 @@ summary:focus-visible {
 
 .home-hero-inner {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   padding: 30px 32px 34px;
   text-align: center;
@@ -705,6 +707,7 @@ summary:focus-visible {
 
 .home-next-unlock-inner {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 28px;
   padding: 40px 42px;
   border: 1px solid color-mix(in oklch, var(--chart-1) 14%, var(--border) 86%);
@@ -716,6 +719,7 @@ summary:focus-visible {
 
 .home-next-unlock-heading {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
 }
 
@@ -734,6 +738,7 @@ summary:focus-visible {
 
 .countdown-shell {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
@@ -1425,11 +1430,6 @@ summary:focus-visible {
 }
 
 @supports (content-visibility: auto) {
-  .countdown-grid {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 320px;
-  }
-
   .recent-answer-card-compact {
     content-visibility: auto;
     contain-intrinsic-size: auto 188px;
@@ -1812,12 +1812,6 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  @supports (content-visibility: auto) {
-    .countdown-grid {
-      contain-intrinsic-size: auto 620px;
-    }
-  }
-
   .recent-answer-grid-compact {
     grid-template-columns: 1fr;
   }
@@ -1865,6 +1859,42 @@ summary:focus-visible {
     padding: 24px;
   }
 
+  .home-hero-inner {
+    padding: 24px 20px 28px;
+  }
+
+  .home-status-badge {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+  }
+
+  .home-hero-title,
+  .home-hero-subtitle,
+  .home-hero-detail {
+    max-width: 100%;
+  }
+
+  .home-hero-title {
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .home-hero-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .home-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-hero-actions .button-primary,
+  .home-hero-actions .button-secondary {
+    width: 100%;
+  }
+
   .home-reveal-title {
     font-size: clamp(22px, 6vw, 28px);
   }
@@ -1875,10 +1905,13 @@ summary:focus-visible {
 
   .home-next-unlock-title {
     font-size: clamp(28px, 8vw, 40px);
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .home-next-unlock-copy {
     font-size: 16px;
+    max-width: 100%;
   }
 
   .reveal-tip,
