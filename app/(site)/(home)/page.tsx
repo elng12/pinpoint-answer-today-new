@@ -7,9 +7,12 @@ import { HomeNextUnlock } from "@/components/home/HomeNextUnlock";
 import { HomeRecentAnswers } from "@/components/home/HomeRecentAnswers";
 import { HomeRevealSection } from "@/components/home/HomeRevealSection";
 import { HomeWhatIs } from "@/components/home/HomeWhatIs";
+import { FooterBadgeWall } from "@/components/layout/FooterBadgeWall";
 import { StructuredData } from "@/components/seo/StructuredData";
 import { getArchiveEntries, getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
+import { footerBadges } from "@/lib/site/badges";
+import { supportEmail } from "@/lib/site/config";
 import {
   absoluteUrl,
   buildPageMetadata,
@@ -37,6 +40,15 @@ export default async function HomePage() {
 
   const previousEntry = allArchiveEntries.find((entry) => entry.number < current.number) ?? null;
   const structuredDataItems = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Pinpoint Answer Today",
+      url: absoluteUrl(routes.home),
+      logo: absoluteUrl("/favicon/apple-touch-icon.png"),
+      description: HOME_SEO_DESCRIPTION,
+      email: supportEmail,
+    },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -83,6 +95,7 @@ export default async function HomePage() {
         <HomeWhatIs />
         <HomeBenefitsFaq puzzle={current} />
         <HomeCtaFooter currentPuzzleNumber={current.number} currentSlug={current.slug} />
+        <FooterBadgeWall badges={footerBadges} heading="Media & Featured In" />
       </div>
     </main>
   );

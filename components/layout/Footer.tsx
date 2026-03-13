@@ -1,8 +1,6 @@
 import Link from "next/link";
-import { FooterBadgeWall } from "@/components/layout/FooterBadgeWall";
 import { routes } from "@/lib/paths/routes";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
-import { footerBadges } from "@/lib/site/badges";
 import { supportMailto } from "@/lib/site/config";
 
 type FooterProps = {
@@ -97,8 +95,6 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             </div>
           </div>
         </div>
-
-        {isDetailPage ? null : <FooterBadgeWall badges={footerBadges} heading="Media & Featured In" />}
         <div className="footer-copyright">
           © {new Date().getFullYear()} Pinpoint Answer Today. All rights reserved. All names, trademarks, and registered marks belong to their respective owners.
         </div>
