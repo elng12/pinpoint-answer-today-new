@@ -1,0 +1,35 @@
+{
+  "slug": "pinpoint-answer-562",
+  "fullAnalysis": [
+    "Pinpoint 562 features Intern, Space, Friend, Champion, and Battle—nouns that span résumés, rocket launches, relationships, trophies, and warfare. The only trick that unites them is adding the same suffix so each clue becomes a familiar “-ship” word.",
+    "I tried common endings: -er, -ing, -ment... none worked across all five. Appending “ship” was the first test that landed everywhere: internship, spaceship, friendship, championship, battleship. Once that happened, the answer wrote itself.",
+    "Every entry is a standalone noun that becomes an unmistakable compound once you append “ship.” Intern → internship, Space → spaceship, Friend → friendship, Champion → championship, and Battle → battleship. The shared connector is therefore “words that precede ship.”",
+    "LinkedIn Pinpoint rewards suffix spotting. The second you realize each clue happily accepts the ending “-ship,” the entire board collapses into place."
+  ],
+  "wordHints": {
+    "Intern": "Add “ship” to form internship, the training period before a full-time role.",
+    "Space": "Spaceship is the vehicle that travels beyond Earth.",
+    "Friend": "Friendship is the bond created between friends.",
+    "Champion": "A championship is the title round of a competition.",
+    "Battle": "Battleship is a heavily armed naval vessel—and the classic board game."
+  },
+  "lessons": [
+    "Test word-builders first. When clues jump between industries, try appending the same suffix or prefix to each word.",
+    "Validate all five entries. A hypothesis only sticks if every clue forms a real word with the chosen suffix.",
+    "Don’t over-index on topic. Sometimes the link is linguistic rather than thematic—especially when contexts are wildly different."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Intern, Space, Friend, Champion, and Battle in Pinpoint #562?",
+      "answer": "Each word becomes a common noun when you append the suffix “ship.”"
+    },
+    {
+      "question": "Why isn’t this a vehicle puzzle?",
+      "answer": "Because internship and friendship aren’t vehicles—only the shared suffix explains every clue."
+    },
+    {
+      "question": "Do abstract nouns like friendship count?",
+      "answer": "Absolutely. As long as “ship” forms a standard word, it belongs in the set."
+    }
+  ]
+}

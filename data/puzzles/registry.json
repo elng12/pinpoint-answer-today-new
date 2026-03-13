@@ -1980,6 +1980,78 @@
     "updatedAt": "2025-11-16T08:06:00.000Z"
   },
   {
+    "puzzleNumber": 564,
+    "slug": "pinpoint-answer-564",
+    "publishDate": "2025-11-15",
+    "status": "archived",
+    "clues": [
+      "Coffee",
+      "Talk",
+      "Pawn",
+      "Thrift",
+      "Like a bull in a china"
+    ],
+    "mainAnswer": "Words that come before 'shop'",
+    "category": "Words that come before 'shop'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint 564 stacks Coffee, Talk, Pawn, Thrift, and Like a bull in a china.",
+    "updatedAt": "2025-11-15T08:06:00.000Z"
+  },
+  {
+    "puzzleNumber": 563,
+    "slug": "pinpoint-answer-563",
+    "publishDate": "2025-11-14",
+    "status": "archived",
+    "clues": [
+      "Vent",
+      "Crater",
+      "Ash",
+      "Magma",
+      "Lava"
+    ],
+    "mainAnswer": "Parts of a volcano",
+    "category": "Parts of a volcano",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint 563 marches through Vent, Crater, Ash, Magma, and Lava—clues that read like a slo-mo eruption.",
+    "updatedAt": "2025-11-14T08:06:00.000Z"
+  },
+  {
+    "puzzleNumber": 562,
+    "slug": "pinpoint-answer-562",
+    "publishDate": "2025-11-13",
+    "status": "archived",
+    "clues": [
+      "Intern",
+      "Space",
+      "Friend",
+      "Champion",
+      "Battle"
+    ],
+    "mainAnswer": "Words that precede “ship”",
+    "category": "Words that precede “ship”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint 562 features Intern, Space, Friend, Champion, and Battle—nouns that span résumés, rocket launches, relationships, trophies, and warfare.",
+    "updatedAt": "2025-11-13T08:06:00.000Z"
+  },
+  {
+    "puzzleNumber": 561,
+    "slug": "pinpoint-answer-561",
+    "publishDate": "2025-11-12",
+    "status": "archived",
+    "clues": [
+      "The Underground",
+      "Double-decker buses",
+      "The Thames",
+      "Big Ben",
+      "Buckingham Palace"
+    ],
+    "mainAnswer": "Things associated with London",
+    "category": "Things associated with London",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint 561 lines up The Underground, double-decker buses, the Thames, Big Ben, and Buckingham Palace—icons that weave together transit, riverside views, clock chimes, and royal ceremony.",
+    "updatedAt": "2025-11-12T08:00:00.000Z"
+  },
+  {
     "puzzleNumber": 560,
     "slug": "pinpoint-answer-560",
     "publishDate": "2025-11-11",
@@ -2016,6 +2088,24 @@
     "updatedAt": "2025-11-02T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 549,
+    "slug": "pinpoint-answer-549",
+    "publishDate": "2025-10-31",
+    "status": "archived",
+    "clues": [
+      "A",
+      "B",
+      "C#",
+      "B♭",
+      "Do (or re or mi)"
+    ],
+    "mainAnswer": "Musical Notes",
+    "category": "Musical Notes",
+    "difficultyLevel": "Easy",
+    "shortSummary": "Today's Pinpoint puzzle, #549, starts with a sequence that feels deceptively simple: A and B.",
+    "updatedAt": "2025-10-31T07:00:00.000Z"
+  },
+  {
     "puzzleNumber": 548,
     "slug": "pinpoint-answer-548",
     "publishDate": "2025-10-30",
@@ -2034,6 +2124,42 @@
     "updatedAt": "2025-10-30T07:00:00.000Z"
   },
   {
+    "puzzleNumber": 547,
+    "slug": "pinpoint-answer-547",
+    "publishDate": "2025-10-29",
+    "status": "archived",
+    "clues": [
+      "Hot",
+      "Spring",
+      "Fresh",
+      "Sparkling",
+      "Distilled"
+    ],
+    "mainAnswer": "Types of water",
+    "category": "Types of water",
+    "difficultyLevel": "Easy",
+    "shortSummary": "My first thought for today’s LinkedIn Pinpoint was, “This is a puzzle about seasons or resorts.” The clue Hot made me think of summer, and Spring felt like a perfect follow-up, pointing toward vacation themes.",
+    "updatedAt": "2025-10-29T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 546,
+    "slug": "pinpoint-answer-546",
+    "publishDate": "2025-10-28",
+    "status": "archived",
+    "clues": [
+      "Stone",
+      "Pound",
+      "Tonne",
+      "Gram",
+      "Ounce"
+    ],
+    "mainAnswer": "Units of mass",
+    "category": "Units of mass",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Today's LinkedIn Pinpoint puzzle starts with a familiar weight, Stone, which immediately made me think of units I might see at a British market.",
+    "updatedAt": "2025-10-28T07:00:00.000Z"
+  },
+  {
     "puzzleNumber": 545,
     "slug": "pinpoint-answer-545",
     "publishDate": "2025-10-27",
@@ -2050,6 +2176,42 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Brief, Lower, Book, Suit, and Pillow all point to one simple connector: Words that come before 'case'.",
     "updatedAt": "2025-10-27T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 544,
+    "slug": "pinpoint-answer-544",
+    "publishDate": "2025-10-26",
+    "status": "archived",
+    "clues": [
+      "Window",
+      "Door",
+      "Painting",
+      "Bicycle",
+      "Glasses"
+    ],
+    "mainAnswer": "Things with frames",
+    "category": "Things with frames",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Today's LinkedIn Pinpoint opens with two very common objects: Window and Door.",
+    "updatedAt": "2025-10-26T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 543,
+    "slug": "pinpoint-answer-543",
+    "publishDate": "2025-10-25",
+    "status": "archived",
+    "clues": [
+      "Double",
+      "Travel",
+      "Secret",
+      "Insurance",
+      "Free"
+    ],
+    "mainAnswer": "Words that come before “agent”",
+    "category": "Words that come before “agent”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Today's Pinpoint began with a simple suggestion.",
+    "updatedAt": "2025-10-25T07:00:00.000Z"
   },
   {
     "puzzleNumber": 541,
