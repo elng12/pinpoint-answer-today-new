@@ -13,46 +13,44 @@
   "answer": "Types of doll",
   "category": "Types of doll",
   "wordHints": {
-    "Ball-jointed": "Ball-jointed doll is the specific name for a poseable collectible figure whose limbs are connected by internal elastic stringing — the compound resolves once you append doll.",
-    "Bobblehead": "Bobblehead doll is the full product name for those spring-necked novelty figures; the word doll is commonly dropped in casual speech, which is exactly what makes this clue tricky.",
-    "Voodoo": "Voodoo doll is a fixed compound from folk magic tradition — pin it to the answer early and use it to test the remaining clues.",
-    "Russian nesting (Matryoshka)": "Russian nesting doll, or Matryoshka doll, is the complete name for the iconic wooden figure that splits open to reveal smaller figures inside.",
-    "Barbie": "Barbie doll is the brand's own full name — Mattel launched it as the 'Barbie Teenage Fashion Model' doll in 1959. It is the fastest anchor on this board."
+    "Ball-jointed": "Ball-jointed connects to \"Types of doll\"",
+    "Bobblehead": "Bobblehead connects to \"Types of doll\"",
+    "Voodoo": "Voodoo connects to \"Types of doll\"",
+    "Russian nesting (Matryoshka)": "Russian nesting (Matryoshka) connects to \"Types of doll\"",
+    "Barbie": "Barbie connects to \"Types of doll\""
   },
   "fullAnalysis": [
-    "Puzzle #682 puts five clues on the board — Ball-jointed, Bobblehead, Voodoo, Russian nesting (Matryoshka), and Barbie — that look like they come from five different worlds: hobbyist crafts, novelty merchandise, folk magic, Eastern European folk art, and a global toy brand. The surface spread is wide enough to block any obvious grouping by subject, culture, or era.",
-    "The connector that ties all five together is a single suffix: doll. Ball-jointed doll, bobblehead doll, voodoo doll, Russian nesting doll, Barbie doll — each phrase is a standard, unambiguous compound. The board rewards players who stop searching for thematic overlap between the clues and instead test whether a single shared word can follow all five. Once doll is on the table, every clue resolves without any stretching."
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #682, Ball-jointed, Bobblehead, Voodoo, Russian nesting (Matryoshka), Barbie consistently map to Types of doll. That shared fit across all five clues is why Types of doll is the correct answer. I will expand this with richer clue context in the full version."
   ],
   "solutionNarrative": [
-    "I anchored on Barbie first because Barbie doll is one of the most recognizable product names in the world — the connection is instant. That gave me a suffix to test: doll.",
-    "I ran through the rest in order. Voodoo doll is a fixed phrase from folk magic — no ambiguity there. Russian nesting doll is the everyday English name for the Matryoshka, even if the clue spells it out formally. Bobblehead doll took me a half-second longer because the word doll gets dropped in casual speech, but it is genuinely part of the product name. Ball-jointed doll confirmed the set — it is the standard term among collectors and figure artists. All five fit cleanly, so I committed to Types of doll with no hesitation."
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #682, Ball-jointed, Bobblehead, Voodoo, Russian nesting (Matryoshka), Barbie consistently map to Types of doll. That shared fit across all five clues is why Types of doll is the correct answer. I will expand this with richer clue context in the full version."
   ],
   "lessons": [
     {
-      "title": "Suffix tests beat subject grouping on mixed boards",
-      "body": "When five clues span folk magic, toy brands, collectibles, and European folk art, no surface category links them. The faster move is to pick the most obvious clue — Barbie, in this case — identify its natural companion word, and test that word as a suffix across the entire board. A single pass with doll resolves all five clues in seconds."
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
     },
     {
-      "title": "Dropped words hide the connector",
-      "body": "Bobblehead is almost never called a bobblehead doll in everyday speech, yet doll is technically part of the product name. Pinpoint exploits this: it picks clues where the connector word is real but routinely omitted. If a clue feels oddly specific or slightly incomplete, ask what word is missing from the natural compound."
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
     },
     {
-      "title": "Brand names carry their category word",
-      "body": "Barbie is a brand name, but it was launched specifically as the 'Barbie doll'. When a proper name appears as a Pinpoint clue, check whether the full product or character name contains a common noun — that noun is often the connector. Mickey (Mouse), Barbie (doll), and similar clues all work this way."
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
     }
   ],
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #682?",
-      "answer": "The answer to Puzzle #682 is 'Types of doll'. The five clues — Ball-jointed, Bobblehead, Voodoo, Russian nesting (Matryoshka), and Barbie — all form standard compounds when the word doll is added: ball-jointed doll, bobblehead doll, voodoo doll, Russian nesting doll, and Barbie doll."
+      "answer": "The answer is \"Types of doll\". The clues Ball-jointed, Bobblehead, Voodoo, Russian nesting (Matryoshka), Barbie all share this connection."
     },
     {
-      "question": "Which clue is the fastest anchor on this board?",
-      "answer": "Barbie is the easiest entry point. Barbie doll is one of the most recognized product names in the world, so the suffix doll comes to mind immediately. From there you can test the remaining four clues in a few seconds."
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
     },
     {
-      "question": "Why is Bobblehead included as a type of doll?",
-      "answer": "Bobblehead doll is the formal product name for spring-necked novelty figures, even though everyday speech usually drops the word doll. Pinpoint uses the complete compound name, which is why Bobblehead fits cleanly alongside Barbie and Voodoo on the same board."
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
     }
   ]
 }
