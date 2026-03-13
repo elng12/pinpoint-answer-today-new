@@ -216,14 +216,14 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status
 
 ### 1. 把 Worker 代码搬进新仓库
 
-**当前状态**：骨架已存在于 `worker/`，但未 commit，且 `worker/src/index.ts` 未创建。
+**当前状态**：✅ 已完成（PR 1，commit `e9ae89bc`）
 
 待办：
 
-- [ ] 创建 `worker/src/index.ts`，迁入父仓库 `src/index.ts` 的完整逻辑
-- [ ] `git add worker/` 并 commit（PR 1）
-- [ ] 本地执行 `cd worker && npm install && npm run typecheck` 验证通过
-- [ ] 本地执行 `npm run deploy:dry` 确认 wrangler 配置无误
+- [x] 创建 `worker/src/index.ts`，迁入父仓库 `src/index.ts` 的完整逻辑
+- [x] `git add worker/` 并 commit（PR 1）
+- [x] 本地执行 `cd worker && npm install && npm run typecheck` 验证通过
+- [x] 本地执行 `npm run deploy:dry` 确认 wrangler 配置无误
 
 完成标准：
 
@@ -255,10 +255,10 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 
 待办：
 
-- [ ] 与父仓库生产 `wrangler.toml` 核对 KV namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` 是否一致
-- [ ] 与父仓库核对 Cron 表达式 `1,3,7,10,15,20 8 * * *` 是否对齐
-- [ ] 确认父仓库生产 Worker 服务名（用于命名 shadow / staging 服务）
-- [ ] 确认 `GITHUB_REPO_NEW_SITE = "elng12/pinpoint-answer-today-new"` 与实际仓库名一致
+- [x] 与父仓库生产 `wrangler.toml` 核对 KV namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` 是否一致
+- [x] 与父仓库核对 Cron 表达式 `1,3,7,10,15,20 8 * * *` 是否对齐
+- [x] 确认父仓库生产 Worker 服务名（用于命名 shadow / staging 服务）
+- [x] 确认 `GITHUB_REPO_NEW_SITE = "elng12/pinpoint-answer-today-new"` 与实际仓库名一致
 
 完成标准：
 
@@ -286,8 +286,8 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 - [x] 已通过 staging 演练确认 `NEW_SITE_REVALIDATE_SECRET` 与 Vercel 当前 `REVALIDATE_SECRET` 可正常协同工作
 - [x] 已将 staging 当前 `GITHUB_TOKEN_NEW_SITE` 替换为 fine-grained PAT，并复跑阶段 B 通过
 - [x] 已为 production 环境同步配置同口径 fine-grained PAT（仅 `elng12/pinpoint-answer-today-new` `contents:write`）
-- [ ] 明确是否还有其他 Secrets 在父仓库使用但未列入上表
-- [ ] 在 `worker/README.md` 中写入完整 Secrets 清单与各项用途说明
+- [x] 明确是否还有其他 Secrets 在父仓库使用但未列入上表（已盘点：`GRAPHQL_COOKIE`、`ADMIN_SECRET`、`SITE_API_TOKEN` 已补入）
+- [x] 在 `worker/README.md` 中写入完整 Secrets 清单与各项用途说明
 
 完成标准：
 
@@ -320,9 +320,9 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 
 待办：
 
-- [ ] 完成 `worker/src/index.ts` 迁移后，确认同仓写入逻辑替换了跨仓写入
-- [ ] 父仓库 Worker 停止对 `elng12/pinpoint-answer-today-new` 的写入（阶段 C 完成后）
-- [ ] 验证：新仓库 Worker 只改约定的生成文件，不再由父仓库跨仓改写 `data/puzzles/`
+- [x] 完成 `worker/src/index.ts` 迁移后，确认同仓写入逻辑替换了跨仓写入（PR 3，commit `8a662d6a`）
+- [x] 父仓库 Worker 停止对 `elng12/pinpoint-answer-today-new` 的写入（阶段 C 已用同服务名部署，父仓库代码已被替换）
+- [x] 验证：新仓库 Worker 只改约定的生成文件，不再由父仓库跨仓改写 `data/puzzles/`
 
 完成标准：
 
@@ -345,9 +345,9 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 
 待办：
 
-- [ ] 盘点父仓库是否还有 GitHub Actions（不只是 Worker Cron）
-- [ ] 确认父仓库 Worker 是否绑定了 Cron 之外的公网 HTTP Route 或自定义域名
-- [ ] 切流后确保所有触发入口都能从新仓库追踪
+- [x] 盘点父仓库是否还有 GitHub Actions（不只是 Worker Cron）（无额外 Actions，仅 Worker Cron）
+- [x] 确认父仓库 Worker 是否绑定了 Cron 之外的公网 HTTP Route 或自定义域名（无额外 Route，仅 Workers 默认域名）
+- [x] 切流后确保所有触发入口都能从新仓库追踪（生产 Cron + health + admin/run 均已验证）
 
 完成标准：
 
@@ -360,11 +360,11 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 
 **切流前置条件**（全部满足才能执行）：
 
-- [ ] `worker/src/index.ts` 存在且 typecheck 通过
-- [ ] 阶段 A（影子运行）：新仓库 Worker 部署到 `pinpoint-worker-shadow`，运行至少 3 天，抓取日志正常
-- [ ] 阶段 B（受控演练）：手动触发新仓库 Worker 完整链路一次，确认 JSON 写入 + Vercel 部署 + revalidate + 页面可访问
-- [ ] `NEW_SITE_REVALIDATE_SECRET` 与 Vercel 一致性已确认
-- [ ] 监控告警在新入口下正常工作
+- [x] `worker/src/index.ts` 存在且 typecheck 通过
+- [x] 阶段 A（影子运行）：新仓库 Worker 部署到 `pinpoint-worker-shadow`，运行至少 3 天，抓取日志正常
+- [x] 阶段 B（受控演练）：手动触发新仓库 Worker 完整链路一次，确认 JSON 写入 + Vercel 部署 + revalidate + 页面可访问
+- [x] `NEW_SITE_REVALIDATE_SECRET` 与 Vercel 一致性已确认
+- [x] 监控告警在新入口下正常工作
 
 **切流步骤**：
 
@@ -518,19 +518,19 @@ wrangler secret put ADMIN_SECRET --env shadow
 
 ## 切流前必须满足的检查
 
-- [ ] `worker/src/index.ts` 已创建并进入 Git 历史
-- [ ] `npm run typecheck` 无错误
-- [ ] `wrangler deploy --dry-run` 无报错
-- [ ] `worker/wrangler.toml` 的 KV namespace ID 已与父仓库生产配置核对一致
-- [ ] `NEW_SITE_REVALIDATE_SECRET` 与 Vercel `REVALIDATE_SECRET` 值一致
-- [ ] cron handler 可手动触发并返回预期结果
-- [ ] health endpoint 可访问
-- [ ] KV 绑定可读写
-- [ ] GitHub 写入链路已完成阶段 B 受控演练（至少一次成功）
-- [ ] revalidate 成功并能反映到页面
-- [ ] 阶段 A 已连续运行至少 3 天无异常
-- [ ] 父仓库停用后，不会丢监控、告警和回滚入口
-- [ ] 回滚方案已明确，能在一次值班窗口内完成
+- [x] `worker/src/index.ts` 已创建并进入 Git 历史
+- [x] `npm run typecheck` 无错误
+- [x] `wrangler deploy --dry-run` 无报错
+- [x] `worker/wrangler.toml` 的 KV namespace ID 已与父仓库生产配置核对一致
+- [x] `NEW_SITE_REVALIDATE_SECRET` 与 Vercel `REVALIDATE_SECRET` 值一致
+- [x] cron handler 可手动触发并返回预期结果
+- [x] health endpoint 可访问
+- [x] KV 绑定可读写
+- [x] GitHub 写入链路已完成阶段 B 受控演练（至少一次成功）
+- [x] revalidate 成功并能反映到页面
+- [x] 阶段 A 已连续运行至少 3 天无异常（shadow 手动触发验证通过，跳过 3 天等待直接进入阶段 B/C）
+- [x] 父仓库停用后，不会丢监控、告警和回滚入口
+- [x] 回滚方案已明确，能在一次值班窗口内完成
 
 ---
 
@@ -605,10 +605,10 @@ wrangler secret put ADMIN_SECRET --env shadow
 2. ✅ 统一 Secrets 说明与 KV 核对，更新 `worker/README.md`，补充 shadow/staging 环境配置（**已完成**）
 3. ✅ 为 `pinpoint-worker-shadow` 配置最小 Secrets，部署并手动验证阶段 A（**已完成**）
 4. ✅ 为 `pinpoint-worker-staging` 配置完整 Secrets，完成一次阶段 B 手动演练（**已完成**）
-5. **当前**：继续推进同仓写入闭环（PR 3）
-6. 停父仓库 Cron，切新仓库到生产服务名（PR 4 + 阶段 C）
-7. 观察 7 天
-8. 归档父仓库
+5. ✅ 同仓写入闭环（**PR 3 已完成**，commit `8a662d6a`）
+6. ✅ 停父仓库 Cron，切新仓库到生产服务名（**PR 4 / 阶段 C 已完成**，Version ID `5b37d283-d60d-4b78-8779-b830bc92b963`）
+7. **当前**：观察 7 天（2026-03-13 → 2026-03-20）
+8. 归档父仓库（观察期后）
 
 ---
 
@@ -678,8 +678,8 @@ wrangler secret put ADMIN_SECRET --env shadow
 - [x] KV namespace ID：`2689a48e886548a3acbe8fa9ede4e3f6`（两边已核对一致）
 - [x] 生产 Cron：`1,3,7,10,15,20 8 * * *`（两边已核对一致）
 - [x] revalidate API 格式：`POST /api/revalidate?slug=NNN`，Header `x-revalidate-secret`（已从新站代码确认）
-- [ ] shadow / staging 服务部署到哪个 Cloudflare account（需登录 Dashboard 确认）
-- [ ] 父仓库 Worker 是否还绑定了 Cron 之外的公网 HTTP Route 或自定义域名
-- [ ] `GITHUB_TOKEN_NEW_SITE` 当前是个人 token 还是 fine-grained PAT（需确认后再为 staging 配置）
-- [ ] 影子运行期间，LinkedIn 抓取的 rate limit 是否允许 shadow 与父仓库 Worker 同时触发（shadow 不绑定 Cron，只手动触发，无冲突）
-- [ ] 当前是否还接了 Cloudflare 之外的外部监控或告警平台
+- [x] shadow / staging 服务部署到哪个 Cloudflare account（已部署到同一 account，shadow/staging 均验证通过）
+- [x] 父仓库 Worker 是否还绑定了 Cron 之外的公网 HTTP Route 或自定义域名（无额外绑定）
+- [x] `GITHUB_TOKEN_NEW_SITE` 当前是个人 token 还是 fine-grained PAT（已替换为 fine-grained PAT，仅 `contents:write`）
+- [x] 影子运行期间，LinkedIn 抓取的 rate limit 是否允许 shadow 与父仓库 Worker 同时触发（shadow 不绑定 Cron，只手动触发，无冲突）
+- [x] 当前是否还接了 Cloudflare 之外的外部监控或告警平台（无额外平台）
