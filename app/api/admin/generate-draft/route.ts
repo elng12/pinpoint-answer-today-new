@@ -8,6 +8,7 @@ import {
 import {
   CONTENT_CONTRACT,
   normalizeAnswerLabel,
+  promotePublishBlockingIssues,
   validateContentContract,
   type ContentContractInput,
   type ContentContractIssue,
@@ -17,7 +18,7 @@ import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint
 const ADMIN_TOKENS = [
   process.env.API_SECRET_TOKEN,
   process.env.ADMIN_PASSPHRASE,
-  "admin-secret-dev",
+  process.env.NODE_ENV === "production" ? null : "admin-secret-dev",
 ].filter(Boolean);
 
 const DISALLOWED_LANGUAGE_PATTERN = /[\u3400-\u9FFF\uF900-\uFAFF\u3040-\u30FF\uAC00-\uD7AF]/;
@@ -323,7 +324,41 @@ function collectOutputLanguageIssues(ai: unknown): LanguageIssue[] {
   pushLanguageIssue(issues, "sections.solutionEmergence", sections.solutionEmergence);
   pushLanguageIssue(issues, "sections.trivia", sections.trivia);
 
+  (Array.isArray(sections.wrongGuesses) ? sections.wrongGuesses : []).forEach((item, index) => {
+    const row = asRecord(item);
+    pushLanguageIssue(issues, `sections.wrongGuesses[${index}].guess`, row?.guess);
+    pushLanguageIssue(issues, `sections.wrongGuesses[${index}].explanation`, row?.explanation);
+  });
+
+  (Array.isArray(sections.clueDetails) ? sections.clueDetails : []).forEach((item, index) => {
+    const row = asRecord(item);
+    pushLanguageIssue(issues, `sections.clueDetails[${index}].clue`, row?.clue);
+    pushLanguageIssue(issues, `sections.clueDetails[${index}].phrase`, row?.phrase);
+    pushLanguageIssue(issues, `sections.clueDetails[${index}].explanation`, row?.explanation);
+    pushLanguageIssue(issues, `sections.clueDetails[${index}].etymology`, row?.etymology);
+  });
+
+  (Array.isArray(sections.lessons) ? sections.lessons : []).forEach((item, index) => {
+    const row = asRecord(item);
+    pushLanguageIssue(issues, `sections.lessons[${index}].title`, row?.title);
+    pushLanguageIssue(issues, `sections.lessons[${index}].body`, row?.body);
+  });
+
+  (Array.isArray(sections.faqs) ? sections.faqs : []).forEach((item, index) => {
+    const row = asRecord(item);
+    pushLanguageIssue(issues, `sections.faqs[${index}].question`, row?.question);
+    pushLanguageIssue(issues, `sections.faqs[${index}].answer`, row?.answer);
+  });
+
   return issues;
+}
+
+function validateDraftIssues(
+  puzzleData: PuzzleDataForAI,
+  ai: unknown,
+  locale: string | null = defaultLocale,
+) {
+  return promotePublishBlockingIssues(validateContentContract(toContractInput(puzzleData, ai, locale)));
 }
 
 function buildRepairPrompt(
@@ -506,7 +541,20 @@ export async function POST(req: NextRequest) {
         model: model || process.env.AI_MODEL || resolveDefaultModel(provider, "draft"),
         apiEndpoint,
       });
-      const issues = validateContentContract(toContractInput(puzzleData, localizedResult, normalizedLocale));
+      const issues = validateDraftIssues(puzzleData, localizedResult, normalizedLocale);
+      const errorIssues = issues.filter((issue) => issue.level === "error");
+
+      if (errorIssues.length > 0) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: `Localized draft failed contract: ${errorIssues.map((issue) => issue.message).join(" | ")}`,
+            locale: normalizedLocale,
+            issues,
+          },
+          { status: 422 },
+        );
+      }
 
       return NextResponse.json({
         success: true,
@@ -534,7 +582,7 @@ export async function POST(req: NextRequest) {
       apiEndpoint,
     });
 
-    let issues = validateContentContract(toContractInput(puzzleData, result, defaultLocale));
+    let issues = validateDraftIssues(puzzleData, result, defaultLocale);
     let errorIssues = issues.filter((issue) => issue.level === "error");
 
     if (errorIssues.length > 0) {
@@ -552,13 +600,13 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      issues = validateContentContract(toContractInput(puzzleData, result, defaultLocale));
+      issues = validateDraftIssues(puzzleData, result, defaultLocale);
       errorIssues = issues.filter((issue) => issue.level === "error");
     }
 
     if (errorIssues.length > 0) {
       result = autoFixDraft(puzzleData, result);
-      issues = validateContentContract(toContractInput(puzzleData, result, defaultLocale));
+      issues = validateDraftIssues(puzzleData, result, defaultLocale);
       errorIssues = issues.filter((issue) => issue.level === "error");
     }
 

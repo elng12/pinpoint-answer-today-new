@@ -76,6 +76,9 @@ export default async function DetailPage({
       "@type": "Article",
       headline: seoHeadline,
       description: seoDescription,
+      image: absoluteUrl(
+        `${routes.detail(puzzle.slug)}/opengraph-image`
+      ),
       dateModified: puzzle.updatedAt,
       datePublished: `${puzzle.isoDate}T00:00:00Z`,
       mainEntityOfPage: absoluteUrl(routes.detail(puzzle.slug)),

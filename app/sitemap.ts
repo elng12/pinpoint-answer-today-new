@@ -19,11 +19,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries = staticRoutes.map(({ path, lastModified }) => ({
     url: `${siteUrl}${path}`,
     lastModified,
+    changeFrequency: "daily" as const,
+    priority: 1.0,
   }));
 
-  const detailEntries = (await getSitemapDetailEntries()).map((item) => ({
+  const detailItems = await getSitemapDetailEntries();
+  const detailEntries = detailItems.map((item, index) => ({
     url: `${siteUrl}${routes.detail(item.slug)}`,
     lastModified: new Date(item.updatedAt),
+    changeFrequency: "daily" as const,
+    priority: index < 10 ? 0.9 : index < 50 ? 0.8 : 0.6,
   }));
 
   return [...staticEntries, ...detailEntries];
