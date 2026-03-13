@@ -12,6 +12,24 @@ import {
 import { StructuredData } from "@/components/seo/StructuredData";
 
 export const revalidate = 86400;
+const INITIAL_ARCHIVE_LIMIT = 24;
+
+function getInitialArchiveGroups(groups: Awaited<ReturnType<typeof getArchiveEntriesGrouped>>) {
+  let remaining = INITIAL_ARCHIVE_LIMIT;
+  const initialGroups: typeof groups = [];
+
+  for (const group of groups) {
+    if (remaining <= 0) {
+      break;
+    }
+
+    const items = group.items.slice(0, remaining);
+    initialGroups.push({ ...group, items });
+    remaining -= items.length;
+  }
+
+  return initialGroups;
+}
 
 export function generateMetadata(): Metadata {
   return buildPageMetadata({
@@ -24,6 +42,7 @@ export function generateMetadata(): Metadata {
 export default async function ArchivePage() {
   const groups = await getArchiveEntriesGrouped();
   const archiveEntries = groups.flatMap((group) => group.items);
+  const initialGroups = getInitialArchiveGroups(groups);
   const structuredDataItems = [
     {
       "@context": "https://schema.org",
@@ -61,7 +80,7 @@ export default async function ArchivePage() {
       <StructuredData items={structuredDataItems} />
       <div className="stack">
         <ArchiveHeader totalCount={archiveEntries.length} />
-        <ArchiveExplorer groups={groups} />
+        <ArchiveExplorer initialGroups={initialGroups} totalCount={archiveEntries.length} />
       </div>
     </main>
   );

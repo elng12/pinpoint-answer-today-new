@@ -5,8 +5,6 @@ import { ArchiveCard } from "@/components/archive/ArchiveCard";
 import type { ArchiveGroup } from "@/lib/puzzles/data";
 import { trackClientEvent } from "@/lib/analytics";
 
-const INITIAL_LIMIT = 60;
-
 function normalizeValue(value: string) {
   return value.toLowerCase().trim();
 }
@@ -25,43 +23,64 @@ function buildSearchText(groupLabel: string, item: ArchiveGroup["items"][number]
   );
 }
 
-export function ArchiveExplorer({ groups }: { groups: ArchiveGroup[] }) {
+async function fetchArchiveGroups() {
+  const response = await fetch("/api/archive-groups", {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to load archive groups.");
+  }
+
+  const payload = (await response.json()) as { groups: ArchiveGroup[] };
+  return payload.groups;
+}
+
+export function ArchiveExplorer({
+  initialGroups,
+  totalCount,
+}: {
+  initialGroups: ArchiveGroup[];
+  totalCount: number;
+}) {
   const [query, setQuery] = useState("");
-  const [showAll, setShowAll] = useState(false);
+  const [allGroups, setAllGroups] = useState<ArchiveGroup[] | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const normalizedQuery = normalizeValue(query);
+  const activeGroups = allGroups ?? initialGroups;
 
   const filteredGroups = useMemo(() => {
     if (!normalizedQuery) {
-      return groups;
+      return activeGroups;
     }
 
-    return groups
+    return activeGroups
       .map((group) => ({
         ...group,
         items: group.items.filter((item) => buildSearchText(group.label, item).includes(normalizedQuery)),
       }))
       .filter((group) => group.items.length > 0);
-  }, [groups, normalizedQuery]);
+  }, [activeGroups, normalizedQuery]);
 
-  const totalCount = filteredGroups.reduce((count, group) => count + group.items.length, 0);
-
-  const visibleGroups = useMemo(() => {
-    if (normalizedQuery || showAll) {
-      return filteredGroups;
-    }
-    let remaining = INITIAL_LIMIT;
-    const result: ArchiveGroup[] = [];
-    for (const group of filteredGroups) {
-      if (remaining <= 0) break;
-      const items = group.items.slice(0, remaining);
-      result.push({ ...group, items });
-      remaining -= items.length;
-    }
-    return result;
-  }, [filteredGroups, normalizedQuery, showAll]);
-
-  const visibleCount = visibleGroups.reduce((n, g) => n + g.items.length, 0);
+  const visibleCount = activeGroups.reduce((count, group) => count + group.items.length, 0);
   const hiddenCount = totalCount - visibleCount;
+
+  const ensureAllGroups = async () => {
+    if (allGroups || isLoading) {
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const groups = await fetchArchiveGroups();
+      setAllGroups(groups);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="stack">
@@ -79,6 +98,9 @@ export function ArchiveExplorer({ groups }: { groups: ArchiveGroup[] }) {
               className="archive-search-input"
               placeholder="Search by puzzle number, clue, category, difficulty, or summary"
               onChange={(event) => setQuery(event.target.value)}
+              onFocus={() => {
+                void ensureAllGroups();
+              }}
               onBlur={() => {
                 if (!normalizedQuery) {
                   return;
@@ -103,15 +125,15 @@ export function ArchiveExplorer({ groups }: { groups: ArchiveGroup[] }) {
           </div>
           <p className="copy archive-search-copy">
             {normalizedQuery
-              ? `Showing ${totalCount} matching puzzle${totalCount === 1 ? "" : "s"} for "${query}".`
+              ? `Showing ${filteredGroups.reduce((count, group) => count + group.items.length, 0)} matching puzzle${filteredGroups.reduce((count, group) => count + group.items.length, 0) === 1 ? "" : "s"} for "${query}".`
               : "Start with a puzzle number, a clue word, a category, or a short summary phrase."}
           </p>
         </div>
       </section>
 
-      {visibleGroups.length ? (
+      {filteredGroups.length ? (
         <>
-          {visibleGroups.map((group) => (
+          {filteredGroups.map((group) => (
             <section key={group.label} className="surface" style={{ padding: 28 }}>
               <p className="eyebrow">{group.label}</p>
               <div className="grid" style={{ marginTop: 20 }}>
@@ -126,9 +148,14 @@ export function ArchiveExplorer({ groups }: { groups: ArchiveGroup[] }) {
               <button
                 type="button"
                 className="button-secondary"
-                onClick={() => setShowAll(true)}
+                onClick={() => {
+                  void ensureAllGroups();
+                }}
+                disabled={isLoading}
               >
-                Load {hiddenCount} more puzzle{hiddenCount === 1 ? "" : "s"}
+                {isLoading
+                  ? "Loading more puzzles..."
+                  : `Load ${hiddenCount} more puzzle${hiddenCount === 1 ? "" : "s"}`}
               </button>
             </div>
           )}
