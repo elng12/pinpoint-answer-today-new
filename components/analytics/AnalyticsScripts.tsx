@@ -2,6 +2,8 @@ import Script from "next/script";
 
 const ENABLE_GA = process.env.NEXT_PUBLIC_ENABLE_GA === "true";
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID?.trim() || "";
+const ANALYTICS_IDLE_TIMEOUT_MS = 15000;
+
 export function AnalyticsScripts() {
   if (!ENABLE_GA || !GA_MEASUREMENT_ID) {
     return null;
@@ -41,6 +43,7 @@ export function AnalyticsScripts() {
         window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
       });
 
+      window.setTimeout(loadAnalytics, ${ANALYTICS_IDLE_TIMEOUT_MS});
     })();
   `;
 
