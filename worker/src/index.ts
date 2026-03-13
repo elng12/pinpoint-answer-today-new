@@ -1197,10 +1197,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
     return { status: "skipped", reason: "AUTO_ENRICH_ENABLED=false" };
   }
 
-  const siteBaseUrl = getLegacySiteBaseUrl(env);
-  if (!siteBaseUrl) {
-    return { status: "skipped", reason: "legacy site pipeline unavailable" };
-  }
+  const siteBaseUrl = getPublicSiteBaseUrl(env);
 
   const token = String(env.SITE_API_TOKEN || "").trim();
   if (!token) {
@@ -1267,17 +1264,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
       },
     };
 
-    await postSiteJsonWithRetry(
-      `${siteBaseUrl}/api/publish`,
-      token,
-      {
-        ...enrichedPayload,
-        idempotencyKey: `worker:${puzzleDate}:enrich:${doc.checksum.slice(0, 24)}`,
-        locale: "en",
-      },
-      timeoutMs,
-      { maxAttempts: 2, baseDelayMs: 1200, retryTag: "enrich-publish" },
-    );
+    await publishToNewSiteGitHub(env, puzzleDate, doc, enrichedPayload, puzzleNumber);
 
     await env.PP_DATA.put(doneKey, new Date().toISOString(), {
       expirationTtl: 60 * 60 * 24 * 14,
@@ -1300,6 +1287,7 @@ async function localizePublishOne(
   words: string[],
   answer: string,
   checksumSeed: string,
+  doc: Doc,
 ): Promise<I18nPublishItemResult> {
   const startedAt = Date.now();
   const detailUrl = `${siteBaseUrl}/${locale}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
@@ -1528,113 +1516,7 @@ async function localizePublishOne(
           },
         };
 
-        const localizedPublishPayload: JsonRecord = {
-          ...localizedPayload,
-          idempotencyKey: `worker:${puzzleDate}:i18n:${locale}:${checksumSeed}`,
-          locale,
-        };
-        try {
-          await postSiteJsonWithRetry(
-            `${siteBaseUrl}/api/publish`,
-            token,
-            localizedPublishPayload,
-            timeoutMs,
-            { maxAttempts: 2, baseDelayMs: 900, retryTag: `i18n-publish:${locale}` },
-          );
-        } catch (publishError) {
-          const readinessIssues = parseLocaleReadinessIssues(publishError);
-          if (readinessIssues.length === 0) {
-            throw publishError;
-          }
-
-          const issueFields = new Set(
-            readinessIssues
-              .map((issue) => issue.field)
-              .filter((field): field is string => Boolean(field)),
-          );
-          const fallbackSections = asRecord(localizedPayload.sections);
-          const fallbackSourceSections = asRecord(sourcePayload.sections);
-          const fallbackSummaryPieces = [localizedNarrativeSeed, clueLine, adjustedOverview, adjustedSolution];
-          const fallbackPayload: JsonRecord = {
-            ...localizedPayload,
-            summary:
-              issueFields.has("summary")
-                ? ensureMinWordsWithinMax(
-                    asNonEmptyString(localizedPayload.summary),
-                    I18N_SUMMARY_MIN_WORDS,
-                    fallbackSummaryPieces,
-                    PUBLISH_SHORT_TEXT_MAX_CHARS,
-                  ) ?? adjustedSummary
-                : localizedPayload.summary,
-            seoDescription:
-              issueFields.has("seoDescription")
-                ? ensureMaxChars(
-                    asNonEmptyString(localizedPayload.seoDescription) ?? `${localizedNarrativeSeed} ${clueLine}`,
-                    PUBLISH_SHORT_TEXT_MAX_CHARS,
-                  ) ?? adjustedSeoDescription
-                : localizedPayload.seoDescription,
-            seo: {
-              title:
-                issueFields.has("seoTitle")
-                  ? ensureMaxChars(
-                      asNonEmptyString(asRecord(localizedPayload.seo)?.title) ??
-                        `LinkedIn Pinpoint ${puzzleNumber}: ${words.join(", ")} (${locale})`,
-                      PUBLISH_SHORT_TEXT_MAX_CHARS,
-                    ) ?? adjustedSeoTitle
-                  : asNonEmptyString(asRecord(localizedPayload.seo)?.title) ?? adjustedSeoTitle,
-            },
-            sections: {
-              ...(fallbackSections || {}),
-              overview:
-                issueFields.has("overview")
-                  ? ensureMinWordsWithinMax(
-                      asNonEmptyString(fallbackSections?.overview),
-                      65,
-                      [localizedNarrativeSeed, adjustedSummary, clueLine],
-                      PUBLISH_SECTION_TEXT_MAX_CHARS,
-                    ) ?? adjustedOverview
-                  : asNonEmptyString(fallbackSections?.overview) ?? adjustedOverview,
-              solutionEmergence:
-                issueFields.has("solutionEmergence")
-                  ? ensureMinWordsWithinMax(
-                      asNonEmptyString(fallbackSections?.solutionEmergence),
-                      90,
-                      [localizedNarrativeSeed, adjustedOverview, adjustedSummary, clueLine],
-                      PUBLISH_SECTION_TEXT_MAX_CHARS,
-                    ) ?? adjustedSolution
-                  : asNonEmptyString(fallbackSections?.solutionEmergence) ?? adjustedSolution,
-              clueDetails:
-                issueFields.has("clueDetails")
-                  ? ensureLocalizedClueDetails(
-                      locale,
-                      words,
-                      fallbackSections?.clueDetails,
-                      fallbackSourceSections?.clueDetails,
-                    )
-                  : (Array.isArray(fallbackSections?.clueDetails)
-                      ? fallbackSections.clueDetails
-                      : adjustedClueDetails),
-            },
-          };
-
-          console.warn("i18n publish fallback retry", {
-            locale,
-            puzzleNumber,
-            issueFields: [...issueFields],
-          });
-
-          await postSiteJsonWithRetry(
-            `${siteBaseUrl}/api/publish`,
-            token,
-            {
-              ...fallbackPayload,
-              idempotencyKey: `worker:${puzzleDate}:i18n:${locale}:${checksumSeed}`,
-              locale,
-            },
-            timeoutMs,
-            { maxAttempts: 2, baseDelayMs: 900, retryTag: `i18n-publish-fallback:${locale}` },
-          );
-        }
+        await publishToNewSiteGitHub(env, puzzleDate, doc, localizedPayload, puzzleNumber);
 
         await env.PP_DATA.put(doneKey, new Date().toISOString(), {
           expirationTtl: 60 * 60 * 24 * 14,
@@ -1695,10 +1577,7 @@ async function localizePublishToSite(
     return { status: "skipped", reason: "AUTO_I18N_LOCALES empty", results: [] };
   }
 
-  const siteBaseUrl = getLegacySiteBaseUrl(env);
-  if (!siteBaseUrl) {
-    return { status: "skipped", reason: "legacy site pipeline unavailable", results: [] };
-  }
+  const siteBaseUrl = getPublicSiteBaseUrl(env);
 
   const token = String(env.SITE_API_TOKEN || "").trim();
   if (!token) {
@@ -1728,6 +1607,7 @@ async function localizePublishToSite(
         words,
         answer,
         checksumSeed,
+        doc,
       ),
     );
   } catch (error) {
@@ -2637,10 +2517,8 @@ export default {
           await persistCronHeartbeat(env, manualHeartbeat);
 
           const shouldRunEnrich =
-            !usedQuickFallback && (
-              quickResult.status === "published" ||
-              quickResult.reason === "quick publish already done today"
-            );
+            quickResult.status === "published" ||
+            quickResult.reason === "quick publish already done today";
 
           if (shouldRunEnrich) {
             manualHeartbeat.enrich = stampHeartbeatStage(manualHeartbeat.enrich, "queued", "manual run queued enrich");
@@ -3104,10 +2982,8 @@ export default {
         await persistCronHeartbeat(env, heartbeat);
 
         const shouldQueueEnrich =
-          !usedQuickFallback && (
-            quickResult.status === "published" ||
-            quickResult.reason === "quick publish already done today"
-          );
+          quickResult.status === "published" ||
+          quickResult.reason === "quick publish already done today";
 
         if (shouldQueueEnrich) {
           const puzzleNumber = quickResult.puzzleNumber ?? inferPuzzleNumber(undefined, date);
