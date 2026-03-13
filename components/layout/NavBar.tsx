@@ -25,7 +25,7 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
         <Link className="brand" href={routes.home}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/favicon/favicon.svg"
+            src="/favicon/favicon-96x96.png"
             alt=""
             className="brand-mark"
             aria-hidden
