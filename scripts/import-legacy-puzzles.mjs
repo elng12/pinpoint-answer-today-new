@@ -8,7 +8,7 @@ const targetDir = path.join(process.cwd(), "data", "puzzles");
 const registryPath = path.join(targetDir, "registry.json");
 const minImportablePuzzleNumber = 458;
 const maxImportablePuzzleNumber = 674;
-const blockedLegacyPuzzleNumbers = new Set([615]);
+const blockedLegacyPuzzleNumbers = new Set([]);
 
 function parseRequestedPuzzles(argv) {
   const puzzlesArg = argv

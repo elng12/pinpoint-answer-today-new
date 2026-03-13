@@ -1188,6 +1188,24 @@
     "updatedAt": "2026-01-06T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 615,
+    "slug": "pinpoint-answer-615",
+    "publishDate": "2026-01-05",
+    "status": "archived",
+    "clues": [
+      "Arsenal",
+      "Juventus",
+      "Raja Casablanca",
+      "Real Madrid",
+      "Manchester United"
+    ],
+    "mainAnswer": "Football teams",
+    "category": "Football teams",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "In today's challenge, the clues seem unrelated at first: Arsenal, Cookie, Juventus, Raja Casablanca, and Manchester United.",
+    "updatedAt": "2026-01-05T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 614,
     "slug": "pinpoint-answer-614",
     "publishDate": "2026-01-04",
