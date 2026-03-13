@@ -156,6 +156,11 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status
 
 - 父仓库 AI / 脚本本地备份：`/Users/elng/web/pinpointanswertoday/.env.override.local`
 - 新站本地运行备份：`/Users/elng/web/pinpointanswertoday/new-pinpoint-site/.env.local`
+- 新站 `new-pinpoint-site/.env.local` 已清理掉临时项，仅保留本地站点实际会读取的变量
+- 父仓库 `.env.override.local` 不再继续瘦身：其中数据库组和 AI 组变量都有真实脚本在读
+- `OPENROUTER_API_KEY` 与 `OPENAI_API_KEY` 需要同时保留：
+  - 较旧脚本读取 `OPENROUTER_API_KEY`
+  - 较新的 admin / generation 链路读取 `OPENAI_API_KEY`
 - 已补齐本机保存的关键值：
   - `OPENROUTER_API_KEY`
   - `OPENAI_API_KEY`
