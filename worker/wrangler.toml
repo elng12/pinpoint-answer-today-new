@@ -24,9 +24,9 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 # Shared vars (non-secret).  Secrets are set via `wrangler secret put`.
 # ---------------------------------------------------------------------------
 [vars]
-GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
+GRAPHQL_ENDPOINT            = ""
 VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
-FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
+FALLBACK_WEBHOOK            = ""
 ALLOW_SELF_GRAPHQL          = "false"
 
 # New-site direct publish (GitHub)
@@ -64,7 +64,7 @@ SITE_BASE_URL               = ""
 # GITHUB_TOKEN_NEW_SITE        — Fine-grained PAT: contents:write on new repo
 # NEW_SITE_REVALIDATE_SECRET   — Must match REVALIDATE_SECRET in Vercel env
 # FEISHU_WEBHOOK_URL           — Feishu webhook URL for cron alerts
-# FALLBACK_WEBHOOK_SECRET      — HMAC signing secret for fallback webhook (optional)
+# FALLBACK_WEBHOOK_SECRET      — HMAC signing secret for fallback webhook (unused; FALLBACK_WEBHOOK cleared)
 # ADMIN_SECRET                 — Admin secret for protected endpoints
 # WORKER_ADMIN_SECRET          — Worker admin secret (separate from ADMIN_SECRET)
 
@@ -89,9 +89,9 @@ preview_id = "pp_data_dev"
 # 不要配置：GITHUB_TOKEN_NEW_SITE、NEW_SITE_REVALIDATE_SECRET、SITE_API_TOKEN
 # ---------------------------------------------------------------------------
 [env.shadow.vars]
-GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
+GRAPHQL_ENDPOINT            = ""
 VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
-FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
+FALLBACK_WEBHOOK            = ""
 ALLOW_SELF_GRAPHQL          = "false"
 GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
 GITHUB_BRANCH_NEW_SITE      = "main"
@@ -124,9 +124,9 @@ binding = "AI"
 # 需要配置全套 Secrets（GITHUB_TOKEN_NEW_SITE、NEW_SITE_REVALIDATE_SECRET 等）
 # ---------------------------------------------------------------------------
 [env.staging.vars]
-GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
+GRAPHQL_ENDPOINT            = ""
 VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
-FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
+FALLBACK_WEBHOOK            = ""
 ALLOW_SELF_GRAPHQL          = "false"
 GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
 GITHUB_BRANCH_NEW_SITE      = "main"
