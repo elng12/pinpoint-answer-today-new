@@ -1,0 +1,78 @@
+name = "pinpoint-worker"
+main = "src/index.ts"
+compatibility_date = "2025-11-10"
+compatibility_flags = ["nodejs_compat"]
+
+# KV — stores daily puzzle docs (key: "pinpoint:YYYY-MM-DD")
+[[kv_namespaces]]
+binding = "PP_DATA"
+id = "2689a48e886548a3acbe8fa9ede4e3f6"
+preview_id = "pp_data_dev"
+
+# Workers AI (optional — used for content enrichment)
+[ai]
+binding = "AI"
+
+# ---------------------------------------------------------------------------
+# Cron schedule (UTC)
+# Beijing 16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20  →  UTC 08:xx
+# ---------------------------------------------------------------------------
+[triggers]
+crons = ["1,3,7,10,15,20 8 * * *"]
+
+# ---------------------------------------------------------------------------
+# Shared vars (non-secret).  Secrets are set via `wrangler secret put`.
+# ---------------------------------------------------------------------------
+[vars]
+GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
+VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
+FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
+ALLOW_SELF_GRAPHQL          = "false"
+
+# New-site direct publish (GitHub)
+GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
+GITHUB_BRANCH_NEW_SITE      = "main"
+NEW_SITE_URL                = "https://pinpointanswertoday.app"
+
+# Feature flags
+AUTO_PUBLISH_ENABLED        = "true"
+AUTO_ENRICH_ENABLED         = "true"
+AUTO_I18N_ENABLED           = "true"
+AUTO_I18N_LOCALES           = "fr,de,pt-BR"
+AUTO_I18N_PARALLEL          = "2"
+
+# Timeouts (ms)
+AUTO_PUBLISH_TIMEOUT_MS     = "15000"
+AUTO_ENRICH_TIMEOUT_MS      = "55000"
+AUTO_I18N_TIMEOUT_MS        = "90000"
+
+# Models
+AUTO_ENRICH_MODEL           = "openai/gpt-4o-mini"
+AUTO_I18N_MODEL             = "openai/gpt-4o-mini"
+
+# Legacy publish base — leave empty; old publish API no longer exists
+SITE_BASE_URL               = ""
+
+# ---------------------------------------------------------------------------
+# Secrets — set via Cloudflare Dashboard or `wrangler secret put <NAME>`
+# See worker/README.md for full list
+# ---------------------------------------------------------------------------
+# LINKEDIN_COOKIE              — LinkedIn session cookie for HTML scraping
+# OPENROUTER_API_KEY           — OpenRouter key for enrichment + i18n
+# GITHUB_TOKEN_NEW_SITE        — Fine-grained PAT: contents:write on new repo
+# NEW_SITE_REVALIDATE_SECRET   — Must match REVALIDATE_SECRET in Vercel env
+# NOTIFICATION_WEBHOOK_URL     — Feishu / Slack webhook for cron alerts
+# NOTIFICATION_WEBHOOK_SECRET  — HMAC signing secret for webhook (optional)
+
+# ---------------------------------------------------------------------------
+# Development overrides
+# ---------------------------------------------------------------------------
+[env.development.vars]
+GRAPHQL_ENDPOINT            = "http://localhost:3000/api/graphql"
+AUTO_PUBLISH_ENABLED        = "false"
+AUTO_ENRICH_ENABLED         = "false"
+AUTO_I18N_ENABLED           = "false"
+
+[[env.development.kv_namespaces]]
+binding = "PP_DATA"
+preview_id = "pp_data_dev"
