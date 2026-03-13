@@ -1,0 +1,35 @@
+{
+  "slug": "pinpoint-answer-541",
+  "fullAnalysis": [
+    "The board spans music, nobility, a canyon, and racing. Adding the same qualifier unites them: grand piano in concerts, a grand finale curtain call, a Grand Duke title, the Grand Canyon landmark, and a Grand Prix race. The shared word is \"Grand.\"",
+    "Music and performance jump out from piano and finale, while Duke and Canyon veer to titles or geography, and Prix hints at competition. No single category covers all.\n\nTesting a prefix solves it: \"Grand\" fits each item cleanly—grand piano, grand finale, Grand Duke, Grand Canyon, Grand Prix. Other adjectives miss at least one clue, but Grand works everywhere.",
+    "Every clue in this set—Piano, Finale, Duke, Canyon, and Prix—ultimately circles back to Words that come after “Grand.”. Piano sparks the pattern, Duke reinforces it, and Prix locks the shared idea in place once you view them through that lens.",
+    "When Piano and Finale appear together, ask how they could relate to Words that come after “Grand.” before exploring other stretches. The moment you test that theory, remaining clues like Prix fall neatly into place."
+  ],
+  "wordHints": {
+    "Piano": "A large horizontal-string piano used in concert halls.",
+    "Finale": "The big, showy concluding act of a performance.",
+    "Duke": "A noble rank above a duke in some monarchies.",
+    "Canyon": "The famous canyon carved by the Colorado River.",
+    "Prix": "A premier prize or top-tier motor race."
+  },
+  "lessons": [
+    "Try a single prefix. When clues mix proper nouns and common nouns, test if one adjective like \"Grand\" can precede them all.",
+    "Check proper nouns for fit. Landmarks and titles often keep their capitalized modifier—if it repeats, that’s your connector.",
+    "Reject partial themes. If music or travel leaves out half the board, lean toward a linguistic link instead of a category."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Piano, Finale, Duke, Canyon, and Prix in Pinpoint #541?",
+      "answer": "Each takes the word \"Grand\": grand piano, grand finale, Grand Duke, Grand Canyon, and Grand Prix."
+    },
+    {
+      "question": "Why not call it a music theme?",
+      "answer": "Only piano and finale are musical; Duke, Canyon, and Prix need the shared adjective, not a music category."
+    },
+    {
+      "question": "How do I confirm a prefix connector?",
+      "answer": "Say the candidate word before every clue; if all five become recognized phrases, you have the answer."
+    }
+  ]
+}

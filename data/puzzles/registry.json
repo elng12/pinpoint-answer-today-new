@@ -4,7 +4,13 @@
     "slug": "pinpoint-answer-681",
     "publishDate": "2026-03-12",
     "status": "live",
-    "clues": ["House", "Field", "Optical", "Mickey", "Cat and 🐭"],
+    "clues": [
+      "House",
+      "Field",
+      "Optical",
+      "Mickey",
+      "Cat and 🐭"
+    ],
     "mainAnswer": "Words that come before mouse",
     "category": "Words that come before mouse",
     "difficultyLevel": "Moderate",
@@ -1920,6 +1926,42 @@
     "updatedAt": "2025-11-18T08:00:00.000Z"
   },
   {
+    "puzzleNumber": 566,
+    "slug": "pinpoint-answer-566",
+    "publishDate": "2025-11-17",
+    "status": "archived",
+    "clues": [
+      "Moon",
+      "Flu",
+      "Espresso",
+      "Jump",
+      "Not by a long"
+    ],
+    "mainAnswer": "Words that precede 'shot'",
+    "category": "Words that precede 'shot'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Moon, Flu, Espresso, Jump, and 'Not by a long' all complete common English expressions when you add the word 'shot'.",
+    "updatedAt": "2025-11-17T00:00:00Z"
+  },
+  {
+    "puzzleNumber": 565,
+    "slug": "pinpoint-answer-565",
+    "publishDate": "2025-11-16",
+    "status": "archived",
+    "clues": [
+      "Meetings",
+      "Class",
+      "Stones",
+      "Lines",
+      "Ropes (when at the playground)"
+    ],
+    "mainAnswer": "Things you can skip",
+    "category": "Things you can skip",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint #565 is pure verbplay—spot that every clue describes something you can skip, and the board solves immediately.",
+    "updatedAt": "2025-11-16T08:06:00.000Z"
+  },
+  {
     "puzzleNumber": 560,
     "slug": "pinpoint-answer-560",
     "publishDate": "2025-11-11",
@@ -1936,6 +1978,60 @@
     "difficultyLevel": "Easy",
     "shortSummary": "LinkedIn Pinpoint #560 clues Lab, House, Pea, Rain, Trench all connect through Words that come before \"coat\". Explore spoiler-safe hints and full explanations.",
     "updatedAt": "2025-11-11T08:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 548,
+    "slug": "pinpoint-answer-548",
+    "publishDate": "2025-10-30",
+    "status": "archived",
+    "clues": [
+      "Pelé",
+      "Messi",
+      "Decathlon",
+      "Perfect score (sometimes)",
+      "X (when counting in Rome)"
+    ],
+    "mainAnswer": "Things associated with the number 10",
+    "category": "Things associated with the number 10",
+    "difficultyLevel": "Easy",
+    "shortSummary": "Start with Pelé and Messi, two legends defined by their number 10 shirts. Add Decathlon, perfect scores, and the Roman numeral X, and each clue reinforces the same numeric signal.",
+    "updatedAt": "2025-10-30T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 545,
+    "slug": "pinpoint-answer-545",
+    "publishDate": "2025-10-27",
+    "status": "archived",
+    "clues": [
+      "Brief",
+      "Lower",
+      "Book",
+      "Suit",
+      "Pillow"
+    ],
+    "mainAnswer": "Words that come before 'case'",
+    "category": "Words that come before 'case'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Brief, Lower, Book, Suit, and Pillow all point to one simple connector: Words that come before 'case'.",
+    "updatedAt": "2025-10-27T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 541,
+    "slug": "pinpoint-answer-541",
+    "publishDate": "2025-10-23",
+    "status": "archived",
+    "clues": [
+      "Piano",
+      "Finale",
+      "Duke",
+      "Canyon",
+      "Prix"
+    ],
+    "mainAnswer": "Words that come after “Grand.”",
+    "category": "Words that come after “Grand.”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Every clue in this set—Piano, Finale, Duke, Canyon, and Prix—ultimately circles back to Words that come after “Grand.”.",
+    "updatedAt": "2025-10-23T07:00:00.000Z"
   },
   {
     "puzzleNumber": 524,
