@@ -8,6 +8,7 @@ const targetDir = path.join(process.cwd(), "data", "puzzles");
 const registryPath = path.join(targetDir, "registry.json");
 const minImportablePuzzleNumber = 524;
 const maxImportablePuzzleNumber = 674;
+const blockedLegacyPuzzleNumbers = new Set([615]);
 
 function parseRequestedPuzzles(argv) {
   const puzzlesArg = argv
@@ -25,6 +26,26 @@ function parseRequestedPuzzles(argv) {
     .filter((value) => Number.isFinite(value));
 
   return new Set(values);
+}
+
+function isWithinDefaultImportRange(puzzleNumber) {
+  return (
+    typeof puzzleNumber === "number" &&
+    puzzleNumber >= minImportablePuzzleNumber &&
+    puzzleNumber <= maxImportablePuzzleNumber
+  );
+}
+
+function shouldConsiderPuzzleNumber(puzzleNumber, requestedPuzzles) {
+  if (blockedLegacyPuzzleNumbers.has(puzzleNumber)) {
+    return false;
+  }
+
+  if (requestedPuzzles) {
+    return requestedPuzzles.has(puzzleNumber);
+  }
+
+  return isWithinDefaultImportRange(puzzleNumber);
 }
 
 function normalizeIsoTimestamp(value) {
@@ -271,15 +292,14 @@ function buildFaqs(legacyPuzzle) {
     .filter((item) => item.question && item.answer);
 }
 
-function isImportableLegacyPuzzle(legacyPuzzle) {
+function isImportableLegacyPuzzle(legacyPuzzle, requestedPuzzles) {
   const clues = getClues(legacyPuzzle);
   const summary = buildShortSummary(legacyPuzzle);
   const publishedAtIso = getPublishedAtIso(legacyPuzzle);
 
   return (
     typeof legacyPuzzle?.puzzleNumber === "number" &&
-    legacyPuzzle.puzzleNumber >= minImportablePuzzleNumber &&
-    legacyPuzzle.puzzleNumber <= maxImportablePuzzleNumber &&
+    shouldConsiderPuzzleNumber(legacyPuzzle.puzzleNumber, requestedPuzzles) &&
     !!publishedAtIso &&
     !!cleanText(legacyPuzzle.mainAnswer) &&
     clues.length >= 5 &&
@@ -394,11 +414,7 @@ async function main() {
         continue;
       }
 
-      if (
-        puzzleNumber < minImportablePuzzleNumber ||
-        puzzleNumber > maxImportablePuzzleNumber ||
-        (requestedPuzzles && !requestedPuzzles.has(puzzleNumber))
-      ) {
+      if (!shouldConsiderPuzzleNumber(puzzleNumber, requestedPuzzles)) {
         continue;
       }
 
@@ -440,7 +456,7 @@ async function main() {
       .map((candidate) => candidate.legacyPuzzle)
       .filter((candidate) => candidate !== legacyPuzzle);
 
-    if (!isImportableLegacyPuzzle(legacyPuzzle)) {
+    if (!isImportableLegacyPuzzle(legacyPuzzle, requestedPuzzles)) {
       console.log(`Skipped #${puzzleNumber} (${sourceLabel}/${fileName}) because the legacy source is still incomplete.`);
       continue;
     }

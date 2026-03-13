@@ -1188,6 +1188,24 @@
     "updatedAt": "2026-01-06T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 611,
+    "slug": "pinpoint-answer-611",
+    "publishDate": "2026-01-01",
+    "status": "archived",
+    "clues": [
+      "Learn a new skill",
+      "Volunteer",
+      "Exercise more",
+      "Save money",
+      "Not break it by Feb. this year"
+    ],
+    "mainAnswer": "New Year's resolutions",
+    "category": "New Year's resolutions",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Learn a new skill, Volunteer, Exercise more, Save money, and Not break it by Feb. this year all point to the classic promises people make on January 1.",
+    "updatedAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 610,
     "slug": "pinpoint-answer-610",
     "publishDate": "2025-12-31",
@@ -1980,6 +1998,24 @@
     "updatedAt": "2025-11-11T08:00:00.000Z"
   },
   {
+    "puzzleNumber": 551,
+    "slug": "pinpoint-answer-551",
+    "publishDate": "2025-11-02",
+    "status": "archived",
+    "clues": [
+      "Fish",
+      "Surfer",
+      "Medal",
+      "Lining",
+      "Spoon"
+    ],
+    "mainAnswer": "Words that can follow \"Silver\"",
+    "category": "Words that can follow \"Silver\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Fish, Surfer, Medal, Lining, and Spoon all settle down once you test the same connector: silver.",
+    "updatedAt": "2025-11-02T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 548,
     "slug": "pinpoint-answer-548",
     "publishDate": "2025-10-30",
@@ -2050,5 +2086,59 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "A puzzle about essential nutrients that keep us healthy",
     "updatedAt": "2025-10-06T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 523,
+    "slug": "pinpoint-answer-523",
+    "publishDate": "2025-10-05",
+    "status": "archived",
+    "clues": [
+      "Sewing machine",
+      "Drum kit",
+      "Car",
+      "Bicycle",
+      "Piano"
+    ],
+    "mainAnswer": "Things with pedals",
+    "category": "Things with pedals",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Sewing machine, Drum kit, Car, Bicycle, and Piano only look random until you focus on the foot-operated part they all share: pedals.",
+    "updatedAt": "2025-10-05T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 502,
+    "slug": "pinpoint-answer-502",
+    "publishDate": "2025-09-14",
+    "status": "archived",
+    "clues": [
+      "Pad",
+      "Cap",
+      "Deep",
+      "Sock",
+      "Jerk"
+    ],
+    "mainAnswer": "Words that follow \"knee\"",
+    "category": "Words that follow \"knee\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pad, Cap, Deep, Sock, and Jerk all become familiar phrases once the same body word lands in front of them: knee.",
+    "updatedAt": "2025-09-14T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 491,
+    "slug": "pinpoint-answer-491",
+    "publishDate": "2025-09-03",
+    "status": "archived",
+    "clues": [
+      "Horse",
+      "Rat",
+      "Presidential",
+      "Drag",
+      "Space"
+    ],
+    "mainAnswer": "Words that come before \"race\"",
+    "category": "Words that come before \"race\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Horse, Rat, Presidential, Drag, and Space all click once you test the same connector across every clue: race.",
+    "updatedAt": "2025-09-03T00:00:00.000Z"
   }
 ]
