@@ -1,0 +1,39 @@
+{
+  "slug": "pinpoint-answer-467",
+  "fullAnalysis": [
+    "Cheese, Guitar, Wheat, Lettuce, and Documents do not share one tidy category, which is exactly what makes the board tricky. The common thread is the word shredded: shredded cheese, guitar shredding, Shredded Wheat, shredded lettuce, and shredded documents.",
+    "The trap is to keep the puzzle in the kitchen after Cheese appears. Lettuce and Wheat encourage that, but Guitar breaks any pure food theory. Once you allow one figurative use alongside several literal ones, the pattern clicks much faster.",
+    "That is why the answer to LinkedIn Pinpoint #467 is Things that can be shredded. Some clues point to physical preparation, like cheese or lettuce. Others point to established phrases, like Shredded Wheat and shredding on guitar. Documents closes the loop because shredding paper is a familiar action.",
+    "Mixed-literal boards like this are easier when you test phrases, not just categories. If one clue feels like an outlier, ask whether it shares a common verb or modifier with the others."
+  ],
+  "wordHints": {
+    "Cheese": "A common food preparation where a block of cheese is grated into small strips, often used as a topping for pasta, pizza, and tacos.",
+    "Guitar": "A popular slang term in music for playing the guitar with exceptional speed, aggression, and technical skill.",
+    "Wheat": "A well-known breakfast cereal made from whole wheat that has been cooked, shredded, and woven into pillow-shaped biscuits.",
+    "Lettuce": "A method of cutting lettuce into thin strips, commonly used for sandwiches, salads, and as a topping for tacos.",
+    "Documents": "The process of cutting paper into fine strips or particles, typically done with a machine to destroy sensitive or confidential information."
+  },
+  "lessons": [
+    "Shift from Abstract to Concrete. If an abstract category like 'things with varieties' feels too loose, try thinking about physical actions. The solution often lies in what you can *do* to the items, not just what they *are*. The shift from 'types' to the action of 'shredding' was the key.",
+    "Use the Most Literal Clue as a Key. Sometimes the most straightforward clue can unlock the entire puzzle. Lettuce is almost exclusively thought of in a culinary context, and its connection to 'shredded' is very strong. Using that concrete visual helped me test the theory against the other, more metaphorical or obscure clues.",
+    "Don't Discount Metaphorical Meanings. A single clue can break a purely literal theme. When I realized 'Shredded Guitar' was a common slang term, it confirmed that the puzzle allowed for metaphorical interpretations. The solution was a mix of the literal (cheese, lettuce, wheat) and the figurative (guitar, documents)."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Cheese, Guitar, Wheat, Lettuce, Documents in Pinpoint #467?",
+      "answer": "The connector is \"Things that can be shredded.\" For example, you can have shredded cheese on a taco, or you can destroy sensitive papers with a document shredder."
+    },
+    {
+      "question": "Why isn't the connection 'things you find in a kitchen'?",
+      "answer": "While Cheese, Wheat, and Lettuce are kitchen items, that theory is broken by two of the five clues. You do not typically find a Guitar or sensitive Documents in a kitchen, so the connector must fit all five words."
+    },
+    {
+      "question": "Does 'shredded guitar' really count?",
+      "answer": "Yes, in the context of this puzzle, it absolutely does. 'Shredding' is a widely understood slang term for playing a guitar solo with incredible speed and technical prowess. The puzzle often combines literal and metaphorical meanings."
+    },
+    {
+      "question": "What was the hardest clue to connect?",
+      "answer": "For many, 'Guitar' is the outlier. While the other clues have a direct, physical connection to being shredded, the guitar connection is purely metaphorical, requiring a bit of lateral thinking to connect it to the others."
+    }
+  ]
+}

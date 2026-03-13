@@ -2106,6 +2106,42 @@
     "updatedAt": "2025-10-05T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 509,
+    "slug": "pinpoint-answer-509",
+    "publishDate": "2025-09-21",
+    "status": "archived",
+    "clues": [
+      "Love",
+      "All",
+      "Advantage",
+      "Fifteen",
+      "Deuce"
+    ],
+    "mainAnswer": "Tennis scoring terms",
+    "category": "Tennis scoring terms",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Love, All, Advantage, Fifteen, and Deuce only make full sense once you hear them as tennis scoring terms.",
+    "updatedAt": "2025-09-21T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 507,
+    "slug": "pinpoint-answer-507",
+    "publishDate": "2025-09-19",
+    "status": "archived",
+    "clues": [
+      "Fish",
+      "Drum",
+      "Lip",
+      "Chop",
+      "Selfie"
+    ],
+    "mainAnswer": "Words that come before “stick”",
+    "category": "Words that come before “stick”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Fish, Drum, Lip, Chop, and Selfie all turn into familiar phrases when the same word lands after them: stick.",
+    "updatedAt": "2025-09-19T07:00:00.000Z"
+  },
+  {
     "puzzleNumber": 502,
     "slug": "pinpoint-answer-502",
     "publishDate": "2025-09-14",
@@ -2124,6 +2160,78 @@
     "updatedAt": "2025-09-14T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 498,
+    "slug": "pinpoint-answer-498",
+    "publishDate": "2025-09-10",
+    "status": "archived",
+    "clues": [
+      "Zebra",
+      "Jelly",
+      "Angel",
+      "Monk",
+      "Clown (like Nemo)"
+    ],
+    "mainAnswer": "Words that come before \"fish\"",
+    "category": "Words that come before \"fish\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Zebra, Jelly, Angel, Monk, and Clown all become familiar animal names the moment the same word lands after each clue: fish.",
+    "updatedAt": "2025-09-10T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 497,
+    "slug": "pinpoint-answer-497",
+    "publishDate": "2025-09-09",
+    "status": "archived",
+    "clues": [
+      "Airplanes",
+      "Coins",
+      "Morning coats",
+      "Comets",
+      "Cats (but not Manx Cats)"
+    ],
+    "mainAnswer": "Things with tails",
+    "category": "Things with tails",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Airplanes, Coins, Morning coats, Comets, and Cats only line up once you stop chasing topic and focus on the shared feature: tails.",
+    "updatedAt": "2025-09-09T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 496,
+    "slug": "pinpoint-answer-496",
+    "publishDate": "2025-09-08",
+    "status": "archived",
+    "clues": [
+      "Silo",
+      "Barn",
+      "Sty",
+      "Stable",
+      "Henhouse"
+    ],
+    "mainAnswer": "Farm structures",
+    "category": "Farm structures",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Silo, Barn, Sty, Stable, and Henhouse all point to the buildings and enclosures that make up a working farm.",
+    "updatedAt": "2025-09-08T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 493,
+    "slug": "pinpoint-answer-493",
+    "publishDate": "2025-09-05",
+    "status": "archived",
+    "clues": [
+      "Red",
+      "Black",
+      "Yellow",
+      "Dead",
+      "Mediterranean"
+    ],
+    "mainAnswer": "Seas",
+    "category": "Seas",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Red, Black, Yellow, Dead, and Mediterranean all become famous place names the moment the same geographic word lands after them: sea.",
+    "updatedAt": "2025-09-05T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 491,
     "slug": "pinpoint-answer-491",
     "publishDate": "2025-09-03",
@@ -2140,5 +2248,149 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Horse, Rat, Presidential, Drag, and Space all click once you test the same connector across every clue: race.",
     "updatedAt": "2025-09-03T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 490,
+    "slug": "pinpoint-answer-490",
+    "publishDate": "2025-09-02",
+    "status": "archived",
+    "clues": [
+      "Tortoise",
+      "Molasses (treacle)",
+      "Sloth",
+      "Snail",
+      "Traffic jams"
+    ],
+    "mainAnswer": "Slow things",
+    "category": "Slow things",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Tortoise, Molasses, Sloth, Snail, and Traffic jams all point to the same plain but sturdy idea: slowness.",
+    "updatedAt": "2025-09-02T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 488,
+    "slug": "pinpoint-answer-488",
+    "publishDate": "2025-08-31",
+    "status": "archived",
+    "clues": [
+      "Cup",
+      "Bank",
+      "Map",
+      "Record",
+      "Wide Web"
+    ],
+    "mainAnswer": "Words that follow \"World\"",
+    "category": "Words that follow \"World\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Cup, Bank, Map, Record, and Wide Web all become familiar phrases the moment you place the same word in front of them: world.",
+    "updatedAt": "2025-08-31T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 483,
+    "slug": "pinpoint-answer-483",
+    "publishDate": "2025-08-26",
+    "status": "archived",
+    "clues": [
+      "Garden",
+      "Fruit",
+      "Egg",
+      "Caprese",
+      "Greek"
+    ],
+    "mainAnswer": "Types of salads",
+    "category": "Types of salads",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Garden, Fruit, Egg, Caprese, and Greek all become familiar dish names once the same word lands after each clue: salad.",
+    "updatedAt": "2025-08-26T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 482,
+    "slug": "pinpoint-answer-482",
+    "publishDate": "2025-08-25",
+    "status": "archived",
+    "clues": [
+      "Right",
+      "Love",
+      "Bermuda",
+      "Isosceles",
+      "Equilateral"
+    ],
+    "mainAnswer": "Triangles",
+    "category": "Triangles",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Right, Love, Bermuda, Isosceles, and Equilateral all resolve once you test the same finishing word across every clue: triangle.",
+    "updatedAt": "2025-08-25T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 478,
+    "slug": "pinpoint-answer-478",
+    "publishDate": "2025-08-21",
+    "status": "archived",
+    "clues": [
+      "Zester",
+      "Tongs",
+      "Mandolin",
+      "Funnel",
+      "Whisk"
+    ],
+    "mainAnswer": "Kitchen utensils",
+    "category": "Kitchen utensils",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Zester, Tongs, Mandolin, Funnel, and Whisk stop feeling specialized once you view them as one family of kitchen utensils.",
+    "updatedAt": "2025-08-21T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 467,
+    "slug": "pinpoint-answer-467",
+    "publishDate": "2025-08-10",
+    "status": "archived",
+    "clues": [
+      "Cheese",
+      "Guitar",
+      "Wheat",
+      "Lettuce",
+      "Documents"
+    ],
+    "mainAnswer": "Things that can be shredded",
+    "category": "Things that can be shredded",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Cheese, Guitar, Wheat, Lettuce, and Documents look mismatched until you notice they all pair naturally with the same word: shredded.",
+    "updatedAt": "2025-08-10T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 463,
+    "slug": "pinpoint-answer-463",
+    "publishDate": "2025-08-06",
+    "status": "archived",
+    "clues": [
+      "Cutter",
+      "Ark",
+      "Ferry",
+      "Catamaran",
+      "Canoe"
+    ],
+    "mainAnswer": "Boat types",
+    "category": "Boat types",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Cutter, Ark, Ferry, Catamaran, and Canoe stop looking random once you view them as different kinds of boats.",
+    "updatedAt": "2025-08-06T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 458,
+    "slug": "pinpoint-answer-458",
+    "publishDate": "2025-08-01",
+    "status": "archived",
+    "clues": [
+      "Lines",
+      "Phones",
+      "Light",
+      "Ache",
+      "First"
+    ],
+    "mainAnswer": "Words that come after 'head'",
+    "category": "Words that come after 'head'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Lines, Phones, Light, Ache, and First only line up once you test the same prefix before every clue: head.",
+    "updatedAt": "2025-08-01T07:00:00.000Z"
   }
 ]

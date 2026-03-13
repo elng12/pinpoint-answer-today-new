@@ -1,0 +1,40 @@
+{
+  "slug": "pinpoint-answer-458",
+  "fullAnalysis": [
+    "Lines, Phones, Light, Ache, and First look unrelated at first, but the board becomes simple once you test a shared prefix instead of a category. Each clue forms a familiar compound with head: headline, headphones, headlight, headache, and headfirst.",
+    "The trap is to overread the first two clues as communication words. That idea breaks as soon as Light and Ache arrive, because they do not belong to one clean topic. A better move is to try a short word before every clue. Head fits immediately, and it fits all five without any stretching.",
+    "That is why the answer to LinkedIn Pinpoint #458 is Words that come after 'head'. The puzzle is really a prefix puzzle: head + line, phone, light, ache, and first all create common English words or phrases. The last clue, First, is especially helpful because headfirst confirms the pattern cleanly.",
+    "Boards like this reward structural thinking. When clues refuse to settle into a natural category, stop chasing themes and test a shared prefix or suffix instead."
+  ],
+  "wordHints": {
+    "Lines": "The line at the top of a news article, introducing the story. This directly forms the compound word 'headlines'.",
+    "Phones": "A pair of earphones joined by a band placed over the top of the head. This is a perfect example of 'head' as a prefix.",
+    "Light": "The main light on a vehicle, typically at the front. The word is formed by combining 'head' and 'light'.",
+    "Ache": "A continuous pain in the head. This is a common and direct compound word from the clue 'ache'.",
+    "First": "An adverb meaning with the head leading, such as in a dive. It combines 'head' and 'first' to create a specific descriptive term."
+  },
+  "lessons": [
+    "When a theory breaks, it breaks for a reason. Notice exactly which clue breaks your idea. For this puzzle, 'Ache' made my 'phoning it in' theory impossible. That specific failure is a huge hint that the connection isn't conceptual but linguistic.",
+    "Test a literal connection, not just a thematic one. If your themes feel stretched, try thinking about the words themselves. Is there a prefix, a suffix, or another word that can be physically attached to every single clue? The solution here was a simple word 'head' placed before each one.",
+    "Use the outliers to break your assumptions. Clues like 'Ache' and 'First' are the most valuable for stress-testing a theory. If your idea works for the 'easy' clues like 'Phones' but not for the 'outliers', it's a sign you need to abandon it and find something more rigid.",
+    "Compound words are a common Pinpoint trap. Always keep simple compound words in your back pocket. Puzzles often hide the answer by forming a new, concrete word from the clue and a shared partner word, just like 'head' + 'ache'."
+  ],
+  "faqs": [
+    {
+      "question": "What connects Lines, Phones, Light, Ache, First in Pinpoint #458?",
+      "answer": "The connection is that they are all words that come after 'head' to form a common compound word, such as 'headlines' and 'headache'."
+    },
+    {
+      "question": "Could the connector be 'things you use every day'?",
+      "answer": "No, this is too vague. While we use phones and light daily, you don't use 'lines' or 'ache' in the same way. The connector must fit every single clue perfectly, which a broad theme cannot do."
+    },
+    {
+      "question": "Why wouldn't 'body' also work as a connector?",
+      "answer": "'Body' is a tempting parallel to 'head', but it fails the test for these clues. While 'headphones' and 'headlight' are common, there are no standard English words like 'bodyphones' or 'bodylight' for this puzzle's set."
+    },
+    {
+      "question": "How can I solve similar puzzles faster?",
+      "answer": "After your first two or three clues form a theory, immediately check it against the next clue. As soon as it feels like a stretch, pivot to looking for a more literal or structural connection like a shared prefix or suffix."
+    }
+  ]
+}

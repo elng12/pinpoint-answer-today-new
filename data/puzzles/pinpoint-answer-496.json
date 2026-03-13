@@ -1,0 +1,39 @@
+{
+  "slug": "pinpoint-answer-496",
+  "fullAnalysis": [
+    "Pinpoint #496 gives a board that feels almost solved from the start. Silo and Barn already suggest rural buildings, while Sty, Stable, and Henhouse sound like places where animals live. The only real challenge is deciding whether the puzzle wants one type of animal housing or the broader group that includes both storage buildings and livestock enclosures.",
+    "My first instinct was to read the board as farm animal homes because sty, stable, and henhouse all fit that lane so well. That theory gets weaker once you account for silo and barn. A barn can hold animals, but it is also a storage building, and a silo is even more clearly about holding feed or grain rather than sheltering livestock directly. That is the cue to widen the answer from animal spaces to farm structures.",
+    "Each clue supports that broader reading cleanly. A silo stores grain or silage, a barn shelters equipment, hay, or animals, a sty houses pigs, a stable houses horses, and a henhouse protects chickens. The set is not built around one species or one function. It is built around the physical structures that make up a working farm.",
+    "That is why the answer to LinkedIn Pinpoint #496 is Farm structures. Once you allow the board to include both storage and shelter buildings, every clue settles into the same simple category."
+  ],
+  "wordHints": {
+    "Silo": "A silo is a tall farm structure used to store grain, feed, or silage.",
+    "Barn": "A barn is a farm building used for hay, equipment, livestock, or general storage.",
+    "Sty": "A sty, or pigsty, is the enclosure or building used to keep pigs.",
+    "Stable": "A stable is the structure used to house and care for horses.",
+    "Henhouse": "A henhouse is the building, often called a coop, where chickens are kept and protected."
+  },
+  "lessons": [
+    "Let the broad category win when the clues split across related functions. Storage and animal housing can still belong to one stable answer.",
+    "Watch for the clue that forces you to widen your theory. In this board, silo keeps the answer from being only about animal homes.",
+    "Concrete noun boards often reward simple classification. If every clue names a kind of building or enclosure, test the object family before chasing anything more abstract."
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #496?",
+      "answer": "The answer is Farm structures. Silo, Barn, Sty, Stable, and Henhouse are all buildings or enclosures found on farms."
+    },
+    {
+      "question": "Why is Silo important in #496?",
+      "answer": "Silo keeps the puzzle from shrinking into only animal housing. It shows the board includes storage buildings too, which makes farm structures the better answer."
+    },
+    {
+      "question": "Could the answer have been animal shelters?",
+      "answer": "That would miss silo and only partly fit barn. Farm structures is broad enough to cover all five clues without forcing any of them."
+    },
+    {
+      "question": "How do I solve straightforward category boards faster?",
+      "answer": "Start with the simplest shared noun class. When several clues are obviously physical places or objects, test the plain category before inventing a more clever theory."
+    }
+  ]
+}

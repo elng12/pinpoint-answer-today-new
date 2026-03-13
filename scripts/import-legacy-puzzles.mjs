@@ -117,6 +117,7 @@ function normalizeClueText(value) {
 function normalizeGeneratedText(value) {
   return cleanText(value)
     .replace(/(^|[\s([{"'“‘,;:])#\d+\s*(?=[A-Za-z(])/g, "$1")
+    .replace(/\s+([,.;!?])/g, "$1")
     .replace(/[ \t]{2,}/g, " ")
     .trim();
 }
