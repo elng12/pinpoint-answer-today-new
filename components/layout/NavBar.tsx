@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { routes } from "@/lib/paths/routes";
 
@@ -24,13 +23,15 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
     <header className="nav">
       <div className="container nav-inner">
         <Link className="brand" href={routes.home}>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/favicon/favicon.svg"
-            alt="Pinpoint Answer Today logo"
+            alt=""
             className="brand-mark"
             aria-hidden
             width={22}
             height={22}
+            decoding="async"
           />
           Pinpoint Answer Today
         </Link>

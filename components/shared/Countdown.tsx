@@ -35,11 +35,43 @@ function getUserTimeZoneLabel() {
 
 export function Countdown({ targetLabel, targetIso }: { targetLabel: string; targetIso: string }) {
   const hasTrackedRef = useRef(false);
+  const shellRef = useRef<HTMLDivElement | null>(null);
+  const [isLive, setIsLive] = useState(false);
   const [remaining, setRemaining] = useState(EMPTY_REMAINING);
   const [userTimeZone, setUserTimeZone] = useState<string | null>(null);
 
   useEffect(() => {
-    if (hasTrackedRef.current) {
+    const element = shellRef.current;
+    if (!element) {
+      return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      setIsLive(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsLive(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "240px 0px" },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    setRemaining(getRemaining(targetIso));
+    setUserTimeZone(getUserTimeZoneLabel());
+  }, [targetIso]);
+
+  useEffect(() => {
+    if (!isLive || hasTrackedRef.current) {
       return;
     }
 
@@ -48,17 +80,20 @@ export function Countdown({ targetLabel, targetIso }: { targetLabel: string; tar
       event_label: targetLabel,
     });
     hasTrackedRef.current = true;
-  }, [targetLabel]);
+  }, [isLive, targetLabel]);
 
   useEffect(() => {
+    if (!isLive) {
+      return;
+    }
+
     setRemaining(getRemaining(targetIso));
-    setUserTimeZone(getUserTimeZoneLabel());
     const timer = window.setInterval(() => {
       setRemaining(getRemaining(targetIso));
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, [targetIso]);
+  }, [isLive, targetIso]);
 
   const segments = useMemo(
     () => [
@@ -79,7 +114,7 @@ export function Countdown({ targetLabel, targetIso }: { targetLabel: string; tar
   );
 
   return (
-    <div className="countdown-shell" role="timer" aria-live="polite">
+    <div ref={shellRef} className="countdown-shell" role="timer" aria-live="polite">
       <div className="countdown-grid">
         {segments.map((segment) => (
           <div className="countdown-segment-card" key={segment.label}>

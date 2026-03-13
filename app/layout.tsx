@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@/app/globals.css";
-import { inter, spaceGrotesk } from "@/app/fonts";
+import { inter } from "@/app/fonts";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
 import { buildSiteMetadata, HOME_SEO_DESCRIPTION, HOME_SEO_TITLE } from "@/lib/seo/metadata";
 
@@ -17,7 +17,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} ${inter.className}`}>
+      <body className={`${inter.variable} ${inter.className}`}>
         <div className="shell">{children}</div>
         <AnalyticsScripts />
       </body>
