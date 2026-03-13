@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { feedbackWebhookSource, supportEmail } from "@/lib/site/config";
@@ -23,14 +22,8 @@ type RateLimitBucket = {
   resetAt: number;
 };
 
-type RateLimitStoreConfig = {
-  token: string;
-  url: string;
-};
-
 const globalForRateLimit = globalThis as typeof globalThis & {
   __feedbackRateLimitStore?: Map<string, RateLimitBucket>;
-  __feedbackRateLimitFallbackWarned?: boolean;
 };
 
 const feedbackRateLimitStore =
@@ -82,51 +75,7 @@ function getFeedbackRateLimitKey(req: NextRequest): string {
   return `${cfConnectingIp || forwardedFor || realIp || "unknown"}::${userAgent}`;
 }
 
-function getSharedRateLimitConfig(): RateLimitStoreConfig | null {
-  const url =
-    process.env.UPSTASH_REDIS_REST_URL?.trim()
-    || process.env.KV_REST_API_URL?.trim()
-    || "";
-  const token =
-    process.env.UPSTASH_REDIS_REST_TOKEN?.trim()
-    || process.env.KV_REST_API_TOKEN?.trim()
-    || "";
-
-  if (!url || !token) {
-    return null;
-  }
-
-  return {
-    token,
-    url: url.replace(/\/+$/, ""),
-  };
-}
-
-function hashRateLimitKey(value: string): string {
-  return createHash("sha256").update(value).digest("hex").slice(0, 32);
-}
-
-function getRateLimitWindowResetAt(now: number): number {
-  const windowStart = Math.floor(now / feedbackRateLimitWindowMs) * feedbackRateLimitWindowMs;
-  return windowStart + feedbackRateLimitWindowMs;
-}
-
-function buildSharedRateLimitKey(rateLimitKey: string, now: number): string {
-  const windowStart = Math.floor(now / feedbackRateLimitWindowMs) * feedbackRateLimitWindowMs;
-  return `feedback-rate:${windowStart}:${hashRateLimitKey(rateLimitKey)}`;
-}
-
-function warnRateLimitFallback(error: unknown) {
-  if (globalForRateLimit.__feedbackRateLimitFallbackWarned) {
-    return;
-  }
-
-  globalForRateLimit.__feedbackRateLimitFallbackWarned = true;
-  const message = error instanceof Error ? error.message : String(error);
-  console.warn(`feedback.rate_limit.fallback_to_memory: ${message}`);
-}
-
-function getInMemoryRateLimitRetryAfter(req: NextRequest): number | null {
+function getRateLimitRetryAfter(req: NextRequest): number | null {
   const now = Date.now();
 
   for (const [key, bucket] of feedbackRateLimitStore.entries()) {
@@ -160,59 +109,6 @@ function getInMemoryRateLimitRetryAfter(req: NextRequest): number | null {
   currentBucket.count += 1;
   feedbackRateLimitStore.set(rateLimitKey, currentBucket);
   return null;
-}
-
-async function getSharedRateLimitRetryAfter(
-  req: NextRequest,
-  config: RateLimitStoreConfig,
-): Promise<number | null> {
-  const now = Date.now();
-  const rateLimitKey = getFeedbackRateLimitKey(req);
-  const sharedKey = buildSharedRateLimitKey(rateLimitKey, now);
-  const resetAt = getRateLimitWindowResetAt(now);
-  const response = await fetch(`${config.url}/pipeline`, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${config.token}`,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify([
-      ["INCR", sharedKey],
-      ["PEXPIRE", sharedKey, String(feedbackRateLimitWindowMs * 2)],
-    ]),
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    throw new Error(`shared feedback rate limit failed with status ${response.status}`);
-  }
-
-  const payload = await response.json() as Array<{ error?: string; result?: number | string | null }>;
-  const incrementResult = Array.isArray(payload) ? payload[0] : null;
-  const count = Number(incrementResult?.result);
-
-  if (incrementResult?.error || !Number.isFinite(count)) {
-    throw new Error("shared feedback rate limit returned an invalid response");
-  }
-
-  if (count > feedbackRateLimitMaxRequests) {
-    return Math.max(1, Math.ceil((resetAt - now) / 1000));
-  }
-
-  return null;
-}
-
-async function getRateLimitRetryAfter(req: NextRequest): Promise<number | null> {
-  const config = getSharedRateLimitConfig();
-  if (config) {
-    try {
-      return await getSharedRateLimitRetryAfter(req, config);
-    } catch (error) {
-      warnRateLimitFallback(error);
-    }
-  }
-
-  return getInMemoryRateLimitRetryAfter(req);
 }
 
 function isFeishuWebhook(url: string): boolean {
@@ -383,7 +279,7 @@ export async function POST(req: NextRequest) {
     return bad(403, "Cross-site submissions are not allowed.");
   }
 
-  const retryAfter = await getRateLimitRetryAfter(req);
+  const retryAfter = getRateLimitRetryAfter(req);
   if (retryAfter !== null) {
     return NextResponse.json(
       {
