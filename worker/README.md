@@ -31,14 +31,20 @@ wrangler deploy --name pinpoint-worker-staging   # 受控演练（阶段 B）
 
 通过 `wrangler secret put <NAME>` 或 Cloudflare Dashboard 设置。
 
-| Secret 名称 | 用途 | 备注 |
-|---|---|---|
-| `LINKEDIN_COOKIE` | LinkedIn session cookie，HTML 抓取鉴权 | 格式：`li_at=xxx; ...` |
-| `OPENROUTER_API_KEY` | OpenRouter API，enrichment + i18n 内容生成 | 前缀 `sk-or-v1-` |
-| `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | 最小权限，勿用宽权限 token |
-| `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel 环境变量 `REVALIDATE_SECRET` 值完全一致 | 两边不一致时 revalidate 会静默失败 |
-| `NOTIFICATION_WEBHOOK_URL` | 飞书 / Slack 告警 webhook URL | 可选，未设置则不发告警 |
-| `NOTIFICATION_WEBHOOK_SECRET` | Webhook HMAC 签名密钥（可选） | 与接收端约定 |
+| Secret 名称 | 用途 | shadow 需要 | staging/生产需要 |
+|---|---|---|---|
+| `GRAPHQL_COOKIE` | LinkedIn raw cookie（`li_at=...; JSESSIONID=...`），HTML 抓取鉴权 | ✅ | ✅ |
+| `GRAPHQL_TOKEN` | GraphQL endpoint 可选 Bearer token | 可选 | 可选 |
+| `GRAPHQL_CSRF_TOKEN` | Voyager GraphQL 可选 CSRF token | 可选 | 可选 |
+| `SITE_API_TOKEN` | 调 `/api/admin/generate-draft` 的 Bearer token（enrichment/i18n 用） | ❌ | ✅ |
+| `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | ❌ | ✅ |
+| `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致 | ❌ | ✅ |
+| `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
+| `FALLBACK_WEBHOOK_SECRET` | Playwright fallback webhook HMAC 签名密钥（可选） | 可选 | 可选 |
+| `ADMIN_SECRET` | 受保护管理接口的密钥 | 可选 | ✅ |
+| `WORKER_ADMIN_SECRET` | Worker 管理接口独立密钥 | 可选 | ✅ |
+
+**注意**：enrichment 不直接调用 OpenRouter，而是通过 `SITE_API_TOKEN` 调站点自己的 `/api/admin/generate-draft`，再由站点侧调用 AI API。
 
 ---
 

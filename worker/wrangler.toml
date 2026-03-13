@@ -57,12 +57,16 @@ SITE_BASE_URL               = ""
 # Secrets — set via Cloudflare Dashboard or `wrangler secret put <NAME>`
 # See worker/README.md for full list
 # ---------------------------------------------------------------------------
-# LINKEDIN_COOKIE              — LinkedIn session cookie for HTML scraping
-# OPENROUTER_API_KEY           — OpenRouter key for enrichment + i18n
+# GRAPHQL_COOKIE               — LinkedIn raw cookie string, e.g. "li_at=...; JSESSIONID=..."
+# GRAPHQL_TOKEN                — Optional bearer token for GraphQL endpoint
+# GRAPHQL_CSRF_TOKEN           — Optional CSRF token for Voyager GraphQL
+# SITE_API_TOKEN               — Bearer token for /api/admin/generate-draft (enrichment)
 # GITHUB_TOKEN_NEW_SITE        — Fine-grained PAT: contents:write on new repo
 # NEW_SITE_REVALIDATE_SECRET   — Must match REVALIDATE_SECRET in Vercel env
-# NOTIFICATION_WEBHOOK_URL     — Feishu / Slack webhook for cron alerts
-# NOTIFICATION_WEBHOOK_SECRET  — HMAC signing secret for webhook (optional)
+# FEISHU_WEBHOOK_URL           — Feishu webhook URL for cron alerts
+# FALLBACK_WEBHOOK_SECRET      — HMAC signing secret for fallback webhook (optional)
+# ADMIN_SECRET                 — Admin secret for protected endpoints
+# WORKER_ADMIN_SECRET          — Worker admin secret (separate from ADMIN_SECRET)
 
 # ---------------------------------------------------------------------------
 # Development overrides
@@ -80,8 +84,9 @@ preview_id = "pp_data_dev"
 # ---------------------------------------------------------------------------
 # Shadow (stage A) — 影子运行，只抓取 + 写 KV，不写 GitHub，不触发 revalidate，不发告警
 # 部署命令：wrangler deploy --env shadow --name pinpoint-worker-shadow
-# 不绑定 Cron，只能手动触发：wrangler trigger --name pinpoint-worker-shadow
-# 注意：不要为 pinpoint-worker-shadow 配置 GITHUB_TOKEN_NEW_SITE Secret
+# 不绑定 Cron，只能手动触发
+# 需要配置的 Secrets（仅抓取相关）：GRAPHQL_COOKIE、GRAPHQL_TOKEN、GRAPHQL_CSRF_TOKEN
+# 不要配置：GITHUB_TOKEN_NEW_SITE、NEW_SITE_REVALIDATE_SECRET、SITE_API_TOKEN
 # ---------------------------------------------------------------------------
 [env.shadow.vars]
 GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
