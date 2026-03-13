@@ -11,6 +11,7 @@ export function generateMetadata(): Metadata {
     description:
       "Contact Pinpoint Answer Today for corrections, support, and feedback about puzzle answers or archive quality.",
     path: routes.contact,
+    noIndex: true,
   });
 }
 

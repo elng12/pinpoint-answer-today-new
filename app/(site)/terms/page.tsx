@@ -8,6 +8,7 @@ export function generateMetadata(): Metadata {
     description:
       "Review the Terms of Use governing Pinpoint Answer Today, including acceptable conduct, intellectual property, and liability limits.",
     path: "/terms",
+    noIndex: true,
   });
 }
 
