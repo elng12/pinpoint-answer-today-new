@@ -112,6 +112,9 @@ SITE_BASE_URL               = ""
 binding = "PP_DATA"
 id = "2689a48e886548a3acbe8fa9ede4e3f6"
 
+[env.shadow.triggers]
+crons = []
+
 [env.shadow.ai]
 binding = "AI"
 
