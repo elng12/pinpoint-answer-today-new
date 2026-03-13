@@ -76,3 +76,68 @@ AUTO_I18N_ENABLED           = "false"
 [[env.development.kv_namespaces]]
 binding = "PP_DATA"
 preview_id = "pp_data_dev"
+
+# ---------------------------------------------------------------------------
+# Shadow (stage A) — 影子运行，只抓取 + 写 KV，不写 GitHub，不触发 revalidate，不发告警
+# 部署命令：wrangler deploy --env shadow --name pinpoint-worker-shadow
+# 不绑定 Cron，只能手动触发：wrangler trigger --name pinpoint-worker-shadow
+# 注意：不要为 pinpoint-worker-shadow 配置 GITHUB_TOKEN_NEW_SITE Secret
+# ---------------------------------------------------------------------------
+[env.shadow.vars]
+GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
+VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
+FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
+ALLOW_SELF_GRAPHQL          = "false"
+GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
+GITHUB_BRANCH_NEW_SITE      = "main"
+NEW_SITE_URL                = "https://pinpointanswertoday.app"
+AUTO_PUBLISH_ENABLED        = "false"
+AUTO_ENRICH_ENABLED         = "false"
+AUTO_I18N_ENABLED           = "false"
+AUTO_I18N_LOCALES           = "fr,de,pt-BR"
+AUTO_I18N_PARALLEL          = "2"
+AUTO_PUBLISH_TIMEOUT_MS     = "15000"
+AUTO_ENRICH_TIMEOUT_MS      = "55000"
+AUTO_I18N_TIMEOUT_MS        = "90000"
+AUTO_ENRICH_MODEL           = "openai/gpt-4o-mini"
+AUTO_I18N_MODEL             = "openai/gpt-4o-mini"
+SITE_BASE_URL               = ""
+
+[[env.shadow.kv_namespaces]]
+binding = "PP_DATA"
+id = "2689a48e886548a3acbe8fa9ede4e3f6"
+
+[env.shadow.ai]
+binding = "AI"
+
+# ---------------------------------------------------------------------------
+# Staging (stage B) — 受控演练，允许完整链路，但只能手动触发，不绑定 Cron
+# 部署命令：wrangler deploy --env staging --name pinpoint-worker-staging
+# 需要配置全套 Secrets（GITHUB_TOKEN_NEW_SITE、NEW_SITE_REVALIDATE_SECRET 等）
+# ---------------------------------------------------------------------------
+[env.staging.vars]
+GRAPHQL_ENDPOINT            = "https://pinpointanswertoday.app/api/graphql"
+VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
+FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
+ALLOW_SELF_GRAPHQL          = "false"
+GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
+GITHUB_BRANCH_NEW_SITE      = "main"
+NEW_SITE_URL                = "https://pinpointanswertoday.app"
+AUTO_PUBLISH_ENABLED        = "true"
+AUTO_ENRICH_ENABLED         = "true"
+AUTO_I18N_ENABLED           = "false"
+AUTO_I18N_LOCALES           = "fr,de,pt-BR"
+AUTO_I18N_PARALLEL          = "2"
+AUTO_PUBLISH_TIMEOUT_MS     = "15000"
+AUTO_ENRICH_TIMEOUT_MS      = "55000"
+AUTO_I18N_TIMEOUT_MS        = "90000"
+AUTO_ENRICH_MODEL           = "openai/gpt-4o-mini"
+AUTO_I18N_MODEL             = "openai/gpt-4o-mini"
+SITE_BASE_URL               = ""
+
+[[env.staging.kv_namespaces]]
+binding = "PP_DATA"
+id = "2689a48e886548a3acbe8fa9ede4e3f6"
+
+[env.staging.ai]
+binding = "AI"

@@ -56,21 +56,32 @@
 
 ## 当前进度
 
-### 已完成
+### 已完成（2026-03-13）
 
-- [x] `worker/wrangler.toml` 已创建，配置与父仓库生产口径基本对齐
+- [x] `worker/wrangler.toml` 已创建，KV namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` 与父仓库生产配置核对一致
 - [x] `worker/package.json` 已创建，含 `dev`、`deploy`、`deploy:dry`、`typecheck`、`tail` 命令
 - [x] `worker/tsconfig.json` 已创建
-- [x] KV namespace ID、Cron 时间、Secrets 清单、Feature flags 均已写入 `wrangler.toml`
-- [x] development 环境覆盖已配置（自动关闭 publish/enrich/i18n）
+- [x] KV namespace ID、Cron `1,3,7,10,15,20 8 * * *`、Secrets 清单、Feature flags 均已写入 `wrangler.toml`
+- [x] `development` 环境已配置（自动关闭 publish/enrich/i18n）
+- [x] `shadow` 环境已配置：`AUTO_PUBLISH_ENABLED=false`、`AUTO_ENRICH_ENABLED=false`、`AUTO_I18N_ENABLED=false`，无 Cron 绑定
+- [x] `staging` 环境已配置：`AUTO_PUBLISH_ENABLED=true`、`AUTO_ENRICH_ENABLED=true`、`AUTO_I18N_ENABLED=false`，无 Cron 绑定
+- [x] **PR 1 完成**：`worker/src/index.ts`（3349 行）、`worker/src/lib/publish/` 2 个依赖文件已迁入，`worker/README.md` 已补充 Secrets 清单与 KV 说明
+- [x] `npm run typecheck` 通过，`wrangler deploy --dry-run` 通过，`--env shadow --dry-run` 通过
+- [x] revalidate 接口已确认：`POST /api/revalidate?slug=pinpoint-answer-NNN`，Header `x-revalidate-secret: <SECRET>` 或 `Authorization: Bearer <SECRET>`
+- [x] `worker/` 目录已 commit 并 push（commit `e9ae89bc`）
 
-### 待完成（阻塞后续步骤）
+### 当前阶段（阶段 A 准备中）
 
-- [ ] `worker/src/index.ts` 未创建（PR 1 最后一步）
-- [ ] `worker/` 整个目录未 commit（未进入 Git 历史）
-- [ ] 父仓库 `src/index.ts` 未迁入新仓库
-- [ ] 跨仓库写入逻辑未改成同仓写入
-- [ ] 生产 Cron 未切换到新仓库 Worker
+- [ ] 在 Cloudflare Dashboard 为 `pinpoint-worker-shadow` 配置 Secrets（**不要**设置 `GITHUB_TOKEN_NEW_SITE`，只需 `LINKEDIN_COOKIE`、`OPENROUTER_API_KEY`）
+- [ ] 执行：`wrangler deploy --env shadow --name pinpoint-worker-shadow`
+- [ ] 手动触发一次 shadow Worker，确认抓取日志正常、KV 写入成功、无 GitHub 写入
+- [ ] shadow 稳定运行 3 天后，进入阶段 B 受控演练
+
+### 待完成（后续步骤）
+
+- [ ] 跨仓库写入逻辑改成同仓写入（PR 3）
+- [ ] 生产 Cron 切换到新仓库 Worker（PR 4 + 阶段 C）
+- [ ] 父仓库归档
 
 ---
 
@@ -487,11 +498,11 @@ wrangler deploy --name pinpoint-worker-staging
 
 ## 建议执行顺序
 
-1. 创建 `worker/src/index.ts`，迁入父仓库逻辑，commit（PR 1 完成）
-2. 统一 Secrets 说明与 KV 核对，更新 `worker/README.md`（PR 2 的前置）
-3. 迁入完整发布链路，验证 typecheck + dry-run（PR 2 完成）
-4. 部署 shadow，阶段 A 运行至少 3 天
-5. 手动演练阶段 B，完成同仓写入验证
+1. ✅ 创建 `worker/src/index.ts`，迁入父仓库逻辑，commit（**PR 1 已完成**）
+2. ✅ 统一 Secrets 说明与 KV 核对，更新 `worker/README.md`，补充 shadow/staging 环境配置（**已完成**）
+3. **当前**：在 Cloudflare Dashboard 为 `pinpoint-worker-shadow` 配置有限 Secrets，部署 shadow，开始阶段 A
+4. shadow 稳定运行 3 天后，配置完整 Secrets，部署 `pinpoint-worker-staging`，手动演练阶段 B
+5. 阶段 B 验证同仓写入闭环（PR 3）
 6. 停父仓库 Cron，切新仓库到生产服务名（PR 4 + 阶段 C）
 7. 观察 7 天
 8. 归档父仓库
@@ -510,17 +521,18 @@ wrangler deploy --name pinpoint-worker-staging
 
 ## 建议拆分成的 PR
 
-### PR 1（当前阻塞项）
+### PR 1 ✅ 已合并（commit e9ae89bc）
 
 `chore: scaffold cloudflare worker inside new repo`
 
 内容：
 
-- `worker/src/index.ts` 创建（迁入基础骨架，不含完整发布逻辑）
-- `worker/wrangler.toml`、`package.json`、`tsconfig.json` 一并 commit
-- `worker/README.md` 写入 Secrets 清单和本地开发命令
+- `worker/src/index.ts`（3349 行，生产 Worker 完整逻辑）
+- `worker/src/lib/publish/locale-auto-publish-freeze.ts`、`auto-i18n-policy.ts`
+- `worker/wrangler.toml`（含 shadow/staging/development 三个命名环境）
+- `worker/package.json`、`tsconfig.json`、`.gitignore`、`README.md`
 
-验收：`npm run typecheck` 通过，`wrangler deploy --dry-run` 通过
+验收：typecheck ✅，deploy --dry-run ✅，shadow env dry-run ✅
 
 ### PR 2
 
@@ -557,13 +569,14 @@ wrangler deploy --name pinpoint-worker-staging
 
 ## 待确认事项
 
-在正式开始 PR 1 前，建议先明确：
+阶段 A 部署前需要人工确认：
 
-- [ ] 父仓库当前生产 Worker 服务名是什么
-- [ ] shadow / staging 服务部署到哪个 Cloudflare account / zone
-- [ ] 父仓库 Worker 是否还绑定了 Cron 之外的公网 HTTP Route 或自定义域名；如果有，阶段 C 切流时由谁负责切换 Route
-- [ ] `GITHUB_TOKEN_NEW_SITE` 是个人 token 还是 fine-grained PAT；如果是个人 token，需要创建新的 scoped token
-- [ ] 影子运行期间，LinkedIn 抓取与 GitHub API rate limit 是否允许双份流量；shadow Cron 需要错峰多少分钟
-- [ ] Cloudflare / Vercel 平台侧谁有实际 admin 权限
+- [x] 父仓库当前生产 Worker 服务名：`pinpoint-worker`（来自父仓库 `wrangler.toml` `name` 字段）
+- [x] KV namespace ID：`2689a48e886548a3acbe8fa9ede4e3f6`（两边已核对一致）
+- [x] 生产 Cron：`1,3,7,10,15,20 8 * * *`（两边已核对一致）
+- [x] revalidate API 格式：`POST /api/revalidate?slug=NNN`，Header `x-revalidate-secret`（已从新站代码确认）
+- [ ] shadow / staging 服务部署到哪个 Cloudflare account（需登录 Dashboard 确认）
+- [ ] 父仓库 Worker 是否还绑定了 Cron 之外的公网 HTTP Route 或自定义域名
+- [ ] `GITHUB_TOKEN_NEW_SITE` 当前是个人 token 还是 fine-grained PAT（需确认后再为 staging 配置）
+- [ ] 影子运行期间，LinkedIn 抓取的 rate limit 是否允许 shadow 与父仓库 Worker 同时触发（shadow 不绑定 Cron，只手动触发，无冲突）
 - [ ] 当前是否还接了 Cloudflare 之外的外部监控或告警平台
-- [ ] 连续 7 天观察期的成功定义是否以"Cron 成功 + 抓取结果非空 + 页面在北京时间 16:30 前更新"为准
