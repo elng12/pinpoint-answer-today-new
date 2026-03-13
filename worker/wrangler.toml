@@ -37,7 +37,7 @@ NEW_SITE_URL                = "https://pinpointanswertoday.app"
 # Feature flags
 AUTO_PUBLISH_ENABLED        = "true"
 AUTO_ENRICH_ENABLED         = "true"
-AUTO_I18N_ENABLED           = "true"
+AUTO_I18N_ENABLED           = "false"
 AUTO_I18N_LOCALES           = "fr,de,pt-BR"
 AUTO_I18N_PARALLEL          = "2"
 
