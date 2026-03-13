@@ -6,7 +6,7 @@ const legacyDir = path.join(workspaceRoot, "data", "puzzles");
 const legacyPendingDir = path.join(workspaceRoot, "data", "pending");
 const targetDir = path.join(process.cwd(), "data", "puzzles");
 const registryPath = path.join(targetDir, "registry.json");
-const minImportablePuzzleNumber = 524;
+const minImportablePuzzleNumber = 458;
 const maxImportablePuzzleNumber = 674;
 const blockedLegacyPuzzleNumbers = new Set([615]);
 
@@ -409,11 +409,16 @@ async function main() {
       const sourcePath = path.join(dirPath, fileName);
       const raw = await fs.readFile(sourcePath, "utf8");
       const legacyPuzzle = JSON.parse(raw);
-      const puzzleNumber = legacyPuzzle?.puzzleNumber;
+      const puzzleNumber = typeof legacyPuzzle?.puzzleNumber === "string"
+        ? Number.parseInt(legacyPuzzle.puzzleNumber, 10)
+        : legacyPuzzle?.puzzleNumber;
 
       if (!Number.isFinite(puzzleNumber)) {
         continue;
       }
+
+      // Normalise puzzleNumber to integer so downstream functions work correctly
+      legacyPuzzle.puzzleNumber = puzzleNumber;
 
       if (!shouldConsiderPuzzleNumber(puzzleNumber, requestedPuzzles)) {
         continue;

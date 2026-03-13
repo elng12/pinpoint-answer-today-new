@@ -1188,6 +1188,60 @@
     "updatedAt": "2026-01-06T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 614,
+    "slug": "pinpoint-answer-614",
+    "publishDate": "2026-01-04",
+    "status": "archived",
+    "clues": [
+      "Sea",
+      "Cookie",
+      "Gila",
+      "Loch Ness",
+      "Frankenstein's"
+    ],
+    "mainAnswer": "Words that come before\"monster\"!",
+    "category": "Words that come before\"monster\"!",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Puzzle presents a fascinating challenge with its set of seemingly unrelated clues: Sea, Cookie, Gila, Loch Ness, and Frankenstein's.",
+    "updatedAt": "2026-01-04T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 613,
+    "slug": "pinpoint-answer-613",
+    "publishDate": "2026-01-03",
+    "status": "archived",
+    "clues": [
+      "Maps",
+      "Pieces of music",
+      "Laptops",
+      "Deadbolt locks",
+      "Pianos"
+    ],
+    "mainAnswer": "Things with keys",
+    "category": "Things with keys",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "The clues 'Maps', 'Pieces of music', 'Laptops', 'Deadbolt locks', and 'Pianos' might appear unrelated at first, but they all share a common feature: k",
+    "updatedAt": "2026-01-03T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 612,
+    "slug": "pinpoint-answer-612",
+    "publishDate": "2026-01-02",
+    "status": "archived",
+    "clues": [
+      "Barbie",
+      "Sheila",
+      "Fair dinkum",
+      "Brekkie",
+      "G'day mate"
+    ],
+    "mainAnswer": "Australian slang terms",
+    "category": "Australian slang terms",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint opens with Barbie and Sheila, which could read like names until the rest of the board appears.",
+    "updatedAt": "2026-01-02T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 611,
     "slug": "pinpoint-answer-611",
     "publishDate": "2026-01-01",
@@ -1456,6 +1510,60 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "LinkedIn Pinpoint #597 connects World, Solheim, Webb Ellis, Davis, and Stanley through Trophies. The walkthrough shows how each clue fits the same connector and why the pattern is consistent.",
     "updatedAt": "2025-12-18T08:42:28.402Z"
+  },
+  {
+    "puzzleNumber": 596,
+    "slug": "pinpoint-answer-596",
+    "publishDate": "2025-12-17",
+    "status": "archived",
+    "clues": [
+      "Treasury",
+      "Corporate",
+      "Junk",
+      "Covalent",
+      "James"
+    ],
+    "mainAnswer": "Bonds",
+    "category": "Bonds",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Treasury, Corporate, Junk, Covalent, and James — and what story do they share?",
+    "updatedAt": "2025-12-17T08:43:27.874Z"
+  },
+  {
+    "puzzleNumber": 595,
+    "slug": "pinpoint-answer-595",
+    "publishDate": "2025-12-16",
+    "status": "archived",
+    "clues": [
+      "Van Gogh",
+      "Guggenheim",
+      "Prado",
+      "Salar Jung",
+      "Louvre"
+    ],
+    "mainAnswer": "Art museums",
+    "category": "Art museums",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Van Gogh, Guggenheim, Prado, Salar Jung, and Louvre — and what story do they share?",
+    "updatedAt": "2025-12-16T08:44:26.793Z"
+  },
+  {
+    "puzzleNumber": 594,
+    "slug": "pinpoint-answer-594",
+    "publishDate": "2025-12-15",
+    "status": "archived",
+    "clues": [
+      "Skills",
+      "Interests",
+      "Education",
+      "Experience",
+      "References (upon request)"
+    ],
+    "mainAnswer": "Resume sections",
+    "category": "Resume sections",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Skills, Interests, Education, Experience, and References (upon request) — and what story do they share?",
+    "updatedAt": "2025-12-15T08:47:16.190Z"
   },
   {
     "puzzleNumber": 593,
@@ -2070,6 +2178,150 @@
     "updatedAt": "2025-11-11T08:00:00.000Z"
   },
   {
+    "puzzleNumber": 559,
+    "slug": "pinpoint-answer-559",
+    "publishDate": "2025-11-10",
+    "status": "archived",
+    "clues": [
+      "Air",
+      "Hair",
+      "Makeup",
+      "Paint",
+      "Tooth"
+    ],
+    "mainAnswer": "Words that come before \"brush\"",
+    "category": "Words that come before \"brush\"",
+    "difficultyLevel": "Easy",
+    "shortSummary": "Air, Hair, Makeup, Paint, and Tooth all pair with ‘brush’—tools for spraying, styling, applying color, or cleaning teeth.",
+    "updatedAt": "2025-11-28T02:48:56.758Z"
+  },
+  {
+    "puzzleNumber": 558,
+    "slug": "pinpoint-answer-558",
+    "publishDate": "2025-11-09",
+    "status": "archived",
+    "clues": [
+      "New York City",
+      "Beehives",
+      "Playing cards",
+      "Chess sets",
+      "LinkedIn Games"
+    ],
+    "mainAnswer": "Things that contain 'Queens'",
+    "category": "Things that contain 'Queens'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "New York City, Beehives, Playing cards, Chess sets, and LinkedIn Games all feature queens—a borough, a queen bee, face cards, the chess piece, and the game role.",
+    "updatedAt": "2025-11-28T02:48:42.525Z"
+  },
+  {
+    "puzzleNumber": 557,
+    "slug": "pinpoint-answer-557",
+    "publishDate": "2025-11-08",
+    "status": "archived",
+    "clues": [
+      "Vacuumed",
+      "Zoom",
+      "Skiing",
+      "Week",
+      "Naan"
+    ],
+    "mainAnswer": "Words with double vowels in the center",
+    "category": "Words with double vowels in the center",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Vacuumed, Zoom, Skiing, Week, and Naan each hinge on a doubled vowel (uu, oo, ii, ee, aa)—a spelling pattern rather than a topic.",
+    "updatedAt": "2025-11-28T02:48:20.415Z"
+  },
+  {
+    "puzzleNumber": 556,
+    "slug": "pinpoint-answer-556",
+    "publishDate": "2025-11-07",
+    "status": "archived",
+    "clues": [
+      "Vacuum cleaner",
+      "Aquarium",
+      "Car engine",
+      "Drip coffee maker",
+      "Email software (targeting spam)"
+    ],
+    "mainAnswer": "Things with filters!",
+    "category": "Things with filters",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Vacuum cleaner, Aquarium, Car engine, Drip coffee maker, and Email software all rely on filters to keep debris or noise out—physical and digital.",
+    "updatedAt": "2025-11-28T02:48:05.999Z"
+  },
+  {
+    "puzzleNumber": 555,
+    "slug": "pinpoint-answer-555",
+    "publishDate": "2025-11-06",
+    "status": "archived",
+    "clues": [
+      "Sheep",
+      "Stars",
+      "Blessings",
+      "Calories",
+      "Votes"
+    ],
+    "mainAnswer": "Things you can count",
+    "category": "Things you can count",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Sheep, Stars, Blessings, Calories, and Votes are all things people ‘count’—from bedtime tricks to elections and gratitude lists.",
+    "updatedAt": "2025-11-28T02:47:51.895Z"
+  },
+  {
+    "puzzleNumber": 554,
+    "slug": "pinpoint-answer-554",
+    "publishDate": "2025-11-05",
+    "status": "archived",
+    "clues": [
+      "Flying",
+      "Heights",
+      "Spiders",
+      "Public speaking",
+      "Open spaces"
+    ],
+    "mainAnswer": "Common fears",
+    "category": "Common fears",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today highlights Flying, Heights, Spiders, Public speaking, and Open spaces—classic fear triggers spanning travel, creatures, social moments, and environments.",
+    "updatedAt": "2025-11-28T02:47:36.817Z"
+  },
+  {
+    "puzzleNumber": 553,
+    "slug": "pinpoint-answer-553",
+    "publishDate": "2025-11-04",
+    "status": "archived",
+    "clues": [
+      "Gates",
+      "Lines",
+      "Planes",
+      "Passengers",
+      "Duty-free shops"
+    ],
+    "mainAnswer": "Things at airports",
+    "category": "Things at airports",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Gates, Lines, Planes, Passengers, and Duty-free shops are all parts of an airport journey from check-in to boarding.",
+    "updatedAt": "2025-11-28T02:47:22.170Z"
+  },
+  {
+    "puzzleNumber": 552,
+    "slug": "pinpoint-answer-552",
+    "publishDate": "2025-11-03",
+    "status": "archived",
+    "clues": [
+      "Boxing",
+      "May",
+      "Labor",
+      "Mother's",
+      "New Year's"
+    ],
+    "mainAnswer": "Words that come before 'Day' to form special occasions",
+    "category": "Words that come before 'Day' to form special occasions",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Boxing, May, Labor, Mother’s, and New Year’s all sit in front of ‘Day’ to name well-known holidays on the calendar.",
+    "updatedAt": "2025-11-28T02:47:06.244Z"
+  },
+  {
     "puzzleNumber": 551,
     "slug": "pinpoint-answer-551",
     "publishDate": "2025-11-02",
@@ -2086,6 +2338,24 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Fish, Surfer, Medal, Lining, and Spoon all settle down once you test the same connector: silver.",
     "updatedAt": "2025-11-02T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 550,
+    "slug": "pinpoint-answer-550",
+    "publishDate": "2025-11-01",
+    "status": "archived",
+    "clues": [
+      "Snow",
+      "Rain",
+      "Cowboy",
+      "Hiking",
+      "Steel-toe"
+    ],
+    "mainAnswer": "Types of boots",
+    "category": "Types of boots",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Snow, Rain, Cowboy, Hiking, and Steel-toe—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T02:46:36.156Z"
   },
   {
     "puzzleNumber": 549,
@@ -2214,6 +2484,24 @@
     "updatedAt": "2025-10-25T07:00:00.000Z"
   },
   {
+    "puzzleNumber": 542,
+    "slug": "pinpoint-answer-542",
+    "publishDate": "2025-10-24",
+    "status": "archived",
+    "clues": [
+      "Door",
+      "Floor",
+      "Place",
+      "Diplo",
+      "Laundro"
+    ],
+    "mainAnswer": "Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.”",
+    "category": "Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring at your phone trying to crack Pinpoint #542, you're not alone!",
+    "updatedAt": "2025-11-28T03:05:56.344Z"
+  },
+  {
     "puzzleNumber": 541,
     "slug": "pinpoint-answer-541",
     "publishDate": "2025-10-23",
@@ -2232,6 +2520,186 @@
     "updatedAt": "2025-10-23T07:00:00.000Z"
   },
   {
+    "puzzleNumber": 540,
+    "slug": "pinpoint-answer-540",
+    "publishDate": "2025-10-22",
+    "status": "archived",
+    "clues": [
+      "Lame",
+      "Sitting",
+      "Rubber",
+      "Peking",
+      "Donald"
+    ],
+    "mainAnswer": "Words that come before “duck” — each clue forms a common phrase or proper noun when placed before the word duck.",
+    "category": "Words that come before “duck” — each clue forms a common phrase or proper noun when placed before the word duck .",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring at your phone trying to crack Pinpoint #540, you're not alone!",
+    "updatedAt": "2025-11-28T03:05:23.973Z"
+  },
+  {
+    "puzzleNumber": 539,
+    "slug": "pinpoint-answer-539",
+    "publishDate": "2025-10-21",
+    "status": "archived",
+    "clues": [
+      "Angel",
+      "Victoria",
+      "Iguazu",
+      "Yosemite",
+      "Niagara"
+    ],
+    "mainAnswer": "Waterfalls — Famous waterfalls around the world.",
+    "category": "Waterfalls — Famous waterfalls around the world.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring at your phone trying to crack Pinpoint #539, you're not alone!",
+    "updatedAt": "2025-11-03T01:29:09.839Z"
+  },
+  {
+    "puzzleNumber": 538,
+    "slug": "pinpoint-answer-538",
+    "publishDate": "2025-10-20",
+    "status": "archived",
+    "clues": [
+      "Junk",
+      "Chain",
+      "Fan",
+      "Snail",
+      "E-"
+    ],
+    "mainAnswer": "Terms that come before “mail.”",
+    "category": "Terms that come before “mail.”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring at your phone trying to crack Pinpoint #538, you weren't alone!",
+    "updatedAt": "2025-11-03T01:29:07.878Z"
+  },
+  {
+    "puzzleNumber": 537,
+    "slug": "pinpoint-answer-537",
+    "publishDate": "2025-10-19",
+    "status": "archived",
+    "clues": [
+      "Waffle",
+      "Tire",
+      "Branding",
+      "Curling",
+      "Steam"
+    ],
+    "mainAnswer": "Words that come before “iron” — all the clues can directly precede “iron” to create meaningful compound words.",
+    "category": "Words that come before “iron” — all the clues can directly precede “iron” to create meaningful compound words.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring at your phone trying to crack Pinpoint #537, you're not alone!",
+    "updatedAt": "2025-11-03T01:29:06.280Z"
+  },
+  {
+    "puzzleNumber": 536,
+    "slug": "pinpoint-answer-536",
+    "publishDate": "2025-10-18",
+    "status": "archived",
+    "clues": [
+      "Concerns",
+      "Donations",
+      "Children",
+      "Eyebrows",
+      "Voice"
+    ],
+    "mainAnswer": "Things you can raise",
+    "category": "Things you can raise",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Concerns and Donations appear together, ask how they could relate to things you can raise before exploring other stretches.",
+    "updatedAt": "2025-10-18T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 535,
+    "slug": "pinpoint-answer-535",
+    "publishDate": "2025-10-17",
+    "status": "archived",
+    "clues": [
+      "Traffic",
+      "Deadline",
+      "Eggs",
+      "Record",
+      "Odds"
+    ],
+    "mainAnswer": "Things you can beat",
+    "category": "Things you can beat",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Traffic and Deadline appear together, ask how they could relate to things you can beat before exploring other stretches.",
+    "updatedAt": "2025-10-17T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 534,
+    "slug": "pinpoint-answer-534",
+    "publishDate": "2025-10-16",
+    "status": "archived",
+    "clues": [
+      "Dial",
+      "Screen",
+      "Glasses",
+      "Burn",
+      "Flower"
+    ],
+    "mainAnswer": "Words that come after “sun” (common “sun-” compounds).",
+    "category": "Sun compounds",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Dial and Screen appear together, ask how they could relate to words that come after “sun” (sun-dial, sunscreen) before exploring other stretches.",
+    "updatedAt": "2025-10-16T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 533,
+    "slug": "pinpoint-answer-533",
+    "publishDate": "2025-10-15",
+    "status": "archived",
+    "clues": [
+      "Mercury",
+      "Venus",
+      "Earth",
+      "Mars",
+      "Jupiter"
+    ],
+    "mainAnswer": "Planets",
+    "category": "Planets",
+    "difficultyLevel": "Easy",
+    "shortSummary": "Placeholder puzzle entry to satisfy data integrity tests.",
+    "updatedAt": "2025-10-15T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 532,
+    "slug": "pinpoint-answer-532",
+    "publishDate": "2025-10-14",
+    "status": "archived",
+    "clues": [
+      "Chest",
+      "Dough",
+      "Hazel",
+      "Coco",
+      "Pea"
+    ],
+    "mainAnswer": "Words that come before “nut” — each clue forms a common compound noun ending with “nut.”",
+    "category": "Words that come before \"nut\"",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Chest and Dough appear together, ask how they could relate to Words that come before “nut” — each clue forms a common compound noun ending with “nut.” before exploring other stretches.",
+    "updatedAt": "2025-10-14T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 531,
+    "slug": "pinpoint-answer-531",
+    "publishDate": "2025-10-13",
+    "status": "archived",
+    "clues": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta",
+      "Epsilon"
+    ],
+    "mainAnswer": "Greek letters",
+    "category": "Greek letters",
+    "difficultyLevel": "Easy",
+    "shortSummary": "Placeholder puzzle entry to satisfy data integrity tests.",
+    "updatedAt": "2025-10-13T16:00:00.000Z"
+  },
+  {
     "puzzleNumber": 530,
     "slug": "pinpoint-answer-530",
     "publishDate": "2025-10-12",
@@ -2248,6 +2716,78 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Of, Golf, Main, Crash, and Stay the all become familiar expressions once the same trailing word lands after each clue: course.",
     "updatedAt": "2025-10-12T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 529,
+    "slug": "pinpoint-answer-529",
+    "publishDate": "2025-10-11",
+    "status": "archived",
+    "clues": [
+      "Bottle",
+      "Survey",
+      "Pool",
+      "Bucket",
+      "Tooth cavity"
+    ],
+    "mainAnswer": "Things you can fill",
+    "category": "Things you can fill",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Bottle and Survey appear together, ask how they could relate to Things you can fill before exploring other stretches.",
+    "updatedAt": "2025-10-11T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 528,
+    "slug": "pinpoint-answer-528",
+    "publishDate": "2025-10-10",
+    "status": "archived",
+    "clues": [
+      "Year",
+      "Guide",
+      "Sketch",
+      "Reference",
+      "Coffee-table"
+    ],
+    "mainAnswer": "Types of Books",
+    "category": "Types of Books",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Year and Guide appear together, ask how they could relate to Types of Books before exploring other stretches.",
+    "updatedAt": "2025-10-10T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 527,
+    "slug": "pinpoint-answer-527",
+    "publishDate": "2025-10-09",
+    "status": "archived",
+    "clues": [
+      "Brain",
+      "Barn",
+      "Sand",
+      "Hail",
+      "Thunder"
+    ],
+    "mainAnswer": "Words that come before “storm”",
+    "category": "Words that come before \"storm\"",
+    "difficultyLevel": "Easy",
+    "shortSummary": "When Brain and Barn appear together, ask how they could relate to Words that come before “storm” before exploring other stretches.",
+    "updatedAt": "2025-10-09T16:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 526,
+    "slug": "pinpoint-answer-526",
+    "publishDate": "2025-10-08",
+    "status": "archived",
+    "clues": [
+      "Mousetrap",
+      "Mechanical watch",
+      "Stapler",
+      "Clothespin",
+      "Trampoline"
+    ],
+    "mainAnswer": "Things with springs",
+    "category": "Things with springs",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "When Mousetrap and Mechanical watch appear together, ask how they could relate to Things with springs before exploring other stretches.",
+    "updatedAt": "2025-10-08T16:00:00.000Z"
   },
   {
     "puzzleNumber": 525,
@@ -2304,6 +2844,186 @@
     "updatedAt": "2025-10-05T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 522,
+    "slug": "pinpoint-answer-522",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Batter",
+      "Brochures",
+      "Laundry",
+      "Lawn chairs",
+      "Your arms"
+    ],
+    "mainAnswer": "Things you can fold",
+    "category": "Things you can fold",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Things you can fold",
+    "updatedAt": "2025-11-28T06:48:59.320Z"
+  },
+  {
+    "puzzleNumber": 521,
+    "slug": "pinpoint-answer-521",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Stone",
+      "Bronze",
+      "Ice",
+      "Space",
+      "Dark"
+    ],
+    "mainAnswer": "Ages (historical or cultural periods)",
+    "category": "Ages (historical or cultural periods)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Ages (historical or cultural periods)",
+    "updatedAt": "2025-11-28T06:48:36.736Z"
+  },
+  {
+    "puzzleNumber": 520,
+    "slug": "pinpoint-answer-520",
+    "publishDate": "2025-11-02",
+    "status": "archived",
+    "clues": [
+      "Top",
+      "Bucket",
+      "Beret",
+      "Cowboy",
+      "Fedora"
+    ],
+    "mainAnswer": "Kinds of hats",
+    "category": "Kinds of hats",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "When Top and Bucket appear together, ask how they could relate to Kinds of hats before exploring other stretches.",
+    "updatedAt": "2025-11-03T01:28:39.405Z"
+  },
+  {
+    "puzzleNumber": 519,
+    "slug": "pinpoint-answer-519",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Dust",
+      "Fur",
+      "Foot",
+      "Basket",
+      "Bowling"
+    ],
+    "mainAnswer": "Words that come before “ball”",
+    "category": "Words that come before “ball”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Dust, Fur, Foot, Basket, and Bowling—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:35:20.489Z"
+  },
+  {
+    "puzzleNumber": 518,
+    "slug": "pinpoint-answer-518",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Straight",
+      "Oily",
+      "Long",
+      "Wavy",
+      "Frizzy"
+    ],
+    "mainAnswer": "Ways to describe hair",
+    "category": "Ways to describe hair",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Straight, Oily, Long, Wavy, and Frizzy—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:34:58.104Z"
+  },
+  {
+    "puzzleNumber": 517,
+    "slug": "pinpoint-answer-517",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Escape",
+      "Shift",
+      "Control",
+      "Tab",
+      "Backspace"
+    ],
+    "mainAnswer": "Keys on a keyboard",
+    "category": "Keys on a keyboard",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Escape, Shift, Control, Tab, and Backspace—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:34:35.859Z"
+  },
+  {
+    "puzzleNumber": 516,
+    "slug": "pinpoint-answer-516",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Primary colors",
+      "Little pigs",
+      "Blind mice",
+      "Musketeers",
+      "Books in a trilogy"
+    ],
+    "mainAnswer": "Things that come in threes",
+    "category": "Things that come in threes",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Primary colors, Little pigs, Blind mice, Musketeers, and Books in a trilogy—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:34:13.922Z"
+  },
+  {
+    "puzzleNumber": 515,
+    "slug": "pinpoint-answer-515",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Cats",
+      "Nuts",
+      "Eggs",
+      "Pollen",
+      "Gluten"
+    ],
+    "mainAnswer": "Things that people are allergic to",
+    "category": "Things that people are allergic to",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Cats, Nuts, Eggs, Pollen, and Gluten—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:33:50.016Z"
+  },
+  {
+    "puzzleNumber": 514,
+    "slug": "pinpoint-answer-514",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Time",
+      "Ice",
+      "Sewing",
+      "Vending",
+      "Automatic Telling"
+    ],
+    "mainAnswer": "Words that can come before “machine”",
+    "category": "Words that can come before “machine”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Time, Ice, Sewing, Vending, and Automatic Telling—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:32:54.888Z"
+  },
+  {
+    "puzzleNumber": 513,
+    "slug": "pinpoint-answer-513",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Desmond Tutu",
+      "Martin Luther King",
+      "Nelson Mandela",
+      "Kofi Annan",
+      "Médecins Sans Frontières"
+    ],
+    "mainAnswer": "Nobel Peace Prize winners",
+    "category": "Nobel Peace Prize winners",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Desmond Tutu, Martin Luther King, Nelson Mandela, Kofi Annan, and Médecins Sans Frontières—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:32:31.672Z"
+  },
+  {
     "puzzleNumber": 512,
     "slug": "pinpoint-answer-512",
     "publishDate": "2025-09-24",
@@ -2320,6 +3040,42 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Crenshaw, Citron, Casaba, Honeydew, and Cantaloupe all settle into place once you stop thinking about general fruit and focus on melon varieties.",
     "updatedAt": "2025-09-24T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 511,
+    "slug": "pinpoint-answer-511",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Hook",
+      "Cross",
+      "Jab",
+      "Overhand",
+      "Uppercut"
+    ],
+    "mainAnswer": "Boxing punches (types of punches in boxing)",
+    "category": "Boxing punches (types of punches in boxing)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Hook, Cross, Jab, Overhand, and Uppercut—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:31:42.186Z"
+  },
+  {
+    "puzzleNumber": 510,
+    "slug": "pinpoint-answer-510",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Italian",
+      "Thousand Island",
+      "Vinaigrette",
+      "Ranch",
+      "Caesar"
+    ],
+    "mainAnswer": "Salad dressings",
+    "category": "Salad dressings",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Italian, Thousand Island, Vinaigrette, Ranch, and Caesar—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:29:30.905Z"
   },
   {
     "puzzleNumber": 509,
@@ -2376,6 +3132,78 @@
     "updatedAt": "2025-09-19T07:00:00.000Z"
   },
   {
+    "puzzleNumber": 506,
+    "slug": "pinpoint-answer-506",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Lab",
+      "Bar",
+      "Milk",
+      "Chip",
+      "Mousse"
+    ],
+    "mainAnswer": "Words that come after “chocolate”",
+    "category": "Words that come after “chocolate”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Lab, Bar, Milk, Chip, and Mousse—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:27:42.783Z"
+  },
+  {
+    "puzzleNumber": 505,
+    "slug": "pinpoint-answer-505",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Champs-Élysées",
+      "Arc de Triomphe",
+      "The Louvre",
+      "Notre-Dame",
+      "Eiffel Tower"
+    ],
+    "mainAnswer": "Paris tourist attractions",
+    "category": "Paris tourist attractions",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Champs-Élysées, Arc de Triomphe, The Louvre, Notre-Dame, and Eiffel Tower—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:27:19.289Z"
+  },
+  {
+    "puzzleNumber": 504,
+    "slug": "pinpoint-answer-504",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Honey",
+      "Polar",
+      "Brown",
+      "Grizzly",
+      "Teddy"
+    ],
+    "mainAnswer": "Types of bears",
+    "category": "Types of bears",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Honey, Polar, Brown, Grizzly, and Teddy—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:26:24.546Z"
+  },
+  {
+    "puzzleNumber": 503,
+    "slug": "pinpoint-answer-503",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Clogs",
+      "Dikes",
+      "Edam",
+      "Windmills",
+      "Tulips"
+    ],
+    "mainAnswer": "Symbols of the Netherlands",
+    "category": "Symbols of the Netherlands",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Clogs, Dikes, Edam, Windmills, and Tulips—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:26:00.319Z"
+  },
+  {
     "puzzleNumber": 502,
     "slug": "pinpoint-answer-502",
     "publishDate": "2025-09-14",
@@ -2392,6 +3220,60 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Pad, Cap, Deep, Sock, and Jerk all become familiar phrases once the same body word lands in front of them: knee.",
     "updatedAt": "2025-09-14T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 501,
+    "slug": "pinpoint-answer-501",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Muffin",
+      "Horn",
+      "Setter",
+      "Breakfast",
+      "Channel"
+    ],
+    "mainAnswer": "Words that come after “English”",
+    "category": "Words that come after “English”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Muffin, Horn, Setter, Breakfast, and Channel—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T06:25:10.012Z"
+  },
+  {
+    "puzzleNumber": 500,
+    "slug": "pinpoint-answer-500",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Wingback",
+      "Rocking",
+      "Folding",
+      "Captain’s",
+      "High"
+    ],
+    "mainAnswer": "Types of chairs",
+    "category": "Types of chairs",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Wingback, Rocking, Folding, Captain’s, and High—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:42:25.550Z"
+  },
+  {
+    "puzzleNumber": 499,
+    "slug": "pinpoint-answer-499",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Tape",
+      "Drop cloth",
+      "Roller",
+      "Tray",
+      "Brush"
+    ],
+    "mainAnswer": "Painting equipment — tools you’d use for painting and decorating.",
+    "category": "Painting equipment — tools you’d use for painting and decorating.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Tape, Drop cloth, Roller, Tray, and Brush—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:41:23.756Z"
   },
   {
     "puzzleNumber": 498,
@@ -2448,6 +3330,42 @@
     "updatedAt": "2025-09-08T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 495,
+    "slug": "pinpoint-answer-495",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Bandage",
+      "Scale",
+      "Stethoscope",
+      "Tongue depressor",
+      "Thermometer"
+    ],
+    "mainAnswer": "Things you’d find at a doctor’s office",
+    "category": "Things you’d find at a doctor’s office",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Bandage, Scale, Stethoscope, Tongue depressor, and Thermometer—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:38:07.929Z"
+  },
+  {
+    "puzzleNumber": 494,
+    "slug": "pinpoint-answer-494",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Chip",
+      "Fade",
+      "Pitch",
+      "Drive",
+      "Putt"
+    ],
+    "mainAnswer": "Types of golf shots — the strokes that carry you from tee to green.",
+    "category": "Types of golf shots — the strokes that carry you from tee to green.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Chip, Fade, Pitch, Drive, and Putt—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:37:44.705Z"
+  },
+  {
     "puzzleNumber": 493,
     "slug": "pinpoint-answer-493",
     "publishDate": "2025-09-05",
@@ -2464,6 +3382,24 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Red, Black, Yellow, Dead, and Mediterranean all become famous place names the moment the same geographic word lands after them: sea.",
     "updatedAt": "2025-09-05T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 492,
+    "slug": "pinpoint-answer-492",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Guitar",
+      "Bag",
+      "Hockey",
+      "Conditioner",
+      "Freshener"
+    ],
+    "mainAnswer": "Words that follow “Air.”",
+    "category": "Words that follow “Air.”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Guitar, Bag, Hockey, Conditioner, and Freshener—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:36:38.738Z"
   },
   {
     "puzzleNumber": 491,
@@ -2502,6 +3438,24 @@
     "updatedAt": "2025-09-02T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 489,
+    "slug": "pinpoint-answer-489",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Canine",
+      "Crown",
+      "Bridge",
+      "Incisor",
+      "Cavity"
+    ],
+    "mainAnswer": "Words related to teeth / Dental terms",
+    "category": "Words related to teeth / Dental terms",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Canine, Crown, Bridge, Incisor, and Cavity—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:35:29.659Z"
+  },
+  {
     "puzzleNumber": 488,
     "slug": "pinpoint-answer-488",
     "publishDate": "2025-08-31",
@@ -2518,6 +3472,78 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Cup, Bank, Map, Record, and Wide Web all become familiar phrases the moment you place the same word in front of them: world.",
     "updatedAt": "2025-08-31T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 487,
+    "slug": "pinpoint-answer-487",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Bicycle",
+      "Free",
+      "Goal",
+      "Penalty",
+      "Corner"
+    ],
+    "mainAnswer": "Soccer / Football kicks — different ways the ball is restarted or struck in the game.",
+    "category": "Soccer / Football kicks — different ways the ball is restarted or struck in the game.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Bicycle, Free, Goal, Penalty, and Corner—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:34:05.148Z"
+  },
+  {
+    "puzzleNumber": 486,
+    "slug": "pinpoint-answer-486",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Temple",
+      "Bridge",
+      "Hinge",
+      "Nose pad",
+      "Lenses"
+    ],
+    "mainAnswer": "Parts of eyeglasses / spectacles",
+    "category": "Parts of eyeglasses / spectacles",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Temple, Bridge, Hinge, Nose pad, and Lenses—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:33:42.275Z"
+  },
+  {
+    "puzzleNumber": 485,
+    "slug": "pinpoint-answer-485",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Attendance",
+      "Office",
+      "Inventory",
+      "Charge",
+      "The bull by the horns"
+    ],
+    "mainAnswer": "Things you can take — common expressions and idioms that begin with take.",
+    "category": "Things you can take — common expressions and idioms that begin with take .",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Attendance, Office, Inventory, Charge, and The bull by the horns—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:33:19.712Z"
+  },
+  {
+    "puzzleNumber": 484,
+    "slug": "pinpoint-answer-484",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Family",
+      "Bed",
+      "Bath",
+      "Dining",
+      "Living"
+    ],
+    "mainAnswer": "Words before “room” in a house — the common prefixes that make up everyday household spaces.",
+    "category": "Words before “room” in a house — the common prefixes that make up everyday household spaces.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Family, Bed, Bath, Dining, and Living—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:32:55.519Z"
   },
   {
     "puzzleNumber": 483,
@@ -2556,6 +3582,60 @@
     "updatedAt": "2025-08-25T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 481,
+    "slug": "pinpoint-answer-481",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Fed",
+      "Land",
+      "Stain",
+      "Roots",
+      "Hopper"
+    ],
+    "mainAnswer": "Words that come after “grass” — compound words formed with grass",
+    "category": "Words that come after “grass” — compound words formed with grass",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Fed, Land, Stain, Roots, and Hopper—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:31:33.336Z"
+  },
+  {
+    "puzzleNumber": 480,
+    "slug": "pinpoint-answer-480",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "England",
+      "Mexico",
+      "-foundland",
+      "Delhi",
+      "Zealand"
+    ],
+    "mainAnswer": "Places that have “New” before them",
+    "category": "Places that have “New” before them",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features England, Mexico, -foundland, Delhi, and Zealand—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:31:10.352Z"
+  },
+  {
+    "puzzleNumber": 479,
+    "slug": "pinpoint-answer-479",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Times",
+      "Red",
+      "Tahrir",
+      "Trafalgar",
+      "Old Town"
+    ],
+    "mainAnswer": "Famous squares — world-renowned landmark squares",
+    "category": "Famous squares — world-renowned landmark squares",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Times, Red, Tahrir, Trafalgar, and Old Town—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:30:46.283Z"
+  },
+  {
     "puzzleNumber": 478,
     "slug": "pinpoint-answer-478",
     "publishDate": "2025-08-21",
@@ -2572,6 +3652,186 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Zester, Tongs, Mandolin, Funnel, and Whisk stop feeling specialized once you view them as one family of kitchen utensils.",
     "updatedAt": "2025-08-21T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 477,
+    "slug": "pinpoint-answer-477",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Grandfather",
+      "Chess",
+      "Alarm",
+      "Atomic",
+      "Cuckoo"
+    ],
+    "mainAnswer": "Types of Clocks",
+    "category": "Types of Clocks",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Grandfather, Chess, Alarm, Atomic, and Cuckoo—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:27:33.132Z"
+  },
+  {
+    "puzzleNumber": 476,
+    "slug": "pinpoint-answer-476",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "Real",
+      "Pound",
+      "Won",
+      "Rupee",
+      "Peso"
+    ],
+    "mainAnswer": "Monetary Units (World Currencies)",
+    "category": "Monetary Units (World Currencies)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features Real, Pound, Won, Rupee, and Peso—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:24:09.503Z"
+  },
+  {
+    "puzzleNumber": 475,
+    "slug": "pinpoint-answer-475",
+    "publishDate": "2025-11-28",
+    "status": "archived",
+    "clues": [
+      "May",
+      "Mar",
+      "Oct",
+      "Jan",
+      "Dec"
+    ],
+    "mainAnswer": "Month Abbreviations — the three-letter (or in May’s case, unchanged) short forms you see in calendars.",
+    "category": "Month Abbreviations — the three-letter (or in May’s case, unchanged) short forms you see in calendars.",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint features May, Mar, Oct, Jan, and Dec—five clues pointing to one connector without saying it.",
+    "updatedAt": "2025-11-28T05:23:45.502Z"
+  },
+  {
+    "puzzleNumber": 474,
+    "slug": "pinpoint-answer-474",
+    "publishDate": "2025-08-17",
+    "status": "archived",
+    "clues": [
+      "Square",
+      "Line",
+      "Break",
+      "Tap",
+      "Ballet"
+    ],
+    "mainAnswer": "Types of dances",
+    "category": "Types of dances",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself flummoxed by today's Pinpoint #474, you're in good company!",
+    "updatedAt": "2025-08-17T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 473,
+    "slug": "pinpoint-answer-473",
+    "publishDate": "2025-08-16",
+    "status": "archived",
+    "clues": [
+      "Scorpius",
+      "Orion",
+      "Cassiopeia",
+      "Canis Major",
+      "Ursa Minor"
+    ],
+    "mainAnswer": "Star constellations",
+    "category": "Star constellations",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself lost in space trying to solve Pinpoint #473, you're in good company.",
+    "updatedAt": "2025-08-16T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 472,
+    "slug": "pinpoint-answer-472",
+    "publishDate": "2025-08-15",
+    "status": "archived",
+    "clues": [
+      "Goat",
+      "Blue",
+      "Cream",
+      "Paneer",
+      "Mozzarella"
+    ],
+    "mainAnswer": "Types of cheese",
+    "category": "Types of cheese",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you're scratching your head over Pinpoint today, you're in good company.",
+    "updatedAt": "2025-08-15T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 471,
+    "slug": "pinpoint-answer-471",
+    "publishDate": "2025-08-14",
+    "status": "archived",
+    "clues": [
+      "Carrot",
+      "Rice",
+      "Cheese",
+      "Sponge",
+      "Birthday"
+    ],
+    "mainAnswer": "Types of cakes",
+    "category": "Types of cakes",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring blankly at your phone screen this morning trying to crack Pinpoint #471, you definitely weren't the only one.",
+    "updatedAt": "2025-08-14T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 470,
+    "slug": "pinpoint-answer-470",
+    "publishDate": "2025-08-13",
+    "status": "archived",
+    "clues": [
+      "Table",
+      "Sea",
+      "Bath",
+      "Celery",
+      "Epsom"
+    ],
+    "mainAnswer": "Salt types",
+    "category": "Salt types",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself scratching your head over Pinpoint today, you're in good company!",
+    "updatedAt": "2025-08-13T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 469,
+    "slug": "pinpoint-answer-469",
+    "publishDate": "2025-08-12",
+    "status": "archived",
+    "clues": [
+      "Bus",
+      "Golf",
+      "Fridge",
+      "Skirt",
+      "Cooper"
+    ],
+    "mainAnswer": "Words that commonly pair with “Mini.”",
+    "category": "Words that commonly pair with “Mini.”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you're scratching your head over Pinpoint #469, you're not alone!",
+    "updatedAt": "2025-08-12T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 468,
+    "slug": "pinpoint-answer-468",
+    "publishDate": "2025-08-11",
+    "status": "archived",
+    "clues": [
+      "Light",
+      "New",
+      "Leap",
+      "Fiscal",
+      "Calendar"
+    ],
+    "mainAnswer": "Words that come before 'year'",
+    "category": "Words that come before 'year'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you're scratching your head over Pinpoint #468, you're definitely not alone!",
+    "updatedAt": "2025-08-11T07:00:00.000Z"
   },
   {
     "puzzleNumber": 467,
@@ -2592,6 +3852,60 @@
     "updatedAt": "2025-08-10T07:00:00.000Z"
   },
   {
+    "puzzleNumber": 466,
+    "slug": "pinpoint-answer-466",
+    "publishDate": "2025-08-09",
+    "status": "archived",
+    "clues": [
+      "Kayak",
+      "Civic",
+      "Race car",
+      "Deified",
+      "Hannah"
+    ],
+    "mainAnswer": "Palindrome words",
+    "category": "Palindrome words",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you're scratching your head at Pinpoint today, you're not alone.",
+    "updatedAt": "2025-08-09T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 465,
+    "slug": "pinpoint-answer-465",
+    "publishDate": "2025-08-08",
+    "status": "archived",
+    "clues": [
+      "Ring",
+      "Reception",
+      "Celebrant",
+      "Flowers",
+      "Ceremony"
+    ],
+    "mainAnswer": "Things Associated with Weddings",
+    "category": "Things Associated with Weddings",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself staring blankly at your phone screen this morning trying to crack Pinpoint #465, you definitely weren't the only one.",
+    "updatedAt": "2025-08-08T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 464,
+    "slug": "pinpoint-answer-464",
+    "publishDate": "2025-08-07",
+    "status": "archived",
+    "clues": [
+      "Contact",
+      "Zoom",
+      "Fish-eye",
+      "Telephoto",
+      "Bifocal"
+    ],
+    "mainAnswer": "Lens types",
+    "category": "Lens types",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself cross-eyed staring at Pinpoint #464, you're in good company.",
+    "updatedAt": "2025-08-07T07:00:00.000Z"
+  },
+  {
     "puzzleNumber": 463,
     "slug": "pinpoint-answer-463",
     "publishDate": "2025-08-06",
@@ -2608,6 +3922,78 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Cutter, Ark, Ferry, Catamaran, and Canoe stop looking random once you view them as different kinds of boats.",
     "updatedAt": "2025-08-06T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 462,
+    "slug": "pinpoint-answer-462",
+    "publishDate": "2025-08-05",
+    "status": "archived",
+    "clues": [
+      "Turtles",
+      "Turtle Eggs",
+      "Nuts",
+      "Coconuts",
+      "Clams"
+    ],
+    "mainAnswer": "Things with shells",
+    "category": "Things with shells",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you're scratching your head over Pinpoint #462, you're in good company.",
+    "updatedAt": "2025-08-05T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 461,
+    "slug": "pinpoint-answer-461",
+    "publishDate": "2025-08-04",
+    "status": "archived",
+    "clues": [
+      "Moat",
+      "Dungeon",
+      "Drawbridge",
+      "Turret",
+      "Keep"
+    ],
+    "mainAnswer": "Parts of a castle",
+    "category": "Parts of a castle",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself scratching your head over Pinpoint #461, you're in good company.",
+    "updatedAt": "2025-08-04T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 460,
+    "slug": "pinpoint-answer-460",
+    "publishDate": "2025-08-03",
+    "status": "archived",
+    "clues": [
+      "Head",
+      "Dead",
+      "Bottom",
+      "Finish",
+      "Punch"
+    ],
+    "mainAnswer": "Words that come before 'line'",
+    "category": "Words that come before 'line'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you found yourself scratching your head over Pinpoint today, you're definitely not alone.",
+    "updatedAt": "2025-08-03T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 459,
+    "slug": "pinpoint-answer-459",
+    "publishDate": "2025-08-02",
+    "status": "archived",
+    "clues": [
+      "Paper",
+      "Wood",
+      "Storm",
+      "Dollar",
+      "Castle"
+    ],
+    "mainAnswer": "Words that come after 'sand'",
+    "category": "Words that come after 'sand'",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "If you're scratching your head over Pinpoint today, you're in good company.",
+    "updatedAt": "2025-08-02T07:00:00.000Z"
   },
   {
     "puzzleNumber": 458,
