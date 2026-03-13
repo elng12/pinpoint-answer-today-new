@@ -979,6 +979,46 @@ summary:focus-visible {
   box-shadow: 0 12px 24px color-mix(in oklch, var(--primary) 10%, transparent);
 }
 
+.recent-answer-answer {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+.archive-card-live {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.archive-answer-spoiler-btn {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  background: var(--muted-token);
+  color: var(--muted-foreground);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.archive-answer-spoiler-btn:hover {
+  background: var(--secondary);
+  border-color: color-mix(in oklch, var(--primary) 30%, var(--border) 70%);
+  color: var(--foreground);
+}
+
+.archive-answer-reveal {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--muted-token);
+  margin: 0;
+}
+
 .recent-answer-summary {
   margin: 12px 0 0;
   color: var(--muted);

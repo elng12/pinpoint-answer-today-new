@@ -6,9 +6,11 @@ import { formatShortDate } from "@/lib/utils/date";
 export function RecentAnswerCard({
   entry,
   isLatest = false,
+  answerText,
 }: {
   entry: ArchiveEntry;
   isLatest?: boolean;
+  answerText?: string;
 }) {
   const shortDate = formatShortDate(entry.isoDate);
 
@@ -28,6 +30,9 @@ export function RecentAnswerCard({
         {isLatest ? <span className="recent-answer-badge">Latest</span> : null}
       </div>
       <p className="recent-answer-title">{`Pinpoint Puzzle ${entry.number}: ${entry.clues.join(", ")}`}</p>
+      {answerText ? (
+        <p className="recent-answer-answer">Answer: {answerText}</p>
+      ) : null}
       <div className="recent-answer-footer">
         <span className="recent-answer-meta">{shortDate}</span>
         <span className="recent-answer-cta">View Answer</span>

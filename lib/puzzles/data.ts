@@ -44,6 +44,7 @@ export type ArchiveEntry = {
   category: string;
   difficulty: string;
   updatedAt: string;
+  status: "live" | "archived";
 };
 
 export type ArchiveGroup = {
@@ -231,6 +232,7 @@ function toArchiveEntry(entry: PuzzleRegistryEntryRecord): ArchiveEntry {
     category: detailEntry?.category ?? "",
     difficulty: entry.difficultyLevel ?? "Moderate",
     updatedAt: entry.updatedAt,
+    status: entry.status as "live" | "archived",
   };
 }
 
