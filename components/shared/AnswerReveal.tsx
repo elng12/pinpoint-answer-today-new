@@ -18,6 +18,19 @@ function normalizeKey(value: string): string {
   return value.trim().toLowerCase();
 }
 
+function buildHintMap(hintMap?: Record<string, string>) {
+  return Object.entries(hintMap ?? {}).reduce<Record<string, string>>((accumulator, [key, value]) => {
+    const cleanKey = normalizeKey(key);
+    const cleanValue = value.trim();
+
+    if (cleanKey && cleanValue) {
+      accumulator[cleanKey] = cleanValue;
+    }
+
+    return accumulator;
+  }, {});
+}
+
 export function AnswerReveal({
   puzzleNumber,
   clues,
@@ -33,17 +46,7 @@ export function AnswerReveal({
   const hintTimerRef = useRef<number | null>(null);
   const revealTipId = useId();
 
-  const normalizedHints = useMemo(() => {
-    const map: Record<string, string> = {};
-    Object.entries(hintMap ?? {}).forEach(([key, value]) => {
-      const cleanKey = normalizeKey(key);
-      const cleanValue = value.trim();
-      if (cleanKey && cleanValue) {
-        map[cleanKey] = cleanValue;
-      }
-    });
-    return map;
-  }, [hintMap]);
+  const normalizedHints = useMemo(() => buildHintMap(hintMap), [hintMap]);
 
   useEffect(() => {
     return () => {

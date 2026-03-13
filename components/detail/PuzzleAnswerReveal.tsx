@@ -15,6 +15,17 @@ function normalizeKey(value: string): string {
   return value.trim().toLowerCase();
 }
 
+function buildHintMap(hintMap?: Record<string, string>) {
+  return Object.entries(hintMap ?? {}).reduce<Record<string, string>>((accumulator, [key, value]) => {
+    const cleanKey = normalizeKey(key);
+    const cleanValue = value.trim();
+    if (cleanKey && cleanValue) {
+      accumulator[cleanKey] = cleanValue;
+    }
+    return accumulator;
+  }, {});
+}
+
 export function PuzzleAnswerReveal({
   puzzleNumber,
   clues,
@@ -28,17 +39,7 @@ export function PuzzleAnswerReveal({
   const hintTimerRef = useRef<number | null>(null);
   const revealTipId = useId();
 
-  const normalizedHints = useMemo(() => {
-    const map: Record<string, string> = {};
-    Object.entries(hintMap ?? {}).forEach(([key, value]) => {
-      const cleanKey = normalizeKey(key);
-      const cleanValue = value.trim();
-      if (cleanKey && cleanValue) {
-        map[cleanKey] = cleanValue;
-      }
-    });
-    return map;
-  }, [hintMap]);
+  const normalizedHints = useMemo(() => buildHintMap(hintMap), [hintMap]);
 
   useEffect(() => {
     return () => {
@@ -75,28 +76,54 @@ export function PuzzleAnswerReveal({
     }
   };
 
-  const handleClueClick = (clue: string) => {
+  const clearHint = () => {
+    if (hintTimerRef.current !== null) {
+      window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+    }
+    setActiveHint(null);
+  };
+
+  const getHintText = (clue: string) => {
     const normalizedClue = normalizeKey(clue);
     const directHint = normalizedHints[normalizedClue];
     const fallbackHint = `${clue} points back to ${category}.`;
-    const hint = directHint || fallbackHint;
+    return directHint || fallbackHint;
+  };
 
-    trackClientEvent("clue_hint_click", {
-      event_category: "engagement",
-      event_label: `${clue} · Puzzle ${puzzleNumber}`,
-      value: puzzleNumber,
-    });
+  const showHint = (
+    clue: string,
+    options?: {
+      persist?: boolean;
+      track?: boolean;
+    },
+  ) => {
+    const hint = getHintText(clue);
 
-    setActiveHint({ clue, text: hint });
+    if (options?.track) {
+      trackClientEvent("clue_hint_click", {
+        event_category: "engagement",
+        event_label: `${clue} · Puzzle ${puzzleNumber}`,
+        value: puzzleNumber,
+      });
+    }
 
     if (hintTimerRef.current !== null) {
       window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
     }
 
-    hintTimerRef.current = window.setTimeout(() => {
-      setActiveHint(null);
-      hintTimerRef.current = null;
-    }, 4000);
+    setActiveHint({
+      clue,
+      text: revealed ? `${hint} Shared connection: ${category}.` : hint,
+    });
+
+    if (options?.persist) {
+      hintTimerRef.current = window.setTimeout(() => {
+        setActiveHint(null);
+        hintTimerRef.current = null;
+      }, 4000);
+    }
   };
 
   return (
@@ -111,9 +138,12 @@ export function PuzzleAnswerReveal({
             key={`${clue}-${index}`}
             type="button"
             className="legacy-reveal-clue-card"
-            onClick={() => handleClueClick(clue)}
+            onClick={() => showHint(clue, { persist: true, track: true })}
+            onMouseEnter={() => showHint(clue)}
+            onMouseLeave={clearHint}
+            onFocus={() => showHint(clue)}
+            onBlur={clearHint}
             aria-describedby={revealTipId}
-            title={normalizedHints[normalizeKey(clue)] || `${clue} points back to ${category}.`}
           >
             <span className="legacy-reveal-clue-index">#{index + 1}</span>
             <span className="legacy-reveal-clue-word">{clue}</span>
