@@ -1,0 +1,26 @@
+import Link from "next/link";
+import { routes } from "@/lib/paths/routes";
+
+export default function NotFound() {
+  return (
+    <main className="container" style={{ padding: "48px 0 72px" }}>
+      <section className="surface" style={{ padding: 32, textAlign: "center" }}>
+        <p className="eyebrow">404</p>
+        <h1 className="section-title">This Pinpoint page is missing</h1>
+        <p className="copy" style={{ margin: "12px auto 0", maxWidth: 640 }}>
+          {
+            "The page may have moved, the puzzle number may not exist yet, or the link may be outdated. You can jump back to the current answer or browse the archive instead."
+          }
+        </p>
+        <div className="button-row" style={{ justifyContent: "center" }}>
+          <Link className="button-primary" href={routes.home}>
+            Go to today
+          </Link>
+          <Link className="button-secondary" href={routes.archive}>
+            Browse archive
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}

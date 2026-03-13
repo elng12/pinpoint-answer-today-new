@@ -1,13 +1,12 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { routes } from "@/lib/paths/routes";
 
-export function NavBar() {
-  const pathname = usePathname();
-  const isDetailPage = pathname.startsWith("/linkedin-pinpoint-answers/");
+type NavBarProps = {
+  isDetailPage?: boolean;
+};
+
+export function NavBar({ isDetailPage = false }: NavBarProps) {
   const navLinks = isDetailPage
     ? [
         { label: "Today", href: routes.home },
@@ -27,7 +26,7 @@ export function NavBar() {
         <Link className="brand" href={routes.home}>
           <Image
             src="/favicon/favicon.svg"
-            alt=""
+            alt="Pinpoint Answer Today logo"
             className="brand-mark"
             aria-hidden
             width={22}
