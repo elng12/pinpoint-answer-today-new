@@ -10,7 +10,7 @@ export interface Env {
   GRAPHQL_TOKEN?: string;      // optional: Bearer token
   GRAPHQL_COOKIE?: string;     // optional: raw cookie string, e.g. "li_at=...; other=..."
   VOYAGER_GRAPHQL_ENDPOINT?: string; // LinkedIn Voyager GraphQL upstream, e.g. https://www.linkedin.com/voyager/api/graphql
-  ADMIN_SECRET?: string;       // admin secret; defaults to "dev" if unset
+  ADMIN_SECRET?: string;       // admin secret for protected endpoints
   FALLBACK_WEBHOOK?: string;   // optional: Playwright 回退 webhook URL
   FALLBACK_WEBHOOK_SECRET?: string; // optional: webhook shared secret
 
@@ -288,6 +288,16 @@ function getLegacySiteBaseUrl(env: Env): string | null {
   if (!siteBaseUrl) return null;
   const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
   return siteBaseUrl === publicSiteBaseUrl ? null : siteBaseUrl;
+}
+
+function getAdminSecret(env: Env): string | null {
+  const secret = String(env.ADMIN_SECRET || "").trim();
+  return secret.length > 0 ? secret : null;
+}
+
+function getAdminPutDocSecret(env: Env): string | null {
+  const secret = String(env.ADMIN_PUT_DOC_SECRET || env.ADMIN_SECRET || "").trim();
+  return secret.length > 0 ? secret : null;
 }
 
 function hasNewSiteGitHubPublisher(env: Env): boolean {
@@ -2396,7 +2406,8 @@ export default {
     }
 
     if (url.pathname === "/admin/seed" && url.hostname.endsWith(".workers.dev")) {
-      const adminSecret = env.ADMIN_SECRET || "dev";
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
@@ -2418,7 +2429,8 @@ export default {
     }
 
     if (url.pathname === "/admin/run") {
-      const adminSecret = env.ADMIN_SECRET || "dev";
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
@@ -2680,7 +2692,12 @@ export default {
         return new Response("Not Found", { status: 404 });
       }
 
-      const expectedSecret = env.ADMIN_PUT_DOC_SECRET || env.ADMIN_SECRET || "dev";
+      const expectedSecret = getAdminPutDocSecret(env);
+      if (!expectedSecret) {
+        return new Response(!isProd ? "admin secret not configured" : "Not Found", {
+          status: !isProd ? 503 : 404,
+        });
+      }
       const secret = url.searchParams.get("secret");
       if (secret !== expectedSecret) {
 
@@ -2797,7 +2814,8 @@ export default {
     }
 
     if (url.pathname === "/admin/upload-ops" && req.method === "POST") {
-      const adminSecret = env.ADMIN_SECRET || "dev";
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
