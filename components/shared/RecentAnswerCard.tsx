@@ -3,6 +3,11 @@ import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 import { formatShortDate } from "@/lib/utils/date";
 
+function buildCluePreview(clues: string[]) {
+  const preview = clues.slice(0, 3).join(", ");
+  return clues.length > 3 ? `${preview}, ...` : preview;
+}
+
 export function RecentAnswerCard({
   entry,
   isLatest = false,
@@ -13,6 +18,7 @@ export function RecentAnswerCard({
   answerText?: string;
 }) {
   const shortDate = formatShortDate(entry.isoDate);
+  const cluePreview = buildCluePreview(entry.clues);
 
   return (
     <Link
@@ -29,7 +35,7 @@ export function RecentAnswerCard({
         </div>
         {isLatest ? <span className="recent-answer-badge">Latest</span> : null}
       </div>
-      <p className="recent-answer-title">{`Pinpoint Puzzle ${entry.number}: ${entry.clues.join(", ")}`}</p>
+      <p className="recent-answer-title">{cluePreview}</p>
       {answerText ? (
         <p className="recent-answer-answer">Answer: {answerText}</p>
       ) : null}

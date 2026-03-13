@@ -1430,6 +1430,16 @@ summary:focus-visible {
     contain-intrinsic-size: auto 320px;
   }
 
+  .recent-answer-card-compact {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 188px;
+  }
+
+  .home-what-is-card {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 120px;
+  }
+
   .benefit-feature-card {
     content-visibility: auto;
     contain-intrinsic-size: auto 220px;
