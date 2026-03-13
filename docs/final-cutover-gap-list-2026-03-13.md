@@ -27,9 +27,9 @@
 
 ### 2. ✅ 明确 `/api/graphql` 与 `/api/fallback/worker-pinpoint` 的最终归属（2026-03-13 已完成）
 
-现状：
+原始问题：
 
-- 新仓库 Worker 配置仍指向：
+- 处理前，新仓库 Worker 配置曾指向：
   - `https://pinpointanswertoday.app/api/graphql`
   - `https://pinpointanswertoday.app/api/fallback/worker-pinpoint`
 - 这两个接口源码目前只在父仓库中找到，新仓库里未找到对应 route 文件
@@ -47,16 +47,21 @@
 - 但 `/api/fallback/worker-pinpoint` 缺失会让“主抓取失败后的站内兜底”失效
 - 因此这不是“主链路立即全挂”的证据，但已经是一个真实的降级能力缺口
 
-动作：
+长期收口选项：
 
 - 二选一：
   1. 把这两个接口迁入新仓库并纳入正式维护
   2. 把 Worker 配置改为真正独立的上游 / 兜底地址，不再让父仓库源码成为隐性依赖
 
-执行顺序补充：
+本次采用：
 
-- 在真正开始第 2 项之前，先确认 Worker 生产环境是否还实际依赖 `GRAPHQL_ENDPOINT=https://pinpointanswertoday.app/api/graphql`
-- 如果生产实际依赖这个地址，那么这项应提升为高优先级阻塞项，不能等到观察期后再处理
+- 直接移除这两个失效站内地址的默认配置，避免继续形成隐性依赖
+
+处理后状态：
+
+- `GRAPHQL_ENDPOINT` 已清空，抓取默认仅走 `VOYAGER_GRAPHQL_ENDPOINT`
+- `FALLBACK_WEBHOOK` 已清空，不再指向线上 `404` 的站内接口
+- 当前结论不是“这两个接口已迁入新仓库”，而是“Worker 已不再默认依赖它们”
 
 完成标准：
 
