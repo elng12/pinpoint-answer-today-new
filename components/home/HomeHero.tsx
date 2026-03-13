@@ -2,11 +2,18 @@ import Link from "next/link";
 import type { PuzzleDetail } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 
+function buildCluePreview(clues: string[]) {
+  const preview = clues.slice(0, 3).join(", ");
+  return clues.length > 3 ? `${preview}, ...` : preview;
+}
+
 export function HomeHero({
   puzzle,
 }: {
   puzzle: PuzzleDetail;
 }) {
+  const cluePreview = buildCluePreview(puzzle.clues);
+
   return (
     <section className="home-hero">
       <div className="home-hero-inner">
@@ -31,7 +38,7 @@ export function HomeHero({
           </Link>
         </div>
         <p className="home-hero-detail">
-          Today&apos;s clues: {puzzle.clues.join(", ")}. Open the full breakdown for the verified answer.
+          Today&apos;s clues: {cluePreview}. Open the full breakdown for the verified answer.
         </p>
       </div>
     </section>
