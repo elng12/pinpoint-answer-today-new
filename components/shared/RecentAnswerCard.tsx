@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 import { trackClientEvent } from "@/lib/analytics";
+import { formatShortDate } from "@/lib/utils/date";
 
 export function RecentAnswerCard({
   entry,
@@ -12,12 +13,7 @@ export function RecentAnswerCard({
   entry: ArchiveEntry;
   isLatest?: boolean;
 }) {
-  const shortDate = new Date(entry.date).toLocaleDateString("en-CA", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    timeZone: "UTC",
-  });
+  const shortDate = formatShortDate(entry.isoDate);
 
   return (
     <Link

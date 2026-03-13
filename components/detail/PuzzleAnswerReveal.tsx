@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { trackClientEvent } from "@/lib/analytics";
 
 type PuzzleAnswerRevealProps = {
@@ -26,6 +26,7 @@ export function PuzzleAnswerReveal({
   const [copied, setCopied] = useState(false);
   const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
   const hintTimerRef = useRef<number | null>(null);
+  const revealTipId = useId();
 
   const normalizedHints = useMemo(() => {
     const map: Record<string, string> = {};
@@ -100,7 +101,7 @@ export function PuzzleAnswerReveal({
 
   return (
     <section className="legacy-reveal-shell" aria-labelledby="answer-reveal-label">
-      <p className="legacy-reveal-tip">
+      <p className="legacy-reveal-tip" id={revealTipId}>
         Hover (desktop) or tap (mobile) each clue to see how it connects to the answer
       </p>
 
@@ -111,7 +112,7 @@ export function PuzzleAnswerReveal({
             type="button"
             className="legacy-reveal-clue-card"
             onClick={() => handleClueClick(clue)}
-            aria-label={`Clue ${index + 1}: ${clue}. Tap to reveal the spoiler-safe hint.`}
+            aria-describedby={revealTipId}
             title={normalizedHints[normalizeKey(clue)] || `${clue} points back to ${category}.`}
           >
             <span className="legacy-reveal-clue-index">#{index + 1}</span>

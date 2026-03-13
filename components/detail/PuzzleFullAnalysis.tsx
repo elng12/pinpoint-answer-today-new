@@ -176,7 +176,7 @@ export function PuzzleFullAnalysis({
             <div className="legacy-faq-stack">
               {puzzle.faqs.map((faq) => (
                 <article className="legacy-faq-card" key={faq.question}>
-                  <h4>{faq.question}</h4>
+                  <h3 className="legacy-faq-question">{faq.question}</h3>
                   <p className="copy">{faq.answer}</p>
                 </article>
               ))}

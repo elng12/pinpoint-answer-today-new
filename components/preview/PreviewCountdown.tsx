@@ -14,6 +14,13 @@ type TimeLeft = {
   expired: boolean;
 };
 
+const EMPTY_TIME_LEFT: TimeLeft = {
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  expired: false,
+};
+
 function calcTimeLeft(targetIso: string): TimeLeft {
   const target = new Date(`${targetIso}T03:00:00Z`); // ~midnight PT
   const diff = target.getTime() - Date.now();
@@ -35,17 +42,8 @@ function pad(n: number) {
   return String(n).padStart(2, "0");
 }
 
-export function PreviewCountdown({ isoDate, puzzleNumber }: Props) {
-  const [time, setTime] = useState<TimeLeft>(() => calcTimeLeft(isoDate));
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(calcTimeLeft(isoDate));
-    }, 1000);
-    return () => clearInterval(id);
-  }, [isoDate]);
-
-  const unlockLabel = new Intl.DateTimeFormat("en-US", {
+function formatUnlockLabel(isoDate: string) {
+  return new Intl.DateTimeFormat("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
@@ -54,6 +52,20 @@ export function PreviewCountdown({ isoDate, puzzleNumber }: Props) {
     timeZoneName: "short",
     timeZone: "America/Los_Angeles",
   }).format(new Date(`${isoDate}T03:00:00Z`));
+}
+
+export function PreviewCountdown({ isoDate, puzzleNumber }: Props) {
+  const [time, setTime] = useState<TimeLeft>(EMPTY_TIME_LEFT);
+  const [unlockLabel, setUnlockLabel] = useState("");
+
+  useEffect(() => {
+    setTime(calcTimeLeft(isoDate));
+    setUnlockLabel(formatUnlockLabel(isoDate));
+    const id = setInterval(() => {
+      setTime(calcTimeLeft(isoDate));
+    }, 1000);
+    return () => clearInterval(id);
+  }, [isoDate]);
 
   return (
     <section className="surface" style={{ padding: 32, textAlign: "center" }}>

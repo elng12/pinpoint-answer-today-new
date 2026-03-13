@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
 import { PuzzleAnswerReveal } from "@/components/detail/PuzzleAnswerReveal";
