@@ -5,6 +5,10 @@ import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
 const minFullAnalysisWords = 80;
+const modernPuzzleDateBaseline = {
+  puzzleNumber: 458,
+  isoDate: "2025-08-01",
+};
 
 function countWords(value) {
   return value.trim().split(/\s+/).filter(Boolean).length;
@@ -14,6 +18,19 @@ function assertNoHtml(label, value) {
   if (htmlTagPattern.test(value)) {
     throw new Error(`${label} contains HTML markup and must be plain text.`);
   }
+}
+
+function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
+  if (!Number.isInteger(puzzleNumber) || puzzleNumber < modernPuzzleDateBaseline.puzzleNumber) {
+    return "";
+  }
+
+  const publishDate = new Date(`${modernPuzzleDateBaseline.isoDate}T00:00:00.000Z`);
+  publishDate.setUTCDate(
+    publishDate.getUTCDate() + (puzzleNumber - modernPuzzleDateBaseline.puzzleNumber),
+  );
+
+  return publishDate.toISOString().slice(0, 10);
 }
 
 function validateDetailContent(entry, detail) {
@@ -95,6 +112,13 @@ async function main() {
     }
     if (dates.has(entry.publishDate)) {
       throw new Error(`Duplicate publishDate detected: ${entry.publishDate}`);
+    }
+
+    const expectedPublishDate = getExpectedPublishDateForPuzzleNumber(entry.puzzleNumber);
+    if (expectedPublishDate && entry.publishDate !== expectedPublishDate) {
+      throw new Error(
+        `Unexpected publishDate for ${entry.slug}: received ${entry.publishDate}, expected ${expectedPublishDate}`,
+      );
     }
 
     numbers.add(entry.puzzleNumber);

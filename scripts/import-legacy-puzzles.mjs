@@ -9,6 +9,10 @@ const registryPath = path.join(targetDir, "registry.json");
 const minImportablePuzzleNumber = 458;
 const maxImportablePuzzleNumber = 674;
 const blockedLegacyPuzzleNumbers = new Set([]);
+const modernPuzzleDateBaseline = {
+  puzzleNumber: 458,
+  isoDate: "2025-08-01",
+};
 
 function parseRequestedPuzzles(argv) {
   const puzzlesArg = argv
@@ -71,6 +75,19 @@ function normalizeIsoTimestamp(value) {
   }
 
   return normalized;
+}
+
+function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
+  if (!Number.isInteger(puzzleNumber) || puzzleNumber < modernPuzzleDateBaseline.puzzleNumber) {
+    return "";
+  }
+
+  const publishDate = new Date(`${modernPuzzleDateBaseline.isoDate}T00:00:00.000Z`);
+  publishDate.setUTCDate(
+    publishDate.getUTCDate() + (puzzleNumber - modernPuzzleDateBaseline.puzzleNumber),
+  );
+
+  return publishDate.toISOString().slice(0, 10);
 }
 
 function decodeHtmlEntities(value) {
@@ -344,8 +361,8 @@ function getSourcePriority(fileName) {
 
 function buildRegistryEntry(legacyPuzzle, supportingPuzzles = []) {
   const publishedAtIso = getPublishedAtIso(legacyPuzzle);
-  const publishDate = publishedAtIso.slice(0, 10);
   const puzzleNumber = legacyPuzzle.puzzleNumber;
+  const publishDate = getExpectedPublishDateForPuzzleNumber(puzzleNumber) || publishedAtIso.slice(0, 10);
   const slug = `pinpoint-answer-${puzzleNumber}`;
   const category =
     cleanText(legacyPuzzle.analysis?.answerGroups?.[0]?.category) ||
