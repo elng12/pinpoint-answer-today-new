@@ -108,10 +108,27 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status
 - [x] staging 完整链路验证通过：quick → enrich → GitHub 写入成功，AI 内容生成走 `NEW_SITE_URL/api/admin/generate-draft`
 - [x] commit `8a662d6a`，已 push
 
-### 待完成（后续步骤）
+### PR 4 / 阶段 C 已执行（2026-03-13）
 
-- [ ] 生产 Cron 切换到新仓库 Worker（PR 4 + 阶段 C）
-- [ ] 父仓库归档
+- [x] 从新仓库 `worker/` 部署到生产服务名 `pinpoint-worker`，Version ID `5b37d283-d60d-4b78-8779-b830bc92b963`
+- [x] 生产 Cron `1,3,7,10,15,20 8 * * *` 已绑定
+- [x] 生产 Secrets 全部继承自原有配置（同服务名，Secrets 不受代码部署影响）
+- [x] `ADMIN_SECRET` 已更新为新仓库统一口径
+- [x] 生产 Worker 手动触发完整链路验证通过：quick → enrich → GitHub 写入 → AI 内容生成成功
+- [x] health 端点返回 200，抓取来源 `graphql`，数据完整
+
+### 阶段 C 观察期（2026-03-13 → 2026-03-20）
+
+每天验收：
+- [ ] Cron 按 `1,3,7,10,15,20 8 * * *` 触发
+- [ ] 抓取结果非空
+- [ ] `data/puzzles/` JSON 写入成功
+- [ ] Vercel 部署在预期窗口内完成
+- [ ] 页面在北京时间 16:30 前展示当日新内容
+
+### 待完成（观察期后）
+
+- [ ] 连续 7 天无异常后，归档父仓库
 
 ### Staging 受控演练记录（2026-03-13）
 

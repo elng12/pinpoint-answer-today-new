@@ -21,15 +21,15 @@ npm run tail         # 实时查看线上 Worker 日志
 
 ```bash
 cd worker
-wrangler deploy --name pinpoint-worker-shadow    # 影子运行（阶段 A）
-wrangler deploy --name pinpoint-worker-staging   # 受控演练（阶段 B）
+wrangler deploy --env shadow --name pinpoint-worker-shadow    # 影子运行（阶段 A）
+wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（阶段 B）
 ```
 
 ---
 
 ## Secrets 清单
 
-通过 `wrangler secret put <NAME>` 或 Cloudflare Dashboard 设置。
+通过 `wrangler secret put <NAME> --env <environment>` 或 Cloudflare Dashboard 设置。
 
 | Secret 名称 | 用途 | shadow 需要 | staging/生产需要 |
 |---|---|---|---|
@@ -46,6 +46,43 @@ wrangler deploy --name pinpoint-worker-staging   # 受控演练（阶段 B）
 
 **注意**：enrichment 不直接调用 OpenRouter，而是通过 `SITE_API_TOKEN` 调站点自己的 `/api/admin/generate-draft`，再由站点侧调用 AI API。
 
+补充说明：
+
+- `staging` / `shadow` 的 secret 请优先使用 `wrangler secret put <NAME> --env staging` 或 `--env shadow`，不要只写 `--name pinpoint-worker-staging`，否则容易写进错误作用域
+- `FEISHU_WEBHOOK_URL` 不是阶段 B 演练必需；如果 staging 只是短期手动验证，可先不配，避免测试告警进入正式群
+- `GITHUB_TOKEN_NEW_SITE` 长期应使用 fine-grained PAT，并限制到 `elng12/pinpoint-answer-today-new` 的 `contents:write`；临时复用本机 `gh auth token` 只适合一次性演练，不适合长期保留
+- 站点 enrichment 走的是站点自己的 `/api/admin/generate-draft`，所以除了 Cloudflare Worker secret 以外，Vercel 站点侧也要有可用的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL`
+- 如果用 OpenRouter，推荐统一口径为：
+  - `OPENAI_API_KEY=<OpenRouter key>`
+  - `OPENAI_BASE_URL=https://openrouter.ai/api/v1`
+  - `AI_MODEL=anthropic/claude-sonnet-4` 或你实际在用的模型
+
+本机 env 副本策略：
+
+- 目的：避免只有 Cloudflare / Vercel 控制台里有值，后续排查时还要重新翻历史记录
+- 本机副本只保留在非 Git 文件里，不替代线上 secret 管理
+- 推荐位置：
+  - 父仓库脚本 / AI 工具：`/Users/elng/web/pinpointanswertoday/.env.override.local`
+  - 新站本地运行：`/Users/elng/web/pinpointanswertoday/new-pinpoint-site/.env.local`
+- 当前建议保留本机副本的关键值：
+  - `OPENROUTER_API_KEY`
+  - `OPENAI_API_KEY`
+  - `OPENAI_BASE_URL`
+  - `AI_MODEL`
+  - `OPENROUTER_SITE_URL`
+  - `OPENROUTER_APP_NAME`
+  - `API_SECRET_TOKEN`
+  - `ADMIN_PASSPHRASE`
+  - `REVALIDATE_SECRET`
+- 不要再把 OpenRouter key 或其他 AI key 硬编码回脚本；父仓库脚本应只从 `OPENROUTER_API_KEY` 或 `OPENAI_API_KEY` 读取
+
+`GITHUB_TOKEN_NEW_SITE` 收口步骤：
+
+1. 在 GitHub 生成 fine-grained PAT，只授权仓库 `elng12/pinpoint-answer-today-new`
+2. Repository permissions 至少给 `Contents: Read and write`；其余权限默认不加
+3. 用 `wrangler secret put GITHUB_TOKEN_NEW_SITE --env staging` 替换 staging 临时 token
+4. staging 再手动跑一次 `/admin/run?publish=1&force=1&i18n=0`，确认仍能发布后，再同样替换 production
+
 ---
 
 ## 关键配置
@@ -54,6 +91,7 @@ wrangler deploy --name pinpoint-worker-staging   # 受控演练（阶段 B）
 |---|---|
 | KV namespace | `PP_DATA`，namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` |
 | Cron | `1,3,7,10,15,20 8 * * *`（UTC），即北京时间 16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20 |
+| staging Cron | 已显式关闭：`[env.staging.triggers].crons = []` |
 | 目标仓库 | `elng12/pinpoint-answer-today-new`，分支 `main` |
 | revalidate 地址 | `https://pinpointanswertoday.app/api/revalidate` |
 

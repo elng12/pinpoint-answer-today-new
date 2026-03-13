@@ -147,7 +147,7 @@ function buildSocialImage(imagePath: string, alt: string) {
   };
 }
 
-function buildIconMetadata(): Pick<Metadata, "appleWebApp" | "icons" | "manifest"> {
+function buildIconMetadata(): Pick<Metadata, "appleWebApp" | "icons"> {
   return {
     appleWebApp: {
       title: siteName,
@@ -155,12 +155,10 @@ function buildIconMetadata(): Pick<Metadata, "appleWebApp" | "icons" | "manifest
     icons: {
       icon: [
         { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-        { url: "/favicon/favicon.svg", type: "image/svg+xml" },
       ],
       shortcut: [{ url: "/favicon/favicon.ico" }],
       apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
-    manifest: "/favicon/site.webmanifest",
   };
 }
 
