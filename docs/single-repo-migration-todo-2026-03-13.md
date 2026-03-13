@@ -70,18 +70,89 @@
 - [x] revalidate 接口已确认：`POST /api/revalidate?slug=pinpoint-answer-NNN`，Header `x-revalidate-secret: <SECRET>` 或 `Authorization: Bearer <SECRET>`
 - [x] `worker/` 目录已 commit 并 push（commit `e9ae89bc`）
 
-### 当前阶段（阶段 A 准备中）
+### 当前阶段（阶段 B 已完成，待收口）
 
-- [ ] 在 Cloudflare Dashboard 为 `pinpoint-worker-shadow` 配置 Secrets（**不要**设置 `GITHUB_TOKEN_NEW_SITE`，只需 `LINKEDIN_COOKIE`、`OPENROUTER_API_KEY`）
-- [ ] 执行：`wrangler deploy --env shadow --name pinpoint-worker-shadow`
-- [ ] 手动触发一次 shadow Worker，确认抓取日志正常、KV 写入成功、无 GitHub 写入
-- [ ] shadow 稳定运行 3 天后，进入阶段 B 受控演练
+- [x] 已为 `pinpoint-worker-shadow` 配置最小 Secrets：`GRAPHQL_COOKIE`、`ADMIN_SECRET`
+- [x] 已执行：`wrangler deploy --env shadow --name pinpoint-worker-shadow`
+- [x] 已手动触发一次 shadow Worker，确认抓取成功、KV 写入成功、`/health` 正常、无 GitHub 写入
+- [x] 已为 `pinpoint-worker-staging` 配置阶段 B 所需 Secrets：`GRAPHQL_COOKIE`、`GITHUB_TOKEN_NEW_SITE`、`NEW_SITE_REVALIDATE_SECRET`、`SITE_API_TOKEN`、`ADMIN_SECRET`
+- [x] 已执行：`wrangler deploy --env staging --name pinpoint-worker-staging`
+- [x] 已完成一次阶段 B 手动演练：`publish=1&force=1&i18n=0`
+- [x] 阶段 B 结果确认：`/admin/run` 返回 `200`，详情页 `pinpoint-answer-682` 可访问，响应头出现 `x-vercel-cache: REVALIDATED`
+- [x] 已将 staging 的 `GITHUB_TOKEN_NEW_SITE` 替换为新生成的 `github_pat` token，并复跑阶段 B 验证通过
+- [x] 已将 production 的 `GITHUB_TOKEN_NEW_SITE` 同步替换为同口径 fine-grained PAT，生产 Worker `/health` 校验正常
+- [x] 已完成一次 `staging` enrich 真机验证：`publish=1&force=1&enrich=1&i18n=0`
+- [x] enrich 结果确认：`enrich.status=enriched`，站点 `generate-draft` 已能通过 OpenRouter 生成 AI 内容
+- [x] 已修正新站 Vercel production 的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL` 写入值，去除尾部换行
+
+### Shadow 手动触发速查
+
+注意：
+
+- `pinpoint-worker-shadow` 的 secret 请用 `wrangler secret put <NAME> --env shadow` 写入，不要混用 `--name pinpoint-worker-shadow`，否则容易写到错误作用域
+- `ADMIN_SECRET` 不要写进仓库；保存到密码管理器或本机 shell 环境变量
+
+```bash
+export SHADOW_ADMIN_SECRET='<your-shadow-admin-secret>'
+curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$SHADOW_ADMIN_SECRET"
+curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/health"
+curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status"
+```
+
+### PR 3 已完成（2026-03-13）
+
+- [x] `enrichPublishToSite`：`getLegacySiteBaseUrl` → `getPublicSiteBaseUrl`，`/api/publish` → `publishToNewSiteGitHub`
+- [x] `localizePublishToSite`：同上，去掉 "legacy site pipeline unavailable" 早退
+- [x] `localizePublishOne`：添加 `doc: Doc` 参数，替换两处 `/api/publish` 为 `publishToNewSiteGitHub`
+- [x] 两处 handler `shouldRunEnrich`/`shouldQueueEnrich`：去掉 `!usedQuickFallback` 条件
+- [x] staging 完整链路验证通过：quick → enrich → GitHub 写入成功，AI 内容生成走 `NEW_SITE_URL/api/admin/generate-draft`
+- [x] commit `8a662d6a`，已 push
 
 ### 待完成（后续步骤）
 
-- [ ] 跨仓库写入逻辑改成同仓写入（PR 3）
 - [ ] 生产 Cron 切换到新仓库 Worker（PR 4 + 阶段 C）
 - [ ] 父仓库归档
+
+### Staging 受控演练记录（2026-03-13）
+
+- staging Worker：`https://pinpoint-worker-staging.2296744453m.workers.dev`
+- 手动触发参数：`publish=1&force=1&i18n=0`
+- 抓取来源：`graphql`
+- 发布结果：`quick.status=published`
+- 详情页地址：`https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-682`
+- 本次未配置 `FEISHU_WEBHOOK_URL`：不是完整演练必需，为避免测试噪音打入正式告警群而暂时跳过
+- `GITHUB_TOKEN_NEW_SITE` 已替换为新生成的 `github_pat` token，并再次验证发布 + revalidate 通过
+- production 的 `GITHUB_TOKEN_NEW_SITE` 也已同步替换为同口径 fine-grained PAT；本次仅做 secret 替换，未主动触发生产发布
+
+### Staging enrich 验证记录（2026-03-13）
+
+- 手动触发参数：`publish=1&force=1&enrich=1&i18n=0`
+- 最终结果：`enrich.status=enriched`
+- 站点侧阻塞已清除：`/api/admin/generate-draft` 不再返回 `404` / `401`
+- AI 生成链路已确认：新站 Vercel production 现使用 OpenRouter 口径
+  - `OPENAI_API_KEY=<OpenRouter key>`
+  - `OPENAI_BASE_URL=https://openrouter.ai/api/v1`
+  - `AI_MODEL=anthropic/claude-sonnet-4`
+- 本次 enrich 触发后，`pinpoint-answer-682` 已写入 AI 内容并重新发布
+
+### 本机本地 env 备份说明（2026-03-13）
+
+- 父仓库 AI / 脚本本地备份：`/Users/elng/web/pinpointanswertoday/.env.override.local`
+- 新站本地运行备份：`/Users/elng/web/pinpointanswertoday/new-pinpoint-site/.env.local`
+- 已补齐本机保存的关键值：
+  - `OPENROUTER_API_KEY`
+  - `OPENAI_API_KEY`
+  - `OPENAI_BASE_URL`
+  - `AI_MODEL`
+  - `OPENROUTER_SITE_URL`
+  - `OPENROUTER_APP_NAME`
+  - `API_SECRET_TOKEN`
+  - `ADMIN_PASSPHRASE`
+  - `REVALIDATE_SECRET`
+- 安全状态：上述文件均被 `.gitignore` 忽略，仅保留在本机
+- 已移除父仓库脚本中的硬编码 OpenRouter key：
+  - `/Users/elng/web/pinpointanswertoday/scripts/generate-sections-597-610-openrouter.ts`
+  - 改为仅从 `OPENROUTER_API_KEY` 或 `OPENAI_API_KEY` 读取
 
 ---
 
@@ -182,16 +253,17 @@ crons = ["1,3,7,10,15,20 8 * * *"]
 | Secret 名称 | 用途 | 状态 |
 |---|---|---|
 | `LINKEDIN_COOKIE` | LinkedIn session cookie，HTML 抓取鉴权 | 父仓库在用 |
-| `OPENROUTER_API_KEY` | OpenRouter，enrichment + i18n 内容生成 | 父仓库在用 |
-| `GITHUB_TOKEN_NEW_SITE` | Fine-grained PAT，contents:write on 新仓库 | 父仓库在用 |
-| `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 一致 | 待核对 |
+| `OPENROUTER_API_KEY` | OpenRouter，enrichment + i18n 内容生成 | 新站 Vercel production 已对齐；本机 `.env.override.local` / `new-pinpoint-site/.env.local` 已保留副本 |
+| `GITHUB_TOKEN_NEW_SITE` | Fine-grained PAT，contents:write on 新仓库 | staging / production 均已替换为 fine-grained PAT |
+| `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 一致 | 已通过 staging 演练验证可用 |
 | `NOTIFICATION_WEBHOOK_URL` | 飞书 / Slack 告警 webhook | 父仓库在用 |
 | `NOTIFICATION_WEBHOOK_SECRET` | Webhook HMAC 签名（可选） | 父仓库在用 |
 
 待办：
 
-- [ ] 核对 `NEW_SITE_REVALIDATE_SECRET` 是否已在 Vercel 的 `REVALIDATE_SECRET` 环境变量中设置，且两边值一致
-- [ ] 确认 `GITHUB_TOKEN_NEW_SITE` 是 fine-grained PAT（仅 `elng12/pinpoint-answer-today-new` contents:write），不是宽权限 token
+- [x] 已通过 staging 演练确认 `NEW_SITE_REVALIDATE_SECRET` 与 Vercel 当前 `REVALIDATE_SECRET` 可正常协同工作
+- [x] 已将 staging 当前 `GITHUB_TOKEN_NEW_SITE` 替换为 fine-grained PAT，并复跑阶段 B 通过
+- [x] 已为 production 环境同步配置同口径 fine-grained PAT（仅 `elng12/pinpoint-answer-today-new` `contents:write`）
 - [ ] 明确是否还有其他 Secrets 在父仓库使用但未列入上表
 - [ ] 在 `worker/README.md` 中写入完整 Secrets 清单与各项用途说明
 
@@ -360,8 +432,10 @@ npm run tail          # 实时查看线上 Worker 日志
 部署到指定环境（shadow / staging）：
 
 ```bash
-wrangler deploy --name pinpoint-worker-shadow
-wrangler deploy --name pinpoint-worker-staging
+wrangler deploy --env shadow --name pinpoint-worker-shadow
+wrangler deploy --env staging --name pinpoint-worker-staging
+wrangler secret put GRAPHQL_COOKIE --env shadow
+wrangler secret put ADMIN_SECRET --env shadow
 ```
 
 ---
@@ -401,6 +475,13 @@ wrangler deploy --name pinpoint-worker-staging
 - 手动触发新 Worker，跑完整链路一次
 - 验证 JSON 写入 → Vercel 部署触发 → `/api/revalidate` → 页面更新
 - 验证 GitHub 写入与 revalidate 的幂等性
+
+当前结果（2026-03-13）：
+
+- 已完成一次 `pinpoint-worker-staging` 手动演练，返回 `200`
+- 详情页 `pinpoint-answer-682` 已可访问，且命中 `REVALIDATED`
+- `staging` 已显式关闭 Cron：`[env.staging.triggers].crons = []`
+- 当前仍需补做的收口动作只有 GitHub token 最小权限化
 
 ### 阶段 C：正式切流
 
@@ -500,9 +581,9 @@ wrangler deploy --name pinpoint-worker-staging
 
 1. ✅ 创建 `worker/src/index.ts`，迁入父仓库逻辑，commit（**PR 1 已完成**）
 2. ✅ 统一 Secrets 说明与 KV 核对，更新 `worker/README.md`，补充 shadow/staging 环境配置（**已完成**）
-3. **当前**：在 Cloudflare Dashboard 为 `pinpoint-worker-shadow` 配置有限 Secrets，部署 shadow，开始阶段 A
-4. shadow 稳定运行 3 天后，配置完整 Secrets，部署 `pinpoint-worker-staging`，手动演练阶段 B
-5. 阶段 B 验证同仓写入闭环（PR 3）
+3. ✅ 为 `pinpoint-worker-shadow` 配置最小 Secrets，部署并手动验证阶段 A（**已完成**）
+4. ✅ 为 `pinpoint-worker-staging` 配置完整 Secrets，完成一次阶段 B 手动演练（**已完成**）
+5. **当前**：继续推进同仓写入闭环（PR 3）
 6. 停父仓库 Cron，切新仓库到生产服务名（PR 4 + 阶段 C）
 7. 观察 7 天
 8. 归档父仓库
