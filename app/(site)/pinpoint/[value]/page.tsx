@@ -24,6 +24,14 @@ export default async function LegacyPinpointValuePage({
     permanentRedirect(routes.detail(slug));
   }
 
+  if (/^\d+$/.test(value)) {
+    const slug = await getPuzzleSlugByNumber(Number(value));
+    if (!slug) {
+      notFound();
+    }
+    permanentRedirect(routes.detail(slug));
+  }
+
   const analysisMatch = value.match(/^(\d+)-analysis$/);
   if (analysisMatch) {
     const slug = await getPuzzleSlugByNumber(Number(analysisMatch[1]));
