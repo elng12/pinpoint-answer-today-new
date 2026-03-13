@@ -40,7 +40,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 | `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | ❌ | ✅ |
 | `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致 | ❌ | ✅ |
 | `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
-| `FALLBACK_WEBHOOK_SECRET` | Playwright fallback webhook HMAC 签名密钥（可选） | 可选 | 可选 |
+| `FALLBACK_WEBHOOK_SECRET` | Playwright fallback webhook HMAC 签名密钥（`FALLBACK_WEBHOOK` 已清空，此密钥暂不生效） | ❌ | ❌ |
 | `ADMIN_SECRET` | 受保护管理接口的密钥 | 可选 | ✅ |
 | `WORKER_ADMIN_SECRET` | Worker 管理接口独立密钥 | 可选 | ✅ |
 
@@ -128,6 +128,11 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 
 ## 迁移状态
 
-当前处于迁移 PR 1 阶段：Worker 代码已迁入新仓库，尚未切换生产 Cron。
-生产 Cron 仍由父仓库 `pinpointanswertoday.app` 的 `src/index.ts` 承接。
-切流方案见 `docs/single-repo-migration-todo-2026-03-13.md`。
+当前不是 PR 1 阶段，而是阶段 C 已执行后的观察期。
+
+- 新仓库 `worker/` 已部署到生产服务名 `pinpoint-worker`
+- 生产 Cron 已切到当前仓库版本
+- 观察期为 `2026-03-13` 到 `2026-03-20`
+- 观察期内仍保留父仓库回滚能力，暂不视为“彻底脱钩完成”
+
+当前统一口径以 `docs/single-repo-migration-todo-2026-03-13.md` 为准。
