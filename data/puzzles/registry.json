@@ -2070,6 +2070,42 @@
     "updatedAt": "2025-10-23T07:00:00.000Z"
   },
   {
+    "puzzleNumber": 530,
+    "slug": "pinpoint-answer-530",
+    "publishDate": "2025-10-12",
+    "status": "archived",
+    "clues": [
+      "Of",
+      "Golf",
+      "Main",
+      "Crash",
+      "Stay the"
+    ],
+    "mainAnswer": "Words that come before \"course\"",
+    "category": "Words that come before \"course\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Of, Golf, Main, Crash, and Stay the all become familiar expressions once the same trailing word lands after each clue: course.",
+    "updatedAt": "2025-10-12T00:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 525,
+    "slug": "pinpoint-answer-525",
+    "publishDate": "2025-10-07",
+    "status": "archived",
+    "clues": [
+      "Orchestra",
+      "Fire",
+      "Money",
+      "Mosh",
+      "Arm"
+    ],
+    "mainAnswer": "Words that come before \"pit\"",
+    "category": "Words that come before \"pit\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Orchestra, Fire, Money, Mosh, and Arm all click once you test the same trailing word across every clue: pit.",
+    "updatedAt": "2025-10-07T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 524,
     "slug": "pinpoint-answer-524",
     "publishDate": "2025-10-06",
@@ -2106,6 +2142,24 @@
     "updatedAt": "2025-10-05T00:00:00.000Z"
   },
   {
+    "puzzleNumber": 512,
+    "slug": "pinpoint-answer-512",
+    "publishDate": "2025-09-24",
+    "status": "archived",
+    "clues": [
+      "Crenshaw",
+      "Citron",
+      "Casaba",
+      "Honeydew",
+      "Cantaloupe"
+    ],
+    "mainAnswer": "Types of melons",
+    "category": "Types of melons",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Crenshaw, Citron, Casaba, Honeydew, and Cantaloupe all settle into place once you stop thinking about general fruit and focus on melon varieties.",
+    "updatedAt": "2025-09-24T00:00:00.000Z"
+  },
+  {
     "puzzleNumber": 509,
     "slug": "pinpoint-answer-509",
     "publishDate": "2025-09-21",
@@ -2122,6 +2176,24 @@
     "difficultyLevel": "Moderate",
     "shortSummary": "Love, All, Advantage, Fifteen, and Deuce only make full sense once you hear them as tennis scoring terms.",
     "updatedAt": "2025-09-21T07:00:00.000Z"
+  },
+  {
+    "puzzleNumber": 508,
+    "slug": "pinpoint-answer-508",
+    "publishDate": "2025-09-20",
+    "status": "archived",
+    "clues": [
+      "Combinatorics",
+      "Topology",
+      "Calculus",
+      "Statistics",
+      "Geometry"
+    ],
+    "mainAnswer": "Subjects in mathematics",
+    "category": "Subjects in mathematics",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Combinatorics, Topology, Calculus, Statistics, and Geometry all point to one broader academic field: mathematics.",
+    "updatedAt": "2025-09-20T00:00:00.000Z"
   },
   {
     "puzzleNumber": 507,
