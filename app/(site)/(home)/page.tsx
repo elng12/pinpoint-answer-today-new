@@ -48,6 +48,15 @@ export default async function HomePage() {
       logo: absoluteUrl("/favicon/apple-touch-icon.png"),
       description: HOME_SEO_DESCRIPTION,
       email: supportEmail,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: supportEmail,
+          url: absoluteUrl(routes.contact),
+          availableLanguage: ["en"],
+        },
+      ],
     },
     {
       "@context": "https://schema.org",
