@@ -4,7 +4,7 @@ import { NavBar } from "@/components/layout/NavBar";
 import { getRecentEntries } from "@/lib/puzzles/data";
 
 export default async function SiteLayout({ children }: { children: ReactNode }) {
-  const recentEntries = await getRecentEntries(10);
+  const recentEntries = await getRecentEntries(5);
 
   return (
     <>

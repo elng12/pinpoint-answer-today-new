@@ -20,10 +20,10 @@ export function HomeCtaFooter({
           drills, and cleaner clue-by-clue recaps.
         </p>
         <div className="button-row" style={{ justifyContent: "center" }}>
-          <Link href={routes.detail(currentSlug)} className="button-secondary home-cta-primary">
+          <Link href={routes.detail(currentSlug)} className="button-secondary home-cta-primary" prefetch={false}>
             Reveal Today&apos;s Answer
           </Link>
-          <Link href={routes.archive} className="button-secondary home-cta-secondary">
+          <Link href={routes.archive} className="button-secondary home-cta-secondary" prefetch={false}>
             Explore archive
           </Link>
         </div>

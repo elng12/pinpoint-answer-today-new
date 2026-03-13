@@ -15,7 +15,7 @@ export function HomeHero({
         <h1 className="home-hero-title">Pinpoint Answer Today for Puzzle {puzzle.number}</h1>
         <p className="home-hero-subtitle">{puzzle.shortSummary}</p>
         <div className="button-row home-hero-actions">
-          <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)}>
+          <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>
             View Puzzle {puzzle.number} breakdown
           </Link>
           <a
@@ -26,7 +26,7 @@ export function HomeHero({
           >
             Play on LinkedIn
           </a>
-          <Link className="button-secondary home-hero-tertiary" href={routes.archive}>
+          <Link className="button-secondary home-hero-tertiary" href={routes.archive} prefetch={false}>
             Browse archive
           </Link>
         </div>

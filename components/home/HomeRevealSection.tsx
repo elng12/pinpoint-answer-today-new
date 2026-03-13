@@ -80,7 +80,12 @@ export function HomeRevealSection({
       </div>
       <nav className="home-adjacent-nav" aria-label="Fast puzzle navigation">
         {navItems.map((item) => (
-          <Link key={`${item.badge}-${item.label}`} href={item.href} className="home-adjacent-card">
+          <Link
+            key={`${item.badge}-${item.label}`}
+            href={item.href}
+            className="home-adjacent-card"
+            prefetch={false}
+          >
             <span className="home-adjacent-badge">{item.badge}</span>
             <span className="home-adjacent-title">{item.label}</span>
             <span className="home-adjacent-copy">{item.description}</span>

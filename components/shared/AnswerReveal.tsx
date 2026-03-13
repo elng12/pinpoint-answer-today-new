@@ -157,6 +157,7 @@ export function AnswerReveal({
             <Link
               className="button-secondary reveal-secondary-button"
               href={detailHref}
+              prefetch={false}
               onClick={() =>
                 trackClientEvent("analysis_click", {
                   event_category: "engagement",

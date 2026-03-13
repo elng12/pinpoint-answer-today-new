@@ -1,11 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { RecentAnswerCard } from "@/components/shared/RecentAnswerCard";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
-import { trackClientEvent } from "@/lib/analytics";
 
 export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
   return (
@@ -23,30 +20,12 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
         ))}
       </div>
       <div className="button-row recent-answer-actions recent-answer-actions-bottom">
-        <Link
-          href={routes.archive}
-          className="button-secondary"
-          onClick={() =>
-            trackClientEvent("archive_open_click", {
-              event_category: "navigation",
-              event_label: "home_recent_answers",
-            })
-          }
-        >
+        <Link href={routes.archive} className="button-secondary" prefetch={false}>
           View All Pinpoint Answers and Solutions
         </Link>
       </div>
       <div className="recent-answer-bottom-link">
-        <Link
-          href={routes.archive}
-          className="home-inline-link"
-          onClick={() =>
-            trackClientEvent("archive_open_click", {
-              event_category: "navigation",
-              event_label: "home_recent_answers_text_link",
-            })
-          }
-        >
+        <Link href={routes.archive} className="home-inline-link" prefetch={false}>
           Explore the full historical answer archive
         </Link>
       </div>

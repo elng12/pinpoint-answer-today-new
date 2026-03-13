@@ -48,11 +48,11 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
           </div>
 
           <div className="footer-block">
-            <h3 className="eyebrow">{isDetailPage ? "Recent answers" : "Recent 10 Pinpoint Answers"}</h3>
+            <h3 className="eyebrow">{isDetailPage ? "Recent answers" : "Recent Pinpoint Answers"}</h3>
             <ul className="footer-link-list footer-link-list-compact">
               {recentEntries.map((entry) => (
                 <li key={entry.slug}>
-                  <Link href={routes.detail(entry.slug)}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
+                  <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
                 </li>
               ))}
             </ul>
@@ -64,7 +64,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
               <ul className="footer-link-list footer-link-list-compact">
                 {quickLinks.map((link) => (
                   <li key={`${link.label}-${link.href}`}>
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link href={link.href} prefetch={false}>{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -78,7 +78,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
                     {link.href.startsWith("mailto:") ? (
                       <a href={link.href}>{link.label}</a>
                     ) : (
-                      <Link href={link.href}>{link.label}</Link>
+                      <Link href={link.href} prefetch={false}>{link.label}</Link>
                     )}
                   </li>
                 ))}
@@ -90,7 +90,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
               <ul className="footer-link-list">
                 {legalLinks.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link href={link.href} prefetch={false}>{link.label}</Link>
                   </li>
                 ))}
               </ul>

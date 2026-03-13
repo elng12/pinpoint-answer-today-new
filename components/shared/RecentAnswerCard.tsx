@@ -1,9 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
-import { trackClientEvent } from "@/lib/analytics";
 import { formatShortDate } from "@/lib/utils/date";
 
 export function RecentAnswerCard({
@@ -19,13 +16,7 @@ export function RecentAnswerCard({
     <Link
       href={routes.detail(entry.slug)}
       className={`recent-answer-card recent-answer-card-compact${isLatest ? " recent-answer-card-current" : ""}`}
-      onClick={() =>
-        trackClientEvent("recent_card_click", {
-          event_category: "engagement",
-          event_label: `Puzzle ${entry.number}`,
-          value: entry.number,
-        })
-      }
+      prefetch={false}
     >
       <div className="recent-answer-top">
         <div className="recent-answer-number-wrap">

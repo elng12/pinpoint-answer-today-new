@@ -36,7 +36,7 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
         </Link>
         <nav className="nav-links">
           {navLinks.map((link) => (
-            <Link key={`${link.href}-${link.label}`} href={link.href}>
+            <Link key={`${link.href}-${link.label}`} href={link.href} prefetch={false}>
               {link.label}
             </Link>
           ))}
