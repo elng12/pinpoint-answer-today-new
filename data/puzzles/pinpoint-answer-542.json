@@ -2,7 +2,7 @@
   "slug": "pinpoint-answer-542",
   "fullAnalysis": [
     "If you found yourself staring at your phone trying to crack Pinpoint #542, you're not alone! The clues DOOR, FLOOR, PLACE, DIPLO and LAUNDRO had many of us scratching our heads. The connector, \"Terms that come before 'mat',\" adds another layer of intrigue. Let's unravel this wordplay and reveal the solution.",
-    "Initially, I was completely stumped. I tried to force-fit things, thinking of things ending in -at. My first thought was something related to a 'diplomat,' which was a total RED HERRING. Then, I briefly considered something about 'door mats' and directions, which led nowhere.\n\nMy next attempt involved focusing on the 'mat' part of the connector. I started listing common words ending in 'mat,' but couldn't find prefixes that matched any of the clues. I even considered words that could be anagrammed, leading to a frustrating dead end with 'PLATFORM'.\n\nFinally, it clicked! The connector wasn't about words ending in 'mat,' but terms that PRECEDE it to make a complete word. DOOR + MAT = DOORMAT. FLOOR + MAT = FLOORMAT. And so on. The answer suddenly became clear: PREFIX",
+    "Initially, I was completely stumped. I tried to force-fit things, thinking of things ending in -at. My first thought was something related to a 'diplomat,' which sent me down the wrong path at first. Then, I briefly considered something about 'door mats' and directions, which led nowhere.\n\nMy next attempt involved focusing on the 'mat' part of the connector. I started listing common words ending in 'mat,' but couldn't find prefixes that matched any of the clues. I even considered words that could be anagrammed, leading to a frustrating dead end with 'PLATFORM'.\n\nFinally, it clicked. The connector wasn't about random words ending in 'mat,' but terms that come before 'mat' to make a familiar word: DOOR + MAT = DOORMAT, FLOOR + MAT = FLOORMAT, PLACE + MAT = PLACEMAT, and LAUNDRO + MAT = LAUNDROMAT. Even DIPLO points toward DIPLOMAT. That was the moment the category came into focus.",
     "Every clue in this set—Door, Floor, Place, Diplo, and Laundro—ultimately circles back to Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.”. Door sparks the pattern, Place reinforces it, and Laundro locks the shared idea in place once you view them through that lens.",
     "When Door and Floor appear together, ask how they could relate to Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.” before exploring other stretches. The moment you test that theory, remaining clues like Laundro fall neatly into place."
   ],
@@ -10,7 +10,7 @@
     "Door": "Everyone wipes their shoes on one of these, hopefully!",
     "Floor": "Car owners certainly know about this one.",
     "Place": "Keeps your table clean and adds a touch of style.",
-    "Diplo": "A person representing their country abroad, often at fancy dinners...with placemats!",
+    "Diplo": "This clue nudges you toward diplomat, which uses the same trailing \"mat\" sound and completes the word pattern.",
     "Laundro": "Where you go to wash clothes if you don't have a machine at home."
   },
   "lessons": [
@@ -26,7 +26,7 @@
     },
     {
       "question": "What does 'Diplo' even mean?",
-      "answer": "'Diplo' is short for diplomat. Diplomats are representatives of a country, usually stationed abroad."
+      "answer": "'Diplo' points toward diplomat. It is the oddest clue in the set, but it still follows the puzzle's shared \"-mat\" completion pattern."
     },
     {
       "question": "How does 'Laundro' connect to the answer?",

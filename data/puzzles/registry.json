@@ -2669,16 +2669,16 @@
     "publishDate": "2025-10-15",
     "status": "archived",
     "clues": [
-      "Mercury",
-      "Venus",
-      "Earth",
-      "Mars",
-      "Jupiter"
+      "Rope",
+      "Hair",
+      "Apron",
+      "Football (or soccer) game",
+      "Shoelaces"
     ],
-    "mainAnswer": "Planets",
-    "category": "Planets",
-    "difficultyLevel": "Easy",
-    "shortSummary": "Placeholder puzzle entry to satisfy data integrity tests.",
+    "mainAnswer": "Things that can be tied",
+    "category": "Things that can be tied",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Rope, Hair, Apron, Football (or soccer) game, and Shoelaces all point to the same idea once you notice the verb tying them together.",
     "updatedAt": "2025-10-15T16:00:00.000Z"
   },
   {
