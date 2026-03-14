@@ -63,7 +63,13 @@ export default async function HomePage() {
       "@type": "WebSite",
       name: "Pinpoint Answer Today",
       url: absoluteUrl(routes.home),
+      description: HOME_SEO_DESCRIPTION,
       inLanguage: "en-US",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${absoluteUrl(routes.archive)}?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@context": "https://schema.org",

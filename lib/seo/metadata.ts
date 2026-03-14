@@ -226,12 +226,10 @@ export function buildPageMetadata({
     alternates: {
       canonical: url,
     },
-    robots: noIndex
-      ? {
-          index: false,
-          follow: true,
-        }
-      : undefined,
+    robots: {
+      index: !noIndex,
+      follow: true,
+    },
     openGraph: {
       title,
       description,

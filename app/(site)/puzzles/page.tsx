@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { ArchiveExplorer } from "@/components/archive/ArchiveExplorer";
 import { ArchiveHeader } from "@/components/archive/ArchiveHeader";
@@ -10,8 +11,6 @@ import {
   buildPageMetadata,
 } from "@/lib/seo/metadata";
 import { StructuredData } from "@/components/seo/StructuredData";
-
-export const revalidate = 86400;
 const INITIAL_ARCHIVE_LIMIT = 24;
 
 function getInitialArchiveGroups(groups: Awaited<ReturnType<typeof getArchiveEntriesGrouped>>) {
@@ -31,15 +30,29 @@ function getInitialArchiveGroups(groups: Awaited<ReturnType<typeof getArchiveEnt
   return initialGroups;
 }
 
-export function generateMetadata(): Metadata {
-  return buildPageMetadata({
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}): Promise<Metadata> {
+  const { q } = await searchParams;
+  const metadata = buildPageMetadata({
     title: ARCHIVE_SEO_TITLE,
     description: ARCHIVE_SEO_DESCRIPTION,
     path: routes.archive,
   });
+  if (q) {
+    metadata.alternates = { canonical: absoluteUrl(routes.archive) };
+  }
+  return metadata;
 }
 
-export default async function ArchivePage() {
+export default async function ArchivePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
   const groups = await getArchiveEntriesGrouped();
   const archiveEntries = groups.flatMap((group) => group.items);
   const initialGroups = getInitialArchiveGroups(groups);
@@ -80,7 +93,9 @@ export default async function ArchivePage() {
       <StructuredData items={structuredDataItems} />
       <div className="stack">
         <ArchiveHeader totalCount={archiveEntries.length} />
-        <ArchiveExplorer initialGroups={initialGroups} totalCount={archiveEntries.length} />
+        <Suspense>
+          <ArchiveExplorer initialGroups={initialGroups} totalCount={archiveEntries.length} initialQuery={q ?? ""} />
+        </Suspense>
       </div>
     </main>
   );

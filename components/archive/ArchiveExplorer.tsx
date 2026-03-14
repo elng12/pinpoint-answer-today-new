@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ArchiveCard } from "@/components/archive/ArchiveCard";
 import type { ArchiveGroup } from "@/lib/puzzles/data";
 import { trackClientEvent } from "@/lib/analytics";
@@ -42,14 +43,29 @@ async function fetchArchiveGroups() {
 export function ArchiveExplorer({
   initialGroups,
   totalCount,
+  initialQuery = "",
 }: {
   initialGroups: ArchiveGroup[];
   totalCount: number;
+  initialQuery?: string;
 }) {
-  const [query, setQuery] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get("q") ?? initialQuery);
   const [allGroups, setAllGroups] = useState<ArchiveGroup[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const normalizedQuery = normalizeValue(query);
+
+  const handleQueryChange = (value: string) => {
+    setQuery(value);
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set("q", value);
+    } else {
+      params.delete("q");
+    }
+    router.replace(`?${params.toString()}`, { scroll: false });
+  };
   const activeGroups = allGroups ?? initialGroups;
 
   const filteredGroups = useMemo(() => {
@@ -97,7 +113,7 @@ export function ArchiveExplorer({
               value={query}
               className="archive-search-input"
               placeholder="Search by puzzle number, clue, category, difficulty, or summary"
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => handleQueryChange(event.target.value)}
               onFocus={() => {
                 void ensureAllGroups();
               }}
@@ -117,7 +133,7 @@ export function ArchiveExplorer({
               <button
                 type="button"
                 className="button-secondary archive-search-clear"
-                onClick={() => setQuery("")}
+                onClick={() => handleQueryChange("")}
               >
                 Clear
               </button>
