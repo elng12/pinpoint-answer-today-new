@@ -39,7 +39,7 @@ export async function generateMetadata({
   }
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
-  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues);
+  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   return buildPageMetadata({
     title: seoTitle,
@@ -69,7 +69,7 @@ export default async function DetailPage({
   }
 
   const seoHeadline = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
-  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues);
+  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   const structuredDataItems = [
     {

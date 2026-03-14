@@ -87,7 +87,27 @@ export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): stri
   return candidates.sort((left, right) => right.length - left.length)[0] ?? `LinkedIn Pinpoint ${puzzleNumber}`;
 }
 
-export function buildPuzzleSeoDescription(puzzleNumber: number, clues: string[]): string {
+export function buildPuzzleSeoDescription(
+  puzzleNumber: number,
+  clues: string[],
+  answer?: string,
+): string {
+  // When the answer is known, build a description that reveals it at the end.
+  // Searchers querying "pinpoint NNN answer" get the answer in the snippet,
+  // which increases click-through rate significantly.
+  if (answer) {
+    const suffix = `. Spoiler-safe hints and a full walkthrough included. Answer: ${answer}.`;
+    const prefix = `LinkedIn Pinpoint ${puzzleNumber} clues: `;
+    const maxClueLength = DESCRIPTION_MAX_LENGTH - prefix.length - suffix.length;
+    if (maxClueLength > 0) {
+      const clueText = fitSeoClues(clues, maxClueLength, true);
+      const candidate = `${prefix}${clueText}${suffix}`;
+      if (candidate.length <= DESCRIPTION_MAX_LENGTH) {
+        return candidate;
+      }
+    }
+  }
+
   const descriptionTemplates = [
     {
       prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `,

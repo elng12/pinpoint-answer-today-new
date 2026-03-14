@@ -50,7 +50,7 @@ export function PuzzleDetail({
         </nav>
 
         <p className="eyebrow legacy-detail-kicker">Permanent answer &amp; walkthrough (Pinpoint Today archive)</p>
-        <h1 className="legacy-detail-title">{`LinkedIn Pinpoint ${puzzle.number}: ${puzzle.clues.join(", ")}`}</h1>
+        <h1 className="legacy-detail-title">{`LinkedIn Pinpoint #${puzzle.number} Answer & Walkthrough`}</h1>
         <p className="legacy-detail-published">{`Published on ${formatLegacyDate(puzzle.isoDate)}`}</p>
         <div className="legacy-detail-verified">
           <span aria-hidden="true">✅</span>

@@ -22,10 +22,12 @@ import {
 
 export const revalidate = 86400;
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata(): Promise<Metadata> {
+  const current = await getCurrentPuzzle();
+  const description = `Today's LinkedIn Pinpoint answer is Puzzle #${current.number} — updated daily with spoiler-safe hints, clue explanations, and solutions that protect your streak.`;
   return buildPageMetadata({
     title: HOME_SEO_TITLE,
-    description: HOME_SEO_DESCRIPTION,
+    description,
     path: routes.home,
   });
 }

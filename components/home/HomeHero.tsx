@@ -19,7 +19,7 @@ export function HomeHero({
       <div className="home-hero-inner">
         <span className="home-status-badge">Live now</span>
         <p className="home-hero-kicker">LinkedIn Pinpoint answer hub</p>
-        <h1 className="home-hero-title">Pinpoint Answer Today for Puzzle {puzzle.number}</h1>
+        <h1 className="home-hero-title">Today&apos;s LinkedIn Pinpoint #{puzzle.number} Answer</h1>
         <p className="home-hero-subtitle">{puzzle.shortSummary}</p>
         <div className="button-row home-hero-actions">
           <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>
