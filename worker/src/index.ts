@@ -1752,6 +1752,25 @@ async function notifyCron(env: Env, title: string, lines: string[]): Promise<voi
   }
 }
 
+/**
+ * Returns true if a success notification has already been sent for this date.
+ * Stores a dedup flag in KV with 48-hour TTL to prevent duplicate notifications
+ * when the cron fires multiple times on the same day.
+ */
+async function checkAndMarkCronSuccessNotified(env: Env, date: string): Promise<boolean> {
+  const key = `notify:cron:success:${date}`;
+  try {
+    const existing = await env.PP_DATA.get(key);
+    if (existing !== null) {
+      return true; // already notified
+    }
+    await env.PP_DATA.put(key, "1", { expirationTtl: 172800 }); // 48 hours
+    return false;
+  } catch {
+    return false; // on KV error, allow notification through
+  }
+}
+
 function toZhWebhookReason(reason: string | undefined): string {
   const raw = String(reason || "").trim();
   if (!raw) return "未提供原因";
@@ -3217,9 +3236,12 @@ export default {
       heartbeat.durationMs = durationMs;
       heartbeat.endedAt = new Date().toISOString();
       await persistCronHeartbeat(env, heartbeat);
-      await notifyCron(env, "✅ Worker 定时抓取成功", [
-        ...notifyLines,
-      ]);
+      const alreadyNotified = await checkAndMarkCronSuccessNotified(env, date);
+      if (!alreadyNotified) {
+        await notifyCron(env, "✅ Worker 定时抓取成功", [
+          ...notifyLines,
+        ]);
+      }
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
       console.error("cron error", msg);
