@@ -71,7 +71,7 @@ export function PuzzleFullAnalysis({
           <section className="legacy-analysis-section">
             <div className="legacy-section-title-row">
               <Lightbulb className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-section-title">Puzzle Overview</h2>
+              <h3 className="legacy-section-title">Puzzle Overview</h3>
             </div>
             <ul className="legacy-bullet-list">
               {overviewParagraphs.map((paragraph, index) => (
@@ -83,7 +83,7 @@ export function PuzzleFullAnalysis({
           <section className="legacy-analysis-section">
             <div className="legacy-section-title-row">
               <Lightbulb className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-section-title">Skim this in 30 seconds</h2>
+              <h3 className="legacy-section-title">Skim this in 30 seconds</h3>
             </div>
             <ul className="legacy-bullet-list legacy-bullet-list-compact">
               <li>
@@ -105,7 +105,7 @@ export function PuzzleFullAnalysis({
             <section className="legacy-analysis-section">
               <div className="legacy-section-title-row">
                 <Lightbulb className="legacy-section-icon" aria-hidden />
-                <h2 className="legacy-section-title">How I solved it</h2>
+                <h3 className="legacy-section-title">How I solved it</h3>
               </div>
               <div className="legacy-prose-stack">
                 {puzzle.solutionNarrative.map((paragraph, index) => (
@@ -153,7 +153,7 @@ export function PuzzleFullAnalysis({
           <section className="legacy-analysis-section">
             <div className="legacy-section-title-row">
               <Lightbulb className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-section-title">{`Lessons Learned from Pinpoint #${puzzle.number}`}</h2>
+              <h3 className="legacy-section-title">{`Lessons Learned from Pinpoint #${puzzle.number}`}</h3>
             </div>
             <ol className="legacy-numbered-list">
               {puzzle.lessons.map((lesson, index) => {
@@ -174,7 +174,7 @@ export function PuzzleFullAnalysis({
           <section className="legacy-analysis-section">
             <div className="legacy-section-title-row">
               <Lightbulb className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-section-title">FAQ</h2>
+              <h3 className="legacy-section-title">FAQ</h3>
             </div>
             <div className="legacy-faq-stack">
               {puzzle.faqs.map((faq) => (
