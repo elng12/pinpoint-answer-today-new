@@ -138,6 +138,33 @@ function toParagraphs(value: unknown, fallback: string): string[] {
   return paragraphs.length > 0 ? paragraphs : [source];
 }
 
+/**
+ * Builds a first-person analysis paragraph (~100 words) from available clue
+ * data when the AI-generated detailedBreakdown/overview is missing or too thin.
+ */
+function buildFallbackAnalysis(
+  puzzleNumber: number,
+  words: string[],
+  answer: string,
+  clueDetails: Array<Record<string, unknown>>,
+): string {
+  const clueLines = words.map((word, i) => {
+    const detail = clueDetails[i];
+    const explanation = typeof detail?.explanation === "string"
+      ? detail.explanation
+      : `${word} fits the theme`;
+    return `"${word}" — ${explanation}`;
+  });
+  const clueBlock = clueLines.join(". ");
+  return (
+    `I approached Pinpoint #${puzzleNumber} by testing each clue against possible connecting words. ` +
+    `The five clues were ${words.map((w) => `"${w}"`).join(", ")}. ` +
+    clueBlock + `. ` +
+    `Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. ` +
+    `The answer is "${answer}" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle.`
+  );
+}
+
 function toAnswers(raw: unknown): Answer[] {
   if (!Array.isArray(raw)) return [];
   return raw
@@ -1032,10 +1059,12 @@ async function publishToNewSiteGitHub(
     { question: "What strategy helps with Pinpoint?", answer: "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept." },
   ];
 
-  const fullAnalysis = toParagraphs(
-    analysis.detailedBreakdown || sections.overview,
-    `${words.join(", ")} — all connected by "${answer}".`,
-  );
+  const rawAnalysisText = String(analysis.detailedBreakdown || sections.overview || "").trim();
+  const rawAnalysisWordCount = rawAnalysisText ? rawAnalysisText.split(/\s+/).filter(Boolean).length : 0;
+  const analysisSource = rawAnalysisWordCount >= 80
+    ? rawAnalysisText
+    : buildFallbackAnalysis(puzzleNumber, words, answer, clueDetails as Array<Record<string, unknown>>);
+  const fullAnalysis = toParagraphs(analysisSource, analysisSource);
   const solutionNarrative = toParagraphs(
     sections.solutionEmergence,
     `I started by testing each clue against possible themes. The words ${words.join(", ")} all pointed to "${answer}".`,
@@ -1077,8 +1106,8 @@ async function publishToNewSiteGitHub(
         entry.updatedAt = updatedAt;
       }
     }
-    const alreadyExists = registry.some((e) => e.puzzleNumber === puzzleNumber);
-    if (!alreadyExists) {
+    const existingIndex = registry.findIndex((e) => e.puzzleNumber === puzzleNumber);
+    if (existingIndex === -1) {
       registry.unshift({
         puzzleNumber,
         slug,
@@ -1091,6 +1120,17 @@ async function publishToNewSiteGitHub(
         shortSummary,
         updatedAt,
       });
+    } else {
+      // Puzzle already in registry — promote it to live and refresh metadata
+      registry[existingIndex] = {
+        ...registry[existingIndex],
+        status: "live",
+        clues: words,
+        mainAnswer: answer,
+        category: answer,
+        shortSummary,
+        updatedAt,
+      };
     }
     await putFile(
       "data/puzzles/registry.json",
