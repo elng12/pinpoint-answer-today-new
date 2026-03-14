@@ -102,6 +102,12 @@ const nextConfig: NextConfig = {
         destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
         permanent: true,
       },
+      // Locale slug-format puzzle pages: /en/puzzles/pinpoint-answer-530 → canonical
+      {
+        source: `/${locale}/puzzles/pinpoint-answer-:number(\\d+)`,
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        permanent: true,
+      },
       // Locale-root puzzle alias: /en/pinpoint-answer-678 → /linkedin-pinpoint-answers/pinpoint-answer-678
       {
         source: `/${locale}/pinpoint-answer-:number(\\d+)`,
@@ -180,6 +186,12 @@ const nextConfig: NextConfig = {
 
     // Non-locale legacy paths from the old (default) route group
     const legacyRedirects = [
+      // Slug-format puzzle pages without locale: /puzzles/pinpoint-answer-530 → canonical
+      {
+        source: "/puzzles/pinpoint-answer-:number(\\d+)",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        permanent: true as const,
+      },
       // Old pinpoint archive shortcut → archive
       {
         source: "/pinpoint/archive",
