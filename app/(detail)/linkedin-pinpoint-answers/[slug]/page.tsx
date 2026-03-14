@@ -171,12 +171,12 @@ export default async function DetailPage({
         url: absoluteUrl(routes.home),
       },
       itemReviewed: {
-        "@type": "Game",
+        "@type": "SoftwareApplication",
         name: `LinkedIn Pinpoint #${puzzle.number}`,
         url: absoluteUrl(routes.detail(puzzle.slug)),
-        genre: "Puzzle Game",
-        gamePlatform: "Web browser",
-        publisher: {
+        applicationCategory: "GameApplication",
+        operatingSystem: "Web browser",
+        author: {
           "@type": "Organization",
           name: "LinkedIn",
         },

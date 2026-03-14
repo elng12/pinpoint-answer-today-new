@@ -174,11 +174,18 @@ export function buildSiteMetadata({
   const baseUrl = getSiteUrl();
   const socialImage = buildSocialImage(defaultSocialImagePath, `${siteName} social preview`);
 
+  const verificationCode = process.env.GOOGLE_SITE_VERIFICATION;
+
   return {
     ...buildIconMetadata(),
     metadataBase: new URL(baseUrl),
     title,
     description,
+    ...(verificationCode && {
+      verification: {
+        google: verificationCode,
+      },
+    }),
     alternates: {
       canonical: absoluteUrl("/"),
     },
