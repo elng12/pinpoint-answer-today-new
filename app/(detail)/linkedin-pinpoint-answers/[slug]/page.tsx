@@ -85,6 +85,16 @@ export default async function DetailPage({
       author: {
         "@type": "Organization",
         name: "Pinpoint Answer Today",
+        url: absoluteUrl(routes.home),
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Pinpoint Answer Today",
+        url: absoluteUrl(routes.home),
+        logo: {
+          "@type": "ImageObject",
+          url: absoluteUrl("/favicon/apple-touch-icon.png"),
+        },
       },
     },
     {
@@ -108,7 +118,7 @@ export default async function DetailPage({
         "@type": "Organization",
         name: "LinkedIn",
       },
-      inLanguage: "en_US",
+      inLanguage: "en-US",
       isPartOf: {
         "@type": "WebSite",
         name: "Pinpoint Answer Today",
@@ -121,7 +131,7 @@ export default async function DetailPage({
       name: `How to solve LinkedIn Pinpoint #${puzzle.number}`,
       description: `Step-by-step method to solve LinkedIn Pinpoint #${puzzle.number} using clue grouping and connector validation.`,
       url: absoluteUrl(routes.detail(puzzle.slug)),
-      inLanguage: "en_US",
+      inLanguage: "en-US",
       step: [
         {
           "@type": "HowToStep",
@@ -154,7 +164,7 @@ export default async function DetailPage({
       "@type": "Review",
       name: `Editorial review for LinkedIn Pinpoint #${puzzle.number}`,
       reviewBody: puzzle.shortSummary,
-      inLanguage: "en_US",
+      inLanguage: "en-US",
       author: {
         "@type": "Organization",
         name: "Pinpoint Answer Today Editorial Team",
