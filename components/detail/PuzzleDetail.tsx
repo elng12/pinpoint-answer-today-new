@@ -29,10 +29,14 @@ export function PuzzleDetail({
   puzzle,
   recentPuzzles,
   nextPreview,
+  adjacentPrev,
+  adjacentNext,
 }: {
   puzzle: PuzzleDetailRecord;
   recentPuzzles: ArchiveEntry[];
   nextPreview: NextPreview | null;
+  adjacentPrev: ArchiveEntry | null;
+  adjacentNext: ArchiveEntry | null;
 }) {
   return (
     <div className="legacy-detail-page">
@@ -80,7 +84,13 @@ export function PuzzleDetail({
 
       <PuzzleCheckin puzzleNumber={puzzle.number} />
 
-      <PuzzleFullAnalysis puzzle={puzzle} recentPuzzles={recentPuzzles} nextPreview={nextPreview} />
+      <PuzzleFullAnalysis
+        puzzle={puzzle}
+        recentPuzzles={recentPuzzles}
+        nextPreview={nextPreview}
+        adjacentPrev={adjacentPrev}
+        adjacentNext={adjacentNext}
+      />
     </div>
   );
 }

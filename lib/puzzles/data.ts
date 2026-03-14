@@ -316,6 +316,19 @@ export async function getRecentEntries(
     .map(toArchiveEntry);
 }
 
+export async function getAdjacentEntries(slug: string): Promise<{
+  prev: ArchiveEntry | null;
+  next: ArchiveEntry | null;
+}> {
+  const entries = await getDetailEntries();
+  const idx = entries.findIndex((e) => e.slug === slug);
+  if (idx === -1) return { prev: null, next: null };
+  // entries sorted newest-first: idx-1 = newer, idx+1 = older
+  const next = idx > 0 ? toArchiveEntry(entries[idx - 1]) : null;
+  const prev = idx < entries.length - 1 ? toArchiveEntry(entries[idx + 1]) : null;
+  return { prev, next };
+}
+
 export async function getArchiveEntries(): Promise<ArchiveEntry[]> {
   const entries = await getDetailEntries();
   return entries.map(toArchiveEntry);

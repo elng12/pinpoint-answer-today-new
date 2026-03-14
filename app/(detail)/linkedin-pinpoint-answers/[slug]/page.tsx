@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { getAllDetailSlugs, getNextPreview, getPuzzleBySlug, getRecentEntries } from "@/lib/puzzles/data";
+import { getAdjacentEntries, getAllDetailSlugs, getNextPreview, getPuzzleBySlug, getRecentEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 import {
   absoluteUrl,
@@ -57,10 +57,11 @@ export default async function DetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [puzzle, recentPuzzles, nextPreview] = await Promise.all([
+  const [puzzle, recentPuzzles, nextPreview, adjacent] = await Promise.all([
     getPuzzleBySlug(slug),
     getRecentEntries(10, slug),
     getNextPreview(),
+    getAdjacentEntries(slug),
   ]);
 
   if (!puzzle) {
@@ -225,6 +226,8 @@ export default async function DetailPage({
         puzzle={puzzle}
         recentPuzzles={recentPuzzles}
         nextPreview={nextPreview}
+        adjacentPrev={adjacent.prev}
+        adjacentNext={adjacent.next}
       />
     </main>
   );

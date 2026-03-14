@@ -42,17 +42,20 @@ export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
   nextPreview,
+  adjacentPrev,
+  adjacentNext,
 }: {
   puzzle: PuzzleDetailRecord;
   recentPuzzles: ArchiveEntry[];
   nextPreview: NextPreview | null;
+  adjacentPrev: ArchiveEntry | null;
+  adjacentNext: ArchiveEntry | null;
 }) {
   const overviewParagraphs = puzzle.fullAnalysis.length > 0 ? puzzle.fullAnalysis : [puzzle.shortSummary];
   const firstLesson = puzzle.lessons[0];
   const strategyText = firstLesson
     ? (() => { const p = parseLesson(firstLesson); return p.body; })()
     : "Start with two clues, test one connector, then verify every clue against it.";
-  const previousPuzzle = recentPuzzles[0] ?? null;
 
   return (
     <>
@@ -208,14 +211,22 @@ export function PuzzleFullAnalysis({
         </aside>
       </div>
 
-      {previousPuzzle ? (
+      {(adjacentPrev || adjacentNext) && (
         <nav className="legacy-puzzle-nav" aria-label="Puzzle navigation">
-          <Link className="legacy-puzzle-nav-link" href={routes.detail(previousPuzzle.slug)}>
-            {`← Previous (#${previousPuzzle.number})`}
-          </Link>
-          <span className="legacy-puzzle-nav-spacer" />
+          {adjacentPrev ? (
+            <Link className="legacy-puzzle-nav-link" href={routes.detail(adjacentPrev.slug)}>
+              {`← Pinpoint #${adjacentPrev.number}`}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {adjacentNext ? (
+            <Link className="legacy-puzzle-nav-link" href={routes.detail(adjacentNext.slug)}>
+              {`Pinpoint #${adjacentNext.number} →`}
+            </Link>
+          ) : null}
         </nav>
-      ) : null}
+      )}
     </>
   );
 }
