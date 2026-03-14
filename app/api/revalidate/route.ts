@@ -1,6 +1,24 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 
+async function pingIndexNow(urls: string[]) {
+  const key = process.env.INDEXNOW_KEY;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pinpointanswertoday.app";
+
+  if (!key) return;
+
+  await fetch("https://api.indexnow.org/indexnow", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      host: new URL(siteUrl).hostname,
+      key,
+      keyLocation: `${siteUrl}/api/indexnow-key`,
+      urlList: urls,
+    }),
+  });
+}
+
 /**
  * On-demand ISR revalidation endpoint.
  *
@@ -42,10 +60,16 @@ export async function POST(request: NextRequest) {
   revalidatePath("/puzzles");
   revalidatePath("/next-pinpoint-preview");
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pinpointanswertoday.app";
+  const urlsToIndex: string[] = [`${siteUrl}/`, `${siteUrl}/puzzles`];
+
   if (slug) {
     revalidateTag(`puzzle:${slug}`);
     revalidatePath(`/linkedin-pinpoint-answers/${slug}`);
+    urlsToIndex.push(`${siteUrl}/linkedin-pinpoint-answers/${slug}`);
   }
+
+  void pingIndexNow(urlsToIndex);
 
   return NextResponse.json({ revalidated: true, slug: slug || "all", ts: Date.now() });
 }
