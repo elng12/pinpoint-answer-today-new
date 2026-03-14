@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "validate:data": "node scripts/validate-data.mjs"
+    "validate:data": "node scripts/validate-data.mjs",
+    "prepare": "node scripts/install-hooks.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.577.0",
