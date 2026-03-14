@@ -11,22 +11,33 @@ const LEGAL_LAST_MODIFIED = new Date("2026-01-01T00:00:00.000Z");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
-  const staticRoutes = [
+  const primaryRoutes = [
     { path: routes.home, lastModified: HOME_LAST_MODIFIED },
     { path: routes.archive, lastModified: ARCHIVE_LAST_MODIFIED },
     { path: routes.about, lastModified: ABOUT_LAST_MODIFIED },
+  ];
+
+  const legalRoutes = [
     { path: routes.contact, lastModified: LEGAL_LAST_MODIFIED },
     { path: routes.privacy, lastModified: LEGAL_LAST_MODIFIED },
     { path: routes.terms, lastModified: LEGAL_LAST_MODIFIED },
     { path: routes.disclaimer, lastModified: LEGAL_LAST_MODIFIED },
   ];
 
-  const staticEntries = staticRoutes.map(({ path, lastModified }) => ({
-    url: `${siteUrl}${path}`,
-    lastModified,
-    changeFrequency: "daily" as const,
-    priority: 1.0,
-  }));
+  const staticEntries = [
+    ...primaryRoutes.map(({ path, lastModified }) => ({
+      url: `${siteUrl}${path}`,
+      lastModified,
+      changeFrequency: "daily" as const,
+      priority: 1.0,
+    })),
+    ...legalRoutes.map(({ path, lastModified }) => ({
+      url: `${siteUrl}${path}`,
+      lastModified,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
+  ];
 
   const detailItems = await getSitemapDetailEntries();
   const detailEntries = detailItems.map((item, index) => ({

@@ -13,7 +13,7 @@ async function pingIndexNow(urls: string[]) {
     body: JSON.stringify({
       host: new URL(siteUrl).hostname,
       key,
-      keyLocation: `${siteUrl}/${key}.txt`,
+      keyLocation: `${siteUrl}/api/indexnow-key`,
       urlList: urls,
     }),
   });
