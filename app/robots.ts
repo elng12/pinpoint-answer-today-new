@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/api/indexnow-key"],
         disallow: ["/api/", "/next-pinpoint-preview"],
       },
       { userAgent: "GPTBot", disallow: "/" },
