@@ -1153,9 +1153,16 @@ async function publishToNewSiteGitHub(
     console.log(`[new-site] ISR revalidate: ${revalRes.status}`);
   }
 
-  // ── 4. 飞书通知 ──
+  // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
-  if (feishuWebhook) {
+  const publishNotifyKey = `notify:publish:${puzzleDate}:${puzzleNumber}`;
+  const alreadyPublishNotified = feishuWebhook
+    ? await env.PP_DATA.get(publishNotifyKey).then((v) => v !== null).catch(() => false)
+    : true;
+  if (!alreadyPublishNotified) {
+    await env.PP_DATA.put(publishNotifyKey, "1", { expirationTtl: 172800 }).catch(() => undefined);
+  }
+  if (feishuWebhook && !alreadyPublishNotified) {
     const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
     const clueStr = words.map((w, i) => `${i + 1}. ${w}`).join("\n");
     const msg = {
