@@ -45,7 +45,12 @@ export default async function HomePage() {
       "@type": "Organization",
       name: "Pinpoint Answer Today",
       url: absoluteUrl(routes.home),
-      logo: absoluteUrl("/favicon/apple-touch-icon.png"),
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/favicon/apple-touch-icon.png"),
+        width: 180,
+        height: 180,
+      },
       description: HOME_SEO_DESCRIPTION,
       email: supportEmail,
       contactPoint: [
