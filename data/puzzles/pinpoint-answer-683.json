@@ -1,0 +1,56 @@
+{
+  "puzzleNumber": 683,
+  "slug": "pinpoint-answer-683",
+  "publishDate": "2026-03-14",
+  "isoDate": "2026-03-14",
+  "clues": [
+    "Start",
+    "Positive",
+    "Alarm",
+    "Tooth",
+    "Advertising (don’t believe it!)"
+  ],
+  "answer": "Words that come after \"false\"",
+  "category": "Words that come after \"false\"",
+  "wordHints": {
+    "Start": "Start connects to \"Words that come after \"false\"\"",
+    "Positive": "Positive connects to \"Words that come after \"false\"\"",
+    "Alarm": "Alarm connects to \"Words that come after \"false\"\"",
+    "Tooth": "Tooth connects to \"Words that come after \"false\"\"",
+    "Advertising (don’t believe it!)": "Advertising (don’t believe it!) connects to \"Words that come after \"false\"\""
+  },
+  "fullAnalysis": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #683, Start, Positive, Alarm, Tooth, Advertising (don’t believe it!) consistently map to Words that come after \"false\". That shared fit across all five clues is why Words that come after \"false\" is the correct answer. I will expand this with richer clue context in the full version."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #683, Start, Positive, Alarm, Tooth, Advertising (don’t believe it!) consistently map to Words that come after \"false\". That shared fit across all five clues is why Words that come after \"false\" is the correct answer. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #683?",
+      "answer": "The answer is \"Words that come after \"false\"\". The clues Start, Positive, Alarm, Tooth, Advertising (don’t believe it!) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ]
+}
