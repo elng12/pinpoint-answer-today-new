@@ -208,6 +208,7 @@ const I18N_LOCALE_SET = new Set<string>(SUPPORTED_I18N_LOCALES);
 const I18N_SUMMARY_MIN_WORDS = 20;
 const PUBLISH_SHORT_TEXT_MAX_CHARS = 500;
 const PUBLISH_SECTION_TEXT_MAX_CHARS = 4000;
+const BEIJING_TIME_ZONE = "Asia/Shanghai";
 
 const MS_IN_DAY = 86_400_000;
 const BASELINE_NUMBER = 536;
@@ -446,6 +447,26 @@ function addUtcDays(date: string, deltaDays: number): string {
   if (Number.isNaN(parsed.getTime())) return date;
   parsed.setUTCDate(parsed.getUTCDate() + deltaDays);
   return parsed.toISOString().slice(0, 10);
+}
+
+function formatDateInTimeZone(date: Date, timeZone: string): string {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const year = parts.find((part) => part.type === "year")?.value;
+  const month = parts.find((part) => part.type === "month")?.value;
+  const day = parts.find((part) => part.type === "day")?.value;
+  if (!year || !month || !day) {
+    return date.toISOString().slice(0, 10);
+  }
+  return `${year}-${month}-${day}`;
+}
+
+function getBeijingTodayDate(now = new Date()): string {
+  return formatDateInTimeZone(now, BEIJING_TIME_ZONE);
 }
 
 function normalizedWordSignature(words: string[]): string {
@@ -1332,24 +1353,46 @@ async function publishToNewSiteGitHub(
     await env.PP_DATA.put(publishNotifyKey, "1", { expirationTtl: 172800 }).catch(() => undefined);
   }
   if (feishuWebhook && !alreadyPublishNotified) {
+    const beijingToday = getBeijingTodayDate();
+    const isTodayPublish = puzzleDate === beijingToday;
     const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
     const clueStr = words.map((w, i) => `${i + 1}. ${w}`).join("\n");
+    const publishFields = isTodayPublish
+      ? [
+        { is_short: true, text: { tag: "lark_md", content: `**谜题编号**\n#${puzzleNumber}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**答案**\n${answer}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**发布日期**\n${puzzleDate}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**难度**\nModerate` } },
+      ]
+      : [
+        { is_short: true, text: { tag: "lark_md", content: `**谜题编号**\n#${puzzleNumber}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**答案**\n${answer}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**原始发布日期**\n${puzzleDate}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**补发日期（北京时间）**\n${beijingToday}` } },
+      ];
     const msg = {
       msg_type: "interactive",
       card: {
         header: {
-          title: { tag: "plain_text", content: `✅ 新站谜题 #${puzzleNumber} 已发布` },
-          template: "green",
+          title: {
+            tag: "plain_text",
+            content: isTodayPublish
+              ? `✅ 新站今日谜题 #${puzzleNumber} 已发布`
+              : `🕒 新站历史谜题 #${puzzleNumber} 已补发`,
+          },
+          template: isTodayPublish ? "green" : "grey",
         },
         elements: [
+          ...(!isTodayPublish ? [{
+            tag: "div",
+            text: {
+              tag: "lark_md",
+              content: "这不是今天新题，而是历史谜题补发，避免和今日抓取结果混淆。",
+            },
+          }] : []),
           {
             tag: "div",
-            fields: [
-              { is_short: true, text: { tag: "lark_md", content: `**谜题编号**\n#${puzzleNumber}` } },
-              { is_short: true, text: { tag: "lark_md", content: `**答案**\n${answer}` } },
-              { is_short: true, text: { tag: "lark_md", content: `**发布日期**\n${puzzleDate}` } },
-              { is_short: true, text: { tag: "lark_md", content: `**难度**\nModerate` } },
-            ],
+            fields: publishFields,
           },
           {
             tag: "div",
@@ -2663,8 +2706,8 @@ export default {
   }
 
     if (url.pathname === "/api/pinpoint/today") {
-      const date = url.searchParams.get("d") ?? new Date().toISOString().slice(0, 10);
-      const today = new Date().toISOString().slice(0, 10);
+      const date = url.searchParams.get("d") ?? getBeijingTodayDate();
+      const today = getBeijingTodayDate();
       const body = await env.PP_DATA.get(keyOf(date));
       if (!body) {
         return new Response("not ready", { status: date === today ? 503 : 404 });
@@ -2678,7 +2721,7 @@ export default {
       const secret = url.searchParams.get("secret");
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
-      const date = url.searchParams.get("date") ?? new Date().toISOString().slice(0, 10);
+      const date = url.searchParams.get("date") ?? getBeijingTodayDate();
       const doc: Doc = {
         version: 1,
         puzzleDate: date,
@@ -2702,7 +2745,7 @@ export default {
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
       const requestedDate = String(url.searchParams.get("date") || "").trim();
-      const today = new Date().toISOString().slice(0, 10);
+      const today = getBeijingTodayDate();
       const probeDate = requestedDate || addUtcDays(today, -1);
       const startedAt = Date.now();
 
@@ -2748,7 +2791,7 @@ export default {
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
       const requestedDate = String(url.searchParams.get("date") || "").trim();
-      const probeDate = requestedDate || new Date().toISOString().slice(0, 10);
+      const probeDate = requestedDate || getBeijingTodayDate();
       const mode = normalizeFallbackMode(url.searchParams.get("mode"));
       const shouldNotify = envFlag(url.searchParams.get("notify") || undefined, false);
       const canNotify = hasNotifyWebhook(env);
@@ -2828,7 +2871,7 @@ export default {
       const secret = url.searchParams.get("secret");
       if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
 
-      const date = url.searchParams.get("date") ?? new Date().toISOString().slice(0, 10);
+      const date = url.searchParams.get("date") ?? getBeijingTodayDate();
       const publishEnabled = url.searchParams.get("publish") === "1";
       const forcePublish = url.searchParams.get("force") === "1";
       const autoI18nEnabled = resolveAutoI18nEnabled("manual", url.searchParams.get("i18n"));
@@ -3185,7 +3228,7 @@ export default {
           return new Response('Bad Request: field validation failed', { status: 400 });
         }
 
-        const date = new Date().toISOString().slice(0, 10);
+        const date = getBeijingTodayDate();
         const answers: Answer[] = answersArray.map((w: string, i: number) => ({ rank: i + 1, word: w.trim() }));
         const checksum = `sha256:${await sha256Hex(JSON.stringify(answers))}`;
         const s = JSON.stringify({
@@ -3265,7 +3308,7 @@ export default {
   },
 
   async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext) {
-    const date = new Date().toISOString().slice(0, 10);
+    const date = getBeijingTodayDate();
     const startedAt = Date.now();
     const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
     const legacySiteBaseUrl = getLegacySiteBaseUrl(env);
