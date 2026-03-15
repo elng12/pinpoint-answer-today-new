@@ -2494,6 +2494,52 @@ export default {
       return new Response("seeded");
     }
 
+    if (url.pathname === "/admin/preflight-linkedin") {
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
+      const secret = url.searchParams.get("secret");
+      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
+
+      const requestedDate = String(url.searchParams.get("date") || "").trim();
+      const today = new Date().toISOString().slice(0, 10);
+      const probeDate = requestedDate || addUtcDays(today, -1);
+      const startedAt = Date.now();
+
+      try {
+        const doc = await fetchGraphQLFor(env, probeDate);
+        const words = doc.answers
+          .map((item) => String(item?.word || "").trim())
+          .filter((item) => item.length > 0)
+          .slice(0, 5);
+
+        return new Response(JSON.stringify({
+          ok: true,
+          probeDate,
+          source: doc.source,
+          answersCount: words.length,
+          words,
+          theme: doc.theme || null,
+          mainAnswer: doc.mainAnswer || doc.theme || null,
+          checkedAt: new Date().toISOString(),
+          durationMs: Date.now() - startedAt,
+        }), {
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : String(e);
+        return new Response(JSON.stringify({
+          ok: false,
+          probeDate,
+          error: message,
+          checkedAt: new Date().toISOString(),
+          durationMs: Date.now() - startedAt,
+        }), {
+          status: 500,
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      }
+    }
+
     if (url.pathname === "/admin/run") {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
