@@ -27,6 +27,13 @@
 
 ### 2. ✅ 明确 `/api/graphql` 与 `/api/fallback/worker-pinpoint` 的最终归属（2026-03-13 已完成）
 
+2026-03-15 更新：
+
+- 新仓库现已补回 `app/api/fallback/worker-pinpoint/route.ts`
+- Worker 默认 `FALLBACK_WEBHOOK` 也已重新指向 `https://pinpointanswertoday.app/api/fallback/worker-pinpoint`
+- 当前口径应理解为：这条 gap 在 `2026-03-13` 时真实存在，但已于 `2026-03-15` 修复
+- `api/graphql` 仍未在新仓库恢复；当前主抓取继续直接打 LinkedIn Voyager GraphQL
+
 原始问题：
 
 - 处理前，新仓库 Worker 配置曾指向：

@@ -40,7 +40,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 | `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | ❌ | ✅ |
 | `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致 | ❌ | ✅ |
 | `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
-| `FALLBACK_WEBHOOK_SECRET` | Playwright fallback webhook HMAC 签名密钥（`FALLBACK_WEBHOOK` 已清空，此密钥暂不生效） | ❌ | ❌ |
+| `FALLBACK_WEBHOOK_SECRET` | Worker 调站点 `/api/fallback/worker-pinpoint` 的 HMAC 签名密钥 | ❌ | ✅ |
 | `ADMIN_SECRET` | 受保护管理接口的密钥 | 可选 | ✅ |
 | `WORKER_ADMIN_SECRET` | 预留的 Worker 管理接口独立密钥；当前 `/admin/run` 仍使用 `ADMIN_SECRET` | 可选 | ✅ |
 
