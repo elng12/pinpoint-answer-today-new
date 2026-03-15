@@ -11,7 +11,7 @@ export interface Env {
   GRAPHQL_COOKIE?: string;     // optional: raw cookie string, e.g. "li_at=...; other=..."
   VOYAGER_GRAPHQL_ENDPOINT?: string; // LinkedIn Voyager GraphQL upstream, e.g. https://www.linkedin.com/voyager/api/graphql
   ADMIN_SECRET?: string;       // admin secret for protected endpoints
-  FALLBACK_WEBHOOK?: string;   // optional: Playwright 回退 webhook URL
+  FALLBACK_WEBHOOK?: string;   // optional: fallback webhook URL
   FALLBACK_WEBHOOK_SECRET?: string; // optional: webhook shared secret
 
   ADMIN_PUT_DOC_ENABLED?: string; // 'true' 才启用
@@ -46,11 +46,12 @@ export interface Env {
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
+type DocSource = "graphql" | "fallback-webhook" | "fallback-local" | "fallback-competitor";
 type Doc = {
   version: 1;
   puzzleDate: string;
   answers: Answer[];
-  source: "graphql" | "playwright";
+  source: DocSource;
   fetchedAt: string
   checksum: string;
   theme?: string;
@@ -105,6 +106,7 @@ type FallbackPayload = {
   answers?: GraphQLAnswer[];
   theme?: unknown;
   mainAnswer?: unknown;
+  source?: unknown;
 };
 
 type GraphQLProxyBody = {
@@ -304,6 +306,14 @@ function normalizeBaseUrl(input: string | undefined, fallback: string): string {
     ? raw
     : `https://${raw.replace(/^\/+/g, "")}`;
   return withProtocol.replace(/\/+$/, "");
+}
+
+function normalizeFallbackSource(raw: unknown): DocSource {
+  const source = typeof raw === "string" ? raw.trim() : "";
+  if (source === "fallback-local" || source === "fallback-competitor") {
+    return source;
+  }
+  return "fallback-webhook";
 }
 
 function getPublicSiteBaseUrl(env: Env): string {
@@ -2523,9 +2533,10 @@ async function callPlaywrightFallback(env: Env, date: string): Promise<Doc> {
   const answers = toAnswers(j?.answers);
   const theme = typeof j?.theme === "string" ? j.theme.trim() : undefined;
   const mainAnswer = typeof j?.mainAnswer === "string" ? j.mainAnswer.trim() : theme;
+  const source = normalizeFallbackSource(j?.source);
   const fetchedAt = new Date().toISOString();
   const checksum = `sha256:${await sha256Hex(JSON.stringify(answers))}`;
-  return { version: 1, puzzleDate: date, answers, source: "playwright", fetchedAt, checksum, theme, mainAnswer };
+  return { version: 1, puzzleDate: date, answers, source, fetchedAt, checksum, theme, mainAnswer };
 }
 
 export default {
@@ -3068,7 +3079,7 @@ export default {
           version: 1,
           puzzleDate: date,
           answers,
-          source: 'playwright',
+          source: "fallback-webhook",
           fetchedAt: new Date().toISOString(),
           checksum,
           theme,
