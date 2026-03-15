@@ -107,7 +107,11 @@ type FallbackPayload = {
   theme?: unknown;
   mainAnswer?: unknown;
   source?: unknown;
+  mode?: unknown;
+  date?: unknown;
 };
+
+type FallbackMode = "auto" | "local" | "competitor";
 
 type GraphQLProxyBody = {
   query?: unknown;
@@ -314,6 +318,14 @@ function normalizeFallbackSource(raw: unknown): DocSource {
     return source;
   }
   return "fallback-webhook";
+}
+
+function normalizeFallbackMode(raw: unknown): FallbackMode {
+  const mode = typeof raw === "string" ? raw.trim().toLowerCase() : "";
+  if (mode === "local" || mode === "competitor") {
+    return mode;
+  }
+  return "auto";
 }
 
 function getPublicSiteBaseUrl(env: Env): string {
@@ -2502,7 +2514,7 @@ class FallbackNotReadyError extends Error {
   }
 }
 
-async function callPlaywrightFallback(env: Env, date: string): Promise<Doc> {
+async function callPlaywrightFallback(env: Env, date: string, mode: FallbackMode = "auto"): Promise<Doc> {
   const url = (env.FALLBACK_WEBHOOK || "").trim();
   if (!url) throw new Error("FALLBACK_WEBHOOK not set");
   const res = await fetch(url, {
@@ -2511,7 +2523,7 @@ async function callPlaywrightFallback(env: Env, date: string): Promise<Doc> {
       "content-type": "application/json",
       ...(env.FALLBACK_WEBHOOK_SECRET ? { "x-webhook-secret": (env.FALLBACK_WEBHOOK_SECRET || "").trim() } : {}),
     },
-    body: JSON.stringify({ date }),
+    body: JSON.stringify({ date, mode }),
   });
   if (!res.ok) {
     let remoteError = "";
@@ -2699,6 +2711,54 @@ export default {
         return new Response(JSON.stringify({
           ok: false,
           probeDate,
+          error: message,
+          checkedAt: new Date().toISOString(),
+          durationMs: Date.now() - startedAt,
+        }), {
+          status: 500,
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      }
+    }
+
+    if (url.pathname === "/admin/test-fallback") {
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
+      const secret = url.searchParams.get("secret");
+      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
+
+      const requestedDate = String(url.searchParams.get("date") || "").trim();
+      const probeDate = requestedDate || new Date().toISOString().slice(0, 10);
+      const mode = normalizeFallbackMode(url.searchParams.get("mode"));
+      const startedAt = Date.now();
+
+      try {
+        const doc = await callPlaywrightFallback(env, probeDate, mode);
+        const words = doc.answers
+          .map((item) => String(item?.word || "").trim())
+          .filter((item) => item.length > 0)
+          .slice(0, 5);
+
+        return new Response(JSON.stringify({
+          ok: true,
+          probeDate,
+          mode,
+          source: doc.source,
+          answersCount: words.length,
+          words,
+          theme: doc.theme || null,
+          mainAnswer: doc.mainAnswer || doc.theme || null,
+          checkedAt: new Date().toISOString(),
+          durationMs: Date.now() - startedAt,
+        }), {
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      } catch (e: unknown) {
+        const message = e instanceof Error ? e.message : String(e);
+        return new Response(JSON.stringify({
+          ok: false,
+          probeDate,
+          mode,
           error: message,
           checkedAt: new Date().toISOString(),
           durationMs: Date.now() - startedAt,

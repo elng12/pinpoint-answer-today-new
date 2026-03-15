@@ -5,6 +5,8 @@ export type WorkerFallbackAnswer = {
   word: string;
 };
 
+export type WorkerFallbackMode = "auto" | "local" | "competitor";
+
 export type WorkerFallbackPayload = {
   source: "fallback-local" | "fallback-competitor";
   theme: string;
@@ -34,6 +36,12 @@ function normalizeAnswerWords(words: string[]): WorkerFallbackAnswer[] {
 
 function normalizeDate(date: string): string | null {
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : null;
+}
+
+export function normalizeWorkerFallbackMode(input: unknown): WorkerFallbackMode {
+  const value = typeof input === "string" ? input.trim().toLowerCase() : "";
+  if (value === "local" || value === "competitor") return value;
+  return "auto";
 }
 
 export async function loadBundledWorkerFallback(date: string): Promise<WorkerFallbackPayload | null> {
