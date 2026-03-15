@@ -1,0 +1,56 @@
+{
+  "puzzleNumber": 684,
+  "slug": "pinpoint-answer-684",
+  "publishDate": "2026-03-15",
+  "isoDate": "2026-03-15",
+  "clues": [
+    "English",
+    "Dog",
+    "Damask",
+    "(Hybrid) Tea",
+    "Stop and smell the (🌹🌹🌹)"
+  ],
+  "answer": "Words that come before “roses”",
+  "category": "Words that come before “roses”",
+  "wordHints": {
+    "English": "English connects to \"Words that come before “roses”\"",
+    "Dog": "Dog connects to \"Words that come before “roses”\"",
+    "Damask": "Damask connects to \"Words that come before “roses”\"",
+    "(Hybrid) Tea": "(Hybrid) Tea connects to \"Words that come before “roses”\"",
+    "Stop and smell the (🌹🌹🌹)": "Stop and smell the (🌹🌹🌹) connects to \"Words that come before “roses”\""
+  },
+  "fullAnalysis": [
+    "I approached Pinpoint #684 by testing each clue against possible connecting words. The five clues were \"English\", \"Dog\", \"Damask\", \"(Hybrid) Tea\", \"Stop and smell the (🌹🌹🌹)\". \"English\" — English fits the theme. \"Dog\" — Dog fits the theme. \"Damask\" — Damask fits the theme. \"(Hybrid) Tea\" — (Hybrid) Tea fits the theme. \"Stop and smell the (🌹🌹🌹)\" — Stop and smell the (🌹🌹🌹) fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Words that come before “roses”\" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #684, English, Dog, Damask, (Hybrid) Tea, Stop and smell the (🌹🌹🌹) consistently map to Words that come before “roses”. That shared fit across all five clues is why Words that come before “roses” is the correct answer. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #684?",
+      "answer": "The answer is \"Words that come before “roses”\". The clues English, Dog, Damask, (Hybrid) Tea, Stop and smell the (🌹🌹🌹) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ]
+}
