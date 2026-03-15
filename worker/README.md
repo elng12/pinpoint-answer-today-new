@@ -137,6 +137,7 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$A
 - `secret=<ADMIN_SECRET>`：必填
 - `date=YYYY-MM-DD`：可选，默认今天
 - `mode=auto|local|competitor`：可选，默认 `auto`
+- `notify=1`：可选，测完后把结果发到已配置的飞书 / Slack webhook
 
 模式含义：
 
@@ -152,6 +153,7 @@ export ADMIN_SECRET='<your-admin-secret>'
 curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET"
 curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET&mode=local&date=2026-03-15"
 curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET&mode=competitor"
+curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET&mode=competitor&notify=1"
 ```
 
 返回含义：
@@ -159,6 +161,10 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 - 返回 `200` + JSON：兜底链路当前可用，会带上 `source` 和前 5 个答案词
 - 返回 `500` + JSON：这条兜底模式当前不可用，看 `error`
 - 返回 `401 unauthorized`：`secret` 不对
+- 如果带了 `notify=1`，返回里还会带 `notifyRequested` / `notified`
+- 飞书示例文案：
+  - 成功：`✅ Worker 本地兜底自测正常`
+  - 失败：`❌ Worker 竞争对手兜底自测异常`
 
 ---
 

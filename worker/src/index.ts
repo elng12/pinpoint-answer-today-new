@@ -328,6 +328,26 @@ function normalizeFallbackMode(raw: unknown): FallbackMode {
   return "auto";
 }
 
+function hasNotifyWebhook(env: Env): boolean {
+  return Boolean(
+    String(env.FEISHU_WEBHOOK_URL || env.ALERT_WEBHOOK_URL || "").trim() ||
+    String(env.SLACK_WEBHOOK_URL || "").trim(),
+  );
+}
+
+function getFallbackModeLabel(mode: FallbackMode): string {
+  if (mode === "local") return "本地兜底自测";
+  if (mode === "competitor") return "竞争对手兜底自测";
+  return "兜底自测";
+}
+
+function getFallbackSourceLabel(source: DocSource): string {
+  if (source === "fallback-local") return "本地兜底";
+  if (source === "fallback-competitor") return "竞争对手兜底";
+  if (source === "fallback-webhook") return "fallback webhook";
+  return "官方抓取";
+}
+
 function getPublicSiteBaseUrl(env: Env): string {
   return normalizeBaseUrl(env.NEW_SITE_URL, "https://pinpointanswertoday.app");
 }
@@ -2730,6 +2750,8 @@ export default {
       const requestedDate = String(url.searchParams.get("date") || "").trim();
       const probeDate = requestedDate || new Date().toISOString().slice(0, 10);
       const mode = normalizeFallbackMode(url.searchParams.get("mode"));
+      const shouldNotify = envFlag(url.searchParams.get("notify") || undefined, false);
+      const canNotify = hasNotifyWebhook(env);
       const startedAt = Date.now();
 
       try {
@@ -2738,6 +2760,19 @@ export default {
           .map((item) => String(item?.word || "").trim())
           .filter((item) => item.length > 0)
           .slice(0, 5);
+        const durationMs = Date.now() - startedAt;
+        const notified = shouldNotify && canNotify;
+
+        if (notified) {
+          await notifyCron(env, `✅ Worker ${getFallbackModeLabel(mode)}正常`, [
+            `日期: ${probeDate}`,
+            `模式: ${mode}`,
+            `实际来源: ${getFallbackSourceLabel(doc.source)}`,
+            `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
+            `答案: ${words.join(" | ") || "（空）"}`,
+            `耗时(ms): ${durationMs}`,
+          ]);
+        }
 
         return new Response(JSON.stringify({
           ok: true,
@@ -2749,19 +2784,37 @@ export default {
           theme: doc.theme || null,
           mainAnswer: doc.mainAnswer || doc.theme || null,
           checkedAt: new Date().toISOString(),
-          durationMs: Date.now() - startedAt,
+          durationMs,
+          notifyRequested: shouldNotify,
+          notified,
+          ...(shouldNotify && !canNotify ? { notifySkipped: "no webhook configured" } : {}),
         }), {
           headers: { "content-type": "application/json; charset=utf-8" },
         });
       } catch (e: unknown) {
         const message = e instanceof Error ? e.message : String(e);
+        const durationMs = Date.now() - startedAt;
+        const notified = shouldNotify && canNotify;
+
+        if (notified) {
+          await notifyCron(env, `❌ Worker ${getFallbackModeLabel(mode)}异常`, [
+            `日期: ${probeDate}`,
+            `模式: ${mode}`,
+            `错误: ${message}`,
+            `耗时(ms): ${durationMs}`,
+          ]);
+        }
+
         return new Response(JSON.stringify({
           ok: false,
           probeDate,
           mode,
           error: message,
           checkedAt: new Date().toISOString(),
-          durationMs: Date.now() - startedAt,
+          durationMs,
+          notifyRequested: shouldNotify,
+          notified,
+          ...(shouldNotify && !canNotify ? { notifySkipped: "no webhook configured" } : {}),
         }), {
           status: 500,
           headers: { "content-type": "application/json; charset=utf-8" },
