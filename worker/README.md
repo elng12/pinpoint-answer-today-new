@@ -166,6 +166,45 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$A
 
 ---
 
+## 观察期检查项
+
+适用场景：刚改完发布链路、刚部署 Worker、或刚切换生产配置后的 1 到 3 天观察期。
+
+重点看这 5 项：
+
+1. Vercel Deployments
+   - 正常预期：同一题不会连续刷出很多个 production build
+   - 如果同一题在几分钟内反复出现 `add answer data` / `mark live` 对应部署，说明仍有重复写入
+
+2. Worker Cron 触发
+   - 当前生产窗口：北京时间 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20`
+   - 正常预期：cron 可以重复触发，但不会因为同样内容反复提交 GitHub
+
+3. Worker 日志关键词
+   - 建议用 `cd worker && npm run tail`
+   - 正常预期能看到以下任一日志，说明去重逻辑在生效：
+     - `skip unchanged`
+     - `GitHub publish skipped ... (no content changes)`
+     - `direct publish fallback skipped (already done)`
+
+4. GitHub `main` 提交频率
+   - 正常预期：每道题只出现必要的少量提交，不应再看到同一题短时间内反复提交多轮
+   - 如果又出现同题连续提交，优先回查 Worker 日志和 `/admin/run` 使用记录
+
+5. 页面结果
+   - 正常预期：首页、归档页、当天详情页都能更新到当天内容
+   - 如果 Worker 已成功发布但页面没更新，优先检查 revalidate 是否成功
+
+建议异常判定：
+
+- 同一题在 10 分钟内出现多次 production build
+- Worker 日志持续推 GitHub，但没有任何 `skip unchanged` / `no content changes`
+- GitHub `main` 再次出现同题多轮重复提交
+- 手动触发 `/admin/run` 返回 `401` 或 `503`
+- Worker 返回成功，但页面仍是旧内容
+
+---
+
 ## 迁移状态
 
 当前不是 PR 1 阶段，而是阶段 C 已执行后的观察期。
