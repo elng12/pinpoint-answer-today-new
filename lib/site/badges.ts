@@ -33,6 +33,15 @@ export const footerBadges = [
     dofollow: true,
   },
   {
+    name: "ToolPilot",
+    image: "https://www.toolpilot.ai/cdn/shop/files/f-b_690x151_crop_center.png?v=1695882701",
+    url: "https://www.toolpilot.ai/",
+    alt: "Featured on ToolPilot",
+    width: 300,
+    height: 66,
+    dofollow: true,
+  },
+  {
     kind: "text",
     name: "MossAI Tools",
     text: "MossAI Tools",
