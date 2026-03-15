@@ -38,6 +38,7 @@ tsconfig.tsbuildinfo
 
 # temporary files and screenshots
 tmp/
+output/
 *.png
 *.jpg
 *.jpeg
