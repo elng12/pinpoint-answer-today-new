@@ -25,6 +25,11 @@
 - `GA4 + gtag` 的基础环境变量命名
 - 详情页 FAQ / 长解释 / 提示块的数据结构
 
+## 运营备注
+
+- `public/startupranking1371053120245110.html` 是 `Startup Ranking` 认领验证文件。
+- 后续发版时不要删除、改名或移动它，线上需要继续保留 `/startupranking1371053120245110.html`。
+
 ## 运行
 
 ```bash
