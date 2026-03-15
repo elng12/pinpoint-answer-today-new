@@ -1278,7 +1278,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
   const answer = String(doc.mainAnswer || doc.theme || "Pinpoint connector").trim() || "Pinpoint connector";
   const timeoutMs = parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000);
-  const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "openai/gpt-4o-mini");
+  const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "google/gemini-2.0-flash-001");
 
   try {
     const draftResp = await postSiteJson(
@@ -1369,7 +1369,7 @@ async function localizePublishOne(
   }
   const doneKey = i18nPublishDoneKeyOf(puzzleDate, locale);
   const runningKey = i18nPublishRunningKeyOf(puzzleDate, locale);
-  const i18nModel = selectModel(env.AUTO_I18N_MODEL, "openai/gpt-4o-mini");
+  const i18nModel = selectModel(env.AUTO_I18N_MODEL, "google/gemini-2.0-flash-001");
 
   if (await env.PP_DATA.get(doneKey)) {
     return {

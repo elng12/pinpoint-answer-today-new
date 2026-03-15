@@ -112,7 +112,7 @@ export async function generatePuzzleContentFromPrompt(
   options: PuzzleGenerationOptions,
   puzzleData?: PuzzleDataForAI,
 ): Promise<AIGeneratedContent> {
-  const { provider = "openai", model = "gpt-4o-mini", apiEndpoint } = options;
+  const { provider = "openai", model = "google/gemini-2.0-flash-001", apiEndpoint } = options;
 
   if (provider === "anthropic") {
     return callAnthropicAPI(prompt, apiKey, model, apiEndpoint, puzzleData);
@@ -307,4 +307,3 @@ function validateAndFixGeneratedContent(
 
   return parsed as AIGeneratedContent;
 }
-

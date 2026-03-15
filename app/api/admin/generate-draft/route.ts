@@ -50,7 +50,7 @@ function resolveDefaultModel(
   if (provider === "anthropic") {
     return process.env.ANTHROPIC_MODEL || "claude-3-5-sonnet-20241022";
   }
-  return mode === "draft" ? "gpt-4o-mini" : "gpt-4o";
+  return mode === "draft" ? "google/gemini-2.0-flash-001" : "google/gemini-2.0-flash-001";
 }
 
 function asRecord(value: unknown): DraftRecord | null {
