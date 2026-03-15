@@ -125,6 +125,43 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$A
 
 ---
 
+## 手动兜底自测
+
+当前兜底自测入口是 Worker 管理接口 `/admin/test-fallback`。
+
+- 生产地址：`https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback`
+- 这个接口只做检查，不写 KV、不发 GitHub、不触发 revalidate
+
+常用参数：
+
+- `secret=<ADMIN_SECRET>`：必填
+- `date=YYYY-MM-DD`：可选，默认今天
+- `mode=auto|local|competitor`：可选，默认 `auto`
+
+模式含义：
+
+- `auto`：按真实线上兜底顺序测试，先看站点本地当天数据，没有再看竞争对手
+- `local`：只测“本地当天 JSON 是否能接住”
+- `competitor`：只测“竞争对手兜底是否还能抓到今天线索”；这个模式只支持今天
+
+推荐命令：
+
+```bash
+export ADMIN_SECRET='<your-admin-secret>'
+
+curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET"
+curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET&mode=local&date=2026-03-15"
+curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret=$ADMIN_SECRET&mode=competitor"
+```
+
+返回含义：
+
+- 返回 `200` + JSON：兜底链路当前可用，会带上 `source` 和前 5 个答案词
+- 返回 `500` + JSON：这条兜底模式当前不可用，看 `error`
+- 返回 `401 unauthorized`：`secret` 不对
+
+---
+
 ## 关键配置
 
 | 配置项 | 值 |

@@ -2,10 +2,13 @@ import { NextResponse } from "next/server";
 import {
   loadBundledWorkerFallback,
   loadCompetitorWorkerFallback,
+  normalizeWorkerFallbackMode,
+  type WorkerFallbackMode,
 } from "@/lib/puzzles/worker-fallback";
 
 type WorkerRequestBody = {
   date?: unknown;
+  mode?: unknown;
 };
 
 export const runtime = "nodejs";
@@ -35,17 +38,66 @@ export async function POST(req: Request) {
 
     const today = new Date().toISOString().slice(0, 10);
     let requestedDate = today;
+    let requestedMode: WorkerFallbackMode = "auto";
 
     try {
       const body = (await req.json()) as WorkerRequestBody;
       requestedDate = normalizeRequestedDate(body?.date) || today;
+      requestedMode = normalizeWorkerFallbackMode(body?.mode);
     } catch {
       requestedDate = today;
+      requestedMode = "auto";
+    }
+
+    if (requestedMode === "local") {
+      const localPayload = await loadBundledWorkerFallback(requestedDate);
+      if (!localPayload) {
+        return NextResponse.json(
+          { error: "not found", mode: requestedMode, date: requestedDate },
+          { status: 404, headers: buildNoStoreHeaders() },
+        );
+      }
+
+      return NextResponse.json(
+        { ...localPayload, mode: requestedMode, date: requestedDate },
+        { status: 200, headers: buildNoStoreHeaders() },
+      );
+    }
+
+    if (requestedMode === "competitor") {
+      if (requestedDate !== today) {
+        return NextResponse.json(
+          {
+            error: "competitor mode only supports today",
+            mode: requestedMode,
+            date: requestedDate,
+            today,
+          },
+          { status: 400, headers: buildNoStoreHeaders() },
+        );
+      }
+
+      try {
+        const competitorPayload = await loadCompetitorWorkerFallback();
+        return NextResponse.json(
+          { ...competitorPayload, mode: requestedMode, date: requestedDate },
+          { status: 200, headers: buildNoStoreHeaders() },
+        );
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error ?? "unknown");
+        return NextResponse.json(
+          { error: "not ready", mode: requestedMode, date: requestedDate, detail: message },
+          {
+            status: 503,
+            headers: buildNoStoreHeaders({ "Retry-After": "300" }),
+          },
+        );
+      }
     }
 
     const localPayload = await loadBundledWorkerFallback(requestedDate);
     if (localPayload) {
-      return NextResponse.json(localPayload, {
+      return NextResponse.json({ ...localPayload, mode: requestedMode, date: requestedDate }, {
         status: 200,
         headers: buildNoStoreHeaders(),
       });
@@ -60,7 +112,7 @@ export async function POST(req: Request) {
 
     try {
       const competitorPayload = await loadCompetitorWorkerFallback();
-      return NextResponse.json(competitorPayload, {
+      return NextResponse.json({ ...competitorPayload, mode: requestedMode, date: requestedDate }, {
         status: 200,
         headers: buildNoStoreHeaders(),
       });
