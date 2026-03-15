@@ -81,7 +81,7 @@
 - [x] 阶段 B 结果确认：`/admin/run` 返回 `200`，详情页 `pinpoint-answer-682` 可访问，响应头出现 `x-vercel-cache: REVALIDATED`
 - [x] 已将 staging 的 `GITHUB_TOKEN_NEW_SITE` 替换为新生成的 `github_pat` token，并复跑阶段 B 验证通过
 - [x] 已将 production 的 `GITHUB_TOKEN_NEW_SITE` 同步替换为同口径 fine-grained PAT，生产 Worker `/health` 校验正常
-- [x] 已完成一次 `staging` enrich 真机验证：`publish=1&force=1&enrich=1&i18n=0`
+- [x] 已完成一次 `staging` enrich 真机验证：当时手动请求使用过 `publish=1&force=1&enrich=1&i18n=0`；其中 `enrich=1` 属于历史参数，当前代码已不再读取
 - [x] enrich 结果确认：`enrich.status=enriched`，站点 `generate-draft` 已能通过 OpenRouter 生成 AI 内容
 - [x] 已修正新站 Vercel production 的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL` 写入值，去除尾部换行
 
@@ -98,6 +98,13 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$S
 curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/health"
 curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status"
 ```
+
+现行手动触发口径补充：
+
+- 当前 `/admin/run` 使用 `ADMIN_SECRET` 校验，不是 `WORKER_ADMIN_SECRET`
+- 推荐参数：`publish=1&force=1&i18n=0`
+- 如果不写 `i18n=0`，当前代码会按手动触发默认开启 i18n
+- `enrich=1` 仅是历史演练残留，当前代码不再读取
 
 ### PR 3 已完成（2026-03-13）
 
@@ -143,7 +150,8 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status
 
 ### Staging enrich 验证记录（2026-03-13）
 
-- 手动触发参数：`publish=1&force=1&enrich=1&i18n=0`
+- 历史手动触发参数：`publish=1&force=1&enrich=1&i18n=0`
+- 当前口径说明：`enrich=1` 已不再被代码读取；现行建议统一使用 `publish=1&force=1&i18n=0`
 - 最终结果：`enrich.status=enriched`
 - 站点侧阻塞已清除：`/api/admin/generate-draft` 不再返回 `404` / `401`
 - AI 生成链路已确认：新站 Vercel production 现使用 OpenRouter 口径

@@ -42,7 +42,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 | `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
 | `FALLBACK_WEBHOOK_SECRET` | Playwright fallback webhook HMAC 签名密钥（`FALLBACK_WEBHOOK` 已清空，此密钥暂不生效） | ❌ | ❌ |
 | `ADMIN_SECRET` | 受保护管理接口的密钥 | 可选 | ✅ |
-| `WORKER_ADMIN_SECRET` | Worker 管理接口独立密钥 | 可选 | ✅ |
+| `WORKER_ADMIN_SECRET` | 预留的 Worker 管理接口独立密钥；当前 `/admin/run` 仍使用 `ADMIN_SECRET` | 可选 | ✅ |
 
 **注意**：enrichment 不直接调用 OpenRouter，而是通过 `SITE_API_TOKEN` 调站点自己的 `/api/admin/generate-draft`，再由站点侧调用 AI API。
 
@@ -82,6 +82,46 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 2. Repository permissions 至少给 `Contents: Read and write`；其余权限默认不加
 3. 用 `wrangler secret put GITHUB_TOKEN_NEW_SITE --env staging` 替换 staging 临时 token
 4. staging 再手动跑一次 `/admin/run?publish=1&force=1&i18n=0`，确认仍能发布后，再同样替换 production
+
+---
+
+## 手动触发
+
+当前手动触发入口是 Worker 管理接口 `/admin/run`。
+
+- 生产地址：`https://pinpoint-worker.2296744453m.workers.dev/admin/run`
+- staging 地址：`https://pinpoint-worker-staging.2296744453m.workers.dev/admin/run`
+- shadow 地址：`https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run`
+
+当前代码口径：
+
+- `/admin/run` 必须带 `secret=<ADMIN_SECRET>`，否则会返回 `401`
+- `WORKER_ADMIN_SECRET` 目前不是 `/admin/run` 的校验口径；不要把它当成当前手动开关密码
+- 手动触发时，如果不显式传 `i18n=0`，当前代码默认会开启 i18n
+- `enrich=1` 是旧演练参数，当前代码已不读取；现行口径不要再依赖它
+
+常用参数：
+
+- `publish=1`：抓取后继续发布
+- `force=1`：即使命中“疑似昨天旧数据”规则也继续跑发布链路
+- `date=YYYY-MM-DD`：手动指定日期
+- `i18n=0` 或 `i18n=1`：关闭或开启多语言
+
+推荐命令：
+
+```bash
+export ADMIN_SECRET='<your-admin-secret>'
+
+curl "https://pinpoint-worker.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET&publish=1&force=1&i18n=0"
+curl "https://pinpoint-worker-staging.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET&publish=1&force=1&i18n=0"
+curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET"
+```
+
+返回含义：
+
+- 返回 `200` + JSON：本次手动触发已进入并执行完成
+- 返回 `401 unauthorized`：`secret` 不对
+- 返回 `503 admin secret not configured`：目标环境没有配置 `ADMIN_SECRET`
 
 ---
 

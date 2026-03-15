@@ -187,6 +187,8 @@ const keyOf = (d: string) => `pinpoint:${d}`;
 const quickPublishKeyOf = (d: string) => `publish:${d}:quick_done`;
 const enrichPublishDoneKeyOf = (d: string) => `publish:${d}:enrich_done`;
 const enrichPublishRunningKeyOf = (d: string) => `publish:${d}:enrich_running`;
+const directNewSitePublishDoneKeyOf = (d: string, signature: string) => `publish:${d}:new_site_direct:${signature}:done`;
+const directNewSitePublishRunningKeyOf = (d: string, signature: string) => `publish:${d}:new_site_direct:${signature}:running`;
 const i18nPublishDoneKeyOf = (d: string, locale: string) => `publish:${d}:i18n:${locale}:done`;
 const i18nPublishRunningKeyOf = (d: string, locale: string) => `publish:${d}:i18n:${locale}:running`;
 const cronHeartbeatLatestKey = "monitor:cron:last";
@@ -997,6 +999,7 @@ async function publishToNewSiteGitHub(
   const newSiteUrl = String(env.NEW_SITE_URL || "").trim();
   const revalidateSecret = String(env.NEW_SITE_REVALIDATE_SECRET || "").trim();
   const slug = `pinpoint-answer-${puzzleNumber}`;
+  const encodedBranchRef = branch.split("/").map((segment) => encodeURIComponent(segment)).join("/");
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -1005,27 +1008,115 @@ async function publishToNewSiteGitHub(
     "Content-Type": "application/json",
     "User-Agent": "pinpoint-worker/1.0",
   };
+  const decodeGitHubFileContent = (content: string): string =>
+    new TextDecoder().decode(Uint8Array.from(atob(content.replace(/\n/g, "")), (char) => char.charCodeAt(0)));
+  const sameStringArray = (existing: unknown, next: string[]): boolean =>
+    Array.isArray(existing) &&
+    existing.length === next.length &&
+    existing.every((item, index) => String(item ?? "").trim() === next[index]);
 
   const getFile = async (path: string): Promise<{ content: string; sha: string } | null> => {
-    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`, { headers });
+    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`, { headers });
     if (res.status === 404) return null;
     if (!res.ok) throw new Error(`GitHub GET ${path}: ${res.status}`);
     return res.json() as Promise<{ content: string; sha: string }>;
   };
 
-  const putFile = async (path: string, content: string, message: string, sha?: string): Promise<void> => {
-    const body: Record<string, unknown> = {
-      message,
-      content: btoa(new TextEncoder().encode(content).reduce((s, b) => s + String.fromCharCode(b), "")),
-      branch,
-    };
-    if (sha) body.sha = sha;
-    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-      method: "PUT",
+  const getJson = async (url: string, errorPrefix: string): Promise<JsonRecord> => {
+    const res = await fetch(url, { headers });
+    if (!res.ok) throw new Error(`${errorPrefix}: ${res.status} ${await res.text()}`);
+    return (asRecord(await res.json()) ?? {}) as JsonRecord;
+  };
+
+  const postJson = async (url: string, body: Record<string, unknown>, errorPrefix: string): Promise<JsonRecord> => {
+    const res = await fetch(url, {
+      method: "POST",
       headers,
       body: JSON.stringify(body),
     });
-    if (!res.ok) throw new Error(`GitHub PUT ${path}: ${res.status} ${await res.text()}`);
+    if (!res.ok) throw new Error(`${errorPrefix}: ${res.status} ${await res.text()}`);
+    return (asRecord(await res.json()) ?? {}) as JsonRecord;
+  };
+
+  const patchJson = async (url: string, body: Record<string, unknown>, errorPrefix: string): Promise<void> => {
+    const res = await fetch(url, {
+      method: "PATCH",
+      headers,
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) throw new Error(`${errorPrefix}: ${res.status} ${await res.text()}`);
+  };
+
+  const stagedFiles: Array<{ path: string; content: string }> = [];
+  const stageFile = (
+    path: string,
+    content: string,
+    existingFile?: { content: string; sha: string } | null,
+  ): boolean => {
+    if (existingFile && decodeGitHubFileContent(existingFile.content) === content) {
+      console.log(`[new-site] skip unchanged ${path}`);
+      return false;
+    }
+    stagedFiles.push({ path, content });
+    return true;
+  };
+
+  const commitStagedFiles = async (message: string): Promise<void> => {
+    const refJson = await getJson(
+      `https://api.github.com/repos/${repo}/git/ref/heads/${encodedBranchRef}`,
+      `GitHub GET ref ${branch}`,
+    );
+    const currentCommitSha = String(asRecord(refJson.object)?.sha || "").trim();
+    if (!currentCommitSha) {
+      throw new Error(`GitHub ref ${branch} missing commit sha`);
+    }
+
+    const commitJson = await getJson(
+      `https://api.github.com/repos/${repo}/git/commits/${currentCommitSha}`,
+      `GitHub GET commit ${currentCommitSha}`,
+    );
+    const baseTreeSha = String(asRecord(commitJson.tree)?.sha || "").trim();
+    if (!baseTreeSha) {
+      throw new Error(`GitHub commit ${currentCommitSha} missing tree sha`);
+    }
+
+    const treeJson = await postJson(
+      `https://api.github.com/repos/${repo}/git/trees`,
+      {
+        base_tree: baseTreeSha,
+        tree: stagedFiles.map((entry) => ({
+          path: entry.path,
+          mode: "100644",
+          type: "blob",
+          content: entry.content,
+        })),
+      },
+      "GitHub POST tree",
+    );
+    const nextTreeSha = String(treeJson.sha || "").trim();
+    if (!nextTreeSha) {
+      throw new Error("GitHub tree response missing sha");
+    }
+
+    const newCommitJson = await postJson(
+      `https://api.github.com/repos/${repo}/git/commits`,
+      {
+        message,
+        tree: nextTreeSha,
+        parents: [currentCommitSha],
+      },
+      "GitHub POST commit",
+    );
+    const newCommitSha = String(newCommitJson.sha || "").trim();
+    if (!newCommitSha) {
+      throw new Error("GitHub commit response missing sha");
+    }
+
+    await patchJson(
+      `https://api.github.com/repos/${repo}/git/refs/heads/${encodedBranchRef}`,
+      { sha: newCommitSha, force: false },
+      `GitHub PATCH ref ${branch}`,
+    );
   };
 
   // Extract data from enrichedPayload
@@ -1089,26 +1180,32 @@ async function publishToNewSiteGitHub(
   }, null, 2);
 
   const existingSlug = await getFile(slugPath);
-  await putFile(slugPath, slugJson, `feat: add Pinpoint #${puzzleNumber} answer data`, existingSlug?.sha);
+  const slugChanged = stageFile(
+    slugPath,
+    slugJson,
+    existingSlug,
+  );
 
   // ── 2. Update registry.json ──
   const registryFile = await getFile("data/puzzles/registry.json");
+  let registryChanged = false;
   if (!registryFile) {
     console.warn("[new-site] registry.json not found, skipping registry update");
   } else {
-    const registryRaw = new TextDecoder().decode(Uint8Array.from(atob(registryFile.content.replace(/\n/g, "")), c => c.charCodeAt(0)));
+    const registryRaw = decodeGitHubFileContent(registryFile.content);
     const registry = JSON.parse(registryRaw) as Array<Record<string, unknown>>;
     const updatedAt = new Date().toISOString();
-    // Mark previous live as archived
-    for (const entry of registry) {
-      if (entry.status === "live") {
-        entry.status = "archived";
-        entry.updatedAt = updatedAt;
-      }
-    }
+    const nextRegistry = registry.map((entry) => ({ ...entry }));
     const existingIndex = registry.findIndex((e) => e.puzzleNumber === puzzleNumber);
+
     if (existingIndex === -1) {
-      registry.unshift({
+      for (const entry of nextRegistry) {
+        if (entry.status === "live") {
+          entry.status = "archived";
+          entry.updatedAt = updatedAt;
+        }
+      }
+      nextRegistry.unshift({
         puzzleNumber,
         slug,
         publishDate: puzzleDate,
@@ -1121,24 +1218,54 @@ async function publishToNewSiteGitHub(
         updatedAt,
       });
     } else {
-      // Puzzle already in registry — promote it to live and refresh metadata
-      registry[existingIndex] = {
-        ...registry[existingIndex],
-        status: "live",
-        clues: words,
-        mainAnswer: answer,
-        category: answer,
-        shortSummary,
-        updatedAt,
-      };
+      for (let index = 0; index < nextRegistry.length; index += 1) {
+        const entry = nextRegistry[index];
+        if (index !== existingIndex && entry.status === "live") {
+          entry.status = "archived";
+          entry.updatedAt = updatedAt;
+        }
+      }
+
+      const existingEntry = nextRegistry[existingIndex];
+      const needsEntryUpdate =
+        existingEntry.status !== "live" ||
+        String(existingEntry.slug ?? "") !== slug ||
+        String(existingEntry.publishDate ?? "") !== puzzleDate ||
+        !sameStringArray(existingEntry.clues, words) ||
+        String(existingEntry.mainAnswer ?? "") !== answer ||
+        String(existingEntry.category ?? "") !== answer ||
+        String(existingEntry.difficultyLevel ?? "Moderate") !== "Moderate" ||
+        String(existingEntry.shortSummary ?? "") !== shortSummary;
+
+      if (needsEntryUpdate) {
+        existingEntry.puzzleNumber = puzzleNumber;
+        existingEntry.slug = slug;
+        existingEntry.publishDate = puzzleDate;
+        existingEntry.status = "live";
+        existingEntry.clues = words;
+        existingEntry.mainAnswer = answer;
+        existingEntry.category = answer;
+        existingEntry.difficultyLevel = "Moderate";
+        existingEntry.shortSummary = shortSummary;
+        existingEntry.updatedAt = updatedAt;
+      }
     }
-    await putFile(
+
+    registryChanged = stageFile(
       "data/puzzles/registry.json",
-      JSON.stringify(registry, null, 2),
-      `feat: publish Pinpoint #${puzzleNumber} — mark live`,
-      registryFile.sha,
+      JSON.stringify(nextRegistry, null, 2),
+      registryFile,
     );
   }
+
+  const hasContentChanges = slugChanged || registryChanged;
+  if (!hasContentChanges) {
+    console.log(`[new-site] GitHub publish skipped for #${puzzleNumber} (no content changes)`);
+    return;
+  }
+
+  await commitStagedFiles(`feat: publish Pinpoint #${puzzleNumber}`);
+  console.log(`[new-site] committed ${stagedFiles.length} file(s) for #${puzzleNumber}`);
 
   // ── 3. Trigger ISR revalidation on the new site ──
   if (newSiteUrl && revalidateSecret) {
@@ -1229,8 +1356,39 @@ async function maybeDirectPublishToNewSite(
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
   const payload = createQuickPayload(publicSiteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+  const signature = (await sha256Hex(JSON.stringify({ puzzleNumber, payload }))).slice(0, 24);
+  const doneKey = directNewSitePublishDoneKeyOf(puzzleDate, signature);
+  const runningKey = directNewSitePublishRunningKeyOf(puzzleDate, signature);
 
-  await publishToNewSiteGitHub(env, puzzleDate, doc, payload, puzzleNumber);
+  if (await env.PP_DATA.get(doneKey)) {
+    console.log("[new-site] direct publish fallback skipped (already done)", {
+      puzzleDate,
+      puzzleNumber,
+      signature,
+    });
+    return { applied: false };
+  }
+  if (await env.PP_DATA.get(runningKey)) {
+    console.log("[new-site] direct publish fallback skipped (already running)", {
+      puzzleDate,
+      puzzleNumber,
+      signature,
+    });
+    return { applied: false };
+  }
+
+  await env.PP_DATA.put(runningKey, new Date().toISOString(), {
+    expirationTtl: 60 * 30,
+  });
+
+  try {
+    await publishToNewSiteGitHub(env, puzzleDate, doc, payload, puzzleNumber);
+    await env.PP_DATA.put(doneKey, new Date().toISOString(), {
+      expirationTtl: 60 * 60 * 24 * 14,
+    });
+  } finally {
+    await env.PP_DATA.delete(runningKey);
+  }
 
   console.warn("[new-site] direct publish fallback used", {
     puzzleDate,
