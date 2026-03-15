@@ -46,7 +46,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
           </div>
 
           <div className="footer-block">
-            <h3 className="eyebrow">{isDetailPage ? "Recent answers" : "Recent Pinpoint Answers"}</h3>
+            <p className="eyebrow">{isDetailPage ? "Recent answers" : "Recent Pinpoint Answers"}</p>
             <ul className="footer-link-list footer-link-list-compact">
               {recentEntries.map((entry) => (
                 <li key={entry.slug}>
@@ -58,7 +58,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
 
           <div className="footer-link-grid">
             <div className="footer-block">
-              <h3 className="eyebrow">Quick Links</h3>
+              <p className="eyebrow">Quick Links</p>
               <ul className="footer-link-list footer-link-list-compact">
                 {quickLinks.map((link) => (
                   <li key={`${link.label}-${link.href}`}>
@@ -69,7 +69,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             </div>
 
             <div className="footer-block">
-              <h3 className="eyebrow">Support</h3>
+              <p className="eyebrow">Support</p>
               <ul className="footer-link-list">
                 {supportLinks.map((link) => (
                   <li key={link.href}>
@@ -84,7 +84,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             </div>
 
             <div className="footer-block">
-              <h3 className="eyebrow">Legal &amp; Privacy</h3>
+              <p className="eyebrow">Legal &amp; Privacy</p>
               <ul className="footer-link-list">
                 {legalLinks.map((link) => (
                   <li key={link.href}>

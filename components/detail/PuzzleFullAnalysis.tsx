@@ -15,24 +15,71 @@ function parseLesson(lesson: LessonItem): { title: string | null; body: string }
   return { title: null, body: lesson };
 }
 
+function extractConnectorTerm(source: string, markers: string[]): string | null {
+  const lowerSource = source.toLowerCase();
+
+  for (const marker of markers) {
+    const markerIndex = lowerSource.indexOf(marker);
+    if (markerIndex === -1) continue;
+
+    const remainder = source.slice(markerIndex + marker.length).trim();
+    if (!remainder) continue;
+
+    const quoted = remainder.match(/^[“"'`]?(.+?)[”"'`]/);
+    if (quoted?.[1]) {
+      return quoted[1].trim();
+    }
+
+    return remainder
+      .split(/\s+[—-]\s+/)[0]
+      .split(/\s+in\s+/i)[0]
+      .split(/[.!?]/)[0]
+      .trim()
+      .replace(/^[“"'`]+|[”"'`]+$/g, "");
+  }
+
+  return null;
+}
+
+function singularizeFinalWord(value: string): string {
+  const parts = value.split(/\s+/);
+  const last = parts.at(-1);
+
+  if (!last) return value;
+
+  let normalizedLast = last;
+  if (last.endsWith("ies") && last.length > 3) {
+    normalizedLast = `${last.slice(0, -3)}y`;
+  } else if (last.endsWith("s") && !last.endsWith("ss") && last.length > 1) {
+    normalizedLast = last.slice(0, -1);
+  }
+
+  return [...parts.slice(0, -1), normalizedLast].join(" ");
+}
+
 function buildExamplePhrase(clue: string, answer: string, category: string): string {
   const answerLower = answer.toLowerCase();
-  const categoryLower = category.toLowerCase();
-  const clueLower = clue.toLowerCase();
+  const beforeTarget =
+    extractConnectorTerm(answer, ["words that come before "]) ??
+    extractConnectorTerm(category, ["words that come before "]);
+  const afterTarget =
+    extractConnectorTerm(answer, ["words that follow ", "words after "]) ??
+    extractConnectorTerm(category, ["words that follow ", "words after "]);
 
-  if (answerLower.startsWith("words that follow ")) {
-    const prefix = answerLower.replace("words that follow ", "").trim();
-    return `${prefix} ${clueLower}`;
+  if (afterTarget) {
+    return `${afterTarget} ${clue}`;
   }
 
-  if (answerLower.startsWith("words after ")) {
-    const prefix = answerLower.replace("words after ", "").trim();
-    return `${prefix} ${clueLower}`;
+  if (beforeTarget) {
+    if (clue.includes("(🌹🌹🌹)")) {
+      return clue.replace("(🌹🌹🌹)", beforeTarget);
+    }
+    return `${clue} ${singularizeFinalWord(beforeTarget)}`;
   }
 
-  if (categoryLower.startsWith("shades of ")) {
-    const suffix = categoryLower.replace("shades of ", "").trim();
-    return `${clueLower} ${suffix}`;
+  if (answerLower.startsWith("shades of ")) {
+    const suffix = answer.slice(answerLower.indexOf("shades of ") + "shades of ".length).trim();
+    return `${clue} ${suffix}`;
   }
 
   return clue;
@@ -119,7 +166,7 @@ export function PuzzleFullAnalysis({
             <div className="legacy-clue-table-shell">
               <div className="legacy-table-kicker-row">
                 <Table className="legacy-section-icon" aria-hidden />
-                <span className="legacy-table-kicker">{`How Each Clue Connects to "${puzzle.category}"`}</span>
+                <h3 className="legacy-table-kicker">{`How Each Clue Connects to "${puzzle.category}"`}</h3>
               </div>
               <table
                 className="legacy-clue-table"
@@ -179,7 +226,7 @@ export function PuzzleFullAnalysis({
             <div className="legacy-faq-stack">
               {puzzle.faqs.map((faq) => (
                 <article className="legacy-faq-card" key={faq.question}>
-                  <h3 className="legacy-faq-question">{faq.question}</h3>
+                  <h4 className="legacy-faq-question">{faq.question}</h4>
                   <p className="copy">{faq.answer}</p>
                 </article>
               ))}
@@ -187,8 +234,8 @@ export function PuzzleFullAnalysis({
           </section>
         </section>
 
-        <aside className="legacy-next-shell">
-          <h3 className="legacy-next-title">Recent Pinpoint answers</h3>
+        <aside className="legacy-next-shell" aria-label="Recent Pinpoint answers">
+          <h2 className="legacy-next-title">Recent Pinpoint answers</h2>
           {nextPreview ? (
             <Link className="legacy-next-link" href={routes.preview}>
               {`Preview Puzzle #${nextPreview.number} - expected ${nextPreview.expectedDate}`}

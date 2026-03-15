@@ -13,44 +13,45 @@
   "answer": "Words that come before “roses”",
   "category": "Words that come before “roses”",
   "wordHints": {
-    "English": "English connects to \"Words that come before “roses”\"",
-    "Dog": "Dog connects to \"Words that come before “roses”\"",
-    "Damask": "Damask connects to \"Words that come before “roses”\"",
-    "(Hybrid) Tea": "(Hybrid) Tea connects to \"Words that come before “roses”\"",
-    "Stop and smell the (🌹🌹🌹)": "Stop and smell the (🌹🌹🌹) connects to \"Words that come before “roses”\""
+    "English": "\"English rose\" is a familiar phrase and points to a classic garden-rose style, so the clue naturally fits before \"roses.\"",
+    "Dog": "\"Dog rose\" is a real wild rose species, which makes this one of the clearest direct matches in the set.",
+    "Damask": "\"Damask rose\" is a historic rose variety known for its fragrance and long use in perfume production.",
+    "(Hybrid) Tea": "\"Hybrid tea rose\" is one of the best-known modern rose classes, especially for long-stemmed blooms.",
+    "Stop and smell the (🌹🌹🌹)": "The idiom \"stop and smell the roses\" gives away the flower theme and helps unlock the earlier clues."
   },
   "fullAnalysis": [
-    "I approached Pinpoint #684 by testing each clue against possible connecting words. The five clues were \"English\", \"Dog\", \"Damask\", \"(Hybrid) Tea\", \"Stop and smell the (🌹🌹🌹)\". \"English\" — English fits the theme. \"Dog\" — Dog fits the theme. \"Damask\" — Damask fits the theme. \"(Hybrid) Tea\" — (Hybrid) Tea fits the theme. \"Stop and smell the (🌹🌹🌹)\" — Stop and smell the (🌹🌹🌹) fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Words that come before “roses”\" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle."
+    "Pinpoint #684 revolves around the word \"roses.\" Four clues point to rose varieties or rose-related phrases: English rose, dog rose, Damask rose, and hybrid tea rose. The final clue, \"Stop and smell the roses,\" confirms the flower theme and makes the shared connector obvious.",
+    "What makes this puzzle feel tricky at first is that the first four clues do not immediately look related. The idiom clue changes the frame from general vocabulary to flowers, and once that shift happens, each earlier clue clicks neatly into place as a rose name or rose phrase."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #684, English, Dog, Damask, (Hybrid) Tea, Stop and smell the (🌹🌹🌹) consistently map to Words that come before “roses”. That shared fit across all five clues is why Words that come before “roses” is the correct answer. I will expand this with richer clue context in the full version."
+    "When I first looked at English, Dog, Damask, and (Hybrid) Tea, they did not seem to belong in the same category. The breakthrough was the clue \"Stop and smell the roses,\" which shifted my thinking toward flowers instead of abstract wordplay. After that, the pattern became straightforward: English rose, dog rose, Damask rose, and hybrid tea rose all work cleanly, so the answer is \"Words that come before “roses”.\""
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Let the strongest clue reframe the puzzle",
+      "body": "When a set feels disconnected, one clue often changes the whole frame of reference. Here, the idiom clue points directly to flowers."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "Check for real phrases, not just loose associations",
+      "body": "The best Pinpoint solutions usually form familiar phrases or named categories, such as dog rose or hybrid tea rose."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Verify every clue against one connector",
+      "body": "A good answer does not solve only three or four clues. It should account for all five without forcing the wording."
     }
   ],
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #684?",
-      "answer": "The answer is \"Words that come before “roses”\". The clues English, Dog, Damask, (Hybrid) Tea, Stop and smell the (🌹🌹🌹) all share this connection."
+      "answer": "The answer is \"Words that come before “roses”\" because the clues point to English rose, dog rose, Damask rose, hybrid tea rose, and the idiom \"stop and smell the roses.\""
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "Why are English, Dog, Damask, and (Hybrid) Tea related?",
+      "answer": "They each form a rose-related phrase or category: English rose, dog rose, Damask rose, and hybrid tea rose."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "What makes \"Stop and smell the roses\" the key clue?",
+      "answer": "It is the clue that makes the flower theme explicit. Once you think of roses, the earlier clues become much easier to connect."
     }
   ]
 }

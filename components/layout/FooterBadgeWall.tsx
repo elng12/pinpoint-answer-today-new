@@ -41,7 +41,7 @@ export function FooterBadgeWall({ badges, heading }: FooterBadgeWallProps) {
 
   return (
     <section aria-label={heading} className="footer-badge-wall">
-      <h3 className="eyebrow footer-badge-heading">{heading}</h3>
+      <p className="eyebrow footer-badge-heading">{heading}</p>
       <ul className="footer-badge-list">
         {badges.map((badge) => {
           const rel = getFooterBadgeRel(badge);

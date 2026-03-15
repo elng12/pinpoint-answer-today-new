@@ -26,9 +26,8 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/favicon/favicon-96x96.png"
-            alt=""
+            alt="Pinpoint Answer Today logo"
             className="brand-mark"
-            aria-hidden
             width={22}
             height={22}
             decoding="async"
