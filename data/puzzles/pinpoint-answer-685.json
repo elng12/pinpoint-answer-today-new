@@ -13,21 +13,21 @@
   "answer": "Magazines (with global readership / versions)",
   "category": "Magazines (with global readership / versions)",
   "wordHints": {
-    "Time": "Time is a well-known news magazine, providing weekly coverage of current events, politics, and culture.",
-    "The Economist": "The Economist is a global magazine that covers economics, current affairs, and business from a global perspective.",
-    "Cosmopolitan": "Cosmopolitan is a women's lifestyle magazine that focuses on fashion, beauty, relationships, and celebrity culture.",
-    "National Geographic": "National Geographic is known for its photography and articles about world cultures, geography, history, and science.",
-    "Reader’s Digest": "Reader's Digest is a general interest magazine known for its condensed articles, anecdotes, and humor, aimed at a broad audience."
+    "Time": "Time publishes numerous international editions, adapting content for different regions and languages.",
+    "The Economist": "The Economist offers global news and analysis, printed and read worldwide, with regional adaptations.",
+    "Cosmopolitan": "Cosmopolitan features many international editions, tailored to local cultures and interests.",
+    "National Geographic": "National Geographic is known for its globally focused explorations and photography, published in multiple languages.",
+    "Reader’s Digest": "Reader's Digest is widely circulated in many countries and languages, featuring condensed articles and varied content."
   },
   "fullAnalysis": [
-    "At first glance, Time, The Economist, Cosmopolitan do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific. That is why guesses like \"New York\" and \"Informative\" can feel plausible at the start. The clue that changes the frame is \"Cosmopolitan\".",
-    "From there, These publications boast wide circulation and varied content for diverse audiences explains the board more cleanly than broader labels. Once that frame clicks, entries like A popular news magazine, A global business magazine, A women's lifestyle magazine stop feeling scattered and start feeling like members of the same family. The clues are diverse in subject matter, obscuring their common format. The brands are so well-known that solvers might not think about the higher category.",
-    "I did not have a clean category from the first clue. I initially drifted toward Newspapers, which felt plausible for a moment, but while some newspapers have national reach, the clues are more focused on general interest, lifestyle, and visual content, unlike standard news reporting.",
-    "The turn came when I let cosmopolitan lead the solve instead of treating it like an outlier. Once I read the board through these publications boast wide circulation and varied content for diverse audiences, clues that had seemed broad started feeling like members of the same category, especially A popular news magazine and A global business magazine. At that point, the final connector was the only reading that explained the full set without stretching anything."
+    "At first glance, Time, The Economist, Cosmopolitan do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific. That is why guesses like \"New York\" and \"Periodicals\" can feel plausible at the start. The clue that changes the frame is \"Cosmopolitan\".",
+    "From there, Titles known for their global editions and diverse content explains the board more cleanly than broader labels. Once that frame clicks, entries like News magazine, Business magazine, Women's magazine stop feeling scattered and start feeling like members of the same family. The clues span diverse topics, obscuring the common format and international focus that links them.",
+    "I did not have a clean category from the first clue. I initially drifted toward Periodicals, which felt plausible for a moment, but while all are periodicals, the connection is more specific and relates to their international reach and format.",
+    "The turn came when I let cosmopolitan lead the solve instead of treating it like an outlier. Once I read the board through titles known for their global editions and diverse content, clues that had seemed broad started feeling like members of the same category, especially News magazine and Business magazine. At that point, the final connector was the only reading that explained the full set without stretching anything."
   ],
   "solutionNarrative": [
-    "I did not have a clean category from the first clue. I initially drifted toward Newspapers, which felt plausible for a moment, but while some newspapers have national reach, the clues are more focused on general interest, lifestyle, and visual content, unlike standard news reporting.",
-    "The turn came when I let cosmopolitan lead the solve instead of treating it like an outlier. Once I read the board through these publications boast wide circulation and varied content for diverse audiences, clues that had seemed broad started feeling like members of the same category, especially A popular news magazine and A global business magazine. At that point, the final connector was the only reading that explained the full set without stretching anything."
+    "I did not have a clean category from the first clue. I initially drifted toward Periodicals, which felt plausible for a moment, but while all are periodicals, the connection is more specific and relates to their international reach and format.",
+    "The turn came when I let cosmopolitan lead the solve instead of treating it like an outlier. Once I read the board through titles known for their global editions and diverse content, clues that had seemed broad started feeling like members of the same category, especially News magazine and Business magazine. At that point, the final connector was the only reading that explained the full set without stretching anything."
   ],
   "lessons": [
     {
@@ -40,7 +40,7 @@
     },
     {
       "title": "Prefer precise category fit over broad topic logic",
-      "body": "Consider the type of source material. Is it a book, periodical, website, or something else?"
+      "body": "Consider format, audience, and reach when seeking connections between seemingly disparate items."
     }
   ],
   "faqs": [
@@ -50,11 +50,11 @@
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #685?",
-      "answer": "The connection is These publications boast wide circulation and varied content for diverse audiences. Each clue belongs inside the same category once the board is read in the right frame."
+      "answer": "The connection is Titles known for their global editions and diverse content. Each clue belongs inside the same category once the board is read in the right frame."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #685?",
-      "answer": "Cosmopolitan is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues are diverse in subject matter, obscuring their common format. The brands are so well-known that solvers might not think about the higher category."
+      "answer": "Cosmopolitan is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues span diverse topics, obscuring the common format and international focus that links them."
     }
   ]
 }
