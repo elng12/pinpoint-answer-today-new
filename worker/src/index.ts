@@ -167,7 +167,7 @@ function buildFallbackAnalysis(
     `The five clues were ${words.map((w) => `"${w}"`).join(", ")}. ` +
     clueBlock + `. ` +
     `Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. ` +
-    `The answer is "${answer}" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle.`
+    `The answer is "${answer}" because it is the first reading that explains all five clues without forcing any of them.`
   );
 }
 
@@ -247,6 +247,7 @@ type I18nPublishOptions = {
 
 type DirectNewSitePublishResult = {
   applied: boolean;
+  alreadyDone?: boolean;
   detailUrl?: string;
   payload?: JsonRecord;
   puzzleNumber?: number;
@@ -526,20 +527,20 @@ async function isLikelyStaleCandidate(
   return { stale: false };
 }
 
-function createQuickOverview(puzzleNumber: number, words: string[], mainAnswer: string): string {
+function createQuickOverview(puzzleNumber: number, words: string[]): string {
   return [
     `LinkedIn Pinpoint #${puzzleNumber} just unlocked, and this is the fastest verified update.`,
-    `The board clues are ${words.join(", ")}, and all five point to ${mainAnswer}.`,
-    `This rapid post gives you the answer immediately so you can protect your streak.`,
+    `The board clues are ${words.join(", ")}, and the set looks broader than it really is at first.`,
+    `This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared.`,
     `A deeper clue-by-clue walkthrough will be added shortly.`,
   ].join(" ");
 }
 
-function createQuickSolution(puzzleNumber: number, words: string[], mainAnswer: string): string {
+function createQuickSolution(puzzleNumber: number, words: string[]): string {
   return [
     `I tested each clue against the same connector and checked whether the phrase stayed natural.`,
-    `For #${puzzleNumber}, ${words.join(", ")} consistently map to ${mainAnswer}.`,
-    `That shared fit across all five clues is why ${mainAnswer} is the correct answer.`,
+    `For #${puzzleNumber}, ${words.join(", ")} only start to make sense once one shared reading locks the set together.`,
+    `That shared fit across all five clues is why the final connector holds up cleanly.`,
     `I will expand this with richer clue context in the full version.`,
   ].join(" ");
 }
@@ -547,8 +548,8 @@ function createQuickSolution(puzzleNumber: number, words: string[], mainAnswer: 
 function createQuickPayload(siteBaseUrl: string, puzzleDate: string, doc: Doc, puzzleNumber: number, words: string[]) {
   const answer = String(doc.mainAnswer || doc.theme || "Pinpoint connector").trim() || "Pinpoint connector";
   const clueLabel = words.join(", ");
-  const overview = createQuickOverview(puzzleNumber, words, answer);
-  const solution = createQuickSolution(puzzleNumber, words, answer);
+  const overview = createQuickOverview(puzzleNumber, words);
+  const solution = createQuickSolution(puzzleNumber, words);
   const summary = `LinkedIn Pinpoint #${puzzleNumber}: ${clueLabel}.`;
 
   return {
@@ -905,6 +906,51 @@ async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs: numbe
   }
 }
 
+async function waitForPublicPage(url: string): Promise<boolean> {
+  const timeoutMs = 120_000;
+  const intervalMs = 5_000;
+  const requestTimeoutMs = 15_000;
+  const startedAt = Date.now();
+  let attempt = 0;
+
+  while (Date.now() - startedAt < timeoutMs) {
+    attempt += 1;
+
+    try {
+      const probeUrl = new URL(url);
+      probeUrl.searchParams.set("__publish_probe", `${Date.now()}`);
+
+      const res = await fetchWithTimeout(
+        probeUrl.toString(),
+        {
+          method: "GET",
+          headers: {
+            "cache-control": "no-cache",
+            pragma: "no-cache",
+          },
+          redirect: "follow",
+        },
+        requestTimeoutMs,
+      );
+
+      if (res.status === 200) {
+        console.log(`[new-site] page ready after ${attempt} probe(s): ${url}`);
+        return true;
+      }
+
+      console.log(`[new-site] page probe ${attempt} returned ${res.status}: ${url}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error ?? "unknown");
+      console.warn(`[new-site] page probe ${attempt} failed: ${message}`);
+    }
+
+    await sleep(intervalMs);
+  }
+
+  console.warn(`[new-site] page did not become ready within ${timeoutMs}ms: ${url}`);
+  return false;
+}
+
 async function postSiteJson(
   url: string,
   token: string,
@@ -1221,9 +1267,12 @@ async function publishToNewSiteGitHub(
   const fullAnalysis = toParagraphs(analysisSource, analysisSource);
   const solutionNarrative = toParagraphs(
     sections.solutionEmergence,
-    `I started by testing each clue against possible themes. The words ${words.join(", ")} all pointed to "${answer}".`,
+    `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
   );
-  const shortSummary = String(enrichedPayload.summary || `${words.join(", ")} — all connected by "${answer}".`);
+  const shortSummary = String(
+    enrichedPayload.summary ||
+      `Pinpoint #${puzzleNumber}: ${words.join(", ")}. Spoiler-safe hints and the full walkthrough are inside.`,
+  );
 
   // ── 1. Write {slug}.json ──
   const slugPath = `data/puzzles/${slug}.json`;
@@ -1343,6 +1392,9 @@ async function publishToNewSiteGitHub(
     console.log(`[new-site] ISR revalidate: ${revalRes.status}`);
   }
 
+  const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
+  const pageReady = pageUrl ? await waitForPublicPage(pageUrl) : false;
+
   // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
   const publishNotifyKey = `notify:publish:${puzzleDate}:${puzzleNumber}`;
@@ -1355,7 +1407,6 @@ async function publishToNewSiteGitHub(
   if (feishuWebhook && !alreadyPublishNotified) {
     const beijingToday = getBeijingTodayDate();
     const isTodayPublish = puzzleDate === beijingToday;
-    const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
     const clueStr = words.map((w, i) => `${i + 1}. ${w}`).join("\n");
     const publishFields = isTodayPublish
       ? [
@@ -1398,7 +1449,14 @@ async function publishToNewSiteGitHub(
             tag: "div",
             text: { tag: "lark_md", content: `**线索**\n${clueStr}` },
           },
-          ...(pageUrl ? [{
+          ...(!pageReady && pageUrl ? [{
+            tag: "div",
+            text: {
+              tag: "lark_md",
+              content: "页面还在等待 Vercel 完成部署，本条通知先不附详情链接，通常 1-2 分钟后即可访问。",
+            },
+          }] : []),
+          ...(pageReady && pageUrl ? [{
             tag: "action",
             actions: [{
               tag: "button",
@@ -1441,17 +1499,24 @@ async function maybeDirectPublishToNewSite(
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
   const payload = createQuickPayload(publicSiteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+  const detailUrl = `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
   const signature = (await sha256Hex(JSON.stringify({ puzzleNumber, payload }))).slice(0, 24);
   const doneKey = directNewSitePublishDoneKeyOf(puzzleDate, signature);
   const runningKey = directNewSitePublishRunningKeyOf(puzzleDate, signature);
 
   if (await env.PP_DATA.get(doneKey)) {
-    console.log("[new-site] direct publish fallback skipped (already done)", {
+    console.log("[new-site] direct publish fallback already satisfied", {
       puzzleDate,
       puzzleNumber,
       signature,
     });
-    return { applied: false };
+    return {
+      applied: false,
+      alreadyDone: true,
+      detailUrl,
+      payload,
+      puzzleNumber,
+    };
   }
   if (await env.PP_DATA.get(runningKey)) {
     console.log("[new-site] direct publish fallback skipped (already running)", {
@@ -1483,7 +1548,7 @@ async function maybeDirectPublishToNewSite(
 
   return {
     applied: true,
-    detailUrl: `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`,
+    detailUrl,
     payload,
     puzzleNumber,
   };
@@ -2949,11 +3014,19 @@ export default {
           let quickResult = await quickPublishToSite(env, date, doc);
           const quickFallback = await maybeDirectPublishToNewSite(env, date, doc, quickResult.reason);
           const usedQuickFallback = quickFallback.applied;
+          const reusedQuickFallback = Boolean(quickFallback.alreadyDone);
           if (usedQuickFallback) {
             quickResult = {
               status: "published",
               puzzleNumber: quickFallback.puzzleNumber,
               reason: `direct new-site publish fallback: ${quickResult.reason || "unknown"}`,
+            };
+            result.quickDetailUrl = quickFallback.detailUrl;
+          } else if (reusedQuickFallback) {
+            quickResult = {
+              status: "skipped",
+              puzzleNumber: quickFallback.puzzleNumber,
+              reason: "quick publish already done today",
             };
             result.quickDetailUrl = quickFallback.detailUrl;
           }
@@ -3400,11 +3473,18 @@ export default {
         const quickDuration = Date.now() - quickStarted;
         const quickFallback = await maybeDirectPublishToNewSite(env, date, doc, quickResult.reason);
         const usedQuickFallback = quickFallback.applied;
+        const reusedQuickFallback = Boolean(quickFallback.alreadyDone);
         if (usedQuickFallback) {
           quickResult = {
             status: "published",
             puzzleNumber: quickFallback.puzzleNumber,
             reason: `direct new-site publish fallback: ${quickResult.reason || "unknown"}`,
+          };
+        } else if (reusedQuickFallback) {
+          quickResult = {
+            status: "skipped",
+            puzzleNumber: quickFallback.puzzleNumber,
+            reason: "quick publish already done today",
           };
         }
         if (quickResult.status === "published") {
@@ -3418,7 +3498,12 @@ export default {
           notifyLines.push(`详情: ${detailUrl}`);
           heartbeat.quickPublish = stampHeartbeatStage(heartbeat.quickPublish, "published", quickResult.reason);
         } else {
-          notifyLines.push(`快速发布: 跳过 (${toZhWebhookReason(quickResult.reason || "no reason")}, ${quickDuration}ms)`);
+          if (reusedQuickFallback && quickFallback.detailUrl) {
+            notifyLines.push(`快速发布: 今日已存在新站结果 #${quickFallback.puzzleNumber ?? inferPuzzleNumber(undefined, date)} (${quickDuration}ms)`);
+            notifyLines.push(`详情: ${quickFallback.detailUrl}`);
+          } else {
+            notifyLines.push(`快速发布: 跳过 (${toZhWebhookReason(quickResult.reason || "no reason")}, ${quickDuration}ms)`);
+          }
           heartbeat.quickPublish = stampHeartbeatStage(
             heartbeat.quickPublish,
             "skipped",
