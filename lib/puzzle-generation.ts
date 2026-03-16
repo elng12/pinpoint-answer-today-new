@@ -62,7 +62,7 @@ export type PuzzleGenerationOptions = {
 };
 
 const DEBUG = process.env.NODE_ENV === "development" || process.env.DEBUG_AI === "true";
-const LLM_TEMPLATE_VERSION = "pinpoint-v6";
+const LLM_TEMPLATE_VERSION = "pinpoint-v7";
 
 function debugInfo(message: string, details?: Record<string, unknown>) {
   if (!DEBUG) return;
@@ -78,9 +78,27 @@ export function buildPuzzlePrompt(puzzleData: PuzzleDataForAI): string {
   const normalizedClues = (puzzleData.rawWords || []).map((clue) => normalizeClueForAI(clue));
   const clues = normalizedClues.map((item) => item.normalized).join(", ");
   const originalClues = (puzzleData.rawWords || []).join(", ");
+  const answerPattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const patternSpecificRules =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? `
+Pattern-specific rules:
+- This is a phrase-pattern board, not a broad category board.
+- connectorSummary should stay spoiler-safe and concise, like a phrase pattern label rather than the exact answer.
+- clueDetails.phrase should be the exact natural phrase that fits each clue.
+- whyItWorks should explain why that phrase is a clean fit.
+`.trim()
+      : `
+Pattern-specific rules:
+- This is a category board, not a before/after phrase board.
+- connectorSummary should be a spoiler-safe category bridge, not a vague slogan.
+- clueDetails.phrase should usually be a natural member label inside the category.
+- If the answer is "Types of X", clueDetails.phrase should usually end with the category noun when natural.
+- whyItWorks should explain why each clue belongs in the category.
+`.trim();
 
   return `
-You are a senior content writer for "Pinpoint Answer Today". Use the V6 Slot Template.
+You are a senior content writer for "Pinpoint Answer Today". Use the V7 Slot Template.
 
 Output ONLY a valid JSON object with this exact shape:
 {
@@ -131,6 +149,8 @@ Writing rules:
   - Difficulty varies
   - This is the hallmark of a well-crafted puzzle
 - Prefer concrete phrase logic over broad vague category talk.
+
+${patternSpecificRules}
 
 Input data:
 - Puzzle #${puzzleData.puzzleNumber}
@@ -310,7 +330,8 @@ function parseAIResponse(content: string): ParsedAIResponse {
 type AnswerPattern =
   | { kind: "before"; token: string }
   | { kind: "after"; token: string }
-  | { kind: "category" };
+  | { kind: "typed-category"; noun: string; singularNoun: string }
+  | { kind: "category"; label: string };
 
 function normalizeText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
@@ -350,7 +371,21 @@ function detectAnswerPattern(answer: string): AnswerPattern {
   if (before?.[1]) return { kind: "before", token: before[1] };
   const after = answer.match(/^Words that come after\s+"([^"]+)"$/i);
   if (after?.[1]) return { kind: "after", token: after[1] };
-  return { kind: "category" };
+  const typedCategory = answer.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (typedCategory?.[2]) {
+    const noun = typedCategory[2].replace(/["“”]/g, "").trim();
+    const words = noun.split(/\s+/);
+    const lastWord = words[words.length - 1] || noun;
+    let singularLastWord = lastWord;
+    if (/ies$/i.test(lastWord)) {
+      singularLastWord = `${lastWord.slice(0, -3)}y`;
+    } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
+      singularLastWord = lastWord.slice(0, -1);
+    }
+    const singularNoun = [...words.slice(0, -1), singularLastWord].join(" ").trim();
+    return { kind: "typed-category", noun, singularNoun: singularNoun || noun };
+  }
+  return { kind: "category", label: stripQuotes(answer).trim() || "the shared category" };
 }
 
 function buildConnectorSummaryFromAnswer(answer: string): string {
@@ -358,13 +393,25 @@ function buildConnectorSummaryFromAnswer(answer: string): string {
   if (pattern.kind === "before" || pattern.kind === "after") {
     return `a phrase pattern built around ${pattern.token}`;
   }
-  return "a shared category pattern";
+  if (pattern.kind === "typed-category") {
+    return `a category board about ${pattern.noun}`;
+  }
+  return "a shared category board";
 }
 
 function buildFallbackPhrase(clue: string, answer: string): string {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "before") return `${clue} ${pattern.token}`.trim();
   if (pattern.kind === "after") return `${pattern.token} ${clue}`.trim();
+  if (pattern.kind === "typed-category") {
+    const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+    const normalizedBase = baseClue || clue;
+    const noun = pattern.singularNoun;
+    const looseBase = normalizeLooseMatch(normalizedBase);
+    const looseNoun = normalizeLooseMatch(noun);
+    if (looseBase.includes(looseNoun)) return normalizedBase;
+    return `${normalizedBase} ${noun}`.trim();
+  }
   return clue;
 }
 
@@ -408,7 +455,7 @@ function buildTurningPointLabel(rawTurningPoint: string | null | undefined, clue
 
 function normalizeConnectorSummary(value: string | null | undefined, answer: string): string {
   const pattern = detectAnswerPattern(answer);
-  if (pattern.kind === "before" || pattern.kind === "after") {
+  if (pattern.kind === "before" || pattern.kind === "after" || pattern.kind === "typed-category") {
     return buildConnectorSummaryFromAnswer(answer);
   }
   const text = trimTrailingPunctuation(normalizeText(value));
@@ -438,6 +485,15 @@ function normalizePhraseDisplay(phrase: string, answer: string): string {
     const parts = cleaned.split(/\s+/);
     if (parts.length >= 2 && parts[parts.length - 1].toLowerCase() === token) {
       return `${parts.slice(0, -1).join(" ")} ${token}`.trim();
+    }
+  }
+
+  if (pattern.kind === "typed-category") {
+    const noun = pattern.singularNoun;
+    const loosePhrase = normalizeLooseMatch(cleaned);
+    const looseNoun = normalizeLooseMatch(noun);
+    if (!loosePhrase.includes(looseNoun)) {
+      return "";
     }
   }
 
@@ -500,10 +556,8 @@ function normalizeSlotClueDetails(
 
   return clues.map((clue) => {
     const source = byClue.get(normalizeText(clue).toLowerCase()) ?? {};
-    const phrase = normalizePhraseDisplay(
-      normalizeText(source.phrase) || buildFallbackPhrase(clue, answer),
-      answer,
-    );
+    const rawPhrase = normalizeText(source.phrase) || buildFallbackPhrase(clue, answer);
+    const phrase = normalizePhraseDisplay(rawPhrase, answer) || buildFallbackPhrase(clue, answer);
     const surfaceRead = normalizeText(source.surfaceRead) || `a broader or more distracting read of ${clue}`;
     const whyItWorks =
       normalizeText(source.whyItWorks) ||
@@ -527,9 +581,14 @@ function buildHeroSummary(
   if (countWords(hero) >= 20 && countMentionedClues(hero, puzzleData.rawWords) >= 2) {
     return ensureSentence(hero);
   }
+  const answerPattern = detectAnswerPattern(puzzleData.mainAnswer);
   const cluePreview = puzzleData.rawWords.slice(0, 3).join(", ");
+  const frameLabel =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? "shared phrase logic"
+      : "shared category";
   return ensureSentence(
-    `At first glance, ${cluePreview} do not suggest one clean pattern. The board only tightens once a later clue makes the shared phrase logic feel much more specific.`,
+    `At first glance, ${cluePreview} do not suggest one clean pattern. The board only tightens once a later clue makes the ${frameLabel} feel much more specific.`,
   );
 }
 
@@ -540,6 +599,7 @@ function buildOverview(
   connectorSummary: string,
   clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
   difficultyReason: string,
+  answer: string,
 ): string {
   const falseStartText =
     falseStarts.length > 0
@@ -553,8 +613,13 @@ function buildOverview(
   const paragraphOne = ensureSentence(
     `${heroSummary} ${falseStartText} The clue that changes the frame is ${turningPointLabel}`,
   );
+  const answerPattern = detectAnswerPattern(answer);
+  const closingText =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? `Once that frame clicks, readings like ${samplePhrases} stop feeling random and start feeling exact.`
+      : `Once that frame clicks, entries like ${samplePhrases} stop feeling scattered and start feeling like members of the same family.`;
   const paragraphTwo = ensureSentence(
-    `From there, ${connectorSummary} explains the board more cleanly than broader labels. Once that frame clicks, readings like ${samplePhrases} stop feeling random and start feeling exact. ${difficultyReason}`,
+    `From there, ${connectorSummary} explains the board more cleanly than broader labels. ${closingText} ${difficultyReason}`,
   );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();
@@ -566,6 +631,7 @@ function buildSolutionEmergence(
   turningPointLabel: string,
   connectorSummary: string,
   clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
+  answer: string,
 ): string {
   const firstGuess =
     rejectedGuess?.guess ||
@@ -578,11 +644,16 @@ function buildSolutionEmergence(
     clueDetails.slice(0, 2).map((detail) => stripQuotes(detail.phrase)),
   ).join(" and ");
 
+  const answerPattern = detectAnswerPattern(answer);
+  const categoryLine =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? "clues that had seemed broad started reading like natural phrases"
+      : "clues that had seemed broad started feeling like members of the same category";
   const paragraphOne = ensureSentence(
     `I did not have a clean category from the first clue. I initially drifted toward ${firstGuess}, which felt plausible for a moment, but ${rejection}`,
   );
   const paragraphTwo = ensureSentence(
-    `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once I read the board through ${lowerFirst(connectorSummary)}, clues that had seemed broad started reading like natural phrases, especially ${phraseExamples}. At that point, the final connector was the only reading that explained the full set without stretching anything.`,
+    `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once I read the board through ${lowerFirst(connectorSummary)}, ${categoryLine}, especially ${phraseExamples}. At that point, the final connector was the only reading that explained the full set without stretching anything.`,
   );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();
@@ -612,7 +683,13 @@ function buildLessons(
   turningPointLabel: string,
   connectorSummary: string,
   portableTakeaway: string,
+  answer: string,
 ) {
+  const answerPattern = detectAnswerPattern(answer);
+  const finalTitle =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? "Prefer exact phrase logic over loose category logic"
+      : "Prefer precise category fit over broad topic logic";
   return [
     {
       title: "Broad clues can create the wrong frame early",
@@ -625,7 +702,7 @@ function buildLessons(
       ),
     },
     {
-      title: "Prefer exact phrase logic over loose category logic",
+      title: finalTitle,
       body: ensureSentence(
         `${portableTakeaway || `A strong Pinpoint answer should explain every clue naturally through ${lowerFirst(connectorSummary)}`}`,
       ),
@@ -639,6 +716,13 @@ function buildFaqs(
   turningPointLabel: string,
   difficultyReason: string,
 ) {
+  const answerPattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const connectionAnswer =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`
+      : answerPattern.kind === "typed-category"
+        ? `The connection is ${connectorSummary}. Each clue points to a recognizable type of ${answerPattern.singularNoun}, with one later clue making the category feel much more obvious`
+        : `The connection is ${connectorSummary}. Each clue belongs inside the same category once the board is read in the right frame`;
   return [
     {
       question: `What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
@@ -647,7 +731,7 @@ function buildFaqs(
     {
       question: `What is the connection in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
       answer: ensureSentence(
-        `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`,
+        connectionAnswer,
       ),
     },
     {
@@ -686,16 +770,25 @@ function composeFromSlots(
   );
   const falseStarts = sanitizeFalseStarts(uniqueNonEmpty(slots.falseStarts ?? []), clues, clueDetails);
   const heroSummary = buildHeroSummary(slots, puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer });
-  const overview = buildOverview(heroSummary, falseStarts, turningPointLabel, connectorSummary, clueDetails, difficultyReason);
+  const overview = buildOverview(
+    heroSummary,
+    falseStarts,
+    turningPointLabel,
+    connectorSummary,
+    clueDetails,
+    difficultyReason,
+    mainAnswer,
+  );
   const solutionEmergence = buildSolutionEmergence(
     falseStarts,
     slots.rejectedGuess,
     turningPointLabel,
     connectorSummary,
     clueDetails,
+    mainAnswer,
   );
   const wrongGuesses = buildWrongGuesses(falseStarts, slots.rejectedGuess, turningPointLabel);
-  const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway);
+  const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway, mainAnswer);
   const faqs = buildFaqs(
     puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer },
     connectorSummary,

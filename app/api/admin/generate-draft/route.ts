@@ -27,7 +27,7 @@ const LOCALIZE_LABELS: Record<string, string> = {
   de: "German (de)",
   "pt-BR": "Brazilian Portuguese (pt-BR)",
 };
-const LLM_TEMPLATE_VERSION = "pinpoint-v6";
+const LLM_TEMPLATE_VERSION = "pinpoint-v7";
 
 type DraftRecord = Record<string, unknown>;
 
@@ -372,7 +372,7 @@ function buildRepairPrompt(
   const previousJson = JSON.stringify(previous, null, 2);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
   return `
-You are a senior content writer for "Pinpoint Answer Today". Use the V6 Compatible Template.
+You are a senior content writer for "Pinpoint Answer Today". Use the V7 Compatible Template.
 
 The previous JSON failed validation for LinkedIn Pinpoint #${puzzleData.puzzleNumber}.
 

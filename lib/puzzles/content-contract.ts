@@ -41,7 +41,7 @@ export type ContentContractInput = {
   llmTemplateVersion?: string | null;
 };
 
-const ACCEPTED_TEMPLATE_VERSIONS = new Set(["pinpoint-v5", "pinpoint-v6"]);
+const ACCEPTED_TEMPLATE_VERSIONS = new Set(["pinpoint-v5", "pinpoint-v6", "pinpoint-v7"]);
 
 export function countWords(text: string | null | undefined): number {
   return (text?.trim().match(/\S+/g) ?? []).length;
