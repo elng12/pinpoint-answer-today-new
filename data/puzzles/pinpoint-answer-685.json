@@ -13,48 +13,44 @@
   "answer": "Magazines (with global readership / versions)",
   "category": "Magazines (with global readership / versions)",
   "wordHints": {
-    "Time": "Time publishes numerous international editions, adapting content for different regions and languages.",
-    "The Economist": "The Economist offers global news and analysis, printed and read worldwide, with regional adaptations.",
-    "Cosmopolitan": "Cosmopolitan features many international editions, tailored to local cultures and interests.",
-    "National Geographic": "National Geographic is known for its globally focused explorations and photography, published in multiple languages.",
-    "Reader’s Digest": "Reader's Digest is widely circulated in many countries and languages, featuring condensed articles and varied content."
+    "Time": "Time connects to \"Magazines (with global readership / versions)\"",
+    "The Economist": "The Economist connects to \"Magazines (with global readership / versions)\"",
+    "Cosmopolitan": "Cosmopolitan connects to \"Magazines (with global readership / versions)\"",
+    "National Geographic": "National Geographic connects to \"Magazines (with global readership / versions)\"",
+    "Reader’s Digest": "Reader’s Digest connects to \"Magazines (with global readership / versions)\""
   },
   "fullAnalysis": [
-    "At first glance, Time, The Economist, Cosmopolitan do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific. That is why guesses like \"New York\" and \"Periodicals\" can feel plausible at the start. The clue that changes the frame is \"Cosmopolitan\".",
-    "From there, Titles known for their global editions and diverse content explains the board more cleanly than broader labels. Once that frame clicks, entries like News magazine, Business magazine, Women's magazine stop feeling scattered and start feeling like members of the same family. The clues span diverse topics, obscuring the common format and international focus that links them.",
-    "I did not have a clean category from the first clue. I initially drifted toward Periodicals, which felt plausible for a moment, but while all are periodicals, the connection is more specific and relates to their international reach and format.",
-    "The turn came when I let cosmopolitan lead the solve instead of treating it like an outlier. Once I read the board through titles known for their global editions and diverse content, clues that had seemed broad started feeling like members of the same category, especially News magazine and Business magazine. At that point, the final connector was the only reading that explained the full set without stretching anything."
+    "I approached Pinpoint #685 by testing each clue against possible connecting words. The five clues were \"Time\", \"The Economist\", \"Cosmopolitan\", \"National Geographic\", \"Reader’s Digest\". \"Time\" — Time fits the theme. \"The Economist\" — The Economist fits the theme. \"Cosmopolitan\" — Cosmopolitan fits the theme. \"National Geographic\" — National Geographic fits the theme. \"Reader’s Digest\" — Reader’s Digest fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Magazines (with global readership / versions)\" because it is the first reading that explains all five clues without forcing any of them."
   ],
   "solutionNarrative": [
-    "I did not have a clean category from the first clue. I initially drifted toward Periodicals, which felt plausible for a moment, but while all are periodicals, the connection is more specific and relates to their international reach and format.",
-    "The turn came when I let cosmopolitan lead the solve instead of treating it like an outlier. Once I read the board through titles known for their global editions and diverse content, clues that had seemed broad started feeling like members of the same category, especially News magazine and Business magazine. At that point, the final connector was the only reading that explained the full set without stretching anything."
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #685, Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
-      "body": "Cosmopolitan is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
-      "body": "Consider format, audience, and reach when seeking connections between seemingly disparate items."
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
     }
   ],
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #685?",
-      "answer": "The answer is \"Magazines (with global readership / versions)\" because that reading explains the full set cleanly, including the final clue."
+      "answer": "The answer is \"Magazines (with global readership / versions)\". The clues Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest all share this connection."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #685?",
-      "answer": "The connection is Titles known for their global editions and diverse content. Each clue belongs inside the same category once the board is read in the right frame."
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #685?",
-      "answer": "Cosmopolitan is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues span diverse topics, obscuring the common format and international focus that links them."
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
     }
   ]
 }
