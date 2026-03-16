@@ -27,6 +27,7 @@ const LOCALIZE_LABELS: Record<string, string> = {
   de: "German (de)",
   "pt-BR": "Brazilian Portuguese (pt-BR)",
 };
+const LLM_TEMPLATE_VERSION = "pinpoint-v6";
 
 type DraftRecord = Record<string, unknown>;
 
@@ -228,7 +229,7 @@ Output ONLY a valid JSON object with this exact structure:
     "seoDescription": "...",
     "seoKeywords": [],
     "tags": ["...", "...", "...", "...", "..."],
-    "llmTemplateVersion": "pinpoint-v4"
+    "llmTemplateVersion": "${LLM_TEMPLATE_VERSION}"
   }
 }
 
@@ -240,7 +241,8 @@ Hard rules:
 ${buildLocalizationPolicy(puzzleData.mainAnswer)}
 5. Keep array counts the same as source.
 6. seoTitle and seoDescription must still include all five clue words exactly as written.
-7. Return only JSON.
+7. heroSummary must remain spoiler-safe and must not reveal the exact answer text unless the source JSON already does.
+8. Return only JSON.
 
 Puzzle context:
 - puzzleNumber: ${puzzleData.puzzleNumber}
@@ -370,7 +372,7 @@ function buildRepairPrompt(
   const previousJson = JSON.stringify(previous, null, 2);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
   return `
-You are a senior content writer for "Pinpoint Answer Today". Use the V4 Standard Template.
+You are a senior content writer for "Pinpoint Answer Today". Use the V6 Compatible Template.
 
 The previous JSON failed validation for LinkedIn Pinpoint #${puzzleData.puzzleNumber}.
 
@@ -387,7 +389,9 @@ Hard rules:
 5. seoTitle must include all five clues and not the answer.
 6. seoDescription must include all five clues.
 7. clueDetails must include exactly 5 items.
-8. analysis.llmTemplateVersion must be "pinpoint-v4".
+8. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
+9. overview must not open with the exact answer text or with "The answer is".
+10. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
 
 Previous JSON:
 ${previousJson}
@@ -404,7 +408,7 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
   const puzzleNumber = Number(puzzleData.puzzleNumber);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
 
-  if (!asString(nextAnalysis.llmTemplateVersion)) nextAnalysis.llmTemplateVersion = "pinpoint-v4";
+  if (!asString(nextAnalysis.llmTemplateVersion)) nextAnalysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
   if (!asString(nextAnalysis.seoTitle)) {
     nextAnalysis.seoTitle = buildPinpointTitle(puzzleNumber, puzzleData.rawWords);
   }
@@ -416,7 +420,7 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
       CONTENT_CONTRACT.overviewMinWords,
       [
         "I look for a connector that can pair naturally with each clue.",
-        `Once I test ${label} against every clue, the pattern either holds or falls apart.`,
+        "Once I test one shared connector across every clue, the pattern either holds or falls apart.",
         "That consistency is what turns a vague hunch into a confirmed answer.",
       ],
     );
@@ -432,8 +436,8 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
       CONTENT_CONTRACT.solutionEmergenceMinWords,
       [
         "When that approach stayed too broad, I switched to a stricter phrase-by-phrase check.",
-        `The breakthrough came when ${label} matched every clue under the same rule.`,
-        `Once I verified all five clues, I knew ${label} was the answer.`,
+        "The breakthrough came when one clue narrowed the set enough to make the shared pattern believable.",
+        `Once I verified all five clues, I knew ${label} was the correct final connector.`,
       ],
     );
   }
@@ -449,6 +453,17 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
 
   if (!Array.isArray(nextAnalysis.seoKeywords) || nextAnalysis.seoKeywords.length > 0) {
     nextAnalysis.seoKeywords = [];
+  }
+
+  const heroSummary = asString(nextAnalysis.heroSummary) ?? "";
+  const normalizedLabel = normalizeAnswerLabel(puzzleData.mainAnswer);
+  const normalizedHeroSummary = normalizeWhitespace(heroSummary).replace(/["“”]/g, "");
+  if (
+    !heroSummary ||
+    (normalizedLabel && normalizedHeroSummary.toLowerCase().includes(normalizedLabel.toLowerCase()))
+  ) {
+    nextAnalysis.heroSummary =
+      `LinkedIn Pinpoint #${puzzleNumber} opens with broad clues. Start with the spoiler-safe hints first, then reveal the final connector when you want the full solve.`;
   }
 
   if (!asString(nextSections.trivia)) {

@@ -41,6 +41,8 @@ export type ContentContractInput = {
   llmTemplateVersion?: string | null;
 };
 
+const ACCEPTED_TEMPLATE_VERSIONS = new Set(["pinpoint-v5", "pinpoint-v6"]);
+
 export function countWords(text: string | null | undefined): number {
   return (text?.trim().match(/\S+/g) ?? []).length;
 }
@@ -208,7 +210,7 @@ export function validateContentContract(input: ContentContractInput): ContentCon
     }
   }
 
-  if (input.llmTemplateVersion && input.llmTemplateVersion !== "pinpoint-v4") {
+  if (input.llmTemplateVersion && !ACCEPTED_TEMPLATE_VERSIONS.has(input.llmTemplateVersion)) {
     issues.push({
       level: "warning",
       code: "llmTemplateVersion.mismatch",
@@ -255,4 +257,3 @@ export function promotePublishBlockingIssues(
     return issue;
   });
 }
-

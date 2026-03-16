@@ -13,44 +13,53 @@
   "answer": "Words that come after \"false\"",
   "category": "Words that come after \"false\"",
   "wordHints": {
-    "Start": "Start connects to \"Words that come after \"false\"\"",
-    "Positive": "Positive connects to \"Words that come after \"false\"\"",
-    "Alarm": "Alarm connects to \"Words that come after \"false\"\"",
-    "Tooth": "Tooth connects to \"Words that come after \"false\"\"",
-    "Advertising (don’t believe it!)": "Advertising (don’t believe it!) connects to \"Words that come after \"false\"\""
+    "Start": "\"False start\" is one of the clearest phrase matches in the set, so this clue works once the board shifts from broad categories to exact phrase logic.",
+    "Positive": "\"False positive\" points to a familiar testing phrase, which helps confirm that the board is built from natural expressions rather than loose associations.",
+    "Alarm": "\"False alarm\" is the phrase that makes the pattern feel everyday and recognizable instead of niche.",
+    "Tooth": "\"False tooth\" keeps the same structure going, showing that the answer is about what follows the shared word rather than one narrow topic area.",
+    "Advertising (don’t believe it!)": "\"False advertising\" is the clue that really tightens the set, because the parenthetical hint pushes you toward deception and away from broader guesses."
+  },
+  "spoilerHints": {
+    "Start": "Think of a familiar phrase from sports or timing, not just a generic beginning.",
+    "Positive": "Read this through testing or diagnosis rather than mood or personality.",
+    "Alarm": "This clue works as a very common warning phrase, which helps lock the pattern in.",
+    "Tooth": "Do not stay in biology. Think about a replacement or artificial version.",
+    "Advertising (don’t believe it!)": "The parenthetical hint points toward deception and gives away the shared word more than the other clues do."
   },
   "fullAnalysis": [
-    "I approached Pinpoint #683 by testing each clue against possible connecting words. The five clues were \"Start\", \"Positive\", \"Alarm\", \"Tooth\", \"Advertising (don’t believe it!)\". \"Start\" — Start fits the theme. \"Positive\" — Positive fits the theme. \"Alarm\" — Alarm fits the theme. \"Tooth\" — Tooth fits the theme. \"Advertising (don’t believe it!)\" — Advertising (don’t believe it!) fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Words that come after \"false\"\" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle."
+    "Pinpoint #683 feels broader than it really is because the opening clues can point in several weak directions at once. \"Start\" and \"Positive\" do not immediately suggest the same family, and \"Alarm\" could still fit a range of common compounds. That is why a vague category like dishonesty or opposites can feel tempting early on. The clue that really sharpens the board is \"Advertising (don’t believe it!),\" because the parenthetical hint points directly toward deception and makes one specific phrase much easier to see.",
+    "From there, the puzzle resolves as a phrase-pattern board built around false. False start, false positive, false alarm, false tooth, and false advertising all work as natural readings, and that tighter phrase logic explains the full set better than a broad label like lies or untrue things. Once the shared word is visible, the earlier clues stop feeling disconnected and start feeling exact."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #683, Start, Positive, Alarm, Tooth, Advertising (don’t believe it!) consistently map to Words that come after \"false\". That shared fit across all five clues is why Words that come after \"false\" is the correct answer. I will expand this with richer clue context in the full version."
+    "I did not have a clean category from the first clue. \"Start\" felt wide open, and once \"Positive\" appeared I briefly drifted toward vague contrast ideas and other broad word-pair patterns. Those guesses were not ridiculous, but they never gave me a satisfying way to handle the whole set at once, especially once the clue about advertising showed up with a parenthetical nudge toward mistrust.",
+    "The turn came when I let that last clue lead the solve instead of treating it like a decorative extra. Once I read the board through false, the earlier clues stopped feeling abstract and started reading like familiar phrases: false start, false positive, false alarm, false tooth, and false advertising. At that point, the final connector was the only reading that explained all five clues cleanly without stretching."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for the clue that narrows the pattern before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The clearest clue often arrives late",
+      "body": "Here, the advertising clue does a lot of hidden work. Once one clue produces a precise natural phrase, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer exact phrase logic over broad topic logic",
+      "body": "A strong Pinpoint answer should explain every clue as a natural phrase, not just as a loose thematic association."
     }
   ],
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #683?",
-      "answer": "The answer is \"Words that come after \"false\"\". The clues Start, Positive, Alarm, Tooth, Advertising (don’t believe it!) all share this connection."
+      "answer": "The answer is \"Words that come after \"false\"\" because that reading explains the full set cleanly, including the advertising clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #683?",
+      "answer": "The connection is a phrase pattern built around false. Each clue resolves as a familiar expression, and the last clue gives the strongest push toward that shared word."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks the set?",
+      "answer": "Advertising (don’t believe it!) is the real turning point because the parenthetical hint makes deception explicit and helps the earlier clues snap into the same phrase pattern."
     }
   ]
 }

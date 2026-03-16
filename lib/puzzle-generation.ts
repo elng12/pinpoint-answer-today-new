@@ -1,11 +1,31 @@
 import { appLogger } from "@/lib/logger";
 import { normalizeClueForAI } from "@/lib/puzzles/clue-normalizer";
+import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 
 export interface PuzzleDataForAI {
   puzzleNumber: number;
   rawWords: string[];
   mainAnswer: string;
 }
+
+export interface AIGeneratedSlots {
+  heroIntroSpoilerSafe: string;
+  connectorSummary: string;
+  turningPoint: string;
+  falseStarts: string[];
+  rejectedGuess?: { guess: string; explanation: string };
+  clueDetails: Array<{
+    clue: string;
+    surfaceRead: string;
+    phrase: string;
+    whyItWorks: string;
+    etymology?: string;
+  }>;
+  difficultyReason: string;
+  portableTakeaway: string;
+}
+
+type SlotClueDetail = AIGeneratedSlots["clueDetails"][number];
 
 export interface AIGeneratedContent {
   sections: {
@@ -27,7 +47,12 @@ export interface AIGeneratedContent {
     tags: string[];
     llmTemplateVersion: string;
   };
+  slots?: AIGeneratedSlots;
 }
+
+type ParsedAIResponse = Partial<Omit<AIGeneratedContent, "slots">> & {
+  slots?: Partial<AIGeneratedSlots>;
+};
 
 export type PuzzleGenerationOptions = {
   model?: string;
@@ -37,6 +62,7 @@ export type PuzzleGenerationOptions = {
 };
 
 const DEBUG = process.env.NODE_ENV === "development" || process.env.DEBUG_AI === "true";
+const LLM_TEMPLATE_VERSION = "pinpoint-v6";
 
 function debugInfo(message: string, details?: Record<string, unknown>) {
   if (!DEBUG) return;
@@ -54,41 +80,57 @@ export function buildPuzzlePrompt(puzzleData: PuzzleDataForAI): string {
   const originalClues = (puzzleData.rawWords || []).join(", ");
 
   return `
-You are a senior content writer for "Pinpoint Answer Today". Use the V4 Standard Template.
+You are a senior content writer for "Pinpoint Answer Today". Use the V6 Slot Template.
 
 Output ONLY a valid JSON object with this exact shape:
 {
-  "sections": {
-    "overview": "...",
-    "solutionEmergence": "...",
-    "wrongGuesses": [{ "guess": "...", "explanation": "..." }],
-    "clueDetails": [{ "clue": "...", "phrase": "...", "explanation": "...", "etymology": "..." }],
-    "lessons": [{ "title": "...", "body": "..." }],
-    "faqs": [{ "question": "...", "answer": "..." }],
-    "trivia": "..."
-  },
-  "analysis": {
-    "detailedBreakdown": "...",
-    "dailyDebrief": "...",
-    "heroSummary": "...",
-    "seoTitle": "LinkedIn Pinpoint #${puzzleData.puzzleNumber}: ${originalClues}",
-    "seoDescription": "...",
-    "seoKeywords": [],
-    "tags": ["...", "...", "...", "...", "..."],
-    "llmTemplateVersion": "pinpoint-v4"
+  "slots": {
+    "heroIntroSpoilerSafe": "...",
+    "connectorSummary": "...",
+    "turningPoint": "...",
+    "falseStarts": ["...", "..."],
+    "rejectedGuess": { "guess": "...", "explanation": "..." },
+    "clueDetails": [
+      {
+        "clue": "...",
+        "surfaceRead": "...",
+        "phrase": "...",
+        "whyItWorks": "...",
+        "etymology": "..."
+      }
+    ],
+    "difficultyReason": "...",
+    "portableTakeaway": "..."
   }
 }
 
 Hard requirements:
-1. overview must be at least 65 words.
-2. solutionEmergence must be at least 90 words and use first-person voice with "I".
-3. Include exactly 5 clueDetails items and each phrase must be different from the clue.
-4. Include at least 3 lessons and 3 FAQs.
-5. The first FAQ question must be "What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?"
-6. The first FAQ answer must explicitly include the exact answer: ${puzzleData.mainAnswer}
-7. seoTitle and seoDescription must include all 5 original clues exactly as written: ${originalClues}
-8. seoKeywords must be an empty array.
-9. Output raw JSON only, no markdown.
+1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
+2. heroIntroSpoilerSafe must be 20 to 45 words and must NOT include the exact answer text: ${puzzleData.mainAnswer}
+3. connectorSummary must be a short spoiler-safe label, 6 to 16 words, and must NOT equal or quote the exact answer text.
+4. turningPoint must name the clue or clue combination that makes the pattern click, in one clear sentence.
+5. falseStarts must contain 1 or 2 plausible wrong reads or weak categories.
+6. rejectedGuess.explanation must explain why that guess falls short.
+7. Include exactly 5 clueDetails items, one for each original clue in this exact set: ${originalClues}
+8. Each clueDetails.clue must match one original clue exactly as written.
+9. Each clueDetails.phrase must be a natural phrase or category reading that is different from the clue.
+10. Each clueDetails.whyItWorks must explain specific logic, not just restate the final answer.
+11. difficultyReason must explain why the board feels tricky without directly repeating the exact answer.
+12. portableTakeaway must be one short practical lesson the solver can reuse tomorrow.
+13. Output raw JSON only, no markdown.
+
+Writing rules:
+- Separate page reveal from explanation. The reveal card owns the first clear answer reveal on-page.
+- Treat heroIntroSpoilerSafe as the short intro shown before the user chooses to reveal the answer.
+- Do not sneak the exact answer into heroIntroSpoilerSafe, connectorSummary, turningPoint, difficultyReason, or falseStarts.
+- Make the clueDetails useful enough that a program can build overview, solve narrative, FAQ, and lessons from them.
+- Avoid filler lines like:
+  - X connects to...
+  - X fits the theme
+  - The clues all share this connection
+  - Difficulty varies
+  - This is the hallmark of a well-crafted puzzle
+- Prefer concrete phrase logic over broad vague category talk.
 
 Input data:
 - Puzzle #${puzzleData.puzzleNumber}
@@ -245,7 +287,7 @@ async function callAnthropicAPI(
   return validateAndFixGeneratedContent(parseAIResponse(content), puzzleData);
 }
 
-function parseAIResponse(content: string): AIGeneratedContent {
+function parseAIResponse(content: string): ParsedAIResponse {
   let jsonContent = content.trim();
 
   if (jsonContent.startsWith("```json")) {
@@ -255,7 +297,7 @@ function parseAIResponse(content: string): AIGeneratedContent {
   }
 
   try {
-    return JSON.parse(jsonContent) as AIGeneratedContent;
+    return JSON.parse(jsonContent) as ParsedAIResponse;
   } catch (error) {
     debugError("Failed to parse AI JSON", {
       error: error instanceof Error ? error.message : String(error),
@@ -265,17 +307,458 @@ function parseAIResponse(content: string): AIGeneratedContent {
   }
 }
 
-function validateAndFixGeneratedContent(
-  parsed: Partial<AIGeneratedContent>,
+type AnswerPattern =
+  | { kind: "before"; token: string }
+  | { kind: "after"; token: string }
+  | { kind: "category" };
+
+function normalizeText(value: string | null | undefined): string {
+  return (value ?? "").replace(/\s+/g, " ").trim();
+}
+
+function countWords(value: string | null | undefined): number {
+  return normalizeText(value).match(/\S+/g)?.length ?? 0;
+}
+
+function ensureSentence(value: string | null | undefined): string {
+  const text = normalizeText(value);
+  if (!text) return "";
+  return /[.!?]$/.test(text) ? text : `${text}.`;
+}
+
+function lowerFirst(value: string): string {
+  if (!value) return value;
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function uniqueNonEmpty(values: Array<string | null | undefined>): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+  for (const value of values) {
+    const text = normalizeText(value);
+    if (!text) continue;
+    const key = text.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(text);
+  }
+  return result;
+}
+
+function detectAnswerPattern(answer: string): AnswerPattern {
+  const before = answer.match(/^Words that come before\s+"([^"]+)"$/i);
+  if (before?.[1]) return { kind: "before", token: before[1] };
+  const after = answer.match(/^Words that come after\s+"([^"]+)"$/i);
+  if (after?.[1]) return { kind: "after", token: after[1] };
+  return { kind: "category" };
+}
+
+function buildConnectorSummaryFromAnswer(answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `a phrase pattern built around ${pattern.token}`;
+  }
+  return "a shared category pattern";
+}
+
+function buildFallbackPhrase(clue: string, answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before") return `${clue} ${pattern.token}`.trim();
+  if (pattern.kind === "after") return `${pattern.token} ${clue}`.trim();
+  return clue;
+}
+
+function stripQuotes(value: string): string {
+  return value.replace(/["“”]/g, "");
+}
+
+function trimTrailingPunctuation(value: string): string {
+  return value.replace(/[.!?]+$/, "").trim();
+}
+
+function normalizeLooseMatch(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/["“”'’()\-_,!?:.;/]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function countMentionedClues(text: string, clues: string[]): number {
+  const normalizedText = normalizeLooseMatch(text);
+  return clues.filter((clue) => {
+    const normalizedClue = normalizeLooseMatch(clue);
+    return Boolean(normalizedClue && normalizedText.includes(normalizedClue));
+  }).length;
+}
+
+function buildTurningPointLabel(rawTurningPoint: string | null | undefined, clues: string[]): string {
+  const normalized = normalizeText(rawTurningPoint);
+  for (const clue of clues) {
+    if (!clue) continue;
+    if (!clue) continue;
+    const looseClue = normalizeLooseMatch(clue);
+    const looseTurningPoint = normalizeLooseMatch(normalized);
+    if (looseClue && looseTurningPoint.includes(looseClue)) {
+      return `"${clue}"`;
+    }
+  }
+  return `"${clues[2] || clues[0] || "the key clue"}"`;
+}
+
+function normalizeConnectorSummary(value: string | null | undefined, answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return buildConnectorSummaryFromAnswer(answer);
+  }
+  const text = trimTrailingPunctuation(normalizeText(value));
+  if (!text) return buildConnectorSummaryFromAnswer(answer);
+  return text;
+}
+
+function normalizePhraseDisplay(phrase: string, answer: string): string {
+  const cleaned = stripQuotes(normalizeText(phrase));
+  const pattern = detectAnswerPattern(answer);
+  if (!cleaned) return cleaned;
+
+  if (pattern.kind === "after") {
+    const token = pattern.token.toLowerCase();
+    const loosePhrase = normalizeLooseMatch(cleaned);
+    if (loosePhrase.startsWith(token)) {
+      const parts = cleaned.split(/\s+/);
+      if (parts.length >= 2) {
+        const rest = parts.slice(1).join(" ").toLowerCase();
+        return `${token.charAt(0).toUpperCase()}${token.slice(1)} ${rest}`.trim();
+      }
+    }
+  }
+
+  if (pattern.kind === "before") {
+    const token = pattern.token.toLowerCase();
+    const parts = cleaned.split(/\s+/);
+    if (parts.length >= 2 && parts[parts.length - 1].toLowerCase() === token) {
+      return `${parts.slice(0, -1).join(" ")} ${token}`.trim();
+    }
+  }
+
+  return cleaned;
+}
+
+function sharesLooseRoot(a: string, b: string): boolean {
+  const left = normalizeLooseMatch(a);
+  const right = normalizeLooseMatch(b);
+  if (left.length < 5 || right.length < 5) return false;
+  return left.slice(0, 5) === right.slice(0, 5);
+}
+
+function sanitizeFalseStarts(
+  values: string[],
+  clues: string[],
+  clueDetails: Array<{ surfaceRead: string; phrase: string }>,
+): string[] {
+  const candidates = uniqueNonEmpty(values);
+  return candidates.filter((candidate) => {
+    const normalizedCandidate = normalizeLooseMatch(candidate);
+    if (!normalizedCandidate) return false;
+    if (countWords(candidate) <= 1 && normalizedCandidate.length < 6) return false;
+
+    for (const clue of clues) {
+      const normalizedClue = normalizeLooseMatch(clue);
+      if (!normalizedClue) continue;
+      if (normalizedCandidate === normalizedClue || sharesLooseRoot(candidate, clue)) {
+        return false;
+      }
+    }
+
+    for (const detail of clueDetails) {
+      if (
+        sharesLooseRoot(candidate, detail.surfaceRead) ||
+        sharesLooseRoot(candidate, detail.phrase) ||
+        normalizedCandidate === normalizeLooseMatch(detail.surfaceRead)
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  }).slice(0, 2);
+}
+
+function normalizeSlotClueDetails(
+  rawDetails: Array<Partial<SlotClueDetail> | null | undefined> | undefined,
+  clues: string[],
+  answer: string,
+  turningPointLabel: string,
+  connectorSummary: string,
+) {
+  const byClue = new Map<string, Partial<SlotClueDetail>>();
+  for (const item of rawDetails ?? []) {
+    const clue = normalizeText(item?.clue);
+    if (!clue) continue;
+    byClue.set(clue.toLowerCase(), item ?? {});
+  }
+
+  return clues.map((clue) => {
+    const source = byClue.get(normalizeText(clue).toLowerCase()) ?? {};
+    const phrase = normalizePhraseDisplay(
+      normalizeText(source.phrase) || buildFallbackPhrase(clue, answer),
+      answer,
+    );
+    const surfaceRead = normalizeText(source.surfaceRead) || `a broader or more distracting read of ${clue}`;
+    const whyItWorks =
+      normalizeText(source.whyItWorks) ||
+      `${stripQuotes(phrase)} fits once the board is read through ${lowerFirst(connectorSummary)}, especially after ${lowerFirst(stripQuotes(turningPointLabel))}.`;
+
+    return {
+      clue,
+      surfaceRead,
+      phrase,
+      whyItWorks: ensureSentence(whyItWorks),
+      etymology: normalizeText(source.etymology) || undefined,
+    };
+  });
+}
+
+function buildHeroSummary(
+  slots: Partial<AIGeneratedSlots>,
+  puzzleData: PuzzleDataForAI,
+): string {
+  const hero = normalizeText(slots.heroIntroSpoilerSafe);
+  if (countWords(hero) >= 20 && countMentionedClues(hero, puzzleData.rawWords) >= 2) {
+    return ensureSentence(hero);
+  }
+  const cluePreview = puzzleData.rawWords.slice(0, 3).join(", ");
+  return ensureSentence(
+    `At first glance, ${cluePreview} do not suggest one clean pattern. The board only tightens once a later clue makes the shared phrase logic feel much more specific.`,
+  );
+}
+
+function buildOverview(
+  heroSummary: string,
+  falseStarts: string[],
+  turningPointLabel: string,
+  connectorSummary: string,
+  clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
+  difficultyReason: string,
+): string {
+  const falseStartText =
+    falseStarts.length > 0
+      ? `That is why guesses like ${falseStarts.map((item) => `"${item}"`).join(" and ")} can feel plausible at the start.`
+      : "That is why the set feels broad before a tighter reading appears.";
+
+  const samplePhrases = uniqueNonEmpty(
+    clueDetails.slice(0, 3).map((detail) => stripQuotes(detail.phrase)),
+  ).join(", ");
+
+  const paragraphOne = ensureSentence(
+    `${heroSummary} ${falseStartText} The clue that changes the frame is ${turningPointLabel}`,
+  );
+  const paragraphTwo = ensureSentence(
+    `From there, ${connectorSummary} explains the board more cleanly than broader labels. Once that frame clicks, readings like ${samplePhrases} stop feeling random and start feeling exact. ${difficultyReason}`,
+  );
+
+  return `${paragraphOne}\n\n${paragraphTwo}`.trim();
+}
+
+function buildSolutionEmergence(
+  falseStarts: string[],
+  rejectedGuess: { guess: string; explanation: string } | undefined,
+  turningPointLabel: string,
+  connectorSummary: string,
+  clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
+): string {
+  const firstGuess =
+    rejectedGuess?.guess ||
+    falseStarts[0] ||
+    "a broader category that looked promising at first";
+  const rejection =
+    lowerFirst(normalizeText(rejectedGuess?.explanation)) ||
+    `That line of thinking never explained ${stripQuotes(turningPointLabel)} cleanly enough.`;
+  const phraseExamples = uniqueNonEmpty(
+    clueDetails.slice(0, 2).map((detail) => stripQuotes(detail.phrase)),
+  ).join(" and ");
+
+  const paragraphOne = ensureSentence(
+    `I did not have a clean category from the first clue. I initially drifted toward ${firstGuess}, which felt plausible for a moment, but ${rejection}`,
+  );
+  const paragraphTwo = ensureSentence(
+    `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once I read the board through ${lowerFirst(connectorSummary)}, clues that had seemed broad started reading like natural phrases, especially ${phraseExamples}. At that point, the final connector was the only reading that explained the full set without stretching anything.`,
+  );
+
+  return `${paragraphOne}\n\n${paragraphTwo}`.trim();
+}
+
+function buildWrongGuesses(
+  falseStarts: string[],
+  rejectedGuess: { guess: string; explanation: string } | undefined,
+  turningPointLabel: string,
+) {
+  const rows = uniqueNonEmpty([
+    rejectedGuess?.guess,
+    ...falseStarts,
+  ]).slice(0, 2);
+
+  return rows.map((guess, index) => ({
+    guess,
+    explanation:
+      normalizeText(index === 0 ? rejectedGuess?.explanation : "") ||
+      ensureSentence(
+        `${guess} feels plausible early on, but it falls apart once ${lowerFirst(stripQuotes(turningPointLabel))} demands a more exact reading.`,
+      ),
+  }));
+}
+
+function buildLessons(
+  turningPointLabel: string,
+  connectorSummary: string,
+  portableTakeaway: string,
+) {
+  return [
+    {
+      title: "Broad clues can create the wrong frame early",
+      body: "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    },
+    {
+      title: "The narrowing clue matters more than the loudest clue",
+      body: ensureSentence(
+        `${stripQuotes(turningPointLabel)} is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`,
+      ),
+    },
+    {
+      title: "Prefer exact phrase logic over loose category logic",
+      body: ensureSentence(
+        `${portableTakeaway || `A strong Pinpoint answer should explain every clue naturally through ${lowerFirst(connectorSummary)}`}`,
+      ),
+    },
+  ];
+}
+
+function buildFaqs(
+  puzzleData: PuzzleDataForAI,
+  connectorSummary: string,
+  turningPointLabel: string,
+  difficultyReason: string,
+) {
+  return [
+    {
+      question: `What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      answer: `The answer is "${puzzleData.mainAnswer}" because that reading explains the full set cleanly, including the final clue.`,
+    },
+    {
+      question: `What is the connection in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      answer: ensureSentence(
+        `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`,
+      ),
+    },
+    {
+      question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      answer: ensureSentence(
+        `${stripQuotes(turningPointLabel)} is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. ${difficultyReason}`,
+      ),
+    },
+  ];
+}
+
+function composeFromSlots(
+  slots: Partial<AIGeneratedSlots>,
   puzzleData?: PuzzleDataForAI,
 ): AIGeneratedContent {
-  if (!parsed.sections) {
+  const puzzleNumber = puzzleData?.puzzleNumber || 0;
+  const clues = puzzleData?.rawWords || [];
+  const mainAnswer = puzzleData?.mainAnswer || "";
+  const connectorSummary = normalizeConnectorSummary(slots.connectorSummary, mainAnswer);
+  const turningPoint =
+    ensureSentence(slots.turningPoint) ||
+    ensureSentence(`${clues[2] || clues[0] || "the later clue"} is the clue that tightens the board.`);
+  const turningPointLabel = buildTurningPointLabel(turningPoint, clues);
+  const difficultyReason =
+    ensureSentence(slots.difficultyReason) ||
+    "The board feels hard because the opening clues are broad enough to support a few weak categories before a tighter phrase reading appears.";
+  const portableTakeaway =
+    ensureSentence(slots.portableTakeaway) ||
+    "When the early clues feel broad, wait for the word that narrows the pattern before committing.";
+  const clueDetails = normalizeSlotClueDetails(
+    slots.clueDetails,
+    clues,
+    mainAnswer,
+    turningPointLabel,
+    connectorSummary,
+  );
+  const falseStarts = sanitizeFalseStarts(uniqueNonEmpty(slots.falseStarts ?? []), clues, clueDetails);
+  const heroSummary = buildHeroSummary(slots, puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer });
+  const overview = buildOverview(heroSummary, falseStarts, turningPointLabel, connectorSummary, clueDetails, difficultyReason);
+  const solutionEmergence = buildSolutionEmergence(
+    falseStarts,
+    slots.rejectedGuess,
+    turningPointLabel,
+    connectorSummary,
+    clueDetails,
+  );
+  const wrongGuesses = buildWrongGuesses(falseStarts, slots.rejectedGuess, turningPointLabel);
+  const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway);
+  const faqs = buildFaqs(
+    puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer },
+    connectorSummary,
+    turningPointLabel,
+    difficultyReason,
+  );
+  const trivia = ensureSentence(
+    "Did you know? The cleanest Pinpoint solves usually come from one repeatable reading that makes every clue feel natural, not forced.",
+  );
+
+  return {
+    sections: {
+      overview,
+      solutionEmergence,
+      wrongGuesses,
+      clueDetails: clueDetails.map((detail) => ({
+        clue: detail.clue,
+        phrase: detail.phrase,
+        explanation: detail.whyItWorks,
+        etymology: detail.etymology,
+      })),
+      lessons,
+      faqs,
+      trivia,
+    },
+    analysis: {
+      detailedBreakdown: `${overview}\n\n${solutionEmergence}`.trim(),
+      dailyDebrief: ensureSentence(
+        `LinkedIn Pinpoint #${puzzleNumber} resolves through ${lowerFirst(connectorSummary)}. The explicit answer is "${mainAnswer}", with ${lowerFirst(stripQuotes(turningPointLabel))} serving as the turning point.`,
+      ),
+      heroSummary,
+      seoTitle: buildPinpointTitle(puzzleNumber, clues),
+      seoDescription: buildPinpointDescription(puzzleNumber, clues),
+      seoKeywords: [],
+      tags: clues.slice(0, 5),
+      llmTemplateVersion: LLM_TEMPLATE_VERSION,
+    },
+    slots: {
+      heroIntroSpoilerSafe: heroSummary,
+      connectorSummary,
+      turningPoint: stripQuotes(turningPoint),
+      falseStarts,
+      rejectedGuess: slots.rejectedGuess,
+      clueDetails,
+      difficultyReason: stripQuotes(difficultyReason),
+      portableTakeaway: stripQuotes(portableTakeaway),
+    },
+  };
+}
+
+function validateAndFixGeneratedContent(
+  parsed: ParsedAIResponse,
+  puzzleData?: PuzzleDataForAI,
+): AIGeneratedContent {
+  const normalized = parsed.slots ? composeFromSlots(parsed.slots, puzzleData) : { ...parsed };
+
+  if (!normalized.sections) {
     throw new Error('AI response missing "sections" object');
   }
 
   const requiredSections = ["overview", "solutionEmergence", "clueDetails", "lessons", "faqs"] as const;
   for (const field of requiredSections) {
-    if (!parsed.sections[field]) {
+    if (!normalized.sections[field]) {
       throw new Error(`AI response missing "sections.${field}"`);
     }
   }
@@ -284,26 +767,34 @@ function validateAndFixGeneratedContent(
   const clues = puzzleData?.rawWords || [];
   const mainAnswer = puzzleData?.mainAnswer || "";
 
-  if (!parsed.analysis) {
-    parsed.analysis = {
-      detailedBreakdown: parsed.sections.solutionEmergence || "",
+  if (!normalized.analysis) {
+    normalized.analysis = {
+      detailedBreakdown: normalized.sections.solutionEmergence || "",
       dailyDebrief: `The answer is ${mainAnswer}. The clues ${clues.join(", ")} all point to the same connector.`,
-      heroSummary: `Looking for LinkedIn Pinpoint #${puzzleNumber}? Here are spoiler-safe hints for ${clues.slice(0, 3).join(", ")}.`,
-      seoTitle: `LinkedIn Pinpoint #${puzzleNumber}: ${clues.join(", ")}`,
-      seoDescription: `LinkedIn Pinpoint #${puzzleNumber} clues: ${clues.join(", ")}. Spoiler-safe hints and a walkthrough are included.`,
+      heroSummary: `LinkedIn Pinpoint #${puzzleNumber} starts wide with ${clues.slice(0, 3).join(", ")}. Use the spoiler-safe clues first, then reveal the final connector when you are ready.`,
+      seoTitle: buildPinpointTitle(puzzleNumber, clues),
+      seoDescription: buildPinpointDescription(puzzleNumber, clues),
       seoKeywords: [],
       tags: clues.slice(0, 5),
-      llmTemplateVersion: "pinpoint-v4",
+      llmTemplateVersion: LLM_TEMPLATE_VERSION,
     };
   }
 
-  if (!parsed.analysis.seoTitle) {
-    parsed.analysis.seoTitle = `LinkedIn Pinpoint #${puzzleNumber}: ${clues.join(", ")}`;
+  if (!normalized.analysis.seoTitle) {
+    normalized.analysis.seoTitle = buildPinpointTitle(puzzleNumber, clues);
   }
 
-  if (!parsed.analysis.seoDescription) {
-    parsed.analysis.seoDescription = `LinkedIn Pinpoint #${puzzleNumber} clues: ${clues.join(", ")}. Spoiler-safe hints and a walkthrough are included.`;
+  if (!normalized.analysis.seoDescription) {
+    normalized.analysis.seoDescription = buildPinpointDescription(puzzleNumber, clues);
   }
 
-  return parsed as AIGeneratedContent;
+  if (!normalized.analysis.heroSummary) {
+    normalized.analysis.heroSummary = `LinkedIn Pinpoint #${puzzleNumber} starts broad. Review the spoiler-safe clues first, then reveal the final connector when you are ready.`;
+  }
+
+  if (!normalized.analysis.llmTemplateVersion) {
+    normalized.analysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
+  }
+
+  return normalized as AIGeneratedContent;
 }
