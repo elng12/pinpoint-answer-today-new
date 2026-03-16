@@ -167,7 +167,7 @@ function buildFallbackAnalysis(
     `The five clues were ${words.map((w) => `"${w}"`).join(", ")}. ` +
     clueBlock + `. ` +
     `Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. ` +
-    `The answer is "${answer}" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle.`
+    `The answer is "${answer}" because it is the first reading that explains all five clues without forcing any of them.`
   );
 }
 
@@ -193,8 +193,8 @@ const keyOf = (d: string) => `pinpoint:${d}`;
 const quickPublishKeyOf = (d: string) => `publish:${d}:quick_done`;
 const enrichPublishDoneKeyOf = (d: string) => `publish:${d}:enrich_done`;
 const enrichPublishRunningKeyOf = (d: string) => `publish:${d}:enrich_running`;
-const directNewSitePublishDoneKeyOf = (d: string, signature: string) => `publish:${d}:new_site_direct:${signature}:done`;
-const directNewSitePublishRunningKeyOf = (d: string, signature: string) => `publish:${d}:new_site_direct:${signature}:running`;
+const newSiteLiveRefreshDoneKeyOf = (d: string, signature: string) => `publish:${d}:new_site_live:${signature}:done`;
+const newSiteLiveRefreshRunningKeyOf = (d: string, signature: string) => `publish:${d}:new_site_live:${signature}:running`;
 const i18nPublishDoneKeyOf = (d: string, locale: string) => `publish:${d}:i18n:${locale}:done`;
 const i18nPublishRunningKeyOf = (d: string, locale: string) => `publish:${d}:i18n:${locale}:running`;
 const cronHeartbeatLatestKey = "monitor:cron:last";
@@ -245,8 +245,9 @@ type I18nPublishOptions = {
   enabled?: boolean;
 };
 
-type DirectNewSitePublishResult = {
+type NewSiteLiveRefreshResult = {
   applied: boolean;
+  alreadyDone?: boolean;
   detailUrl?: string;
   payload?: JsonRecord;
   puzzleNumber?: number;
@@ -372,8 +373,11 @@ function getAdminPutDocSecret(env: Env): string | null {
   return secret.length > 0 ? secret : null;
 }
 
-function hasNewSiteGitHubPublisher(env: Env): boolean {
-  return String(env.GITHUB_TOKEN_NEW_SITE || "").trim().length > 0;
+function hasNewSiteRevalidateConfig(env: Env): boolean {
+  return (
+    String(env.NEW_SITE_URL || "").trim().length > 0 &&
+    String(env.NEW_SITE_REVALIDATE_SECRET || "").trim().length > 0
+  );
 }
 
 function shouldUseDirectNewSiteFallback(reason: string | undefined): boolean {
@@ -384,6 +388,11 @@ function shouldUseDirectNewSiteFallback(reason: string | undefined): boolean {
   if (normalized.includes("/api/publish failed (404)")) return true;
   if (normalized.includes("/api/admin/generate-draft") && normalized.includes("failed (404)")) return true;
   return false;
+}
+
+function isQuickPublishNonBlockingReason(reason: string | undefined): boolean {
+  const normalized = String(reason || "").trim();
+  return normalized === "quick publish already done today" || normalized === "legacy site pipeline unavailable";
 }
 
 function parseTimeoutMs(input: string | undefined, fallbackMs: number, minMs = 1000, maxMs = 120_000): number {
@@ -481,6 +490,28 @@ function normalizedAnswerText(raw: unknown): string {
   return raw.trim().toLowerCase();
 }
 
+function sanitizePublishedAnswerLabel(raw: unknown): string {
+  if (typeof raw !== "string") return "";
+  const text = raw.replace(/\s+/g, " ").trim();
+  if (!text) return "";
+
+  if (/^Words that come (before|after)\b/i.test(text) || /^(Types|Kinds)\s+of\b/i.test(text)) {
+    return text;
+  }
+
+  const strippedQualifier = text.replace(/\s*\((?:with|for|including)\b[^)]*\)\s*$/i, "").trim();
+  if (strippedQualifier && strippedQualifier !== text) {
+    return strippedQualifier;
+  }
+
+  const beforeSlash = text.split("/")[0]?.trim() || text;
+  if (beforeSlash && beforeSlash !== text && beforeSlash.length >= 4) {
+    return beforeSlash;
+  }
+
+  return text;
+}
+
 async function isLikelyStaleCandidate(
   env: Env,
   date: string,
@@ -526,29 +557,29 @@ async function isLikelyStaleCandidate(
   return { stale: false };
 }
 
-function createQuickOverview(puzzleNumber: number, words: string[], mainAnswer: string): string {
+function createQuickOverview(puzzleNumber: number, words: string[]): string {
   return [
     `LinkedIn Pinpoint #${puzzleNumber} just unlocked, and this is the fastest verified update.`,
-    `The board clues are ${words.join(", ")}, and all five point to ${mainAnswer}.`,
-    `This rapid post gives you the answer immediately so you can protect your streak.`,
+    `The board clues are ${words.join(", ")}, and the set looks broader than it really is at first.`,
+    `This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared.`,
     `A deeper clue-by-clue walkthrough will be added shortly.`,
   ].join(" ");
 }
 
-function createQuickSolution(puzzleNumber: number, words: string[], mainAnswer: string): string {
+function createQuickSolution(puzzleNumber: number, words: string[]): string {
   return [
     `I tested each clue against the same connector and checked whether the phrase stayed natural.`,
-    `For #${puzzleNumber}, ${words.join(", ")} consistently map to ${mainAnswer}.`,
-    `That shared fit across all five clues is why ${mainAnswer} is the correct answer.`,
+    `For #${puzzleNumber}, ${words.join(", ")} only start to make sense once one shared reading locks the set together.`,
+    `That shared fit across all five clues is why the final connector holds up cleanly.`,
     `I will expand this with richer clue context in the full version.`,
   ].join(" ");
 }
 
 function createQuickPayload(siteBaseUrl: string, puzzleDate: string, doc: Doc, puzzleNumber: number, words: string[]) {
-  const answer = String(doc.mainAnswer || doc.theme || "Pinpoint connector").trim() || "Pinpoint connector";
+  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
   const clueLabel = words.join(", ");
-  const overview = createQuickOverview(puzzleNumber, words, answer);
-  const solution = createQuickSolution(puzzleNumber, words, answer);
+  const overview = createQuickOverview(puzzleNumber, words);
+  const solution = createQuickSolution(puzzleNumber, words);
   const summary = `LinkedIn Pinpoint #${puzzleNumber}: ${clueLabel}.`;
 
   return {
@@ -905,6 +936,51 @@ async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs: numbe
   }
 }
 
+async function waitForPublicPage(url: string): Promise<boolean> {
+  const timeoutMs = 120_000;
+  const intervalMs = 5_000;
+  const requestTimeoutMs = 15_000;
+  const startedAt = Date.now();
+  let attempt = 0;
+
+  while (Date.now() - startedAt < timeoutMs) {
+    attempt += 1;
+
+    try {
+      const probeUrl = new URL(url);
+      probeUrl.searchParams.set("__publish_probe", `${Date.now()}`);
+
+      const res = await fetchWithTimeout(
+        probeUrl.toString(),
+        {
+          method: "GET",
+          headers: {
+            "cache-control": "no-cache",
+            pragma: "no-cache",
+          },
+          redirect: "follow",
+        },
+        requestTimeoutMs,
+      );
+
+      if (res.status === 200) {
+        console.log(`[new-site] page ready after ${attempt} probe(s): ${url}`);
+        return true;
+      }
+
+      console.log(`[new-site] page probe ${attempt} returned ${res.status}: ${url}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error ?? "unknown");
+      console.warn(`[new-site] page probe ${attempt} failed: ${message}`);
+    }
+
+    await sleep(intervalMs);
+  }
+
+  console.warn(`[new-site] page did not become ready within ${timeoutMs}ms: ${url}`);
+  return false;
+}
+
 async function postSiteJson(
   url: string,
   token: string,
@@ -1186,7 +1262,7 @@ async function publishToNewSiteGitHub(
   const words = Array.isArray(enrichedPayload.rawWords)
     ? (enrichedPayload.rawWords as string[])
     : extractWordsFromDoc(doc);
-  const answer = String(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "").trim();
+  const answer = sanitizePublishedAnswerLabel(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "");
   const sections = asRecord(enrichedPayload.sections) ?? {};
   const analysis = asRecord(enrichedPayload.analysis) ?? {};
 
@@ -1221,9 +1297,12 @@ async function publishToNewSiteGitHub(
   const fullAnalysis = toParagraphs(analysisSource, analysisSource);
   const solutionNarrative = toParagraphs(
     sections.solutionEmergence,
-    `I started by testing each clue against possible themes. The words ${words.join(", ")} all pointed to "${answer}".`,
+    `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
   );
-  const shortSummary = String(enrichedPayload.summary || `${words.join(", ")} — all connected by "${answer}".`);
+  const shortSummary = String(
+    enrichedPayload.summary ||
+      `Pinpoint #${puzzleNumber}: ${words.join(", ")}. Spoiler-safe hints and the full walkthrough are inside.`,
+  );
 
   // ── 1. Write {slug}.json ──
   const slugPath = `data/puzzles/${slug}.json`;
@@ -1343,6 +1422,9 @@ async function publishToNewSiteGitHub(
     console.log(`[new-site] ISR revalidate: ${revalRes.status}`);
   }
 
+  const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
+  const pageReady = pageUrl ? await waitForPublicPage(pageUrl) : false;
+
   // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
   const publishNotifyKey = `notify:publish:${puzzleDate}:${puzzleNumber}`;
@@ -1355,7 +1437,6 @@ async function publishToNewSiteGitHub(
   if (feishuWebhook && !alreadyPublishNotified) {
     const beijingToday = getBeijingTodayDate();
     const isTodayPublish = puzzleDate === beijingToday;
-    const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
     const clueStr = words.map((w, i) => `${i + 1}. ${w}`).join("\n");
     const publishFields = isTodayPublish
       ? [
@@ -1398,7 +1479,14 @@ async function publishToNewSiteGitHub(
             tag: "div",
             text: { tag: "lark_md", content: `**线索**\n${clueStr}` },
           },
-          ...(pageUrl ? [{
+          ...(!pageReady && pageUrl ? [{
+            tag: "div",
+            text: {
+              tag: "lark_md",
+              content: "页面还在等待 Vercel 完成部署，本条通知先不附详情链接，通常 1-2 分钟后即可访问。",
+            },
+          }] : []),
+          ...(pageReady && pageUrl ? [{
             tag: "action",
             actions: [{
               tag: "button",
@@ -1427,13 +1515,43 @@ async function publishToNewSiteGitHub(
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-async function maybeDirectPublishToNewSite(
+async function triggerNewSiteRevalidate(
+  env: Env,
+  puzzleNumber: number,
+  mode: "default" | "live" = "default",
+): Promise<boolean> {
+  const newSiteUrl = String(env.NEW_SITE_URL || "").trim();
+  const revalidateSecret = String(env.NEW_SITE_REVALIDATE_SECRET || "").trim();
+  if (!newSiteUrl || !revalidateSecret) {
+    return false;
+  }
+
+  const slug = `pinpoint-answer-${puzzleNumber}`;
+  const revalidateUrl = `${newSiteUrl}/api/revalidate?slug=${encodeURIComponent(slug)}${mode === "live" ? "&mode=live" : ""}`;
+
+  try {
+    const revalRes = await fetch(revalidateUrl, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${revalidateSecret}`,
+        "x-revalidate-secret": revalidateSecret,
+      },
+    });
+    console.log(`[new-site] live refresh revalidate: ${revalRes.status}`);
+    return revalRes.ok;
+  } catch (error) {
+    console.warn("[new-site] live refresh revalidate failed", error);
+    return false;
+  }
+}
+
+async function maybeRefreshNewSiteLiveFallback(
   env: Env,
   puzzleDate: string,
   doc: Doc,
   reason: string | undefined,
-): Promise<DirectNewSitePublishResult> {
-  if (!shouldUseDirectNewSiteFallback(reason) || !hasNewSiteGitHubPublisher(env)) {
+): Promise<NewSiteLiveRefreshResult> {
+  if (!shouldUseDirectNewSiteFallback(reason) || !hasNewSiteRevalidateConfig(env)) {
     return { applied: false };
   }
 
@@ -1441,20 +1559,27 @@ async function maybeDirectPublishToNewSite(
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
   const payload = createQuickPayload(publicSiteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-  const signature = (await sha256Hex(JSON.stringify({ puzzleNumber, payload }))).slice(0, 24);
-  const doneKey = directNewSitePublishDoneKeyOf(puzzleDate, signature);
-  const runningKey = directNewSitePublishRunningKeyOf(puzzleDate, signature);
+  const detailUrl = `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
+  const signature = (await sha256Hex(JSON.stringify({ puzzleNumber, payload, mode: "live-refresh" }))).slice(0, 24);
+  const doneKey = newSiteLiveRefreshDoneKeyOf(puzzleDate, signature);
+  const runningKey = newSiteLiveRefreshRunningKeyOf(puzzleDate, signature);
 
   if (await env.PP_DATA.get(doneKey)) {
-    console.log("[new-site] direct publish fallback skipped (already done)", {
+    console.log("[new-site] live refresh fallback already satisfied", {
       puzzleDate,
       puzzleNumber,
       signature,
     });
-    return { applied: false };
+    return {
+      applied: false,
+      alreadyDone: true,
+      detailUrl,
+      payload,
+      puzzleNumber,
+    };
   }
   if (await env.PP_DATA.get(runningKey)) {
-    console.log("[new-site] direct publish fallback skipped (already running)", {
+    console.log("[new-site] live refresh fallback skipped (already running)", {
       puzzleDate,
       puzzleNumber,
       signature,
@@ -1467,7 +1592,10 @@ async function maybeDirectPublishToNewSite(
   });
 
   try {
-    await publishToNewSiteGitHub(env, puzzleDate, doc, payload, puzzleNumber);
+    const refreshed = await triggerNewSiteRevalidate(env, puzzleNumber, "live");
+    if (!refreshed) {
+      return { applied: false };
+    }
     await env.PP_DATA.put(doneKey, new Date().toISOString(), {
       expirationTtl: 60 * 60 * 24 * 14,
     });
@@ -1475,7 +1603,7 @@ async function maybeDirectPublishToNewSite(
     await env.PP_DATA.delete(runningKey);
   }
 
-  console.warn("[new-site] direct publish fallback used", {
+  console.warn("[new-site] live refresh fallback used", {
     puzzleDate,
     puzzleNumber,
     reason: reason || "unknown",
@@ -1483,7 +1611,7 @@ async function maybeDirectPublishToNewSite(
 
   return {
     applied: true,
-    detailUrl: `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`,
+    detailUrl,
     payload,
     puzzleNumber,
   };
@@ -1519,7 +1647,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
 
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
-  const answer = String(doc.mainAnswer || doc.theme || "Pinpoint connector").trim() || "Pinpoint connector";
+  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
   const timeoutMs = parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000);
   const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "google/gemini-2.0-flash-001");
 
@@ -1889,7 +2017,7 @@ async function localizePublishToSite(
 
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
-  const answer = String(doc.mainAnswer || doc.theme || "Pinpoint connector").trim() || "Pinpoint connector";
+  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
   const checksumSeed = doc.checksum.slice(0, 24);
 
   let results: I18nPublishItemResult[] = [];
@@ -2075,9 +2203,9 @@ function toZhWebhookReason(reason: string | undefined): string {
     return detail ? `多语言调度错误：${detail}` : "多语言调度错误";
   }
 
-  if (raw.startsWith("direct new-site publish fallback:")) {
-    const detail = raw.slice("direct new-site publish fallback:".length).trim();
-    return detail ? `旧发布链路不可用，已改走新站直发：${toZhWebhookReason(detail)}` : "旧发布链路不可用，已改走新站直发";
+  if (raw.startsWith("new-site live refresh fallback:")) {
+    const detail = raw.slice("new-site live refresh fallback:".length).trim();
+    return detail ? `旧发布链路不可用，已改走新站实时刷新：${toZhWebhookReason(detail)}` : "旧发布链路不可用，已改走新站实时刷新";
   }
 
   const map: Record<string, string> = {
@@ -2947,13 +3075,21 @@ export default {
           const legacySiteBaseUrl = getLegacySiteBaseUrl(env);
           const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, date);
           let quickResult = await quickPublishToSite(env, date, doc);
-          const quickFallback = await maybeDirectPublishToNewSite(env, date, doc, quickResult.reason);
+          const quickFallback = await maybeRefreshNewSiteLiveFallback(env, date, doc, quickResult.reason);
           const usedQuickFallback = quickFallback.applied;
+          const reusedQuickFallback = Boolean(quickFallback.alreadyDone);
           if (usedQuickFallback) {
             quickResult = {
               status: "published",
               puzzleNumber: quickFallback.puzzleNumber,
-              reason: `direct new-site publish fallback: ${quickResult.reason || "unknown"}`,
+              reason: `new-site live refresh fallback: ${quickResult.reason || "unknown"}`,
+            };
+            result.quickDetailUrl = quickFallback.detailUrl;
+          } else if (reusedQuickFallback) {
+            quickResult = {
+              status: "skipped",
+              puzzleNumber: quickFallback.puzzleNumber,
+              reason: "quick publish already done today",
             };
             result.quickDetailUrl = quickFallback.detailUrl;
           }
@@ -2967,7 +3103,7 @@ export default {
 
           const shouldRunEnrich =
             quickResult.status === "published" ||
-            quickResult.reason === "quick publish already done today";
+            isQuickPublishNonBlockingReason(quickResult.reason);
 
           if (shouldRunEnrich) {
             manualHeartbeat.enrich = stampHeartbeatStage(manualHeartbeat.enrich, "queued", "manual run queued enrich");
@@ -3009,7 +3145,7 @@ export default {
 
             const enrichFallback =
               !payloadForI18n
-                ? await maybeDirectPublishToNewSite(env, date, doc, enrichResult.reason)
+                ? await maybeRefreshNewSiteLiveFallback(env, date, doc, enrichResult.reason)
                 : { applied: false };
             if (enrichFallback.applied) {
               result.newSiteFallback = {
@@ -3054,7 +3190,7 @@ export default {
                 status: "skipped",
                 reason:
                   (enrichFallback.applied
-                    ? `direct new-site publish fallback: ${enrichResult.reason || "unknown"}`
+                    ? `new-site live refresh fallback: ${enrichResult.reason || "unknown"}`
                     : enrichResult.reason) || "enrich payload missing",
                 results: [],
               };
@@ -3062,16 +3198,16 @@ export default {
                 manualHeartbeat.i18n,
                 "skipped",
                 (enrichFallback.applied
-                  ? `direct new-site publish fallback: ${enrichResult.reason || "unknown"}`
+                  ? `new-site live refresh fallback: ${enrichResult.reason || "unknown"}`
                   : enrichResult.reason) || "enrich payload missing",
               );
               await persistCronHeartbeat(env, manualHeartbeat);
             }
           } else {
             const fallbackReason = quickResult.reason || "quick publish not ready";
-            const directFallback = await maybeDirectPublishToNewSite(env, date, doc, fallbackReason);
+            const directFallback = await maybeRefreshNewSiteLiveFallback(env, date, doc, fallbackReason);
             const skipReason = directFallback.applied
-              ? `direct new-site publish fallback: ${fallbackReason}`
+              ? `new-site live refresh fallback: ${fallbackReason}`
               : fallbackReason;
             if (directFallback.applied) {
               result.quick = {
@@ -3398,13 +3534,20 @@ export default {
         const quickStarted = Date.now();
         let quickResult = await quickPublishToSite(env, date, doc);
         const quickDuration = Date.now() - quickStarted;
-        const quickFallback = await maybeDirectPublishToNewSite(env, date, doc, quickResult.reason);
+        const quickFallback = await maybeRefreshNewSiteLiveFallback(env, date, doc, quickResult.reason);
         const usedQuickFallback = quickFallback.applied;
+        const reusedQuickFallback = Boolean(quickFallback.alreadyDone);
         if (usedQuickFallback) {
           quickResult = {
             status: "published",
             puzzleNumber: quickFallback.puzzleNumber,
-            reason: `direct new-site publish fallback: ${quickResult.reason || "unknown"}`,
+            reason: `new-site live refresh fallback: ${quickResult.reason || "unknown"}`,
+          };
+        } else if (reusedQuickFallback) {
+          quickResult = {
+            status: "skipped",
+            puzzleNumber: quickFallback.puzzleNumber,
+            reason: "quick publish already done today",
           };
         }
         if (quickResult.status === "published") {
@@ -3412,25 +3555,29 @@ export default {
           const detailUrl = quickFallback.detailUrl || `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
           notifyLines.push(
             usedQuickFallback
-              ? `快速发布: 已直发新站 #${puzzleNumber} (${quickDuration}ms)`
+              ? `快速发布: 已刷新新站实时页 #${puzzleNumber} (${quickDuration}ms)`
               : `快速发布: 已发布 #${puzzleNumber} (${quickDuration}ms)`,
           );
           notifyLines.push(`详情: ${detailUrl}`);
           heartbeat.quickPublish = stampHeartbeatStage(heartbeat.quickPublish, "published", quickResult.reason);
         } else {
-          notifyLines.push(`快速发布: 跳过 (${toZhWebhookReason(quickResult.reason || "no reason")}, ${quickDuration}ms)`);
+          if (reusedQuickFallback && quickFallback.detailUrl) {
+            notifyLines.push(`快速发布: 今日已存在新站实时页 #${quickFallback.puzzleNumber ?? inferPuzzleNumber(undefined, date)} (${quickDuration}ms)`);
+            notifyLines.push(`详情: ${quickFallback.detailUrl}`);
+          } else {
+            notifyLines.push(`快速发布: 跳过 (${toZhWebhookReason(quickResult.reason || "no reason")}, ${quickDuration}ms)`);
+          }
           heartbeat.quickPublish = stampHeartbeatStage(
             heartbeat.quickPublish,
             "skipped",
             quickResult.reason || "not published",
           );
           const reason = String(quickResult.reason || "");
-          const nonBlockingReasons = new Set([
-            "quick publish already done today",
-            "enrich already done today",
-            "enrich already running",
-          ]);
-          if (!nonBlockingReasons.has(reason)) {
+          if (
+            !isQuickPublishNonBlockingReason(reason) &&
+            reason !== "enrich already done today" &&
+            reason !== "enrich already running"
+          ) {
             publishBlockingIssue = reason || "unknown skip reason";
           }
         }
@@ -3438,7 +3585,7 @@ export default {
 
         const shouldQueueEnrich =
           quickResult.status === "published" ||
-          quickResult.reason === "quick publish already done today";
+          isQuickPublishNonBlockingReason(quickResult.reason);
 
         if (shouldQueueEnrich) {
           const puzzleNumber = quickResult.puzzleNumber ?? inferPuzzleNumber(undefined, date);
@@ -3485,10 +3632,10 @@ export default {
 
                 const enrichFallback =
                   !payloadForI18n
-                    ? await maybeDirectPublishToNewSite(env, date, doc, enrichResult.reason)
+                    ? await maybeRefreshNewSiteLiveFallback(env, date, doc, enrichResult.reason)
                     : { applied: false };
                 if (enrichFallback.applied) {
-                  await notifyCron(env, "⚠️ Worker 已改走新站直发兜底", [
+                  await notifyCron(env, "⚠️ Worker 已改走新站实时刷新兜底", [
                     `日期: ${date}`,
                     `谜题: #${enrichFallback.puzzleNumber ?? puzzleNumber}`,
                     `详情: ${enrichFallback.detailUrl || detailUrl}`,
@@ -3539,7 +3686,7 @@ export default {
                     heartbeat.i18n,
                     "skipped",
                     (enrichFallback.applied
-                      ? `direct new-site publish fallback: ${enrichResult.reason || "unknown"}`
+                      ? `new-site live refresh fallback: ${enrichResult.reason || "unknown"}`
                       : enrichResult.reason) || "enrich payload missing",
                   );
                   await persistCronHeartbeat(env, heartbeat);
@@ -3547,20 +3694,20 @@ export default {
               } catch (enrichError) {
                 const enrichMsg = enrichError instanceof Error ? enrichError.message : String(enrichError);
                 const enrichDuration = Date.now() - enrichStarted;
-                const directFallback = await maybeDirectPublishToNewSite(env, date, doc, enrichMsg);
+                const directFallback = await maybeRefreshNewSiteLiveFallback(env, date, doc, enrichMsg);
                 if (directFallback.applied) {
                   heartbeat.enrich = stampHeartbeatStage(
                     heartbeat.enrich,
                     "published",
-                    `direct new-site publish fallback: ${enrichMsg}`,
+                    `new-site live refresh fallback: ${enrichMsg}`,
                   );
                   heartbeat.i18n = stampHeartbeatStage(
                     heartbeat.i18n,
                     "skipped",
-                    `direct new-site publish fallback: ${enrichMsg}`,
+                    `new-site live refresh fallback: ${enrichMsg}`,
                   );
                   await persistCronHeartbeat(env, heartbeat);
-                  await notifyCron(env, "⚠️ Worker 异步增强改走新站直发兜底", [
+                  await notifyCron(env, "⚠️ Worker 异步增强改走新站实时刷新兜底", [
                     `日期: ${date}`,
                     `谜题: #${directFallback.puzzleNumber ?? puzzleNumber}`,
                     `详情: ${directFallback.detailUrl || detailUrl}`,
@@ -3585,12 +3732,12 @@ export default {
           notifyLines.push(`增强: 已入队 #${puzzleNumber}`);
         } else {
           const reason = quickResult.reason || "quick publish not ready";
-          const directFallback = await maybeDirectPublishToNewSite(env, date, doc, reason);
+          const directFallback = await maybeRefreshNewSiteLiveFallback(env, date, doc, reason);
           const finalReason = directFallback.applied
-            ? `direct new-site publish fallback: ${reason}`
+            ? `new-site live refresh fallback: ${reason}`
             : reason;
           if (directFallback.applied) {
-            notifyLines.push(`快速发布兜底: 新站直发 #${directFallback.puzzleNumber ?? inferPuzzleNumber(undefined, date)}`);
+            notifyLines.push(`快速发布兜底: 新站实时刷新 #${directFallback.puzzleNumber ?? inferPuzzleNumber(undefined, date)}`);
             if (directFallback.detailUrl) {
               notifyLines.push(`详情: ${directFallback.detailUrl}`);
             }
@@ -3602,28 +3749,28 @@ export default {
         }
       } catch (publishError) {
         const publishMsg = publishError instanceof Error ? publishError.message : String(publishError);
-        const directFallback = await maybeDirectPublishToNewSite(env, date, doc, publishMsg);
+        const directFallback = await maybeRefreshNewSiteLiveFallback(env, date, doc, publishMsg);
         if (directFallback.applied) {
           const puzzleNumber = directFallback.puzzleNumber ?? inferPuzzleNumber(undefined, date);
-          console.warn("quick publish failed; used direct new-site fallback", publishMsg);
-          notifyLines.push(`快速发布: 已直发新站 #${puzzleNumber}`);
+          console.warn("quick publish failed; used new-site live refresh fallback", publishMsg);
+          notifyLines.push(`快速发布: 已刷新新站实时页 #${puzzleNumber}`);
           if (directFallback.detailUrl) {
             notifyLines.push(`详情: ${directFallback.detailUrl}`);
           }
           heartbeat.quickPublish = stampHeartbeatStage(
             heartbeat.quickPublish,
             "published",
-            `direct new-site publish fallback: ${publishMsg}`,
+            `new-site live refresh fallback: ${publishMsg}`,
           );
           heartbeat.enrich = stampHeartbeatStage(
             heartbeat.enrich,
             "skipped",
-            `direct new-site publish fallback: ${publishMsg}`,
+            `new-site live refresh fallback: ${publishMsg}`,
           );
           heartbeat.i18n = stampHeartbeatStage(
             heartbeat.i18n,
             "skipped",
-            `direct new-site publish fallback: ${publishMsg}`,
+            `new-site live refresh fallback: ${publishMsg}`,
           );
           await persistCronHeartbeat(env, heartbeat);
         } else {
