@@ -45,3 +45,31 @@ cp .env.example .env.local
 ```
 
 然后把 `NEXT_PUBLIC_ENABLE_GA` 改成 `true`，再填入 `NEXT_PUBLIC_GA_ID`。
+
+## 内容回归检查
+
+以后只要改了下面任一类内容，发布前都建议跑一次回归：
+
+- `lib/puzzle-generation.ts`
+- `app/api/admin/generate-draft/route.ts`
+- `lib/puzzles/content-contract.ts`
+- `lib/puzzles/semantic-lint.ts`
+- 发布门槛、自动修补、answer reveal 相关逻辑
+
+常用命令：
+
+```bash
+npm run test:pinpoint-regression
+npm run test:pinpoint-regression:core
+npm run test:pinpoint-regression:all
+```
+
+使用建议：
+
+- 日常小改动：先跑 `npm run test:pinpoint-regression`
+- 准备合并或发布前：跑 `npm run test:pinpoint-regression:core`
+- 大改生成器或质检规则：再补跑 `npm run test:pinpoint-regression:all`
+
+样本集说明见：
+
+- `docs/pinpoint-content-regression-sample-set.md`

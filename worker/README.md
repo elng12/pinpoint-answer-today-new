@@ -209,6 +209,30 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 
 ---
 
+## 发布前回归检查
+
+如果这次改动会影响新站内容生成、自动修补、语义质检或发布门槛，建议在推送前先回到站点根目录跑一次回归。
+
+推荐顺序：
+
+```bash
+cd /Users/elng/web/pinpointanswertoday/new-pinpoint-site
+npm run test:pinpoint-regression
+npm run test:pinpoint-regression:core
+```
+
+口径建议：
+
+- 小改动先跑 `quick`
+- 准备推 `main` 或准备观察线上效果时跑 `core`
+- 如果这次改了生成器主逻辑，再补跑 `all`
+
+样本集说明见：
+
+- `docs/pinpoint-content-regression-sample-set.md`
+
+---
+
 ## 观察期检查项
 
 适用场景：刚改完发布链路、刚部署 Worker、或刚切换生产配置后的 1 到 3 天观察期。
