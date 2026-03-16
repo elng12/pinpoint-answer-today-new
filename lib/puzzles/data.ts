@@ -26,6 +26,7 @@ export type PuzzleDetail = {
   fullAnalysis: string[];
   solutionNarrative: string[];
   wordHints: Record<string, string>;
+  spoilerHints: Record<string, string>;
   lessons: LessonItem[];
   faqs: FaqItem[];
   status: Exclude<PuzzleStatus, "draft" | "preview">;
@@ -61,11 +62,24 @@ export type NextPreview = {
   shortSummary: string;
 };
 
+type LiveWorkerPuzzleRecord = {
+  puzzleDate: string;
+  fetchedAt: string;
+  clues: string[];
+  answer: string;
+};
+
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const GITHUB_RAW_BASE =
   process.env.GITHUB_RAW_BASE ??
   "https://raw.githubusercontent.com/elng12/pinpoint-answer-today-new/main";
+const PINPOINT_WORKER_HEALTH_URL =
+  process.env.PINPOINT_WORKER_HEALTH_URL ??
+  "https://pinpoint-worker.2296744453m.workers.dev/health";
+const BASELINE_NUMBER = 536;
+const BASELINE_DATE_UTC = Date.UTC(2025, 9, 18); // 2025-10-18
+const MS_IN_DAY = 86_400_000;
 
 // Used only for generateStaticParams (build-time pre-rendering of known slugs)
 const bundledRegistryEntries = registrySchema
@@ -94,6 +108,143 @@ function formatMonthLabel(input: string): string {
 
 function buildTitle(entry: PuzzleRegistryEntryRecord): string {
   return `Pinpoint #${entry.puzzleNumber}`;
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return null;
+  }
+  return value as Record<string, unknown>;
+}
+
+function isIsoDate(value: string): boolean {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+function inferPuzzleNumberFromDate(isoDate: string): number | null {
+  if (!isIsoDate(isoDate)) return null;
+
+  const parsedDate = new Date(`${isoDate}T00:00:00.000Z`);
+  if (Number.isNaN(parsedDate.getTime())) return null;
+
+  const utc = Date.UTC(parsedDate.getUTCFullYear(), parsedDate.getUTCMonth(), parsedDate.getUTCDate());
+  const diffDays = Math.floor((utc - BASELINE_DATE_UTC) / MS_IN_DAY);
+  if (diffDays < 0) return null;
+
+  return BASELINE_NUMBER + diffDays;
+}
+
+function buildLiveWordHints(clues: string[], answer: string): Record<string, string> {
+  return Object.fromEntries(
+    clues.map((clue) => [clue, `${clue} fits the same shared connection that leads to ${answer}.`]),
+  );
+}
+
+function buildLiveLessons(answer: string): LessonItem[] {
+  return [
+    {
+      title: "Test one connector across all five clues",
+      body: `The quickest way to validate ${answer} is to see whether every clue still feels natural under the same pattern or category.`,
+    },
+    {
+      title: "Favor the cleanest explanation",
+      body: "If one answer explains all five clues without stretching any of them, that is usually the strongest Pinpoint read.",
+    },
+    {
+      title: "Use the archive for confirmation",
+      body: "A richer editorial walkthrough will replace this quick version after the daily archive sync finishes.",
+    },
+  ];
+}
+
+function buildLiveFaqs(puzzleNumber: number, clues: string[], answer: string): FaqItem[] {
+  const clueLabel = clues.join(", ");
+  return [
+    {
+      question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+      answer: `The answer is ${answer}. The clues ${clueLabel} all point back to that same connection.`,
+    },
+    {
+      question: "Why does this page look shorter than older walkthroughs?",
+      answer: "This is the live version generated before the full editorial archive update finishes. The complete long-form walkthrough lands shortly after.",
+    },
+    {
+      question: "Are the clues already verified?",
+      answer: "Yes. The answer and clue set come from the live daily feed, then the archive version adds the fuller explanation layer.",
+    },
+  ];
+}
+
+function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null {
+  const puzzleNumber = inferPuzzleNumberFromDate(record.puzzleDate);
+  if (!puzzleNumber) return null;
+
+  const slug = `pinpoint-answer-${puzzleNumber}`;
+  const clueLabel = record.clues.join(", ");
+  const answer = record.answer;
+  const shortSummary = `Pinpoint #${puzzleNumber}: ${clueLabel}.`;
+
+  return {
+    number: puzzleNumber,
+    slug,
+    title: `Pinpoint #${puzzleNumber}`,
+    date: formatDisplayDate(record.puzzleDate),
+    isoDate: record.puzzleDate,
+    answer,
+    category: answer,
+    clues: record.clues,
+    difficulty: "Moderate",
+    shortSummary,
+    fullAnalysis: [
+      `Pinpoint #${puzzleNumber} is already live with the clues ${clueLabel}. The shared connection is ${answer}. This quick page keeps today's answer available while the full archived walkthrough is still finishing.`,
+    ],
+    solutionNarrative: [
+      `I checked whether ${clueLabel} could all resolve under the same phrase pattern or category. ${answer} is the first clean fit that explains the full set without forcing any clue.`,
+    ],
+    wordHints: buildLiveWordHints(record.clues, answer),
+    spoilerHints: {},
+    lessons: buildLiveLessons(answer),
+    faqs: buildLiveFaqs(puzzleNumber, record.clues, answer),
+    status: "live",
+    updatedAt: record.fetchedAt,
+  };
+}
+
+function parseLiveWorkerPuzzleRecord(raw: unknown): LiveWorkerPuzzleRecord | null {
+  const json = asRecord(raw);
+  if (!json) return null;
+
+  const puzzleDate = typeof json.puzzleDate === "string" ? json.puzzleDate.trim() : "";
+  if (!isIsoDate(puzzleDate)) return null;
+
+  const answers = Array.isArray(json.answers)
+    ? json.answers
+        .map((item) => {
+          const row = asRecord(item);
+          const word = typeof row?.word === "string" ? row.word.trim() : "";
+          return word;
+        })
+        .filter((word) => word.length > 0)
+        .slice(0, 5)
+    : [];
+
+  const answer = typeof json.mainAnswer === "string"
+    ? json.mainAnswer.trim()
+    : typeof json.theme === "string"
+      ? json.theme.trim()
+      : "";
+
+  if (answers.length !== 5 || !answer) return null;
+
+  const fetchedAtRaw = typeof json.fetchedAt === "string" ? json.fetchedAt.trim() : "";
+  const fetchedAt = fetchedAtRaw || `${puzzleDate}T00:00:00.000Z`;
+
+  return {
+    puzzleDate,
+    fetchedAt,
+    clues: answers,
+    answer,
+  };
 }
 
 function isDetailEntry(
@@ -176,6 +327,31 @@ const fetchPuzzleContent = cache(
     }
   },
 );
+
+const fetchLiveWorkerPuzzle = cache(async (): Promise<PuzzleDetail | null> => {
+  const workerHealthUrl = PINPOINT_WORKER_HEALTH_URL.trim();
+  if (!workerHealthUrl) return null;
+
+  try {
+    const res = await fetch(workerHealthUrl, {
+      next: { tags: ["worker-live"], revalidate: 300 },
+    });
+    if (!res.ok) {
+      throw new Error(`worker live fetch failed with status ${res.status}`);
+    }
+
+    const json = await res.json();
+    const liveRecord = parseLiveWorkerPuzzleRecord(json);
+    if (!liveRecord) {
+      throw new Error("worker live payload was incomplete");
+    }
+
+    return toLivePuzzleDetail(liveRecord);
+  } catch (error) {
+    warnRemoteFallback("Worker live puzzle unavailable", error);
+    return null;
+  }
+});
 
 function resolveDataDir(): string {
   const cwd = process.cwd();
@@ -260,6 +436,7 @@ async function toPuzzleDetail(
     fullAnalysis: detailContent.fullAnalysis,
     solutionNarrative: detailContent.solutionNarrative ?? [],
     wordHints: detailContent.wordHints,
+    spoilerHints: detailContent.spoilerHints ?? {},
     lessons: detailContent.lessons,
     faqs: detailContent.faqs,
     status: entry.status,
@@ -272,6 +449,21 @@ async function getDetailEntries() {
   return entries.filter(isDetailEntry);
 }
 
+async function getLiveWorkerPuzzle(
+  entries?: Array<{
+    slug: string;
+  }>,
+): Promise<PuzzleDetail | null> {
+  const livePuzzle = await fetchLiveWorkerPuzzle();
+  if (!livePuzzle) return null;
+
+  if (entries?.some((entry) => entry.slug === livePuzzle.slug)) {
+    return null;
+  }
+
+  return livePuzzle;
+}
+
 // ── Public API (async) ─────────────────────────────────────────────────────
 
 /** Used only by generateStaticParams — reads bundled registry at build time. */
@@ -281,6 +473,11 @@ export function getAllDetailSlugs(): string[] {
 
 export async function getCurrentPuzzle(): Promise<PuzzleDetail> {
   const entries = await getDetailEntries();
+  const livePuzzle = await getLiveWorkerPuzzle(entries);
+  if (livePuzzle) {
+    return livePuzzle;
+  }
+
   const current = entries.find((e) => e.status === "live");
   if (!current) throw new Error("Expected one live puzzle in the registry.");
   return toPuzzleDetail(current);
@@ -289,20 +486,30 @@ export async function getCurrentPuzzle(): Promise<PuzzleDetail> {
 export async function getPuzzleBySlug(slug: string): Promise<PuzzleDetail | null> {
   const entries = await getDetailEntries();
   const entry = entries.find((e) => e.slug === slug);
-  if (!entry) return null;
-  return toPuzzleDetail(entry);
+  if (entry) {
+    return toPuzzleDetail(entry);
+  }
+
+  const livePuzzle = await getLiveWorkerPuzzle(entries);
+  return livePuzzle?.slug === slug ? livePuzzle : null;
 }
 
 export async function getPuzzleSlugByNumber(number: number): Promise<string | null> {
   const entries = await getDetailEntries();
   const entry = entries.find((e) => e.puzzleNumber === number);
-  return entry?.slug ?? null;
+  if (entry) return entry.slug;
+
+  const livePuzzle = await getLiveWorkerPuzzle(entries);
+  return livePuzzle?.number === number ? livePuzzle.slug : null;
 }
 
 export async function getPuzzleSlugByPublishDate(isoDate: string): Promise<string | null> {
   const entries = await getDetailEntries();
   const entry = entries.find((e) => e.publishDate === isoDate);
-  return entry?.slug ?? null;
+  if (entry) return entry.slug;
+
+  const livePuzzle = await getLiveWorkerPuzzle(entries);
+  return livePuzzle?.isoDate === isoDate ? livePuzzle.slug : null;
 }
 
 export async function getRecentEntries(
@@ -322,7 +529,14 @@ export async function getAdjacentEntries(slug: string): Promise<{
 }> {
   const entries = await getDetailEntries();
   const idx = entries.findIndex((e) => e.slug === slug);
-  if (idx === -1) return { prev: null, next: null };
+  if (idx === -1) {
+    const livePuzzle = await getLiveWorkerPuzzle(entries);
+    if (livePuzzle?.slug === slug) {
+      const previousEntry = entries[0] ? toArchiveEntry(entries[0]) : null;
+      return { prev: previousEntry, next: null };
+    }
+    return { prev: null, next: null };
+  }
   // entries sorted newest-first: idx-1 = newer, idx+1 = older
   const next = idx > 0 ? toArchiveEntry(entries[idx - 1]) : null;
   const prev = idx < entries.length - 1 ? toArchiveEntry(entries[idx + 1]) : null;

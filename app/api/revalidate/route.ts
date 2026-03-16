@@ -50,14 +50,17 @@ export async function POST(request: NextRequest) {
   }
 
   const slug = request.nextUrl.searchParams.get("slug")?.trim() ?? "";
+  const mode = request.nextUrl.searchParams.get("mode")?.trim() ?? "";
   if (slug && !/^pinpoint-answer-\d+$/.test(slug)) {
     return NextResponse.json({ error: "Invalid slug" }, { status: 400 });
   }
 
   // Always refresh shared data (registry-dependent pages)
   revalidateTag("registry");
+  revalidateTag("worker-live");
   revalidatePath("/");
   revalidatePath("/puzzles");
+  revalidatePath("/pinpoint/today");
   revalidatePath("/next-pinpoint-preview");
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pinpointanswertoday.app";
@@ -69,7 +72,9 @@ export async function POST(request: NextRequest) {
     urlsToIndex.push(`${siteUrl}/linkedin-pinpoint-answers/${slug}`);
   }
 
-  void pingIndexNow(urlsToIndex);
+  if (mode !== "live") {
+    void pingIndexNow(urlsToIndex);
+  }
 
-  return NextResponse.json({ revalidated: true, slug: slug || "all", ts: Date.now() });
+  return NextResponse.json({ revalidated: true, slug: slug || "all", mode: mode || "default", ts: Date.now() });
 }
