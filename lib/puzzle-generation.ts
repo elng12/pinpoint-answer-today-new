@@ -367,9 +367,9 @@ function uniqueNonEmpty(values: Array<string | null | undefined>): string[] {
 }
 
 function detectAnswerPattern(answer: string): AnswerPattern {
-  const before = answer.match(/^Words that come before\s+"([^"]+)"$/i);
+  const before = answer.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
   if (before?.[1]) return { kind: "before", token: before[1] };
-  const after = answer.match(/^Words that come after\s+"([^"]+)"$/i);
+  const after = answer.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
   if (after?.[1]) return { kind: "after", token: after[1] };
   const typedCategory = answer.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
   if (typedCategory?.[2]) {
@@ -431,6 +431,101 @@ function normalizeLooseMatch(value: string): string {
     .trim();
 }
 
+function hasVisualCue(value: string): boolean {
+  return /[^\p{L}\p{N}\s()'"&,-]/u.test(value);
+}
+
+function buildTokenVariants(token: string): string[] {
+  const normalized = normalizeLooseMatch(token);
+  const variants = new Set<string>();
+  if (!normalized) return [];
+  variants.add(normalized);
+
+  const irregularSingulars: Record<string, string> = {
+    mice: "mouse",
+    geese: "goose",
+    teeth: "tooth",
+    feet: "foot",
+    men: "man",
+    women: "woman",
+  };
+
+  if (irregularSingulars[normalized]) {
+    variants.add(irregularSingulars[normalized]);
+  }
+
+  if (/ies$/i.test(normalized)) {
+    variants.add(`${normalized.slice(0, -3)}y`);
+  } else if (/(ches|shes|xes|zes)$/i.test(normalized)) {
+    variants.add(normalized.slice(0, -2));
+  } else if (/s$/i.test(normalized) && !/ss$/i.test(normalized)) {
+    variants.add(normalized.slice(0, -1));
+  } else {
+    variants.add(`${normalized}s`);
+  }
+
+  return [...variants].filter(Boolean);
+}
+
+function extractMeaningfulClueWords(clue: string): string[] {
+  return normalizeLooseMatch(clue)
+    .split(" ")
+    .map((part) => part.trim())
+    .filter((part) => part.length >= 3 && !["and", "the", "for", "with"].includes(part));
+}
+
+function buildSpecialPhraseFromClue(clue: string, answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
+
+  const token = pattern.token;
+  const original = normalizeText(clue);
+  let candidate = original;
+  const symbolGroupPattern = /\(\s*[^\p{L}\p{N}]+\s*\)|[^\p{L}\p{N}\s()'"&,-]+/gu;
+
+  const replaced = candidate.replace(symbolGroupPattern, ` ${token} `).replace(/\s+/g, " ").trim();
+  if (replaced === original) {
+    return "";
+  }
+
+  candidate = replaced;
+  candidate = candidate.replace(/\(\s*\)/g, "").replace(/\s+/g, " ").trim();
+  return stripQuotes(candidate);
+}
+
+function isPhraseCandidateValid(candidate: string, clue: string, answer: string): boolean {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind !== "before" && pattern.kind !== "after") {
+    return Boolean(normalizeText(candidate));
+  }
+
+  const normalizedCandidate = normalizeLooseMatch(candidate);
+  if (!normalizedCandidate) return false;
+
+  const tokenVariants = buildTokenVariants(pattern.token);
+  const clueWords = extractMeaningfulClueWords(clue);
+  const hasClueContext = clueWords.length === 0 || clueWords.some((word) => normalizedCandidate.includes(word));
+
+  const boundaryMatch =
+    pattern.kind === "before"
+      ? tokenVariants.some(
+          (variant) =>
+            normalizedCandidate.endsWith(` ${variant}`) ||
+            normalizedCandidate === variant ||
+            normalizedCandidate.endsWith(variant),
+        )
+      : tokenVariants.some(
+          (variant) =>
+            normalizedCandidate.startsWith(`${variant} `) ||
+            normalizedCandidate === variant ||
+            normalizedCandidate.startsWith(variant),
+        );
+
+  if (!boundaryMatch) return false;
+  if (clueWords.length > 0 && !hasClueContext) return false;
+  return true;
+}
+
 function countMentionedClues(text: string, clues: string[]): number {
   const normalizedText = normalizeLooseMatch(text);
   return clues.filter((clue) => {
@@ -441,15 +536,28 @@ function countMentionedClues(text: string, clues: string[]): number {
 
 function buildTurningPointLabel(rawTurningPoint: string | null | undefined, clues: string[]): string {
   const normalized = normalizeText(rawTurningPoint);
+  const looseTurningPoint = normalizeLooseMatch(normalized);
   for (const clue of clues) {
     if (!clue) continue;
-    if (!clue) continue;
     const looseClue = normalizeLooseMatch(clue);
-    const looseTurningPoint = normalizeLooseMatch(normalized);
     if (looseClue && looseTurningPoint.includes(looseClue)) {
       return `"${clue}"`;
     }
   }
+
+  const visualClue = clues.find((clue) => hasVisualCue(clue));
+  if (visualClue && looseTurningPoint) {
+    const clueWords = extractMeaningfulClueWords(visualClue);
+    if (
+      clueWords.some((word) => looseTurningPoint.includes(word)) ||
+      looseTurningPoint.includes("emoji") ||
+      looseTurningPoint.includes("icon") ||
+      looseTurningPoint.includes("symbol")
+    ) {
+      return `"${visualClue}"`;
+    }
+  }
+
   return `"${clues[2] || clues[0] || "the key clue"}"`;
 }
 
@@ -556,8 +664,15 @@ function normalizeSlotClueDetails(
 
   return clues.map((clue) => {
     const source = byClue.get(normalizeText(clue).toLowerCase()) ?? {};
-    const rawPhrase = normalizeText(source.phrase) || buildFallbackPhrase(clue, answer);
-    const phrase = normalizePhraseDisplay(rawPhrase, answer) || buildFallbackPhrase(clue, answer);
+    const rawPhrase = normalizeText(source.phrase);
+    const normalizedRawPhrase = normalizePhraseDisplay(rawPhrase, answer);
+    const specialPhrase = buildSpecialPhraseFromClue(clue, answer);
+    const fallbackPhrase = buildFallbackPhrase(clue, answer);
+    const phraseCandidate =
+      (isPhraseCandidateValid(normalizedRawPhrase, clue, answer) && normalizedRawPhrase) ||
+      (isPhraseCandidateValid(specialPhrase, clue, answer) && normalizePhraseDisplay(specialPhrase, answer)) ||
+      fallbackPhrase;
+    const phrase = normalizePhraseDisplay(phraseCandidate, answer) || fallbackPhrase;
     const surfaceRead = normalizeText(source.surfaceRead) || `a broader or more distracting read of ${clue}`;
     const whyItWorks =
       normalizeText(source.whyItWorks) ||
@@ -829,7 +944,11 @@ function composeFromSlots(
     slots: {
       heroIntroSpoilerSafe: heroSummary,
       connectorSummary,
-      turningPoint: stripQuotes(turningPoint),
+      turningPoint: ensureSentence(
+        normalizeLooseMatch(turningPoint).includes(normalizeLooseMatch(stripQuotes(turningPointLabel)))
+          ? stripQuotes(turningPoint)
+          : `${stripQuotes(turningPointLabel)} is the clue that makes the pattern click.`,
+      ),
       falseStarts,
       rejectedGuess: slots.rejectedGuess,
       clueDetails,

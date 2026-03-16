@@ -9,6 +9,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
+    "test:pinpoint-regression": "node scripts/run-pinpoint-regression.mjs",
+    "test:pinpoint-regression:core": "node scripts/run-pinpoint-regression.mjs --set core",
+    "test:pinpoint-regression:all": "node scripts/run-pinpoint-regression.mjs --set all",
     "prepare": "node scripts/install-hooks.mjs"
   },
   "dependencies": {

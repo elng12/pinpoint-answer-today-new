@@ -3,6 +3,12 @@
 This sample set is the minimum board mix to re-test after any change to the
 Pinpoint content generator, semantic lint rules, or publish gating.
 
+## Run Commands
+
+- Quick smoke test: `npm run test:pinpoint-regression`
+- Core set: `npm run test:pinpoint-regression:core`
+- Full sweep: `npm run test:pinpoint-regression:all`
+
 ## Core Set
 
 ### 682 - Category board with mixed cultural contexts

@@ -162,11 +162,11 @@ type AnswerPattern =
   | { kind: "category" };
 
 function detectAnswerPattern(answer: string): AnswerPattern {
-  const before = answer.match(/^Words that come before\s+"([^"]+)"$/i);
+  const before = answer.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
   if (before?.[1]) {
     return { kind: "before", token: before[1] };
   }
-  const after = answer.match(/^Words that come after\s+"([^"]+)"$/i);
+  const after = answer.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
   if (after?.[1]) {
     return { kind: "after", token: after[1] };
   }
