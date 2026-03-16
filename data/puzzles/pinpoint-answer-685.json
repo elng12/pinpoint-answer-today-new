@@ -1,0 +1,56 @@
+{
+  "puzzleNumber": 685,
+  "slug": "pinpoint-answer-685",
+  "publishDate": "2026-03-16",
+  "isoDate": "2026-03-16",
+  "clues": [
+    "Time",
+    "The Economist",
+    "Cosmopolitan",
+    "National Geographic",
+    "Reader’s Digest"
+  ],
+  "answer": "Magazines (with global readership / versions)",
+  "category": "Magazines (with global readership / versions)",
+  "wordHints": {
+    "Time": "Time connects to \"Magazines (with global readership / versions)\"",
+    "The Economist": "The Economist connects to \"Magazines (with global readership / versions)\"",
+    "Cosmopolitan": "Cosmopolitan connects to \"Magazines (with global readership / versions)\"",
+    "National Geographic": "National Geographic connects to \"Magazines (with global readership / versions)\"",
+    "Reader’s Digest": "Reader’s Digest connects to \"Magazines (with global readership / versions)\""
+  },
+  "fullAnalysis": [
+    "I approached Pinpoint #685 by testing each clue against possible connecting words. The five clues were \"Time\", \"The Economist\", \"Cosmopolitan\", \"National Geographic\", \"Reader’s Digest\". \"Time\" — Time fits the theme. \"The Economist\" — The Economist fits the theme. \"Cosmopolitan\" — Cosmopolitan fits the theme. \"National Geographic\" — National Geographic fits the theme. \"Reader’s Digest\" — Reader’s Digest fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Magazines (with global readership / versions)\" — every clue connects to it cleanly, which is the hallmark of a well-crafted Pinpoint puzzle."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #685, Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest consistently map to Magazines (with global readership / versions). That shared fit across all five clues is why Magazines (with global readership / versions) is the correct answer. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #685?",
+      "answer": "The answer is \"Magazines (with global readership / versions)\". The clues Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ]
+}

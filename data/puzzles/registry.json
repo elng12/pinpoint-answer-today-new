@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 685,
+    "slug": "pinpoint-answer-685",
+    "publishDate": "2026-03-16",
+    "status": "live",
+    "clues": [
+      "Time",
+      "The Economist",
+      "Cosmopolitan",
+      "National Geographic",
+      "Reader’s Digest"
+    ],
+    "mainAnswer": "Magazines (with global readership / versions)",
+    "category": "Magazines (with global readership / versions)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #685: Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest.",
+    "updatedAt": "2026-03-16T08:01:47.594Z"
+  },
+  {
     "puzzleNumber": 684,
     "slug": "pinpoint-answer-684",
     "publishDate": "2026-03-15",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "English",
       "Dog",
@@ -15,7 +33,7 @@
     "category": "Words that come before “roses”",
     "difficultyLevel": "Moderate",
     "shortSummary": "LinkedIn Pinpoint #684: English, Dog, Damask, (Hybrid) Tea, Stop and smell the (🌹🌹🌹).",
-    "updatedAt": "2026-03-15T12:28:21.507Z"
+    "updatedAt": "2026-03-16T08:01:47.594Z"
   },
   {
     "puzzleNumber": 683,
