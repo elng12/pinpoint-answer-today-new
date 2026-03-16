@@ -38,6 +38,7 @@ export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.Zo
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   wordHints: z.ZodRecord<z.ZodString, z.ZodString>;
+  spoilerHints: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
   lessons: z.ZodArray<typeof lessonItemSchema, "many">;
   faqs: z.ZodArray<typeof faqItemSchema, "many">;
 }>;
