@@ -230,6 +230,7 @@ npm run test:pinpoint-regression:core
 样本集说明见：
 
 - `docs/pinpoint-content-regression-sample-set.md`
+- `docs/pinpoint-content-generation-best-practice-2026-03-17.md`
 
 ---
 
