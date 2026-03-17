@@ -552,6 +552,302 @@ function sanitizePublishedAnswerLabel(raw: unknown): string {
   return text;
 }
 
+type WorkerAnswerPattern =
+  | { kind: "before"; token: string }
+  | { kind: "after"; token: string }
+  | { kind: "typed-category"; noun: string; singularNoun: string }
+  | { kind: "category"; label: string };
+
+function stripStraightAndCurlyQuotes(value: string): string {
+  return value.replace(/["“”]/g, "");
+}
+
+function singularizeTrailingWord(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+  const words = trimmed.split(/\s+/);
+  const lastWord = words[words.length - 1] || trimmed;
+  const lowerLastWord = lastWord.toLowerCase();
+  const irregularSingulars: Record<string, string> = {
+    mice: "mouse",
+    geese: "goose",
+    teeth: "tooth",
+    feet: "foot",
+    men: "man",
+    women: "woman",
+    people: "person",
+    children: "child",
+  };
+
+  let singularLastWord = lastWord;
+  if (irregularSingulars[lowerLastWord]) {
+    singularLastWord = irregularSingulars[lowerLastWord];
+  } else if (/ies$/i.test(lastWord)) {
+    singularLastWord = `${lastWord.slice(0, -3)}y`;
+  } else if (/(ches|shes|xes|zes)$/i.test(lastWord)) {
+    singularLastWord = lastWord.slice(0, -2);
+  } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
+    singularLastWord = lastWord.slice(0, -1);
+  }
+
+  return [...words.slice(0, -1), singularLastWord].join(" ").trim();
+}
+
+function detectWorkerAnswerPattern(answer: string): WorkerAnswerPattern {
+  const normalizedAnswer = sanitizePublishedAnswerLabel(answer);
+  const before = normalizedAnswer.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
+  if (before?.[1]) return { kind: "before", token: stripStraightAndCurlyQuotes(before[1]).trim() };
+
+  const after = normalizedAnswer.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
+  if (after?.[1]) return { kind: "after", token: stripStraightAndCurlyQuotes(after[1]).trim() };
+
+  const typedCategory = normalizedAnswer.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (typedCategory?.[2]) {
+    const noun = stripStraightAndCurlyQuotes(typedCategory[2]).trim();
+    return {
+      kind: "typed-category",
+      noun,
+      singularNoun: singularizeTrailingWord(noun) || noun,
+    };
+  }
+
+  return {
+    kind: "category",
+    label: stripStraightAndCurlyQuotes(normalizedAnswer).replace(/\s*\([^)]*\)\s*$/, "").trim() || "shared category",
+  };
+}
+
+function normalizeLooseWorkerText(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/["“”'’()\-_,!?:.;/]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractWorkerCategoryLabel(answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "typed-category") return pattern.noun.toLowerCase();
+  if (pattern.kind !== "category") return "";
+  const firstWord = pattern.label.split(/\s+/)[0]?.trim().toLowerCase() || "";
+  return firstWord.length > 2 ? firstWord : pattern.label.toLowerCase();
+}
+
+function buildWorkerConnectorSummary(answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `a phrase pattern built around ${pattern.token}`;
+  }
+  if (pattern.kind === "typed-category") {
+    return `a category board about ${pattern.noun.toLowerCase()}`;
+  }
+  const label = extractWorkerCategoryLabel(answer);
+  return label ? `a category board about ${label}` : "a shared category board";
+}
+
+function buildWorkerSpecialPhrase(clue: string, answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
+
+  const symbolGroupPattern = /\(\s*[^\p{L}\p{N}]+\s*\)|[^\p{L}\p{N}\s()'"&,-]+/gu;
+  const replaced = clue.replace(symbolGroupPattern, ` ${pattern.token} `).replace(/\s+/g, " ").trim();
+  if (replaced === clue) return "";
+  return stripStraightAndCurlyQuotes(replaced.replace(/\(\s*\)/g, "").replace(/\s+/g, " ").trim());
+}
+
+function buildWorkerFallbackPhrase(clue: string, answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "before") {
+    return buildWorkerSpecialPhrase(clue, answer) || `${clue} ${pattern.token}`.trim();
+  }
+  if (pattern.kind === "after") {
+    return buildWorkerSpecialPhrase(clue, answer) || `${pattern.token} ${clue}`.trim();
+  }
+  if (pattern.kind === "typed-category") {
+    const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+    const normalizedBase = baseClue || clue;
+    const baseLoose = normalizeLooseWorkerText(normalizedBase);
+    const nounLoose = normalizeLooseWorkerText(pattern.singularNoun);
+    if (nounLoose && baseLoose.includes(nounLoose)) return normalizedBase;
+    return `${normalizedBase} ${pattern.singularNoun}`.trim();
+  }
+  return clue.trim();
+}
+
+function buildWorkerClueExplanation(clue: string, phrase: string, answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    const token = pattern.token;
+    const phraseText = phrase || clue;
+    const visualStyle = normalizeLooseWorkerText(clue) !== normalizeLooseWorkerText(phraseText) &&
+      /[^\p{L}\p{N}\s()'"&,-]/u.test(clue);
+    if (visualStyle) {
+      return `The familiar expression "${phraseText}" confirms the shared word "${token}" in plain language.`;
+    }
+    return `"${phraseText}" is the natural reading here, so this clue fits once the board is read through "${token}".`;
+  }
+
+  if (pattern.kind === "typed-category") {
+    return `"${phrase}" is a recognizable ${pattern.singularNoun.toLowerCase()}, which makes this clue a clean member of the set.`;
+  }
+
+  const label = extractWorkerCategoryLabel(answer) || "category";
+  return `"${phrase}" belongs in the same ${label} frame, which is why the clue becomes much clearer once the board tightens.`;
+}
+
+function scoreWorkerClueSpecificity(clue: string): number {
+  const text = clue.trim();
+  if (!text) return 0;
+  const words = text.split(/\s+/).filter(Boolean);
+  let score = text.length;
+  score += words.length * 5;
+  score += (text.match(/-/g)?.length || 0) * 6;
+  score += (text.match(/\(/g)?.length || 0) * 4;
+  score += /The\s+/i.test(text) ? 5 : 0;
+  return score;
+}
+
+function pickWorkerTurningPoint(words: string[], answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    const special = words.find((word) => buildWorkerSpecialPhrase(word, answer));
+    if (special) return special;
+  }
+
+  let bestWord = words[0] || "the key clue";
+  let bestScore = -1;
+  for (let index = 0; index < words.length; index += 1) {
+    const word = words[index] || "";
+    const score = scoreWorkerClueSpecificity(word) + index;
+    if (score > bestScore) {
+      bestScore = score;
+      bestWord = word;
+    }
+  }
+  return bestWord;
+}
+
+function buildTemplateFallbackPayload(
+  siteBaseUrl: string,
+  puzzleDate: string,
+  doc: Doc,
+  puzzleNumber: number,
+  words: string[],
+): JsonRecord {
+  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
+  const clueLabel = words.join(", ");
+  const pattern = detectWorkerAnswerPattern(answer);
+  const connectorSummary = buildWorkerConnectorSummary(answer);
+  const turningPoint = pickWorkerTurningPoint(words, answer);
+  const turningPhrase = buildWorkerFallbackPhrase(turningPoint, answer);
+  const clueDetails = words.map((clue) => {
+    const phrase = buildWorkerFallbackPhrase(clue, answer);
+    return {
+      clue,
+      phrase,
+      explanation: buildWorkerClueExplanation(clue, phrase, answer),
+    };
+  });
+
+  const heroSummary =
+    `Pinpoint Answer Today asks: what links ${clueLabel} - and what story do they share? ` +
+    `The set looks broader than it really is at first, but one clue narrows the frame and makes the pattern click.`;
+
+  const overviewParagraphs =
+    pattern.kind === "before" || pattern.kind === "after"
+      ? [
+          `Pinpoint #${puzzleNumber} looks wider than it really is because clues like ${words.slice(0, 3).join(", ")} can point in several directions before one clue narrows the frame. The board settles once "${turningPoint}" is read as "${turningPhrase}", because the earlier clues then stop feeling random and start reading like natural phrases.`,
+          `From there, ${connectorSummary} explains the full set more cleanly than loose category guesses. Each clue resolves through a phrase that naturally includes the shared word, and the final confirmation works because the same reading holds across all five clues without forcing any of them.`,
+        ]
+      : [
+          `At first glance, ${words.slice(0, 3).join(", ")} do not suggest one clean category. The board tightens once "${turningPoint}" makes the shared frame specific enough to test across all five clues, because the earlier words then stop feeling broad and start feeling like exact members of the same set.`,
+          `From there, ${connectorSummary} explains the board more cleanly than broader labels. The clues work because each one points to a recognizable member of the same category, not because the words merely feel adjacent or loosely related.`,
+        ];
+
+  const solutionParagraphs =
+    pattern.kind === "before" || pattern.kind === "after"
+      ? [
+          `I did not have a clean connector from the first clue. ${words[0]} and ${words[1]} both support a few weak guesses on their own, so I waited for a clue that felt more specific instead of forcing an answer too early.`,
+          `The turn came when "${turningPoint}" clicked as "${turningPhrase}". Once I read the board through that shared word, the earlier clues started to behave like natural phrases rather than isolated prompts, and that was the first point where one connector explained the full set cleanly.`,
+        ]
+      : [
+          `I did not have a clean category from the first clue. ${words[0]} and ${words[1]} could each belong to several broad topics, so the set felt wider than it really was until one clue made the board specific enough to test properly.`,
+          `The turn came when I treated "${turningPoint}" as "${turningPhrase}" instead of a loose association. Once the board was read through ${connectorSummary}, the earlier clues started to feel like exact members of the same category, and that was the first point where one reading explained all five clues without stretching.`,
+        ];
+
+  const detailedBreakdown = overviewParagraphs.join("\n\n");
+  const solutionEmergence = solutionParagraphs.join("\n\n");
+  const lessons = [
+    {
+      title: pattern.kind === "before" || pattern.kind === "after"
+        ? "Wait for the clue that narrows the shared phrase"
+        : "Wait for the clue that narrows the category",
+      body: pattern.kind === "before" || pattern.kind === "after"
+        ? "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact."
+        : "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test.",
+    },
+    {
+      title: "Prefer exact fits over loose associations",
+      body: pattern.kind === "before" || pattern.kind === "after"
+        ? "A strong Pinpoint answer should create natural phrases for all five clues, not just a vibe that seems close enough."
+        : "A strong Pinpoint answer should explain why each clue belongs in the same set, not just why the words feel loosely related.",
+    },
+    {
+      title: "Re-check the earlier clues once the frame tightens",
+      body: pattern.kind === "before" || pattern.kind === "after"
+        ? `Once "${turningPoint}" lands, go back and test the earlier clues against the same shared word before locking the answer.`
+        : `Once "${turningPoint}" lands, go back and test the earlier clues under the same category before locking the answer.`,
+    },
+  ];
+
+  const faqs = [
+    {
+      question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+      answer: `The answer is "${answer}" because that reading explains the full set cleanly, including "${turningPoint}".`,
+    },
+    {
+      question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+      answer:
+        pattern.kind === "before" || pattern.kind === "after"
+          ? `The connection is ${connectorSummary}. Each clue resolves through a natural phrase that uses the same shared word.`
+          : `The connection is ${connectorSummary}. Each clue points to a recognizable member of the same category once the board is read in the right frame.`,
+    },
+    {
+      question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
+      answer:
+        pattern.kind === "before" || pattern.kind === "after"
+          ? `"${turningPoint}" is the turning point because "${turningPhrase}" confirms the shared word in the clearest way.`
+          : `"${turningPoint}" is the turning point because "${turningPhrase}" makes the category specific enough to test across the whole board.`,
+    },
+  ];
+
+  return {
+    puzzleNumber,
+    rawWords: words,
+    analysis: {
+      answerGroups: [{ category: answer, words }],
+      detailedBreakdown,
+      dailyDebrief: `LinkedIn Pinpoint #${puzzleNumber} answer is ${answer}. Clues: ${clueLabel}.`,
+      difficultyRating: 3,
+      answerDescription: answer,
+    },
+    summary: heroSummary,
+    mainAnswer: answer,
+    sections: {
+      overview: detailedBreakdown,
+      solutionEmergence,
+      clueDetails,
+      lessons,
+      faqs,
+    },
+    publishedAtIso: buildPublishedAtIso(puzzleDate, doc.fetchedAt),
+    metadata: {
+      publishedAtSource: `${siteBaseUrl}/worker/template-fallback`,
+      publishedAtConfidence: 0.7,
+    },
+  };
+}
+
 async function isLikelyStaleCandidate(
   env: Env,
   date: string,
@@ -1756,16 +2052,29 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
         }
         qualityGateSummary = extractDraftFailureSummary(error);
         if (attempt >= draftAttempts) {
-          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}`;
-          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已保留快版内容", [
+          const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used template fallback`;
+          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已改用模板保底全文", [
             `日期: ${puzzleDate}`,
             `谜题: #${puzzleNumber}`,
             `答案: ${answer}`,
             `尝试次数: ${draftAttempts}`,
-            `结果: 未发布全文，继续保留快版内容`,
+            `结果: AI 全文未过线，已改用旧模板保底全文`,
             `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
           ]);
-          return { status: "skipped", reason, puzzleNumber };
+          draftResp = {
+            success: true,
+            data: fallbackPayload,
+          };
+          lastDraftError = null;
+          console.warn("[enrich] draft blocked by quality gates; switched to template fallback", {
+            puzzleDate,
+            puzzleNumber,
+            attempt,
+            draftAttempts,
+            reason,
+          });
+          break;
         }
         const reason = error instanceof Error ? error.message : String(error);
         const delayMs = 800 * attempt;
@@ -1793,6 +2102,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
     const draftData = asRecord(draftResp.data);
     const draftSections = asRecord(draftData?.sections);
     const draftAnalysis = asRecord(draftData?.analysis);
+    const draftMetadata = asRecord(draftData?.metadata);
 
     const fallbackPayload = createQuickPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
     const enrichedPayload: JsonRecord = {
@@ -1802,13 +2112,19 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
         detailedBreakdown: String(draftAnalysis?.detailedBreakdown || fallbackPayload.analysis.detailedBreakdown),
         dailyDebrief: String(draftAnalysis?.dailyDebrief || fallbackPayload.analysis.dailyDebrief),
       },
-      summary: String(draftAnalysis?.heroSummary || fallbackPayload.summary),
+      summary: String(draftAnalysis?.heroSummary || draftData?.summary || fallbackPayload.summary),
       seoDescription: typeof draftAnalysis?.seoDescription === "string" ? draftAnalysis.seoDescription : undefined,
       seo: typeof draftAnalysis?.seoTitle === "string" ? { title: draftAnalysis.seoTitle } : undefined,
       sections: buildEnrichedSections(draftSections, asRecord(fallbackPayload.sections)),
       metadata: {
-        publishedAtSource: `${siteBaseUrl}/api/admin/generate-draft`,
-        publishedAtConfidence: 1,
+        publishedAtSource:
+          typeof draftMetadata?.publishedAtSource === "string"
+            ? String(draftMetadata.publishedAtSource)
+            : `${siteBaseUrl}/api/admin/generate-draft`,
+        publishedAtConfidence:
+          typeof draftMetadata?.publishedAtConfidence === "number"
+            ? Number(draftMetadata.publishedAtConfidence)
+            : 1,
       },
     };
 
@@ -2330,6 +2646,9 @@ function toZhWebhookReason(reason: string | undefined): string {
 
   if (raw.startsWith("quality gate blocked after")) {
     const detail = raw.split(":").slice(1).join(":").trim();
+    if (raw.includes("used template fallback")) {
+      return detail ? `草稿质量未过线，已改用模板保底全文：${detail}` : "草稿质量未过线，已改用模板保底全文";
+    }
     return detail ? `草稿质量未过线：${detail}` : "草稿质量未过线，已保留快版内容";
   }
 
