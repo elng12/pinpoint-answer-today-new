@@ -37,6 +37,27 @@ const PROMOTIONAL_SUMMARY_PATTERNS = [
   /\bblooming with possibilities\b/i,
   /\bcan you identify\b/i,
 ];
+const GENERIC_FALSE_START_PATTERNS = [
+  /^(brands?|types?|kinds?) of\b/i,
+  /\b(items?|things?|objects?|stuff)\b/i,
+  /\bvehicle brands?\b/i,
+  /\bbrands? of vehicles?\b/i,
+];
+const GENERIC_CATEGORY_PIVOT_PATTERNS = [
+  /\bwhat kind of source or title it was\b/i,
+  /\bwhat kind of item each clue described\b/i,
+  /\bwhat kind of item it was\b/i,
+];
+const GENERIC_CONNECTION_FAQ_PATTERNS = [
+  /\bsame category once the board is read in the right frame\b/i,
+  /\bone later clue makes the category feel much more obvious\b/i,
+];
+
+type AnswerPattern =
+  | { kind: "before"; token: string }
+  | { kind: "after"; token: string }
+  | { kind: "typed-category"; noun: string; singularNoun: string }
+  | { kind: "category" };
 
 function normalizeText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
@@ -85,12 +106,46 @@ function overlapRatio(left: string | null | undefined, right: string | null | un
   return overlap / Math.min(leftTokens.size, rightTokens.size);
 }
 
+function detectAnswerPattern(answer: string | null | undefined): AnswerPattern {
+  const text = normalizeText(answer);
+  const before = text.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
+  if (before?.[1]) return { kind: "before", token: before[1] };
+  const after = text.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
+  if (after?.[1]) return { kind: "after", token: after[1] };
+  const typedCategory = text.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (typedCategory?.[2]) {
+    const noun = typedCategory[2].trim();
+    const words = noun.split(/\s+/);
+    const lastWord = words[words.length - 1] || noun;
+    let singularLastWord = lastWord;
+    if (/ies$/i.test(lastWord)) {
+      singularLastWord = `${lastWord.slice(0, -3)}y`;
+    } else if (/(ches|shes|xes|zes)$/i.test(lastWord)) {
+      singularLastWord = lastWord.slice(0, -2);
+    } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
+      singularLastWord = lastWord.slice(0, -1);
+    }
+    return {
+      kind: "typed-category",
+      noun,
+      singularNoun: [...words.slice(0, -1), singularLastWord].join(" ").trim() || noun,
+    };
+  }
+  return { kind: "category" };
+}
+
 function isSuspiciousCategoryAnswerLabel(answer: string | null | undefined): boolean {
   const text = normalizeText(answer);
   if (!text) return false;
   if (/^Words that come (before|after)\b/i.test(text)) return false;
   if (/^(Types|Kinds)\s+of\b/i.test(text)) return false;
   return /\//.test(text) || /\((?:with|for|including)\b[^)]*\)/i.test(text);
+}
+
+function looksLikeMachineGuess(value: string | null | undefined): boolean {
+  const text = normalizeText(value);
+  if (!text) return false;
+  return GENERIC_FALSE_START_PATTERNS.some((pattern) => pattern.test(text));
 }
 
 function sampleText(value: string | null | undefined): string | undefined {
@@ -156,6 +211,15 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
   input.wrongGuesses?.forEach((item, index) => {
     scanTextEntry(issues, `wrongGuesses[${index}].guess`, item?.guess, input.locale);
     scanTextEntry(issues, `wrongGuesses[${index}].explanation`, item?.explanation, input.locale);
+    if (looksLikeMachineGuess(item?.guess)) {
+      pushIssue(
+        issues,
+        "wrongGuesses.machineyGuess",
+        "Wrong-guess label sounds machine-made instead of like a believable human false start",
+        `wrongGuesses[${index}].guess`,
+        item?.guess,
+      );
+    }
   });
   input.faqs?.forEach((item, index) => {
     scanTextEntry(issues, `faqs[${index}].question`, item?.question, input.locale);
@@ -253,6 +317,28 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     });
   }
 
+  if (GENERIC_CATEGORY_PIVOT_PATTERNS.some((pattern) => pattern.test(normalizeText(input.solutionEmergence)))) {
+    issues.push({
+      code: "solutionEmergence.genericPivot",
+      message: "Solve narrative uses a generic category pivot instead of a clue-specific turning point",
+      field: "solutionEmergence",
+      ...(sampleText(input.solutionEmergence) ? { sample: sampleText(input.solutionEmergence) } : {}),
+    });
+  }
+
+  const answerPattern = detectAnswerPattern(input.mainAnswer);
+  if (answerPattern.kind === "typed-category" || answerPattern.kind === "category") {
+    const faqConnectionAnswer = normalizeText(input.faqs?.[1]?.answer);
+    if (GENERIC_CONNECTION_FAQ_PATTERNS.some((pattern) => pattern.test(faqConnectionAnswer))) {
+      issues.push({
+        code: "faqs.genericConnectionAnswer",
+        message: "Connection FAQ sounds generic and does not explain the board specifically enough",
+        field: "faqs[1].answer",
+        ...(sampleText(input.faqs?.[1]?.answer) ? { sample: sampleText(input.faqs?.[1]?.answer) } : {}),
+      });
+    }
+  }
+
   return issues;
 }
 
@@ -268,4 +354,7 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "overview.leadingAnswerSpoiler",
   "sections.overlap",
   "answer.overused",
+  "wrongGuesses.machineyGuess",
+  "solutionEmergence.genericPivot",
+  "faqs.genericConnectionAnswer",
 ]);
