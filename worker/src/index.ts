@@ -30,6 +30,8 @@ export interface Env {
   AUTO_ENRICH_ENABLED?: string;   // optional: set "false" to disable async enrich
   AUTO_PUBLISH_TIMEOUT_MS?: string; // optional: timeout for quick publish requests
   AUTO_ENRICH_TIMEOUT_MS?: string;  // optional: timeout for async enrich requests
+  AUTO_ENRICH_DRAFT_ATTEMPTS?: string; // optional: retry count when enrich draft is blocked by quality gates
+  AUTO_ENRICH_RETRY_MODEL?: string; // optional: alternate model used on regenerate attempts after the first
   AUTO_I18N_ENABLED?: string;       // optional: set "true" to enable localized async publish
   AUTO_I18N_LOCALES?: string;       // optional: comma list, e.g. "fr,de,pt-BR"
   AUTO_I18N_PARALLEL?: string;      // optional: concurrent locale jobs
@@ -668,6 +670,12 @@ function parseParallelCount(raw: string | undefined): number {
   return Math.min(3, Math.max(1, n));
 }
 
+function parseAttemptCount(raw: string | undefined, fallback: number, max = 3): number {
+  const n = Number.parseInt(String(raw || ""), 10);
+  if (!Number.isFinite(n) || n <= 0) return fallback;
+  return Math.min(max, Math.max(1, n));
+}
+
 function selectModel(raw: string | undefined, fallback: string): string {
   const model = String(raw || "").trim();
   return model.length > 0 ? model : fallback;
@@ -962,6 +970,36 @@ function isRetryableSitePostError(error: unknown): boolean {
     return isRetryableNetworkMessage(error.message);
   }
   return false;
+}
+
+function isDraftQualityGateError(error: unknown): boolean {
+  if (!(error instanceof SitePostError)) return false;
+  if (error.status !== 422) return false;
+  const body = String(error.responseBody || error.message || "");
+  return (
+    body.includes("Draft generation failed contract") ||
+    body.includes("Draft generation blocked") ||
+    body.includes("First FAQ answer does not include the exact answer text") ||
+    body.includes("Exactly 5 clue details are required") ||
+    body.includes("Connection FAQ sounds generic")
+  );
+}
+
+function extractDraftFailureSummary(error: unknown): string {
+  const raw =
+    error instanceof SitePostError
+      ? String(error.responseBody || error.message || "")
+      : error instanceof Error
+        ? error.message
+        : String(error || "unknown draft error");
+  const match = raw.match(/Draft generation (?:failed contract|blocked):\s*([\s\S]+)/i);
+  const summary = (match?.[1] || raw).replace(/\s+/g, " ").trim();
+  return summary.length > 260 ? `${summary.slice(0, 257)}...` : summary;
+}
+
+function isQualityGateBlockedReason(reason: string | undefined): boolean {
+  const normalized = String(reason || "").toLowerCase();
+  return normalized.startsWith("quality gate blocked after");
 }
 
 async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs: number): Promise<Response> {
@@ -1688,20 +1726,64 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
   const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
   const timeoutMs = parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000);
   const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "google/gemini-2.0-flash-001");
+  const retryModel = selectModel(env.AUTO_ENRICH_RETRY_MODEL, enrichModel);
+  const draftAttempts = parseAttemptCount(env.AUTO_ENRICH_DRAFT_ATTEMPTS, 2, 3);
 
   try {
-    const draftResp = await postSiteJson(
-      `${siteBaseUrl}/api/admin/generate-draft`,
-      token,
-      {
-        type: "draft",
-        model: enrichModel,
-        puzzleNumber,
-        rawWords: words,
-        mainAnswer: answer,
-      },
-      timeoutMs,
-    );
+    let draftResp: JsonRecord | null = null;
+    let lastDraftError: unknown = null;
+    let qualityGateSummary = "";
+    for (let attempt = 1; attempt <= draftAttempts; attempt += 1) {
+      const draftModel = attempt === 1 ? enrichModel : retryModel;
+      try {
+        draftResp = await postSiteJson(
+          `${siteBaseUrl}/api/admin/generate-draft`,
+          token,
+          {
+            type: "draft",
+            model: draftModel,
+            puzzleNumber,
+            rawWords: words,
+            mainAnswer: answer,
+          },
+          timeoutMs,
+        );
+        break;
+      } catch (error) {
+        lastDraftError = error;
+        if (!isDraftQualityGateError(error)) {
+          throw error;
+        }
+        qualityGateSummary = extractDraftFailureSummary(error);
+        if (attempt >= draftAttempts) {
+          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}`;
+          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已保留快版内容", [
+            `日期: ${puzzleDate}`,
+            `谜题: #${puzzleNumber}`,
+            `答案: ${answer}`,
+            `尝试次数: ${draftAttempts}`,
+            `结果: 未发布全文，继续保留快版内容`,
+            `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
+          ]);
+          return { status: "skipped", reason, puzzleNumber };
+        }
+        const reason = error instanceof Error ? error.message : String(error);
+        const delayMs = 800 * attempt;
+        console.warn("[enrich] draft blocked by quality gates; regenerating", {
+          puzzleDate,
+          puzzleNumber,
+          attempt,
+          draftAttempts,
+          model: draftModel,
+          nextModel: retryModel,
+          reason,
+        });
+        await sleep(delayMs);
+      }
+    }
+    if (!draftResp) {
+      throw (lastDraftError instanceof Error ? lastDraftError : new Error("draft generation failed"));
+    }
     const success = Boolean(draftResp.success);
     if (!success) {
       const message = typeof draftResp.message === "string" ? draftResp.message : "draft generation failed";
@@ -2244,6 +2326,11 @@ function toZhWebhookReason(reason: string | undefined): string {
   if (raw.startsWith("new-site live refresh fallback:")) {
     const detail = raw.slice("new-site live refresh fallback:".length).trim();
     return detail ? `旧发布链路不可用，已改走新站实时刷新：${toZhWebhookReason(detail)}` : "旧发布链路不可用，已改走新站实时刷新";
+  }
+
+  if (raw.startsWith("quality gate blocked after")) {
+    const detail = raw.split(":").slice(1).join(":").trim();
+    return detail ? `草稿质量未过线：${detail}` : "草稿质量未过线，已保留快版内容";
   }
 
   const map: Record<string, string> = {
