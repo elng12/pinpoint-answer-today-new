@@ -563,6 +563,14 @@ function buildCategoryReading(answer: string): string {
   return "reading them as one clean category";
 }
 
+function buildCategoryFocusQuestion(answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "typed-category") {
+    return `asked what kind of ${pattern.singularNoun.toLowerCase()} each clue described`;
+  }
+  return "asked what kind of item each clue was really pointing to";
+}
+
 function buildCategoryConnectionAnswer(answer: string): string {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "typed-category") {
@@ -771,6 +779,7 @@ function sanitizeFalseStarts(
     if (!normalizedCandidate) return false;
     if (countWords(candidate) <= 1 && normalizedCandidate.length < 6) return false;
     if (/[()/]/.test(candidate) || countWords(candidate) > 3) return false;
+    if (/^(brands?|types?|kinds?) of\b/i.test(normalizeText(candidate))) return false;
 
     if (answerPattern.kind === "category" || answerPattern.kind === "typed-category") {
       const words = normalizeText(candidate).split(/\s+/).filter(Boolean);
@@ -953,7 +962,7 @@ function buildSolutionEmergence(
           `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once I read the board through ${lowerFirst(connectorSummary)}, ${categoryLine}, especially ${solveExamples}. At that point, the final connector was the only reading that explained the full set without stretching anything.`,
         )
       : ensureSentence(
-          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and asked what kind of source or title it was. Once I started ${buildCategoryReading(answer)}, ${categoryLine}, especially ${solveExamples}. That was the first point where one category explained the full set without forcing any exceptions.`,
+          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and ${buildCategoryFocusQuestion(answer)}. Once I started ${buildCategoryReading(answer)}, ${categoryLine}, especially ${solveExamples}. That was the first point where one category explained the full set without forcing any exceptions.`,
         );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();

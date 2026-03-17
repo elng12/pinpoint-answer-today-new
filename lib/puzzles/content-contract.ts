@@ -47,12 +47,52 @@ export function countWords(text: string | null | undefined): number {
   return (text?.trim().match(/\S+/g) ?? []).length;
 }
 
+function pluralizeLastWord(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return trimmed;
+  const words = trimmed.split(/\s+/);
+  const lastWord = words[words.length - 1] || trimmed;
+  const irregularPlurals: Record<string, string> = {
+    mouse: "mice",
+    goose: "geese",
+    tooth: "teeth",
+    foot: "feet",
+    man: "men",
+    woman: "women",
+    person: "people",
+    child: "children",
+  };
+
+  let pluralLastWord = lastWord;
+  const lowerLastWord = lastWord.toLowerCase();
+  if (irregularPlurals[lowerLastWord]) {
+    pluralLastWord = irregularPlurals[lowerLastWord];
+  } else if (/ies$/i.test(lastWord) || /s$/i.test(lastWord)) {
+    pluralLastWord = lastWord;
+  } else if (/[^aeiou]y$/i.test(lastWord)) {
+    pluralLastWord = `${lastWord.slice(0, -1)}ies`;
+  } else if (/(ch|sh|x|z|s)$/i.test(lastWord)) {
+    pluralLastWord = `${lastWord}es`;
+  } else {
+    pluralLastWord = `${lastWord}s`;
+  }
+
+  return [...words.slice(0, -1), pluralLastWord].join(" ").trim();
+}
+
 export function normalizeAnswerLabel(answer: string | null | undefined): string {
-  return (answer ?? "")
+  const normalized = (answer ?? "")
     .replace(/["“”]/g, "")
     .replace(/\s+/g, " ")
     .trim()
     .replace(/[.!?]+$/, "");
+  const typedCategory = normalized.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (!typedCategory?.[2]) {
+    return normalized;
+  }
+  const prefix = typedCategory[1];
+  const noun = typedCategory[2].trim();
+  return `${prefix} of ${pluralizeLastWord(noun)}`.trim();
 }
 
 function normalizeText(text: string | null | undefined): string {

@@ -490,13 +490,51 @@ function normalizedAnswerText(raw: unknown): string {
   return raw.trim().toLowerCase();
 }
 
+function pluralizeTrailingWord(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+  const words = trimmed.split(/\s+/);
+  const lastWord = words[words.length - 1] || trimmed;
+  const lowerLastWord = lastWord.toLowerCase();
+  const irregularPlurals: Record<string, string> = {
+    mouse: "mice",
+    goose: "geese",
+    tooth: "teeth",
+    foot: "feet",
+    man: "men",
+    woman: "women",
+    person: "people",
+    child: "children",
+  };
+
+  let pluralLastWord = lastWord;
+  if (irregularPlurals[lowerLastWord]) {
+    pluralLastWord = irregularPlurals[lowerLastWord];
+  } else if (/ies$/i.test(lastWord) || /s$/i.test(lastWord)) {
+    pluralLastWord = lastWord;
+  } else if (/[^aeiou]y$/i.test(lastWord)) {
+    pluralLastWord = `${lastWord.slice(0, -1)}ies`;
+  } else if (/(ch|sh|x|z|s)$/i.test(lastWord)) {
+    pluralLastWord = `${lastWord}es`;
+  } else {
+    pluralLastWord = `${lastWord}s`;
+  }
+
+  return [...words.slice(0, -1), pluralLastWord].join(" ").trim();
+}
+
 function sanitizePublishedAnswerLabel(raw: unknown): string {
   if (typeof raw !== "string") return "";
   const text = raw.replace(/\s+/g, " ").trim();
   if (!text) return "";
 
-  if (/^Words that come (before|after)\b/i.test(text) || /^(Types|Kinds)\s+of\b/i.test(text)) {
+  if (/^Words that come (before|after)\b/i.test(text)) {
     return text;
+  }
+
+  const typedCategory = text.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (typedCategory?.[2]) {
+    return `${typedCategory[1]} of ${pluralizeTrailingWord(typedCategory[2])}`.trim();
   }
 
   const strippedQualifier = text.replace(/\s*\((?:with|for|including)\b[^)]*\)\s*$/i, "").trim();
