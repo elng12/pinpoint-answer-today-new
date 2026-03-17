@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 686,
+    "slug": "pinpoint-answer-686",
+    "publishDate": "2026-03-17",
+    "status": "live",
+    "clues": [
+      "Mountain",
+      "Electric",
+      "Recumbent",
+      "Tandem",
+      "Ten-Speed"
+    ],
+    "mainAnswer": "Types of bicycle",
+    "category": "Types of bicycle",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Mountain, Electric, Recumbent do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific.",
+    "updatedAt": "2026-03-17T08:01:23.079Z"
+  },
+  {
     "puzzleNumber": 685,
     "slug": "pinpoint-answer-685",
     "publishDate": "2026-03-16",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Time",
       "The Economist",
@@ -15,7 +33,7 @@
     "category": "Magazines (with global readership / versions)",
     "difficultyLevel": "Moderate",
     "shortSummary": "LinkedIn Pinpoint #685: Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest.",
-    "updatedAt": "2026-03-16T08:47:32.122Z"
+    "updatedAt": "2026-03-17T08:01:23.079Z"
   },
   {
     "puzzleNumber": 684,
