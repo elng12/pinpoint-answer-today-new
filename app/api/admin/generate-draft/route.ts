@@ -537,7 +537,7 @@ export async function POST(req: NextRequest) {
     const puzzleData: PuzzleDataForAI = {
       puzzleNumber: Number(puzzleNumber),
       rawWords,
-      mainAnswer,
+      mainAnswer: normalizeAnswerLabel(mainAnswer),
     };
 
     if (type === "localize") {
