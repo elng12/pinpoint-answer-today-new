@@ -597,6 +597,13 @@ summary:focus-visible {
   gap: 14px;
 }
 
+.reveal-clue-title {
+  margin: 18px 0 14px;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.25;
+  text-align: center;
+}
+
 .reveal-clue-card {
   display: flex;
   min-height: 86px;

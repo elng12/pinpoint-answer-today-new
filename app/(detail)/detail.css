@@ -481,6 +481,7 @@
   margin: 10px 0 0;
   font-size: 18px;
   font-weight: 700;
+  line-height: 1.22;
   color: var(--brand);
 }
 
@@ -842,6 +843,13 @@
   text-underline-offset: 2px;
   font-size: 16px;
   line-height: 1.65;
+}
+
+.legacy-next-link-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 600;
 }
 
 .legacy-next-link:hover {

@@ -127,9 +127,9 @@ export function PuzzleAnswerReveal({
   };
 
   return (
-    <section className="legacy-reveal-shell" aria-labelledby="answer-reveal-label">
+    <section className="legacy-reveal-shell" aria-labelledby="pinpoint-answer-title">
       <p className="legacy-reveal-tip" id={revealTipId}>
-        Hover (desktop) or tap (mobile) each clue to see how it connects to the answer
+        Hover (desktop) or tap (mobile) each clue before you reveal the Pinpoint answer
       </p>
 
       <div className="legacy-reveal-clue-grid">
@@ -160,10 +160,10 @@ export function PuzzleAnswerReveal({
         ) : null}
       </div>
 
-      <div className="legacy-answer-panel" id="answer-reveal">
-        <p className="legacy-answer-label" id="answer-reveal-label">
-          {`LinkedIn Pinpoint #${puzzleNumber} Answer:`}
-        </p>
+      <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
+        <h2 className="legacy-answer-label" id="pinpoint-answer-title">
+          {`Pinpoint Answer for LinkedIn Pinpoint ${puzzleNumber}`}
+        </h2>
         {revealed ? (
           <p className="legacy-answer-title" aria-live="polite">
             {answer}
@@ -171,17 +171,17 @@ export function PuzzleAnswerReveal({
         ) : null}
         <div className="legacy-answer-actions">
           <button className="button-primary legacy-answer-button" type="button" onClick={handleRevealToggle}>
-            {revealed ? "Hide the Answer" : "Reveal the Answer"}
+            {revealed ? "Hide Pinpoint Answer" : "Reveal Pinpoint Answer"}
           </button>
           {revealed ? (
             <button className="button-secondary legacy-answer-button" type="button" onClick={handleCopy}>
-              {copied ? "Copied" : "Copy answer"}
+              {copied ? "Copied" : "Copy Pinpoint Answer"}
             </button>
           ) : null}
         </div>
         <p className="legacy-answer-note">
           <span aria-hidden="true">ℹ️</span>
-          <span>Detailed breakdown continues just below - keep scrolling</span>
+          <span>Detailed Pinpoint answer breakdown continues just below - keep scrolling</span>
         </p>
       </div>
     </section>

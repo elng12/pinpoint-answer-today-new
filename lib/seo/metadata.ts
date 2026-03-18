@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { defaultLocale } from "@/i18n.config";
 import { defaultSocialImagePath, siteName } from "@/lib/site/config";
 
-export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today - Daily Answers & Solutions";
+export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Clues, Walkthrough & Archive";
 export const HOME_SEO_DESCRIPTION =
-  "Find today's LinkedIn Pinpoint answer instantly - updated daily with clear solutions, clue explanations, and tips that help protect your streak every day.";
+  "Get today's LinkedIn Pinpoint answer with spoiler-safe hints, clear clue-by-clue walkthroughs, yesterday's answer, and the full archive, all in one place.";
 export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive & Guides | Pinpoint Answer Today";
 export const ARCHIVE_SEO_DESCRIPTION =
   "Browse LinkedIn Pinpoint walkthroughs, clue guides, archive pages, and past answers. Open the latest recap fast or revisit older puzzles in one place.";
@@ -178,6 +178,18 @@ function buildSocialImage(imagePath: string, alt: string) {
     width: 1200,
     height: 630,
     alt,
+  };
+}
+
+function buildCanonicalAlternates(path: string): NonNullable<Metadata["alternates"]> {
+  const url = absoluteUrl(path);
+
+  return {
+    canonical: url,
+    languages: {
+      [defaultLocale]: url,
+      "x-default": url,
+    },
   };
 }
 

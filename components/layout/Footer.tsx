@@ -17,8 +17,8 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
         { label: "About", href: routes.about },
       ]
     : [
-        { label: "Next Pinpoint Preview", href: routes.preview },
-        { label: "View All Pinpoint Boards and Solutions", href: routes.archive },
+        { label: "Next Preview", href: routes.preview },
+        { label: "Open Full Archive", href: routes.archive },
       ];
   const supportLinks = [
     { label: "Email Support", href: supportMailto },
@@ -40,17 +40,17 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             <p className="eyebrow">Pinpoint Answer Today</p>
             <p className="footer-copy">
               {isDetailPage
-                ? "Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. We deliver rapid solutions, thoughtful analysis, and strategy guides while operating independently from any organization."
-                : "Fast daily Pinpoint solutions, deeper Pinpoint explanations, and a cleaner English-only Pinpoint archive built for people who want today's board without wading through legacy clutter."}
+                ? "Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. Each daily Pinpoint answer comes with rapid verification, thoughtful analysis, and strategy notes, and every Pinpoint answer page is built independently from any organization."
+                : "Pinpoint Answer Today is built for people who want today's answer, clearer explanations, and a cleaner archive path without wading through old clutter."}
             </p>
           </div>
 
           <div className="footer-block">
-            <p className="eyebrow">{isDetailPage ? "Recent answers" : "Recent Pinpoint Boards"}</p>
+            <p className="eyebrow">{isDetailPage ? "Recent Pinpoint answer pages" : "Recent answers"}</p>
             <ul className="footer-link-list footer-link-list-compact">
               {recentEntries.map((entry) => (
                 <li key={entry.slug}>
-                  <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
+                  <Link href={routes.detail(entry.slug)} prefetch={false}>{`#${entry.number}`}</Link>
                 </li>
               ))}
             </ul>

@@ -15,6 +15,9 @@ function parseLesson(lesson: LessonItem): { title: string | null; body: string }
   return { title: null, body: lesson };
 }
 
+function buildRecentLinkTitle(entry: ArchiveEntry) {
+  return `LinkedIn Pinpoint ${entry.number}: ${entry.clues.join(", ")}`;
+}
 export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
@@ -38,7 +41,7 @@ export function PuzzleFullAnalysis({
           <header className="legacy-analysis-header">
             <div className="legacy-analysis-header-inner">
               <Star className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-analysis-title">{`Pinpoint #${puzzle.number} Walkthrough & Analysis`}</h2>
+              <h2 className="legacy-analysis-title">{`Pinpoint Answer Walkthrough & Analysis for #${puzzle.number}`}</h2>
             </div>
           </header>
 
@@ -159,8 +162,8 @@ export function PuzzleFullAnalysis({
           </section>
         </section>
 
-        <aside className="legacy-next-shell" aria-label="Recent Pinpoint answers">
-          <h2 className="legacy-next-title">Recent Pinpoint answers</h2>
+        <aside className="legacy-next-shell" aria-label="Recent Pinpoint answer pages">
+          <h2 className="legacy-next-title">Recent Pinpoint answer pages</h2>
           {nextPreview ? (
             <Link className="legacy-next-link" href={routes.preview}>
               {`Preview Puzzle #${nextPreview.number} - expected ${nextPreview.expectedDate}`}
@@ -169,15 +172,19 @@ export function PuzzleFullAnalysis({
           <ul className="legacy-next-list">
             {recentPuzzles.map((entry) => (
               <li key={entry.slug}>
-                <Link className="legacy-next-link" href={routes.detail(entry.slug)}>
-                  {`LinkedIn Pinpoint #${entry.number} answer - clues: ${entry.clues.join(", ")}`}
+                <Link
+                  className="legacy-next-link"
+                  href={routes.detail(entry.slug)}
+                  aria-label={`Open ${buildRecentLinkTitle(entry)}`}
+                >
+                  <h3 className="legacy-next-link-title">{buildRecentLinkTitle(entry)}</h3>
                 </Link>
               </li>
             ))}
           </ul>
           <div className="legacy-next-actions">
             <Link className="button-secondary" href={routes.archive}>
-              View all Pinpoint answers &amp; solutions
+              View all Pinpoint answer pages
             </Link>
           </div>
         </aside>

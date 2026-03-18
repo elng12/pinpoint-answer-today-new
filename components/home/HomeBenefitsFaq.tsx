@@ -5,7 +5,7 @@ const benefits = [
     icon: "bolt",
     title: "Instant Answers",
     description:
-      "Get today’s Pinpoint solution quickly, then open the detail page when you want the full Pinpoint reasoning.",
+      "Start with spoiler-safe hints, then open the detail page when you want the full reasoning behind today's answer.",
   },
   {
     icon: "brain",
@@ -17,7 +17,7 @@ const benefits = [
     icon: "calendar",
     title: "Daily updates",
     description:
-      "Fresh Pinpoint solution pages, next-puzzle timing, and archive updates all stay inside one English-only structure.",
+      "Fresh Pinpoint answer pages, next-puzzle timing, and archive updates all stay inside one English-only structure.",
   },
   {
     icon: "bookmark",
@@ -80,11 +80,11 @@ function getFaqItems(puzzle: PuzzleDetail) {
   return [
     {
       question: "When does the daily Pinpoint solution become available?",
-      answer: `New LinkedIn Pinpoint boards usually unlock on a daily cycle. We update the live Pinpoint page for Puzzle ${puzzle.number} as soon as the latest verified Pinpoint board is ready.`,
+      answer: `LinkedIn Pinpoint usually unlocks on a daily cycle. We update the live Pinpoint page for Puzzle ${puzzle.number} as soon as the latest verified board is ready.`,
     },
     {
       question: "Can I browse historical Pinpoint boards here?",
-      answer: "Yes. The Pinpoint archive keeps recent and older boards in one place so you can review old connections, clue sets, and solution patterns without hunting around.",
+      answer: "Yes. The Pinpoint archive keeps recent and older boards in one place so you can review old connections, clue sets, and answer patterns without hunting around.",
     },
     {
       question: "What happens if I miss a day’s puzzle?",
@@ -92,7 +92,7 @@ function getFaqItems(puzzle: PuzzleDetail) {
     },
     {
       question: "Is this an official LinkedIn resource?",
-      answer: "No. This is an independent Pinpoint guide built to help players check the solution, review the clue logic, and browse older boards more easily.",
+      answer: "No. This is an independent Pinpoint guide built to help players check the answer, review clue logic, and browse older boards more easily.",
     },
     {
       question: "How do the clue explanations work?",
@@ -115,7 +115,8 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
           <p className="eyebrow">Why Pinpoint players use us</p>
           <h2 className="section-title benefit-guide-title">Why Use Our Pinpoint Guide?</h2>
           <p className="copy benefits-intro">
-            Everything you need for faster Pinpoint solving.
+            Players use this guide when they want today&apos;s answer, spoiler-safe hints, and a
+            clean archive path in one place.
           </p>
         </div>
         <div className="benefit-guide-grid">
