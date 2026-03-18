@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { defaultLocale } from "@/i18n.config";
 import { defaultSocialImagePath, siteName } from "@/lib/site/config";
 
 export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today - Daily Answers & Solutions";
@@ -18,6 +19,18 @@ export function getSiteUrl(): string {
 
 export function absoluteUrl(path: string): string {
   return new URL(path, getSiteUrl()).toString();
+}
+
+function buildCanonicalAlternates(path: string): Metadata["alternates"] {
+  const url = absoluteUrl(path);
+
+  return {
+    canonical: url,
+    languages: {
+      [defaultLocale]: url,
+      "x-default": url,
+    },
+  };
 }
 
 function normalizeSeoClues(clues: string[]): string[] {
@@ -206,9 +219,7 @@ export function buildSiteMetadata({
         google: verificationCode,
       },
     }),
-    alternates: {
-      canonical: absoluteUrl("/"),
-    },
+    alternates: buildCanonicalAlternates("/"),
     openGraph: {
       title,
       description,
@@ -250,9 +261,7 @@ export function buildPageMetadata({
     ...buildIconMetadata(),
     title,
     description,
-    alternates: {
-      canonical: url,
-    },
+    alternates: buildCanonicalAlternates(path),
     robots: {
       index: !noIndex,
       follow: true,
