@@ -353,7 +353,11 @@ function buildLiveConnectorSummary(answer: string): string {
   if (pattern.kind === "association") {
     return `a board centered on ${pattern.subject}`;
   }
-  return `one category built around ${pattern.label.toLowerCase()}`;
+  const cleanedLabel = pattern.label.replace(/\s+/g, " ").trim();
+  if (cleanedLabel) {
+    return `a category built around ${cleanedLabel}`;
+  }
+  return "a shared category board";
 }
 
 function buildLiveFallbackPhrase(clue: string, answer: string): string {
