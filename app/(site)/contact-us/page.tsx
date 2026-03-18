@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { ContactFeedbackForm } from "@/components/contact/ContactFeedbackForm";
-import { StructuredData } from "@/components/seo/StructuredData";
-import { routes } from "@/lib/paths/routes";
+import { ContactFeedbackForm } from "@/components/site/contact/ContactFeedbackForm";
+import { StructuredData } from "@/components/site/seo/StructuredData";
+import { routes } from "@/lib/site/routes";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
 import { supportEmail, supportMailto } from "@/lib/site/config";
 

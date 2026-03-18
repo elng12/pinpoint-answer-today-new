@@ -4,7 +4,7 @@ import {
   generatePuzzleContent,
   generatePuzzleContentFromPrompt,
   PuzzleDataForAI,
-} from "@/lib/puzzle-generation";
+} from "@/lib/puzzles/generation";
 import {
   CONTENT_CONTRACT,
   normalizeAnswerLabel,

@@ -1,5 +1,5 @@
 import { notFound, permanentRedirect } from "next/navigation";
-import { routes } from "@/lib/paths/routes";
+import { routes } from "@/lib/site/routes";
 import { getPuzzleSlugByNumber } from "@/lib/puzzles/data";
 
 export const revalidate = 86400;

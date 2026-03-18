@@ -1,7 +1,7 @@
 import "./detail.css";
 import type { ReactNode } from "react";
-import { Footer } from "@/components/layout/Footer";
-import { NavBar } from "@/components/layout/NavBar";
+import { Footer } from "@/components/site/layout/Footer";
+import { NavBar } from "@/components/site/layout/NavBar";
 import { getRecentEntries } from "@/lib/puzzles/data";
 
 export default async function DetailLayout({ children }: { children: ReactNode }) {

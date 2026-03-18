@@ -1,0 +1,30 @@
+import type { NextPreview } from "@/lib/puzzles/data";
+import { Countdown } from "@/components/puzzles/shared/Countdown";
+
+function toUnlockIso(dateIso: string) {
+  return `${dateIso}T08:00:00.000Z`;
+}
+
+export function HomeNextUnlock({ preview }: { preview: NextPreview | null }) {
+  if (!preview) {
+    return null;
+  }
+
+  const targetIso = toUnlockIso(preview.isoDate);
+  const targetLabel = `Puzzle ${preview.number} unlocks on ${preview.expectedDate} at GMT+8 16:00`;
+  const headline = `Puzzle ${preview.number} unlocks in`;
+
+  return (
+    <section className="home-next-unlock">
+      <div className="home-next-unlock-inner">
+        <div className="home-next-unlock-heading">
+          <p className="home-next-unlock-title">{headline}</p>
+          <p className="home-next-unlock-copy">
+            {`Next unlock at ${preview.expectedDate} 16:00 (Asia/Shanghai). Times shown in your local time zone below.`}
+          </p>
+        </div>
+        <Countdown targetIso={targetIso} targetLabel={targetLabel} />
+      </div>
+    </section>
+  );
+}

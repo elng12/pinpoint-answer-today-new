@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getSitemapDetailEntries } from "@/lib/puzzles/data";
-import { routes } from "@/lib/paths/routes";
+import { routes } from "@/lib/site/routes";
 
 export const revalidate = 86400;
 

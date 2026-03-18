@@ -1,16 +1,16 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import { ArchiveExplorer } from "@/components/archive/ArchiveExplorer";
-import { ArchiveHeader } from "@/components/archive/ArchiveHeader";
+import { ArchiveExplorer } from "@/components/puzzles/archive/ArchiveExplorer";
+import { ArchiveHeader } from "@/components/puzzles/archive/ArchiveHeader";
 import { getArchiveEntriesGrouped } from "@/lib/puzzles/data";
-import { routes } from "@/lib/paths/routes";
+import { routes } from "@/lib/site/routes";
 import {
   absoluteUrl,
   ARCHIVE_SEO_DESCRIPTION,
   ARCHIVE_SEO_TITLE,
   buildPageMetadata,
 } from "@/lib/seo/metadata";
-import { StructuredData } from "@/components/seo/StructuredData";
+import { StructuredData } from "@/components/site/seo/StructuredData";
 const INITIAL_ARCHIVE_LIMIT = 24;
 
 function getInitialArchiveGroups(groups: Awaited<ReturnType<typeof getArchiveEntriesGrouped>>) {

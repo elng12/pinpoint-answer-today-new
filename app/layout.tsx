@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "@/app/globals.css";
 import { inter } from "@/app/fonts";
-import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { AnalyticsScripts } from "@/components/site/analytics/AnalyticsScripts";
 import { buildSiteMetadata, HOME_SEO_DESCRIPTION, HOME_SEO_TITLE } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildSiteMetadata({

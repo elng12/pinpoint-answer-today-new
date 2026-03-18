@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { routes } from "@/lib/paths/routes";
+import { routes } from "@/lib/site/routes";
 
 export default function GlobalError({
   error,

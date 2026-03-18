@@ -8,11 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "validate:data": "node scripts/validate-data.mjs",
-    "test:pinpoint-regression": "node scripts/run-pinpoint-regression.mjs",
-    "test:pinpoint-regression:core": "node scripts/run-pinpoint-regression.mjs --set core",
-    "test:pinpoint-regression:all": "node scripts/run-pinpoint-regression.mjs --set all",
-    "prepare": "node scripts/install-hooks.mjs"
+    "validate:data": "node scripts/puzzles/validate-data.mjs",
+    "test:pinpoint-regression": "node scripts/puzzles/run-pinpoint-regression.mjs",
+    "test:pinpoint-regression:core": "node scripts/puzzles/run-pinpoint-regression.mjs --set core",
+    "test:pinpoint-regression:all": "node scripts/puzzles/run-pinpoint-regression.mjs --set all",
+    "prepare": "node scripts/dev/install-hooks.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.577.0",

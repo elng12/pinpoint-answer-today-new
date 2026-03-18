@@ -50,7 +50,7 @@ cp .env.example .env.local
 
 以后只要改了下面任一类内容，发布前都建议跑一次回归：
 
-- `lib/puzzle-generation.ts`
+- `lib/puzzles/generation.ts`
 - `app/api/admin/generate-draft/route.ts`
 - `lib/puzzles/content-contract.ts`
 - `lib/puzzles/semantic-lint.ts`
@@ -72,4 +72,5 @@ npm run test:pinpoint-regression:all
 
 样本集说明见：
 
-- `docs/pinpoint-content-regression-sample-set.md`
+- `docs/content/pinpoint-content-regression-sample-set.md`
+- `docs/content/pinpoint-content-generation-best-practice-2026-03-17.md`

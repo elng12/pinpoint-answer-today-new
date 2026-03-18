@@ -229,7 +229,8 @@ npm run test:pinpoint-regression:core
 
 样本集说明见：
 
-- `docs/pinpoint-content-regression-sample-set.md`
+- `docs/content/pinpoint-content-regression-sample-set.md`
+- `docs/content/pinpoint-content-generation-best-practice-2026-03-17.md`
 
 ---
 
@@ -281,4 +282,4 @@ npm run test:pinpoint-regression:core
 - 观察期为 `2026-03-13` 到 `2026-03-20`
 - 观察期内仍保留父仓库回滚能力，暂不视为“彻底脱钩完成”
 
-当前统一口径以 `docs/single-repo-migration-todo-2026-03-13.md` 为准。
+当前统一口径以 `docs/migration/single-repo-migration-todo-2026-03-13.md` 为准。

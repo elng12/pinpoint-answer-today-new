@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { HomeBenefitsFaq } from "@/components/home/HomeBenefitsFaq";
-import { HomeBookmarkStrip } from "@/components/home/HomeBookmarkStrip";
-import { HomeCtaFooter } from "@/components/home/HomeCtaFooter";
-import { HomeHero } from "@/components/home/HomeHero";
-import { HomeNextUnlock } from "@/components/home/HomeNextUnlock";
-import { HomeRecentAnswers } from "@/components/home/HomeRecentAnswers";
-import { HomeRevealSection } from "@/components/home/HomeRevealSection";
-import { HomeWhatIs } from "@/components/home/HomeWhatIs";
-import { FooterBadgeWall } from "@/components/layout/FooterBadgeWall";
-import { StructuredData } from "@/components/seo/StructuredData";
+import { HomeBenefitsFaq } from "@/components/site/home/HomeBenefitsFaq";
+import { HomeBookmarkStrip } from "@/components/site/home/HomeBookmarkStrip";
+import { HomeCtaFooter } from "@/components/site/home/HomeCtaFooter";
+import { HomeHero } from "@/components/site/home/HomeHero";
+import { HomeNextUnlock } from "@/components/site/home/HomeNextUnlock";
+import { HomeRecentAnswers } from "@/components/site/home/HomeRecentAnswers";
+import { HomeRevealSection } from "@/components/site/home/HomeRevealSection";
+import { HomeWhatIs } from "@/components/site/home/HomeWhatIs";
+import { FooterBadgeWall } from "@/components/site/layout/FooterBadgeWall";
+import { StructuredData } from "@/components/site/seo/StructuredData";
 import { getArchiveEntries, getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzles/data";
-import { routes } from "@/lib/paths/routes";
+import { routes } from "@/lib/site/routes";
 import { footerBadges } from "@/lib/site/badges";
 import { supportEmail } from "@/lib/site/config";
 import {
@@ -24,7 +24,7 @@ export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   const current = await getCurrentPuzzle();
-  const description = `Today's LinkedIn Pinpoint answer is Puzzle #${current.number} — updated daily with spoiler-safe hints, clue explanations, and solutions that protect your streak.`;
+  const description = `Find today's LinkedIn Pinpoint answer for Puzzle #${current.number}, spoiler-safe hints, yesterday's answer, and the full archive in one place.`;
   return buildPageMetadata({
     title: HOME_SEO_TITLE,
     description,
@@ -87,12 +87,16 @@ export default async function HomePage() {
           answer: `The answer for Puzzle ${current.number} is ${current.answer}.`,
         },
         {
-          question: "Where can I browse older Pinpoint answers?",
-          answer: "Use the archive page to review recent and older puzzles.",
+          question: previousEntry
+            ? `Where can I find yesterday's Pinpoint answer for Puzzle ${previousEntry.number}?`
+            : "Where can I find yesterday's Pinpoint answer?",
+          answer: previousEntry
+            ? `Open Puzzle ${previousEntry.number} to review yesterday's answer and the full breakdown.`
+            : "Use the archive page to review yesterday's board and other recent puzzles.",
         },
         {
-          question: "What is LinkedIn Pinpoint?",
-          answer: "It is a daily word-association puzzle built around a shared connection.",
+          question: "Where can I browse older Pinpoint answers?",
+          answer: "Use the archive page to review recent and older puzzles in one place.",
         },
       ].map((faq) => ({
         "@type": "Question",
@@ -109,7 +113,7 @@ export default async function HomePage() {
     <main className="container" style={{ padding: "48px 0 72px" }}>
       <StructuredData items={structuredDataItems} />
       <div className="stack">
-        <HomeHero puzzle={current} />
+        <HomeHero puzzle={current} previousEntry={previousEntry} />
         <HomeBookmarkStrip />
         <HomeRevealSection puzzle={current} previousEntry={previousEntry} preview={preview} />
         <HomeNextUnlock preview={preview} />
