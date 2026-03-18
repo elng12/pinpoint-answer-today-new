@@ -4,8 +4,7 @@ import { routes } from "@/lib/paths/routes";
 import { formatShortDate } from "@/lib/utils/date";
 
 function buildCluePreview(clues: string[]) {
-  const preview = clues.slice(0, 3).join(", ");
-  return clues.length > 3 ? `${preview}, ...` : preview;
+  return clues.join(", ");
 }
 
 export function RecentAnswerCard({
@@ -25,23 +24,20 @@ export function RecentAnswerCard({
       href={routes.detail(entry.slug)}
       className={`recent-answer-card recent-answer-card-compact${isLatest ? " recent-answer-card-current" : ""}`}
       prefetch={false}
+      aria-label={`Open puzzle ${entry.number} for clues ${cluePreview}`}
     >
       <div className="recent-answer-top">
         <div className="recent-answer-number-wrap">
           <span className="recent-answer-number">{entry.number}</span>
-          <div>
-            <p className="recent-answer-label">Puzzle {entry.number}</p>
-          </div>
         </div>
         {isLatest ? <span className="recent-answer-badge">Latest</span> : null}
       </div>
-      <p className="recent-answer-title">{cluePreview}</p>
+      <h3 className="recent-answer-title">{`LinkedIn Pinpoint ${entry.number}: ${cluePreview}`}</h3>
       {answerText ? (
         <p className="recent-answer-answer">Solution: {answerText}</p>
       ) : null}
       <div className="recent-answer-footer">
         <span className="recent-answer-meta">{shortDate}</span>
-        <span className="recent-answer-cta">View Recap</span>
       </div>
     </Link>
   );

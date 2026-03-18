@@ -18,14 +18,14 @@ export function HomeHero({
     <section className="home-hero">
       <div className="home-hero-inner">
         <span className="home-status-badge">Live now</span>
-        <p className="home-hero-kicker">Today&apos;s Pinpoint hints, Pinpoint recap, and Pinpoint archive</p>
-        <h1 className="home-hero-title">Today&apos;s LinkedIn Pinpoint #{puzzle.number} Solution</h1>
+        <p className="home-hero-kicker">Today&apos;s Pinpoint hints, yesterday&apos;s answer, and the archive</p>
+        <h1 className="home-hero-title">{`Today's LinkedIn Pinpoint #${puzzle.number} Answer`}</h1>
         <p className="home-hero-subtitle">
-          {`Use this Pinpoint hub for spoiler-safe Pinpoint clues, the verified Pinpoint solution, and fast access to older Pinpoint boards. ${puzzle.shortSummary}`}
+          {`If you need LinkedIn Pinpoint answer today, this page keeps today's answer, spoiler-safe hints, yesterday's answer, and the full archive in one place for Puzzle #${puzzle.number}.`}
         </p>
         <div className="button-row home-hero-actions">
           <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>
-            Open today&apos;s Pinpoint breakdown
+            Open today&apos;s answer
           </Link>
           <a
             className="button-secondary home-hero-secondary"
@@ -36,12 +36,11 @@ export function HomeHero({
             Play on LinkedIn
           </a>
           <Link className="button-secondary home-hero-tertiary" href={routes.archive} prefetch={false}>
-            Browse Pinpoint archive
+            Open full archive
           </Link>
         </div>
         <p className="home-hero-detail">
-          Today&apos;s Pinpoint clues: {cluePreview}. Open the full Pinpoint breakdown when
-          you&apos;re ready for the verified solution.
+          Today&apos;s clue preview for Puzzle #{puzzle.number}: {cluePreview}. Open today&apos;s answer whenever you&apos;re ready.
         </p>
       </div>
     </section>

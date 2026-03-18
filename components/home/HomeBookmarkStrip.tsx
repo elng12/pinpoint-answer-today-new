@@ -7,8 +7,8 @@ export function HomeBookmarkStrip() {
       <div className="home-bookmark-copy">
         <p className="home-bookmark-title">Bookmark this page for the daily Pinpoint drop</p>
         <p className="copy" style={{ margin: 0 }}>
-          Keep the hub close. It is the fastest way back to today&apos;s Pinpoint solution, the next
-          Pinpoint preview, and the full Pinpoint archive.
+          Keep the hub close. Today&apos;s answer, the next preview, and the full archive stay one
+          click away.
         </p>
       </div>
       <div className="home-bookmark-tip">
