@@ -16,15 +16,15 @@ export function HomeCtaFooter({
         </p>
         <p className="home-cta-title">Start your journey to becoming a Pinpoint champion today.</p>
         <p className="home-cta-copy">
-          Start with today&apos;s puzzle answer, then build confidence with the archive, preview
-          drills, and cleaner clue-by-clue recaps.
+          Start with today&apos;s Pinpoint solution, then build confidence with the Pinpoint archive,
+          preview drills, and cleaner clue-by-clue recaps.
         </p>
         <div className="button-row" style={{ justifyContent: "center" }}>
           <Link href={routes.detail(currentSlug)} className="button-secondary home-cta-primary" prefetch={false}>
-            Reveal Today&apos;s Answer
+            Reveal Today&apos;s Pinpoint Solution
           </Link>
           <Link href={routes.archive} className="button-secondary home-cta-secondary" prefetch={false}>
-            Explore archive
+            Explore Pinpoint archive
           </Link>
         </div>
       </div>

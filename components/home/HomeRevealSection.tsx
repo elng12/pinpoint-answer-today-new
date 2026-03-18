@@ -25,15 +25,15 @@ export function HomeRevealSection({
     previousEntry
       ? {
           badge: "Previous",
-          label: `Yesterday's answer (Puzzle ${previousEntry.number})`,
-          description: "View Full Breakdown",
+          label: `Yesterday's Pinpoint recap (Puzzle ${previousEntry.number})`,
+          description: "Open yesterday's full Pinpoint breakdown.",
           href: routes.detail(previousEntry.slug),
         }
       : null,
     {
       badge: "Today",
-      label: `Today's answer: Puzzle ${puzzle.number}`,
-      description: "View Full Breakdown",
+      label: `Today's LinkedIn Pinpoint board (Puzzle ${puzzle.number})`,
+      description: "Open the live Pinpoint solution, hints, and full breakdown.",
       href: routes.detail(puzzle.slug),
     },
     preview
@@ -45,8 +45,8 @@ export function HomeRevealSection({
         }
       : {
           badge: "Archive",
-          label: "Browse older puzzles",
-          description: "Jump into the archive if you want past boards instead.",
+          label: "Browse older Pinpoint boards",
+          description: "Jump into the full Pinpoint archive of recent and past boards.",
           href: routes.archive,
         },
   ].filter(Boolean) as Array<{
@@ -61,11 +61,11 @@ export function HomeRevealSection({
       <div className="home-reveal-heading">
         <p className="eyebrow">Reveal</p>
         <h2 className="home-reveal-title">
-          {`Today's Pinpoint Clues & Answer (${formatCompactDate(puzzle.isoDate)})`}
+          {`Today's LinkedIn Pinpoint clues, hints, and solution (${formatCompactDate(puzzle.isoDate)})`}
         </h2>
         <p className="copy home-reveal-description">
-          Pinpoint Answer Today keeps your streak safe with spoiler-free clues while you control
-          when to reveal the LinkedIn Pinpoint Answer Today.
+          Reveal spoiler-safe Pinpoint hints first, then open today&apos;s verified Pinpoint
+          solution or jump to yesterday&apos;s Pinpoint board and the Pinpoint archive.
         </p>
       </div>
       <div className="reveal-section-body">

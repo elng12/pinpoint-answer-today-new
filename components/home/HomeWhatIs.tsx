@@ -1,9 +1,9 @@
 const pinpointFacts = [
-  "New puzzle released daily",
+  "New Pinpoint puzzle released daily",
   "Five clues share one hidden connection",
   "Test one clean rule across all five clues",
-  "Review the clue-by-clue breakdown after reveal",
-  "Keep your streak safe and your archive easy to browse",
+  "Review the Pinpoint clue-by-clue breakdown after reveal",
+  "Keep your Pinpoint streak safe and your archive easy to browse",
 ];
 
 export function HomeWhatIs() {
@@ -14,8 +14,9 @@ export function HomeWhatIs() {
         <h2 className="section-title">What is LinkedIn Pinpoint?</h2>
         <p className="copy home-what-is-copy">
           LinkedIn Pinpoint is a daily word puzzle where five clues all point to one hidden
-          connection. Pinpoint Answer Today helps you move from spoiler-safe clues to a clean
-          answer recap without getting buried in the old-site clutter.
+          connection. Pinpoint Answer Today helps you move through each Pinpoint board with
+          spoiler-safe clues, a clean solution recap, and a faster archive path without getting
+          buried in the old-site clutter.
         </p>
       </div>
 

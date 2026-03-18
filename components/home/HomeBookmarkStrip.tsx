@@ -5,10 +5,10 @@ export function HomeBookmarkStrip() {
         Save
       </div>
       <div className="home-bookmark-copy">
-        <p className="home-bookmark-title">Bookmark this page for the daily answer drop</p>
+        <p className="home-bookmark-title">Bookmark this page for the daily Pinpoint drop</p>
         <p className="copy" style={{ margin: 0 }}>
-          Keep the hub close. It is the fastest way back to today&apos;s answer, the next preview,
-          and the full archive.
+          Keep the hub close. It is the fastest way back to today&apos;s Pinpoint solution, the next
+          Pinpoint preview, and the full Pinpoint archive.
         </p>
       </div>
       <div className="home-bookmark-tip">
