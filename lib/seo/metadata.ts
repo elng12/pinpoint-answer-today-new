@@ -12,6 +12,7 @@ const TITLE_MAX_LENGTH = 60;
 const TITLE_MIN_LENGTH = 55;
 const DESCRIPTION_MAX_LENGTH = 160;
 const DESCRIPTION_MIN_LENGTH = 150;
+const SITE_LOCALE = "en_US";
 
 export function getSiteUrl(): string {
   return process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
@@ -226,13 +227,14 @@ export function buildSiteMetadata({
       type: "website",
       url: absoluteUrl("/"),
       siteName,
+      locale: SITE_LOCALE,
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [socialImage.url],
+      images: [socialImage],
     },
   };
 }
@@ -272,13 +274,14 @@ export function buildPageMetadata({
       type,
       url,
       siteName,
+      locale: SITE_LOCALE,
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [socialImage.url],
+      images: [socialImage],
     },
   };
 }

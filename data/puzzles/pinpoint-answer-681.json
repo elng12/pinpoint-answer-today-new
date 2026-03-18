@@ -29,6 +29,36 @@
       "body": "'Cat and 🐭' looks playful rather than literal, but it maps cleanly to the fixed idiom 'cat-and-mouse'. Pinpoint sometimes mixes words with visual symbols to point at a set phrase. If a clue feels half-written, check whether an icon is supplying the missing word."
     }
   ],
+  "display": {
+    "connectorSummary": "a phrase pattern built around mouse",
+    "clueTableRows": [
+      {
+        "clue": "House",
+        "examplePhrase": "House mouse",
+        "connectionExplained": "House mouse is a common household rodent — a familiar phrase that confirms the pattern early."
+      },
+      {
+        "clue": "Field",
+        "examplePhrase": "Field mouse",
+        "connectionExplained": "Field mouse refers to small rodents found in open countryside; the compound is a real species name."
+      },
+      {
+        "clue": "Optical",
+        "examplePhrase": "Optical mouse",
+        "connectionExplained": "Optical mouse is the standard name for the computer peripheral that uses light sensors instead of a rolling ball."
+      },
+      {
+        "clue": "Mickey",
+        "examplePhrase": "Mickey Mouse",
+        "connectionExplained": "Mickey Mouse is the Disney cartoon character created in 1928 — one of the most recognized compound names in the world."
+      },
+      {
+        "clue": "Cat and 🐭",
+        "examplePhrase": "Cat-and-mouse",
+        "connectionExplained": "Cat-and-mouse is a fixed English idiom for a pursuit or power game; the mouse icon completes the visual clue and points straight to the idiom."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #681?",
