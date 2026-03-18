@@ -160,6 +160,13 @@ function buildFallbackCluePhrase(clue: string, answer: string): string {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "before") return normalizeWhitespace(`${clue} ${pattern.token}`);
   if (pattern.kind === "after") return normalizeWhitespace(`${pattern.token} ${clue}`);
+  if (pattern.kind === "typed-category") {
+    const normalizedClue = normalizeWhitespace(clue.replace(/\s*\([^)]*\)\s*/g, " "));
+    if (normalizeForMatch(normalizedClue).includes(normalizeForMatch(pattern.singularNoun))) {
+      return normalizedClue;
+    }
+    return normalizeWhitespace(`${normalizedClue} ${pattern.singularNoun}`);
+  }
   return clue;
 }
 
@@ -221,6 +228,7 @@ function safeJSONString(value: unknown): string {
 type AnswerPattern =
   | { kind: "before"; token: string }
   | { kind: "after"; token: string }
+  | { kind: "typed-category"; noun: string; singularNoun: string }
   | { kind: "category" };
 
 function detectAnswerPattern(answer: string): AnswerPattern {
@@ -232,7 +240,159 @@ function detectAnswerPattern(answer: string): AnswerPattern {
   if (after?.[1]) {
     return { kind: "after", token: after[1] };
   }
+  const typedCategory = answer.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (typedCategory?.[2]) {
+    const noun = normalizeWhitespace(typedCategory[2].replace(/["“”]/g, ""));
+    const words = noun.split(/\s+/);
+    const lastWord = words[words.length - 1] || noun;
+    let singularLastWord = lastWord;
+    if (/ies$/i.test(lastWord)) {
+      singularLastWord = `${lastWord.slice(0, -3)}y`;
+    } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
+      singularLastWord = lastWord.slice(0, -1);
+    }
+    const singularNoun = normalizeWhitespace([...words.slice(0, -1), singularLastWord].join(" "));
+    return {
+      kind: "typed-category",
+      noun,
+      singularNoun: singularNoun || noun,
+    };
+  }
   return { kind: "category" };
+}
+
+function countMentionedClues(text: string | null | undefined, clues: string[]): number {
+  const normalizedText = normalizeForMatch(text);
+  if (!normalizedText) return 0;
+  return clues.filter((clue) => {
+    const normalizedClue = normalizeForMatch(clue);
+    return Boolean(normalizedClue && normalizedText.includes(normalizedClue));
+  }).length;
+}
+
+function looksGenericTurningPoint(text: string | null | undefined): boolean {
+  const normalized = normalizeWhitespace(text ?? "").toLowerCase();
+  if (!normalized) return true;
+  return (
+    normalized.includes("the key clue is the clue that makes the pattern click") ||
+    normalized.includes("the clue that makes the pattern click") ||
+    normalized.includes("the key clue") ||
+    normalized.includes("the later clue")
+  );
+}
+
+function looksMachineyWrongGuess(text: string | null | undefined): boolean {
+  const normalized = normalizeWhitespace(text ?? "");
+  if (!normalized) return true;
+  return (
+    /^(brands?|types?|kinds?) of\b/i.test(normalized) ||
+    /\b(items?|things?|objects?|stuff)\b/i.test(normalized) ||
+    /\bvehicle brands?\b/i.test(normalized) ||
+    /\bbrands? of vehicles?\b/i.test(normalized)
+  );
+}
+
+function pickTurningPointClue(clues: string[]): string {
+  const scored = clues
+    .map((clue, index) => {
+      let score = index;
+      if (/\s/.test(clue)) score += 2;
+      if (/[^\p{L}\p{N}\s()'"&,-]/u.test(clue)) score += 2;
+      if (/bridge|island|square|geographic|advertising|cellular|touch|golden|matryoshka|princess/i.test(clue)) {
+        score += 3;
+      }
+      return { clue, score };
+    })
+    .sort((left, right) => right.score - left.score);
+  return scored[0]?.clue || clues[clues.length - 1] || "the later clue";
+}
+
+function buildFallbackConnectorSummary(answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `a phrase pattern built around ${pattern.token}`;
+  }
+  if (pattern.kind === "typed-category") {
+    return `a category board about ${pattern.noun.toLowerCase()}`;
+  }
+  const label = normalizeAnswerLabel(answer);
+  return label ? `a category board about ${label.toLowerCase()}` : "a shared category board";
+}
+
+function buildGroundedHeroSummary(puzzleData: PuzzleDataForAI): string {
+  const clues = puzzleData.rawWords.map((word) => normalizeWhitespace(String(word ?? ""))).filter(Boolean);
+  const cluePreview = clues.slice(0, 3).join(", ");
+  const pattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const frameLabel =
+    pattern.kind === "before" || pattern.kind === "after" ? "shared phrase logic" : "shared category";
+  return `At first glance, ${cluePreview} do not suggest one clean pattern. The board only tightens once a later clue makes the ${frameLabel} feel much more specific.`;
+}
+
+function buildFallbackFalseStarts(puzzleData: PuzzleDataForAI): string[] {
+  const clues = puzzleData.rawWords.map((word) => normalizeWhitespace(String(word ?? ""))).filter(Boolean);
+  const joined = clues.join(" ").toLowerCase();
+  const pattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const guesses = new Set<string>();
+
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    if (/mickey|disney|princess|bowser|luigi/i.test(joined)) guesses.add("cartoon references");
+    if (/optical|touch|cellular|electric|cable|smart/i.test(joined)) guesses.add("tech terms");
+    if (/stop and smell|cat and|wrap|wedding/i.test(joined)) guesses.add("familiar sayings");
+    if (/tea|damask|english|dog|rose/i.test(joined) || /\broses?\b/i.test(pattern.token)) guesses.add("garden vocabulary");
+    if (guesses.size === 0) guesses.add("common compound words");
+    if (guesses.size === 1) guesses.add("loose word associations");
+    return [...guesses].slice(0, 2);
+  }
+
+  if (/time|economist|cosmopolitan|digest|geographic/i.test(joined)) guesses.add("publication brands");
+  if (/bridge|island|square|fog|cable/i.test(joined)) guesses.add("California travel references");
+  if (/toad|luigi|bowser|princess|piranha/i.test(joined)) guesses.add("video game references");
+  if (/mountain|electric|recumbent|tandem|speed/i.test(joined)) guesses.add("transportation terms");
+  if (/ball|bobblehead|voodoo|barbie|matryoshka/i.test(joined)) guesses.add("collectibles");
+  if (guesses.size === 0) guesses.add("broader category guesses");
+  return [...guesses].slice(0, 2);
+}
+
+function buildFallbackRejectedGuess(
+  puzzleData: PuzzleDataForAI,
+  wrongGuess: string,
+  turningClue: string,
+): { guess: string; explanation: string } {
+  const pattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const explanation =
+    pattern.kind === "before" || pattern.kind === "after"
+      ? `${turningClue} never fit that reading cleanly enough, so the board needed a tighter phrase frame.`
+      : `${turningClue} never fit that reading cleanly enough, so the board needed a more exact category.`;
+  return {
+    guess: wrongGuess,
+    explanation,
+  };
+}
+
+function buildFallbackTurningPoint(puzzleData: PuzzleDataForAI, turningClue: string): string {
+  const pattern = detectAnswerPattern(puzzleData.mainAnswer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `"${turningClue}" is the clue that makes the phrase pattern click.`;
+  }
+  return `"${turningClue}" is the clue that makes the category click.`;
+}
+
+function buildFallbackSolutionEmergence(
+  puzzleData: PuzzleDataForAI,
+  wrongGuess: string,
+  turningClue: string,
+): string {
+  const pattern = detectAnswerPattern(puzzleData.mainAnswer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return [
+      `I did not have a clean category from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningClue}" cleanly enough.`,
+      `The turn came when I let "${turningClue}" lead the solve. Once I read the board through a tighter phrase pattern, the earlier clues stopped feeling broad and started reading like natural phrases.`,
+    ].join(" ");
+  }
+  return [
+    `I did not have a clean category from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningClue}" cleanly enough.`,
+    `The turn came when I let "${turningClue}" narrow the board. Once I read the clues through one tighter category, the earlier items stopped feeling miscellaneous and started reading like members of the same set.`,
+  ].join(" ");
 }
 
 function buildLocalizationPolicy(answer: string): string {
@@ -464,12 +624,17 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
   const next = asRecord(JSON.parse(JSON.stringify(ai ?? {}))) ?? {};
   const nextSections = asRecord(next.sections) ?? {};
   const nextAnalysis = asRecord(next.analysis) ?? {};
+  const nextSlots = asRecord(next.slots) ?? {};
   next.sections = nextSections;
   next.analysis = nextAnalysis;
+  next.slots = nextSlots;
 
   const puzzleNumber = Number(puzzleData.puzzleNumber);
   const clues = puzzleData.rawWords.map((word) => normalizeWhitespace(String(word ?? ""))).filter(Boolean);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
+  const answerPattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const turningClue = pickTurningPointClue(clues);
+  const fallbackFalseStarts = buildFallbackFalseStarts(puzzleData);
 
   nextAnalysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
 
@@ -507,6 +672,8 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
         "Once I verified all five clues, I knew I had the correct final connector.",
       ],
     );
+  } else {
+    nextSections.solutionEmergence = normalizeWhitespace(solution);
   }
 
   const seoDescription = asString(nextAnalysis.seoDescription);
@@ -532,10 +699,88 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
   const normalizedHeroSummary = normalizeWhitespace(heroSummary).replace(/["“”]/g, "");
   if (
     !heroSummary ||
-    (normalizedLabel && normalizedHeroSummary.toLowerCase().includes(normalizedLabel.toLowerCase()))
+    (normalizedLabel && normalizedHeroSummary.toLowerCase().includes(normalizedLabel.toLowerCase())) ||
+    countMentionedClues(heroSummary, clues) < 2
   ) {
-    nextAnalysis.heroSummary =
-      `LinkedIn Pinpoint #${puzzleNumber} opens with broad clues. Start with the spoiler-safe hints first, then reveal the final connector when you want the full solve.`;
+    nextAnalysis.heroSummary = buildGroundedHeroSummary(puzzleData);
+  }
+
+  const slotHeroSummary = asString(nextSlots.heroIntroSpoilerSafe) ?? "";
+  nextSlots.heroIntroSpoilerSafe =
+    !slotHeroSummary || countMentionedClues(slotHeroSummary, clues) < 2
+      ? nextAnalysis.heroSummary
+      : normalizeWhitespace(slotHeroSummary);
+
+  const slotConnectorSummary = asString(nextSlots.connectorSummary) ?? "";
+  nextSlots.connectorSummary =
+    !slotConnectorSummary ||
+    (answerPattern.kind === "typed-category" &&
+      !normalizeForMatch(slotConnectorSummary).includes(normalizeForMatch(answerPattern.noun)))
+      ? buildFallbackConnectorSummary(puzzleData.mainAnswer)
+      : normalizeWhitespace(slotConnectorSummary);
+
+  const slotTurningPoint = asString(nextSlots.turningPoint) ?? "";
+  nextSlots.turningPoint =
+    !slotTurningPoint || looksGenericTurningPoint(slotTurningPoint) || countMentionedClues(slotTurningPoint, clues) === 0
+      ? buildFallbackTurningPoint(puzzleData, turningClue)
+      : normalizeWhitespace(slotTurningPoint);
+
+  const rawFalseStarts = Array.isArray(nextSlots.falseStarts)
+    ? nextSlots.falseStarts.map((item) => asString(item)).filter((item): item is string => Boolean(item))
+    : [];
+  const cleanedFalseStarts = rawFalseStarts
+    .map((item) => normalizeWhitespace(item))
+    .filter((item) => item && !looksMachineyWrongGuess(item));
+  const finalFalseStarts = (cleanedFalseStarts.length > 0 ? cleanedFalseStarts : fallbackFalseStarts).slice(0, 2);
+  nextSlots.falseStarts = finalFalseStarts;
+
+  const rejectedGuess = asRecord(nextSlots.rejectedGuess) ?? {};
+  const rejectedGuessLabel = asString(rejectedGuess.guess);
+  const rejectedGuessExplanation = normalizeWhitespace(asString(rejectedGuess.explanation) ?? "");
+  const safeRejectedGuess =
+    rejectedGuessLabel && !looksMachineyWrongGuess(rejectedGuessLabel)
+      ? normalizeWhitespace(rejectedGuessLabel)
+      : finalFalseStarts[0] || fallbackFalseStarts[0] || "a broader category guess";
+  nextSlots.rejectedGuess = {
+    guess: safeRejectedGuess,
+    explanation:
+      rejectedGuessExplanation && !looksGenericTurningPoint(rejectedGuessExplanation)
+        ? rejectedGuessExplanation
+        : buildFallbackRejectedGuess(puzzleData, safeRejectedGuess, turningClue).explanation,
+  };
+  nextSections.wrongGuesses = [
+    {
+      guess: safeRejectedGuess,
+      explanation: asString((nextSlots.rejectedGuess as DraftRecord | null)?.explanation) || "",
+    },
+    ...finalFalseStarts
+      .filter((item) => normalizeForMatch(item) !== normalizeForMatch(safeRejectedGuess))
+      .slice(0, 1)
+      .map((item) => ({
+        guess: item,
+        explanation: `${item} feels plausible early on, but "${turningClue}" pushes the board toward a more exact reading.`,
+      })),
+  ];
+
+  if (
+    countMentionedClues(solution, clues) === 0 ||
+    looksGenericTurningPoint(solution) ||
+    /\bwhat kind of source or title it was\b/i.test(solution) ||
+    /\bwhat kind of item each clue described\b/i.test(solution)
+  ) {
+    solution = buildFallbackSolutionEmergence(puzzleData, safeRejectedGuess, turningClue);
+    nextSections.solutionEmergence =
+      countWords(solution) < CONTENT_CONTRACT.solutionEmergenceMinWords
+        ? ensureMinWords(
+            solution,
+            CONTENT_CONTRACT.solutionEmergenceMinWords,
+            [
+              "When that approach stayed too broad, I switched to a stricter phrase-by-phrase check.",
+              "The breakthrough came when one clue narrowed the set enough to make the shared pattern believable.",
+              "Once I verified all five clues, I knew I had the correct final connector.",
+            ],
+          )
+        : normalizeWhitespace(solution);
   }
 
   if (!asString(nextSections.trivia)) {
@@ -554,10 +799,16 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
     const phrase = asString(matchedRow?.phrase);
     const explanation = asString(matchedRow?.explanation);
     const etymology = asString(matchedRow?.etymology);
+    const normalizedPhrase = normalizeWhitespace(phrase || "");
+    const finalPhrase =
+      answerPattern.kind === "typed-category" &&
+      !normalizeForMatch(normalizedPhrase).includes(normalizeForMatch(answerPattern.noun))
+        ? buildFallbackCluePhrase(clue, label)
+        : normalizedPhrase || buildFallbackCluePhrase(clue, label);
 
     return {
       clue,
-      phrase: normalizeWhitespace(phrase || buildFallbackCluePhrase(clue, label)),
+      phrase: normalizeWhitespace(finalPhrase),
       explanation: normalizeWhitespace(explanation || buildFallbackClueExplanation(clue, partnerClue)),
       ...(etymology ? { etymology: normalizeWhitespace(etymology) } : {}),
     };
