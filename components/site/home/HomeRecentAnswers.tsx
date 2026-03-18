@@ -9,9 +9,9 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
     <section className="surface surface-block">
       <div className="home-search-heading recent-answers-heading">
         <SectionHeading
-          eyebrow="Recent puzzle answers"
-          title="LinkedIn Pinpoint Answer Today: Recent Clues & Solutions"
-          description="Open any recent answer to review the clue-by-clue solution and move fast into the full archive."
+          eyebrow="Recent Pinpoint boards"
+          title="Recent LinkedIn Pinpoint Clues & Solutions"
+          description="Open any recent Pinpoint recap to review the clue-by-clue solution and move fast into the full Pinpoint archive."
         />
       </div>
       <div className="recent-answer-grid recent-answer-grid-compact">
@@ -21,12 +21,12 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
       </div>
       <div className="button-row recent-answer-actions recent-answer-actions-bottom">
         <Link href={routes.archive} className="button-secondary" prefetch={false}>
-          View All Pinpoint Answers and Solutions
+          View All Pinpoint Boards and Solutions
         </Link>
       </div>
       <div className="recent-answer-bottom-link">
         <Link href={routes.archive} className="home-inline-link" prefetch={false}>
-          Explore the full historical answer archive
+          Explore the full historical Pinpoint archive
         </Link>
       </div>
     </section>

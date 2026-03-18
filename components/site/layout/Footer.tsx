@@ -18,7 +18,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
       ]
     : [
         { label: "Next Pinpoint Preview", href: routes.preview },
-        { label: "View All Pinpoint Answers and Solutions", href: routes.archive },
+        { label: "View All Pinpoint Boards and Solutions", href: routes.archive },
       ];
   const supportLinks = [
     { label: "Email Support", href: supportMailto },
@@ -41,12 +41,12 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             <p className="footer-copy">
               {isDetailPage
                 ? "Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. We deliver rapid solutions, thoughtful analysis, and strategy guides while operating independently from any organization."
-                : "Fast daily answers, deeper puzzle explanations, and a cleaner English-only archive built for people who want today's solution without wading through legacy clutter."}
+                : "Fast daily Pinpoint solutions, deeper Pinpoint explanations, and a cleaner English-only Pinpoint archive built for people who want today's board without wading through legacy clutter."}
             </p>
           </div>
 
           <div className="footer-block">
-            <p className="eyebrow">{isDetailPage ? "Recent answers" : "Recent Pinpoint Answers"}</p>
+            <p className="eyebrow">{isDetailPage ? "Recent answers" : "Recent Pinpoint Boards"}</p>
             <ul className="footer-link-list footer-link-list-compact">
               {recentEntries.map((entry) => (
                 <li key={entry.slug}>

@@ -25,15 +25,15 @@ export function HomeRevealSection({
     previousEntry
       ? {
           badge: "Previous",
-          label: `Yesterday's Pinpoint answer (Puzzle ${previousEntry.number})`,
-          description: "Open yesterday's full breakdown.",
+          label: `Yesterday's Pinpoint recap (Puzzle ${previousEntry.number})`,
+          description: "Open yesterday's full Pinpoint breakdown.",
           href: routes.detail(previousEntry.slug),
         }
       : null,
     {
       badge: "Today",
-      label: `Today's LinkedIn Pinpoint answer (Puzzle ${puzzle.number})`,
-      description: "Open the live answer, hints, and full breakdown.",
+      label: `Today's LinkedIn Pinpoint board (Puzzle ${puzzle.number})`,
+      description: "Open the live Pinpoint solution, hints, and full breakdown.",
       href: routes.detail(puzzle.slug),
     },
     preview
@@ -45,8 +45,8 @@ export function HomeRevealSection({
         }
       : {
           badge: "Archive",
-          label: "Browse older Pinpoint answers",
-          description: "Jump into the full archive of recent and past boards.",
+          label: "Browse older Pinpoint boards",
+          description: "Jump into the full Pinpoint archive of recent and past boards.",
           href: routes.archive,
         },
   ].filter(Boolean) as Array<{
@@ -61,11 +61,11 @@ export function HomeRevealSection({
       <div className="home-reveal-heading">
         <p className="eyebrow">Reveal</p>
         <h2 className="home-reveal-title">
-          {`Today's LinkedIn Pinpoint clues, hints, and answer (${formatCompactDate(puzzle.isoDate)})`}
+          {`Today's LinkedIn Pinpoint clues, hints, and solution (${formatCompactDate(puzzle.isoDate)})`}
         </h2>
         <p className="copy home-reveal-description">
-          Reveal spoiler-safe hints first, then open today&apos;s verified answer or jump to
-          yesterday&apos;s board and the archive.
+          Reveal spoiler-safe Pinpoint hints first, then open today&apos;s verified Pinpoint
+          solution or jump to yesterday&apos;s Pinpoint board and the Pinpoint archive.
         </p>
       </div>
       <div className="reveal-section-body">

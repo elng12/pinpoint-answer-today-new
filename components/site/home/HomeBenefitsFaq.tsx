@@ -5,37 +5,37 @@ const benefits = [
     icon: "bolt",
     title: "Instant Answers",
     description:
-      "Get today’s pinpoint answer quickly, then open the detail page when you want the full reasoning.",
+      "Get today’s Pinpoint solution quickly, then open the detail page when you want the full Pinpoint reasoning.",
   },
   {
     icon: "brain",
     title: "Detailed Clues",
     description:
-      "Review how each clue connects to the answer instead of stopping at the final category name.",
+      "Review how each Pinpoint clue connects to the solution instead of stopping at the final category name.",
   },
   {
     icon: "calendar",
     title: "Daily updates",
     description:
-      "Fresh answer pages, next-puzzle timing, and archive updates all stay inside one English-only structure.",
+      "Fresh Pinpoint solution pages, next-puzzle timing, and archive updates all stay inside one English-only structure.",
   },
   {
     icon: "bookmark",
     title: "Save Your Streak",
     description:
-      "Use spoiler-safe reveals and cleaner recap pages to stay accurate without wasting guesses.",
+      "Use spoiler-safe Pinpoint reveals and cleaner recap pages to stay accurate without wasting guesses.",
   },
   {
     icon: "layers",
     title: "Pattern training",
     description:
-      "Recent boards and preview guidance help you recognise shared rules faster over time.",
+      "Recent Pinpoint boards and preview guidance help you recognise shared rules faster over time.",
   },
   {
     icon: "spark",
     title: "Smart solving tips",
     description:
-      "Learn the habits that narrow the hidden connection before you chase the wrong theme.",
+      "Learn the Pinpoint habits that narrow the hidden connection before you chase the wrong theme.",
   },
 ];
 
@@ -79,28 +79,28 @@ function BenefitIcon({ icon }: { icon: string }) {
 function getFaqItems(puzzle: PuzzleDetail) {
   return [
     {
-      question: "When does the daily Pinpoint answer become available?",
-      answer: `New LinkedIn Pinpoint boards usually unlock on a daily cycle. We update the live answer page for Puzzle ${puzzle.number} as soon as the latest verified board is ready.`,
+      question: "When does the daily Pinpoint solution become available?",
+      answer: `New LinkedIn Pinpoint boards usually unlock on a daily cycle. We update the live Pinpoint page for Puzzle ${puzzle.number} as soon as the latest verified Pinpoint board is ready.`,
     },
     {
-      question: "Can I browse historical Pinpoint answers here?",
-      answer: "Yes. The archive keeps recent and older boards in one place so you can review old connections, clue sets, and answer patterns without hunting around.",
+      question: "Can I browse historical Pinpoint boards here?",
+      answer: "Yes. The Pinpoint archive keeps recent and older boards in one place so you can review old connections, clue sets, and solution patterns without hunting around.",
     },
     {
       question: "What happens if I miss a day’s puzzle?",
-      answer: "Missing a board does not stop you from learning the pattern. You can open the archive later, review the recap, and keep building your solving habits from there.",
+      answer: "Missing a Pinpoint board does not stop you from learning the pattern. You can open the Pinpoint archive later, review the recap, and keep building your solving habits from there.",
     },
     {
       question: "Is this an official LinkedIn resource?",
-      answer: "No. This is an independent guide built to help players check the answer, review the clue logic, and browse older boards more easily.",
+      answer: "No. This is an independent Pinpoint guide built to help players check the solution, review the clue logic, and browse older boards more easily.",
     },
     {
       question: "How do the clue explanations work?",
-      answer: `Each walkthrough explains how all five clues fit the shared rule. For today’s board, the current connection is ${puzzle.category}, and the detail page shows how each clue supports it.`,
+      answer: `Each Pinpoint walkthrough explains how all five clues fit the shared rule. For today’s board, the current connection is ${puzzle.category}, and the detail page shows how each clue supports it.`,
     },
     {
       question: "Why are some Pinpoint connections hard to spot?",
-      answer: "Many boards rely on wordplay, cultural references, or a very specific shared phrase. The goal is not just to know the answer, but to learn how the pattern became visible.",
+      answer: "Many Pinpoint boards rely on wordplay, cultural references, or a very specific shared phrase. The goal is not just to know the solution, but to learn how the pattern became visible.",
     },
   ];
 }
@@ -112,10 +112,10 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
     <div className="stack">
       <section className="surface surface-block">
         <div className="home-search-heading home-benefits-heading">
-          <p className="eyebrow">Why choose Pinpoint Answer Today</p>
-          <h2 className="section-title benefit-guide-title">Why Use Our Pinpoint Answer Guide?</h2>
+          <p className="eyebrow">Why Pinpoint players use us</p>
+          <h2 className="section-title benefit-guide-title">Why Use Our Pinpoint Guide?</h2>
           <p className="copy benefits-intro">
-            Everything you need to solve Pinpoint puzzles.
+            Everything you need for faster Pinpoint solving.
           </p>
         </div>
         <div className="benefit-guide-grid">
@@ -137,7 +137,7 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
         <div className="home-search-heading faq-section-heading">
           <h2 className="section-title faq-guide-title">Frequently Asked Questions</h2>
           <p className="copy faq-intro">
-            Everything you need to know about our Pinpoint Answer Guide.
+            Everything you need to know about this Pinpoint guide.
           </p>
         </div>
         <div className="faq-guide-grid">

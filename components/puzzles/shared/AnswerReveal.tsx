@@ -146,7 +146,7 @@ export function AnswerReveal({
   return (
     <div className="reveal-shell">
       <p className="reveal-tip" id={revealTipId}>
-        Hover (desktop) or tap (mobile) each clue to see how it connects to the answer
+        Hover (desktop) or tap (mobile) each clue to see how it connects to the Pinpoint solution
       </p>
 
       <div className="reveal-clue-grid">
@@ -178,21 +178,21 @@ export function AnswerReveal({
       <div id="answer-reveal" className="reveal-answer-panel">
         <p className="sr-only">
           {revealed
-            ? `LinkedIn Pinpoint ${puzzleNumber} answer: ${answer}. Shared connection: ${category}.`
-            : `LinkedIn Pinpoint ${puzzleNumber} answer is hidden until you press the reveal button.`}
+            ? `LinkedIn Pinpoint ${puzzleNumber} solution: ${answer}. Shared connection: ${category}.`
+            : `LinkedIn Pinpoint ${puzzleNumber} solution is hidden until you press the reveal button.`}
         </p>
-        <p className="eyebrow">Answer</p>
+        <p className="eyebrow">Pinpoint solution</p>
         <h3 className="reveal-answer-title">
-          {revealed ? answer : `LinkedIn Pinpoint ${puzzleNumber} Answer:`}
+          {revealed ? answer : `LinkedIn Pinpoint ${puzzleNumber} solution`}
         </h3>
         <p className="reveal-answer-copy">
           {revealed
             ? ""
-            : "Use the button below if you want the answer now. If you prefer context first, keep scrolling and read the full explanation."}
+            : "Use the button below if you want today's Pinpoint solution now. If you prefer the Pinpoint logic first, keep scrolling and read the full explanation."}
         </p>
         <div className="button-row reveal-answer-actions">
           <button className="button-primary reveal-primary-button" type="button" onClick={handleRevealToggle}>
-            {revealed ? "Hide the answer" : "Reveal Pinpoint Answer Today"}
+            {revealed ? "Hide the solution" : "Reveal Pinpoint solution"}
           </button>
           {showDetailLink && detailHref ? (
             <Link
@@ -212,7 +212,7 @@ export function AnswerReveal({
           ) : null}
           {revealed ? (
             <button className="button-secondary reveal-secondary-button" type="button" onClick={handleCopy}>
-              {copied ? "Copied" : "Copy answer"}
+              {copied ? "Copied" : "Copy solution"}
             </button>
           ) : null}
         </div>

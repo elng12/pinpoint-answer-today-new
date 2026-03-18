@@ -37,11 +37,11 @@ export function RecentAnswerCard({
       </div>
       <p className="recent-answer-title">{cluePreview}</p>
       {answerText ? (
-        <p className="recent-answer-answer">Answer: {answerText}</p>
+        <p className="recent-answer-answer">Solution: {answerText}</p>
       ) : null}
       <div className="recent-answer-footer">
         <span className="recent-answer-meta">{shortDate}</span>
-        <span className="recent-answer-cta">View Answer</span>
+        <span className="recent-answer-cta">View Recap</span>
       </div>
     </Link>
   );
