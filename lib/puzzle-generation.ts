@@ -1,5 +1,10 @@
 import { appLogger } from "@/lib/logger";
 import { normalizeClueForAI } from "@/lib/puzzles/clue-normalizer";
+import {
+  SLOT_CONTRACT,
+  type PuzzleSlotClueDetail,
+  type PuzzleSlotContractData,
+} from "@/lib/puzzles/slot-contract";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 
 export interface PuzzleDataForAI {
@@ -8,24 +13,9 @@ export interface PuzzleDataForAI {
   mainAnswer: string;
 }
 
-export interface AIGeneratedSlots {
-  heroIntroSpoilerSafe: string;
-  connectorSummary: string;
-  turningPoint: string;
-  falseStarts: string[];
-  rejectedGuess?: { guess: string; explanation: string };
-  clueDetails: Array<{
-    clue: string;
-    surfaceRead: string;
-    phrase: string;
-    whyItWorks: string;
-    etymology?: string;
-  }>;
-  difficultyReason: string;
-  portableTakeaway: string;
-}
+export type AIGeneratedSlots = PuzzleSlotContractData;
 
-type SlotClueDetail = AIGeneratedSlots["clueDetails"][number];
+type SlotClueDetail = PuzzleSlotClueDetail;
 
 export interface AIGeneratedContent {
   sections: {
@@ -128,12 +118,12 @@ Output ONLY a valid JSON object with this exact shape:
 
 Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
-2. heroIntroSpoilerSafe must be 20 to 45 words and must NOT include the exact answer text: ${puzzleData.mainAnswer}
-3. connectorSummary must be a short spoiler-safe label, 6 to 16 words, and must NOT equal or quote the exact answer text.
+2. heroIntroSpoilerSafe must be ${SLOT_CONTRACT.heroIntroMinWords} to ${SLOT_CONTRACT.heroIntroMaxWords} words and must NOT include the exact answer text: ${puzzleData.mainAnswer}
+3. connectorSummary must be a short spoiler-safe label, ${SLOT_CONTRACT.connectorSummaryMinWords} to ${SLOT_CONTRACT.connectorSummaryMaxWords} words, and must NOT equal or quote the exact answer text.
 4. turningPoint must name the clue or clue combination that makes the pattern click, in one clear sentence.
 5. falseStarts must contain 1 or 2 plausible wrong reads or weak categories.
 6. rejectedGuess.explanation must explain why that guess falls short.
-7. Include exactly 5 clueDetails items, one for each original clue in this exact set: ${originalClues}
+7. Include exactly ${SLOT_CONTRACT.clueDetailsRequired} clueDetails items, one for each original clue in this exact set: ${originalClues}
 8. Each clueDetails.clue must match one original clue exactly as written.
 9. Each clueDetails.phrase must be a natural phrase or category reading that is different from the clue.
 10. Each clueDetails.whyItWorks must explain specific logic, not just restate the final answer.

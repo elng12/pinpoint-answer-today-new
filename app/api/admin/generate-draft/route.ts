@@ -13,6 +13,10 @@ import {
   type ContentContractInput,
   type ContentContractIssue,
 } from "@/lib/puzzles/content-contract";
+import {
+  validateSlotContract,
+  type SlotContractInput,
+} from "@/lib/puzzles/slot-contract";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 
 const ADMIN_TOKENS = [
@@ -510,6 +514,48 @@ function toContractInput(
   };
 }
 
+function toSlotContractInput(
+  puzzleData: PuzzleDataForAI,
+  ai: unknown,
+): SlotContractInput {
+  const root = asRecord(ai) ?? {};
+  const slots = asRecord(root.slots);
+  return {
+    rawWords: puzzleData.rawWords,
+    mainAnswer: puzzleData.mainAnswer,
+    slots: slots
+      ? {
+          heroIntroSpoilerSafe: asString(slots.heroIntroSpoilerSafe) ?? undefined,
+          connectorSummary: asString(slots.connectorSummary) ?? undefined,
+          turningPoint: asString(slots.turningPoint) ?? undefined,
+          falseStarts: Array.isArray(slots.falseStarts)
+            ? slots.falseStarts.filter((item): item is string => typeof item === "string")
+            : undefined,
+          rejectedGuess: asRecord(slots.rejectedGuess)
+            ? {
+                guess: asString(asRecord(slots.rejectedGuess)?.guess) ?? "",
+                explanation: asString(asRecord(slots.rejectedGuess)?.explanation) ?? "",
+              }
+            : undefined,
+          clueDetails: Array.isArray(slots.clueDetails)
+            ? slots.clueDetails.map((item) => {
+                const row = asRecord(item);
+                return {
+                  clue: asString(row?.clue) ?? "",
+                  surfaceRead: asString(row?.surfaceRead) ?? "",
+                  phrase: asString(row?.phrase) ?? "",
+                  whyItWorks: asString(row?.whyItWorks) ?? "",
+                  etymology: asString(row?.etymology) ?? undefined,
+                };
+              })
+            : undefined,
+          difficultyReason: asString(slots.difficultyReason) ?? undefined,
+          portableTakeaway: asString(slots.portableTakeaway) ?? undefined,
+        }
+      : null,
+  };
+}
+
 function hasDisallowedLanguage(value: string | null | undefined): boolean {
   return Boolean(value && DISALLOWED_LANGUAGE_PATTERN.test(value));
 }
@@ -582,7 +628,10 @@ function validateDraftIssues(
   ai: unknown,
   locale: string | null = defaultLocale,
 ) {
-  return promotePublishBlockingIssues(validateContentContract(toContractInput(puzzleData, ai, locale)));
+  return [
+    ...promotePublishBlockingIssues(validateContentContract(toContractInput(puzzleData, ai, locale))),
+    ...validateSlotContract(toSlotContractInput(puzzleData, ai)),
+  ];
 }
 
 function buildRepairPrompt(
