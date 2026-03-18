@@ -12,6 +12,16 @@ import {
   registrySchema,
 } from "@/lib/puzzles/schema";
 
+export type PuzzleDetailDisplay = {
+  connectorSummary: string;
+  fastStrategy: string;
+  clueTableRows: Array<{
+    clue: string;
+    examplePhrase: string;
+    connectionExplained: string;
+  }>;
+};
+
 export type PuzzleDetail = {
   number: number;
   slug: string;
@@ -29,6 +39,7 @@ export type PuzzleDetail = {
   spoilerHints: Record<string, string>;
   lessons: LessonItem[];
   faqs: FaqItem[];
+  display: PuzzleDetailDisplay;
   status: Exclude<PuzzleStatus, "draft" | "preview">;
   updatedAt: string;
 };
@@ -181,6 +192,124 @@ function singularizeTrailingWord(text: string): string {
   }
 
   return [...words.slice(0, -1), singularLastWord].join(" ").trim() || trimmed;
+}
+
+function parseLesson(lesson: LessonItem): { title: string | null; body: string } {
+  if (typeof lesson === "object") {
+    return { title: lesson.title, body: lesson.body };
+  }
+  const dotIdx = lesson.indexOf(". ");
+  if (dotIdx > 0 && dotIdx <= 55) {
+    return { title: lesson.slice(0, dotIdx), body: lesson.slice(dotIdx + 2) };
+  }
+  return { title: null, body: lesson };
+}
+
+function extractConnectorTerm(source: string, markers: string[]): string | null {
+  const lowerSource = source.toLowerCase();
+
+  for (const marker of markers) {
+    const markerIndex = lowerSource.indexOf(marker);
+    if (markerIndex === -1) continue;
+
+    const remainder = source.slice(markerIndex + marker.length).trim();
+    if (!remainder) continue;
+
+    const quoted = remainder.match(/^[“"'`]?(.+?)[”"'`]/);
+    if (quoted?.[1]) {
+      return quoted[1].trim();
+    }
+
+    return remainder
+      .split(/\s+[—-]\s+/)[0]
+      .split(/\s+in\s+/i)[0]
+      .split(/[.!?]/)[0]
+      .trim()
+      .replace(/^[“"'`]+|[”"'`]+$/g, "");
+  }
+
+  return null;
+}
+
+function buildArchiveConnectorSummary(answer: string, category: string): string {
+  const beforeTarget =
+    extractConnectorTerm(answer, ["words that come before "]) ??
+    extractConnectorTerm(category, ["words that come before "]);
+  const afterTarget =
+    extractConnectorTerm(answer, ["words that follow ", "words after "]) ??
+    extractConnectorTerm(category, ["words that follow ", "words after "]);
+
+  if (beforeTarget || afterTarget) {
+    return `a phrase pattern built around ${beforeTarget ?? afterTarget}`;
+  }
+
+  const pattern = detectLiveAnswerPattern(answer);
+  if (pattern.kind === "typed-category" || pattern.kind === "association" || pattern.kind === "category") {
+    return buildLiveConnectorSummary(answer);
+  }
+
+  return answer;
+}
+
+function buildArchiveExamplePhrase(clue: string, answer: string, category: string): string {
+  const answerLower = answer.toLowerCase();
+  const beforeTarget =
+    extractConnectorTerm(answer, ["words that come before "]) ??
+    extractConnectorTerm(category, ["words that come before "]);
+  const afterTarget =
+    extractConnectorTerm(answer, ["words that follow ", "words after "]) ??
+    extractConnectorTerm(category, ["words that follow ", "words after "]);
+
+  if (afterTarget) {
+    return `${afterTarget} ${clue}`.trim();
+  }
+
+  if (beforeTarget) {
+    if (clue.includes("(🌹🌹🌹)")) {
+      return clue.replace("(🌹🌹🌹)", beforeTarget);
+    }
+    return `${clue} ${singularizeTrailingWord(beforeTarget)}`.trim();
+  }
+
+  if (answerLower.startsWith("shades of ")) {
+    const suffix = answer.slice(answerLower.indexOf("shades of ") + "shades of ".length).trim();
+    return `${clue} ${suffix}`.trim();
+  }
+
+  return buildLiveFallbackPhrase(clue, answer);
+}
+
+function buildPuzzleDisplay(
+  clues: string[],
+  answer: string,
+  category: string,
+  detailContent: PuzzleDetailContentRecord,
+  lessons: LessonItem[],
+  wordHints: Record<string, string>,
+): PuzzleDetailDisplay {
+  const storedDisplay = detailContent.display;
+  const firstLesson = lessons[0];
+  const fastStrategy = storedDisplay?.fastStrategy
+    ? storedDisplay.fastStrategy
+    : firstLesson
+      ? parseLesson(firstLesson).body
+      : "Start with two clues, test one connector, then verify every clue against it.";
+
+  const clueTableRows =
+    storedDisplay?.clueTableRows && storedDisplay.clueTableRows.length === clues.length
+      ? storedDisplay.clueTableRows
+      : clues.map((clue) => ({
+          clue,
+          examplePhrase: buildArchiveExamplePhrase(clue, answer, category),
+          connectionExplained:
+            wordHints[clue] ?? `${clue} fits the same shared rule that leads to ${answer}.`,
+        }));
+
+  return {
+    connectorSummary: storedDisplay?.connectorSummary ?? buildArchiveConnectorSummary(answer, category),
+    fastStrategy,
+    clueTableRows,
+  };
 }
 
 function detectLiveAnswerPattern(answer: string): LiveAnswerPattern {
@@ -383,6 +512,18 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const pattern = detectLiveAnswerPattern(answer);
   const turningPoint = pickLiveTurningPoint(record.clues, answer);
   const connectorSummary = buildLiveConnectorSummary(answer);
+  const lessons = buildLiveLessons(answer, turningPoint);
+  const wordHints = buildLiveWordHints(record.clues, answer);
+  const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint);
+  const display: PuzzleDetailDisplay = {
+    connectorSummary,
+    fastStrategy: parseLesson(lessons[0]!).body,
+    clueTableRows: record.clues.map((clue, index) => ({
+      clue,
+      examplePhrase: buildLiveFallbackPhrase(clue, answer),
+      connectionExplained: wordHints[clue] ?? buildLiveClueExplanation(clue, answer, index, turningPoint),
+    })),
+  };
 
   return {
     number: puzzleNumber,
@@ -413,10 +554,11 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
           `I did not have a clean category from the first clue. ${record.clues[0]} and ${record.clues[1]} could each fit a few broad ideas, so the board felt wider than it really was until one clue made the frame specific enough to test properly.`,
           `The turn came when "${turningPoint}" made the shared frame obvious enough to re-check across the whole board. Once I read the clues that way, the earlier words stopped feeling broad and started feeling like exact members of the same set.`,
         ],
-    wordHints: buildLiveWordHints(record.clues, answer),
+    wordHints,
     spoilerHints: {},
-    lessons: buildLiveLessons(answer, turningPoint),
-    faqs: buildLiveFaqs(puzzleNumber, answer, turningPoint),
+    lessons,
+    faqs,
+    display,
     status: "live",
     updatedAt: record.fetchedAt,
   };
@@ -651,6 +793,14 @@ async function toPuzzleDetail(
     spoilerHints: detailContent.spoilerHints ?? {},
     lessons: detailContent.lessons,
     faqs: detailContent.faqs,
+    display: buildPuzzleDisplay(
+      detailClues,
+      entry.mainAnswer,
+      entry.category,
+      detailContent,
+      detailContent.lessons,
+      detailContent.wordHints,
+    ),
     status: entry.status,
     updatedAt: entry.updatedAt,
   };
