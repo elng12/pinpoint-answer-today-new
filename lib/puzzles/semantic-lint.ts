@@ -52,6 +52,17 @@ const GENERIC_CONNECTION_FAQ_PATTERNS = [
   /\bsame category once the board is read in the right frame\b/i,
   /\bone later clue makes the category feel much more obvious\b/i,
 ];
+const TEMPORARY_PAGE_PATTERNS = [
+  /\bthis quick page keeps today'?s answer available\b/i,
+  /\blive version generated before the full editorial archive update finishes\b/i,
+  /\barchive version adds the fuller explanation layer\b/i,
+  /\bfull archived walkthrough is still finishing\b/i,
+];
+const GENERIC_CLUE_EXPLANATION_PATTERNS = [
+  /\bfits the same shared connection\b/i,
+  /\bsame shared connection that leads to\b/i,
+  /\bpoints back to that same connection\b/i,
+];
 
 type AnswerPattern =
   | { kind: "before"; token: string }
@@ -307,6 +318,31 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     });
   }
 
+  const temporaryPageFields: Array<[string, string | null | undefined]> = [
+    ["overview", input.overview],
+    ["solutionEmergence", input.solutionEmergence],
+    ["lessons[0].body", input.lessons?.[0]?.body],
+    ["lessons[1].body", input.lessons?.[1]?.body],
+    ["lessons[2].body", input.lessons?.[2]?.body],
+    ["faqs[0].answer", input.faqs?.[0]?.answer],
+    ["faqs[1].answer", input.faqs?.[1]?.answer],
+    ["faqs[2].answer", input.faqs?.[2]?.answer],
+  ];
+
+  for (const [field, value] of temporaryPageFields) {
+    const text = normalizeText(value);
+    if (!text) continue;
+    if (TEMPORARY_PAGE_PATTERNS.some((pattern) => pattern.test(text))) {
+      issues.push({
+        code: "copy.temporaryPageLanguage",
+        message: "Draft sounds like a temporary quick-page notice instead of a normal walkthrough",
+        field,
+        ...(sampleText(value) ? { sample: sampleText(value) } : {}),
+      });
+      break;
+    }
+  }
+
   const sectionOverlap = overlapRatio(input.overview, input.solutionEmergence);
   if (sectionOverlap >= 0.6) {
     issues.push({
@@ -339,6 +375,19 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     }
   }
 
+  input.clueDetails?.forEach((item, index) => {
+    const explanation = normalizeText(item?.explanation);
+    if (!explanation) return;
+    if (GENERIC_CLUE_EXPLANATION_PATTERNS.some((pattern) => pattern.test(explanation))) {
+      issues.push({
+        code: "clueDetails.genericExplanation",
+        message: "Clue explanation repeats generic shared-connection filler instead of explaining the clue specifically",
+        field: `clueDetails[${index}].explanation`,
+        ...(sampleText(item?.explanation) ? { sample: sampleText(item?.explanation) } : {}),
+      });
+    }
+  });
+
   return issues;
 }
 
@@ -350,6 +399,7 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "mainAnswer.suspiciousCategoryLabel",
   "faqs.firstAnswerMissingExactAnswer",
   "summary.promotionalTone",
+  "copy.temporaryPageLanguage",
   "summary.answerSpoiler",
   "overview.leadingAnswerSpoiler",
   "sections.overlap",
@@ -357,4 +407,5 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "wrongGuesses.machineyGuess",
   "solutionEmergence.genericPivot",
   "faqs.genericConnectionAnswer",
+  "clueDetails.genericExplanation",
 ]);

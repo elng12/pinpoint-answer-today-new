@@ -556,6 +556,7 @@ type WorkerAnswerPattern =
   | { kind: "before"; token: string }
   | { kind: "after"; token: string }
   | { kind: "typed-category"; noun: string; singularNoun: string }
+  | { kind: "association"; subject: string }
   | { kind: "category"; label: string };
 
 function stripStraightAndCurlyQuotes(value: string): string {
@@ -611,6 +612,14 @@ function detectWorkerAnswerPattern(answer: string): WorkerAnswerPattern {
     };
   }
 
+  const association = normalizedAnswer.match(/^Things associated with\s+(.+)$/i);
+  if (association?.[1]) {
+    return {
+      kind: "association",
+      subject: stripStraightAndCurlyQuotes(association[1]).trim(),
+    };
+  }
+
   return {
     kind: "category",
     label: stripStraightAndCurlyQuotes(normalizedAnswer).replace(/\s*\([^)]*\)\s*$/, "").trim() || "shared category",
@@ -628,6 +637,7 @@ function normalizeLooseWorkerText(value: string): string {
 function extractWorkerCategoryLabel(answer: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
   if (pattern.kind === "typed-category") return pattern.noun.toLowerCase();
+  if (pattern.kind === "association") return pattern.subject.toLowerCase();
   if (pattern.kind !== "category") return "";
   const firstWord = pattern.label.split(/\s+/)[0]?.trim().toLowerCase() || "";
   return firstWord.length > 2 ? firstWord : pattern.label.toLowerCase();
@@ -640,6 +650,9 @@ function buildWorkerConnectorSummary(answer: string): string {
   }
   if (pattern.kind === "typed-category") {
     return `a category board about ${pattern.noun.toLowerCase()}`;
+  }
+  if (pattern.kind === "association") {
+    return `a board centered on ${pattern.subject}`;
   }
   const label = extractWorkerCategoryLabel(answer);
   return label ? `a category board about ${label}` : "a shared category board";
@@ -674,7 +687,7 @@ function buildWorkerFallbackPhrase(clue: string, answer: string): string {
   return clue.trim();
 }
 
-function buildWorkerClueExplanation(clue: string, phrase: string, answer: string): string {
+function buildWorkerClueExplanation(clue: string, phrase: string, answer: string, index: number, turningPoint: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
   if (pattern.kind === "before" || pattern.kind === "after") {
     const token = pattern.token;
@@ -688,11 +701,35 @@ function buildWorkerClueExplanation(clue: string, phrase: string, answer: string
   }
 
   if (pattern.kind === "typed-category") {
-    return `"${phrase}" is a recognizable ${pattern.singularNoun.toLowerCase()}, which makes this clue a clean member of the set.`;
+    const variants = [
+      `"${phrase}" is a recognizable ${pattern.singularNoun.toLowerCase()}, so it gives the board a clean category fit.`,
+      `Once the board is read as ${pattern.noun.toLowerCase()}, "${phrase}" stops feeling broad and becomes an exact fit.`,
+      `"${phrase}" belongs in the same ${pattern.singularNoun.toLowerCase()} frame, which keeps the category specific instead of loose.`,
+    ];
+    return variants[index % variants.length] || variants[0];
   }
 
-  const label = extractWorkerCategoryLabel(answer) || "category";
-  return `"${phrase}" belongs in the same ${label} frame, which is why the clue becomes much clearer once the board tightens.`;
+  if (pattern.kind === "association") {
+    if (clue === turningPoint) {
+      return `"${clue}" is one of the clearest anchors for a ${pattern.subject} reading, which is why it helps lock the board into place.`;
+    }
+    const variants = [
+      `"${clue}" fits naturally once the board is read through ${pattern.subject} rather than as a loose general-interest category.`,
+      `"${clue}" supports the same ${pattern.subject}-based frame as the other clues, so it reads as part of one picture instead of an isolated reference.`,
+      `"${clue}" works because it points back to the same ${pattern.subject} context that ties the whole board together.`,
+    ];
+    return variants[index % variants.length] || variants[0];
+  }
+
+  if (clue === turningPoint) {
+    return `"${clue}" is the clue that makes the shared frame specific enough to test across the full board.`;
+  }
+  const variants = [
+    `"${phrase}" fits more cleanly once the board is read through the same shared frame as the other clues.`,
+    `"${phrase}" helps confirm the same category reading instead of pulling the board into a looser guess.`,
+    `"${phrase}" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible.`,
+  ];
+  return variants[index % variants.length] || variants[0];
 }
 
 function scoreWorkerClueSpecificity(clue: string): number {
@@ -704,6 +741,7 @@ function scoreWorkerClueSpecificity(clue: string): number {
   score += (text.match(/-/g)?.length || 0) * 6;
   score += (text.match(/\(/g)?.length || 0) * 4;
   score += /The\s+/i.test(text) ? 5 : 0;
+  score += /\b(island|bridge|square|park|museum|tower|center|bay)\b/i.test(text) ? 8 : 0;
   return score;
 }
 
@@ -718,7 +756,13 @@ function pickWorkerTurningPoint(words: string[], answer: string): string {
   let bestScore = -1;
   for (let index = 0; index < words.length; index += 1) {
     const word = words[index] || "";
-    const score = scoreWorkerClueSpecificity(word) + index;
+    let score = scoreWorkerClueSpecificity(word) + index;
+    if (
+      pattern.kind === "association" &&
+      /\b(square|island|bridge|park|museum|tower|center|bay)\b/i.test(word)
+    ) {
+      score += 10;
+    }
     if (score > bestScore) {
       bestScore = score;
       bestWord = word;
@@ -740,12 +784,12 @@ function buildTemplateFallbackPayload(
   const connectorSummary = buildWorkerConnectorSummary(answer);
   const turningPoint = pickWorkerTurningPoint(words, answer);
   const turningPhrase = buildWorkerFallbackPhrase(turningPoint, answer);
-  const clueDetails = words.map((clue) => {
+  const clueDetails = words.map((clue, index) => {
     const phrase = buildWorkerFallbackPhrase(clue, answer);
     return {
       clue,
       phrase,
-      explanation: buildWorkerClueExplanation(clue, phrase, answer),
+      explanation: buildWorkerClueExplanation(clue, phrase, answer, index, turningPoint),
     };
   });
 
@@ -761,7 +805,7 @@ function buildTemplateFallbackPayload(
         ]
       : [
           `At first glance, ${words.slice(0, 3).join(", ")} do not suggest one clean category. The board tightens once "${turningPoint}" makes the shared frame specific enough to test across all five clues, because the earlier words then stop feeling broad and start feeling like exact members of the same set.`,
-          `From there, ${connectorSummary} explains the board more cleanly than broader labels. The clues work because each one points to a recognizable member of the same category, not because the words merely feel adjacent or loosely related.`,
+          `From there, ${connectorSummary} explains the board more cleanly than broader labels. The clues work because each one belongs in the same frame, not because the words merely feel adjacent or loosely related.`,
         ];
 
   const solutionParagraphs =
@@ -772,7 +816,7 @@ function buildTemplateFallbackPayload(
         ]
       : [
           `I did not have a clean category from the first clue. ${words[0]} and ${words[1]} could each belong to several broad topics, so the set felt wider than it really was until one clue made the board specific enough to test properly.`,
-          `The turn came when I treated "${turningPoint}" as "${turningPhrase}" instead of a loose association. Once the board was read through ${connectorSummary}, the earlier clues started to feel like exact members of the same category, and that was the first point where one reading explained all five clues without stretching.`,
+          `The turn came when "${turningPoint}" made the shared frame specific enough to re-check across the whole board. Once I read the board through ${connectorSummary}, the earlier clues stopped feeling broad and started feeling like exact members of the same set.`,
         ];
 
   const detailedBreakdown = overviewParagraphs.join("\n\n");
@@ -810,7 +854,7 @@ function buildTemplateFallbackPayload(
       answer:
         pattern.kind === "before" || pattern.kind === "after"
           ? `The connection is ${connectorSummary}. Each clue resolves through a natural phrase that uses the same shared word.`
-          : `The connection is ${connectorSummary}. Each clue points to a recognizable member of the same category once the board is read in the right frame.`,
+          : `The connection is ${connectorSummary}. The clues all fit more cleanly once the board is read through the same place, topic, or category frame.`,
     },
     {
       question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,

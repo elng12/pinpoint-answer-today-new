@@ -69,6 +69,13 @@ type LiveWorkerPuzzleRecord = {
   answer: string;
 };
 
+type LiveAnswerPattern =
+  | { kind: "before"; token: string }
+  | { kind: "after"; token: string }
+  | { kind: "typed-category"; noun: string; singularNoun: string }
+  | { kind: "association"; subject: string }
+  | { kind: "category"; label: string };
+
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const GITHUB_RAW_BASE =
@@ -134,43 +141,233 @@ function inferPuzzleNumberFromDate(isoDate: string): number | null {
   return BASELINE_NUMBER + diffDays;
 }
 
+function normalizeLooseLiveText(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/["“”'`]/g, "")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function singularizeTrailingWord(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+
+  const words = trimmed.split(/\s+/);
+  const lastWord = words[words.length - 1] || trimmed;
+  const lowerLastWord = lastWord.toLowerCase();
+
+  const irregularSingulars: Record<string, string> = {
+    mice: "mouse",
+    geese: "goose",
+    teeth: "tooth",
+    feet: "foot",
+    men: "man",
+    women: "woman",
+    people: "person",
+    children: "child",
+  };
+
+  let singularLastWord = lastWord;
+  if (irregularSingulars[lowerLastWord]) {
+    singularLastWord = irregularSingulars[lowerLastWord];
+  } else if (/ies$/i.test(lastWord)) {
+    singularLastWord = `${lastWord.slice(0, -3)}y`;
+  } else if (/(ches|shes|xes|zes)$/i.test(lastWord)) {
+    singularLastWord = lastWord.slice(0, -2);
+  } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
+    singularLastWord = lastWord.slice(0, -1);
+  }
+
+  return [...words.slice(0, -1), singularLastWord].join(" ").trim() || trimmed;
+}
+
+function detectLiveAnswerPattern(answer: string): LiveAnswerPattern {
+  const text = answer.trim();
+
+  const before = text.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
+  if (before?.[1]) return { kind: "before", token: before[1].trim() };
+
+  const after = text.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
+  if (after?.[1]) return { kind: "after", token: after[1].trim() };
+
+  const typedCategory = text.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
+  if (typedCategory?.[2]) {
+    const noun = typedCategory[2].trim();
+    return {
+      kind: "typed-category",
+      noun,
+      singularNoun: singularizeTrailingWord(noun),
+    };
+  }
+
+  const association = text.match(/^Things associated with\s+(.+)$/i);
+  if (association?.[1]) {
+    return { kind: "association", subject: association[1].trim() };
+  }
+
+  return {
+    kind: "category",
+    label: text || "shared category",
+  };
+}
+
+function buildLiveConnectorSummary(answer: string): string {
+  const pattern = detectLiveAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `a phrase pattern built around ${pattern.token}`;
+  }
+  if (pattern.kind === "typed-category") {
+    return `a category board about ${pattern.noun.toLowerCase()}`;
+  }
+  if (pattern.kind === "association") {
+    return `a board centered on ${pattern.subject}`;
+  }
+  return `one category built around ${pattern.label.toLowerCase()}`;
+}
+
+function buildLiveFallbackPhrase(clue: string, answer: string): string {
+  const pattern = detectLiveAnswerPattern(answer);
+  if (pattern.kind === "before") return `${clue} ${pattern.token}`.trim();
+  if (pattern.kind === "after") return `${pattern.token} ${clue}`.trim();
+  if (pattern.kind === "typed-category") {
+    const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+    const normalizedBase = baseClue || clue;
+    if (normalizeLooseLiveText(normalizedBase).includes(normalizeLooseLiveText(pattern.singularNoun))) {
+      return normalizedBase;
+    }
+    return `${normalizedBase} ${pattern.singularNoun}`.trim();
+  }
+  return clue.trim();
+}
+
+function scoreLiveClueSpecificity(clue: string): number {
+  const text = clue.trim();
+  if (!text) return 0;
+  const words = text.split(/\s+/).filter(Boolean);
+  let score = text.length;
+  score += words.length * 5;
+  score += (text.match(/-/g)?.length || 0) * 6;
+  score += (text.match(/\(/g)?.length || 0) * 4;
+  score += /\b(the|island|bridge|square|park|museum|tower|center|bay)\b/i.test(text) ? 8 : 0;
+  return score;
+}
+
+function pickLiveTurningPoint(clues: string[], answer: string): string {
+  let bestClue = clues[0] || "the key clue";
+  let bestScore = -1;
+  const pattern = detectLiveAnswerPattern(answer);
+
+  for (let index = 0; index < clues.length; index += 1) {
+    const clue = clues[index] || "";
+    let score = scoreLiveClueSpecificity(clue) + index;
+    if (
+      pattern.kind === "association" &&
+      /\b(square|island|bridge|park|museum|tower|center|bay)\b/i.test(clue)
+    ) {
+      score += 10;
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      bestClue = clue;
+    }
+  }
+
+  return bestClue;
+}
+
+function buildLiveClueExplanation(clue: string, answer: string, index: number, turningPoint: string): string {
+  const pattern = detectLiveAnswerPattern(answer);
+  const phrase = buildLiveFallbackPhrase(clue, answer);
+
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `"${phrase}" is the natural reading here, so this clue makes more sense once the board is read through "${pattern.token}".`;
+  }
+
+  if (pattern.kind === "typed-category") {
+    const variants = [
+      `"${phrase}" is a recognizable ${pattern.singularNoun.toLowerCase()}, so it gives the board a clean category fit.`,
+      `Once the board is read as ${pattern.noun.toLowerCase()}, "${phrase}" stops feeling broad and becomes an exact fit.`,
+      `"${phrase}" belongs in the same ${pattern.singularNoun.toLowerCase()} frame, which keeps the category specific instead of loose.`,
+    ];
+    return variants[index % variants.length] || variants[0];
+  }
+
+  if (pattern.kind === "association") {
+    const subject = pattern.subject;
+    if (clue === turningPoint) {
+      return `"${clue}" is one of the clearest anchors for a ${subject} reading, which is why it helps lock the board into place.`;
+    }
+    const variants = [
+      `"${clue}" fits naturally once the board is read through ${subject} rather than as a loose general-interest category.`,
+      `"${clue}" supports the same ${subject}-based frame as the other clues, so it reads as part of one picture instead of an isolated reference.`,
+      `"${clue}" works because it points back to the same ${subject} context that ties the whole board together.`,
+    ];
+    return variants[index % variants.length] || variants[0];
+  }
+
+  if (clue === turningPoint) {
+    return `"${clue}" is the clue that makes the shared frame specific enough to test across the full board.`;
+  }
+  const variants = [
+    `"${clue}" fits more cleanly once the board is read through the same shared frame as the other clues.`,
+    `"${clue}" helps confirm the same category reading instead of pulling the board into a looser guess.`,
+    `"${clue}" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible.`,
+  ];
+  return variants[index % variants.length] || variants[0];
+}
+
 function buildLiveWordHints(clues: string[], answer: string): Record<string, string> {
+  const turningPoint = pickLiveTurningPoint(clues, answer);
   return Object.fromEntries(
-    clues.map((clue) => [clue, `${clue} fits the same shared connection that leads to ${answer}.`]),
+    clues.map((clue, index) => [clue, buildLiveClueExplanation(clue, answer, index, turningPoint)]),
   );
 }
 
-function buildLiveLessons(answer: string): LessonItem[] {
+function buildLiveLessons(answer: string, turningPoint: string): LessonItem[] {
+  const pattern = detectLiveAnswerPattern(answer);
   return [
     {
-      title: "Test one connector across all five clues",
-      body: `The quickest way to validate ${answer} is to see whether every clue still feels natural under the same pattern or category.`,
+      title: pattern.kind === "before" || pattern.kind === "after"
+        ? "Wait for the clue that narrows the shared phrase"
+        : "Wait for the clue that narrows the frame",
+      body: pattern.kind === "before" || pattern.kind === "after"
+        ? "When the opening clues are broad, the best move is to wait for the clue that makes the repeated word feel exact."
+        : "When the opening clues feel wide, the best move is to wait for the clue that makes the shared frame specific enough to test.",
     },
     {
-      title: "Favor the cleanest explanation",
-      body: "If one answer explains all five clues without stretching any of them, that is usually the strongest Pinpoint read.",
+      title: "Prefer exact fits over loose associations",
+      body: pattern.kind === "before" || pattern.kind === "after"
+        ? "The strongest Pinpoint answers create natural phrases for all five clues, not just a connection that feels close enough."
+        : "The strongest Pinpoint answers explain why every clue belongs in the same set, not just why the words feel vaguely related.",
     },
     {
-      title: "Use the archive for confirmation",
-      body: "A richer editorial walkthrough will replace this quick version after the daily archive sync finishes.",
+      title: "Re-check the earlier clues once the frame tightens",
+      body: `Once "${turningPoint}" clicks, go back and test the earlier clues under that same frame before locking the answer.`,
     },
   ];
 }
 
-function buildLiveFaqs(puzzleNumber: number, clues: string[], answer: string): FaqItem[] {
-  const clueLabel = clues.join(", ");
+function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint: string): FaqItem[] {
+  const pattern = detectLiveAnswerPattern(answer);
+  const connectorSummary = buildLiveConnectorSummary(answer);
   return [
     {
       question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
-      answer: `The answer is ${answer}. The clues ${clueLabel} all point back to that same connection.`,
+      answer: `The answer is ${answer}. That reading is the first one that explains the full set cleanly, including "${turningPoint}".`,
     },
     {
-      question: "Why does this page look shorter than older walkthroughs?",
-      answer: "This is the live version generated before the full editorial archive update finishes. The complete long-form walkthrough lands shortly after.",
+      question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+      answer: pattern.kind === "before" || pattern.kind === "after"
+        ? `The connection is ${connectorSummary}. Each clue resolves through a natural phrase that uses the same shared word.`
+        : `The connection is ${connectorSummary}. The clues all fit more cleanly once the board is read through the same place, topic, or category frame.`,
     },
     {
-      question: "Are the clues already verified?",
-      answer: "Yes. The answer and clue set come from the live daily feed, then the archive version adds the fuller explanation layer.",
+      question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
+      answer: pattern.kind === "before" || pattern.kind === "after"
+        ? `"${turningPoint}" is the turning point because it confirms the shared word in the clearest way.`
+        : `"${turningPoint}" is the turning point because it makes the board specific enough to test across all five clues.`,
     },
   ];
 }
@@ -183,6 +380,9 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const clueLabel = record.clues.join(", ");
   const answer = record.answer;
   const shortSummary = `Pinpoint #${puzzleNumber}: ${clueLabel}.`;
+  const pattern = detectLiveAnswerPattern(answer);
+  const turningPoint = pickLiveTurningPoint(record.clues, answer);
+  const connectorSummary = buildLiveConnectorSummary(answer);
 
   return {
     number: puzzleNumber,
@@ -195,16 +395,28 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     clues: record.clues,
     difficulty: "Moderate",
     shortSummary,
-    fullAnalysis: [
-      `Pinpoint #${puzzleNumber} is already live with the clues ${clueLabel}. The shared connection is ${answer}. This quick page keeps today's answer available while the full archived walkthrough is still finishing.`,
-    ],
-    solutionNarrative: [
-      `I checked whether ${clueLabel} could all resolve under the same phrase pattern or category. ${answer} is the first clean fit that explains the full set without forcing any clue.`,
-    ],
+    fullAnalysis: pattern.kind === "before" || pattern.kind === "after"
+      ? [
+          `At first glance, ${record.clues.slice(0, 3).join(", ")} can point in several directions before one clue narrows the frame. The board tightens once "${turningPoint}" confirms the shared word in a way that makes the earlier clues stop feeling random and start reading like natural phrases.`,
+          `From there, ${connectorSummary} explains the full set more cleanly than loose category guesses. Each clue works because it forms a natural reading under the same shared word, not because the words merely feel adjacent.`,
+        ]
+      : [
+          `At first glance, ${record.clues.slice(0, 3).join(", ")} do not suggest one neat category. The board tightens once "${turningPoint}" makes the shared frame specific enough to test, because the earlier clues then stop feeling broad and start reading like exact members of the same set.`,
+          `From there, ${connectorSummary} explains the board more cleanly than broader labels. The clues work because each one belongs in the same frame, not because the words only feel loosely related.`,
+        ],
+    solutionNarrative: pattern.kind === "before" || pattern.kind === "after"
+      ? [
+          `I did not have a clean connector from the first clue. ${record.clues[0]} and ${record.clues[1]} both support a few weak guesses on their own, so I waited for the clue that felt more specific instead of forcing an answer too early.`,
+          `The turn came when "${turningPoint}" made the shared word feel exact. Once I read the board through that phrase frame, the earlier clues started behaving like natural fits instead of isolated prompts.`,
+        ]
+      : [
+          `I did not have a clean category from the first clue. ${record.clues[0]} and ${record.clues[1]} could each fit a few broad ideas, so the board felt wider than it really was until one clue made the frame specific enough to test properly.`,
+          `The turn came when "${turningPoint}" made the shared frame obvious enough to re-check across the whole board. Once I read the clues that way, the earlier words stopped feeling broad and started feeling like exact members of the same set.`,
+        ],
     wordHints: buildLiveWordHints(record.clues, answer),
     spoilerHints: {},
-    lessons: buildLiveLessons(answer),
-    faqs: buildLiveFaqs(puzzleNumber, record.clues, answer),
+    lessons: buildLiveLessons(answer, turningPoint),
+    faqs: buildLiveFaqs(puzzleNumber, answer, turningPoint),
     status: "live",
     updatedAt: record.fetchedAt,
   };
