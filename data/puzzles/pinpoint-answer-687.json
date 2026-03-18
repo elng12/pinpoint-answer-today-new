@@ -1,0 +1,60 @@
+{
+  "puzzleNumber": 687,
+  "slug": "pinpoint-answer-687",
+  "publishDate": "2026-03-18",
+  "isoDate": "2026-03-18",
+  "clues": [
+    "Fog",
+    "Cable cars",
+    "Ghirardelli Square",
+    "Alcatraz Island",
+    "Golden Gate Bridge"
+  ],
+  "answer": "Things associated with San Francisco",
+  "category": "Things associated with San Francisco",
+  "wordHints": {
+    "Fog": "Fog becomes more convincing when it is read beside Cable cars, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts.",
+    "Cable cars": "Cable cars becomes more convincing when it is read beside Ghirardelli Square, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts.",
+    "Ghirardelli Square": "Ghirardelli Square becomes more convincing when it is read beside Alcatraz Island, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts.",
+    "Alcatraz Island": "Alcatraz Island becomes more convincing when it is read beside Golden Gate Bridge, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts.",
+    "Golden Gate Bridge": "Golden Gate Bridge becomes more convincing when it is read beside Fog, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts."
+  },
+  "fullAnalysis": [
+    "At first glance, do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific. That is why guesses like \"Tourist attractions\" and \"Popular vacation destinations\" can feel plausible at the start. The clue that changes the frame is \"the key clue\".",
+    "From there, reading them as one clean category explains the board more cleanly than broader labels. Once that frame clicks, names like stop feeling miscellaneous and start looking like members of one shelf. The clues are all well-known, but they could be associated with other locations if taken individually.",
+    "I did not have a clean category from the first clue. I initially drifted toward National Historic Landmarks, which felt plausible for a moment, but while Alcatraz is a National Historic Landmark, the other clues don't fit that designation as cleanly.",
+    "The turn came when I stopped treating the key clue as just another item and asked what kind of item each clue was really pointing to. Once I started reading them as one clean category, clues that had seemed broad started feeling like members of the same category, especially . That was the first point where one category explained the full set without forcing any exceptions."
+  ],
+  "solutionNarrative": [
+    "I did not have a clean category from the first clue. I initially drifted toward National Historic Landmarks, which felt plausible for a moment, but while Alcatraz is a National Historic Landmark, the other clues don't fit that designation as cleanly.",
+    "The turn came when I stopped treating the key clue as just another item and asked what kind of item each clue was really pointing to. Once I started reading them as one clean category, clues that had seemed broad started feeling like members of the same category, especially . That was the first point where one category explained the full set without forcing any exceptions."
+  ],
+  "lessons": [
+    {
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "the key clue is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When problem-solving, consider what details are unique versus commonly shared."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #0?",
+      "answer": "The answer is Things associated with San Francisco. The clues Fog, Cable cars, Ghirardelli Square, Alcatraz Island, Golden Gate Bridge all point back to that same connection."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #0?",
+      "answer": "Fog, Cable cars, and Ghirardelli Square already point toward the same setting, while Alcatraz Island and Golden Gate Bridge confirm that the board is circling one concrete connection rather than asking for a loose umbrella category."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #0?",
+      "answer": "the key clue is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues are all well-known, but they could be associated with other locations if taken individually."
+    }
+  ]
+}
