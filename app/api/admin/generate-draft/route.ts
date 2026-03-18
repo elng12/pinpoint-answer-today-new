@@ -114,6 +114,15 @@ function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function normalizeForMatch(value: string | null | undefined): string {
+  return normalizeWhitespace(value ?? "")
+    .toLowerCase()
+    .replace(/["“”'`]/g, "")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function countWords(value: string | undefined | null) {
   return (value?.trim().match(/\S+/g) ?? []).length;
 }
@@ -139,6 +148,59 @@ function ensureMinWords(text: string, minWords: number, fillers: string[]) {
     result = normalizeWhitespace(`${result} ${fillers[fillers.length - 1]}`);
   }
   return result;
+}
+
+function getMissingClues(text: string | null | undefined, clues: string[]): string[] {
+  const normalizedText = normalizeForMatch(text);
+  if (!normalizedText) return clues;
+  return clues.filter((clue) => !normalizedText.includes(normalizeForMatch(clue)));
+}
+
+function buildFallbackCluePhrase(clue: string, answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before") return normalizeWhitespace(`${clue} ${pattern.token}`);
+  if (pattern.kind === "after") return normalizeWhitespace(`${pattern.token} ${clue}`);
+  return clue;
+}
+
+function buildFallbackClueExplanation(clue: string, partnerClue: string): string {
+  return normalizeWhitespace(
+    `${clue} becomes more convincing when it is read beside ${partnerClue}, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts.`,
+  );
+}
+
+function hasGenericConnectionFaqAnswer(text: string | null | undefined): boolean {
+  const normalized = normalizeWhitespace(text ?? "").toLowerCase();
+  if (!normalized) return false;
+  return (
+    normalized.includes("same category once the board is read in the right frame") ||
+    normalized.includes("one later clue makes the category feel much more obvious")
+  );
+}
+
+function buildSpecificConnectionFaqAnswer(clues: string[]): string {
+  const [first = "the first clue", second = "the second clue", third = "the third clue", fourth = "the fourth clue", fifth = "the fifth clue"] = clues;
+  return normalizeWhitespace(
+    `${first}, ${second}, and ${third} already point toward the same setting, while ${fourth} and ${fifth} confirm that the board is circling one concrete connection rather than asking for a loose umbrella category.`,
+  );
+}
+
+function buildFallbackLessons(clues: string[]) {
+  const [first = "the first clue", second = "the second clue", third = "the third clue"] = clues;
+  return [
+    {
+      title: "Test one connector across every clue",
+      body: `A candidate answer is only worth keeping if ${first}, ${second}, and the remaining clues all fit the same frame without forcing the wording.`,
+    },
+    {
+      title: "Use the strongest clue as the tiebreaker",
+      body: `${third} usually matters most once two possible themes seem plausible, because the sharper clue often kills the wrong bucket immediately.`,
+    },
+    {
+      title: "Confirm the board before locking in",
+      body: "A good Pinpoint solve feels consistent across all five clues, not just clever for the first two that jump out.",
+    },
+  ];
 }
 
 function normalizeTargetLocale(input: unknown): string | null {
@@ -406,11 +468,16 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
   next.analysis = nextAnalysis;
 
   const puzzleNumber = Number(puzzleData.puzzleNumber);
+  const clues = puzzleData.rawWords.map((word) => normalizeWhitespace(String(word ?? ""))).filter(Boolean);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
 
-  if (!asString(nextAnalysis.llmTemplateVersion)) nextAnalysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
-  if (!asString(nextAnalysis.seoTitle)) {
+  nextAnalysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
+
+  const seoTitle = asString(nextAnalysis.seoTitle);
+  if (!seoTitle || getMissingClues(seoTitle, clues).length > 0) {
     nextAnalysis.seoTitle = buildPinpointTitle(puzzleNumber, puzzleData.rawWords);
+  } else {
+    nextAnalysis.seoTitle = normalizeWhitespace(seoTitle);
   }
 
   const overview = asString(nextSections.overview) ?? "";
@@ -437,18 +504,23 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
       [
         "When that approach stayed too broad, I switched to a stricter phrase-by-phrase check.",
         "The breakthrough came when one clue narrowed the set enough to make the shared pattern believable.",
-        `Once I verified all five clues, I knew ${label} was the correct final connector.`,
+        "Once I verified all five clues, I knew I had the correct final connector.",
       ],
     );
   }
 
-  const seoDescription = asString(nextAnalysis.seoDescription)
-    ? normalizeWhitespace(asString(nextAnalysis.seoDescription)!)
-    : "";
-  if (seoDescription.length < CONTENT_CONTRACT.metaDescriptionMinChars) {
+  const seoDescription = asString(nextAnalysis.seoDescription);
+  const normalizedSeoDescription = seoDescription ? normalizeWhitespace(seoDescription) : "";
+  if (
+    normalizedSeoDescription.length < CONTENT_CONTRACT.metaDescriptionMinChars ||
+    getMissingClues(normalizedSeoDescription, clues).length > 0
+  ) {
     nextAnalysis.seoDescription = buildPinpointDescription(puzzleNumber, puzzleData.rawWords);
   } else {
-    nextAnalysis.seoDescription = clampToMaxChars(seoDescription, CONTENT_CONTRACT.metaDescriptionMaxChars);
+    nextAnalysis.seoDescription = clampToMaxChars(
+      normalizedSeoDescription,
+      CONTENT_CONTRACT.metaDescriptionMaxChars,
+    );
   }
 
   if (!Array.isArray(nextAnalysis.seoKeywords) || nextAnalysis.seoKeywords.length > 0) {
@@ -469,6 +541,66 @@ function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
   if (!asString(nextSections.trivia)) {
     nextSections.trivia =
       "Did you know? Connector puzzles often depend on one repeatable rule that makes every clue read naturally.";
+  }
+
+  const existingClueDetails = Array.isArray(nextSections.clueDetails) ? nextSections.clueDetails : [];
+  const clueDetailRows = existingClueDetails.map((item) => asRecord(item));
+  nextSections.clueDetails = clues.map((clue, index) => {
+    const matchedRow =
+      clueDetailRows.find((row) => normalizeForMatch(asString(row?.clue)) === normalizeForMatch(clue)) ??
+      clueDetailRows[index] ??
+      null;
+    const partnerClue = clues[(index + 1) % clues.length] ?? clue;
+    const phrase = asString(matchedRow?.phrase);
+    const explanation = asString(matchedRow?.explanation);
+    const etymology = asString(matchedRow?.etymology);
+
+    return {
+      clue,
+      phrase: normalizeWhitespace(phrase || buildFallbackCluePhrase(clue, label)),
+      explanation: normalizeWhitespace(explanation || buildFallbackClueExplanation(clue, partnerClue)),
+      ...(etymology ? { etymology: normalizeWhitespace(etymology) } : {}),
+    };
+  });
+
+  const existingFaqs = Array.isArray(nextSections.faqs) ? nextSections.faqs : [];
+  const faqRows = existingFaqs.map((item) => asRecord(item));
+  const faq0Question =
+    asString(faqRows[0]?.question) || `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`;
+  const faq0Answer = asString(faqRows[0]?.answer);
+  const faq1Question =
+    asString(faqRows[1]?.question) || `How do the clues connect in LinkedIn Pinpoint #${puzzleNumber}?`;
+  const faq1Answer = asString(faqRows[1]?.answer);
+  const faq2Question =
+    asString(faqRows[2]?.question) || "What solving strategy works best for boards like this?";
+  const faq2Answer = asString(faqRows[2]?.answer);
+
+  nextSections.faqs = [
+    {
+      question: faq0Question,
+      answer:
+        faq0Answer && normalizeForMatch(faq0Answer).includes(normalizeForMatch(label))
+          ? normalizeWhitespace(faq0Answer)
+          : `The answer is ${label}. The clues ${clues.join(", ")} all point back to that same connection.`,
+    },
+    {
+      question: faq1Question,
+      answer:
+        faq1Answer && !hasGenericConnectionFaqAnswer(faq1Answer)
+          ? normalizeWhitespace(faq1Answer)
+          : buildSpecificConnectionFaqAnswer(clues),
+    },
+    {
+      question: faq2Question,
+      answer:
+        faq2Answer
+          ? normalizeWhitespace(faq2Answer)
+          : "Start by testing one candidate connector against all five clues. If even one clue feels forced, keep looking until the whole board reads cleanly.",
+    },
+  ];
+
+  if (!Array.isArray(nextSections.lessons) || nextSections.lessons.length < CONTENT_CONTRACT.lessonsMin) {
+    nextSections.lessons = buildFallbackLessons(clues);
   }
 
   return next;
