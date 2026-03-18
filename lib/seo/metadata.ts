@@ -22,18 +22,6 @@ export function absoluteUrl(path: string): string {
   return new URL(path, getSiteUrl()).toString();
 }
 
-function buildCanonicalAlternates(path: string): Metadata["alternates"] {
-  const url = absoluteUrl(path);
-
-  return {
-    canonical: url,
-    languages: {
-      [defaultLocale]: url,
-      "x-default": url,
-    },
-  };
-}
-
 function normalizeSeoClues(clues: string[]): string[] {
   return clues.map((clue) => clue.replace(/\s+/g, " ").trim()).filter(Boolean);
 }
