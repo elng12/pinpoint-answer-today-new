@@ -49,7 +49,7 @@ export function PuzzleDetail({
           <span>{`Pinpoint #${puzzle.number}`}</span>
         </nav>
 
-        <p className="eyebrow legacy-detail-kicker">Permanent answer &amp; walkthrough (Pinpoint Today archive)</p>
+        <p className="eyebrow legacy-detail-kicker">Permanent Pinpoint answer &amp; walkthrough (Pinpoint Today archive)</p>
         <h1 className="legacy-detail-title">{`LinkedIn Pinpoint #${puzzle.number} Answer & Walkthrough`}</h1>
         <p className="legacy-detail-published">{`Published on ${formatLegacyDate(puzzle.isoDate)}`}</p>
         <div className="legacy-detail-verified">
@@ -57,15 +57,15 @@ export function PuzzleDetail({
           <span>Verified by Human Editor</span>
         </div>
         <p className="copy legacy-detail-summary">
-          {`Pinpoint Answer Today asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and see how each clue fits together.`}
+          {`This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and see how each clue fits together.`}
         </p>
 
         <div className="legacy-detail-actions">
           <a className="button-primary" href="#analysis">
-            Jump to full Pinpoint walkthrough
+            Jump to full Pinpoint answer walkthrough
           </a>
           <Link className="button-secondary" href={routes.archive}>
-            Browse all LinkedIn Pinpoint answers
+            Browse all Pinpoint answer pages
           </Link>
         </div>
 

@@ -14,9 +14,8 @@ export function HomeWhatIs() {
         <h2 className="section-title">What is LinkedIn Pinpoint?</h2>
         <p className="copy home-what-is-copy">
           LinkedIn Pinpoint is a daily word puzzle where five clues all point to one hidden
-          connection. Pinpoint Answer Today helps you move through each Pinpoint board with
-          spoiler-safe clues, a clean solution recap, and a faster archive path without getting
-          buried in the old-site clutter.
+          connection. People checking LinkedIn Pinpoint answer today usually test a few
+          patterns first, then check the answer recap and archive when they get stuck.
         </p>
       </div>
 

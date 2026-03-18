@@ -47,7 +47,6 @@ export function AnswerReveal({
   const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
   const hintTimerRef = useRef<number | null>(null);
   const revealTipId = useId();
-
   const normalizedHints = useMemo(() => buildHintMap(hintMap), [hintMap]);
   const normalizedSpoilerHints = useMemo(() => buildHintMap(spoilerHintMap), [spoilerHintMap]);
 
@@ -182,17 +181,15 @@ export function AnswerReveal({
             : `LinkedIn Pinpoint ${puzzleNumber} solution is hidden until you press the reveal button.`}
         </p>
         <p className="eyebrow">Pinpoint solution</p>
-        <h3 className="reveal-answer-title">
-          {revealed ? answer : `LinkedIn Pinpoint ${puzzleNumber} solution`}
-        </h3>
+        <h3 className="reveal-answer-title">{revealed ? answer : `Pinpoint Answer for Puzzle ${puzzleNumber}`}</h3>
         <p className="reveal-answer-copy">
           {revealed
             ? ""
-            : "Use the button below if you want today's Pinpoint solution now. If you prefer the Pinpoint logic first, keep scrolling and read the full explanation."}
+            : "Use the button below if you want todays Pinpoint answer. Pinpoint today answer logic stays below if you keep scrolling for the full explanation."}
         </p>
         <div className="button-row reveal-answer-actions">
           <button className="button-primary reveal-primary-button" type="button" onClick={handleRevealToggle}>
-            {revealed ? "Hide the solution" : "Reveal Pinpoint solution"}
+            {revealed ? "Hide the answer" : "Reveal Pinpoint answer"}
           </button>
           {showDetailLink && detailHref ? (
             <Link
@@ -212,7 +209,7 @@ export function AnswerReveal({
           ) : null}
           {revealed ? (
             <button className="button-secondary reveal-secondary-button" type="button" onClick={handleCopy}>
-              {copied ? "Copied" : "Copy solution"}
+              {copied ? "Copied" : "Copy Pinpoint answer"}
             </button>
           ) : null}
         </div>

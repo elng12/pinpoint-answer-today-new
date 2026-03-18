@@ -16,30 +16,30 @@ export function HomeHero({
 }) {
   const cluePreview = buildCluePreview(puzzle.clues);
   const secondaryHref = previousEntry ? routes.detail(previousEntry.slug) : routes.archive;
-  const secondaryLabel = previousEntry ? "View yesterday's Pinpoint recap" : "Browse recent Pinpoint boards";
+  const secondaryLabel = previousEntry ? "Open yesterday's answer" : "Browse recent answers";
 
   return (
     <section className="home-hero">
       <div className="home-hero-inner">
         <span className="home-status-badge">Live now</span>
-        <p className="home-hero-kicker">Today&apos;s Pinpoint hints, yesterday&apos;s Pinpoint board, and the Pinpoint archive</p>
-        <h1 className="home-hero-title">LinkedIn Pinpoint Answer Today</h1>
+        <p className="home-hero-kicker">Today&apos;s Pinpoint hints, yesterday&apos;s answer, and the archive</p>
+        <h1 className="home-hero-title">{`Today's LinkedIn Pinpoint #${puzzle.number} Answer`}</h1>
         <p className="home-hero-subtitle">
-          {`Puzzle #${puzzle.number} is live now with spoiler-safe Pinpoint hints, the verified Pinpoint solution, and quick links to yesterday's Pinpoint board plus the full Pinpoint archive.`}
+          {`If you need LinkedIn Pinpoint answer today, this page keeps today's answer, spoiler-safe hints, yesterday's answer, and the full archive in one place for Puzzle #${puzzle.number}.`}
         </p>
         <div className="button-row home-hero-actions">
           <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>
-            Open today&apos;s Pinpoint solution
+            Open today&apos;s answer
           </Link>
           <Link className="button-secondary home-hero-secondary" href={secondaryHref} prefetch={false}>
             {secondaryLabel}
           </Link>
           <Link className="button-secondary home-hero-tertiary" href={routes.archive} prefetch={false}>
-            Browse Pinpoint archive
+            Open full archive
           </Link>
         </div>
         <p className="home-hero-detail">
-          {`Today's Pinpoint clues for Puzzle #${puzzle.number}: ${cluePreview}. Open today's Pinpoint solution when you're ready.`}
+          {`Today's clue preview for Puzzle #${puzzle.number}: ${cluePreview}. Open today's answer whenever you're ready.`}
         </p>
       </div>
     </section>

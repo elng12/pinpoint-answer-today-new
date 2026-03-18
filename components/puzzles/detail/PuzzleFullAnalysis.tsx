@@ -15,89 +15,8 @@ function parseLesson(lesson: LessonItem): { title: string | null; body: string }
   return { title: null, body: lesson };
 }
 
-function extractConnectorTerm(source: string, markers: string[]): string | null {
-  const lowerSource = source.toLowerCase();
-
-  for (const marker of markers) {
-    const markerIndex = lowerSource.indexOf(marker);
-    if (markerIndex === -1) continue;
-
-    const remainder = source.slice(markerIndex + marker.length).trim();
-    if (!remainder) continue;
-
-    const quoted = remainder.match(/^[“"'`]?(.+?)[”"'`]/);
-    if (quoted?.[1]) {
-      return quoted[1].trim();
-    }
-
-    return remainder
-      .split(/\s+[—-]\s+/)[0]
-      .split(/\s+in\s+/i)[0]
-      .split(/[.!?]/)[0]
-      .trim()
-      .replace(/^[“"'`]+|[”"'`]+$/g, "");
-  }
-
-  return null;
-}
-
-function singularizeFinalWord(value: string): string {
-  const parts = value.split(/\s+/);
-  const last = parts.at(-1);
-
-  if (!last) return value;
-
-  let normalizedLast = last;
-  if (last.endsWith("ies") && last.length > 3) {
-    normalizedLast = `${last.slice(0, -3)}y`;
-  } else if (last.endsWith("s") && !last.endsWith("ss") && last.length > 1) {
-    normalizedLast = last.slice(0, -1);
-  }
-
-  return [...parts.slice(0, -1), normalizedLast].join(" ");
-}
-
-function buildExamplePhrase(clue: string, answer: string, category: string): string {
-  const answerLower = answer.toLowerCase();
-  const beforeTarget =
-    extractConnectorTerm(answer, ["words that come before "]) ??
-    extractConnectorTerm(category, ["words that come before "]);
-  const afterTarget =
-    extractConnectorTerm(answer, ["words that follow ", "words after "]) ??
-    extractConnectorTerm(category, ["words that follow ", "words after "]);
-
-  if (afterTarget) {
-    return `${afterTarget} ${clue}`;
-  }
-
-  if (beforeTarget) {
-    if (clue.includes("(🌹🌹🌹)")) {
-      return clue.replace("(🌹🌹🌹)", beforeTarget);
-    }
-    return `${clue} ${singularizeFinalWord(beforeTarget)}`;
-  }
-
-  if (answerLower.startsWith("shades of ")) {
-    const suffix = answer.slice(answerLower.indexOf("shades of ") + "shades of ".length).trim();
-    return `${clue} ${suffix}`;
-  }
-
-  return clue;
-}
-
-function buildConnectorSummary(answer: string, category: string): string {
-  const beforeTarget =
-    extractConnectorTerm(answer, ["words that come before "]) ??
-    extractConnectorTerm(category, ["words that come before "]);
-  const afterTarget =
-    extractConnectorTerm(answer, ["words that follow ", "words after "]) ??
-    extractConnectorTerm(category, ["words that follow ", "words after "]);
-
-  if (beforeTarget || afterTarget) {
-    return `a phrase pattern built around ${beforeTarget ?? afterTarget}`;
-  }
-
-  return answer;
+function buildRecentLinkTitle(entry: ArchiveEntry) {
+  return `LinkedIn Pinpoint ${entry.number}: ${entry.clues.join(", ")}`;
 }
 
 export function PuzzleFullAnalysis({
@@ -114,10 +33,7 @@ export function PuzzleFullAnalysis({
   adjacentNext: ArchiveEntry | null;
 }) {
   const overviewParagraphs = puzzle.fullAnalysis.length > 0 ? puzzle.fullAnalysis : [puzzle.shortSummary];
-  const firstLesson = puzzle.lessons[0];
-  const strategyText = firstLesson
-    ? (() => { const p = parseLesson(firstLesson); return p.body; })()
-    : "Start with two clues, test one connector, then verify every clue against it.";
+  const strategyText = puzzle.display.fastStrategy;
 
   return (
     <>
@@ -126,7 +42,7 @@ export function PuzzleFullAnalysis({
           <header className="legacy-analysis-header">
             <div className="legacy-analysis-header-inner">
               <Star className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-analysis-title">{`Pinpoint #${puzzle.number} Walkthrough & Analysis`}</h2>
+              <h2 className="legacy-analysis-title">{`Pinpoint Answer Walkthrough & Analysis for #${puzzle.number}`}</h2>
             </div>
           </header>
 
@@ -149,7 +65,7 @@ export function PuzzleFullAnalysis({
             </div>
             <ul className="legacy-bullet-list legacy-bullet-list-compact">
               <li>
-                <strong>Connector:</strong> {buildConnectorSummary(puzzle.answer, puzzle.category)}
+                <strong>Connector:</strong> {puzzle.display.connectorSummary}
               </li>
               <li>
                 <strong>Clues:</strong> {puzzle.clues.join(" · ")}
@@ -198,12 +114,12 @@ export function PuzzleFullAnalysis({
                   </tr>
                 </thead>
                 <tbody>
-                  {puzzle.clues.map((clue) => (
-                    <tr key={clue}>
-                      <th scope="row">{clue}</th>
-                      <td>{`"${buildExamplePhrase(clue, puzzle.answer, puzzle.category)}"`}</td>
+                  {puzzle.display.clueTableRows.map((row) => (
+                    <tr key={row.clue}>
+                      <th scope="row">{row.clue}</th>
+                      <td>{`"${row.examplePhrase}"`}</td>
                       <td>
-                        {puzzle.wordHints[clue] ?? `${clue} fits the same shared rule that leads to ${puzzle.answer}.`}
+                        {row.connectionExplained}
                       </td>
                     </tr>
                   ))}
@@ -249,8 +165,8 @@ export function PuzzleFullAnalysis({
           </section>
         </section>
 
-        <aside className="legacy-next-shell" aria-label="Recent Pinpoint answers">
-          <h2 className="legacy-next-title">Recent Pinpoint answers</h2>
+        <aside className="legacy-next-shell" aria-label="Recent Pinpoint answer pages">
+          <h2 className="legacy-next-title">Recent Pinpoint answer pages</h2>
           {nextPreview ? (
             <Link className="legacy-next-link" href={routes.preview}>
               {`Preview Puzzle #${nextPreview.number} - expected ${nextPreview.expectedDate}`}
@@ -259,15 +175,19 @@ export function PuzzleFullAnalysis({
           <ul className="legacy-next-list">
             {recentPuzzles.map((entry) => (
               <li key={entry.slug}>
-                <Link className="legacy-next-link" href={routes.detail(entry.slug)}>
-                  {`LinkedIn Pinpoint #${entry.number} answer - clues: ${entry.clues.join(", ")}`}
+                <Link
+                  className="legacy-next-link"
+                  href={routes.detail(entry.slug)}
+                  aria-label={`Open ${buildRecentLinkTitle(entry)}`}
+                >
+                  <h3 className="legacy-next-link-title">{buildRecentLinkTitle(entry)}</h3>
                 </Link>
               </li>
             ))}
           </ul>
           <div className="legacy-next-actions">
             <Link className="button-secondary" href={routes.archive}>
-              View all Pinpoint answers &amp; solutions
+              View all Pinpoint answer pages
             </Link>
           </div>
         </aside>

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { defaultLocale } from "@/i18n.config";
 import { defaultSocialImagePath, siteName } from "@/lib/site/config";
 
-export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today - Daily Answers & Solutions";
+export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Clues, Walkthrough & Archive";
 export const HOME_SEO_DESCRIPTION =
-  "Find today's LinkedIn Pinpoint answer instantly - updated daily with clear solutions, clue explanations, and tips that help protect your streak every day.";
+  "Get today's LinkedIn Pinpoint answer with spoiler-safe hints, clear clue-by-clue walkthroughs, yesterday's answer, and the full archive, all in one place.";
 export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive & Guides | Pinpoint Answer Today";
 export const ARCHIVE_SEO_DESCRIPTION =
   "Browse LinkedIn Pinpoint walkthroughs, clue guides, archive pages, and past answers. Open the latest recap fast or revisit older puzzles in one place.";
@@ -11,6 +12,7 @@ const TITLE_MAX_LENGTH = 60;
 const TITLE_MIN_LENGTH = 55;
 const DESCRIPTION_MAX_LENGTH = 160;
 const DESCRIPTION_MIN_LENGTH = 150;
+const SITE_LOCALE = "en_US";
 
 export function getSiteUrl(): string {
   return process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
@@ -167,6 +169,18 @@ function buildSocialImage(imagePath: string, alt: string) {
   };
 }
 
+function buildCanonicalAlternates(path: string): NonNullable<Metadata["alternates"]> {
+  const url = absoluteUrl(path);
+
+  return {
+    canonical: url,
+    languages: {
+      [defaultLocale]: url,
+      "x-default": url,
+    },
+  };
+}
+
 function buildIconMetadata(): Pick<Metadata, "appleWebApp" | "icons" | "manifest"> {
   return {
     appleWebApp: {
@@ -206,22 +220,21 @@ export function buildSiteMetadata({
         google: verificationCode,
       },
     }),
-    alternates: {
-      canonical: absoluteUrl("/"),
-    },
+    alternates: buildCanonicalAlternates("/"),
     openGraph: {
       title,
       description,
       type: "website",
       url: absoluteUrl("/"),
       siteName,
+      locale: SITE_LOCALE,
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [socialImage.url],
+      images: [socialImage],
     },
   };
 }
@@ -250,9 +263,7 @@ export function buildPageMetadata({
     ...buildIconMetadata(),
     title,
     description,
-    alternates: {
-      canonical: url,
-    },
+    alternates: buildCanonicalAlternates(path),
     robots: {
       index: !noIndex,
       follow: true,
@@ -263,13 +274,14 @@ export function buildPageMetadata({
       type,
       url,
       siteName,
+      locale: SITE_LOCALE,
       images: [socialImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [socialImage.url],
+      images: [socialImage],
     },
   };
 }
