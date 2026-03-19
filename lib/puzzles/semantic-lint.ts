@@ -42,6 +42,9 @@ const GENERIC_FALSE_START_PATTERNS = [
   /\b(items?|things?|objects?|stuff)\b/i,
   /\bvehicle brands?\b/i,
   /\bbrands? of vehicles?\b/i,
+  /\bwarning words?\b/i,
+  /\bmixed signals?\b/i,
+  /\bgeneral clues?\b/i,
 ];
 const GENERIC_CATEGORY_PIVOT_PATTERNS = [
   /\bwhat kind of source or title it was\b/i,
@@ -115,6 +118,26 @@ function overlapRatio(left: string | null | undefined, right: string | null | un
   }
 
   return overlap / Math.min(leftTokens.size, rightTokens.size);
+}
+
+function longestSharedTokenRun(left: string | null | undefined, right: string | null | undefined): number {
+  const leftTokens = normalizeForMatch(left).split(" ").filter((token) => token.length >= 4);
+  const rightTokens = normalizeForMatch(right).split(" ").filter((token) => token.length >= 4);
+  if (leftTokens.length === 0 || rightTokens.length === 0) return 0;
+
+  const matrix = Array.from({ length: leftTokens.length + 1 }, () => new Array<number>(rightTokens.length + 1).fill(0));
+  let longest = 0;
+
+  for (let i = 1; i <= leftTokens.length; i += 1) {
+    for (let j = 1; j <= rightTokens.length; j += 1) {
+      if (leftTokens[i - 1] === rightTokens[j - 1]) {
+        matrix[i][j] = matrix[i - 1][j - 1] + 1;
+        if (matrix[i][j] > longest) longest = matrix[i][j];
+      }
+    }
+  }
+
+  return longest;
 }
 
 function detectAnswerPattern(answer: string | null | undefined): AnswerPattern {
@@ -353,6 +376,16 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     });
   }
 
+  const sharedRun = longestSharedTokenRun(input.overview, input.solutionEmergence);
+  if (sharedRun >= 7) {
+    issues.push({
+      code: "sections.sharedPhrasing",
+      message: `Overview and solve narrative reuse too much of the same phrasing (${sharedRun} words in a row)`,
+      field: "solutionEmergence",
+      ...(sampleText(input.solutionEmergence) ? { sample: sampleText(input.solutionEmergence) } : {}),
+    });
+  }
+
   if (GENERIC_CATEGORY_PIVOT_PATTERNS.some((pattern) => pattern.test(normalizeText(input.solutionEmergence)))) {
     issues.push({
       code: "solutionEmergence.genericPivot",
@@ -403,6 +436,7 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "summary.answerSpoiler",
   "overview.leadingAnswerSpoiler",
   "sections.overlap",
+  "sections.sharedPhrasing",
   "answer.overused",
   "wrongGuesses.machineyGuess",
   "solutionEmergence.genericPivot",

@@ -815,19 +815,46 @@ function looksMachineyWrongGuess(value: string | null | undefined): boolean {
     /^(brands?|types?|kinds?) of\b/i.test(normalized) ||
     /\b(items?|things?|objects?|stuff)\b/i.test(normalized) ||
     /\bvehicle brands?\b/i.test(normalized) ||
-    /\bbrands? of vehicles?\b/i.test(normalized)
+    /\bbrands? of vehicles?\b/i.test(normalized) ||
+    /\bwarning words?\b/i.test(normalized) ||
+    /\bmixed signals?\b/i.test(normalized) ||
+    /\bgeneral clues?\b/i.test(normalized)
   );
 }
 
-function buildFallbackFalseStarts(answer: string): string[] {
+function inferBroadFallbackGuesses(clues: string[]): string[] {
+  const clueText = clues.map((clue) => normalizeLooseMatch(clue)).join(" ");
+  const guesses: string[] = [];
+
+  if (/\b(gamma|cosmic|electric|optical|atomic|laser|radio|phone|camera|cellular)\b/.test(clueText)) {
+    guesses.push("science terms");
+  }
+  if (/\b(sting|manta|dog|cat|mouse|orca|panda|bird|snake|fish)\b/.test(clueText)) {
+    guesses.push("animal names");
+  }
+  if (/\b(island|bridge|square|park|bay|city|mountain)\b/.test(clueText)) {
+    guesses.push("place names");
+  }
+  if (clues.some((clue) => looksLikeRecognizableTitle(clue))) {
+    guesses.push("famous names");
+  }
+
+  return uniqueNonEmpty(guesses).slice(0, 2);
+}
+
+function buildFallbackFalseStarts(answer: string, clues: string[]): string[] {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "before" || pattern.kind === "after") {
-    return ["warning words", "mixed signals"];
+    const inferred = inferBroadFallbackGuesses(clues);
+    if (inferred.length > 0) return inferred;
+    return ["science terms", "animal names"];
   }
   if (pattern.kind === "typed-category") {
     return ["collectibles", "toy brands"];
   }
-  return ["brand names", "pop culture"];
+  const inferred = inferBroadFallbackGuesses(clues);
+  if (inferred.length > 0) return inferred;
+  return ["brand names", "place names"];
 }
 
 function normalizeSlotClueDetails(
@@ -978,10 +1005,10 @@ function buildSolutionEmergence(
   const paragraphTwo =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? ensureSentence(
-          `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once I read the board through ${lowerFirst(connectorSummary)}, ${categoryLine}, especially ${solveExamples}. At that point, the final connector was the only reading that explained the full set without stretching anything.`,
+          `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back to the earlier clues and tested them one by one. That was the first moment the board stopped feeling noisy and started behaving like one clean phrase family.`,
         )
       : ensureSentence(
-          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and ${buildCategoryFocusQuestion(answer)}. Once I started ${buildCategoryReading(answer)}, ${categoryLine}, especially ${solveExamples}. That was the first point where one category explained the full set without forcing any exceptions.`,
+          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and ${buildCategoryFocusQuestion(answer)}. Once that clue made the frame specific enough to trust, I re-checked the earlier clues instead of reaching for another broad label. That was the first moment the board stopped feeling scattered and started reading like one clean set.`,
         );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();
@@ -1130,7 +1157,7 @@ function composeFromSlots(
   const falseStarts =
     providedFalseStarts.length > 0
       ? providedFalseStarts
-      : sanitizeFalseStarts(buildFallbackFalseStarts(mainAnswer), clues, clueDetails, mainAnswer);
+      : sanitizeFalseStarts(buildFallbackFalseStarts(mainAnswer, clues), clues, clueDetails, mainAnswer);
   const rejectedGuess = sanitizeRejectedGuess(falseStarts, slots.rejectedGuess, turningPointLabel);
   const heroSummary = buildHeroSummary(slots, puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer });
   const overview = buildOverview(
