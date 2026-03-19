@@ -1,13 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getSitemapDetailEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
+import { getStaticRouteLastModified } from "@/lib/site/static-page-metadata";
 
 export const revalidate = 86400;
-
-const HOME_LAST_MODIFIED = new Date("2026-03-13T00:00:00.000Z");
-const ARCHIVE_LAST_MODIFIED = new Date("2026-03-13T00:00:00.000Z");
-const ABOUT_LAST_MODIFIED = new Date("2026-03-12T00:00:00.000Z");
-const LEGAL_LAST_MODIFIED = new Date("2026-01-01T00:00:00.000Z");
 
 function withTrailingSlash(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
@@ -16,24 +12,24 @@ function withTrailingSlash(path: string): string {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
   const primaryRoutes = [
-    { path: routes.home, lastModified: HOME_LAST_MODIFIED },
-    { path: routes.archive, lastModified: ARCHIVE_LAST_MODIFIED },
-    { path: routes.about, lastModified: ABOUT_LAST_MODIFIED },
+    { path: routes.home, lastModified: getStaticRouteLastModified(routes.home), priority: 1.0 },
+    { path: routes.archive, lastModified: getStaticRouteLastModified(routes.archive), priority: 0.9 },
+    { path: routes.about, lastModified: getStaticRouteLastModified(routes.about), priority: 0.6 },
   ];
 
   const legalRoutes = [
-    { path: routes.contact, lastModified: LEGAL_LAST_MODIFIED },
-    { path: routes.privacy, lastModified: LEGAL_LAST_MODIFIED },
-    { path: routes.terms, lastModified: LEGAL_LAST_MODIFIED },
-    { path: routes.disclaimer, lastModified: LEGAL_LAST_MODIFIED },
+    { path: routes.contact, lastModified: getStaticRouteLastModified(routes.contact) },
+    { path: routes.privacy, lastModified: getStaticRouteLastModified(routes.privacy) },
+    { path: routes.terms, lastModified: getStaticRouteLastModified(routes.terms) },
+    { path: routes.disclaimer, lastModified: getStaticRouteLastModified(routes.disclaimer) },
   ];
 
   const staticEntries = [
-    ...primaryRoutes.map(({ path, lastModified }) => ({
+    ...primaryRoutes.map(({ path, lastModified, priority }) => ({
       url: `${siteUrl}${path}`,
       lastModified,
       changeFrequency: "daily" as const,
-      priority: 1.0,
+      priority,
     })),
     ...legalRoutes.map(({ path, lastModified }) => ({
       url: `${siteUrl}${path}`,

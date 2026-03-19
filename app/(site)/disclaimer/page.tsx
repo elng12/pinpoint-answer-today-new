@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { formatStaticRouteLastUpdated } from "@/lib/site/static-page-metadata";
 import { supportEmail, supportMailto } from "@/lib/site/config";
 
 export function generateMetadata(): Metadata {
@@ -13,13 +14,15 @@ export function generateMetadata(): Metadata {
 }
 
 export default function DisclaimerPage() {
+  const lastUpdated = formatStaticRouteLastUpdated("/disclaimer");
+
   return (
     <main className="container" style={{ padding: "32px 0 56px" }}>
       <div className="stack">
         <section className="surface" style={{ padding: 32 }}>
           <p className="eyebrow">Legal &amp; Privacy</p>
           <h1 className="section-title">Disclaimer</h1>
-          <p className="copy" style={{ marginTop: 4 }}>Last updated: March 12, 2026</p>
+          <p className="copy" style={{ marginTop: 4 }}>Last updated: {lastUpdated}</p>
         </section>
 
         <section className="surface" style={{ padding: 28 }}>
