@@ -88,7 +88,8 @@ export default async function HomePage() {
         },
         {
           question: "Where can I browse older Pinpoint answers?",
-          answer: "Use the archive page to review recent and older puzzles.",
+          answer:
+            "Open the archive page to browse recent answers, search past puzzles by keyword, and jump into older clue-by-clue walkthroughs from one place.",
         },
         {
           question: "What is LinkedIn Pinpoint?",
