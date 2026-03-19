@@ -30,6 +30,10 @@ export function generateStaticParams() {
 export const revalidate = 86400;
 export const dynamicParams = true;
 
+function withTrailingSlash(path: string): string {
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 function parsePuzzleNumberFromSlug(slug: string): number | null {
   const match = slug.match(/^pinpoint-answer-(\d+)$/);
   if (!match) return null;
@@ -86,6 +90,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const puzzle = await getPuzzleBySlug(slug);
+  const detailPath = withTrailingSlash(routes.detail(slug));
 
   if (!puzzle) {
     const pending = await getPublishingFallback(slug);
@@ -94,7 +99,7 @@ export async function generateMetadata({
         title: `Pinpoint #${pending.requestedNumber} is publishing`,
         description:
           "This answer page is still propagating across the live site. Please retry shortly for the full walkthrough.",
-        path: routes.detail(slug),
+        path: detailPath,
         noIndex: true,
       });
     }
@@ -109,13 +114,14 @@ export async function generateMetadata({
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
   const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const puzzleDetailPath = withTrailingSlash(routes.detail(puzzle.slug));
 
   return buildPageMetadata({
     title: seoTitle,
     description: seoDescription,
-    path: routes.detail(puzzle.slug),
+    path: puzzleDetailPath,
     type: "article",
-    socialImagePath: `${routes.detail(puzzle.slug)}/opengraph-image`,
+    socialImagePath: `${puzzleDetailPath}opengraph-image`,
     socialImageAlt: `LinkedIn Pinpoint #${puzzle.number} social preview`,
   });
 }
@@ -144,6 +150,9 @@ export default async function DetailPage({
 
   const seoHeadline = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
   const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const detailPath = withTrailingSlash(routes.detail(puzzle.slug));
+  const detailUrl = absoluteUrl(detailPath);
+  const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
 
   const structuredDataItems = [
     {
@@ -151,12 +160,10 @@ export default async function DetailPage({
       "@type": "Article",
       headline: seoHeadline,
       description: seoDescription,
-      image: absoluteUrl(
-        `${routes.detail(puzzle.slug)}/opengraph-image`
-      ),
+      image: absoluteUrl(detailOpenGraphImagePath),
       dateModified: puzzle.updatedAt,
       datePublished: `${puzzle.isoDate}T00:00:00Z`,
-      mainEntityOfPage: absoluteUrl(routes.detail(puzzle.slug)),
+      mainEntityOfPage: detailUrl,
       author: {
         "@type": "Organization",
         name: "Pinpoint Answer Today",
@@ -205,7 +212,7 @@ export default async function DetailPage({
       "@type": "HowTo",
       name: `How to solve LinkedIn Pinpoint #${puzzle.number}`,
       description: `Step-by-step method to solve LinkedIn Pinpoint #${puzzle.number} using clue grouping and connector validation.`,
-      url: absoluteUrl(routes.detail(puzzle.slug)),
+      url: detailUrl,
       inLanguage: "en-US",
       step: [
         {
@@ -248,7 +255,7 @@ export default async function DetailPage({
       itemReviewed: {
         "@type": "SoftwareApplication",
         name: `LinkedIn Pinpoint #${puzzle.number}`,
-        url: absoluteUrl(routes.detail(puzzle.slug)),
+        url: detailUrl,
         applicationCategory: "GameApplication",
         operatingSystem: "Web browser",
         author: {
@@ -263,7 +270,7 @@ export default async function DetailPage({
       itemListElement: recentPuzzles.map((entry, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: absoluteUrl(routes.detail(entry.slug)),
+        url: absoluteUrl(withTrailingSlash(routes.detail(entry.slug))),
         name: `LinkedIn Pinpoint #${entry.number} answer`,
       })),
     },
@@ -287,7 +294,7 @@ export default async function DetailPage({
           "@type": "ListItem",
           position: 3,
           name: `Pinpoint #${puzzle.number}`,
-          item: absoluteUrl(routes.detail(puzzle.slug)),
+          item: detailUrl,
         },
       ],
     },
