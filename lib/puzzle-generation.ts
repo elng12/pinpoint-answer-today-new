@@ -372,6 +372,19 @@ function uniqueNonEmpty(values: Array<string | null | undefined>): string[] {
   return result;
 }
 
+function formatNaturalList(values: Array<string | null | undefined>, conjunction = "and"): string {
+  const cleaned = uniqueNonEmpty(values.map((value) => stripQuotes(normalizeText(value))));
+  if (cleaned.length === 0) return "";
+  if (cleaned.length === 1) return cleaned[0];
+  if (cleaned.length === 2) return `${cleaned[0]} ${conjunction} ${cleaned[1]}`;
+  return `${cleaned.slice(0, -1).join(", ")}, ${conjunction} ${cleaned[cleaned.length - 1]}`;
+}
+
+function formatQuotedList(values: Array<string | null | undefined>, conjunction = "and"): string {
+  const cleaned = uniqueNonEmpty(values.map((value) => stripQuotes(normalizeText(value))));
+  return formatNaturalList(cleaned.map((value) => `"${value}"`), conjunction);
+}
+
 function detectAnswerPattern(answer: string): AnswerPattern {
   const before = answer.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
   if (before?.[1]) return { kind: "before", token: before[1] };
@@ -926,8 +939,75 @@ function buildHeroSummary(
   );
 }
 
+function buildOpeningBoardRead(clues: string[], answer: string): string {
+  const preview = formatQuotedList(clues.slice(0, 3));
+  const answerPattern = detectAnswerPattern(answer);
+  if (answerPattern.kind === "before" || answerPattern.kind === "after") {
+    return ensureSentence(
+      `${preview} do not immediately suggest the same repeated word, so the board feels broader than it really is at the start.`,
+    );
+  }
+  return ensureSentence(
+    `${preview} do not immediately suggest one clean category, so the board feels broader than it really is at the start.`,
+  );
+}
+
+function buildFalseStartLead(falseStarts: string[], answer: string): string {
+  const answerPattern = detectAnswerPattern(answer);
+  const firstGuess = falseStarts[0];
+  if (!firstGuess) {
+    return answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? "That is why a few weak phrase directions can feel plausible before the right repeated word appears."
+      : "That is why a few broad category guesses can feel plausible before the right frame appears.";
+  }
+  return answerPattern.kind === "before" || answerPattern.kind === "after"
+    ? `That is why a broad early read like "${firstGuess}" can feel plausible before the phrase pattern becomes clear.`
+    : `That is why a broad early read like "${firstGuess}" can feel plausible before the category becomes specific enough to trust.`;
+}
+
+function buildRepresentativeReadings(
+  clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
+  answer: string,
+  limit = 3,
+): string[] {
+  const answerPattern = detectAnswerPattern(answer);
+  return uniqueNonEmpty(
+    clueDetails.slice(0, limit).map((detail) =>
+      answerPattern.kind === "before" || answerPattern.kind === "after"
+        ? stripQuotes(detail.phrase)
+        : stripQuotes(detail.clue),
+    ),
+  );
+}
+
+function buildOverviewResolution(
+  connectorSummary: string,
+  clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
+  answer: string,
+): string {
+  const answerPattern = detectAnswerPattern(answer);
+  const sampleEntries = formatNaturalList(buildRepresentativeReadings(clueDetails, answer));
+  if (answerPattern.kind === "before" || answerPattern.kind === "after") {
+    return ensureSentence(
+      `From there, ${connectorSummary} explains the board cleanly. Readings like ${sampleEntries} stop feeling random and start behaving like one exact phrase family.`,
+    );
+  }
+  return ensureSentence(
+    `From there, ${buildCategoryReading(answer)} explains the board cleanly. Entries like ${sampleEntries} stop feeling miscellaneous and start reading like parts of one tight set.`,
+  );
+}
+
+function buildDifficultyCloser(answer: string, difficultyReason: string): string {
+  const normalizedReason = ensureSentence(difficultyReason);
+  if (normalizedReason) return normalizedReason;
+  const answerPattern = detectAnswerPattern(answer);
+  return answerPattern.kind === "before" || answerPattern.kind === "after"
+    ? "The puzzle feels harder than it is because the opening clues stay broad until one clue makes the repeated word visible."
+    : "The puzzle feels harder than it is because the clues come from different corners of the same category before the right frame clicks.";
+}
+
 function buildOverview(
-  heroSummary: string,
+  clues: string[],
   falseStarts: string[],
   turningPointLabel: string,
   connectorSummary: string,
@@ -936,44 +1016,25 @@ function buildOverview(
   answer: string,
 ): string {
   const answerPattern = detectAnswerPattern(answer);
-  const falseStartText =
-    falseStarts.length > 0
-      ? `That is why guesses like ${falseStarts.map((item) => `"${item}"`).join(" and ")} can feel plausible at the start.`
-      : "That is why the set feels broad before a tighter reading appears.";
-
-  const sampleEntries = uniqueNonEmpty(
-    clueDetails
-      .slice(0, 3)
-      .map((detail) =>
-        answerPattern.kind === "before" || answerPattern.kind === "after"
-          ? stripQuotes(detail.phrase)
-          : stripQuotes(detail.clue),
-      ),
-  ).join(", ");
-
   const paragraphOne = ensureSentence(
-    `${heroSummary} ${falseStartText} The clue that changes the frame is ${turningPointLabel}`,
+    `${buildOpeningBoardRead(clues, answer)} ${buildFalseStartLead(falseStarts, answer)} The clue that changes the frame is ${turningPointLabel}.`,
   );
-  const closingText =
+  const turningPointEffect =
     answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? `Once that frame clicks, readings like ${sampleEntries} stop feeling random and start feeling exact.`
-      : `Once that frame clicks, names like ${sampleEntries} stop feeling miscellaneous and start looking like members of one shelf.`;
-  const explanationLead =
-    answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? `${connectorSummary} explains the board more cleanly than broader labels.`
-      : `${buildCategoryReading(answer)} explains the board more cleanly than broader labels.`;
+      ? `Once ${lowerFirst(stripQuotes(turningPointLabel))} makes the repeated word visible, the earlier clues stop feeling loose and start reading like exact fits.`
+      : `Once ${lowerFirst(stripQuotes(turningPointLabel))} makes the category specific enough to trust, the earlier clues stop feeling miscellaneous and start pulling toward the same shelf.`;
   const paragraphTwo = ensureSentence(
-    `From there, ${explanationLead} ${closingText} ${difficultyReason}`,
+    `${buildOverviewResolution(connectorSummary, clueDetails, answer)} ${turningPointEffect} ${buildDifficultyCloser(answer, difficultyReason)}`,
   );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();
 }
 
 function buildSolutionEmergence(
+  clues: string[],
   falseStarts: string[],
   rejectedGuess: { guess: string; explanation: string } | undefined,
   turningPointLabel: string,
-  connectorSummary: string,
   clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
   answer: string,
 ): string {
@@ -982,33 +1043,18 @@ function buildSolutionEmergence(
     rejectedGuess?.guess ||
     falseStarts[0] ||
     "a broader category that looked promising at first";
-  const rejection =
-    lowerFirst(normalizeText(rejectedGuess?.explanation)) ||
-    `That line of thinking never explained ${stripQuotes(turningPointLabel)} cleanly enough.`;
-  const solveExamples = uniqueNonEmpty(
-    clueDetails
-      .slice(0, 2)
-      .map((detail) =>
-        answerPattern.kind === "before" || answerPattern.kind === "after"
-          ? stripQuotes(detail.phrase)
-          : stripQuotes(detail.clue),
-      ),
-  ).join(" and ");
-
-  const categoryLine =
-    answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? "clues that had seemed broad started reading like natural phrases"
-      : "clues that had seemed broad started feeling like members of the same category";
+  const openingClues = formatQuotedList(clues.slice(0, 2));
+  const solveExamples = formatNaturalList(buildRepresentativeReadings(clueDetails, answer, 2));
   const paragraphOne = ensureSentence(
-    `I did not have a clean category from the first clue. I initially drifted toward ${firstGuess}, which felt plausible for a moment, but ${rejection}`,
+    `I did not have a clean read from the first clue. ${openingClues} still left room for ${firstGuess}, so that was the first direction I tested. That idea held for a moment, but it never explained ${stripQuotes(turningPointLabel)} cleanly enough.`,
   );
   const paragraphTwo =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? ensureSentence(
-          `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back to the earlier clues and tested them one by one. That was the first moment the board stopped feeling noisy and started behaving like one clean phrase family.`,
+          `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like ${solveExamples} started to feel natural instead of forced, which was the point where the puzzle finally locked in.`,
         )
       : ensureSentence(
-          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and ${buildCategoryFocusQuestion(answer)}. Once that clue made the frame specific enough to trust, I re-checked the earlier clues instead of reaching for another broad label. That was the first moment the board stopped feeling scattered and started reading like one clean set.`,
+          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and ${buildCategoryFocusQuestion(answer)}. Once that clue made the frame specific enough to trust, I went back through the board and checked whether each clue belonged on the same shelf. Entries like ${solveExamples} stopped feeling miscellaneous and started behaving like one clean set, which was when the solve clicked.`,
         );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();
@@ -1161,7 +1207,7 @@ function composeFromSlots(
   const rejectedGuess = sanitizeRejectedGuess(falseStarts, slots.rejectedGuess, turningPointLabel);
   const heroSummary = buildHeroSummary(slots, puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer });
   const overview = buildOverview(
-    heroSummary,
+    clues,
     falseStarts,
     turningPointLabel,
     connectorSummary,
@@ -1170,10 +1216,10 @@ function composeFromSlots(
     mainAnswer,
   );
   const solutionEmergence = buildSolutionEmergence(
+    clues,
     falseStarts,
     rejectedGuess,
     turningPointLabel,
-    connectorSummary,
     clueDetails,
     mainAnswer,
   );
