@@ -1,22 +1,14 @@
-function cleanWords(words: Array<string | null | undefined>): string[] {
-  const cleaned = (words ?? [])
-    .map((word) => String(word ?? "").replace(/\s+/g, " ").trim())
-    .filter(Boolean);
+import {
+  joinPinpointClues,
+  normalizePinpointCluesWithFallback,
+} from "@/lib/seo/pinpoint-text";
 
-  while (cleaned.length < 5) {
-    cleaned.push(`Clue ${cleaned.length + 1}`);
-  }
-  return cleaned.slice(0, 5);
-}
-
-function formatClueList(words: string[]): string {
-  if (words.length <= 1) return words[0] ?? "";
-  if (words.length === 2) return `${words[0]} and ${words[1]}`;
-  return `${words.slice(0, -1).join(", ")}, and ${words[words.length - 1]}`;
+function getRequiredClues(words?: Array<string | null | undefined>): string[] {
+  return normalizePinpointCluesWithFallback(words ?? [], 5);
 }
 
 export function buildPinpointTitle(issue: number | string, words?: Array<string | null | undefined>): string {
-  const clueList = cleanWords(words ?? []).join(", ");
+  const clueList = getRequiredClues(words).join(", ");
   return `LinkedIn Pinpoint #${String(issue).trim()}: ${clueList}`;
 }
 
@@ -24,7 +16,8 @@ export function buildPinpointDescription(
   issue: number | string,
   words?: Array<string | null | undefined>,
 ): string {
-  const clueList = formatClueList(cleanWords(words ?? []));
+  // Draft-generation SEO copy must keep all five clues present to satisfy the content contract.
+  const clueList = joinPinpointClues(getRequiredClues(words), true);
   const base = `LinkedIn Pinpoint #${String(issue).trim()} clues: ${clueList}.`;
   const extras = [
     " Spoiler-safe hints and a clue-by-clue walkthrough are included.",
@@ -46,4 +39,3 @@ export function buildPinpointDescription(
 
   return description;
 }
-

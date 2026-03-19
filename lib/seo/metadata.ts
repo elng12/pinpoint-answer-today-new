@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { defaultLocale } from "@/i18n.config";
-import { defaultSocialImagePath, siteName } from "@/lib/site/config";
+import { defaultSocialImagePath, siteName, twitterHandle } from "@/lib/site/config";
+import { fitPinpointClues } from "@/lib/seo/pinpoint-text";
 
 export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Clues, Walkthrough & Archive";
 export const HOME_SEO_DESCRIPTION =
@@ -22,48 +23,6 @@ export function absoluteUrl(path: string): string {
   return new URL(path, getSiteUrl()).toString();
 }
 
-function normalizeSeoClues(clues: string[]): string[] {
-  return clues.map((clue) => clue.replace(/\s+/g, " ").trim()).filter(Boolean);
-}
-
-function joinSeoClues(clues: string[], useFinalAnd = false): string {
-  if (clues.length === 0) {
-    return "";
-  }
-
-  if (!useFinalAnd || clues.length === 1) {
-    return clues.join(", ");
-  }
-
-  if (clues.length === 2) {
-    return `${clues[0]} and ${clues[1]}`;
-  }
-
-  return `${clues.slice(0, -1).join(", ")}, and ${clues[clues.length - 1]}`;
-}
-
-function fitSeoClues(clues: string[], maxLength: number, useFinalAnd = false): string {
-  const normalizedClues = normalizeSeoClues(clues);
-
-  for (let count = normalizedClues.length; count >= 1; count -= 1) {
-    const candidate = joinSeoClues(normalizedClues.slice(0, count), useFinalAnd);
-    if (candidate.length <= maxLength) {
-      return candidate;
-    }
-  }
-
-  const [firstClue = ""] = normalizedClues;
-  if (firstClue.length <= maxLength) {
-    return firstClue;
-  }
-
-  if (maxLength <= 3) {
-    return firstClue.slice(0, maxLength);
-  }
-
-  return `${firstClue.slice(0, maxLength - 3).trimEnd()}...`;
-}
-
 export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): string {
   const titlePrefixes = [
     `LinkedIn Pinpoint ${puzzleNumber}: `,
@@ -75,7 +34,7 @@ export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): stri
   ];
 
   const candidates = titlePrefixes
-    .map((prefix) => `${prefix}${fitSeoClues(clues, TITLE_MAX_LENGTH - prefix.length)}`)
+    .map((prefix) => `${prefix}${fitPinpointClues(clues, TITLE_MAX_LENGTH - prefix.length)}`)
     .filter((title) => title.length <= TITLE_MAX_LENGTH);
 
   const bestInRange = candidates
@@ -102,7 +61,7 @@ export function buildPuzzleSeoDescription(
     const prefix = `LinkedIn Pinpoint ${puzzleNumber} clues: `;
     const maxClueLength = DESCRIPTION_MAX_LENGTH - prefix.length - suffix.length;
     if (maxClueLength > 0) {
-      const clueText = fitSeoClues(clues, maxClueLength, true);
+      const clueText = fitPinpointClues(clues, maxClueLength, true);
       const candidate = `${prefix}${clueText}${suffix}`;
       if (candidate.length <= DESCRIPTION_MAX_LENGTH) {
         return candidate;
@@ -135,7 +94,7 @@ export function buildPuzzleSeoDescription(
 
   const candidates = descriptionTemplates
     .map(({ prefix, suffix }) => {
-      const clueText = fitSeoClues(
+      const clueText = fitPinpointClues(
         clues,
         DESCRIPTION_MAX_LENGTH - prefix.length - suffix.length - 2,
         true,
@@ -169,7 +128,7 @@ function buildSocialImage(imagePath: string, alt: string) {
   };
 }
 
-function buildCanonicalAlternates(path: string): NonNullable<Metadata["alternates"]> {
+export function buildCanonicalAlternates(path: string): NonNullable<Metadata["alternates"]> {
   const url = absoluteUrl(path);
 
   return {
@@ -198,6 +157,8 @@ function buildIconMetadata(): Pick<Metadata, "appleWebApp" | "icons" | "manifest
   };
 }
 
+// Root layout metadata exists only as the app-wide fallback.
+// Page routes should use buildPageMetadata(path) so their canonical and alternates stay page-specific.
 export function buildSiteMetadata({
   title,
   description,
@@ -235,6 +196,7 @@ export function buildSiteMetadata({
       title,
       description,
       images: [socialImage],
+      ...(twitterHandle ? { site: twitterHandle } : {}),
     },
   };
 }
@@ -282,6 +244,7 @@ export function buildPageMetadata({
       title,
       description,
       images: [socialImage],
+      ...(twitterHandle ? { site: twitterHandle } : {}),
     },
   };
 }
