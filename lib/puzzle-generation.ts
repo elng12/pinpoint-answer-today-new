@@ -167,6 +167,13 @@ export async function generatePuzzleContent(
   return generatePuzzleContentFromPrompt(buildPuzzlePrompt(puzzleData), apiKey, options, puzzleData);
 }
 
+export function buildDeterministicPuzzleContent(
+  puzzleData: PuzzleDataForAI,
+  slots: Partial<AIGeneratedSlots> = {},
+): AIGeneratedContent {
+  return composeFromSlots(slots, puzzleData);
+}
+
 export async function generatePuzzleContentFromPrompt(
   prompt: string,
   apiKey: string,
@@ -393,13 +400,13 @@ function buildConnectorSummaryFromAnswer(answer: string): string {
     return `a phrase pattern built around ${pattern.token}`;
   }
   if (pattern.kind === "typed-category") {
-    return `a category board about ${pattern.noun}`;
+    return `a category board focused on ${pattern.noun}`;
   }
   const displayLabel = extractCategoryDisplayLabel(answer);
   if (displayLabel) {
-    return `a category board about ${displayLabel}`;
+    return `a category board focused on ${displayLabel}`;
   }
-  return "a shared category board";
+  return "a shared category board with one connector";
 }
 
 function buildFallbackPhrase(clue: string, answer: string): string {
@@ -801,6 +808,28 @@ function sanitizeFalseStarts(
   }).slice(0, 2);
 }
 
+function looksMachineyWrongGuess(value: string | null | undefined): boolean {
+  const normalized = normalizeText(value);
+  if (!normalized) return true;
+  return (
+    /^(brands?|types?|kinds?) of\b/i.test(normalized) ||
+    /\b(items?|things?|objects?|stuff)\b/i.test(normalized) ||
+    /\bvehicle brands?\b/i.test(normalized) ||
+    /\bbrands? of vehicles?\b/i.test(normalized)
+  );
+}
+
+function buildFallbackFalseStarts(answer: string): string[] {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return ["warning words", "mixed signals"];
+  }
+  if (pattern.kind === "typed-category") {
+    return ["collectibles", "toy brands"];
+  }
+  return ["brand names", "pop culture"];
+}
+
 function normalizeSlotClueDetails(
   rawDetails: Array<Partial<SlotClueDetail> | null | undefined> | undefined,
   clues: string[],
@@ -978,6 +1007,24 @@ function buildWrongGuesses(
   }));
 }
 
+function sanitizeRejectedGuess(
+  falseStarts: string[],
+  rejectedGuess: { guess: string; explanation: string } | undefined,
+  turningPointLabel: string,
+) {
+  const fallbackGuess = falseStarts[0] || "an early category guess";
+  const rawGuess = normalizeText(rejectedGuess?.guess);
+  const guess = rawGuess && !looksMachineyWrongGuess(rawGuess) ? rawGuess : fallbackGuess;
+  const explanation =
+    normalizeText(rejectedGuess?.explanation) ||
+    `${guess} feels plausible early on, but ${lowerFirst(stripQuotes(turningPointLabel))} demands a more exact reading.`;
+
+  return {
+    guess,
+    explanation: ensureSentence(explanation),
+  };
+}
+
 function buildLessons(
   turningPointLabel: string,
   connectorSummary: string,
@@ -1024,8 +1071,8 @@ function buildFaqs(
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`
       : answerPattern.kind === "typed-category"
-        ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} One later clue makes the category feel much more obvious`
-        : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} Each clue belongs inside the same category once the board is read in the right frame`;
+        ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} ${stripQuotes(turningPointLabel)} is the clue that makes the category specific enough to verify across the full board`
+        : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} ${stripQuotes(turningPointLabel)} is what keeps the category reading precise instead of broad`;
   return [
     {
       question: `What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
@@ -1074,7 +1121,17 @@ function composeFromSlots(
     turningPointLabel,
     connectorSummary,
   );
-  const falseStarts = sanitizeFalseStarts(uniqueNonEmpty(slots.falseStarts ?? []), clues, clueDetails, mainAnswer);
+  const providedFalseStarts = sanitizeFalseStarts(
+    uniqueNonEmpty(slots.falseStarts ?? []),
+    clues,
+    clueDetails,
+    mainAnswer,
+  );
+  const falseStarts =
+    providedFalseStarts.length > 0
+      ? providedFalseStarts
+      : sanitizeFalseStarts(buildFallbackFalseStarts(mainAnswer), clues, clueDetails, mainAnswer);
+  const rejectedGuess = sanitizeRejectedGuess(falseStarts, slots.rejectedGuess, turningPointLabel);
   const heroSummary = buildHeroSummary(slots, puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer });
   const overview = buildOverview(
     heroSummary,
@@ -1087,13 +1144,13 @@ function composeFromSlots(
   );
   const solutionEmergence = buildSolutionEmergence(
     falseStarts,
-    slots.rejectedGuess,
+    rejectedGuess,
     turningPointLabel,
     connectorSummary,
     clueDetails,
     mainAnswer,
   );
-  const wrongGuesses = buildWrongGuesses(falseStarts, slots.rejectedGuess, turningPointLabel);
+  const wrongGuesses = buildWrongGuesses(falseStarts, rejectedGuess, turningPointLabel);
   const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway, mainAnswer);
   const faqs = buildFaqs(
     puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer },
@@ -1143,7 +1200,7 @@ function composeFromSlots(
           : `${stripQuotes(turningPointLabel)} is the clue that makes the pattern click.`,
       ),
       falseStarts,
-      rejectedGuess: slots.rejectedGuess,
+      rejectedGuess,
       clueDetails,
       difficultyReason: stripQuotes(difficultyReason),
       portableTakeaway: stripQuotes(portableTakeaway),

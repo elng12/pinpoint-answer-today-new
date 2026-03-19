@@ -649,13 +649,15 @@ function buildWorkerConnectorSummary(answer: string): string {
     return `a phrase pattern built around ${pattern.token}`;
   }
   if (pattern.kind === "typed-category") {
-    return `a category board about ${pattern.noun.toLowerCase()}`;
+    return `a category board focused on ${pattern.noun.toLowerCase()}`;
   }
   if (pattern.kind === "association") {
-    return `a board centered on ${pattern.subject}`;
+    return `a board centered on the theme of ${pattern.subject}`;
   }
   const label = extractWorkerCategoryLabel(answer);
-  return label ? `a category board about ${label}` : "a shared category board";
+  return label
+    ? `a category board focused on ${label}`
+    : "a shared category board with one connector";
 }
 
 function buildWorkerSpecialPhrase(clue: string, answer: string): string {
