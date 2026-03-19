@@ -13,11 +13,11 @@
   "answer": "Words that come before “ray”",
   "category": "Words that come before “ray”",
   "wordHints": {
-    "X": "X-ray is a common term in medical imaging and science, using the letter X to denote a specific type of radiation.",
-    "Sting": "Stingrays are known for their venomous barbs, making 'stingray' a very direct association.",
-    "Cosmic": "Cosmic rays are high-energy particles originating from outer space, fitting the 'cosmic' theme perfectly.",
-    "Manta": "Manta rays are a specific type of large ray, making it a direct and obvious fit.",
-    "Gamma (high energy radiation)": "Gamma rays are a type of electromagnetic radiation, completing the pattern."
+    "X": "'X-ray' is a well-known term, commonly used in medical imaging, making it a readily accessible phrase.",
+    "Sting": "'Stingray' is a type of ray known for the venomous barbs in its tail, creating a clear connection.",
+    "Cosmic": "'Cosmic ray' refers to high-energy particles originating from outer space, a direct link to the 'cosmic' theme.",
+    "Manta": "'Manta ray' is the common name for these large rays, making it a very direct and recognizable phrase.",
+    "Gamma (high energy radiation)": "'Gamma ray' is the standard term for this type of high-energy electromagnetic radiation, fitting perfectly."
   },
   "spoilerHints": {
     "X": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -27,14 +27,14 @@
     "Gamma (high energy radiation)": "This is the clue that makes the phrase frame specific enough to trust without revealing the final connector."
   },
   "fullAnalysis": [
-    "At first glance, X, Sting, Cosmic do not suggest one clean pattern. The board only tightens once a later clue makes the shared phrase logic feel much more specific. That is why guesses like \"warning words\" and \"mixed signals\" can feel plausible at the start. The clue that changes the frame is \"Cosmic\".",
-    "From there, a phrase pattern built around ray explains the board more cleanly than broader labels. Once that frame clicks, readings like X-ray, Stingray, Cosmic ray stop feeling random and start feeling exact. The variety of sources makes it harder to see the pattern. The radiation idea is less obvious without knowing the phrase.",
-    "I did not have a clean category from the first clue. I initially drifted toward warning words, which felt plausible for a moment, but while 'sting' could relate to a projectile, 'cosmic' and 'manta' don't fit this theme as naturally.",
-    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once I read the board through a phrase pattern built around ray, clues that had seemed broad started reading like natural phrases, especially X-ray and Stingray. At that point, the final connector was the only reading that explained the full set without stretching anything."
+    "X, Sting, and Cosmic do not immediately suggest the same repeated word, so the board feels broader than it really is at the start. That is why a broad early read like \"science terms\" can feel plausible before the phrase pattern becomes clear. The clue that changes the frame is \"Cosmic\".",
+    "From there, a phrase pattern built around ray explains the board cleanly. Readings like X-ray, Stingray, and Cosmic ray stop feeling random and start behaving like one exact phrase family. Once cosmic makes the repeated word visible, the earlier clues stop feeling loose and start reading like exact fits. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough.",
+    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
+    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
   ],
   "solutionNarrative": [
-    "I did not have a clean category from the first clue. I initially drifted toward warning words, which felt plausible for a moment, but while 'sting' could relate to a projectile, 'cosmic' and 'manta' don't fit this theme as naturally.",
-    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once I read the board through a phrase pattern built around ray, clues that had seemed broad started reading like natural phrases, especially X-ray and Stingray. At that point, the final connector was the only reading that explained the full set without stretching anything."
+    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
+    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
   ],
   "lessons": [
     {
@@ -47,37 +47,37 @@
     },
     {
       "title": "Prefer exact phrase logic over loose category logic",
-      "body": "When stuck, try thinking of common phrases associated with each word individually."
+      "body": "Consider common phrases when a list of words seems too diverse for a simple category."
     }
   ],
   "display": {
     "connectorSummary": "a phrase pattern built around ray",
-    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "fastStrategy": "Consider common phrases when a list of words seems too diverse for a simple category.",
     "clueTableRows": [
       {
         "clue": "X",
         "examplePhrase": "X-ray",
-        "connectionExplained": "X-ray is a common term in medical imaging and science, using the letter X to denote a specific type of radiation."
+        "connectionExplained": "'X-ray' is a well-known term, commonly used in medical imaging, making it a readily accessible phrase."
       },
       {
         "clue": "Sting",
         "examplePhrase": "Stingray",
-        "connectionExplained": "Stingrays are known for their venomous barbs, making 'stingray' a very direct association."
+        "connectionExplained": "'Stingray' is a type of ray known for the venomous barbs in its tail, creating a clear connection."
       },
       {
         "clue": "Cosmic",
         "examplePhrase": "Cosmic ray",
-        "connectionExplained": "Cosmic rays are high-energy particles originating from outer space, fitting the 'cosmic' theme perfectly."
+        "connectionExplained": "'Cosmic ray' refers to high-energy particles originating from outer space, a direct link to the 'cosmic' theme."
       },
       {
         "clue": "Manta",
         "examplePhrase": "Manta ray",
-        "connectionExplained": "Manta rays are a specific type of large ray, making it a direct and obvious fit."
+        "connectionExplained": "'Manta ray' is the common name for these large rays, making it a very direct and recognizable phrase."
       },
       {
         "clue": "Gamma (high energy radiation)",
         "examplePhrase": "Gamma ray",
-        "connectionExplained": "Gamma rays are a type of electromagnetic radiation, completing the pattern."
+        "connectionExplained": "'Gamma ray' is the standard term for this type of high-energy electromagnetic radiation, fitting perfectly."
       }
     ]
   },
@@ -92,7 +92,7 @@
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
-      "answer": "Cosmic is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The variety of sources makes it harder to see the pattern. The radiation idea is less obvious without knowing the phrase."
+      "answer": "Cosmic is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough."
     }
   ]
 }
