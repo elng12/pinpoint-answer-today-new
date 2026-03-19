@@ -264,31 +264,30 @@ export function validateSlotContract(input: SlotContractInput): SlotContractIssu
   if (!difficultyReason || countWords(difficultyReason) < SLOT_CONTRACT.difficultyReasonMinWords) {
     issues.push({
       level: "warning",
-      code: "slots.difficultyReason.tooShort",
-      message: `difficultyReason should be at least ${SLOT_CONTRACT.difficultyReasonMinWords} words`,
+      code: "slots.difficultyReason.thin",
+      message: "difficultyReason should explain why the board feels tricky in a concrete way",
       field: "slots.difficultyReason",
     });
-  }
-  if (difficultyReason && containsExactAnswer(difficultyReason, answer)) {
+  } else if (containsExactAnswer(difficultyReason, answer)) {
     issues.push({
-      level: "warning",
+      level: "error",
       code: "slots.difficultyReason.answerLeak",
-      message: "difficultyReason should explain difficulty without repeating the exact answer",
+      message: "difficultyReason should not repeat the exact answer text",
       field: "slots.difficultyReason",
     });
   }
 
   const portableTakeaway = normalizeText(slots.portableTakeaway);
-  const portableTakeawayWords = countWords(portableTakeaway);
+  const takeawayWords = countWords(portableTakeaway);
   if (
     !portableTakeaway ||
-    portableTakeawayWords < SLOT_CONTRACT.portableTakeawayMinWords ||
-    portableTakeawayWords > SLOT_CONTRACT.portableTakeawayMaxWords
+    takeawayWords < SLOT_CONTRACT.portableTakeawayMinWords ||
+    takeawayWords > SLOT_CONTRACT.portableTakeawayMaxWords
   ) {
     issues.push({
       level: "warning",
-      code: "slots.portableTakeaway.wordCount",
-      message: `portableTakeaway should stay between ${SLOT_CONTRACT.portableTakeawayMinWords} and ${SLOT_CONTRACT.portableTakeawayMaxWords} words`,
+      code: "slots.portableTakeaway.shape",
+      message: "portableTakeaway should be one short reusable lesson",
       field: "slots.portableTakeaway",
     });
   }

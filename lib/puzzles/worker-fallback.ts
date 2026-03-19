@@ -48,10 +48,10 @@ export async function loadBundledWorkerFallback(date: string): Promise<WorkerFal
   const isoDate = normalizeDate(date);
   if (!isoDate) return null;
 
-  const slug = await getPuzzleSlugByPublishDate(isoDate);
+  const slug = await getPuzzleSlugByPublishDate(isoDate, { allowLiveWorkerFallback: false });
   if (!slug) return null;
 
-  const puzzle = await getPuzzleBySlug(slug);
+  const puzzle = await getPuzzleBySlug(slug, { allowLiveWorkerFallback: false });
   if (!puzzle) return null;
 
   const words = puzzle.clues

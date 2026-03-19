@@ -73,6 +73,10 @@ export type NextPreview = {
   shortSummary: string;
 };
 
+type PuzzleQueryOptions = {
+  allowLiveWorkerFallback?: boolean;
+};
+
 type LiveWorkerPuzzleRecord = {
   puzzleDate: string;
   fetchedAt: string;
@@ -159,6 +163,10 @@ function normalizeLooseLiveText(value: string): string {
     .replace(/[^\p{L}\p{N}]+/gu, " ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function stripStraightAndCurlyQuotes(value: string): string {
+  return value.replace(/["“”]/g, "");
 }
 
 function singularizeTrailingWord(text: string): string {
@@ -348,22 +356,37 @@ function buildLiveConnectorSummary(answer: string): string {
     return `a phrase pattern built around ${pattern.token}`;
   }
   if (pattern.kind === "typed-category") {
-    return `a category board about ${pattern.noun.toLowerCase()}`;
+    return `a category board focused on ${pattern.noun.toLowerCase()}`;
   }
   if (pattern.kind === "association") {
-    return `a board centered on ${pattern.subject}`;
+    return `a board centered on the theme of ${pattern.subject}`;
   }
   const cleanedLabel = pattern.label.replace(/\s+/g, " ").trim();
   if (cleanedLabel) {
-    return `a category built around ${cleanedLabel}`;
+    return `a category board focused on ${cleanedLabel}`;
   }
-  return "a shared category board";
+  return "a shared category board with one connector";
+}
+
+function buildLiveSpecialPhrase(clue: string, answer: string): string {
+  const pattern = detectLiveAnswerPattern(answer);
+  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
+
+  const symbolGroupPattern = /\(\s*[^\p{L}\p{N}]+\s*\)|[^\p{L}\p{N}\s()'"&,-]+/gu;
+  const replaced = clue.replace(symbolGroupPattern, ` ${pattern.token} `).replace(/\s+/g, " ").trim();
+  if (replaced === clue) return "";
+
+  return stripStraightAndCurlyQuotes(replaced.replace(/\(\s*\)/g, "").replace(/\s+/g, " ").trim());
 }
 
 function buildLiveFallbackPhrase(clue: string, answer: string): string {
   const pattern = detectLiveAnswerPattern(answer);
-  if (pattern.kind === "before") return `${clue} ${pattern.token}`.trim();
-  if (pattern.kind === "after") return `${pattern.token} ${clue}`.trim();
+  if (pattern.kind === "before") {
+    return buildLiveSpecialPhrase(clue, answer) || `${clue} ${pattern.token}`.trim();
+  }
+  if (pattern.kind === "after") {
+    return buildLiveSpecialPhrase(clue, answer) || `${pattern.token} ${clue}`.trim();
+  }
   if (pattern.kind === "typed-category") {
     const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
     const normalizedBase = baseClue || clue;
@@ -770,6 +793,23 @@ function toArchiveEntry(entry: PuzzleRegistryEntryRecord): ArchiveEntry {
   };
 }
 
+function toArchiveEntryFromDetail(puzzle: PuzzleDetail): ArchiveEntry {
+  return {
+    number: puzzle.number,
+    slug: puzzle.slug,
+    title: puzzle.title,
+    date: puzzle.date,
+    isoDate: puzzle.isoDate,
+    clues: puzzle.clues,
+    shortSummary: puzzle.shortSummary,
+    answer: puzzle.answer,
+    category: puzzle.category,
+    difficulty: puzzle.difficulty,
+    updatedAt: puzzle.updatedAt,
+    status: puzzle.status,
+  };
+}
+
 async function toPuzzleDetail(
   entry: PuzzleRegistryEntryRecord & {
     mainAnswer: string;
@@ -830,6 +870,10 @@ async function getLiveWorkerPuzzle(
   return livePuzzle;
 }
 
+function allowLiveWorkerFallback(options?: PuzzleQueryOptions): boolean {
+  return options?.allowLiveWorkerFallback !== false;
+}
+
 // ── Public API (async) ─────────────────────────────────────────────────────
 
 /** Used only by generateStaticParams — reads bundled registry at build time. */
@@ -849,30 +893,51 @@ export async function getCurrentPuzzle(): Promise<PuzzleDetail> {
   return toPuzzleDetail(current);
 }
 
-export async function getPuzzleBySlug(slug: string): Promise<PuzzleDetail | null> {
+export async function getPuzzleBySlug(
+  slug: string,
+  options?: PuzzleQueryOptions,
+): Promise<PuzzleDetail | null> {
   const entries = await getDetailEntries();
   const entry = entries.find((e) => e.slug === slug);
   if (entry) {
     return toPuzzleDetail(entry);
   }
 
+  if (!allowLiveWorkerFallback(options)) {
+    return null;
+  }
+
   const livePuzzle = await getLiveWorkerPuzzle(entries);
   return livePuzzle?.slug === slug ? livePuzzle : null;
 }
 
-export async function getPuzzleSlugByNumber(number: number): Promise<string | null> {
+export async function getPuzzleSlugByNumber(
+  number: number,
+  options?: PuzzleQueryOptions,
+): Promise<string | null> {
   const entries = await getDetailEntries();
   const entry = entries.find((e) => e.puzzleNumber === number);
   if (entry) return entry.slug;
+
+  if (!allowLiveWorkerFallback(options)) {
+    return null;
+  }
 
   const livePuzzle = await getLiveWorkerPuzzle(entries);
   return livePuzzle?.number === number ? livePuzzle.slug : null;
 }
 
-export async function getPuzzleSlugByPublishDate(isoDate: string): Promise<string | null> {
+export async function getPuzzleSlugByPublishDate(
+  isoDate: string,
+  options?: PuzzleQueryOptions,
+): Promise<string | null> {
   const entries = await getDetailEntries();
   const entry = entries.find((e) => e.publishDate === isoDate);
   if (entry) return entry.slug;
+
+  if (!allowLiveWorkerFallback(options)) {
+    return null;
+  }
 
   const livePuzzle = await getLiveWorkerPuzzle(entries);
   return livePuzzle?.isoDate === isoDate ? livePuzzle.slug : null;
@@ -881,41 +946,43 @@ export async function getPuzzleSlugByPublishDate(isoDate: string): Promise<strin
 export async function getRecentEntries(
   limit: number,
   excludeSlug?: string,
+  options?: PuzzleQueryOptions,
 ): Promise<ArchiveEntry[]> {
-  const entries = await getDetailEntries();
+  const entries = await getArchiveEntries(options);
   return entries
     .filter((e) => e.slug !== excludeSlug)
     .slice(0, limit)
-    .map(toArchiveEntry);
+    .map((entry) => ({ ...entry }));
 }
 
 export async function getAdjacentEntries(slug: string): Promise<{
   prev: ArchiveEntry | null;
   next: ArchiveEntry | null;
 }> {
-  const entries = await getDetailEntries();
+  const entries = await getArchiveEntries();
   const idx = entries.findIndex((e) => e.slug === slug);
   if (idx === -1) {
-    const livePuzzle = await getLiveWorkerPuzzle(entries);
-    if (livePuzzle?.slug === slug) {
-      const previousEntry = entries[0] ? toArchiveEntry(entries[0]) : null;
-      return { prev: previousEntry, next: null };
-    }
     return { prev: null, next: null };
   }
   // entries sorted newest-first: idx-1 = newer, idx+1 = older
-  const next = idx > 0 ? toArchiveEntry(entries[idx - 1]) : null;
-  const prev = idx < entries.length - 1 ? toArchiveEntry(entries[idx + 1]) : null;
+  const next = idx > 0 ? { ...entries[idx - 1]! } : null;
+  const prev = idx < entries.length - 1 ? { ...entries[idx + 1]! } : null;
   return { prev, next };
 }
 
-export async function getArchiveEntries(): Promise<ArchiveEntry[]> {
+export async function getArchiveEntries(options?: PuzzleQueryOptions): Promise<ArchiveEntry[]> {
   const entries = await getDetailEntries();
-  return entries.map(toArchiveEntry);
+  const archiveEntries = entries.map(toArchiveEntry);
+  if (!allowLiveWorkerFallback(options)) {
+    return archiveEntries;
+  }
+
+  const livePuzzle = await getLiveWorkerPuzzle(entries);
+  return livePuzzle ? [toArchiveEntryFromDetail(livePuzzle), ...archiveEntries] : archiveEntries;
 }
 
-export async function getArchiveEntriesGrouped(): Promise<ArchiveGroup[]> {
-  const archiveEntries = await getArchiveEntries();
+export async function getArchiveEntriesGrouped(options?: PuzzleQueryOptions): Promise<ArchiveGroup[]> {
+  const archiveEntries = await getArchiveEntries(options);
   const grouped = new Map<string, ArchiveEntry[]>();
   for (const entry of archiveEntries) {
     const label = formatMonthLabel(entry.isoDate);
