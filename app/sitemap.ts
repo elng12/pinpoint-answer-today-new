@@ -9,10 +9,6 @@ const ARCHIVE_LAST_MODIFIED = new Date("2026-03-13T00:00:00.000Z");
 const ABOUT_LAST_MODIFIED = new Date("2026-03-12T00:00:00.000Z");
 const LEGAL_LAST_MODIFIED = new Date("2026-01-01T00:00:00.000Z");
 
-function withTrailingSlash(path: string): string {
-  return path.endsWith("/") ? path : `${path}/`;
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
   const primaryRoutes = [
@@ -45,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const detailItems = await getSitemapDetailEntries();
   const detailEntries = detailItems.map((item, index) => ({
-    url: `${siteUrl}${withTrailingSlash(routes.detail(item.slug))}`,
+    url: `${siteUrl}${routes.detail(item.slug)}`,
     lastModified: new Date(item.updatedAt),
     changeFrequency: "daily" as const,
     priority: index < 10 ? 0.9 : index < 50 ? 0.8 : 0.6,
