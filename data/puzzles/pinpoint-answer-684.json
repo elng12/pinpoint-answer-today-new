@@ -13,45 +13,53 @@
   "answer": "Words that come before “roses”",
   "category": "Words that come before “roses”",
   "wordHints": {
-    "English": "\"English rose\" is a familiar phrase and points to a classic garden-rose style, so the clue naturally fits before \"roses.\"",
-    "Dog": "\"Dog rose\" is a real wild rose species, which makes this one of the clearest direct matches in the set.",
-    "Damask": "\"Damask rose\" is a historic rose variety known for its fragrance and long use in perfume production.",
-    "(Hybrid) Tea": "\"Hybrid tea rose\" is one of the best-known modern rose classes, especially for long-stemmed blooms.",
-    "Stop and smell the (🌹🌹🌹)": "The idiom \"stop and smell the roses\" gives away the flower theme and helps unlock the earlier clues."
+    "English": "\"English rose\" is a familiar phrase, so this clue works once the board shifts away from broad categories and into natural rose-related expressions.",
+    "Dog": "\"Dog rose\" is a real wild rose species, which makes this one of the clearest clue-to-phrase matches in the set.",
+    "Damask": "\"Damask rose\" is the narrowing clue. It is specific enough to pull the earlier words into the same phrase pattern.",
+    "(Hybrid) Tea": "\"Hybrid tea rose\" makes the most sense once \"tea\" is read as part of a rose classification rather than a drink reference.",
+    "Stop and smell the (🌹🌹🌹)": "The idiom \"stop and smell the roses\" confirms the flower pattern and validates the earlier clue readings."
+  },
+  "spoilerHints": {
+    "English": "Start with a familiar phrase, not a broad subject like language or nationality.",
+    "Dog": "Treat this as part of a named phrase, not as a pet category on its own.",
+    "Damask": "This is the clue that narrows the whole set and makes the theme more specific.",
+    "(Hybrid) Tea": "Ignore the drink for now. Think of a formal label you might see in a catalog.",
+    "Stop and smell the (🌹🌹🌹)": "The last clue confirms the pattern through a very familiar saying without needing the full reveal."
   },
   "fullAnalysis": [
-    "Pinpoint #684 revolves around the word \"roses.\" Four clues point to rose varieties or rose-related phrases: English rose, dog rose, Damask rose, and hybrid tea rose. The final clue, \"Stop and smell the roses,\" confirms the flower theme and makes the shared connector obvious.",
-    "What makes this puzzle feel tricky at first is that the first four clues do not immediately look related. The idiom clue changes the frame from general vocabulary to flowers, and once that shift happens, each earlier clue clicks neatly into place as a rose name or rose phrase."
+    "Pinpoint #684 feels trickier than it really is because the opening clues invite broad, slightly wrong reads. \"English\" can point to language or nationality, and \"Dog\" can point to breeds, pets, or all kinds of compound words. That makes the board feel loose at first. The clue that changes everything is \"Damask,\" because once \"Damask rose\" becomes visible, the earlier clues stop feeling random and start reading like part of the same phrase family.",
+    "From there, the puzzle resolves as a phrase-pattern board built around roses. English rose, dog rose, Damask rose, and hybrid tea rose all work as natural readings, while \"Stop and smell the roses\" acts as the final confirmation rather than a separate idea. This tighter phrase reading explains the board more cleanly than broader labels like flowers or gardening."
   ],
   "solutionNarrative": [
-    "When I first looked at English, Dog, Damask, and (Hybrid) Tea, they did not seem to belong in the same category. The breakthrough was the clue \"Stop and smell the roses,\" which shifted my thinking toward flowers instead of abstract wordplay. After that, the pattern became straightforward: English rose, dog rose, Damask rose, and hybrid tea rose all work cleanly, so the answer is \"Words that come before “roses”.\""
+    "I did not have a clean category from the first clue. \"English\" felt too open, and once \"Dog\" appeared I briefly drifted toward common compound words and breed-related ideas. Those guesses were not absurd, but they did not explain \"Damask\" in any convincing way, which was the sign that I was forcing the board instead of following it.",
+    "The turn came when I let \"Damask\" lead the solve and then checked the final clue again. Once the board was read through roses, the earlier clues stopped feeling broad and started reading like natural rose phrases, while the idiom confirmed the pattern in plain language. At that point, the final connector was the only reading that explained all five clues without stretching."
   ],
   "lessons": [
     {
-      "title": "Let the strongest clue reframe the puzzle",
-      "body": "When a set feels disconnected, one clue often changes the whole frame of reference. Here, the idiom clue points directly to flowers."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Check for real phrases, not just loose associations",
-      "body": "The best Pinpoint solutions usually form familiar phrases or named categories, such as dog rose or hybrid tea rose."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Damask is what organizes this board. Once one clue produces a precise natural phrase, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Verify every clue against one connector",
-      "body": "A good answer does not solve only three or four clues. It should account for all five without forcing the wording."
+      "title": "Prefer exact phrase logic over loose category logic",
+      "body": "A strong Pinpoint answer should explain every clue naturally. Here, real rose phrases beat broader labels like flowers or gardening."
     }
   ],
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #684?",
-      "answer": "The answer is \"Words that come before “roses”\" because the clues point to English rose, dog rose, Damask rose, hybrid tea rose, and the idiom \"stop and smell the roses.\""
+      "answer": "The answer is \"Words that come before “roses”\" because that reading explains the full set cleanly, including the final idiom."
     },
     {
-      "question": "Why are English, Dog, Damask, and (Hybrid) Tea related?",
-      "answer": "They each form a rose-related phrase or category: English rose, dog rose, Damask rose, and hybrid tea rose."
+      "question": "What is the connection in LinkedIn Pinpoint #684?",
+      "answer": "The connection is a phrase pattern built around roses. Four clues resolve as rose names or classifications, and the last clue confirms the same frame through a familiar saying."
     },
     {
-      "question": "What makes \"Stop and smell the roses\" the key clue?",
-      "answer": "It is the clue that makes the flower theme explicit. Once you think of roses, the earlier clues become much easier to connect."
+      "question": "Which clue really unlocks the set?",
+      "answer": "Damask is the real turning point because \"Damask rose\" is specific enough to pull the earlier clues into the same pattern. The final idiom then confirms that reading."
     }
   ]
 }

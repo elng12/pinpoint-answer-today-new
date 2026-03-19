@@ -1,5 +1,10 @@
 import { appLogger } from "@/lib/logger";
 import { normalizeClueForAI } from "@/lib/puzzles/clue-normalizer";
+import {
+  SLOT_CONTRACT,
+  type PuzzleSlotClueDetail,
+  type PuzzleSlotContractData,
+} from "@/lib/puzzles/content-contract";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 
 export interface PuzzleDataForAI {
@@ -8,24 +13,9 @@ export interface PuzzleDataForAI {
   mainAnswer: string;
 }
 
-export interface AIGeneratedSlots {
-  heroIntroSpoilerSafe: string;
-  connectorSummary: string;
-  turningPoint: string;
-  falseStarts: string[];
-  rejectedGuess?: { guess: string; explanation: string };
-  clueDetails: Array<{
-    clue: string;
-    surfaceRead: string;
-    phrase: string;
-    whyItWorks: string;
-    etymology?: string;
-  }>;
-  difficultyReason: string;
-  portableTakeaway: string;
-}
+export type AIGeneratedSlots = PuzzleSlotContractData;
 
-type SlotClueDetail = AIGeneratedSlots["clueDetails"][number];
+type SlotClueDetail = PuzzleSlotClueDetail;
 
 export interface AIGeneratedContent {
   sections: {
@@ -128,12 +118,12 @@ Output ONLY a valid JSON object with this exact shape:
 
 Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
-2. heroIntroSpoilerSafe must be 20 to 45 words and must NOT include the exact answer text: ${puzzleData.mainAnswer}
-3. connectorSummary must be a short spoiler-safe label, 6 to 16 words, and must NOT equal or quote the exact answer text.
+2. heroIntroSpoilerSafe must be ${SLOT_CONTRACT.heroIntroMinWords} to ${SLOT_CONTRACT.heroIntroMaxWords} words and must NOT include the exact answer text: ${puzzleData.mainAnswer}
+3. connectorSummary must be a short spoiler-safe label, ${SLOT_CONTRACT.connectorSummaryMinWords} to ${SLOT_CONTRACT.connectorSummaryMaxWords} words, and must NOT equal or quote the exact answer text.
 4. turningPoint must name the clue or clue combination that makes the pattern click, in one clear sentence.
 5. falseStarts must contain 1 or 2 plausible wrong reads or weak categories.
 6. rejectedGuess.explanation must explain why that guess falls short.
-7. Include exactly 5 clueDetails items, one for each original clue in this exact set: ${originalClues}
+7. Include exactly ${SLOT_CONTRACT.clueDetailsRequired} clueDetails items, one for each original clue in this exact set: ${originalClues}
 8. Each clueDetails.clue must match one original clue exactly as written.
 9. Each clueDetails.phrase must be a natural phrase or category reading that is different from the clue.
 10. Each clueDetails.whyItWorks must explain specific logic, not just restate the final answer.
@@ -175,6 +165,13 @@ export async function generatePuzzleContent(
   options: PuzzleGenerationOptions,
 ): Promise<AIGeneratedContent> {
   return generatePuzzleContentFromPrompt(buildPuzzlePrompt(puzzleData), apiKey, options, puzzleData);
+}
+
+export function buildDeterministicPuzzleContent(
+  puzzleData: PuzzleDataForAI,
+  slots: Partial<AIGeneratedSlots> = {},
+): AIGeneratedContent {
+  return composeFromSlots(slots, puzzleData);
 }
 
 export async function generatePuzzleContentFromPrompt(
@@ -403,13 +400,13 @@ function buildConnectorSummaryFromAnswer(answer: string): string {
     return `a phrase pattern built around ${pattern.token}`;
   }
   if (pattern.kind === "typed-category") {
-    return `a category board about ${pattern.noun}`;
+    return `a category board focused on ${pattern.noun}`;
   }
   const displayLabel = extractCategoryDisplayLabel(answer);
   if (displayLabel) {
-    return `a category board about ${displayLabel}`;
+    return `a category board focused on ${displayLabel}`;
   }
-  return "a shared category board";
+  return "a shared category board with one connector";
 }
 
 function buildFallbackPhrase(clue: string, answer: string): string {
@@ -811,6 +808,17 @@ function sanitizeFalseStarts(
   }).slice(0, 2);
 }
 
+function buildFallbackFalseStarts(answer: string): string[] {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return ["warning words", "mixed signals"];
+  }
+  if (pattern.kind === "typed-category") {
+    return ["collectibles", "toy brands"];
+  }
+  return ["brand names", "pop culture"];
+}
+
 function normalizeSlotClueDetails(
   rawDetails: Array<Partial<SlotClueDetail> | null | undefined> | undefined,
   clues: string[],
@@ -1034,8 +1042,8 @@ function buildFaqs(
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`
       : answerPattern.kind === "typed-category"
-        ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} One later clue makes the category feel much more obvious`
-        : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} Each clue belongs inside the same category once the board is read in the right frame`;
+        ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} ${stripQuotes(turningPointLabel)} is the clue that makes the category specific enough to verify across the full board`
+        : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} ${stripQuotes(turningPointLabel)} is what keeps the category reading precise instead of broad`;
   return [
     {
       question: `What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
@@ -1084,7 +1092,16 @@ function composeFromSlots(
     turningPointLabel,
     connectorSummary,
   );
-  const falseStarts = sanitizeFalseStarts(uniqueNonEmpty(slots.falseStarts ?? []), clues, clueDetails, mainAnswer);
+  const providedFalseStarts = sanitizeFalseStarts(
+    uniqueNonEmpty(slots.falseStarts ?? []),
+    clues,
+    clueDetails,
+    mainAnswer,
+  );
+  const falseStarts =
+    providedFalseStarts.length > 0
+      ? providedFalseStarts
+      : sanitizeFalseStarts(buildFallbackFalseStarts(mainAnswer), clues, clueDetails, mainAnswer);
   const heroSummary = buildHeroSummary(slots, puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer });
   const overview = buildOverview(
     heroSummary,

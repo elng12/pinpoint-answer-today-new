@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { defaultLocale } from "@/i18n.config";
 import {
+  buildDeterministicPuzzleContent,
   generatePuzzleContent,
   generatePuzzleContentFromPrompt,
   PuzzleDataForAI,
@@ -9,11 +10,12 @@ import {
   CONTENT_CONTRACT,
   normalizeAnswerLabel,
   promotePublishBlockingIssues,
+  validateSlotContract,
   validateContentContract,
   type ContentContractInput,
   type ContentContractIssue,
+  type SlotContractInput,
 } from "@/lib/puzzles/content-contract";
-import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 
 const ADMIN_TOKENS = [
   process.env.API_SECRET_TOKEN,
@@ -112,33 +114,6 @@ function toContractFaqs(value: unknown): ContentContractInput["faqs"] {
 
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
-}
-
-function countWords(value: string | undefined | null) {
-  return (value?.trim().match(/\S+/g) ?? []).length;
-}
-
-function clampToMaxChars(text: string, maxChars: number) {
-  const normalized = normalizeWhitespace(text);
-  if (normalized.length <= maxChars) return normalized;
-  const slice = normalized.slice(0, maxChars + 1);
-  const lastSpace = slice.lastIndexOf(" ");
-  const cutAt = lastSpace > 0 ? lastSpace : maxChars;
-  const clipped = slice.slice(0, cutAt).replace(/[ ,;:.]+$/, "");
-  return /[.!?]$/.test(clipped) ? clipped : `${clipped}.`;
-}
-
-function ensureMinWords(text: string, minWords: number, fillers: string[]) {
-  let result = normalizeWhitespace(text);
-  let index = 0;
-  while (countWords(result) < minWords && index < fillers.length) {
-    result = normalizeWhitespace(`${result} ${fillers[index]}`);
-    index += 1;
-  }
-  while (countWords(result) < minWords && fillers.length > 0) {
-    result = normalizeWhitespace(`${result} ${fillers[fillers.length - 1]}`);
-  }
-  return result;
 }
 
 function normalizeTargetLocale(input: unknown): string | null {
@@ -288,6 +263,48 @@ function toContractInput(
   };
 }
 
+function toSlotContractInput(
+  puzzleData: PuzzleDataForAI,
+  ai: unknown,
+): SlotContractInput {
+  const root = asRecord(ai) ?? {};
+  const slots = asRecord(root.slots);
+  return {
+    rawWords: puzzleData.rawWords,
+    mainAnswer: puzzleData.mainAnswer,
+    slots: slots
+      ? {
+          heroIntroSpoilerSafe: asString(slots.heroIntroSpoilerSafe) ?? undefined,
+          connectorSummary: asString(slots.connectorSummary) ?? undefined,
+          turningPoint: asString(slots.turningPoint) ?? undefined,
+          falseStarts: Array.isArray(slots.falseStarts)
+            ? slots.falseStarts.filter((item): item is string => typeof item === "string")
+            : undefined,
+          rejectedGuess: asRecord(slots.rejectedGuess)
+            ? {
+                guess: asString(asRecord(slots.rejectedGuess)?.guess) ?? "",
+                explanation: asString(asRecord(slots.rejectedGuess)?.explanation) ?? "",
+              }
+            : undefined,
+          clueDetails: Array.isArray(slots.clueDetails)
+            ? slots.clueDetails.map((item) => {
+                const row = asRecord(item);
+                return {
+                  clue: asString(row?.clue) ?? "",
+                  surfaceRead: asString(row?.surfaceRead) ?? "",
+                  phrase: asString(row?.phrase) ?? "",
+                  whyItWorks: asString(row?.whyItWorks) ?? "",
+                  etymology: asString(row?.etymology) ?? undefined,
+                };
+              })
+            : undefined,
+          difficultyReason: asString(slots.difficultyReason) ?? undefined,
+          portableTakeaway: asString(slots.portableTakeaway) ?? undefined,
+        }
+      : null,
+  };
+}
+
 function hasDisallowedLanguage(value: string | null | undefined): boolean {
   return Boolean(value && DISALLOWED_LANGUAGE_PATTERN.test(value));
 }
@@ -360,7 +377,10 @@ function validateDraftIssues(
   ai: unknown,
   locale: string | null = defaultLocale,
 ) {
-  return promotePublishBlockingIssues(validateContentContract(toContractInput(puzzleData, ai, locale)));
+  return [
+    ...promotePublishBlockingIssues(validateContentContract(toContractInput(puzzleData, ai, locale))),
+    ...validateSlotContract(toSlotContractInput(puzzleData, ai)),
+  ];
 }
 
 function buildRepairPrompt(
@@ -400,78 +420,10 @@ ${previousJson}
 
 function autoFixDraft(puzzleData: PuzzleDataForAI, ai: unknown) {
   const next = asRecord(JSON.parse(JSON.stringify(ai ?? {}))) ?? {};
-  const nextSections = asRecord(next.sections) ?? {};
-  const nextAnalysis = asRecord(next.analysis) ?? {};
-  next.sections = nextSections;
-  next.analysis = nextAnalysis;
-
-  const puzzleNumber = Number(puzzleData.puzzleNumber);
-  const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
-
-  if (!asString(nextAnalysis.llmTemplateVersion)) nextAnalysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
-  if (!asString(nextAnalysis.seoTitle)) {
-    nextAnalysis.seoTitle = buildPinpointTitle(puzzleNumber, puzzleData.rawWords);
-  }
-
-  const overview = asString(nextSections.overview) ?? "";
-  if (countWords(overview) < CONTENT_CONTRACT.overviewMinWords) {
-    nextSections.overview = ensureMinWords(
-      overview || `LinkedIn Pinpoint #${puzzleNumber} begins with five clues that seem unrelated at first glance.`,
-      CONTENT_CONTRACT.overviewMinWords,
-      [
-        "I look for a connector that can pair naturally with each clue.",
-        "Once I test one shared connector across every clue, the pattern either holds or falls apart.",
-        "That consistency is what turns a vague hunch into a confirmed answer.",
-      ],
-    );
-  }
-
-  let solution = asString(nextSections.solutionEmergence) ?? "";
-  if (!/\bI\b/.test(solution)) {
-    solution = `I started by testing a few obvious categories, but at least one clue felt like an outlier. ${solution}`.trim();
-  }
-  if (countWords(solution) < CONTENT_CONTRACT.solutionEmergenceMinWords) {
-    nextSections.solutionEmergence = ensureMinWords(
-      solution || "I began by scanning the clues for a shared pattern.",
-      CONTENT_CONTRACT.solutionEmergenceMinWords,
-      [
-        "When that approach stayed too broad, I switched to a stricter phrase-by-phrase check.",
-        "The breakthrough came when one clue narrowed the set enough to make the shared pattern believable.",
-        `Once I verified all five clues, I knew ${label} was the correct final connector.`,
-      ],
-    );
-  }
-
-  const seoDescription = asString(nextAnalysis.seoDescription)
-    ? normalizeWhitespace(asString(nextAnalysis.seoDescription)!)
-    : "";
-  if (seoDescription.length < CONTENT_CONTRACT.metaDescriptionMinChars) {
-    nextAnalysis.seoDescription = buildPinpointDescription(puzzleNumber, puzzleData.rawWords);
-  } else {
-    nextAnalysis.seoDescription = clampToMaxChars(seoDescription, CONTENT_CONTRACT.metaDescriptionMaxChars);
-  }
-
-  if (!Array.isArray(nextAnalysis.seoKeywords) || nextAnalysis.seoKeywords.length > 0) {
-    nextAnalysis.seoKeywords = [];
-  }
-
-  const heroSummary = asString(nextAnalysis.heroSummary) ?? "";
-  const normalizedLabel = normalizeAnswerLabel(puzzleData.mainAnswer);
-  const normalizedHeroSummary = normalizeWhitespace(heroSummary).replace(/["“”]/g, "");
-  if (
-    !heroSummary ||
-    (normalizedLabel && normalizedHeroSummary.toLowerCase().includes(normalizedLabel.toLowerCase()))
-  ) {
-    nextAnalysis.heroSummary =
-      `LinkedIn Pinpoint #${puzzleNumber} opens with broad clues. Start with the spoiler-safe hints first, then reveal the final connector when you want the full solve.`;
-  }
-
-  if (!asString(nextSections.trivia)) {
-    nextSections.trivia =
-      "Did you know? Connector puzzles often depend on one repeatable rule that makes every clue read naturally.";
-  }
-
-  return next;
+  return buildDeterministicPuzzleContent(
+    puzzleData,
+    toSlotContractInput(puzzleData, next).slots ?? {},
+  );
 }
 
 export async function POST(req: NextRequest) {

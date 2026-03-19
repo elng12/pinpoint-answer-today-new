@@ -23,13 +23,16 @@ import {
 export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const current = await getCurrentPuzzle();
-  const description = `Find today's LinkedIn Pinpoint answer for Puzzle #${current.number}, spoiler-safe hints, yesterday's answer, and the full archive in one place.`;
-  return buildPageMetadata({
+  const metadata = buildPageMetadata({
     title: HOME_SEO_TITLE,
-    description,
+    description: HOME_SEO_DESCRIPTION,
     path: routes.home,
   });
+
+  return {
+    ...metadata,
+    alternates: null,
+  };
 }
 
 export default async function HomePage() {
@@ -110,19 +113,24 @@ export default async function HomePage() {
   ];
 
   return (
-    <main className="container" style={{ padding: "48px 0 72px" }}>
-      <StructuredData items={structuredDataItems} />
-      <div className="stack">
-        <HomeHero puzzle={current} previousEntry={previousEntry} />
-        <HomeBookmarkStrip />
-        <HomeRevealSection puzzle={current} previousEntry={previousEntry} preview={preview} />
-        <HomeNextUnlock preview={preview} />
-        <HomeRecentAnswers entries={archive} />
-        <HomeWhatIs />
-        <HomeBenefitsFaq puzzle={current} />
-        <HomeCtaFooter currentPuzzleNumber={current.number} currentSlug={current.slug} />
-        <FooterBadgeWall badges={footerBadges} heading="Media & Featured In" />
-      </div>
-    </main>
+    <>
+      <link rel="canonical" href={absoluteUrl(routes.home)} />
+      <link rel="alternate" hrefLang="en" href={absoluteUrl(routes.home)} />
+      <link rel="alternate" hrefLang="x-default" href={absoluteUrl(routes.home)} />
+      <main className="container" style={{ padding: "48px 0 72px" }}>
+        <StructuredData items={structuredDataItems} />
+        <div className="stack">
+          <HomeHero puzzle={current} previousEntry={previousEntry} />
+          <HomeBookmarkStrip />
+          <HomeRevealSection puzzle={current} previousEntry={previousEntry} preview={preview} />
+          <HomeNextUnlock preview={preview} />
+          <HomeRecentAnswers entries={archive} />
+          <HomeWhatIs />
+          <HomeBenefitsFaq puzzle={current} />
+          <HomeCtaFooter currentPuzzleNumber={current.number} currentSlug={current.slug} />
+          <FooterBadgeWall badges={footerBadges} heading="Media & Featured In" />
+        </div>
+      </main>
+    </>
   );
 }

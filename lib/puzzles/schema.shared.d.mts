@@ -27,11 +27,25 @@ export declare const lessonItemSchema: z.ZodUnion<
   [z.ZodString, z.ZodObject<{ title: z.ZodString; body: z.ZodString }>]
 >;
 
+export declare const puzzleDetailDisplayRowSchema: z.ZodObject<{
+  clue: z.ZodString;
+  examplePhrase: z.ZodString;
+  connectionExplained: z.ZodString;
+}>;
+
+export declare const puzzleDetailDisplaySchema: z.ZodObject<{
+  connectorSummary: z.ZodString;
+  fastStrategy: z.ZodOptional<z.ZodString>;
+  clueTableRows: z.ZodOptional<z.ZodArray<typeof puzzleDetailDisplayRowSchema, "many">>;
+}>;
+
 export declare const puzzleDetailContentSchema: z.ZodObject<{
   slug: z.ZodString;
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   wordHints: z.ZodRecord<z.ZodString, z.ZodString>;
+  spoilerHints: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
   lessons: z.ZodArray<typeof lessonItemSchema, "many">;
   faqs: z.ZodArray<typeof faqItemSchema, "many">;
+  display: z.ZodOptional<typeof puzzleDetailDisplaySchema>;
 }>;

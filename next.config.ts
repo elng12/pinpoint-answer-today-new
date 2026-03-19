@@ -1,5 +1,15 @@
 import type { NextConfig } from "next";
 
+const isProduction = process.env.NODE_ENV === "production";
+
+const scriptSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  ...(isProduction ? [] : ["'unsafe-eval'"]),
+  "https://www.googletagmanager.com",
+  "https://www.google-analytics.com",
+].join(" ");
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -10,7 +20,7 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https:",
   "manifest-src 'self'",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+  `script-src ${scriptSrc}`,
   "style-src 'self' 'unsafe-inline'",
   "worker-src 'self' blob:",
 ].join("; ");
@@ -108,6 +118,12 @@ const nextConfig: NextConfig = {
         destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
         permanent: true,
       },
+      // Some old locale pages used the longer "linkedin-pinpoint-answer" slug form.
+      {
+        source: `/${locale}/puzzles/linkedin-pinpoint-answer-:number(\\d+)`,
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        permanent: true,
+      },
       // Locale-root puzzle alias: /en/pinpoint-answer-678 → /linkedin-pinpoint-answers/pinpoint-answer-678
       {
         source: `/${locale}/pinpoint-answer-:number(\\d+)`,
@@ -156,6 +172,17 @@ const nextConfig: NextConfig = {
         destination: "/about-us",
         permanent: true,
       },
+      // Old faceted archive pages should consolidate into the canonical archive.
+      {
+        source: `/${locale}/puzzles/difficulty/:slug`,
+        destination: "/puzzles",
+        permanent: true,
+      },
+      {
+        source: `/${locale}/puzzles/connectors/:slug`,
+        destination: "/puzzles",
+        permanent: true,
+      },
       // Static trust pages
       {
         source: `/${locale}/about-us`,
@@ -190,6 +217,23 @@ const nextConfig: NextConfig = {
       {
         source: "/puzzles/pinpoint-answer-:number(\\d+)",
         destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        permanent: true as const,
+      },
+      // Some legacy URLs used the longer slug form.
+      {
+        source: "/puzzles/linkedin-pinpoint-answer-:number(\\d+)",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        permanent: true as const,
+      },
+      // Old faceted archive pages should collapse into the canonical archive page.
+      {
+        source: "/puzzles/difficulty/:slug",
+        destination: "/puzzles",
+        permanent: true as const,
+      },
+      {
+        source: "/puzzles/connectors/:slug",
+        destination: "/puzzles",
         permanent: true as const,
       },
       // Old pinpoint archive shortcut → archive
