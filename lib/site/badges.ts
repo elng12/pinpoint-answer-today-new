@@ -42,6 +42,15 @@ export const footerBadges = [
     dofollow: true,
   },
   {
+    name: "SaaS Tools Dir",
+    image: "https://saastoolsdir.com/assets/images/badge.png",
+    url: "https://saastoolsdir.com",
+    alt: "SaaS Tools Dir",
+    width: 213,
+    height: 54,
+    dofollow: true,
+  },
+  {
     kind: "text",
     name: "MossAI Tools",
     text: "MossAI Tools",
