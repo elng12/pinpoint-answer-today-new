@@ -126,3 +126,48 @@ console.log({
 3. `/puzzles?q=test` 的 canonical 不带查询参数，且 hreflang 还在
 4. 正常详情页的 FAQ Schema 非空
 5. Rich Results Test 没有新增错误
+
+---
+
+## F. 2026-03-19 实际验收记录
+
+验收方式：
+
+- 直接抓取正式站 HTML 源码并解析 `link` 标签和 `application/ld+json`
+- 这样看到的是搜索引擎最接近的服务端输出，不依赖浏览器本地状态
+
+验收页面：
+
+- `https://pinpointanswertoday.app/puzzles`
+- `https://pinpointanswertoday.app/puzzles?q=test`
+- `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-687/`
+
+实际结果：
+
+- 归档页 `/puzzles`
+- 找到 `3` 个 `JSON-LD` 脚本
+- 独立 `ItemList` 已上线
+- `numberOfItems = 230`
+- `itemListElement.length = 230`
+- 第一条 `item["@type"] = "Article"`
+- 第一条包含 `datePublished`
+- `ItemList` 和 `CollectionPage.hasPart` 中的首条详情页 URL 都是带尾斜杠的正式地址
+
+- 搜索参数页 `/puzzles?q=test`
+- `canonical = https://pinpointanswertoday.app/puzzles`
+- `hreflang="en" = https://pinpointanswertoday.app/puzzles`
+- `hreflang="x-default" = https://pinpointanswertoday.app/puzzles`
+- 已确认 canonical 没有把查询参数带进去
+
+- 详情页 `/linkedin-pinpoint-answers/pinpoint-answer-687/`
+- `Article` Schema 存在
+- `datePublished = 2026-03-18T00:00:00Z`
+- `FAQPage` Schema 存在
+- `faqCount = 3`
+- canonical 为带尾斜杠的正式详情页 URL
+
+当前结论：
+
+- A、B、C 三项线上源码验收通过
+- 本轮代码修复已经在线上生效，没有发现回归
+- D 项中的 Google Rich Results Test 还需要人工到 Google 工具页面补一次最终复查
