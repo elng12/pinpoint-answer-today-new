@@ -9,9 +9,10 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-data.mjs",
-    "test:pinpoint-regression": "node scripts/run-pinpoint-regression.mjs",
-    "test:pinpoint-regression:core": "node scripts/run-pinpoint-regression.mjs --set core",
-    "test:pinpoint-regression:all": "node scripts/run-pinpoint-regression.mjs --set all",
+    "test:pinpoint-guardrails": "tsx scripts/check-pinpoint-guardrails.ts",
+    "test:pinpoint-regression": "npm run test:pinpoint-guardrails && node scripts/run-pinpoint-regression.mjs",
+    "test:pinpoint-regression:core": "npm run test:pinpoint-guardrails && node scripts/run-pinpoint-regression.mjs --set core",
+    "test:pinpoint-regression:all": "npm run test:pinpoint-guardrails && node scripts/run-pinpoint-regression.mjs --set all",
     "prepare": "node scripts/install-hooks.mjs"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.39.4",
     "eslint-config-next": "^15.0.5",
+    "tsx": "^4.21.0",
     "typescript": "^5.6.2"
   }
 }

@@ -1655,6 +1655,80 @@ async function quickPublishToSite(env: Env, puzzleDate: string, doc: Doc): Promi
 
 // ── New-site GitHub JSON publisher ──────────────────────────────────────────
 
+type PublishedPuzzleDetailInput = {
+  puzzleNumber: number;
+  slug: string;
+  puzzleDate: string;
+  answer: string;
+  words: string[];
+  sections: JsonRecord;
+  analysis: JsonRecord;
+  summary?: unknown;
+};
+
+export function buildPublishedPuzzleDetailRecord({
+  puzzleNumber,
+  slug,
+  puzzleDate,
+  answer,
+  words,
+  sections,
+  analysis,
+  summary,
+}: PublishedPuzzleDetailInput) {
+  const clueDetails = Array.isArray(sections.clueDetails) ? sections.clueDetails : [];
+
+  const wordHints: Record<string, string> = {};
+  words.forEach((word, index) => {
+    const detail = clueDetails[index] as Record<string, unknown> | undefined;
+    const hint = typeof detail?.explanation === "string"
+      ? detail.explanation
+      : `${word} connects to "${answer}"`;
+    wordHints[word] = hint;
+  });
+
+  const lessons = Array.isArray(sections.lessons) ? sections.lessons : [
+    { title: "Look for word patterns", body: "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer." },
+    { title: "Test each clue", body: "Verify the connection holds for all 5 clues before committing." },
+    { title: "Trust your instinct", body: "If a theme fits most clues naturally, it is usually correct." },
+  ];
+  const faqs = Array.isArray(sections.faqs) ? sections.faqs : [
+    { question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`, answer: `The answer is "${answer}". The clues ${words.join(", ")} all share this connection.` },
+    { question: "How difficult was this Pinpoint puzzle?", answer: "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy." },
+    { question: "What strategy helps with Pinpoint?", answer: "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept." },
+  ];
+
+  const rawAnalysisText = String(analysis.detailedBreakdown || sections.overview || "").trim();
+  const rawAnalysisWordCount = rawAnalysisText ? rawAnalysisText.split(/\s+/).filter(Boolean).length : 0;
+  const analysisSource = rawAnalysisWordCount >= 80
+    ? rawAnalysisText
+    : buildFallbackAnalysis(puzzleNumber, words, answer, clueDetails as Array<Record<string, unknown>>);
+  const fullAnalysis = toParagraphs(analysisSource, analysisSource);
+  const solutionNarrative = toParagraphs(
+    sections.solutionEmergence,
+    `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
+  );
+  const spoilerHints = buildWorkerSpoilerHints(words, answer);
+  const display = buildWorkerDisplay(words, answer, wordHints, lessons, clueDetails as Array<Record<string, unknown>>);
+
+  return {
+    puzzleNumber,
+    slug,
+    publishDate: puzzleDate,
+    isoDate: puzzleDate,
+    clues: words,
+    answer,
+    category: answer,
+    wordHints,
+    spoilerHints,
+    fullAnalysis,
+    solutionNarrative,
+    lessons,
+    display,
+    faqs,
+  };
+}
+
 async function publishToNewSiteGitHub(
   env: Env,
   puzzleDate: string,
@@ -1797,65 +1871,24 @@ async function publishToNewSiteGitHub(
   const answer = sanitizePublishedAnswerLabel(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "");
   const sections = asRecord(enrichedPayload.sections) ?? {};
   const analysis = asRecord(enrichedPayload.analysis) ?? {};
-
-  // Build wordHints from clueDetails if available, else fallback
-  const wordHints: Record<string, string> = {};
-  const clueDetails = Array.isArray(sections.clueDetails) ? sections.clueDetails : [];
-  words.forEach((word, i) => {
-    const detail = clueDetails[i] as Record<string, unknown> | undefined;
-    const hint = typeof detail?.explanation === "string"
-      ? detail.explanation
-      : `${word} connects to "${answer}"`;
-    wordHints[word] = hint;
+  const detailRecord = buildPublishedPuzzleDetailRecord({
+    puzzleNumber,
+    slug,
+    puzzleDate,
+    answer,
+    words,
+    sections,
+    analysis,
+    summary: enrichedPayload.summary,
   });
-
-  // Build lessons & faqs
-  const lessons = Array.isArray(sections.lessons) ? sections.lessons : [
-    { title: "Look for word patterns", body: "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer." },
-    { title: "Test each clue", body: "Verify the connection holds for all 5 clues before committing." },
-    { title: "Trust your instinct", body: "If a theme fits most clues naturally, it is usually correct." },
-  ];
-  const faqs = Array.isArray(sections.faqs) ? sections.faqs : [
-    { question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`, answer: `The answer is "${answer}". The clues ${words.join(", ")} all share this connection.` },
-    { question: "How difficult was this Pinpoint puzzle?", answer: "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy." },
-    { question: "What strategy helps with Pinpoint?", answer: "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept." },
-  ];
-
-  const rawAnalysisText = String(analysis.detailedBreakdown || sections.overview || "").trim();
-  const rawAnalysisWordCount = rawAnalysisText ? rawAnalysisText.split(/\s+/).filter(Boolean).length : 0;
-  const analysisSource = rawAnalysisWordCount >= 80
-    ? rawAnalysisText
-    : buildFallbackAnalysis(puzzleNumber, words, answer, clueDetails as Array<Record<string, unknown>>);
-  const fullAnalysis = toParagraphs(analysisSource, analysisSource);
-  const solutionNarrative = toParagraphs(
-    sections.solutionEmergence,
-    `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
-  );
   const shortSummary = String(
     enrichedPayload.summary ||
       `Pinpoint #${puzzleNumber}: ${words.join(", ")}. Spoiler-safe hints and the full walkthrough are inside.`,
   );
-  const spoilerHints = buildWorkerSpoilerHints(words, answer);
-  const display = buildWorkerDisplay(words, answer, wordHints, lessons, clueDetails as Array<Record<string, unknown>>);
 
   // ── 1. Write {slug}.json ──
   const slugPath = `data/puzzles/${slug}.json`;
-  const slugJson = JSON.stringify({
-    puzzleNumber,
-    slug,
-    publishDate: puzzleDate,
-    isoDate: puzzleDate,
-    clues: words,
-    answer,
-    category: answer,
-    wordHints,
-    spoilerHints,
-    fullAnalysis,
-    solutionNarrative,
-    lessons,
-    display,
-    faqs,
-  }, null, 2);
+  const slugJson = JSON.stringify(detailRecord, null, 2);
 
   const existingSlug = await getFile(slugPath);
   const slugChanged = stageFile(
