@@ -13,6 +13,7 @@
     "test:pinpoint-regression": "npm run test:pinpoint-guardrails && node scripts/run-pinpoint-regression.mjs",
     "test:pinpoint-regression:core": "npm run test:pinpoint-guardrails && node scripts/run-pinpoint-regression.mjs --set core",
     "test:pinpoint-regression:all": "npm run test:pinpoint-guardrails && node scripts/run-pinpoint-regression.mjs --set all",
+    "release:production": "node scripts/release-production.mjs",
     "prepare": "node scripts/install-hooks.mjs"
   },
   "dependencies": {

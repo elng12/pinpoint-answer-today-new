@@ -74,3 +74,28 @@ npm run test:pinpoint-regression:all
 
 - `docs/pinpoint-content-regression-sample-set.md`
 - `docs/pinpoint-content-generation-best-practice-2026-03-17.md`
+
+## 正式发布
+
+如果这次改动会同时影响站点和 `worker/`，不要只做 `git push`。
+
+现在推荐统一用这条命令收口：
+
+```bash
+npm run release:production
+```
+
+这条脚本会按顺序做这些事：
+
+- 确认当前分支是 `main`，而且工作区干净
+- 先跑 `test:pinpoint-guardrails`、`typecheck`、`validate:data`、`worker` 的 `typecheck`
+- 推送 `origin/main`
+- 等这次提交对应的 Vercel 部署成功
+- 单独部署生产 Cloudflare Worker
+- 最后检查首页、`/api/puzzles/summary` 和 Worker `/health`
+
+如果你只想先演练不真正发布：
+
+```bash
+npm run release:production -- --dry-run
+```

@@ -2,6 +2,12 @@
 
 Cloudflare Worker — 负责定时抓取 LinkedIn Pinpoint 数据、发布到新站 `data/puzzles/`、触发 revalidate、发送告警。
 
+生产发版提醒：
+
+- 站点 `git push` 成功，不等于 Worker 也已经更新
+- 如果这次改动同时碰了站点和 `worker/`，优先在仓库根目录直接跑 `npm run release:production`
+- 这条命令会先等 Vercel 成功，再单独发生产 Worker，避免出现“站点是新版本、Worker 还是旧版本”的半上线状态
+
 ---
 
 ## 本地开发
