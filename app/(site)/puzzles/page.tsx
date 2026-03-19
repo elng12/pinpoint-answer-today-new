@@ -80,25 +80,32 @@ export default async function ArchivePage({
       name: "LinkedIn Pinpoint Answers Archive",
       url: absoluteUrl(routes.archive),
       numberOfItems: archiveEntries.length,
-      itemListElement: archiveEntries.map((item, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "Article",
-          "@id": absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
-          headline: item.title,
-          url: absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
-          datePublished: `${item.isoDate}T00:00:00Z`,
-          dateModified: item.updatedAt,
-          description:
-            item.shortSummary ||
-            `LinkedIn Pinpoint #${item.number} answer and clue walkthrough.`,
-          author: {
-            "@type": "Organization",
-            name: "Pinpoint Answer Today",
+      itemListElement: archiveEntries.map((item, index) => {
+        const detailPath = withTrailingSlash(routes.detail(item.slug));
+        const detailUrl = absoluteUrl(detailPath);
+
+        return {
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Article",
+            "@id": detailUrl,
+            headline: item.title,
+            url: detailUrl,
+            image: absoluteUrl(`${detailPath}opengraph-image`),
+            datePublished: `${item.isoDate}T00:00:00Z`,
+            dateModified: item.updatedAt,
+            description:
+              item.shortSummary ||
+              `LinkedIn Pinpoint #${item.number} answer and clue walkthrough.`,
+            author: {
+              "@type": "Organization",
+              name: "Pinpoint Answer Today",
+              url: absoluteUrl(routes.home),
+            },
           },
-        },
-      })),
+        };
+      }),
     },
     {
       "@context": "https://schema.org",
