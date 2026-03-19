@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 688,
+    "slug": "pinpoint-answer-688",
+    "publishDate": "2026-03-19",
+    "status": "live",
+    "clues": [
+      "X",
+      "Sting",
+      "Cosmic",
+      "Manta",
+      "Gamma (high energy radiation)"
+    ],
+    "mainAnswer": "Words that come before “ray”",
+    "category": "Words that come before “ray”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, X, Sting, Cosmic do not suggest one clean pattern. The board only tightens once a later clue makes the shared phrase logic feel much more specific.",
+    "updatedAt": "2026-03-19T08:01:15.842Z"
+  },
+  {
     "puzzleNumber": 687,
     "slug": "pinpoint-answer-687",
     "publishDate": "2026-03-18",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Fog",
       "Cable cars",
@@ -15,7 +33,7 @@
     "category": "San Francisco icons",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint #687: Fog, Cable cars, Ghirardelli Square, Alcatraz Island, Golden Gate Bridge.",
-    "updatedAt": "2026-03-18T08:35:05Z"
+    "updatedAt": "2026-03-19T08:01:15.842Z"
   },
   {
     "puzzleNumber": 686,
