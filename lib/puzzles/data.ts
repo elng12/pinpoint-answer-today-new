@@ -881,11 +881,15 @@ export function getAllDetailSlugs(): string[] {
   return bundledRegistryEntries.filter(isDetailEntry).map((e) => e.slug);
 }
 
-export async function getCurrentPuzzle(): Promise<PuzzleDetail> {
+export async function getCurrentPuzzle(
+  options?: PuzzleQueryOptions,
+): Promise<PuzzleDetail> {
   const entries = await getDetailEntries();
-  const livePuzzle = await getLiveWorkerPuzzle(entries);
-  if (livePuzzle) {
-    return livePuzzle;
+  if (allowLiveWorkerFallback(options)) {
+    const livePuzzle = await getLiveWorkerPuzzle(entries);
+    if (livePuzzle) {
+      return livePuzzle;
+    }
   }
 
   const current = entries.find((e) => e.status === "live");

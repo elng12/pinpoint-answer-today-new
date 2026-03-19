@@ -6,12 +6,14 @@ export const dynamic = "force-dynamic";
 /**
  * GET /api/puzzles/summary
  *
- * Returns the latest live puzzle entry visible on the site, including the
- * worker-backed live fallback that can appear before the archive JSON sync.
+ * Returns the latest published live puzzle from the registry only.
+ *
+ * This endpoint intentionally does not surface the worker-backed live fallback,
+ * so external automation can keep treating it as a publish-complete signal.
  */
 export async function GET() {
   try {
-    const current = await getCurrentPuzzle();
+    const current = await getCurrentPuzzle({ allowLiveWorkerFallback: false });
 
     return NextResponse.json({
       latest: {

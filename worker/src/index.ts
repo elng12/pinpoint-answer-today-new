@@ -773,6 +773,120 @@ function pickWorkerTurningPoint(words: string[], answer: string): string {
   return bestWord;
 }
 
+function buildWorkerSpoilerHint(clue: string, answer: string, index: number, turningPoint: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  const isTurningPoint = clue === turningPoint;
+
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    if (isTurningPoint) {
+      return "This is the clue that makes the phrase frame specific enough to trust without revealing the final connector.";
+    }
+    const hints = [
+      "Try reading this as part of a familiar phrase instead of as a standalone word.",
+      "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+      "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    ];
+    return hints[index % hints.length] || hints[0];
+  }
+
+  if (pattern.kind === "typed-category") {
+    if (isTurningPoint) {
+      return "This is the clue that makes the category specific enough to verify across the whole board.";
+    }
+    const hints = [
+      "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+      "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+      "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    ];
+    return hints[index % hints.length] || hints[0];
+  }
+
+  if (pattern.kind === "association") {
+    if (isTurningPoint) {
+      return "This is the clue that turns a loose board into one specific setting or theme.";
+    }
+    const hints = [
+      "Think about one shared setting or theme that can absorb this clue naturally.",
+      "This clue points to the same world as the others once the frame gets specific enough.",
+      "Treat this as one part of a bigger picture rather than as an isolated reference.",
+    ];
+    return hints[index % hints.length] || hints[0];
+  }
+
+  if (isTurningPoint) {
+    return "This is the clue that makes the category specific enough to test instead of staying broad.";
+  }
+
+  const hints = [
+    "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+  ];
+  return hints[index % hints.length] || hints[0];
+}
+
+function buildWorkerSpoilerHints(words: string[], answer: string): Record<string, string> {
+  const turningPoint = pickWorkerTurningPoint(words, answer);
+  return words.reduce<Record<string, string>>((accumulator, clue, index) => {
+    accumulator[clue] = buildWorkerSpoilerHint(clue, answer, index, turningPoint);
+    return accumulator;
+  }, {});
+}
+
+function readWorkerLessonBody(lesson: unknown): string | undefined {
+  if (typeof lesson === "string") {
+    return asNonEmptyString(lesson);
+  }
+
+  const row = asRecord(lesson);
+  return asNonEmptyString(row?.body) ?? asNonEmptyString(row?.title);
+}
+
+function buildWorkerFastStrategy(answer: string, lessons: unknown[]): string {
+  const firstLessonBody = readWorkerLessonBody(lessons[0]);
+  if (firstLessonBody) {
+    return firstLessonBody;
+  }
+
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return "Test one shared word across two clues first, then verify that the same phrase logic survives all five.";
+  }
+  return "Wait for the clue that makes the category specific, then re-check the earlier clues under that tighter frame.";
+}
+
+function buildWorkerDisplay(
+  words: string[],
+  answer: string,
+  wordHints: Record<string, string>,
+  lessons: unknown[],
+  clueDetails: Array<Record<string, unknown>>,
+) {
+  const turningPoint = pickWorkerTurningPoint(words, answer);
+  const clueDetailsByClue = new Map<string, Record<string, unknown>>();
+  clueDetails.forEach((detail) => {
+    const clue = asNonEmptyString(detail.clue);
+    if (clue) {
+      clueDetailsByClue.set(clue, detail);
+    }
+  });
+
+  return {
+    connectorSummary: buildWorkerConnectorSummary(answer),
+    fastStrategy: buildWorkerFastStrategy(answer, lessons),
+    clueTableRows: words.map((clue, index) => {
+      const detail = clueDetailsByClue.get(clue) ?? clueDetails[index];
+      const examplePhrase = asNonEmptyString(detail?.phrase) ?? buildWorkerFallbackPhrase(clue, answer);
+      return {
+        clue,
+        examplePhrase,
+        connectionExplained:
+          wordHints[clue] ?? buildWorkerClueExplanation(clue, examplePhrase, answer, index, turningPoint),
+      };
+    }),
+  };
+}
+
 function buildTemplateFallbackPayload(
   siteBaseUrl: string,
   puzzleDate: string,
@@ -1721,6 +1835,8 @@ async function publishToNewSiteGitHub(
     enrichedPayload.summary ||
       `Pinpoint #${puzzleNumber}: ${words.join(", ")}. Spoiler-safe hints and the full walkthrough are inside.`,
   );
+  const spoilerHints = buildWorkerSpoilerHints(words, answer);
+  const display = buildWorkerDisplay(words, answer, wordHints, lessons, clueDetails as Array<Record<string, unknown>>);
 
   // ── 1. Write {slug}.json ──
   const slugPath = `data/puzzles/${slug}.json`;
@@ -1733,9 +1849,11 @@ async function publishToNewSiteGitHub(
     answer,
     category: answer,
     wordHints,
+    spoilerHints,
     fullAnalysis,
     solutionNarrative,
     lessons,
+    display,
     faqs,
   }, null, 2);
 
