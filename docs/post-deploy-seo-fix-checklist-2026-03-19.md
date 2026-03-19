@@ -171,3 +171,34 @@ console.log({
 - A、B、C 三项线上源码验收通过
 - 本轮代码修复已经在线上生效，没有发现回归
 - D 项中的 Google Rich Results Test 还需要人工到 Google 工具页面补一次最终复查
+
+---
+
+## G. 2026-03-19 补充修复记录（Rich Results Test 非严重问题）
+
+触发原因：
+
+- 在 Google Rich Results Test 中，归档页 `ItemList` 下的每条 `Article` 被提示 2 个非严重问题：
+- 缺少 `image`
+- `author` 下缺少 `url`
+
+修复提交：
+
+- `6bee67db`：为归档页 `ItemList` 中的 `Article` 补齐 `image` 和 `author.url`
+
+修复后本地验证：
+
+- 本地渲染的 `/puzzles` 页面中，首条 `Article` 已包含：
+- `image = https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-687/opengraph-image`
+- `author.url = https://pinpointanswertoday.app/`
+
+修复后线上复核：
+
+- 正式站 `/puzzles` 源码已确认首条 `Article` 包含：
+- `image = https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-687/opengraph-image`
+- `author.url = https://pinpointanswertoday.app/`
+
+当前判断：
+
+- 这 2 个 Rich Results Test 非严重问题的根因已经修复并上线
+- 下一步只需要重新跑一次 Google Rich Results Test，确认旧截图里的警告已消失
