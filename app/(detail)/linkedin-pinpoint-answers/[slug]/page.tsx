@@ -131,12 +131,13 @@ export default async function DetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const detailArchiveOptions = { allowLiveWorkerFallback: false } as const;
   const { slug } = await params;
   const [puzzle, recentPuzzles, nextPreview, adjacent] = await Promise.all([
     getPuzzleBySlug(slug),
-    getRecentEntries(10, slug),
+    getRecentEntries(10, slug, detailArchiveOptions),
     getNextPreview(),
-    getAdjacentEntries(slug),
+    getAdjacentEntries(slug, detailArchiveOptions),
   ]);
 
   if (!puzzle) {

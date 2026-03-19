@@ -959,11 +959,14 @@ export async function getRecentEntries(
     .map((entry) => ({ ...entry }));
 }
 
-export async function getAdjacentEntries(slug: string): Promise<{
+export async function getAdjacentEntries(
+  slug: string,
+  options?: PuzzleQueryOptions,
+): Promise<{
   prev: ArchiveEntry | null;
   next: ArchiveEntry | null;
 }> {
-  const entries = await getArchiveEntries();
+  const entries = await getArchiveEntries(options);
   const idx = entries.findIndex((e) => e.slug === slug);
   if (idx === -1) {
     return { prev: null, next: null };

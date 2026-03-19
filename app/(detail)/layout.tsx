@@ -5,7 +5,7 @@ import { NavBar } from "@/components/layout/NavBar";
 import { getRecentEntries } from "@/lib/puzzles/data";
 
 export default async function DetailLayout({ children }: { children: ReactNode }) {
-  const recentEntries = await getRecentEntries(10);
+  const recentEntries = await getRecentEntries(10, undefined, { allowLiveWorkerFallback: false });
 
   return (
     <>
