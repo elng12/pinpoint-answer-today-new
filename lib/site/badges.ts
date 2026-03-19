@@ -52,6 +52,15 @@ export const footerBadges = [
   },
   {
     kind: "text",
+    name: "Pixel Art Village",
+    text: "Pixel Art Village",
+    url: "https://pixelartvillage.org/",
+    alt: "Pixel Art Village",
+    title: "Pixel Art Village",
+    dofollow: true,
+  },
+  {
+    kind: "text",
     name: "Micro SaaS Examples",
     text: "Micro SaaS Examples",
     url: "https://www.microsaasexamples.com/",
