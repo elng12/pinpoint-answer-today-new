@@ -250,29 +250,6 @@ export default async function DetailPage({
     },
     {
       "@context": "https://schema.org",
-      "@type": "Review",
-      name: `Editorial review for LinkedIn Pinpoint #${puzzle.number}`,
-      reviewBody: puzzle.shortSummary,
-      inLanguage: "en-US",
-      author: {
-        "@type": "Organization",
-        name: "Pinpoint Answer Today Editorial Team",
-        url: absoluteUrl(routes.home),
-      },
-      itemReviewed: {
-        "@type": "SoftwareApplication",
-        name: `LinkedIn Pinpoint #${puzzle.number}`,
-        url: detailUrl,
-        applicationCategory: "GameApplication",
-        operatingSystem: "Web browser",
-        author: {
-          "@type": "Organization",
-          name: "LinkedIn",
-        },
-      },
-    },
-    {
-      "@context": "https://schema.org",
       "@type": "ItemList",
       itemListElement: recentPuzzles.map((entry, index) => ({
         "@type": "ListItem",
