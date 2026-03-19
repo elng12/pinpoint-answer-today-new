@@ -8,10 +8,16 @@ import {
   absoluteUrl,
   ARCHIVE_SEO_DESCRIPTION,
   ARCHIVE_SEO_TITLE,
+  buildCanonicalAlternates,
   buildPageMetadata,
 } from "@/lib/seo/metadata";
 import { StructuredData } from "@/components/seo/StructuredData";
+
 const INITIAL_ARCHIVE_LIMIT = 24;
+
+function withTrailingSlash(path: string): string {
+  return path.endsWith("/") ? path : `${path}/`;
+}
 
 function getInitialArchiveGroups(groups: Awaited<ReturnType<typeof getArchiveEntriesGrouped>>) {
   let remaining = INITIAL_ARCHIVE_LIMIT;
@@ -42,7 +48,7 @@ export async function generateMetadata({
     path: routes.archive,
   });
   if (q) {
-    metadata.alternates = { canonical: absoluteUrl(routes.archive) };
+    metadata.alternates = buildCanonicalAlternates(routes.archive);
   }
   return metadata;
 }
@@ -65,7 +71,33 @@ export default async function ArchivePage({
       hasPart: archiveEntries.slice(0, 20).map((item) => ({
         "@type": "WebPage",
         name: item.title,
-        url: absoluteUrl(routes.detail(item.slug)),
+        url: absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "LinkedIn Pinpoint Answers Archive",
+      url: absoluteUrl(routes.archive),
+      numberOfItems: archiveEntries.length,
+      itemListElement: archiveEntries.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Article",
+          "@id": absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
+          headline: item.title,
+          url: absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
+          datePublished: `${item.isoDate}T00:00:00Z`,
+          dateModified: item.updatedAt,
+          description:
+            item.shortSummary ||
+            `LinkedIn Pinpoint #${item.number} answer and clue walkthrough.`,
+          author: {
+            "@type": "Organization",
+            name: "Pinpoint Answer Today",
+          },
+        },
       })),
     },
     {

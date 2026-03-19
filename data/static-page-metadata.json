@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-18T17:15:24.000Z",
+  "generatedAt": "2026-03-19T03:38:54.000Z",
   "routes": {
     "/": {
       "lastModified": "2026-03-18T17:15:24.000Z",
@@ -17,7 +17,7 @@
       ]
     },
     "/puzzles": {
-      "lastModified": "2026-03-14T02:25:58.000Z",
+      "lastModified": "2026-03-19T03:38:54.000Z",
       "sourceFiles": [
         "app/(site)/puzzles/page.tsx",
         "components/archive/ArchiveExplorer.tsx",
