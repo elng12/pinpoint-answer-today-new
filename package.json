@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev -p 3004",
+    "generate:static-page-metadata": "node scripts/generate-static-page-metadata.mjs",
     "build": "npm run validate:data && next build",
     "start": "next start",
     "lint": "next lint",

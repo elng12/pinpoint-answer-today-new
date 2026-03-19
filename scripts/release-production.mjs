@@ -207,6 +207,7 @@ async function main() {
 
   logStep("Checking git state");
   await ensureMainBranch();
+  await run("npm", ["run", "generate:static-page-metadata"]);
   await ensureCleanWorktree();
 
   logStep("Running local release checks");

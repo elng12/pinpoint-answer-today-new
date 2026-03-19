@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-03-18T17:15:24.000Z",
+  "routes": {
+    "/": {
+      "lastModified": "2026-03-18T17:15:24.000Z",
+      "sourceFiles": [
+        "app/(site)/(home)/page.tsx",
+        "components/home/HomeBenefitsFaq.tsx",
+        "components/home/HomeBookmarkStrip.tsx",
+        "components/home/HomeCtaFooter.tsx",
+        "components/home/HomeHero.tsx",
+        "components/home/HomeNextUnlock.tsx",
+        "components/home/HomeRecentAnswers.tsx",
+        "components/home/HomeRevealSection.tsx",
+        "components/home/HomeWhatIs.tsx",
+        "components/layout/FooterBadgeWall.tsx"
+      ]
+    },
+    "/puzzles": {
+      "lastModified": "2026-03-14T02:25:58.000Z",
+      "sourceFiles": [
+        "app/(site)/puzzles/page.tsx",
+        "components/archive/ArchiveExplorer.tsx",
+        "components/archive/ArchiveHeader.tsx"
+      ]
+    },
+    "/about-us": {
+      "lastModified": "2026-03-13T00:37:40.000Z",
+      "sourceFiles": [
+        "app/(site)/about-us/page.tsx"
+      ]
+    },
+    "/contact-us": {
+      "lastModified": "2026-03-13T11:50:50.000Z",
+      "sourceFiles": [
+        "app/(site)/contact-us/page.tsx",
+        "components/contact/ContactFeedbackForm.tsx"
+      ]
+    },
+    "/privacy": {
+      "lastModified": "2026-03-13T11:50:50.000Z",
+      "sourceFiles": [
+        "app/(site)/privacy/page.tsx"
+      ]
+    },
+    "/terms": {
+      "lastModified": "2026-03-13T11:50:50.000Z",
+      "sourceFiles": [
+        "app/(site)/terms/page.tsx"
+      ]
+    },
+    "/disclaimer": {
+      "lastModified": "2026-03-13T11:50:50.000Z",
+      "sourceFiles": [
+        "app/(site)/disclaimer/page.tsx"
+      ]
+    }
+  }
+}
