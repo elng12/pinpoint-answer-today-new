@@ -18,6 +18,82 @@ function parseLesson(lesson: LessonItem): { title: string | null; body: string }
 function buildRecentLinkTitle(entry: ArchiveEntry) {
   return `LinkedIn Pinpoint ${entry.number}: ${entry.clues.join(", ")}`;
 }
+
+function splitIntoSentences(paragraph: string): string[] {
+  const matches = paragraph.match(/[^.!?]+(?:[.!?]+["')\]]*)?(?=\s+|$)/g);
+  return (matches ?? [paragraph]).map((sentence) => sentence.trim()).filter(Boolean);
+}
+
+function buildReadableParagraphs(paragraphs: string[]): string[] {
+  const trimmedParagraphs = paragraphs.map((paragraph) => paragraph.trim()).filter(Boolean);
+  if (trimmedParagraphs.length >= 5) {
+    return trimmedParagraphs;
+  }
+
+  return paragraphs.flatMap((paragraph) => {
+    const sentences = splitIntoSentences(paragraph);
+    return sentences.length > 0 ? sentences : [paragraph.trim()];
+  });
+}
+
+function formatPublishedDate(isoDate: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${isoDate}T00:00:00Z`));
+}
+
+function buildWalkthroughLead(puzzle: PuzzleDetailRecord): string {
+  return `At first glance, Pinpoint ${puzzle.number} feels broader than it really is.`;
+}
+
+function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
+  const sourceParagraphs =
+    puzzle.fullAnalysis.length > 0
+      ? puzzle.fullAnalysis
+      : puzzle.solutionNarrative.length > 0
+        ? puzzle.solutionNarrative
+        : [puzzle.shortSummary];
+
+  const readableParagraphs = buildReadableParagraphs(sourceParagraphs);
+  const normalizedAnswer = puzzle.answer.trim().toLowerCase();
+
+  if (normalizedAnswer.length === 0) {
+    return readableParagraphs;
+  }
+
+  const anyParagraphMentionsAnswer = readableParagraphs.some((paragraph) => {
+    const normalizedParagraph = paragraph.toLowerCase();
+    return (
+      normalizedParagraph.includes(normalizedAnswer) ||
+      normalizedParagraph.includes("the answer is") ||
+      normalizedParagraph.includes("the answer was")
+    );
+  });
+
+  const firstParagraph = readableParagraphs[0]?.toLowerCase() ?? "";
+  const firstParagraphHasLead =
+    firstParagraph.startsWith("at first") ||
+    firstParagraph.startsWith("at first glance") ||
+    firstParagraph.startsWith("this puzzle") ||
+    firstParagraph.startsWith("this board") ||
+    firstParagraph.startsWith("this one") ||
+    firstParagraph.startsWith("today") ||
+    firstParagraph.includes(`pinpoint ${puzzle.number}`);
+
+  const paragraphsWithLead = firstParagraphHasLead
+    ? readableParagraphs
+    : [buildWalkthroughLead(puzzle), ...readableParagraphs];
+
+  if (anyParagraphMentionsAnswer) {
+    return paragraphsWithLead;
+  }
+
+  return [...paragraphsWithLead, `The answer was ${puzzle.answer}.`];
+}
+
 export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
@@ -31,72 +107,44 @@ export function PuzzleFullAnalysis({
   adjacentPrev: ArchiveEntry | null;
   adjacentNext: ArchiveEntry | null;
 }) {
-  const overviewParagraphs = puzzle.fullAnalysis.length > 0 ? puzzle.fullAnalysis : [puzzle.shortSummary];
-  const strategyText = puzzle.display.fastStrategy;
+  const walkthroughParagraphs = buildWalkthroughParagraphs(puzzle);
 
   return (
     <>
       <div className="legacy-analysis-flow">
         <section className="legacy-analysis-shell" id="analysis">
           <header className="legacy-analysis-header">
+            <div className="legacy-analysis-meta">
+              <p className="legacy-analysis-meta-line">By Pinpoint Answer Today</p>
+              <p className="legacy-analysis-meta-line">{`Published on ${formatPublishedDate(puzzle.isoDate)}`}</p>
+            </div>
             <div className="legacy-analysis-header-inner">
               <Star className="legacy-section-icon" aria-hidden />
-              <h2 className="legacy-analysis-title">{`Pinpoint Answer Walkthrough & Analysis for #${puzzle.number}`}</h2>
+              <h2 className="legacy-analysis-title">{`Pinpoint ${puzzle.number} Answer & Full Analysis`}</h2>
             </div>
           </header>
 
           <section className="legacy-analysis-section">
-            <div className="legacy-section-title-row">
-              <Lightbulb className="legacy-section-icon" aria-hidden />
-              <h3 className="legacy-section-title">Puzzle Overview</h3>
-            </div>
-            <ul className="legacy-bullet-list">
-              {overviewParagraphs.map((paragraph, index) => (
-                <li key={`${puzzle.slug}-overview-${index}`}>{paragraph}</li>
+            <div className="legacy-prose-stack">
+              {walkthroughParagraphs.map((paragraph, index) => (
+                <p key={`${puzzle.slug}-walkthrough-${index}`}>{paragraph}</p>
               ))}
-            </ul>
+            </div>
           </section>
 
           <section className="legacy-analysis-section">
             <div className="legacy-section-title-row">
               <Lightbulb className="legacy-section-icon" aria-hidden />
-              <h3 className="legacy-section-title">Skim this in 30 seconds</h3>
+              <h3 className="legacy-section-title">{`Category: Pinpoint ${puzzle.number}`}</h3>
             </div>
-            <ul className="legacy-bullet-list legacy-bullet-list-compact">
-              <li>
-                <strong>Connector:</strong> {puzzle.display.connectorSummary}
-              </li>
-              <li>
-                <strong>Clues:</strong> {puzzle.clues.join(" · ")}
-              </li>
-              <li>
-                <strong>Difficulty:</strong> {puzzle.difficulty}
-              </li>
-              <li>
-                <strong>Fast strategy:</strong> {strategyText}
-              </li>
-            </ul>
+            <p className="legacy-category-answer">{puzzle.answer}</p>
           </section>
-
-          {puzzle.solutionNarrative.length > 0 && (
-            <section className="legacy-analysis-section">
-              <div className="legacy-section-title-row">
-                <Lightbulb className="legacy-section-icon" aria-hidden />
-                <h3 className="legacy-section-title">How I solved it</h3>
-              </div>
-              <div className="legacy-prose-stack">
-                {puzzle.solutionNarrative.map((paragraph, index) => (
-                  <p key={`${puzzle.slug}-narrative-${index}`}>{paragraph}</p>
-                ))}
-              </div>
-            </section>
-          )}
 
           <section className="legacy-analysis-section">
             <div className="legacy-clue-table-shell">
               <div className="legacy-table-kicker-row">
                 <Table className="legacy-section-icon" aria-hidden />
-                <h3 className="legacy-table-kicker">How Each Clue Resolves</h3>
+                <h3 className="legacy-table-kicker">Words & How They Fit</h3>
               </div>
               <table
                 className="legacy-clue-table"

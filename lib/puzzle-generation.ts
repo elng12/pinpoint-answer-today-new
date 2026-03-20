@@ -4,8 +4,10 @@ import {
   SLOT_CONTRACT,
   type PuzzleSlotClueDetail,
   type PuzzleSlotContractData,
+  validateSlotContract,
 } from "@/lib/puzzles/slot-contract";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
+import { z } from "zod";
 
 export interface PuzzleDataForAI {
   puzzleNumber: number;
@@ -44,6 +46,74 @@ type ParsedAIResponse = Partial<Omit<AIGeneratedContent, "slots">> & {
   slots?: Partial<AIGeneratedSlots>;
 };
 
+const ParsedRejectedGuessSchema = z.object({
+  guess: z.string().trim().min(1),
+  explanation: z.string().trim().min(1),
+});
+
+const ParsedSlotClueDetailSchema = z.object({
+  clue: z.string().trim().min(1),
+  surfaceRead: z.string().trim().min(1),
+  phrase: z.string().trim().min(1),
+  whyItWorks: z.string().trim().min(1),
+  etymology: z.string().trim().min(1).optional(),
+});
+
+const ParsedSlotsSchema = z.object({
+  heroIntroSpoilerSafe: z.string().trim().min(1).optional(),
+  connectorSummary: z.string().trim().min(1).optional(),
+  turningPoint: z.string().trim().min(1).optional(),
+  falseStarts: z.array(z.string().trim().min(1)).optional(),
+  rejectedGuess: ParsedRejectedGuessSchema.optional(),
+  clueDetails: z.array(ParsedSlotClueDetailSchema).optional(),
+  difficultyReason: z.string().trim().min(1).optional(),
+  portableTakeaway: z.string().trim().min(1).optional(),
+});
+
+const ParsedSectionsSchema = z.object({
+  overview: z.string().trim().min(1).optional(),
+  solutionEmergence: z.string().trim().min(1).optional(),
+  wrongGuesses: z.array(z.object({
+    guess: z.string().trim().min(1),
+    explanation: z.string().trim().min(1),
+  })).optional(),
+  clueDetails: z.array(z.object({
+    clue: z.string().trim().min(1),
+    phrase: z.string().trim().min(1),
+    explanation: z.string().trim().min(1),
+    etymology: z.string().trim().min(1).optional(),
+  })).optional(),
+  lessons: z.array(z.object({
+    title: z.string().trim().min(1),
+    body: z.string().trim().min(1),
+  })).optional(),
+  faqs: z.array(z.object({
+    question: z.string().trim().min(1),
+    answer: z.string().trim().min(1),
+  })).optional(),
+  trivia: z.string().trim().min(1).optional(),
+}).optional();
+
+const ParsedAnalysisSchema = z.object({
+  detailedBreakdown: z.string().trim().min(1).optional(),
+  dailyDebrief: z.string().trim().min(1).optional(),
+  heroSummary: z.string().trim().min(1).optional(),
+  seoTitle: z.string().trim().min(1).optional(),
+  seoDescription: z.string().trim().min(1).optional(),
+  seoKeywords: z.array(z.string().trim().min(1)).optional(),
+  tags: z.array(z.string().trim().min(1)).optional(),
+  llmTemplateVersion: z.string().trim().min(1).optional(),
+}).optional();
+
+const ParsedAIResponseSchema = z.object({
+  slots: ParsedSlotsSchema.optional(),
+  sections: ParsedSectionsSchema,
+  analysis: ParsedAnalysisSchema,
+}).refine((value) => Boolean(value.slots || value.sections), {
+  message: 'AI response must include either "slots" or "sections".',
+  path: ["slots"],
+});
+
 export type PuzzleGenerationOptions = {
   model?: string;
   apiEndpoint?: string;
@@ -52,7 +122,17 @@ export type PuzzleGenerationOptions = {
 };
 
 const DEBUG = process.env.NODE_ENV === "development" || process.env.DEBUG_AI === "true";
-const LLM_TEMPLATE_VERSION = "pinpoint-v7";
+const LLM_TEMPLATE_VERSION = "pinpoint-v9";
+const AI_MAX_RETRIES = 3;
+const AI_RETRY_BASE_DELAY_MS = 800;
+const AI_REQUEST_TIMEOUT_MS = 30_000;
+const LLM_SYSTEM_PROMPT = [
+  'You write archive content for "Pinpoint Answer Today".',
+  "Write like a sharp human solver replaying how the answer became clear.",
+  "Do not sound like a teacher, analyst, glossary, or SEO filler writer.",
+  "Prefer concrete solve-story language over abstract category language.",
+  "Return JSON only.",
+].join(" ");
 
 function debugInfo(message: string, details?: Record<string, unknown>) {
   if (!DEBUG) return;
@@ -62,6 +142,206 @@ function debugInfo(message: string, details?: Record<string, unknown>) {
 function debugError(message: string, details?: Record<string, unknown>) {
   if (!DEBUG) return;
   appLogger.error(message, { component: "puzzle-generation", ...details });
+}
+
+function formatZodIssues(issues: z.ZodIssue[]): string {
+  return issues
+    .slice(0, 6)
+    .map((issue) => {
+      const path = issue.path.length ? issue.path.join(".") : "root";
+      return `${path}: ${issue.message}`;
+    })
+    .join("; ");
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function isRetryableStatus(status: number): boolean {
+  return status === 408 || status === 409 || status === 425 || status === 429 || status >= 500;
+}
+
+function isRetryableFetchError(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  const message = error.message.toLowerCase();
+  if (error.name === "AbortError") return true;
+  return (
+    message.includes("timeout") ||
+    message.includes("timed out") ||
+    message.includes("aborted") ||
+    message.includes("network") ||
+    message.includes("fetch failed") ||
+    message.includes("econnreset") ||
+    message.includes("socket hang up") ||
+    message.includes("temporary")
+  );
+}
+
+async function waitForRetry(attempt: number, context: Record<string, unknown>): Promise<void> {
+  const delayMs = AI_RETRY_BASE_DELAY_MS * 2 ** (attempt - 1);
+  debugInfo("Retrying AI request", { ...context, attempt, delayMs });
+  await sleep(delayMs);
+}
+
+async function fetchTextWithRetry(
+  url: string,
+  init: RequestInit,
+  context: Record<string, unknown>,
+): Promise<string> {
+  let lastError: Error | null = null;
+
+  for (let attempt = 1; attempt <= AI_MAX_RETRIES; attempt += 1) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), AI_REQUEST_TIMEOUT_MS);
+    try {
+      const response = await fetch(url, { ...init, signal: controller.signal });
+      const responseText = await response.text();
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        if (attempt > 1) {
+          debugInfo("AI request recovered after retry", { ...context, attempt });
+        }
+        return responseText;
+      }
+
+      const error = new Error(
+        `AI API Error: ${response.status} ${responseText.slice(0, 500)}`.trim(),
+      );
+      const retryable = isRetryableStatus(response.status);
+      debugError("AI API error response", {
+        ...context,
+        attempt,
+        status: response.status,
+        retryable,
+        errorTextHead: responseText.slice(0, 500),
+      });
+
+      if (!retryable || attempt === AI_MAX_RETRIES) {
+        throw error;
+      }
+
+      lastError = error;
+      await waitForRetry(attempt, context);
+    } catch (error) {
+      clearTimeout(timeoutId);
+      const timedOut = controller.signal.aborted;
+      const wrappedError =
+        timedOut
+          ? new Error(`AI request timed out after ${AI_REQUEST_TIMEOUT_MS}ms`)
+          : error instanceof Error
+            ? error
+            : new Error(String(error));
+      const retryable = timedOut || isRetryableFetchError(wrappedError);
+
+      if (!retryable || attempt === AI_MAX_RETRIES) {
+        throw wrappedError;
+      }
+
+      lastError = wrappedError;
+      debugError("AI request failed before response completed", {
+        ...context,
+        attempt,
+        retryable,
+        error: wrappedError.message,
+      });
+      await waitForRetry(attempt, context);
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  throw lastError ?? new Error("AI request failed after retries");
+}
+
+function stripMarkdownCodeFence(content: string): string {
+  let text = content.trim().replace(/^\uFEFF/, "");
+  if (text.startsWith("```json")) {
+    text = text.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
+  } else if (text.startsWith("```")) {
+    text = text.replace(/^```\s*/, "").replace(/\s*```$/, "");
+  }
+  return text.trim();
+}
+
+function resolveDefaultModel(provider: PuzzleGenerationOptions["provider"], endpoint?: string): string {
+  if (provider === "anthropic") {
+    return "claude-3-5-sonnet-20241022";
+  }
+  if (provider === "zhipu") {
+    return "glm-4-plus";
+  }
+  if (provider === "azure") {
+    return "gpt-4.1-mini";
+  }
+  return endpoint ? "google/gemini-2.0-flash-001" : "gpt-4.1-mini";
+}
+
+function ensureProviderModelCompatibility(
+  provider: PuzzleGenerationOptions["provider"],
+  model: string,
+  endpoint?: string,
+): void {
+  const normalizedModel = normalizeText(model).toLowerCase();
+  if (!normalizedModel) return;
+  if (provider === "openai" && !endpoint) {
+    const clearlyNonOpenAIModel =
+      normalizedModel.startsWith("google/") ||
+      normalizedModel.startsWith("gemini") ||
+      normalizedModel.startsWith("anthropic/") ||
+      normalizedModel.startsWith("claude") ||
+      normalizedModel.startsWith("glm-");
+    if (clearlyNonOpenAIModel) {
+      throw new Error(
+        `Model "${model}" is not compatible with the official OpenAI endpoint. Set an OpenAI-compatible base URL or switch to a gpt-* model.`,
+      );
+    }
+  }
+}
+
+function extractFirstJSONObject(content: string): string | null {
+  let start = -1;
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+
+  for (let index = 0; index < content.length; index += 1) {
+    const char = content[index];
+
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+      } else if (char === "\\") {
+        escaped = true;
+      } else if (char === '"') {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (char === '"') {
+      inString = true;
+      continue;
+    }
+
+    if (char === "{") {
+      if (start === -1) {
+        start = index;
+      }
+      depth += 1;
+      continue;
+    }
+
+    if (char === "}" && start !== -1) {
+      depth -= 1;
+      if (depth === 0) {
+        return content.slice(start, index + 1);
+      }
+    }
+  }
+
+  return null;
 }
 
 export function buildPuzzlePrompt(puzzleData: PuzzleDataForAI): string {
@@ -83,16 +363,18 @@ Pattern-specific rules:
 - This is a category board, not a before/after phrase board.
 - connectorSummary should be a short spoiler-safe category bridge, not a vague slogan.
 - connectorSummary must stay plain and natural. Do NOT use slashes, parentheses, stacked qualifiers, or over-explained labels.
+- connectorSummary must sound like a plain UI label, not a joke, twist, contrast line, or conversational aside.
 - clueDetails.phrase should usually be a natural member label inside the category.
 - If the answer is "Types of X", clueDetails.phrase should usually end with the category noun when natural.
 - If a clue is already a recognizable title, brand, publication, or named entity, keep clueDetails.phrase close to that clue instead of swapping in a generic subtype label.
 - whyItWorks should explain why each clue belongs in the category.
 - falseStarts must be broad, realistic category guesses like newspapers, media brands, travel publications, or nature media. Do NOT use city names, one-off titles, or long awkward labels.
+- falseStarts must not sound like retail taxonomy, ecommerce filters, or audience segments. Avoid phrases like gifts for adults, products for..., items for..., or categories for...
 - If three or more clues already point toward the same everyday category, keep the solve narrative calm and straightforward instead of forcing extra drama.
 `.trim();
 
   return `
-You are a senior content writer for "Pinpoint Answer Today". Use the V7 Slot Template.
+You are a senior content writer for "Pinpoint Answer Today". Use the V9 Article Slot Template.
 
 Output ONLY a valid JSON object with this exact shape:
 {
@@ -120,7 +402,7 @@ Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
 2. heroIntroSpoilerSafe must be ${SLOT_CONTRACT.heroIntroMinWords} to ${SLOT_CONTRACT.heroIntroMaxWords} words and must NOT include the exact answer text: ${puzzleData.mainAnswer}
 3. connectorSummary must be a short spoiler-safe label, ${SLOT_CONTRACT.connectorSummaryMinWords} to ${SLOT_CONTRACT.connectorSummaryMaxWords} words, and must NOT equal or quote the exact answer text.
-4. turningPoint must name the clue or clue combination that makes the pattern click, in one clear sentence.
+4. turningPoint must name the clue or clue combination that forces the mental pivot, in one plain human sentence.
 5. falseStarts must contain 1 or 2 plausible wrong reads or weak categories.
 6. rejectedGuess.explanation must explain why that guess falls short.
 7. Include exactly ${SLOT_CONTRACT.clueDetailsRequired} clueDetails items, one for each original clue in this exact set: ${originalClues}
@@ -131,15 +413,28 @@ Hard requirements:
 12. portableTakeaway must be one short practical lesson the solver can reuse tomorrow.
 13. Output raw JSON only, no markdown.
 
+Primary writing goal:
+- Build the source material for a short archive article, not a report.
+- Think in this order: first impression -> wrong direction -> contradiction -> turning clue -> answer -> hindsight clarity.
+
 Writing rules:
 - Separate page reveal from explanation. The reveal card owns the first clear answer reveal on-page.
 - Treat heroIntroSpoilerSafe as the short intro shown before the user chooses to reveal the answer.
 - Do not sneak the exact answer into heroIntroSpoilerSafe, connectorSummary, turningPoint, difficultyReason, or falseStarts.
-- Make the clueDetails useful enough that a program can build overview, solve narrative, FAQ, and lessons from them.
+- Make the slots useful enough that a program can build a short article with believable movement.
 - overview and solutionEmergence must feel different:
-  - overview explains the board shape and why the final category or phrase is cleaner than nearby alternatives
-  - solutionEmergence explains one believable false start and one turning point in first person
-- Do not repeat the same examples or sentence structure across overview and solutionEmergence.
+  - overview explains why the puzzle shape is misleading and why the final read is cleaner than nearby alternatives
+  - solutionEmergence replays one believable solve path in first person
+- The solve path should feel like a human replay:
+  - one plausible early read
+  - one moment where a later clue weakens that read
+  - one turning clue that makes the answer concrete
+- Prefer concrete language:
+  - say "I first thought..." not "the board felt broad"
+  - say "that theory broke" not "the frame shifted"
+  - say "then X changed the solve" not "the category became specific enough"
+- Write natural phrases a real solver might think of.
+- Keep falseStarts concrete and everyday, not academic or machiney.
 - Do not write teaser copy, hype copy, or ad-style openers.
 - Avoid filler lines like:
   - X connects to...
@@ -147,7 +442,19 @@ Writing rules:
   - The clues all share this connection
   - Difficulty varies
   - This is the hallmark of a well-crafted puzzle
+- Avoid overusing abstract words like board, frame, connector, category, pattern in every field.
 - Prefer concrete phrase logic over broad vague category talk.
+
+Slot guidance:
+- heroIntroSpoilerSafe: a spoiler-safe hook about why the opening clues can mislead, without sounding generic.
+- connectorSummary: a plain, compact bridge label the UI can use later. Keep it human.
+- connectorSummary: write it like a calm editor label, not like copywriting.
+- turningPoint: name the clue that forces the mental pivot. Keep it plain. Avoid phrases like "pattern click", "form factor", "alongside the others", or other writerly meta language.
+- falseStarts: broad but believable wrong reads a person would really try first.
+- rejectedGuess.explanation: explain why that guess breaks once the turning clue appears.
+- clueDetails.surfaceRead: describe the distracting first impression of the clue in plain language.
+- clueDetails.phrase: give the clean resolved phrase or category reading.
+- clueDetails.whyItWorks: explain the fit specifically and concretely.
 
 ${patternSpecificRules}
 
@@ -162,7 +469,7 @@ Input data:
 export async function generatePuzzleContent(
   puzzleData: PuzzleDataForAI,
   apiKey: string,
-  options: PuzzleGenerationOptions,
+  options: PuzzleGenerationOptions = {},
 ): Promise<AIGeneratedContent> {
   return generatePuzzleContentFromPrompt(buildPuzzlePrompt(puzzleData), apiKey, options, puzzleData);
 }
@@ -177,10 +484,12 @@ export function buildDeterministicPuzzleContent(
 export async function generatePuzzleContentFromPrompt(
   prompt: string,
   apiKey: string,
-  options: PuzzleGenerationOptions,
+  options: PuzzleGenerationOptions = {},
   puzzleData?: PuzzleDataForAI,
 ): Promise<AIGeneratedContent> {
-  const { provider = "openai", model = "google/gemini-2.0-flash-001", apiEndpoint } = options;
+  const { provider = "openai", apiEndpoint } = options;
+  const model = normalizeText(options.model) || resolveDefaultModel(provider, apiEndpoint);
+  ensureProviderModelCompatibility(provider, model, apiEndpoint);
 
   if (provider === "anthropic") {
     return callAnthropicAPI(prompt, apiKey, model, apiEndpoint, puzzleData);
@@ -215,13 +524,20 @@ async function callOpenAICompatible(
     headers.authorization = `Bearer ${apiKey}`;
   } else if (provider === "azure") {
     if (!endpoint) throw new Error("Azure endpoint required");
-    apiUrl = `${endpoint.replace(/\/$/, "")}/openai/deployments/${model}/chat/completions?api-version=${apiVersion}`;
+    const azureUrl = new URL(
+      `/openai/deployments/${model}/chat/completions`,
+      endpoint.endsWith("/") ? endpoint : `${endpoint}/`,
+    );
+    azureUrl.searchParams.set("api-version", apiVersion);
+    apiUrl = azureUrl.toString();
     headers["api-key"] = apiKey;
   } else {
     headers.authorization = `Bearer ${apiKey}`;
     if (endpoint) {
-      const baseUrl = endpoint.replace(/\/$/, "");
-      apiUrl = baseUrl.endsWith("/chat/completions") ? baseUrl : `${baseUrl}/chat/completions`;
+      const baseUrl = new URL(endpoint.endsWith("/") ? endpoint : `${endpoint}/`);
+      apiUrl = baseUrl.pathname.endsWith("/chat/completions")
+        ? baseUrl.toString()
+        : new URL("chat/completions", baseUrl).toString();
     }
   }
 
@@ -229,7 +545,7 @@ async function callOpenAICompatible(
     messages: [
       {
         role: "system",
-        content: "You are a content writer for Pinpoint Answer Today. Return JSON only.",
+        content: LLM_SYSTEM_PROMPT,
       },
       {
         role: "user",
@@ -247,20 +563,15 @@ async function callOpenAICompatible(
   }
 
   debugInfo("AI API request", { provider, model, apiUrl });
-
-  const response = await fetch(apiUrl, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(requestBody),
-  });
-
-  if (!response.ok) {
-    const errText = await response.text();
-    debugError("AI API error response", { status: response.status, errorTextHead: errText.slice(0, 500) });
-    throw new Error(`AI API Error (${provider}): ${response.status} ${errText.slice(0, 500)}`);
-  }
-
-  const responseText = await response.text();
+  const responseText = await fetchTextWithRetry(
+    apiUrl,
+    {
+      method: "POST",
+      headers,
+      body: JSON.stringify(requestBody),
+    },
+    { provider, model, apiUrl },
+  );
   let data: { choices?: Array<{ message?: { content?: string } }> };
   try {
     data = JSON.parse(responseText) as { choices?: Array<{ message?: { content?: string } }> };
@@ -285,26 +596,26 @@ async function callAnthropicAPI(
   endpoint = "https://api.anthropic.com/v1/messages",
   puzzleData?: PuzzleDataForAI,
 ): Promise<AIGeneratedContent> {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": apiKey,
-      "anthropic-version": "2023-06-01",
+  const responseText = await fetchTextWithRetry(
+    endpoint,
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify({
+        model,
+        max_tokens: 4096,
+        system: LLM_SYSTEM_PROMPT,
+        messages: [{ role: "user", content: prompt }],
+      }),
     },
-    body: JSON.stringify({
-      model,
-      max_tokens: 4096,
-      messages: [{ role: "user", content: prompt }],
-    }),
-  });
+    { provider: "anthropic", model, apiUrl: endpoint },
+  );
 
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(`Anthropic Error: ${response.status} ${errText}`);
-  }
-
-  const data = (await response.json()) as { content?: Array<{ text?: string }> };
+  const data = JSON.parse(responseText) as { content?: Array<{ text?: string }> };
   const content = data.content?.[0]?.text;
   if (!content) {
     throw new Error("No content from Anthropic");
@@ -314,23 +625,61 @@ async function callAnthropicAPI(
 }
 
 function parseAIResponse(content: string): ParsedAIResponse {
-  let jsonContent = content.trim();
+  const cleaned = stripMarkdownCodeFence(content);
+  const extractedObject = extractFirstJSONObject(cleaned);
+  const candidates = extractedObject && extractedObject !== cleaned ? [cleaned, extractedObject] : [cleaned];
+  let lastError: unknown = null;
 
-  if (jsonContent.startsWith("```json")) {
-    jsonContent = jsonContent.replace(/^```json\n?/, "").replace(/\n?```$/, "");
-  } else if (jsonContent.startsWith("```")) {
-    jsonContent = jsonContent.replace(/^```\n?/, "").replace(/\n?```$/, "");
+  for (const candidate of candidates) {
+    try {
+      return JSON.parse(candidate) as ParsedAIResponse;
+    } catch (error) {
+      lastError = error;
+    }
   }
 
-  try {
-    return JSON.parse(jsonContent) as ParsedAIResponse;
-  } catch (error) {
-    debugError("Failed to parse AI JSON", {
-      error: error instanceof Error ? error.message : String(error),
-      preview: jsonContent.slice(0, 1000),
+  debugError("Failed to parse AI JSON", {
+    error: lastError instanceof Error ? lastError.message : String(lastError),
+    preview: cleaned.slice(0, 1000),
+    extractedPreview: extractedObject?.slice(0, 1000),
+  });
+  throw new Error(`Failed to parse JSON content: ${(lastError as Error)?.message ?? "unknown"}`);
+}
+
+function validateParsedResponseShape(parsed: ParsedAIResponse): ParsedAIResponse {
+  const result = ParsedAIResponseSchema.safeParse(parsed);
+  if (!result.success) {
+    throw new Error(`AI response shape invalid: ${formatZodIssues(result.error.issues)}`);
+  }
+  return result.data as ParsedAIResponse;
+}
+
+function validateParsedSlotsContract(
+  parsedSlots: Partial<AIGeneratedSlots>,
+  puzzleData?: PuzzleDataForAI,
+): Partial<AIGeneratedSlots> {
+  const result = ParsedSlotsSchema.safeParse(parsedSlots);
+  if (!result.success) {
+    throw new Error(`AI slots shape invalid: ${formatZodIssues(result.error.issues)}`);
+  }
+
+  if (!puzzleData) {
+    return result.data as Partial<AIGeneratedSlots>;
+  }
+
+  const slotIssues = validateSlotContract({
+    rawWords: puzzleData.rawWords,
+    mainAnswer: puzzleData.mainAnswer,
+    slots: result.data as Partial<AIGeneratedSlots>,
+  });
+  if (slotIssues.length > 0) {
+    debugInfo("AI slots contract issues", {
+      issues: slotIssues.map((issue) => `${issue.level}:${issue.code}:${issue.field ?? "root"}`),
+      puzzleNumber: puzzleData.puzzleNumber,
     });
-    throw new Error(`Failed to parse JSON content: ${(error as Error)?.message ?? "unknown"}`);
   }
+
+  return result.data as Partial<AIGeneratedSlots>;
 }
 
 type AnswerPattern =
@@ -356,6 +705,25 @@ function ensureSentence(value: string | null | undefined): string {
 function lowerFirst(value: string): string {
   if (!value) return value;
   return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function normalizeGuessLabel(value: string | null | undefined): string {
+  const text = stripQuotes(normalizeText(value));
+  if (!text) return "";
+  if (looksLikeRecognizableTitle(text) || /^[A-Z]{2,}\b/.test(text)) {
+    return text;
+  }
+  return lowerFirst(text);
+}
+
+function withIndefiniteArticle(value: string): string {
+  const text = stripQuotes(normalizeText(value));
+  if (!text) return "";
+  if (/^(a|an|the)\b/i.test(text) || looksLikeRecognizableTitle(text)) {
+    return text;
+  }
+  const article = /^[aeiou]/i.test(text) ? "an" : "a";
+  return `${article} ${lowerFirst(text)}`;
 }
 
 function uniqueNonEmpty(values: Array<string | null | undefined>): string[] {
@@ -410,16 +778,12 @@ function detectAnswerPattern(answer: string): AnswerPattern {
 function buildConnectorSummaryFromAnswer(answer: string): string {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "before" || pattern.kind === "after") {
-    return `a phrase pattern built around ${pattern.token}`;
+    return "a repeated-word phrase pattern with one missing term";
   }
   if (pattern.kind === "typed-category") {
-    return `a category board focused on ${pattern.noun}`;
+    return "different forms of one everyday object";
   }
-  const displayLabel = extractCategoryDisplayLabel(answer);
-  if (displayLabel) {
-    return `a category board focused on ${displayLabel}`;
-  }
-  return "a shared category board with one connector";
+  return "a shared category board with one concrete theme";
 }
 
 function buildFallbackPhrase(clue: string, answer: string): string {
@@ -495,8 +859,8 @@ function extractCategoryStem(answer: string): string {
   const beforeSlash = cleaned.split("/")[0]?.trim() || cleaned;
   const words = beforeSlash.split(/\s+/).filter(Boolean);
   if (words.length === 0) return "";
-  const firstWord = words[0];
-  const lower = firstWord.toLowerCase();
+  const lastWord = words[words.length - 1] || "";
+  const lower = lastWord.toLowerCase();
   return lower.length > 2 ? singularizeToken(lower) : "";
 }
 
@@ -509,15 +873,16 @@ function extractCategoryDisplayLabel(answer: string): string {
   const cleaned = stripQuotes(normalizeText(answer)).replace(/\s*\([^)]*\)\s*$/, "").trim();
   if (!cleaned) return "";
   const beforeSlash = cleaned.split("/")[0]?.trim() || cleaned;
-  const words = beforeSlash.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return "";
-  const firstWord = words[0]?.toLowerCase() || "";
-  return firstWord.length > 2 ? firstWord : "";
+  return beforeSlash.toLowerCase();
 }
 
 function buildReadableCategoryPhrase(clue: string, answer: string): string {
+  const pattern = detectAnswerPattern(answer);
   const normalizedClue = normalizeText(clue);
   if (!normalizedClue) return normalizedClue;
+  if (pattern.kind === "category") {
+    return normalizedClue;
+  }
   const categoryStem = extractCategoryStem(answer);
   if (countWords(normalizedClue) === 1 && categoryStem) {
     const looseClue = normalizeLooseMatch(normalizedClue);
@@ -558,7 +923,58 @@ function simplifyRecognizableTitlePhrase(rawPhrase: string, clue: string, answer
 function looksSuspiciousConnectorSummary(text: string): boolean {
   const normalized = normalizeText(text);
   if (!normalized) return true;
-  return /[()/]/.test(normalized) || normalized.length > 70;
+  return (
+    /[()/]/.test(normalized) ||
+    normalized.length > 70 ||
+    /\b(common household item|everyday item that comes|comes in different varieties|comes in different forms)\b/i.test(normalized) ||
+    /\b(you|your|youre|you're|thinking|guess|joke|actually|really|clearly|obviously|instead|rather than|but not)\b/i.test(
+      normalized,
+    ) ||
+    /\b(descriptor|descriptors|label|labels|term|terms|clue|clues|word|words|adjective|adjectives)\b/i.test(
+      normalized,
+    ) ||
+    /\b(illuminating|common thread|diverse items|diverse|thread between|thread across)\b/i.test(normalized) ||
+    /[,;:]/.test(normalized) ||
+    /\bnot the\b/i.test(normalized)
+  );
+}
+
+function connectorSummaryLeaksAnswer(summary: string, answer: string): boolean {
+  const normalizedSummary = normalizeLooseMatch(summary);
+  if (!normalizedSummary) return true;
+
+  const normalizedAnswer = normalizeLooseMatch(stripQuotes(answer));
+  if (normalizedAnswer && normalizedSummary.includes(normalizedAnswer)) {
+    return true;
+  }
+
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return buildTokenVariants(pattern.token).some((variant) => normalizedSummary.includes(variant));
+  }
+
+  if (pattern.kind === "typed-category") {
+    const normalizedNoun = normalizeLooseMatch(pattern.noun);
+    const normalizedSingularNoun = normalizeLooseMatch(pattern.singularNoun);
+    return (
+      (normalizedNoun.length > 0 && normalizedSummary.includes(normalizedNoun)) ||
+      (normalizedSingularNoun.length > 0 && normalizedSummary.includes(normalizedSingularNoun))
+    );
+  }
+
+  return false;
+}
+
+function isUsableConnectorSummary(value: string | null | undefined, answer: string): value is string {
+  const text = trimTrailingPunctuation(normalizeText(value));
+  if (!text) return false;
+  const words = countWords(text);
+  if (words < SLOT_CONTRACT.connectorSummaryMinWords || words > SLOT_CONTRACT.connectorSummaryMaxWords) {
+    return false;
+  }
+  if (looksSuspiciousConnectorSummary(text)) return false;
+  if (connectorSummaryLeaksAnswer(text, answer)) return false;
+  return true;
 }
 
 function buildCategoryReading(answer: string): string {
@@ -576,21 +992,22 @@ function buildCategoryReading(answer: string): string {
 function buildCategoryFocusQuestion(answer: string): string {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "typed-category") {
-    return `asked what kind of ${pattern.singularNoun.toLowerCase()} each clue described`;
+    return `asked what kind of ${pattern.singularNoun.toLowerCase()} each clue could describe`;
   }
-  return "asked what kind of item each clue was really pointing to";
+  return "asked what kind of thing each clue could really be describing";
 }
 
-function buildCategoryConnectionAnswer(answer: string): string {
+function buildCategoryConnectionAnswer(answer: string, clueCount: number): string {
   const pattern = detectAnswerPattern(answer);
+  const cluePhrase = `all ${clueCount} clues`;
   if (pattern.kind === "typed-category") {
-    return `The connection is that all five clues point to recognizable types of ${pattern.noun.toLowerCase()}.`;
+    return `The connection is that ${cluePhrase} point to recognizable types of ${pattern.noun.toLowerCase()}.`;
   }
   const displayLabel = extractCategoryDisplayLabel(answer);
   if (displayLabel) {
-    return `The connection is that all five clues are ${displayLabel}.`;
+    return `The connection is that ${cluePhrase} fit under ${displayLabel}.`;
   }
-  return "The connection is that all five clues belong in the same category.";
+  return `The connection is that ${cluePhrase} belong in the same category.`;
 }
 
 function buildTokenVariants(token: string): string[] {
@@ -716,20 +1133,146 @@ function buildTurningPointLabel(rawTurningPoint: string | null | undefined, clue
     }
   }
 
-  return `"${clues[2] || clues[0] || "the key clue"}"`;
+  return "a later clue";
+}
+
+function turningPointMentionsClue(rawTurningPoint: string | null | undefined, clue: string): boolean {
+  const looseTurningPoint = normalizeLooseMatch(normalizeText(rawTurningPoint));
+  const looseClue = normalizeLooseMatch(clue);
+  return Boolean(looseTurningPoint && looseClue && looseTurningPoint.includes(looseClue));
+}
+
+function scoreTurningPointCandidate(
+  clue: string,
+  index: number,
+  detail: { surfaceRead: string; phrase: string; whyItWorks: string },
+  rawTurningPoint: string | null | undefined,
+  answer: string,
+): number {
+  const pattern = detectAnswerPattern(answer);
+  const combined = normalizeLooseMatch(
+    [detail.surfaceRead, detail.phrase, detail.whyItWorks].filter(Boolean).join(" "),
+  );
+  let score = 0;
+
+  if (turningPointMentionsClue(rawTurningPoint, clue)) {
+    score += 6;
+  }
+
+  if (index === 2) score += 3;
+  else if (index === 1 || index === 3) score += 2;
+  else score += 1;
+
+  if (hasVisualCue(clue) || /[()]/.test(clue)) {
+    score -= 3;
+  }
+
+  if (pattern.kind === "typed-category" || pattern.kind === "category") {
+    if (
+      /\b(gesture|devotion|devotional|ritual|spiritual|religious|symbol|concept|abstract|celebration|self care|self-care|wellness)\b/.test(
+        combined,
+      )
+    ) {
+      score += 4;
+    }
+
+    if (
+      /\b(type|kind|specific|used in|placed on|classified|classification|small and often|cake|ceremony)\b/.test(
+        combined,
+      )
+    ) {
+      score += 2;
+    }
+
+    if (
+      /\b(scent|smell|fragrance|aroma|odor|relax|relaxation|outdoor|decorative|decoration|gift|gifts|oil|insect|repel)\b/.test(
+        combined,
+      )
+    ) {
+      score -= 3;
+    }
+  }
+
+  return score;
+}
+
+function refineTurningPointLabel(
+  rawTurningPoint: string | null | undefined,
+  currentLabel: string,
+  clues: string[],
+  clueDetails: Array<{ clue: string; surfaceRead: string; phrase: string; whyItWorks: string }>,
+  answer: string,
+): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return currentLabel;
+  }
+
+  const byClue = new Map(clueDetails.map((detail) => [detail.clue, detail]));
+  let bestClue = "";
+  let bestScore = Number.NEGATIVE_INFINITY;
+
+  for (const [index, clue] of clues.entries()) {
+    const detail = byClue.get(clue);
+    if (!detail) continue;
+    const score = scoreTurningPointCandidate(clue, index, detail, rawTurningPoint, answer);
+    if (score > bestScore) {
+      bestScore = score;
+      bestClue = clue;
+    }
+  }
+
+  if (!bestClue) {
+    return currentLabel;
+  }
+
+  if (bestScore < 3 && !hasSpecificTurningPointLabel(currentLabel)) {
+    return currentLabel;
+  }
+
+  return `"${bestClue}"`;
+}
+
+function hasSpecificTurningPointLabel(label: string): boolean {
+  const normalized = normalizeText(stripQuotes(label));
+  return Boolean(normalized && normalizeLooseMatch(normalized) !== "a later clue");
+}
+
+function turningPointSubject(label: string): string {
+  return hasSpecificTurningPointLabel(label) ? stripQuotes(label) : "A later clue";
+}
+
+function turningPointReference(label: string): string {
+  return hasSpecificTurningPointLabel(label) ? lowerFirst(stripQuotes(label)) : "a later clue";
+}
+
+function looksSuspiciousTurningPointText(value: string | null | undefined): boolean {
+  const normalized = normalizeText(value);
+  if (!normalized) return true;
+  return /\b(pattern click|makes the pattern click|locked in the pattern|form factor|alongside the others|repeating form factor|click into place|connection click)\b/i.test(
+    normalized,
+  );
+}
+
+function buildTurningPointFallbackSentence(label: string, answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (!hasSpecificTurningPointLabel(label)) {
+    return pattern.kind === "before" || pattern.kind === "after"
+      ? "A later clue is what finally made the missing word visible."
+      : "A later clue is what finally made the answer feel concrete.";
+  }
+
+  const subject = turningPointSubject(label);
+  return pattern.kind === "before" || pattern.kind === "after"
+    ? `${subject} is the clue that finally made the missing word visible.`
+    : `${subject} is the clue that finally made the answer feel concrete.`;
 }
 
 function normalizeConnectorSummary(value: string | null | undefined, answer: string): string {
-  const pattern = detectAnswerPattern(answer);
-  if (pattern.kind === "before" || pattern.kind === "after" || pattern.kind === "typed-category") {
-    return buildConnectorSummaryFromAnswer(answer);
+  if (isUsableConnectorSummary(value, answer)) {
+    return trimTrailingPunctuation(normalizeText(value));
   }
-  if (pattern.kind === "category") {
-    return buildConnectorSummaryFromAnswer(answer);
-  }
-  const text = trimTrailingPunctuation(normalizeText(value));
-  if (!text || looksSuspiciousConnectorSummary(text)) return buildConnectorSummaryFromAnswer(answer);
-  return text;
+  return buildConnectorSummaryFromAnswer(answer);
 }
 
 function normalizePhraseDisplay(phrase: string, answer: string): string {
@@ -790,6 +1333,15 @@ function sanitizeFalseStarts(
     if (countWords(candidate) <= 1 && normalizedCandidate.length < 6) return false;
     if (/[()/]/.test(candidate) || countWords(candidate) > 3) return false;
     if (/^(brands?|types?|kinds?) of\b/i.test(normalizeText(candidate))) return false;
+    if (
+      /\b(products?|items?|things?|categories?)\s+for\b/i.test(normalizeText(candidate)) ||
+      /\bfor\s+(adults?|kids?|children|men|women|people|beginners|gift giving|gift-giving)\b/i.test(
+        normalizeText(candidate),
+      ) ||
+      /\bretail\b|\becommerce\b|\be-commerce\b/i.test(normalizeText(candidate))
+    ) {
+      return false;
+    }
 
     if (answerPattern.kind === "category" || answerPattern.kind === "typed-category") {
       const words = normalizeText(candidate).split(/\s+/).filter(Boolean);
@@ -818,7 +1370,7 @@ function sanitizeFalseStarts(
     }
 
     return true;
-  }).slice(0, 2);
+  }).map((candidate) => normalizeGuessLabel(candidate)).filter(Boolean).slice(0, 2);
 }
 
 function looksMachineyWrongGuess(value: string | null | undefined): boolean {
@@ -826,7 +1378,11 @@ function looksMachineyWrongGuess(value: string | null | undefined): boolean {
   if (!normalized) return true;
   return (
     /^(brands?|types?|kinds?) of\b/i.test(normalized) ||
+    /^ways to\b/i.test(normalized) ||
     /\b(items?|things?|objects?|stuff)\b/i.test(normalized) ||
+    /\b(products?|items?|things?|categories?)\s+for\b/i.test(normalized) ||
+    /\bfor\s+(adults?|kids?|children|men|women|people|beginners)\b/i.test(normalized) ||
+    /\bgift (ideas?|items?)\b/i.test(normalized) ||
     /\bvehicle brands?\b/i.test(normalized) ||
     /\bbrands? of vehicles?\b/i.test(normalized) ||
     /\bwarning words?\b/i.test(normalized) ||
@@ -855,6 +1411,34 @@ function inferBroadFallbackGuesses(clues: string[]): string[] {
   return uniqueNonEmpty(guesses).slice(0, 2);
 }
 
+function buildTypedCategoryFallbackGuesses(answer: string, clues: string[]): string[] {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind !== "typed-category") return [];
+
+  const noun = pattern.singularNoun.toLowerCase();
+  const nounSpecificGuesses: Record<string, string[]> = {
+    candle: ["home fragrance", "wellness products"],
+    bike: ["outdoor gear", "vehicle brands"],
+    bicycle: ["outdoor gear", "vehicle brands"],
+    magazine: ["newspapers", "media brands"],
+    rose: ["flowers", "gardening terms"],
+    ray: ["science terms", "animal names"],
+    doll: ["collectibles", "toy brands"],
+  };
+
+  const mapped = nounSpecificGuesses[noun];
+  if (mapped?.length) {
+    return mapped;
+  }
+
+  const inferred = inferBroadFallbackGuesses(clues);
+  if (inferred.length > 0) {
+    return inferred;
+  }
+
+  return ["home products", "general consumer goods"];
+}
+
 function buildFallbackFalseStarts(answer: string, clues: string[]): string[] {
   const pattern = detectAnswerPattern(answer);
   if (pattern.kind === "before" || pattern.kind === "after") {
@@ -863,7 +1447,7 @@ function buildFallbackFalseStarts(answer: string, clues: string[]): string[] {
     return ["science terms", "animal names"];
   }
   if (pattern.kind === "typed-category") {
-    return ["collectibles", "toy brands"];
+    return buildTypedCategoryFallbackGuesses(answer, clues);
   }
   const inferred = inferBroadFallbackGuesses(clues);
   if (inferred.length > 0) return inferred;
@@ -906,9 +1490,12 @@ function normalizeSlotClueDetails(
       fallbackPhrase;
     const phrase = normalizePhraseDisplay(phraseCandidate, answer) || fallbackPhrase;
     const surfaceRead = normalizeText(source.surfaceRead) || `a broader or more distracting read of ${clue}`;
+    const turningPointTail = hasSpecificTurningPointLabel(turningPointLabel)
+      ? `especially after ${turningPointReference(turningPointLabel)}`
+      : "especially after a later clue sharpens the solve";
     const whyItWorks =
       normalizeText(source.whyItWorks) ||
-      `${stripQuotes(phrase)} fits once the board is read through ${lowerFirst(connectorSummary)}, especially after ${lowerFirst(stripQuotes(turningPointLabel))}.`;
+      `${stripQuotes(phrase)} fits once the board is read through ${lowerFirst(connectorSummary)}, ${turningPointTail}.`;
 
     return {
       clue,
@@ -935,7 +1522,7 @@ function buildHeroSummary(
       ? "shared phrase logic"
       : "shared category";
   return ensureSentence(
-    `At first glance, ${cluePreview} do not suggest one clean pattern. The board only tightens once a later clue makes the ${frameLabel} feel much more specific.`,
+    `At first glance, ${cluePreview} do not look like one clean set. The solve only tightens once a later clue makes the ${frameLabel} much harder to miss.`,
   );
 }
 
@@ -944,11 +1531,11 @@ function buildOpeningBoardRead(clues: string[], answer: string): string {
   const answerPattern = detectAnswerPattern(answer);
   if (answerPattern.kind === "before" || answerPattern.kind === "after") {
     return ensureSentence(
-      `${preview} do not immediately suggest the same repeated word, so the board feels broader than it really is at the start.`,
+      `${preview} do not immediately line up around one missing word, so the solve starts out looser than it really is.`,
     );
   }
   return ensureSentence(
-    `${preview} do not immediately suggest one clean category, so the board feels broader than it really is at the start.`,
+    `${preview} do not immediately look like the same kind of thing, so the first read can wander in the wrong direction.`,
   );
 }
 
@@ -957,12 +1544,12 @@ function buildFalseStartLead(falseStarts: string[], answer: string): string {
   const firstGuess = falseStarts[0];
   if (!firstGuess) {
     return answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? "That is why a few weak phrase directions can feel plausible before the right repeated word appears."
-      : "That is why a few broad category guesses can feel plausible before the right frame appears.";
+      ? "That is why a few loose phrase guesses can hang around before the missing word shows itself."
+      : "That is why a broad early guess can feel reasonable before one clue forces a more concrete read.";
   }
   return answerPattern.kind === "before" || answerPattern.kind === "after"
-    ? `That is why a broad early read like "${firstGuess}" can feel plausible before the phrase pattern becomes clear.`
-    : `That is why a broad early read like "${firstGuess}" can feel plausible before the category becomes specific enough to trust.`;
+    ? `That is why a first read like "${firstGuess}" can feel plausible before the missing word finally shows itself.`
+    : `That is why a first read like "${firstGuess}" can feel plausible before one clue makes the answer feel concrete.`;
 }
 
 function buildRepresentativeReadings(
@@ -989,12 +1576,35 @@ function buildOverviewResolution(
   const sampleEntries = formatNaturalList(buildRepresentativeReadings(clueDetails, answer));
   if (answerPattern.kind === "before" || answerPattern.kind === "after") {
     return ensureSentence(
-      `From there, ${connectorSummary} explains the board cleanly. Readings like ${sampleEntries} stop feeling random and start behaving like one exact phrase family.`,
+      `From there, ${connectorSummary} explains the board cleanly. Readings like ${sampleEntries} stop feeling loose and start sounding exact.`,
     );
   }
   return ensureSentence(
-    `From there, ${buildCategoryReading(answer)} explains the board cleanly. Entries like ${sampleEntries} stop feeling miscellaneous and start reading like parts of one tight set.`,
+    `From there, ${buildCategoryReading(answer)} explains the board much more cleanly. Entries like ${sampleEntries} stop feeling disconnected and start looking like they belong together.`,
   );
+}
+
+function buildAnswerFocusLabel(answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "typed-category") {
+    return pattern.noun.toLowerCase();
+  }
+  const displayLabel = extractCategoryDisplayLabel(answer);
+  return displayLabel || "one specific category";
+}
+
+function buildResolvedReadingSentence(
+  detail: ReturnType<typeof normalizeSlotClueDetails>[number] | undefined,
+): string {
+  if (!detail) return "";
+  const clue = stripQuotes(normalizeText(detail.clue));
+  const rawPhrase = stripQuotes(normalizeText(detail.phrase));
+  const phrase = looksLikeRecognizableTitle(rawPhrase) ? rawPhrase : lowerFirst(rawPhrase);
+  if (!clue || !phrase) return "";
+  if (normalizeLooseMatch(clue) === normalizeLooseMatch(phrase)) {
+    return ensureSentence(`${clue} fit once I read it through the answer`);
+  }
+  return ensureSentence(`${clue} made sense as ${withIndefiniteArticle(phrase)}`);
 }
 
 function buildDifficultyCloser(answer: string, difficultyReason: string): string {
@@ -1002,8 +1612,68 @@ function buildDifficultyCloser(answer: string, difficultyReason: string): string
   if (normalizedReason) return normalizedReason;
   const answerPattern = detectAnswerPattern(answer);
   return answerPattern.kind === "before" || answerPattern.kind === "after"
-    ? "The puzzle feels harder than it is because the opening clues stay broad until one clue makes the repeated word visible."
-    : "The puzzle feels harder than it is because the clues come from different corners of the same category before the right frame clicks.";
+    ? "The puzzle feels harder than it is because the opening clues stay broad until one clue makes the missing word obvious."
+    : "The puzzle feels harder than it is because the clues do not all look like the same kind of thing until the right read appears.";
+}
+
+function buildArticleBreakdown(
+  puzzleNumber: number,
+  clues: string[],
+  falseStarts: string[],
+  rejectedGuess: { guess: string; explanation: string } | undefined,
+  turningPointLabel: string,
+  connectorSummary: string,
+  clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
+  answer: string,
+): string {
+  const answerPattern = detectAnswerPattern(answer);
+  const categoryComparison =
+    answerPattern.kind === "typed-category"
+      ? answerPattern.noun.toLowerCase()
+      : answerPattern.kind === "before" || answerPattern.kind === "after"
+        ? "one repeated-word pattern"
+        : "the final answer";
+  const answerFocus = buildAnswerFocusLabel(answer);
+  const firstGuess =
+    rejectedGuess?.guess ||
+    falseStarts[0] ||
+    (answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? "a loose phrase pattern"
+      : "a broad category guess");
+  const firstResolvedReading = buildResolvedReadingSentence(clueDetails[0]);
+  const secondResolvedReading = buildResolvedReadingSentence(clueDetails[1]);
+  const finalChecks = formatNaturalList(clues.slice(-2).map((clue) => `"${clue}"`));
+
+  const paragraphs =
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? [
+          `At first, this looked more like ${firstGuess} than ${categoryComparison}.`,
+          `${clues[0]} pushed me in that direction immediately.`,
+          `${clues[1] || clues[0]} kept that read alive for a moment, but ${turningPointReference(turningPointLabel)} still did not sound right.`,
+          "That was the moment the first idea stopped working.",
+          `Then ${turningPointSubject(turningPointLabel)} made the missing word much harder to miss.`,
+          `Readings like ${formatNaturalList(buildRepresentativeReadings(clueDetails, answer, 2))} finally sounded exact instead of approximate.`,
+          `The answer was ${answer}.`,
+          `${finalChecks} then felt like confirmations, not extra mysteries.`,
+          "Looking back, the whole pattern feels obvious in the best way.",
+        ]
+      : [
+          `At first, this looked more like ${firstGuess} than ${answerFocus}.`,
+          `${clues[0]} pushed me in that direction immediately.`,
+          `${clues[1] || clues[0]} kept that theory alive for a moment, but ${turningPointReference(turningPointLabel)} still did not quite fit.`,
+          "That was the moment the first idea stopped working.",
+          `Then ${turningPointSubject(turningPointLabel)} made me stop thinking about ${firstGuess} and start thinking about ${answerFocus}.`,
+          firstResolvedReading,
+          secondResolvedReading,
+          `The answer was ${answer}.`,
+          `${finalChecks} then felt less surprising and more like the last pieces falling into place.`,
+          "Looking back, the answer feels obvious in the best way.",
+        ];
+
+  return paragraphs
+    .map((paragraph) => ensureSentence(paragraph))
+    .filter(Boolean)
+    .join("\n\n");
 }
 
 function buildOverview(
@@ -1016,13 +1686,16 @@ function buildOverview(
   answer: string,
 ): string {
   const answerPattern = detectAnswerPattern(answer);
+  const answerFocus = buildAnswerFocusLabel(answer);
   const paragraphOne = ensureSentence(
-    `${buildOpeningBoardRead(clues, answer)} ${buildFalseStartLead(falseStarts, answer)} The clue that changes the frame is ${turningPointLabel}.`,
+    answerPattern.kind === "before" || answerPattern.kind === "after"
+      ? `${buildOpeningBoardRead(clues, answer)} ${buildFalseStartLead(falseStarts, answer)} ${turningPointSubject(turningPointLabel)} is the clue that finally makes the missing word visible.`
+      : `${buildOpeningBoardRead(clues, answer)} ${buildFalseStartLead(falseStarts, answer)} ${turningPointSubject(turningPointLabel)} is the clue that finally breaks that first read and makes ${answerFocus} feel concrete.`,
   );
   const turningPointEffect =
     answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? `Once ${lowerFirst(stripQuotes(turningPointLabel))} makes the repeated word visible, the earlier clues stop feeling loose and start reading like exact fits.`
-      : `Once ${lowerFirst(stripQuotes(turningPointLabel))} makes the category specific enough to trust, the earlier clues stop feeling miscellaneous and start pulling toward the same shelf.`;
+      ? `Once ${turningPointReference(turningPointLabel)} makes the missing word visible, the earlier clues stop feeling loose and start sounding exact.`
+      : `Once ${turningPointReference(turningPointLabel)} is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer.`;
   const paragraphTwo = ensureSentence(
     `${buildOverviewResolution(connectorSummary, clueDetails, answer)} ${turningPointEffect} ${buildDifficultyCloser(answer, difficultyReason)}`,
   );
@@ -1039,22 +1712,22 @@ function buildSolutionEmergence(
   answer: string,
 ): string {
   const answerPattern = detectAnswerPattern(answer);
+  const answerFocus = buildAnswerFocusLabel(answer);
   const firstGuess =
     rejectedGuess?.guess ||
     falseStarts[0] ||
     "a broader category that looked promising at first";
   const openingClues = formatQuotedList(clues.slice(0, 2));
-  const solveExamples = formatNaturalList(buildRepresentativeReadings(clueDetails, answer, 2));
   const paragraphOne = ensureSentence(
-    `I did not have a clean read from the first clue. ${openingClues} still left room for ${firstGuess}, so that was the first direction I tested. That idea held for a moment, but it never explained ${stripQuotes(turningPointLabel)} cleanly enough.`,
+    `${openingClues} first pulled me toward ${firstGuess}, so that was the first path I tested. It held together for a moment, but ${turningPointReference(turningPointLabel)} never really fit it.`,
   );
   const paragraphTwo =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? ensureSentence(
-          `The turn came when I let ${lowerFirst(stripQuotes(turningPointLabel))} lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like ${solveExamples} started to feel natural instead of forced, which was the point where the puzzle finally locked in.`,
+          `The solve turned when I let ${turningPointReference(turningPointLabel)} lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like ${formatNaturalList(buildRepresentativeReadings(clueDetails, answer, 2))} started to sound exact, which was when the answer locked in.`,
         )
       : ensureSentence(
-          `The turn came when I stopped treating ${lowerFirst(stripQuotes(turningPointLabel))} as just another item and ${buildCategoryFocusQuestion(answer)}. Once that clue made the frame specific enough to trust, I went back through the board and checked whether each clue belonged on the same shelf. Entries like ${solveExamples} stopped feeling miscellaneous and started behaving like one clean set, which was when the solve clicked.`,
+          `The solve turned when I stopped treating ${turningPointReference(turningPointLabel)} as just another clue and ${buildCategoryFocusQuestion(answer)}. Once I made that shift, I was no longer thinking about ${firstGuess}; I was thinking about ${answerFocus}. That was when the answer became clear.`,
         );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();
@@ -1075,7 +1748,7 @@ function buildWrongGuesses(
     explanation:
       normalizeText(index === 0 ? rejectedGuess?.explanation : "") ||
       ensureSentence(
-        `${guess} feels plausible early on, but it falls apart once ${lowerFirst(stripQuotes(turningPointLabel))} demands a more exact reading.`,
+        `${guess} feels plausible early on, but it falls apart once ${turningPointReference(turningPointLabel)} demands a more exact reading.`,
       ),
   }));
 }
@@ -1087,10 +1760,10 @@ function sanitizeRejectedGuess(
 ) {
   const fallbackGuess = falseStarts[0] || "an early category guess";
   const rawGuess = normalizeText(rejectedGuess?.guess);
-  const guess = rawGuess && !looksMachineyWrongGuess(rawGuess) ? rawGuess : fallbackGuess;
+  const guess = normalizeGuessLabel(rawGuess && !looksMachineyWrongGuess(rawGuess) ? rawGuess : fallbackGuess);
   const explanation =
     normalizeText(rejectedGuess?.explanation) ||
-    `${guess} feels plausible early on, but ${lowerFirst(stripQuotes(turningPointLabel))} demands a more exact reading.`;
+    `${guess} feels plausible early on, but ${turningPointReference(turningPointLabel)} demands a more exact reading.`;
 
   return {
     guess,
@@ -1121,7 +1794,7 @@ function buildLessons(
     {
       title: "The narrowing clue matters more than the loudest clue",
       body: ensureSentence(
-        `${stripQuotes(turningPointLabel)} is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`,
+        `${turningPointSubject(turningPointLabel)} is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`,
       ),
     },
     {
@@ -1140,12 +1813,13 @@ function buildFaqs(
   difficultyReason: string,
 ) {
   const answerPattern = detectAnswerPattern(puzzleData.mainAnswer);
+  const clueCount = puzzleData.rawWords.length || SLOT_CONTRACT.clueDetailsRequired;
   const connectionAnswer =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`
       : answerPattern.kind === "typed-category"
-        ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} ${stripQuotes(turningPointLabel)} is the clue that makes the category specific enough to verify across the full board`
-        : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer)} ${stripQuotes(turningPointLabel)} is what keeps the category reading precise instead of broad`;
+        ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer, clueCount)} ${turningPointSubject(turningPointLabel)} is the clue that makes the category specific enough to verify across the full board`
+        : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer, clueCount)} ${turningPointSubject(turningPointLabel)} is what keeps the category reading precise instead of broad`;
   return [
     {
       question: `What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
@@ -1160,7 +1834,7 @@ function buildFaqs(
     {
       question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
       answer: ensureSentence(
-        `${stripQuotes(turningPointLabel)} is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. ${difficultyReason}`,
+        `${turningPointSubject(turningPointLabel)} is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. ${difficultyReason}`,
       ),
     },
   ];
@@ -1177,8 +1851,8 @@ function composeFromSlots(
   const connectorSummary = normalizeConnectorSummary(slots.connectorSummary, mainAnswer);
   const turningPoint =
     ensureSentence(slots.turningPoint) ||
-    ensureSentence(`${clues[2] || clues[0] || "the later clue"} is the clue that tightens the board.`);
-  const turningPointLabel = buildTurningPointLabel(turningPoint, clues);
+    ensureSentence("A later clue is what finally tightens the board.");
+  let turningPointLabel = buildTurningPointLabel(turningPoint, clues);
   const difficultyReason =
     ensureSentence(slots.difficultyReason) ||
     (answerPattern.kind === "before" || answerPattern.kind === "after"
@@ -1187,13 +1861,30 @@ function composeFromSlots(
   const portableTakeaway =
     ensureSentence(slots.portableTakeaway) ||
     "When the early clues feel broad, wait for the word that narrows the pattern before committing.";
-  const clueDetails = normalizeSlotClueDetails(
+  let clueDetails = normalizeSlotClueDetails(
     slots.clueDetails,
     clues,
     mainAnswer,
     turningPointLabel,
     connectorSummary,
   );
+  const refinedTurningPointLabel = refineTurningPointLabel(
+    turningPoint,
+    turningPointLabel,
+    clues,
+    clueDetails,
+    mainAnswer,
+  );
+  if (refinedTurningPointLabel !== turningPointLabel) {
+    turningPointLabel = refinedTurningPointLabel;
+    clueDetails = normalizeSlotClueDetails(
+      slots.clueDetails,
+      clues,
+      mainAnswer,
+      turningPointLabel,
+      connectorSummary,
+    );
+  }
   const providedFalseStarts = sanitizeFalseStarts(
     uniqueNonEmpty(slots.falseStarts ?? []),
     clues,
@@ -1234,6 +1925,16 @@ function composeFromSlots(
   const trivia = ensureSentence(
     "Did you know? The cleanest Pinpoint solves usually come from one repeatable reading that makes every clue feel natural, not forced.",
   );
+  const detailedBreakdown = buildArticleBreakdown(
+    puzzleNumber,
+    clues,
+    falseStarts,
+    rejectedGuess,
+    turningPointLabel,
+    connectorSummary,
+    clueDetails,
+    mainAnswer,
+  );
 
   return {
     sections: {
@@ -1251,11 +1952,11 @@ function composeFromSlots(
       trivia,
     },
     analysis: {
-      detailedBreakdown: `${overview}\n\n${solutionEmergence}`.trim(),
+      detailedBreakdown,
       dailyDebrief: ensureSentence(
         answerPattern.kind === "before" || answerPattern.kind === "after"
-          ? `LinkedIn Pinpoint #${puzzleNumber} resolves through ${lowerFirst(connectorSummary)}. The explicit answer is "${mainAnswer}", with ${lowerFirst(stripQuotes(turningPointLabel))} serving as the turning point.`
-          : `LinkedIn Pinpoint #${puzzleNumber} resolves as a category board. The explicit answer is "${mainAnswer}", with ${lowerFirst(stripQuotes(turningPointLabel))} serving as the clue that tightens the frame.`,
+          ? `LinkedIn Pinpoint #${puzzleNumber} resolves through ${lowerFirst(connectorSummary)}. The explicit answer is "${mainAnswer}", with ${turningPointReference(turningPointLabel)} serving as the turning point.`
+          : `LinkedIn Pinpoint #${puzzleNumber} resolves as a category board. The explicit answer is "${mainAnswer}", with ${turningPointReference(turningPointLabel)} serving as the clue that tightens the frame.`,
       ),
       heroSummary,
       seoTitle: buildPinpointTitle(puzzleNumber, clues),
@@ -1268,9 +1969,10 @@ function composeFromSlots(
       heroIntroSpoilerSafe: heroSummary,
       connectorSummary,
       turningPoint: ensureSentence(
-        normalizeLooseMatch(turningPoint).includes(normalizeLooseMatch(stripQuotes(turningPointLabel)))
+        !looksSuspiciousTurningPointText(turningPoint) &&
+          normalizeLooseMatch(turningPoint).includes(normalizeLooseMatch(stripQuotes(turningPointLabel)))
           ? stripQuotes(turningPoint)
-          : `${stripQuotes(turningPointLabel)} is the clue that makes the pattern click.`,
+          : buildTurningPointFallbackSentence(turningPointLabel, mainAnswer),
       ),
       falseStarts,
       rejectedGuess,
@@ -1285,7 +1987,10 @@ function validateAndFixGeneratedContent(
   parsed: ParsedAIResponse,
   puzzleData?: PuzzleDataForAI,
 ): AIGeneratedContent {
-  const normalized = parsed.slots ? composeFromSlots(parsed.slots, puzzleData) : { ...parsed };
+  const validatedParsed = validateParsedResponseShape(parsed);
+  const normalized = validatedParsed.slots
+    ? composeFromSlots(validateParsedSlotsContract(validatedParsed.slots, puzzleData), puzzleData)
+    : { ...validatedParsed };
 
   if (!normalized.sections) {
     throw new Error('AI response missing "sections" object');

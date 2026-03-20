@@ -49,20 +49,20 @@ export function PuzzleDetail({
           <span>{`Pinpoint #${puzzle.number}`}</span>
         </nav>
 
-        <p className="eyebrow legacy-detail-kicker">Permanent Pinpoint answer &amp; walkthrough (Pinpoint Today archive)</p>
-        <h1 className="legacy-detail-title">{`LinkedIn Pinpoint #${puzzle.number} Answer & Walkthrough`}</h1>
+        <p className="eyebrow legacy-detail-kicker">Permanent Pinpoint answer &amp; analysis (Pinpoint Today archive)</p>
+        <h1 className="legacy-detail-title">{`LinkedIn Pinpoint #${puzzle.number} Answer & Analysis`}</h1>
         <p className="legacy-detail-published">{`Published on ${formatLegacyDate(puzzle.isoDate)}`}</p>
         <div className="legacy-detail-verified">
           <span aria-hidden="true">✅</span>
           <span>Verified by Human Editor</span>
         </div>
         <p className="copy legacy-detail-summary">
-          {`This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and see how each clue fits together.`}
+          {`This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and read the full analysis of how each clue fits together.`}
         </p>
 
         <div className="legacy-detail-actions">
           <a className="button-primary" href="#analysis">
-            Jump to full Pinpoint answer walkthrough
+            Jump to full Pinpoint analysis
           </a>
           <Link className="button-secondary" href={routes.archive}>
             Browse all Pinpoint answer pages

@@ -553,15 +553,15 @@
 }
 
 .legacy-analysis-flow {
-  width: min(1220px, 100%);
+  width: min(980px, 100%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 24px;
+  gap: 26px;
 }
 
 .legacy-puzzle-nav {
-  width: min(1220px, 100%);
+  width: min(980px, 100%);
   margin: 32px auto 0;
   display: flex;
   align-items: center;
@@ -587,18 +587,35 @@
 
 .legacy-analysis-shell,
 .legacy-next-shell {
-  border-radius: 22px;
-  border: 1px solid var(--brand-line);
+  border-radius: 18px;
+  border: 1px solid color-mix(in oklch, var(--brand-line) 70%, white 30%);
   background: color-mix(in oklch, var(--surface) 96%, white 4%);
-  box-shadow: var(--shadow);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
 }
 
 .legacy-analysis-shell {
-  padding: 34px 36px;
+  padding: 28px 30px 34px;
 }
 
 .legacy-analysis-header {
+  margin-bottom: 12px;
+}
+
+.legacy-analysis-meta {
+  display: grid;
+  gap: 2px;
   margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid color-mix(in oklch, var(--brand-line) 60%, white 40%);
+}
+
+.legacy-analysis-meta-line {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  font-style: italic;
+  color: color-mix(in oklch, var(--muted) 55%, var(--text) 45%);
 }
 
 .legacy-analysis-header-inner {
@@ -628,25 +645,30 @@
 
 .legacy-analysis-title {
   margin: 0;
-  font-size: 30px;
-  line-height: 1.12;
+  font-family: var(--font-sans);
+  font-size: 22px;
+  line-height: 1.28;
   font-weight: 700;
+  letter-spacing: -0.01em;
+  color: color-mix(in oklch, var(--text) 72%, white 28%);
 }
 
 .legacy-analysis-section {
-  padding-top: 24px;
-  border-top: 1px solid var(--brand-line);
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in oklch, var(--brand-line) 65%, white 35%);
 }
 
 .legacy-analysis-section + .legacy-analysis-section {
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .legacy-section-title {
   margin: 0 0 14px;
-  font-size: 20px;
-  line-height: 1.24;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.35;
   font-weight: 700;
+  color: color-mix(in oklch, var(--text) 68%, white 32%);
 }
 
 .legacy-bullet-list,
@@ -692,14 +714,26 @@
 
 .legacy-prose-stack {
   display: grid;
-  gap: 12px;
+  gap: 18px;
 }
 
 .legacy-prose-stack p {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--text);
+  max-width: 72ch;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.72;
+  letter-spacing: 0;
+  color: color-mix(in oklch, var(--text) 82%, white 18%);
+}
+
+.legacy-category-answer {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.65;
+  font-weight: 600;
+  color: color-mix(in oklch, var(--text) 88%, white 12%);
 }
 
 .legacy-lesson-body {
@@ -724,7 +758,7 @@
 
 .legacy-clue-table-shell {
   border: 1px solid var(--brand-line);
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
 }
 
@@ -739,11 +773,12 @@
 
 .legacy-table-kicker {
   margin: 0;
-  font-size: 12px;
+  font-family: var(--font-sans);
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--brand);
+  letter-spacing: 0;
+  text-transform: none;
+  color: color-mix(in oklch, var(--text) 68%, white 32%);
 }
 
 .legacy-table-kicker-row .legacy-section-icon {
@@ -755,8 +790,9 @@
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  font-family: var(--font-sans);
   font-size: 15px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .legacy-clue-table thead tr {
@@ -767,8 +803,8 @@
   padding: 12px 18px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
   color: var(--muted);
   border-bottom: 1px solid var(--brand-line);
 }
@@ -807,6 +843,7 @@
 
 .legacy-faq-question {
   margin: 0;
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.35;
   font-weight: 700;
@@ -814,8 +851,9 @@
 
 .legacy-faq-card .copy {
   margin: 8px 0 0;
+  font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.68;
+  line-height: 1.72;
 }
 
 .legacy-next-shell {

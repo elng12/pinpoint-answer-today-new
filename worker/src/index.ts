@@ -146,9 +146,46 @@ function toParagraphs(value: unknown, fallback: string): string[] {
   return paragraphs.length > 0 ? paragraphs : [source];
 }
 
+function buildWorkerArticleBreakdown(
+  puzzleNumber: number,
+  words: string[],
+  answer: string,
+  turningPoint: string,
+): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  const connectorSummary = buildWorkerConnectorSummary(answer);
+  const sampleReads = words
+    .slice(0, 2)
+    .map((word) => `"${buildWorkerFallbackPhrase(word, answer)}"`)
+    .join(" and ");
+  const finalChecks = words.slice(-2).map((word) => `"${word}"`).join(" and ");
+
+  const paragraphs =
+    pattern.kind === "before" || pattern.kind === "after"
+      ? [
+          `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
+          `${words[0]} did not give me a stable connector on its own.`,
+          `"${turningPoint}" was the clue that finally made the repeated word visible.`,
+          `Once I had that phrase frame, readings like ${sampleReads} stopped feeling random and started behaving like clean fits.`,
+          `The answer was "${answer}".`,
+          `${finalChecks} then felt more like confirmations than separate mysteries.`,
+          `That is why ${connectorSummary} explains the whole board more cleanly than a loose early guess.`,
+        ]
+      : [
+          `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
+          `${words[0]} and ${words[1]} both leave room for a few broad guesses before the frame gets specific.`,
+          `"${turningPoint}" is the clue that narrows the board enough to test properly.`,
+          `Once I read the board through ${connectorSummary}, entries like ${sampleReads} stopped feeling miscellaneous and started behaving like one clean set.`,
+          `The answer was "${answer}".`,
+          `${finalChecks} then felt more like clean confirmations than loose associations.`,
+        ];
+
+  return paragraphs.join("\n\n");
+}
+
 /**
- * Builds a first-person analysis paragraph (~100 words) from available clue
- * data when the AI-generated detailedBreakdown/overview is missing or too thin.
+ * Builds a first-person article-style walkthrough from available clue data
+ * when the AI-generated detailedBreakdown/overview is missing or too thin.
  */
 function buildFallbackAnalysis(
   puzzleNumber: number,
@@ -156,20 +193,14 @@ function buildFallbackAnalysis(
   answer: string,
   clueDetails: Array<Record<string, unknown>>,
 ): string {
-  const clueLines = words.map((word, i) => {
-    const detail = clueDetails[i];
-    const explanation = typeof detail?.explanation === "string"
-      ? detail.explanation
-      : `${word} fits the theme`;
-    return `"${word}" — ${explanation}`;
-  });
-  const clueBlock = clueLines.join(". ");
-  return (
-    `I approached Pinpoint #${puzzleNumber} by testing each clue against possible connecting words. ` +
-    `The five clues were ${words.map((w) => `"${w}"`).join(", ")}. ` +
-    clueBlock + `. ` +
-    `Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. ` +
-    `The answer is "${answer}" because it is the first reading that explains all five clues without forcing any of them.`
+  const turningPoint =
+    clueDetails.find((detail) => typeof detail?.clue === "string" && typeof detail?.explanation === "string")
+      ?.clue as string | undefined;
+  return buildWorkerArticleBreakdown(
+    puzzleNumber,
+    words,
+    answer,
+    turningPoint || pickWorkerTurningPoint(words, answer),
   );
 }
 
@@ -916,26 +947,30 @@ function buildTemplateFallbackPayload(
   const overviewParagraphs =
     pattern.kind === "before" || pattern.kind === "after"
       ? [
-          `Pinpoint #${puzzleNumber} looks wider than it really is because clues like ${words.slice(0, 3).join(", ")} can point in several directions before one clue narrows the frame. The board settles once "${turningPoint}" is read as "${turningPhrase}", because the earlier clues then stop feeling random and start reading like natural phrases.`,
-          `From there, ${connectorSummary} explains the full set more cleanly than loose category guesses. Each clue resolves through a phrase that naturally includes the shared word, and the final confirmation works because the same reading holds across all five clues without forcing any of them.`,
+          `At first glance, ${words.slice(0, 3).join(", ")} can point in several directions. "${turningPoint}" is the clue that finally makes the repeated word visible.`,
+          `Once that phrase frame appears, ${connectorSummary} explains the whole set more cleanly than a loose early guess.`,
         ]
       : [
-          `At first glance, ${words.slice(0, 3).join(", ")} do not suggest one clean category. The board tightens once "${turningPoint}" makes the shared frame specific enough to test across all five clues, because the earlier words then stop feeling broad and start feeling like exact members of the same set.`,
-          `From there, ${connectorSummary} explains the board more cleanly than broader labels. The clues work because each one belongs in the same frame, not because the words merely feel adjacent or loosely related.`,
+          `At first glance, ${words.slice(0, 3).join(", ")} do not point to one neat category. "${turningPoint}" is the clue that makes the board specific enough to test.`,
+          `Once the board is read through ${connectorSummary}, the earlier clues stop feeling broad and start behaving like exact members of one set.`,
         ];
 
   const solutionParagraphs =
     pattern.kind === "before" || pattern.kind === "after"
       ? [
-          `I did not have a clean connector from the first clue. ${words[0]} and ${words[1]} both support a few weak guesses on their own, so I waited for a clue that felt more specific instead of forcing an answer too early.`,
-          `The turn came when "${turningPoint}" clicked as "${turningPhrase}". Once I read the board through that shared word, the earlier clues started to behave like natural phrases rather than isolated prompts, and that was the first point where one connector explained the full set cleanly.`,
+          `I did not have a stable connector from the first clue. ${words[0]} and ${words[1]} both left room for weak phrase guesses.`,
+          `The solve turned when "${turningPoint}" clicked as "${turningPhrase}".`,
+          `Once I had that repeated word, the earlier clues started behaving like natural phrases instead of isolated prompts.`,
+          `The answer was "${answer}".`,
         ]
       : [
-          `I did not have a clean category from the first clue. ${words[0]} and ${words[1]} could each belong to several broad topics, so the set felt wider than it really was until one clue made the board specific enough to test properly.`,
-          `The turn came when "${turningPoint}" made the shared frame specific enough to re-check across the whole board. Once I read the board through ${connectorSummary}, the earlier clues stopped feeling broad and started feeling like exact members of the same set.`,
+          `I did not trust my first read of the board. ${words[0]} and ${words[1]} both left too much room for a broad guess.`,
+          `The solve turned when "${turningPoint}" gave me a specific frame to test across all five clues.`,
+          `Once I read the board through ${connectorSummary}, the earlier words stopped feeling miscellaneous.`,
+          `The answer was "${answer}".`,
         ];
 
-  const detailedBreakdown = overviewParagraphs.join("\n\n");
+  const detailedBreakdown = buildWorkerArticleBreakdown(puzzleNumber, words, answer, turningPoint);
   const solutionEmergence = solutionParagraphs.join("\n\n");
   const lessons = [
     {

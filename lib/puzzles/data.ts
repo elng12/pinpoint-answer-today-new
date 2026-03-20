@@ -96,9 +96,7 @@ type LiveAnswerPattern =
 const GITHUB_RAW_BASE =
   process.env.GITHUB_RAW_BASE ??
   "https://raw.githubusercontent.com/elng12/pinpoint-answer-today-new/main";
-const PINPOINT_WORKER_HEALTH_URL =
-  process.env.PINPOINT_WORKER_HEALTH_URL ??
-  "https://pinpoint-worker.2296744453m.workers.dev/health";
+const DEFAULT_PINPOINT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.dev/health";
 const BASELINE_NUMBER = 536;
 const BASELINE_DATE_UTC = Date.UTC(2025, 9, 18); // 2025-10-18
 const MS_IN_DAY = 86_400_000;
@@ -137,6 +135,10 @@ function asRecord(value: unknown): Record<string, unknown> | null {
     return null;
   }
   return value as Record<string, unknown>;
+}
+
+function getPinpointWorkerHealthUrl(): string {
+  return (process.env.PINPOINT_WORKER_HEALTH_URL ?? DEFAULT_PINPOINT_WORKER_HEALTH_URL).trim();
 }
 
 function isIsoDate(value: string): boolean {
@@ -528,6 +530,39 @@ function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint: strin
   ];
 }
 
+function buildLiveArticleBreakdown(
+  puzzleNumber: number,
+  clues: string[],
+  answer: string,
+  turningPoint: string,
+): string[] {
+  const pattern = detectLiveAnswerPattern(answer);
+  const connectorSummary = buildLiveConnectorSummary(answer);
+  const sampleReads = clues
+    .slice(0, 2)
+    .map((clue) => `"${buildLiveFallbackPhrase(clue, answer)}"`)
+    .join(" and ");
+  const finalChecks = clues.slice(-2).map((clue) => `"${clue}"`).join(" and ");
+
+  return pattern.kind === "before" || pattern.kind === "after"
+    ? [
+        `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
+        `${clues[0]} did not give me a stable connector on its own.`,
+        `"${turningPoint}" is the clue that finally makes the repeated word visible.`,
+        `Once I had that phrase frame, readings like ${sampleReads} stopped feeling random and started behaving like clean fits.`,
+        `The answer was ${answer}.`,
+        `${finalChecks} then felt more like confirmations than separate mysteries.`,
+      ]
+    : [
+        `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
+        `${clues[0]} and ${clues[1]} both leave room for broad guesses before the frame gets specific.`,
+        `"${turningPoint}" is the clue that narrows the board enough to test properly.`,
+        `Once I read the board through ${connectorSummary}, entries like ${sampleReads} stopped feeling miscellaneous and started behaving like one clean set.`,
+        `The answer was ${answer}.`,
+        `${finalChecks} then felt more like clean confirmations than loose associations.`,
+      ];
+}
+
 function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null {
   const puzzleNumber = inferPuzzleNumberFromDate(record.puzzleDate);
   if (!puzzleNumber) return null;
@@ -542,6 +577,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const lessons = buildLiveLessons(answer, turningPoint);
   const wordHints = buildLiveWordHints(record.clues, answer);
   const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint);
+  const fullAnalysis = buildLiveArticleBreakdown(puzzleNumber, record.clues, answer, turningPoint);
   const display: PuzzleDetailDisplay = {
     connectorSummary,
     fastStrategy: parseLesson(lessons[0]!).body,
@@ -563,15 +599,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     clues: record.clues,
     difficulty: "Moderate",
     shortSummary,
-    fullAnalysis: pattern.kind === "before" || pattern.kind === "after"
-      ? [
-          `At first glance, ${record.clues.slice(0, 3).join(", ")} can point in several directions before one clue narrows the frame. The board tightens once "${turningPoint}" confirms the shared word in a way that makes the earlier clues stop feeling random and start reading like natural phrases.`,
-          `From there, ${connectorSummary} explains the full set more cleanly than loose category guesses. Each clue works because it forms a natural reading under the same shared word, not because the words merely feel adjacent.`,
-        ]
-      : [
-          `At first glance, ${record.clues.slice(0, 3).join(", ")} do not suggest one neat category. The board tightens once "${turningPoint}" makes the shared frame specific enough to test, because the earlier clues then stop feeling broad and start reading like exact members of the same set.`,
-          `From there, ${connectorSummary} explains the board more cleanly than broader labels. The clues work because each one belongs in the same frame, not because the words only feel loosely related.`,
-        ],
+    fullAnalysis,
     solutionNarrative: pattern.kind === "before" || pattern.kind === "after"
       ? [
           `I did not have a clean connector from the first clue. ${record.clues[0]} and ${record.clues[1]} both support a few weak guesses on their own, so I waited for the clue that felt more specific instead of forcing an answer too early.`,
@@ -710,7 +738,7 @@ const fetchPuzzleContent = cache(
 );
 
 const fetchLiveWorkerPuzzle = cache(async (): Promise<PuzzleDetail | null> => {
-  const workerHealthUrl = PINPOINT_WORKER_HEALTH_URL.trim();
+  const workerHealthUrl = getPinpointWorkerHealthUrl();
   if (!workerHealthUrl) return null;
 
   try {

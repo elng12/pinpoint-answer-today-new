@@ -32,7 +32,7 @@ const LOCALIZE_LABELS: Record<string, string> = {
   de: "German (de)",
   "pt-BR": "Brazilian Portuguese (pt-BR)",
 };
-const LLM_TEMPLATE_VERSION = "pinpoint-v7";
+const LLM_TEMPLATE_VERSION = "pinpoint-v9";
 
 type DraftRecord = Record<string, unknown>;
 
@@ -48,7 +48,7 @@ export const maxDuration = 60;
 
 function resolveDefaultModel(
   provider: "openai" | "anthropic" | "zhipu" | "azure",
-  mode: "draft",
+  _mode: "draft",
 ) {
   if (provider === "zhipu") {
     return "glm-4-plus";
@@ -56,7 +56,10 @@ function resolveDefaultModel(
   if (provider === "anthropic") {
     return process.env.ANTHROPIC_MODEL || "claude-3-5-sonnet-20241022";
   }
-  return mode === "draft" ? "google/gemini-2.0-flash-001" : "google/gemini-2.0-flash-001";
+  if (provider === "azure") {
+    return process.env.AI_MODEL || "gpt-4.1-mini";
+  }
+  return process.env.OPENAI_BASE_URL ? "google/gemini-2.0-flash-001" : "gpt-4.1-mini";
 }
 
 function asRecord(value: unknown): DraftRecord | null {
@@ -644,7 +647,7 @@ function buildRepairPrompt(
   const previousJson = JSON.stringify(previous, null, 2);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
   return `
-You are a senior content writer for "Pinpoint Answer Today". Use the V7 Compatible Template.
+You are a senior content writer for "Pinpoint Answer Today". Use the V9 Article Slot Template.
 
 The previous JSON failed validation for LinkedIn Pinpoint #${puzzleData.puzzleNumber}.
 
@@ -664,6 +667,8 @@ Hard rules:
 8. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
 9. overview must not open with the exact answer text or with "The answer is".
 10. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
+11. Keep the prose natural and article-like, not robotic or overly analytical.
+12. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}
