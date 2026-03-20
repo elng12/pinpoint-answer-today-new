@@ -13,11 +13,11 @@
   "answer": "Types of candles",
   "category": "Types of candles",
   "wordHints": {
-    "Aromatherapy": "Many aromatherapy practices use scented versions to enhance relaxation and mood through fragrance.",
-    "Unscented": "Unscented versions serve functional purposes without adding any fragrance to the environment.",
-    "Votive": "Votives are small, often religious, and designed to burn for a relatively short period during prayer or rituals.",
-    "Citronella": "Citronella versions contain oil that repels insects, making them ideal for outdoor use.",
-    "Birthday (make a wish!)": "These small versions are placed on cakes and lit during birthday celebrations for the birthday person to make a wish."
+    "Aromatherapy": "Aromatherapy describes scented oils used for therapeutic benefit, often released via a burning candle.",
+    "Unscented": "Unscented candles provide light without adding fragrance, useful for those sensitive to smells.",
+    "Votive": "Votive candles are small and often used in religious settings or decorative holders.",
+    "Citronella": "Citronella candles contain oil that repels insects, making them common for outdoor use.",
+    "Birthday (make a wish!)": "Birthday candles are placed on cakes and blown out while making a wish."
   },
   "spoilerHints": {
     "Aromatherapy": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
@@ -27,13 +27,13 @@
     "Birthday (make a wish!)": "This is the clue that makes the category specific enough to verify across the whole board."
   },
   "fullAnalysis": [
-    "Aromatherapy, Unscented, and Votive do not immediately suggest one clean category, so the board feels broader than it really is at the start. That is why a broad early read like \"Party supplies\" can feel plausible before the category becomes specific enough to trust. The clue that changes the frame is \"Votive\".",
-    "From there, reading them as candles explains the board cleanly. Entries like Aromatherapy, Unscented, and Votive stop feeling miscellaneous and start reading like parts of one tight set. Once votive makes the category specific enough to trust, the earlier clues stop feeling miscellaneous and start pulling toward the same shelf. The clues cover a range of uses, from practical to celebratory, which obscures the underlying product category.",
-    "I did not have a clean read from the first clue. Aromatherapy and Unscented still left room for Gifts, so that was the first direction I tested. That idea held for a moment, but it never explained Votive cleanly enough.",
+    "Aromatherapy, Unscented, and Votive do not immediately suggest one clean category, so the board feels broader than it really is at the start. That is why a broad early read like \"Room decorations\" can feel plausible before the category becomes specific enough to trust. The clue that changes the frame is \"Votive\".",
+    "From there, reading them as candles explains the board cleanly. Entries like Aromatherapy, Unscented, and Votive stop feeling miscellaneous and start reading like parts of one tight set. Once votive makes the category specific enough to trust, the earlier clues stop feeling miscellaneous and start pulling toward the same shelf. The variety of uses and scents might distract solvers from the core similarity of the objects themselves.",
+    "I did not have a clean read from the first clue. Aromatherapy and Unscented still left room for Gifts you can give, so that was the first direction I tested. That idea held for a moment, but it never explained Votive cleanly enough.",
     "The turn came when I stopped treating votive as just another item and asked what kind of candle each clue described. Once that clue made the frame specific enough to trust, I went back through the board and checked whether each clue belonged on the same shelf. Entries like Aromatherapy and Unscented stopped feeling miscellaneous and started behaving like one clean set, which was when the solve clicked."
   ],
   "solutionNarrative": [
-    "I did not have a clean read from the first clue. Aromatherapy and Unscented still left room for Gifts, so that was the first direction I tested. That idea held for a moment, but it never explained Votive cleanly enough.",
+    "I did not have a clean read from the first clue. Aromatherapy and Unscented still left room for Gifts you can give, so that was the first direction I tested. That idea held for a moment, but it never explained Votive cleanly enough.",
     "The turn came when I stopped treating votive as just another item and asked what kind of candle each clue described. Once that clue made the frame specific enough to trust, I went back through the board and checked whether each clue belonged on the same shelf. Entries like Aromatherapy and Unscented stopped feeling miscellaneous and started behaving like one clean set, which was when the solve clicked."
   ],
   "lessons": [
@@ -47,37 +47,37 @@
     },
     {
       "title": "Prefer precise category fit over broad topic logic",
-      "body": "Consider items by their core function, not just their specific use case."
+      "body": "Consider the root purpose of an object beyond its immediate use to understand its category."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on candles",
-    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "fastStrategy": "Consider the root purpose of an object beyond its immediate use to understand its category.",
     "clueTableRows": [
       {
         "clue": "Aromatherapy",
         "examplePhrase": "Scented candle",
-        "connectionExplained": "Many aromatherapy practices use scented versions to enhance relaxation and mood through fragrance."
+        "connectionExplained": "Aromatherapy describes scented oils used for therapeutic benefit, often released via a burning candle."
       },
       {
         "clue": "Unscented",
-        "examplePhrase": "Plain candle",
-        "connectionExplained": "Unscented versions serve functional purposes without adding any fragrance to the environment."
+        "examplePhrase": "Unscented candle",
+        "connectionExplained": "These provide light without adding fragrance to a space, useful for those sensitive to smells."
       },
       {
         "clue": "Votive",
         "examplePhrase": "Votive candle",
-        "connectionExplained": "Votives are small, often religious, and designed to burn for a relatively short period during prayer or rituals."
+        "connectionExplained": "Votives are small and often used in religious settings or as decorative elements."
       },
       {
         "clue": "Citronella",
         "examplePhrase": "Citronella candle",
-        "connectionExplained": "Citronella versions contain oil that repels insects, making them ideal for outdoor use."
+        "connectionExplained": "Citronella oil is a natural insect repellent, commonly found in outdoor candles."
       },
       {
         "clue": "Birthday (make a wish!)",
         "examplePhrase": "Birthday candle",
-        "connectionExplained": "These small versions are placed on cakes and lit during birthday celebrations for the birthday person to make a wish."
+        "connectionExplained": "These small candles are placed on birthday cakes and are blown out while making a wish."
       }
     ]
   },
@@ -92,7 +92,7 @@
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #689?",
-      "answer": "Votive is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues cover a range of uses, from practical to celebratory, which obscures the underlying product category."
+      "answer": "Votive is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The variety of uses and scents might distract solvers from the core similarity of the objects themselves."
     }
   ]
 }
