@@ -70,6 +70,15 @@ export const footerBadges = [
   },
   {
     kind: "text",
+    name: "Directory Website Promote",
+    text: "Directory Website Promote",
+    url: "https://www.promotebusinessdirectory.com/",
+    alt: "Directory Website Promote",
+    title: "Directory Website Promote",
+    dofollow: true,
+  },
+  {
+    kind: "text",
     name: "Micro SaaS Examples",
     text: "Micro SaaS Examples",
     url: "https://www.microsaasexamples.com/",
