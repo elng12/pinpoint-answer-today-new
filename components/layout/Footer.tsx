@@ -50,7 +50,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             <ul className="footer-link-list footer-link-list-compact">
               {recentEntries.map((entry) => (
                 <li key={entry.slug}>
-                  <Link href={routes.detail(entry.slug)} prefetch={false}>{`#${entry.number}`}</Link>
+                  <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
                 </li>
               ))}
             </ul>
