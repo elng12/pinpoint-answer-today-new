@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 689,
+    "slug": "pinpoint-answer-689",
+    "publishDate": "2026-03-20",
+    "status": "live",
+    "clues": [
+      "Aromatherapy",
+      "Unscented",
+      "Votive",
+      "Citronella",
+      "Birthday (make a wish!)"
+    ],
+    "mainAnswer": "Types of candles",
+    "category": "Types of candles",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Aromatherapy, Unscented, Votive do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific.",
+    "updatedAt": "2026-03-20T08:01:43.355Z"
+  },
+  {
     "puzzleNumber": 688,
     "slug": "pinpoint-answer-688",
     "publishDate": "2026-03-19",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "X",
       "Sting",
@@ -15,7 +33,7 @@
     "category": "Words that come before “ray”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, X, Sting, Cosmic do not suggest one clean pattern. The board only tightens once a later clue makes the shared phrase logic feel much more specific.",
-    "updatedAt": "2026-03-19T08:01:15.842Z"
+    "updatedAt": "2026-03-20T08:01:43.355Z"
   },
   {
     "puzzleNumber": 687,
