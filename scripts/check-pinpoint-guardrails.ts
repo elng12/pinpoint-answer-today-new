@@ -14,6 +14,12 @@ type RegistryEntry = {
   status: string;
 };
 
+function addUtcDays(isoDate: string, days: number): string {
+  const parsed = new Date(`${isoDate}T00:00:00.000Z`);
+  parsed.setUTCDate(parsed.getUTCDate() + days);
+  return parsed.toISOString().slice(0, 10);
+}
+
 async function readLiveRegistryEntry(): Promise<RegistryEntry> {
   const raw = await readFile(resolve(ROOT, "data", "puzzles", "registry.json"), "utf8");
   const registry = JSON.parse(raw) as RegistryEntry[];
@@ -63,12 +69,13 @@ async function withMockWorkerHealth<T>(
 
 async function checkPublishedSummaryRoute() {
   const liveEntry = await readLiveRegistryEntry();
+  const unpublishedWorkerDate = addUtcDays(liveEntry.publishDate, 1);
   const previousWorkerHealthUrl = process.env.PINPOINT_WORKER_HEALTH_URL;
 
   await withMockWorkerHealth(
     {
-      puzzleDate: "2026-03-19",
-      fetchedAt: "2026-03-19T08:01:00.000Z",
+      puzzleDate: unpublishedWorkerDate,
+      fetchedAt: `${unpublishedWorkerDate}T08:01:00.000Z`,
       answers: [
         { rank: 1, word: "Mock One" },
         { rank: 2, word: "Mock Two" },
@@ -96,7 +103,7 @@ async function checkPublishedSummaryRoute() {
       const currentWithFallback = await dataModule.getCurrentPuzzle();
       assert.equal(
         currentWithFallback.isoDate,
-        "2026-03-19",
+        unpublishedWorkerDate,
         "positive control failed: mocked worker live fallback was not picked up",
       );
 
