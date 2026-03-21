@@ -13,11 +13,11 @@
   "answer": "Words that come before \"spoon\"",
   "category": "Words that come before \"spoon\"",
   "wordHints": {
-    "Tea": "\"Tea spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
-    "Soup": "\"Soup spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
-    "Silver": "\"Silver spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
-    "Measuring": "\"Measuring spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
-    "Table (3×Tea most places)": "The familiar expression \"Table (3 spoon Tea most places)\" confirms the shared word \"spoon\" in plain language."
+    "Tea": "\"Teaspoon\" is the clean fit here, because the clue supplies the word that naturally appears before \"spoon\".",
+    "Soup": "\"Soup spoon\" is a standard phrase, so this clue fits cleanly once the board is read through \"spoon\".",
+    "Silver": "\"Silver spoon\" is the clearest confirmation, because it is already a familiar expression on its own.",
+    "Measuring": "\"Measuring spoon\" keeps the same shared word while making the kitchen reading feel more concrete.",
+    "Table (3×Tea most places)": "This clue points to \"tablespoon\" by hinting at the common ratio that one tablespoon equals three teaspoons in many places."
   },
   "spoilerHints": {
     "Tea": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -27,70 +27,90 @@
     "Table (3×Tea most places)": "This is the clue that makes the phrase frame specific enough to trust without revealing the final connector."
   },
   "fullAnalysis": [
-    "Pinpoint #690 looks wider than it really is because clues like Tea, Soup, Silver can point in several directions before one clue narrows the frame. The board settles once \"Table (3×Tea most places)\" is read as \"Table (3 spoon Tea most places)\", because the earlier clues then stop feeling random and start reading like natural phrases.",
-    "From there, a phrase pattern built around spoon explains the full set more cleanly than loose category guesses. Each clue resolves through a phrase that naturally includes the shared word, and the final confirmation works because the same reading holds across all five clues without forcing any of them."
+    "At first, Tea, Soup, and Silver did not look like one clean idea.",
+    "My first instinct was something around dining or table settings.",
+    "That held for a moment, especially with Soup and Silver in the mix.",
+    "But Measuring made the set feel less decorative and more functional.",
+    "The real turn came with Table (3×Tea most places).",
+    "Once I read that clue as tablespoon, the shared word finally showed itself.",
+    "After that, teaspoon, soup spoon, silver spoon, and measuring spoon all snapped into place.",
+    "The answer was Words that come before \"spoon\".",
+    "From there, the board stopped feeling thematic and started feeling exact.",
+    "Looking back, this is one of those Pinpoint sets that seems obvious only after the key phrase appears."
   ],
   "solutionNarrative": [
-    "I did not have a clean connector from the first clue. Tea and Soup both support a few weak guesses on their own, so I waited for a clue that felt more specific instead of forcing an answer too early.",
-    "The turn came when \"Table (3×Tea most places)\" clicked as \"Table (3 spoon Tea most places)\". Once I read the board through that shared word, the earlier clues started to behave like natural phrases rather than isolated prompts, and that was the first point where one connector explained the full set cleanly."
+    "I first treated Tea, Soup, and Silver like broad category clues and drifted toward dining or table settings. That was plausible for a moment, but it still felt too loose because Measuring and the final clue were doing something more exact than a general theme.",
+    "The solve turned when I read Table (3×Tea most places) as tablespoon. Once spoon became the shared word, the earlier clues stopped behaving like broad hints and started reading like exact phrase fits: teaspoon, soup spoon, silver spoon, and measuring spoon."
   ],
   "lessons": [
     {
-      "title": "Wait for the clue that narrows the shared phrase",
-      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact."
+      "title": "Wait for the clue that turns a theme into a phrase pattern",
+      "body": "When the first clues feel broad, the best move is often to wait for the clue that makes one shared word unavoidable."
     },
     {
-      "title": "Prefer exact fits over loose associations",
-      "body": "A strong Pinpoint answer should create natural phrases for all five clues, not just a vibe that seems close enough."
+      "title": "Prefer exact phrase fits over loose category vibes",
+      "body": "A strong Pinpoint answer should create natural readings for every clue, not just a category that feels close enough."
     },
     {
-      "title": "Re-check the earlier clues once the frame tightens",
-      "body": "Once \"Table (3×Tea most places)\" lands, go back and test the earlier clues against the same shared word before locking the answer."
+      "title": "Re-check the early clues once the key phrase appears",
+      "body": "After the shared word clicks, go back through the board and make sure each earlier clue now lands cleanly under the same reading."
     }
   ],
   "display": {
-    "connectorSummary": "a phrase pattern built around spoon",
-    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact.",
+    "connectorSummary": "common phrases built around spoon",
+    "fastStrategy": "When the board feels thematic, wait for the clue that turns it into one exact phrase pattern.",
     "clueTableRows": [
       {
         "clue": "Tea",
-        "examplePhrase": "Tea spoon",
-        "connectionExplained": "\"Tea spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+        "examplePhrase": "teaspoon",
+        "connectionExplained": "Tea fits because \"teaspoon\" is a natural everyday word that cleanly supplies the shared ending."
       },
       {
         "clue": "Soup",
-        "examplePhrase": "Soup spoon",
-        "connectionExplained": "\"Soup spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+        "examplePhrase": "soup spoon",
+        "connectionExplained": "Soup fits through the standard phrase \"soup spoon\", which keeps the same shared word without forcing the wording."
       },
       {
         "clue": "Silver",
-        "examplePhrase": "Silver spoon",
-        "connectionExplained": "\"Silver spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+        "examplePhrase": "silver spoon",
+        "connectionExplained": "Silver is the strongest confirmation because \"silver spoon\" is already a familiar expression on its own."
       },
       {
         "clue": "Measuring",
-        "examplePhrase": "Measuring spoon",
-        "connectionExplained": "\"Measuring spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+        "examplePhrase": "measuring spoon",
+        "connectionExplained": "Measuring keeps the same pattern while making the utensil reading feel concrete instead of abstract."
       },
       {
         "clue": "Table (3×Tea most places)",
-        "examplePhrase": "Table (3 spoon Tea most places)",
-        "connectionExplained": "The familiar expression \"Table (3 spoon Tea most places)\" confirms the shared word \"spoon\" in plain language."
+        "examplePhrase": "tablespoon",
+        "connectionExplained": "The final clue points to \"tablespoon\" by referencing the familiar conversion that a tablespoon equals three teaspoons in many places."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #690?",
-      "answer": "The answer is \"Words that come before \"spoon\"\" because that reading explains the full set cleanly, including \"Table (3×Tea most places)\"."
+      "answer": "The answer is \"Words that come before \"spoon\"\" because Tea, Soup, Silver, Measuring, and the final clue all resolve cleanly once spoon is the shared word."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #690?",
-      "answer": "The connection is a phrase pattern built around spoon. Each clue resolves through a natural phrase that uses the same shared word."
+      "answer": "The connection is a phrase pattern built around spoon. Each clue contributes a natural word or phrase that leads to teaspoon, soup spoon, silver spoon, measuring spoon, or tablespoon."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #690?",
-      "answer": "\"Table (3×Tea most places)\" is the turning point because \"Table (3 spoon Tea most places)\" confirms the shared word in the clearest way."
+      "answer": "\"Table (3×Tea most places)\" is the real turning point because it points to tablespoon and makes spoon impossible to miss as the shared word."
     }
+  ],
+  "articleBlocks": [
+    "At first, Tea, Soup, and Silver did not look like one clean idea.",
+    "My first instinct was something around dining or table settings.",
+    "That held for a moment, especially with Soup and Silver in the mix.",
+    "But Measuring made the set feel less decorative and more functional.",
+    "The real turn came with Table (3×Tea most places).",
+    "Once I read that clue as tablespoon, the shared word finally showed itself.",
+    "After that, teaspoon, soup spoon, silver spoon, and measuring spoon all snapped into place.",
+    "The answer was Words that come before \"spoon\".",
+    "From there, the board stopped feeling thematic and started feeling exact.",
+    "Looking back, this is one of those Pinpoint sets that seems obvious only after the key phrase appears."
   ]
 }
