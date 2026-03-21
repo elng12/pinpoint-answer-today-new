@@ -33,6 +33,7 @@ export type PuzzleDetail = {
   clues: string[];
   difficulty: string;
   shortSummary: string;
+  articleBlocks: string[];
   fullAnalysis: string[];
   solutionNarrative: string[];
   wordHints: Record<string, string>;
@@ -518,14 +519,14 @@ function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint: strin
     {
       question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
       answer: pattern.kind === "before" || pattern.kind === "after"
-        ? `The connection is ${connectorSummary}. Each clue resolves through a natural phrase that uses the same shared word.`
-        : `The connection is ${connectorSummary}. The clues all fit more cleanly once the board is read through the same place, topic, or category frame.`,
+        ? `The connection is ${connectorSummary}. Each clue becomes a familiar phrase once the same shared word is in place.`
+        : `The connection is ${connectorSummary}. The clues all fit more cleanly once they are read through the same specific category.`,
     },
     {
       question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
       answer: pattern.kind === "before" || pattern.kind === "after"
-        ? `"${turningPoint}" is the turning point because it confirms the shared word in the clearest way.`
-        : `"${turningPoint}" is the turning point because it makes the board specific enough to test across all five clues.`,
+        ? `"${turningPoint}" is the turning point because it confirms the shared word more clearly than the earlier clues do.`
+        : `"${turningPoint}" is the turning point because it makes the category specific enough to test across all five clues.`,
     },
   ];
 }
@@ -546,20 +547,18 @@ function buildLiveArticleBreakdown(
 
   return pattern.kind === "before" || pattern.kind === "after"
     ? [
-        `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
-        `${clues[0]} did not give me a stable connector on its own.`,
-        `"${turningPoint}" is the clue that finally makes the repeated word visible.`,
-        `Once I had that phrase frame, readings like ${sampleReads} stopped feeling random and started behaving like clean fits.`,
+        `At first, ${clues[0]} and ${clues[1]} did not point to one shared word on their own.`,
+        `"${turningPoint}" is the clue that makes the repeated word feel exact instead of guessed.`,
+        `Once I had that phrase frame, readings like ${sampleReads} stopped feeling random.`,
         `The answer was ${answer}.`,
-        `${finalChecks} then felt more like confirmations than separate mysteries.`,
+        `${finalChecks} then felt like the last confirmations, not separate mysteries.`,
       ]
     : [
-        `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
-        `${clues[0]} and ${clues[1]} both leave room for broad guesses before the frame gets specific.`,
-        `"${turningPoint}" is the clue that narrows the board enough to test properly.`,
-        `Once I read the board through ${connectorSummary}, entries like ${sampleReads} stopped feeling miscellaneous and started behaving like one clean set.`,
+        `At first, ${clues[0]} and ${clues[1]} could have pointed to a few broad ideas instead of one clean set.`,
+        `"${turningPoint}" is the clue that makes the category specific enough to trust.`,
+        `Once I read the board through ${connectorSummary}, entries like ${sampleReads} started feeling like exact fits instead of loose guesses.`,
         `The answer was ${answer}.`,
-        `${finalChecks} then felt more like clean confirmations than loose associations.`,
+        `${finalChecks} then felt like the last pieces falling into place.`,
       ];
 }
 
@@ -578,6 +577,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const wordHints = buildLiveWordHints(record.clues, answer);
   const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint);
   const fullAnalysis = buildLiveArticleBreakdown(puzzleNumber, record.clues, answer, turningPoint);
+  const articleBlocks = fullAnalysis;
   const display: PuzzleDetailDisplay = {
     connectorSummary,
     fastStrategy: parseLesson(lessons[0]!).body,
@@ -599,6 +599,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     clues: record.clues,
     difficulty: "Moderate",
     shortSummary,
+    articleBlocks,
     fullAnalysis,
     solutionNarrative: pattern.kind === "before" || pattern.kind === "after"
       ? [
@@ -859,6 +860,7 @@ async function toPuzzleDetail(
     clues: detailClues,
     difficulty: entry.difficultyLevel ?? "Moderate",
     shortSummary: entry.shortSummary,
+    articleBlocks: detailContent.articleBlocks ?? detailContent.fullAnalysis,
     fullAnalysis: detailContent.fullAnalysis,
     solutionNarrative: detailContent.solutionNarrative ?? [],
     wordHints: detailContent.wordHints,

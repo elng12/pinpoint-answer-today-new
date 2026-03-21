@@ -45,13 +45,11 @@ function formatPublishedDate(isoDate: string): string {
   }).format(new Date(`${isoDate}T00:00:00Z`));
 }
 
-function buildWalkthroughLead(puzzle: PuzzleDetailRecord): string {
-  return `At first glance, Pinpoint ${puzzle.number} feels broader than it really is.`;
-}
-
 function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
   const sourceParagraphs =
-    puzzle.fullAnalysis.length > 0
+    puzzle.articleBlocks.length > 0
+      ? puzzle.articleBlocks
+      : puzzle.fullAnalysis.length > 0
       ? puzzle.fullAnalysis
       : puzzle.solutionNarrative.length > 0
         ? puzzle.solutionNarrative
@@ -73,19 +71,7 @@ function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
     );
   });
 
-  const firstParagraph = readableParagraphs[0]?.toLowerCase() ?? "";
-  const firstParagraphHasLead =
-    firstParagraph.startsWith("at first") ||
-    firstParagraph.startsWith("at first glance") ||
-    firstParagraph.startsWith("this puzzle") ||
-    firstParagraph.startsWith("this board") ||
-    firstParagraph.startsWith("this one") ||
-    firstParagraph.startsWith("today") ||
-    firstParagraph.includes(`pinpoint ${puzzle.number}`);
-
-  const paragraphsWithLead = firstParagraphHasLead
-    ? readableParagraphs
-    : [buildWalkthroughLead(puzzle), ...readableParagraphs];
+  const paragraphsWithLead = readableParagraphs;
 
   if (anyParagraphMentionsAnswer) {
     return paragraphsWithLead;

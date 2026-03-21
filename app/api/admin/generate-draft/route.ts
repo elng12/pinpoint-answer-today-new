@@ -331,9 +331,9 @@ function buildGroundedHeroSummary(puzzleData: PuzzleDataForAI): string {
   const clues = puzzleData.rawWords.map((word) => normalizeWhitespace(String(word ?? ""))).filter(Boolean);
   const cluePreview = clues.slice(0, 3).join(", ");
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
-  const frameLabel =
-    pattern.kind === "before" || pattern.kind === "after" ? "shared phrase logic" : "shared category";
-  return `At first glance, ${cluePreview} do not suggest one clean pattern. The board only tightens once a later clue makes the ${frameLabel} feel much more specific.`;
+  return pattern.kind === "before" || pattern.kind === "after"
+    ? `At first, ${cluePreview} can point in several directions before one later clue makes the repeated word feel exact.`
+    : `At first, ${cluePreview} do not suggest one clean set until a later clue makes the category specific enough to trust.`;
 }
 
 function buildFallbackFalseStarts(puzzleData: PuzzleDataForAI): string[] {
@@ -380,9 +380,9 @@ function buildFallbackRejectedGuess(
 function buildFallbackTurningPoint(puzzleData: PuzzleDataForAI, turningClue: string): string {
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   if (pattern.kind === "before" || pattern.kind === "after") {
-    return `"${turningClue}" is the clue that makes the phrase pattern click.`;
+    return `"${turningClue}" is the clue that makes the shared word feel exact instead of guessed.`;
   }
-  return `"${turningClue}" is the clue that makes the category click.`;
+  return `"${turningClue}" is the clue that makes the category specific enough to trust.`;
 }
 
 function buildFallbackSolutionEmergence(
@@ -393,13 +393,13 @@ function buildFallbackSolutionEmergence(
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   if (pattern.kind === "before" || pattern.kind === "after") {
     return [
-      `I did not have a clean category from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningClue}" cleanly enough.`,
-      `The turn came when I let "${turningClue}" lead the solve. Once I read the board through a tighter phrase pattern, the earlier clues stopped feeling broad and started reading like natural phrases.`,
+      `I did not have a stable shared word from the first clue. I initially drifted toward ${wrongGuess}, but that reading never explained "${turningClue}" cleanly enough.`,
+      `The turn came when I let "${turningClue}" lead the solve. Once I read the board through one tighter phrase pattern, the earlier clues started behaving like natural fits instead of isolated prompts.`,
     ].join(" ");
   }
   return [
     `I did not have a clean category from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningClue}" cleanly enough.`,
-    `The turn came when I let "${turningClue}" narrow the board. Once I read the clues through one tighter category, the earlier items stopped feeling miscellaneous and started reading like members of the same set.`,
+    `The turn came when I let "${turningClue}" narrow the board. Once I read the clues through one tighter category, the earlier items stopped feeling loose and started reading like members of the same set.`,
   ].join(" ");
 }
 
@@ -443,6 +443,7 @@ Translate the source JSON content from English into ${localeLabel}.
 Output ONLY a valid JSON object with this exact structure:
 {
   "sections": {
+    "articleBlocks": ["..."],
     "overview": "...",
     "solutionEmergence": "...",
     "wrongGuesses": [{ "guess": "...", "explanation": "..." }],
@@ -597,6 +598,9 @@ function collectOutputLanguageIssues(ai: unknown): LanguageIssue[] {
   pushLanguageIssue(issues, "sections.overview", sections.overview);
   pushLanguageIssue(issues, "sections.solutionEmergence", sections.solutionEmergence);
   pushLanguageIssue(issues, "sections.trivia", sections.trivia);
+  (Array.isArray(sections.articleBlocks) ? sections.articleBlocks : []).forEach((item, index) => {
+    pushLanguageIssue(issues, `sections.articleBlocks[${index}]`, item);
+  });
 
   (Array.isArray(sections.wrongGuesses) ? sections.wrongGuesses : []).forEach((item, index) => {
     const row = asRecord(item);
@@ -661,14 +665,15 @@ Hard rules:
    - Answer: ${label}
 3. overview must be at least ${CONTENT_CONTRACT.overviewMinWords} words.
 4. solutionEmergence must be at least ${CONTENT_CONTRACT.solutionEmergenceMinWords} words and use first-person voice.
-5. seoTitle must include all five clues and not the answer.
-6. seoDescription must include all five clues.
-7. clueDetails must include exactly 5 items.
-8. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
-9. overview must not open with the exact answer text or with "The answer is".
-10. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
-11. Keep the prose natural and article-like, not robotic or overly analytical.
-12. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+5. sections.articleBlocks must contain 8 to 14 short paragraphs that read like a natural article.
+6. seoTitle must include all five clues and not the answer.
+7. seoDescription must include all five clues.
+8. clueDetails must include exactly 5 items.
+9. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
+10. overview must not open with the exact answer text or with "The answer is".
+11. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
+12. Keep the prose natural and article-like, not robotic or overly analytical.
+13. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}

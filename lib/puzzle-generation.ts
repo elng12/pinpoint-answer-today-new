@@ -21,6 +21,7 @@ type SlotClueDetail = PuzzleSlotClueDetail;
 
 export interface AIGeneratedContent {
   sections: {
+    articleBlocks?: string[];
     overview: string;
     solutionEmergence: string;
     wrongGuesses: Array<{ guess: string; explanation: string }>;
@@ -71,6 +72,7 @@ const ParsedSlotsSchema = z.object({
 });
 
 const ParsedSectionsSchema = z.object({
+  articleBlocks: z.array(z.string().trim().min(1)).optional(),
   overview: z.string().trim().min(1).optional(),
   solutionEmergence: z.string().trim().min(1).optional(),
   wrongGuesses: z.array(z.object({
@@ -395,6 +397,9 @@ Output ONLY a valid JSON object with this exact shape:
     ],
     "difficultyReason": "...",
     "portableTakeaway": "..."
+  },
+  "sections": {
+    "articleBlocks": ["...", "..."]
   }
 }
 
@@ -411,7 +416,10 @@ Hard requirements:
 10. Each clueDetails.whyItWorks must explain specific logic, not just restate the final answer.
 11. difficultyReason must explain why the board feels tricky without directly repeating the exact answer.
 12. portableTakeaway must be one short practical lesson the solver can reuse tomorrow.
-13. Output raw JSON only, no markdown.
+13. sections.articleBlocks must contain 8 to 14 short paragraphs.
+14. Most articleBlocks paragraphs should be one sentence. Some can be two sentences. Avoid long blocks.
+15. articleBlocks must include one believable wrong read, one clean turning clue, one explicit answer reveal, and a resolved closing line.
+16. Output raw JSON only, no markdown.
 
 Primary writing goal:
 - Build the source material for a short archive article, not a report.
@@ -422,6 +430,7 @@ Writing rules:
 - Treat heroIntroSpoilerSafe as the short intro shown before the user chooses to reveal the answer.
 - Do not sneak the exact answer into heroIntroSpoilerSafe, connectorSummary, turningPoint, difficultyReason, or falseStarts.
 - Make the slots useful enough that a program can build a short article with believable movement.
+- sections.articleBlocks should already read like a short article, not like analysis bullets.
 - overview and solutionEmergence must feel different:
   - overview explains why the puzzle shape is misleading and why the final read is cleaner than nearby alternatives
   - solutionEmergence replays one believable solve path in first person
@@ -455,6 +464,7 @@ Slot guidance:
 - clueDetails.surfaceRead: describe the distracting first impression of the clue in plain language.
 - clueDetails.phrase: give the clean resolved phrase or category reading.
 - clueDetails.whyItWorks: explain the fit specifically and concretely.
+- sections.articleBlocks: write the actual article body in short paragraphs. Keep the voice human and specific.
 
 ${patternSpecificRules}
 
@@ -1616,16 +1626,208 @@ function buildDifficultyCloser(answer: string, difficultyReason: string): string
     : "The puzzle feels harder than it is because the clues do not all look like the same kind of thing until the right read appears.";
 }
 
-function buildArticleBreakdown(
-  puzzleNumber: number,
+function splitParagraphSentences(paragraph: string): string[] {
+  const matches = paragraph.match(/[^.!?]+(?:[.!?]+["')\]]*)?(?=\s+|$)/g);
+  return (matches ?? [paragraph]).map((sentence) => sentence.trim()).filter(Boolean);
+}
+
+function looksSuspiciousArticleParagraph(paragraph: string, answer: string): boolean {
+  const normalized = normalizeText(paragraph).toLowerCase();
+  if (!normalized) return true;
+
+  const strongBeat = /^(wrong|wrong again|correct)\.?$/i;
+  if (strongBeat.test(normalized)) {
+    return false;
+  }
+
+  if (countWords(paragraph) <= 3) {
+    return true;
+  }
+
+  const answerPattern = detectAnswerPattern(answer);
+  const genericCategory = answerPattern.kind === "category" || answerPattern.kind === "typed-category";
+  const suspiciousPatterns = [
+    /\bmaybe even\b/i,
+    /\beveryone knows\b/i,
+    /\bnow i see the light\b/i,
+    /\bgame over\b/i,
+    /\bof course\b/i,
+    /\bnatural remedies\b/i,
+    /\bluxury goods\b/i,
+    /\bspa gift set\b/i,
+    /\bspa day\b/i,
+    /\broom fresheners?\b/i,
+    /\bair fresheners?\b/i,
+    /\broom decorations?\b/i,
+    /\bsome kind of\b/i,
+    /\breligious or ceremonial\b/i,
+    /\bdifferent kinds? of flames\b/i,
+    /\btheme that could tie everything together\b/i,
+    /\bfelt like a mix\b/i,
+    /\bpointed toward celebrations\b/i,
+    /\bthe board started to shift\b/i,
+    /\bthe board pivoted\b/i,
+    /\bmade the answer feel concrete\b/i,
+    /\bthe answer became clear\b/i,
+    /\bmakes sense of the whole board\b/i,
+    /\bobvious confirmations?\b/i,
+    /\bloose associations?\b/i,
+    /\bconcrete members? of the same answer\b/i,
+    /\beach clue names a common kind of\b/i,
+    /\beach clue represents a specific type\b/i,
+    /\beach clue corresponds to a specific kind\b/i,
+    /\bshould have been my clue\b/i,
+    /\bboard makes perfect sense\b/i,
+    /\bcore object\b/i,
+    /\bwhat'?s on the market\b/i,
+    /\bbroader product category\b/i,
+    /\bchanged the solve\b/i,
+  ];
+
+  if (suspiciousPatterns.some((pattern) => pattern.test(normalized))) {
+    return true;
+  }
+
+  if (
+    genericCategory &&
+    (/\bfeels broader than it really is\b/i.test(normalized) ||
+      /\bthe whole board feels clean\b/i.test(normalized))
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+function articleBlocksNeedFallback(paragraphs: string[], answer: string): boolean {
+  if (paragraphs.length < 6) {
+    return true;
+  }
+
+  let suspiciousCount = 0;
+  let weakGuessCount = 0;
+  let weakTransitionCount = 0;
+  let reportToneCount = 0;
+  let semanticDriftCount = 0;
+
+  for (const paragraph of paragraphs) {
+    const normalized = normalizeText(paragraph).toLowerCase();
+    if (!normalized) continue;
+
+    if (looksSuspiciousArticleParagraph(paragraph, answer)) {
+      suspiciousCount += 1;
+    }
+
+    if (
+      /\b(luxury goods|spa gift set|gift idea|gift ideas|party supplies|some kind of|room fresheners?|air fresheners?)\b/i.test(
+        normalized,
+      )
+    ) {
+      weakGuessCount += 1;
+    }
+
+    if (/\b(board pivoted|board started to shift|changed the solve)\b/i.test(normalized)) {
+      weakTransitionCount += 1;
+    }
+
+    if (
+      /\b(different kinds? of flames|religious or ceremonial|core object)\b/i.test(normalized)
+    ) {
+      semanticDriftCount += 1;
+    }
+
+    if (
+      /\beach clue names\b/i.test(normalized) ||
+      /\beach clue represents a specific type\b/i.test(normalized) ||
+      /\bboard makes perfect sense\b/i.test(normalized) ||
+      /\bin hindsight\b.*\bshould have been my clue\b/i.test(normalized) ||
+      /\bthe trick was seeing past\b/i.test(normalized)
+    ) {
+      reportToneCount += 1;
+    }
+  }
+
+  return (
+    suspiciousCount >= 2 ||
+    weakGuessCount >= 1 ||
+    weakTransitionCount >= 1 ||
+    reportToneCount >= 1 ||
+    semanticDriftCount >= 1
+  );
+}
+
+function normalizeArticleBlocks(
+  providedBlocks: string[] | undefined,
+  answer: string,
+): string[] {
+  const normalized = (providedBlocks ?? [])
+    .flatMap((block) => String(block || "").split(/\n{2,}/))
+    .map((block) => normalizeText(block))
+    .filter(Boolean);
+
+  if (normalized.length === 0) {
+    return [];
+  }
+
+  const shortened = normalized.flatMap((block) => {
+    const sentences = splitParagraphSentences(block);
+    if (sentences.length <= 2) {
+      return [ensureSentence(block)];
+    }
+    return sentences
+      .reduce<string[]>((acc, sentence, index) => {
+        if (index % 2 === 0) {
+          acc.push(sentence);
+        } else {
+          acc[acc.length - 1] = `${acc[acc.length - 1]} ${sentence}`.trim();
+        }
+        return acc;
+      }, [])
+      .map((paragraph) => ensureSentence(paragraph))
+      .filter(Boolean);
+  });
+
+  if (articleBlocksNeedFallback(shortened, answer)) {
+    return [];
+  }
+
+  const filtered = shortened.filter((paragraph) => !looksSuspiciousArticleParagraph(paragraph, answer));
+  if (filtered.length < 6) {
+    return [];
+  }
+
+  const trimmed = filtered.slice(0, 14);
+  const answerMentioned = trimmed.some((paragraph) => {
+    const normalizedParagraph = paragraph.toLowerCase();
+    const normalizedAnswer = answer.trim().toLowerCase();
+    return (
+      normalizedParagraph.includes(normalizedAnswer) ||
+      normalizedParagraph.includes("the answer is") ||
+      normalizedParagraph.includes("the answer was")
+    );
+  });
+
+  if (!answerMentioned) {
+    trimmed.push(`The answer was ${answer}.`);
+  }
+
+  return trimmed;
+}
+
+function buildArticleBlocks(
   clues: string[],
   falseStarts: string[],
   rejectedGuess: { guess: string; explanation: string } | undefined,
   turningPointLabel: string,
-  connectorSummary: string,
   clueDetails: ReturnType<typeof normalizeSlotClueDetails>,
   answer: string,
-): string {
+  providedBlocks?: string[],
+): string[] {
+  const normalizedProvided = normalizeArticleBlocks(providedBlocks, answer);
+  if (normalizedProvided.length >= 6) {
+    return normalizedProvided;
+  }
+
   const answerPattern = detectAnswerPattern(answer);
   const categoryComparison =
     answerPattern.kind === "typed-category"
@@ -1640,6 +1842,8 @@ function buildArticleBreakdown(
     (answerPattern.kind === "before" || answerPattern.kind === "after"
       ? "a loose phrase pattern"
       : "a broad category guess");
+  const narrativeGuess = lowerFirst(firstGuess);
+  const narrativeAnswerFocus = lowerFirst(answerFocus);
   const firstResolvedReading = buildResolvedReadingSentence(clueDetails[0]);
   const secondResolvedReading = buildResolvedReadingSentence(clueDetails[1]);
   const finalChecks = formatNaturalList(clues.slice(-2).map((clue) => `"${clue}"`));
@@ -1647,7 +1851,7 @@ function buildArticleBreakdown(
   const paragraphs =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? [
-          `At first, this looked more like ${firstGuess} than ${categoryComparison}.`,
+          `At first, this looked more like ${narrativeGuess} than ${categoryComparison}.`,
           `${clues[0]} pushed me in that direction immediately.`,
           `${clues[1] || clues[0]} kept that read alive for a moment, but ${turningPointReference(turningPointLabel)} still did not sound right.`,
           "That was the moment the first idea stopped working.",
@@ -1658,11 +1862,11 @@ function buildArticleBreakdown(
           "Looking back, the whole pattern feels obvious in the best way.",
         ]
       : [
-          `At first, this looked more like ${firstGuess} than ${answerFocus}.`,
+          `At first, this looked more like ${narrativeGuess} than ${narrativeAnswerFocus}.`,
           `${clues[0]} pushed me in that direction immediately.`,
           `${clues[1] || clues[0]} kept that theory alive for a moment, but ${turningPointReference(turningPointLabel)} still did not quite fit.`,
           "That was the moment the first idea stopped working.",
-          `Then ${turningPointSubject(turningPointLabel)} made me stop thinking about ${firstGuess} and start thinking about ${answerFocus}.`,
+          `Then ${turningPointSubject(turningPointLabel)} made me stop thinking about ${narrativeGuess} and start thinking about ${narrativeAnswerFocus}.`,
           firstResolvedReading,
           secondResolvedReading,
           `The answer was ${answer}.`,
@@ -1672,8 +1876,7 @@ function buildArticleBreakdown(
 
   return paragraphs
     .map((paragraph) => ensureSentence(paragraph))
-    .filter(Boolean)
-    .join("\n\n");
+    .filter(Boolean);
 }
 
 function buildOverview(
@@ -1843,6 +2046,7 @@ function buildFaqs(
 function composeFromSlots(
   slots: Partial<AIGeneratedSlots>,
   puzzleData?: PuzzleDataForAI,
+  providedArticleBlocks?: string[],
 ): AIGeneratedContent {
   const puzzleNumber = puzzleData?.puzzleNumber || 0;
   const clues = puzzleData?.rawWords || [];
@@ -1925,19 +2129,20 @@ function composeFromSlots(
   const trivia = ensureSentence(
     "Did you know? The cleanest Pinpoint solves usually come from one repeatable reading that makes every clue feel natural, not forced.",
   );
-  const detailedBreakdown = buildArticleBreakdown(
-    puzzleNumber,
+  const articleBlocks = buildArticleBlocks(
     clues,
     falseStarts,
     rejectedGuess,
     turningPointLabel,
-    connectorSummary,
     clueDetails,
     mainAnswer,
+    providedArticleBlocks,
   );
+  const detailedBreakdown = articleBlocks.join("\n\n");
 
   return {
     sections: {
+      articleBlocks,
       overview,
       solutionEmergence,
       wrongGuesses,
@@ -1989,11 +2194,31 @@ function validateAndFixGeneratedContent(
 ): AIGeneratedContent {
   const validatedParsed = validateParsedResponseShape(parsed);
   const normalized = validatedParsed.slots
-    ? composeFromSlots(validateParsedSlotsContract(validatedParsed.slots, puzzleData), puzzleData)
+    ? composeFromSlots(
+        validateParsedSlotsContract(validatedParsed.slots, puzzleData),
+        puzzleData,
+        validatedParsed.sections?.articleBlocks,
+      )
     : { ...validatedParsed };
 
   if (!normalized.sections) {
     throw new Error('AI response missing "sections" object');
+  }
+
+  const normalizedArticleBlocks = normalizeArticleBlocks(
+    normalized.sections.articleBlocks,
+    puzzleData?.mainAnswer || "",
+  );
+  if (normalizedArticleBlocks.length > 0) {
+    normalized.sections.articleBlocks = normalizedArticleBlocks;
+  } else {
+    normalized.sections.articleBlocks = normalizeArticleBlocks(
+      [
+        String(normalized.analysis?.detailedBreakdown || "").trim(),
+        String(normalized.sections.solutionEmergence || "").trim(),
+      ].filter(Boolean),
+      puzzleData?.mainAnswer || "",
+    );
   }
 
   const requiredSections = ["overview", "solutionEmergence", "clueDetails", "lessons", "faqs"] as const;
@@ -2009,7 +2234,10 @@ function validateAndFixGeneratedContent(
 
   if (!normalized.analysis) {
     normalized.analysis = {
-      detailedBreakdown: normalized.sections.solutionEmergence || "",
+      detailedBreakdown:
+        normalized.sections.articleBlocks?.join("\n\n") ||
+        normalized.sections.solutionEmergence ||
+        "",
       dailyDebrief: `The answer is ${mainAnswer}. The clues ${clues.join(", ")} all point to the same connector.`,
       heroSummary: `LinkedIn Pinpoint #${puzzleNumber} starts wide with ${clues.slice(0, 3).join(", ")}. Use the spoiler-safe clues first, then reveal the final connector when you are ready.`,
       seoTitle: buildPinpointTitle(puzzleNumber, clues),
@@ -2030,6 +2258,14 @@ function validateAndFixGeneratedContent(
 
   if (!normalized.analysis.heroSummary) {
     normalized.analysis.heroSummary = `LinkedIn Pinpoint #${puzzleNumber} starts broad. Review the spoiler-safe clues first, then reveal the final connector when you are ready.`;
+  }
+
+  if (!normalized.analysis.detailedBreakdown) {
+    normalized.analysis.detailedBreakdown =
+      normalized.sections.articleBlocks?.join("\n\n") ||
+      normalized.sections.solutionEmergence ||
+      normalized.sections.overview ||
+      "";
   }
 
   if (!normalized.analysis.llmTemplateVersion) {

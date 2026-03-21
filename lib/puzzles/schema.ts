@@ -47,6 +47,7 @@ export const puzzleDetailDisplaySchema = sharedPuzzleDetailDisplaySchema as z.Zo
 }>;
 export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.ZodObject<{
   slug: z.ZodString;
+  articleBlocks: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   wordHints: z.ZodRecord<z.ZodString, z.ZodString>;

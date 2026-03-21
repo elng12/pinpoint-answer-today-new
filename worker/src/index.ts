@@ -137,6 +137,14 @@ function asRecord(value: unknown): JsonRecord | null {
 }
 
 function toParagraphs(value: unknown, fallback: string): string[] {
+  if (Array.isArray(value)) {
+    const arrayParagraphs = value
+      .map((item) => (typeof item === "string" ? item.trim() : ""))
+      .filter(Boolean);
+    if (arrayParagraphs.length > 0) {
+      return arrayParagraphs;
+    }
+  }
   const source = String(value || fallback).trim();
   if (!source) return [fallback.trim()].filter(Boolean);
   const paragraphs = source
@@ -163,21 +171,19 @@ function buildWorkerArticleBreakdown(
   const paragraphs =
     pattern.kind === "before" || pattern.kind === "after"
       ? [
-          `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
-          `${words[0]} did not give me a stable connector on its own.`,
-          `"${turningPoint}" was the clue that finally made the repeated word visible.`,
-          `Once I had that phrase frame, readings like ${sampleReads} stopped feeling random and started behaving like clean fits.`,
+          `At first, ${words[0]} and ${words[1]} did not point to one shared word on their own.`,
+          `"${turningPoint}" was the clue that made the missing word feel exact instead of guessed.`,
+          `Once I could read phrases like ${sampleReads}, the rest of the board stopped feeling random.`,
           `The answer was "${answer}".`,
-          `${finalChecks} then felt more like confirmations than separate mysteries.`,
-          `That is why ${connectorSummary} explains the whole board more cleanly than a loose early guess.`,
+          `${finalChecks} then felt like the last confirmations, not separate mysteries.`,
+          `That is why ${connectorSummary} explains the set more cleanly than an early loose guess.`,
         ]
       : [
-          `Today's Pinpoint #${puzzleNumber} looks broader on first read than it really is.`,
-          `${words[0]} and ${words[1]} both leave room for a few broad guesses before the frame gets specific.`,
-          `"${turningPoint}" is the clue that narrows the board enough to test properly.`,
-          `Once I read the board through ${connectorSummary}, entries like ${sampleReads} stopped feeling miscellaneous and started behaving like one clean set.`,
+          `At first, ${words[0]} and ${words[1]} could have pointed to a few broad ideas instead of one clean set.`,
+          `"${turningPoint}" was the clue that made the category feel specific enough to trust.`,
+          `Once I read the board through ${connectorSummary}, examples like ${sampleReads} started feeling like exact fits instead of loose guesses.`,
           `The answer was "${answer}".`,
-          `${finalChecks} then felt more like clean confirmations than loose associations.`,
+          `${finalChecks} then felt like the last pieces falling into place.`,
         ];
 
   return paragraphs.join("\n\n");
@@ -942,16 +948,18 @@ function buildTemplateFallbackPayload(
 
   const heroSummary =
     `Pinpoint Answer Today asks: what links ${clueLabel} - and what story do they share? ` +
-    `The set looks broader than it really is at first, but one clue narrows the frame and makes the pattern click.`;
+    `The set starts with a few plausible directions before one clue makes the clean reading hard to miss.`;
 
   const overviewParagraphs =
     pattern.kind === "before" || pattern.kind === "after"
       ? [
-          `At first glance, ${words.slice(0, 3).join(", ")} can point in several directions. "${turningPoint}" is the clue that finally makes the repeated word visible.`,
+          `At first, ${words.slice(0, 3).join(", ")} can point in several directions.`,
+          `"${turningPoint}" is the clue that makes the repeated word feel exact instead of guessed.`,
           `Once that phrase frame appears, ${connectorSummary} explains the whole set more cleanly than a loose early guess.`,
         ]
       : [
-          `At first glance, ${words.slice(0, 3).join(", ")} do not point to one neat category. "${turningPoint}" is the clue that makes the board specific enough to test.`,
+          `At first, ${words.slice(0, 3).join(", ")} do not point to one neat category.`,
+          `"${turningPoint}" is the clue that makes the category specific enough to test with confidence.`,
           `Once the board is read through ${connectorSummary}, the earlier clues stop feeling broad and start behaving like exact members of one set.`,
         ];
 
@@ -964,9 +972,9 @@ function buildTemplateFallbackPayload(
           `The answer was "${answer}".`,
         ]
       : [
-          `I did not trust my first read of the board. ${words[0]} and ${words[1]} both left too much room for a broad guess.`,
+          `I did not trust my first read of the board. ${words[0]} and ${words[1]} both left room for a few broad guesses.`,
           `The solve turned when "${turningPoint}" gave me a specific frame to test across all five clues.`,
-          `Once I read the board through ${connectorSummary}, the earlier words stopped feeling miscellaneous.`,
+          `Once I read the board through ${connectorSummary}, the earlier words stopped feeling loose and started reading like part of one real set.`,
           `The answer was "${answer}".`,
         ];
 
@@ -1004,17 +1012,22 @@ function buildTemplateFallbackPayload(
       question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
       answer:
         pattern.kind === "before" || pattern.kind === "after"
-          ? `The connection is ${connectorSummary}. Each clue resolves through a natural phrase that uses the same shared word.`
-          : `The connection is ${connectorSummary}. The clues all fit more cleanly once the board is read through the same place, topic, or category frame.`,
+          ? `The connection is ${connectorSummary}. Each clue becomes a familiar phrase once the same shared word is in place.`
+          : `The connection is ${connectorSummary}. The clues all fit more cleanly once they are read through the same specific category.`,
     },
     {
       question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
       answer:
         pattern.kind === "before" || pattern.kind === "after"
-          ? `"${turningPoint}" is the turning point because "${turningPhrase}" confirms the shared word in the clearest way.`
+          ? `"${turningPoint}" is the turning point because "${turningPhrase}" confirms the shared word more clearly than the earlier clues do.`
           : `"${turningPoint}" is the turning point because "${turningPhrase}" makes the category specific enough to test across the whole board.`,
     },
   ];
+
+  const articleBlocks = detailedBreakdown
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
 
   return {
     puzzleNumber,
@@ -1029,6 +1042,7 @@ function buildTemplateFallbackPayload(
     summary: heroSummary,
     mainAnswer: answer,
     sections: {
+      articleBlocks,
       overview: detailedBreakdown,
       solutionEmergence,
       clueDetails,
@@ -1738,7 +1752,11 @@ export function buildPublishedPuzzleDetailRecord({
   const analysisSource = rawAnalysisWordCount >= 80
     ? rawAnalysisText
     : buildFallbackAnalysis(puzzleNumber, words, answer, clueDetails as Array<Record<string, unknown>>);
-  const fullAnalysis = toParagraphs(analysisSource, analysisSource);
+  const articleBlocks = toParagraphs(
+    (sections as Record<string, unknown>).articleBlocks,
+    analysisSource,
+  );
+  const fullAnalysis = articleBlocks;
   const solutionNarrative = toParagraphs(
     sections.solutionEmergence,
     `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
@@ -1756,6 +1774,7 @@ export function buildPublishedPuzzleDetailRecord({
     category: answer,
     wordHints,
     spoilerHints,
+    articleBlocks,
     fullAnalysis,
     solutionNarrative,
     lessons,
