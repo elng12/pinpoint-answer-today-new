@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-03-19T03:38:54.000Z",
+  "generatedAt": "2026-03-19T05:15:36.000Z",
   "routes": {
     "/": {
-      "lastModified": "2026-03-18T17:15:24.000Z",
+      "lastModified": "2026-03-19T04:04:59.000Z",
       "sourceFiles": [
         "app/(site)/(home)/page.tsx",
         "components/home/HomeBenefitsFaq.tsx",
@@ -17,7 +17,7 @@
       ]
     },
     "/puzzles": {
-      "lastModified": "2026-03-19T03:38:54.000Z",
+      "lastModified": "2026-03-19T05:15:36.000Z",
       "sourceFiles": [
         "app/(site)/puzzles/page.tsx",
         "components/archive/ArchiveExplorer.tsx",
@@ -38,19 +38,19 @@
       ]
     },
     "/privacy": {
-      "lastModified": "2026-03-13T11:50:50.000Z",
+      "lastModified": "2026-03-19T04:03:47.000Z",
       "sourceFiles": [
         "app/(site)/privacy/page.tsx"
       ]
     },
     "/terms": {
-      "lastModified": "2026-03-13T11:50:50.000Z",
+      "lastModified": "2026-03-19T04:03:47.000Z",
       "sourceFiles": [
         "app/(site)/terms/page.tsx"
       ]
     },
     "/disclaimer": {
-      "lastModified": "2026-03-13T11:50:50.000Z",
+      "lastModified": "2026-03-19T04:03:47.000Z",
       "sourceFiles": [
         "app/(site)/disclaimer/page.tsx"
       ]
