@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 690,
+    "slug": "pinpoint-answer-690",
+    "publishDate": "2026-03-21",
+    "status": "live",
+    "clues": [
+      "Tea",
+      "Soup",
+      "Silver",
+      "Measuring",
+      "Table (3×Tea most places)"
+    ],
+    "mainAnswer": "Words that come before \"spoon\"",
+    "category": "Words that come before \"spoon\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Tea, Soup, Silver, Measuring, Table (3×Tea most places) - and what story do they share? The set looks broader than it really is at first, but one clue narrows the frame and makes the pattern click.",
+    "updatedAt": "2026-03-21T08:01:51.474Z"
+  },
+  {
     "puzzleNumber": 689,
     "slug": "pinpoint-answer-689",
     "publishDate": "2026-03-20",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Aromatherapy",
       "Unscented",
@@ -15,7 +33,7 @@
     "category": "Types of candles",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Aromatherapy, Unscented, Votive do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific.",
-    "updatedAt": "2026-03-20T08:01:43.355Z"
+    "updatedAt": "2026-03-21T08:01:51.474Z"
   },
   {
     "puzzleNumber": 688,

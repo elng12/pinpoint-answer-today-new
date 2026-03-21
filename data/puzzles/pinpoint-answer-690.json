@@ -1,0 +1,96 @@
+{
+  "puzzleNumber": 690,
+  "slug": "pinpoint-answer-690",
+  "publishDate": "2026-03-21",
+  "isoDate": "2026-03-21",
+  "clues": [
+    "Tea",
+    "Soup",
+    "Silver",
+    "Measuring",
+    "Table (3×Tea most places)"
+  ],
+  "answer": "Words that come before \"spoon\"",
+  "category": "Words that come before \"spoon\"",
+  "wordHints": {
+    "Tea": "\"Tea spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
+    "Soup": "\"Soup spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
+    "Silver": "\"Silver spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
+    "Measuring": "\"Measuring spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\".",
+    "Table (3×Tea most places)": "The familiar expression \"Table (3 spoon Tea most places)\" confirms the shared word \"spoon\" in plain language."
+  },
+  "spoilerHints": {
+    "Tea": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Soup": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Silver": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Measuring": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Table (3×Tea most places)": "This is the clue that makes the phrase frame specific enough to trust without revealing the final connector."
+  },
+  "fullAnalysis": [
+    "Pinpoint #690 looks wider than it really is because clues like Tea, Soup, Silver can point in several directions before one clue narrows the frame. The board settles once \"Table (3×Tea most places)\" is read as \"Table (3 spoon Tea most places)\", because the earlier clues then stop feeling random and start reading like natural phrases.",
+    "From there, a phrase pattern built around spoon explains the full set more cleanly than loose category guesses. Each clue resolves through a phrase that naturally includes the shared word, and the final confirmation works because the same reading holds across all five clues without forcing any of them."
+  ],
+  "solutionNarrative": [
+    "I did not have a clean connector from the first clue. Tea and Soup both support a few weak guesses on their own, so I waited for a clue that felt more specific instead of forcing an answer too early.",
+    "The turn came when \"Table (3×Tea most places)\" clicked as \"Table (3 spoon Tea most places)\". Once I read the board through that shared word, the earlier clues started to behave like natural phrases rather than isolated prompts, and that was the first point where one connector explained the full set cleanly."
+  ],
+  "lessons": [
+    {
+      "title": "Wait for the clue that narrows the shared phrase",
+      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact."
+    },
+    {
+      "title": "Prefer exact fits over loose associations",
+      "body": "A strong Pinpoint answer should create natural phrases for all five clues, not just a vibe that seems close enough."
+    },
+    {
+      "title": "Re-check the earlier clues once the frame tightens",
+      "body": "Once \"Table (3×Tea most places)\" lands, go back and test the earlier clues against the same shared word before locking the answer."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a phrase pattern built around spoon",
+    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact.",
+    "clueTableRows": [
+      {
+        "clue": "Tea",
+        "examplePhrase": "Tea spoon",
+        "connectionExplained": "\"Tea spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+      },
+      {
+        "clue": "Soup",
+        "examplePhrase": "Soup spoon",
+        "connectionExplained": "\"Soup spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+      },
+      {
+        "clue": "Silver",
+        "examplePhrase": "Silver spoon",
+        "connectionExplained": "\"Silver spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+      },
+      {
+        "clue": "Measuring",
+        "examplePhrase": "Measuring spoon",
+        "connectionExplained": "\"Measuring spoon\" is the natural reading here, so this clue fits once the board is read through \"spoon\"."
+      },
+      {
+        "clue": "Table (3×Tea most places)",
+        "examplePhrase": "Table (3 spoon Tea most places)",
+        "connectionExplained": "The familiar expression \"Table (3 spoon Tea most places)\" confirms the shared word \"spoon\" in plain language."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #690?",
+      "answer": "The answer is \"Words that come before \"spoon\"\" because that reading explains the full set cleanly, including \"Table (3×Tea most places)\"."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #690?",
+      "answer": "The connection is a phrase pattern built around spoon. Each clue resolves through a natural phrase that uses the same shared word."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #690?",
+      "answer": "\"Table (3×Tea most places)\" is the turning point because \"Table (3 spoon Tea most places)\" confirms the shared word in the clearest way."
+    }
+  ]
+}
