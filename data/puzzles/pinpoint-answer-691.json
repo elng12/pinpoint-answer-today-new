@@ -10,99 +10,107 @@
     "Old tires",
     "Tarzan"
   ],
-  "answer": "Things that swing from trees",
-  "category": "Things that swing from trees",
+  "answer": "Things that swing",
+  "category": "Things that swing",
   "wordHints": {
-    "Vines": "\"Vines\" fits more cleanly once the board is read through the same shared frame as the other clues.",
-    "Orangutans": "\"Orangutans\" helps confirm the same category reading instead of pulling the board into a looser guess.",
-    "Hammocks": "\"Hammocks\" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible.",
-    "Old tires": "\"Old tires\" is the clue that makes the shared frame specific enough to test across the full board.",
-    "Tarzan": "\"Tarzan\" helps confirm the same category reading instead of pulling the board into a looser guess."
+    "Vines": "Vines hang and sway from branches, so they fit the idea of things that swing.",
+    "Orangutans": "Orangutans are famous for swinging through trees, which makes this clue a natural fit.",
+    "Hammocks": "A hammock swings gently once it is hung, so it belongs in the same set.",
+    "Old tires": "An old tire often becomes a tire swing, which is the clearest concrete confirmation in the board.",
+    "Tarzan": "Tarzan is the iconic character associated with swinging on vines, so this clue confirms the same action-based answer."
   },
   "spoilerHints": {
-    "Vines": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Orangutans": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Hammocks": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Old tires": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Tarzan": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Vines": "Think less about where this clue is found and more about what it does once suspended.",
+    "Orangutans": "This clue works better as an action clue than as a jungle clue.",
+    "Hammocks": "The fit becomes cleaner when you focus on motion instead of location.",
+    "Old tires": "This is the clue that makes the action frame much harder to miss.",
+    "Tarzan": "A famous image tied to this clue should confirm the same physical action."
   },
   "articleBlocks": [
-    "At first, Vines and Orangutans could have pointed to a few broad ideas instead of one clean set.",
-    "\"Vines\" was the clue that made the category feel specific enough to trust.",
-    "Once I read the board through a category board focused on things, examples like \"Vines\" and \"Orangutans\" started feeling like exact fits instead of loose guesses.",
-    "The answer was \"Things that swing from trees\".",
-    "\"Old tires\" and \"Tarzan\" then felt like the last pieces falling into place."
+    "At first, Vines and Orangutans made this feel like a jungle board.",
+    "That first read held for a moment, especially once Hammocks joined in.",
+    "But Old tires changed the solve.",
+    "That clue stopped the board from being about a place and pushed it toward an action instead.",
+    "An old tire is not just something you find outside. It becomes a tire swing.",
+    "Once that clicked, the rest of the set fell into place fast.",
+    "Vines swing. Orangutans swing. Hammocks swing.",
+    "Tarzan is practically shorthand for swinging through the trees.",
+    "The answer was Things that swing.",
+    "Looking back, this is one of those Pinpoint boards that only feels obvious after the right action word appears."
   ],
   "fullAnalysis": [
-    "At first, Vines and Orangutans could have pointed to a few broad ideas instead of one clean set.",
-    "\"Vines\" was the clue that made the category feel specific enough to trust.",
-    "Once I read the board through a category board focused on things, examples like \"Vines\" and \"Orangutans\" started feeling like exact fits instead of loose guesses.",
-    "The answer was \"Things that swing from trees\".",
-    "\"Old tires\" and \"Tarzan\" then felt like the last pieces falling into place."
+    "At first, Vines and Orangutans made this feel like a jungle board.",
+    "That first read held for a moment, especially once Hammocks joined in.",
+    "But Old tires changed the solve.",
+    "That clue stopped the board from being about a place and pushed it toward an action instead.",
+    "An old tire is not just something you find outside. It becomes a tire swing.",
+    "Once that clicked, the rest of the set fell into place fast.",
+    "Vines swing. Orangutans swing. Hammocks swing.",
+    "Tarzan is practically shorthand for swinging through the trees.",
+    "The answer was Things that swing.",
+    "Looking back, this is one of those Pinpoint boards that only feels obvious after the right action word appears."
   ],
   "solutionNarrative": [
-    "I did not trust my first read of the board. Vines and Orangutans both left room for a few broad guesses.",
-    "The solve turned when \"Old tires\" gave me a specific frame to test across all five clues.",
-    "Once I read the board through a category board focused on things, the earlier words stopped feeling loose and started reading like part of one real set.",
-    "The answer was \"Things that swing from trees\"."
+    "I first treated the set like a jungle or rainforest category because Vines, Orangutans, and Hammocks all live comfortably in that picture. That was plausible, but it stayed too broad and never explained why the board wanted five clues instead of one scene.",
+    "The turn came when I read Old tires as tire swing instead of junk hanging around a yard. Once swing became the shared action, the rest of the board tightened immediately: vines swing, orangutans swing, hammocks swing, and Tarzan is the most obvious swinging image of all."
   ],
   "lessons": [
     {
-      "title": "Wait for the clue that narrows the category",
-      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test."
+      "title": "Do not stop at the setting if the action is stronger",
+      "body": "A board can look like it is describing one place, but the better answer is often the action that ties every clue together."
     },
     {
-      "title": "Prefer exact fits over loose associations",
-      "body": "A strong Pinpoint answer should explain why each clue belongs in the same set, not just why the words feel loosely related."
+      "title": "Watch for the clue that turns a scene into a specific object or action",
+      "body": "Old tires matters because it points to tire swing, which makes the rest of the clues snap into the same motion-based reading."
     },
     {
-      "title": "Re-check the earlier clues once the frame tightens",
-      "body": "Once \"Old tires\" lands, go back and test the earlier clues under the same category before locking the answer."
+      "title": "Re-check every clue once the verb appears",
+      "body": "Once swing showed up as the real connector, each clue could be tested quickly against the same action instead of a vague category."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on things",
-    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test.",
+    "connectorSummary": "things associated with swinging",
+    "fastStrategy": "If the early clues suggest a setting, check whether a later clue reveals a shared action instead.",
     "clueTableRows": [
       {
         "clue": "Vines",
-        "examplePhrase": "Vines",
-        "connectionExplained": "\"Vines\" fits more cleanly once the board is read through the same shared frame as the other clues."
+        "examplePhrase": "swinging on vines",
+        "connectionExplained": "Vines fit because they hang and sway, and they are one of the most familiar things people swing from."
       },
       {
         "clue": "Orangutans",
-        "examplePhrase": "Orangutans",
-        "connectionExplained": "\"Orangutans\" helps confirm the same category reading instead of pulling the board into a looser guess."
+        "examplePhrase": "orangutans swinging through trees",
+        "connectionExplained": "Orangutans fit because they are strongly associated with swinging through branches."
       },
       {
         "clue": "Hammocks",
-        "examplePhrase": "Hammocks",
-        "connectionExplained": "\"Hammocks\" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible."
+        "examplePhrase": "a hammock swinging gently",
+        "connectionExplained": "Hammocks belong because their whole motion is a gentle swing once they are suspended."
       },
       {
         "clue": "Old tires",
-        "examplePhrase": "Old tires",
-        "connectionExplained": "\"Old tires\" is the clue that makes the shared frame specific enough to test across the full board."
+        "examplePhrase": "tire swing",
+        "connectionExplained": "Old tires is the real turning clue because an old tire naturally becomes a tire swing."
       },
       {
         "clue": "Tarzan",
-        "examplePhrase": "Tarzan",
-        "connectionExplained": "\"Tarzan\" helps confirm the same category reading instead of pulling the board into a looser guess."
+        "examplePhrase": "Tarzan swinging on vines",
+        "connectionExplained": "Tarzan confirms the answer because the character is iconic for swinging through the jungle."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #691?",
-      "answer": "The answer is \"Things that swing from trees\" because that reading explains the full set cleanly, including \"Old tires\"."
+      "answer": "The answer is \"Things that swing\" because all five clues point to objects, animals, or characters associated with swinging."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #691?",
-      "answer": "The connection is a category board focused on things. The clues all fit more cleanly once they are read through the same specific category."
+      "answer": "The connection is swinging. Vines, orangutans, hammocks, old tires, and Tarzan all fit once the board is read through that action instead of as a jungle setting."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #691?",
-      "answer": "\"Old tires\" is the turning point because \"Old tires\" makes the category specific enough to test across the whole board."
+      "answer": "\"Old tires\" is the clue that unlocks the set because it naturally points to a tire swing and turns the board from a place-based guess into an action-based answer."
     }
   ]
 }
