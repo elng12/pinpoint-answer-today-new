@@ -676,7 +676,29 @@ function isDetailEntry(
 // fall back to GitHub raw fetch for new puzzles added after the last deployment.
 
 const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
-  // Try local filesystem first (available during build and for existing deployments)
+  // In production we prefer remote first so publish + revalidate can reflect
+  // new puzzles without waiting for a full redeploy artifact refresh.
+  const shouldTryRemoteFirst = process.env.NODE_ENV === "production";
+
+  if (shouldTryRemoteFirst) {
+    try {
+      const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
+        next: { tags: ["registry"], revalidate: 3600 },
+      });
+      if (!res.ok) {
+        throw new Error(`registry fetch failed with status ${res.status}`);
+      }
+      const json = await res.json();
+      return registrySchema
+        .parse(json)
+        .slice()
+        .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+    } catch (error) {
+      warnRemoteFallback("Remote registry unavailable, falling back to local file", error);
+    }
+  }
+
+  // Try local filesystem (available during build/dev and as fallback in prod)
   try {
     const filePath = resolve(resolveDataDir(), "registry.json");
     if (existsSync(filePath)) {
@@ -687,10 +709,10 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
         .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
     }
   } catch {
-    // fall through to GitHub fetch
+    // fall through to final remote attempt
   }
 
-  // Filesystem unavailable (e.g. serverless runtime after ISR) — fetch from GitHub
+  // Final remote attempt (covers environments where filesystem is unavailable)
   try {
     const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
       next: { tags: ["registry"], revalidate: 3600 },

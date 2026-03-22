@@ -62,6 +62,8 @@ export async function POST(request: NextRequest) {
   revalidatePath("/puzzles");
   revalidatePath("/pinpoint/today");
   revalidatePath("/next-pinpoint-preview");
+  revalidatePath("/sitemap.xml");
+  revalidatePath("/api/puzzles/summary");
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pinpointanswertoday.app";
   const urlsToIndex: string[] = [`${siteUrl}/`, `${siteUrl}/puzzles`];
