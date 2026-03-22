@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
 import process from "node:process";
 import { dirname, resolve } from "node:path";
+import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
@@ -11,6 +12,8 @@ const DEFAULT_WORKER_HEALTH_URL =
   process.env.PINPOINT_WORKER_HEALTH_URL || "https://pinpoint-worker.2296744453m.workers.dev/health";
 const STATUS_TIMEOUT_MS = 10 * 60 * 1000;
 const STATUS_POLL_MS = 5000;
+const DETAIL_VERIFY_TIMEOUT_MS = 2 * 60 * 1000;
+const DETAIL_VERIFY_POLL_MS = 5000;
 
 function parseArgs(argv) {
   return {
@@ -197,6 +200,87 @@ async function checkWorkerHealth(url) {
   return payload;
 }
 
+function decodeCommonEntities(value) {
+  return String(value || "")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&#x27;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ");
+}
+
+function extractSearchableText(html) {
+  return decodeCommonEntities(
+    String(html || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim(),
+  );
+}
+
+async function loadPublishedPuzzle(slug) {
+  const filePath = resolve(ROOT, "data", "puzzles", `${slug}.json`);
+  const raw = await readFile(filePath, "utf8");
+  return JSON.parse(raw);
+}
+
+function buildDetailVerificationStrings(puzzle) {
+  const clues = Array.isArray(puzzle?.clues) ? puzzle.clues.filter(Boolean) : [];
+  const bodyBlocks = Array.isArray(puzzle?.articleBlocks) && puzzle.articleBlocks.length
+    ? puzzle.articleBlocks
+    : Array.isArray(puzzle?.fullAnalysis)
+      ? puzzle.fullAnalysis
+      : [];
+  const bodySnippet = bodyBlocks.find((entry) => String(entry || "").trim());
+  const faqSnippet = Array.isArray(puzzle?.faqs)
+    ? puzzle.faqs.find((item) => String(item?.answer || "").trim())?.answer
+    : "";
+
+  return [puzzle?.answer, clues[0], clues.at(-1), bodySnippet, faqSnippet]
+    .map((entry) => String(entry || "").trim())
+    .filter(Boolean);
+}
+
+async function waitForLatestDetailContent(siteUrl, slug, puzzle) {
+  const startedAt = Date.now();
+  const expectedStrings = buildDetailVerificationStrings(puzzle);
+  const detailUrl = `${siteUrl.replace(/\/$/, "")}/linkedin-pinpoint-answers/${slug}/`;
+  let lastMissing = expectedStrings;
+
+  while (Date.now() - startedAt < DETAIL_VERIFY_TIMEOUT_MS) {
+    const cacheBust = `release-check=${Date.now()}`;
+    const response = await fetch(`${detailUrl}?${cacheBust}`, {
+      signal: AbortSignal.timeout(15000),
+      headers: {
+        "cache-control": "no-cache",
+        pragma: "no-cache",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Detail page check failed with HTTP ${response.status}: ${detailUrl}`);
+    }
+
+    const html = await response.text();
+    const text = extractSearchableText(html);
+    const missing = expectedStrings.filter((entry) => !text.includes(entry));
+    if (missing.length === 0) {
+      return { detailUrl, checkedStrings: expectedStrings };
+    }
+
+    lastMissing = missing;
+    console.log(`Waiting for live detail content to update... missing ${missing.length} expected snippet(s).`);
+    await sleep(DETAIL_VERIFY_POLL_MS);
+  }
+
+  throw new Error(
+    `Detail page did not refresh to the expected content in time: ${slug}\nMissing: ${lastMissing.join(" | ")}`,
+  );
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -242,6 +326,8 @@ async function main() {
   await checkHttpOk(`${DEFAULT_SITE_URL}/`, "Homepage");
   const summary = await checkSummaryApi(`${DEFAULT_SITE_URL}/api/puzzles/summary`);
   const workerHealth = await checkWorkerHealth(DEFAULT_WORKER_HEALTH_URL);
+  const publishedPuzzle = await loadPublishedPuzzle(summary.latest.slug);
+  const detail = await waitForLatestDetailContent(DEFAULT_SITE_URL, summary.latest.slug, publishedPuzzle);
 
   logStep("Production release finished");
   console.log(`Commit: ${sha}`);
@@ -249,6 +335,7 @@ async function main() {
   console.log(`Summary slug: ${summary.latest.slug}`);
   console.log(`Summary publishedAt: ${summary.latest.isoPublishedAt}`);
   console.log(`Worker puzzleDate: ${workerHealth.puzzleDate}`);
+  console.log(`Verified detail page: ${detail.detailUrl}`);
 }
 
 main().catch((error) => {
