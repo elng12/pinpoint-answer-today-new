@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 691,
+    "slug": "pinpoint-answer-691",
+    "publishDate": "2026-03-22",
+    "status": "live",
+    "clues": [
+      "Vines",
+      "Orangutans",
+      "Hammocks",
+      "Old tires",
+      "Tarzan"
+    ],
+    "mainAnswer": "Things that swing from trees",
+    "category": "Things that swing from trees",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Vines, Orangutans, Hammocks, Old tires, Tarzan - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-03-22T08:02:04.344Z"
+  },
+  {
     "puzzleNumber": 690,
     "slug": "pinpoint-answer-690",
     "publishDate": "2026-03-21",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Tea",
       "Soup",
@@ -15,7 +33,7 @@
     "category": "Words that come before \"spoon\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Tea, Soup, Silver, Measuring, Table (3×Tea most places) - and what story do they share? The set looks broader than it really is at first, but one clue narrows the frame and makes the pattern click.",
-    "updatedAt": "2026-03-21T08:01:51.474Z"
+    "updatedAt": "2026-03-22T08:02:04.344Z"
   },
   {
     "puzzleNumber": 689,
