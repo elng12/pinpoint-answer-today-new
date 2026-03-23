@@ -5,6 +5,13 @@ import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
 const minFullAnalysisWords = 80;
+const legacyTemplateMarkers = [
+  "same category reading",
+  "same shared frame",
+  "same frame as the rest of the board",
+  "specific enough to trust",
+  "tightens once this pattern becomes visible",
+];
 const modernPuzzleDateBaseline = {
   puzzleNumber: 458,
   isoDate: "2025-08-01",
@@ -17,6 +24,14 @@ function countWords(value) {
 function assertNoHtml(label, value) {
   if (htmlTagPattern.test(value)) {
     throw new Error(`${label} contains HTML markup and must be plain text.`);
+  }
+}
+
+function assertNoLegacyTemplate(label, value) {
+  const normalized = String(value || "").toLowerCase();
+  const matched = legacyTemplateMarkers.find((marker) => normalized.includes(marker));
+  if (matched) {
+    throw new Error(`${label} still contains legacy template phrasing: "${matched}"`);
   }
 }
 
@@ -65,30 +80,56 @@ function validateDetailContent(entry, detail) {
 
   detail.fullAnalysis.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} fullAnalysis[${index}]`, paragraph);
+    assertNoLegacyTemplate(`${entry.slug} fullAnalysis[${index}]`, paragraph);
+  });
+
+  detail.articleBlocks?.forEach((paragraph, index) => {
+    assertNoHtml(`${entry.slug} articleBlocks[${index}]`, paragraph);
+    assertNoLegacyTemplate(`${entry.slug} articleBlocks[${index}]`, paragraph);
   });
 
   detail.solutionNarrative?.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} solutionNarrative[${index}]`, paragraph);
+    assertNoLegacyTemplate(`${entry.slug} solutionNarrative[${index}]`, paragraph);
   });
 
   Object.entries(detail.wordHints).forEach(([clue, hint]) => {
     assertNoHtml(`${entry.slug} wordHints.${clue}`, hint);
+    assertNoLegacyTemplate(`${entry.slug} wordHints.${clue}`, hint);
+  });
+
+  Object.entries(detail.spoilerHints || {}).forEach(([clue, hint]) => {
+    assertNoHtml(`${entry.slug} spoilerHints.${clue}`, hint);
+    assertNoLegacyTemplate(`${entry.slug} spoilerHints.${clue}`, hint);
   });
 
   detail.lessons.forEach((lesson, index) => {
     if (typeof lesson === "string") {
       assertNoHtml(`${entry.slug} lessons[${index}]`, lesson);
+      assertNoLegacyTemplate(`${entry.slug} lessons[${index}]`, lesson);
       return;
     }
 
     assertNoHtml(`${entry.slug} lessons[${index}].title`, lesson.title);
     assertNoHtml(`${entry.slug} lessons[${index}].body`, lesson.body);
+    assertNoLegacyTemplate(`${entry.slug} lessons[${index}].title`, lesson.title);
+    assertNoLegacyTemplate(`${entry.slug} lessons[${index}].body`, lesson.body);
   });
 
   detail.faqs.forEach((faq, index) => {
     assertNoHtml(`${entry.slug} faqs[${index}].question`, faq.question);
     assertNoHtml(`${entry.slug} faqs[${index}].answer`, faq.answer);
+    assertNoLegacyTemplate(`${entry.slug} faqs[${index}].question`, faq.question);
+    assertNoLegacyTemplate(`${entry.slug} faqs[${index}].answer`, faq.answer);
   });
+
+  if (detail.display) {
+    assertNoLegacyTemplate(`${entry.slug} display.connectorSummary`, detail.display.connectorSummary);
+    assertNoLegacyTemplate(`${entry.slug} display.fastStrategy`, detail.display.fastStrategy);
+    detail.display.clueTableRows.forEach((row, index) => {
+      assertNoLegacyTemplate(`${entry.slug} display.clueTableRows[${index}].connectionExplained`, row.connectionExplained);
+    });
+  }
 }
 
 async function main() {

@@ -13,11 +13,11 @@
   "answer": "Places to get drinking water",
   "category": "Places to get drinking water",
   "wordHints": {
-    "Spring": "\"Spring\" fits more cleanly once the board is read through the same shared frame as the other clues.",
-    "Tap": "\"Tap\" helps confirm the same category reading instead of pulling the board into a looser guess.",
-    "Oasis": "\"Oasis\" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible.",
-    "Well": "\"Well\" fits more cleanly once the board is read through the same shared frame as the other clues.",
-    "Fountain": "\"Fountain\" is the clue that makes the shared frame specific enough to test across the full board."
+    "Spring": "\"Spring\" fits once the answer is read as a real place where drinking water can come from.",
+    "Tap": "\"Tap\" stops feeling broad once the board is read as practical sources of drinking water.",
+    "Oasis": "\"Oasis\" fits as a place where drinkable water appears in an otherwise dry setting.",
+    "Well": "\"Well\" is one of the clearest direct examples once the answer is in place.",
+    "Fountain": "\"Fountain\" is the clue that pushes the board from general water ideas toward actual places you might get a drink."
   },
   "spoilerHints": {
     "Spring": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -71,27 +71,27 @@
       {
         "clue": "Spring",
         "examplePhrase": "Spring",
-        "connectionExplained": "\"Spring\" fits more cleanly once the board is read through the same shared frame as the other clues."
+        "connectionExplained": "\"Spring\" works once the answer is read as a real place where drinking water can come from."
       },
       {
         "clue": "Tap",
         "examplePhrase": "Tap",
-        "connectionExplained": "\"Tap\" helps confirm the same category reading instead of pulling the board into a looser guess."
+        "connectionExplained": "\"Tap\" fits as an everyday place where someone can get drinking water without leaving the house."
       },
       {
         "clue": "Oasis",
         "examplePhrase": "Oasis",
-        "connectionExplained": "\"Oasis\" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible."
+        "connectionExplained": "\"Oasis\" fits as a natural source of drinkable water, especially in a dry environment."
       },
       {
         "clue": "Well",
         "examplePhrase": "Well",
-        "connectionExplained": "\"Well\" fits more cleanly once the board is read through the same shared frame as the other clues."
+        "connectionExplained": "\"Well\" is one of the most direct places in the set where someone could actually get drinking water."
       },
       {
         "clue": "Fountain",
         "examplePhrase": "Fountain",
-        "connectionExplained": "\"Fountain\" is the clue that makes the shared frame specific enough to test across the full board."
+        "connectionExplained": "\"Fountain\" is the clue that makes the answer feel practical instead of decorative, which helps the rest of the set lock in."
       }
     ]
   },
