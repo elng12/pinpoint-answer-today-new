@@ -14,6 +14,7 @@ export type SemanticContentInput = {
   seoDescription?: string | null;
   overview?: string | null;
   solutionEmergence?: string | null;
+  articleBlocks?: string[] | null;
   wrongGuesses?: Array<{ guess?: string | null; explanation?: string | null }> | null;
   faqs?: Array<{ question?: string | null; answer?: string | null }> | null;
   clueDetails?: Array<{ clue?: string | null; phrase?: string | null; explanation?: string | null }> | null;
@@ -66,6 +67,21 @@ const GENERIC_CLUE_EXPLANATION_PATTERNS = [
   /\bsame shared connection that leads to\b/i,
   /\bpoints back to that same connection\b/i,
 ];
+const ANSWER_NARROWING_PREPOSITIONS = [
+  "from",
+  "in",
+  "on",
+  "under",
+  "over",
+  "with",
+  "for",
+  "around",
+  "through",
+  "inside",
+  "outside",
+  "beneath",
+  "across",
+] as const;
 
 type AnswerPattern =
   | { kind: "before"; token: string }
@@ -176,6 +192,88 @@ function isSuspiciousCategoryAnswerLabel(answer: string | null | undefined): boo
   return /\//.test(text) || /\((?:with|for|including)\b[^)]*\)/i.test(text);
 }
 
+function escapeForRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeAnswerLabelForComparison(value: string | null | undefined): string {
+  return normalizeText(value)
+    .replace(/["“”'`]/g, "")
+    .replace(/[.!?]+$/g, "")
+    .trim();
+}
+
+function looksLikeSameAnswerFamily(candidate: string, answer: string): boolean {
+  const normalizedCandidate = normalizeForMatch(candidate);
+  const normalizedAnswer = normalizeForMatch(answer);
+  if (!normalizedCandidate || !normalizedAnswer) return false;
+  if (normalizedCandidate === normalizedAnswer) return false;
+  return (
+    normalizedCandidate.startsWith(`${normalizedAnswer} `) ||
+    normalizedAnswer.startsWith(`${normalizedCandidate} `) ||
+    overlapRatio(normalizedCandidate, normalizedAnswer) >= 0.75
+  );
+}
+
+function extractAnswerLikeCandidates(text: string): string[] {
+  const candidates = new Set<string>();
+  const patterns = [
+    /\bWords that come (?:before|after)\s+["“]?[A-Za-z0-9'’ -]+["”]?/gi,
+    /\b(?:Types|Kinds)\s+of\s+[A-Za-z][A-Za-z'’ -]+/gi,
+    /\b(?:Things|Items|Objects|People|Places)\s+that\s+[A-Za-z][A-Za-z'’ -]+/gi,
+  ];
+
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      const candidate = normalizeAnswerLabelForComparison(match[0]);
+      if (candidate) candidates.add(candidate);
+    }
+  }
+
+  return [...candidates];
+}
+
+function buildAnswerNarrowingPattern(answer: string): RegExp | null {
+  const normalizedAnswer = normalizeAnswerLabelForComparison(answer);
+  if (!normalizedAnswer) return null;
+  const prepositions = ANSWER_NARROWING_PREPOSITIONS.join("|");
+  return new RegExp(`\\b${escapeForRegex(normalizedAnswer)}\\s+(?:${prepositions})\\b`, "i");
+}
+
+function pushAnswerLogicIssues(
+  issues: SemanticLintIssue[],
+  field: string,
+  value: string | null | undefined,
+  answer: string | null | undefined,
+) {
+  const text = normalizeText(value);
+  const mainAnswer = normalizeAnswerLabelForComparison(answer);
+  if (!text || !mainAnswer) return;
+
+  const narrowingPattern = buildAnswerNarrowingPattern(mainAnswer);
+  if (narrowingPattern?.test(text)) {
+    pushIssue(
+      issues,
+      "answer.semanticNarrowing",
+      "Draft narrows the answer with an extra qualifier that is not part of the official answer",
+      field,
+      text,
+    );
+  }
+
+  for (const candidate of extractAnswerLikeCandidates(text)) {
+    if (!looksLikeSameAnswerFamily(candidate, mainAnswer)) continue;
+    pushIssue(
+      issues,
+      "answer.alternateRestatement",
+      "Draft introduces an alternate answer-like phrase instead of restating the official answer cleanly",
+      field,
+      candidate,
+    );
+    break;
+  }
+}
+
 function looksLikeMachineGuess(value: string | null | undefined): boolean {
   const text = normalizeText(value);
   if (!text) return false;
@@ -241,6 +339,9 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
   scanTextEntry(issues, "seoDescription", input.seoDescription, input.locale);
   scanTextEntry(issues, "overview", input.overview, input.locale);
   scanTextEntry(issues, "solutionEmergence", input.solutionEmergence, input.locale);
+  input.articleBlocks?.forEach((item, index) => {
+    scanTextEntry(issues, `articleBlocks[${index}]`, item, input.locale);
+  });
 
   input.wrongGuesses?.forEach((item, index) => {
     scanTextEntry(issues, `wrongGuesses[${index}].guess`, item?.guess, input.locale);
@@ -270,6 +371,26 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
   });
 
   const normalizedAnswer = normalizeForMatch(input.mainAnswer);
+  const answerLogicFields: Array<[string, string | null | undefined]> = [
+    ["overview", input.overview],
+    ["solutionEmergence", input.solutionEmergence],
+    ["summary", input.summary],
+    ["seoDescription", input.seoDescription],
+    ...(input.articleBlocks?.map((item, index) => [`articleBlocks[${index}]`, item] as [string, string]) ?? []),
+    ...(input.clueDetails?.flatMap((item, index) => [
+      [`clueDetails[${index}].phrase`, item?.phrase] as [string, string | null | undefined],
+      [`clueDetails[${index}].explanation`, item?.explanation] as [string, string | null | undefined],
+    ]) ?? []),
+    ...(input.faqs?.flatMap((item, index) => [
+      [`faqs[${index}].question`, item?.question] as [string, string | null | undefined],
+      [`faqs[${index}].answer`, item?.answer] as [string, string | null | undefined],
+    ]) ?? []),
+  ];
+
+  for (const [field, value] of answerLogicFields) {
+    pushAnswerLogicIssues(issues, field, value, input.mainAnswer);
+  }
+
   const firstFaqAnswer = normalizeForMatch(input.faqs?.[0]?.answer);
   if (normalizedAnswer && (!firstFaqAnswer || !firstFaqAnswer.includes(normalizedAnswer))) {
     issues.push({
@@ -442,4 +563,6 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "solutionEmergence.genericPivot",
   "faqs.genericConnectionAnswer",
   "clueDetails.genericExplanation",
+  "answer.semanticNarrowing",
+  "answer.alternateRestatement",
 ]);

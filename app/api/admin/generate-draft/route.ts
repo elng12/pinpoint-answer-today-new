@@ -18,6 +18,10 @@ import {
   validateSlotContract,
   type SlotContractInput,
 } from "@/lib/puzzles/slot-contract";
+import {
+  buildSharedFallbackLessons,
+  buildSharedFallbackSolutionNarrative,
+} from "@/lib/puzzles/fallback-copy";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 
 const ADMIN_TOKENS = [
@@ -180,7 +184,7 @@ function buildFallbackCluePhrase(clue: string, answer: string): string {
 
 function buildFallbackClueExplanation(clue: string, partnerClue: string): string {
   return normalizeWhitespace(
-    `${clue} becomes more convincing when it is read beside ${partnerClue}, because the board starts narrowing toward one concrete shared connection instead of five unrelated facts.`,
+    `${clue} reads more cleanly once it is tested beside ${partnerClue}, because the board is clearly narrowing toward one answer instead of five unrelated facts.`,
   );
 }
 
@@ -196,26 +200,13 @@ function hasGenericConnectionFaqAnswer(text: string | null | undefined): boolean
 function buildSpecificConnectionFaqAnswer(clues: string[]): string {
   const [first = "the first clue", second = "the second clue", third = "the third clue", fourth = "the fourth clue", fifth = "the fifth clue"] = clues;
   return normalizeWhitespace(
-    `${first}, ${second}, and ${third} already point toward the same setting, while ${fourth} and ${fifth} confirm that the board is circling one concrete connection rather than asking for a loose umbrella category.`,
+    `${first}, ${second}, and ${third} already lean toward the same answer, while ${fourth} and ${fifth} confirm that the board is circling one concrete idea rather than a loose umbrella theme.`,
   );
 }
 
 function buildFallbackLessons(clues: string[]) {
-  const [first = "the first clue", second = "the second clue", third = "the third clue"] = clues;
-  return [
-    {
-      title: "Test one connector across every clue",
-      body: `A candidate answer is only worth keeping if ${first}, ${second}, and the remaining clues all fit the same frame without forcing the wording.`,
-    },
-    {
-      title: "Use the strongest clue as the tiebreaker",
-      body: `${third} usually matters most once two possible themes seem plausible, because the sharper clue often kills the wrong bucket immediately.`,
-    },
-    {
-      title: "Confirm the board before locking in",
-      body: "A good Pinpoint solve feels consistent across all five clues, not just clever for the first two that jump out.",
-    },
-  ];
+  const turningPoint = clues[2] ?? clues[clues.length - 1] ?? "the later clue";
+  return buildSharedFallbackLessons({ kind: "category", turningPoint });
 }
 
 function normalizeTargetLocale(input: unknown): string | null {
@@ -332,8 +323,8 @@ function buildGroundedHeroSummary(puzzleData: PuzzleDataForAI): string {
   const cluePreview = clues.slice(0, 3).join(", ");
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   return pattern.kind === "before" || pattern.kind === "after"
-    ? `At first, ${cluePreview} can point in several directions before one later clue makes the repeated word feel exact.`
-    : `At first, ${cluePreview} do not suggest one clean set until a later clue makes the category specific enough to trust.`;
+    ? `At first, ${cluePreview} can point in a few different directions before one later clue makes the repeated word hard to miss.`
+    : `At first, ${cluePreview} do not suggest one clean answer until a later clue makes the shared idea concrete enough to test.`;
 }
 
 function buildFallbackFalseStarts(puzzleData: PuzzleDataForAI): string[] {
@@ -380,9 +371,9 @@ function buildFallbackRejectedGuess(
 function buildFallbackTurningPoint(puzzleData: PuzzleDataForAI, turningClue: string): string {
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   if (pattern.kind === "before" || pattern.kind === "after") {
-    return `"${turningClue}" is the clue that makes the shared word feel exact instead of guessed.`;
+    return `"${turningClue}" is the clue that makes the shared word hard to miss.`;
   }
-  return `"${turningClue}" is the clue that makes the category specific enough to trust.`;
+  return `"${turningClue}" is the clue that makes the answer concrete enough to test.`;
 }
 
 function buildFallbackSolutionEmergence(
@@ -391,16 +382,11 @@ function buildFallbackSolutionEmergence(
   turningClue: string,
 ): string {
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
-  if (pattern.kind === "before" || pattern.kind === "after") {
-    return [
-      `I did not have a stable shared word from the first clue. I initially drifted toward ${wrongGuess}, but that reading never explained "${turningClue}" cleanly enough.`,
-      `The turn came when I let "${turningClue}" lead the solve. Once I read the board through one tighter phrase pattern, the earlier clues started behaving like natural fits instead of isolated prompts.`,
-    ].join(" ");
-  }
-  return [
-    `I did not have a clean category from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningClue}" cleanly enough.`,
-    `The turn came when I let "${turningClue}" narrow the board. Once I read the clues through one tighter category, the earlier items stopped feeling loose and started reading like members of the same set.`,
-  ].join(" ");
+  return buildSharedFallbackSolutionNarrative({
+    kind: pattern.kind,
+    wrongGuess,
+    turningPoint: turningClue,
+  }).join(" ");
 }
 
 function buildLocalizationPolicy(answer: string): string {
@@ -502,6 +488,9 @@ function toContractInput(
     seoDescription: asString(analysis.seoDescription),
     overview: asString(sections.overview),
     solutionEmergence: asString(sections.solutionEmergence),
+    articleBlocks: Array.isArray(sections.articleBlocks)
+      ? sections.articleBlocks.map((item) => asString(item) ?? "").filter(Boolean)
+      : null,
     wrongGuesses: Array.isArray(sections.wrongGuesses)
       ? sections.wrongGuesses.map((item) => {
           const row = asRecord(item);

@@ -11,6 +11,12 @@ import {
   type PuzzleStatus,
   registrySchema,
 } from "@/lib/puzzles/schema";
+import {
+  buildSharedFallbackArticleBlocks,
+  buildSharedFallbackFaqs,
+  buildSharedFallbackLessons,
+  buildSharedFallbackSolutionNarrative,
+} from "@/lib/puzzles/fallback-copy";
 
 export type PuzzleDetailDisplay = {
   connectorSummary: string;
@@ -467,12 +473,12 @@ function buildLiveClueExplanation(clue: string, answer: string, index: number, t
   }
 
   if (clue === turningPoint) {
-    return `"${clue}" is the clue that makes the shared frame specific enough to test across the full board.`;
+    return `"${clue}" is the clue that makes the shared answer concrete enough to test across the full board.`;
   }
   const variants = [
-    `"${clue}" fits more cleanly once the board is read through the same shared frame as the other clues.`,
-    `"${clue}" helps confirm the same category reading instead of pulling the board into a looser guess.`,
-    `"${clue}" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible.`,
+    `"${clue}" fits more cleanly once the board is tested under the same answer as the other clues.`,
+    `"${clue}" helps confirm the same answer instead of pulling the board back toward a looser guess.`,
+    `"${clue}" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.`,
   ];
   return variants[index % variants.length] || variants[0];
 }
@@ -486,49 +492,19 @@ function buildLiveWordHints(clues: string[], answer: string): Record<string, str
 
 function buildLiveLessons(answer: string, turningPoint: string): LessonItem[] {
   const pattern = detectLiveAnswerPattern(answer);
-  return [
-    {
-      title: pattern.kind === "before" || pattern.kind === "after"
-        ? "Wait for the clue that narrows the shared phrase"
-        : "Wait for the clue that narrows the frame",
-      body: pattern.kind === "before" || pattern.kind === "after"
-        ? "When the opening clues are broad, the best move is to wait for the clue that makes the repeated word feel exact."
-        : "When the opening clues feel wide, the best move is to wait for the clue that makes the shared frame specific enough to test.",
-    },
-    {
-      title: "Prefer exact fits over loose associations",
-      body: pattern.kind === "before" || pattern.kind === "after"
-        ? "The strongest Pinpoint answers create natural phrases for all five clues, not just a connection that feels close enough."
-        : "The strongest Pinpoint answers explain why every clue belongs in the same set, not just why the words feel vaguely related.",
-    },
-    {
-      title: "Re-check the earlier clues once the frame tightens",
-      body: `Once "${turningPoint}" clicks, go back and test the earlier clues under that same frame before locking the answer.`,
-    },
-  ];
+  return buildSharedFallbackLessons({ kind: pattern.kind, turningPoint });
 }
 
 function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint: string): FaqItem[] {
   const pattern = detectLiveAnswerPattern(answer);
   const connectorSummary = buildLiveConnectorSummary(answer);
-  return [
-    {
-      question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
-      answer: `The answer is ${answer}. That reading is the first one that explains the full set cleanly, including "${turningPoint}".`,
-    },
-    {
-      question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
-      answer: pattern.kind === "before" || pattern.kind === "after"
-        ? `The connection is ${connectorSummary}. Each clue becomes a familiar phrase once the same shared word is in place.`
-        : `The connection is ${connectorSummary}. The clues all fit more cleanly once they are read through the same specific category.`,
-    },
-    {
-      question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
-      answer: pattern.kind === "before" || pattern.kind === "after"
-        ? `"${turningPoint}" is the turning point because it confirms the shared word more clearly than the earlier clues do.`
-        : `"${turningPoint}" is the turning point because it makes the category specific enough to test across all five clues.`,
-    },
-  ];
+  return buildSharedFallbackFaqs({
+    puzzleNumber,
+    kind: pattern.kind,
+    answer,
+    turningPoint,
+    connectorSummary,
+  });
 }
 
 function buildLiveArticleBreakdown(
@@ -541,25 +517,18 @@ function buildLiveArticleBreakdown(
   const connectorSummary = buildLiveConnectorSummary(answer);
   const sampleReads = clues
     .slice(0, 2)
-    .map((clue) => `"${buildLiveFallbackPhrase(clue, answer)}"`)
-    .join(" and ");
-  const finalChecks = clues.slice(-2).map((clue) => `"${clue}"`).join(" and ");
+    .map((clue) => buildLiveFallbackPhrase(clue, answer));
+  const finalChecks = clues.slice(-2);
 
-  return pattern.kind === "before" || pattern.kind === "after"
-    ? [
-        `At first, ${clues[0]} and ${clues[1]} did not point to one shared word on their own.`,
-        `"${turningPoint}" is the clue that makes the repeated word feel exact instead of guessed.`,
-        `Once I had that phrase frame, readings like ${sampleReads} stopped feeling random.`,
-        `The answer was ${answer}.`,
-        `${finalChecks} then felt like the last confirmations, not separate mysteries.`,
-      ]
-    : [
-        `At first, ${clues[0]} and ${clues[1]} could have pointed to a few broad ideas instead of one clean set.`,
-        `"${turningPoint}" is the clue that makes the category specific enough to trust.`,
-        `Once I read the board through ${connectorSummary}, entries like ${sampleReads} started feeling like exact fits instead of loose guesses.`,
-        `The answer was ${answer}.`,
-        `${finalChecks} then felt like the last pieces falling into place.`,
-      ];
+  return buildSharedFallbackArticleBlocks({
+    kind: pattern.kind,
+    clues,
+    answer,
+    turningPoint,
+    connectorSummary,
+    sampleReads,
+    finalChecks,
+  });
 }
 
 function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null {
@@ -601,15 +570,13 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     shortSummary,
     articleBlocks,
     fullAnalysis,
-    solutionNarrative: pattern.kind === "before" || pattern.kind === "after"
-      ? [
-          `I did not have a clean connector from the first clue. ${record.clues[0]} and ${record.clues[1]} both support a few weak guesses on their own, so I waited for the clue that felt more specific instead of forcing an answer too early.`,
-          `The turn came when "${turningPoint}" made the shared word feel exact. Once I read the board through that phrase frame, the earlier clues started behaving like natural fits instead of isolated prompts.`,
-        ]
-      : [
-          `I did not have a clean category from the first clue. ${record.clues[0]} and ${record.clues[1]} could each fit a few broad ideas, so the board felt wider than it really was until one clue made the frame specific enough to test properly.`,
-          `The turn came when "${turningPoint}" made the shared frame obvious enough to re-check across the whole board. Once I read the clues that way, the earlier words stopped feeling broad and started feeling like exact members of the same set.`,
-        ],
+    solutionNarrative: buildSharedFallbackSolutionNarrative({
+      kind: pattern.kind,
+      wrongGuess: pattern.kind === "before" || pattern.kind === "after"
+        ? "loose phrase guesses"
+        : "a broader category guess",
+      turningPoint,
+    }),
     wordHints,
     spoilerHints: {},
     lessons,

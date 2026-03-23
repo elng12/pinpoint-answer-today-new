@@ -33,6 +33,7 @@ export type ContentContractInput = {
   seoDescription?: string | null;
   overview?: string | null;
   solutionEmergence?: string | null;
+  articleBlocks?: string[] | null;
   wrongGuesses?: Array<{ guess?: string | null; explanation?: string | null }> | null;
   clueDetails?: Array<{ clue?: string | null; phrase?: string | null; explanation?: string | null }> | null;
   lessons?: Array<{ title?: string | null; body?: string | null }> | null;
@@ -266,6 +267,7 @@ export function validateContentContract(input: ContentContractInput): ContentCon
     seoDescription: input.seoDescription,
     overview: input.overview,
     solutionEmergence: input.solutionEmergence,
+    articleBlocks: input.articleBlocks ?? null,
     wrongGuesses: input.wrongGuesses ?? null,
     faqs: input.faqs ?? null,
     clueDetails: input.clueDetails ?? null,
