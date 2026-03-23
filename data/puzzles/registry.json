@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 692,
+    "slug": "pinpoint-answer-692",
+    "publishDate": "2026-03-23",
+    "status": "live",
+    "clues": [
+      "Spring",
+      "Tap",
+      "Oasis",
+      "Well",
+      "Fountain"
+    ],
+    "mainAnswer": "Places to get drinking water",
+    "category": "Places to get drinking water",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Spring, Tap, Oasis, Well, Fountain - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-03-23T08:01:52.204Z"
+  },
+  {
     "puzzleNumber": 691,
     "slug": "pinpoint-answer-691",
     "publishDate": "2026-03-22",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Vines",
       "Orangutans",
@@ -15,7 +33,7 @@
     "category": "Things that swing",
     "difficultyLevel": "Moderate",
     "shortSummary": "Vines, Orangutans, Hammocks, Old tires, and Tarzan look like a jungle set at first, but one clue reveals that the real answer is about swinging.",
-    "updatedAt": "2026-03-22T11:15:47Z"
+    "updatedAt": "2026-03-23T08:01:52.204Z"
   },
   {
     "puzzleNumber": 690,

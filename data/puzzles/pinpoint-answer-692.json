@@ -1,0 +1,108 @@
+{
+  "puzzleNumber": 692,
+  "slug": "pinpoint-answer-692",
+  "publishDate": "2026-03-23",
+  "isoDate": "2026-03-23",
+  "clues": [
+    "Spring",
+    "Tap",
+    "Oasis",
+    "Well",
+    "Fountain"
+  ],
+  "answer": "Places to get drinking water",
+  "category": "Places to get drinking water",
+  "wordHints": {
+    "Spring": "\"Spring\" fits more cleanly once the board is read through the same shared frame as the other clues.",
+    "Tap": "\"Tap\" helps confirm the same category reading instead of pulling the board into a looser guess.",
+    "Oasis": "\"Oasis\" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible.",
+    "Well": "\"Well\" fits more cleanly once the board is read through the same shared frame as the other clues.",
+    "Fountain": "\"Fountain\" is the clue that makes the shared frame specific enough to test across the full board."
+  },
+  "spoilerHints": {
+    "Spring": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Tap": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Oasis": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Well": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Fountain": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
+  "articleBlocks": [
+    "At first, Spring and Tap could have pointed to a few broad ideas instead of one clean set.",
+    "\"Spring\" was the clue that made the category feel specific enough to trust.",
+    "Once I read the board through a category board focused on places, examples like \"Spring\" and \"Tap\" started feeling like exact fits instead of loose guesses.",
+    "The answer was \"Places to get drinking water\".",
+    "\"Well\" and \"Fountain\" then felt like the last pieces falling into place."
+  ],
+  "fullAnalysis": [
+    "At first, Spring and Tap could have pointed to a few broad ideas instead of one clean set.",
+    "\"Spring\" was the clue that made the category feel specific enough to trust.",
+    "Once I read the board through a category board focused on places, examples like \"Spring\" and \"Tap\" started feeling like exact fits instead of loose guesses.",
+    "The answer was \"Places to get drinking water\".",
+    "\"Well\" and \"Fountain\" then felt like the last pieces falling into place."
+  ],
+  "solutionNarrative": [
+    "I did not trust my first read of the board. Spring and Tap both left room for a few broad guesses.",
+    "The solve turned when \"Fountain\" gave me a specific frame to test across all five clues.",
+    "Once I read the board through a category board focused on places, the earlier words stopped feeling loose and started reading like part of one real set.",
+    "The answer was \"Places to get drinking water\"."
+  ],
+  "lessons": [
+    {
+      "title": "Wait for the clue that narrows the category",
+      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test."
+    },
+    {
+      "title": "Prefer exact fits over loose associations",
+      "body": "A strong Pinpoint answer should explain why each clue belongs in the same set, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the earlier clues once the frame tightens",
+      "body": "Once \"Fountain\" lands, go back and test the earlier clues under the same category before locking the answer."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on places",
+    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test.",
+    "clueTableRows": [
+      {
+        "clue": "Spring",
+        "examplePhrase": "Spring",
+        "connectionExplained": "\"Spring\" fits more cleanly once the board is read through the same shared frame as the other clues."
+      },
+      {
+        "clue": "Tap",
+        "examplePhrase": "Tap",
+        "connectionExplained": "\"Tap\" helps confirm the same category reading instead of pulling the board into a looser guess."
+      },
+      {
+        "clue": "Oasis",
+        "examplePhrase": "Oasis",
+        "connectionExplained": "\"Oasis\" belongs in the same frame as the rest of the board, which is why the answer tightens once this pattern becomes visible."
+      },
+      {
+        "clue": "Well",
+        "examplePhrase": "Well",
+        "connectionExplained": "\"Well\" fits more cleanly once the board is read through the same shared frame as the other clues."
+      },
+      {
+        "clue": "Fountain",
+        "examplePhrase": "Fountain",
+        "connectionExplained": "\"Fountain\" is the clue that makes the shared frame specific enough to test across the full board."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #692?",
+      "answer": "The answer is \"Places to get drinking water\" because that reading explains the full set cleanly, including \"Fountain\"."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #692?",
+      "answer": "The connection is a category board focused on places. The clues all fit more cleanly once they are read through the same specific category."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
+      "answer": "\"Fountain\" is the turning point because \"Fountain\" makes the category specific enough to test across the whole board."
+    }
+  ]
+}
