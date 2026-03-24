@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 693,
+    "slug": "pinpoint-answer-693",
+    "publishDate": "2026-03-24",
+    "status": "live",
+    "clues": [
+      "Mahalo",
+      "Danke",
+      "Arigato",
+      "Merci",
+      "Gracias"
+    ],
+    "mainAnswer": "“Thank you” in different languages",
+    "category": "“Thank you” in different languages",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Mahalo, Danke, Arigato, Merci, Gracias - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-03-24T08:01:56.414Z"
+  },
+  {
     "puzzleNumber": 692,
     "slug": "pinpoint-answer-692",
     "publishDate": "2026-03-23",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Spring",
       "Tap",
@@ -15,7 +33,7 @@
     "category": "Places to get drinking water",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Spring, Tap, Oasis, Well, Fountain - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-03-23T08:01:52.204Z"
+    "updatedAt": "2026-03-24T08:01:56.414Z"
   },
   {
     "puzzleNumber": 691,
