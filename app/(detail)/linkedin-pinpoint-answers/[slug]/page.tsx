@@ -113,7 +113,10 @@ export async function generateMetadata({
   }
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
-  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const isShortMode = puzzle.detailMode === "short";
+  const seoDescription = isShortMode
+    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the verified answer included. Answer: ${puzzle.answer}.`
+    : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
   const puzzleDetailPath = withTrailingSlash(routes.detail(puzzle.slug));
 
   return buildPageMetadata({
