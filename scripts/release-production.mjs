@@ -244,11 +244,29 @@ function buildDetailVerificationStrings(puzzle) {
     .filter(Boolean);
 }
 
+function buildDetailHtmlExpectations(puzzle) {
+  const bodyMode = String(puzzle?.bodyMode || "").trim();
+  if (bodyMode === "short") {
+    return {
+      required: ["compact guide"],
+      forbidden: ["full walkthrough included"],
+    };
+  }
+
+  return {
+    required: [],
+    forbidden: [],
+  };
+}
+
 async function waitForLatestDetailContent(siteUrl, slug, puzzle) {
   const startedAt = Date.now();
   const expectedStrings = buildDetailVerificationStrings(puzzle);
+  const htmlExpectations = buildDetailHtmlExpectations(puzzle);
   const detailUrl = `${siteUrl.replace(/\/$/, "")}/linkedin-pinpoint-answers/${slug}/`;
   let lastMissing = expectedStrings;
+  let lastMissingHtml = htmlExpectations.required;
+  let lastForbiddenHtml = [];
 
   while (Date.now() - startedAt < DETAIL_VERIFY_TIMEOUT_MS) {
     const cacheBust = `release-check=${Date.now()}`;
@@ -267,17 +285,23 @@ async function waitForLatestDetailContent(siteUrl, slug, puzzle) {
     const html = await response.text();
     const text = extractSearchableText(html);
     const missing = expectedStrings.filter((entry) => !text.includes(entry));
-    if (missing.length === 0) {
+    const missingHtml = htmlExpectations.required.filter((entry) => !html.includes(entry));
+    const forbiddenHtml = htmlExpectations.forbidden.filter((entry) => html.includes(entry));
+    if (missing.length === 0 && missingHtml.length === 0 && forbiddenHtml.length === 0) {
       return { detailUrl, checkedStrings: expectedStrings };
     }
 
     lastMissing = missing;
-    console.log(`Waiting for live detail content to update... missing ${missing.length} expected snippet(s).`);
+    lastMissingHtml = missingHtml;
+    lastForbiddenHtml = forbiddenHtml;
+    console.log(
+      `Waiting for live detail content to update... missing ${missing.length} text snippet(s), ${missingHtml.length} html marker(s), ${forbiddenHtml.length} stale html marker(s).`,
+    );
     await sleep(DETAIL_VERIFY_POLL_MS);
   }
 
   throw new Error(
-    `Detail page did not refresh to the expected content in time: ${slug}\nMissing: ${lastMissing.join(" | ")}`,
+    `Detail page did not refresh to the expected content in time: ${slug}\nMissing text: ${lastMissing.join(" | ") || "(none)"}\nMissing html: ${lastMissingHtml.join(" | ") || "(none)"}\nStale html still present: ${lastForbiddenHtml.join(" | ") || "(none)"}`,
   );
 }
 
