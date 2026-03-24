@@ -9,6 +9,7 @@ type PuzzleAnswerRevealProps = {
   answer: string;
   category: string;
   hintMap?: Record<string, string>;
+  detailMode?: "full" | "short";
 };
 
 function normalizeKey(value: string): string {
@@ -32,6 +33,7 @@ export function PuzzleAnswerReveal({
   answer,
   category,
   hintMap,
+  detailMode = "full",
 }: PuzzleAnswerRevealProps) {
   const [revealed, setRevealed] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -126,6 +128,11 @@ export function PuzzleAnswerReveal({
     }
   };
 
+  const detailNote =
+    detailMode === "short"
+      ? "Short guide continues just below - keep scrolling for the compact breakdown"
+      : "Detailed Pinpoint answer breakdown continues just below - keep scrolling";
+
   return (
     <section className="legacy-reveal-shell" aria-labelledby="pinpoint-answer-title">
       <p className="legacy-reveal-tip" id={revealTipId}>
@@ -181,7 +188,7 @@ export function PuzzleAnswerReveal({
         </div>
         <p className="legacy-answer-note">
           <span aria-hidden="true">ℹ️</span>
-          <span>Detailed Pinpoint answer breakdown continues just below - keep scrolling</span>
+          <span>{detailNote}</span>
         </p>
       </div>
     </section>

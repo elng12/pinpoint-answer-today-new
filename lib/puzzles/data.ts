@@ -49,6 +49,7 @@ export type PuzzleDetail = {
   display: PuzzleDetailDisplay;
   status: Exclude<PuzzleStatus, "draft" | "preview">;
   updatedAt: string;
+  detailMode: "full" | "short";
 };
 
 export type ArchiveEntry = {
@@ -584,6 +585,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     display,
     status: "live",
     updatedAt: record.fetchedAt,
+    detailMode: "short",
   };
 }
 
@@ -866,6 +868,7 @@ async function toPuzzleDetail(
     ),
     status: entry.status,
     updatedAt: entry.updatedAt,
+    detailMode: "full",
   };
 }
 

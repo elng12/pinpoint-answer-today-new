@@ -38,6 +38,7 @@ export function PuzzleDetail({
   adjacentPrev: ArchiveEntry | null;
   adjacentNext: ArchiveEntry | null;
 }) {
+  const isShortMode = puzzle.detailMode === "short";
   return (
     <div className="legacy-detail-page">
       <section className="legacy-detail-header">
@@ -57,12 +58,14 @@ export function PuzzleDetail({
           <span>Verified by Human Editor</span>
         </div>
         <p className="copy legacy-detail-summary">
-          {`This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and read the full analysis of how each clue fits together.`}
+          {isShortMode
+            ? `This short guide keeps the spoiler-safe hints, the answer reveal, and the compact clue table for ${formatClueList(puzzle.clues)} while the formal long-form JSON is still unavailable.`
+            : `This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and read the full analysis of how each clue fits together.`}
         </p>
 
         <div className="legacy-detail-actions">
           <a className="button-primary" href="#analysis">
-            Jump to full Pinpoint analysis
+            {isShortMode ? "Jump to quick Pinpoint guide" : "Jump to full Pinpoint analysis"}
           </a>
           <Link className="button-secondary" href={routes.archive}>
             Browse all Pinpoint answer pages
@@ -80,6 +83,7 @@ export function PuzzleDetail({
         answer={puzzle.answer}
         category={puzzle.category}
         hintMap={puzzle.wordHints}
+        detailMode={puzzle.detailMode}
       />
 
       <PuzzleCheckin puzzleNumber={puzzle.number} />

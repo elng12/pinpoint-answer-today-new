@@ -154,6 +154,7 @@ export default async function DetailPage({
   const detailPath = withTrailingSlash(routes.detail(puzzle.slug));
   const detailUrl = absoluteUrl(detailPath);
   const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
+  const isShortMode = puzzle.detailMode === "short";
 
   const structuredDataItems = [
     {
@@ -244,7 +245,9 @@ export default async function DetailPage({
           "@type": "HowToStep",
           position: 4,
           name: "Confirm with walkthrough",
-          text: `Compare your guess with the full clue-by-clue walkthrough for puzzle #${puzzle.number}. Reveal the validated connector and see how each clue fits.`,
+          text: isShortMode
+            ? `Compare your guess with the compact guide for puzzle #${puzzle.number}. Reveal the validated connector and use the table below to confirm each clue.`
+            : `Compare your guess with the full clue-by-clue walkthrough for puzzle #${puzzle.number}. Reveal the validated connector and see how each clue fits.`,
         },
       ],
     },
