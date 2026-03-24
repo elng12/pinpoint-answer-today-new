@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  puzzleDetailBodyModeSchema as sharedPuzzleDetailBodyModeSchema,
   difficultyLevelSchema as sharedDifficultyLevelSchema,
   faqItemSchema as sharedFaqItemSchema,
   lessonItemSchema as sharedLessonItemSchema,
@@ -15,6 +16,8 @@ export const puzzleStatusSchema =
   sharedPuzzleStatusSchema as z.ZodEnum<["draft", "preview", "live", "archived"]>;
 export const difficultyLevelSchema =
   sharedDifficultyLevelSchema as z.ZodEnum<["Easy", "Moderate", "Hard"]>;
+export const puzzleDetailBodyModeSchema =
+  sharedPuzzleDetailBodyModeSchema as z.ZodEnum<["short", "standard", "deep"]>;
 export const puzzleRegistryEntrySchema = sharedPuzzleRegistryEntrySchema as z.ZodObject<{
   puzzleNumber: z.ZodNumber;
   slug: z.ZodString;
@@ -47,6 +50,7 @@ export const puzzleDetailDisplaySchema = sharedPuzzleDetailDisplaySchema as z.Zo
 }>;
 export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.ZodObject<{
   slug: z.ZodString;
+  bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;
   articleBlocks: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;

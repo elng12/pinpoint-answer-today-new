@@ -39,6 +39,7 @@ export function PuzzleDetail({
   adjacentNext: ArchiveEntry | null;
 }) {
   const isShortMode = puzzle.detailMode === "short";
+  const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
   return (
     <div className="legacy-detail-page">
       <section className="legacy-detail-header">
@@ -58,8 +59,10 @@ export function PuzzleDetail({
           <span>Verified by Human Editor</span>
         </div>
         <p className="copy legacy-detail-summary">
-          {isShortMode
+          {isFallbackShortMode
             ? `This short guide keeps the spoiler-safe hints, the answer reveal, and the compact clue table for ${formatClueList(puzzle.clues)} while the formal long-form JSON is still unavailable.`
+            : isShortMode
+              ? `This quick guide keeps the spoiler-safe hints, answer reveal, and compact clue table for ${formatClueList(puzzle.clues)} without stretching an obvious pattern into a fake long walkthrough.`
             : `This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and read the full analysis of how each clue fits together.`}
         </p>
 

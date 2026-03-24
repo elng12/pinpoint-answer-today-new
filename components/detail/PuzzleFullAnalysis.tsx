@@ -94,13 +94,16 @@ export function PuzzleFullAnalysis({
   adjacentNext: ArchiveEntry | null;
 }) {
   const isShortMode = puzzle.detailMode === "short";
+  const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
   const walkthroughParagraphs = buildWalkthroughParagraphs(puzzle);
   const shortFaqs = puzzle.faqs.slice(0, 2);
   const analysisTitle = isShortMode
     ? `Pinpoint ${puzzle.number} Quick Guide`
     : `Pinpoint ${puzzle.number} Answer & Full Analysis`;
-  const analysisMetaLine = isShortMode
+  const analysisMetaLine = isFallbackShortMode
     ? "Short mode: compact explanation while the formal long-form JSON is unavailable"
+    : isShortMode
+      ? "Short mode: compact walkthrough for an obvious pattern puzzle"
     : "By Pinpoint Answer Today";
 
   return (
@@ -118,7 +121,7 @@ export function PuzzleFullAnalysis({
             </div>
           </header>
 
-          {isShortMode ? (
+          {isFallbackShortMode ? (
             <>
               <section className="legacy-analysis-section">
                 <div className="legacy-prose-stack">
@@ -127,6 +130,64 @@ export function PuzzleFullAnalysis({
                   <p>
                     {`The answer is ${puzzle.answer}. Use the table below to test each clue, then skim the compact FAQ for the shortest path to the connection.`}
                   </p>
+                </div>
+              </section>
+
+              <section className="legacy-analysis-section">
+                <div className="legacy-clue-table-shell">
+                  <div className="legacy-table-kicker-row">
+                    <Table className="legacy-section-icon" aria-hidden />
+                    <h3 className="legacy-table-kicker">Words & How They Fit</h3>
+                  </div>
+                  <table
+                    className="legacy-clue-table"
+                    aria-label={`Detailed breakdown of each clue word, example phrase, and explanation`}
+                  >
+                    <caption className="sr-only">
+                      Detailed breakdown of each clue word, example phrase, and explanation
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Clue Word</th>
+                        <th scope="col">Example Phrase</th>
+                        <th scope="col">Connection Explained</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {puzzle.display.clueTableRows.map((row) => (
+                        <tr key={row.clue}>
+                          <th scope="row">{row.clue}</th>
+                          <td>{`"${row.examplePhrase}"`}</td>
+                          <td>{row.connectionExplained}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section className="legacy-analysis-section">
+                <div className="legacy-section-title-row">
+                  <Lightbulb className="legacy-section-icon" aria-hidden />
+                  <h3 className="legacy-section-title">Compact FAQ</h3>
+                </div>
+                <div className="legacy-faq-stack">
+                  {shortFaqs.map((faq) => (
+                    <article className="legacy-faq-card" key={faq.question}>
+                      <h4 className="legacy-faq-question">{faq.question}</h4>
+                      <p className="copy">{faq.answer}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </>
+          ) : isShortMode ? (
+            <>
+              <section className="legacy-analysis-section">
+                <div className="legacy-prose-stack">
+                  {walkthroughParagraphs.map((paragraph, index) => (
+                    <p key={`${puzzle.slug}-walkthrough-${index}`}>{paragraph}</p>
+                  ))}
                 </div>
               </section>
 

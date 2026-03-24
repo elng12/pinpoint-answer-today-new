@@ -150,11 +150,13 @@ export default async function DetailPage({
   }
 
   const seoHeadline = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
-  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
   const detailPath = withTrailingSlash(routes.detail(puzzle.slug));
   const detailUrl = absoluteUrl(detailPath);
   const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
   const isShortMode = puzzle.detailMode === "short";
+  const seoDescription = isShortMode
+    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the verified answer included. Answer: ${puzzle.answer}.`
+    : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   const structuredDataItems = [
     {
