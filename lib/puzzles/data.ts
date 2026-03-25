@@ -102,9 +102,7 @@ type LiveAnswerPattern =
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
-const GITHUB_RAW_BASE =
-  process.env.GITHUB_RAW_BASE ??
-  "https://raw.githubusercontent.com/elng12/pinpoint-answer-today-new/main";
+const GITHUB_RAW_BASE = process.env.GITHUB_RAW_BASE?.trim() ?? "";
 const DEFAULT_PINPOINT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.dev/health";
 const BASELINE_NUMBER = 536;
 const BASELINE_DATE_UTC = Date.UTC(2025, 9, 18); // 2025-10-18
@@ -125,6 +123,10 @@ function formatDisplayDate(input: string): string {
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(`${input}T00:00:00Z`));
+}
+
+function hasRemotePuzzleDataSource(): boolean {
+  return GITHUB_RAW_BASE.length > 0;
 }
 
 function formatMonthLabel(input: string): string {
@@ -644,12 +646,13 @@ function isDetailEntry(
 
 // ── Data fetching (ISR-aware) ─────────────────────────────────────────────
 // Strategy: filesystem first (fast, works at build time and for deployed files),
-// fall back to GitHub raw fetch for new puzzles added after the last deployment.
+// with an optional remote content source for puzzles added after the last deployment.
 
 const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
   // In production we prefer remote first so publish + revalidate can reflect
   // new puzzles without waiting for a full redeploy artifact refresh.
-  const shouldTryRemoteFirst = process.env.NODE_ENV === "production";
+  const shouldTryRemoteFirst =
+    process.env.NODE_ENV === "production" && hasRemotePuzzleDataSource();
 
   if (shouldTryRemoteFirst) {
     try {
@@ -683,6 +686,10 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
     // fall through to final remote attempt
   }
 
+  if (!hasRemotePuzzleDataSource()) {
+    return bundledRegistryEntries;
+  }
+
   // Final remote attempt (covers environments where filesystem is unavailable)
   try {
     const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
@@ -711,23 +718,26 @@ const fetchPuzzleContent = cache(
         return loadDetailContentFromFilesystem(slug);
       }
     } catch {
-      // fall through to GitHub fetch
+      // fall through to optional remote fetch
     }
 
-    // File not in current deployment (new puzzle added after build) — fetch from GitHub
-    try {
-      const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
-        next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
-      });
-      if (!res.ok) {
-        throw new Error(`detail fetch failed with status ${res.status}`);
+    if (hasRemotePuzzleDataSource()) {
+      // File not in current deployment (new puzzle added after build) — fetch from remote content source
+      try {
+        const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
+          next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
+        });
+        if (!res.ok) {
+          throw new Error(`detail fetch failed with status ${res.status}`);
+        }
+        const json = await res.json();
+        return puzzleDetailContentSchema.parse(json);
+      } catch (error) {
+        warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
       }
-      const json = await res.json();
-      return puzzleDetailContentSchema.parse(json);
-    } catch (error) {
-      warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
-      return loadDetailContentFromFilesystem(slug);
     }
+
+    return loadDetailContentFromFilesystem(slug);
   },
 );
 

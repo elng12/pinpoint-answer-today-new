@@ -75,7 +75,7 @@ Recommended fallback choice:
 | --- | --- | --- | --- |
 | `NEXT_PUBLIC_ENABLE_GA` | Optional | `true` | Enables GA client scripts. Leave `false` if analytics is not ready. |
 | `NEXT_PUBLIC_GA_ID` | Optional | `G-XXXXXXXXXX` | Needed only when `NEXT_PUBLIC_ENABLE_GA=true`. |
-| `GITHUB_RAW_BASE` | Optional | `https://raw.githubusercontent.com/elng12/pinpoint-answer-today-new/main` | Usually leave blank. Override only if the content repo or branch changes. |
+| `GITHUB_RAW_BASE` | Optional | `https://cdn.example.com/pinpoint-content` | Leave blank in the current setup. Set it only if you have a public content endpoint that serves `data/puzzles/*.json`. |
 
 ## 4. Cross-System Value Matching
 
@@ -127,7 +127,7 @@ NEXT_PUBLIC_GA_ID=
 - Missing `REVALIDATE_SECRET`: `/api/revalidate` cannot be safely used by automation.
 - Missing feedback delivery vars: contact form returns `503` and tells the user to email support directly.
 - Missing GA vars: no analytics, but site still works.
-- Missing `GITHUB_RAW_BASE`: safe, because the default raw GitHub URL is already hardcoded.
+- Missing `GITHUB_RAW_BASE`: safe. The site will use bundled/deployed puzzle JSON only and will skip remote fetches.
 
 ## 7. Quick Post-Setup Checks
 
