@@ -15,6 +15,9 @@ const legacyTemplateMarkers = [
   "category board focused on thank",
   "shared idea concrete enough to test",
   "same specific category",
+  "one clean set",
+  "too loose to trust",
+  "same shelf",
 ];
 const modernPuzzleDateBaseline = {
   puzzleNumber: 458,

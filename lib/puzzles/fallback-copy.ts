@@ -45,7 +45,7 @@ export function buildSharedFallbackArticleBlocks(input: {
   return [
     `At first, ${first} and ${second} pointed in a few different directions.`,
     `The turn came with "${turningPoint}".`,
-    `That clue made the shared idea concrete enough to test across the full board.`,
+    `That clue made the answer feel concrete enough to test across the full board.`,
     `Once I read the set through ${connectorSummary}, examples like ${sampleReadText} stopped feeling loose and started landing cleanly.`,
     `The answer was ${answer}.`,
     `${finalCheckText} then felt like the last confirmations, not separate guesses.`,
