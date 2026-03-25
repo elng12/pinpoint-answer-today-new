@@ -6,6 +6,8 @@ import {
 export const CONTENT_CONTRACT = {
   overviewMinWords: 65,
   solutionEmergenceMinWords: 90,
+  shortOverviewMinWords: 40,
+  shortSolutionEmergenceMinWords: 70,
   summaryMinWords: 20,
   metaDescriptionMinChars: 115,
   metaDescriptionMaxChars: 165,
@@ -25,6 +27,7 @@ export type ContentContractIssue = {
 
 export type ContentContractInput = {
   puzzleNumber?: number;
+  bodyMode?: "short" | "standard" | "deep" | null;
   locale?: string | null;
   rawWords?: string[];
   mainAnswer?: string | null;
@@ -108,8 +111,35 @@ function normalizeForMatch(text: string | null | undefined): string {
     .trim();
 }
 
+export function resolveContentBodyMode(input: ContentContractInput): "short" | "standard" | "deep" {
+  if (input.bodyMode === "short" || input.bodyMode === "standard" || input.bodyMode === "deep") {
+    return input.bodyMode;
+  }
+
+  const articleBlockCount = Array.isArray(input.articleBlocks) ? input.articleBlocks.filter(Boolean).length : 0;
+  if (articleBlockCount > 0 && articleBlockCount <= 6) {
+    return "short";
+  }
+
+  return "standard";
+}
+
+export function getContentContractThresholds(input: ContentContractInput) {
+  const bodyMode = resolveContentBodyMode(input);
+  return {
+    bodyMode,
+    overviewMinWords:
+      bodyMode === "short" ? CONTENT_CONTRACT.shortOverviewMinWords : CONTENT_CONTRACT.overviewMinWords,
+    solutionEmergenceMinWords:
+      bodyMode === "short"
+        ? CONTENT_CONTRACT.shortSolutionEmergenceMinWords
+        : CONTENT_CONTRACT.solutionEmergenceMinWords,
+  };
+}
+
 export function validateContentContract(input: ContentContractInput): ContentContractIssue[] {
   const issues: ContentContractIssue[] = [];
+  const thresholds = getContentContractThresholds(input);
   const puzzleNumber = input.puzzleNumber ?? 0;
   const rawWords = (input.rawWords ?? []).map((word) => normalizeText(word)).filter(Boolean);
   const mainAnswer = normalizeAnswerLabel(input.mainAnswer ?? "");
@@ -149,7 +179,7 @@ export function validateContentContract(input: ContentContractInput): ContentCon
   }
 
   const overviewWords = countWords(input.overview);
-  if (overviewWords < CONTENT_CONTRACT.overviewMinWords) {
+  if (overviewWords < thresholds.overviewMinWords) {
     issues.push({
       level: "error",
       code: "overview.tooShort",
@@ -159,14 +189,14 @@ export function validateContentContract(input: ContentContractInput): ContentCon
   }
 
   const solutionWords = countWords(input.solutionEmergence);
-  if (solutionWords < CONTENT_CONTRACT.solutionEmergenceMinWords) {
+  if (solutionWords < thresholds.solutionEmergenceMinWords) {
     issues.push({
       level: "error",
       code: "solutionEmergence.tooShort",
       message: `Solution emergence too short: ${solutionWords}`,
       field: "solutionEmergence",
     });
-  } else if (!/\bI\b/.test(normalizeText(input.solutionEmergence))) {
+  } else if (thresholds.bodyMode !== "short" && !/\bI\b/.test(normalizeText(input.solutionEmergence))) {
     issues.push({
       level: "warning",
       code: "solutionEmergence.voice",

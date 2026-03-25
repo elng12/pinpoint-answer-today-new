@@ -5,6 +5,7 @@ import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
 const minFullAnalysisWords = 80;
+const minShortModeFullAnalysisWords = 60;
 const legacyTemplateMarkers = [
   "same category reading",
   "same shared frame",
@@ -75,9 +76,11 @@ function validateDetailContent(entry, detail) {
   }
 
   const fullAnalysisWordCount = countWords(detail.fullAnalysis.join(" "));
-  if (fullAnalysisWordCount < minFullAnalysisWords) {
+  const minRequiredFullAnalysisWords =
+    detail.bodyMode === "short" ? minShortModeFullAnalysisWords : minFullAnalysisWords;
+  if (fullAnalysisWordCount < minRequiredFullAnalysisWords) {
     throw new Error(
-      `${entry.slug} fullAnalysis is too thin (${fullAnalysisWordCount} words; expected at least ${minFullAnalysisWords}).`,
+      `${entry.slug} fullAnalysis is too thin (${fullAnalysisWordCount} words; expected at least ${minRequiredFullAnalysisWords}).`,
     );
   }
 

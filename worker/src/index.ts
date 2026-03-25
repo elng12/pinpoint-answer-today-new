@@ -2263,13 +2263,13 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
         qualityGateSummary = extractDraftFailureSummary(error);
         if (attempt >= draftAttempts) {
           const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used template fallback`;
-          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已改用模板保底全文", [
+          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used short fallback`;
+          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 Quick Guide 短版页", [
             `日期: ${puzzleDate}`,
             `谜题: #${puzzleNumber}`,
             `答案: ${answer}`,
             `尝试次数: ${draftAttempts}`,
-            `结果: AI 全文未过线，已改用旧模板保底全文`,
+            `结果: AI 长文未过线，已切换为 Quick Guide 短版页`,
             `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
           ]);
           draftResp = {
@@ -2277,7 +2277,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
             data: fallbackPayload,
           };
           lastDraftError = null;
-          console.warn("[enrich] draft blocked by quality gates; switched to template fallback", {
+          console.warn("[enrich] draft blocked by quality gates; switched to short fallback", {
             puzzleDate,
             puzzleNumber,
             attempt,
@@ -2856,8 +2856,8 @@ function toZhWebhookReason(reason: string | undefined): string {
 
   if (raw.startsWith("quality gate blocked after")) {
     const detail = raw.split(":").slice(1).join(":").trim();
-    if (raw.includes("used template fallback")) {
-      return detail ? `草稿质量未过线，已改用模板保底全文：${detail}` : "草稿质量未过线，已改用模板保底全文";
+    if (raw.includes("used short fallback") || raw.includes("used template fallback")) {
+      return detail ? `草稿质量未过线，已切换为 Quick Guide 短版页：${detail}` : "草稿质量未过线，已切换为 Quick Guide 短版页";
     }
     return detail ? `草稿质量未过线：${detail}` : "草稿质量未过线，已保留快版内容";
   }

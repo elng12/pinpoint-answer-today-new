@@ -8,6 +8,7 @@ import {
 } from "@/lib/puzzle-generation";
 import {
   CONTENT_CONTRACT,
+  getContentContractThresholds,
   normalizeAnswerLabel,
   promotePublishBlockingIssues,
   validateContentContract,
@@ -478,8 +479,14 @@ function toContractInput(
   locale: string | null = defaultLocale,
 ): ContentContractInput {
   const { sections, analysis } = readDraftParts(ai);
+  const articleBlocks = Array.isArray(sections.articleBlocks)
+    ? sections.articleBlocks.map((item) => asString(item) ?? "").filter(Boolean)
+    : [];
+  const bodyMode: ContentContractInput["bodyMode"] =
+    articleBlocks.length > 0 && articleBlocks.length <= 6 ? "short" : "standard";
   return {
     puzzleNumber: Number(puzzleData.puzzleNumber),
+    bodyMode,
     locale,
     rawWords: puzzleData.rawWords,
     mainAnswer: puzzleData.mainAnswer,
@@ -488,9 +495,7 @@ function toContractInput(
     seoDescription: asString(analysis.seoDescription),
     overview: asString(sections.overview),
     solutionEmergence: asString(sections.solutionEmergence),
-    articleBlocks: Array.isArray(sections.articleBlocks)
-      ? sections.articleBlocks.map((item) => asString(item) ?? "").filter(Boolean)
-      : null,
+    articleBlocks: articleBlocks.length > 0 ? articleBlocks : null,
     wrongGuesses: Array.isArray(sections.wrongGuesses)
       ? sections.wrongGuesses.map((item) => {
           const row = asRecord(item);
@@ -639,6 +644,11 @@ function buildRepairPrompt(
   const issueLines = issues.map((issue) => `- ${issue.message}`).join("\n");
   const previousJson = JSON.stringify(previous, null, 2);
   const label = normalizeAnswerLabel(puzzleData.mainAnswer) || "the shared idea";
+  const thresholds = getContentContractThresholds(toContractInput(puzzleData, previous));
+  const articleBlockRule =
+    thresholds.bodyMode === "short"
+      ? "5. sections.articleBlocks must contain 4 to 6 short paragraphs that read like a natural quick guide."
+      : "5. sections.articleBlocks must contain 8 to 14 short paragraphs that read like a natural article.";
   return `
 You are a senior content writer for "Pinpoint Answer Today". Use the V9 Article Slot Template.
 
@@ -652,9 +662,9 @@ Hard rules:
 2. Keep the puzzle data consistent:
    - Clues: ${puzzleData.rawWords.join(", ")}
    - Answer: ${label}
-3. overview must be at least ${CONTENT_CONTRACT.overviewMinWords} words.
-4. solutionEmergence must be at least ${CONTENT_CONTRACT.solutionEmergenceMinWords} words and use first-person voice.
-5. sections.articleBlocks must contain 8 to 14 short paragraphs that read like a natural article.
+3. overview must be at least ${thresholds.overviewMinWords} words.
+4. solutionEmergence must be at least ${thresholds.solutionEmergenceMinWords} words${thresholds.bodyMode === "short" ? "." : " and use first-person voice."}
+${articleBlockRule}
 6. seoTitle must include all five clues and not the answer.
 7. seoDescription must include all five clues.
 8. clueDetails must include exactly 5 items.
