@@ -84,6 +84,12 @@ const nextConfig: NextConfig = {
         destination: "/linkedin-pinpoint-answers/:slug",
         permanent: true,
       },
+      // Locale detail OG image paths: /de/linkedin-pinpoint-answers/pinpoint-answer-678/opengraph-image → canonical
+      {
+        source: `/${locale}/linkedin-pinpoint-answers/:slug/opengraph-image`,
+        destination: "/linkedin-pinpoint-answers/:slug/opengraph-image",
+        permanent: true,
+      },
       // Locale archive alias: /en/linkedin-pinpoint-answers → /puzzles (new site has no bare list at this path)
       {
         source: `/${locale}/linkedin-pinpoint-answers`,
@@ -209,6 +215,17 @@ const nextConfig: NextConfig = {
       {
         source: "/featured",
         destination: "/about-us",
+        permanent: true as const,
+      },
+      // Common root icon requests from iOS/Safari and crawlers
+      {
+        source: "/apple-touch-icon.png",
+        destination: "/favicon/apple-touch-icon.png",
+        permanent: true as const,
+      },
+      {
+        source: "/apple-touch-icon-precomposed.png",
+        destination: "/favicon/apple-touch-icon.png",
         permanent: true as const,
       },
     ];
