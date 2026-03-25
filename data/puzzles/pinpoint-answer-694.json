@@ -1,0 +1,108 @@
+{
+  "puzzleNumber": 694,
+  "slug": "pinpoint-answer-694",
+  "publishDate": "2026-03-25",
+  "isoDate": "2026-03-25",
+  "clues": [
+    "Marble",
+    "Obsidian",
+    "Slate",
+    "Granite",
+    "Sandstone"
+  ],
+  "answer": "Types of rocks",
+  "category": "Types of rocks",
+  "wordHints": {
+    "Marble": "\"Marble rock\" is a recognizable rock, so it gives the board a clean category fit.",
+    "Obsidian": "Once the board is read as rocks, \"Obsidian rock\" stops feeling broad and becomes an exact fit.",
+    "Slate": "\"Slate rock\" belongs in the same rock frame, which keeps the category specific instead of loose.",
+    "Granite": "\"Granite rock\" is a recognizable rock, so it gives the board a clean category fit.",
+    "Sandstone": "Once the board is read as rocks, \"Sandstone rock\" stops feeling broad and becomes an exact fit."
+  },
+  "spoilerHints": {
+    "Marble": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Obsidian": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Slate": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Granite": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Sandstone": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, Marble and Obsidian could have pointed to a few broad ideas instead of one clean set.",
+    "\"Marble\" was the clue that made the category feel specific enough to trust.",
+    "Once I read the board through a category board focused on rocks, examples like \"Marble rock\" and \"Obsidian rock\" started feeling like exact fits instead of loose guesses.",
+    "The answer was \"Types of rocks\".",
+    "\"Granite\" and \"Sandstone\" then felt like the last pieces falling into place."
+  ],
+  "fullAnalysis": [
+    "At first, Marble and Obsidian could have pointed to a few broad ideas instead of one clean set.",
+    "\"Marble\" was the clue that made the category feel specific enough to trust.",
+    "Once I read the board through a category board focused on rocks, examples like \"Marble rock\" and \"Obsidian rock\" started feeling like exact fits instead of loose guesses.",
+    "The answer was \"Types of rocks\".",
+    "\"Granite\" and \"Sandstone\" then felt like the last pieces falling into place."
+  ],
+  "solutionNarrative": [
+    "I did not trust my first read of the board. Marble and Obsidian both left room for a few broad guesses.",
+    "The solve turned when \"Sandstone\" gave me a specific frame to test across all five clues.",
+    "Once I read the board through a category board focused on rocks, the earlier words stopped feeling loose and started reading like part of one real set.",
+    "The answer was \"Types of rocks\"."
+  ],
+  "lessons": [
+    {
+      "title": "Wait for the clue that narrows the category",
+      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test."
+    },
+    {
+      "title": "Prefer exact fits over loose associations",
+      "body": "A strong Pinpoint answer should explain why each clue belongs in the same set, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the earlier clues once the frame tightens",
+      "body": "Once \"Sandstone\" lands, go back and test the earlier clues under the same category before locking the answer."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on rocks",
+    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test.",
+    "clueTableRows": [
+      {
+        "clue": "Marble",
+        "examplePhrase": "Marble rock",
+        "connectionExplained": "\"Marble rock\" is a recognizable rock, so it gives the board a clean category fit."
+      },
+      {
+        "clue": "Obsidian",
+        "examplePhrase": "Obsidian rock",
+        "connectionExplained": "Once the board is read as rocks, \"Obsidian rock\" stops feeling broad and becomes an exact fit."
+      },
+      {
+        "clue": "Slate",
+        "examplePhrase": "Slate rock",
+        "connectionExplained": "\"Slate rock\" belongs in the same rock frame, which keeps the category specific instead of loose."
+      },
+      {
+        "clue": "Granite",
+        "examplePhrase": "Granite rock",
+        "connectionExplained": "\"Granite rock\" is a recognizable rock, so it gives the board a clean category fit."
+      },
+      {
+        "clue": "Sandstone",
+        "examplePhrase": "Sandstone rock",
+        "connectionExplained": "Once the board is read as rocks, \"Sandstone rock\" stops feeling broad and becomes an exact fit."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #694?",
+      "answer": "The answer is \"Types of rocks\" because that reading explains the full set cleanly, including \"Sandstone\"."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #694?",
+      "answer": "The connection is a category board focused on rocks. The clues all fit more cleanly once they are read through the same specific category."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
+      "answer": "\"Sandstone\" is the turning point because \"Sandstone rock\" makes the category specific enough to test across the whole board."
+    }
+  ]
+}

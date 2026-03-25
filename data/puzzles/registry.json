@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 694,
+    "slug": "pinpoint-answer-694",
+    "publishDate": "2026-03-25",
+    "status": "live",
+    "clues": [
+      "Marble",
+      "Obsidian",
+      "Slate",
+      "Granite",
+      "Sandstone"
+    ],
+    "mainAnswer": "Types of rocks",
+    "category": "Types of rocks",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Marble, Obsidian, Slate, Granite, Sandstone - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-03-25T08:02:23.227Z"
+  },
+  {
     "puzzleNumber": 693,
     "slug": "pinpoint-answer-693",
     "publishDate": "2026-03-24",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Mahalo",
       "Danke",
@@ -15,7 +33,7 @@
     "category": "“Thank you” in different languages",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Mahalo, Danke, Arigato, Merci, Gracias - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-03-24T08:01:56.414Z"
+    "updatedAt": "2026-03-25T08:02:23.227Z"
   },
   {
     "puzzleNumber": 692,
