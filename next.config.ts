@@ -46,6 +46,36 @@ const securityHeaders: { key: string; value: string }[] = [
   },
 ];
 
+const legacyThemeDetailRedirects = [
+  {
+    source: "/puzzles/themes/types-of-dances",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-474",
+  },
+  {
+    source: "/puzzles/themes/things-you-can-raise",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-536",
+  },
+  {
+    source: "/puzzles/themes/words-that-precede-ship",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-562",
+  },
+  {
+    source: "/puzzles/themes/things-you-can-skip",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-565",
+  },
+] as const;
+
+const legacyConnectorDetailRedirects = [
+  {
+    source: "/puzzles/connector/mark",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-587",
+  },
+  {
+    source: "/puzzles/connectors/course",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-530",
+  },
+] as const;
+
 const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async headers() {
@@ -102,6 +132,18 @@ const nextConfig: NextConfig = {
         destination: "/puzzles",
         permanent: true,
       },
+      // Locale legacy theme family paths that now map cleanly to detail pages
+      ...legacyThemeDetailRedirects.map((redirect) => ({
+        source: `/${locale}${redirect.source}`,
+        destination: redirect.destination,
+        permanent: true,
+      })),
+      // Locale legacy connector family paths that now map cleanly to detail pages
+      ...legacyConnectorDetailRedirects.map((redirect) => ({
+        source: `/${locale}${redirect.source}`,
+        destination: redirect.destination,
+        permanent: true,
+      })),
       // Locale numeric puzzle pages first normalize to the English legacy alias,
       // then the app validates whether that puzzle number really exists.
       {
@@ -193,6 +235,16 @@ const nextConfig: NextConfig = {
 
     // Non-locale legacy paths from the old (default) route group
     const legacyRedirects = [
+      ...legacyThemeDetailRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: true as const,
+      })),
+      ...legacyConnectorDetailRedirects.map((redirect) => ({
+        source: redirect.source,
+        destination: redirect.destination,
+        permanent: true as const,
+      })),
       // Slug-format puzzle pages without locale: /puzzles/pinpoint-answer-530 → canonical
       {
         source: "/puzzles/pinpoint-answer-:number(\\d+)",
