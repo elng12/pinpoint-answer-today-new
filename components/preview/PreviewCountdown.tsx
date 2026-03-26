@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  formatPinpointUnlockLabel,
+  getPinpointUnlockIso,
+  PINPOINT_RESET_TIME_ZONE,
+} from "@/lib/utils/pinpoint-unlock";
 
 type Props = {
   isoDate: string;
@@ -22,7 +27,7 @@ const EMPTY_TIME_LEFT: TimeLeft = {
 };
 
 function calcTimeLeft(targetIso: string): TimeLeft {
-  const target = new Date(`${targetIso}T03:00:00Z`); // ~midnight PT
+  const target = new Date(targetIso);
   const diff = target.getTime() - Date.now();
 
   if (diff <= 0) {
@@ -43,15 +48,7 @@ function pad(n: number) {
 }
 
 function formatUnlockLabel(isoDate: string) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "short",
-    timeZone: "America/Los_Angeles",
-  }).format(new Date(`${isoDate}T03:00:00Z`));
+  return formatPinpointUnlockLabel(isoDate, PINPOINT_RESET_TIME_ZONE);
 }
 
 export function PreviewCountdown({ isoDate, puzzleNumber }: Props) {
@@ -59,10 +56,11 @@ export function PreviewCountdown({ isoDate, puzzleNumber }: Props) {
   const [unlockLabel, setUnlockLabel] = useState("");
 
   useEffect(() => {
-    setTime(calcTimeLeft(isoDate));
+    const targetIso = getPinpointUnlockIso(isoDate);
+    setTime(calcTimeLeft(targetIso));
     setUnlockLabel(formatUnlockLabel(isoDate));
     const id = setInterval(() => {
-      setTime(calcTimeLeft(isoDate));
+      setTime(calcTimeLeft(targetIso));
     }, 1000);
     return () => clearInterval(id);
   }, [isoDate]);

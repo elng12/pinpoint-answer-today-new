@@ -9,6 +9,7 @@ import {
   buildSharedFallbackLessons,
   buildSharedFallbackSolutionNarrative,
 } from "../../lib/puzzles/fallback-copy";
+import { getPinpointUnlockUtcHour } from "../../lib/utils/pinpoint-unlock";
 
 export interface Env {
   PP_DATA: KVNamespace;
@@ -4097,8 +4098,24 @@ export default {
     return new Response("Not Found", { status: 404 });
   },
 
-  async scheduled(_controller: ScheduledController, env: Env, ctx: ExecutionContext) {
-    const date = getBeijingTodayDate();
+  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
+    const scheduledAt =
+      typeof controller.scheduledTime === "number" ? new Date(controller.scheduledTime) : new Date();
+    const date = getBeijingTodayDate(scheduledAt);
+    const expectedUtcHour = getPinpointUnlockUtcHour(date);
+    const scheduledUtcHour = scheduledAt.getUTCHours();
+
+    if (scheduledUtcHour !== expectedUtcHour) {
+      console.log("scheduled run skipped outside active unlock window", {
+        date,
+        scheduledAt: scheduledAt.toISOString(),
+        scheduledUtcHour,
+        expectedUtcHour,
+        cron: controller.cron,
+      });
+      return;
+    }
+
     const startedAt = Date.now();
     const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
     const legacySiteBaseUrl = getLegacySiteBaseUrl(env);

@@ -1,17 +1,19 @@
 import type { NextPreview } from "@/lib/puzzles/data";
 import { Countdown } from "@/components/shared/Countdown";
-
-function toUnlockIso(dateIso: string) {
-  return `${dateIso}T08:00:00.000Z`;
-}
+import {
+  formatPinpointUnlockTime,
+  getPinpointUnlockIso,
+  SHANGHAI_TIME_ZONE,
+} from "@/lib/utils/pinpoint-unlock";
 
 export function HomeNextUnlock({ preview }: { preview: NextPreview | null }) {
   if (!preview) {
     return null;
   }
 
-  const targetIso = toUnlockIso(preview.isoDate);
-  const targetLabel = `Puzzle ${preview.number} unlocks on ${preview.expectedDate} at GMT+8 16:00`;
+  const shanghaiTime = formatPinpointUnlockTime(preview.isoDate, SHANGHAI_TIME_ZONE);
+  const targetIso = getPinpointUnlockIso(preview.isoDate);
+  const targetLabel = `Puzzle ${preview.number} unlocks on ${preview.expectedDate} at GMT+8 ${shanghaiTime}`;
   const headline = `When Does LinkedIn Pinpoint ${preview.number} Unlock?`;
 
   return (
@@ -20,7 +22,7 @@ export function HomeNextUnlock({ preview }: { preview: NextPreview | null }) {
         <div className="home-next-unlock-heading">
           <h2 className="home-next-unlock-title">{headline}</h2>
           <p className="home-next-unlock-copy">
-            {`Next unlock at ${preview.expectedDate} 16:00 (Asia/Shanghai). For Pinpoint, LinkedIn's daily schedule, this gives you the next reset at a glance. Times shown in your local time zone below.`}
+            {`Next unlock at ${preview.expectedDate} ${shanghaiTime} (Asia/Shanghai). This follows LinkedIn's Los Angeles reset, so the Shanghai time will auto-shift with daylight saving. Times shown in your local time zone below.`}
           </p>
         </div>
         <Countdown targetIso={targetIso} targetLabel={targetLabel} />

@@ -179,7 +179,7 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 | 配置项 | 值 |
 |---|---|
 | KV namespace | `PP_DATA`，namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` |
-| Cron | `1,3,7,10,15,20 8 * * *`（UTC），即北京时间 16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20 |
+| Cron | `1,3,7,10,15,20 7,8 * * *`（UTC；覆盖夏令时/冬令时，Worker 会自动跳过无效窗口），即北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20` |
 | staging Cron | 已显式关闭：`[env.staging.triggers].crons = []` |
 | 目标仓库 | `elng12/pinpoint-answer-today-new`，分支 `main` |
 | revalidate 地址 | `https://pinpointanswertoday.app/api/revalidate` |
@@ -251,7 +251,7 @@ npm run test:pinpoint-regression:core
    - 如果同一题在几分钟内反复出现 `add answer data` / `mark live` 对应部署，说明仍有重复写入
 
 2. Worker Cron 触发
-   - 当前生产窗口：北京时间 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20`
+   - 当前生产窗口：北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20`
    - 正常预期：cron 可以重复触发，但不会因为同样内容反复提交 GitHub
 
 3. Worker 日志关键词
