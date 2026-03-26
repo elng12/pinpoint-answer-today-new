@@ -309,8 +309,11 @@ function pickTurningPointClue(clues: string[]): string {
 
 function buildFallbackConnectorSummary(answer: string): string {
   const pattern = detectAnswerPattern(answer);
-  if (pattern.kind === "before" || pattern.kind === "after") {
-    return `a phrase pattern built around ${pattern.token}`;
+  if (pattern.kind === "before") {
+    return `familiar phrases that end with "${pattern.token}"`;
+  }
+  if (pattern.kind === "after") {
+    return `familiar phrases and common terms that begin with "${pattern.token}"`;
   }
   if (pattern.kind === "typed-category") {
     return `a category board about ${pattern.noun.toLowerCase()}`;
@@ -324,7 +327,7 @@ function buildGroundedHeroSummary(puzzleData: PuzzleDataForAI): string {
   const cluePreview = clues.slice(0, 3).join(", ");
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   return pattern.kind === "before" || pattern.kind === "after"
-    ? `At first, ${cluePreview} can point in a few different directions before one later clue makes the repeated word hard to miss.`
+    ? `At first, ${cluePreview} could point toward a few different phrase guesses before one later clue makes the missing word hard to miss.`
     : `At first, ${cluePreview} do not suggest one clean answer until a later clue makes the shared idea concrete enough to test.`;
 }
 
@@ -361,7 +364,7 @@ function buildFallbackRejectedGuess(
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   const explanation =
     pattern.kind === "before" || pattern.kind === "after"
-      ? `${turningClue} never fit that reading cleanly enough, so the board needed a tighter phrase frame.`
+      ? `${turningClue} never fit that reading cleanly enough, so the board needed one exact missing word instead of a loose phrase guess.`
       : `${turningClue} never fit that reading cleanly enough, so the board needed a more exact category.`;
   return {
     guess: wrongGuess,
@@ -372,7 +375,7 @@ function buildFallbackRejectedGuess(
 function buildFallbackTurningPoint(puzzleData: PuzzleDataForAI, turningClue: string): string {
   const pattern = detectAnswerPattern(puzzleData.mainAnswer);
   if (pattern.kind === "before" || pattern.kind === "after") {
-    return `"${turningClue}" is the clue that makes the shared word hard to miss.`;
+    return `"${turningClue}" is the clue that makes the missing word hard to miss.`;
   }
   return `"${turningClue}" is the clue that makes the answer concrete enough to test.`;
 }

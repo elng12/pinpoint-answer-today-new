@@ -365,8 +365,11 @@ function detectLiveAnswerPattern(answer: string): LiveAnswerPattern {
 
 function buildLiveConnectorSummary(answer: string): string {
   const pattern = detectLiveAnswerPattern(answer);
-  if (pattern.kind === "before" || pattern.kind === "after") {
-    return `a phrase pattern built around ${pattern.token}`;
+  if (pattern.kind === "before") {
+    return `familiar phrases that end with "${pattern.token}"`;
+  }
+  if (pattern.kind === "after") {
+    return `familiar phrases and common terms that begin with "${pattern.token}"`;
   }
   if (pattern.kind === "typed-category") {
     return `a category board focused on ${pattern.noun.toLowerCase()}`;
@@ -451,7 +454,7 @@ function buildLiveClueExplanation(clue: string, answer: string, index: number, t
   const phrase = buildLiveFallbackPhrase(clue, answer);
 
   if (pattern.kind === "before" || pattern.kind === "after") {
-    return `"${phrase}" is the natural reading here, so this clue makes more sense once the board is read through "${pattern.token}".`;
+    return `"${phrase}" is a familiar phrase or term, which is why this clue fits once "${pattern.token}" is in place.`;
   }
 
   if (pattern.kind === "typed-category") {

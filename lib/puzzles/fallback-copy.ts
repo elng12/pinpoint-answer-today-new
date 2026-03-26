@@ -33,12 +33,11 @@ export function buildSharedFallbackArticleBlocks(input: {
 
   if (isPhrasePattern(kind)) {
     return [
-      `At first, ${first} and ${second} did not point to one shared word on their own.`,
-      `The turn came with "${turningPoint}".`,
-      `That clue made the repeated word feel exact instead of guessed.`,
-      `Once I could read phrases like ${sampleReadText}, the board stopped feeling random.`,
+      `At first, ${first} and ${second} could have pulled toward a few different phrase guesses.`,
+      `"${turningPoint}" was the clue that made the missing word much easier to spot.`,
+      `Once phrases like ${sampleReadText} appeared, the board stopped feeling scattered.`,
       `The answer was ${answer}.`,
-      `${finalCheckText} then felt like the last confirmations, not separate mysteries.`,
+      `${finalCheckText} then felt like the last clean checks on the same pattern.`,
     ];
   }
 
@@ -60,16 +59,16 @@ export function buildSharedFallbackLessons(input: {
   if (isPhrasePattern(kind)) {
     return [
       {
-        title: "Wait for the clue that narrows the phrase",
-        body: "When the opening clues feel broad, wait for the clue that makes one repeated word impossible to ignore.",
+        title: "Wait for the clue that makes the missing word obvious",
+        body: "When the opening clues feel broad, look for the clue that turns a loose phrase guess into one exact expression.",
       },
       {
-        title: "Prefer exact phrases over loose associations",
-        body: "A strong Pinpoint answer should create natural phrase fits for all five clues, not just a theme that feels close enough.",
+        title: "Prefer familiar phrases over vague overlap",
+        body: "A strong Pinpoint answer should produce natural expressions and common terms, not just words that feel loosely related.",
       },
       {
-        title: "Re-check the early clues once the pattern appears",
-        body: `Once "${turningPoint}" lands, go back and test the earlier clues against that same shared word before locking the answer.`,
+        title: "Re-check the first clues once the pattern appears",
+        body: `Once "${turningPoint}" lands, go back and test the earlier clues against the same missing word before locking the answer.`,
       },
     ];
   }
@@ -107,11 +106,11 @@ export function buildSharedFallbackFaqs(input: {
       },
       {
         question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
-        answer: `The connection is ${connectorSummary}. Each clue becomes a familiar phrase once the same shared word is in place.`,
+        answer: `The connection is ${connectorSummary}. Each clue becomes a familiar phrase or common term once the same missing word is in place.`,
       },
       {
         question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
-        answer: `"${turningPoint}" is the turning point because ${turningPhrase ? `"${turningPhrase}" makes the repeated word hard to miss.` : "it makes the repeated word hard to miss."}`,
+        answer: `"${turningPoint}" is the strongest clue because ${turningPhrase ? `"${turningPhrase}" makes the missing word feel exact instead of improvised.` : "it makes the missing word feel exact instead of improvised."}`,
       },
     ];
   }
@@ -140,8 +139,8 @@ export function buildSharedFallbackSolutionNarrative(input: {
   const { kind, wrongGuess, turningPoint } = input;
   if (isPhrasePattern(kind)) {
     return [
-      `I did not have a stable shared word from the first clue. I initially drifted toward ${wrongGuess}, but that reading never explained "${turningPoint}" cleanly enough.`,
-      `The turn came when I let "${turningPoint}" lead the solve. Once I had one tighter phrase pattern, the earlier clues started behaving like natural fits instead of isolated prompts.`,
+      `I did not have a stable missing word from the first clue. I initially drifted toward ${wrongGuess}, but that reading never explained "${turningPoint}" cleanly enough.`,
+      `The solve turned when I let "${turningPoint}" lead. Once one exact phrase landed, the earlier clues started behaving like natural fits instead of isolated prompts.`,
     ];
   }
 

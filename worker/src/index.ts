@@ -679,8 +679,11 @@ function extractWorkerCategoryLabel(answer: string): string {
 
 function buildWorkerConnectorSummary(answer: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
-  if (pattern.kind === "before" || pattern.kind === "after") {
-    return `a phrase pattern built around ${pattern.token}`;
+  if (pattern.kind === "before") {
+    return `familiar phrases that end with "${pattern.token}"`;
+  }
+  if (pattern.kind === "after") {
+    return `familiar phrases and common terms that begin with "${pattern.token}"`;
   }
   if (pattern.kind === "typed-category") {
     return `a category board focused on ${pattern.noun.toLowerCase()}`;
@@ -731,9 +734,9 @@ function buildWorkerClueExplanation(clue: string, phrase: string, answer: string
     const visualStyle = normalizeLooseWorkerText(clue) !== normalizeLooseWorkerText(phraseText) &&
       /[^\p{L}\p{N}\s()'"&,-]/u.test(clue);
     if (visualStyle) {
-      return `The familiar expression "${phraseText}" confirms the shared word "${token}" in plain language.`;
+      return `The familiar expression "${phraseText}" makes the missing word "${token}" obvious in plain language.`;
     }
-    return `"${phraseText}" is the natural reading here, so this clue fits once the board is read through "${token}".`;
+    return `"${phraseText}" is a familiar phrase or term, which is why this clue fits once "${token}" is in place.`;
   }
 
   if (pattern.kind === "typed-category") {
@@ -950,9 +953,9 @@ function buildTemplateFallbackPayload(
   const overviewParagraphs =
     pattern.kind === "before" || pattern.kind === "after"
       ? [
-          `At first, ${words.slice(0, 3).join(", ")} can point in a few different directions.`,
-          `"${turningPoint}" is the clue that makes the repeated word hard to miss.`,
-          `Once that phrase pattern appears, ${connectorSummary} explains the whole set more cleanly than an early loose guess.`,
+          `At first, ${words.slice(0, 3).join(", ")} could have pointed toward a few different phrase guesses.`,
+          `"${turningPoint}" is the clue that makes the missing word much easier to spot.`,
+          `Once that phrase appears, ${connectorSummary} explains the whole set more cleanly than an early loose guess.`,
         ]
       : [
           `At first, ${words.slice(0, 3).join(", ")} do not point to one clean answer.`,
