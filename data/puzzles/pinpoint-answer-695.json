@@ -1,0 +1,110 @@
+{
+  "puzzleNumber": 695,
+  "slug": "pinpoint-answer-695",
+  "publishDate": "2026-03-26",
+  "isoDate": "2026-03-26",
+  "clues": [
+    "Tiger",
+    "Plane",
+    "Towel",
+    "Weight",
+    "Clip"
+  ],
+  "answer": "Words that come after \"paper\"",
+  "category": "Words that come after \"paper\"",
+  "wordHints": {
+    "Tiger": "\"paper Tiger\" is the natural reading here, so this clue fits once the board is read through \"paper\".",
+    "Plane": "\"paper Plane\" is the natural reading here, so this clue fits once the board is read through \"paper\".",
+    "Towel": "\"paper Towel\" is the natural reading here, so this clue fits once the board is read through \"paper\".",
+    "Weight": "\"paper Weight\" is the natural reading here, so this clue fits once the board is read through \"paper\".",
+    "Clip": "\"paper Clip\" is the natural reading here, so this clue fits once the board is read through \"paper\"."
+  },
+  "spoilerHints": {
+    "Tiger": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Plane": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Towel": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Weight": "This is the clue that makes the phrase frame specific enough to trust without revealing the final connector.",
+    "Clip": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "At first, Tiger and Plane did not point to one shared word on their own.",
+    "\"Weight\" was the clue that made the missing word feel exact instead of guessed.",
+    "Once I could read phrases like \"paper Tiger\" and \"paper Plane\", the rest of the board stopped feeling random.",
+    "The answer was \"Words that come after \"paper\"\".",
+    "\"Weight\" and \"Clip\" then felt like the last confirmations, not separate mysteries.",
+    "That is why a phrase pattern built around paper explains the set more cleanly than an early loose guess."
+  ],
+  "fullAnalysis": [
+    "At first, Tiger and Plane did not point to one shared word on their own.",
+    "\"Weight\" was the clue that made the missing word feel exact instead of guessed.",
+    "Once I could read phrases like \"paper Tiger\" and \"paper Plane\", the rest of the board stopped feeling random.",
+    "The answer was \"Words that come after \"paper\"\".",
+    "\"Weight\" and \"Clip\" then felt like the last confirmations, not separate mysteries.",
+    "That is why a phrase pattern built around paper explains the set more cleanly than an early loose guess."
+  ],
+  "solutionNarrative": [
+    "I did not have a stable connector from the first clue. Tiger and Plane both left room for weak phrase guesses.",
+    "The solve turned when \"Weight\" clicked as \"paper Weight\".",
+    "Once I had that repeated word, the earlier clues started behaving like natural phrases instead of isolated prompts.",
+    "The answer was \"Words that come after \"paper\"\"."
+  ],
+  "lessons": [
+    {
+      "title": "Wait for the clue that narrows the shared phrase",
+      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact."
+    },
+    {
+      "title": "Prefer exact fits over loose associations",
+      "body": "A strong Pinpoint answer should create natural phrases for all five clues, not just a vibe that seems close enough."
+    },
+    {
+      "title": "Re-check the earlier clues once the frame tightens",
+      "body": "Once \"Weight\" lands, go back and test the earlier clues against the same shared word before locking the answer."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a phrase pattern built around paper",
+    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact.",
+    "clueTableRows": [
+      {
+        "clue": "Tiger",
+        "examplePhrase": "paper Tiger",
+        "connectionExplained": "\"paper Tiger\" is the natural reading here, so this clue fits once the board is read through \"paper\"."
+      },
+      {
+        "clue": "Plane",
+        "examplePhrase": "paper Plane",
+        "connectionExplained": "\"paper Plane\" is the natural reading here, so this clue fits once the board is read through \"paper\"."
+      },
+      {
+        "clue": "Towel",
+        "examplePhrase": "paper Towel",
+        "connectionExplained": "\"paper Towel\" is the natural reading here, so this clue fits once the board is read through \"paper\"."
+      },
+      {
+        "clue": "Weight",
+        "examplePhrase": "paper Weight",
+        "connectionExplained": "\"paper Weight\" is the natural reading here, so this clue fits once the board is read through \"paper\"."
+      },
+      {
+        "clue": "Clip",
+        "examplePhrase": "paper Clip",
+        "connectionExplained": "\"paper Clip\" is the natural reading here, so this clue fits once the board is read through \"paper\"."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #695?",
+      "answer": "The answer is \"Words that come after \"paper\"\" because that reading explains the full set cleanly, including \"Weight\"."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #695?",
+      "answer": "The connection is a phrase pattern built around paper. Each clue becomes a familiar phrase once the same shared word is in place."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #695?",
+      "answer": "\"Weight\" is the turning point because \"paper Weight\" confirms the shared word more clearly than the earlier clues do."
+    }
+  ]
+}

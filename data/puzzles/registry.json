@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 695,
+    "slug": "pinpoint-answer-695",
+    "publishDate": "2026-03-26",
+    "status": "live",
+    "clues": [
+      "Tiger",
+      "Plane",
+      "Towel",
+      "Weight",
+      "Clip"
+    ],
+    "mainAnswer": "Words that come after \"paper\"",
+    "category": "Words that come after \"paper\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Tiger, Plane, Towel, Weight, Clip - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-03-26T08:02:11.260Z"
+  },
+  {
     "puzzleNumber": 694,
     "slug": "pinpoint-answer-694",
     "publishDate": "2026-03-25",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Marble",
       "Obsidian",
@@ -15,7 +33,7 @@
     "category": "Types of rocks",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Marble, Obsidian, Slate, Granite, Sandstone - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-03-25T08:02:23.227Z"
+    "updatedAt": "2026-03-26T08:02:11.260Z"
   },
   {
     "puzzleNumber": 693,
