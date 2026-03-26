@@ -144,6 +144,22 @@ const nextConfig: NextConfig = {
         destination: redirect.destination,
         permanent: true,
       })),
+      // Route remaining locale legacy family pages through the non-locale fallback handlers
+      {
+        source: `/${locale}/puzzles/themes/:slug`,
+        destination: "/puzzles/themes/:slug",
+        permanent: true,
+      },
+      {
+        source: `/${locale}/puzzles/connectors/:slug`,
+        destination: "/puzzles/connectors/:slug",
+        permanent: true,
+      },
+      {
+        source: `/${locale}/puzzles/connector/:slug`,
+        destination: "/puzzles/connector/:slug",
+        permanent: true,
+      },
       // Locale numeric puzzle pages first normalize to the English legacy alias,
       // then the app validates whether that puzzle number really exists.
       {
