@@ -27,44 +27,42 @@
     "Clip": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "At first, Tiger and Plane could have pulled toward a few different compound-word guesses.",
-    "The board settled once Weight suggested \"paperweight,\" because that term feels exact instead of improvised.",
-    "From there, phrases like \"paper tiger,\" \"paper plane,\" and \"paper towel\" all landed naturally.",
-    "The answer was \"Words that come after \\\"paper\\\".\"",
-    "Clip then worked as one more clean check on the same pattern rather than a separate idea."
+    "Tiger and Plane made the shared-word setup obvious almost immediately, but neither clue told me which word belonged in front.",
+    "Weight solved that, because \"paperweight\" feels exact in a way the earlier guesses do not.",
+    "Once that clicked, \"paper tiger,\" \"paper plane,\" and \"paper towel\" all landed as familiar phrases instead of lucky stretches.",
+    "The answer was Words that come after \"paper\".",
+    "\"Paper clip\" then worked as the last easy confirmation."
   ],
   "fullAnalysis": [
-    "At first, Tiger and Plane could have pulled toward a few different compound-word guesses.",
-    "\"Weight\" was the clue that made the missing word feel exact instead of improvised.",
-    "Once \"paperweight\" landed, the earlier clues stopped feeling scattered and started reading like familiar phrases.",
-    "\"Paper tiger,\" \"paper plane,\" and \"paper towel\" all fit without forcing anything.",
-    "The answer was \"Words that come after \\\"paper\\\".\"",
-    "\"Paper clip\" also worked immediately, which is why the pattern felt settled instead of speculative.",
-    "\"Clip\" then worked as the last clean confirmation on the same pattern."
+    "Tiger and Plane tell you pretty quickly that this is a shared-word phrase puzzle, but neither one is precise enough to name the word on its own.",
+    "\"Weight\" is the giveaway. Once \"paperweight\" appears, the answer stops feeling guessed and starts feeling exact.",
+    "From there, \"paper tiger,\" \"paper plane,\" and \"paper towel\" all read like ordinary language rather than forced compounds.",
+    "\"Paper clip\" works the same way, which is why the board closes cleanly once \"paper\" is in place.",
+    "The answer was Words that come after \"paper\"."
   ],
   "solutionNarrative": [
-    "Tiger and Plane did not point me to one missing word right away.",
-    "\"Weight\" changed that, because \"paperweight\" is such a familiar term.",
-    "Once that phrase clicked, the rest of the clues lined up fast as everyday expressions and objects.",
-    "The answer was \"Words that come after \\\"paper\\\".\""
+    "Tiger and Plane made the shared-word pattern obvious, but not the word itself.",
+    "\"Weight\" solved that, because \"paperweight\" is so exact that the rest of the board snapped into place right after it.",
+    "After that, the other clues all read like familiar phrases and everyday terms.",
+    "The answer was Words that come after \"paper\"."
   ],
   "lessons": [
     {
-      "title": "Wait for the clue that narrows the shared phrase",
-      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the repeated word feel exact."
+      "title": "Let the most specific phrase lead",
+      "body": "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase."
     },
     {
-      "title": "Prefer exact fits over loose associations",
-      "body": "A strong Pinpoint answer should create natural phrases for all five clues, not just a vibe that seems close enough."
+      "title": "Test real language, not just a theme",
+      "body": "A good answer should produce phrases people actually say, not just words that seem related from a distance."
     },
     {
-      "title": "Re-check the earlier clues once the frame tightens",
-      "body": "Once \"Weight\" lands, go back and test the earlier clues against the same shared word before locking the answer."
+      "title": "Save the easiest clue for confirmation",
+      "body": "After the answer lands, a clue like \"Clip\" should feel boring in the best way because it works immediately."
     }
   ],
   "display": {
-    "connectorSummary": "familiar phrases and terms that begin with \"paper\"",
-    "fastStrategy": "Look for the clue that turns a loose word list into one exact compound or phrase.",
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Look for the clue that turns a broad phrase guess into one exact term.",
     "clueTableRows": [
       {
         "clue": "Tiger",
@@ -74,37 +72,37 @@
       {
         "clue": "Plane",
         "examplePhrase": "paper plane",
-        "connectionExplained": "\"paper plane\" is a common folded toy, so it confirms the same opening word without any stretch."
+        "connectionExplained": "\"paper plane\" is an everyday folded toy, so it confirms the same opening word without any strain."
       },
       {
         "clue": "Towel",
         "examplePhrase": "paper towel",
-        "connectionExplained": "\"paper towel\" is an everyday household term, which keeps the pattern grounded in normal language."
+        "connectionExplained": "\"paper towel\" is such a standard household phrase that it reinforces the same answer immediately."
       },
       {
         "clue": "Weight",
         "examplePhrase": "paperweight",
-        "connectionExplained": "\"paperweight\" is the strongest clue because it makes the missing word feel exact instead of guessed."
+        "connectionExplained": "\"paperweight\" is the clue that locks the answer because it points to one exact word instead of several possible compounds."
       },
       {
         "clue": "Clip",
         "examplePhrase": "paper clip",
-        "connectionExplained": "\"paper clip\" is a basic desk item, so it works as one more clean confirmation of the same pattern."
+        "connectionExplained": "\"paper clip\" is a familiar desk item, so it works as the final low-drama check once the pattern is already clear."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #695?",
-      "answer": "The answer is \"Words that come after \\\"paper\\\"\" because phrases like \"paper tiger,\" \"paper towel,\" and \"paper clip\" all fit naturally once that word is in place."
+      "answer": "The answer is Words that come after \"paper\" because phrases like \"paper tiger,\" \"paper towel,\" and \"paper clip\" all fit naturally once that word is in place."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #695?",
-      "answer": "The connection is familiar words and phrases that begin with \"paper.\" The set works because each clue forms a natural expression or common term."
+      "answer": "The connection is one shared word that comes before every clue. Once you test \"paper,\" each clue turns into a familiar phrase or everyday term."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #695?",
-      "answer": "\"Weight\" is the strongest clue because \"paperweight\" is such a familiar term that it makes the missing word feel obvious."
+      "question": "Why is Weight the key clue in LinkedIn Pinpoint #695?",
+      "answer": "\"Weight\" is the strongest clue because \"paperweight\" feels exact right away. It narrows the missing word much faster than Tiger or Plane do."
     }
   ]
 }

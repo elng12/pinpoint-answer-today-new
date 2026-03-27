@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
+const adjacentQuotePattern = /["“”]{2,}/;
 const minFullAnalysisWords = 80;
 const minShortModeFullAnalysisWords = 60;
 const legacyTemplateMarkers = [
@@ -42,6 +43,29 @@ function assertNoLegacyTemplate(label, value) {
   }
 }
 
+function assertNoAdjacentQuotes(label, value) {
+  if (adjacentQuotePattern.test(String(value || ""))) {
+    throw new Error(`${label} contains malformed adjacent quote characters.`);
+  }
+}
+
+function assertNoWrappedQuotedAnswer(label, value, answer) {
+  const text = String(value || "");
+  const normalizedAnswer = String(answer || "").trim();
+  if (!normalizedAnswer || !/["“”]/.test(normalizedAnswer)) {
+    return;
+  }
+
+  const wrappedVariants = [
+    `"${normalizedAnswer}"`,
+    `“${normalizedAnswer}”`,
+  ];
+
+  if (wrappedVariants.some((variant) => text.includes(variant))) {
+    throw new Error(`${label} wraps an answer that already contains its own quotes.`);
+  }
+}
+
 function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
   if (!Number.isInteger(puzzleNumber) || puzzleNumber < modernPuzzleDateBaseline.puzzleNumber) {
     return "";
@@ -56,6 +80,7 @@ function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
 }
 
 function validateDetailContent(entry, detail) {
+  const detailAnswer = typeof detail.answer === "string" ? detail.answer : "";
   const hintKeys = Object.keys(detail.wordHints);
   const missingHintKeys = entry.clues.filter((clue) => !hintKeys.includes(clue));
   const extraHintKeys = hintKeys.filter((key) => !entry.clues.includes(key));
@@ -90,16 +115,22 @@ function validateDetailContent(entry, detail) {
   detail.fullAnalysis.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} fullAnalysis[${index}]`, paragraph);
     assertNoLegacyTemplate(`${entry.slug} fullAnalysis[${index}]`, paragraph);
+    assertNoAdjacentQuotes(`${entry.slug} fullAnalysis[${index}]`, paragraph);
+    assertNoWrappedQuotedAnswer(`${entry.slug} fullAnalysis[${index}]`, paragraph, detailAnswer);
   });
 
   detail.articleBlocks?.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} articleBlocks[${index}]`, paragraph);
     assertNoLegacyTemplate(`${entry.slug} articleBlocks[${index}]`, paragraph);
+    assertNoAdjacentQuotes(`${entry.slug} articleBlocks[${index}]`, paragraph);
+    assertNoWrappedQuotedAnswer(`${entry.slug} articleBlocks[${index}]`, paragraph, detailAnswer);
   });
 
   detail.solutionNarrative?.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} solutionNarrative[${index}]`, paragraph);
     assertNoLegacyTemplate(`${entry.slug} solutionNarrative[${index}]`, paragraph);
+    assertNoAdjacentQuotes(`${entry.slug} solutionNarrative[${index}]`, paragraph);
+    assertNoWrappedQuotedAnswer(`${entry.slug} solutionNarrative[${index}]`, paragraph, detailAnswer);
   });
 
   Object.entries(detail.wordHints).forEach(([clue, hint]) => {
@@ -130,12 +161,16 @@ function validateDetailContent(entry, detail) {
     assertNoHtml(`${entry.slug} faqs[${index}].answer`, faq.answer);
     assertNoLegacyTemplate(`${entry.slug} faqs[${index}].question`, faq.question);
     assertNoLegacyTemplate(`${entry.slug} faqs[${index}].answer`, faq.answer);
+    assertNoAdjacentQuotes(`${entry.slug} faqs[${index}].question`, faq.question);
+    assertNoAdjacentQuotes(`${entry.slug} faqs[${index}].answer`, faq.answer);
+    assertNoWrappedQuotedAnswer(`${entry.slug} faqs[${index}].answer`, faq.answer, detailAnswer);
   });
 
   if (detail.display) {
     assertNoLegacyTemplate(`${entry.slug} display.connectorSummary`, detail.display.connectorSummary);
     assertNoLegacyTemplate(`${entry.slug} display.fastStrategy`, detail.display.fastStrategy);
     detail.display.clueTableRows.forEach((row, index) => {
+      assertNoAdjacentQuotes(`${entry.slug} display.clueTableRows[${index}].examplePhrase`, row.examplePhrase);
       assertNoLegacyTemplate(`${entry.slug} display.clueTableRows[${index}].connectionExplained`, row.connectionExplained);
     });
   }

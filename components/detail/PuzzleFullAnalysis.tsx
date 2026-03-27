@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Star, Lightbulb, Table } from "lucide-react";
 import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
+import { getVisibleDetailFaqs } from "@/lib/puzzles/detail-view";
 import type { LessonItem } from "@/lib/puzzles/schema";
 import { routes } from "@/lib/paths/routes";
 
@@ -80,6 +81,43 @@ function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
   return [...paragraphsWithLead, `The answer was ${puzzle.answer}.`];
 }
 
+function renderClueTable(rows: PuzzleDetailRecord["display"]["clueTableRows"]) {
+  return (
+    <div className="legacy-clue-table-shell">
+      <div className="legacy-table-kicker-row">
+        <Table className="legacy-section-icon" aria-hidden />
+        <h3 className="legacy-table-kicker">Words & How They Fit</h3>
+      </div>
+      <div className="legacy-clue-table-scroll">
+        <table
+          className="legacy-clue-table"
+          aria-label="Detailed breakdown of each clue word, example read, and explanation"
+        >
+          <caption className="sr-only">
+            Detailed breakdown of each clue word, example read, and explanation
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Clue Word</th>
+              <th scope="col">Example Read</th>
+              <th scope="col">Connection Explained</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.clue}>
+                <th scope="row">{row.clue}</th>
+                <td>{`"${row.examplePhrase}"`}</td>
+                <td>{row.connectionExplained}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
@@ -96,15 +134,15 @@ export function PuzzleFullAnalysis({
   const isShortMode = puzzle.detailMode === "short";
   const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
   const walkthroughParagraphs = buildWalkthroughParagraphs(puzzle);
-  const shortFaqs = puzzle.faqs.slice(0, 2);
+  const visibleFaqs = getVisibleDetailFaqs(puzzle.faqs, puzzle.detailMode);
   const analysisTitle = isShortMode
     ? `Pinpoint ${puzzle.number} Quick Guide`
     : `Pinpoint ${puzzle.number} Answer & Full Analysis`;
   const analysisMetaLine = isFallbackShortMode
-    ? "Short mode: compact explanation while the formal long-form JSON is unavailable"
+    ? "Auto-generated quick guide from live puzzle data"
     : isShortMode
-      ? "Short mode: compact walkthrough for an obvious pattern puzzle"
-    : "By Pinpoint Answer Today";
+      ? "Compact guide for a clean, obvious pattern puzzle"
+      : "By Pinpoint Answer Today";
 
   return (
     <>
@@ -128,42 +166,13 @@ export function PuzzleFullAnalysis({
                   <p>{`Quick read: ${puzzle.display.connectorSummary}.`}</p>
                   <p>{`Fast strategy: ${puzzle.display.fastStrategy}.`}</p>
                   <p>
-                    {`The answer is ${puzzle.answer}. Use the table below to test each clue, then skim the compact FAQ for the shortest path to the connection.`}
+                    {`The answer is ${puzzle.answer}. Use the table below to check each clue, then skim the compact FAQ for the quickest path to the connection.`}
                   </p>
                 </div>
               </section>
 
               <section className="legacy-analysis-section">
-                <div className="legacy-clue-table-shell">
-                  <div className="legacy-table-kicker-row">
-                    <Table className="legacy-section-icon" aria-hidden />
-                    <h3 className="legacy-table-kicker">Words & How They Fit</h3>
-                  </div>
-                  <table
-                    className="legacy-clue-table"
-                    aria-label={`Detailed breakdown of each clue word, example phrase, and explanation`}
-                  >
-                    <caption className="sr-only">
-                      Detailed breakdown of each clue word, example phrase, and explanation
-                    </caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">Clue Word</th>
-                        <th scope="col">Example Phrase</th>
-                        <th scope="col">Connection Explained</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {puzzle.display.clueTableRows.map((row) => (
-                        <tr key={row.clue}>
-                          <th scope="row">{row.clue}</th>
-                          <td>{`"${row.examplePhrase}"`}</td>
-                          <td>{row.connectionExplained}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {renderClueTable(puzzle.display.clueTableRows)}
               </section>
 
               <section className="legacy-analysis-section">
@@ -172,7 +181,7 @@ export function PuzzleFullAnalysis({
                   <h3 className="legacy-section-title">Compact FAQ</h3>
                 </div>
                 <div className="legacy-faq-stack">
-                  {shortFaqs.map((faq) => (
+                  {visibleFaqs.map((faq) => (
                     <article className="legacy-faq-card" key={faq.question}>
                       <h4 className="legacy-faq-question">{faq.question}</h4>
                       <p className="copy">{faq.answer}</p>
@@ -192,36 +201,7 @@ export function PuzzleFullAnalysis({
               </section>
 
               <section className="legacy-analysis-section">
-                <div className="legacy-clue-table-shell">
-                  <div className="legacy-table-kicker-row">
-                    <Table className="legacy-section-icon" aria-hidden />
-                    <h3 className="legacy-table-kicker">Words & How They Fit</h3>
-                  </div>
-                  <table
-                    className="legacy-clue-table"
-                    aria-label={`Detailed breakdown of each clue word, example phrase, and explanation`}
-                  >
-                    <caption className="sr-only">
-                      Detailed breakdown of each clue word, example phrase, and explanation
-                    </caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">Clue Word</th>
-                        <th scope="col">Example Phrase</th>
-                        <th scope="col">Connection Explained</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {puzzle.display.clueTableRows.map((row) => (
-                        <tr key={row.clue}>
-                          <th scope="row">{row.clue}</th>
-                          <td>{`"${row.examplePhrase}"`}</td>
-                          <td>{row.connectionExplained}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {renderClueTable(puzzle.display.clueTableRows)}
               </section>
 
               <section className="legacy-analysis-section">
@@ -230,7 +210,7 @@ export function PuzzleFullAnalysis({
                   <h3 className="legacy-section-title">Compact FAQ</h3>
                 </div>
                 <div className="legacy-faq-stack">
-                  {shortFaqs.map((faq) => (
+                  {visibleFaqs.map((faq) => (
                     <article className="legacy-faq-card" key={faq.question}>
                       <h4 className="legacy-faq-question">{faq.question}</h4>
                       <p className="copy">{faq.answer}</p>
@@ -252,42 +232,13 @@ export function PuzzleFullAnalysis({
               <section className="legacy-analysis-section">
                 <div className="legacy-section-title-row">
                   <Lightbulb className="legacy-section-icon" aria-hidden />
-                  <h3 className="legacy-section-title">{`Category: Pinpoint ${puzzle.number}`}</h3>
+                  <h3 className="legacy-section-title">Solved Connection</h3>
                 </div>
                 <p className="legacy-category-answer">{puzzle.answer}</p>
               </section>
 
               <section className="legacy-analysis-section">
-                <div className="legacy-clue-table-shell">
-                  <div className="legacy-table-kicker-row">
-                    <Table className="legacy-section-icon" aria-hidden />
-                    <h3 className="legacy-table-kicker">Words & How They Fit</h3>
-                  </div>
-                  <table
-                    className="legacy-clue-table"
-                    aria-label={`Detailed breakdown of each clue word, example phrase, and explanation`}
-                  >
-                    <caption className="sr-only">
-                      Detailed breakdown of each clue word, example phrase, and explanation
-                    </caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">Clue Word</th>
-                        <th scope="col">Example Phrase</th>
-                        <th scope="col">Connection Explained</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {puzzle.display.clueTableRows.map((row) => (
-                        <tr key={row.clue}>
-                          <th scope="row">{row.clue}</th>
-                          <td>{`"${row.examplePhrase}"`}</td>
-                          <td>{row.connectionExplained}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {renderClueTable(puzzle.display.clueTableRows)}
               </section>
 
               <section className="legacy-analysis-section">
@@ -317,7 +268,7 @@ export function PuzzleFullAnalysis({
                   <h3 className="legacy-section-title">FAQ</h3>
                 </div>
                 <div className="legacy-faq-stack">
-                  {puzzle.faqs.map((faq) => (
+                  {visibleFaqs.map((faq) => (
                     <article className="legacy-faq-card" key={faq.question}>
                       <h4 className="legacy-faq-question">{faq.question}</h4>
                       <p className="copy">{faq.answer}</p>

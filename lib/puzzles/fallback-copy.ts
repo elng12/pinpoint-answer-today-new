@@ -16,6 +16,14 @@ function isPhrasePattern(kind: FallbackPatternKind): boolean {
   return kind === "before" || kind === "after";
 }
 
+function phrasePositionText(kind: FallbackPatternKind): string {
+  return kind === "before" ? "after" : "before";
+}
+
+function phraseAnswerSlot(kind: FallbackPatternKind): string {
+  return kind === "before" ? "ending word" : "first word";
+}
+
 export function buildSharedFallbackArticleBlocks(input: {
   kind: FallbackPatternKind;
   clues: string[];
@@ -32,12 +40,14 @@ export function buildSharedFallbackArticleBlocks(input: {
   const finalCheckText = quoteJoin(finalChecks.slice(0, 2));
 
   if (isPhrasePattern(kind)) {
+    const positionText = phrasePositionText(kind);
+    const answerSlot = phraseAnswerSlot(kind);
     return [
-      `At first, ${first} and ${second} could have pulled toward a few different phrase guesses.`,
-      `"${turningPoint}" was the clue that made the missing word much easier to spot.`,
-      `Once phrases like ${sampleReadText} appeared, the board stopped feeling scattered.`,
+      `The first clues make it clear this is a shared-word phrase puzzle, but not which ${answerSlot} belongs ${positionText} every clue.`,
+      `"${turningPoint}" narrows that down quickly because it points to one phrase that feels exact right away.`,
+      `Once that phrase appears, examples like ${sampleReadText} stop feeling guessed and start reading like ordinary language.`,
       `The answer was ${answer}.`,
-      `${finalCheckText} then felt like the last clean checks on the same pattern.`,
+      `${finalCheckText} then work as clean confirmations that the same word belongs ${positionText} the remaining clues too.`,
     ];
   }
 
@@ -57,18 +67,19 @@ export function buildSharedFallbackLessons(input: {
 }): LessonItem[] {
   const { kind, turningPoint } = input;
   if (isPhrasePattern(kind)) {
+    const positionText = phrasePositionText(kind);
     return [
       {
-        title: "Wait for the clue that makes the missing word obvious",
-        body: "When the opening clues feel broad, look for the clue that turns a loose phrase guess into one exact expression.",
+        title: "Let the clearest phrase lead",
+        body: "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase.",
       },
       {
-        title: "Prefer familiar phrases over vague overlap",
-        body: "A strong Pinpoint answer should produce natural expressions and common terms, not just words that feel loosely related.",
+        title: "Prefer everyday language over loose overlap",
+        body: "A good answer should create phrases people actually say, not just words that seem related from a distance.",
       },
       {
-        title: "Re-check the first clues once the pattern appears",
-        body: `Once "${turningPoint}" lands, go back and test the earlier clues against the same missing word before locking the answer.`,
+        title: "Use the easiest clue as confirmation",
+        body: `Once "${turningPoint}" lands, place the same word ${positionText} the other clues and make sure they read naturally right away.`,
       },
     ];
   }
@@ -99,18 +110,19 @@ export function buildSharedFallbackFaqs(input: {
 }): FaqItem[] {
   const { puzzleNumber, kind, answer, turningPoint, connectorSummary, turningPhrase } = input;
   if (isPhrasePattern(kind)) {
+    const positionText = phrasePositionText(kind);
     return [
       {
         question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
-        answer: `The answer is ${answer}. That reading is the first one that explains the full set cleanly, including "${turningPoint}".`,
+        answer: `The answer is ${answer}. That reading is the first one that turns all five clues into familiar phrases or common terms.`,
       },
       {
         question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
-        answer: `The connection is ${connectorSummary}. Each clue becomes a familiar phrase or common term once the same missing word is in place.`,
+        answer: `The connection is ${connectorSummary}. The same word fits ${positionText} every clue to create familiar phrases or everyday terms.`,
       },
       {
-        question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
-        answer: `"${turningPoint}" is the strongest clue because ${turningPhrase ? `"${turningPhrase}" makes the missing word feel exact instead of improvised.` : "it makes the missing word feel exact instead of improvised."}`,
+        question: `Which clue is decisive in LinkedIn Pinpoint #${puzzleNumber}?`,
+        answer: `"${turningPoint}" is the strongest clue because ${turningPhrase ? `"${turningPhrase}" points to one exact phrase much faster than the earlier clues do.` : "it points to one exact phrase much faster than the earlier clues do."}`,
       },
     ];
   }
@@ -138,9 +150,11 @@ export function buildSharedFallbackSolutionNarrative(input: {
 }): string[] {
   const { kind, wrongGuess, turningPoint } = input;
   if (isPhrasePattern(kind)) {
+    const positionText = phrasePositionText(kind);
     return [
-      `I did not have a stable missing word from the first clue. I initially drifted toward ${wrongGuess}, but that reading never explained "${turningPoint}" cleanly enough.`,
-      `The solve turned when I let "${turningPoint}" lead. Once one exact phrase landed, the earlier clues started behaving like natural fits instead of isolated prompts.`,
+      `I first tried ${wrongGuess}, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made "${turningPoint}" feel exact enough.`,
+      `Once "${turningPoint}" clicked, the phrase pattern was finally clear. The same word fit ${positionText} the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.`,
+      "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
     ];
   }
 

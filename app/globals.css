@@ -1317,6 +1317,10 @@ summary:focus-visible {
   align-items: start;
 }
 
+.footer-grid-two-column {
+  grid-template-columns: 1.2fr 1.6fr;
+}
+
 .footer-link-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

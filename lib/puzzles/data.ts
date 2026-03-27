@@ -260,8 +260,12 @@ function buildArchiveConnectorSummary(answer: string, category: string): string 
     extractConnectorTerm(answer, ["words that follow ", "words after "]) ??
     extractConnectorTerm(category, ["words that follow ", "words after "]);
 
-  if (beforeTarget || afterTarget) {
-    return `a phrase pattern built around ${beforeTarget ?? afterTarget}`;
+  if (beforeTarget) {
+    return "familiar phrases completed by one shared ending word";
+  }
+
+  if (afterTarget) {
+    return "familiar phrases and everyday terms built with one shared opening word";
   }
 
   const pattern = detectLiveAnswerPattern(answer);
@@ -648,8 +652,35 @@ function isDetailEntry(
 }
 
 // ── Data fetching (ISR-aware) ─────────────────────────────────────────────
-// Strategy: filesystem first (fast, works at build time and for deployed files),
-// with an optional remote content source for puzzles added after the last deployment.
+// Strategy: local files stay the default in dev/build, while production can prefer
+// a remote content source so revalidated pages can pick up new puzzle content fast.
+
+async function fetchRegistryFromRemote(): Promise<PuzzleRegistryEntryRecord[]> {
+  const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
+    next: { tags: ["registry"], revalidate: 3600 },
+  });
+  if (!res.ok) {
+    throw new Error(`registry fetch failed with status ${res.status}`);
+  }
+  const json = await res.json();
+  return registrySchema
+    .parse(json)
+    .slice()
+    .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+}
+
+async function fetchPuzzleContentFromRemote(
+  slug: string,
+): Promise<PuzzleDetailContentRecord> {
+  const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
+    next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
+  });
+  if (!res.ok) {
+    throw new Error(`detail fetch failed with status ${res.status}`);
+  }
+  const json = await res.json();
+  return puzzleDetailContentSchema.parse(json);
+}
 
 const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
   // In production we prefer remote first so publish + revalidate can reflect
@@ -659,17 +690,7 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
 
   if (shouldTryRemoteFirst) {
     try {
-      const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
-        next: { tags: ["registry"], revalidate: 3600 },
-      });
-      if (!res.ok) {
-        throw new Error(`registry fetch failed with status ${res.status}`);
-      }
-      const json = await res.json();
-      return registrySchema
-        .parse(json)
-        .slice()
-        .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+      return fetchRegistryFromRemote();
     } catch (error) {
       warnRemoteFallback("Remote registry unavailable, falling back to local file", error);
     }
@@ -695,17 +716,7 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
 
   // Final remote attempt (covers environments where filesystem is unavailable)
   try {
-    const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
-      next: { tags: ["registry"], revalidate: 3600 },
-    });
-    if (!res.ok) {
-      throw new Error(`registry fetch failed with status ${res.status}`);
-    }
-    const json = await res.json();
-    return registrySchema
-      .parse(json)
-      .slice()
-      .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+    return fetchRegistryFromRemote();
   } catch (error) {
     warnRemoteFallback("Falling back to bundled registry", error);
     return bundledRegistryEntries;
@@ -714,7 +725,23 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
 
 const fetchPuzzleContent = cache(
   async (slug: string): Promise<PuzzleDetailContentRecord> => {
-    // Try local filesystem first (fast, works during build and for deployed files)
+    // Match registry behavior so production revalidation can pull fresh detail JSON
+    // without waiting for a fresh deployment artifact.
+    const shouldTryRemoteFirst =
+      process.env.NODE_ENV === "production" && hasRemotePuzzleDataSource();
+
+    if (shouldTryRemoteFirst) {
+      try {
+        return fetchPuzzleContentFromRemote(slug);
+      } catch (error) {
+        warnRemoteFallback(
+          `Remote detail JSON unavailable for ${slug}, falling back to local file`,
+          error,
+        );
+      }
+    }
+
+    // Try local filesystem (available during build/dev and as fallback in prod)
     try {
       const filePath = resolve(resolveDataDir(), `${slug}.json`);
       if (existsSync(filePath)) {
@@ -724,20 +751,15 @@ const fetchPuzzleContent = cache(
       // fall through to optional remote fetch
     }
 
-    if (hasRemotePuzzleDataSource()) {
-      // File not in current deployment (new puzzle added after build) — fetch from remote content source
-      try {
-        const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
-          next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
-        });
-        if (!res.ok) {
-          throw new Error(`detail fetch failed with status ${res.status}`);
-        }
-        const json = await res.json();
-        return puzzleDetailContentSchema.parse(json);
-      } catch (error) {
-        warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
-      }
+    if (!hasRemotePuzzleDataSource()) {
+      return loadDetailContentFromFilesystem(slug);
+    }
+
+    // Final remote attempt (covers environments where filesystem is unavailable)
+    try {
+      return fetchPuzzleContentFromRemote(slug);
+    } catch (error) {
+      warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
     }
 
     return loadDetailContentFromFilesystem(slug);

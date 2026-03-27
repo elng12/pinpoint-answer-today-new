@@ -25,6 +25,34 @@ function formatClueList(clues: string[]): string {
   return `${clues.slice(0, -1).join(", ")}, and ${clues[clues.length - 1]}`;
 }
 
+function buildDetailSummary(puzzle: PuzzleDetailRecord, isShortMode: boolean, isFallbackShortMode: boolean): string {
+  const answer = puzzle.answer.trim();
+  const afterMatch = answer.match(/^Words that come after "(.+)"$/i);
+  const beforeMatch = answer.match(/^Words that come before "(.+)"$/i);
+
+  if (afterMatch) {
+    return isShortMode
+      ? `This quick guide shows which familiar phrases appear when one shared word comes before ${formatClueList(puzzle.clues)}. Use the spoiler-safe hints, clue table, and compact FAQ to see why the same word solves the set.`
+      : `This Pinpoint answer guide asks which shared word turns ${formatClueList(puzzle.clues)} into familiar phrases and common terms. Follow the spoiler-safe hints, then see why the same word makes each clue land cleanly.`;
+  }
+
+  if (beforeMatch) {
+    return isShortMode
+      ? `This quick guide shows which familiar phrases appear when one shared word follows ${formatClueList(puzzle.clues)}. Use the spoiler-safe hints, clue table, and compact FAQ to see why the same word solves the set.`
+      : `This Pinpoint answer guide asks which shared word fits before ${formatClueList(puzzle.clues)} to create familiar phrases. Follow the spoiler-safe hints, then see why the same word completes each clue cleanly.`;
+  }
+
+  if (isFallbackShortMode) {
+    return `This quick guide keeps the spoiler-safe hints, answer reveal, and compact clue table focused on the fastest path from ${formatClueList(puzzle.clues)} to the final connection.`;
+  }
+
+  if (isShortMode) {
+    return `This quick guide keeps the spoiler-safe hints, answer reveal, and compact clue table focused on the fastest path from ${formatClueList(puzzle.clues)} to the final connection.`;
+  }
+
+  return `This Pinpoint answer guide asks what shared idea links ${formatClueList(puzzle.clues)}. Follow the spoiler-safe hints one by one, then see how each clue clicks into the final answer.`;
+}
+
 export function PuzzleDetail({
   puzzle,
   recentPuzzles,
@@ -40,6 +68,11 @@ export function PuzzleDetail({
 }) {
   const isShortMode = puzzle.detailMode === "short";
   const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
+  const isFallbackDetail = puzzle.detailSource === "fallback";
+  const verificationLabel = isFallbackDetail
+    ? "Auto-generated quick guide from live puzzle data"
+    : "Verified by Human Editor";
+  const summary = buildDetailSummary(puzzle, isShortMode, isFallbackShortMode);
   return (
     <div className="legacy-detail-page">
       <section className="legacy-detail-header">
@@ -54,17 +87,11 @@ export function PuzzleDetail({
         <p className="eyebrow legacy-detail-kicker">Permanent Pinpoint answer &amp; analysis (Pinpoint Today archive)</p>
         <h1 className="legacy-detail-title">{`LinkedIn Pinpoint #${puzzle.number} Answer & Analysis`}</h1>
         <p className="legacy-detail-published">{`Published on ${formatLegacyDate(puzzle.isoDate)}`}</p>
-        <div className="legacy-detail-verified">
-          <span aria-hidden="true">✅</span>
-          <span>Verified by Human Editor</span>
+        <div className={`legacy-detail-verified${isFallbackDetail ? " legacy-detail-verified-fallback" : ""}`}>
+          <span aria-hidden="true">{isFallbackDetail ? "i" : "✓"}</span>
+          <span>{verificationLabel}</span>
         </div>
-        <p className="copy legacy-detail-summary">
-          {isFallbackShortMode
-            ? `This short guide keeps the spoiler-safe hints, the answer reveal, and the compact clue table for ${formatClueList(puzzle.clues)} while the formal long-form JSON is still unavailable.`
-            : isShortMode
-              ? `This quick guide keeps the spoiler-safe hints, answer reveal, and compact clue table for ${formatClueList(puzzle.clues)} without stretching an obvious pattern into a fake long walkthrough.`
-            : `This Pinpoint answer guide asks: what links ${formatClueList(puzzle.clues)} - and what story do they share? Follow the spoiler-safe hints one by one, then reveal the final connection and read the full analysis of how each clue fits together.`}
-        </p>
+        <p className="copy legacy-detail-summary">{summary}</p>
 
         <div className="legacy-detail-actions">
           <a className="button-primary" href="#analysis">

@@ -353,6 +353,10 @@
   font-weight: 500;
 }
 
+.legacy-detail-verified-fallback {
+  color: var(--muted);
+}
+
 .legacy-detail-summary {
   max-width: 920px;
   margin: 22px auto 0;
@@ -762,6 +766,11 @@
   overflow: hidden;
 }
 
+.legacy-clue-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .legacy-table-kicker-row {
   display: flex;
   align-items: center;
@@ -788,6 +797,7 @@
 
 .legacy-clue-table {
   width: 100%;
+  min-width: 640px;
   border-collapse: collapse;
   text-align: left;
   font-family: var(--font-sans);
@@ -931,6 +941,10 @@ body:has(.legacy-detail-page) .footer-grid {
   gap: 20px;
 }
 
+body:has(.legacy-detail-page) .footer-grid-two-column {
+  grid-template-columns: 1.15fr 1.45fr;
+}
+
 body:has(.legacy-detail-page) .footer-link-grid {
   gap: 14px;
 }
@@ -990,9 +1004,7 @@ body:has(.legacy-detail-page) .footer-badge-wall {
     overflow-wrap: anywhere;
   }
 
-  .legacy-reveal-clue-grid,
-  .legacy-clue-table-head,
-  .legacy-clue-row {
+  .legacy-reveal-clue-grid {
     grid-template-columns: 1fr;
   }
 

@@ -4,11 +4,16 @@ import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { supportMailto } from "@/lib/site/config";
 
 type FooterProps = {
-  recentEntries: ArchiveEntry[];
+  recentEntries?: ArchiveEntry[];
   isDetailPage?: boolean;
+  showRecentEntries?: boolean;
 };
 
-export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
+export function Footer({
+  recentEntries = [],
+  isDetailPage = false,
+  showRecentEntries = true,
+}: FooterProps) {
   const quickLinks = isDetailPage
     ? [
         { label: "Next puzzle", href: routes.preview },
@@ -35,7 +40,7 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-grid">
+        <div className={`footer-grid${showRecentEntries ? "" : " footer-grid-two-column"}`}>
           <div className="footer-block">
             <p className="eyebrow">Pinpoint Answer Today</p>
             <p className="footer-copy">
@@ -45,16 +50,18 @@ export function Footer({ recentEntries, isDetailPage = false }: FooterProps) {
             </p>
           </div>
 
-          <div className="footer-block">
-            <p className="eyebrow">{isDetailPage ? "Recent Pinpoint answer pages" : "Recent answers"}</p>
-            <ul className="footer-link-list footer-link-list-compact">
-              {recentEntries.map((entry) => (
-                <li key={entry.slug}>
-                  <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {showRecentEntries ? (
+            <div className="footer-block">
+              <p className="eyebrow">{isDetailPage ? "Recent Pinpoint answer pages" : "Recent answers"}</p>
+              <ul className="footer-link-list footer-link-list-compact">
+                {recentEntries.map((entry) => (
+                  <li key={entry.slug}>
+                    <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
 
           <div className="footer-link-grid">
             <div className="footer-block">

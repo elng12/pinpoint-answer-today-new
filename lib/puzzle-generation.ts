@@ -791,7 +791,7 @@ function buildConnectorSummaryFromAnswer(answer: string): string {
     return "a repeated-word phrase pattern with one missing term";
   }
   if (pattern.kind === "typed-category") {
-    return "different forms of one everyday object";
+    return `a category board focused on ${pattern.noun.toLowerCase()}`;
   }
   return "a shared category board with one concrete theme";
 }
@@ -982,6 +982,15 @@ function isUsableConnectorSummary(value: string | null | undefined, answer: stri
   if (words < SLOT_CONTRACT.connectorSummaryMinWords || words > SLOT_CONTRACT.connectorSummaryMaxWords) {
     return false;
   }
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "typed-category") {
+    const normalizedText = normalizeLooseMatch(text);
+    const noun = normalizeLooseMatch(pattern.noun);
+    const singularNoun = normalizeLooseMatch(pattern.singularNoun);
+    if (!normalizedText.includes(noun) && !normalizedText.includes(singularNoun)) {
+      return false;
+    }
+  }
   if (looksSuspiciousConnectorSummary(text)) return false;
   if (connectorSummaryLeaksAnswer(text, answer)) return false;
   return true;
@@ -992,11 +1001,7 @@ function buildCategoryReading(answer: string): string {
   if (pattern.kind === "typed-category") {
     return `reading them as ${pattern.noun.toLowerCase()}`;
   }
-  const displayLabel = extractCategoryDisplayLabel(answer);
-  if (displayLabel) {
-    return `reading them as ${displayLabel}`;
-  }
-  return "reading them as one clean category";
+  return "reading them through one specific category frame";
 }
 
 function buildCategoryFocusQuestion(answer: string): string {
@@ -1013,11 +1018,7 @@ function buildCategoryConnectionAnswer(answer: string, clueCount: number): strin
   if (pattern.kind === "typed-category") {
     return `The connection is that ${cluePhrase} point to recognizable types of ${pattern.noun.toLowerCase()}.`;
   }
-  const displayLabel = extractCategoryDisplayLabel(answer);
-  if (displayLabel) {
-    return `The connection is that ${cluePhrase} fit under ${displayLabel}.`;
-  }
-  return `The connection is that ${cluePhrase} belong in the same category.`;
+  return `The connection is that ${cluePhrase} point back to one specific category instead of a loose umbrella theme.`;
 }
 
 function buildTokenVariants(token: string): string[] {
@@ -1599,8 +1600,7 @@ function buildAnswerFocusLabel(answer: string): string {
   if (pattern.kind === "typed-category") {
     return pattern.noun.toLowerCase();
   }
-  const displayLabel = extractCategoryDisplayLabel(answer);
-  return displayLabel || "one specific category";
+  return "the real category";
 }
 
 function buildResolvedReadingSentence(
@@ -1922,15 +1922,15 @@ function buildSolutionEmergence(
     "a broader category that looked promising at first";
   const openingClues = formatQuotedList(clues.slice(0, 2));
   const paragraphOne = ensureSentence(
-    `${openingClues} first pulled me toward ${firstGuess}, so that was the first path I tested. It held together for a moment, but ${turningPointReference(turningPointLabel)} never really fit it.`,
+    `${openingClues} first pulled me toward ${firstGuess}, so that was the first path I tested. It held together for a moment, but ${turningPointReference(turningPointLabel)} never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.`,
   );
   const paragraphTwo =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? ensureSentence(
-          `The solve turned when I let ${turningPointReference(turningPointLabel)} lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like ${formatNaturalList(buildRepresentativeReadings(clueDetails, answer, 2))} started to sound exact, which was when the answer locked in.`,
+          `The solve turned when I let ${turningPointReference(turningPointLabel)} lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like ${formatNaturalList(buildRepresentativeReadings(clueDetails, answer, 2))} started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.`,
         )
       : ensureSentence(
-          `The solve turned when I stopped treating ${turningPointReference(turningPointLabel)} as just another clue and ${buildCategoryFocusQuestion(answer)}. Once I made that shift, I was no longer thinking about ${firstGuess}; I was thinking about ${answerFocus}. That was when the answer became clear.`,
+          `The solve turned when I stopped treating ${turningPointReference(turningPointLabel)} as just another clue and ${buildCategoryFocusQuestion(answer)}. Once I made that shift, I was no longer thinking about ${firstGuess}; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing ${answerFocus}.`,
         );
 
   return `${paragraphOne}\n\n${paragraphTwo}`.trim();

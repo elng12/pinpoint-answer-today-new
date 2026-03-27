@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { getVisibleDetailFaqs } from "@/lib/puzzles/detail-view";
 import {
   getAdjacentEntries,
   getAllDetailSlugs,
@@ -114,8 +115,9 @@ export async function generateMetadata({
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
   const isShortMode = puzzle.detailMode === "short";
+  const visibleFaqs = getVisibleDetailFaqs(puzzle.faqs, puzzle.detailMode);
   const seoDescription = isShortMode
-    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the verified answer included. Answer: ${puzzle.answer}.`
+    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the answer included. Answer: ${puzzle.answer}.`
     : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
   const puzzleDetailPath = withTrailingSlash(routes.detail(puzzle.slug));
 
@@ -157,8 +159,9 @@ export default async function DetailPage({
   const detailUrl = absoluteUrl(detailPath);
   const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
   const isShortMode = puzzle.detailMode === "short";
+  const visibleFaqs = getVisibleDetailFaqs(puzzle.faqs, puzzle.detailMode);
   const seoDescription = isShortMode
-    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the verified answer included. Answer: ${puzzle.answer}.`
+    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the answer included. Answer: ${puzzle.answer}.`
     : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   const structuredDataItems = [
@@ -187,12 +190,12 @@ export default async function DetailPage({
       },
     },
     ...(
-      puzzle.faqs.length > 0
+      visibleFaqs.length > 0
         ? [
             {
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: puzzle.faqs.map((faq) => ({
+              mainEntity: visibleFaqs.map((faq) => ({
                 "@type": "Question",
                 name: faq.question,
                 acceptedAnswer: {

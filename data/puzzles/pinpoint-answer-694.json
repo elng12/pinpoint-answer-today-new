@@ -29,7 +29,7 @@
   "articleBlocks": [
     "This board becomes clear pretty quickly once you stop reading the clues as materials and start reading them as rock names.",
     "Marble and Obsidian can feel a little broad at first because both words also show up in design or sculpture, but Sandstone pushes the board back toward geology.",
-    "From there, the rest settle fast: marble rock, obsidian rock, slate rock, granite rock, and sandstone rock all point to the same category.",
+    "From there, the rest settle fast: marble, obsidian, slate, granite, and sandstone all read cleanly as rock names.",
     "The answer was \"Types of rocks\".",
     "Once that answer is in place, the whole board reads like a straightforward list instead of a loose theme."
   ],
@@ -66,28 +66,28 @@
     "clueTableRows": [
       {
         "clue": "Marble",
-        "examplePhrase": "Marble rock",
-        "connectionExplained": "\"Marble rock\" is a familiar geological reading, even if the word also appears in design and sculpture."
+        "examplePhrase": "Marble",
+        "connectionExplained": "Marble is both a design material and a rock name, but the geological reading fits the full board once Sandstone lands."
       },
       {
         "clue": "Obsidian",
-        "examplePhrase": "Obsidian rock",
-        "connectionExplained": "\"Obsidian rock\" fits once the board is read through geology instead of decor or jewelry."
+        "examplePhrase": "Obsidian",
+        "connectionExplained": "Obsidian points cleanly to geology once the board is read as rock names instead of decor or jewelry terms."
       },
       {
         "clue": "Slate",
-        "examplePhrase": "Slate rock",
-        "connectionExplained": "\"Slate rock\" is a direct rock reading, which keeps the set grounded in the same category."
+        "examplePhrase": "Slate",
+        "connectionExplained": "Slate works because it is an ordinary rock name, which keeps the set grounded in the same category."
       },
       {
         "clue": "Granite",
-        "examplePhrase": "Granite rock",
-        "connectionExplained": "\"Granite rock\" is another familiar geological fit that reinforces the answer cleanly."
+        "examplePhrase": "Granite",
+        "connectionExplained": "Granite reinforces the same geological reading, especially once the board stops being read as a materials list."
       },
       {
         "clue": "Sandstone",
-        "examplePhrase": "Sandstone rock",
-        "connectionExplained": "\"Sandstone rock\" is the clearest anchor in the set because it points straight to a rock category."
+        "examplePhrase": "Sandstone",
+        "connectionExplained": "Sandstone is the clearest anchor in the set because it points straight to a rock category."
       }
     ]
   },
