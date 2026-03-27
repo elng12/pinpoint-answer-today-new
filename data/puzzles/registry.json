@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 696,
+    "slug": "pinpoint-answer-696",
+    "publishDate": "2026-03-27",
+    "status": "live",
+    "clues": [
+      "Scissors",
+      "Golf clubs",
+      "Guitars",
+      "Helices (DNA is usually right)",
+      "Gloves (🫲 + 🫱)"
+    ],
+    "mainAnswer": "Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)",
+    "category": "Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Scissors, Golf clubs, Guitars, Helices (DNA is usually right), Gloves (🫲 + 🫱) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-03-27T07:02:19.425Z"
+  },
+  {
     "puzzleNumber": 695,
     "slug": "pinpoint-answer-695",
     "publishDate": "2026-03-26",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Tiger",
       "Plane",
@@ -15,7 +33,7 @@
     "category": "Words that come after \"paper\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Tiger, Plane, Towel, Weight, Clip - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-03-26T08:02:11.260Z"
+    "updatedAt": "2026-03-27T07:02:19.425Z"
   },
   {
     "puzzleNumber": 694,
