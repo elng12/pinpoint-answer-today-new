@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-697",
   "publishDate": "2026-03-28",
   "isoDate": "2026-03-28",
-  "detailState": "generating",
+  "detailState": "fallback_full",
   "clues": [
     "Horn",
     "Cod",
@@ -14,11 +14,11 @@
   "answer": "Geographical capes",
   "category": "Geographical capes",
   "wordHints": {
-    "Horn": "Horn connects to \"Geographical capes\"",
-    "Cod": "Cod connects to \"Geographical capes\"",
-    "Verde": "Verde connects to \"Geographical capes\"",
-    "Canaveral": "Canaveral connects to \"Geographical capes\"",
-    "Of Good Hope": "Of Good Hope connects to \"Geographical capes\""
+    "Horn": "\"Horn\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Cod": "\"Cod\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "Verde": "\"Verde\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "Canaveral": "\"Canaveral\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Of Good Hope": "\"Of Good Hope\" is the clue that makes the shared answer concrete enough to test across the full board."
   },
   "spoilerHints": {
     "Horn": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -29,7 +29,7 @@
   },
   "articleBlocks": [
     "At first, Horn and Cod pointed in a few different directions.",
-    "The turn came with \"Of Good Hope\".",
+    "The turn came with \"Horn\".",
     "That clue made the answer feel concrete enough to test across the full board.",
     "Once I read the set through a category board focused on geographical, examples like \"Horn\" and \"Cod\" stopped feeling loose and started landing cleanly.",
     "The answer was \"Geographical capes\".",
@@ -37,72 +37,74 @@
   ],
   "fullAnalysis": [
     "At first, Horn and Cod pointed in a few different directions.",
-    "The turn came with \"Of Good Hope\".",
+    "The turn came with \"Horn\".",
     "That clue made the answer feel concrete enough to test across the full board.",
     "Once I read the set through a category board focused on geographical, examples like \"Horn\" and \"Cod\" stopped feeling loose and started landing cleanly.",
     "The answer was \"Geographical capes\".",
     "\"Canaveral\" and \"Of Good Hope\" then felt like the last confirmations, not separate guesses."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #697, Horn, Cod, Verde, Canaveral, Of Good Hope only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "I did not have a clean answer from the first clue. I initially drifted toward a broader category guess, but that line of thinking never explained \"Of Good Hope\" cleanly enough.",
+    "The turn came when I let \"Of Good Hope\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.",
+    "The answer was \"Geographical capes\"."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Wait for the clue that makes the set concrete",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "Prefer exact fits over vague overlap",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Re-check the early clues once the answer sharpens",
+      "body": "Once \"Of Good Hope\" lands, go back and test the earlier clues under that same answer before locking it in."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on geographical",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
     "clueTableRows": [
       {
         "clue": "Horn",
         "examplePhrase": "Horn",
-        "connectionExplained": "Horn connects to \"Geographical capes\""
+        "connectionExplained": "\"Horn\" fits more cleanly once the board is tested under the same answer as the other clues."
       },
       {
         "clue": "Cod",
         "examplePhrase": "Cod",
-        "connectionExplained": "Cod connects to \"Geographical capes\""
+        "connectionExplained": "\"Cod\" helps confirm the same answer instead of pulling the board back toward a looser guess."
       },
       {
         "clue": "Verde",
         "examplePhrase": "Verde",
-        "connectionExplained": "Verde connects to \"Geographical capes\""
+        "connectionExplained": "\"Verde\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
       },
       {
         "clue": "Canaveral",
         "examplePhrase": "Canaveral",
-        "connectionExplained": "Canaveral connects to \"Geographical capes\""
+        "connectionExplained": "\"Canaveral\" fits more cleanly once the board is tested under the same answer as the other clues."
       },
       {
         "clue": "Of Good Hope",
         "examplePhrase": "Of Good Hope",
-        "connectionExplained": "Of Good Hope connects to \"Geographical capes\""
+        "connectionExplained": "\"Of Good Hope\" is the clue that makes the shared answer concrete enough to test across the full board."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #697?",
-      "answer": "The answer is \"Geographical capes\". The clues Horn, Cod, Verde, Canaveral, Of Good Hope all share this connection."
+      "answer": "The answer is \"Geographical capes\". That reading is the first one that explains the whole set without forcing any clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #697?",
+      "answer": "The connection is a category board focused on geographical. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #697?",
+      "answer": "\"Of Good Hope\" is the turning point because it makes the answer concrete enough to test across all five clues."
     }
   ]
 }
