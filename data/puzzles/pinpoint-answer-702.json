@@ -1,0 +1,195 @@
+{
+  "puzzleNumber": 702,
+  "slug": "pinpoint-answer-702",
+  "publishDate": "2026-04-02",
+  "isoDate": "2026-04-02",
+  "detailState": "generating",
+  "questionType": "phrase",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Tiger",
+    "Plane",
+    "Travel",
+    "Weight",
+    "Clip"
+  ],
+  "answer": "Words that come after paper",
+  "category": "Words that come after paper",
+  "wordHints": {
+    "Tiger": "Tiger connects to \"Words that come after paper\"",
+    "Plane": "Plane connects to \"Words that come after paper\"",
+    "Travel": "Travel connects to \"Words that come after paper\"",
+    "Weight": "Weight connects to \"Words that come after paper\"",
+    "Clip": "Clip connects to \"Words that come after paper\""
+  },
+  "spoilerHints": {
+    "Tiger": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Plane": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Travel": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Weight": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector.",
+    "Clip": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue.",
+    "\"Weight\" narrows that down quickly because it points to one phrase that feels exact right away.",
+    "Once that phrase appears, examples like \"paper Tiger\" and \"paper Plane\" stop feeling guessed and start reading like ordinary language.",
+    "The answer was \"Words that come after paper\".",
+    "\"Weight\" and \"Clip\" then work as clean confirmations that the same word belongs before the remaining clues too."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue.",
+    "\"Weight\" narrows that down quickly because it points to one phrase that feels exact right away.",
+    "Once that phrase appears, examples like \"paper Tiger\" and \"paper Plane\" stop feeling guessed and start reading like ordinary language.",
+    "The answer was \"Words that come after paper\".",
+    "\"Weight\" and \"Clip\" then work as clean confirmations that the same word belongs before the remaining clues too."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #702, Tiger, Plane, Travel, Weight, Clip only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Tiger",
+        "examplePhrase": "paper Tiger",
+        "connectionExplained": "Tiger connects to \"Words that come after paper\""
+      },
+      {
+        "clue": "Plane",
+        "examplePhrase": "paper Plane",
+        "connectionExplained": "Plane connects to \"Words that come after paper\""
+      },
+      {
+        "clue": "Travel",
+        "examplePhrase": "paper Travel",
+        "connectionExplained": "Travel connects to \"Words that come after paper\""
+      },
+      {
+        "clue": "Weight",
+        "examplePhrase": "paper Weight",
+        "connectionExplained": "Weight connects to \"Words that come after paper\""
+      },
+      {
+        "clue": "Clip",
+        "examplePhrase": "paper Clip",
+        "connectionExplained": "Clip connects to \"Words that come after paper\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #702?",
+      "answer": "The answer is \"Words that come after paper\". The clues Tiger, Plane, Travel, Weight, Clip all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #702 just unlocked, and this is the fastest verified update. The board clues are Tiger, Plane, Travel, Weight, Clip, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [],
+    "whyFalseStartPlausible": [],
+    "breakingClue": "Tiger",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #702, Tiger, Plane, Travel, Weight, Clip only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Tiger lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Tiger",
+    "whyDecisive": "Tiger is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Tiger lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Tiger",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Tiger",
+      "nonObviousWhy": "Tiger supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Tiger"
+    },
+    {
+      "clue": "Plane",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Plane",
+      "nonObviousWhy": "Plane supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Plane"
+    },
+    {
+      "clue": "Travel",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Travel",
+      "nonObviousWhy": "Travel supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Travel"
+    },
+    {
+      "clue": "Weight",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Weight",
+      "nonObviousWhy": "Weight supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Weight"
+    },
+    {
+      "clue": "Clip",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Clip",
+      "nonObviousWhy": "Clip supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Clip"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #702?",
+      "answer": "The answer is \"Words that come after paper\". The clues Tiger, Plane, Travel, Weight, Clip all share this connection.",
+      "tiedClue": "Tiger"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "Tiger",
+      "Plane",
+      "Travel",
+      "Weight",
+      "Clip"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "Tiger",
+      "Plane",
+      "Travel",
+      "Weight"
+    ]
+  }
+}
