@@ -1,5 +1,14 @@
 import { appLogger } from "@/lib/logger";
 import { normalizeClueForAI } from "@/lib/puzzles/clue-normalizer";
+import type {
+  PuzzleClueRowRecord,
+  PuzzleDifficultyBand,
+  PuzzleEvidenceFaqItemRecord,
+  PuzzleQuestionType,
+  PuzzleSolvePathRecord,
+  PuzzleTurningPointRecord,
+  PuzzleUniquenessSignalsRecord,
+} from "@/lib/puzzles/schema";
 import {
   SLOT_CONTRACT,
   type PuzzleSlotClueDetail,
@@ -20,6 +29,8 @@ export type AIGeneratedSlots = PuzzleSlotContractData;
 type SlotClueDetail = PuzzleSlotClueDetail;
 
 export interface AIGeneratedContent {
+  questionType?: PuzzleQuestionType;
+  difficultyBand?: PuzzleDifficultyBand;
   sections: {
     articleBlocks?: string[];
     overview: string;
@@ -40,6 +51,11 @@ export interface AIGeneratedContent {
     tags: string[];
     llmTemplateVersion: string;
   };
+  solvePath?: PuzzleSolvePathRecord;
+  turningPoint?: PuzzleTurningPointRecord;
+  clueRows?: PuzzleClueRowRecord[];
+  faqItems?: PuzzleEvidenceFaqItemRecord[];
+  uniquenessSignals?: PuzzleUniquenessSignalsRecord;
   slots?: AIGeneratedSlots;
 }
 
@@ -107,14 +123,90 @@ const ParsedAnalysisSchema = z.object({
   llmTemplateVersion: z.string().trim().min(1).optional(),
 }).optional();
 
+const ParsedSolvePathSchema = z.object({
+  firstRead: z.string().trim().min(1),
+  falseStarts: z.array(z.string().trim().min(1)),
+  whyFalseStartPlausible: z.array(z.string().trim().min(1)),
+  breakingClue: z.string().trim().min(1).optional(),
+  pivot: z.string().trim().min(1).optional(),
+  fullBoardConfirmation: z.string().trim().min(1).optional(),
+}).optional();
+
+const ParsedTurningPointSchema = z.object({
+  clue: z.string().trim().min(1),
+  whyDecisive: z.string().trim().min(1),
+  whatChangedAfterIt: z.string().trim().min(1),
+}).optional();
+
+const ParsedClueRowSchema = z.object({
+  clue: z.string().trim().min(1),
+  surfaceMisread: z.string().trim().min(1).optional(),
+  resolvedPhraseOrMember: z.string().trim().min(1),
+  nonObviousWhy: z.string().trim().min(1),
+  searchableContext: z.string().trim().min(1).optional(),
+});
+
+const ParsedFaqItemSchema = z.object({
+  intentType: z.enum(["definition", "clue_background", "comparison", "solve_strategy", "category_context"]),
+  question: z.string().trim().min(1),
+  answer: z.string().trim().min(1),
+  tiedClue: z.string().trim().min(1).nullable().optional(),
+});
+
+const ParsedUniquenessSignalsSchema = z.object({
+  angle: z.string().trim().min(1),
+  relatedEntities: z.array(z.string().trim().min(1)),
+  doNotRepeatPatterns: z.array(z.string().trim().min(1)),
+}).optional();
+
 const ParsedAIResponseSchema = z.object({
+  questionType: z.enum(["phrase", "category", "association", "hybrid"]).optional(),
+  difficultyBand: z.enum(["obvious", "medium", "hard"]).optional(),
   slots: ParsedSlotsSchema.optional(),
   sections: ParsedSectionsSchema,
   analysis: ParsedAnalysisSchema,
+  solvePath: ParsedSolvePathSchema,
+  turningPoint: ParsedTurningPointSchema,
+  clueRows: z.array(ParsedClueRowSchema).optional(),
+  faqItems: z.array(ParsedFaqItemSchema).optional(),
+  uniquenessSignals: ParsedUniquenessSignalsSchema,
 }).refine((value) => Boolean(value.slots || value.sections), {
   message: 'AI response must include either "slots" or "sections".',
   path: ["slots"],
 });
+
+function sanitizeOptionalEvidenceField<T>(
+  value: unknown,
+  schema: z.ZodType<T>,
+): T | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+  const result = schema.safeParse(value);
+  return result.success ? result.data : undefined;
+}
+
+function sanitizeParsedResponseEvidenceFields(parsed: ParsedAIResponse): ParsedAIResponse {
+  return {
+    ...parsed,
+    questionType: sanitizeOptionalEvidenceField(
+      parsed.questionType,
+      z.enum(["phrase", "category", "association", "hybrid"]),
+    ),
+    difficultyBand: sanitizeOptionalEvidenceField(
+      parsed.difficultyBand,
+      z.enum(["obvious", "medium", "hard"]),
+    ),
+    solvePath: sanitizeOptionalEvidenceField(parsed.solvePath, ParsedSolvePathSchema),
+    turningPoint: sanitizeOptionalEvidenceField(parsed.turningPoint, ParsedTurningPointSchema),
+    clueRows: sanitizeOptionalEvidenceField(parsed.clueRows, z.array(ParsedClueRowSchema).optional()),
+    faqItems: sanitizeOptionalEvidenceField(parsed.faqItems, z.array(ParsedFaqItemSchema).optional()),
+    uniquenessSignals: sanitizeOptionalEvidenceField(
+      parsed.uniquenessSignals,
+      ParsedUniquenessSignalsSchema,
+    ),
+  };
+}
 
 export type PuzzleGenerationOptions = {
   model?: string;
@@ -378,7 +470,9 @@ Pattern-specific rules:
   return `
 You are a senior content writer for "Pinpoint Answer Today". Use the V9 Article Slot Template.
 
-Output ONLY a valid JSON object with this exact shape:
+Output ONLY a valid JSON object.
+
+Minimum required shape:
 {
   "slots": {
     "heroIntroSpoilerSafe": "...",
@@ -402,6 +496,15 @@ Output ONLY a valid JSON object with this exact shape:
     "articleBlocks": ["...", "..."]
   }
 }
+
+Optional v2 fields are allowed at the root when you can fill them cleanly:
+- "questionType"
+- "difficultyBand"
+- "solvePath"
+- "turningPoint"
+- "clueRows"
+- "faqItems"
+- "uniquenessSignals"
 
 Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
@@ -657,7 +760,7 @@ function parseAIResponse(content: string): ParsedAIResponse {
 }
 
 function validateParsedResponseShape(parsed: ParsedAIResponse): ParsedAIResponse {
-  const result = ParsedAIResponseSchema.safeParse(parsed);
+  const result = ParsedAIResponseSchema.safeParse(sanitizeParsedResponseEvidenceFields(parsed));
   if (!result.success) {
     throw new Error(`AI response shape invalid: ${formatZodIssues(result.error.issues)}`);
   }
@@ -697,6 +800,14 @@ type AnswerPattern =
   | { kind: "after"; token: string }
   | { kind: "typed-category"; noun: string; singularNoun: string }
   | { kind: "category"; label: string };
+
+type GeneratedClueDetail = {
+  clue: string;
+  surfaceRead: string;
+  phrase: string;
+  whyItWorks: string;
+  etymology?: string;
+};
 
 function normalizeText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
@@ -2043,6 +2154,277 @@ function buildFaqs(
   ];
 }
 
+function splitGeneratedParagraphs(value: string | null | undefined): string[] {
+  return String(value || "")
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+}
+
+function inferGeneratedQuestionType(answer: string): PuzzleQuestionType {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return "phrase";
+  }
+  return "category";
+}
+
+function inferGeneratedDifficultyBand(
+  answer: string,
+  falseStarts: string[],
+  wrongGuesses: Array<{ guess: string; explanation: string }>,
+): PuzzleDifficultyBand {
+  if (falseStarts.length >= 2 || wrongGuesses.length >= 2) {
+    return "hard";
+  }
+  if (falseStarts.length === 0 && inferGeneratedQuestionType(answer) !== "association") {
+    return "obvious";
+  }
+  return "medium";
+}
+
+function findGeneratedMentionedClue(text: string, clues: string[]): string | null {
+  const normalizedText = normalizeLooseMatch(text);
+  let matchedClue: string | null = null;
+  let matchedIndex = Number.POSITIVE_INFINITY;
+  for (const clue of clues) {
+    const normalizedClue = normalizeLooseMatch(clue);
+    if (!normalizedClue) continue;
+    const mentionIndex = normalizedText.indexOf(normalizedClue);
+    if (mentionIndex !== -1 && mentionIndex < matchedIndex) {
+      matchedClue = clue;
+      matchedIndex = mentionIndex;
+    }
+  }
+  return matchedClue;
+}
+
+function buildGeneratedTurningPointRecord(
+  clues: string[],
+  turningPointText: string,
+  turningPointLabel: string,
+  clueDetails: GeneratedClueDetail[],
+  answer: string,
+): PuzzleTurningPointRecord | undefined {
+  const explicitClue =
+    hasSpecificTurningPointLabel(turningPointLabel)
+      ? clues.find((clue) => normalizeLooseMatch(clue) === normalizeLooseMatch(stripQuotes(turningPointLabel)))
+      : undefined;
+  const clue =
+    explicitClue ||
+    findGeneratedMentionedClue(turningPointText, clues) ||
+    clueDetails.find((detail) => turningPointMentionsClue(turningPointText, detail.clue))?.clue ||
+    clues[0];
+  if (!clue) return undefined;
+
+  const clueDetail = clueDetails.find((detail) => detail.clue === clue);
+  const whyDecisive =
+    ensureSentence(turningPointText) ||
+    clueDetail?.whyItWorks ||
+    buildTurningPointFallbackSentence(`"${clue}"`, answer);
+
+  return {
+    clue,
+    whyDecisive,
+    whatChangedAfterIt: ensureSentence(
+      detectAnswerPattern(answer).kind === "before" || detectAnswerPattern(answer).kind === "after"
+        ? `Once ${clue} made the missing word visible, the earlier clues stopped feeling loose and started sounding exact.`
+        : `Once ${clue} landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer.`,
+    ),
+  };
+}
+
+function buildGeneratedSolvePath(
+  answer: string,
+  overview: string,
+  solutionEmergence: string,
+  falseStarts: string[],
+  wrongGuesses: Array<{ guess: string; explanation: string }>,
+  turningPoint: PuzzleTurningPointRecord | undefined,
+): PuzzleSolvePathRecord {
+  const overviewParagraphs = splitGeneratedParagraphs(overview);
+  const solutionParagraphs = splitGeneratedParagraphs(solutionEmergence);
+  const wrongGuessReasons = wrongGuesses
+    .map((item) => ensureSentence(item.explanation))
+    .filter(Boolean)
+    .slice(0, Math.max(falseStarts.length, 1));
+  const fallbackFalseStartReason =
+    wrongGuesses[0]?.explanation ||
+    buildFalseStartLead(falseStarts, answer);
+
+  return {
+    firstRead:
+      overviewParagraphs[0] ||
+      solutionParagraphs[0] ||
+      "The opening clues support more than one plausible read before a later clue tightens the board.",
+    falseStarts,
+    whyFalseStartPlausible: wrongGuessReasons.length > 0
+      ? wrongGuessReasons
+      : [ensureSentence(fallbackFalseStartReason)],
+    ...(turningPoint?.clue ? { breakingClue: turningPoint.clue } : {}),
+    ...(solutionParagraphs[1] || turningPoint?.whyDecisive
+      ? { pivot: solutionParagraphs[1] || turningPoint?.whyDecisive }
+      : {}),
+    ...(overviewParagraphs[1] || turningPoint?.whatChangedAfterIt
+      ? { fullBoardConfirmation: overviewParagraphs[1] || turningPoint?.whatChangedAfterIt }
+      : {}),
+  };
+}
+
+function buildGeneratedClueRows(
+  clueDetails: GeneratedClueDetail[],
+  wrongGuesses: Array<{ guess: string; explanation: string }>,
+): PuzzleClueRowRecord[] {
+  const broadMisread = wrongGuesses[0]?.guess;
+  return clueDetails.map((detail) => ({
+    clue: detail.clue,
+    ...(broadMisread ? { surfaceMisread: broadMisread } : {}),
+    resolvedPhraseOrMember: detail.phrase,
+    nonObviousWhy: ensureSentence(detail.whyItWorks),
+    ...(detail.etymology || detail.phrase
+      ? { searchableContext: detail.etymology || detail.phrase }
+      : {}),
+  }));
+}
+
+function inferGeneratedFaqIntentType(
+  question: string,
+): PuzzleEvidenceFaqItemRecord["intentType"] {
+  const normalized = normalizeLooseMatch(question);
+  if (normalized.includes("what is the answer")) return "definition";
+  if (normalized.includes("what is the connection")) return "category_context";
+  if (normalized.includes("which clue") || normalized.startsWith("why is")) return "clue_background";
+  if (normalized.includes("compare") || normalized.includes("difference")) return "comparison";
+  return "solve_strategy";
+}
+
+function buildGeneratedFaqItems(
+  faqs: Array<{ question: string; answer: string }>,
+  clues: string[],
+): PuzzleEvidenceFaqItemRecord[] {
+  return faqs.map((faq) => ({
+    intentType: inferGeneratedFaqIntentType(faq.question),
+    question: faq.question,
+    answer: faq.answer,
+    tiedClue: findGeneratedMentionedClue(`${faq.question} ${faq.answer}`, clues),
+  }));
+}
+
+function buildGeneratedUniquenessSignals(
+  connectorSummary: string,
+  clueRows: PuzzleClueRowRecord[],
+  lessons: Array<{ title: string; body: string }>,
+): PuzzleUniquenessSignalsRecord {
+  return {
+    angle: connectorSummary,
+    relatedEntities: clueRows.map((row) => row.resolvedPhraseOrMember).filter(Boolean).slice(0, 5),
+    doNotRepeatPatterns: Array.from(
+      new Set([
+        connectorSummary,
+        ...lessons.map((lesson) => lesson.title),
+        ...clueRows.map((row) => row.searchableContext || row.resolvedPhraseOrMember),
+      ].filter(Boolean)),
+    ).slice(0, 6),
+  };
+}
+
+function buildGeneratedEvidenceFields(input: {
+  clues: string[];
+  answer: string;
+  connectorSummary: string;
+  turningPointText: string;
+  turningPointLabel: string;
+  falseStarts: string[];
+  wrongGuesses: Array<{ guess: string; explanation: string }>;
+  clueDetails: GeneratedClueDetail[];
+  faqs: Array<{ question: string; answer: string }>;
+  lessons: Array<{ title: string; body: string }>;
+  overview: string;
+  solutionEmergence: string;
+}) {
+  const questionType = inferGeneratedQuestionType(input.answer);
+  const difficultyBand = inferGeneratedDifficultyBand(input.answer, input.falseStarts, input.wrongGuesses);
+  const turningPoint = buildGeneratedTurningPointRecord(
+    input.clues,
+    input.turningPointText,
+    input.turningPointLabel,
+    input.clueDetails,
+    input.answer,
+  );
+  const clueRows = buildGeneratedClueRows(input.clueDetails, input.wrongGuesses);
+  return {
+    questionType,
+    difficultyBand,
+    solvePath: buildGeneratedSolvePath(
+      input.answer,
+      input.overview,
+      input.solutionEmergence,
+      input.falseStarts,
+      input.wrongGuesses,
+      turningPoint,
+    ),
+    turningPoint,
+    clueRows,
+    faqItems: buildGeneratedFaqItems(input.faqs, input.clues),
+    uniquenessSignals: buildGeneratedUniquenessSignals(input.connectorSummary, clueRows, input.lessons),
+  };
+}
+
+function buildGeneratedEvidenceFromContent(
+  content: Partial<Omit<AIGeneratedContent, "slots">> & { slots?: Partial<AIGeneratedSlots> },
+  puzzleData?: PuzzleDataForAI,
+) {
+  const clues =
+    puzzleData?.rawWords?.filter(Boolean) ||
+    content.sections?.clueDetails?.map((detail) => detail.clue).filter(Boolean) ||
+    [];
+  const answer = puzzleData?.mainAnswer || "";
+  if (!content.sections || !answer || clues.length === 0) {
+    return null;
+  }
+
+  const clueDetails: GeneratedClueDetail[] = (content.sections.clueDetails || []).map((detail) => ({
+    clue: detail.clue,
+    surfaceRead: detail.explanation,
+    phrase: detail.phrase,
+    whyItWorks: detail.explanation,
+    etymology: detail.etymology,
+  }));
+  const lessons = (content.sections.lessons || []).map((lesson, index) =>
+    typeof lesson === "string"
+      ? { title: `Lesson ${index + 1}`, body: lesson }
+      : lesson,
+  );
+  const faqs = content.sections.faqs || [];
+  const connectorSummary =
+    content.slots?.connectorSummary ||
+    content.uniquenessSignals?.angle ||
+    buildConnectorSummaryFromAnswer(answer);
+  const turningPointText =
+    content.slots?.turningPoint ||
+    content.turningPoint?.whyDecisive ||
+    content.sections.solutionEmergence ||
+    content.sections.overview;
+  const turningPointLabel = content.turningPoint?.clue
+    ? `"${content.turningPoint.clue}"`
+    : buildTurningPointLabel(turningPointText, clues);
+
+  return buildGeneratedEvidenceFields({
+    clues,
+    answer,
+    connectorSummary,
+    turningPointText,
+    turningPointLabel,
+    falseStarts: content.solvePath?.falseStarts || [],
+    wrongGuesses: content.sections.wrongGuesses || [],
+    clueDetails,
+    faqs,
+    lessons,
+    overview: content.sections.overview,
+    solutionEmergence: content.sections.solutionEmergence,
+  });
+}
+
 function composeFromSlots(
   slots: Partial<AIGeneratedSlots>,
   puzzleData?: PuzzleDataForAI,
@@ -2139,8 +2521,24 @@ function composeFromSlots(
     providedArticleBlocks,
   );
   const detailedBreakdown = articleBlocks.join("\n\n");
+  const evidence = buildGeneratedEvidenceFields({
+    clues,
+    answer: mainAnswer,
+    connectorSummary,
+    turningPointText: turningPoint,
+    turningPointLabel,
+    falseStarts,
+    wrongGuesses,
+    clueDetails,
+    faqs,
+    lessons,
+    overview,
+    solutionEmergence,
+  });
 
   return {
+    questionType: evidence.questionType,
+    difficultyBand: evidence.difficultyBand,
     sections: {
       articleBlocks,
       overview,
@@ -2170,6 +2568,11 @@ function composeFromSlots(
       tags: clues.slice(0, 5),
       llmTemplateVersion: LLM_TEMPLATE_VERSION,
     },
+    solvePath: evidence.solvePath,
+    ...(evidence.turningPoint ? { turningPoint: evidence.turningPoint } : {}),
+    clueRows: evidence.clueRows,
+    faqItems: evidence.faqItems,
+    uniquenessSignals: evidence.uniquenessSignals,
     slots: {
       heroIntroSpoilerSafe: heroSummary,
       connectorSummary,
@@ -2270,6 +2673,17 @@ function validateAndFixGeneratedContent(
 
   if (!normalized.analysis.llmTemplateVersion) {
     normalized.analysis.llmTemplateVersion = LLM_TEMPLATE_VERSION;
+  }
+
+  const derivedEvidence = buildGeneratedEvidenceFromContent(normalized, puzzleData);
+  if (derivedEvidence) {
+    normalized.questionType ||= derivedEvidence.questionType;
+    normalized.difficultyBand ||= derivedEvidence.difficultyBand;
+    normalized.solvePath ||= derivedEvidence.solvePath;
+    normalized.turningPoint ||= derivedEvidence.turningPoint;
+    normalized.clueRows ||= derivedEvidence.clueRows;
+    normalized.faqItems ||= derivedEvidence.faqItems;
+    normalized.uniquenessSignals ||= derivedEvidence.uniquenessSignals;
   }
 
   return normalized as AIGeneratedContent;

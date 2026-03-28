@@ -227,6 +227,41 @@ async function loadPublishedPuzzle(slug) {
   return JSON.parse(raw);
 }
 
+async function loadRegistryEntries() {
+  const filePath = resolve(ROOT, "data", "puzzles", "registry.json");
+  const raw = await readFile(filePath, "utf8");
+  return JSON.parse(raw);
+}
+
+async function loadLiveRegistryEntry() {
+  const registry = await loadRegistryEntries();
+  const liveEntry = Array.isArray(registry)
+    ? registry.find((entry) => String(entry?.status || "") === "live")
+    : null;
+
+  if (!liveEntry?.slug) {
+    throw new Error("registry.json does not contain a live puzzle entry");
+  }
+
+  return liveEntry;
+}
+
+function assertReleaseEligibleDetail(slug, puzzle, contextLabel) {
+  const detailState = String(puzzle?.detailState || "published").trim().toLowerCase();
+  if (detailState !== "published" && detailState !== "fallback_full") {
+    throw new Error(
+      `${contextLabel} is not publicly releasable for ${slug}. detailState=${detailState}`,
+    );
+  }
+
+  const bodyMode = String(puzzle?.bodyMode || "").trim().toLowerCase();
+  if (bodyMode === "short") {
+    throw new Error(
+      `${contextLabel} is still short mode for ${slug}. Production release only allows formal full detail pages.`,
+    );
+  }
+}
+
 function buildDetailVerificationStrings(puzzle) {
   const clues = Array.isArray(puzzle?.clues) ? puzzle.clues.filter(Boolean) : [];
   const bodyBlocks = Array.isArray(puzzle?.articleBlocks) && puzzle.articleBlocks.length
@@ -248,14 +283,14 @@ function buildDetailHtmlExpectations(puzzle) {
   const bodyMode = String(puzzle?.bodyMode || "").trim();
   if (bodyMode === "short") {
     return {
-      required: ["compact guide"],
-      forbidden: ["full walkthrough included"],
+      required: [],
+      forbidden: ["compact guide"],
     };
   }
 
   return {
     required: [],
-    forbidden: [],
+    forbidden: ["compact guide"],
   };
 }
 
@@ -318,6 +353,10 @@ async function main() {
   await run("npm", ["run", "generate:static-page-metadata"]);
   await ensureCleanWorktree();
 
+  const localLiveEntry = await loadLiveRegistryEntry();
+  const localLivePuzzle = await loadPublishedPuzzle(localLiveEntry.slug);
+  assertReleaseEligibleDetail(localLiveEntry.slug, localLivePuzzle, "Local live detail JSON");
+
   logStep("Running local release checks");
   await run("npm", ["run", "test:pinpoint-guardrails"]);
   await run("npm", ["run", "typecheck"]);
@@ -351,6 +390,7 @@ async function main() {
   const summary = await checkSummaryApi(`${DEFAULT_SITE_URL}/api/puzzles/summary`);
   const workerHealth = await checkWorkerHealth(DEFAULT_WORKER_HEALTH_URL);
   const publishedPuzzle = await loadPublishedPuzzle(summary.latest.slug);
+  assertReleaseEligibleDetail(summary.latest.slug, publishedPuzzle, "Published detail JSON");
   const detail = await waitForLatestDetailContent(DEFAULT_SITE_URL, summary.latest.slug, publishedPuzzle);
 
   logStep("Production release finished");

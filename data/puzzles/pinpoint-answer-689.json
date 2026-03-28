@@ -1,31 +1,6 @@
 {
-  "puzzleNumber": 689,
   "slug": "pinpoint-answer-689",
-  "publishDate": "2026-03-20",
-  "isoDate": "2026-03-20",
-  "clues": [
-    "Aromatherapy",
-    "Unscented",
-    "Votive",
-    "Citronella",
-    "Birthday (make a wish!)"
-  ],
-  "answer": "Types of candles",
-  "category": "Types of candles",
-  "wordHints": {
-    "Aromatherapy": "Aromatherapy describes scented oils used for therapeutic benefit, often released via a burning candle.",
-    "Unscented": "Unscented candles provide light without adding fragrance, useful for those sensitive to smells.",
-    "Votive": "Votive candles are small and often used in religious settings or decorative holders.",
-    "Citronella": "Citronella candles contain oil that repels insects, making them common for outdoor use.",
-    "Birthday (make a wish!)": "Birthday candles are placed on cakes and blown out while making a wish."
-  },
-  "spoilerHints": {
-    "Aromatherapy": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-    "Unscented": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
-    "Votive": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
-    "Citronella": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-    "Birthday (make a wish!)": "This is the clue that makes the category specific enough to verify across the whole board."
-  },
+  "detailState": "published",
   "fullAnalysis": [
     "At first, this looked more like a wellness board than a candle board.",
     "Aromatherapy pushed me in that direction immediately.",
@@ -44,6 +19,20 @@
     "Aromatherapy pushed me toward wellness products first, and Unscented kept that theory alive for a moment. It still felt unstable, though, because Votive was too specific to live comfortably inside a vague scent-products read.",
     "The turn came when I read Votive as a candle type instead of as another lifestyle clue. Once that clicked, Aromatherapy and Unscented both resolved cleanly, and Types of candles became the only reading that fit the whole set."
   ],
+  "wordHints": {
+    "Aromatherapy": "Aromatherapy describes scented oils used for therapeutic benefit, often released via a burning candle.",
+    "Unscented": "Unscented candles provide light without adding fragrance, useful for those sensitive to smells.",
+    "Votive": "Votive candles are small and often used in religious settings or decorative holders.",
+    "Citronella": "Citronella candles contain oil that repels insects, making them common for outdoor use.",
+    "Birthday (make a wish!)": "Birthday candles are placed on cakes and blown out while making a wish."
+  },
+  "spoilerHints": {
+    "Aromatherapy": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Unscented": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Votive": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Citronella": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Birthday (make a wish!)": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
   "lessons": [
     {
       "title": "Broad clues can create the wrong frame early",
@@ -56,6 +45,20 @@
     {
       "title": "Prefer precise category fit over broad topic logic",
       "body": "Consider the root purpose of an object beyond its immediate use to understand its category."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #689?",
+      "answer": "The answer is \"Types of candles\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #689?",
+      "answer": "The connection is that all five clues resolve as recognizable types of candles. Votive is the clue that turns the board from a vague product read into a specific candle shelf."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #689?",
+      "answer": "Votive is the turning point because it forces the board to become concrete. Once that clue reads as a candle type, the earlier clues stop feeling like loose descriptors and start fitting the same answer."
     }
   ],
   "display": {
@@ -88,19 +91,5 @@
         "connectionExplained": "These small candles are placed on birthday cakes and are blown out while making a wish."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #689?",
-      "answer": "The answer is \"Types of candles\" because that reading explains the full set cleanly, including the final clue."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #689?",
-      "answer": "The connection is that all five clues resolve as recognizable types of candles. Votive is the clue that turns the board from a vague product read into a specific candle shelf."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #689?",
-      "answer": "Votive is the turning point because it forces the board to become concrete. Once that clue reads as a candle type, the earlier clues stop feeling like loose descriptors and start fitting the same answer."
-    }
-  ]
+  }
 }

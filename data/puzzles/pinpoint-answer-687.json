@@ -1,17 +1,14 @@
 {
-  "puzzleNumber": 687,
   "slug": "pinpoint-answer-687",
-  "publishDate": "2026-03-18",
-  "isoDate": "2026-03-18",
-  "clues": [
-    "Fog",
-    "Cable cars",
-    "Ghirardelli Square",
-    "Alcatraz Island",
-    "Golden Gate Bridge"
+  "detailState": "published",
+  "fullAnalysis": [
+    "Pinpoint #687 looks broader than it really is because the board mixes atmosphere, transportation, shopping, and famous landmarks. \"Fog\" can feel especially loose on its own, and clues like \"Cable cars\" or \"Alcatraz Island\" could still sit inside a wider travel or California-themed guess. The clue that really tightens the set is \"Golden Gate Bridge,\" because once that appears, the board stops feeling like a bag of tourist references and starts reading as one clean city picture.",
+    "From there, the answer resolves as San Francisco icons. The city is famously linked with bay fog and cable cars, while Ghirardelli Square, Alcatraz Island, and the Golden Gate Bridge are all unmistakable San Francisco landmarks. That reading explains the whole board more cleanly than broader labels like California attractions or tourist destinations, because every clue points back to the same city identity."
   ],
-  "answer": "San Francisco icons",
-  "category": "San Francisco icons",
+  "solutionNarrative": [
+    "I did not have a clean category from the first clue. \"Fog\" felt too open, and even after \"Cable cars\" appeared, I could still justify a broader travel or transportation angle. \"Ghirardelli Square\" helped narrow the frame, but I still needed one clue that made the city connection impossible to miss.",
+    "That turning point was \"Golden Gate Bridge.\" Once I let that clue lead the solve, the rest of the board stopped feeling scattered and started reading like a single San Francisco collage: fog, cable cars, Ghirardelli Square, Alcatraz Island, and the bridge itself. At that point, the city-specific reading explained the full set much better than any looser tourism label."
+  ],
   "wordHints": {
     "Fog": "Fog works because San Francisco is famously associated with its cold, rolling bay fog, making it one of the city's clearest atmosphere clues.",
     "Cable cars": "Cable cars are one of San Francisco's most recognizable transit symbols, so this clue points to the city almost immediately once the frame appears.",
@@ -26,14 +23,6 @@
     "Alcatraz Island": "Think of a landmark that is closely tied to one specific bay city.",
     "Golden Gate Bridge": "This is the clue that turns a broad travel board into a very specific city board."
   },
-  "fullAnalysis": [
-    "Pinpoint #687 looks broader than it really is because the board mixes atmosphere, transportation, shopping, and famous landmarks. \"Fog\" can feel especially loose on its own, and clues like \"Cable cars\" or \"Alcatraz Island\" could still sit inside a wider travel or California-themed guess. The clue that really tightens the set is \"Golden Gate Bridge,\" because once that appears, the board stops feeling like a bag of tourist references and starts reading as one clean city picture.",
-    "From there, the answer resolves as San Francisco icons. The city is famously linked with bay fog and cable cars, while Ghirardelli Square, Alcatraz Island, and the Golden Gate Bridge are all unmistakable San Francisco landmarks. That reading explains the whole board more cleanly than broader labels like California attractions or tourist destinations, because every clue points back to the same city identity."
-  ],
-  "solutionNarrative": [
-    "I did not have a clean category from the first clue. \"Fog\" felt too open, and even after \"Cable cars\" appeared, I could still justify a broader travel or transportation angle. \"Ghirardelli Square\" helped narrow the frame, but I still needed one clue that made the city connection impossible to miss.",
-    "That turning point was \"Golden Gate Bridge.\" Once I let that clue lead the solve, the rest of the board stopped feeling scattered and started reading like a single San Francisco collage: fog, cable cars, Ghirardelli Square, Alcatraz Island, and the bridge itself. At that point, the city-specific reading explained the full set much better than any looser tourism label."
-  ],
   "lessons": [
     {
       "title": "City boards often mix landmarks with atmosphere",

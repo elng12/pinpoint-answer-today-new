@@ -1,31 +1,6 @@
 {
-  "puzzleNumber": 694,
   "slug": "pinpoint-answer-694",
-  "publishDate": "2026-03-25",
-  "isoDate": "2026-03-25",
-  "clues": [
-    "Marble",
-    "Obsidian",
-    "Slate",
-    "Granite",
-    "Sandstone"
-  ],
-  "answer": "Types of rocks",
-  "category": "Types of rocks",
-  "wordHints": {
-    "Marble": "\"Marble rock\" is a recognizable rock, so it gives the board a clean category fit.",
-    "Obsidian": "Once the board is read as rocks, \"Obsidian rock\" stops feeling broad and becomes an exact fit.",
-    "Slate": "\"Slate rock\" belongs in the same rock frame, which keeps the category specific instead of loose.",
-    "Granite": "\"Granite rock\" is a recognizable rock, so it gives the board a clean category fit.",
-    "Sandstone": "Once the board is read as rocks, \"Sandstone rock\" stops feeling broad and becomes an exact fit."
-  },
-  "spoilerHints": {
-    "Marble": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-    "Obsidian": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
-    "Slate": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
-    "Granite": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-    "Sandstone": "This is the clue that makes the category specific enough to verify across the whole board."
-  },
+  "detailState": "published",
   "articleBlocks": [
     "This board becomes clear pretty quickly once you stop reading the clues as materials and start reading them as rock names.",
     "Marble and Obsidian can feel a little broad at first because both words also show up in design or sculpture, but Sandstone pushes the board back toward geology.",
@@ -46,6 +21,20 @@
     "Once I made that shift, Marble, Obsidian, Slate, and Granite all settled into the same category without much resistance.",
     "The answer was \"Types of rocks\"."
   ],
+  "wordHints": {
+    "Marble": "\"Marble rock\" is a recognizable rock, so it gives the board a clean category fit.",
+    "Obsidian": "Once the board is read as rocks, \"Obsidian rock\" stops feeling broad and becomes an exact fit.",
+    "Slate": "\"Slate rock\" belongs in the same rock frame, which keeps the category specific instead of loose.",
+    "Granite": "\"Granite rock\" is a recognizable rock, so it gives the board a clean category fit.",
+    "Sandstone": "Once the board is read as rocks, \"Sandstone rock\" stops feeling broad and becomes an exact fit."
+  },
+  "spoilerHints": {
+    "Marble": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Obsidian": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Slate": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Granite": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Sandstone": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
   "lessons": [
     {
       "title": "Wait for the clue that narrows the category",
@@ -58,6 +47,20 @@
     {
       "title": "Re-check the earlier clues once the frame tightens",
       "body": "After \"Sandstone\" points you toward geology, go back and make sure Marble, Obsidian, Slate, and Granite still hold under the same answer."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #694?",
+      "answer": "The answer is \"Types of rocks\". Each clue works as the name of a rock, and \"Sandstone\" makes that reading especially easy to verify."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #694?",
+      "answer": "The connection is rock names. The board looks a little broader at first because Marble and Obsidian also appear in non-geology contexts, but the full set settles once every clue is read as a rock."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
+      "answer": "\"Sandstone\" is the strongest anchor because it points most directly to geology and makes the category easier to test across the whole board."
     }
   ],
   "display": {
@@ -90,19 +93,5 @@
         "connectionExplained": "Sandstone is the clearest anchor in the set because it points straight to a rock category."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #694?",
-      "answer": "The answer is \"Types of rocks\". Each clue works as the name of a rock, and \"Sandstone\" makes that reading especially easy to verify."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #694?",
-      "answer": "The connection is rock names. The board looks a little broader at first because Marble and Obsidian also appear in non-geology contexts, but the full set settles once every clue is read as a rock."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
-      "answer": "\"Sandstone\" is the strongest anchor because it points most directly to geology and makes the category easier to test across the whole board."
-    }
-  ]
+  }
 }

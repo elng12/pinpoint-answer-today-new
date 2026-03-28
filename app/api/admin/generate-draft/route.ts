@@ -16,6 +16,9 @@ import {
   type ContentContractIssue,
 } from "@/lib/puzzles/content-contract";
 import {
+  validateEvidenceContract,
+} from "@/lib/puzzles/evidence-contract";
+import {
   validateSlotContract,
   type SlotContractInput,
 } from "@/lib/puzzles/slot-contract";
@@ -121,6 +124,72 @@ function toContractFaqs(value: unknown): ContentContractInput["faqs"] {
       answer: asString(row?.answer),
     };
   });
+}
+
+function toStringArray(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null;
+  return value.filter((item): item is string => typeof item === "string");
+}
+
+function toEvidenceContractInput(puzzleData: PuzzleDataForAI, ai: unknown) {
+  const root = asRecord(ai) ?? {};
+  const solvePath = asRecord(root.solvePath);
+  const turningPoint = asRecord(root.turningPoint);
+  const uniquenessSignals = asRecord(root.uniquenessSignals);
+
+  return {
+    rawWords: puzzleData.rawWords,
+    mainAnswer: puzzleData.mainAnswer,
+    questionType: asString(root.questionType),
+    difficultyBand: asString(root.difficultyBand),
+    solvePath: solvePath
+      ? {
+          firstRead: asString(solvePath.firstRead),
+          falseStarts: toStringArray(solvePath.falseStarts),
+          whyFalseStartPlausible: toStringArray(solvePath.whyFalseStartPlausible),
+          breakingClue: asString(solvePath.breakingClue),
+          pivot: asString(solvePath.pivot),
+          fullBoardConfirmation: asString(solvePath.fullBoardConfirmation),
+        }
+      : null,
+    turningPoint: turningPoint
+      ? {
+          clue: asString(turningPoint.clue),
+          whyDecisive: asString(turningPoint.whyDecisive),
+          whatChangedAfterIt: asString(turningPoint.whatChangedAfterIt),
+        }
+      : null,
+    clueRows: Array.isArray(root.clueRows)
+      ? root.clueRows.map((item) => {
+          const row = asRecord(item);
+          return {
+            clue: asString(row?.clue),
+            surfaceMisread: asString(row?.surfaceMisread),
+            resolvedPhraseOrMember: asString(row?.resolvedPhraseOrMember),
+            nonObviousWhy: asString(row?.nonObviousWhy),
+            searchableContext: asString(row?.searchableContext),
+          };
+        })
+      : null,
+    faqItems: Array.isArray(root.faqItems)
+      ? root.faqItems.map((item) => {
+          const row = asRecord(item);
+          return {
+            intentType: asString(row?.intentType),
+            question: asString(row?.question),
+            answer: asString(row?.answer),
+            tiedClue: asString(row?.tiedClue),
+          };
+        })
+      : null,
+    uniquenessSignals: uniquenessSignals
+      ? {
+          angle: asString(uniquenessSignals.angle),
+          relatedEntities: toStringArray(uniquenessSignals.relatedEntities),
+          doNotRepeatPatterns: toStringArray(uniquenessSignals.doNotRepeatPatterns),
+        }
+      : null,
+  };
 }
 
 function normalizeWhitespace(value: string): string {
@@ -635,6 +704,9 @@ function validateDraftIssues(
 ) {
   return [
     ...promotePublishBlockingIssues(validateContentContract(toContractInput(puzzleData, ai, locale))),
+    ...validateEvidenceContract(toEvidenceContractInput(puzzleData, ai), {
+      requireEvidenceFields: true,
+    }),
     ...validateSlotContract(toSlotContractInput(puzzleData, ai)),
   ];
 }
@@ -674,8 +746,10 @@ ${articleBlockRule}
 9. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
 10. overview must not open with the exact answer text or with "The answer is".
 11. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
-12. Keep the prose natural and article-like, not robotic or overly analytical.
-13. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+12. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
+13. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
+14. Keep the prose natural and article-like, not robotic or overly analytical.
+15. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}

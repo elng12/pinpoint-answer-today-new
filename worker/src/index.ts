@@ -52,6 +52,7 @@ export interface Env {
   GITHUB_BRANCH_NEW_SITE?: string;       // default: main
   NEW_SITE_URL?: string;                 // e.g. https://pinpointanswertoday.app (new site)
   NEW_SITE_REVALIDATE_SECRET?: string;   // matches REVALIDATE_SECRET on Vercel
+  NEW_SITE_LIVE_REFRESH_ENABLED?: string; // optional: set "true" to allow worker-triggered live refresh fallback
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
@@ -238,6 +239,7 @@ const cronHeartbeatDayKeyOf = (d: string) => `monitor:cron:${d}`;
 const cronHeartbeatDayRunsKeyOf = (d: string) => `monitor:cron:${d}:runs`;
 const cronHeartbeatRunKeyOf = (runId: string) => `monitor:cron:run:${runId}`;
 const cronHeartbeatRunsLimit = 20;
+const nonPublicDetailStateAlertThresholdMs = 15 * 60 * 1000;
 
 const SUPPORTED_I18N_LOCALES = ["fr", "de", "pt-BR"] as const;
 const I18N_LOCALE_SET = new Set<string>(SUPPORTED_I18N_LOCALES);
@@ -256,11 +258,52 @@ type QuickPublishResult = {
   reason?: string;
 };
 
+type PublicDetailState = "published" | "fallback_full";
+type PublishDetailState = PublicDetailState | "generating" | "validated" | "failed";
+type DetailQuestionType = "phrase" | "category" | "association" | "hybrid";
+type DetailDifficultyBand = "obvious" | "medium" | "hard";
+type WorkerTurningPointRecord = {
+  clue: string;
+  whyDecisive: string;
+  whatChangedAfterIt: string;
+};
+type WorkerSolvePathRecord = {
+  firstRead: string;
+  falseStarts: string[];
+  whyFalseStartPlausible: string[];
+  breakingClue?: string;
+  pivot?: string;
+  fullBoardConfirmation?: string;
+};
+type WorkerClueRow = {
+  clue: string;
+  surfaceMisread: string;
+  resolvedPhraseOrMember: string;
+  nonObviousWhy: string;
+  searchableContext: string;
+};
+type WorkerFaqItem = {
+  intentType: "definition" | "clue_background" | "comparison" | "solve_strategy" | "category_context";
+  question: string;
+  answer: string;
+  tiedClue: string | null;
+};
+type WorkerUniquenessSignals = {
+  angle: string;
+  relatedEntities: string[];
+  doNotRepeatPatterns: string[];
+};
+
 type EnrichPublishResult = {
-  status: "enriched" | "skipped";
+  status: "enriched" | "fallback_full" | "skipped";
   reason?: string;
   puzzleNumber?: number;
   payload?: JsonRecord;
+  detailState?: PublicDetailState;
+};
+
+type EnrichPublishOptions = {
+  onDetailStateChange?: (detailState: PublishDetailState, reason?: string) => Promise<void> | void;
 };
 
 type I18nPublishItemResult = {
@@ -294,6 +337,7 @@ type CronHeartbeatStageStatus = "unknown" | "queued" | "published" | "skipped" |
 type CronHeartbeatStage = {
   status: CronHeartbeatStageStatus;
   reason?: string;
+  detailState?: PublishDetailState;
   updatedAt: string;
 };
 
@@ -407,6 +451,63 @@ function getAdminSecret(env: Env): string | null {
 function getAdminPutDocSecret(env: Env): string | null {
   const secret = String(env.ADMIN_PUT_DOC_SECRET || env.ADMIN_SECRET || "").trim();
   return secret.length > 0 ? secret : null;
+}
+
+function canUseStoredAdminDoc(env: Env): boolean {
+  const branch = String(env.GITHUB_BRANCH_NEW_SITE || "main").trim();
+  return !isPrimaryNewSiteBranch(branch);
+}
+
+function normalizeStoredDocAnswer(raw: unknown, index: number): Answer | null {
+  const entry = asRecord(raw);
+  const word = String(entry?.word || "").trim();
+  if (!word) return null;
+  const rankRaw = Number(entry?.rank);
+  const confidenceRaw = Number(entry?.confidence);
+  const rank = Number.isFinite(rankRaw) && rankRaw > 0 ? Math.trunc(rankRaw) : index + 1;
+  return {
+    rank,
+    word,
+    ...(Number.isFinite(confidenceRaw) ? { confidence: confidenceRaw } : {}),
+  };
+}
+
+function parseStoredDoc(raw: string, fallbackDate: string): Doc {
+  const parsed = asRecord(JSON.parse(raw));
+  if (!parsed) {
+    throw new Error("stored doc invalid");
+  }
+
+  const answersRaw = Array.isArray(parsed.answers) ? parsed.answers : [];
+  const answers = answersRaw
+    .map((item, index) => normalizeStoredDocAnswer(item, index))
+    .filter((item): item is Answer => Boolean(item))
+    .slice(0, 5);
+  if (answers.length !== 5) {
+    throw new Error(`stored doc answers length invalid (expected 5, got ${answers.length})`);
+  }
+
+  const puzzleDate = String(parsed.puzzleDate || fallbackDate).trim() || fallbackDate;
+  const fetchedAt = String(parsed.fetchedAt || new Date().toISOString()).trim() || new Date().toISOString();
+  const source = normalizeFallbackSource(parsed.source ?? "graphql");
+  const checksum = String(parsed.checksum || "").trim();
+
+  return {
+    version: 1,
+    puzzleDate,
+    answers,
+    source,
+    fetchedAt,
+    checksum: checksum || `sha256:stored:${puzzleDate}`,
+    ...(typeof parsed.theme === "string" && parsed.theme.trim() ? { theme: parsed.theme.trim() } : {}),
+    ...(typeof parsed.mainAnswer === "string" && parsed.mainAnswer.trim() ? { mainAnswer: parsed.mainAnswer.trim() } : {}),
+  };
+}
+
+async function loadStoredDocForDate(env: Env, date: string): Promise<Doc | null> {
+  const raw = await env.PP_DATA.get(keyOf(date));
+  if (!raw) return null;
+  return parseStoredDoc(raw, date);
 }
 
 function hasNewSiteRevalidateConfig(env: Env): boolean {
@@ -680,10 +781,10 @@ function extractWorkerCategoryLabel(answer: string): string {
 function buildWorkerConnectorSummary(answer: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
   if (pattern.kind === "before") {
-    return `familiar phrases that end with "${pattern.token}"`;
+    return "familiar phrases completed by one shared ending word";
   }
   if (pattern.kind === "after") {
-    return `familiar phrases and common terms that begin with "${pattern.token}"`;
+    return "familiar phrases and everyday terms built with one shared opening word";
   }
   if (pattern.kind === "typed-category") {
     return `a category board focused on ${pattern.noun.toLowerCase()}`;
@@ -736,7 +837,12 @@ function buildWorkerClueExplanation(clue: string, phrase: string, answer: string
     if (visualStyle) {
       return `The familiar expression "${phraseText}" makes the missing word "${token}" obvious in plain language.`;
     }
-    return `"${phraseText}" is a familiar phrase or term, which is why this clue fits once "${token}" is in place.`;
+    const variants = [
+      `"${phraseText}" is a familiar phrase, so it helps reveal the shared word quickly.`,
+      `"${phraseText}" is common enough to confirm the same missing word without stretching the phrasing.`,
+      `Once the shared word is in place, "${phraseText}" reads like ordinary language instead of a forced compound.`,
+    ];
+    return variants[index % variants.length] || variants[0];
   }
 
   if (pattern.kind === "typed-category") {
@@ -991,27 +1097,47 @@ function buildTemplateFallbackPayload(
     .split(/\n\s*\n/)
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
+  const sections = {
+    articleBlocks,
+    overview: detailedBreakdown,
+    solutionEmergence,
+    clueDetails,
+    lessons,
+    faqs,
+  };
+  const analysis = {
+    answerGroups: [{ category: answer, words }],
+    detailedBreakdown,
+    dailyDebrief: `LinkedIn Pinpoint #${puzzleNumber} answer is ${answer}. Clues: ${clueLabel}.`,
+    difficultyRating: 3,
+    answerDescription: answer,
+  };
+  const detailRecord = buildPublishedPuzzleDetailRecord({
+    puzzleNumber,
+    slug: `pinpoint-answer-${puzzleNumber}`,
+    puzzleDate,
+    answer,
+    words,
+    sections,
+    analysis,
+    summary: heroSummary,
+    detailState: "fallback_full",
+  });
 
   return {
     puzzleNumber,
     rawWords: words,
-    analysis: {
-      answerGroups: [{ category: answer, words }],
-      detailedBreakdown,
-      dailyDebrief: `LinkedIn Pinpoint #${puzzleNumber} answer is ${answer}. Clues: ${clueLabel}.`,
-      difficultyRating: 3,
-      answerDescription: answer,
-    },
+    analysis,
     summary: heroSummary,
     mainAnswer: answer,
-    sections: {
-      articleBlocks,
-      overview: detailedBreakdown,
-      solutionEmergence,
-      clueDetails,
-      lessons,
-      faqs,
-    },
+    sections,
+    questionType: detailRecord.questionType,
+    difficultyBand: detailRecord.difficultyBand,
+    solvePath: detailRecord.solvePath,
+    ...(detailRecord.turningPoint ? { turningPoint: detailRecord.turningPoint } : {}),
+    clueRows: detailRecord.clueRows,
+    faqItems: detailRecord.faqItems,
+    uniquenessSignals: detailRecord.uniquenessSignals,
     publishedAtIso: buildPublishedAtIso(puzzleDate, doc.fetchedAt),
     metadata: {
       publishedAtSource: `${siteBaseUrl}/worker/template-fallback`,
@@ -1675,8 +1801,346 @@ type PublishedPuzzleDetailInput = {
   words: string[];
   sections: JsonRecord;
   analysis: JsonRecord;
+  slots?: JsonRecord | null;
   summary?: unknown;
+  detailState?: PublishDetailState;
+  questionType?: DetailQuestionType;
+  difficultyBand?: DetailDifficultyBand;
+  solvePath?: WorkerSolvePathRecord | null;
+  turningPoint?: WorkerTurningPointRecord | null;
+  clueRows?: WorkerClueRow[];
+  faqItems?: WorkerFaqItem[];
+  uniquenessSignals?: WorkerUniquenessSignals | null;
 };
+
+function normalizeWorkerLooseText(value: string): string {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/["“”'’()\-_,!?:.;/]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function inferWorkerDetailQuestionType(answer: string): DetailQuestionType {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return "phrase";
+  }
+  if (pattern.kind === "association") {
+    return "association";
+  }
+  return "category";
+}
+
+type ProvidedEvidenceFields = {
+  questionType?: DetailQuestionType;
+  difficultyBand?: DetailDifficultyBand;
+  solvePath?: WorkerSolvePathRecord | null;
+  turningPoint?: WorkerTurningPointRecord | null;
+  clueRows?: WorkerClueRow[];
+  faqItems?: WorkerFaqItem[];
+  uniquenessSignals?: WorkerUniquenessSignals | null;
+};
+
+function resolveProvidedWorkerQuestionType(value: unknown): DetailQuestionType | undefined {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (
+    normalized === "phrase" ||
+    normalized === "category" ||
+    normalized === "association" ||
+    normalized === "hybrid"
+  ) {
+    return normalized;
+  }
+  return undefined;
+}
+
+function resolveProvidedWorkerDifficultyBand(value: unknown): DetailDifficultyBand | undefined {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (normalized === "obvious" || normalized === "medium" || normalized === "hard") {
+    return normalized;
+  }
+  return undefined;
+}
+
+function normalizeWorkerRecordArray(value: unknown): JsonRecord[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const rows = value
+    .map((item) => asRecord(item))
+    .filter((item): item is JsonRecord => Boolean(item));
+  return rows.length > 0 ? rows : undefined;
+}
+
+function normalizeWorkerTurningPointRecord(value: unknown): WorkerTurningPointRecord | null {
+  const record = asRecord(value);
+  const clue = asNonEmptyString(record?.clue);
+  const whyDecisive = asNonEmptyString(record?.whyDecisive);
+  const whatChangedAfterIt = asNonEmptyString(record?.whatChangedAfterIt);
+  if (!clue || !whyDecisive || !whatChangedAfterIt) return null;
+  return { clue, whyDecisive, whatChangedAfterIt };
+}
+
+function normalizeWorkerSolvePathRecord(value: unknown): WorkerSolvePathRecord | null {
+  const record = asRecord(value);
+  const firstRead = asNonEmptyString(record?.firstRead);
+  if (!firstRead) return null;
+  const falseStarts = Array.isArray(record?.falseStarts)
+    ? record.falseStarts.map((item) => String(item || "").trim()).filter(Boolean)
+    : [];
+  const whyFalseStartPlausible = Array.isArray(record?.whyFalseStartPlausible)
+    ? record.whyFalseStartPlausible.map((item) => String(item || "").trim()).filter(Boolean)
+    : [];
+  const breakingClue = asNonEmptyString(record?.breakingClue) || undefined;
+  const pivot = asNonEmptyString(record?.pivot) || undefined;
+  const fullBoardConfirmation = asNonEmptyString(record?.fullBoardConfirmation) || undefined;
+  return {
+    firstRead,
+    falseStarts,
+    whyFalseStartPlausible,
+    ...(breakingClue ? { breakingClue } : {}),
+    ...(pivot ? { pivot } : {}),
+    ...(fullBoardConfirmation ? { fullBoardConfirmation } : {}),
+  };
+}
+
+function normalizeWorkerClueRows(value: unknown): WorkerClueRow[] | undefined {
+  const rows = normalizeWorkerRecordArray(value);
+  if (!rows) return undefined;
+  const normalized = rows
+    .map((row) => {
+      const clue = asNonEmptyString(row.clue);
+      const surfaceMisread = asNonEmptyString(row.surfaceMisread);
+      const resolvedPhraseOrMember = asNonEmptyString(row.resolvedPhraseOrMember);
+      const nonObviousWhy = asNonEmptyString(row.nonObviousWhy);
+      const searchableContext = asNonEmptyString(row.searchableContext);
+      if (!clue || !surfaceMisread || !resolvedPhraseOrMember || !nonObviousWhy || !searchableContext) {
+        return null;
+      }
+      return {
+        clue,
+        surfaceMisread,
+        resolvedPhraseOrMember,
+        nonObviousWhy,
+        searchableContext,
+      };
+    })
+    .filter((row): row is WorkerClueRow => Boolean(row));
+  return normalized.length > 0 ? normalized : undefined;
+}
+
+function normalizeWorkerFaqItems(value: unknown): WorkerFaqItem[] | undefined {
+  const rows = normalizeWorkerRecordArray(value);
+  if (!rows) return undefined;
+  const normalized = rows
+    .map((row) => {
+      const question = asNonEmptyString(row.question);
+      const answer = asNonEmptyString(row.answer);
+      const intentType = String(row.intentType || "").trim() as WorkerFaqItem["intentType"];
+      const tiedClue = asNonEmptyString(row.tiedClue) || null;
+      if (!question || !answer) return null;
+      if (
+        intentType !== "definition" &&
+        intentType !== "clue_background" &&
+        intentType !== "comparison" &&
+        intentType !== "solve_strategy" &&
+        intentType !== "category_context"
+      ) {
+        return null;
+      }
+      return { intentType, question, answer, tiedClue };
+    })
+    .filter((row): row is WorkerFaqItem => Boolean(row));
+  return normalized.length > 0 ? normalized : undefined;
+}
+
+function normalizeWorkerUniquenessSignals(value: unknown): WorkerUniquenessSignals | null {
+  const record = asRecord(value);
+  const angle = asNonEmptyString(record?.angle);
+  const relatedEntities = Array.isArray(record?.relatedEntities)
+    ? record.relatedEntities.map((item) => String(item || "").trim()).filter(Boolean)
+    : [];
+  const doNotRepeatPatterns = Array.isArray(record?.doNotRepeatPatterns)
+    ? record.doNotRepeatPatterns.map((item) => String(item || "").trim()).filter(Boolean)
+    : [];
+  if (!angle || relatedEntities.length === 0 || doNotRepeatPatterns.length === 0) return null;
+  return { angle, relatedEntities, doNotRepeatPatterns };
+}
+
+function extractProvidedEvidenceFields(payload: JsonRecord): ProvidedEvidenceFields {
+  return {
+    questionType: resolveProvidedWorkerQuestionType(payload.questionType),
+    difficultyBand: resolveProvidedWorkerDifficultyBand(payload.difficultyBand),
+    solvePath: normalizeWorkerSolvePathRecord(payload.solvePath),
+    turningPoint: normalizeWorkerTurningPointRecord(payload.turningPoint),
+    clueRows: normalizeWorkerClueRows(payload.clueRows),
+    faqItems: normalizeWorkerFaqItems(payload.faqItems),
+    uniquenessSignals: normalizeWorkerUniquenessSignals(payload.uniquenessSignals),
+  };
+}
+
+function inferWorkerDifficultyBand(answer: string, sections: JsonRecord): DetailDifficultyBand {
+  const wrongGuesses = Array.isArray(sections.wrongGuesses) ? sections.wrongGuesses : [];
+  if (wrongGuesses.length >= 2) return "hard";
+  if (wrongGuesses.length === 0 && inferWorkerDetailQuestionType(answer) !== "association") {
+    return "obvious";
+  }
+  return "medium";
+}
+
+function findWorkerMentionedClue(text: string, words: string[]): string | null {
+  const normalizedText = normalizeWorkerLooseText(text);
+  for (const word of words) {
+    const normalizedWord = normalizeWorkerLooseText(word);
+    if (normalizedWord && normalizedText.includes(normalizedWord)) {
+      return word;
+    }
+  }
+  return null;
+}
+
+function inferWorkerTurningPointRecord(
+  words: string[],
+  sections: JsonRecord,
+  analysis: JsonRecord,
+  clueDetails: Array<Record<string, unknown>>,
+): WorkerTurningPointRecord | null {
+  const candidateTexts = [
+    asNonEmptyString(sections.solutionEmergence),
+    asNonEmptyString(sections.overview),
+    asNonEmptyString(analysis.detailedBreakdown),
+  ].filter(Boolean) as string[];
+  const keywordPattern = /(turn|turning|key clue|strongest clue|giveaway|locks the answer|makes .* concrete|impossible to miss)/i;
+
+  let bestClue = words[0] || "";
+  let bestScore = -1;
+
+  for (const clue of words) {
+    let score = 0;
+    for (const text of candidateTexts) {
+      if (!normalizeWorkerLooseText(text).includes(normalizeWorkerLooseText(clue))) continue;
+      score += 2;
+      if (keywordPattern.test(text)) score += 5;
+    }
+    const detail = clueDetails.find((item) => asNonEmptyString(item.clue) === clue);
+    const explanation = asNonEmptyString(detail?.explanation) || "";
+    if (keywordPattern.test(explanation)) score += 4;
+    if (score > bestScore) {
+      bestScore = score;
+      bestClue = clue;
+    }
+  }
+
+  if (!bestClue) return null;
+  const detail = clueDetails.find((item) => asNonEmptyString(item.clue) === bestClue);
+  const whyDecisive =
+    asNonEmptyString(detail?.explanation) ||
+    `${bestClue} is the clue that makes the answer precise enough to test across the full board.`;
+
+  return {
+    clue: bestClue,
+    whyDecisive,
+    whatChangedAfterIt: `Once ${bestClue} lands, the earlier clues stop feeling broad and start reading under the same answer.`,
+  };
+}
+
+function inferWorkerSolvePath(
+  sections: JsonRecord,
+  analysis: JsonRecord,
+  slots: JsonRecord | null,
+  turningPoint: WorkerTurningPointRecord | null,
+): WorkerSolvePathRecord {
+  const firstRead =
+    toParagraphs(sections.overview, asNonEmptyString(analysis.detailedBreakdown) || "")[0] ||
+    "The opening clues support more than one plausible read before a later clue tightens the board.";
+  const wrongGuesses = Array.isArray(sections.wrongGuesses)
+    ? sections.wrongGuesses
+        .map((item) => asRecord(item))
+        .filter((item): item is JsonRecord => Boolean(item))
+    : [];
+  const falseStarts = wrongGuesses
+    .map((item) => asNonEmptyString(item.guess))
+    .filter((item): item is string => Boolean(item))
+    .slice(0, 2);
+  const whyFalseStartPlausible = wrongGuesses
+    .map((item) => asNonEmptyString(item.explanation))
+    .filter((item): item is string => Boolean(item))
+    .slice(0, Math.max(falseStarts.length, 1));
+  const pivot =
+    asNonEmptyString(sections.solutionEmergence) ||
+    asNonEmptyString(slots?.turningPoint) ||
+    turningPoint?.whyDecisive;
+  const fullBoardConfirmation =
+    toParagraphs(
+      analysis.detailedBreakdown,
+      turningPoint?.whatChangedAfterIt || "Once the turning clue lands, the rest of the board starts confirming the same answer.",
+    ).find((paragraph, index) => index > 0 && /the answer (?:is|was)|once /i.test(paragraph)) ||
+    turningPoint?.whatChangedAfterIt;
+
+  return {
+    firstRead,
+    falseStarts,
+    whyFalseStartPlausible,
+    ...(turningPoint?.clue ? { breakingClue: turningPoint.clue } : {}),
+    ...(pivot ? { pivot } : {}),
+    ...(fullBoardConfirmation ? { fullBoardConfirmation } : {}),
+  };
+}
+
+function inferWorkerClueRows(
+  words: string[],
+  clueDetails: Array<Record<string, unknown>>,
+  wrongGuessLabel: string,
+) {
+  return words.map((word, index) => {
+    const detail = clueDetails[index] ?? {};
+    return {
+      clue: word,
+      surfaceMisread: wrongGuessLabel,
+      resolvedPhraseOrMember: asNonEmptyString(detail.phrase) || word,
+      nonObviousWhy:
+        asNonEmptyString(detail.explanation) ||
+        `${word} supports the same answer once the shared frame becomes clear.`,
+      searchableContext: asNonEmptyString(detail.etymology) || asNonEmptyString(detail.phrase) || word,
+    };
+  });
+}
+
+function inferWorkerFaqIntentType(question: string): "definition" | "clue_background" | "comparison" | "solve_strategy" | "category_context" {
+  const normalized = normalizeWorkerLooseText(question);
+  if (normalized.includes("what is the answer")) return "definition";
+  if (normalized.includes("what is the connection")) return "category_context";
+  if (normalized.includes("which clue") || normalized.startsWith("why is")) return "clue_background";
+  if (normalized.includes("compare") || normalized.includes("difference")) return "comparison";
+  return "solve_strategy";
+}
+
+function inferWorkerFaqItems(
+  faqs: Array<{ question: string; answer: string }>,
+  words: string[],
+) {
+  return faqs.map((faq) => ({
+    intentType: inferWorkerFaqIntentType(faq.question),
+    question: faq.question,
+    answer: faq.answer,
+    tiedClue: findWorkerMentionedClue(`${faq.question} ${faq.answer}`, words),
+  }));
+}
+
+function buildWorkerUniquenessSignals(
+  answer: string,
+  clueRows: WorkerClueRow[],
+): WorkerUniquenessSignals {
+  const angle = buildWorkerConnectorSummary(answer);
+  const relatedEntities = clueRows.map((row) => row.resolvedPhraseOrMember).filter(Boolean).slice(0, 5);
+  const doNotRepeatPatterns = Array.from(
+    new Set([angle, ...clueRows.map((row) => row.searchableContext || row.resolvedPhraseOrMember)].filter(Boolean)),
+  ).slice(0, 5);
+  return {
+    angle,
+    relatedEntities,
+    doNotRepeatPatterns,
+  };
+}
 
 export function buildPublishedPuzzleDetailRecord({
   puzzleNumber,
@@ -1686,7 +2150,16 @@ export function buildPublishedPuzzleDetailRecord({
   words,
   sections,
   analysis,
+  slots = null,
   summary,
+  detailState = "published",
+  questionType: providedQuestionType,
+  difficultyBand: providedDifficultyBand,
+  solvePath: providedSolvePath = null,
+  turningPoint: providedTurningPoint = null,
+  clueRows: providedClueRows,
+  faqItems: providedFaqItems,
+  uniquenessSignals: providedUniquenessSignals = null,
 }: PublishedPuzzleDetailInput) {
   const clueDetails = Array.isArray(sections.clueDetails) ? sections.clueDetails : [];
 
@@ -1726,12 +2199,34 @@ export function buildPublishedPuzzleDetailRecord({
   );
   const spoilerHints = buildWorkerSpoilerHints(words, answer);
   const display = buildWorkerDisplay(words, answer, wordHints, lessons, clueDetails as Array<Record<string, unknown>>);
+  const wrongGuessLabel =
+    Array.isArray(sections.wrongGuesses) && sections.wrongGuesses.length > 0
+      ? asNonEmptyString(asRecord(sections.wrongGuesses[0])?.guess) || "an early broad guess"
+      : "an early broad guess";
+  const questionType = providedQuestionType ?? inferWorkerDetailQuestionType(answer);
+  const difficultyBand = providedDifficultyBand ?? inferWorkerDifficultyBand(answer, sections);
+  const turningPoint =
+    providedTurningPoint ??
+    inferWorkerTurningPointRecord(words, sections, analysis, clueDetails as Array<Record<string, unknown>>);
+  const solvePath = providedSolvePath ?? inferWorkerSolvePath(sections, analysis, slots, turningPoint);
+  const clueRows =
+    (Array.isArray(providedClueRows) && providedClueRows.length > 0
+      ? providedClueRows
+      : inferWorkerClueRows(words, clueDetails as Array<Record<string, unknown>>, wrongGuessLabel));
+  const faqItems =
+    (Array.isArray(providedFaqItems) && providedFaqItems.length > 0
+      ? providedFaqItems
+      : inferWorkerFaqItems(faqs, words));
+  const uniquenessSignals = providedUniquenessSignals ?? buildWorkerUniquenessSignals(answer, clueRows);
 
   return {
     puzzleNumber,
     slug,
     publishDate: puzzleDate,
     isoDate: puzzleDate,
+    detailState,
+    questionType,
+    difficultyBand,
     clues: words,
     answer,
     category: answer,
@@ -1743,7 +2238,61 @@ export function buildPublishedPuzzleDetailRecord({
     lessons,
     display,
     faqs,
+    solvePath,
+    turningPoint: turningPoint ?? undefined,
+    clueRows,
+    faqItems,
+    uniquenessSignals,
   };
+}
+
+function resolvePublishDetailState(value: unknown): PublishDetailState {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (
+    normalized === "generating" ||
+    normalized === "validated" ||
+    normalized === "failed" ||
+    normalized === "fallback_full"
+  ) {
+    return normalized;
+  }
+  return "published";
+}
+
+function isPublicPublishDetailState(detailState: PublishDetailState): detailState is PublicDetailState {
+  return detailState === "published" || detailState === "fallback_full";
+}
+
+function isPrimaryNewSiteBranch(branch: string): boolean {
+  return branch.trim() === "main";
+}
+
+function buildNewSiteStatusPayload(
+  siteBaseUrl: string,
+  puzzleDate: string,
+  doc: Doc,
+  puzzleNumber: number,
+  words: string[],
+  detailState: PublishDetailState,
+): JsonRecord {
+  return {
+    ...createQuickPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words),
+    detailState,
+  };
+}
+
+function isSuccessfulEnrichResult(
+  result: EnrichPublishResult,
+): result is EnrichPublishResult & {
+  status: "enriched" | "fallback_full";
+  payload: JsonRecord;
+  detailState: PublicDetailState;
+} {
+  return (
+    (result.status === "enriched" || result.status === "fallback_full") &&
+    Boolean(result.payload) &&
+    Boolean(result.detailState)
+  );
 }
 
 async function publishToNewSiteGitHub(
@@ -1760,6 +2309,7 @@ async function publishToNewSiteGitHub(
   const branch = String(env.GITHUB_BRANCH_NEW_SITE || "main").trim();
   const newSiteUrl = String(env.NEW_SITE_URL || "").trim();
   const revalidateSecret = String(env.NEW_SITE_REVALIDATE_SECRET || "").trim();
+  const isPrimaryBranch = isPrimaryNewSiteBranch(branch);
   const slug = `pinpoint-answer-${puzzleNumber}`;
   const encodedBranchRef = branch.split("/").map((segment) => encodeURIComponent(segment)).join("/");
 
@@ -1886,8 +2436,12 @@ async function publishToNewSiteGitHub(
     ? (enrichedPayload.rawWords as string[])
     : extractWordsFromDoc(doc);
   const answer = sanitizePublishedAnswerLabel(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "");
+  const detailState = resolvePublishDetailState(enrichedPayload.detailState);
+  const isPublicState = isPublicPublishDetailState(detailState);
   const sections = asRecord(enrichedPayload.sections) ?? {};
   const analysis = asRecord(enrichedPayload.analysis) ?? {};
+  const slots = asRecord(enrichedPayload.slots);
+  const providedEvidence = extractProvidedEvidenceFields(enrichedPayload);
   const detailRecord = buildPublishedPuzzleDetailRecord({
     puzzleNumber,
     slug,
@@ -1896,7 +2450,10 @@ async function publishToNewSiteGitHub(
     words,
     sections,
     analysis,
+    slots,
     summary: enrichedPayload.summary,
+    detailState,
+    ...providedEvidence,
   });
   const shortSummary = String(
     enrichedPayload.summary ||
@@ -1938,6 +2495,7 @@ async function publishToNewSiteGitHub(
         slug,
         publishDate: puzzleDate,
         status: "live",
+        detailState,
         clues: words,
         mainAnswer: answer,
         category: answer,
@@ -1957,6 +2515,7 @@ async function publishToNewSiteGitHub(
       const existingEntry = nextRegistry[existingIndex];
       const needsEntryUpdate =
         existingEntry.status !== "live" ||
+        resolvePublishDetailState(existingEntry.detailState) !== detailState ||
         String(existingEntry.slug ?? "") !== slug ||
         String(existingEntry.publishDate ?? "") !== puzzleDate ||
         !sameStringArray(existingEntry.clues, words) ||
@@ -1970,6 +2529,7 @@ async function publishToNewSiteGitHub(
         existingEntry.slug = slug;
         existingEntry.publishDate = puzzleDate;
         existingEntry.status = "live";
+        existingEntry.detailState = detailState;
         existingEntry.clues = words;
         existingEntry.mainAnswer = answer;
         existingEntry.category = answer;
@@ -1988,15 +2548,18 @@ async function publishToNewSiteGitHub(
 
   const hasContentChanges = slugChanged || registryChanged;
   if (!hasContentChanges) {
-    console.log(`[new-site] GitHub publish skipped for #${puzzleNumber} (no content changes)`);
+    console.log(`[new-site] GitHub publish skipped for #${puzzleNumber} (${detailState}, no content changes)`);
     return;
   }
 
-  await commitStagedFiles(`feat: publish Pinpoint #${puzzleNumber}`);
-  console.log(`[new-site] committed ${stagedFiles.length} file(s) for #${puzzleNumber}`);
+  const commitMessage = isPublicState
+    ? `feat: publish Pinpoint #${puzzleNumber}`
+    : `chore: update Pinpoint #${puzzleNumber} state to ${detailState}`;
+  await commitStagedFiles(commitMessage);
+  console.log(`[new-site] committed ${stagedFiles.length} file(s) for #${puzzleNumber} (${detailState})`);
 
   // ── 3. Trigger ISR revalidation on the new site ──
-  if (newSiteUrl && revalidateSecret) {
+  if (isPublicState && isPrimaryBranch && newSiteUrl && revalidateSecret) {
     const revalidateUrl = `${newSiteUrl}/api/revalidate?slug=${encodeURIComponent(slug)}`;
     const revalRes = await fetch(revalidateUrl, {
       method: "POST",
@@ -2008,8 +2571,8 @@ async function publishToNewSiteGitHub(
     console.log(`[new-site] ISR revalidate: ${revalRes.status}`);
   }
 
-  const pageUrl = newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}` : "";
-  const pageReady = pageUrl ? await waitForPublicPage(pageUrl) : false;
+  const pageUrl = isPrimaryBranch && newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}/` : "";
+  const pageReady = isPublicState && pageUrl ? await waitForPublicPage(pageUrl) : false;
 
   // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
@@ -2020,7 +2583,7 @@ async function publishToNewSiteGitHub(
   if (!alreadyPublishNotified) {
     await env.PP_DATA.put(publishNotifyKey, "1", { expirationTtl: 172800 }).catch(() => undefined);
   }
-  if (feishuWebhook && !alreadyPublishNotified) {
+  if (isPublicState && isPrimaryBranch && feishuWebhook && !alreadyPublishNotified) {
     const beijingToday = getBeijingTodayDate();
     const isTodayPublish = puzzleDate === beijingToday;
     const clueStr = words.map((w, i) => `${i + 1}. ${w}`).join("\n");
@@ -2096,7 +2659,7 @@ async function publishToNewSiteGitHub(
     }
   }
 
-  console.log(`[new-site] GitHub publish complete for #${puzzleNumber}`);
+  console.log(`[new-site] GitHub publish complete for #${puzzleNumber} (${detailState})`);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -2137,6 +2700,10 @@ async function maybeRefreshNewSiteLiveFallback(
   doc: Doc,
   reason: string | undefined,
 ): Promise<NewSiteLiveRefreshResult> {
+  if (!envFlag(env.NEW_SITE_LIVE_REFRESH_ENABLED, false)) {
+    return { applied: false };
+  }
+
   if (!shouldUseDirectNewSiteFallback(reason) || !hasNewSiteRevalidateConfig(env)) {
     return { applied: false };
   }
@@ -2145,7 +2712,7 @@ async function maybeRefreshNewSiteLiveFallback(
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
   const payload = createQuickPayload(publicSiteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-  const detailUrl = `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
+  const detailUrl = `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}/`;
   const signature = (await sha256Hex(JSON.stringify({ puzzleNumber, payload, mode: "live-refresh" }))).slice(0, 24);
   const doneKey = newSiteLiveRefreshDoneKeyOf(puzzleDate, signature);
   const runningKey = newSiteLiveRefreshRunningKeyOf(puzzleDate, signature);
@@ -2205,7 +2772,12 @@ async function maybeRefreshNewSiteLiveFallback(
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Promise<EnrichPublishResult> {
+async function enrichPublishToSite(
+  env: Env,
+  puzzleDate: string,
+  doc: Doc,
+  options: EnrichPublishOptions = {},
+): Promise<EnrichPublishResult> {
   const enabled = envFlag(env.AUTO_ENRICH_ENABLED, true);
   if (!enabled) {
     return { status: "skipped", reason: "AUTO_ENRICH_ENABLED=false" };
@@ -2238,11 +2810,35 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
   const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "google/gemini-2.0-flash-001");
   const retryModel = selectModel(env.AUTO_ENRICH_RETRY_MODEL, enrichModel);
   const draftAttempts = parseAttemptCount(env.AUTO_ENRICH_DRAFT_ATTEMPTS, 2, 3);
+  const generatingPayload = buildNewSiteStatusPayload(
+    siteBaseUrl,
+    puzzleDate,
+    doc,
+    puzzleNumber,
+    words,
+    "generating",
+  );
+  const failedPayload = buildNewSiteStatusPayload(
+    siteBaseUrl,
+    puzzleDate,
+    doc,
+    puzzleNumber,
+    words,
+    "failed",
+  );
 
   try {
+    try {
+      await publishToNewSiteGitHub(env, puzzleDate, doc, generatingPayload, puzzleNumber);
+      await options.onDetailStateChange?.("generating");
+    } catch (statusError) {
+      console.warn("[new-site] generating state publish failed (non-fatal):", statusError);
+    }
+
     let draftResp: JsonRecord | null = null;
     let lastDraftError: unknown = null;
     let qualityGateSummary = "";
+    let publishDetailState: PublicDetailState = "published";
     for (let attempt = 1; attempt <= draftAttempts; attempt += 1) {
       const draftModel = attempt === 1 ? enrichModel : retryModel;
       try {
@@ -2266,14 +2862,15 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
         }
         qualityGateSummary = extractDraftFailureSummary(error);
         if (attempt >= draftAttempts) {
+          publishDetailState = "fallback_full";
           const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used short fallback`;
-          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 Quick Guide 短版页", [
+          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
+          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 fallback_full 保底全文页", [
             `日期: ${puzzleDate}`,
             `谜题: #${puzzleNumber}`,
             `答案: ${answer}`,
             `尝试次数: ${draftAttempts}`,
-            `结果: AI 长文未过线，已切换为 Quick Guide 短版页`,
+            `结果: AI 长文未过线，已切换为 fallback_full 保底全文页`,
             `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
           ]);
           draftResp = {
@@ -2281,7 +2878,7 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
             data: fallbackPayload,
           };
           lastDraftError = null;
-          console.warn("[enrich] draft blocked by quality gates; switched to short fallback", {
+          console.warn("[enrich] draft blocked by quality gates; switched to fallback_full", {
             puzzleDate,
             puzzleNumber,
             attempt,
@@ -2316,7 +2913,9 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
     const draftData = asRecord(draftResp.data);
     const draftSections = asRecord(draftData?.sections);
     const draftAnalysis = asRecord(draftData?.analysis);
+    const draftSlots = asRecord(draftData?.slots);
     const draftMetadata = asRecord(draftData?.metadata);
+    const draftEvidence = extractProvidedEvidenceFields(draftData ?? {});
 
     const fallbackPayload = createQuickPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
     const enrichedPayload: JsonRecord = {
@@ -2327,9 +2926,12 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
         dailyDebrief: String(draftAnalysis?.dailyDebrief || fallbackPayload.analysis.dailyDebrief),
       },
       summary: String(draftAnalysis?.heroSummary || draftData?.summary || fallbackPayload.summary),
+      detailState: publishDetailState,
+      ...draftEvidence,
       seoDescription: typeof draftAnalysis?.seoDescription === "string" ? draftAnalysis.seoDescription : undefined,
       seo: typeof draftAnalysis?.seoTitle === "string" ? { title: draftAnalysis.seoTitle } : undefined,
       sections: buildEnrichedSections(draftSections, asRecord(fallbackPayload.sections)),
+      ...(draftSlots ? { slots: draftSlots } : {}),
       metadata: {
         publishedAtSource:
           typeof draftMetadata?.publishedAtSource === "string"
@@ -2342,12 +2944,42 @@ async function enrichPublishToSite(env: Env, puzzleDate: string, doc: Doc): Prom
       },
     };
 
+    if (publishDetailState === "published") {
+      const validatedPayload: JsonRecord = {
+        ...enrichedPayload,
+        detailState: "validated",
+      };
+      try {
+        await publishToNewSiteGitHub(env, puzzleDate, doc, validatedPayload, puzzleNumber);
+        await options.onDetailStateChange?.("validated");
+      } catch (statusError) {
+        console.warn("[new-site] validated state publish failed (non-fatal):", statusError);
+      }
+    }
+
     await publishToNewSiteGitHub(env, puzzleDate, doc, enrichedPayload, puzzleNumber);
+    await options.onDetailStateChange?.(publishDetailState);
 
     await env.PP_DATA.put(doneKey, new Date().toISOString(), {
       expirationTtl: 60 * 60 * 24 * 14,
     });
-    return { status: "enriched", puzzleNumber, payload: enrichedPayload };
+    return {
+      status: publishDetailState === "fallback_full" ? "fallback_full" : "enriched",
+      puzzleNumber,
+      payload: enrichedPayload,
+      detailState: publishDetailState,
+    };
+  } catch (error) {
+    try {
+      await publishToNewSiteGitHub(env, puzzleDate, doc, failedPayload, puzzleNumber);
+      await options.onDetailStateChange?.(
+        "failed",
+        error instanceof Error ? error.message : String(error),
+      );
+    } catch (statusError) {
+      console.warn("[new-site] failed state publish failed (non-fatal):", statusError);
+    }
+    throw error;
   } finally {
     await env.PP_DATA.delete(runningKey);
   }
@@ -2368,7 +3000,7 @@ async function localizePublishOne(
   doc: Doc,
 ): Promise<I18nPublishItemResult> {
   const startedAt = Date.now();
-  const detailUrl = `${siteBaseUrl}/${locale}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
+  const detailUrl = `${siteBaseUrl}/${locale}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}/`;
   const localeAutoPublishFreeze = getLocaleAutoPublishFreeze({
     puzzleNumber,
     locale,
@@ -2573,6 +3205,7 @@ async function localizePublishOne(
 
         const localizedPayload: JsonRecord = {
           ...sourcePayload,
+          detailState: resolvePublishDetailState(sourcePayload.detailState),
           summary: adjustedSummary,
           seoDescription: adjustedSeoDescription,
           seo: { title: adjustedSeoTitle },
@@ -2695,7 +3328,7 @@ async function localizePublishToSite(
       status: "failed",
       reason: `i18n scheduler error: ${message}`,
       durationMs: 0,
-      detailUrl: `${siteBaseUrl}/${locale}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`,
+      detailUrl: `${siteBaseUrl}/${locale}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}/`,
     }));
   }
 
@@ -2860,8 +3493,12 @@ function toZhWebhookReason(reason: string | undefined): string {
 
   if (raw.startsWith("quality gate blocked after")) {
     const detail = raw.split(":").slice(1).join(":").trim();
-    if (raw.includes("used short fallback") || raw.includes("used template fallback")) {
-      return detail ? `草稿质量未过线，已切换为 Quick Guide 短版页：${detail}` : "草稿质量未过线，已切换为 Quick Guide 短版页";
+    if (
+      raw.includes("used fallback_full") ||
+      raw.includes("used short fallback") ||
+      raw.includes("used template fallback")
+    ) {
+      return detail ? `草稿质量未过线，已切换为保底全文页：${detail}` : "草稿质量未过线，已切换为保底全文页";
     }
     return detail ? `草稿质量未过线：${detail}` : "草稿质量未过线，已保留快版内容";
   }
@@ -2943,6 +3580,115 @@ function stampHeartbeatStage(
   };
 }
 
+function stampHeartbeatDetailState(
+  stage: CronHeartbeatStage,
+  detailState: PublishDetailState,
+  reason?: string,
+): CronHeartbeatStage {
+  return {
+    ...stage,
+    detailState,
+    ...(reason ? { reason } : {}),
+    ...(!reason ? { reason: stage.reason } : {}),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+function getHeartbeatStageStatusForDetailState(detailState: PublishDetailState): CronHeartbeatStageStatus {
+  if (detailState === "published" || detailState === "fallback_full") {
+    return "published";
+  }
+  if (detailState === "failed") {
+    return "failed";
+  }
+  return "queued";
+}
+
+export function buildCronHeartbeatAlerts(
+  heartbeat: CronHeartbeat | null,
+  nowMs: number = Date.now(),
+): Array<{
+  code: string;
+  severity: "warning";
+  detailState: PublishDetailState;
+  minutesStuck: number;
+  message: string;
+}> {
+  if (!heartbeat) return [];
+
+  const detailState = heartbeat.enrich.detailState;
+  if (detailState !== "generating" && detailState !== "validated") {
+    return [];
+  }
+
+  const updatedAtMs = Date.parse(heartbeat.enrich.updatedAt);
+  if (!Number.isFinite(updatedAtMs)) {
+    return [];
+  }
+
+  const ageMs = Math.max(0, nowMs - updatedAtMs);
+  if (ageMs < nonPublicDetailStateAlertThresholdMs) {
+    return [];
+  }
+
+  const minutesStuck = Math.floor(ageMs / 60000);
+  return [
+    {
+      code: "detail_state.stuck",
+      severity: "warning",
+      detailState,
+      minutesStuck,
+      message: `Enrich detailState has stayed at ${detailState} for ${minutesStuck} minute(s).`,
+    },
+  ];
+}
+
+async function checkAndMarkDetailStateAlertNotified(
+  env: Env,
+  heartbeat: CronHeartbeat,
+  detailState: PublishDetailState,
+): Promise<boolean> {
+  const updatedAt = String(heartbeat.enrich.updatedAt || "").trim();
+  if (!updatedAt) return false;
+
+  const key = `notify:cron:detail-state:${heartbeat.date}:${detailState}:${updatedAt}`;
+  try {
+    const existing = await env.PP_DATA.get(key);
+    if (existing !== null) {
+      return true;
+    }
+    await env.PP_DATA.put(key, "1", { expirationTtl: 172800 });
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+async function maybeNotifyCronHeartbeatAlerts(env: Env, heartbeat: CronHeartbeat): Promise<void> {
+  if (!hasNotifyWebhook(env)) return;
+
+  const alerts = buildCronHeartbeatAlerts(heartbeat);
+  if (alerts.length === 0) return;
+
+  for (const alert of alerts) {
+    const alreadyNotified = await checkAndMarkDetailStateAlertNotified(
+      env,
+      heartbeat,
+      alert.detailState,
+    );
+    if (alreadyNotified) continue;
+
+    await notifyCron(env, "⚠️ Worker 详情状态停滞告警", [
+      `日期: ${heartbeat.date}`,
+      `运行: ${heartbeat.runId}`,
+      `状态: ${alert.detailState}`,
+      `停留分钟: ${alert.minutesStuck}`,
+      `说明: ${alert.message}`,
+      `阶段原因: ${toZhWebhookReason(heartbeat.enrich.reason)}`,
+    ]);
+  }
+}
+
 async function readCronHeartbeatRunIds(env: Env, date: string): Promise<string[]> {
   const raw = await env.PP_DATA.get(cronHeartbeatDayRunsKeyOf(date));
   if (!raw) return [];
@@ -2980,6 +3726,7 @@ async function persistCronHeartbeat(env: Env, heartbeat: CronHeartbeat): Promise
     env.PP_DATA.put(cronHeartbeatRunKeyOf(heartbeat.runId), raw, { expirationTtl: ttl }),
     env.PP_DATA.put(cronHeartbeatDayRunsKeyOf(heartbeat.date), JSON.stringify(runIds), { expirationTtl: ttl }),
   ]);
+  await maybeNotifyCronHeartbeatAlerts(env, heartbeat);
 }
 
 function extractCookie(rawCookie: string | undefined, name: string): string | undefined {
@@ -3660,6 +4407,8 @@ export default {
       const date = url.searchParams.get("date") ?? getBeijingTodayDate();
       const publishEnabled = url.searchParams.get("publish") === "1";
       const forcePublish = url.searchParams.get("force") === "1";
+      const requestedSource = String(url.searchParams.get("source") || "").trim().toLowerCase();
+      const useStoredDoc = requestedSource === "stored";
       const autoI18nEnabled = resolveAutoI18nEnabled("manual", url.searchParams.get("i18n"));
       const requestId =
         req.headers.get("cf-ray") ||
@@ -3678,14 +4427,25 @@ export default {
       await persistCronHeartbeat(env, manualHeartbeat);
       try {
         let doc: Doc;
-        try {
-          doc = await fetchGraphQLFor(env, date);
-        } catch (e) {
+        if (useStoredDoc) {
+          if (!canUseStoredAdminDoc(env)) {
+            return new Response("stored source unavailable on primary branch", { status: 409 });
+          }
+          const storedDoc = await loadStoredDocForDate(env, date);
+          if (!storedDoc) {
+            return new Response("stored doc not found", { status: 404 });
+          }
+          doc = storedDoc;
+        } else {
+          try {
+            doc = await fetchGraphQLFor(env, date);
+          } catch (e) {
 
-          if (env.FALLBACK_WEBHOOK) {
-            doc = await callPlaywrightFallback(env, date);
-          } else {
-            throw e;
+            if (env.FALLBACK_WEBHOOK) {
+              doc = await callPlaywrightFallback(env, date);
+            } else {
+              throw e;
+            }
           }
         }
         const result: JsonRecord = {
@@ -3695,6 +4455,7 @@ export default {
           publishEnabled,
           forcePublish,
           autoI18nEnabled,
+          ...(useStoredDoc ? { docSourceMode: "stored" } : {}),
         };
 
         if (publishEnabled && !forcePublish) {
@@ -3769,17 +4530,31 @@ export default {
               ? stampHeartbeatStage(manualHeartbeat.i18n, "queued", "pending enrich")
               : stampHeartbeatStage(manualHeartbeat.i18n, "skipped", "auto i18n disabled for this run");
             await persistCronHeartbeat(env, manualHeartbeat);
-            const enrichResult = await enrichPublishToSite(env, date, doc);
+            const enrichResult = await enrichPublishToSite(env, date, doc, {
+              onDetailStateChange: async (detailState, reason) => {
+                manualHeartbeat.enrich = stampHeartbeatDetailState(
+                  manualHeartbeat.enrich,
+                  detailState,
+                  reason,
+                );
+                manualHeartbeat.enrich = stampHeartbeatStage(
+                  manualHeartbeat.enrich,
+                  getHeartbeatStageStatusForDetailState(detailState),
+                  reason,
+                );
+                await persistCronHeartbeat(env, manualHeartbeat);
+              },
+            });
             result.enrich = enrichResult;
             manualHeartbeat.enrich = stampHeartbeatStage(
               manualHeartbeat.enrich,
-              enrichResult.status === "enriched" ? "published" : "skipped",
+              isSuccessfulEnrichResult(enrichResult) ? "published" : "skipped",
               enrichResult.reason,
             );
             await persistCronHeartbeat(env, manualHeartbeat);
 
             // Publish to new site (non-blocking, failures don't affect old site)
-            if (enrichResult.status === "enriched" && enrichResult.payload) {
+            if (isSuccessfulEnrichResult(enrichResult)) {
               try {
                 await publishToNewSiteGitHub(env, date, doc, enrichResult.payload, puzzleNumber);
               } catch (newSiteErr) {
@@ -4076,6 +4851,7 @@ export default {
       const date = String(url.searchParams.get("date") || "").trim();
       const limitRaw = Number.parseInt(String(url.searchParams.get("limit") || "10"), 10);
       const limit = Number.isFinite(limitRaw) ? Math.max(1, Math.min(limitRaw, cronHeartbeatRunsLimit)) : 10;
+      const now = new Date().toISOString();
       const latestRaw = await env.PP_DATA.get(cronHeartbeatLatestKey);
       let latest: CronHeartbeat | null = null;
       try { latest = latestRaw ? JSON.parse(latestRaw) as CronHeartbeat : null; } catch {}
@@ -4086,13 +4862,15 @@ export default {
       try { byDate = dateRaw ? JSON.parse(dateRaw) as CronHeartbeat : null; } catch {}
 
       const runs = effectiveDate ? await loadCronHeartbeatRuns(env, effectiveDate, limit) : [];
+      const alerts = buildCronHeartbeatAlerts(byDate ?? latest, Date.parse(now));
       return new Response(JSON.stringify({
-        now: new Date().toISOString(),
+        now,
         date: date || null,
         effectiveDate: effectiveDate || null,
         latest,
         byDate,
         runs,
+        alerts,
       }), {
         headers: { "content-type": "application/json; charset=utf-8" },
       });
@@ -4226,7 +5004,7 @@ export default {
         }
         if (quickResult.status === "published") {
           const puzzleNumber = quickResult.puzzleNumber ?? inferPuzzleNumber(undefined, date);
-          const detailUrl = quickFallback.detailUrl || `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
+          const detailUrl = quickFallback.detailUrl || `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}/`;
           notifyLines.push(
             usedQuickFallback
               ? `快速发布: 已刷新新站实时页 #${puzzleNumber} (${quickDuration}ms)`
@@ -4263,7 +5041,7 @@ export default {
 
         if (shouldQueueEnrich) {
           const puzzleNumber = quickResult.puzzleNumber ?? inferPuzzleNumber(undefined, date);
-          const detailUrl = `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
+          const detailUrl = `${publicSiteBaseUrl}/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}/`;
           heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "queued", `queued #${puzzleNumber}`);
           heartbeat.i18n = autoI18nEnabled
             ? stampHeartbeatStage(heartbeat.i18n, "queued", `pending enrich #${puzzleNumber}`)
@@ -4273,17 +5051,29 @@ export default {
             (async () => {
               const enrichStarted = Date.now();
               try {
-                const enrichResult = await enrichPublishToSite(env, date, doc);
+                const enrichResult = await enrichPublishToSite(env, date, doc, {
+                  onDetailStateChange: async (detailState, reason) => {
+                    heartbeat.enrich = stampHeartbeatDetailState(
+                      heartbeat.enrich,
+                      detailState,
+                      reason,
+                    );
+                    heartbeat.enrich = stampHeartbeatStage(
+                      heartbeat.enrich,
+                      getHeartbeatStageStatusForDetailState(detailState),
+                      reason,
+                    );
+                    await persistCronHeartbeat(env, heartbeat);
+                  },
+                });
                 let payloadForI18n = enrichResult.payload ?? null;
-                if (enrichResult.status === "enriched") {
+                if (isSuccessfulEnrichResult(enrichResult)) {
                   heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "published");
                   await persistCronHeartbeat(env, heartbeat);
-                  if (enrichResult.payload) {
-                    try {
-                      await publishToNewSiteGitHub(env, date, doc, enrichResult.payload, puzzleNumber);
-                    } catch (newSiteErr) {
-                      console.warn("[new-site] publish failed (non-fatal):", newSiteErr);
-                    }
+                  try {
+                    await publishToNewSiteGitHub(env, date, doc, enrichResult.payload, puzzleNumber);
+                  } catch (newSiteErr) {
+                    console.warn("[new-site] publish failed (non-fatal):", newSiteErr);
                   }
                 } else {
                   heartbeat.enrich = stampHeartbeatStage(

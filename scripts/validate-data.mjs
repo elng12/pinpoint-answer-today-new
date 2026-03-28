@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
+import { validateEvidenceContract } from "../lib/puzzles/evidence-contract.shared.mjs";
 import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
@@ -173,6 +174,29 @@ function validateDetailContent(entry, detail) {
       assertNoAdjacentQuotes(`${entry.slug} display.clueTableRows[${index}].examplePhrase`, row.examplePhrase);
       assertNoLegacyTemplate(`${entry.slug} display.clueTableRows[${index}].connectionExplained`, row.connectionExplained);
     });
+  }
+
+  const evidenceErrors = validateEvidenceContract(
+    {
+      rawWords: entry.clues,
+      mainAnswer: entry.mainAnswer,
+      questionType: detail.questionType,
+      difficultyBand: detail.difficultyBand,
+      solvePath: detail.solvePath,
+      turningPoint: detail.turningPoint,
+      clueRows: detail.clueRows,
+      faqItems: detail.faqItems,
+      uniquenessSignals: detail.uniquenessSignals,
+    },
+    { requireEvidenceFields: false },
+  ).filter((issue) => issue.level === "error");
+
+  if (evidenceErrors.length > 0) {
+    throw new Error(
+      `${entry.slug} evidence contract failed: ${evidenceErrors
+        .map((issue) => `${issue.code}${issue.field ? ` (${issue.field})` : ""}`)
+        .join(", ")}`,
+    );
   }
 }
 

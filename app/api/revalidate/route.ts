@@ -1,5 +1,6 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
+import { getPuzzleBySlug } from "@/lib/puzzles/data";
 
 async function pingIndexNow(urls: string[]) {
   const key = process.env.INDEXNOW_KEY;
@@ -55,9 +56,46 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid slug" }, { status: 400 });
   }
 
+  if (mode === "live") {
+    console.info(
+      "[revalidate] rejected live-mode request",
+      JSON.stringify({ slug: slug || null, mode, source: "query" }),
+    );
+    return NextResponse.json({ error: "Live fallback revalidation is disabled" }, { status: 409 });
+  }
+
+  let authoritativeDetailState: "published" | "fallback_full" | "missing" = "missing";
+  if (slug) {
+    const formalPuzzle = await getPuzzleBySlug(slug, { allowLiveWorkerFallback: false });
+    if (
+      !formalPuzzle ||
+      formalPuzzle.detailSource !== "formal" ||
+      (formalPuzzle.detailState !== "published" && formalPuzzle.detailState !== "fallback_full")
+    ) {
+      console.info(
+        "[revalidate] rejected unpublished slug",
+        JSON.stringify({ slug, mode: mode || "default", authoritativeDetailState }),
+      );
+      return NextResponse.json(
+        { error: "Slug is not published formal content yet" },
+        { status: 409 },
+      );
+    }
+
+    authoritativeDetailState = formalPuzzle.detailState;
+  }
+
+  console.info(
+    "[revalidate] accepted request",
+    JSON.stringify({
+      slug: slug || null,
+      mode: mode || "default",
+      authoritativeDetailState,
+    }),
+  );
+
   // Always refresh shared data (registry-dependent pages)
   revalidateTag("registry");
-  revalidateTag("worker-live");
   revalidatePath("/");
   revalidatePath("/puzzles");
   revalidatePath("/pinpoint/today");
@@ -70,13 +108,17 @@ export async function POST(request: NextRequest) {
 
   if (slug) {
     revalidateTag(`puzzle:${slug}`);
-    revalidatePath(`/linkedin-pinpoint-answers/${slug}`);
-    urlsToIndex.push(`${siteUrl}/linkedin-pinpoint-answers/${slug}`);
+    revalidatePath(`/linkedin-pinpoint-answers/${slug}/`);
+    urlsToIndex.push(`${siteUrl}/linkedin-pinpoint-answers/${slug}/`);
   }
 
-  if (mode !== "live") {
-    void pingIndexNow(urlsToIndex);
-  }
+  void pingIndexNow(urlsToIndex);
 
-  return NextResponse.json({ revalidated: true, slug: slug || "all", mode: mode || "default", ts: Date.now() });
+  return NextResponse.json({
+    revalidated: true,
+    slug: slug || "all",
+    mode: mode || "default",
+    authoritativeDetailState,
+    ts: Date.now(),
+  });
 }

@@ -1,5 +1,6 @@
 {
   "slug": "pinpoint-answer-573",
+  "detailState": "published",
   "fullAnalysis": [
     "Pinpoint 573 features Highlight, Underline, Bold, Italic, and Strikethrough—five interface verbs you click when dressing up text. Each clue hints at a different kind of emphasis or revision, so the puzzle dares you to name the single toolbar that keeps them in one row. Can you figure out which shared menu ties them together?",
     "I first guessed these might be proofreading marks, but italics and bold live in the main font ribbon, not the editor’s margin. Listing the clues in the order I see them on the Word toolbar made it obvious: every word is a formatting toggle that changes presentation without altering wording. Once I pictured the ribbon, highlight and strikethrough slotted into place and the answer wrote itself: ways to format text.",

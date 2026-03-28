@@ -1,5 +1,6 @@
 {
   "slug": "pinpoint-answer-541",
+  "detailState": "published",
   "fullAnalysis": [
     "The board spans music, nobility, a canyon, and racing. Adding the same qualifier unites them: grand piano in concerts, a grand finale curtain call, a Grand Duke title, the Grand Canyon landmark, and a Grand Prix race. The shared word is \"Grand.\"",
     "Music and performance jump out from piano and finale, while Duke and Canyon veer to titles or geography, and Prix hints at competition. No single category covers all.\n\nTesting a prefix solves it: \"Grand\" fits each item cleanly—grand piano, grand finale, Grand Duke, Grand Canyon, Grand Prix. Other adjectives miss at least one clue, but Grand works everywhere.",

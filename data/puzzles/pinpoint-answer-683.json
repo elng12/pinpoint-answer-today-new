@@ -1,17 +1,14 @@
 {
-  "puzzleNumber": 683,
   "slug": "pinpoint-answer-683",
-  "publishDate": "2026-03-14",
-  "isoDate": "2026-03-14",
-  "clues": [
-    "Start",
-    "Positive",
-    "Alarm",
-    "Tooth",
-    "Advertising (don’t believe it!)"
+  "detailState": "published",
+  "fullAnalysis": [
+    "Pinpoint #683 feels broader than it really is because the opening clues can point in several weak directions at once. \"Start\" and \"Positive\" do not immediately suggest the same family, and \"Alarm\" could still fit a range of common compounds. That is why a vague category like dishonesty or opposites can feel tempting early on. The clue that really sharpens the board is \"Advertising (don’t believe it!),\" because the parenthetical hint points directly toward deception and makes one specific phrase much easier to see.",
+    "From there, the puzzle resolves as a phrase-pattern board built around false. False start, false positive, false alarm, false tooth, and false advertising all work as natural readings, and that tighter phrase logic explains the full set better than a broad label like lies or untrue things. Once the shared word is visible, the earlier clues stop feeling disconnected and start feeling exact."
   ],
-  "answer": "Words that come after \"false\"",
-  "category": "Words that come after \"false\"",
+  "solutionNarrative": [
+    "I did not have a clean category from the first clue. \"Start\" felt wide open, and once \"Positive\" appeared I briefly drifted toward vague contrast ideas and other broad word-pair patterns. Those guesses were not ridiculous, but they never gave me a satisfying way to handle the whole set at once, especially once the clue about advertising showed up with a parenthetical nudge toward mistrust.",
+    "The turn came when I let that last clue lead the solve instead of treating it like a decorative extra. Once I read the board through false, the earlier clues stopped feeling abstract and started reading like familiar phrases: false start, false positive, false alarm, false tooth, and false advertising. At that point, the final connector was the only reading that explained all five clues cleanly without stretching."
+  ],
   "wordHints": {
     "Start": "\"False start\" is one of the clearest phrase matches in the set, so this clue works once the board shifts from broad categories to exact phrase logic.",
     "Positive": "\"False positive\" points to a familiar testing phrase, which helps confirm that the board is built from natural expressions rather than loose associations.",
@@ -26,14 +23,6 @@
     "Tooth": "Do not stay in biology. Think about a replacement or artificial version.",
     "Advertising (don’t believe it!)": "The parenthetical hint points toward deception and gives away the shared word more than the other clues do."
   },
-  "fullAnalysis": [
-    "Pinpoint #683 feels broader than it really is because the opening clues can point in several weak directions at once. \"Start\" and \"Positive\" do not immediately suggest the same family, and \"Alarm\" could still fit a range of common compounds. That is why a vague category like dishonesty or opposites can feel tempting early on. The clue that really sharpens the board is \"Advertising (don’t believe it!),\" because the parenthetical hint points directly toward deception and makes one specific phrase much easier to see.",
-    "From there, the puzzle resolves as a phrase-pattern board built around false. False start, false positive, false alarm, false tooth, and false advertising all work as natural readings, and that tighter phrase logic explains the full set better than a broad label like lies or untrue things. Once the shared word is visible, the earlier clues stop feeling disconnected and start feeling exact."
-  ],
-  "solutionNarrative": [
-    "I did not have a clean category from the first clue. \"Start\" felt wide open, and once \"Positive\" appeared I briefly drifted toward vague contrast ideas and other broad word-pair patterns. Those guesses were not ridiculous, but they never gave me a satisfying way to handle the whole set at once, especially once the clue about advertising showed up with a parenthetical nudge toward mistrust.",
-    "The turn came when I let that last clue lead the solve instead of treating it like a decorative extra. Once I read the board through false, the earlier clues stopped feeling abstract and started reading like familiar phrases: false start, false positive, false alarm, false tooth, and false advertising. At that point, the final connector was the only reading that explained all five clues cleanly without stretching."
-  ],
   "lessons": [
     {
       "title": "Broad clues can create the wrong frame early",

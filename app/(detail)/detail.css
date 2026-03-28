@@ -834,6 +834,10 @@
   font-size: 15px;
 }
 
+.legacy-clue-table-evidence {
+  min-width: 860px;
+}
+
 .legacy-clue-table tbody td:first-of-type {
   color: var(--muted);
   font-style: italic;
@@ -857,6 +861,16 @@
   font-size: 16px;
   line-height: 1.35;
   font-weight: 700;
+}
+
+.legacy-faq-meta {
+  margin: 8px 0 0;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
 .legacy-faq-card .copy {

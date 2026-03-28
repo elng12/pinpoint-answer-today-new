@@ -1,24 +1,6 @@
 {
-  "puzzleNumber": 686,
   "slug": "pinpoint-answer-686",
-  "publishDate": "2026-03-17",
-  "isoDate": "2026-03-17",
-  "clues": [
-    "Mountain",
-    "Electric",
-    "Recumbent",
-    "Tandem",
-    "Ten-Speed"
-  ],
-  "answer": "Types of bicycle",
-  "category": "Types of bicycle",
-  "wordHints": {
-    "Mountain": "Mountain bikes are designed for off-road cycling on rugged terrain.",
-    "Electric": "Electric bikes use a motor to assist the rider, making cycling easier.",
-    "Recumbent": "Recumbent bikes place the rider in a reclined position for comfort and aerodynamics.",
-    "Tandem": "Tandem bikes are designed for two riders, one behind the other.",
-    "Ten-Speed": "Ten-speed bikes feature a range of gears for different terrains and speeds."
-  },
+  "detailState": "published",
   "fullAnalysis": [
     "At first glance, Mountain, Electric, Recumbent do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific. That is why guesses like \"Kinds of vehicles\" can feel plausible at the start. The clue that changes the frame is \"Tandem\".",
     "From there, reading them as bicycle explains the board more cleanly than broader labels. Once that frame clicks, names like Mountain, Electric, Recumbent stop feeling miscellaneous and start looking like members of one shelf. The clues could be interpreted in various ways, requiring careful consideration to identify the unifying theme. The specific jargon feels less common.",
@@ -29,6 +11,13 @@
     "I did not have a clean category from the first clue. I initially drifted toward Brands of car, which felt plausible for a moment, but these clues are not associated with specific automotive brands. Focus on the world of cycling.",
     "The turn came when I stopped treating tandem as just another item and asked what kind of source or title it was. Once I started reading them as bicycle, clues that had seemed broad started feeling like members of the same category, especially Mountain and Electric. That was the first point where one category explained the full set without forcing any exceptions."
   ],
+  "wordHints": {
+    "Mountain": "Mountain bikes are designed for off-road cycling on rugged terrain.",
+    "Electric": "Electric bikes use a motor to assist the rider, making cycling easier.",
+    "Recumbent": "Recumbent bikes place the rider in a reclined position for comfort and aerodynamics.",
+    "Tandem": "Tandem bikes are designed for two riders, one behind the other.",
+    "Ten-Speed": "Ten-speed bikes feature a range of gears for different terrains and speeds."
+  },
   "lessons": [
     {
       "title": "Broad clues can create the wrong frame early",

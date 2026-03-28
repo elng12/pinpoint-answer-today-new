@@ -1,31 +1,6 @@
 {
-  "puzzleNumber": 695,
   "slug": "pinpoint-answer-695",
-  "publishDate": "2026-03-26",
-  "isoDate": "2026-03-26",
-  "clues": [
-    "Tiger",
-    "Plane",
-    "Towel",
-    "Weight",
-    "Clip"
-  ],
-  "answer": "Words that come after \"paper\"",
-  "category": "Words that come after \"paper\"",
-  "wordHints": {
-    "Tiger": "\"paper tiger\" is a familiar phrase, so it quickly shows how the missing word works here.",
-    "Plane": "\"paper plane\" is an everyday term, which makes this one of the cleanest checks on the pattern.",
-    "Towel": "\"paper towel\" is a common household phrase, so it supports the same answer without stretching anything.",
-    "Weight": "\"paperweight\" is the strongest confirming clue because it makes the missing word feel exact instead of guessed.",
-    "Clip": "\"paper clip\" is a basic desk item, so it closes the set with another natural phrase."
-  },
-  "spoilerHints": {
-    "Tiger": "Try reading this as part of a familiar phrase instead of as a standalone word.",
-    "Plane": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
-    "Towel": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
-    "Weight": "This is the clue that makes the phrase pattern feel concrete enough to test without revealing the final connector.",
-    "Clip": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
-  },
+  "detailState": "published",
   "articleBlocks": [
     "Tiger and Plane made the shared-word setup obvious almost immediately, but neither clue told me which word belonged in front.",
     "Weight solved that, because \"paperweight\" feels exact in a way the earlier guesses do not.",
@@ -46,6 +21,20 @@
     "After that, the other clues all read like familiar phrases and everyday terms.",
     "The answer was Words that come after \"paper\"."
   ],
+  "wordHints": {
+    "Tiger": "\"paper tiger\" is a familiar phrase, so it quickly shows how the missing word works here.",
+    "Plane": "\"paper plane\" is an everyday term, which makes this one of the cleanest checks on the pattern.",
+    "Towel": "\"paper towel\" is a common household phrase, so it supports the same answer without stretching anything.",
+    "Weight": "\"paperweight\" is the strongest confirming clue because it makes the missing word feel exact instead of guessed.",
+    "Clip": "\"paper clip\" is a basic desk item, so it closes the set with another natural phrase."
+  },
+  "spoilerHints": {
+    "Tiger": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Plane": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Towel": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Weight": "This is the clue that makes the phrase pattern feel concrete enough to test without revealing the final connector.",
+    "Clip": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
   "lessons": [
     {
       "title": "Let the most specific phrase lead",
@@ -58,6 +47,20 @@
     {
       "title": "Save the easiest clue for confirmation",
       "body": "After the answer lands, a clue like \"Clip\" should feel boring in the best way because it works immediately."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #695?",
+      "answer": "The answer is Words that come after \"paper\" because phrases like \"paper tiger,\" \"paper towel,\" and \"paper clip\" all fit naturally once that word is in place."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #695?",
+      "answer": "The connection is one shared word that comes before every clue. Once you test \"paper,\" each clue turns into a familiar phrase or everyday term."
+    },
+    {
+      "question": "Why is Weight the key clue in LinkedIn Pinpoint #695?",
+      "answer": "\"Weight\" is the strongest clue because \"paperweight\" feels exact right away. It narrows the missing word much faster than Tiger or Plane do."
     }
   ],
   "display": {
@@ -90,19 +93,5 @@
         "connectionExplained": "\"paper clip\" is a familiar desk item, so it works as the final low-drama check once the pattern is already clear."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #695?",
-      "answer": "The answer is Words that come after \"paper\" because phrases like \"paper tiger,\" \"paper towel,\" and \"paper clip\" all fit naturally once that word is in place."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #695?",
-      "answer": "The connection is one shared word that comes before every clue. Once you test \"paper,\" each clue turns into a familiar phrase or everyday term."
-    },
-    {
-      "question": "Why is Weight the key clue in LinkedIn Pinpoint #695?",
-      "answer": "\"Weight\" is the strongest clue because \"paperweight\" feels exact right away. It narrows the missing word much faster than Tiger or Plane do."
-    }
-  ]
+  }
 }

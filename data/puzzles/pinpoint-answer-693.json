@@ -1,32 +1,7 @@
 {
-  "puzzleNumber": 693,
   "slug": "pinpoint-answer-693",
+  "detailState": "published",
   "bodyMode": "short",
-  "publishDate": "2026-03-24",
-  "isoDate": "2026-03-24",
-  "clues": [
-    "Mahalo",
-    "Danke",
-    "Arigato",
-    "Merci",
-    "Gracias"
-  ],
-  "answer": "“Thank you” in different languages",
-  "category": "“Thank you” in different languages",
-  "wordHints": {
-    "Mahalo": "\"Mahalo\" is the Hawaiian word for \"thank you,\" so it fits directly once the puzzle is read as different languages.",
-    "Danke": "\"Danke\" is the German word for \"thank you,\" which keeps the language pattern clear and straightforward.",
-    "Arigato": "\"Arigato\" is the Japanese word for \"thank you,\" so it lands cleanly under the same answer.",
-    "Merci": "\"Merci\" is the French word for \"thank you,\" adding another familiar confirmation of the same idea.",
-    "Gracias": "\"Gracias\" is the Spanish word for \"thank you,\" which makes the full set easy to verify."
-  },
-  "spoilerHints": {
-    "Mahalo": "Treat this as a word from a specific language, not as a broad travel or culture clue.",
-    "Danke": "If two or three clues already look like foreign words, test whether they express the same common phrase.",
-    "Arigato": "This clue works best when you read the board as language-based rather than theme-based.",
-    "Merci": "Look for a shared everyday meaning that can appear in several languages.",
-    "Gracias": "This clue confirms the pattern instead of creating a whole new direction."
-  },
   "articleBlocks": [
     "This one becomes clear pretty quickly once you stop treating the clues as names and start reading them as words from different languages.",
     "Mahalo, Danke, and Arigato all point in the same direction almost immediately.",
@@ -47,6 +22,20 @@
     "Merci and Gracias simply confirmed the same idea.",
     "The answer was “Thank you” in different languages."
   ],
+  "wordHints": {
+    "Mahalo": "\"Mahalo\" is the Hawaiian word for \"thank you,\" so it fits directly once the puzzle is read as different languages.",
+    "Danke": "\"Danke\" is the German word for \"thank you,\" which keeps the language pattern clear and straightforward.",
+    "Arigato": "\"Arigato\" is the Japanese word for \"thank you,\" so it lands cleanly under the same answer.",
+    "Merci": "\"Merci\" is the French word for \"thank you,\" adding another familiar confirmation of the same idea.",
+    "Gracias": "\"Gracias\" is the Spanish word for \"thank you,\" which makes the full set easy to verify."
+  },
+  "spoilerHints": {
+    "Mahalo": "Treat this as a word from a specific language, not as a broad travel or culture clue.",
+    "Danke": "If two or three clues already look like foreign words, test whether they express the same common phrase.",
+    "Arigato": "This clue works best when you read the board as language-based rather than theme-based.",
+    "Merci": "Look for a shared everyday meaning that can appear in several languages.",
+    "Gracias": "This clue confirms the pattern instead of creating a whole new direction."
+  },
   "lessons": [
     {
       "title": "Trust the obvious pattern when several clues agree",
@@ -59,6 +48,20 @@
     {
       "title": "Use the last clues as confirmation, not reinvention",
       "body": "Once the first few words suggest the right language pattern, the remaining clues should simply reinforce it."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #693?",
+      "answer": "The answer is “Thank you” in different languages because each clue is a different language version of the same everyday phrase."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #693?",
+      "answer": "The connection is that all five clues are ways to say \"thank you\" in different languages."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #693?",
+      "answer": "There is not one dramatic unlocking clue here. The pattern is visible once several of the words are read as different-language versions of \"thank you.\""
     }
   ],
   "display": {
@@ -91,19 +94,5 @@
         "connectionExplained": "\"Gracias\" is the Spanish word for \"thank you,\" which makes the full set easy to confirm."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #693?",
-      "answer": "The answer is “Thank you” in different languages because each clue is a different language version of the same everyday phrase."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #693?",
-      "answer": "The connection is that all five clues are ways to say \"thank you\" in different languages."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #693?",
-      "answer": "There is not one dramatic unlocking clue here. The pattern is visible once several of the words are read as different-language versions of \"thank you.\""
-    }
-  ]
+  }
 }

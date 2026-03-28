@@ -1,31 +1,6 @@
 {
-  "puzzleNumber": 691,
   "slug": "pinpoint-answer-691",
-  "publishDate": "2026-03-22",
-  "isoDate": "2026-03-22",
-  "clues": [
-    "Vines",
-    "Orangutans",
-    "Hammocks",
-    "Old tires",
-    "Tarzan"
-  ],
-  "answer": "Things that swing",
-  "category": "Things that swing",
-  "wordHints": {
-    "Vines": "Vines hang and sway from branches, so they fit the idea of things that swing.",
-    "Orangutans": "Orangutans are famous for swinging through trees, which makes this clue a natural fit.",
-    "Hammocks": "A hammock swings gently once it is hung, so it belongs in the same set.",
-    "Old tires": "An old tire often becomes a tire swing, which is the clearest concrete confirmation in the board.",
-    "Tarzan": "Tarzan is the iconic character associated with swinging on vines, so this clue confirms the same action-based answer."
-  },
-  "spoilerHints": {
-    "Vines": "Think less about where this clue is found and more about what it does once suspended.",
-    "Orangutans": "This clue works better as an action clue than as a jungle clue.",
-    "Hammocks": "The fit becomes cleaner when you focus on motion instead of location.",
-    "Old tires": "This is the clue that makes the action frame much harder to miss.",
-    "Tarzan": "A famous image tied to this clue should confirm the same physical action."
-  },
+  "detailState": "published",
   "articleBlocks": [
     "At first, Vines and Orangutans made this feel like a jungle board.",
     "That first read held for a moment, especially once Hammocks joined in.",
@@ -54,6 +29,20 @@
     "I first treated the set like a jungle or rainforest category because Vines, Orangutans, and Hammocks all live comfortably in that picture. That was plausible, but it stayed too broad and never explained why the board wanted five clues instead of one scene.",
     "The turn came when I read Old tires as tire swing instead of junk hanging around a yard. Once swing became the shared action, the rest of the board tightened immediately: vines swing, orangutans swing, hammocks swing, and Tarzan is the most obvious swinging image of all."
   ],
+  "wordHints": {
+    "Vines": "Vines hang and sway from branches, so they fit the idea of things that swing.",
+    "Orangutans": "Orangutans are famous for swinging through trees, which makes this clue a natural fit.",
+    "Hammocks": "A hammock swings gently once it is hung, so it belongs in the same set.",
+    "Old tires": "An old tire often becomes a tire swing, which is the clearest concrete confirmation in the board.",
+    "Tarzan": "Tarzan is the iconic character associated with swinging on vines, so this clue confirms the same action-based answer."
+  },
+  "spoilerHints": {
+    "Vines": "Think less about where this clue is found and more about what it does once suspended.",
+    "Orangutans": "This clue works better as an action clue than as a jungle clue.",
+    "Hammocks": "The fit becomes cleaner when you focus on motion instead of location.",
+    "Old tires": "This is the clue that makes the action frame much harder to miss.",
+    "Tarzan": "A famous image tied to this clue should confirm the same physical action."
+  },
   "lessons": [
     {
       "title": "Do not stop at the setting if the action is stronger",
@@ -66,6 +55,20 @@
     {
       "title": "Re-check every clue once the verb appears",
       "body": "Once swing showed up as the real connector, each clue could be tested quickly against the same action instead of a vague category."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #691?",
+      "answer": "The answer is \"Things that swing\" because all five clues point to objects, animals, or characters associated with swinging."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #691?",
+      "answer": "The connection is swinging. Vines, orangutans, hammocks, old tires, and Tarzan all fit once the board is read through that action instead of as a jungle setting."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #691?",
+      "answer": "\"Old tires\" is the clue that unlocks the set because it naturally points to a tire swing and turns the board from a place-based guess into an action-based answer."
     }
   ],
   "display": {
@@ -98,19 +101,5 @@
         "connectionExplained": "Tarzan confirms the answer because the character is iconic for swinging through the jungle."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #691?",
-      "answer": "The answer is \"Things that swing\" because all five clues point to objects, animals, or characters associated with swinging."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #691?",
-      "answer": "The connection is swinging. Vines, orangutans, hammocks, old tires, and Tarzan all fit once the board is read through that action instead of as a jungle setting."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #691?",
-      "answer": "\"Old tires\" is the clue that unlocks the set because it naturally points to a tire swing and turns the board from a place-based guess into an action-based answer."
-    }
-  ]
+  }
 }

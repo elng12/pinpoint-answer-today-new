@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
@@ -7,7 +6,6 @@ import { getVisibleDetailFaqs } from "@/lib/puzzles/detail-view";
 import {
   getAdjacentEntries,
   getAllDetailSlugs,
-  getCurrentPuzzle,
   getNextPreview,
   getPuzzleBySlug,
   getRecentEntries,
@@ -35,80 +33,20 @@ function withTrailingSlash(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
 }
 
-function parsePuzzleNumberFromSlug(slug: string): number | null {
-  const match = slug.match(/^pinpoint-answer-(\d+)$/);
-  if (!match) return null;
-
-  const parsed = Number(match[1]);
-  return Number.isFinite(parsed) ? parsed : null;
-}
-
-async function getPublishingFallback(slug: string): Promise<{ requestedNumber: number } | null> {
-  const requestedNumber = parsePuzzleNumberFromSlug(slug);
-  if (!requestedNumber) return null;
-
-  try {
-    const current = await getCurrentPuzzle();
-    const today = new Date().toISOString().slice(0, 10);
-
-    if (requestedNumber !== current.number + 1) return null;
-    if (current.isoDate >= today) return null;
-
-    return { requestedNumber };
-  } catch {
-    return null;
-  }
-}
-
-function PublishingFallback({ requestedNumber }: { requestedNumber: number }) {
-  return (
-    <main className="container" style={{ padding: "48px 0 72px" }}>
-      <section className="surface" style={{ padding: 32, textAlign: "center" }}>
-        <p className="eyebrow">Publishing</p>
-        <h1 className="section-title">Pinpoint #{requestedNumber} is still rolling out</h1>
-        <p className="copy" style={{ margin: "12px auto 0", maxWidth: 640 }}>
-          {
-            "The new answer page is still propagating across the live site. This is usually a short deployment gap and should clear within a minute or two."
-          }
-        </p>
-        <div className="button-row" style={{ justifyContent: "center" }}>
-          <Link className="button-primary" href={routes.home}>
-            Go to today
-          </Link>
-          <Link className="button-secondary" href={routes.archive}>
-            Browse archive
-          </Link>
-        </div>
-      </section>
-    </main>
-  );
-}
-
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const puzzle = await getPuzzleBySlug(slug);
+  const puzzle = await getPuzzleBySlug(slug, { allowLiveWorkerFallback: false });
   const detailPath = withTrailingSlash(routes.detail(slug));
 
   if (!puzzle) {
-    const pending = await getPublishingFallback(slug);
-    if (pending) {
-      return buildPageMetadata({
-        title: `Pinpoint #${pending.requestedNumber} is publishing`,
-        description:
-          "This answer page is still propagating across the live site. Please retry shortly for the full walkthrough.",
-        path: detailPath,
-        noIndex: true,
-      });
-    }
-
     return buildPageMetadata({
       title: "Pinpoint Answer",
       description: "This Pinpoint answer page could not be found.",
-      path: routes.archive,
+      path: detailPath,
       noIndex: true,
     });
   }
@@ -139,18 +77,13 @@ export default async function DetailPage({
   const detailArchiveOptions = { allowLiveWorkerFallback: false } as const;
   const { slug } = await params;
   const [puzzle, recentPuzzles, nextPreview, adjacent] = await Promise.all([
-    getPuzzleBySlug(slug),
+    getPuzzleBySlug(slug, detailArchiveOptions),
     getRecentEntries(10, slug, detailArchiveOptions),
     getNextPreview(),
     getAdjacentEntries(slug, detailArchiveOptions),
   ]);
 
   if (!puzzle) {
-    const pending = await getPublishingFallback(slug);
-    if (pending) {
-      return <PublishingFallback requestedNumber={pending.requestedNumber} />;
-    }
-
     notFound();
   }
 

@@ -1,17 +1,14 @@
 {
-  "puzzleNumber": 684,
   "slug": "pinpoint-answer-684",
-  "publishDate": "2026-03-15",
-  "isoDate": "2026-03-15",
-  "clues": [
-    "English",
-    "Dog",
-    "Damask",
-    "(Hybrid) Tea",
-    "Stop and smell the (🌹🌹🌹)"
+  "detailState": "published",
+  "fullAnalysis": [
+    "Pinpoint #684 feels trickier than it really is because the opening clues invite broad, slightly wrong reads. \"English\" can point to language or nationality, and \"Dog\" can point to breeds, pets, or all kinds of compound words. That makes the board feel loose at first. The clue that changes everything is \"Damask,\" because once \"Damask rose\" becomes visible, the earlier clues stop feeling random and start reading like part of the same phrase family.",
+    "From there, the puzzle resolves as a phrase-pattern board built around roses. English rose, dog rose, Damask rose, and hybrid tea rose all work as natural readings, while \"Stop and smell the roses\" acts as the final confirmation rather than a separate idea. This tighter phrase reading explains the board more cleanly than broader labels like flowers or gardening."
   ],
-  "answer": "Words that come before “roses”",
-  "category": "Words that come before “roses”",
+  "solutionNarrative": [
+    "I did not have a clean category from the first clue. \"English\" felt too open, and once \"Dog\" appeared I briefly drifted toward common compound words and breed-related ideas. Those guesses were not absurd, but they did not explain \"Damask\" in any convincing way, which was the sign that I was forcing the board instead of following it.",
+    "The turn came when I let \"Damask\" lead the solve and then checked the final clue again. Once the board was read through roses, the earlier clues stopped feeling broad and started reading like natural rose phrases, while the idiom confirmed the pattern in plain language. At that point, the final connector was the only reading that explained all five clues without stretching."
+  ],
   "wordHints": {
     "English": "\"English rose\" is a familiar phrase, so this clue works once the board shifts away from broad categories and into natural rose-related expressions.",
     "Dog": "\"Dog rose\" is a real wild rose species, which makes this one of the clearest clue-to-phrase matches in the set.",
@@ -26,14 +23,6 @@
     "(Hybrid) Tea": "Ignore the drink for now. Think of a formal label you might see in a catalog.",
     "Stop and smell the (🌹🌹🌹)": "The last clue confirms the pattern through a very familiar saying without needing the full reveal."
   },
-  "fullAnalysis": [
-    "Pinpoint #684 feels trickier than it really is because the opening clues invite broad, slightly wrong reads. \"English\" can point to language or nationality, and \"Dog\" can point to breeds, pets, or all kinds of compound words. That makes the board feel loose at first. The clue that changes everything is \"Damask,\" because once \"Damask rose\" becomes visible, the earlier clues stop feeling random and start reading like part of the same phrase family.",
-    "From there, the puzzle resolves as a phrase-pattern board built around roses. English rose, dog rose, Damask rose, and hybrid tea rose all work as natural readings, while \"Stop and smell the roses\" acts as the final confirmation rather than a separate idea. This tighter phrase reading explains the board more cleanly than broader labels like flowers or gardening."
-  ],
-  "solutionNarrative": [
-    "I did not have a clean category from the first clue. \"English\" felt too open, and once \"Dog\" appeared I briefly drifted toward common compound words and breed-related ideas. Those guesses were not absurd, but they did not explain \"Damask\" in any convincing way, which was the sign that I was forcing the board instead of following it.",
-    "The turn came when I let \"Damask\" lead the solve and then checked the final clue again. Once the board was read through roses, the earlier clues stopped feeling broad and started reading like natural rose phrases, while the idiom confirmed the pattern in plain language. At that point, the final connector was the only reading that explained all five clues without stretching."
-  ],
   "lessons": [
     {
       "title": "Broad clues can create the wrong frame early",

@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { Star, Lightbulb, Table } from "lucide-react";
 import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
-import { getVisibleDetailFaqs } from "@/lib/puzzles/detail-view";
+import {
+  formatPuzzleDifficultyBandLabel,
+  formatPuzzleQuestionTypeLabel,
+  getVisibleDetailFaqEntries,
+  type VisibleDetailFaqEntry,
+} from "@/lib/puzzles/detail-view";
 import type { LessonItem } from "@/lib/puzzles/schema";
 import { routes } from "@/lib/paths/routes";
 
@@ -81,7 +86,96 @@ function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
   return [...paragraphsWithLead, `The answer was ${puzzle.answer}.`];
 }
 
-function renderClueTable(rows: PuzzleDetailRecord["display"]["clueTableRows"]) {
+function normalizeParagraphKey(paragraph: string): string {
+  return paragraph.toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function dedupeParagraphs(paragraphs: string[]): string[] {
+  const seen = new Set<string>();
+  const unique: string[] = [];
+  for (const paragraph of paragraphs.map((item) => item.trim()).filter(Boolean)) {
+    const key = normalizeParagraphKey(paragraph);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(paragraph);
+  }
+  return unique;
+}
+
+function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
+  const paragraphs: string[] = [];
+
+  if (puzzle.solvePath?.firstRead) {
+    paragraphs.push(puzzle.solvePath.firstRead);
+  }
+
+  puzzle.solvePath?.falseStarts.forEach((guess, index) => {
+    const explanation = puzzle.solvePath?.whyFalseStartPlausible[index];
+    paragraphs.push(
+      explanation
+        ? `A believable early read was "${guess}". ${explanation}`
+        : `A believable early read was "${guess}".`,
+    );
+  });
+
+  if (puzzle.turningPoint?.clue) {
+    paragraphs.push(`${puzzle.turningPoint.clue} was the turning clue. ${puzzle.turningPoint.whyDecisive}`);
+  } else if (puzzle.solvePath?.breakingClue) {
+    paragraphs.push(`${puzzle.solvePath.breakingClue} was the clue that tightened the board.`);
+  }
+
+  if (puzzle.turningPoint?.whatChangedAfterIt) {
+    paragraphs.push(puzzle.turningPoint.whatChangedAfterIt);
+  }
+
+  if (puzzle.solvePath?.fullBoardConfirmation) {
+    paragraphs.push(puzzle.solvePath.fullBoardConfirmation);
+  }
+
+  return dedupeParagraphs(paragraphs);
+}
+
+function renderClueTable(puzzle: PuzzleDetailRecord) {
+  if (puzzle.clueRows.length === puzzle.clues.length && puzzle.clueRows.length > 0) {
+    return (
+      <div className="legacy-clue-table-shell">
+        <div className="legacy-table-kicker-row">
+          <Table className="legacy-section-icon" aria-hidden />
+          <h3 className="legacy-table-kicker">Clue-by-clue evidence</h3>
+        </div>
+        <div className="legacy-clue-table-scroll">
+          <table
+            className="legacy-clue-table legacy-clue-table-evidence"
+            aria-label="Clue-by-clue evidence showing the early misread, resolved reading, and why each clue fits"
+          >
+            <caption className="sr-only">
+              Clue-by-clue evidence showing the early misread, resolved reading, and why each clue fits
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Clue</th>
+                <th scope="col">Early read</th>
+                <th scope="col">Resolved read</th>
+                <th scope="col">Why it works</th>
+              </tr>
+            </thead>
+            <tbody>
+              {puzzle.clueRows.map((row) => (
+                <tr key={row.clue}>
+                  <th scope="row">{row.clue}</th>
+                  <td>{row.surfaceMisread || "Same first broad read as the rest of the board"}</td>
+                  <td>{`"${row.resolvedPhraseOrMember}"`}</td>
+                  <td>{row.nonObviousWhy}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
+  const rows = puzzle.display.clueTableRows;
   return (
     <div className="legacy-clue-table-shell">
       <div className="legacy-table-kicker-row">
@@ -118,6 +212,18 @@ function renderClueTable(rows: PuzzleDetailRecord["display"]["clueTableRows"]) {
   );
 }
 
+function renderFaqCards(faqEntries: VisibleDetailFaqEntry[]) {
+  return faqEntries.map((faq) => (
+    <article className="legacy-faq-card" key={faq.question}>
+      <h4 className="legacy-faq-question">{faq.question}</h4>
+      {faq.intentType === "clue_background" && faq.tiedClue ? (
+        <p className="legacy-faq-meta">{`Tied clue: ${faq.tiedClue}`}</p>
+      ) : null}
+      <p className="copy">{faq.answer}</p>
+    </article>
+  ));
+}
+
 export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
@@ -134,7 +240,8 @@ export function PuzzleFullAnalysis({
   const isShortMode = puzzle.detailMode === "short";
   const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
   const walkthroughParagraphs = buildWalkthroughParagraphs(puzzle);
-  const visibleFaqs = getVisibleDetailFaqs(puzzle.faqs, puzzle.detailMode);
+  const solvePathParagraphs = buildSolvePathParagraphs(puzzle);
+  const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
   const analysisTitle = isShortMode
     ? `Pinpoint ${puzzle.number} Quick Guide`
     : `Pinpoint ${puzzle.number} Answer & Full Analysis`;
@@ -143,6 +250,12 @@ export function PuzzleFullAnalysis({
     : isShortMode
       ? "Compact guide for a clean, obvious pattern puzzle"
       : "By Pinpoint Answer Today";
+  const evidenceMetaLine = [
+    formatPuzzleQuestionTypeLabel(puzzle.questionType),
+    formatPuzzleDifficultyBandLabel(puzzle.difficultyBand),
+    puzzle.turningPoint?.clue ? `Turning clue: ${puzzle.turningPoint.clue}` : null,
+  ].filter(Boolean).join(" · ");
+  const shortModeLeadParagraphs = solvePathParagraphs.length > 0 ? solvePathParagraphs : walkthroughParagraphs;
 
   return (
     <>
@@ -152,6 +265,9 @@ export function PuzzleFullAnalysis({
             <div className="legacy-analysis-meta">
               <p className="legacy-analysis-meta-line">{analysisMetaLine}</p>
               <p className="legacy-analysis-meta-line">{`Published on ${formatPublishedDate(puzzle.isoDate)}`}</p>
+              {!isFallbackShortMode ? (
+                <p className="legacy-analysis-meta-line">{evidenceMetaLine}</p>
+              ) : null}
             </div>
             <div className="legacy-analysis-header-inner">
               <Star className="legacy-section-icon" aria-hidden />
@@ -172,7 +288,7 @@ export function PuzzleFullAnalysis({
               </section>
 
               <section className="legacy-analysis-section">
-                {renderClueTable(puzzle.display.clueTableRows)}
+                {renderClueTable(puzzle)}
               </section>
 
               <section className="legacy-analysis-section">
@@ -181,12 +297,7 @@ export function PuzzleFullAnalysis({
                   <h3 className="legacy-section-title">Compact FAQ</h3>
                 </div>
                 <div className="legacy-faq-stack">
-                  {visibleFaqs.map((faq) => (
-                    <article className="legacy-faq-card" key={faq.question}>
-                      <h4 className="legacy-faq-question">{faq.question}</h4>
-                      <p className="copy">{faq.answer}</p>
-                    </article>
-                  ))}
+                  {renderFaqCards(visibleFaqEntries)}
                 </div>
               </section>
             </>
@@ -194,14 +305,14 @@ export function PuzzleFullAnalysis({
             <>
               <section className="legacy-analysis-section">
                 <div className="legacy-prose-stack">
-                  {walkthroughParagraphs.map((paragraph, index) => (
+                  {shortModeLeadParagraphs.map((paragraph, index) => (
                     <p key={`${puzzle.slug}-walkthrough-${index}`}>{paragraph}</p>
                   ))}
                 </div>
               </section>
 
               <section className="legacy-analysis-section">
-                {renderClueTable(puzzle.display.clueTableRows)}
+                {renderClueTable(puzzle)}
               </section>
 
               <section className="legacy-analysis-section">
@@ -210,17 +321,26 @@ export function PuzzleFullAnalysis({
                   <h3 className="legacy-section-title">Compact FAQ</h3>
                 </div>
                 <div className="legacy-faq-stack">
-                  {visibleFaqs.map((faq) => (
-                    <article className="legacy-faq-card" key={faq.question}>
-                      <h4 className="legacy-faq-question">{faq.question}</h4>
-                      <p className="copy">{faq.answer}</p>
-                    </article>
-                  ))}
+                  {renderFaqCards(visibleFaqEntries)}
                 </div>
               </section>
             </>
           ) : (
             <>
+              {solvePathParagraphs.length > 0 ? (
+                <section className="legacy-analysis-section">
+                  <div className="legacy-section-title-row">
+                    <Lightbulb className="legacy-section-icon" aria-hidden />
+                    <h3 className="legacy-section-title">Solve path snapshot</h3>
+                  </div>
+                  <div className="legacy-prose-stack">
+                    {solvePathParagraphs.map((paragraph, index) => (
+                      <p key={`${puzzle.slug}-solve-path-${index}`}>{paragraph}</p>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
               <section className="legacy-analysis-section">
                 <div className="legacy-prose-stack">
                   {walkthroughParagraphs.map((paragraph, index) => (
@@ -238,7 +358,7 @@ export function PuzzleFullAnalysis({
               </section>
 
               <section className="legacy-analysis-section">
-                {renderClueTable(puzzle.display.clueTableRows)}
+                {renderClueTable(puzzle)}
               </section>
 
               <section className="legacy-analysis-section">
@@ -268,12 +388,7 @@ export function PuzzleFullAnalysis({
                   <h3 className="legacy-section-title">FAQ</h3>
                 </div>
                 <div className="legacy-faq-stack">
-                  {visibleFaqs.map((faq) => (
-                    <article className="legacy-faq-card" key={faq.question}>
-                      <h4 className="legacy-faq-question">{faq.question}</h4>
-                      <p className="copy">{faq.answer}</p>
-                    </article>
-                  ))}
+                  {renderFaqCards(visibleFaqEntries)}
                 </div>
               </section>
             </>

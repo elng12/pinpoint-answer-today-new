@@ -1,7 +1,18 @@
 import { z } from "zod";
 
 export declare const puzzleStatusSchema: z.ZodEnum<["draft", "preview", "live", "archived"]>;
+export declare const puzzleDetailStateSchema: z.ZodEnum<[
+  "draft",
+  "generating",
+  "validated",
+  "publishing_placeholder",
+  "fallback_full",
+  "published",
+  "failed"
+]>;
 export declare const difficultyLevelSchema: z.ZodEnum<["Easy", "Moderate", "Hard"]>;
+export declare const puzzleQuestionTypeSchema: z.ZodEnum<["phrase", "category", "association", "hybrid"]>;
+export declare const puzzleDifficultyBandSchema: z.ZodEnum<["obvious", "medium", "hard"]>;
 export declare const puzzleDetailBodyModeSchema: z.ZodEnum<["short", "standard", "deep"]>;
 
 export declare const puzzleRegistryEntrySchema: z.ZodObject<{
@@ -13,6 +24,7 @@ export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   mainAnswer: z.ZodNullable<z.ZodString>;
   category: z.ZodNullable<z.ZodString>;
   difficultyLevel: z.ZodOptional<typeof difficultyLevelSchema>;
+  detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
   shortSummary: z.ZodString;
   updatedAt: z.ZodString;
 }>;
@@ -40,8 +52,51 @@ export declare const puzzleDetailDisplaySchema: z.ZodObject<{
   clueTableRows: z.ZodOptional<z.ZodArray<typeof puzzleDetailDisplayRowSchema, "many">>;
 }>;
 
+export declare const puzzleSolvePathSchema: z.ZodObject<{
+  firstRead: z.ZodString;
+  falseStarts: z.ZodArray<z.ZodString, "many">;
+  whyFalseStartPlausible: z.ZodArray<z.ZodString, "many">;
+  breakingClue: z.ZodOptional<z.ZodString>;
+  pivot: z.ZodOptional<z.ZodString>;
+  fullBoardConfirmation: z.ZodOptional<z.ZodString>;
+}>;
+
+export declare const puzzleTurningPointSchema: z.ZodObject<{
+  clue: z.ZodString;
+  whyDecisive: z.ZodString;
+  whatChangedAfterIt: z.ZodString;
+}>;
+
+export declare const puzzleClueRowSchema: z.ZodObject<{
+  clue: z.ZodString;
+  surfaceMisread: z.ZodOptional<z.ZodString>;
+  resolvedPhraseOrMember: z.ZodString;
+  nonObviousWhy: z.ZodString;
+  searchableContext: z.ZodOptional<z.ZodString>;
+}>;
+
+export declare const puzzleFaqIntentTypeSchema: z.ZodEnum<
+  ["definition", "clue_background", "comparison", "solve_strategy", "category_context"]
+>;
+
+export declare const puzzleEvidenceFaqItemSchema: z.ZodObject<{
+  intentType: typeof puzzleFaqIntentTypeSchema;
+  question: z.ZodString;
+  answer: z.ZodString;
+  tiedClue: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}>;
+
+export declare const puzzleUniquenessSignalsSchema: z.ZodObject<{
+  angle: z.ZodString;
+  relatedEntities: z.ZodArray<z.ZodString, "many">;
+  doNotRepeatPatterns: z.ZodArray<z.ZodString, "many">;
+}>;
+
 export declare const puzzleDetailContentSchema: z.ZodObject<{
   slug: z.ZodString;
+  detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
+  questionType: z.ZodOptional<typeof puzzleQuestionTypeSchema>;
+  difficultyBand: z.ZodOptional<typeof puzzleDifficultyBandSchema>;
   bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;
   articleBlocks: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
@@ -50,5 +105,10 @@ export declare const puzzleDetailContentSchema: z.ZodObject<{
   spoilerHints: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
   lessons: z.ZodArray<typeof lessonItemSchema, "many">;
   faqs: z.ZodArray<typeof faqItemSchema, "many">;
+  solvePath: z.ZodOptional<typeof puzzleSolvePathSchema>;
+  turningPoint: z.ZodOptional<typeof puzzleTurningPointSchema>;
+  clueRows: z.ZodOptional<z.ZodArray<typeof puzzleClueRowSchema, "many">>;
+  faqItems: z.ZodOptional<z.ZodArray<typeof puzzleEvidenceFaqItemSchema, "many">>;
+  uniquenessSignals: z.ZodOptional<typeof puzzleUniquenessSignalsSchema>;
   display: z.ZodOptional<typeof puzzleDetailDisplaySchema>;
 }>;

@@ -1,31 +1,6 @@
 {
-  "puzzleNumber": 692,
   "slug": "pinpoint-answer-692",
-  "publishDate": "2026-03-23",
-  "isoDate": "2026-03-23",
-  "clues": [
-    "Spring",
-    "Tap",
-    "Oasis",
-    "Well",
-    "Fountain"
-  ],
-  "answer": "Places to get drinking water",
-  "category": "Places to get drinking water",
-  "wordHints": {
-    "Spring": "\"Spring\" fits once the answer is read as a real place where drinking water can come from.",
-    "Tap": "\"Tap\" stops feeling broad once the board is read as practical sources of drinking water.",
-    "Oasis": "\"Oasis\" fits as a place where drinkable water appears in an otherwise dry setting.",
-    "Well": "\"Well\" is one of the clearest direct examples once the answer is in place.",
-    "Fountain": "\"Fountain\" is the clue that pushes the board from general water ideas toward actual places you might get a drink."
-  },
-  "spoilerHints": {
-    "Spring": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Tap": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Oasis": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Well": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Fountain": "This is the clue that makes the category specific enough to test instead of staying broad."
-  },
+  "detailState": "published",
   "articleBlocks": [
     "At first, Spring and Tap felt more like loose water clues than one clean answer.",
     "My first read drifted toward water in general, but that stayed too broad once Oasis and Fountain showed up.",
@@ -50,6 +25,20 @@
     "Once I read the board as places where someone could actually get drinking water, the earlier clues stopped feeling loose and started reading like part of one real set.",
     "The answer was \"Places to get drinking water\"."
   ],
+  "wordHints": {
+    "Spring": "\"Spring\" fits once the answer is read as a real place where drinking water can come from.",
+    "Tap": "\"Tap\" stops feeling broad once the board is read as practical sources of drinking water.",
+    "Oasis": "\"Oasis\" fits as a place where drinkable water appears in an otherwise dry setting.",
+    "Well": "\"Well\" is one of the clearest direct examples once the answer is in place.",
+    "Fountain": "\"Fountain\" is the clue that pushes the board from general water ideas toward actual places you might get a drink."
+  },
+  "spoilerHints": {
+    "Spring": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Tap": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Oasis": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Well": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Fountain": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
   "lessons": [
     {
       "title": "Wait for the clue that narrows the category",
@@ -62,6 +51,20 @@
     {
       "title": "Re-check the earlier clues once the frame tightens",
       "body": "Once \"Fountain\" lands, go back and test the earlier clues under the same category before locking the answer."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #692?",
+      "answer": "The answer is \"Places to get drinking water\" because that reading explains the full set cleanly, including \"Fountain\"."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #692?",
+      "answer": "The connection is that all five clues point to real places or sources where someone can get drinking water."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
+      "answer": "\"Fountain\" is the turning point because it pushes the board away from general water imagery and toward actual places where someone could get a drink."
     }
   ],
   "display": {
@@ -94,19 +97,5 @@
         "connectionExplained": "\"Fountain\" is the clue that makes the answer feel practical instead of decorative, which helps the rest of the set lock in."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #692?",
-      "answer": "The answer is \"Places to get drinking water\" because that reading explains the full set cleanly, including \"Fountain\"."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #692?",
-      "answer": "The connection is that all five clues point to real places or sources where someone can get drinking water."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
-      "answer": "\"Fountain\" is the turning point because it pushes the board away from general water imagery and toward actual places where someone could get a drink."
-    }
-  ]
+  }
 }

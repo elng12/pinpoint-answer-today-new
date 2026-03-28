@@ -1,17 +1,12 @@
 {
-  "puzzleNumber": 685,
   "slug": "pinpoint-answer-685",
-  "publishDate": "2026-03-16",
-  "isoDate": "2026-03-16",
-  "clues": [
-    "Time",
-    "The Economist",
-    "Cosmopolitan",
-    "National Geographic",
-    "Reader’s Digest"
+  "detailState": "published",
+  "fullAnalysis": [
+    "I approached Pinpoint #685 by testing each clue against possible connecting words. The five clues were \"Time\", \"The Economist\", \"Cosmopolitan\", \"National Geographic\", \"Reader’s Digest\". \"Time\" — Time fits the theme. \"The Economist\" — The Economist fits the theme. \"Cosmopolitan\" — Cosmopolitan fits the theme. \"National Geographic\" — National Geographic fits the theme. \"Reader’s Digest\" — Reader’s Digest fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Magazines (with global readership / versions)\" because it is the first reading that explains all five clues without forcing any of them."
   ],
-  "answer": "Magazines (with global readership / versions)",
-  "category": "Magazines (with global readership / versions)",
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #685, Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
   "wordHints": {
     "Time": "Time connects to \"Magazines (with global readership / versions)\"",
     "The Economist": "The Economist connects to \"Magazines (with global readership / versions)\"",
@@ -19,12 +14,6 @@
     "National Geographic": "National Geographic connects to \"Magazines (with global readership / versions)\"",
     "Reader’s Digest": "Reader’s Digest connects to \"Magazines (with global readership / versions)\""
   },
-  "fullAnalysis": [
-    "I approached Pinpoint #685 by testing each clue against possible connecting words. The five clues were \"Time\", \"The Economist\", \"Cosmopolitan\", \"National Geographic\", \"Reader’s Digest\". \"Time\" — Time fits the theme. \"The Economist\" — The Economist fits the theme. \"Cosmopolitan\" — Cosmopolitan fits the theme. \"National Geographic\" — National Geographic fits the theme. \"Reader’s Digest\" — Reader’s Digest fits the theme. Once I noticed that all five clues could follow or precede the same word or phrase, the answer became clear. The answer is \"Magazines (with global readership / versions)\" because it is the first reading that explains all five clues without forcing any of them."
-  ],
-  "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #685, Time, The Economist, Cosmopolitan, National Geographic, Reader’s Digest only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
-  ],
   "lessons": [
     {
       "title": "Look for word patterns",

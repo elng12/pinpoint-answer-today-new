@@ -6,9 +6,17 @@ import {
   puzzleDetailContentSchema,
   type FaqItem,
   type LessonItem,
+  type PuzzleClueRowRecord,
+  type PuzzleDifficultyBand,
+  type PuzzleEvidenceFaqItemRecord,
+  type PuzzleDetailState,
   type PuzzleDetailContentRecord,
+  type PuzzleQuestionType,
   type PuzzleRegistryEntryRecord,
+  type PuzzleSolvePathRecord,
   type PuzzleStatus,
+  type PuzzleTurningPointRecord,
+  type PuzzleUniquenessSignalsRecord,
   registrySchema,
 } from "@/lib/puzzles/schema";
 import {
@@ -38,6 +46,8 @@ export type PuzzleDetail = {
   category: string;
   clues: string[];
   difficulty: string;
+  questionType: PuzzleQuestionType;
+  difficultyBand: PuzzleDifficultyBand;
   shortSummary: string;
   articleBlocks: string[];
   fullAnalysis: string[];
@@ -46,8 +56,14 @@ export type PuzzleDetail = {
   spoilerHints: Record<string, string>;
   lessons: LessonItem[];
   faqs: FaqItem[];
+  solvePath: PuzzleSolvePathRecord | null;
+  turningPoint: PuzzleTurningPointRecord | null;
+  clueRows: PuzzleClueRowRecord[];
+  faqItems: PuzzleEvidenceFaqItemRecord[];
+  uniquenessSignals: PuzzleUniquenessSignalsRecord | null;
   display: PuzzleDetailDisplay;
   status: Exclude<PuzzleStatus, "draft" | "preview">;
+  detailState: PuzzleDetailState;
   updatedAt: string;
   detailMode: "full" | "short";
   detailSource: "formal" | "fallback";
@@ -103,6 +119,8 @@ type LiveAnswerPattern =
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const GITHUB_RAW_BASE = process.env.GITHUB_RAW_BASE?.trim() ?? "";
+const DETAIL_PUBLIC_FORMAL_ONLY =
+  (process.env.DETAIL_PUBLIC_FORMAL_ONLY ?? "true").trim().toLowerCase() !== "false";
 const DEFAULT_PINPOINT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.dev/health";
 const BASELINE_NUMBER = 536;
 const BASELINE_DATE_UTC = Date.UTC(2025, 9, 18); // 2025-10-18
@@ -316,6 +334,8 @@ function buildPuzzleDisplay(
   const firstLesson = lessons[0];
   const fastStrategy = storedDisplay?.fastStrategy
     ? storedDisplay.fastStrategy
+    : detailContent.turningPoint?.whyDecisive
+      ? detailContent.turningPoint.whyDecisive
     : firstLesson
       ? parseLesson(firstLesson).body
       : "Start with two clues, test one connector, then verify every clue against it.";
@@ -323,6 +343,12 @@ function buildPuzzleDisplay(
   const clueTableRows =
     storedDisplay?.clueTableRows && storedDisplay.clueTableRows.length === clues.length
       ? storedDisplay.clueTableRows
+      : detailContent.clueRows && detailContent.clueRows.length === clues.length
+        ? detailContent.clueRows.map((row) => ({
+            clue: row.clue,
+            examplePhrase: row.resolvedPhraseOrMember,
+            connectionExplained: row.nonObviousWhy,
+          }))
       : clues.map((clue) => ({
           clue,
           examplePhrase: buildArchiveExamplePhrase(clue, answer, category),
@@ -334,6 +360,200 @@ function buildPuzzleDisplay(
     connectorSummary: storedDisplay?.connectorSummary ?? buildArchiveConnectorSummary(answer, category),
     fastStrategy,
     clueTableRows,
+  };
+}
+
+function inferPuzzleQuestionType(answer: string): PuzzleQuestionType {
+  const pattern = detectLiveAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return "phrase";
+  }
+  if (pattern.kind === "association") {
+    return "association";
+  }
+  return "category";
+}
+
+function inferPuzzleDifficultyBand(input: {
+  explicit?: PuzzleDifficultyBand;
+  difficultyLevel?: string;
+  bodyMode?: string;
+}): PuzzleDifficultyBand {
+  if (input.explicit) {
+    return input.explicit;
+  }
+
+  const bodyMode = String(input.bodyMode || "").trim().toLowerCase();
+  if (bodyMode === "short") return "obvious";
+  if (bodyMode === "deep") return "hard";
+
+  const difficultyLevel = String(input.difficultyLevel || "").trim().toLowerCase();
+  if (difficultyLevel === "easy") return "obvious";
+  if (difficultyLevel === "hard") return "hard";
+
+  return "medium";
+}
+
+function inferFaqIntentType(
+  question: string,
+  answer: string,
+): PuzzleEvidenceFaqItemRecord["intentType"] {
+  const normalized = normalizeLooseLiveText(question);
+  if (normalized.includes("what is the answer")) {
+    return "definition";
+  }
+  if (normalized.includes("what is the connection")) {
+    return "category_context";
+  }
+  if (normalized.includes("which clue") || normalized.startsWith("why is")) {
+    return "clue_background";
+  }
+  if (normalized.includes("compare") || normalized.includes("difference")) {
+    return "comparison";
+  }
+  if (normalized.includes("strategy") || normalized.includes("how ")) {
+    return "solve_strategy";
+  }
+
+  return inferPuzzleQuestionType(answer) === "association" ? "category_context" : "solve_strategy";
+}
+
+function findMentionedClue(text: string, clues: string[]): string | null {
+  const normalizedText = normalizeLooseLiveText(text);
+  let bestMatch: { clue: string; index: number } | null = null;
+  for (const clue of clues) {
+    const normalizedClue = normalizeLooseLiveText(clue);
+    if (!normalizedClue) continue;
+    const matchIndex = normalizedText.indexOf(normalizedClue);
+    if (matchIndex === -1) continue;
+    if (!bestMatch || matchIndex < bestMatch.index) {
+      bestMatch = { clue, index: matchIndex };
+    }
+  }
+  return bestMatch?.clue ?? null;
+}
+
+function resolveEvidenceClueRows(
+  clues: string[],
+  detailContent: PuzzleDetailContentRecord,
+  display: PuzzleDetailDisplay,
+  wordHints: Record<string, string>,
+): PuzzleClueRowRecord[] {
+  if (detailContent.clueRows?.length === clues.length) {
+    return detailContent.clueRows;
+  }
+
+  return display.clueTableRows.map((row) => ({
+    clue: row.clue,
+    resolvedPhraseOrMember: row.examplePhrase,
+    nonObviousWhy: row.connectionExplained || wordHints[row.clue] || `${row.clue} fits the same answer.`,
+    searchableContext: row.examplePhrase,
+  }));
+}
+
+function resolveEvidenceFaqItems(
+  detailContent: PuzzleDetailContentRecord,
+  clues: string[],
+  answer: string,
+): PuzzleEvidenceFaqItemRecord[] {
+  if (detailContent.faqItems?.length) {
+    return detailContent.faqItems;
+  }
+
+  return detailContent.faqs.map((faq) => ({
+    intentType: inferFaqIntentType(faq.question, answer),
+    question: faq.question,
+    answer: faq.answer,
+    tiedClue: findMentionedClue(`${faq.question} ${faq.answer}`, clues),
+  }));
+}
+
+function resolveEvidenceTurningPoint(
+  detailContent: PuzzleDetailContentRecord,
+  clueRows: PuzzleClueRowRecord[],
+  faqItems: PuzzleEvidenceFaqItemRecord[],
+): PuzzleTurningPointRecord | null {
+  if (detailContent.turningPoint) {
+    return detailContent.turningPoint;
+  }
+
+  const faqCandidate = faqItems.find((item) => item.intentType === "clue_background" && item.tiedClue);
+  const rowCandidate = clueRows.find((row) =>
+    /(turning point|key clue|strongest clue|locks the answer|locks the frame|makes the answer concrete|giveaway)/i.test(
+      row.nonObviousWhy,
+    ),
+  );
+  const clue = faqCandidate?.tiedClue ?? rowCandidate?.clue ?? null;
+  if (!clue) {
+    return null;
+  }
+
+  const whyDecisive =
+    faqCandidate?.answer ||
+    rowCandidate?.nonObviousWhy ||
+    `${clue} is the clue that makes the shared answer precise enough to test across the full board.`;
+
+  return {
+    clue,
+    whyDecisive,
+    whatChangedAfterIt: `Once ${clue} lands, the earlier clues stop feeling broad and start reading under the same answer.`,
+  };
+}
+
+function resolveEvidenceSolvePath(
+  detailContent: PuzzleDetailContentRecord,
+  articleBlocks: string[],
+  fullAnalysis: string[],
+  solutionNarrative: string[],
+  turningPoint: PuzzleTurningPointRecord | null,
+): PuzzleSolvePathRecord | null {
+  if (detailContent.solvePath) {
+    return detailContent.solvePath;
+  }
+
+  const sourceParagraphs = [
+    ...solutionNarrative,
+    ...articleBlocks,
+    ...fullAnalysis,
+  ].map((paragraph) => paragraph.trim()).filter(Boolean);
+  const firstRead = sourceParagraphs[0];
+  if (!firstRead) {
+    return null;
+  }
+
+  const fullBoardConfirmation =
+    sourceParagraphs.find((paragraph, index) => index > 0 && /the answer (?:is|was)|once /i.test(paragraph)) ??
+    turningPoint?.whatChangedAfterIt;
+
+  return {
+    firstRead,
+    falseStarts: [],
+    whyFalseStartPlausible: [],
+    ...(turningPoint?.clue ? { breakingClue: turningPoint.clue } : {}),
+    ...(turningPoint?.whyDecisive ? { pivot: turningPoint.whyDecisive } : {}),
+    ...(fullBoardConfirmation ? { fullBoardConfirmation } : {}),
+  };
+}
+
+function resolveEvidenceUniquenessSignals(
+  detailContent: PuzzleDetailContentRecord,
+  display: PuzzleDetailDisplay,
+  clueRows: PuzzleClueRowRecord[],
+): PuzzleUniquenessSignalsRecord | null {
+  if (detailContent.uniquenessSignals) {
+    return detailContent.uniquenessSignals;
+  }
+
+  return {
+    angle: display.connectorSummary,
+    relatedEntities: clueRows.map((row) => row.resolvedPhraseOrMember).filter(Boolean).slice(0, 5),
+    doNotRepeatPatterns: Array.from(
+      new Set(
+        [display.connectorSummary, ...clueRows.map((row) => row.searchableContext || row.resolvedPhraseOrMember)]
+          .map((item) => item.trim())
+          .filter(Boolean),
+      ),
+    ).slice(0, 5),
   };
 }
 
@@ -558,6 +778,13 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint);
   const fullAnalysis = buildLiveArticleBreakdown(puzzleNumber, record.clues, answer, turningPoint);
   const articleBlocks = fullAnalysis;
+  const solutionNarrative = buildSharedFallbackSolutionNarrative({
+    kind: pattern.kind,
+    wrongGuess: pattern.kind === "before" || pattern.kind === "after"
+      ? "loose phrase guesses"
+      : "a broader category guess",
+    turningPoint,
+  });
   const display: PuzzleDetailDisplay = {
     connectorSummary,
     fastStrategy: parseLesson(lessons[0]!).body,
@@ -566,6 +793,47 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
       examplePhrase: buildLiveFallbackPhrase(clue, answer),
       connectionExplained: wordHints[clue] ?? buildLiveClueExplanation(clue, answer, index, turningPoint),
     })),
+  };
+  const questionType = inferPuzzleQuestionType(answer);
+  const difficultyBand = inferPuzzleDifficultyBand({ difficultyLevel: "Moderate" });
+  const clueRows = display.clueTableRows.map((row) => ({
+    clue: row.clue,
+    surfaceMisread: row.clue,
+    resolvedPhraseOrMember: row.examplePhrase,
+    nonObviousWhy: row.connectionExplained,
+    searchableContext: row.examplePhrase,
+  }));
+  const faqItems = faqs.map((faq) => ({
+    intentType: inferFaqIntentType(faq.question, answer),
+    question: faq.question,
+    answer: faq.answer,
+    tiedClue: findMentionedClue(`${faq.question} ${faq.answer}`, record.clues),
+  }));
+  const turningPointRecord: PuzzleTurningPointRecord = {
+    clue: turningPoint,
+    whyDecisive: `${turningPoint} is the clue that makes the shared answer concrete enough to test across all five clues.`,
+    whatChangedAfterIt: `Once ${turningPoint} lands, the earlier clues start reading under the same answer instead of as loose guesses.`,
+  };
+  const solvePath: PuzzleSolvePathRecord = {
+    firstRead: articleBlocks[0] ?? `At first, ${record.clues.slice(0, 2).join(" and ")} pointed in more than one direction.`,
+    falseStarts: pattern.kind === "before" || pattern.kind === "after"
+      ? ["loose phrase guesses"]
+      : ["a broader category guess"],
+    whyFalseStartPlausible: [
+      pattern.kind === "before" || pattern.kind === "after"
+        ? "The opening clues support more than one shared-word read until a later clue narrows the pattern."
+        : "The earliest clues are broad enough to resemble a wider category before one clue makes the exact set visible.",
+    ],
+    breakingClue: turningPoint,
+    pivot: turningPointRecord.whyDecisive,
+    fullBoardConfirmation:
+      articleBlocks.find((paragraph, index) => index > 1 && /the answer (?:is|was)|once /i.test(paragraph)) ??
+      turningPointRecord.whatChangedAfterIt,
+  };
+  const uniquenessSignals: PuzzleUniquenessSignalsRecord = {
+    angle: connectorSummary,
+    relatedEntities: clueRows.map((row) => row.resolvedPhraseOrMember).slice(0, 5),
+    doNotRepeatPatterns: Array.from(new Set([connectorSummary, ...clueRows.map((row) => row.searchableContext || row.resolvedPhraseOrMember)])).slice(0, 5),
   };
 
   return {
@@ -578,22 +846,24 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     category: answer,
     clues: record.clues,
     difficulty: "Moderate",
+    questionType,
+    difficultyBand,
     shortSummary,
     articleBlocks,
     fullAnalysis,
-    solutionNarrative: buildSharedFallbackSolutionNarrative({
-      kind: pattern.kind,
-      wrongGuess: pattern.kind === "before" || pattern.kind === "after"
-        ? "loose phrase guesses"
-        : "a broader category guess",
-      turningPoint,
-    }),
+    solutionNarrative,
     wordHints,
     spoilerHints: {},
     lessons,
     faqs,
+    solvePath,
+    turningPoint: turningPointRecord,
+    clueRows,
+    faqItems,
+    uniquenessSignals,
     display,
     status: "live",
+    detailState: "publishing_placeholder",
     updatedAt: record.fetchedAt,
     detailMode: "short",
     detailSource: "fallback",
@@ -649,6 +919,35 @@ function isDetailEntry(
     !!entry.mainAnswer &&
     !!entry.category
   );
+}
+
+function resolveRegistryDetailState(entry: Pick<PuzzleRegistryEntryRecord, "status" | "detailState">): PuzzleDetailState {
+  if (entry.detailState) {
+    return entry.detailState;
+  }
+
+  return entry.status === "draft" || entry.status === "preview" ? "draft" : "published";
+}
+
+function resolveFormalDetailState(
+  entry: Pick<PuzzleRegistryEntryRecord, "status" | "detailState">,
+  detailContent: Pick<PuzzleDetailContentRecord, "detailState">,
+): PuzzleDetailState {
+  return detailContent.detailState ?? resolveRegistryDetailState(entry);
+}
+
+function isPublicDetailState(detailState: PuzzleDetailState): boolean {
+  return detailState === "published" || detailState === "fallback_full";
+}
+
+function isPublicDetailEntry(
+  entry: PuzzleRegistryEntryRecord,
+): entry is PuzzleRegistryEntryRecord & {
+  mainAnswer: string;
+  category: string;
+  status: "live" | "archived";
+} {
+  return isDetailEntry(entry) && isPublicDetailState(resolveRegistryDetailState(entry));
 }
 
 // ── Data fetching (ISR-aware) ─────────────────────────────────────────────
@@ -966,6 +1265,35 @@ async function toPuzzleDetail(
 ): Promise<PuzzleDetail> {
   const detailContent = await fetchPuzzleContent(entry.slug);
   const detailClues = resolveDetailClues(entry.clues, detailContent);
+  const detailState = resolveFormalDetailState(entry, detailContent);
+  const display = buildPuzzleDisplay(
+    detailClues,
+    entry.mainAnswer,
+    entry.category,
+    detailContent,
+    detailContent.lessons,
+    detailContent.wordHints,
+  );
+  const articleBlocks = detailContent.articleBlocks ?? detailContent.fullAnalysis;
+  const fullAnalysis = detailContent.fullAnalysis;
+  const solutionNarrative = detailContent.solutionNarrative ?? [];
+  const questionType = detailContent.questionType ?? inferPuzzleQuestionType(entry.mainAnswer);
+  const difficultyBand = inferPuzzleDifficultyBand({
+    explicit: detailContent.difficultyBand,
+    difficultyLevel: entry.difficultyLevel,
+    bodyMode: detailContent.bodyMode,
+  });
+  const clueRows = resolveEvidenceClueRows(detailClues, detailContent, display, detailContent.wordHints);
+  const faqItems = resolveEvidenceFaqItems(detailContent, detailClues, entry.mainAnswer);
+  const turningPoint = resolveEvidenceTurningPoint(detailContent, clueRows, faqItems);
+  const solvePath = resolveEvidenceSolvePath(
+    detailContent,
+    articleBlocks,
+    fullAnalysis,
+    solutionNarrative,
+    turningPoint,
+  );
+  const uniquenessSignals = resolveEvidenceUniquenessSignals(detailContent, display, clueRows);
 
   return {
     number: entry.puzzleNumber,
@@ -977,23 +1305,24 @@ async function toPuzzleDetail(
     category: entry.category,
     clues: detailClues,
     difficulty: entry.difficultyLevel ?? "Moderate",
+    questionType,
+    difficultyBand,
     shortSummary: entry.shortSummary,
-    articleBlocks: detailContent.articleBlocks ?? detailContent.fullAnalysis,
-    fullAnalysis: detailContent.fullAnalysis,
-    solutionNarrative: detailContent.solutionNarrative ?? [],
+    articleBlocks,
+    fullAnalysis,
+    solutionNarrative,
     wordHints: detailContent.wordHints,
     spoilerHints: detailContent.spoilerHints ?? {},
     lessons: detailContent.lessons,
     faqs: detailContent.faqs,
-    display: buildPuzzleDisplay(
-      detailClues,
-      entry.mainAnswer,
-      entry.category,
-      detailContent,
-      detailContent.lessons,
-      detailContent.wordHints,
-    ),
+    solvePath,
+    turningPoint,
+    clueRows,
+    faqItems,
+    uniquenessSignals,
+    display,
     status: entry.status,
+    detailState,
     updatedAt: entry.updatedAt,
     detailMode: detailContent.bodyMode === "short" ? "short" : "full",
     detailSource: "formal",
@@ -1002,7 +1331,7 @@ async function toPuzzleDetail(
 
 async function getDetailEntries() {
   const entries = await fetchRegistry();
-  return entries.filter(isDetailEntry);
+  return entries.filter(isPublicDetailEntry);
 }
 
 async function getLiveWorkerPuzzle(
@@ -1021,14 +1350,20 @@ async function getLiveWorkerPuzzle(
 }
 
 function allowLiveWorkerFallback(options?: PuzzleQueryOptions): boolean {
-  return options?.allowLiveWorkerFallback !== false;
+  if (typeof options?.allowLiveWorkerFallback === "boolean") {
+    return options.allowLiveWorkerFallback;
+  }
+
+  return !DETAIL_PUBLIC_FORMAL_ONLY;
 }
 
 // ── Public API (async) ─────────────────────────────────────────────────────
 
 /** Used only by generateStaticParams — reads bundled registry at build time. */
 export function getAllDetailSlugs(): string[] {
-  return bundledRegistryEntries.filter(isDetailEntry).map((e) => e.slug);
+  return bundledRegistryEntries
+    .filter(isPublicDetailEntry)
+    .map((e) => e.slug);
 }
 
 export async function getCurrentPuzzle(
@@ -1042,7 +1377,7 @@ export async function getCurrentPuzzle(
     }
   }
 
-  const current = entries.find((e) => e.status === "live");
+  const current = entries.find((e) => e.status === "live") ?? entries[0];
   if (!current) throw new Error("Expected one live puzzle in the registry.");
   return toPuzzleDetail(current);
 }

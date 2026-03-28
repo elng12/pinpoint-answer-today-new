@@ -1,17 +1,16 @@
 {
-  "puzzleNumber": 688,
   "slug": "pinpoint-answer-688",
-  "publishDate": "2026-03-19",
-  "isoDate": "2026-03-19",
-  "clues": [
-    "X",
-    "Sting",
-    "Cosmic",
-    "Manta",
-    "Gamma (high energy radiation)"
+  "detailState": "published",
+  "fullAnalysis": [
+    "X, Sting, and Cosmic do not immediately suggest the same repeated word, so the board feels broader than it really is at the start. That is why a broad early read like \"science terms\" can feel plausible before the phrase pattern becomes clear. The clue that changes the frame is \"Cosmic\".",
+    "From there, a phrase pattern built around ray explains the board cleanly. Readings like X-ray, Stingray, and Cosmic ray stop feeling random and start behaving like one exact phrase family. Once cosmic makes the repeated word visible, the earlier clues stop feeling loose and start reading like exact fits. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough.",
+    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
+    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
   ],
-  "answer": "Words that come before “ray”",
-  "category": "Words that come before “ray”",
+  "solutionNarrative": [
+    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
+    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
+  ],
   "wordHints": {
     "X": "'X-ray' is a well-known term, commonly used in medical imaging, making it a readily accessible phrase.",
     "Sting": "'Stingray' is a type of ray known for the venomous barbs in its tail, creating a clear connection.",
@@ -26,16 +25,6 @@
     "Manta": "Try reading this as part of a familiar phrase instead of as a standalone word.",
     "Gamma (high energy radiation)": "This is the clue that makes the phrase pattern feel testable without revealing the final shared word."
   },
-  "fullAnalysis": [
-    "X, Sting, and Cosmic do not immediately suggest the same repeated word, so the board feels broader than it really is at the start. That is why a broad early read like \"science terms\" can feel plausible before the phrase pattern becomes clear. The clue that changes the frame is \"Cosmic\".",
-    "From there, a phrase pattern built around ray explains the board cleanly. Readings like X-ray, Stingray, and Cosmic ray stop feeling random and start behaving like one exact phrase family. Once cosmic makes the repeated word visible, the earlier clues stop feeling loose and start reading like exact fits. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough.",
-    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
-    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
-  ],
-  "solutionNarrative": [
-    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
-    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
-  ],
   "lessons": [
     {
       "title": "Broad clues can create the wrong frame early",
@@ -48,6 +37,20 @@
     {
       "title": "Prefer exact phrase logic over loose category logic",
       "body": "Consider common phrases when a list of words seems too diverse for a simple category."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #688?",
+      "answer": "The answer is \"Words that come before ray\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #688?",
+      "answer": "The connection is a phrase pattern built around ray. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
+      "answer": "Cosmic is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough."
     }
   ],
   "display": {
@@ -80,19 +83,5 @@
         "connectionExplained": "'Gamma ray' is the standard term for this type of high-energy electromagnetic radiation, fitting perfectly."
       }
     ]
-  },
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #688?",
-      "answer": "The answer is \"Words that come before ray\" because that reading explains the full set cleanly, including the final clue."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #688?",
-      "answer": "The connection is a phrase pattern built around ray. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
-      "answer": "Cosmic is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough."
-    }
-  ]
+  }
 }
