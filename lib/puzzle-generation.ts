@@ -1,4 +1,20 @@
 import { appLogger } from "@/lib/logger";
+import {
+  ensureProviderModelCompatibility,
+  requestAIResponseContent,
+  resolveDefaultModel,
+} from "@/lib/puzzle-generation/provider-client";
+import {
+  parseAIJsonResponse,
+  validateZodShape,
+} from "@/lib/puzzle-generation/response-parser";
+import type {
+  AIGeneratedContent,
+  AIGeneratedSlots,
+  ParsedAIResponse,
+  PuzzleDataForAI,
+  PuzzleGenerationOptions,
+} from "@/lib/puzzle-generation/types";
 import { normalizeClueForAI } from "@/lib/puzzles/clue-normalizer";
 import type {
   PuzzleClueRowRecord,
@@ -12,56 +28,19 @@ import type {
 import {
   SLOT_CONTRACT,
   type PuzzleSlotClueDetail,
-  type PuzzleSlotContractData,
   validateSlotContract,
 } from "@/lib/puzzles/slot-contract";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
 import { z } from "zod";
 
-export interface PuzzleDataForAI {
-  puzzleNumber: number;
-  rawWords: string[];
-  mainAnswer: string;
-}
-
-export type AIGeneratedSlots = PuzzleSlotContractData;
+export type {
+  AIGeneratedContent,
+  AIGeneratedSlots,
+  PuzzleDataForAI,
+  PuzzleGenerationOptions,
+} from "@/lib/puzzle-generation/types";
 
 type SlotClueDetail = PuzzleSlotClueDetail;
-
-export interface AIGeneratedContent {
-  questionType?: PuzzleQuestionType;
-  difficultyBand?: PuzzleDifficultyBand;
-  sections: {
-    articleBlocks?: string[];
-    overview: string;
-    solutionEmergence: string;
-    wrongGuesses: Array<{ guess: string; explanation: string }>;
-    clueDetails: Array<{ clue: string; phrase: string; explanation: string; etymology?: string }>;
-    lessons: Array<{ title: string; body: string }>;
-    faqs: Array<{ question: string; answer: string }>;
-    trivia?: string;
-  };
-  analysis: {
-    detailedBreakdown: string;
-    dailyDebrief: string;
-    heroSummary: string;
-    seoTitle: string;
-    seoDescription: string;
-    seoKeywords: string[];
-    tags: string[];
-    llmTemplateVersion: string;
-  };
-  solvePath?: PuzzleSolvePathRecord;
-  turningPoint?: PuzzleTurningPointRecord;
-  clueRows?: PuzzleClueRowRecord[];
-  faqItems?: PuzzleEvidenceFaqItemRecord[];
-  uniquenessSignals?: PuzzleUniquenessSignalsRecord;
-  slots?: AIGeneratedSlots;
-}
-
-type ParsedAIResponse = Partial<Omit<AIGeneratedContent, "slots">> & {
-  slots?: Partial<AIGeneratedSlots>;
-};
 
 const ParsedRejectedGuessSchema = z.object({
   guess: z.string().trim().min(1),
@@ -208,18 +187,8 @@ function sanitizeParsedResponseEvidenceFields(parsed: ParsedAIResponse): ParsedA
   };
 }
 
-export type PuzzleGenerationOptions = {
-  model?: string;
-  apiEndpoint?: string;
-  provider?: "openai" | "anthropic" | "zhipu" | "azure";
-  apiVersion?: string;
-};
-
 const DEBUG = process.env.NODE_ENV === "development" || process.env.DEBUG_AI === "true";
 const LLM_TEMPLATE_VERSION = "pinpoint-v9";
-const AI_MAX_RETRIES = 3;
-const AI_RETRY_BASE_DELAY_MS = 800;
-const AI_REQUEST_TIMEOUT_MS = 30_000;
 const LLM_SYSTEM_PROMPT = [
   'You write archive content for "Pinpoint Answer Today".',
   "Write like a sharp human solver replaying how the answer became clear.",
@@ -236,206 +205,6 @@ function debugInfo(message: string, details?: Record<string, unknown>) {
 function debugError(message: string, details?: Record<string, unknown>) {
   if (!DEBUG) return;
   appLogger.error(message, { component: "puzzle-generation", ...details });
-}
-
-function formatZodIssues(issues: z.ZodIssue[]): string {
-  return issues
-    .slice(0, 6)
-    .map((issue) => {
-      const path = issue.path.length ? issue.path.join(".") : "root";
-      return `${path}: ${issue.message}`;
-    })
-    .join("; ");
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-function isRetryableStatus(status: number): boolean {
-  return status === 408 || status === 409 || status === 425 || status === 429 || status >= 500;
-}
-
-function isRetryableFetchError(error: unknown): boolean {
-  if (!(error instanceof Error)) return false;
-  const message = error.message.toLowerCase();
-  if (error.name === "AbortError") return true;
-  return (
-    message.includes("timeout") ||
-    message.includes("timed out") ||
-    message.includes("aborted") ||
-    message.includes("network") ||
-    message.includes("fetch failed") ||
-    message.includes("econnreset") ||
-    message.includes("socket hang up") ||
-    message.includes("temporary")
-  );
-}
-
-async function waitForRetry(attempt: number, context: Record<string, unknown>): Promise<void> {
-  const delayMs = AI_RETRY_BASE_DELAY_MS * 2 ** (attempt - 1);
-  debugInfo("Retrying AI request", { ...context, attempt, delayMs });
-  await sleep(delayMs);
-}
-
-async function fetchTextWithRetry(
-  url: string,
-  init: RequestInit,
-  context: Record<string, unknown>,
-): Promise<string> {
-  let lastError: Error | null = null;
-
-  for (let attempt = 1; attempt <= AI_MAX_RETRIES; attempt += 1) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), AI_REQUEST_TIMEOUT_MS);
-    try {
-      const response = await fetch(url, { ...init, signal: controller.signal });
-      const responseText = await response.text();
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        if (attempt > 1) {
-          debugInfo("AI request recovered after retry", { ...context, attempt });
-        }
-        return responseText;
-      }
-
-      const error = new Error(
-        `AI API Error: ${response.status} ${responseText.slice(0, 500)}`.trim(),
-      );
-      const retryable = isRetryableStatus(response.status);
-      debugError("AI API error response", {
-        ...context,
-        attempt,
-        status: response.status,
-        retryable,
-        errorTextHead: responseText.slice(0, 500),
-      });
-
-      if (!retryable || attempt === AI_MAX_RETRIES) {
-        throw error;
-      }
-
-      lastError = error;
-      await waitForRetry(attempt, context);
-    } catch (error) {
-      clearTimeout(timeoutId);
-      const timedOut = controller.signal.aborted;
-      const wrappedError =
-        timedOut
-          ? new Error(`AI request timed out after ${AI_REQUEST_TIMEOUT_MS}ms`)
-          : error instanceof Error
-            ? error
-            : new Error(String(error));
-      const retryable = timedOut || isRetryableFetchError(wrappedError);
-
-      if (!retryable || attempt === AI_MAX_RETRIES) {
-        throw wrappedError;
-      }
-
-      lastError = wrappedError;
-      debugError("AI request failed before response completed", {
-        ...context,
-        attempt,
-        retryable,
-        error: wrappedError.message,
-      });
-      await waitForRetry(attempt, context);
-    } finally {
-      clearTimeout(timeoutId);
-    }
-  }
-
-  throw lastError ?? new Error("AI request failed after retries");
-}
-
-function stripMarkdownCodeFence(content: string): string {
-  let text = content.trim().replace(/^\uFEFF/, "");
-  if (text.startsWith("```json")) {
-    text = text.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
-  } else if (text.startsWith("```")) {
-    text = text.replace(/^```\s*/, "").replace(/\s*```$/, "");
-  }
-  return text.trim();
-}
-
-function resolveDefaultModel(provider: PuzzleGenerationOptions["provider"], endpoint?: string): string {
-  if (provider === "anthropic") {
-    return "claude-3-5-sonnet-20241022";
-  }
-  if (provider === "zhipu") {
-    return "glm-4-plus";
-  }
-  if (provider === "azure") {
-    return "gpt-4.1-mini";
-  }
-  return endpoint ? "google/gemini-2.0-flash-001" : "gpt-4.1-mini";
-}
-
-function ensureProviderModelCompatibility(
-  provider: PuzzleGenerationOptions["provider"],
-  model: string,
-  endpoint?: string,
-): void {
-  const normalizedModel = normalizeText(model).toLowerCase();
-  if (!normalizedModel) return;
-  if (provider === "openai" && !endpoint) {
-    const clearlyNonOpenAIModel =
-      normalizedModel.startsWith("google/") ||
-      normalizedModel.startsWith("gemini") ||
-      normalizedModel.startsWith("anthropic/") ||
-      normalizedModel.startsWith("claude") ||
-      normalizedModel.startsWith("glm-");
-    if (clearlyNonOpenAIModel) {
-      throw new Error(
-        `Model "${model}" is not compatible with the official OpenAI endpoint. Set an OpenAI-compatible base URL or switch to a gpt-* model.`,
-      );
-    }
-  }
-}
-
-function extractFirstJSONObject(content: string): string | null {
-  let start = -1;
-  let depth = 0;
-  let inString = false;
-  let escaped = false;
-
-  for (let index = 0; index < content.length; index += 1) {
-    const char = content[index];
-
-    if (inString) {
-      if (escaped) {
-        escaped = false;
-      } else if (char === "\\") {
-        escaped = true;
-      } else if (char === '"') {
-        inString = false;
-      }
-      continue;
-    }
-
-    if (char === '"') {
-      inString = true;
-      continue;
-    }
-
-    if (char === "{") {
-      if (start === -1) {
-        start = index;
-      }
-      depth += 1;
-      continue;
-    }
-
-    if (char === "}" && start !== -1) {
-      depth -= 1;
-      if (depth === 0) {
-        return content.slice(start, index + 1);
-      }
-    }
-  }
-
-  return null;
 }
 
 export function buildPuzzlePrompt(puzzleData: PuzzleDataForAI): string {
@@ -603,187 +372,47 @@ export async function generatePuzzleContentFromPrompt(
   const { provider = "openai", apiEndpoint } = options;
   const model = normalizeText(options.model) || resolveDefaultModel(provider, apiEndpoint);
   ensureProviderModelCompatibility(provider, model, apiEndpoint);
-
-  if (provider === "anthropic") {
-    return callAnthropicAPI(prompt, apiKey, model, apiEndpoint, puzzleData);
-  }
-  return callOpenAICompatible(
+  const content = await requestAIResponseContent({
     prompt,
     apiKey,
     provider,
     model,
-    apiEndpoint,
-    options.apiVersion,
-    puzzleData,
-  );
-}
-
-async function callOpenAICompatible(
-  prompt: string,
-  apiKey: string,
-  provider: string,
-  model: string,
-  endpoint?: string,
-  apiVersion = "2024-02-15-preview",
-  puzzleData?: PuzzleDataForAI,
-): Promise<AIGeneratedContent> {
-  let apiUrl = "https://api.openai.com/v1/chat/completions";
-  const headers: Record<string, string> = {
-    "content-type": "application/json",
-  };
-
-  if (provider === "zhipu") {
-    apiUrl = endpoint || "https://open.bigmodel.cn/api/paas/v4/chat/completions";
-    headers.authorization = `Bearer ${apiKey}`;
-  } else if (provider === "azure") {
-    if (!endpoint) throw new Error("Azure endpoint required");
-    const azureUrl = new URL(
-      `/openai/deployments/${model}/chat/completions`,
-      endpoint.endsWith("/") ? endpoint : `${endpoint}/`,
-    );
-    azureUrl.searchParams.set("api-version", apiVersion);
-    apiUrl = azureUrl.toString();
-    headers["api-key"] = apiKey;
-  } else {
-    headers.authorization = `Bearer ${apiKey}`;
-    if (endpoint) {
-      const baseUrl = new URL(endpoint.endsWith("/") ? endpoint : `${endpoint}/`);
-      apiUrl = baseUrl.pathname.endsWith("/chat/completions")
-        ? baseUrl.toString()
-        : new URL("chat/completions", baseUrl).toString();
-    }
-  }
-
-  const requestBody: Record<string, unknown> = {
-    messages: [
-      {
-        role: "system",
-        content: LLM_SYSTEM_PROMPT,
-      },
-      {
-        role: "user",
-        content: prompt,
-      },
-    ],
-    temperature: 0.7,
-  };
-
-  if (provider !== "azure") {
-    requestBody.model = model;
-  }
-  if ((provider === "openai" || provider === "zhipu") && (model.includes("gpt-") || model.includes("glm-"))) {
-    requestBody.response_format = { type: "json_object" };
-  }
-
-  debugInfo("AI API request", { provider, model, apiUrl });
-  const responseText = await fetchTextWithRetry(
-    apiUrl,
-    {
-      method: "POST",
-      headers,
-      body: JSON.stringify(requestBody),
-    },
-    { provider, model, apiUrl },
-  );
-  let data: { choices?: Array<{ message?: { content?: string } }> };
-  try {
-    data = JSON.parse(responseText) as { choices?: Array<{ message?: { content?: string } }> };
-  } catch (error) {
-    throw new Error(
-      `Failed to parse AI API response as JSON: ${(error as Error)?.message ?? "unknown"}. First 500 chars: ${responseText.slice(0, 500)}`,
-    );
-  }
-
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) {
-    throw new Error("No content returned from AI");
-  }
-
-  return validateAndFixGeneratedContent(parseAIResponse(content), puzzleData);
-}
-
-async function callAnthropicAPI(
-  prompt: string,
-  apiKey: string,
-  model: string,
-  endpoint = "https://api.anthropic.com/v1/messages",
-  puzzleData?: PuzzleDataForAI,
-): Promise<AIGeneratedContent> {
-  const responseText = await fetchTextWithRetry(
-    endpoint,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model,
-        max_tokens: 4096,
-        system: LLM_SYSTEM_PROMPT,
-        messages: [{ role: "user", content: prompt }],
-      }),
-    },
-    { provider: "anthropic", model, apiUrl: endpoint },
-  );
-
-  const data = JSON.parse(responseText) as { content?: Array<{ text?: string }> };
-  const content = data.content?.[0]?.text;
-  if (!content) {
-    throw new Error("No content from Anthropic");
-  }
-
-  return validateAndFixGeneratedContent(parseAIResponse(content), puzzleData);
-}
-
-function parseAIResponse(content: string): ParsedAIResponse {
-  const cleaned = stripMarkdownCodeFence(content);
-  const extractedObject = extractFirstJSONObject(cleaned);
-  const candidates = extractedObject && extractedObject !== cleaned ? [cleaned, extractedObject] : [cleaned];
-  let lastError: unknown = null;
-
-  for (const candidate of candidates) {
-    try {
-      return JSON.parse(candidate) as ParsedAIResponse;
-    } catch (error) {
-      lastError = error;
-    }
-  }
-
-  debugError("Failed to parse AI JSON", {
-    error: lastError instanceof Error ? lastError.message : String(lastError),
-    preview: cleaned.slice(0, 1000),
-    extractedPreview: extractedObject?.slice(0, 1000),
+    endpoint: apiEndpoint,
+    apiVersion: options.apiVersion,
+    systemPrompt: LLM_SYSTEM_PROMPT,
+    debugInfo,
+    debugError,
   });
-  throw new Error(`Failed to parse JSON content: ${(lastError as Error)?.message ?? "unknown"}`);
+
+  return validateAndFixGeneratedContent(parseAIJsonResponse<ParsedAIResponse>(content, debugError), puzzleData);
 }
 
 function validateParsedResponseShape(parsed: ParsedAIResponse): ParsedAIResponse {
-  const result = ParsedAIResponseSchema.safeParse(sanitizeParsedResponseEvidenceFields(parsed));
-  if (!result.success) {
-    throw new Error(`AI response shape invalid: ${formatZodIssues(result.error.issues)}`);
-  }
-  return result.data as ParsedAIResponse;
+  return validateZodShape(
+    ParsedAIResponseSchema,
+    sanitizeParsedResponseEvidenceFields(parsed),
+    "AI response shape invalid",
+  ) as ParsedAIResponse;
 }
 
 function validateParsedSlotsContract(
   parsedSlots: Partial<AIGeneratedSlots>,
   puzzleData?: PuzzleDataForAI,
 ): Partial<AIGeneratedSlots> {
-  const result = ParsedSlotsSchema.safeParse(parsedSlots);
-  if (!result.success) {
-    throw new Error(`AI slots shape invalid: ${formatZodIssues(result.error.issues)}`);
-  }
+  const validatedSlots = validateZodShape(
+    ParsedSlotsSchema,
+    parsedSlots,
+    "AI slots shape invalid",
+  ) as Partial<AIGeneratedSlots>;
 
   if (!puzzleData) {
-    return result.data as Partial<AIGeneratedSlots>;
+    return validatedSlots;
   }
 
   const slotIssues = validateSlotContract({
     rawWords: puzzleData.rawWords,
     mainAnswer: puzzleData.mainAnswer,
-    slots: result.data as Partial<AIGeneratedSlots>,
+    slots: validatedSlots,
   });
   if (slotIssues.length > 0) {
     debugInfo("AI slots contract issues", {
@@ -792,7 +421,7 @@ function validateParsedSlotsContract(
     });
   }
 
-  return result.data as Partial<AIGeneratedSlots>;
+  return validatedSlots;
 }
 
 type AnswerPattern =
