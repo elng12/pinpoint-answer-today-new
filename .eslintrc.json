@@ -1,4 +1,7 @@
 {
+  "ignorePatterns": [
+    "**/*.d.mts"
+  ],
   "extends": [
     "next/core-web-vitals"
   ]
