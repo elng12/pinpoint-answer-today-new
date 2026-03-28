@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 697,
+    "slug": "pinpoint-answer-697",
+    "publishDate": "2026-03-28",
+    "status": "live",
+    "clues": [
+      "Horn",
+      "Cod",
+      "Verde",
+      "Canaveral",
+      "Of Good Hope"
+    ],
+    "mainAnswer": "Geographical capes",
+    "category": "Geographical capes",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Horn, Cod, Verde do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-03-28T07:01:34.645Z"
+  },
+  {
     "puzzleNumber": 696,
     "slug": "pinpoint-answer-696",
     "publishDate": "2026-03-27",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Scissors",
       "Golf clubs",
@@ -15,7 +33,7 @@
     "category": "Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Scissors, Golf clubs, Guitars, Helices (DNA is usually right), Gloves (🫲 + 🫱) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-03-27T07:02:19.425Z"
+    "updatedAt": "2026-03-28T07:01:34.645Z"
   },
   {
     "puzzleNumber": 695,
