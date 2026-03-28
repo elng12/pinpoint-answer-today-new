@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-699",
   "publishDate": "2026-03-30",
   "isoDate": "2026-03-30",
-  "detailState": "generating",
+  "detailState": "validated",
   "questionType": "phrase",
-  "difficultyBand": "obvious",
+  "difficultyBand": "hard",
   "clues": [
     "Tiger",
     "Plane",
@@ -16,11 +16,11 @@
   "answer": "Words that come after paper",
   "category": "Words that come after paper",
   "wordHints": {
-    "Tiger": "Tiger connects to \"Words that come after paper\"",
-    "Plane": "Plane connects to \"Words that come after paper\"",
-    "Travel": "Travel connects to \"Words that come after paper\"",
-    "Weight": "Weight connects to \"Words that come after paper\"",
-    "Clip": "Clip connects to \"Words that come after paper\""
+    "Tiger": "A 'paper tiger' is something that seems threatening but is actually harmless.",
+    "Plane": "A 'paper plane' is a toy folded from paper and thrown like a glider.",
+    "Travel": "Paper travel is the bureaucracy and documentation for travel such as visas and passports.",
+    "Weight": "A 'paper weight' is a small, heavy object used to hold down sheets of paper.",
+    "Clip": "A 'paper clip' is a wire device used to fasten sheets of paper together."
   },
   "spoilerHints": {
     "Tiger": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -30,166 +30,184 @@
     "Clip": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue.",
-    "\"Weight\" narrows that down quickly because it points to one phrase that feels exact right away.",
-    "Once that phrase appears, examples like \"paper Tiger\" and \"paper Plane\" stop feeling guessed and start reading like ordinary language.",
-    "The answer was \"Words that come after paper\".",
-    "\"Weight\" and \"Clip\" then work as clean confirmations that the same word belongs before the remaining clues too."
+    "At first glance, this puzzle felt scattered. 'Tiger,' 'Plane,' 'Travel,' 'Weight,' and 'Clip' didn't immediately suggest a common theme.",
+    "I started thinking about things you might find in an office, since 'Weight' and 'Clip' pointed in that direction.",
+    "But 'Tiger' and 'Travel' didn't fit that idea at all.",
+    "Then I tried to read the clues as things related to air travel, but 'Tiger' and 'Weight' felt out of place there.",
+    "The breakthrough came with 'Clip'.",
+    "Suddenly, I realized each word could come after 'paper'.",
+    "Paper tiger, paper plane, paper travel, paper weight, paper clip...",
+    "The answer is the phrase: Words that come after paper.",
+    "The clues were less random than they seemed. Each one forms a common phrase with 'paper.'.",
+    "That last clue made the category lock in perfectly.",
+    "Now the board feels much cleaner in hindsight."
   ],
   "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue.",
-    "\"Weight\" narrows that down quickly because it points to one phrase that feels exact right away.",
-    "Once that phrase appears, examples like \"paper Tiger\" and \"paper Plane\" stop feeling guessed and start reading like ordinary language.",
-    "The answer was \"Words that come after paper\".",
-    "\"Weight\" and \"Clip\" then work as clean confirmations that the same word belongs before the remaining clues too."
+    "At first glance, this puzzle felt scattered. 'Tiger,' 'Plane,' 'Travel,' 'Weight,' and 'Clip' didn't immediately suggest a common theme.",
+    "I started thinking about things you might find in an office, since 'Weight' and 'Clip' pointed in that direction.",
+    "But 'Tiger' and 'Travel' didn't fit that idea at all.",
+    "Then I tried to read the clues as things related to air travel, but 'Tiger' and 'Weight' felt out of place there.",
+    "The breakthrough came with 'Clip'.",
+    "Suddenly, I realized each word could come after 'paper'.",
+    "Paper tiger, paper plane, paper travel, paper weight, paper clip...",
+    "The answer is the phrase: Words that come after paper.",
+    "The clues were less random than they seemed. Each one forms a common phrase with 'paper.'.",
+    "That last clue made the category lock in perfectly.",
+    "Now the board feels much cleaner in hindsight."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #699, Tiger, Plane, Travel, Weight, Clip only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Tiger and Plane first pulled me toward office supplies, so that was the first path I tested. It held together for a moment, but clip never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let clip lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Paper tiger and Paper plane started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Clip is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer exact phrase logic over loose category logic",
+      "body": "When clues seem unrelated, try to find common phrases that connect them."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Tiger",
-        "examplePhrase": "paper Tiger",
-        "connectionExplained": "Tiger connects to \"Words that come after paper\""
+        "examplePhrase": "Paper tiger",
+        "connectionExplained": "A 'paper tiger' is something that seems threatening but is actually harmless."
       },
       {
         "clue": "Plane",
-        "examplePhrase": "paper Plane",
-        "connectionExplained": "Plane connects to \"Words that come after paper\""
+        "examplePhrase": "Paper plane",
+        "connectionExplained": "A 'paper plane' is a toy folded from paper and thrown like a glider."
       },
       {
         "clue": "Travel",
-        "examplePhrase": "paper Travel",
-        "connectionExplained": "Travel connects to \"Words that come after paper\""
+        "examplePhrase": "Paper travel",
+        "connectionExplained": "Paper travel is the bureaucracy and documentation for travel such as visas and passports."
       },
       {
         "clue": "Weight",
-        "examplePhrase": "paper Weight",
-        "connectionExplained": "Weight connects to \"Words that come after paper\""
+        "examplePhrase": "Paper weight",
+        "connectionExplained": "A 'paper weight' is a small, heavy object used to hold down sheets of paper."
       },
       {
         "clue": "Clip",
-        "examplePhrase": "paper Clip",
-        "connectionExplained": "Clip connects to \"Words that come after paper\""
+        "examplePhrase": "Paper clip",
+        "connectionExplained": "A 'paper clip' is a wire device used to fasten sheets of paper together."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #699?",
-      "answer": "The answer is \"Words that come after paper\". The clues Tiger, Plane, Travel, Weight, Clip all share this connection."
+      "answer": "The answer is \"Words that come after paper\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #699?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #699?",
+      "answer": "Clip is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues seem like a random collection of nouns at first, and the specific phrases are not obvious without that final click."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #699 just unlocked, and this is the fastest verified update. The board clues are Tiger, Plane, Travel, Weight, Clip, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
-    "falseStarts": [],
-    "whyFalseStartPlausible": [],
-    "breakingClue": "Tiger",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #699, Tiger, Plane, Travel, Weight, Clip only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Tiger lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "firstRead": "Tiger, Plane, and Travel do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"famous names\" can feel plausible before the missing word finally shows itself. Clip is the clue that finally makes the missing word visible.",
+    "falseStarts": [
+      "famous names"
+    ],
+    "whyFalseStartPlausible": [
+      "That guess only covers a few clues, and it doesn't explain 'Tiger' or 'Travel' at all."
+    ],
+    "breakingClue": "Clip",
+    "pivot": "The solve turned when I let clip lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Paper tiger and Paper plane started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Paper tiger, Paper plane, and Paper travel stop feeling loose and start sounding exact. Once clip makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem like a random collection of nouns at first, and the specific phrases are not obvious without that final click."
   },
   "turningPoint": {
     "clue": "Tiger",
-    "whyDecisive": "Tiger is the clue that makes the answer precise enough to test across the full board.",
+    "whyDecisive": "A 'paper tiger' is something that seems threatening but is actually harmless.",
     "whatChangedAfterIt": "Once Tiger lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
       "clue": "Tiger",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Tiger",
-      "nonObviousWhy": "Tiger supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Tiger"
+      "surfaceMisread": "office supplies",
+      "resolvedPhraseOrMember": "Paper tiger",
+      "nonObviousWhy": "A 'paper tiger' is something that seems threatening but is actually harmless.",
+      "searchableContext": "Paper tiger"
     },
     {
       "clue": "Plane",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Plane",
-      "nonObviousWhy": "Plane supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Plane"
+      "surfaceMisread": "office supplies",
+      "resolvedPhraseOrMember": "Paper plane",
+      "nonObviousWhy": "A 'paper plane' is a toy folded from paper and thrown like a glider.",
+      "searchableContext": "Paper plane"
     },
     {
       "clue": "Travel",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Travel",
-      "nonObviousWhy": "Travel supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Travel"
+      "surfaceMisread": "office supplies",
+      "resolvedPhraseOrMember": "Paper travel",
+      "nonObviousWhy": "Paper travel is the bureaucracy and documentation for travel such as visas and passports.",
+      "searchableContext": "Paper travel"
     },
     {
       "clue": "Weight",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Weight",
-      "nonObviousWhy": "Weight supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Weight"
+      "surfaceMisread": "office supplies",
+      "resolvedPhraseOrMember": "Paper weight",
+      "nonObviousWhy": "A 'paper weight' is a small, heavy object used to hold down sheets of paper.",
+      "searchableContext": "Paper weight"
     },
     {
       "clue": "Clip",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Clip",
-      "nonObviousWhy": "Clip supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Clip"
+      "surfaceMisread": "office supplies",
+      "resolvedPhraseOrMember": "Paper clip",
+      "nonObviousWhy": "A 'paper clip' is a wire device used to fasten sheets of paper together.",
+      "searchableContext": "Paper clip"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #699?",
-      "answer": "The answer is \"Words that come after paper\". The clues Tiger, Plane, Travel, Weight, Clip all share this connection.",
-      "tiedClue": "Tiger"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Words that come after paper\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #699?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #699?",
+      "answer": "Clip is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues seem like a random collection of nouns at first, and the specific phrases are not obvious without that final click.",
+      "tiedClue": "Clip"
     }
   ],
   "uniquenessSignals": {
-    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "angle": "a repeated-word phrase pattern with one missing term",
     "relatedEntities": [
-      "Tiger",
-      "Plane",
-      "Travel",
-      "Weight",
-      "Clip"
+      "Paper tiger",
+      "Paper plane",
+      "Paper travel",
+      "Paper weight",
+      "Paper clip"
     ],
     "doNotRepeatPatterns": [
-      "familiar phrases and everyday terms built with one shared opening word",
-      "Tiger",
-      "Plane",
-      "Travel",
-      "Weight"
+      "a repeated-word phrase pattern with one missing term",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer exact phrase logic over loose category logic",
+      "Paper tiger",
+      "Paper plane"
     ]
   }
 }
