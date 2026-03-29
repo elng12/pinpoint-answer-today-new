@@ -84,7 +84,7 @@ binding = "PP_DATA"
 preview_id = "pp_data_dev"
 
 # ---------------------------------------------------------------------------
-# Shadow (stage A) — 影子运行，只抓取 + 写 KV，不写 GitHub，不触发 revalidate，不发告警
+# Shadow (stage A) — 影子运行，只抓取 + 写独立 KV，不写正式分支，不触发正式站刷新
 # 部署命令：wrangler deploy --env shadow --name pinpoint-worker-shadow
 # 不绑定 Cron，只能手动触发
 # 需要配置的 Secrets（仅抓取相关）：GRAPHQL_COOKIE、GRAPHQL_TOKEN、GRAPHQL_CSRF_TOKEN
@@ -96,11 +96,12 @@ VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
 FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
 ALLOW_SELF_GRAPHQL          = "false"
 GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
-GITHUB_BRANCH_NEW_SITE      = "main"
+GITHUB_BRANCH_NEW_SITE      = "worker-shadow"
 NEW_SITE_URL                = "https://pinpointanswertoday.app"
 AUTO_PUBLISH_ENABLED        = "false"
 AUTO_ENRICH_ENABLED         = "false"
 AUTO_I18N_ENABLED           = "false"
+ADMIN_PUT_DOC_ENABLED       = "true"
 AUTO_I18N_LOCALES           = "fr,de,pt-BR"
 AUTO_I18N_PARALLEL          = "2"
 AUTO_PUBLISH_TIMEOUT_MS     = "15000"
@@ -112,7 +113,8 @@ SITE_BASE_URL               = ""
 
 [[env.shadow.kv_namespaces]]
 binding = "PP_DATA"
-id = "2689a48e886548a3acbe8fa9ede4e3f6"
+id = "eec495bd5bc344dca194cbe970d3d50a"
+remote = true
 
 [env.shadow.triggers]
 crons = []
@@ -121,7 +123,7 @@ crons = []
 binding = "AI"
 
 # ---------------------------------------------------------------------------
-# Staging (stage B) — 受控演练，允许完整链路，但只能手动触发，不绑定 Cron
+# Staging (stage B) — 受控演练，允许完整链路，但只写演练分支，不绑定 Cron
 # 部署命令：wrangler deploy --env staging --name pinpoint-worker-staging
 # 需要配置全套 Secrets（GITHUB_TOKEN_NEW_SITE、NEW_SITE_REVALIDATE_SECRET 等）
 # ---------------------------------------------------------------------------
@@ -131,11 +133,12 @@ VOYAGER_GRAPHQL_ENDPOINT    = "https://www.linkedin.com/voyager/api/graphql"
 FALLBACK_WEBHOOK            = "https://pinpointanswertoday.app/api/fallback/worker-pinpoint"
 ALLOW_SELF_GRAPHQL          = "false"
 GITHUB_REPO_NEW_SITE        = "elng12/pinpoint-answer-today-new"
-GITHUB_BRANCH_NEW_SITE      = "main"
+GITHUB_BRANCH_NEW_SITE      = "worker-staging"
 NEW_SITE_URL                = "https://pinpointanswertoday.app"
 AUTO_PUBLISH_ENABLED        = "true"
 AUTO_ENRICH_ENABLED         = "true"
 AUTO_I18N_ENABLED           = "false"
+ADMIN_PUT_DOC_ENABLED       = "true"
 AUTO_I18N_LOCALES           = "fr,de,pt-BR"
 AUTO_I18N_PARALLEL          = "2"
 AUTO_PUBLISH_TIMEOUT_MS     = "15000"
@@ -147,7 +150,8 @@ SITE_BASE_URL               = ""
 
 [[env.staging.kv_namespaces]]
 binding = "PP_DATA"
-id = "2689a48e886548a3acbe8fa9ede4e3f6"
+id = "027ced3a21454b649569b50f142aef0e"
+remote = true
 
 [env.staging.triggers]
 crons = []
