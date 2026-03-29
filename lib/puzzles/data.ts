@@ -1,7 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { cache } from "react";
-import registryJson from "@/data/puzzles/registry.json";
 import {
   puzzleDetailContentSchema,
   type FaqItem,
@@ -17,14 +16,15 @@ import {
   type PuzzleStatus,
   type PuzzleTurningPointRecord,
   type PuzzleUniquenessSignalsRecord,
-  registrySchema,
 } from "@/lib/puzzles/schema";
+import { registrySchema } from "@/lib/puzzles/schema";
 import {
   buildSharedFallbackArticleBlocks,
   buildSharedFallbackFaqs,
   buildSharedFallbackLessons,
   buildSharedFallbackSolutionNarrative,
 } from "@/lib/puzzles/fallback-copy";
+import { getBundledRegistryEntries } from "@/lib/puzzles/registry-bundled";
 
 export type PuzzleDetailDisplay = {
   connectorSummary: string;
@@ -125,12 +125,6 @@ const DEFAULT_PINPOINT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.
 const BASELINE_NUMBER = 536;
 const BASELINE_DATE_UTC = Date.UTC(2025, 9, 18); // 2025-10-18
 const MS_IN_DAY = 86_400_000;
-
-// Used only for generateStaticParams (build-time pre-rendering of known slugs)
-const bundledRegistryEntries = registrySchema
-  .parse(registryJson)
-  .slice()
-  .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -1010,7 +1004,7 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
   }
 
   if (!hasRemotePuzzleDataSource()) {
-    return bundledRegistryEntries;
+    return getBundledRegistryEntries();
   }
 
   // Final remote attempt (covers environments where filesystem is unavailable)
@@ -1018,7 +1012,7 @@ const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
     return fetchRegistryFromRemote();
   } catch (error) {
     warnRemoteFallback("Falling back to bundled registry", error);
-    return bundledRegistryEntries;
+    return getBundledRegistryEntries();
   }
 });
 
@@ -1361,7 +1355,7 @@ function allowLiveWorkerFallback(options?: PuzzleQueryOptions): boolean {
 
 /** Used only by generateStaticParams — reads bundled registry at build time. */
 export function getAllDetailSlugs(): string[] {
-  return bundledRegistryEntries
+  return getBundledRegistryEntries()
     .filter(isPublicDetailEntry)
     .map((e) => e.slug);
 }
