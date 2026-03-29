@@ -994,9 +994,7 @@ function turningPointSubject(label: string): string {
 }
 
 function turningPointReference(label: string): string {
-  // Preserve clue casing in prose (e.g. "Canaveral"), since these are displayed
-  // as the board words rather than generic nouns.
-  return hasSpecificTurningPointLabel(label) ? stripQuotes(label) : "a later clue";
+  return hasSpecificTurningPointLabel(label) ? lowerFirst(stripQuotes(label)) : "a later clue";
 }
 
 function looksSuspiciousTurningPointText(value: string | null | undefined): boolean {
