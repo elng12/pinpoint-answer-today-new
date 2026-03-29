@@ -30,91 +30,6 @@ function splitIntoSentences(paragraph: string): string[] {
   return (matches ?? [paragraph]).map((sentence) => sentence.trim()).filter(Boolean);
 }
 
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function stripLeadingQuotes(value: string): string {
-  return value.trimStart().replace(/^[\"'“‘]+/, "");
-}
-
-function whyAlreadyNamesClue(why: string, clue: string): boolean {
-  const clueLabel = clue.trim();
-  if (clueLabel.length === 0) return false;
-
-  const candidate = stripLeadingQuotes(why);
-  if (/^[A-Za-z]+$/.test(clueLabel)) {
-    // Avoid matching "Cod" against "Code" etc.
-    const pattern = new RegExp(`^${escapeRegExp(clueLabel)}(?![A-Za-z])`, "i");
-    return pattern.test(candidate);
-  }
-
-  return candidate.toLowerCase().startsWith(clueLabel.toLowerCase());
-}
-
-function findPreviousWord(input: string, matchStart: number): string | null {
-  const before = input.slice(0, matchStart);
-  const match = before.match(/([A-Za-z]+)[^A-Za-z]*$/);
-  return match?.[1] ?? null;
-}
-
-function findNextWord(input: string, matchEnd: number): string | null {
-  const after = input.slice(matchEnd);
-  const match = after.match(/^[^A-Za-z]*([A-Za-z]+)/);
-  return match?.[1] ?? null;
-}
-
-type SharedPhraseToken = { kind: "before" | "after"; token: string };
-
-function getSharedPhraseToken(answer: string): SharedPhraseToken | null {
-  const trimmed = answer.trim();
-  const after = trimmed.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
-  if (after?.[1]) return { kind: "after", token: after[1].trim().toLowerCase() };
-  const before = trimmed.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
-  if (before?.[1]) return { kind: "before", token: before[1].trim().toLowerCase() };
-  return null;
-}
-
-function applyClueCasing(paragraph: string, clues: string[], phraseToken: SharedPhraseToken | null): string {
-  let out = paragraph;
-  const normalizedClues = clues
-    .map((clue) => clue.trim())
-    .filter(Boolean)
-    // Replace multi-word clues first so single-word passes don't disturb them.
-    .sort((a, b) => b.length - a.length);
-
-  for (const clue of normalizedClues) {
-    // Only apply casing to simple alpha words/phrases; skip emoji/punctuation-heavy clues.
-    if (!/^[A-Za-z][A-Za-z'’\-\s]*$/.test(clue)) continue;
-    const pattern = new RegExp(`\\b${escapeRegExp(clue)}\\b`, "gi");
-    const isSingleWord = !clue.includes(" ");
-
-    out = out.replace(pattern, (match, offset) => {
-      if (!isSingleWord) return clue;
-
-      if (phraseToken?.kind === "after") {
-        const previousWord = findPreviousWord(out, offset);
-        if (previousWord?.toLowerCase() === phraseToken.token) {
-          // e.g. keep "paper plane" lowercase in shared-word puzzles.
-          return match;
-        }
-      }
-
-      if (phraseToken?.kind === "before") {
-        const nextWord = findNextWord(out, offset + match.length);
-        if (nextWord?.toLowerCase() === phraseToken.token) {
-          // e.g. keep "traffic light" lowercase in shared-word puzzles.
-          return match;
-        }
-      }
-
-      return clue;
-    });
-  }
-
-  return out;
-}
-
 function buildReadableParagraphs(paragraphs: string[]): string[] {
   const trimmedParagraphs = paragraphs.map((paragraph) => paragraph.trim()).filter(Boolean);
   if (trimmedParagraphs.length >= 5) {
@@ -187,13 +102,6 @@ function dedupeParagraphs(paragraphs: string[]): string[] {
   return unique;
 }
 
-function dedupeAgainstReference(paragraphs: string[], reference: string[]): string[] {
-  if (reference.length === 0) return paragraphs;
-  const referenceKeys = new Set(reference.map(normalizeParagraphKey));
-  const filtered = paragraphs.filter((paragraph) => !referenceKeys.has(normalizeParagraphKey(paragraph)));
-  return filtered.length > 0 ? filtered : paragraphs;
-}
-
 function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
   const paragraphs: string[] = [];
 
@@ -211,17 +119,7 @@ function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
   });
 
   if (puzzle.turningPoint?.clue) {
-    const clue = puzzle.turningPoint.clue;
-    const why = puzzle.turningPoint.whyDecisive?.trim();
-
-    // Avoid "X was the turning clue. X is the turning point..." style repetition.
-    if (why && whyAlreadyNamesClue(why, clue)) {
-      paragraphs.push(why);
-    } else if (why) {
-      paragraphs.push(`${clue} was the turning clue. ${why}`);
-    } else {
-      paragraphs.push(`${clue} was the turning clue.`);
-    }
+    paragraphs.push(`${puzzle.turningPoint.clue} was the turning clue. ${puzzle.turningPoint.whyDecisive}`);
   } else if (puzzle.solvePath?.breakingClue) {
     paragraphs.push(`${puzzle.solvePath.breakingClue} was the clue that tightened the board.`);
   }
@@ -235,34 +133,6 @@ function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
   }
 
   return dedupeParagraphs(paragraphs);
-}
-
-function tightenWalkthroughParagraphs(paragraphs: string[], puzzle: PuzzleDetailRecord): string[] {
-  if (paragraphs.length <= 4) return paragraphs;
-
-  const answer = puzzle.answer.trim().toLowerCase();
-  const clueNeedle = puzzle.clues.map((clue) => clue.trim().toLowerCase()).filter(Boolean);
-
-  const kept = paragraphs.filter((paragraph, index) => {
-    if (index === paragraphs.length - 1) return true; // keep the closing line
-
-    const trimmed = paragraph.trim();
-    const lower = trimmed.toLowerCase();
-    if (answer && lower.includes(answer)) return true;
-    if (/(the answer (?:is|was)|once\b)/i.test(trimmed)) return true;
-    if (trimmed.length >= 140) return true;
-
-    const mentionsClue = clueNeedle.some((clue) => clue && lower.includes(clue));
-    if (mentionsClue && /(made sense|fit|worked|clicked|lands?|confirm|narrow)/i.test(trimmed)) {
-      return true;
-    }
-
-    return false;
-  });
-
-  const unique = dedupeParagraphs(kept);
-  // If we filtered too aggressively, keep the original text.
-  return unique.length >= 3 ? unique : paragraphs;
 }
 
 function renderClueTable(puzzle: PuzzleDetailRecord) {
@@ -369,19 +239,8 @@ export function PuzzleFullAnalysis({
 }) {
   const isShortMode = puzzle.detailMode === "short";
   const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
-  const phraseToken = getSharedPhraseToken(puzzle.answer);
-  const solvePathParagraphs = dedupeParagraphs(
-    buildSolvePathParagraphs(puzzle).map((paragraph) => applyClueCasing(paragraph, puzzle.clues, phraseToken)),
-  );
-  const walkthroughParagraphs = dedupeAgainstReference(
-    dedupeParagraphs(
-      tightenWalkthroughParagraphs(
-        buildWalkthroughParagraphs(puzzle).map((paragraph) => applyClueCasing(paragraph, puzzle.clues, phraseToken)),
-        puzzle,
-      ),
-    ),
-    solvePathParagraphs,
-  );
+  const walkthroughParagraphs = buildWalkthroughParagraphs(puzzle);
+  const solvePathParagraphs = buildSolvePathParagraphs(puzzle);
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
   const analysisTitle = isShortMode
     ? `Pinpoint ${puzzle.number} Quick Guide`
