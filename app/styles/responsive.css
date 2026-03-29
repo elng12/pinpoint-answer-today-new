@@ -1,4 +1,12 @@
 @media (max-width: 900px) {
+  .nav-links-desktop {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
+  }
+
   .footer-grid,
   .footer-link-grid,
   .detail-hero-grid,
