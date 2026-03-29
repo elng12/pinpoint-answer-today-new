@@ -16,5 +16,5 @@ export default async function LegacyThemePage({
     notFound();
   }
 
-  permanentRedirect(`${routes.detail(detailSlug)}/`);
+  permanentRedirect(routes.detail(detailSlug));
 }

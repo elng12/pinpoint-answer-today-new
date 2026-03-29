@@ -49,30 +49,30 @@ const securityHeaders: { key: string; value: string }[] = [
 const legacyThemeDetailRedirects = [
   {
     source: "/puzzles/themes/types-of-dances",
-    destination: "/linkedin-pinpoint-answers/pinpoint-answer-474",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-474/",
   },
   {
     source: "/puzzles/themes/things-you-can-raise",
-    destination: "/linkedin-pinpoint-answers/pinpoint-answer-536",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-536/",
   },
   {
     source: "/puzzles/themes/words-that-precede-ship",
-    destination: "/linkedin-pinpoint-answers/pinpoint-answer-562",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-562/",
   },
   {
     source: "/puzzles/themes/things-you-can-skip",
-    destination: "/linkedin-pinpoint-answers/pinpoint-answer-565",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-565/",
   },
 ] as const;
 
 const legacyConnectorDetailRedirects = [
   {
     source: "/puzzles/connector/mark",
-    destination: "/linkedin-pinpoint-answers/pinpoint-answer-587",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-587/",
   },
   {
     source: "/puzzles/connectors/course",
-    destination: "/linkedin-pinpoint-answers/pinpoint-answer-530",
+    destination: "/linkedin-pinpoint-answers/pinpoint-answer-530/",
   },
 ] as const;
 
@@ -111,7 +111,7 @@ const nextConfig: NextConfig = {
       // Puzzle detail pages: /en/linkedin-pinpoint-answers/pinpoint-answer-678 → /linkedin-pinpoint-answers/pinpoint-answer-678
       {
         source: `/${locale}/linkedin-pinpoint-answers/:slug`,
-        destination: "/linkedin-pinpoint-answers/:slug",
+        destination: "/linkedin-pinpoint-answers/:slug/",
         permanent: true,
       },
       // Locale detail OG image paths: /de/linkedin-pinpoint-answers/pinpoint-answer-678/opengraph-image → canonical
@@ -129,6 +129,12 @@ const nextConfig: NextConfig = {
       // Puzzles archive: /en/puzzles → /puzzles
       {
         source: `/${locale}/puzzles`,
+        destination: "/puzzles",
+        permanent: true,
+      },
+      // Legacy connectors archive root has no dedicated page in the new site
+      {
+        source: `/${locale}/puzzles/connectors`,
         destination: "/puzzles",
         permanent: true,
       },
@@ -164,19 +170,19 @@ const nextConfig: NextConfig = {
       // then the app validates whether that puzzle number really exists.
       {
         source: `/${locale}/puzzles/:number(\\d+)`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true,
       },
       // Locale slug-format puzzle pages: /en/puzzles/pinpoint-answer-530 → canonical
       {
         source: `/${locale}/puzzles/pinpoint-answer-:number(\\d+)`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true,
       },
       // Locale-root puzzle alias: /en/pinpoint-answer-678 → /linkedin-pinpoint-answers/pinpoint-answer-678
       {
         source: `/${locale}/pinpoint-answer-:number(\\d+)`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true,
       },
       // Dynamic today alias keeps its own stable URL, then resolves to the current live detail page.
@@ -200,7 +206,7 @@ const nextConfig: NextConfig = {
       // Older "number-analysis" aliases still point at the canonical detail page when the number exists.
       {
         source: `/${locale}/pinpoint/:number(\\d+)-analysis`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true,
       },
       // Preview page
@@ -264,7 +270,25 @@ const nextConfig: NextConfig = {
       // Slug-format puzzle pages without locale: /puzzles/pinpoint-answer-530 → canonical
       {
         source: "/puzzles/pinpoint-answer-:number(\\d+)",
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        permanent: true as const,
+      },
+      // Legacy connectors archive root → canonical archive
+      {
+        source: "/puzzles/connectors",
+        destination: "/puzzles",
+        permanent: true as const,
+      },
+      // Old root detail alias: /pinpoint-answer-530 → canonical
+      {
+        source: "/pinpoint-answer-:number(\\d+)",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        permanent: true as const,
+      },
+      // Older numeric detail alias: /linkedin-pinpoint/530 → canonical
+      {
+        source: "/linkedin-pinpoint/:number(\\d+)",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true as const,
       },
       // Old pinpoint archive shortcut → archive

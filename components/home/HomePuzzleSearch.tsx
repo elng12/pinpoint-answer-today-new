@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { trackClientEvent } from "@/lib/analytics";
+import { routes } from "@/lib/paths/routes";
 
 function buildSlug(puzzleNumber: number) {
-  return `/linkedin-pinpoint-answers/pinpoint-answer-${puzzleNumber}`;
+  return routes.detail(`pinpoint-answer-${puzzleNumber}`);
 }
 
 export function HomePuzzleSearch({
