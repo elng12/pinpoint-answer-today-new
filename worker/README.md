@@ -44,7 +44,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 | `GRAPHQL_CSRF_TOKEN` | Voyager GraphQL 可选 CSRF token | 可选 | 可选 |
 | `SITE_API_TOKEN` | 调 `/api/admin/generate-draft` 的 Bearer token（enrichment/i18n 用） | ❌ | ✅ |
 | `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | ❌ | ✅ |
-| `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致 | ❌ | ✅ |
+| `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致；仅正式 `main` 分支需要 | ❌ | staging 可选 / 生产必需 |
 | `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
 | `FALLBACK_WEBHOOK_SECRET` | Worker 调站点 `/api/fallback/worker-pinpoint` 的 HMAC 签名密钥 | ❌ | ✅ |
 | `ADMIN_SECRET` | 受保护管理接口的密钥 | 可选 | ✅ |
@@ -58,10 +58,64 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 - `FEISHU_WEBHOOK_URL` 不是阶段 B 演练必需；如果 staging 只是短期手动验证，可先不配，避免测试告警进入正式群
 - `GITHUB_TOKEN_NEW_SITE` 长期应使用 fine-grained PAT，并限制到 `elng12/pinpoint-answer-today-new` 的 `contents:write`；临时复用本机 `gh auth token` 只适合一次性演练，不适合长期保留
 - 站点 enrichment 走的是站点自己的 `/api/admin/generate-draft`，所以除了 Cloudflare Worker secret 以外，Vercel 站点侧也要有可用的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL`
+- `shadow` 默认写演练分支 `worker-shadow`，`staging` 默认写演练分支 `worker-staging`；非 `main` 分支不会触发正式站 `revalidate`、页面探活或发布通知
 - 如果用 OpenRouter，推荐统一口径为：
   - `OPENAI_API_KEY=<OpenRouter key>`
   - `OPENAI_BASE_URL=https://openrouter.ai/api/v1`
   - `AI_MODEL=google/gemini-2.0-flash-001` 或你实际在用的模型
+
+### `graphql 401` 优先修复顺序
+
+如果 `staging` / `shadow` 的 `/admin/preflight-linkedin` 返回 `graphql 401`，先不要默认去找 `GRAPHQL_TOKEN` 或 `GRAPHQL_CSRF_TOKEN` 原值。当前 worker 会优先从 `GRAPHQL_COOKIE` 里的 `JSESSIONID` 自动拼出 `csrf-token`，所以最常见的原因其实是 `GRAPHQL_COOKIE` 过期。
+
+完整演练步骤见：
+
+- `docs/staging-graphql-cookie-recovery-runbook-2026-03-28.md`
+
+推荐排查顺序：
+
+1. 先对比生产和演练环境的预检结果
+   - 如果生产 `pinpoint-worker` 预检正常，而 `staging` / `shadow` 返回 `graphql 401`，优先怀疑演练环境 cookie 过期
+2. 先刷新 `GRAPHQL_COOKIE`
+   - 从本机当前已登录 LinkedIn 的浏览器会话提取一份新 cookie
+   - 至少要包含 `li_at` 和 `JSESSIONID`
+3. 只有在刷新 cookie 后仍然失败，再继续核对 `GRAPHQL_TOKEN`
+
+`2026-03-28` 实测结论：
+
+- 仅刷新 `GRAPHQL_COOKIE` 就让 `shadow` 和 `staging` 的 `/admin/preflight-linkedin` 从 `graphql 401` 恢复为 `source: "graphql"`
+- `GRAPHQL_CSRF_TOKEN` 在当前 worker 实现里不是首要排查项
+
+推荐命令：
+
+```bash
+python3 - <<'PY' >/tmp/linkedin_edge_cookie.txt
+import browser_cookie3
+jar = browser_cookie3.edge(domain_name='linkedin.com')
+seen = set()
+parts = []
+for c in jar:
+    if c.name in seen:
+        continue
+    seen.add(c.name)
+    parts.append(f"{c.name}={c.value}")
+print('; '.join(parts), end='')
+PY
+
+cd /Users/elng/web/pinpointanswertoday/new-pinpoint-site/worker
+npx wrangler secret put GRAPHQL_COOKIE --env staging < /tmp/linkedin_edge_cookie.txt
+npx wrangler secret put GRAPHQL_COOKIE --env shadow < /tmp/linkedin_edge_cookie.txt
+rm -f /tmp/linkedin_edge_cookie.txt
+```
+
+补完后立刻用下面的预检接口确认：
+
+```bash
+export ADMIN_SECRET='<your-admin-secret>'
+
+curl "https://pinpoint-worker-staging.2296744453m.workers.dev/admin/preflight-linkedin?secret=$ADMIN_SECRET&date=2026-03-28"
+curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/preflight-linkedin?secret=$ADMIN_SECRET&date=2026-03-28"
+```
 
 本机 env 副本策略：
 
@@ -109,9 +163,10 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 常用参数：
 
 - `publish=1`：抓取后继续发布
-- `force=1`：即使命中“疑似昨天旧数据”规则也继续跑发布链路
+- `force=1`：即使命中“疑似昨天旧数据”规则也继续跑发布链路；不会清除“今天已完成 enrich”这把完成锁
 - `date=YYYY-MM-DD`：手动指定日期
 - `i18n=0` 或 `i18n=1`：关闭或开启多语言
+- `source=stored`：仅演练分支可用；直接使用该环境 KV 里已存的题目数据，不再现场抓取
 
 推荐命令：
 
@@ -121,6 +176,16 @@ export ADMIN_SECRET='<your-admin-secret>'
 curl "https://pinpoint-worker.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET&publish=1&force=1&i18n=0"
 curl "https://pinpoint-worker-staging.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET&publish=1&force=1&i18n=0"
 curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET"
+```
+
+如果 staging / shadow 的上游抓取临时失效，可以先把一份题目写进演练环境，再用 `source=stored` 跑发布链路：
+
+```bash
+curl -X POST "https://pinpoint-worker-staging.2296744453m.workers.dev/admin/put-doc?secret=$ADMIN_SECRET" \
+  -H "content-type: application/json" \
+  --data '{"theme":"Example theme","mainAnswer":"Example theme","answers":["One","Two","Three","Four","Five"]}'
+
+curl "https://pinpoint-worker-staging.2296744453m.workers.dev/admin/run?secret=$ADMIN_SECRET&publish=1&force=1&i18n=0&source=stored"
 ```
 
 返回含义：
