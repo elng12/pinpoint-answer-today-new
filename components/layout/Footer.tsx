@@ -27,9 +27,7 @@ export function Footer({
       ];
   const supportLinks = [
     { label: "Email Support", href: supportMailto },
-    { label: "Contact", href: routes.contact },
-    { label: "Share Feedback", href: routes.contact },
-    { label: "Request a Feature", href: routes.contact },
+    { label: "Contact & Feedback", href: routes.contact },
   ];
   const legalLinks = [
     { label: "Privacy Notice", href: routes.privacy },
@@ -79,7 +77,7 @@ export function Footer({
               <p className="eyebrow">Support</p>
               <ul className="footer-link-list">
                 {supportLinks.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.label}-${link.href}`}>
                     {link.href.startsWith("mailto:") ? (
                       <a href={link.href}>{link.label}</a>
                     ) : (

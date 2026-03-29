@@ -30,7 +30,7 @@ export function HomeHero({
           <a
             className="button-secondary home-hero-secondary"
             href="https://www.linkedin.com/games/"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             target="_blank"
           >
             Play on LinkedIn
