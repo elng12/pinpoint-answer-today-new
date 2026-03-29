@@ -34,13 +34,32 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
           />
           Pinpoint Answer Today
         </Link>
-        <nav className="nav-links">
+
+        <nav className="nav-links nav-links-desktop" aria-label="Primary navigation">
           {navLinks.map((link) => (
             <Link key={`${link.href}-${link.label}`} href={link.href} prefetch={false}>
               {link.label}
             </Link>
           ))}
         </nav>
+
+        <details className="nav-menu">
+          <summary className="nav-menu-trigger" aria-label="Open navigation menu">
+            <span className="nav-menu-trigger-label">Menu</span>
+            <span className="nav-menu-icon" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
+          </summary>
+          <nav className="nav-menu-panel" aria-label="Mobile navigation">
+            {navLinks.map((link) => (
+              <Link key={`mobile-${link.href}-${link.label}`} href={link.href} prefetch={false}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </details>
       </div>
     </header>
   );
