@@ -21,7 +21,7 @@ export function HomeHero({
         <p className="home-hero-kicker">Today&apos;s Pinpoint hints, yesterday&apos;s answer, and the archive</p>
         <h1 className="home-hero-title">{`Today's LinkedIn Pinpoint #${puzzle.number} Answer`}</h1>
         <p className="home-hero-subtitle">
-          {`If you need LinkedIn Pinpoint answer today, this page keeps today's answer, spoiler-safe hints, yesterday's answer, and the full archive in one place for Puzzle #${puzzle.number}.`}
+          {`Need today's LinkedIn Pinpoint answer? Find spoiler-safe hints, yesterday's solution, and the full archive for Puzzle #${puzzle.number} in one place.`}
         </p>
         <div className="button-row home-hero-actions">
           <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>

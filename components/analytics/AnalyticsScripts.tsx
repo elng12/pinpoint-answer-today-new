@@ -9,6 +9,11 @@ export function AnalyticsScripts() {
     return null;
   }
 
+  const measurementIdLiteral = JSON.stringify(GA_MEASUREMENT_ID);
+  const scriptSrcLiteral = JSON.stringify(
+    `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+  );
+
   const bootstrapAnalytics = `
     (function() {
       window.dataLayer = window.dataLayer || [];
@@ -29,11 +34,11 @@ export function AnalyticsScripts() {
 
         var script = document.createElement("script");
         script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}";
+        script.src = ${scriptSrcLiteral};
         document.head.appendChild(script);
 
         window.gtag("js", new Date());
-        window.gtag("config", "${GA_MEASUREMENT_ID}", {
+        window.gtag("config", ${measurementIdLiteral}, {
           anonymize_ip: true,
           transport_type: "beacon"
         });
