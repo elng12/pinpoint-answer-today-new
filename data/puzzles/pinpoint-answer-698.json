@@ -1,0 +1,197 @@
+{
+  "puzzleNumber": 698,
+  "slug": "pinpoint-answer-698",
+  "publishDate": "2026-03-29",
+  "isoDate": "2026-03-29",
+  "detailState": "generating",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Fence",
+    "Moat",
+    "Hedge",
+    "Wall",
+    "Boundary line"
+  ],
+  "answer": "Things that separate properties",
+  "category": "Things that separate properties",
+  "wordHints": {
+    "Fence": "Fence connects to \"Things that separate properties\"",
+    "Moat": "Moat connects to \"Things that separate properties\"",
+    "Hedge": "Hedge connects to \"Things that separate properties\"",
+    "Wall": "Wall connects to \"Things that separate properties\"",
+    "Boundary line": "Boundary line connects to \"Things that separate properties\""
+  },
+  "spoilerHints": {
+    "Fence": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Moat": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Hedge": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Wall": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Boundary line": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
+  "articleBlocks": [
+    "At first, Fence and Moat pointed in a few different directions.",
+    "The turn came with \"Boundary line\".",
+    "That clue made the answer feel concrete enough to test across the full board.",
+    "Once I read the set through a category board focused on things, examples like \"Fence\" and \"Moat\" stopped feeling loose and started landing cleanly.",
+    "The answer was \"Things that separate properties\".",
+    "\"Wall\" and \"Boundary line\" then felt like the last confirmations, not separate guesses."
+  ],
+  "fullAnalysis": [
+    "At first, Fence and Moat pointed in a few different directions.",
+    "The turn came with \"Boundary line\".",
+    "That clue made the answer feel concrete enough to test across the full board.",
+    "Once I read the set through a category board focused on things, examples like \"Fence\" and \"Moat\" stopped feeling loose and started landing cleanly.",
+    "The answer was \"Things that separate properties\".",
+    "\"Wall\" and \"Boundary line\" then felt like the last confirmations, not separate guesses."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #698, Fence, Moat, Hedge, Wall, Boundary line only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Fence",
+        "examplePhrase": "Fence",
+        "connectionExplained": "Fence connects to \"Things that separate properties\""
+      },
+      {
+        "clue": "Moat",
+        "examplePhrase": "Moat",
+        "connectionExplained": "Moat connects to \"Things that separate properties\""
+      },
+      {
+        "clue": "Hedge",
+        "examplePhrase": "Hedge",
+        "connectionExplained": "Hedge connects to \"Things that separate properties\""
+      },
+      {
+        "clue": "Wall",
+        "examplePhrase": "Wall",
+        "connectionExplained": "Wall connects to \"Things that separate properties\""
+      },
+      {
+        "clue": "Boundary line",
+        "examplePhrase": "Boundary line",
+        "connectionExplained": "Boundary line connects to \"Things that separate properties\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #698?",
+      "answer": "The answer is \"Things that separate properties\". The clues Fence, Moat, Hedge, Wall, Boundary line all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #698 just unlocked, and this is the fastest verified update. The board clues are Fence, Moat, Hedge, Wall, Boundary line, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [],
+    "whyFalseStartPlausible": [],
+    "breakingClue": "Fence",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #698, Fence, Moat, Hedge, Wall, Boundary line only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Fence lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Fence",
+    "whyDecisive": "Fence is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Fence lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Fence",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Fence",
+      "nonObviousWhy": "Fence supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Fence"
+    },
+    {
+      "clue": "Moat",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Moat",
+      "nonObviousWhy": "Moat supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Moat"
+    },
+    {
+      "clue": "Hedge",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Hedge",
+      "nonObviousWhy": "Hedge supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Hedge"
+    },
+    {
+      "clue": "Wall",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Wall",
+      "nonObviousWhy": "Wall supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Wall"
+    },
+    {
+      "clue": "Boundary line",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Boundary line",
+      "nonObviousWhy": "Boundary line supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Boundary line"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #698?",
+      "answer": "The answer is \"Things that separate properties\". The clues Fence, Moat, Hedge, Wall, Boundary line all share this connection.",
+      "tiedClue": "Fence"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Fence",
+      "Moat",
+      "Hedge",
+      "Wall",
+      "Boundary line"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Fence",
+      "Moat",
+      "Hedge",
+      "Wall"
+    ]
+  }
+}
