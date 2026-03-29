@@ -117,7 +117,7 @@ export default async function HomePage() {
         <HomeRecentAnswers entries={archive} />
         <HomeWhatIs />
         <HomeBenefitsFaq puzzle={current} />
-        <HomeCtaFooter currentPuzzleNumber={current.number} currentSlug={current.slug} />
+        <HomeCtaFooter currentSlug={current.slug} />
         <FooterBadgeWall badges={footerBadges} heading="Media & Featured In" />
       </div>
     </main>

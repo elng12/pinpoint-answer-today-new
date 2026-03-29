@@ -53,7 +53,6 @@ export async function generateMetadata({
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
   const isShortMode = puzzle.detailMode === "short";
-  const visibleFaqs = getVisibleDetailFaqs(puzzle.faqs, puzzle.detailMode);
   const seoDescription = isShortMode
     ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the answer included. Answer: ${puzzle.answer}.`
     : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);

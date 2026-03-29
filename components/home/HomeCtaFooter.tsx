@@ -2,10 +2,8 @@ import Link from "next/link";
 import { routes } from "@/lib/paths/routes";
 
 export function HomeCtaFooter({
-  currentPuzzleNumber,
   currentSlug,
 }: {
-  currentPuzzleNumber: number;
   currentSlug: string;
 }) {
   return (
