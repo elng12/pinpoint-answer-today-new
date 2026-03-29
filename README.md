@@ -85,6 +85,22 @@ npm run test:pinpoint-regression:all
 - `docs/pinpoint-content-regression-sample-set.md`
 - `docs/pinpoint-content-generation-best-practice-2026-03-17.md`
 
+## 详情页视觉自检（图1基线）
+
+为了避免把详情页“从图1改成图2那种大重排”，改完详情相关组件后建议跑一次截图自检：
+
+```bash
+npm run dev
+```
+
+另开一个终端执行：
+
+```bash
+npm run visual:detail
+```
+
+默认会截 `695/697/698` 三篇详情页，图片输出到 `tmp/visual-baseline/<今天日期>/`。
+
 ## 正式发布
 
 如果这次改动会同时影响站点和 `worker/`，不要只做 `git push`。
