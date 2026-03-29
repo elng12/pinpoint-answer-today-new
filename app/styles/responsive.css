@@ -1,0 +1,185 @@
+@media (max-width: 900px) {
+  .footer-grid,
+  .footer-link-grid,
+  .detail-hero-grid,
+  .contact-hero-grid,
+  .contact-card-row,
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .home-bookmark-strip {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .home-bookmark-tip {
+    text-align: left;
+  }
+
+  .home-adjacent-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .reveal-clue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .countdown-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-what-is-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-answer-grid-compact {
+    grid-template-columns: 1fr;
+  }
+
+  .countdown-segment-card {
+    min-height: 156px;
+  }
+
+  .detail-clue-table-head {
+    display: none;
+  }
+
+  .detail-clue-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .detail-stat-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-submit-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .archive-search-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .archive-search-clear {
+    width: 100%;
+  }
+
+  .footer-badge-link {
+    min-width: 144px;
+  }
+
+  .surface-block {
+    padding: 24px;
+  }
+
+  .home-hero-inner {
+    padding: 24px 20px 28px;
+  }
+
+  .home-status-badge {
+    font-size: 14px;
+    letter-spacing: 0.12em;
+  }
+
+  .home-hero-title,
+  .home-hero-subtitle,
+  .home-hero-detail {
+    max-width: 100%;
+  }
+
+  .home-hero-title {
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .home-hero-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .home-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-hero-actions .button-primary,
+  .home-hero-actions .button-secondary {
+    width: 100%;
+  }
+
+  .home-reveal-title {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .home-next-unlock-inner {
+    padding: 32px 28px;
+  }
+
+  .home-next-unlock-title {
+    font-size: clamp(28px, 8vw, 40px);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .home-next-unlock-copy {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .reveal-tip,
+  .reveal-hint-card {
+    width: 100%;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .reveal-clue-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .home-what-is-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .benefit-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .faq-guide-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recent-answer-grid-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-cta-title {
+    white-space: nowrap;
+  }
+
+  .home-cta-copy {
+    max-width: 1180px;
+    white-space: nowrap;
+  }
+}
