@@ -34,6 +34,24 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+function stripLeadingQuotes(value: string): string {
+  return value.trimStart().replace(/^[\"'“‘]+/, "");
+}
+
+function whyAlreadyNamesClue(why: string, clue: string): boolean {
+  const clueLabel = clue.trim();
+  if (clueLabel.length === 0) return false;
+
+  const candidate = stripLeadingQuotes(why);
+  if (/^[A-Za-z]+$/.test(clueLabel)) {
+    // Avoid matching "Cod" against "Code" etc.
+    const pattern = new RegExp(`^${escapeRegExp(clueLabel)}(?![A-Za-z])`, "i");
+    return pattern.test(candidate);
+  }
+
+  return candidate.toLowerCase().startsWith(clueLabel.toLowerCase());
+}
+
 function findPreviousWord(input: string, matchStart: number): string | null {
   const before = input.slice(0, matchStart);
   const match = before.match(/([A-Za-z]+)[^A-Za-z]*$/);
@@ -195,11 +213,9 @@ function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
   if (puzzle.turningPoint?.clue) {
     const clue = puzzle.turningPoint.clue;
     const why = puzzle.turningPoint.whyDecisive?.trim();
-    const normalizedWhy = why?.toLowerCase() ?? "";
-    const normalizedClue = clue.trim().toLowerCase();
 
     // Avoid "X was the turning clue. X is the turning point..." style repetition.
-    if (why && normalizedWhy.startsWith(normalizedClue)) {
+    if (why && whyAlreadyNamesClue(why, clue)) {
       paragraphs.push(why);
     } else if (why) {
       paragraphs.push(`${clue} was the turning clue. ${why}`);
