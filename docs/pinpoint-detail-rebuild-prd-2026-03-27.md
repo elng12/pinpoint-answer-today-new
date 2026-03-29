@@ -101,10 +101,10 @@
 
 `components/detail/PuzzleDetail.tsx` 和 `components/detail/PuzzleFullAnalysis.tsx` 目前仍然把不少交互和辅助模块放在正文前。用户和搜索引擎最需要的“答案为什么成立、关键转折 clue 是什么、为什么不是别的答案”没有在首屏正文立住。
 
-### 5. 内链过于通用，详情页缺少主题集群关系
+### 5. 内链策略需要克制（先不加不必要复杂度）
 
-当前详情页主要依赖 recent list 和前后页导航，缺少“同题型”“同套路”“同样靠转折 clue 才解开”的上下文内链。  
-这会让页面更像单条记录，而不是一个主题网络里的节点。
+当前详情页主要依赖 recent list 和前后页导航。理论上可以再做“同题型”“同套路”“同样靠转折 clue 才解开”的上下文内链，但这会引入额外供数与维护成本，也容易把页面变成为了 SEO 而堆模块。  
+首版以对齐对手为原则：不新增分组 related，只保留 recent list + 前后题导航；等正文质量与发布一致性稳定后再评审是否需要增强内链。
 
 ---
 
@@ -256,20 +256,21 @@
 4. `Why each clue fits`
 5. `Why this answer and not others`
 6. `FAQ`
-7. `相关题 / 前后题`
+7. `recent list / 前后题`
 8. `share / check-in / 次要 CTA`
 
 原则是把“解释”放到“交互”前面，把“正文”放到“壳子”前面。
 
-### 方案 D：上下文内链替代泛 recent list
+### 方案 D：内链保持最小化（只保留 recent list + 前后题）
 
-详情页底部的内链建议改成三组：
+首版不新增“同题型 / 同难度 / 同解法”分组 related 模块。详情页底部继续使用：
 
-- 同题型：before/after、phrase、broad category
-- 同解法：靠某条转折 clue 才锁定答案
-- 相邻日期：上一题 / 下一题
+- recent list（最近答案页列表）
+- 前后题导航（上一题 / 下一题）
 
 同时补齐旧单数路径 `/linkedin-pinpoint-answer/:slug` 到当前 canonical 路径的 301。
+
+如未来要加 related，单独 PRD 评审，不与正文/发布链路改造绑在一起。
 
 ---
 
@@ -748,12 +749,7 @@
 - 低置信结果必须打 `warning`，进入每日抽检列表
 - 人工只在抽检或回补时覆盖，不进入默认日常链路
 
-### A.5 Related 供数第一版规则
+### A.5 Related 供数（暂不做）
 
-为避免 related 模块阻塞主线，一版供数只用确定性规则：
-
-- 同题型：基于 `questionType`
-- 同难度：基于 `difficultyBand`
-- 相邻日期：基于 `publishDate`
-
-embedding、人工标签和更细的“同解法”关系，放在第二版评审。
+为对齐对手的极简策略，首版不引入分组 related 模块，也不新增 related 供数系统。页面只保留 recent list + 前后题导航。  
+如后续确实需要 related，将在“正文去模板味 + 发布口径稳定”之后单独立项评审。
