@@ -51,6 +51,7 @@ export function FooterBadgeWall({ badges, heading }: FooterBadgeWallProps) {
 
           return (
             <li key={badge.name} className="footer-badge-item">
+              {/* eslint-disable-next-line react/jsx-no-target-blank -- rel is normalized to include noopener/noreferrer for new-tab badges. */}
               <a
                 href={badge.url}
                 target={openInNewTab ? "_blank" : undefined}

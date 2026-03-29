@@ -59,7 +59,7 @@ export default async function PreviewPage() {
         <PreviewGlossary />
         <PreviewFaq />
         {latestEntry ? (
-          <HomeCtaFooter currentPuzzleNumber={latestEntry.number} currentSlug={latestEntry.slug} />
+          <HomeCtaFooter currentSlug={latestEntry.slug} />
         ) : null}
       </div>
     </main>

@@ -115,10 +115,6 @@ export function buildPuzzleSeoDescription(
     ?? `Explore LinkedIn Pinpoint ${puzzleNumber} with clue hints and a full walkthrough.`;
 }
 
-function getDefaultSocialImageUrl(): string {
-  return absoluteUrl(defaultSocialImagePath);
-}
-
 function buildSocialImage(imagePath: string, alt: string) {
   return {
     url: absoluteUrl(imagePath),
