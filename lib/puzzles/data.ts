@@ -15,13 +15,21 @@ import {
   type PuzzleUniquenessSignalsRecord,
 } from "@/lib/puzzles/schema";
 import { fetchPuzzleContent, fetchRegistry, warnRemoteFallback } from "@/lib/puzzles/data-sources";
-import {
-  buildSharedFallbackArticleBlocks,
-  buildSharedFallbackFaqs,
-  buildSharedFallbackLessons,
-  buildSharedFallbackSolutionNarrative,
-} from "@/lib/puzzles/fallback-copy";
+import { buildSharedFallbackSolutionNarrative } from "@/lib/puzzles/fallback-copy";
 import { getBundledRegistryEntries } from "@/lib/puzzles/registry-bundled";
+import {
+  buildLiveArticleBreakdown,
+  buildLiveClueExplanation,
+  buildLiveConnectorSummary,
+  buildLiveFallbackPhrase,
+  buildLiveFaqs,
+  buildLiveLessons,
+  buildLiveWordHints,
+  detectLiveAnswerPattern,
+  normalizeLooseLiveText,
+  pickLiveTurningPoint,
+  singularizeTrailingWord,
+} from "@/lib/puzzles/live-fallback";
 
 export type PuzzleDetailDisplay = {
   connectorSummary: string;
@@ -106,13 +114,6 @@ type LiveWorkerPuzzleRecord = {
   answer: string;
 };
 
-type LiveAnswerPattern =
-  | { kind: "before"; token: string }
-  | { kind: "after"; token: string }
-  | { kind: "typed-category"; noun: string; singularNoun: string }
-  | { kind: "association"; subject: string }
-  | { kind: "category"; label: string };
-
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const DETAIL_PUBLIC_FORMAL_ONLY =
@@ -171,52 +172,6 @@ function inferPuzzleNumberFromDate(isoDate: string): number | null {
   if (diffDays < 0) return null;
 
   return BASELINE_NUMBER + diffDays;
-}
-
-function normalizeLooseLiveText(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/["“”'`]/g, "")
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function stripStraightAndCurlyQuotes(value: string): string {
-  return value.replace(/["“”]/g, "");
-}
-
-function singularizeTrailingWord(text: string): string {
-  const trimmed = text.trim();
-  if (!trimmed) return trimmed;
-
-  const words = trimmed.split(/\s+/);
-  const lastWord = words[words.length - 1] || trimmed;
-  const lowerLastWord = lastWord.toLowerCase();
-
-  const irregularSingulars: Record<string, string> = {
-    mice: "mouse",
-    geese: "goose",
-    teeth: "tooth",
-    feet: "foot",
-    men: "man",
-    women: "woman",
-    people: "person",
-    children: "child",
-  };
-
-  let singularLastWord = lastWord;
-  if (irregularSingulars[lowerLastWord]) {
-    singularLastWord = irregularSingulars[lowerLastWord];
-  } else if (/ies$/i.test(lastWord)) {
-    singularLastWord = `${lastWord.slice(0, -3)}y`;
-  } else if (/(ches|shes|xes|zes)$/i.test(lastWord)) {
-    singularLastWord = lastWord.slice(0, -2);
-  } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
-    singularLastWord = lastWord.slice(0, -1);
-  }
-
-  return [...words.slice(0, -1), singularLastWord].join(" ").trim() || trimmed;
 }
 
 function parseLesson(lesson: LessonItem): { title: string | null; body: string } {
@@ -541,211 +496,6 @@ function resolveEvidenceUniquenessSignals(
       ),
     ).slice(0, 5),
   };
-}
-
-function detectLiveAnswerPattern(answer: string): LiveAnswerPattern {
-  const text = answer.trim();
-
-  const before = text.match(/^Words that come before\s+["“]?(.+?)["”]?$/i);
-  if (before?.[1]) return { kind: "before", token: before[1].trim() };
-
-  const after = text.match(/^Words that come after\s+["“]?(.+?)["”]?$/i);
-  if (after?.[1]) return { kind: "after", token: after[1].trim() };
-
-  const typedCategory = text.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
-  if (typedCategory?.[2]) {
-    const noun = typedCategory[2].trim();
-    return {
-      kind: "typed-category",
-      noun,
-      singularNoun: singularizeTrailingWord(noun),
-    };
-  }
-
-  const association = text.match(/^Things associated with\s+(.+)$/i);
-  if (association?.[1]) {
-    return { kind: "association", subject: association[1].trim() };
-  }
-
-  return {
-    kind: "category",
-    label: text || "shared category",
-  };
-}
-
-function buildLiveConnectorSummary(answer: string): string {
-  const pattern = detectLiveAnswerPattern(answer);
-  if (pattern.kind === "before") {
-    return `familiar phrases that end with "${pattern.token}"`;
-  }
-  if (pattern.kind === "after") {
-    return `familiar phrases and common terms that begin with "${pattern.token}"`;
-  }
-  if (pattern.kind === "typed-category") {
-    return `a category board focused on ${pattern.noun.toLowerCase()}`;
-  }
-  if (pattern.kind === "association") {
-    return `a board centered on the theme of ${pattern.subject}`;
-  }
-  const cleanedLabel = pattern.label.replace(/\s+/g, " ").trim();
-  if (cleanedLabel) {
-    return `a category board focused on ${cleanedLabel}`;
-  }
-  return "a shared category board with one connector";
-}
-
-function buildLiveSpecialPhrase(clue: string, answer: string): string {
-  const pattern = detectLiveAnswerPattern(answer);
-  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
-
-  const symbolGroupPattern = /\(\s*[^\p{L}\p{N}]+\s*\)|[^\p{L}\p{N}\s()'"&,-]+/gu;
-  const replaced = clue.replace(symbolGroupPattern, ` ${pattern.token} `).replace(/\s+/g, " ").trim();
-  if (replaced === clue) return "";
-
-  return stripStraightAndCurlyQuotes(replaced.replace(/\(\s*\)/g, "").replace(/\s+/g, " ").trim());
-}
-
-function buildLiveFallbackPhrase(clue: string, answer: string): string {
-  const pattern = detectLiveAnswerPattern(answer);
-  if (pattern.kind === "before") {
-    return buildLiveSpecialPhrase(clue, answer) || `${clue} ${pattern.token}`.trim();
-  }
-  if (pattern.kind === "after") {
-    return buildLiveSpecialPhrase(clue, answer) || `${pattern.token} ${clue}`.trim();
-  }
-  if (pattern.kind === "typed-category") {
-    const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
-    const normalizedBase = baseClue || clue;
-    if (normalizeLooseLiveText(normalizedBase).includes(normalizeLooseLiveText(pattern.singularNoun))) {
-      return normalizedBase;
-    }
-    return `${normalizedBase} ${pattern.singularNoun}`.trim();
-  }
-  return clue.trim();
-}
-
-function scoreLiveClueSpecificity(clue: string): number {
-  const text = clue.trim();
-  if (!text) return 0;
-  const words = text.split(/\s+/).filter(Boolean);
-  let score = text.length;
-  score += words.length * 5;
-  score += (text.match(/-/g)?.length || 0) * 6;
-  score += (text.match(/\(/g)?.length || 0) * 4;
-  score += /\b(the|island|bridge|square|park|museum|tower|center|bay)\b/i.test(text) ? 8 : 0;
-  return score;
-}
-
-function pickLiveTurningPoint(clues: string[], answer: string): string {
-  let bestClue = clues[0] || "the key clue";
-  let bestScore = -1;
-  const pattern = detectLiveAnswerPattern(answer);
-
-  for (let index = 0; index < clues.length; index += 1) {
-    const clue = clues[index] || "";
-    let score = scoreLiveClueSpecificity(clue) + index;
-    if (
-      pattern.kind === "association" &&
-      /\b(square|island|bridge|park|museum|tower|center|bay)\b/i.test(clue)
-    ) {
-      score += 10;
-    }
-    if (score > bestScore) {
-      bestScore = score;
-      bestClue = clue;
-    }
-  }
-
-  return bestClue;
-}
-
-function buildLiveClueExplanation(clue: string, answer: string, index: number, turningPoint: string): string {
-  const pattern = detectLiveAnswerPattern(answer);
-  const phrase = buildLiveFallbackPhrase(clue, answer);
-
-  if (pattern.kind === "before" || pattern.kind === "after") {
-    return `"${phrase}" is a familiar phrase or term, which is why this clue fits once "${pattern.token}" is in place.`;
-  }
-
-  if (pattern.kind === "typed-category") {
-    const variants = [
-      `"${phrase}" is a recognizable ${pattern.singularNoun.toLowerCase()}, so it gives the board a clean category fit.`,
-      `Once the board is read as ${pattern.noun.toLowerCase()}, "${phrase}" stops feeling broad and becomes an exact fit.`,
-      `"${phrase}" belongs in the same ${pattern.singularNoun.toLowerCase()} frame, which keeps the category specific instead of loose.`,
-    ];
-    return variants[index % variants.length] || variants[0];
-  }
-
-  if (pattern.kind === "association") {
-    const subject = pattern.subject;
-    if (clue === turningPoint) {
-      return `"${clue}" is one of the clearest anchors for a ${subject} reading, which is why it helps lock the board into place.`;
-    }
-    const variants = [
-      `"${clue}" fits naturally once the board is read through ${subject} rather than as a loose general-interest category.`,
-      `"${clue}" supports the same ${subject}-based frame as the other clues, so it reads as part of one picture instead of an isolated reference.`,
-      `"${clue}" works because it points back to the same ${subject} context that ties the whole board together.`,
-    ];
-    return variants[index % variants.length] || variants[0];
-  }
-
-  if (clue === turningPoint) {
-    return `"${clue}" is the clue that makes the shared answer concrete enough to test across the full board.`;
-  }
-  const variants = [
-    `"${clue}" fits more cleanly once the board is tested under the same answer as the other clues.`,
-    `"${clue}" helps confirm the same answer instead of pulling the board back toward a looser guess.`,
-    `"${clue}" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.`,
-  ];
-  return variants[index % variants.length] || variants[0];
-}
-
-function buildLiveWordHints(clues: string[], answer: string): Record<string, string> {
-  const turningPoint = pickLiveTurningPoint(clues, answer);
-  return Object.fromEntries(
-    clues.map((clue, index) => [clue, buildLiveClueExplanation(clue, answer, index, turningPoint)]),
-  );
-}
-
-function buildLiveLessons(answer: string, turningPoint: string): LessonItem[] {
-  const pattern = detectLiveAnswerPattern(answer);
-  return buildSharedFallbackLessons({ kind: pattern.kind, turningPoint });
-}
-
-function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint: string): FaqItem[] {
-  const pattern = detectLiveAnswerPattern(answer);
-  const connectorSummary = buildLiveConnectorSummary(answer);
-  return buildSharedFallbackFaqs({
-    puzzleNumber,
-    kind: pattern.kind,
-    answer,
-    turningPoint,
-    connectorSummary,
-  });
-}
-
-function buildLiveArticleBreakdown(
-  puzzleNumber: number,
-  clues: string[],
-  answer: string,
-  turningPoint: string,
-): string[] {
-  const pattern = detectLiveAnswerPattern(answer);
-  const connectorSummary = buildLiveConnectorSummary(answer);
-  const sampleReads = clues
-    .slice(0, 2)
-    .map((clue) => buildLiveFallbackPhrase(clue, answer));
-  const finalChecks = clues.slice(-2);
-
-  return buildSharedFallbackArticleBlocks({
-    kind: pattern.kind,
-    clues,
-    answer,
-    turningPoint,
-    connectorSummary,
-    sampleReads,
-    finalChecks,
-  });
 }
 
 function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null {
