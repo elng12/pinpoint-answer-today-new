@@ -169,13 +169,6 @@ function dedupeParagraphs(paragraphs: string[]): string[] {
   return unique;
 }
 
-function dedupeAgainstReference(paragraphs: string[], reference: string[]): string[] {
-  if (reference.length === 0) return paragraphs;
-  const referenceKeys = new Set(reference.map(normalizeParagraphKey));
-  const filtered = paragraphs.filter((paragraph) => !referenceKeys.has(normalizeParagraphKey(paragraph)));
-  return filtered.length > 0 ? filtered : paragraphs;
-}
-
 function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
   const paragraphs: string[] = [];
 
@@ -357,14 +350,11 @@ export function PuzzleFullAnalysis({
   const solvePathParagraphs = dedupeParagraphs(
     buildSolvePathParagraphs(puzzle).map((paragraph) => applyClueCasing(paragraph, puzzle.clues, phraseToken)),
   );
-  const walkthroughParagraphs = dedupeAgainstReference(
-    dedupeParagraphs(
-      tightenWalkthroughParagraphs(
-        buildWalkthroughParagraphs(puzzle).map((paragraph) => applyClueCasing(paragraph, puzzle.clues, phraseToken)),
-        puzzle,
-      ),
-    ),
-    solvePathParagraphs,
+  const walkthroughSourceParagraphs = buildWalkthroughParagraphs(puzzle).map((paragraph) =>
+    applyClueCasing(paragraph, puzzle.clues, phraseToken),
+  );
+  const walkthroughParagraphs = dedupeParagraphs(
+    isShortMode ? tightenWalkthroughParagraphs(walkthroughSourceParagraphs, puzzle) : walkthroughSourceParagraphs,
   );
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
   const analysisTitle = isShortMode
@@ -452,20 +442,6 @@ export function PuzzleFullAnalysis({
             </>
           ) : (
             <>
-              {solvePathParagraphs.length > 0 ? (
-                <section className="legacy-analysis-section">
-                  <div className="legacy-section-title-row">
-                    <Lightbulb className="legacy-section-icon" aria-hidden />
-                    <h3 className="legacy-section-title">Solve path snapshot</h3>
-                  </div>
-                  <div className="legacy-prose-stack">
-                    {solvePathParagraphs.map((paragraph, index) => (
-                      <p key={`${puzzle.slug}-solve-path-${index}`}>{paragraph}</p>
-                    ))}
-                  </div>
-                </section>
-              ) : null}
-
               <section className="legacy-analysis-section">
                 <div className="legacy-prose-stack">
                   {walkthroughParagraphs.map((paragraph, index) => (
