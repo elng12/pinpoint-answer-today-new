@@ -10,6 +10,9 @@ type PuzzleAnswerRevealProps = {
   category: string;
   hintMap?: Record<string, string>;
   detailMode?: "full" | "short";
+  defaultRevealed?: boolean;
+  panelTitle?: string;
+  detailNote?: string;
 };
 
 function normalizeKey(value: string): string {
@@ -34,8 +37,11 @@ export function PuzzleAnswerReveal({
   category,
   hintMap,
   detailMode = "full",
+  defaultRevealed = false,
+  panelTitle,
+  detailNote,
 }: PuzzleAnswerRevealProps) {
-  const [revealed, setRevealed] = useState(false);
+  const [revealed, setRevealed] = useState(defaultRevealed);
   const [copied, setCopied] = useState(false);
   const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
   const hintTimerRef = useRef<number | null>(null);
@@ -128,10 +134,12 @@ export function PuzzleAnswerReveal({
     }
   };
 
-  const detailNote =
+  const fallbackDetailNote =
     detailMode === "short"
       ? "Short guide continues just below - keep scrolling for the compact breakdown"
       : "Detailed Pinpoint answer breakdown continues just below - keep scrolling";
+  const answerPanelTitle = panelTitle ?? `Pinpoint Answer for LinkedIn Pinpoint ${puzzleNumber}`;
+  const answerPanelNote = detailNote ?? fallbackDetailNote;
 
   return (
     <section className="legacy-reveal-shell" aria-labelledby="pinpoint-answer-title">
@@ -169,7 +177,7 @@ export function PuzzleAnswerReveal({
 
       <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">
-          {`Pinpoint Answer for LinkedIn Pinpoint ${puzzleNumber}`}
+          {answerPanelTitle}
         </h2>
         {revealed ? (
           <p className="legacy-answer-title" aria-live="polite">
@@ -188,7 +196,7 @@ export function PuzzleAnswerReveal({
         </div>
         <p className="legacy-answer-note">
           <span aria-hidden="true">ℹ️</span>
-          <span>{detailNote}</span>
+          <span>{answerPanelNote}</span>
         </p>
       </div>
     </section>
