@@ -14,6 +14,7 @@
 - 预告页 `/next-pinpoint-preview`
 - 归档页 `/puzzles`
 - 详情页 `/linkedin-pinpoint-answers/[slug]`
+- 站点 API：`/api/puzzles/summary`、`/api/health`、`/api/pinpoint/today`
 - 基础信任页
 - `robots` 和 `sitemap`
 - `JSON registry + 每题独立 JSON` 数据结构
@@ -45,6 +46,15 @@ cp .env.example .env.local
 ```
 
 然后把 `NEXT_PUBLIC_ENABLE_GA` 改成 `true`，再填入 `NEXT_PUBLIC_GA_ID`。
+
+## 线上健康检查与今日接口
+
+主站域名上这两个接口会代理到 Cloudflare Worker（避免主站切到 Vercel 后出现 404）：
+
+- 健康检查：`/api/health`（代理 Worker `/health`）
+- 今日接口：`/api/pinpoint/today`（代理 Worker `/api/pinpoint/today`）
+
+如果需要切换到 staging/shadow Worker，设置 `.env.local` 的 `PINPOINT_WORKER_HEALTH_URL` 即可。
 
 ## 内容回归检查
 
