@@ -56,6 +56,9 @@ const GENERIC_CONNECTION_FAQ_PATTERNS = [
   /\bsame category once the board is read in the right frame\b/i,
   /\bone later clue makes the category feel much more obvious\b/i,
 ];
+const GENERIC_TURNING_CLUE_FAQ_PATTERNS = [
+  /\bnarrows the board enough to make the earlier clues read cleanly instead of loosely\b/i,
+];
 const TEMPORARY_PAGE_PATTERNS = [
   /\bthis quick page keeps today'?s answer available\b/i,
   /\blive version generated before the full editorial archive update finishes\b/i,
@@ -529,6 +532,16 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     }
   }
 
+  const faqTurningClueAnswer = normalizeText(input.faqs?.[2]?.answer);
+  if (GENERIC_TURNING_CLUE_FAQ_PATTERNS.some((pattern) => pattern.test(faqTurningClueAnswer))) {
+    issues.push({
+      code: "faqs.genericTurningClueAnswer",
+      message: "Turning clue FAQ uses generic narrowing phrasing instead of clue-specific evidence",
+      field: "faqs[2].answer",
+      ...(sampleText(input.faqs?.[2]?.answer) ? { sample: sampleText(input.faqs?.[2]?.answer) } : {}),
+    });
+  }
+
   input.clueDetails?.forEach((item, index) => {
     const explanation = normalizeText(item?.explanation);
     if (!explanation) return;
@@ -562,6 +575,7 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "wrongGuesses.machineyGuess",
   "solutionEmergence.genericPivot",
   "faqs.genericConnectionAnswer",
+  "faqs.genericTurningClueAnswer",
   "clueDetails.genericExplanation",
   "answer.semanticNarrowing",
   "answer.alternateRestatement",

@@ -1322,10 +1322,21 @@ function buildFaqs(
   puzzleData: PuzzleDataForAI,
   connectorSummary: string,
   turningPointLabel: string,
+  clueDetails: GeneratedClueDetail[],
   difficultyReason: string,
 ) {
   const answerPattern = detectAnswerPattern(puzzleData.mainAnswer);
   const clueCount = puzzleData.rawWords.length || SLOT_CONTRACT.clueDetailsRequired;
+  const turningClue = turningPointSubject(turningPointLabel);
+  const normalizedTurningClue = normalizeLooseMatch(turningClue);
+  const turningDetail = clueDetails.find((detail) => normalizeLooseMatch(detail.clue) === normalizedTurningClue);
+  const turningPhrase = stripQuotes(normalizeText(turningDetail?.phrase));
+  const supportingDetails = clueDetails
+    .filter((detail) => normalizeLooseMatch(detail.clue) !== normalizedTurningClue)
+    .filter((detail) => normalizeText(detail.phrase));
+  const supportingExample = supportingDetails[0];
+  const supportingPhrase = stripQuotes(normalizeText(supportingExample?.phrase));
+  const phraseExamples = formatQuotedList(supportingDetails.slice(0, 2).map((detail) => detail.phrase));
   const connectionAnswer =
     answerPattern.kind === "before" || answerPattern.kind === "after"
       ? `The connection is ${connectorSummary}. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language`
@@ -1346,7 +1357,19 @@ function buildFaqs(
     {
       question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
       answer: ensureSentence(
-        `${turningPointSubject(turningPointLabel)} is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. ${difficultyReason}`,
+        (answerPattern.kind === "before" || answerPattern.kind === "after")
+          ? turningPhrase
+            ? `${turningClue} is the turning clue because "${turningPhrase}" is an exact, everyday phrase. ${
+                phraseExamples
+                  ? `With the missing word in place, other clues read cleanly as ${phraseExamples}`
+                  : "It makes the missing word visible fast enough to confirm the rest of the board"
+              }. ${difficultyReason}`
+            : `${turningClue} is the turning clue because it is the first clue that produces an exact, familiar phrase. ${difficultyReason}`
+          : turningPhrase && supportingExample && supportingPhrase
+            ? `${turningClue} is the turning clue because "${turningPhrase}" makes the shared category frame explicit. It also makes ${supportingExample.clue} read cleanly as "${supportingPhrase}". ${difficultyReason}`
+            : turningDetail?.whyItWorks
+              ? `${turningClue} is the turning clue because ${stripQuotes(normalizeText(turningDetail.whyItWorks))}. ${difficultyReason}`
+              : `${turningClue} is the turning clue because it is the first clue that makes the answer feel concrete enough to test across the full board. ${difficultyReason}`,
       ),
     },
   ];
@@ -1704,6 +1727,7 @@ export function composeFromSlots(
     puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer },
     connectorSummary,
     turningPointLabel,
+    clueDetails,
     difficultyReason,
   );
   const trivia = ensureSentence(
