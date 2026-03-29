@@ -1,8 +1,5 @@
-import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { cache } from "react";
 import {
-  puzzleDetailContentSchema,
   type FaqItem,
   type LessonItem,
   type PuzzleClueRowRecord,
@@ -17,7 +14,7 @@ import {
   type PuzzleTurningPointRecord,
   type PuzzleUniquenessSignalsRecord,
 } from "@/lib/puzzles/schema";
-import { registrySchema } from "@/lib/puzzles/schema";
+import { fetchPuzzleContent, fetchRegistry, warnRemoteFallback } from "@/lib/puzzles/data-sources";
 import {
   buildSharedFallbackArticleBlocks,
   buildSharedFallbackFaqs,
@@ -118,7 +115,6 @@ type LiveAnswerPattern =
 
 // ── Constants ──────────────────────────────────────────────────────────────
 
-const GITHUB_RAW_BASE = process.env.GITHUB_RAW_BASE?.trim() ?? "";
 const DETAIL_PUBLIC_FORMAL_ONLY =
   (process.env.DETAIL_PUBLIC_FORMAL_ONLY ?? "true").trim().toLowerCase() !== "false";
 const DEFAULT_PINPOINT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.dev/health";
@@ -135,10 +131,6 @@ function formatDisplayDate(input: string): string {
     year: "numeric",
     timeZone: "UTC",
   }).format(new Date(`${input}T00:00:00Z`));
-}
-
-function hasRemotePuzzleDataSource(): boolean {
-  return GITHUB_RAW_BASE.length > 0;
 }
 
 function formatMonthLabel(input: string): string {
@@ -945,119 +937,8 @@ function isPublicDetailEntry(
 }
 
 // ── Data fetching (ISR-aware) ─────────────────────────────────────────────
-// Strategy: local files stay the default in dev/build, while production can prefer
-// a remote content source so revalidated pages can pick up new puzzle content fast.
-
-async function fetchRegistryFromRemote(): Promise<PuzzleRegistryEntryRecord[]> {
-  const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/registry.json`, {
-    next: { tags: ["registry"], revalidate: 3600 },
-  });
-  if (!res.ok) {
-    throw new Error(`registry fetch failed with status ${res.status}`);
-  }
-  const json = await res.json();
-  return registrySchema
-    .parse(json)
-    .slice()
-    .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
-}
-
-async function fetchPuzzleContentFromRemote(
-  slug: string,
-): Promise<PuzzleDetailContentRecord> {
-  const res = await fetch(`${GITHUB_RAW_BASE}/data/puzzles/${slug}.json`, {
-    next: { tags: [`puzzle:${slug}`], revalidate: 86400 },
-  });
-  if (!res.ok) {
-    throw new Error(`detail fetch failed with status ${res.status}`);
-  }
-  const json = await res.json();
-  return puzzleDetailContentSchema.parse(json);
-}
-
-const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
-  // In production we prefer remote first so publish + revalidate can reflect
-  // new puzzles without waiting for a full redeploy artifact refresh.
-  const shouldTryRemoteFirst =
-    process.env.NODE_ENV === "production" && hasRemotePuzzleDataSource();
-
-  if (shouldTryRemoteFirst) {
-    try {
-      return fetchRegistryFromRemote();
-    } catch (error) {
-      warnRemoteFallback("Remote registry unavailable, falling back to local file", error);
-    }
-  }
-
-  // Try local filesystem (available during build/dev and as fallback in prod)
-  try {
-    const filePath = resolve(resolveDataDir(), "registry.json");
-    if (existsSync(filePath)) {
-      const raw = readFileSync(filePath, "utf8");
-      return registrySchema
-        .parse(JSON.parse(raw))
-        .slice()
-        .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
-    }
-  } catch {
-    // fall through to final remote attempt
-  }
-
-  if (!hasRemotePuzzleDataSource()) {
-    return getBundledRegistryEntries();
-  }
-
-  // Final remote attempt (covers environments where filesystem is unavailable)
-  try {
-    return fetchRegistryFromRemote();
-  } catch (error) {
-    warnRemoteFallback("Falling back to bundled registry", error);
-    return getBundledRegistryEntries();
-  }
-});
-
-const fetchPuzzleContent = cache(
-  async (slug: string): Promise<PuzzleDetailContentRecord> => {
-    // Match registry behavior so production revalidation can pull fresh detail JSON
-    // without waiting for a fresh deployment artifact.
-    const shouldTryRemoteFirst =
-      process.env.NODE_ENV === "production" && hasRemotePuzzleDataSource();
-
-    if (shouldTryRemoteFirst) {
-      try {
-        return fetchPuzzleContentFromRemote(slug);
-      } catch (error) {
-        warnRemoteFallback(
-          `Remote detail JSON unavailable for ${slug}, falling back to local file`,
-          error,
-        );
-      }
-    }
-
-    // Try local filesystem (available during build/dev and as fallback in prod)
-    try {
-      const filePath = resolve(resolveDataDir(), `${slug}.json`);
-      if (existsSync(filePath)) {
-        return loadDetailContentFromFilesystem(slug);
-      }
-    } catch {
-      // fall through to optional remote fetch
-    }
-
-    if (!hasRemotePuzzleDataSource()) {
-      return loadDetailContentFromFilesystem(slug);
-    }
-
-    // Final remote attempt (covers environments where filesystem is unavailable)
-    try {
-      return fetchPuzzleContentFromRemote(slug);
-    } catch (error) {
-      warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
-    }
-
-    return loadDetailContentFromFilesystem(slug);
-  },
-);
+// Registry + detail JSON loading lives in `data-sources.ts`.
+// Live worker fetch stays here because it composes a fallback PuzzleDetail payload.
 
 const fetchLiveWorkerPuzzle = cache(async (): Promise<PuzzleDetail | null> => {
   const workerHealthUrl = getPinpointWorkerHealthUrl();
@@ -1083,29 +964,6 @@ const fetchLiveWorkerPuzzle = cache(async (): Promise<PuzzleDetail | null> => {
     return null;
   }
 });
-
-function resolveDataDir(): string {
-  const cwd = process.cwd();
-  const directDir = resolve(cwd, "data", "puzzles");
-  if (existsSync(resolve(directDir, "registry.json"))) return directDir;
-  return resolve(cwd, "new-pinpoint-site", "data", "puzzles");
-}
-
-function loadDetailContentFromFilesystem(slug: string): PuzzleDetailContentRecord {
-  const filePath = resolve(resolveDataDir(), `${slug}.json`);
-  const raw = readFileSync(filePath, "utf8");
-  return puzzleDetailContentSchema.parse(JSON.parse(raw));
-}
-
-function warnRemoteFallback(message: string, error: unknown) {
-  const detail =
-    error instanceof Error
-      ? error.message
-      : typeof error === "string"
-        ? error
-        : "";
-  console.warn(`[puzzles] ${message}${detail ? `: ${detail}` : ""}`);
-}
 
 function resolveDetailClues(
   registryClues: string[],
