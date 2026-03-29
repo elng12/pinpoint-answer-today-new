@@ -64,6 +64,35 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
   - `OPENAI_BASE_URL=https://openrouter.ai/api/v1`
   - `AI_MODEL=google/gemini-2.0-flash-001` 或你实际在用的模型
 
+---
+
+## 每日自检（建议 14:55 / 15:05 北京时间）
+
+目标：在 LinkedIn 刷新前后，用 30 秒确认“抓取鉴权 + Worker 状态”都正常，避免当天首发掉回兜底。
+
+从仓库根目录运行（不要在 `worker/` 子目录里跑）：
+
+```bash
+cd /Users/elng/web/pinpointanswertoday/new-pinpoint-site
+
+# 14:55 左右：预检（只测抓取，不发布）
+npm run worker:preflight
+
+# 15:05 左右：看健康（确认已拿到今天数据）
+npm run worker:health
+```
+
+如果预检失败（401/500 或 `ok:false`），优先刷新 cookie（需要本机 Edge 已登录 LinkedIn）：
+
+```bash
+npm run worker:refresh-cookie
+```
+
+说明：
+
+- 上面三个命令都会读取仓库根目录的 `.env.local`（需要包含 `ADMIN_PASSPHRASE`），不会打印 secret 或 cookie 内容
+- 如果你只想更新某一个环境的 cookie：`node scripts/worker-ops.mjs refresh-cookie --targets staging`
+
 ### `graphql 401` 优先修复顺序
 
 如果 `staging` / `shadow` 的 `/admin/preflight-linkedin` 返回 `graphql 401`，先不要默认去找 `GRAPHQL_TOKEN` 或 `GRAPHQL_CSRF_TOKEN` 原值。当前 worker 会优先从 `GRAPHQL_COOKIE` 里的 `JSESSIONID` 自动拼出 `csrf-token`，所以最常见的原因其实是 `GRAPHQL_COOKIE` 过期。
