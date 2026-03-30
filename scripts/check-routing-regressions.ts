@@ -61,8 +61,10 @@ async function checkRedirectConfig() {
   );
   assertRedirectRule(rules, "/fr/puzzles/:number(\\d+)", "/linkedin-pinpoint-answers/pinpoint-answer-:number/");
   assertRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})", "/pinpoint/:date");
+  assertRedirectRule(rules, "/en/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/puzzles/connectors", "/puzzles");
   assertRedirectRule(rules, "/feedback", "/contact-us");
+  assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/linkedin-pinpoint-answers/pinpoint-answer-:number/");
 
   console.log("ok: next.config.ts preserves key locale and legacy redirect rules");
