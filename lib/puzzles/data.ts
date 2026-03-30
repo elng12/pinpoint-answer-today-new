@@ -14,6 +14,7 @@ export {
   getArchiveEntriesGrouped,
   getCurrentPuzzle,
   getLegacyConnectorRedirectSlug,
+  getLegacyThemeOrConnectorRedirectSlug,
   getLegacyThemeRedirectSlug,
   getNextPreview,
   getPuzzleBySlug,
@@ -22,4 +23,3 @@ export {
   getRecentEntries,
   getSitemapDetailEntries,
 } from "@/lib/puzzles/data/public";
-

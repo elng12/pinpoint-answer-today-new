@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 import nextConfig from "../next.config";
 import { middleware } from "../middleware";
 import { NextRequest } from "next/server";
+import {
+  getLegacyConnectorRedirectSlug,
+  getLegacyThemeOrConnectorRedirectSlug,
+  getLegacyThemeRedirectSlug,
+} from "../lib/puzzles/data/legacy-redirects";
 
 type RedirectRule = {
   source: string;
@@ -92,9 +97,30 @@ function checkMiddlewareCanonicalization() {
   console.log("ok: middleware preserves canonical slash and host normalization");
 }
 
+async function checkLegacyFamilyRedirectLookup() {
+  assert.equal(
+    await getLegacyThemeRedirectSlug("things-you-d-find-at-a-doctor-s-office"),
+    "pinpoint-answer-495",
+    "legacy theme slugs should still resolve when apostrophes were flattened into dash-separated slugs",
+  );
+  assert.equal(
+    await getLegacyThemeOrConnectorRedirectSlug("coat"),
+    "pinpoint-answer-560",
+    "legacy theme pages should fall back to connector lookups for mislabeled old links",
+  );
+  assert.equal(
+    await getLegacyConnectorRedirectSlug("coat"),
+    "pinpoint-answer-560",
+    "legacy connector slugs should keep resolving to canonical detail pages",
+  );
+
+  console.log("ok: legacy family lookups handle apostrophe slugs and theme-to-connector fallback");
+}
+
 async function main() {
   await checkRedirectConfig();
   checkMiddlewareCanonicalization();
+  await checkLegacyFamilyRedirectLookup();
   console.log("Pinpoint routing regression passed.");
 }
 

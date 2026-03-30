@@ -13,7 +13,11 @@ import { getLiveWorkerPuzzle } from "@/lib/puzzles/data/live-worker";
 import { fetchRegistry } from "@/lib/puzzles/data-sources";
 import { getBundledRegistryEntries } from "@/lib/puzzles/registry-bundled";
 
-export { getLegacyConnectorRedirectSlug, getLegacyThemeRedirectSlug } from "@/lib/puzzles/data/legacy-redirects";
+export {
+  getLegacyConnectorRedirectSlug,
+  getLegacyThemeOrConnectorRedirectSlug,
+  getLegacyThemeRedirectSlug,
+} from "@/lib/puzzles/data/legacy-redirects";
 
 const DETAIL_PUBLIC_FORMAL_ONLY =
   (process.env.DETAIL_PUBLIC_FORMAL_ONLY ?? "true").trim().toLowerCase() !== "false";
@@ -160,4 +164,3 @@ export async function getSitemapDetailEntries() {
   const entries = await getDetailEntries();
   return entries.map((e) => ({ slug: e.slug, updatedAt: e.updatedAt }));
 }
-
