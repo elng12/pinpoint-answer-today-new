@@ -132,6 +132,12 @@ const nextConfig: NextConfig = {
         destination: "/puzzles",
         permanent: true,
       },
+      // Legacy archive shortcut: /en/linkedin-pinpoint → /puzzles
+      {
+        source: `/${locale}/linkedin-pinpoint`,
+        destination: "/puzzles",
+        permanent: true,
+      },
       // Legacy connectors archive root has no dedicated page in the new site
       {
         source: `/${locale}/puzzles/connectors`,
@@ -276,6 +282,12 @@ const nextConfig: NextConfig = {
       // Legacy connectors archive root → canonical archive
       {
         source: "/puzzles/connectors",
+        destination: "/puzzles",
+        permanent: true as const,
+      },
+      // Old LinkedIn archive shortcut → canonical archive
+      {
+        source: "/linkedin-pinpoint",
         destination: "/puzzles",
         permanent: true as const,
       },
