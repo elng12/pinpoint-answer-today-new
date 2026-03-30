@@ -8,6 +8,8 @@
 - 法律页：`https://pinpointanswertoday.app/privacy`
 - 404 页：`https://pinpointanswertoday.app/this-page-should-not-exist`
 - OG 图片：`https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-560/opengraph-image`
+- 旧链接重定向（后续补充）：`https://pinpointanswertoday.app/linkedin-pinpoint`（应跳转到 `/puzzles`）
+- 旧链接重定向（后续补充）：`https://pinpointanswertoday.app/en/linkedin-pinpoint`（应跳转到 `/puzzles`）
 
 ## 结果概览
 
@@ -17,6 +19,8 @@
 - Privacy 页面：可访问，`Last updated: March 12, 2026` 已生效
 - 404 页面：可访问，返回 `404`，品牌化文案已生效
 - 详情页 OG 图片：可访问，返回 `200`
+- 旧链接重定向 `/linkedin-pinpoint`：返回 `308`，跳转到 `/puzzles`（2026-03-30 复核通过）
+- 旧链接重定向 `/en/linkedin-pinpoint`：返回 `308`，跳转到 `/puzzles`（2026-03-30 复核通过）
 - `robots.txt`：已包含 `Disallow: /api/`
 - 安全响应头：首页、详情页、OG 图片已带 `Content-Security-Policy`、`X-Frame-Options`、`X-Content-Type-Options` 等
 
