@@ -55,6 +55,9 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 补充说明：
 
 - `staging` / `shadow` 的 secret 请优先使用 `wrangler secret put <NAME> --env staging` 或 `--env shadow`，不要只写 `--name pinpoint-worker-staging`，否则容易写进错误作用域
+- 如果 `staging` 这类历史环境里某个口令以前被当成普通变量写进去，`wrangler secret put` 可能会报 `Binding name '<NAME>' already in use`
+- 遇到这种报错，不要反复重试同一个 `secret put`；优先改用 `wrangler versions secret put <NAME> --env staging` 生成一个带 `secret_text` 的新版本，再用 `wrangler versions deploy <version-id>@100 --env staging` 切到线上
+- `2026-03-30` 实测里，`pinpoint-worker-staging` 的 `ADMIN_SECRET` 和 `SITE_API_TOKEN` 就是按这个口径从历史 `plain_text` 绑定收口到 `secret_text`
 - `FEISHU_WEBHOOK_URL` 不是阶段 B 演练必需；如果 staging 只是短期手动验证，可先不配，避免测试告警进入正式群
 - `GITHUB_TOKEN_NEW_SITE` 长期应使用 fine-grained PAT，并限制到 `elng12/pinpoint-answer-today-new` 的 `contents:write`；临时复用本机 `gh auth token` 只适合一次性演练，不适合长期保留
 - 站点 enrichment 走的是站点自己的 `/api/admin/generate-draft`，所以除了 Cloudflare Worker secret 以外，Vercel 站点侧也要有可用的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL`
@@ -171,6 +174,18 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/preflight-lin
 2. Repository permissions 至少给 `Contents: Read and write`；其余权限默认不加
 3. 用 `wrangler secret put GITHUB_TOKEN_NEW_SITE --env staging` 替换 staging 临时 token
 4. staging 再手动跑一次 `/admin/run?publish=1&force=1&i18n=0`，确认仍能发布后，再同样替换 production
+
+---
+
+`staging` 历史口令占位收口：
+
+1. 先看 `wrangler secret list --env staging`
+2. 如果目标名字不在 secret 列表里，但 `versions view` 里还能看到它是 `plain_text`，说明它是旧版明文变量，不是 secret
+3. 用 `printf '%s' '<value>' | wrangler versions secret put <NAME> --env staging`
+4. 再用 `wrangler versions deploy <version-id>@100 --env staging --yes`
+5. 最后确认：
+   - `wrangler secret list --env staging` 已出现该名字
+   - `wrangler versions view <current-version-id> --env staging --json` 里该绑定类型已变成 `secret_text`
 
 ---
 

@@ -84,6 +84,8 @@
 - [x] 已完成一次 `staging` enrich 真机验证：当时手动请求使用过 `publish=1&force=1&enrich=1&i18n=0`；其中 `enrich=1` 属于历史参数，当前代码已不再读取
 - [x] enrich 结果确认：`enrich.status=enriched`，站点 `generate-draft` 已能通过 OpenRouter 生成 AI 内容
 - [x] 已修正新站 Vercel production 的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL` 写入值，去除尾部换行
+- [x] `2026-03-30` 已统一 GitHub Actions 与 production / staging / shadow 的 `ADMIN_SECRET`，`401 unauthorized` 告警恢复
+- [x] `2026-03-30` 已将 `pinpoint-worker-staging` 里的历史明文绑定 `ADMIN_SECRET` / `SITE_API_TOKEN` 收口为 `secret_text`
 
 ### Shadow 手动触发速查
 
@@ -105,6 +107,7 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/monitor/cron-status
 - 推荐参数：`publish=1&force=1&i18n=0`
 - 如果不写 `i18n=0`，当前代码会按手动触发默认开启 i18n
 - `enrich=1` 仅是历史演练残留，当前代码不再读取
+- 如果 `staging` 某个口令名字已经被历史 `plain_text` 变量占用，优先用 `wrangler versions secret put <NAME> --env staging` 收口，再用 `wrangler versions deploy <version-id>@100 --env staging --yes` 切换当前版本
 
 ### PR 3 已完成（2026-03-13）
 
