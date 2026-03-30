@@ -2,16 +2,32 @@ import { cache } from "react";
 import { fetchRegistry } from "@/lib/puzzles/data-sources";
 import { isDetailEntry } from "@/lib/puzzles/data/registry";
 
-function normalizeLegacyLookupValue(value: string): string {
+function slugifyLegacyLookupValue(value: string): string {
   return value
-    .normalize("NFKD")
-    .replace(/[\u2018\u2019\u201C\u201D]/g, "")
     .replace(/[^\x00-\x7F]/g, "")
     .toLowerCase()
     .replace(/&/g, " and ")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+function getLegacyLookupVariants(value: string): string[] {
+  const normalizedValue = value
+    .normalize("NFKD")
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"');
+
+  return Array.from(
+    new Set([
+      slugifyLegacyLookupValue(normalizedValue.replace(/['"]/g, "")),
+      slugifyLegacyLookupValue(normalizedValue.replace(/['"]/g, "-")),
+    ]),
+  ).filter(Boolean);
+}
+
+function normalizeLegacyLookupValue(value: string): string {
+  return getLegacyLookupVariants(value)[0] ?? "";
 }
 
 function addLegacyRedirectCandidate(map: Map<string, string | null>, key: string, slug: string) {
@@ -62,7 +78,9 @@ const getLegacyThemeRedirectMap = cache(async (): Promise<Map<string, string | n
 
   for (const entry of entries) {
     for (const candidate of [entry.category, entry.mainAnswer]) {
-      addLegacyRedirectCandidate(map, normalizeLegacyLookupValue(candidate), entry.slug);
+      for (const key of getLegacyLookupVariants(candidate)) {
+        addLegacyRedirectCandidate(map, key, entry.slug);
+      }
     }
   }
 
@@ -89,8 +107,13 @@ export async function getLegacyThemeRedirectSlug(legacySlug: string): Promise<st
   return map.get(normalizeLegacyLookupValue(legacySlug)) ?? null;
 }
 
+export async function getLegacyThemeOrConnectorRedirectSlug(
+  legacySlug: string,
+): Promise<string | null> {
+  return (await getLegacyThemeRedirectSlug(legacySlug)) ?? getLegacyConnectorRedirectSlug(legacySlug);
+}
+
 export async function getLegacyConnectorRedirectSlug(legacySlug: string): Promise<string | null> {
   const map = await getLegacyConnectorRedirectMap();
   return map.get(normalizeLegacyLookupValue(legacySlug)) ?? null;
 }
-

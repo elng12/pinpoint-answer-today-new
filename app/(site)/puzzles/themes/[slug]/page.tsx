@@ -1,6 +1,6 @@
 import { notFound, permanentRedirect } from "next/navigation";
 import { routes } from "@/lib/paths/routes";
-import { getLegacyThemeRedirectSlug } from "@/lib/puzzles/data";
+import { getLegacyThemeOrConnectorRedirectSlug } from "@/lib/puzzles/data";
 
 export const revalidate = 86400;
 
@@ -10,7 +10,7 @@ export default async function LegacyThemePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const detailSlug = await getLegacyThemeRedirectSlug(slug);
+  const detailSlug = await getLegacyThemeOrConnectorRedirectSlug(slug);
 
   if (!detailSlug) {
     notFound();
