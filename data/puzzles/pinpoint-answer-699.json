@@ -1,0 +1,197 @@
+{
+  "puzzleNumber": 699,
+  "slug": "pinpoint-answer-699",
+  "publishDate": "2026-03-30",
+  "isoDate": "2026-03-30",
+  "detailState": "generating",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Pistachio",
+    "Coffee",
+    "Vanilla",
+    "Cookie dough",
+    "Mint chocolate chip"
+  ],
+  "answer": "Flavors of ice cream",
+  "category": "Flavors of ice cream",
+  "wordHints": {
+    "Pistachio": "Pistachio connects to \"Flavors of ice cream\"",
+    "Coffee": "Coffee connects to \"Flavors of ice cream\"",
+    "Vanilla": "Vanilla connects to \"Flavors of ice cream\"",
+    "Cookie dough": "Cookie dough connects to \"Flavors of ice cream\"",
+    "Mint chocolate chip": "Mint chocolate chip connects to \"Flavors of ice cream\""
+  },
+  "spoilerHints": {
+    "Pistachio": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Coffee": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Vanilla": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Cookie dough": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Mint chocolate chip": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
+  "articleBlocks": [
+    "At first, Pistachio and Coffee pointed in a few different directions.",
+    "The turn came with \"Mint chocolate chip\".",
+    "That clue made the answer feel concrete enough to test across the full board.",
+    "Once I read the set through a category board focused on flavors, examples like \"Pistachio\" and \"Coffee\" stopped feeling loose and started landing cleanly.",
+    "The answer was \"Flavors of ice cream\".",
+    "\"Cookie dough\" and \"Mint chocolate chip\" then felt like the last confirmations, not separate guesses."
+  ],
+  "fullAnalysis": [
+    "At first, Pistachio and Coffee pointed in a few different directions.",
+    "The turn came with \"Mint chocolate chip\".",
+    "That clue made the answer feel concrete enough to test across the full board.",
+    "Once I read the set through a category board focused on flavors, examples like \"Pistachio\" and \"Coffee\" stopped feeling loose and started landing cleanly.",
+    "The answer was \"Flavors of ice cream\".",
+    "\"Cookie dough\" and \"Mint chocolate chip\" then felt like the last confirmations, not separate guesses."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #699, Pistachio, Coffee, Vanilla, Cookie dough, Mint chocolate chip only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on flavors",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Pistachio",
+        "examplePhrase": "Pistachio",
+        "connectionExplained": "Pistachio connects to \"Flavors of ice cream\""
+      },
+      {
+        "clue": "Coffee",
+        "examplePhrase": "Coffee",
+        "connectionExplained": "Coffee connects to \"Flavors of ice cream\""
+      },
+      {
+        "clue": "Vanilla",
+        "examplePhrase": "Vanilla",
+        "connectionExplained": "Vanilla connects to \"Flavors of ice cream\""
+      },
+      {
+        "clue": "Cookie dough",
+        "examplePhrase": "Cookie dough",
+        "connectionExplained": "Cookie dough connects to \"Flavors of ice cream\""
+      },
+      {
+        "clue": "Mint chocolate chip",
+        "examplePhrase": "Mint chocolate chip",
+        "connectionExplained": "Mint chocolate chip connects to \"Flavors of ice cream\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #699?",
+      "answer": "The answer is \"Flavors of ice cream\". The clues Pistachio, Coffee, Vanilla, Cookie dough, Mint chocolate chip all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #699 just unlocked, and this is the fastest verified update. The board clues are Pistachio, Coffee, Vanilla, Cookie dough, Mint chocolate chip, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [],
+    "whyFalseStartPlausible": [],
+    "breakingClue": "Pistachio",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #699, Pistachio, Coffee, Vanilla, Cookie dough, Mint chocolate chip only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Pistachio lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Pistachio",
+    "whyDecisive": "Pistachio is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Pistachio lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Pistachio",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Pistachio",
+      "nonObviousWhy": "Pistachio supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Pistachio"
+    },
+    {
+      "clue": "Coffee",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Coffee",
+      "nonObviousWhy": "Coffee supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Coffee"
+    },
+    {
+      "clue": "Vanilla",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Vanilla",
+      "nonObviousWhy": "Vanilla supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Vanilla"
+    },
+    {
+      "clue": "Cookie dough",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Cookie dough",
+      "nonObviousWhy": "Cookie dough supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Cookie dough"
+    },
+    {
+      "clue": "Mint chocolate chip",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Mint chocolate chip",
+      "nonObviousWhy": "Mint chocolate chip supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Mint chocolate chip"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #699?",
+      "answer": "The answer is \"Flavors of ice cream\". The clues Pistachio, Coffee, Vanilla, Cookie dough, Mint chocolate chip all share this connection.",
+      "tiedClue": "Pistachio"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on flavors",
+    "relatedEntities": [
+      "Pistachio",
+      "Coffee",
+      "Vanilla",
+      "Cookie dough",
+      "Mint chocolate chip"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on flavors",
+      "Pistachio",
+      "Coffee",
+      "Vanilla",
+      "Cookie dough"
+    ]
+  }
+}
