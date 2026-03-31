@@ -1,0 +1,197 @@
+{
+  "puzzleNumber": 700,
+  "slug": "pinpoint-answer-700",
+  "publishDate": "2026-03-31",
+  "isoDate": "2026-03-31",
+  "detailState": "generating",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Panel",
+    "One-on-one",
+    "Behavioral",
+    "Technical",
+    "Phone screen"
+  ],
+  "answer": "Types of interviews in a job searches",
+  "category": "Types of interviews in a job searches",
+  "wordHints": {
+    "Panel": "Panel connects to \"Types of interviews in a job searches\"",
+    "One-on-one": "One-on-one connects to \"Types of interviews in a job searches\"",
+    "Behavioral": "Behavioral connects to \"Types of interviews in a job searches\"",
+    "Technical": "Technical connects to \"Types of interviews in a job searches\"",
+    "Phone screen": "Phone screen connects to \"Types of interviews in a job searches\""
+  },
+  "spoilerHints": {
+    "Panel": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "One-on-one": "This is the clue that makes the category specific enough to verify across the whole board.",
+    "Behavioral": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Technical": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Phone screen": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before."
+  },
+  "articleBlocks": [
+    "At first, Panel and One-on-one pointed in a few different directions.",
+    "The turn came with \"One-on-one\".",
+    "That clue made the answer feel concrete enough to test across the full board.",
+    "Once I read the set through a category board focused on interviews in a job searches, examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" stopped feeling loose and started landing cleanly.",
+    "The answer was \"Types of interviews in a job searches\".",
+    "\"Technical\" and \"Phone screen\" then felt like the last confirmations, not separate guesses."
+  ],
+  "fullAnalysis": [
+    "At first, Panel and One-on-one pointed in a few different directions.",
+    "The turn came with \"One-on-one\".",
+    "That clue made the answer feel concrete enough to test across the full board.",
+    "Once I read the set through a category board focused on interviews in a job searches, examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" stopped feeling loose and started landing cleanly.",
+    "The answer was \"Types of interviews in a job searches\".",
+    "\"Technical\" and \"Phone screen\" then felt like the last confirmations, not separate guesses."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #700, Panel, One-on-one, Behavioral, Technical, Phone screen only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on interviews in a job searches",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Panel",
+        "examplePhrase": "Panel interviews in a job search",
+        "connectionExplained": "Panel connects to \"Types of interviews in a job searches\""
+      },
+      {
+        "clue": "One-on-one",
+        "examplePhrase": "One-on-one interviews in a job search",
+        "connectionExplained": "One-on-one connects to \"Types of interviews in a job searches\""
+      },
+      {
+        "clue": "Behavioral",
+        "examplePhrase": "Behavioral interviews in a job search",
+        "connectionExplained": "Behavioral connects to \"Types of interviews in a job searches\""
+      },
+      {
+        "clue": "Technical",
+        "examplePhrase": "Technical interviews in a job search",
+        "connectionExplained": "Technical connects to \"Types of interviews in a job searches\""
+      },
+      {
+        "clue": "Phone screen",
+        "examplePhrase": "Phone screen interviews in a job search",
+        "connectionExplained": "Phone screen connects to \"Types of interviews in a job searches\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #700?",
+      "answer": "The answer is \"Types of interviews in a job searches\". The clues Panel, One-on-one, Behavioral, Technical, Phone screen all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #700 just unlocked, and this is the fastest verified update. The board clues are Panel, One-on-one, Behavioral, Technical, Phone screen, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [],
+    "whyFalseStartPlausible": [],
+    "breakingClue": "Panel",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #700, Panel, One-on-one, Behavioral, Technical, Phone screen only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Panel lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Panel",
+    "whyDecisive": "Panel is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Panel lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Panel",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Panel",
+      "nonObviousWhy": "Panel supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Panel"
+    },
+    {
+      "clue": "One-on-one",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "One-on-one",
+      "nonObviousWhy": "One-on-one supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "One-on-one"
+    },
+    {
+      "clue": "Behavioral",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Behavioral",
+      "nonObviousWhy": "Behavioral supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Behavioral"
+    },
+    {
+      "clue": "Technical",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Technical",
+      "nonObviousWhy": "Technical supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Technical"
+    },
+    {
+      "clue": "Phone screen",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Phone screen",
+      "nonObviousWhy": "Phone screen supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Phone screen"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #700?",
+      "answer": "The answer is \"Types of interviews in a job searches\". The clues Panel, One-on-one, Behavioral, Technical, Phone screen all share this connection.",
+      "tiedClue": "Panel"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on interviews in a job searches",
+    "relatedEntities": [
+      "Panel",
+      "One-on-one",
+      "Behavioral",
+      "Technical",
+      "Phone screen"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on interviews in a job searches",
+      "Panel",
+      "One-on-one",
+      "Behavioral",
+      "Technical"
+    ]
+  }
+}

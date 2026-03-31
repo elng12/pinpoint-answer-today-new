@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 700,
+    "slug": "pinpoint-answer-700",
+    "publishDate": "2026-03-31",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Panel",
+      "One-on-one",
+      "Behavioral",
+      "Technical",
+      "Phone screen"
+    ],
+    "mainAnswer": "Types of interviews in a job searches",
+    "category": "Types of interviews in a job searches",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #700: Panel, One-on-one, Behavioral, Technical, Phone screen.",
+    "updatedAt": "2026-03-31T07:29:58.797Z"
+  },
+  {
     "puzzleNumber": 702,
     "slug": "pinpoint-answer-702",
     "publishDate": "2026-04-02",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Tiger",
@@ -16,7 +35,7 @@
     "category": "Words that come after paper",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Tiger, Plane, Travel do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-03-28T12:25:14.643Z"
+    "updatedAt": "2026-03-31T07:29:58.797Z"
   },
   {
     "puzzleNumber": 701,
