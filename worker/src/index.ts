@@ -660,7 +660,7 @@ function pluralizeTrailingWord(text: string): string {
   return [...words.slice(0, -1), pluralLastWord].join(" ").trim();
 }
 
-function sanitizePublishedAnswerLabel(raw: unknown): string {
+export function sanitizePublishedAnswerLabel(raw: unknown): string {
   if (typeof raw !== "string") return "";
   const text = raw.replace(/\s+/g, " ").trim();
   if (!text) return "";
@@ -671,7 +671,13 @@ function sanitizePublishedAnswerLabel(raw: unknown): string {
 
   const typedCategory = text.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
   if (typedCategory?.[2]) {
-    return `${typedCategory[1]} of ${pluralizeTrailingWord(typedCategory[2])}`.trim();
+    const noun = typedCategory[2].replace(/["“”]/g, "").trim();
+    const words = noun.split(/\s+/).filter(Boolean);
+
+    // LinkedIn sometimes uses "Types of <plural noun> in a <singular phrase>" (e.g. "Types of interviews in a job search").
+    // Pluralizing the trailing word breaks grammar ("a job searches"), so only pluralize one-word nouns.
+    const normalizedNoun = words.length <= 1 ? pluralizeTrailingWord(noun) : noun;
+    return `${typedCategory[1]} of ${normalizedNoun}`.trim();
   }
 
   const strippedQualifier = text.replace(/\s*\((?:with|for|including)\b[^)]*\)\s*$/i, "").trim();

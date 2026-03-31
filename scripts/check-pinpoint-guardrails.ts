@@ -1100,6 +1100,101 @@ async function checkEvidenceContractGuardsMeaningfulV2Fields() {
   console.log("ok: v2 evidence contract blocks thin turningPoint/clueRows/faqItems payloads");
 }
 
+async function checkTypedCategoryGenerationKeepsGrammarNatural() {
+  const generationModulePath = "../lib/puzzle-generation.ts";
+  const workerModulePath = "../worker/src/index.ts";
+  const generationModule = (await import(generationModulePath)) as {
+    buildDeterministicPuzzleContent: (
+      puzzleData: {
+        puzzleNumber: number;
+        rawWords: string[];
+        mainAnswer: string;
+      },
+      slots?: Record<string, unknown>,
+    ) => {
+      sections?: {
+        clueDetails?: Array<{ phrase?: string }>;
+      };
+      clueRows?: Array<{ resolvedPhraseOrMember?: string; surfaceMisread?: string }>;
+    };
+  };
+  const workerModule = (await import(workerModulePath)) as {
+    sanitizePublishedAnswerLabel: (raw: unknown) => string;
+  };
+
+  const puzzleData = {
+    puzzleNumber: 700,
+    rawWords: ["Panel", "One-on-one", "Behavioral", "Technical", "Phone screen"],
+    mainAnswer: "Types of interviews in a job search",
+  };
+
+  const generated = generationModule.buildDeterministicPuzzleContent(puzzleData, {
+    heroIntroSpoilerSafe:
+      "At first glance, Panel, One-on-one, and Behavioral feel broad, but a later clue finally shows the tighter hiring pattern underneath the board.",
+    connectorSummary: "a category board focused on interview formats used in hiring",
+    turningPoint: "Phone screen is the clue that finally points the whole board toward hiring.",
+    falseStarts: ["science terms", "famous names"],
+    difficultyReason:
+      "The board feels trickier because the clues mix interview formats and content styles before one clue makes the hiring frame concrete.",
+    portableTakeaway:
+      "Wait for the clue that turns a broad work context into one exact hiring category.",
+    clueDetails: [
+      {
+        clue: "Panel",
+        surfaceRead: "a broad workplace label",
+        phrase: "Panel interviews in a job search",
+        whyItWorks: "Panel interviews are a recognizable hiring format with multiple interviewers.",
+      },
+      {
+        clue: "One-on-one",
+        surfaceRead: "a broad workplace label",
+        phrase: "One-on-one interviews in a job search",
+        whyItWorks: "One-on-one interviews are a standard hiring setup with one interviewer and one candidate.",
+      },
+      {
+        clue: "Behavioral",
+        surfaceRead: "a broad workplace label",
+        phrase: "Behavioral interviews in a job search",
+        whyItWorks: "Behavioral interviews are a common hiring category focused on past actions.",
+      },
+      {
+        clue: "Technical",
+        surfaceRead: "a broad workplace label",
+        phrase: "Technical interviews in a job search",
+        whyItWorks: "Technical interviews test the job-specific skills needed for a role.",
+      },
+      {
+        clue: "Phone screen",
+        surfaceRead: "a broad workplace label",
+        phrase: "Phone screen interviews in a job search",
+        whyItWorks: "Phone screen interviews are short first-pass hiring calls used to filter candidates.",
+      },
+    ],
+  });
+
+  assert.equal(
+    workerModule.sanitizePublishedAnswerLabel("Types of interviews in a job search"),
+    "Types of interviews in a job search",
+    "worker publish sanitizer should not pluralize the tail of multi-word typed-category answers",
+  );
+  assert.equal(
+    generated.sections?.clueDetails?.[0]?.phrase,
+    "Panel interviews in a job search",
+    "typed-category generated clue phrases should preserve the singular tail in multi-word answers",
+  );
+  assert.equal(
+    generated.clueRows?.[0]?.resolvedPhraseOrMember,
+    "Panel interviews in a job search",
+    "typed-category clueRows should preserve the singular tail in multi-word answers",
+  );
+  assert.ok(
+    generated.clueRows?.every((row) => !row.surfaceMisread),
+    "bucket-style false starts like \"science terms\" should stay out of the clue evidence table",
+  );
+
+  console.log("ok: typed-category generation keeps singular tails and hides bucket misreads from clueRows");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -1109,6 +1204,7 @@ async function main() {
   await checkWorkerDetailShape();
   await checkPhraseFallbackDirection();
   await checkEvidenceContractGuardsMeaningfulV2Fields();
+  await checkTypedCategoryGenerationKeepsGrammarNatural();
   console.log("Pinpoint guardrail regression passed.");
 }
 

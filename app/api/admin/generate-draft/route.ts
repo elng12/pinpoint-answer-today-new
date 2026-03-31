@@ -228,6 +228,8 @@ function detectAnswerPattern(answer: string): AnswerPattern {
     let singularLastWord = lastWord;
     if (/ies$/i.test(lastWord)) {
       singularLastWord = `${lastWord.slice(0, -3)}y`;
+    } else if (/(ches|shes|xes|zes)$/i.test(lastWord)) {
+      singularLastWord = lastWord.slice(0, -2);
     } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
       singularLastWord = lastWord.slice(0, -1);
     }

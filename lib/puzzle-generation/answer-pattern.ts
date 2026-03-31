@@ -24,6 +24,9 @@ export function detectAnswerPattern(answer: string): AnswerPattern {
 
     if (/ies$/i.test(lastWord)) {
       singularLastWord = `${lastWord.slice(0, -3)}y`;
+    } else if (/(ches|shes|xes|zes)$/i.test(lastWord)) {
+      // searches -> search, boxes -> box
+      singularLastWord = lastWord.slice(0, -2);
     } else if (/s$/i.test(lastWord) && !/ss$/i.test(lastWord)) {
       singularLastWord = lastWord.slice(0, -1);
     }
@@ -34,4 +37,3 @@ export function detectAnswerPattern(answer: string): AnswerPattern {
 
   return { kind: "category", label: stripQuotes(answer).trim() || "the shared category" };
 }
-

@@ -1496,10 +1496,15 @@ function buildGeneratedClueRows(
   clueDetails: GeneratedClueDetail[],
   wrongGuesses: Array<{ guess: string; explanation: string }>,
 ): PuzzleClueRowRecord[] {
-  const broadMisread = wrongGuesses[0]?.guess;
+  const broadMisread = normalizeText(wrongGuesses[0]?.guess);
+  const shouldShowBroadMisread =
+    !!broadMisread &&
+    !looksMachineyWrongGuess(broadMisread) &&
+    // Bucket-y labels like "science terms" look awkward when repeated in every row.
+    !/\b(terms|names)\b/i.test(broadMisread);
   return clueDetails.map((detail) => ({
     clue: detail.clue,
-    ...(broadMisread ? { surfaceMisread: broadMisread } : {}),
+    ...(shouldShowBroadMisread ? { surfaceMisread: broadMisread } : {}),
     resolvedPhraseOrMember: detail.phrase,
     nonObviousWhy: ensureSentence(detail.whyItWorks),
     ...(detail.etymology || detail.phrase
