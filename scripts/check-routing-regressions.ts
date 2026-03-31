@@ -15,6 +15,11 @@ type RedirectRule = {
   permanent?: boolean;
 };
 
+type HeaderRule = {
+  source: string;
+  headers: Array<{ key: string; value: string }>;
+};
+
 async function getRedirectRules(): Promise<RedirectRule[]> {
   const redirects = nextConfig.redirects;
   assert.equal(typeof redirects, "function", "next.config.ts must expose redirects()");
@@ -24,6 +29,17 @@ async function getRedirectRules(): Promise<RedirectRule[]> {
   const rules = await redirects();
   assert.ok(Array.isArray(rules), "redirects() must return an array");
   return rules as RedirectRule[];
+}
+
+async function getHeaderRules(): Promise<HeaderRule[]> {
+  const headers = nextConfig.headers;
+  assert.equal(typeof headers, "function", "next.config.ts must expose headers()");
+  if (!headers) {
+    throw new Error("next.config.ts headers() is unavailable");
+  }
+  const rules = await headers();
+  assert.ok(Array.isArray(rules), "headers() must return an array");
+  return rules as HeaderRule[];
 }
 
 function assertRedirectRule(
@@ -75,6 +91,29 @@ async function checkRedirectConfig() {
   assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/linkedin-pinpoint-answers/pinpoint-answer-:number/");
 
   console.log("ok: next.config.ts preserves key locale and legacy redirect rules");
+}
+
+async function checkHeaderConfig() {
+  const rules = await getHeaderRules();
+  const apiRule = rules.find((entry) => entry.source === "/api/:path*");
+  assert.ok(apiRule, "missing header rule for /api/:path*");
+
+  const apiRobotsHeader = apiRule.headers.find((entry) => entry.key.toLowerCase() === "x-robots-tag");
+  assert.ok(apiRobotsHeader, "/api/:path* should publish an X-Robots-Tag header");
+  assert.equal(
+    apiRobotsHeader.value,
+    "noindex, nofollow, noarchive",
+    "/api/:path* should keep its noindex X-Robots-Tag policy",
+  );
+
+  const previewRule = rules.find((entry) => entry.source === "/next-pinpoint-preview");
+  assert.equal(
+    previewRule,
+    undefined,
+    "preview page should not force an X-Robots-Tag override that conflicts with page metadata",
+  );
+
+  console.log("ok: next.config.ts keeps API noindex headers without overriding the preview page");
 }
 
 function checkMiddlewareCanonicalization() {
@@ -140,6 +179,7 @@ async function checkTrafficAdviceRoute() {
 
 async function main() {
   await checkRedirectConfig();
+  await checkHeaderConfig();
   checkMiddlewareCanonicalization();
   await checkLegacyFamilyRedirectLookup();
   await checkTrafficAdviceRoute();
