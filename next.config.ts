@@ -93,6 +93,15 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: "/next-pinpoint-preview",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, follow",
+          },
+        ],
+      },
     ];
   },
   async redirects() {

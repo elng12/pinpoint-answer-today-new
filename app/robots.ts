@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/api/indexnow-key"],
-        disallow: ["/api/", "/next-pinpoint-preview"],
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
