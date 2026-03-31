@@ -1813,6 +1813,118 @@ type PublishedPuzzleDetailInput = {
   uniquenessSignals?: WorkerUniquenessSignals | null;
 };
 
+const MIN_DETAIL_FULL_ANALYSIS_WORDS = 80;
+const MIN_DETAIL_SHORT_ANALYSIS_WORDS = 60;
+
+type PublishedPuzzleDetailSnapshot = {
+  slug: string;
+  detailState: PublishDetailState;
+  bodyMode: "full" | "short";
+  fullAnalysisWordCount: number;
+  minRequiredWords: number;
+};
+
+type ThinContentProtectionDecision =
+  | { action: "use-incoming" }
+  | { action: "keep-existing"; reason: string }
+  | { action: "use-primary"; content: string; reason: string };
+
+function countDetailWords(paragraphs: string[]): number {
+  return paragraphs
+    .join(" ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .length;
+}
+
+function summarizePublishedPuzzleDetail(value: unknown): PublishedPuzzleDetailSnapshot | null {
+  const record = asRecord(value);
+  if (!record) return null;
+
+  const slug = String(record.slug || "").trim();
+  if (!slug) return null;
+
+  const bodyMode = String(record.bodyMode || "").trim().toLowerCase() === "short" ? "short" : "full";
+  const fullAnalysis = Array.isArray(record.fullAnalysis)
+    ? record.fullAnalysis
+      .map((paragraph) => String(paragraph || "").trim())
+      .filter(Boolean)
+    : [];
+  const minRequiredWords =
+    bodyMode === "short" ? MIN_DETAIL_SHORT_ANALYSIS_WORDS : MIN_DETAIL_FULL_ANALYSIS_WORDS;
+
+  return {
+    slug,
+    detailState: resolvePublishDetailState(record.detailState),
+    bodyMode,
+    fullAnalysisWordCount: countDetailWords(fullAnalysis),
+    minRequiredWords,
+  };
+}
+
+function summarizePublishedPuzzleDetailContent(content: string): PublishedPuzzleDetailSnapshot | null {
+  try {
+    return summarizePublishedPuzzleDetail(JSON.parse(content));
+  } catch {
+    return null;
+  }
+}
+
+function isDetailSnapshotAtOrAboveFloor(snapshot: PublishedPuzzleDetailSnapshot | null): boolean {
+  if (!snapshot) return false;
+  return snapshot.fullAnalysisWordCount >= snapshot.minRequiredWords;
+}
+
+function describeDetailSnapshot(snapshot: PublishedPuzzleDetailSnapshot): string {
+  return `${snapshot.detailState} ${snapshot.fullAnalysisWordCount}/${snapshot.minRequiredWords} words`;
+}
+
+function resolveThinContentProtectionDecision({
+  incoming,
+  existingBranch,
+  primaryBranch,
+  isPublicState,
+}: {
+  incoming: PublishedPuzzleDetailSnapshot | null;
+  existingBranch: { summary: PublishedPuzzleDetailSnapshot | null };
+  primaryBranch?: { summary: PublishedPuzzleDetailSnapshot | null; content: string };
+  isPublicState: boolean;
+}): ThinContentProtectionDecision {
+  if (!incoming || isDetailSnapshotAtOrAboveFloor(incoming)) {
+    return { action: "use-incoming" };
+  }
+
+  if (
+    isDetailSnapshotAtOrAboveFloor(existingBranch.summary) &&
+    existingBranch.summary?.slug === incoming.slug
+  ) {
+    return {
+      action: "keep-existing",
+      reason:
+        `incoming ${describeDetailSnapshot(incoming)} would regress below the content floor; ` +
+        `keeping current branch detail ${describeDetailSnapshot(existingBranch.summary)}`,
+    };
+  }
+
+  if (
+    isPublicState &&
+    primaryBranch?.content &&
+    isDetailSnapshotAtOrAboveFloor(primaryBranch.summary) &&
+    primaryBranch.summary?.slug === incoming.slug
+  ) {
+    return {
+      action: "use-primary",
+      content: primaryBranch.content,
+      reason:
+        `incoming ${describeDetailSnapshot(incoming)} would regress below the content floor; ` +
+        `reusing primary-branch detail ${describeDetailSnapshot(primaryBranch.summary)}`,
+    };
+  }
+
+  return { action: "use-incoming" };
+}
+
 function normalizeWorkerLooseText(value: string): string {
   return String(value || "")
     .toLowerCase()
@@ -2327,8 +2439,8 @@ async function publishToNewSiteGitHub(
     existing.length === next.length &&
     existing.every((item, index) => String(item ?? "").trim() === next[index]);
 
-  const getFile = async (path: string): Promise<{ content: string; sha: string } | null> => {
-    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`, { headers });
+  const getFile = async (path: string, ref = branch): Promise<{ content: string; sha: string } | null> => {
+    const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}?ref=${encodeURIComponent(ref)}`, { headers });
     if (res.status === 404) return null;
     if (!res.ok) throw new Error(`GitHub GET ${path}: ${res.status}`);
     return res.json() as Promise<{ content: string; sha: string }>;
@@ -2463,13 +2575,38 @@ async function publishToNewSiteGitHub(
   // ── 1. Write {slug}.json ──
   const slugPath = `data/puzzles/${slug}.json`;
   const slugJson = JSON.stringify(detailRecord, null, 2);
-
   const existingSlug = await getFile(slugPath);
-  const slugChanged = stageFile(
-    slugPath,
-    slugJson,
-    existingSlug,
-  );
+  const existingSlugContent = existingSlug ? decodeGitHubFileContent(existingSlug.content) : "";
+  const existingSlugSummary = existingSlugContent
+    ? summarizePublishedPuzzleDetailContent(existingSlugContent)
+    : null;
+  const primarySlug = !isPrimaryBranch ? await getFile(slugPath, "main") : null;
+  const primarySlugContent = primarySlug ? decodeGitHubFileContent(primarySlug.content) : "";
+  const primarySlugSummary = primarySlugContent
+    ? summarizePublishedPuzzleDetailContent(primarySlugContent)
+    : null;
+  const slugProtection = resolveThinContentProtectionDecision({
+    incoming: summarizePublishedPuzzleDetail(detailRecord),
+    existingBranch: { summary: existingSlugSummary },
+    primaryBranch: primarySlugContent
+      ? { summary: primarySlugSummary, content: primarySlugContent }
+      : undefined,
+    isPublicState,
+  });
+
+  let slugChanged = false;
+  if (slugProtection.action === "keep-existing") {
+    console.warn(`[new-site] skip regressive detail overwrite for ${slugPath}: ${slugProtection.reason}`);
+  } else {
+    if (slugProtection.action === "use-primary") {
+      console.warn(`[new-site] heal ${slugPath} from primary branch: ${slugProtection.reason}`);
+    }
+    slugChanged = stageFile(
+      slugPath,
+      slugProtection.action === "use-primary" ? slugProtection.content : slugJson,
+      existingSlug,
+    );
+  }
 
   // ── 2. Update registry.json ──
   const registryFile = await getFile("data/puzzles/registry.json");
