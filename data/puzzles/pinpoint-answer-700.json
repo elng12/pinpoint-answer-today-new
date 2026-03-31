@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-700",
   "publishDate": "2026-03-31",
   "isoDate": "2026-03-31",
-  "detailState": "generating",
+  "detailState": "validated",
   "questionType": "category",
-  "difficultyBand": "obvious",
+  "difficultyBand": "hard",
   "clues": [
     "Panel",
     "One-on-one",
@@ -16,11 +16,11 @@
   "answer": "Types of interviews in a job searches",
   "category": "Types of interviews in a job searches",
   "wordHints": {
-    "Panel": "Panel connects to \"Types of interviews in a job searches\"",
-    "One-on-one": "One-on-one connects to \"Types of interviews in a job searches\"",
-    "Behavioral": "Behavioral connects to \"Types of interviews in a job searches\"",
-    "Technical": "Technical connects to \"Types of interviews in a job searches\"",
-    "Phone screen": "Phone screen connects to \"Types of interviews in a job searches\""
+    "Panel": "In a panel interview, multiple interviewers assess a single candidate simultaneously, saving time.",
+    "One-on-one": "A one-on-one interview allows for a more personal, in-depth conversation between the candidate and interviewer.",
+    "Behavioral": "Behavioral interviews focus on past actions to predict future performance, using questions like 'Tell me about a time when...'.",
+    "Technical": "Technical interviews assess a candidate's specific technical abilities through problem-solving or coding exercises.",
+    "Phone screen": "A phone screen is a brief initial interview conducted over the phone to filter candidates before in-person interviews."
   },
   "spoilerHints": {
     "Panel": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
@@ -30,168 +30,180 @@
     "Phone screen": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before."
   },
   "articleBlocks": [
-    "At first, Panel and One-on-one pointed in a few different directions.",
-    "The turn came with \"One-on-one\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on interviews in a job searches, examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Types of interviews in a job searches\".",
-    "\"Technical\" and \"Phone screen\" then felt like the last confirmations, not separate guesses."
+    "I saw 'Panel' and thought this might be about different types of meetings.",
+    "But 'Behavioral' didn't really line up with that.",
+    "I briefly considered human resources activities, but that felt too broad.",
+    "Then I spotted 'Phone screen'.",
+    "That made me think about the steps to getting hired.",
+    "The answer is types of interviews in a job search.",
+    "Each clue represents a distinct interview format used by companies.",
+    "From initial phone screens to technical deep dives, these are all standard steps.",
+    "In hindsight, the clues all clearly pointed to the hiring process."
   ],
   "fullAnalysis": [
-    "At first, Panel and One-on-one pointed in a few different directions.",
-    "The turn came with \"One-on-one\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on interviews in a job searches, examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Types of interviews in a job searches\".",
-    "\"Technical\" and \"Phone screen\" then felt like the last confirmations, not separate guesses."
+    "I saw 'Panel' and thought this might be about different types of meetings.",
+    "But 'Behavioral' didn't really line up with that.",
+    "I briefly considered human resources activities, but that felt too broad.",
+    "Then I spotted 'Phone screen'.",
+    "That made me think about the steps to getting hired.",
+    "The answer is types of interviews in a job search.",
+    "Each clue represents a distinct interview format used by companies.",
+    "From initial phone screens to technical deep dives, these are all standard steps.",
+    "In hindsight, the clues all clearly pointed to the hiring process."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #700, Panel, One-on-one, Behavioral, Technical, Phone screen only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Panel and One-on-one first pulled me toward employee evaluation methods, so that was the first path I tested. It held together for a moment, but phone screen never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating phone screen as just another clue and asked what kind of interviews in a job searche each clue could describe. Once I made that shift, I was no longer thinking about employee evaluation methods; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing interviews in a job searches."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Phone screen is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When solving category puzzles, consider the purpose or context behind the items, not just their surface meanings."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on interviews in a job searches",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Panel",
-        "examplePhrase": "Panel interviews in a job search",
-        "connectionExplained": "Panel connects to \"Types of interviews in a job searches\""
+        "examplePhrase": "Panel interviews in a job searche",
+        "connectionExplained": "In a panel interview, multiple interviewers assess a single candidate simultaneously, saving time."
       },
       {
         "clue": "One-on-one",
-        "examplePhrase": "One-on-one interviews in a job search",
-        "connectionExplained": "One-on-one connects to \"Types of interviews in a job searches\""
+        "examplePhrase": "One-on-one interviews in a job searche",
+        "connectionExplained": "A one-on-one interview allows for a more personal, in-depth conversation between the candidate and interviewer."
       },
       {
         "clue": "Behavioral",
-        "examplePhrase": "Behavioral interviews in a job search",
-        "connectionExplained": "Behavioral connects to \"Types of interviews in a job searches\""
+        "examplePhrase": "Behavioral interviews in a job searche",
+        "connectionExplained": "Behavioral interviews focus on past actions to predict future performance, using questions like 'Tell me about a time when...'."
       },
       {
         "clue": "Technical",
-        "examplePhrase": "Technical interviews in a job search",
-        "connectionExplained": "Technical connects to \"Types of interviews in a job searches\""
+        "examplePhrase": "Technical interviews in a job searche",
+        "connectionExplained": "Technical interviews assess a candidate's specific technical abilities through problem-solving or coding exercises."
       },
       {
         "clue": "Phone screen",
-        "examplePhrase": "Phone screen interviews in a job search",
-        "connectionExplained": "Phone screen connects to \"Types of interviews in a job searches\""
+        "examplePhrase": "Phone screen interviews in a job searche",
+        "connectionExplained": "A phone screen is a brief initial interview conducted over the phone to filter candidates before in-person interviews."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #700?",
-      "answer": "The answer is \"Types of interviews in a job searches\". The clues Panel, One-on-one, Behavioral, Technical, Phone screen all share this connection."
+      "answer": "The answer is \"Types of interviews in a job searches\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #700?",
+      "answer": "The connection is that all 5 clues point to recognizable types of interviews in a job searches. Phone screen is the clue that makes the category specific enough to verify across the full board."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #700?",
+      "answer": "Phone screen is the turning clue because \"Phone screen interviews in a job searche\" makes the shared category frame explicit. It also makes Panel read cleanly as \"Panel interviews in a job searche\". The clues are all related to the workplace, which opens up many possibilities before the specific angle locks in."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #700 just unlocked, and this is the fastest verified update. The board clues are Panel, One-on-one, Behavioral, Technical, Phone screen, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
-    "falseStarts": [],
-    "whyFalseStartPlausible": [],
-    "breakingClue": "Panel",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #700, Panel, One-on-one, Behavioral, Technical, Phone screen only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Panel lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "firstRead": "Panel, One-on-one, and Behavioral do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"human resources activities\" can feel plausible before one clue makes the answer feel concrete. Phone screen is the clue that finally breaks that first read and makes interviews in a job searches feel concrete.",
+    "falseStarts": [
+      "human resources activities"
+    ],
+    "whyFalseStartPlausible": [
+      "That idea didn't quite work. 'Panel' and 'Phone screen' don't really fit how performance reviews are done."
+    ],
+    "breakingClue": "Phone screen",
+    "pivot": "The solve turned when I stopped treating phone screen as just another clue and asked what kind of interviews in a job searche each clue could describe. Once I made that shift, I was no longer thinking about employee evaluation methods; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing interviews in a job searches.",
+    "fullBoardConfirmation": "From there, reading them as interviews in a job searches explains the board much more cleanly. Entries like Panel, One-on-one, and Behavioral stop feeling disconnected and start looking like they belong together. Once phone screen is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are all related to the workplace, which opens up many possibilities before the specific angle locks in."
   },
   "turningPoint": {
-    "clue": "Panel",
-    "whyDecisive": "Panel is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Panel lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Phone screen",
+    "whyDecisive": "Seeing 'Phone screen' made the interview context click into place.",
+    "whatChangedAfterIt": "Once Phone screen landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Panel",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Panel",
-      "nonObviousWhy": "Panel supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Panel"
+      "surfaceMisread": "employee evaluation methods",
+      "resolvedPhraseOrMember": "Panel interviews in a job searche",
+      "nonObviousWhy": "In a panel interview, multiple interviewers assess a single candidate simultaneously, saving time.",
+      "searchableContext": "Panel interviews in a job searche"
     },
     {
       "clue": "One-on-one",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "One-on-one",
-      "nonObviousWhy": "One-on-one supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "One-on-one"
+      "surfaceMisread": "employee evaluation methods",
+      "resolvedPhraseOrMember": "One-on-one interviews in a job searche",
+      "nonObviousWhy": "A one-on-one interview allows for a more personal, in-depth conversation between the candidate and interviewer.",
+      "searchableContext": "One-on-one interviews in a job searche"
     },
     {
       "clue": "Behavioral",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Behavioral",
-      "nonObviousWhy": "Behavioral supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Behavioral"
+      "surfaceMisread": "employee evaluation methods",
+      "resolvedPhraseOrMember": "Behavioral interviews in a job searche",
+      "nonObviousWhy": "Behavioral interviews focus on past actions to predict future performance, using questions like 'Tell me about a time when...'.",
+      "searchableContext": "Behavioral interviews in a job searche"
     },
     {
       "clue": "Technical",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Technical",
-      "nonObviousWhy": "Technical supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Technical"
+      "surfaceMisread": "employee evaluation methods",
+      "resolvedPhraseOrMember": "Technical interviews in a job searche",
+      "nonObviousWhy": "Technical interviews assess a candidate's specific technical abilities through problem-solving or coding exercises.",
+      "searchableContext": "Technical interviews in a job searche"
     },
     {
       "clue": "Phone screen",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Phone screen",
-      "nonObviousWhy": "Phone screen supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Phone screen"
+      "surfaceMisread": "employee evaluation methods",
+      "resolvedPhraseOrMember": "Phone screen interviews in a job searche",
+      "nonObviousWhy": "A phone screen is a brief initial interview conducted over the phone to filter candidates before in-person interviews.",
+      "searchableContext": "Phone screen interviews in a job searche"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #700?",
-      "answer": "The answer is \"Types of interviews in a job searches\". The clues Panel, One-on-one, Behavioral, Technical, Phone screen all share this connection.",
-      "tiedClue": "Panel"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Types of interviews in a job searches\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #700?",
+      "answer": "The connection is that all 5 clues point to recognizable types of interviews in a job searches. Phone screen is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Phone screen"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #700?",
+      "answer": "Phone screen is the turning clue because \"Phone screen interviews in a job searche\" makes the shared category frame explicit. It also makes Panel read cleanly as \"Panel interviews in a job searche\". The clues are all related to the workplace, which opens up many possibilities before the specific angle locks in.",
+      "tiedClue": "Phone screen"
     }
   ],
   "uniquenessSignals": {
     "angle": "a category board focused on interviews in a job searches",
     "relatedEntities": [
-      "Panel",
-      "One-on-one",
-      "Behavioral",
-      "Technical",
-      "Phone screen"
+      "Panel interviews in a job searche",
+      "One-on-one interviews in a job searche",
+      "Behavioral interviews in a job searche",
+      "Technical interviews in a job searche",
+      "Phone screen interviews in a job searche"
     ],
     "doNotRepeatPatterns": [
       "a category board focused on interviews in a job searches",
-      "Panel",
-      "One-on-one",
-      "Behavioral",
-      "Technical"
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
+      "Panel interviews in a job searche",
+      "One-on-one interviews in a job searche"
     ]
   }
 }
