@@ -338,6 +338,7 @@
 }
 
 .legacy-detail-published,
+.legacy-detail-updated,
 .legacy-detail-verified {
   margin: 6px 0 0;
   font-size: 14px;
@@ -355,6 +356,16 @@
 
 .legacy-detail-verified-fallback {
   color: var(--muted);
+}
+
+.legacy-detail-verify-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legacy-detail-verify-link:hover {
+  color: var(--brand);
 }
 
 .legacy-detail-summary {

@@ -73,6 +73,8 @@ export function PuzzleDetail({
     ? "Auto-generated quick guide from live puzzle data"
     : "Verified by Human Editor";
   const summary = buildDetailSummary(puzzle, isShortMode, isFallbackShortMode);
+  const publishedAt = `${puzzle.isoDate}T00:00:00Z`;
+  const showUpdatedAt = Boolean(puzzle.updatedAt && puzzle.updatedAt !== publishedAt);
   return (
     <div className="legacy-detail-page">
       <section className="legacy-detail-header">
@@ -87,9 +89,15 @@ export function PuzzleDetail({
         <p className="eyebrow legacy-detail-kicker">Permanent Pinpoint answer &amp; analysis (Pinpoint Today archive)</p>
         <h1 className="legacy-detail-title">{`LinkedIn Pinpoint #${puzzle.number} Answer & Analysis`}</h1>
         <p className="legacy-detail-published">{`Published on ${formatLegacyDate(puzzle.isoDate)}`}</p>
+        {showUpdatedAt ? (
+          <p className="legacy-detail-updated">{`Updated on ${formatLegacyDate(puzzle.updatedAt.slice(0, 10))}`}</p>
+        ) : null}
         <div className={`legacy-detail-verified${isFallbackDetail ? " legacy-detail-verified-fallback" : ""}`}>
           <span aria-hidden="true">{isFallbackDetail ? "i" : "✓"}</span>
           <span>{verificationLabel}</span>
+          <Link href="/about-us#editorial-process" className="legacy-detail-verify-link">
+            How we verify
+          </Link>
         </div>
         <p className="copy legacy-detail-summary">{summary}</p>
 

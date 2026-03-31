@@ -49,6 +49,34 @@ export default function AboutPage() {
           </section>
         </div>
 
+        <section id="editorial-process" className="surface" style={{ padding: 28, scrollMarginTop: 100 }}>
+          <p className="eyebrow">Editorial Process</p>
+          <h2 className="section-title" style={{ marginTop: 8 }}>How we verify each Pinpoint page</h2>
+          <p className="copy" style={{ marginTop: 12 }}>
+            Each Pinpoint answer page combines puzzle data, human review, and automated checks so the
+            public page is useful, consistent, and traceable over time.
+          </p>
+          <ol className="copy" style={{ marginTop: 16, paddingLeft: 20, lineHeight: 2 }}>
+            <li>Live puzzle data gives us the clue set, answer, and publish timing for the day.</li>
+            <li>Human editorial review checks the explanation, turning point, and clue-by-clue fit.</li>
+            <li>Automated quality checks validate data integrity and catch thin or malformed copy before release.</li>
+          </ol>
+          <p className="copy" style={{ marginTop: 12 }}>
+            Pages marked <strong>Verified by Human Editor</strong> have been reviewed by our editorial workflow.
+            Pages marked <strong>Auto-generated quick guide</strong> are based on live puzzle data and may offer a
+            lighter explanation layer until a fuller walkthrough is available.
+          </p>
+        </section>
+
+        <section className="surface" style={{ padding: 28 }}>
+          <p className="eyebrow">Corrections Policy</p>
+          <p className="copy" style={{ marginTop: 12 }}>
+            If you spot an error, use the contact page and include the puzzle number plus any context
+            that would help us reproduce the issue. We aim to review corrections within 24 hours, and
+            when a page is updated the visible &quot;Updated on&quot; date is refreshed.
+          </p>
+        </section>
+
         <section className="surface" style={{ padding: 28 }}>
           <p className="eyebrow">Independence</p>
           <p className="copy" style={{ marginTop: 12 }}>
