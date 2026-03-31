@@ -3,7 +3,6 @@
   "slug": "pinpoint-answer-697",
   "publishDate": "2026-03-28",
   "isoDate": "2026-03-28",
-  "detailState": "fallback_full",
   "clues": [
     "Horn",
     "Cod",
@@ -14,11 +13,11 @@
   "answer": "Geographical capes",
   "category": "Geographical capes",
   "wordHints": {
-    "Horn": "\"Horn\" fits more cleanly once the board is tested under the same answer as the other clues.",
-    "Cod": "\"Cod\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
-    "Verde": "\"Verde\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
-    "Canaveral": "\"Canaveral\" fits more cleanly once the board is tested under the same answer as the other clues.",
-    "Of Good Hope": "\"Of Good Hope\" is the clue that makes the shared answer concrete enough to test across the full board."
+    "Horn": "Cape Horn is the southernmost point of South America, notorious for its rough seas.",
+    "Cod": "Cape Cod is a peninsula in Massachusetts known for its beaches and maritime history.",
+    "Verde": "Cape Verde is an island nation off the coast of West Africa.",
+    "Canaveral": "Cape Canaveral is a space launch facility in Florida.",
+    "Of Good Hope": "The Cape of Good Hope is a landmark on the southern tip of Africa."
   },
   "spoilerHints": {
     "Horn": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -28,83 +27,90 @@
     "Of Good Hope": "This is the clue that makes the category specific enough to test instead of staying broad."
   },
   "articleBlocks": [
-    "At first, Horn and Cod pointed in a few different directions.",
-    "The turn came with \"Horn\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on geographical, examples like \"Horn\" and \"Cod\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Geographical capes\".",
-    "\"Canaveral\" and \"Of Good Hope\" then felt like the last confirmations, not separate guesses."
+    "At first, this looked more like famous place names than the real category.",
+    "Horn pushed me in that direction immediately.",
+    "Cod kept that theory alive for a moment, but canaveral still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Canaveral made me stop thinking about famous place names and start thinking about the real category.",
+    "Horn made sense as Cape Horn.",
+    "Cod made sense as Cape Cod.",
+    "The answer was Geographical capes.",
+    "Canaveral and Of Good Hope then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "fullAnalysis": [
-    "At first, Horn and Cod pointed in a few different directions.",
-    "The turn came with \"Horn\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on geographical, examples like \"Horn\" and \"Cod\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Geographical capes\".",
-    "\"Canaveral\" and \"Of Good Hope\" then felt like the last confirmations, not separate guesses."
+    "At first, this looked more like famous place names than the real category.",
+    "Horn pushed me in that direction immediately.",
+    "Cod kept that theory alive for a moment, but canaveral still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Canaveral made me stop thinking about famous place names and start thinking about the real category.",
+    "Horn made sense as Cape Horn.",
+    "Cod made sense as Cape Cod.",
+    "The answer was Geographical capes.",
+    "Canaveral and Of Good Hope then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "solutionNarrative": [
-    "I did not have a clean answer from the first clue. I initially drifted toward a broader category guess, but that line of thinking never explained \"Of Good Hope\" cleanly enough.",
-    "The turn came when I let \"Of Good Hope\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.",
-    "The answer was \"Geographical capes\"."
+    "Horn and Cod first pulled me toward famous place names, so that was the first path I tested. It held together for a moment, but canaveral never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating canaveral as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about famous place names; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
-      "title": "Wait for the clue that makes the set concrete",
-      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Prefer exact fits over vague overlap",
-      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Canaveral is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Re-check the early clues once the answer sharpens",
-      "body": "Once \"Of Good Hope\" lands, go back and test the earlier clues under that same answer before locking it in."
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "Look for common geographical features when place names appear disconnected."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on geographical",
-    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Horn",
-        "examplePhrase": "Horn",
-        "connectionExplained": "\"Horn\" fits more cleanly once the board is tested under the same answer as the other clues."
+        "examplePhrase": "Cape Horn",
+        "connectionExplained": "Cape Horn is the southernmost point of South America, notorious for its rough seas."
       },
       {
         "clue": "Cod",
-        "examplePhrase": "Cod",
-        "connectionExplained": "\"Cod\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+        "examplePhrase": "Cape Cod",
+        "connectionExplained": "Cape Cod is a peninsula in Massachusetts known for its beaches and maritime history."
       },
       {
         "clue": "Verde",
-        "examplePhrase": "Verde",
-        "connectionExplained": "\"Verde\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+        "examplePhrase": "Cape Verde",
+        "connectionExplained": "Cape Verde is an island nation off the coast of West Africa."
       },
       {
         "clue": "Canaveral",
-        "examplePhrase": "Canaveral",
-        "connectionExplained": "\"Canaveral\" fits more cleanly once the board is tested under the same answer as the other clues."
+        "examplePhrase": "Cape Canaveral",
+        "connectionExplained": "Cape Canaveral is a space launch facility in Florida."
       },
       {
         "clue": "Of Good Hope",
-        "examplePhrase": "Of Good Hope",
-        "connectionExplained": "\"Of Good Hope\" is the clue that makes the shared answer concrete enough to test across the full board."
+        "examplePhrase": "Cape of Good Hope",
+        "connectionExplained": "The Cape of Good Hope is a landmark on the southern tip of Africa."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #697?",
-      "answer": "The answer is \"Geographical capes\". That reading is the first one that explains the whole set without forcing any clue."
+      "answer": "The answer is \"Geographical capes\" because that reading explains the full set cleanly, including the final clue."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #697?",
-      "answer": "The connection is a category board focused on geographical. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Canaveral is what keeps the category reading precise instead of broad."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #697?",
-      "answer": "\"Of Good Hope\" is the turning point because it makes the answer concrete enough to test across all five clues."
+      "answer": "Canaveral is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues seem unrelated until you realize they all name a specific type of geographical feature."
     }
   ]
 }
