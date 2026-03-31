@@ -16,13 +16,13 @@ export function Footer({
 }: FooterProps) {
   const quickLinks = isDetailPage
     ? [
-        { label: "Next puzzle", href: routes.preview },
+        { label: "Pro Tips", href: routes.preview },
         { label: "Archive", href: routes.archive },
         { label: "How it works", href: "/#faq" },
         { label: "About", href: routes.about },
       ]
     : [
-        { label: "Next Preview", href: routes.preview },
+        { label: "Pro Tips", href: routes.preview },
         { label: "Open Full Archive", href: routes.archive },
       ];
   const supportLinks = [

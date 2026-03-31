@@ -9,7 +9,6 @@ export function generateMetadata(): Metadata {
     description:
       "Read how Pinpoint Answer Today operates as an independent LinkedIn Pinpoint companion and what limitations apply.",
     path: "/disclaimer",
-    noIndex: true,
   });
 }
 

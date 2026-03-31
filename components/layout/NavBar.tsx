@@ -9,7 +9,7 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
   const navLinks = isDetailPage
     ? [
         { label: "Today", href: routes.home },
-        { label: "Next puzzle", href: routes.preview },
+        { label: "Pro Tips", href: routes.preview },
         { label: "Past Puzzles", href: routes.archive },
         { label: "Feedback", href: routes.contact },
       ]

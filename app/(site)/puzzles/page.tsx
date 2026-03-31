@@ -13,27 +13,11 @@ import {
 } from "@/lib/seo/metadata";
 import { StructuredData } from "@/components/seo/StructuredData";
 
-const INITIAL_ARCHIVE_LIMIT = 24;
+// ISR: revalidate every 24h; on-demand revalidation triggered via /api/revalidate
+export const revalidate = 86400;
 
 function withTrailingSlash(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
-}
-
-function getInitialArchiveGroups(groups: Awaited<ReturnType<typeof getArchiveEntriesGrouped>>) {
-  let remaining = INITIAL_ARCHIVE_LIMIT;
-  const initialGroups: typeof groups = [];
-
-  for (const group of groups) {
-    if (remaining <= 0) {
-      break;
-    }
-
-    const items = group.items.slice(0, remaining);
-    initialGroups.push({ ...group, items });
-    remaining -= items.length;
-  }
-
-  return initialGroups;
 }
 
 export async function generateMetadata({
@@ -41,6 +25,8 @@ export async function generateMetadata({
 }: {
   searchParams: Promise<{ q?: string }>;
 }): Promise<Metadata> {
+  // Reading searchParams here only affects metadata, not the page's static data.
+  // The canonical fallback ensures ?q= variants don't compete with the base URL.
   const { q } = await searchParams;
   const metadata = buildPageMetadata({
     title: ARCHIVE_SEO_TITLE,
@@ -58,10 +44,14 @@ export default async function ArchivePage({
 }: {
   searchParams: Promise<{ q?: string }>;
 }) {
+  // NOTE: We read searchParams here only to pass the initial query to the
+  // client-side search component. The full groups/entries data is always
+  // rendered server-side regardless of the query, so Googlebot sees all
+  // 700+ entry links in the HTML regardless of the ?q= param.
   const { q } = await searchParams;
   const groups = await getArchiveEntriesGrouped();
   const archiveEntries = groups.flatMap((group) => group.items);
-  const initialGroups = getInitialArchiveGroups(groups);
+  const initialGroups = groups;
   const structuredDataItems = [
     {
       "@context": "https://schema.org",

@@ -21,11 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const puzzleLabel = preview ? `#${preview.number}` : "the next puzzle";
 
   return buildPageMetadata({
-    title: `LinkedIn Pinpoint ${puzzleLabel} Preview — Coming Soon`,
+    title: "LinkedIn Pinpoint Tips, Patterns & Next Puzzle Preview",
     description:
-      "Get ready for the next LinkedIn Pinpoint answer with spoiler-safe tips, common answer patterns, and quick links to the latest verified solution.",
+      `Master LinkedIn Pinpoint with pro tips, common answer patterns, a full glossary, and a spoiler-safe preview of ${puzzleLabel}. Updated daily.`,
     path: routes.preview,
-    noIndex: true,
   });
 }
 

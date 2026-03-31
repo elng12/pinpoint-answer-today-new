@@ -14,11 +14,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const primaryRoutes = [
     { path: routes.home, lastModified: getStaticRouteLastModified(routes.home), priority: 1.0 },
     { path: routes.archive, lastModified: getStaticRouteLastModified(routes.archive), priority: 0.9 },
+    { path: routes.preview, lastModified: getStaticRouteLastModified(routes.preview), priority: 0.8 },
     { path: routes.about, lastModified: getStaticRouteLastModified(routes.about), priority: 0.6 },
   ];
 
   const legalRoutes = [
-    { path: routes.contact, lastModified: getStaticRouteLastModified(routes.contact) },
     { path: routes.privacy, lastModified: getStaticRouteLastModified(routes.privacy) },
     { path: routes.terms, lastModified: getStaticRouteLastModified(routes.terms) },
     { path: routes.disclaimer, lastModified: getStaticRouteLastModified(routes.disclaimer) },

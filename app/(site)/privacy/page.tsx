@@ -9,7 +9,6 @@ export function generateMetadata(): Metadata {
     description:
       "Learn how Pinpoint Answer Today handles the limited personal data used to operate this LinkedIn Pinpoint companion site.",
     path: "/privacy",
-    noIndex: true,
   });
 }
 
