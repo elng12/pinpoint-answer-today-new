@@ -341,6 +341,27 @@ const nextConfig: NextConfig = {
         destination: "/favicon/apple-touch-icon.png",
         permanent: true as const,
       },
+      // Old locale sitemap endpoints now collapse into the single canonical sitemap.
+      {
+        source: "/sitemaps/en.xml",
+        destination: "/sitemap.xml",
+        permanent: true as const,
+      },
+      {
+        source: "/sitemaps/pt-BR.xml",
+        destination: "/sitemap.xml",
+        permanent: true as const,
+      },
+      {
+        source: "/sitemaps/fr.xml",
+        destination: "/sitemap.xml",
+        permanent: true as const,
+      },
+      {
+        source: "/sitemaps/de.xml",
+        destination: "/sitemap.xml",
+        permanent: true as const,
+      },
     ];
 
     return [...localeRedirects, ...legacyRedirects];

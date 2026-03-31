@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import nextConfig from "../next.config";
 import { middleware } from "../middleware";
 import { NextRequest } from "next/server";
+import { GET as getTrafficAdviceRoute } from "../app/.well-known/traffic-advice/route";
 import {
   getLegacyConnectorRedirectSlug,
   getLegacyThemeOrConnectorRedirectSlug,
@@ -68,6 +69,7 @@ async function checkRedirectConfig() {
   assertRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})", "/pinpoint/:date");
   assertRedirectRule(rules, "/en/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/puzzles/connectors", "/puzzles");
+  assertRedirectRule(rules, "/sitemaps/pt-BR.xml", "/sitemap.xml");
   assertRedirectRule(rules, "/feedback", "/contact-us");
   assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/linkedin-pinpoint-answers/pinpoint-answer-:number/");
@@ -117,10 +119,30 @@ async function checkLegacyFamilyRedirectLookup() {
   console.log("ok: legacy family lookups handle apostrophe slugs and theme-to-connector fallback");
 }
 
+async function checkTrafficAdviceRoute() {
+  const response = await getTrafficAdviceRoute();
+
+  assert.equal(response.status, 200, "traffic advice endpoint should return 200");
+  assert.equal(
+    response.headers.get("content-type"),
+    "application/trafficadvice+json; charset=utf-8",
+    "traffic advice endpoint should use the registered media type",
+  );
+  assert.equal(
+    response.headers.get("cache-control"),
+    "public, max-age=1800, must-revalidate",
+    "traffic advice endpoint should publish a short-lived cache policy",
+  );
+  assert.equal(await response.text(), "[]", "traffic advice endpoint should return an empty advice list");
+
+  console.log("ok: traffic advice well-known endpoint returns a valid empty policy");
+}
+
 async function main() {
   await checkRedirectConfig();
   checkMiddlewareCanonicalization();
   await checkLegacyFamilyRedirectLookup();
+  await checkTrafficAdviceRoute();
   console.log("Pinpoint routing regression passed.");
 }
 
