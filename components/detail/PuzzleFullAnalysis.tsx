@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Star, Lightbulb, Table } from "lucide-react";
-import { SectionViewTracker } from "@/components/analytics/SectionViewTracker";
 import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
 import {
   formatPuzzleDifficultyBandLabel,
@@ -375,20 +374,6 @@ export function PuzzleFullAnalysis({
   const previewCtaLabel = nextPreview
     ? `Pro Tips & Puzzle #${nextPreview.number} preview - expected ${nextPreview.expectedDate}`
     : "Open Pro Tips and spoiler-safe next puzzle guidance";
-  const faqTracker = (
-    <SectionViewTracker
-      eventName="faq_section_viewed"
-      eventParams={{
-        event_category: "engagement",
-        event_label: `Puzzle ${puzzle.number}`,
-        detail_mode: puzzle.detailMode,
-        puzzle_number: puzzle.number,
-        source_slot: "detail_faq_section",
-        value: puzzle.number,
-      }}
-    />
-  );
-
   return (
     <>
       <div className="legacy-analysis-flow">
@@ -424,7 +409,6 @@ export function PuzzleFullAnalysis({
               </section>
 
               <section className="legacy-analysis-section" id="faq">
-                {faqTracker}
                 <div className="legacy-section-title-row">
                   <Lightbulb className="legacy-section-icon" aria-hidden />
                   <h3 className="legacy-section-title">Compact FAQ</h3>
@@ -449,7 +433,6 @@ export function PuzzleFullAnalysis({
               </section>
 
               <section className="legacy-analysis-section" id="faq">
-                {faqTracker}
                 <div className="legacy-section-title-row">
                   <Lightbulb className="legacy-section-icon" aria-hidden />
                   <h3 className="legacy-section-title">Compact FAQ</h3>
@@ -503,7 +486,6 @@ export function PuzzleFullAnalysis({
               </section>
 
               <section className="legacy-analysis-section" id="faq">
-                {faqTracker}
                 <div className="legacy-section-title-row">
                   <Lightbulb className="legacy-section-icon" aria-hidden />
                   <h3 className="legacy-section-title">FAQ</h3>
