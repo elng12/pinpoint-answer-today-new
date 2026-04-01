@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { trackClientEvent } from "@/lib/analytics";
+import {
+  getScrollDepthPercent,
+  trackClientEvent,
+  trackClientEventWhenReady,
+} from "@/lib/analytics";
 
 type PuzzleAnswerRevealProps = {
   puzzleNumber: number;
@@ -60,11 +64,26 @@ export function PuzzleAnswerReveal({
   const handleRevealToggle = () => {
     setRevealed((current) => {
       const nextValue = !current;
+      const scrollDepthPercent = getScrollDepthPercent();
+
       trackClientEvent(nextValue ? "reveal_click" : "hide_answer", {
         event_category: "engagement",
         event_label: `Puzzle ${puzzleNumber}`,
         value: puzzleNumber,
       });
+
+      if (nextValue) {
+        trackClientEventWhenReady("answer_revealed", {
+          event_category: "engagement",
+          event_label: `Puzzle ${puzzleNumber}`,
+          puzzle_number: puzzleNumber,
+          detail_mode: detailMode,
+          source_slot: "detail_answer_panel",
+          scroll_depth_percent: scrollDepthPercent,
+          value: puzzleNumber,
+        });
+      }
+
       return nextValue;
     });
   };

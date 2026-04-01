@@ -231,7 +231,7 @@
   display: grid;
   gap: 16px;
   margin-top: 22px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .home-adjacent-card {
@@ -699,4 +699,3 @@
   font-weight: 600;
   color: var(--muted-foreground);
 }
-

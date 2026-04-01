@@ -36,19 +36,22 @@ export function HomeRevealSection({
       description: "Open today's answer, hints, and full breakdown together.",
       href: routes.detail(puzzle.slug),
     },
-    preview
-      ? {
-          badge: "Next",
-          label: `Tomorrow's preview (Puzzle ${preview.number})`,
-          description: `Puzzle ${preview.number} unlocks soon.`,
-          href: routes.preview,
-        }
-      : {
-          badge: "Archive",
-          label: "Browse older answers",
-          description: "Jump into the full archive of recent and past answers.",
-          href: routes.archive,
-        },
+    {
+      badge: "Archive",
+      label: "Browse older answers",
+      description: "Jump into the full archive of recent and past answers.",
+      href: routes.archive,
+    },
+    {
+      badge: "Pro Tips",
+      label: preview
+        ? `Pro Tips & next puzzle (Puzzle ${preview.number})`
+        : "Open Pro Tips and next puzzle guidance",
+      description: preview
+        ? `Review spoiler-safe solving patterns before Puzzle ${preview.number} unlocks.`
+        : "Review spoiler-safe solving patterns, clue types, and preview guidance.",
+      href: routes.preview,
+    },
   ].filter(Boolean) as Array<{
     badge: string;
     label: string;
@@ -65,8 +68,8 @@ export function HomeRevealSection({
         </h2>
         <p className="copy home-reveal-description">
           Reveal spoiler-safe hints first, then open today&apos;s verified answer. Many players who
-          search LinkedIn Pinpoint answer today start here before moving to yesterday&apos;s
-          answer or the full archive.
+          search LinkedIn Pinpoint answer today start here before moving into the archive or the
+          Pro Tips hub.
         </p>
       </div>
       <div className="reveal-section-body">

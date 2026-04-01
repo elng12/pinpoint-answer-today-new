@@ -931,6 +931,9 @@
 
 .legacy-next-actions {
   margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 body:has(.legacy-detail-page) .nav-inner {
