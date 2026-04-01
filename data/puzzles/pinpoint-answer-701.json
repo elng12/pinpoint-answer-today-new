@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-701",
   "publishDate": "2026-04-01",
   "isoDate": "2026-04-01",
-  "detailState": "generating",
+  "detailState": "fallback_full",
   "questionType": "category",
   "difficultyBand": "obvious",
   "clues": [
@@ -16,11 +16,11 @@
   "answer": "Weather emojis (did you solve before the storm?)",
   "category": "Weather emojis (did you solve before the storm?)",
   "wordHints": {
-    "☀️": "☀️ connects to \"Weather emojis (did you solve before the storm?)\"",
-    "🌤️": "🌤️ connects to \"Weather emojis (did you solve before the storm?)\"",
-    "☁️": "☁️ connects to \"Weather emojis (did you solve before the storm?)\"",
-    "🌧️": "🌧️ connects to \"Weather emojis (did you solve before the storm?)\"",
-    "⛈️": "⛈️ connects to \"Weather emojis (did you solve before the storm?)\""
+    "☀️": "\"☀️\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "🌤️": "\"🌤️\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "☁️": "\"☁️\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "🌧️": "\"🌧️\" is the clue that makes the shared answer concrete enough to test across the full board.",
+    "⛈️": "\"⛈️\" helps confirm the same answer instead of pulling the board back toward a looser guess."
   },
   "spoilerHints": {
     "☀️": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -31,7 +31,7 @@
   },
   "articleBlocks": [
     "At first, ☀️ and 🌤️ pointed in a few different directions.",
-    "The turn came with \"🌧️\".",
+    "The turn came with \"☀️\".",
     "That clue made the answer feel concrete enough to test across the full board.",
     "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling loose and started landing cleanly.",
     "The answer was \"Weather emojis (did you solve before the storm?)\".",
@@ -39,121 +39,123 @@
   ],
   "fullAnalysis": [
     "At first, ☀️ and 🌤️ pointed in a few different directions.",
-    "The turn came with \"🌧️\".",
+    "The turn came with \"☀️\".",
     "That clue made the answer feel concrete enough to test across the full board.",
     "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling loose and started landing cleanly.",
     "The answer was \"Weather emojis (did you solve before the storm?)\".",
     "\"🌧️\" and \"⛈️\" then felt like the last confirmations, not separate guesses."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #701, ☀️, 🌤️, ☁️, 🌧️, ⛈️ only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "I did not have a clean answer from the first clue. I initially drifted toward a broader category guess, but that line of thinking never explained \"🌧️\" cleanly enough.",
+    "The turn came when I let \"🌧️\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.",
+    "The answer was \"Weather emojis (did you solve before the storm?)\"."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Wait for the clue that makes the set concrete",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "Prefer exact fits over vague overlap",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Re-check the early clues once the answer sharpens",
+      "body": "Once \"🌧️\" lands, go back and test the earlier clues under that same answer before locking it in."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on weather",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
     "clueTableRows": [
       {
         "clue": "☀️",
         "examplePhrase": "☀️",
-        "connectionExplained": "☀️ connects to \"Weather emojis (did you solve before the storm?)\""
+        "connectionExplained": "\"☀️\" fits more cleanly once the board is tested under the same answer as the other clues."
       },
       {
         "clue": "🌤️",
         "examplePhrase": "🌤️",
-        "connectionExplained": "🌤️ connects to \"Weather emojis (did you solve before the storm?)\""
+        "connectionExplained": "\"🌤️\" helps confirm the same answer instead of pulling the board back toward a looser guess."
       },
       {
         "clue": "☁️",
         "examplePhrase": "☁️",
-        "connectionExplained": "☁️ connects to \"Weather emojis (did you solve before the storm?)\""
+        "connectionExplained": "\"☁️\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
       },
       {
         "clue": "🌧️",
         "examplePhrase": "🌧️",
-        "connectionExplained": "🌧️ connects to \"Weather emojis (did you solve before the storm?)\""
+        "connectionExplained": "\"🌧️\" is the clue that makes the shared answer concrete enough to test across the full board."
       },
       {
         "clue": "⛈️",
         "examplePhrase": "⛈️",
-        "connectionExplained": "⛈️ connects to \"Weather emojis (did you solve before the storm?)\""
+        "connectionExplained": "\"⛈️\" helps confirm the same answer instead of pulling the board back toward a looser guess."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #701?",
-      "answer": "The answer is \"Weather emojis (did you solve before the storm?)\". The clues ☀️, 🌤️, ☁️, 🌧️, ⛈️ all share this connection."
+      "answer": "The answer is \"Weather emojis (did you solve before the storm?)\". That reading is the first one that explains the whole set without forcing any clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #701?",
+      "answer": "The connection is a category board focused on weather. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #701?",
+      "answer": "\"🌧️\" is the turning point because it makes the answer concrete enough to test across all five clues."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #701 just unlocked, and this is the fastest verified update. The board clues are ☀️, 🌤️, ☁️, 🌧️, ⛈️, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "At first, ☀️ and 🌤️ pointed in a few different directions.",
     "falseStarts": [],
     "whyFalseStartPlausible": [],
-    "breakingClue": "☀️",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #701, ☀️, 🌤️, ☁️, 🌧️, ⛈️ only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once ☀️ lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "🌧️",
+    "pivot": "I did not have a clean answer from the first clue. I initially drifted toward a broader category guess, but that line of thinking never explained \"🌧️\" cleanly enough.\n\nThe turn came when I let \"🌧️\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.\n\nThe answer was \"Weather emojis (did you solve before the storm?)\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling loose and started landing cleanly."
   },
   "turningPoint": {
-    "clue": "☀️",
-    "whyDecisive": "☀️ is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once ☀️ lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "🌧️",
+    "whyDecisive": "\"🌧️\" is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once 🌧️ lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
       "clue": "☀️",
       "surfaceMisread": "an early broad guess",
       "resolvedPhraseOrMember": "☀️",
-      "nonObviousWhy": "☀️ supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "\"☀️\" fits more cleanly once the board is tested under the same answer as the other clues.",
       "searchableContext": "☀️"
     },
     {
       "clue": "🌤️",
       "surfaceMisread": "an early broad guess",
       "resolvedPhraseOrMember": "🌤️",
-      "nonObviousWhy": "🌤️ supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "\"🌤️\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
       "searchableContext": "🌤️"
     },
     {
       "clue": "☁️",
       "surfaceMisread": "an early broad guess",
       "resolvedPhraseOrMember": "☁️",
-      "nonObviousWhy": "☁️ supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "\"☁️\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
       "searchableContext": "☁️"
     },
     {
       "clue": "🌧️",
       "surfaceMisread": "an early broad guess",
       "resolvedPhraseOrMember": "🌧️",
-      "nonObviousWhy": "🌧️ supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "\"🌧️\" is the clue that makes the shared answer concrete enough to test across the full board.",
       "searchableContext": "🌧️"
     },
     {
       "clue": "⛈️",
       "surfaceMisread": "an early broad guess",
       "resolvedPhraseOrMember": "⛈️",
-      "nonObviousWhy": "⛈️ supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "\"⛈️\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
       "searchableContext": "⛈️"
     }
   ],
@@ -161,20 +163,20 @@
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #701?",
-      "answer": "The answer is \"Weather emojis (did you solve before the storm?)\". The clues ☀️, 🌤️, ☁️, 🌧️, ⛈️ all share this connection.",
-      "tiedClue": "☀️"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Weather emojis (did you solve before the storm?)\". That reading is the first one that explains the whole set without forcing any clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #701?",
+      "answer": "The connection is a category board focused on weather. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
       "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #701?",
+      "answer": "\"🌧️\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "🌧️"
     }
   ],
   "uniquenessSignals": {
