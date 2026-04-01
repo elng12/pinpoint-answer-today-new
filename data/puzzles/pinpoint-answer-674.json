@@ -1,35 +1,206 @@
 {
+  "puzzleNumber": 674,
   "slug": "pinpoint-answer-674",
+  "publishDate": "2026-03-05",
+  "isoDate": "2026-03-05",
   "detailState": "published",
-  "fullAnalysis": [
-    "LinkedIn Pinpoint #674 initially feels broad because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes) seem to point in different directions. The solve gets easier when I stop hunting for a pun and instead ask what narrow category can hold every clue without exceptions. Places with benches is the clean fit because each item is a place where benches commonly appear. That makes the board cohesive, specific, and strong enough to explain all five clues with one answer instead of a loose vibe or an overly broad theme.",
-    "I began by splitting the clues into smaller buckets, because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes) did not look unified on a first pass. My early guesses were all too broad and kept leaving one clue behind. The breakthrough came when I asked what exact category each clue could belong to without any stretching. One by one, the pieces snapped into place: every clue is one of the place where benches commonly appear. After that, I reread the full set and checked whether any clue felt forced. None did. That final verification mattered because it showed Places with benches was not just plausible, it was precise enough to explain the board cleanly from start to finish.",
-    "After checking Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes) against Places with benches, the board resolves cleanly without any leftover clue."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Parks",
+    "Courtrooms",
+    "Piano lounges",
+    "Bus stops",
+    "Stadiums (for team substitutes)"
   ],
+  "answer": "Places with benches",
+  "category": "Places with benches",
   "wordHints": {
-    "Parks": "Parks fits because it is a place where benches commonly appear, matching the category Places with benches.",
-    "Courtrooms": "Courtrooms fits because it is a place where benches commonly appear, matching the category Places with benches.",
-    "Piano lounges": "Piano lounges fits because it is a place where benches commonly appear, matching the category Places with benches.",
-    "Bus stops": "Bus stops fits because it is a place where benches commonly appear, matching the category Places with benches.",
-    "Stadiums (for team substitutes)": "Stadiums (for team substitutes) fits because it is a place where benches commonly appear, matching the category Places with benches."
+    "Parks": "Parks fit because park benches are one of the most familiar public seating examples.",
+    "Courtrooms": "Courtrooms matter because a courtroom bench is a specific and formal kind of bench, not just generic seating.",
+    "Piano lounges": "Piano lounges help because a piano bench shifts the clue from public seating to functional furniture.",
+    "Bus stops": "Bus stops confirm the category through the everyday waiting-bench use case.",
+    "Stadiums (for team substitutes)": "Stadiums is the turning clue because 'the bench' is a sports term that makes the object and category much more exact."
   },
-  "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who look for a shared object that appears in several different venues before chasing a clever but unstable guess. Places with benches works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. treat parenthetical notes as clues about a special bench use case so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, prefer location-based answers when every clue names a setting. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+  "spoilerHints": {
+    "Parks": "Think about a common object you would find there, not just the location itself.",
+    "Courtrooms": "This clue works through a formal use of the same object, not simply public furniture.",
+    "Piano lounges": "Look for a functional object associated with the instrument rather than the room.",
+    "Bus stops": "Treat this as another setting where the same object appears for a practical reason.",
+    "Stadiums (for team substitutes)": "This is the clue that turns a broad seating theme into one exact object."
+  },
+  "articleBlocks": [
+    "Parks and Bus stops both suggest seating early, but that still leaves the board feeling broader than it should.",
+    "Courtrooms and Piano lounges help, though each one uses the same object in a different way, which can make the set feel inconsistent at first.",
+    "Stadiums (for team substitutes) is the clue that tightens it.",
+    "Once you think of the bench in sports language, the board stops being about places to sit in general and starts being about places with benches specifically.",
+    "That makes park benches, courtroom benches, piano benches, and bus stop benches all feel like one clean family.",
+    "The answer was Places with benches.",
+    "This puzzle is stronger than a generic seating board because each clue points to a slightly different kind of bench use."
   ],
+  "fullAnalysis": [
+    "Parks and Bus stops both suggest seating early, but that still leaves the board feeling broader than it should.",
+    "Courtrooms and Piano lounges help, though each one uses the same object in a different way, which can make the set feel inconsistent at first.",
+    "Stadiums (for team substitutes) is the turning clue because 'the bench' is such a fixed sports term that it reveals the exact object more clearly than a generic seating answer would.",
+    "After that, park benches, courtroom benches, piano benches, and bus stop benches all become clean members of the same category.",
+    "The answer was Places with benches.",
+    "What makes the board satisfying is that it uses public, formal, musical, and sports contexts to hide one simple object."
+  ],
+  "solutionNarrative": [
+    "Parks and Bus stops first made me think about public seating, which was close but too broad. Courtrooms and Piano lounges fit unevenly enough that I still did not feel confident about the exact object.",
+    "Stadiums changed that. Once I read the clue through the sports meaning of bench, the whole board snapped into a much tighter answer about places with benches rather than places with seats."
+  ],
+  "lessons": [
+    {
+      "title": "Broad seating themes often need a specific object",
+      "body": "A near-right answer like places to sit can feel plausible until one clue demands the exact kind of seat."
+    },
+    {
+      "title": "One clue can reveal the object's name through a special use",
+      "body": "The sports bench matters because it names the same object in a context that is more exact than simple park seating."
+    },
+    {
+      "title": "Mixed contexts can still point to one object",
+      "body": "Courtrooms, piano lounges, and stadiums look different on the surface, but they all center on the same kind of bench."
+    }
+  ],
+  "display": {
+    "connectorSummary": "different settings where benches appear in public, formal, musical, and sports use",
+    "fastStrategy": "If several place clues seem related by function, ask whether they all contain one specific object rather than one broad activity.",
+    "clueTableRows": [
+      {
+        "clue": "Parks",
+        "examplePhrase": "park bench",
+        "connectionExplained": "Parks fit because park benches are one of the most familiar public seating examples."
+      },
+      {
+        "clue": "Courtrooms",
+        "examplePhrase": "courtroom bench",
+        "connectionExplained": "Courtrooms matter because a courtroom bench is a specific and formal kind of bench, not just generic seating."
+      },
+      {
+        "clue": "Piano lounges",
+        "examplePhrase": "piano bench",
+        "connectionExplained": "Piano lounges help because a piano bench shifts the clue from public seating to functional furniture."
+      },
+      {
+        "clue": "Bus stops",
+        "examplePhrase": "bus stop bench",
+        "connectionExplained": "Bus stops confirm the category through the everyday waiting-bench use case."
+      },
+      {
+        "clue": "Stadiums (for team substitutes)",
+        "examplePhrase": "team bench",
+        "connectionExplained": "Stadiums is the turning clue because 'the bench' is a sports term that makes the object and category much more exact."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #674?",
-      "answer": "The answer is Places with benches. The five clues are Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums (for team substitutes)."
+      "answer": "The answer is Places with benches because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums all point to settings where a bench is a natural object."
     },
     {
-      "question": "How can I verify the answer quickly?",
-      "answer": "Run through all five clues again and make sure Places with benches explains each one cleanly. If even one clue feels forced, keep searching."
+      "question": "What is the connection in LinkedIn Pinpoint #674?",
+      "answer": "The connection is not seating in general. It is the more exact object bench, which appears in each setting for a slightly different reason."
     },
     {
-      "question": "What solving habit helps on puzzles like this?",
-      "answer": "The fastest habit is to test the narrowest clean answer against every clue instead of committing to a broad theme after only one or two matches."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #674?",
+      "answer": "Stadiums (for team substitutes) is the turning clue because the sports meaning of bench makes the object much clearer than a broad seating answer."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Parks and Bus stops make a broad seating answer feel plausible early on, but that does not yet explain the whole board precisely.",
+    "falseStarts": [
+      "places to sit",
+      "public waiting areas"
+    ],
+    "whyFalseStartPlausible": [
+      "Parks and Bus stops both support that broad idea right away, which is why it feels nearly right at first.",
+      "That answer becomes too loose once Courtrooms, Piano lounges, and Stadiums ask for a more specific object."
+    ],
+    "breakingClue": "Stadiums (for team substitutes)",
+    "pivot": "Stadiums changed the solve because the bench is a fixed sports term for substitute players. Once that meaning surfaced, the earlier clues all re-read around the exact object bench.",
+    "fullBoardConfirmation": "Courtroom bench and piano bench matter after the pivot because they prove the same object appears in formal and musical settings too. That makes Places with benches a tighter answer than any general seating theme."
+  },
+  "turningPoint": {
+    "clue": "Stadiums (for team substitutes)",
+    "whyDecisive": "This clue is decisive because the sports meaning of bench reveals the exact object more clearly than generic seating clues do.",
+    "whatChangedAfterIt": "Once the sports bench surfaced, Parks, Courtrooms, Piano lounges, and Bus stops all re-read as settings built around benches instead of loose seating categories."
+  },
+  "clueRows": [
+    {
+      "clue": "Parks",
+      "surfaceMisread": "places to sit",
+      "resolvedPhraseOrMember": "park bench",
+      "nonObviousWhy": "Parks fit because park benches are one of the most familiar public seating examples.",
+      "searchableContext": "park bench"
+    },
+    {
+      "clue": "Courtrooms",
+      "surfaceMisread": "places to sit",
+      "resolvedPhraseOrMember": "courtroom bench",
+      "nonObviousWhy": "Courtrooms matter because a courtroom bench is a specific and formal kind of bench, not just generic seating.",
+      "searchableContext": "courtroom bench"
+    },
+    {
+      "clue": "Piano lounges",
+      "surfaceMisread": "places to sit",
+      "resolvedPhraseOrMember": "piano bench",
+      "nonObviousWhy": "Piano lounges help because a piano bench shifts the clue from public seating to functional furniture.",
+      "searchableContext": "piano bench"
+    },
+    {
+      "clue": "Bus stops",
+      "surfaceMisread": "places to sit",
+      "resolvedPhraseOrMember": "bus stop bench",
+      "nonObviousWhy": "Bus stops confirm the category through the everyday waiting-bench use case.",
+      "searchableContext": "bus stop bench"
+    },
+    {
+      "clue": "Stadiums (for team substitutes)",
+      "surfaceMisread": "places to sit",
+      "resolvedPhraseOrMember": "team bench",
+      "nonObviousWhy": "Stadiums is the turning clue because 'the bench' is a sports term that makes the object and category much more exact.",
+      "searchableContext": "team bench"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #674?",
+      "answer": "The answer is Places with benches because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums all point to settings where a bench is a natural object.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #674?",
+      "answer": "The connection is not seating in general. It is the more exact object bench, which appears in each setting for a slightly different reason.",
+      "tiedClue": "Stadiums (for team substitutes)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #674?",
+      "answer": "Stadiums (for team substitutes) is the turning clue because the sports meaning of bench makes the object much clearer than a broad seating answer.",
+      "tiedClue": "Stadiums (for team substitutes)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a place board that only becomes exact when one sports clue reveals the object bench",
+    "relatedEntities": [
+      "park bench",
+      "courtroom bench",
+      "piano bench",
+      "bus stop bench",
+      "team bench"
+    ],
+    "doNotRepeatPatterns": [
+      "a place board that only becomes exact when one sports clue reveals the object bench",
+      "Broad seating themes often need a specific object",
+      "One clue can reveal the object's name through a special use",
+      "The sports bench reveals the exact object more clearly than generic seating",
+      "courtroom bench",
+      "team bench"
+    ]
+  }
 }

@@ -1,37 +1,206 @@
 {
+  "puzzleNumber": 460,
   "slug": "pinpoint-answer-460",
+  "publishDate": "2025-08-03",
+  "isoDate": "2025-08-03",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself scratching your head over Pinpoint today, you're definitely not alone. This wasn't a walk in the park. With clues like HEAD, DEAD, and BOTTOM, the Pinpoint clues initially felt all over the place, but the solution brought everything neatly into...well, a LINE.",
-    "I stared at HEAD, DEAD, and BOTTOM, and naturally my first thought was 'END'. HEAD-END, DEAD-END, BOTTOM-END. Seemed logical, right? I confidently typed in END, only to be met with disappointment.\n\nThe next clue, FINISH, only strengthened my incorrect theory. I was so sure I had it! But then the final clue, PUNCH, appeared and threw a wrench into everything. Punch-End? Nope. Total confusion.\n\nThat's when the \"aha!\" moment hit. I realized we were looking for something that comes *after* the clues, not something that completes them. HEAD-LINE, DEAD-LINE, BOTTOM-LINE, FINISH-LINE, and PUNCH-LINE. It all clicked into place. The answer was LINE.",
-    "Pinpoint tests your associative thinking as much as your vocabulary. The challenge lies in recognizing that the clues are incomplete words, needing 'LINE' to form common phrases.",
-    "Overall, Pinpoint was a moderately challenging puzzle that required a shift in perspective to solve. Don't be afraid to abandon your initial answer and think of words that come after the clues."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Head",
+    "Dead",
+    "Bottom",
+    "Finish",
+    "Punch"
   ],
+  "answer": "Words that come before \"line\"",
+  "category": "Words that come before \"line\"",
   "wordHints": {
-    "Head": "Matches perfectly with Headline, which is the title of a newspaper article.",
-    "Dead": "Referring to Deadline, the latest time or date by which something should be completed.",
-    "Bottom": "A nod to Bottom Line, which represents the net income or expenses.",
-    "Finish": "Connects to Finish Line, representing the end of a race.",
-    "Punch": "Refers to Punchline, which is the final part of a joke, making it funny."
+    "Head": "\"Headline\" is a strong early anchor, but it still leaves room for other shared endings until more clues land.",
+    "Dead": "\"Deadline\" helps because it is a fixed everyday word and supports the same ending across a different meaning.",
+    "Bottom": "\"Bottom line\" confirms the connector in business language rather than in publishing or scheduling.",
+    "Finish": "\"Finish line\" keeps the same ending in sports language and makes the board feel broader than one topic.",
+    "Punch": "\"Punchline\" is the turning clue because it breaks the common early false guess of 'end' and makes line feel much cleaner."
   },
-  "lessons": [
-    "Consider words that follow, not just precede. This puzzle throws a curveball by requiring you to think about what comes *after* the clues. Don't get stuck only thinking of prefixes. Remember to test suffixes too!",
-    "Don't be afraid to abandon your initial theory. I was so convinced that 'END' was the answer after seeing HEAD, DEAD and BOTTOM. But clinging to that idea blinded me to the real solution. When new clues contradict your guess, be ready to pivot.",
-    "Think beyond literal meanings. Sometimes, the connection is more figurative than literal. 'Punch' doesn't literally have to be hitting something; it can refer to the setup for a joke, leading to 'Punchline'",
-    "Trust the shift in perspective. Notice how the clues shift from physical ('Head', 'Bottom') to abstract ('Finish', 'Punch'). This shift can be a signal that you're on the right track."
+  "spoilerHints": {
+    "Head": "Think of a common media or publishing word, not just a body part.",
+    "Dead": "This clue forms a very familiar time-related word with the right ending.",
+    "Bottom": "Look for a phrase used in business or argument, not just a physical position.",
+    "Finish": "This clue helps in sports language once the connector is right.",
+    "Punch": "This is the clue that breaks several almost-right endings and forces the real one."
+  },
+  "articleBlocks": [
+    "Head, Dead, and Bottom can all tempt the wrong shared ending at first, especially if you jump too quickly into broad phrase completion mode.",
+    "Finish helps, but the board still feels like it could support more than one common word.",
+    "Punch is the clue that really sharpens it.",
+    "Punchline is such a specific and familiar phrase that it breaks weaker guesses and makes line feel much more exact than alternatives like end.",
+    "Once that happens, headline, deadline, bottom line, and finish line all become easy confirmations.",
+    "The answer was Words that come before \"line\".",
+    "This board works because several clues support nearly-right endings for a while, so the real answer lands only when one phrase becomes unmistakable."
   ],
+  "fullAnalysis": [
+    "Head, Dead, and Bottom can all tempt the wrong shared ending at first, especially if you move too fast on the first few clues.",
+    "Finish supports several familiar phrase endings too, which is why the board can feel stubborn before the last clue arrives.",
+    "Punch is the turning clue because punchline is such a specific phrase that it rules out weaker candidates and makes line feel exact.",
+    "After that, headline, deadline, bottom line, and finish line all read as clean everyday phrases in different contexts.",
+    "The answer was Words that come before \"line\".",
+    "The puzzle is satisfying because it uses several clues that almost support other endings, so the real connector has to earn its place."
+  ],
+  "solutionNarrative": [
+    "Head and Dead first made me test a few common endings, and some of them felt close enough to be distracting. Bottom and Finish kept the puzzle alive, but not yet settled.",
+    "Punch solved it. Once punchline appeared, the board finally stopped wobbling and turned into a straightforward set of line phrases with headline, deadline, bottom line, and finish line."
+  ],
+  "lessons": [
+    {
+      "title": "Late clues often break early almost-right answers",
+      "body": "If the first few clues support several plausible endings, wait for the clue that eliminates the weaker ones rather than forcing a guess."
+    },
+    {
+      "title": "Phrase boards get cleaner when one clue changes context",
+      "body": "Punchline matters because it brings humor into a board that otherwise spans news, business, and racing."
+    },
+    {
+      "title": "Do not trust the first shared ending too quickly",
+      "body": "A connector can feel plausible after two clues and still be wrong. Make sure the last clue lands just as naturally as the first ones."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar line phrases spread across news, timing, business, racing, and humor",
+    "fastStrategy": "If several clues seem to support more than one ending, wait for the clue that makes one phrase much more specific than the rest.",
+    "clueTableRows": [
+      {
+        "clue": "Head",
+        "examplePhrase": "headline",
+        "connectionExplained": "\"Headline\" is a strong early anchor, but it still leaves room for other shared endings until more clues land."
+      },
+      {
+        "clue": "Dead",
+        "examplePhrase": "deadline",
+        "connectionExplained": "\"Deadline\" helps because it is a fixed everyday word and supports the same ending across a different meaning."
+      },
+      {
+        "clue": "Bottom",
+        "examplePhrase": "bottom line",
+        "connectionExplained": "\"Bottom line\" confirms the connector in business language rather than in publishing or scheduling."
+      },
+      {
+        "clue": "Finish",
+        "examplePhrase": "finish line",
+        "connectionExplained": "\"Finish line\" keeps the same ending in sports language and makes the board feel broader than one topic."
+      },
+      {
+        "clue": "Punch",
+        "examplePhrase": "punchline",
+        "connectionExplained": "\"Punchline\" is the turning clue because it breaks the common early false guess of 'end' and makes line feel much cleaner."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "Why isn't 'END' the answer?",
-      "answer": "While Head-End, Dead-End, and Bottom-End might seem to fit, they don't all form equally common or logical phrases. Plus, they don't account for the 'Punch' clue."
+      "question": "What is the answer to LinkedIn Pinpoint #460?",
+      "answer": "The answer is Words that come before \"line\" because Head, Dead, Bottom, Finish, and Punch all form familiar phrases with line."
     },
     {
-      "question": "What does 'Bottom' mean?",
-      "answer": "In this context, 'Bottom' refers to 'Bottom Line', a financial or business term highlighting the final result or conclusion."
+      "question": "What is the connection in LinkedIn Pinpoint #460?",
+      "answer": "The connection is one shared ending word. The board resolves into headline, deadline, bottom line, finish line, and punchline."
     },
     {
-      "question": "How does 'Finish' connect to 'Line'?",
-      "answer": "'Finish' connects to 'Line' through the common phrase 'Finish Line', which is the marked end of a race or competition."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #460?",
+      "answer": "Punch is the turning clue because punchline is the phrase that breaks weaker candidates and makes line feel like the exact connector."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Head, Dead, and Bottom all support several common endings at first, so the board feels slippery instead of clean.",
+    "falseStarts": [
+      "shared ending guesses that feel almost right",
+      "topic clusters around endings or conclusions"
+    ],
+    "whyFalseStartPlausible": [
+      "Early clues like Head and Dead can complete in multiple familiar ways, which makes the board easy to over-read too soon.",
+      "Bottom and Finish can sound like a theme about endings, but Punch forces a more exact phrase answer."
+    ],
+    "breakingClue": "Punch",
+    "pivot": "Punch changed the solve because punchline is such a specific phrase that it eliminates weaker endings and locks line into place. After that, the earlier clues all become easy confirmations.",
+    "fullBoardConfirmation": "Bottom line and finish line matter after the pivot because they prove the same ending works in business and sports, not just in one context. That makes line feel fully secure."
+  },
+  "turningPoint": {
+    "clue": "Punch",
+    "whyDecisive": "Punch is decisive because punchline is the least flexible and most clue-breaking phrase on the board.",
+    "whatChangedAfterIt": "Once punchline appeared, Head, Dead, Bottom, and Finish all re-read as straightforward line phrases instead of almost-right partials."
+  },
+  "clueRows": [
+    {
+      "clue": "Head",
+      "surfaceMisread": "shared ending guesses that feel almost right",
+      "resolvedPhraseOrMember": "headline",
+      "nonObviousWhy": "\"Headline\" is a strong early anchor, but it still leaves room for other shared endings until more clues land.",
+      "searchableContext": "headline"
+    },
+    {
+      "clue": "Dead",
+      "surfaceMisread": "shared ending guesses that feel almost right",
+      "resolvedPhraseOrMember": "deadline",
+      "nonObviousWhy": "\"Deadline\" helps because it is a fixed everyday word and supports the same ending across a different meaning.",
+      "searchableContext": "deadline"
+    },
+    {
+      "clue": "Bottom",
+      "surfaceMisread": "shared ending guesses that feel almost right",
+      "resolvedPhraseOrMember": "bottom line",
+      "nonObviousWhy": "\"Bottom line\" confirms the connector in business language rather than in publishing or scheduling.",
+      "searchableContext": "bottom line"
+    },
+    {
+      "clue": "Finish",
+      "surfaceMisread": "shared ending guesses that feel almost right",
+      "resolvedPhraseOrMember": "finish line",
+      "nonObviousWhy": "\"Finish line\" keeps the same ending in sports language and makes the board feel broader than one topic.",
+      "searchableContext": "finish line"
+    },
+    {
+      "clue": "Punch",
+      "surfaceMisread": "shared ending guesses that feel almost right",
+      "resolvedPhraseOrMember": "punchline",
+      "nonObviousWhy": "\"Punchline\" is the turning clue because it breaks the common early false guess of 'end' and makes line feel much cleaner.",
+      "searchableContext": "punchline"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #460?",
+      "answer": "The answer is Words that come before \"line\" because Head, Dead, Bottom, Finish, and Punch all form familiar phrases with line.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #460?",
+      "answer": "The connection is one shared ending word. The board resolves into headline, deadline, bottom line, finish line, and punchline.",
+      "tiedClue": "Punch"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #460?",
+      "answer": "Punch is the turning clue because punchline is the phrase that breaks weaker candidates and makes line feel like the exact connector.",
+      "tiedClue": "Punch"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a line phrase board where one humor clue breaks several tempting but weaker endings",
+    "relatedEntities": [
+      "headline",
+      "deadline",
+      "bottom line",
+      "finish line",
+      "punchline"
+    ],
+    "doNotRepeatPatterns": [
+      "a line phrase board where one humor clue breaks several tempting but weaker endings",
+      "Late clues often break early almost-right answers",
+      "Phrase boards get cleaner when one clue changes context",
+      "Punch is decisive because punchline is the least flexible phrase on the board",
+      "finish line",
+      "punchline"
+    ]
+  }
 }

@@ -1,40 +1,206 @@
 {
+  "puzzleNumber": 530,
   "slug": "pinpoint-answer-530",
+  "publishDate": "2025-10-12",
+  "isoDate": "2025-10-12",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #530 is one of those boards where the connector becomes obvious as soon as you stop searching for a category. Of, Golf, Main, Crash, and Stay the do not belong to one topic, but they all sound like incomplete expressions. That usually means the answer is a shared trailing word rather than a subject area.",
-    "My first instinct was to treat Golf and Main as the anchors because they are the easiest to complete. Golf course and main course both arrive immediately, which makes course a strong candidate. The real check is whether the rest of the board keeps working without strain. Of course is one of the most common phrases in English, crash course is the familiar label for an intensive introduction, and stay the course is the standard expression for continuing despite difficulty. Once all five land naturally, there is no reason to keep searching.",
-    "The board works because the same ending serves very different functions. Golf course names a place, main course names part of a meal, of course is conversational emphasis, crash course is an accelerated learning format, and stay the course is an idiom about persistence. That variety is exactly what makes phrase puzzles like this feel broader than they really are.",
-    "That is why the answer to LinkedIn Pinpoint #530 is Words that come before \"course\". The clues are not trying to form one thematic group. They are all waiting for the same final word."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Of",
+    "Golf",
+    "Main",
+    "Crash",
+    "Stay the"
   ],
+  "answer": "Words that come before \"course\"",
+  "category": "Words that come before \"course\"",
   "wordHints": {
-    "Of": "Of course is the everyday phrase of agreement or certainty that helps expose the shared ending quickly.",
-    "Golf": "A golf course is the clearest place-based example and one of the fastest routes into the puzzle.",
-    "Main": "Main course refers to the primary dish in a meal, reinforcing the same trailing word in a different context.",
-    "Crash": "A crash course is an intensive short introduction to a subject, making the phrase pattern unmistakable.",
-    "Stay the": "Stay the course is the idiom about continuing with a plan despite setbacks or obstacles."
+    "Of": "\"Of course\" works because it is one of the most common conversational phrases in English.",
+    "Golf": "\"Golf course\" is an immediate place-name phrase and one of the fastest anchors on the board.",
+    "Main": "\"Main course\" confirms the same ending in food language, which helps prove this is a phrase puzzle rather than a topic board.",
+    "Crash": "\"Crash course\" broadens the set into learning language and keeps the connector working cleanly across contexts.",
+    "Stay the": "\"Stay the course\" is the turning clue because it is such a fixed idiom that the shared ending becomes hard to ignore."
   },
-  "lessons": [
-    "When several clues feel half-finished, test a shared ending before you waste time hunting for a subject category.",
-    "Use the easiest phrase first. Golf course and main course make course a fast candidate, and the rest of the clues verify it.",
-    "Good phrase boards mix grammar, places, meals, and idioms. That variety can feel distracting, but it is usually a sign that one shared word is doing all the work."
+  "spoilerHints": {
+    "Of": "Treat this as an incomplete expression, not as a standalone preposition clue.",
+    "Golf": "This clue is a strong test for a shared ending word rather than for a category.",
+    "Main": "Think about a common meal phrase, not just importance or rank.",
+    "Crash": "This clue works in education or training language once the right ending appears.",
+    "Stay the": "This is the clue that makes the puzzle feel more like a phrase family than a list of nouns."
+  },
+  "articleBlocks": [
+    "Golf and Main both hint that the board wants a shared ending, but they do not prove which one by themselves.",
+    "Crash keeps that idea alive, though several common phrase endings can still feel possible at that stage.",
+    "Stay the is the clue that really tightens it.",
+    "Stay the course is such a fixed idiom that course stops feeling like just one candidate and starts feeling like the answer the whole board was waiting for.",
+    "Once that happens, of course, golf course, main course, and crash course all line up immediately.",
+    "The answer was Words that come before \"course\".",
+    "This board works because the same ending word spans conversation, food, education, sports, and idiom without any clue feeling forced."
   ],
+  "fullAnalysis": [
+    "Golf and Main both hint that the board wants a shared ending, but they do not prove which one by themselves.",
+    "Crash helps because crash course is a familiar phrase, yet the board can still feel like a loose collection of partial expressions at first.",
+    "Stay the is the turning clue because stay the course is such a fixed idiom that course suddenly becomes much more exact than any other candidate.",
+    "Once course appears there, of course, golf course, main course, and crash course all become clean confirmations instead of trial completions.",
+    "The answer was Words that come before \"course\".",
+    "The set is strong because it uses the same ending in very different kinds of phrases, which makes the board feel wider than it really is."
+  ],
+  "solutionNarrative": [
+    "Golf course and main course showed the board was probably about a shared ending, but I still did not trust one answer yet. Crash course fit too, but that alone still left room for other possibilities.",
+    "Stay the changed the solve. Once stay the course appeared, the connector stopped feeling optional, and the rest of the board became a straightforward phrase check rather than a guessing game."
+  ],
+  "lessons": [
+    {
+      "title": "Idioms can be better locks than nouns",
+      "body": "A fixed phrase like stay the course can settle a board faster than literal clues because it leaves less room for alternative endings."
+    },
+    {
+      "title": "Phrase boards often cross unrelated domains on purpose",
+      "body": "Food, sports, conversation, and learning all appear here, but the puzzle only cares that the same final word works everywhere."
+    },
+    {
+      "title": "Three matches are better than one hunch",
+      "body": "Golf course, main course, and crash course are useful because they let you test the same ending in multiple contexts before you commit."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word across several contexts",
+    "fastStrategy": "If the clues look like incomplete expressions, wait for the most fixed idiom on the board and use it to confirm the shared ending.",
+    "clueTableRows": [
+      {
+        "clue": "Of",
+        "examplePhrase": "of course",
+        "connectionExplained": "\"Of course\" works because it is one of the most common conversational phrases in English."
+      },
+      {
+        "clue": "Golf",
+        "examplePhrase": "golf course",
+        "connectionExplained": "\"Golf course\" is an immediate place-name phrase and one of the fastest anchors on the board."
+      },
+      {
+        "clue": "Main",
+        "examplePhrase": "main course",
+        "connectionExplained": "\"Main course\" confirms the same ending in food language, which helps prove this is a phrase puzzle rather than a topic board."
+      },
+      {
+        "clue": "Crash",
+        "examplePhrase": "crash course",
+        "connectionExplained": "\"Crash course\" broadens the set into learning language and keeps the connector working cleanly across contexts."
+      },
+      {
+        "clue": "Stay the",
+        "examplePhrase": "stay the course",
+        "connectionExplained": "\"Stay the course\" is the turning clue because it is such a fixed idiom that the shared ending becomes hard to ignore."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #530?",
-      "answer": "The answer is Words that come before \"course\". The clues form of course, golf course, main course, crash course, and stay the course."
+      "answer": "The answer is Words that come before \"course\" because Of, Golf, Main, Crash, and Stay the all form familiar expressions with course."
     },
     {
-      "question": "Why is Of such an important clue in #530?",
-      "answer": "Because of course is such a common phrase that it helps confirm the board is about a shared trailing word rather than a topic."
+      "question": "What is the connection in LinkedIn Pinpoint #530?",
+      "answer": "The connection is one shared ending word. The board resolves into of course, golf course, main course, crash course, and stay the course."
     },
     {
-      "question": "Could the answer have been kinds of learning or progress?",
-      "answer": "That would be too narrow. Golf course and main course do not fit that interpretation nearly as well as the simple phrase ending course."
-    },
-    {
-      "question": "How do I solve connector boards like #530 faster?",
-      "answer": "Treat the clues as partial phrases. If one short word completes every clue into a familiar expression, trust that structure instead of forcing a broader theme."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #530?",
+      "answer": "Stay the is the turning clue because stay the course is the most fixed idiom on the board and makes the shared ending feel exact instead of tentative."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Golf and Main suggest a shared ending quickly, but not necessarily the only one. That is why the board feels promising before it feels solved.",
+    "falseStarts": [
+      "shared phrase ending without certainty",
+      "general topic around learning or sports"
+    ],
+    "whyFalseStartPlausible": [
+      "Golf course and main course both work early, but a good Pinpoint solve still needs the rest of the board to land naturally.",
+      "Crash can tempt a topic guess, but Of and Stay the prove the puzzle is really about phrase structure."
+    ],
+    "breakingClue": "Stay the",
+    "pivot": "Stay the changed the solve because stay the course is a fixed idiom that leaves almost no room for another ending. Once that clicked, the other clues all became fast confirmations.",
+    "fullBoardConfirmation": "Of course and crash course are especially useful after the pivot because they show the same ending works in conversation and education, not just in noun phrases like golf course."
+  },
+  "turningPoint": {
+    "clue": "Stay the",
+    "whyDecisive": "Stay the is decisive because stay the course is the most fixed and least flexible phrase on the board.",
+    "whatChangedAfterIt": "Once stay the course appeared, Of, Golf, Main, and Crash all stopped feeling like trial phrases and started behaving like obvious course completions."
+  },
+  "clueRows": [
+    {
+      "clue": "Of",
+      "surfaceMisread": "shared phrase ending without certainty",
+      "resolvedPhraseOrMember": "of course",
+      "nonObviousWhy": "\"Of course\" works because it is one of the most common conversational phrases in English.",
+      "searchableContext": "of course"
+    },
+    {
+      "clue": "Golf",
+      "surfaceMisread": "shared phrase ending without certainty",
+      "resolvedPhraseOrMember": "golf course",
+      "nonObviousWhy": "\"Golf course\" is an immediate place-name phrase and one of the fastest anchors on the board.",
+      "searchableContext": "golf course"
+    },
+    {
+      "clue": "Main",
+      "surfaceMisread": "shared phrase ending without certainty",
+      "resolvedPhraseOrMember": "main course",
+      "nonObviousWhy": "\"Main course\" confirms the same ending in food language, which helps prove this is a phrase puzzle rather than a topic board.",
+      "searchableContext": "main course"
+    },
+    {
+      "clue": "Crash",
+      "surfaceMisread": "shared phrase ending without certainty",
+      "resolvedPhraseOrMember": "crash course",
+      "nonObviousWhy": "\"Crash course\" broadens the set into learning language and keeps the connector working cleanly across contexts.",
+      "searchableContext": "crash course"
+    },
+    {
+      "clue": "Stay the",
+      "surfaceMisread": "shared phrase ending without certainty",
+      "resolvedPhraseOrMember": "stay the course",
+      "nonObviousWhy": "\"Stay the course\" is the turning clue because it is such a fixed idiom that the shared ending becomes hard to ignore.",
+      "searchableContext": "stay the course"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #530?",
+      "answer": "The answer is Words that come before \"course\" because Of, Golf, Main, Crash, and Stay the all form familiar expressions with course.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #530?",
+      "answer": "The connection is one shared ending word. The board resolves into of course, golf course, main course, crash course, and stay the course.",
+      "tiedClue": "Stay the"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #530?",
+      "answer": "Stay the is the turning clue because stay the course is the most fixed idiom on the board and makes the shared ending feel exact instead of tentative.",
+      "tiedClue": "Stay the"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a phrase board where one idiom locks a shared ending across food, sports, learning, and conversation",
+    "relatedEntities": [
+      "of course",
+      "golf course",
+      "main course",
+      "crash course",
+      "stay the course"
+    ],
+    "doNotRepeatPatterns": [
+      "a phrase board where one idiom locks a shared ending across food, sports, learning, and conversation",
+      "Idioms can be better locks than nouns",
+      "Phrase boards often cross unrelated domains on purpose",
+      "Stay the is decisive because stay the course is the most fixed idiom on the board",
+      "crash course",
+      "stay the course"
+    ]
+  }
 }

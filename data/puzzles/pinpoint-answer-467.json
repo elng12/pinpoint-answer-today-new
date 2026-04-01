@@ -1,40 +1,205 @@
 {
+  "puzzleNumber": 467,
   "slug": "pinpoint-answer-467",
+  "publishDate": "2025-08-10",
+  "isoDate": "2025-08-10",
   "detailState": "published",
-  "fullAnalysis": [
-    "Cheese, Guitar, Wheat, Lettuce, and Documents do not share one tidy category, which is exactly what makes the board tricky. The common thread is the word shredded: shredded cheese, guitar shredding, Shredded Wheat, shredded lettuce, and shredded documents.",
-    "The trap is to keep the puzzle in the kitchen after Cheese appears. Lettuce and Wheat encourage that, but Guitar breaks any pure food theory. Once you allow one figurative use alongside several literal ones, the pattern clicks much faster.",
-    "That is why the answer to LinkedIn Pinpoint #467 is Things that can be shredded. Some clues point to physical preparation, like cheese or lettuce. Others point to established phrases, like Shredded Wheat and shredding on guitar. Documents closes the loop because shredding paper is a familiar action.",
-    "Mixed-literal boards like this are easier when you test phrases, not just categories. If one clue feels like an outlier, ask whether it shares a common verb or modifier with the others."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Cheese",
+    "Guitar",
+    "Wheat",
+    "Lettuce",
+    "Documents"
   ],
+  "answer": "Things that can be shredded",
+  "category": "Things that can be shredded",
   "wordHints": {
-    "Cheese": "A common food preparation where a block of cheese is grated into small strips, often used as a topping for pasta, pizza, and tacos.",
-    "Guitar": "A popular slang term in music for playing the guitar with exceptional speed, aggression, and technical skill.",
-    "Wheat": "A well-known breakfast cereal made from whole wheat that has been cooked, shredded, and woven into pillow-shaped biscuits.",
-    "Lettuce": "A method of cutting lettuce into thin strips, commonly used for sandwiches, salads, and as a topping for tacos.",
-    "Documents": "The process of cutting paper into fine strips or particles, typically done with a machine to destroy sensitive or confidential information."
+    "Cheese": "Cheese fits because shredded cheese is one of the most common food preparations in everyday cooking.",
+    "Guitar": "Guitar is the turning clue because 'shredding on guitar' breaks the board out of a food-only read and reveals the shared action word.",
+    "Wheat": "Wheat confirms the answer through the fixed product name Shredded Wheat, which keeps the same connector in branded form.",
+    "Lettuce": "Lettuce works because shredded lettuce is a standard prep phrase and one of the most literal clues on the board.",
+    "Documents": "Documents closes the set because shredding paper is a familiar real-world action outside food or music."
   },
-  "lessons": [
-    "Shift from Abstract to Concrete. If an abstract category like 'things with varieties' feels too loose, try thinking about physical actions. The solution often lies in what you can *do* to the items, not just what they *are*. The shift from 'types' to the action of 'shredding' was the key.",
-    "Use the Most Literal Clue as a Key. Sometimes the most straightforward clue can unlock the entire puzzle. Lettuce is almost exclusively thought of in a culinary context, and its connection to 'shredded' is very strong. Using that concrete visual helped me test the theory against the other, more metaphorical or obscure clues.",
-    "Don't Discount Metaphorical Meanings. A single clue can break a purely literal theme. When I realized 'Shredded Guitar' was a common slang term, it confirmed that the puzzle allowed for metaphorical interpretations. The solution was a mix of the literal (cheese, lettuce, wheat) and the figurative (guitar, documents)."
+  "spoilerHints": {
+    "Cheese": "Think about a common action applied to food, not just dairy as a category.",
+    "Guitar": "This clue is the one that tells you the board is not staying literal in only one domain.",
+    "Wheat": "A familiar product name hides the same action word here.",
+    "Lettuce": "Use this as a very literal clue rather than as a salad theme.",
+    "Documents": "This clue works through a familiar office action, not through a kitchen read."
+  },
+  "articleBlocks": [
+    "Cheese, Wheat, and Lettuce can make the board feel like food preparation at first, which is the main trap.",
+    "Documents already strains that theory, but Guitar is the clue that really breaks it.",
+    "Once 'shredding on guitar' comes into view, the board stops being about one food category and becomes about the shared action word shredded.",
+    "After that, shredded cheese, Shredded Wheat, shredded lettuce, and shredded documents all line up naturally.",
+    "The answer was Things that can be shredded.",
+    "This puzzle works because it mixes literal food prep, office destruction, and musical slang under one connector."
   ],
+  "fullAnalysis": [
+    "Cheese, Wheat, and Lettuce can make the board feel like food preparation at first, which is the main misread.",
+    "Documents already strains that theory, but the board becomes much clearer once Guitar appears in the right way.",
+    "Guitar is the turning clue because shredding on guitar is a familiar figurative use of the same word, which proves the board is about shredding itself rather than about food.",
+    "That shift makes shredded cheese, Shredded Wheat, shredded lettuce, and shredded documents all feel like natural members of the same answer.",
+    "The answer was Things that can be shredded.",
+    "The board is satisfying because one clue forces you to allow both literal and figurative uses of the same action."
+  ],
+  "solutionNarrative": [
+    "Cheese and Lettuce pulled me toward a kitchen answer early, and Wheat almost kept me there. Documents made that theory wobble, but not enough to fully replace it.",
+    "Guitar solved the puzzle. Once I let 'shredding' work as a musical verb, the whole board became about what can be shredded rather than about where the clues belong."
+  ],
+  "lessons": [
+    {
+      "title": "One figurative clue can unlock four literal ones",
+      "body": "A board may look literal until one clue proves the same word can operate metaphorically too."
+    },
+    {
+      "title": "Food clusters often hide an action word",
+      "body": "When several clues seem culinary, test whether they share a preparation verb instead of a food category."
+    },
+    {
+      "title": "Outliers are often the best clue, not the worst one",
+      "body": "Guitar feels strange next to Cheese and Lettuce, but that is exactly why it reveals the real connector."
+    }
+  ],
+  "display": {
+    "connectorSummary": "literal and figurative uses of one shared action word",
+    "fastStrategy": "If several clues look culinary but one does not, ask whether a verb rather than a category is tying them together.",
+    "clueTableRows": [
+      {
+        "clue": "Cheese",
+        "examplePhrase": "shredded cheese",
+        "connectionExplained": "Cheese fits because shredded cheese is one of the most common food preparations in everyday cooking."
+      },
+      {
+        "clue": "Guitar",
+        "examplePhrase": "shredding on guitar",
+        "connectionExplained": "Guitar is the turning clue because 'shredding on guitar' breaks the board out of a food-only read and reveals the shared action word."
+      },
+      {
+        "clue": "Wheat",
+        "examplePhrase": "Shredded Wheat",
+        "connectionExplained": "Wheat confirms the answer through the fixed product name Shredded Wheat, which keeps the same connector in branded form."
+      },
+      {
+        "clue": "Lettuce",
+        "examplePhrase": "shredded lettuce",
+        "connectionExplained": "Lettuce works because shredded lettuce is a standard prep phrase and one of the most literal clues on the board."
+      },
+      {
+        "clue": "Documents",
+        "examplePhrase": "shredded documents",
+        "connectionExplained": "Documents closes the set because shredding paper is a familiar real-world action outside food or music."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "What connects Cheese, Guitar, Wheat, Lettuce, Documents in Pinpoint #467?",
-      "answer": "The connector is \"Things that can be shredded.\" For example, you can have shredded cheese on a taco, or you can destroy sensitive papers with a document shredder."
+      "question": "What is the answer to LinkedIn Pinpoint #467?",
+      "answer": "The answer is Things that can be shredded because Cheese, Guitar, Wheat, Lettuce, and Documents all connect cleanly through the action word shredded."
     },
     {
-      "question": "Why isn't the connection 'things you find in a kitchen'?",
-      "answer": "While Cheese, Wheat, and Lettuce are kitchen items, that theory is broken by two of the five clues. You do not typically find a Guitar or sensitive Documents in a kitchen, so the connector must fit all five words."
+      "question": "What is the connection in LinkedIn Pinpoint #467?",
+      "answer": "The connection is a shared action, not a shared subject. The board mixes food, music, branding, and office language through the word shredded."
     },
     {
-      "question": "Does 'shredded guitar' really count?",
-      "answer": "Yes, in the context of this puzzle, it absolutely does. 'Shredding' is a widely understood slang term for playing a guitar solo with incredible speed and technical prowess. The puzzle often combines literal and metaphorical meanings."
-    },
-    {
-      "question": "What was the hardest clue to connect?",
-      "answer": "For many, 'Guitar' is the outlier. While the other clues have a direct, physical connection to being shredded, the guitar connection is purely metaphorical, requiring a bit of lateral thinking to connect it to the others."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #467?",
+      "answer": "Guitar is the turning clue because it proves the board is not only about food and shows that shredding can work figuratively as well as literally."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Cheese, Wheat, and Lettuce make a food answer feel plausible early, which is why the board initially looks more literal than it is.",
+    "falseStarts": [
+      "food preparation",
+      "kitchen items"
+    ],
+    "whyFalseStartPlausible": [
+      "Cheese, Wheat, and Lettuce all support that direction at first, so the wrong answer feels close.",
+      "That read falls apart once Guitar and Documents have to fit the same connector cleanly."
+    ],
+    "breakingClue": "Guitar",
+    "pivot": "Guitar changed the solve because 'shredding' works there as a figurative music term. Once that clicked, the board became about what can be shredded rather than about one literal category.",
+    "fullBoardConfirmation": "Documents matters after the pivot because shredding documents is a very familiar action outside the food world. That helps prove the connector is the verb shredded itself."
+  },
+  "turningPoint": {
+    "clue": "Guitar",
+    "whyDecisive": "Guitar is decisive because it forces the board to allow figurative shredding and breaks the food-only misread.",
+    "whatChangedAfterIt": "Once guitar shredding appeared, Cheese, Wheat, Lettuce, and Documents all re-read as things that can be shredded instead of ingredients in one food theme."
+  },
+  "clueRows": [
+    {
+      "clue": "Cheese",
+      "surfaceMisread": "food preparation",
+      "resolvedPhraseOrMember": "shredded cheese",
+      "nonObviousWhy": "Cheese fits because shredded cheese is one of the most common food preparations in everyday cooking.",
+      "searchableContext": "shredded cheese"
+    },
+    {
+      "clue": "Guitar",
+      "surfaceMisread": "food preparation",
+      "resolvedPhraseOrMember": "shredding on guitar",
+      "nonObviousWhy": "Guitar is the turning clue because 'shredding on guitar' breaks the board out of a food-only read and reveals the shared action word.",
+      "searchableContext": "guitar shredding"
+    },
+    {
+      "clue": "Wheat",
+      "surfaceMisread": "food preparation",
+      "resolvedPhraseOrMember": "Shredded Wheat",
+      "nonObviousWhy": "Wheat confirms the answer through the fixed product name Shredded Wheat, which keeps the same connector in branded form.",
+      "searchableContext": "Shredded Wheat"
+    },
+    {
+      "clue": "Lettuce",
+      "surfaceMisread": "food preparation",
+      "resolvedPhraseOrMember": "shredded lettuce",
+      "nonObviousWhy": "Lettuce works because shredded lettuce is a standard prep phrase and one of the most literal clues on the board.",
+      "searchableContext": "shredded lettuce"
+    },
+    {
+      "clue": "Documents",
+      "surfaceMisread": "food preparation",
+      "resolvedPhraseOrMember": "shredded documents",
+      "nonObviousWhy": "Documents closes the set because shredding paper is a familiar real-world action outside food or music.",
+      "searchableContext": "shredded documents"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #467?",
+      "answer": "The answer is Things that can be shredded because Cheese, Guitar, Wheat, Lettuce, and Documents all connect cleanly through the action word shredded.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #467?",
+      "answer": "The connection is a shared action, not a shared subject. The board mixes food, music, branding, and office language through the word shredded.",
+      "tiedClue": "Guitar"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #467?",
+      "answer": "Guitar is the turning clue because it proves the board is not only about food and shows that shredding can work figuratively as well as literally.",
+      "tiedClue": "Guitar"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shredded board that breaks out of the kitchen through one figurative music clue",
+    "relatedEntities": [
+      "shredded cheese",
+      "guitar shredding",
+      "Shredded Wheat",
+      "shredded lettuce",
+      "shredded documents"
+    ],
+    "doNotRepeatPatterns": [
+      "a shredded board that breaks out of the kitchen through one figurative music clue",
+      "One figurative clue can unlock four literal ones",
+      "Food clusters often hide an action word",
+      "Guitar is decisive because it forces the board to allow figurative shredding",
+      "guitar shredding",
+      "shredded documents"
+    ]
+  }
 }

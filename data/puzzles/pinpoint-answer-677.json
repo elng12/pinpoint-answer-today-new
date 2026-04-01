@@ -1,47 +1,206 @@
 {
+  "puzzleNumber": 677,
   "slug": "pinpoint-answer-677",
+  "publishDate": "2026-03-08",
+  "isoDate": "2026-03-08",
   "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Sun",
+    "Wrap",
+    "Cocktail",
+    "Wedding",
+    "Little black"
+  ],
+  "answer": "Types of dresses",
+  "category": "Types of dresses",
+  "wordHints": {
+    "Sun": "\"Sundress\" fits because it is one of the most common named dress styles in everyday language.",
+    "Wrap": "\"Wrap dress\" confirms the answer with a classic fashion silhouette rather than an event clue.",
+    "Cocktail": "\"Cocktail dress\" keeps the board in fashion and shows the answer is about garments, not occasions.",
+    "Wedding": "\"Wedding dress\" is the most mainstream phrase on the board and a fast early anchor.",
+    "Little black": "\"Little black dress\" is the turning clue because it is such a fixed cultural phrase that the dress category becomes unavoidable."
+  },
+  "spoilerHints": {
+    "Sun": "Think clothing style before you think season or weather.",
+    "Wrap": "This clue names a fashion silhouette, not just an action.",
+    "Cocktail": "Treat this as a garment phrase rather than as an event category.",
+    "Wedding": "This clue is a strong anchor, but the board still needs a fuller fashion frame.",
+    "Little black": "This is the clue that makes the dress reading feel least flexible."
+  },
+  "articleBlocks": [
+    "Cocktail and Wedding can make the board feel like events at first, which is the main trap here.",
+    "Sun and Wrap help, but only if you stop thinking about occasions and start thinking about garments.",
+    "Little black is the clue that locks it.",
+    "Little black dress is such a fixed phrase that the whole board snaps from lifestyle words into named dress styles.",
+    "After that, sundress, wrap dress, cocktail dress, and wedding dress all line up immediately.",
+    "The answer was Types of dresses.",
+    "This puzzle is cleaner than it first appears because every clue names a real dress phrase rather than a vague fashion theme."
+  ],
   "fullAnalysis": [
-    "Puzzle #677 gives you five clues — Sun, Wrap, Cocktail, Wedding, and Little black — that look like a mix of weather, cooking, events, and colours. The surface meanings could easily point toward party themes or seasonal occasions, which is a deliberate misdirect. The actual connector is the word 'dress': every clue forms a specific, named dress style.",
-    "Sundress, wrap dress, cocktail dress, wedding dress, and little black dress are all established fashion terms that appear regularly in magazines, retail, and everyday conversation. None of them require obscure fashion knowledge — these are mainstream phrases that most people encounter routinely."
+    "Cocktail and Wedding can make the board feel like events at first, which is the main trap here.",
+    "Sun and Wrap help, but only if you stop thinking about occasions and start thinking about garments.",
+    "Little black is the turning clue because little black dress is such a fixed phrase that the fashion reading becomes far more exact than any event-based guess.",
+    "Once that phrase appears, sundress, wrap dress, cocktail dress, and wedding dress all become obvious members of the same category.",
+    "The answer was Types of dresses.",
+    "The board works because several clues can describe social settings, but the real connection is the garment each one names."
   ],
   "solutionNarrative": [
-    "I tried the event angle first. Cocktail and Wedding both felt like occasions, which sent me toward party themes and formal events. But Sun and Wrap didn't belong in that framing at all. I stepped back and changed the question from 'what occasions?' to 'what type of dress?' — and the whole board resolved instantly.",
-    "Sundress, wrap dress, cocktail dress, wedding dress, little black dress. Every clue confirmed the pattern cleanly, including Little black, which I initially read as two separate words rather than one compound modifier. Once I treated it as a single unit, the connection was obvious. Five for five with no exceptions."
+    "Cocktail and Wedding first pulled me toward events, and Sun did not completely break that. The set felt stylish, but still too broad to trust.",
+    "Little black changed the solve. Once little black dress appeared, the board stopped being about settings or moods and became a straightforward list of dress types."
   ],
-  "wordHints": {
-    "Sun": "Sundress is a standard warm-weather clothing term and often the quickest anchor on this board.",
-    "Wrap": "Wrap dress is a well-known fashion silhouette that confirms the dress category.",
-    "Cocktail": "Cocktail dress is a classic formal-wear phrase — despite sounding like an event clue, it names a specific dress style.",
-    "Wedding": "Wedding dress is one of the most fixed fashion phrases in everyday language.",
-    "Little black": "Little black dress is the iconic fashion phrase, making it the final clean confirmation of the category."
-  },
   "lessons": [
     {
-      "title": "Event clues can name objects, not occasions",
-      "body": "Cocktail and Wedding both sound like events, but they complete dress phrases rather than pointing to occasion themes. If multiple clues feel like occasions or settings, test whether they all name the same type of object instead."
+      "title": "Event words can hide garment categories",
+      "body": "Cocktail and wedding sound like occasions first, but here they work because they complete dress phrases."
     },
     {
-      "title": "Switching the frame unlocks the board",
-      "body": "The clues only make sense as a group once you ask 'what type of dress?' instead of 'what occasion?'. When one framing produces mixed results across the clues, change the question you are asking — the right connector becomes obvious immediately."
+      "title": "Fixed cultural phrases can settle a fashion board",
+      "body": "Little black dress matters because it is much less flexible than a clue like Sun or Wrap."
     },
     {
-      "title": "Multi-word clues are tested as a single unit",
-      "body": "Little black is two words, but little black dress is a single, fixed cultural phrase. Pinpoint uses multi-word fragments occasionally; treat them as one compound modifier and apply the connector to the whole phrase, not just the last word."
+      "title": "When the board feels stylish, ask what object the style belongs to",
+      "body": "A board can sound like a vibe or an occasion until one clue reveals the actual garment or item underneath it."
     }
   ],
+  "display": {
+    "connectorSummary": "named dress phrases that hide inside style and event words",
+    "fastStrategy": "If several clues sound like occasions or moods, test whether they all name the same garment instead.",
+    "clueTableRows": [
+      {
+        "clue": "Sun",
+        "examplePhrase": "sundress",
+        "connectionExplained": "\"Sundress\" fits because it is one of the most common named dress styles in everyday language."
+      },
+      {
+        "clue": "Wrap",
+        "examplePhrase": "wrap dress",
+        "connectionExplained": "\"Wrap dress\" confirms the answer with a classic fashion silhouette rather than an event clue."
+      },
+      {
+        "clue": "Cocktail",
+        "examplePhrase": "cocktail dress",
+        "connectionExplained": "\"Cocktail dress\" keeps the board in fashion and shows the answer is about garments, not occasions."
+      },
+      {
+        "clue": "Wedding",
+        "examplePhrase": "wedding dress",
+        "connectionExplained": "\"Wedding dress\" is the most mainstream phrase on the board and a fast early anchor."
+      },
+      {
+        "clue": "Little black",
+        "examplePhrase": "little black dress",
+        "connectionExplained": "\"Little black dress\" is the turning clue because it is such a fixed cultural phrase that the dress category becomes unavoidable."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "What is the LinkedIn Pinpoint answer for Puzzle #677?",
-      "answer": "The answer for Puzzle #677 is Types of dresses."
+      "question": "What is the answer to LinkedIn Pinpoint #677?",
+      "answer": "The answer is Types of dresses because Sun, Wrap, Cocktail, Wedding, and Little black all form familiar dress phrases."
     },
     {
-      "question": "Which clue gives the answer away fastest?",
-      "answer": "Wedding is usually the fastest clue because wedding dress is such a universally known phrase."
+      "question": "What is the connection in LinkedIn Pinpoint #677?",
+      "answer": "The connection is fashion. The board resolves into sundress, wrap dress, cocktail dress, wedding dress, and little black dress."
     },
     {
-      "question": "Why does Little black fit?",
-      "answer": "Little black dress is a fixed fashion phrase — one of the most culturally recognised style names in the category."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #677?",
+      "answer": "Little black is the turning clue because little black dress is the most fixed and least flexible phrase on the board, which makes the dress category feel exact."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Cocktail and Wedding make an event-based answer feel plausible for a moment, especially if you read the board too broadly.",
+    "falseStarts": [
+      "formal occasions",
+      "style or lifestyle words"
+    ],
+    "whyFalseStartPlausible": [
+      "Cocktail and Wedding both point toward events, so the wrong frame feels natural at the start.",
+      "Sun and Wrap can sound like general style words until the board narrows into actual garment phrases."
+    ],
+    "breakingClue": "Little black",
+    "pivot": "Little black changed the solve because little black dress is such a fixed phrase that it reveals the garment immediately. After that, the earlier clues all become dress styles rather than event words.",
+    "fullBoardConfirmation": "Wrap dress is especially helpful after the pivot because it proves the board is about named fashion silhouettes, not just special occasions."
+  },
+  "turningPoint": {
+    "clue": "Little black",
+    "whyDecisive": "Little black is decisive because little black dress is the most fixed cultural phrase on the board.",
+    "whatChangedAfterIt": "Once little black dress appeared, Sun, Wrap, Cocktail, and Wedding all re-read as named dress styles instead of event or mood clues."
+  },
+  "clueRows": [
+    {
+      "clue": "Sun",
+      "surfaceMisread": "formal occasions",
+      "resolvedPhraseOrMember": "sundress",
+      "nonObviousWhy": "\"Sundress\" fits because it is one of the most common named dress styles in everyday language.",
+      "searchableContext": "sundress"
+    },
+    {
+      "clue": "Wrap",
+      "surfaceMisread": "formal occasions",
+      "resolvedPhraseOrMember": "wrap dress",
+      "nonObviousWhy": "\"Wrap dress\" confirms the answer with a classic fashion silhouette rather than an event clue.",
+      "searchableContext": "wrap dress"
+    },
+    {
+      "clue": "Cocktail",
+      "surfaceMisread": "formal occasions",
+      "resolvedPhraseOrMember": "cocktail dress",
+      "nonObviousWhy": "\"Cocktail dress\" keeps the board in fashion and shows the answer is about garments, not occasions.",
+      "searchableContext": "cocktail dress"
+    },
+    {
+      "clue": "Wedding",
+      "surfaceMisread": "formal occasions",
+      "resolvedPhraseOrMember": "wedding dress",
+      "nonObviousWhy": "\"Wedding dress\" is the most mainstream phrase on the board and a fast early anchor.",
+      "searchableContext": "wedding dress"
+    },
+    {
+      "clue": "Little black",
+      "surfaceMisread": "formal occasions",
+      "resolvedPhraseOrMember": "little black dress",
+      "nonObviousWhy": "\"Little black dress\" is the turning clue because it is such a fixed cultural phrase that the dress category becomes unavoidable.",
+      "searchableContext": "little black dress"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #677?",
+      "answer": "The answer is Types of dresses because Sun, Wrap, Cocktail, Wedding, and Little black all form familiar dress phrases.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #677?",
+      "answer": "The connection is fashion. The board resolves into sundress, wrap dress, cocktail dress, wedding dress, and little black dress.",
+      "tiedClue": "Little black"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #677?",
+      "answer": "Little black is the turning clue because little black dress is the most fixed and least flexible phrase on the board, which makes the dress category feel exact.",
+      "tiedClue": "Little black"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a fashion board disguised as event and style language until one iconic dress phrase settles it",
+    "relatedEntities": [
+      "sundress",
+      "wrap dress",
+      "cocktail dress",
+      "wedding dress",
+      "little black dress"
+    ],
+    "doNotRepeatPatterns": [
+      "a fashion board disguised as event and style language until one iconic dress phrase settles it",
+      "Event words can hide garment categories",
+      "Fixed cultural phrases can settle a fashion board",
+      "Little black is decisive because little black dress is the most fixed phrase on the board",
+      "wrap dress",
+      "little black dress"
+    ]
+  }
 }

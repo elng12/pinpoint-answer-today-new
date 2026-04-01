@@ -1,47 +1,206 @@
 {
+  "puzzleNumber": 675,
   "slug": "pinpoint-answer-675",
+  "publishDate": "2026-03-06",
+  "isoDate": "2026-03-06",
   "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Warning",
+    "Street",
+    "Vital",
+    "Peace",
+    "Equal"
+  ],
+  "answer": "Types of signs",
+  "category": "Types of signs",
+  "wordHints": {
+    "warning": "\"Warning sign\" is one of the quickest anchors on the board and shows the category immediately.",
+    "street": "\"Street sign\" confirms the same object in a public-place context.",
+    "vital": "\"Vital signs\" matters because it shows the answer includes recognized sign language outside literal posted signage.",
+    "peace": "\"Peace sign\" broadens the board into cultural symbols and keeps the category from feeling too narrow.",
+    "equal": "\"Equal sign\" is the turning clue because it proves the board includes symbolic notation as well as public signs."
+  },
+  "spoilerHints": {
+    "Warning": "Use this as a quick test for the object category, not as a whole theme by itself.",
+    "Street": "This clue confirms the same object in a very literal everyday setting.",
+    "Vital": "The board is wider than street or warning signage alone.",
+    "Peace": "A symbolic clue helps stretch the category beyond posted physical signs.",
+    "Equal": "This is the clue that makes the answer broader and more exact at the same time."
+  },
+  "articleBlocks": [
+    "Warning and Street make signs feel likely almost immediately, but they can also trap you in a too-literal road-and-safety reading.",
+    "Peace helps widen the board, though the cleanest shift comes when one clue proves the category includes symbols and notation too.",
+    "Equal is the clue that does that work.",
+    "Once equal sign appears, the answer stops being about posted signage alone and becomes the broader category of signs.",
+    "That makes warning sign, street sign, vital signs, and peace sign all fit comfortably under the same label.",
+    "The answer was Types of signs.",
+    "This board is simple on purpose, but it still works because the clues stretch the word sign across medicine, culture, public space, and math."
+  ],
   "fullAnalysis": [
-    "Puzzle #675 offers five clues — Warning, Street, Vital, Peace, and Equal — that seem to span safety, geography, medicine, culture, and mathematics. The surface categories appear unrelated, which creates a momentary sense of difficulty. But the shared connector is hiding in plain sight: every clue forms a well-known phrase when you place the word 'sign' after it.",
-    "Warning sign and street sign are so common they barely need testing. Peace sign and equal sign are fixed cultural and mathematical terms. Vital signs, the one plural form in the set, refers to the standard medical measurements of pulse, blood pressure, and temperature. All five phrases are in active daily use across completely different domains, which is exactly what makes this category clean despite the wide variety of clues."
+    "Warning and Street make signs feel likely almost immediately, but they can also trap you in a too-literal road-and-safety reading.",
+    "Peace helps widen the board, though the cleanest shift comes when one clue proves the category includes symbols and notation too.",
+    "Equal is the turning clue because equal sign makes it obvious that the board is not limited to posted physical signs.",
+    "After that, warning sign, street sign, vital signs, and peace sign all become straightforward members of the broader answer.",
+    "The answer was Types of signs.",
+    "The puzzle works because it starts with very literal signage and then stretches the same word into medicine, culture, and mathematics."
   ],
   "solutionNarrative": [
-    "I started with the two most obvious phrases: warning sign and street sign. Both landed immediately and I had a working hypothesis within seconds. From there I tested the remaining three against 'sign' in sequence — peace sign, equal sign, vital signs — and each one produced a phrase I already knew. No false starts, no backtracking.",
-    "The only moment of hesitation came with Vital, because vital signs is plural while the others use the singular form. I almost dismissed it, then reminded myself that the conventional phrase is vital signs, not vital sign. That was enough. Once all five clues checked out, I stopped second-guessing and committed to the answer."
+    "Warning and Street made sign feel likely quickly, but at first I read the board too narrowly as public or cautionary signage. Vital and Peace helped, yet I still wanted one clue that proved the category was broader than that.",
+    "Equal gave me that proof. Once equal sign appeared, the board expanded into the broader idea of signs, and the earlier clues all fit more cleanly without being trapped inside road or warning contexts."
   ],
-  "wordHints": {
-    "warning": "Warning sign is a direct, everyday phrase and one of the fastest anchors in this set.",
-    "street": "Street sign is another common phrase that confirms the 'sign' connector quickly.",
-    "vital": "Vital signs is the standard medical term for pulse, blood pressure, and other key measurements.",
-    "peace": "Peace sign is a fixed cultural phrase referring to the well-known symbol.",
-    "equal": "Equal sign is the standard mathematical term for the = symbol."
-  },
   "lessons": [
     {
-      "title": "Start with the most obvious phrase and test outward",
-      "body": "Warning sign and street sign are so familiar that they almost solve themselves. Once two clues confirm a connector, apply it to the remaining three before considering any other hypothesis. Common phrases are usually the right path."
+      "title": "The right answer can be obvious but still too narrow at first",
+      "body": "Getting the word sign early is not enough if you still read the board through only one kind of sign."
     },
     {
-      "title": "Different domains can share one clean connector",
-      "body": "Street comes from geography, vital from medicine, peace from culture, equal from mathematics — yet 'sign' works for all five. A connector does not need every clue to come from the same field. Focus on the shared word, not the shared topic."
+      "title": "A symbolic clue can broaden a literal category",
+      "body": "Equal sign matters because it proves the board is about the word sign across multiple domains, not just signage in public space."
     },
     {
-      "title": "Plural forms are still valid",
-      "body": "Vital signs uses the plural while the other clues pair with a singular sign. Pinpoint accepts this variation as long as the compound phrase is a recognised term in standard usage. Do not discard a good hypothesis just because one clue takes a slightly different grammatical form."
+      "title": "Plural forms can still belong cleanly",
+      "body": "Vital signs uses the plural form, but it still belongs because the recognized phrase centers on the same word."
     }
   ],
+  "display": {
+    "connectorSummary": "different uses of the word sign across safety, streets, medicine, culture, and math",
+    "fastStrategy": "If the first clues make the category feel obvious, check whether a later clue broadens the meaning of the same word before you lock it in.",
+    "clueTableRows": [
+      {
+        "clue": "warning",
+        "examplePhrase": "warning sign",
+        "connectionExplained": "\"Warning sign\" is one of the quickest anchors on the board and shows the category immediately."
+      },
+      {
+        "clue": "street",
+        "examplePhrase": "street sign",
+        "connectionExplained": "\"Street sign\" confirms the same object in a public-place context."
+      },
+      {
+        "clue": "vital",
+        "examplePhrase": "vital signs",
+        "connectionExplained": "\"Vital signs\" matters because it shows the answer includes recognized sign language outside literal posted signage."
+      },
+      {
+        "clue": "peace",
+        "examplePhrase": "peace sign",
+        "connectionExplained": "\"Peace sign\" broadens the board into cultural symbols and keeps the category from feeling too narrow."
+      },
+      {
+        "clue": "equal",
+        "examplePhrase": "equal sign",
+        "connectionExplained": "\"Equal sign\" is the turning clue because it proves the board includes symbolic notation as well as public signs."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "What is the LinkedIn Pinpoint answer for Puzzle #675?",
-      "answer": "The answer for Puzzle #675 is Types of signs."
+      "question": "What is the answer to LinkedIn Pinpoint #675?",
+      "answer": "The answer is Types of signs because Warning, Street, Vital, Peace, and Equal all form recognized sign phrases."
     },
     {
-      "question": "Why does vital belong with sign?",
-      "answer": "Vital signs is the standard medical phrase for measurements like pulse and blood pressure, which makes it a valid member of the signs category."
+      "question": "What is the connection in LinkedIn Pinpoint #675?",
+      "answer": "The connection is the word sign across multiple domains: public safety, medicine, culture, and mathematics."
     },
     {
-      "question": "Was this an easier puzzle than recent boards?",
-      "answer": "Yes — warning sign and street sign are so common that they lock in the connector very quickly, making this one of the more accessible boards in recent weeks."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #675?",
+      "answer": "Equal is the turning clue because equal sign proves the board is broader than literal street or warning signage and confirms the full category of signs."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Warning and Street make sign feel likely almost immediately, but they can keep you stuck in a too-literal reading of posted or public signs.",
+    "falseStarts": [
+      "road and warning signage only",
+      "public signs"
+    ],
+    "whyFalseStartPlausible": [
+      "Warning sign and street sign are both such common phrases that the narrow reading feels safe at first.",
+      "That answer becomes too limited once Vital, Peace, and Equal ask for a broader meaning of sign."
+    ],
+    "breakingClue": "Equal",
+    "pivot": "Equal changed the solve because equal sign proves the board includes symbolic notation, not just posted signage. After that, Vital and Peace also fit more comfortably inside the broader answer.",
+    "fullBoardConfirmation": "Vital signs and peace sign matter after the pivot because they show the category stretches into medicine and culture as well. That makes Types of signs cleaner than any narrow traffic-sign answer."
+  },
+  "turningPoint": {
+    "clue": "Equal",
+    "whyDecisive": "Equal is decisive because equal sign proves the board is using sign in a broader sense than public signage.",
+    "whatChangedAfterIt": "Once equal sign appeared, Warning, Street, Vital, and Peace all re-read as members of a larger sign family instead of only public or cautionary examples."
+  },
+  "clueRows": [
+    {
+      "clue": "warning",
+      "surfaceMisread": "road and warning signage only",
+      "resolvedPhraseOrMember": "warning sign",
+      "nonObviousWhy": "\"Warning sign\" is one of the quickest anchors on the board and shows the category immediately.",
+      "searchableContext": "warning sign"
+    },
+    {
+      "clue": "street",
+      "surfaceMisread": "road and warning signage only",
+      "resolvedPhraseOrMember": "street sign",
+      "nonObviousWhy": "\"Street sign\" confirms the same object in a public-place context.",
+      "searchableContext": "street sign"
+    },
+    {
+      "clue": "vital",
+      "surfaceMisread": "road and warning signage only",
+      "resolvedPhraseOrMember": "vital signs",
+      "nonObviousWhy": "\"Vital signs\" matters because it shows the answer includes recognized sign language outside literal posted signage.",
+      "searchableContext": "vital signs"
+    },
+    {
+      "clue": "peace",
+      "surfaceMisread": "road and warning signage only",
+      "resolvedPhraseOrMember": "peace sign",
+      "nonObviousWhy": "\"Peace sign\" broadens the board into cultural symbols and keeps the category from feeling too narrow.",
+      "searchableContext": "peace sign"
+    },
+    {
+      "clue": "equal",
+      "surfaceMisread": "road and warning signage only",
+      "resolvedPhraseOrMember": "equal sign",
+      "nonObviousWhy": "\"Equal sign\" is the turning clue because it proves the board includes symbolic notation as well as public signs.",
+      "searchableContext": "equal sign"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #675?",
+      "answer": "The answer is Types of signs because Warning, Street, Vital, Peace, and Equal all form recognized sign phrases.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #675?",
+      "answer": "The connection is the word sign across multiple domains: public safety, medicine, culture, and mathematics.",
+      "tiedClue": "Equal"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #675?",
+      "answer": "Equal is the turning clue because equal sign proves the board is broader than literal street or warning signage and confirms the full category of signs.",
+      "tiedClue": "Equal"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a sign board that starts literal and then broadens into culture, medicine, and math",
+    "relatedEntities": [
+      "warning sign",
+      "street sign",
+      "vital signs",
+      "peace sign",
+      "equal sign"
+    ],
+    "doNotRepeatPatterns": [
+      "a sign board that starts literal and then broadens into culture, medicine, and math",
+      "The right answer can be obvious but still too narrow at first",
+      "A symbolic clue can broaden a literal category",
+      "Equal is decisive because equal sign proves the board is using sign broadly",
+      "vital signs",
+      "equal sign"
+    ]
+  }
 }
