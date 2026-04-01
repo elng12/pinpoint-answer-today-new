@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 701,
+    "slug": "pinpoint-answer-701",
+    "publishDate": "2026-04-01",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "☀️",
+      "🌤️",
+      "☁️",
+      "🌧️",
+      "⛈️"
+    ],
+    "mainAnswer": "Weather emojis (did you solve before the storm?)",
+    "category": "Weather emojis (did you solve before the storm?)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #701: ☀️, 🌤️, ☁️, 🌧️, ⛈️.",
+    "updatedAt": "2026-04-01T07:01:21.147Z"
+  },
+  {
     "puzzleNumber": 700,
     "slug": "pinpoint-answer-700",
     "publishDate": "2026-03-31",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Panel",
@@ -16,7 +35,7 @@
     "category": "Types of interviews in a job search",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Panel, One-on-one, Behavioral do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-03-31T07:03:33.572Z"
+    "updatedAt": "2026-04-01T07:01:21.147Z"
   },
   {
     "puzzleNumber": 699,
