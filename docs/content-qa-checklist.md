@@ -33,6 +33,7 @@ Copy this block into the daily log before reviewing a page.
 ### Opening Paragraph
 - [ ] The opening paragraph does not reveal the answer word.
 - [ ] The opening paragraph reads as 2-5 sentences.
+- [ ] Adjacent one-sentence openers are merged into one deliberate first paragraph.
 - [ ] The opening creates a clear reason to keep reading.
 
 ### Internal Links
@@ -54,4 +55,5 @@ Copy this block into the daily log before reviewing a page.
 - Log the review in a dated doc under `docs/`.
 - Fix `P0` issues the same day and revalidate the page.
 - Fix `P1` issues within 24 hours.
+- When the source copy opens as several one-sentence lines, correct the template before hand-editing individual pages.
 - If the same `P1` pattern appears twice in one week, pause further rollout work until the template or generator rule is corrected.

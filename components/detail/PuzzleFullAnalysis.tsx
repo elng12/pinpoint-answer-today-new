@@ -153,6 +153,21 @@ function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
   return [...paragraphsWithLead, `The answer was ${puzzle.answer}.`];
 }
 
+function sentenceMentionsAnswer(sentence: string, puzzle: PuzzleDetailRecord): boolean {
+  const normalizedSentence = sentence.trim().toLowerCase();
+  const normalizedAnswer = puzzle.answer.trim().toLowerCase();
+
+  if (!normalizedSentence) {
+    return false;
+  }
+
+  return (
+    (normalizedAnswer.length > 0 && normalizedSentence.includes(normalizedAnswer)) ||
+    normalizedSentence.includes("the answer is") ||
+    normalizedSentence.includes("the answer was")
+  );
+}
+
 function normalizeParagraphKey(paragraph: string): string {
   return paragraph.toLowerCase().replace(/\s+/g, " ").trim();
 }
@@ -167,6 +182,63 @@ function dedupeParagraphs(paragraphs: string[]): string[] {
     unique.push(paragraph);
   }
   return unique;
+}
+
+function mergeOpeningParagraphBlock(paragraphs: string[], puzzle: PuzzleDetailRecord): string[] {
+  if (paragraphs.length === 0) {
+    return paragraphs;
+  }
+
+  const firstParagraphSentenceCount = splitIntoSentences(paragraphs[0]).length;
+  if (firstParagraphSentenceCount >= 2 && firstParagraphSentenceCount <= 5) {
+    return paragraphs;
+  }
+
+  const safeOpeningSentences: string[] = [];
+  const paragraphSentences = paragraphs.map((paragraph) => splitIntoSentences(paragraph));
+
+  for (const sentences of paragraphSentences) {
+    for (const sentence of sentences) {
+      if (sentenceMentionsAnswer(sentence, puzzle)) {
+        break;
+      }
+      safeOpeningSentences.push(sentence);
+      if (safeOpeningSentences.length === 5) {
+        break;
+      }
+    }
+
+    if (safeOpeningSentences.length === 5) {
+      break;
+    }
+  }
+
+  if (safeOpeningSentences.length < 2) {
+    return paragraphs;
+  }
+
+  const mergedSentenceCount = Math.min(safeOpeningSentences.length, 3);
+  const mergedOpeningParagraph = safeOpeningSentences.slice(0, mergedSentenceCount).join(" ");
+  const rebuiltParagraphs = [mergedOpeningParagraph];
+  let sentencesRemainingToConsume = mergedSentenceCount;
+
+  for (const paragraph of paragraphs) {
+    const sentences = splitIntoSentences(paragraph);
+    if (sentencesRemainingToConsume > 0) {
+      if (sentences.length <= sentencesRemainingToConsume) {
+        sentencesRemainingToConsume -= sentences.length;
+        continue;
+      }
+
+      rebuiltParagraphs.push(sentences.slice(sentencesRemainingToConsume).join(" "));
+      sentencesRemainingToConsume = 0;
+      continue;
+    }
+
+    rebuiltParagraphs.push(paragraph);
+  }
+
+  return dedupeParagraphs(rebuiltParagraphs);
 }
 
 function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
@@ -356,6 +428,7 @@ export function PuzzleFullAnalysis({
   const walkthroughParagraphs = dedupeParagraphs(
     isShortMode ? tightenWalkthroughParagraphs(walkthroughSourceParagraphs, puzzle) : walkthroughSourceParagraphs,
   );
+  const normalizedWalkthroughParagraphs = mergeOpeningParagraphBlock(walkthroughParagraphs, puzzle);
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
   const analysisTitle = isShortMode
     ? `Pinpoint ${puzzle.number} Quick Guide`
@@ -370,7 +443,10 @@ export function PuzzleFullAnalysis({
     formatPuzzleDifficultyBandLabel(puzzle.difficultyBand),
     puzzle.turningPoint?.clue ? `Turning clue: ${puzzle.turningPoint.clue}` : null,
   ].filter(Boolean).join(" · ");
-  const shortModeLeadParagraphs = solvePathParagraphs.length > 0 ? solvePathParagraphs : walkthroughParagraphs;
+  const shortModeLeadParagraphs = mergeOpeningParagraphBlock(
+    solvePathParagraphs.length > 0 ? solvePathParagraphs : normalizedWalkthroughParagraphs,
+    puzzle,
+  );
   const previewCtaLabel = nextPreview
     ? `Pro Tips & Puzzle #${nextPreview.number} preview - expected ${nextPreview.expectedDate}`
     : "Open Pro Tips and spoiler-safe next puzzle guidance";
@@ -446,7 +522,7 @@ export function PuzzleFullAnalysis({
             <>
               <section className="legacy-analysis-section">
                 <div className="legacy-prose-stack">
-                  {walkthroughParagraphs.map((paragraph, index) => (
+                  {normalizedWalkthroughParagraphs.map((paragraph, index) => (
                     <p key={`${puzzle.slug}-walkthrough-${index}`}>{paragraph}</p>
                   ))}
                 </div>
