@@ -8,6 +8,7 @@ This checklist is part of the publish workflow for Pinpoint detail pages. Do not
 - FAQ, prompt, or template changes: check the current live detail page plus 2 representative older pages on the same day.
 - Detail rendering or CTA changes: check the current live detail page plus 2 representative older pages on the same day.
 - Weekly review: sample the latest 5 pages plus new GSC query-driven candidates.
+- Observation-first rule: for the next few days of new publishes, record 24h / 72h Search Console results using `docs/high-search-intent-pinpoint-sop-2026-04-01.md` before turning any predicted pattern into a fixed rule.
 
 ## Severity
 
@@ -57,3 +58,4 @@ Copy this block into the daily log before reviewing a page.
 - Fix `P1` issues within 24 hours.
 - When the source copy opens as several one-sentence lines, correct the template before hand-editing individual pages.
 - If the same `P1` pattern appears twice in one week, pause further rollout work until the template or generator rule is corrected.
+- For search-driven follow-up, use `npm run gsc:pinpoint -- page ...` at 24h and 72h on newly published boards in the current observation window, then classify the query pattern before deciding any follow-up edits.
