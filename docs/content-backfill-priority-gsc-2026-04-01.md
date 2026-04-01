@@ -37,10 +37,10 @@
 
 - `pinpoint-answer-9013`
   - Showed `86` impressions but has no local detail JSON file, so it should be treated as a routing or indexing anomaly before any content work.
-- `pinpoint-answer-531`
-  - Still appears in Search Console and currently looks like a placeholder record in the registry, so it should be fixed soon even though it did not make the top 10 by impressions.
-- `pinpoint-answer-481`
-  - Next in line after the top 10 if we keep expanding the performance-led queue.
+- `pinpoint-answer-563`
+  - Next clean content-depth candidate after the second batch if impressions keep holding.
+- `pinpoint-answer-679`
+  - Still sits just behind the current batch and is a reasonable follow-up if we keep expanding by performance.
 
 ## Rule For This Pass
 
@@ -53,8 +53,23 @@
 - If two pages are close on impressions, prefer the page with more clicks or a fresher publish date.
 - If a page is structurally broken, placeholder, or anomalous in GSC, fix that before treating it as a normal content-depth candidate.
 
+## Follow-Up Batch
+
+1. `pinpoint-answer-529` - `24` impressions, `0` clicks, avg position `1.71`
+2. `pinpoint-answer-481` - `24` impressions, `0` clicks, avg position `1.79`
+3. `pinpoint-answer-458` - `17` impressions, `0` clicks, avg position `1.59`
+4. `pinpoint-answer-531` - `16` impressions, `0` clicks, avg position `1.88`
+5. `pinpoint-answer-600` - `15` impressions, `0` clicks, avg position `18.20`
+6. `pinpoint-answer-604` - `13` impressions, `0` clicks, avg position `11.08`
+7. `pinpoint-answer-490` - `9` impressions, `0` clicks, avg position `7.78`
+8. `pinpoint-answer-634` - `6` impressions, `0` clicks, avg position `8.67`
+9. `pinpoint-answer-597` - `6` impressions, `0` clicks, avg position `13.83`
+10. `pinpoint-answer-618` - `6` impressions, `0` clicks, avg position `17.83`
+
 ## Status
 
 - Queue selected on `2026-04-01`.
 - First GSC-driven content-depth pass completed for `530`, `676`, `677`, `674`, `526`, `467`, `477`, `675`, `678`, and `460` on `2026-04-01`.
-- Next likely follow-up pages are `481`, `531`, and then any page that gains impressions before the next content pass starts.
+- Second GSC-driven content-depth pass completed for `529`, `481`, `458`, `531`, `600`, `604`, `490`, `634`, `597`, and `618` on `2026-04-01`.
+- The placeholder summary on `pinpoint-answer-531` was replaced with a real archived-page summary during this pass.
+- Next likely follow-up pages are `563`, `679`, `614`, `540`, and `459` if the performance-led queue keeps expanding.

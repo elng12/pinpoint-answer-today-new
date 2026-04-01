@@ -1,34 +1,202 @@
 {
+  "puzzleNumber": 604,
   "slug": "pinpoint-answer-604",
+  "publishDate": "2025-12-25",
+  "isoDate": "2025-12-25",
   "detailState": "published",
-  "fullAnalysis": [
-    "At first glance, LinkedIn Pinpoint #604 presents a collection of modern technological items that seem unrelated: television sets, garage doors, drones, Nintendo Wii controllers, and RC cars. Each represents different categories of consumer technology, from entertainment devices to home automation systems to gaming peripherals. The diversity might initially mislead solvers into thinking about electronics, wireless technology, or modern conveniences. However, the key insight lies in recognizing a specific operational characteristic that unites these disparate items. The puzzle requires looking beyond their obvious differences to identify the common thread that connects how users interact with each device.",
-    "I initially focused on the technological aspect, thinking these were all wireless devices or electronic gadgets. Television sets, garage doors, drones - they all use electricity and modern technology, so I considered categories like 'wireless technology' or 'electronic devices.' However, this felt too broad and didn't capture the specific connection. I then tried thinking about user interaction patterns, considering how people operate these items. The breakthrough came when I realized the specific method of control that links them all. I thought about how you don't directly touch or manually operate any of these items during normal use. Television sets are controlled with remote controls, garage doors open via remote transmitters, drones are piloted using remote controllers, Nintendo Wii systems respond to wireless controllers held at a distance, and RC cars are operated through handheld remote transmitters. The structural connection became clear: these are all items that are typically controlled from a distance using some form of remote control device, whether it's an infrared remote, radio frequency transmitter, or wireless controller."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Television sets",
+    "Garage doors",
+    "Drones",
+    "Nintendo Wii",
+    "RC cars"
   ],
+  "answer": "Items controlled remotely",
+  "category": "Items controlled remotely",
   "wordHints": {
-    "Television sets": "Television (Television + Sets): Electronic display devices that receive broadcast signals and are operated using infrared remote controls for channel changing and volume adjustment.",
-    "Garage doors": "Garage doors (Garage + Doors): Large hinged or sectional barriers that protect vehicle storage spaces and are operated via radio frequency remote transmitters for convenient access.",
-    "Drones": "Drones (Unmanned + Aircraft): Remote-controlled or autonomous flying vehicles operated through handheld controllers or smartphone applications for photography, surveillance, or recreational purposes.",
-    "Nintendo Wii": "Nintendo Wii (Gaming + Console): Motion-sensing video game system that uses wireless controllers to detect player movements and translate them into game actions without direct physical connection.",
-    "RC cars": "RC cars (Remote Control + Vehicles): Miniature automobiles operated through handheld radio transmitters that send control signals for steering, acceleration, and braking functions."
+    "Television sets": "Television sets are a familiar anchor because most people immediately associate them with a handheld remote.",
+    "Garage doors": "Garage doors broaden the category beyond entertainment devices and point toward things you operate from a distance.",
+    "Drones": "Drones keep the board in remote-control territory while adding a more modern and mobile example.",
+    "Nintendo Wii": "Nintendo Wii is the turning clue because the Wii Remote makes the mechanism of control explicit instead of merely implied.",
+    "RC cars": "RC cars are a direct confirmation because the category is built into the abbreviation itself: remote control."
   },
-  "lessons": [
-    "Look for operational patterns rather than surface categories. When items seem technologically diverse, focus on how users interact with them rather than their apparent functions or industries.",
-    "Consider the control mechanism as a unifying factor. Many puzzles connect items through their method of operation, especially when direct physical interaction isn't the primary interface.",
-    "Distinguish between broad and specific technological connections. While items might share general technology features, the puzzle often requires identifying the most specific operational characteristic they have in common."
+  "spoilerHints": {
+    "Television sets": "Think about the way you usually change channels.",
+    "Garage doors": "This clue is about how you open it, not where it is attached.",
+    "Drones": "Picture piloting from the ground.",
+    "Nintendo Wii": "The console itself is less important than the controller people associate with it.",
+    "RC cars": "Read the initials literally."
+  },
+  "articleBlocks": [
+    "Television sets and Garage doors suggest remote controls pretty quickly, but the board can still look like a generic technology category.",
+    "Drones and RC cars keep that idea alive, though both could also point toward toys or hobby equipment.",
+    "Nintendo Wii is the clue that makes remotely controlled feel exact rather than approximate.",
+    "The Wii Remote turns the board from a tech cluster into a clean action category, and then the other clues read as things you control from a distance.",
+    "The answer was Items controlled remotely.",
+    "This puzzle is less about naming one device and more about noticing the shared way people interact with all of them."
   ],
+  "fullAnalysis": [
+    "Television sets and Garage doors make remote control feel plausible early, but they still allow a broad consumer-tech reading.",
+    "Drones and RC cars extend the idea into hobbies and vehicles, which helps but can still make the board feel like a list of gadgets.",
+    "Nintendo Wii is the turning clue because the Wii Remote makes the method of control explicit, not just assumed.",
+    "Once that clue lands, the board becomes clearly about items controlled remotely rather than about one product family.",
+    "The answer was Items controlled remotely.",
+    "The board is nicely built because it mixes home devices, gaming, toys, and aircraft under one everyday interaction pattern."
+  ],
+  "solutionNarrative": [
+    "Television sets and Garage doors put remote control into the conversation fast, but the board still looked like it might just be electronics. Drones and RC cars widened that into hobby gear without fully naming the common action.",
+    "Nintendo Wii made the mechanism impossible to ignore. Once the Wii Remote sat at the center of the solve, the rest of the clues all read as items operated from a distance."
+  ],
+  "lessons": [
+    {
+      "title": "Use interaction patterns, not product families",
+      "body": "A board may look like electronics or toys when it is really asking how people use the objects, not what the objects are."
+    },
+    {
+      "title": "Literal controller clues can lock the category",
+      "body": "Nintendo Wii matters because it calls up the Wii Remote so directly that the category becomes much more precise."
+    },
+    {
+      "title": "Abbreviations can act like confirmations",
+      "body": "RC cars help because the initials already spell out remote control, reinforcing the theme without any extra work."
+    }
+  ],
+  "display": {
+    "connectorSummary": "devices and objects people commonly operate from a distance",
+    "fastStrategy": "If the clues all seem interactive, stop naming product types and look for the shared way people control them.",
+    "clueTableRows": [
+      {
+        "clue": "Television sets",
+        "examplePhrase": "television sets",
+        "connectionExplained": "Television sets are a familiar anchor because most people immediately associate them with a handheld remote."
+      },
+      {
+        "clue": "Garage doors",
+        "examplePhrase": "garage doors",
+        "connectionExplained": "Garage doors broaden the category beyond entertainment devices and point toward things you operate from a distance."
+      },
+      {
+        "clue": "Drones",
+        "examplePhrase": "drones",
+        "connectionExplained": "Drones keep the board in remote-control territory while adding a more modern and mobile example."
+      },
+      {
+        "clue": "Nintendo Wii",
+        "examplePhrase": "Nintendo Wii",
+        "connectionExplained": "Nintendo Wii is the turning clue because the Wii Remote makes the mechanism of control explicit instead of merely implied."
+      },
+      {
+        "clue": "RC cars",
+        "examplePhrase": "RC cars",
+        "connectionExplained": "RC cars are a direct confirmation because the category is built into the abbreviation itself: remote control."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #604?",
-      "answer": "The answer is Items controlled remotely: Television sets, Garage doors, Drones, Nintendo Wii, RC cars."
+      "answer": "The answer is Items controlled remotely because Television sets, Garage doors, Drones, Nintendo Wii, and RC cars are all operated from a distance."
     },
     {
-      "question": "Why don't other electronic devices fit this category?",
-      "answer": "The specific connection is remote operation from a distance, not just electronic functionality - items like smartphones or laptops require direct physical interaction."
+      "question": "What is the connection in LinkedIn Pinpoint #604?",
+      "answer": "The connection is the method of control. Each clue points to something people typically operate remotely rather than directly by hand on the device itself."
     },
     {
-      "question": "What makes this connection challenging to identify?",
-      "answer": "The items span different industries and purposes, making their shared control method less obvious than their technological differences."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #604?",
+      "answer": "Nintendo Wii is the turning clue because the Wii Remote makes the remote-control idea explicit instead of merely implied."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Television sets and Garage doors hint at remote control early, but the board can still look like a loose technology category.",
+    "falseStarts": [
+      "consumer electronics",
+      "toys or hobby gear"
+    ],
+    "whyFalseStartPlausible": [
+      "Television sets and Garage doors are both common household devices, so a simple home-tech read is believable.",
+      "Drones and RC cars can pull the board toward hobby equipment even before the shared interaction becomes clear."
+    ],
+    "breakingClue": "Nintendo Wii",
+    "pivot": "Nintendo Wii changes the solve because the Wii Remote makes remote control feel like the central mechanic of the board rather than a side association.",
+    "fullBoardConfirmation": "RC cars confirm the read especially well because the RC abbreviation literally stands for remote control."
+  },
+  "turningPoint": {
+    "clue": "Nintendo Wii",
+    "whyDecisive": "Nintendo Wii is decisive because it immediately evokes the Wii Remote, which names the interaction instead of only implying it.",
+    "whatChangedAfterIt": "Once the Wii Remote came to mind, Television sets, Garage doors, Drones, and RC cars all became examples of things controlled remotely."
+  },
+  "clueRows": [
+    {
+      "clue": "Television sets",
+      "surfaceMisread": "consumer electronics",
+      "resolvedPhraseOrMember": "television sets",
+      "nonObviousWhy": "Television sets are a familiar anchor because most people immediately associate them with a handheld remote.",
+      "searchableContext": "remote control television"
+    },
+    {
+      "clue": "Garage doors",
+      "surfaceMisread": "consumer electronics",
+      "resolvedPhraseOrMember": "garage doors",
+      "nonObviousWhy": "Garage doors broaden the category beyond entertainment devices and point toward things you operate from a distance.",
+      "searchableContext": "remote garage door"
+    },
+    {
+      "clue": "Drones",
+      "surfaceMisread": "toys or hobby gear",
+      "resolvedPhraseOrMember": "drones",
+      "nonObviousWhy": "Drones keep the board in remote-control territory while adding a more modern and mobile example.",
+      "searchableContext": "remote controlled drone"
+    },
+    {
+      "clue": "Nintendo Wii",
+      "surfaceMisread": "toys or hobby gear",
+      "resolvedPhraseOrMember": "Nintendo Wii",
+      "nonObviousWhy": "Nintendo Wii is the turning clue because the Wii Remote makes the mechanism of control explicit instead of merely implied.",
+      "searchableContext": "Wii Remote"
+    },
+    {
+      "clue": "RC cars",
+      "surfaceMisread": "toys or hobby gear",
+      "resolvedPhraseOrMember": "RC cars",
+      "nonObviousWhy": "RC cars are a direct confirmation because the category is built into the abbreviation itself: remote control.",
+      "searchableContext": "RC car remote control"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #604?",
+      "answer": "The answer is Items controlled remotely because Television sets, Garage doors, Drones, Nintendo Wii, and RC cars are all operated from a distance.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #604?",
+      "answer": "The connection is the method of control. Each clue points to something people typically operate remotely rather than directly by hand on the device itself.",
+      "tiedClue": "Nintendo Wii"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #604?",
+      "answer": "Nintendo Wii is the turning clue because the Wii Remote makes the remote-control idea explicit instead of merely implied.",
+      "tiedClue": "Nintendo Wii"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "an interaction-based board where a game console clue makes remote control explicit across home devices and hobby gear",
+    "relatedEntities": [
+      "television remote",
+      "garage door remote",
+      "drone controller",
+      "Wii Remote",
+      "RC cars"
+    ],
+    "doNotRepeatPatterns": [
+      "an interaction-based board where a game console clue makes remote control explicit across home devices and hobby gear",
+      "Wii Remote",
+      "Use interaction patterns, not product families"
+    ]
+  }
 }

@@ -1,40 +1,201 @@
 {
+  "puzzleNumber": 490,
   "slug": "pinpoint-answer-490",
+  "publishDate": "2025-09-02",
+  "isoDate": "2025-09-02",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #490 looks broad on purpose. Tortoise, Molasses, Sloth, Snail, and Traffic jams do not form one natural category of object, animal, or place. That usually means the puzzle is about a shared quality instead. Here the common thread is not what the clues are, but how strongly they all signal the same idea of moving slowly or making progress slowly.",
-    "My first impulse was to separate the board into animals and non-animals. Tortoise, sloth, and snail clearly live together, while molasses and traffic jams feel more like metaphors or everyday experiences. That split is actually the clue. The board wants a simple descriptive answer that can cover both literal slow movers and things famous for sluggishness. Once you read molasses and traffic jams that way, slow things becomes the cleanest fit.",
-    "Each clue reinforces the theme from a slightly different angle. Tortoises, sloths, and snails are all cultural shorthand for slow movement. Molasses is the classic comparison for anything dragging or thick. Traffic jams bring the same idea into daily life, where motion slows to a crawl or stops entirely. The answer does not need to be more technical than that because the shared trait is obvious across every clue.",
-    "That is why the answer to LinkedIn Pinpoint #490 is Slow things. The board works by mixing animals, substances, and situations that all trigger the same instinctive idea of slowness."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Tortoise",
+    "Molasses (treacle)",
+    "Sloth",
+    "Snail",
+    "Traffic jams"
   ],
+  "answer": "Slow things",
+  "category": "Slow things",
   "wordHints": {
-    "Tortoise": "The tortoise is one of the most familiar symbols of slow and steady movement, thanks in part to the classic fable.",
-    "Molasses (treacle)": "Molasses is famous as a comparison for sluggish movement because it pours and flows very slowly.",
-    "Sloth": "Sloths are widely known for moving slowly, which makes this one of the clearest clues on the board.",
-    "Snail": "Snails move at a snail's pace, making them another standard symbol of slowness.",
-    "Traffic jams": "Traffic jams slow movement to a crawl or complete standstill, extending the same theme into everyday life."
+    "Tortoise": "Tortoise is a classic slow symbol, which makes it one of the easiest first anchors on the board.",
+    "Molasses (treacle)": "Molasses adds the familiar slow as molasses idea and helps the category move beyond living things.",
+    "Sloth": "Sloth doubles down on the animal stereotype and makes the board look even more creature-focused at first.",
+    "Snail": "Snail keeps the same pace theme alive and strengthens the common-language reading of slow.",
+    "Traffic jams": "Traffic jams are the turning clue because they prove the category is about pace itself, not just famously slow animals."
   },
-  "lessons": [
-    "When clues do not share a noun category, test a shared trait. This board becomes much easier once you switch from object classification to descriptive quality.",
-    "Mixed literal and metaphor clues often point to a simple adjective-based answer. Molasses and traffic jams help confirm that the board wants slowness, not one species group.",
-    "Do not make the answer fancier than the clues require. Sometimes the right solution is a plain phrase like slow things because that is the cleanest description every clue supports."
+  "spoilerHints": {
+    "Tortoise": "Think about the animal from the race fable.",
+    "Molasses (treacle)": "This clue is famous because of an idiom about speed.",
+    "Sloth": "Think of an animal whose name is almost synonymous with sluggishness.",
+    "Snail": "This clue appears in plenty of slow-motion metaphors.",
+    "Traffic jams": "Move from creatures to commuting."
+  },
+  "articleBlocks": [
+    "Tortoise, Sloth, and Snail make the board look like it might just be about famously slow animals.",
+    "Molasses supports the same idea, but it also nudges the set toward a broader theme of sluggishness.",
+    "Traffic jams are the clue that fully opens it up.",
+    "Once traffic jams join the board, the category stops being about creatures and becomes the wider idea of Slow things.",
+    "The answer was Slow things.",
+    "This is a simple board, but the last clue matters because it proves the theme is about pace, not species."
   ],
+  "fullAnalysis": [
+    "Tortoise, Sloth, and Snail all point toward slowness immediately, but they can also make the board look narrower than it really is.",
+    "Molasses helps by bringing in an idiomatic non-animal example, though the category can still feel like a bundle of stereotypes.",
+    "Traffic jams are the turning clue because they make it clear that the board is about slow pace in general, not just living things.",
+    "After that, each clue reads as a different example of slowness rather than as a small animal-themed cluster.",
+    "The answer was Slow things.",
+    "The board is straightforward, but it is well balanced because it moves from creatures to substances to everyday situations."
+  ],
+  "solutionNarrative": [
+    "The animal clues made the board feel almost too obvious, which actually made it easier to overfit to creatures rather than to pace. Molasses helped widen the board, but not enough to fully break that read.",
+    "Traffic jams did the real work. Once a commuting problem joined the set, the answer became about slowness itself, and the earlier clues all fit more naturally."
+  ],
+  "lessons": [
+    {
+      "title": "Look for the clue that broadens the board",
+      "body": "When several clues live in one obvious subgroup, the category is often wider than that subgroup appears to be."
+    },
+    {
+      "title": "Idioms can prepare a simple category",
+      "body": "Molasses matters because the slow as molasses expression primes the right pace-based read before the broadening clue arrives."
+    },
+    {
+      "title": "Straightforward boards still have a pivot",
+      "body": "Even easy categories often rely on one clue to prove the theme is conceptual rather than just visual or biological."
+    }
+  ],
+  "display": {
+    "connectorSummary": "examples that all represent sluggish pace, from animals to situations",
+    "fastStrategy": "If several clues share a stereotype, look for the clue that widens the board beyond one type of thing.",
+    "clueTableRows": [
+      {
+        "clue": "Tortoise",
+        "examplePhrase": "tortoise",
+        "connectionExplained": "Tortoise is a classic slow symbol, which makes it one of the easiest first anchors on the board."
+      },
+      {
+        "clue": "Molasses (treacle)",
+        "examplePhrase": "molasses",
+        "connectionExplained": "Molasses adds the familiar slow as molasses idea and helps the category move beyond living things."
+      },
+      {
+        "clue": "Sloth",
+        "examplePhrase": "sloth",
+        "connectionExplained": "Sloth doubles down on the animal stereotype and makes the board look even more creature-focused at first."
+      },
+      {
+        "clue": "Snail",
+        "examplePhrase": "snail",
+        "connectionExplained": "Snail keeps the same pace theme alive and strengthens the common-language reading of slow."
+      },
+      {
+        "clue": "Traffic jams",
+        "examplePhrase": "traffic jams",
+        "connectionExplained": "Traffic jams are the turning clue because they prove the category is about pace itself, not just famously slow animals."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #490?",
-      "answer": "The answer is Slow things. Tortoise, Molasses, Sloth, Snail, and Traffic jams all strongly suggest slowness."
+      "answer": "The answer is Slow things because Tortoise, Molasses, Sloth, Snail, and Traffic jams all point to sluggish pace."
     },
     {
-      "question": "Why does Molasses fit the answer in #490?",
-      "answer": "Because molasses is a classic comparison for something moving very slowly, so it supports the same idea as the animals and the traffic clue."
+      "question": "What is the connection in LinkedIn Pinpoint #490?",
+      "answer": "The connection is slowness. Each clue is a familiar example of something people describe as slow."
     },
     {
-      "question": "Could the answer have been animals instead?",
-      "answer": "No. Traffic jams and molasses do not fit an animal category, so the better answer is the broader shared trait: slow things."
-    },
-    {
-      "question": "How should I solve attribute boards like #490?",
-      "answer": "If the clues come from very different domains, ask what feeling or quality they all signal. A shared adjective is often the cleanest answer."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #490?",
+      "answer": "Traffic jams are the turning clue because they show the board is about slow pace in general, not only about animals."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "The animal clues point toward slowness quickly, but they also make the board look narrower than the real category.",
+    "falseStarts": [
+      "slow animals",
+      "nature-based examples"
+    ],
+    "whyFalseStartPlausible": [
+      "Tortoise, Sloth, and Snail are such strong stereotype clues that a creature-only category feels natural at first.",
+      "Molasses still behaves like a familiar comparison rather than a completely new domain, so it does not immediately break the animal read."
+    ],
+    "breakingClue": "Traffic jams",
+    "pivot": "Traffic jams change the solve because they pull the board into everyday situations and confirm that the category is about pace itself.",
+    "fullBoardConfirmation": "Molasses is especially useful after the pivot because it shows the board includes idiomatic slow examples, not just literal movement speed."
+  },
+  "turningPoint": {
+    "clue": "Traffic jams",
+    "whyDecisive": "Traffic jams are decisive because they widen the board beyond animals and substances into a real-world situation defined by slowness.",
+    "whatChangedAfterIt": "Once traffic jams joined the set, Tortoise, Molasses, Sloth, and Snail all became examples of slow things instead of an animal-heavy cluster."
+  },
+  "clueRows": [
+    {
+      "clue": "Tortoise",
+      "surfaceMisread": "animals",
+      "resolvedPhraseOrMember": "tortoise",
+      "nonObviousWhy": "Tortoise is a classic slow symbol, which makes it one of the easiest first anchors on the board.",
+      "searchableContext": "slow tortoise"
+    },
+    {
+      "clue": "Molasses (treacle)",
+      "surfaceMisread": "animals",
+      "resolvedPhraseOrMember": "molasses",
+      "nonObviousWhy": "Molasses adds the familiar slow as molasses idea and helps the category move beyond living things.",
+      "searchableContext": "slow as molasses"
+    },
+    {
+      "clue": "Sloth",
+      "surfaceMisread": "animals",
+      "resolvedPhraseOrMember": "sloth",
+      "nonObviousWhy": "Sloth doubles down on the animal stereotype and makes the board look even more creature-focused at first.",
+      "searchableContext": "slow sloth"
+    },
+    {
+      "clue": "Snail",
+      "surfaceMisread": "animals",
+      "resolvedPhraseOrMember": "snail",
+      "nonObviousWhy": "Snail keeps the same pace theme alive and strengthens the common-language reading of slow.",
+      "searchableContext": "slow snail"
+    },
+    {
+      "clue": "Traffic jams",
+      "surfaceMisread": "animals",
+      "resolvedPhraseOrMember": "traffic jams",
+      "nonObviousWhy": "Traffic jams are the turning clue because they prove the category is about pace itself, not just famously slow animals.",
+      "searchableContext": "slow traffic jams"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #490?",
+      "answer": "The answer is Slow things because Tortoise, Molasses, Sloth, Snail, and Traffic jams all point to sluggish pace.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #490?",
+      "answer": "The connection is slowness. Each clue is a familiar example of something people describe as slow.",
+      "tiedClue": "Traffic jams"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #490?",
+      "answer": "Traffic jams are the turning clue because they show the board is about slow pace in general, not only about animals.",
+      "tiedClue": "Traffic jams"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a simple pace board where one commuting clue proves the category is broader than a cluster of slow stereotypes",
+    "relatedEntities": [
+      "tortoise",
+      "molasses",
+      "sloth",
+      "snail",
+      "traffic jams"
+    ],
+    "doNotRepeatPatterns": [
+      "a simple pace board where one commuting clue proves the category is broader than a cluster of slow stereotypes",
+      "Traffic jams are the turning clue because they show the board is about slow pace in general, not only about animals"
+    ]
+  }
 }

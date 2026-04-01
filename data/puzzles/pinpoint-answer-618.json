@@ -1,36 +1,202 @@
 {
+  "puzzleNumber": 618,
   "slug": "pinpoint-answer-618",
+  "publishDate": "2026-01-08",
+  "isoDate": "2026-01-08",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's puzzle centers around tools that have shaped woodworking and construction for centuries. The clues initially seem disconnected - from musical groups to problem-solving methods. However, when examining each term's alternative meanings, particularly in the context of cutting and slicing implements, a fascinating pattern emerges. The connection becomes clear when considering how each word represents a distinct variety of cutting tool used in carpentry, construction, and DIY projects.",
-    "I started by noting how 'band' could refer to a musical group, but something about the other clues suggested a different direction. Looking at 'hack' made me think of cutting. I remembered that a band saw is a common power tool, which sparked my interest. The presence of 'chain' then clicked - chainsaws are obvious cutting implements. This had to be about different types of saws. The breakthrough came when I recalled that a coping saw is used for intricate cuts in woodworking. Jig confirmed my theory, as jigsaw is another well-known cutting tool. Finally, I was confident these were all varieties of saws, each with its unique cutting purpose and design.",
-    "The puzzle reveals different types of saws through various clues. Band refers to a band saw, chain to chainsaw, hack to hacksaw, coping to coping saw, and jig to jigsaw. Each represents a distinct cutting tool with specific applications in woodworking and construction.",
-    "Today's puzzle focused on different types of saws used in woodworking and construction. Each clue represented a specific saw variety: band saw, chainsaw, hacksaw, coping saw, and jigsaw, each designed for particular cutting tasks."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Band",
+    "Chain",
+    "Hack",
+    "Coping",
+    "Jig"
   ],
+  "answer": "Types of saws",
+  "category": "Types of saws",
   "wordHints": {
-    "Band": "Band (Band Saw): A continuous blade power tool for cutting wood or metal",
-    "Chain": "Chain (Chain Saw): A motorized saw with teeth set on a rotating chain",
-    "Hack": "Hack (Hack Saw): A fine-toothed saw used for cutting metal",
-    "Coping": "Coping (Coping Saw): A thin-bladed saw for detailed interior cuts",
-    "Jig": "Jig (Jig Saw): A power saw with reciprocating blade for curved cuts"
+    "Band": "Band works because band saw is a standard shop tool, even if the clue itself could mislead you toward music first.",
+    "Chain": "Chain is useful because chainsaw is instantly recognizable, though the clue alone can still feel more general than the final category.",
+    "Hack": "Hack nudges the board toward tools, but it can still be confused with metaphorical language until more evidence arrives.",
+    "Coping": "Coping is the turning clue because coping saw is specific enough to force the workshop interpretation.",
+    "Jig": "Jig confirms the pattern with another familiar tool name that most solvers recognize once saw is in place."
   },
-  "lessons": [
-    "Consider tool-related meanings when clues suggest equipment. Words often have specific meanings in technical contexts.",
-    "Look for patterns in functionality across clues. Similar uses or purposes can reveal the connection.",
-    "Remember that common words may have specialized meanings. Everyday terms often have specific definitions in different fields."
+  "spoilerHints": {
+    "Band": "Think workshop, not orchestra.",
+    "Chain": "Picture a loud cutting tool.",
+    "Hack": "This is a cutting tool, not a computer shortcut.",
+    "Coping": "Ignore emotional coping and think about a craft tool.",
+    "Jig": "This one can mean both a tool and a puzzle cut style, but the shared word is the same."
+  },
+  "articleBlocks": [
+    "Band and Chain can feel like they belong to music or linked objects instead of tools, which is why the board takes a moment to settle.",
+    "Hack points toward equipment, but it still might not be enough if you are thinking about metaphors like hacks or chains.",
+    "Coping is the clue that makes the workshop answer clear.",
+    "Coping saw is too specific to ignore, and once saw clicks, band saw, chainsaw, hacksaw, and jigsaw all fall into place.",
+    "The answer was Types of saws.",
+    "This board is a good example of how one specialized clue can organize a list of more familiar words."
   ],
+  "fullAnalysis": [
+    "Band and Chain are both common words outside the workshop, so the puzzle can feel abstract or even musical before the pattern emerges.",
+    "Hack nudges the board toward tools, but it still allows several metaphorical readings if you do not have the shared word yet.",
+    "Coping is the turning clue because coping saw is such a specific tool name that it forces saw to the front.",
+    "After that, band saw, chainsaw, hacksaw, and jigsaw all become quick confirmations in the same tool family.",
+    "The answer was Types of saws.",
+    "The puzzle works because it hides the workshop category behind short clue words with several unrelated everyday meanings."
+  ],
+  "solutionNarrative": [
+    "Band and Chain felt broad enough to belong almost anywhere, and Hack only partially pushed the board toward tools. The clues were fair, but they needed one more specialized term to settle.",
+    "Coping provided that term. Once coping saw came to mind, the rest of the board reorganized into familiar saw names instead of a pile of ambiguous short words."
+  ],
+  "lessons": [
+    {
+      "title": "Specialized clues can rescue ambiguous short words",
+      "body": "A board made of short clues often needs one technical term to reveal the true category."
+    },
+    {
+      "title": "Common words may hide trade vocabulary",
+      "body": "Band, Chain, Hack, and Jig all live outside the workshop too, which is why the saw category stays hidden longer than expected."
+    },
+    {
+      "title": "The most specific clue often deserves extra weight",
+      "body": "Coping is not the most common everyday word on the board, but that is exactly why it confirms the tool family so well."
+    }
+  ],
+  "display": {
+    "connectorSummary": "tool names built by the same shared word across workshop terms",
+    "fastStrategy": "When short clues feel disconnected, test whether one common tool word can complete each of them naturally.",
+    "clueTableRows": [
+      {
+        "clue": "Band",
+        "examplePhrase": "band saw",
+        "connectionExplained": "Band works because band saw is a standard shop tool, even if the clue itself could mislead you toward music first."
+      },
+      {
+        "clue": "Chain",
+        "examplePhrase": "chainsaw",
+        "connectionExplained": "Chain is useful because chainsaw is instantly recognizable, though the clue alone can still feel more general than the final category."
+      },
+      {
+        "clue": "Hack",
+        "examplePhrase": "hacksaw",
+        "connectionExplained": "Hack nudges the board toward tools, but it can still be confused with metaphorical language until more evidence arrives."
+      },
+      {
+        "clue": "Coping",
+        "examplePhrase": "coping saw",
+        "connectionExplained": "Coping is the turning clue because coping saw is specific enough to force the workshop interpretation."
+      },
+      {
+        "clue": "Jig",
+        "examplePhrase": "jigsaw",
+        "connectionExplained": "Jig confirms the pattern with another familiar tool name that most solvers recognize once saw is in place."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #618?",
-      "answer": "The answer is Types of saws: Band, Chain, Hack, Coping, Jig."
+      "answer": "The answer is Types of saws because Band, Chain, Hack, Coping, and Jig all form familiar saw names."
     },
     {
-      "question": "Why is a coping saw named that way?",
-      "answer": "It's named for its primary use in creating coped joints in woodworking, particularly for trim and molding."
+      "question": "What is the connection in LinkedIn Pinpoint #618?",
+      "answer": "The connection is one shared tool word. The clues resolve into band saw, chainsaw, hacksaw, coping saw, and jigsaw."
     },
     {
-      "question": "What makes these saws different from each other?",
-      "answer": "Each saw is designed for specific cutting tasks: band saws for continuous cuts, chainsaws for heavy cutting, hacksaws for metal, coping saws for detail work, and jigsaws for curves."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #618?",
+      "answer": "Coping is the turning clue because coping saw is the most specialized and least flexible tool name on the board."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Band and Chain are broad enough to suggest several directions, while Hack only lightly hints that tools might be involved.",
+    "falseStarts": [
+      "music or abstract words",
+      "general workshop words without a category"
+    ],
+    "whyFalseStartPlausible": [
+      "Band, Chain, and Jig all have common meanings outside tools, so the board can feel linguistically noisy at first.",
+      "Hack has both literal and figurative uses, which makes it supportive but not fully decisive on its own."
+    ],
+    "breakingClue": "Coping",
+    "pivot": "Coping changes the solve because coping saw is a specific tool name that strongly validates saw as the shared word.",
+    "fullBoardConfirmation": "Chain is especially useful after the pivot because chainsaw is so recognizable that it makes the workshop read feel immediate."
+  },
+  "turningPoint": {
+    "clue": "Coping",
+    "whyDecisive": "Coping is decisive because coping saw is highly specific and much less metaphorical than the other clue words.",
+    "whatChangedAfterIt": "Once coping saw appeared, Band, Chain, Hack, and Jig all became familiar saw names instead of ambiguous short words."
+  },
+  "clueRows": [
+    {
+      "clue": "Band",
+      "surfaceMisread": "music or abstract words",
+      "resolvedPhraseOrMember": "band saw",
+      "nonObviousWhy": "Band works because band saw is a standard shop tool, even if the clue itself could mislead you toward music first.",
+      "searchableContext": "band saw"
+    },
+    {
+      "clue": "Chain",
+      "surfaceMisread": "music or abstract words",
+      "resolvedPhraseOrMember": "chainsaw",
+      "nonObviousWhy": "Chain is useful because chainsaw is instantly recognizable, though the clue alone can still feel more general than the final category.",
+      "searchableContext": "chainsaw"
+    },
+    {
+      "clue": "Hack",
+      "surfaceMisread": "music or abstract words",
+      "resolvedPhraseOrMember": "hacksaw",
+      "nonObviousWhy": "Hack nudges the board toward tools, but it can still be confused with metaphorical language until more evidence arrives.",
+      "searchableContext": "hacksaw"
+    },
+    {
+      "clue": "Coping",
+      "surfaceMisread": "emotions or abstract words",
+      "resolvedPhraseOrMember": "coping saw",
+      "nonObviousWhy": "Coping is the turning clue because coping saw is specific enough to force the workshop interpretation.",
+      "searchableContext": "coping saw"
+    },
+    {
+      "clue": "Jig",
+      "surfaceMisread": "music or dance words",
+      "resolvedPhraseOrMember": "jigsaw",
+      "nonObviousWhy": "Jig confirms the pattern with another familiar tool name that most solvers recognize once saw is in place.",
+      "searchableContext": "jigsaw"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #618?",
+      "answer": "The answer is Types of saws because Band, Chain, Hack, Coping, and Jig all form familiar saw names.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #618?",
+      "answer": "The connection is one shared tool word. The clues resolve into band saw, chainsaw, hacksaw, coping saw, and jigsaw.",
+      "tiedClue": "Coping"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #618?",
+      "answer": "Coping is the turning clue because coping saw is the most specialized and least flexible tool name on the board.",
+      "tiedClue": "Coping"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a workshop board where one specialized clue organizes several ambiguous short words into saw names",
+    "relatedEntities": [
+      "band saw",
+      "chainsaw",
+      "hacksaw",
+      "coping saw",
+      "jigsaw"
+    ],
+    "doNotRepeatPatterns": [
+      "a workshop board where one specialized clue organizes several ambiguous short words into saw names",
+      "coping saw",
+      "Specialized clues can rescue ambiguous short words"
+    ]
+  }
 }

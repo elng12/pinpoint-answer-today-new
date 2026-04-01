@@ -1,41 +1,202 @@
 {
+  "puzzleNumber": 458,
   "slug": "pinpoint-answer-458",
+  "publishDate": "2025-08-01",
+  "isoDate": "2025-08-01",
   "detailState": "published",
-  "fullAnalysis": [
-    "Lines, Phones, Light, Ache, and First look unrelated at first, but the board becomes simple once you test a shared prefix instead of a category. Each clue forms a familiar compound with head: headline, headphones, headlight, headache, and headfirst.",
-    "The trap is to overread the first two clues as communication words. That idea breaks as soon as Light and Ache arrive, because they do not belong to one clean topic. A better move is to try a short word before every clue. Head fits immediately, and it fits all five without any stretching.",
-    "That is why the answer to LinkedIn Pinpoint #458 is Words that come after 'head'. The puzzle is really a prefix puzzle: head + line, phone, light, ache, and first all create common English words or phrases. The last clue, First, is especially helpful because headfirst confirms the pattern cleanly.",
-    "Boards like this reward structural thinking. When clues refuse to settle into a natural category, stop chasing themes and test a shared prefix or suffix instead."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Lines",
+    "Phones",
+    "Light",
+    "Ache",
+    "First"
   ],
+  "answer": "Words that come after 'head'",
+  "category": "Words that come after 'head'",
   "wordHints": {
-    "Lines": "The line at the top of a news article, introducing the story. This directly forms the compound word 'headlines'.",
-    "Phones": "A pair of earphones joined by a band placed over the top of the head. This is a perfect example of 'head' as a prefix.",
-    "Light": "The main light on a vehicle, typically at the front. The word is formed by combining 'head' and 'light'.",
-    "Ache": "A continuous pain in the head. This is a common and direct compound word from the clue 'ache'.",
-    "First": "An adverb meaning with the head leading, such as in a dive. It combines 'head' and 'first' to create a specific descriptive term."
+    "Lines": "Lines works because headlines is an immediate newsroom word and a natural first confirmation for head.",
+    "Phones": "Phones keeps the same opener alive in consumer tech language, which prevents the board from feeling too literary.",
+    "Light": "Light adds an automotive phrase, showing the shared opener works beyond media and electronics.",
+    "Ache": "Ache is a strong body-language confirmation because headache is so common that it anchors the opener in everyday speech.",
+    "First": "First is the turning clue because headfirst is a compact, fixed adverb that makes head feel exact instead of merely plausible."
   },
-  "lessons": [
-    "When a theory breaks, it breaks for a reason. Notice exactly which clue breaks your idea. For this puzzle, 'Ache' made my 'phoning it in' theory impossible. That specific failure is a huge hint that the connection isn't conceptual but linguistic.",
-    "Test a literal connection, not just a thematic one. If your themes feel stretched, try thinking about the words themselves. Is there a prefix, a suffix, or another word that can be physically attached to every single clue? The solution here was a simple word 'head' placed before each one.",
-    "Use the outliers to break your assumptions. Clues like 'Ache' and 'First' are the most valuable for stress-testing a theory. If your idea works for the 'easy' clues like 'Phones' but not for the 'outliers', it's a sign you need to abandon it and find something more rigid.",
-    "Compound words are a common Pinpoint trap. Always keep simple compound words in your back pocket. Puzzles often hide the answer by forming a new, concrete word from the clue and a shared partner word, just like 'head' + 'ache'."
+  "spoilerHints": {
+    "Lines": "Think about what appears at the top of a news story.",
+    "Phones": "This clue points to wearable audio gear.",
+    "Light": "Picture the front of a car.",
+    "Ache": "Think about a pain you feel above the neck.",
+    "First": "This clue forms an adverb about diving in before the rest of you."
+  },
+  "articleBlocks": [
+    "Lines, Phones, and Light all look like they could belong to different modern-life categories, which is why the board can feel scattered at first.",
+    "Ache pulls the set toward body language, but the connector still is not obvious until one clue reads like a fixed expression.",
+    "First is the clue that settles it.",
+    "Headfirst is such a tight formation that head becomes the only clean shared opener, and then headlines, headphones, headlight, and headache all lock in.",
+    "The answer was Words that come after 'head'.",
+    "This board is stronger than it looks because each match lives in a different part of everyday language."
   ],
+  "fullAnalysis": [
+    "Lines, Phones, and Light suggest a shared opener, but each clue lives in such a different context that the board can feel noisy rather than clean.",
+    "Ache helps by adding a very common body-related word, though it still leaves room for a general anatomy or health theory.",
+    "First is the turning clue because headfirst is a fixed form that makes head feel much more exact than any competing opener.",
+    "Once headfirst clicks, headlines, headphones, headlight, and headache all become obvious confirmations across media, tech, transport, and health.",
+    "The answer was Words that come after 'head'.",
+    "The puzzle lands well because one short opener can produce several high-frequency words without making the board feel repetitive."
+  ],
+  "solutionNarrative": [
+    "Lines and Phones made me suspect a shared opener, but the board still looked like a blend of news and electronics. Ache suggested body language, which only made the set feel more scattered.",
+    "First changed the solve. Headfirst is such a fixed form that head stopped being a maybe and became the only opener that explained every clue cleanly."
+  ],
+  "lessons": [
+    {
+      "title": "Short openers can hide behind mixed contexts",
+      "body": "When the matched words come from media, gadgets, health, and motion, it is easy to miss that the same prefix is doing all the work."
+    },
+    {
+      "title": "One unusual form can validate common ones",
+      "body": "Headfirst matters because it is less generic than headline or headphone, so it confirms head with much more force."
+    },
+    {
+      "title": "Do not mistake variety for randomness",
+      "body": "A good shared-word board often spreads across several domains on purpose so the structure stays hidden longer."
+    }
+  ],
+  "display": {
+    "connectorSummary": "one shared opener that works across media, tech, health, and movement terms",
+    "fastStrategy": "On a prefix board, look for the clue that forms the most fixed expression and let it validate the rest.",
+    "clueTableRows": [
+      {
+        "clue": "Lines",
+        "examplePhrase": "headlines",
+        "connectionExplained": "Lines works because headlines is an immediate newsroom word and a natural first confirmation for head."
+      },
+      {
+        "clue": "Phones",
+        "examplePhrase": "headphones",
+        "connectionExplained": "Phones keeps the same opener alive in consumer tech language, which prevents the board from feeling too literary."
+      },
+      {
+        "clue": "Light",
+        "examplePhrase": "headlight",
+        "connectionExplained": "Light adds an automotive phrase, showing the shared opener works beyond media and electronics."
+      },
+      {
+        "clue": "Ache",
+        "examplePhrase": "headache",
+        "connectionExplained": "Ache is a strong body-language confirmation because headache is so common that it anchors the opener in everyday speech."
+      },
+      {
+        "clue": "First",
+        "examplePhrase": "headfirst",
+        "connectionExplained": "First is the turning clue because headfirst is a compact, fixed adverb that makes head feel exact instead of merely plausible."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "What connects Lines, Phones, Light, Ache, First in Pinpoint #458?",
-      "answer": "The connection is that they are all words that come after 'head' to form a common compound word, such as 'headlines' and 'headache'."
+      "question": "What is the answer to LinkedIn Pinpoint #458?",
+      "answer": "The answer is Words that come after 'head' because Lines, Phones, Light, Ache, and First all form common words with head."
     },
     {
-      "question": "Could the connector be 'things you use every day'?",
-      "answer": "No, this is too vague. While we use phones and light daily, you don't use 'lines' or 'ache' in the same way. The connector must fit every single clue perfectly, which a broad theme cannot do."
+      "question": "What is the connection in LinkedIn Pinpoint #458?",
+      "answer": "The connection is a shared opener. The clues resolve into headlines, headphones, headlight, headache, and headfirst."
     },
     {
-      "question": "Why wouldn't 'body' also work as a connector?",
-      "answer": "'Body' is a tempting parallel to 'head', but it fails the test for these clues. While 'headphones' and 'headlight' are common, there are no standard English words like 'bodyphones' or 'bodylight' for this puzzle's set."
-    },
-    {
-      "question": "How can I solve similar puzzles faster?",
-      "answer": "After your first two or three clues form a theory, immediately check it against the next clue. As soon as it feels like a stretch, pivot to looking for a more literal or structural connection like a shared prefix or suffix."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #458?",
+      "answer": "First is the turning clue because headfirst is the most fixed and least flexible formation on the board."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Lines, Phones, and Light hint at a shared opener, but the board still feels spread across too many everyday domains to commit quickly.",
+    "falseStarts": [
+      "technology or communication terms",
+      "body-related words"
+    ],
+    "whyFalseStartPlausible": [
+      "Phones and Light can push you toward devices or electronics, while Lines can live in media or communication.",
+      "Ache makes an anatomy or symptom theme feel possible, especially before you notice how neatly head fits the other clues."
+    ],
+    "breakingClue": "First",
+    "pivot": "First changes the solve because headfirst is such a tight expression that it validates head more strongly than the other clues can on their own.",
+    "fullBoardConfirmation": "Ache is especially useful after the pivot because headache is so common that it makes the shared opener feel undeniably natural."
+  },
+  "turningPoint": {
+    "clue": "First",
+    "whyDecisive": "First is decisive because headfirst is a fixed form that feels much less replaceable than headline or headphone.",
+    "whatChangedAfterIt": "Once headfirst appeared, Lines, Phones, Light, and Ache all snapped into recognizable head words instead of unrelated domains."
+  },
+  "clueRows": [
+    {
+      "clue": "Lines",
+      "surfaceMisread": "technology or communication terms",
+      "resolvedPhraseOrMember": "headlines",
+      "nonObviousWhy": "Lines works because headlines is an immediate newsroom word and a natural first confirmation for head.",
+      "searchableContext": "headlines"
+    },
+    {
+      "clue": "Phones",
+      "surfaceMisread": "technology or communication terms",
+      "resolvedPhraseOrMember": "headphones",
+      "nonObviousWhy": "Phones keeps the same opener alive in consumer tech language, which prevents the board from feeling too literary.",
+      "searchableContext": "headphones"
+    },
+    {
+      "clue": "Light",
+      "surfaceMisread": "technology or communication terms",
+      "resolvedPhraseOrMember": "headlight",
+      "nonObviousWhy": "Light adds an automotive phrase, showing the shared opener works beyond media and electronics.",
+      "searchableContext": "headlight"
+    },
+    {
+      "clue": "Ache",
+      "surfaceMisread": "body parts or health language",
+      "resolvedPhraseOrMember": "headache",
+      "nonObviousWhy": "Ache is a strong body-language confirmation because headache is so common that it anchors the opener in everyday speech.",
+      "searchableContext": "headache"
+    },
+    {
+      "clue": "First",
+      "surfaceMisread": "body parts or health language",
+      "resolvedPhraseOrMember": "headfirst",
+      "nonObviousWhy": "First is the turning clue because headfirst is a compact, fixed adverb that makes head feel exact instead of merely plausible.",
+      "searchableContext": "headfirst"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #458?",
+      "answer": "The answer is Words that come after 'head' because Lines, Phones, Light, Ache, and First all form common words with head.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #458?",
+      "answer": "The connection is a shared opener. The clues resolve into headlines, headphones, headlight, headache, and headfirst.",
+      "tiedClue": "First"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #458?",
+      "answer": "First is the turning clue because headfirst is the most fixed and least flexible formation on the board.",
+      "tiedClue": "First"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared-opener board where one compact adverb locks several familiar head words from different domains",
+    "relatedEntities": [
+      "headlines",
+      "headphones",
+      "headlight",
+      "headache",
+      "headfirst"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared-opener board where one compact adverb locks several familiar head words from different domains",
+      "headfirst",
+      "One unusual form can validate common ones"
+    ]
+  }
 }

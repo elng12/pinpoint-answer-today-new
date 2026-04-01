@@ -1,36 +1,201 @@
 {
+  "puzzleNumber": 634,
   "slug": "pinpoint-answer-634",
+  "publishDate": "2026-01-24",
+  "isoDate": "2026-01-24",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's puzzle explores different ways we interact with spaces and systems, both digital and physical. The clues span from technological interfaces to architectural elements, hinting at actions we take regularly. When I noticed 'Username' and 'Spreadsheet item' among the clues, I started thinking about how we navigate and input information in various contexts. The connection became clearer as I considered the different types of access points we encounter daily.",
-    "I initially focused on the digital clues, wondering if this was about data or information systems. The username and spreadsheet elements seemed to point that way. Looking at 'Contest' and 'Plea', I considered if this was about submissions or applications, but that felt incomplete. The breakthrough came when I saw 'Building through a doorway' - suddenly realizing these were all things we enter into different systems or spaces. I tested my theory against each clue: we enter usernames, pleas, contests, spreadsheet data, and buildings. The pattern held perfectly, confirming that these were all THINGS YOU ENTER.",
-    "The puzzle connects various types of entry - digital (username, spreadsheet), legal (plea), competitive (contest), and physical (building). Each clue represents something we enter in different contexts.",
-    "Today's Pinpoint revealed 'Things you enter' as the connecting theme. From digital inputs like usernames and spreadsheet data to physical entries through doorways, each clue represents something we enter or input in various contexts."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Username",
+    "Plea",
+    "Contest",
+    "Spreadsheet item",
+    "Building (through a doorway)"
   ],
+  "answer": "Things you enter",
+  "category": "Things you enter",
   "wordHints": {
-    "Username": "Username (Identity + Input): A unique identifier entered to access digital accounts",
-    "Plea": "Plea (Legal + Declaration): A formal statement entered in response to legal charges",
-    "Contest": "Contest (Competition + Entry): An event or competition one enters to compete",
-    "Spreadsheet item": "Spreadsheet item (Data + Input): Information entered into cells of a digital worksheet",
-    "Building (through a doorway)": "Building entry (Physical + Access): The act of going into a structure through an entrance"
+    "Username": "Username is a strong digital anchor because enter a username is a routine instruction people see constantly online.",
+    "Plea": "Plea is useful because enter a plea is a legal phrase that stretches the same verb into a very different domain.",
+    "Contest": "Contest keeps the board in action territory and shows the verb works in ordinary life as well as in technical systems.",
+    "Spreadsheet item": "Spreadsheet item reinforces the data-entry reading that many solvers will notice early.",
+    "Building (through a doorway)": "Building (through a doorway) is the turning clue because it proves the verb is not limited to forms, contests, or legal statements."
   },
-  "lessons": [
-    "Consider both physical and digital interpretations. Solutions often bridge virtual and real-world concepts",
-    "Look for action-based connections. Clues may relate through what we do with them",
-    "Pay attention to prepositions. Words like 'through' can hint at the solution's nature"
+  "spoilerHints": {
+    "Username": "Think about a login form.",
+    "Plea": "This clue belongs in court language, not on a keyboard.",
+    "Contest": "Picture signing up rather than winning.",
+    "Spreadsheet item": "This clue is about typing something into a cell.",
+    "Building (through a doorway)": "Move from screens and paperwork to literal movement."
+  },
+  "articleBlocks": [
+    "Username, Plea, and Contest all suggest different kinds of entry, but they can still feel like a paperwork board rather than a clean category.",
+    "Spreadsheet item keeps the verb enter in play, especially if you think about data entry.",
+    "Building (through a doorway) is the clue that proves the idea is much broader.",
+    "Once physical movement joins legal forms, account fields, and competitions, the answer stops being about one system and becomes Things you enter.",
+    "The answer was Things you enter.",
+    "This board is satisfying because the same verb works across digital, legal, competitive, and physical contexts."
   ],
+  "fullAnalysis": [
+    "Username and Spreadsheet item make an input or data-entry board feel plausible early on, while Plea and Contest pull the same verb into less technical settings.",
+    "That spread is useful, but the category can still feel like paperwork or registration until one clue turns physical.",
+    "Building (through a doorway) is the turning clue because enter a building proves the connector is the broad verb enter, not a specialized office or legal action.",
+    "After that, enter a username, enter a plea, enter a contest, and enter a spreadsheet item all act as clean confirmations.",
+    "The answer was Things you enter.",
+    "The set works because it uses one plain verb to bridge digital life, the courtroom, competitions, office work, and literal movement through space."
+  ],
+  "solutionNarrative": [
+    "Username and Spreadsheet item made the board feel like something about forms or typed inputs, while Plea and Contest kept nudging the same verb into other settings. That helped, but it still felt narrower than the real category.",
+    "Building (through a doorway) solved the ambiguity. Once physical movement joined the set, enter became the only verb broad enough to explain every clue cleanly."
+  ],
+  "lessons": [
+    {
+      "title": "Broad verbs can hide inside narrow-looking systems",
+      "body": "A puzzle may look like it is about forms or courts when the real connector is a much simpler action word."
+    },
+    {
+      "title": "Physical clues can widen administrative boards",
+      "body": "Building matters because it pulls the board out of paperwork and proves the category belongs to everyday movement too."
+    },
+    {
+      "title": "Do not ignore routine phrases",
+      "body": "Enter a username and enter a contest may feel too ordinary, but common instructions are often exactly what a good Pinpoint board needs."
+    }
+  ],
+  "display": {
+    "connectorSummary": "different targets that all work with the same verb across digital, legal, competitive, and physical contexts",
+    "fastStrategy": "When the clues feel like different systems, test whether one everyday verb naturally works with all of them.",
+    "clueTableRows": [
+      {
+        "clue": "Username",
+        "examplePhrase": "enter a username",
+        "connectionExplained": "Username is a strong digital anchor because enter a username is a routine instruction people see constantly online."
+      },
+      {
+        "clue": "Plea",
+        "examplePhrase": "enter a plea",
+        "connectionExplained": "Plea is useful because enter a plea is a legal phrase that stretches the same verb into a very different domain."
+      },
+      {
+        "clue": "Contest",
+        "examplePhrase": "enter a contest",
+        "connectionExplained": "Contest keeps the board in action territory and shows the verb works in ordinary life as well as in technical systems."
+      },
+      {
+        "clue": "Spreadsheet item",
+        "examplePhrase": "enter a spreadsheet item",
+        "connectionExplained": "Spreadsheet item reinforces the data-entry reading that many solvers will notice early."
+      },
+      {
+        "clue": "Building (through a doorway)",
+        "examplePhrase": "enter a building",
+        "connectionExplained": "Building (through a doorway) is the turning clue because it proves the verb is not limited to forms, contests, or legal statements."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #634?",
-      "answer": "The answer is Things you enter: Username, Plea, Contest, Spreadsheet item, Building"
+      "answer": "The answer is Things you enter because Username, Plea, Contest, Spreadsheet item, and Building all pair naturally with the verb enter."
     },
     {
-      "question": "Why isn't 'Access Points' the answer?",
-      "answer": "While related to entry, it doesn't fully capture the action of entering data or spaces"
+      "question": "What is the connection in LinkedIn Pinpoint #634?",
+      "answer": "The connection is one shared action. You can enter a username, enter a plea, enter a contest, enter spreadsheet data, and enter a building."
     },
     {
-      "question": "How does 'Plea' fit the pattern?",
-      "answer": "A plea is entered into court records or legal proceedings"
+      "question": "Which clue really unlocks LinkedIn Pinpoint #634?",
+      "answer": "Building (through a doorway) is the turning clue because it proves the answer is not limited to forms or legal language and forces the broader verb enter."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Username and Spreadsheet item can make the board look like data entry, while Plea and Contest hint that the same action works in other systems too.",
+    "falseStarts": [
+      "forms or data entry",
+      "legal and registration actions"
+    ],
+    "whyFalseStartPlausible": [
+      "Username and Spreadsheet item strongly suggest typing information somewhere, which makes a narrow office or form read attractive.",
+      "Plea and Contest are both things people enter, but they can still feel like a paperwork cluster before the physical clue arrives."
+    ],
+    "breakingClue": "Building (through a doorway)",
+    "pivot": "Building (through a doorway) changes the solve because it widens the board from procedural entry to literal movement, confirming enter as the shared verb.",
+    "fullBoardConfirmation": "Plea is especially useful after the pivot because enter a plea is such a fixed legal phrase that it supports the same verb in a specialized context."
+  },
+  "turningPoint": {
+    "clue": "Building (through a doorway)",
+    "whyDecisive": "Building (through a doorway) is decisive because it proves the connector is a broad everyday verb rather than a narrow paperwork action.",
+    "whatChangedAfterIt": "Once entering a building came into view, Username, Plea, Contest, and Spreadsheet item all became clear enter phrases across different systems."
+  },
+  "clueRows": [
+    {
+      "clue": "Username",
+      "surfaceMisread": "forms or data entry",
+      "resolvedPhraseOrMember": "enter a username",
+      "nonObviousWhy": "Username is a strong digital anchor because enter a username is a routine instruction people see constantly online.",
+      "searchableContext": "enter a username"
+    },
+    {
+      "clue": "Plea",
+      "surfaceMisread": "forms or data entry",
+      "resolvedPhraseOrMember": "enter a plea",
+      "nonObviousWhy": "Plea is useful because enter a plea is a legal phrase that stretches the same verb into a very different domain.",
+      "searchableContext": "enter a plea"
+    },
+    {
+      "clue": "Contest",
+      "surfaceMisread": "forms or data entry",
+      "resolvedPhraseOrMember": "enter a contest",
+      "nonObviousWhy": "Contest keeps the board in action territory and shows the verb works in ordinary life as well as in technical systems.",
+      "searchableContext": "enter a contest"
+    },
+    {
+      "clue": "Spreadsheet item",
+      "surfaceMisread": "forms or data entry",
+      "resolvedPhraseOrMember": "enter a spreadsheet item",
+      "nonObviousWhy": "Spreadsheet item reinforces the data-entry reading that many solvers will notice early.",
+      "searchableContext": "enter spreadsheet data"
+    },
+    {
+      "clue": "Building (through a doorway)",
+      "surfaceMisread": "forms or data entry",
+      "resolvedPhraseOrMember": "enter a building",
+      "nonObviousWhy": "Building (through a doorway) is the turning clue because it proves the verb is not limited to forms, contests, or legal statements.",
+      "searchableContext": "enter a building"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #634?",
+      "answer": "The answer is Things you enter because Username, Plea, Contest, Spreadsheet item, and Building all pair naturally with the verb enter.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #634?",
+      "answer": "The connection is one shared action. You can enter a username, enter a plea, enter a contest, enter spreadsheet data, and enter a building.",
+      "tiedClue": "Building (through a doorway)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #634?",
+      "answer": "Building (through a doorway) is the turning clue because it proves the answer is not limited to forms or legal language and forces the broader verb enter.",
+      "tiedClue": "Building (through a doorway)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a verb board where a doorway clue widens data-entry language into a much broader enter category",
+    "relatedEntities": [
+      "enter a username",
+      "enter a plea",
+      "enter a contest",
+      "enter spreadsheet data",
+      "enter a building"
+    ],
+    "doNotRepeatPatterns": [
+      "a verb board where a doorway clue widens data-entry language into a much broader enter category",
+      "Building (through a doorway) is the turning clue because it proves the answer is not limited to forms or legal language and forces the broader verb enter"
+    ]
+  }
 }

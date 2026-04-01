@@ -1,35 +1,202 @@
 {
+  "puzzleNumber": 600,
   "slug": "pinpoint-answer-600",
+  "publishDate": "2025-12-21",
+  "isoDate": "2025-12-21",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's LinkedIn Pinpoint #600 presents five seemingly unrelated words that initially appear to span completely different categories. Water suggests hydration or natural resources, Duck points toward waterfowl, Dollar implies currency, Appropriation hints at government budgets, and Credit Card relates to financial transactions. The challenge lies in discovering what these disparate terms share in common. At first glance, they seem to represent nature, animals, money, politics, and banking respectively. However, the real connection requires thinking beyond their obvious meanings and considering how each word functions in compound phrases. The twist emerges when you realize these aren't just random nouns, but words that can all precede the same common term to form familiar expressions.",
-    "I initially thought this puzzle was about water-related themes since both Water and Duck could connect to aquatic environments. I tried grouping them around financial concepts next, given Dollar and Credit Card, but Appropriation felt forced and Water didn't fit naturally. I spent time considering government terminology since Appropriation is legislative language, but Duck and Credit Card seemed completely unrelated to politics. The breakthrough came when I started thinking about compound words and phrases rather than thematic categories. I realized I needed to find a word that could follow each clue to create common expressions. I tried various connectors like 'back' and 'down' but nothing worked consistently. Then I considered 'bill' and everything clicked perfectly. Water bill immediately made sense as a utility statement. Duck bill referred to the distinctive beak shape. Dollar bill was obviously currency. Appropriation bill represented legislative spending measures. Credit card bill described monthly payment statements. Each combination created a legitimate, commonly-used phrase that people encounter regularly in daily life. The elegance of this connection lay in how 'bill' transforms each word's meaning while maintaining logical coherence across completely different contexts."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Water",
+    "Duck",
+    "Dollar",
+    "Appropriation",
+    "Credit Card"
   ],
+  "answer": "Words that come before bill",
+  "category": "Words that come before bill",
   "wordHints": {
-    "Water": "Water (Water + Bill): A utility statement for water usage and consumption charges.",
-    "Duck": "Duck (Duck + Bill): The broad, flat beak characteristic of waterfowl species.",
-    "Dollar": "Dollar (Dollar + Bill): Paper currency representing one unit of US monetary value.",
-    "Appropriation": "Appropriation (Appropriation + Bill): Legislative measure that authorizes government spending for specific purposes.",
-    "Credit Card": "Credit Card (Credit Card + Bill): Monthly statement showing purchases, payments, and balance due on credit accounts."
+    "Water": "Water is a natural early anchor because water bill is one of the most common household payment phrases.",
+    "Duck": "Duck is useful because duckbill breaks the payment theme and proves bill can also work as a beak-related word.",
+    "Dollar": "Dollar keeps bill active in money language, which is why the board can feel too financial for a while.",
+    "Appropriation": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that makes bill feel exact across domains.",
+    "Credit Card": "Credit Card confirms the same ending in a personal-finance phrase that is more specific than water bill or dollar bill."
   },
-  "lessons": [
-    "Consider compound words when themes don't emerge clearly. When individual words seem unrelated thematically, explore whether they can combine with a common word to form familiar phrases or expressions.",
-    "Look beyond primary definitions to secondary meanings. Words like 'bill' have multiple meanings (legislation, currency, animal feature, invoice) that can connect seemingly unrelated terms.",
-    "Test potential connectors systematically across all clues. Once you identify a possible connecting word, verify it works logically with every single clue before confirming your answer.",
-    "Remember that everyday phrases often hide puzzle solutions. Common expressions we use regularly (like 'water bill' or 'duck bill') frequently serve as the foundation for word association puzzles."
+  "spoilerHints": {
+    "Water": "Think about a monthly charge, not the liquid itself.",
+    "Duck": "This clue forms one compact noun, not an invoice.",
+    "Dollar": "Picture cash, not budgeting software.",
+    "Appropriation": "Think about a lawmaking term, not personal finance.",
+    "Credit Card": "Stay with charges you receive after spending."
+  },
+  "articleBlocks": [
+    "Water, Dollar, and Credit Card can make the board feel like it is about payments or monthly expenses.",
+    "Duck is the first hint that the connector is broader than invoices, but it still may not feel locked.",
+    "Appropriation is the clue that makes bill unavoidable.",
+    "Appropriation bill is such a specific legislative phrase that the rest of the set reorganizes immediately into water bill, duckbill, dollar bill, and credit card bill.",
+    "The answer was Words that come before bill.",
+    "This board wins by letting everyday money language hide one compound noun and one government term in plain sight."
   ],
+  "fullAnalysis": [
+    "Water, Dollar, and Credit Card all make bill feel possible, but they also tempt you to overread the board as a money or expense theme.",
+    "Duck complicates that theory in a helpful way because duckbill uses the same ending in a completely different sense.",
+    "Appropriation is the turning clue because appropriation bill is such a formal, fixed phrase that bill becomes much harder to replace with another ending.",
+    "Once bill is confirmed, water bill, duckbill, dollar bill, and credit card bill all support it from different contexts.",
+    "The answer was Words that come before bill.",
+    "The puzzle works because it lets one ending link household payments, legislation, cash, credit, and animal anatomy."
+  ],
+  "solutionNarrative": [
+    "Water and Dollar put bill in my head early, but the board still looked like it might only be about money. Duck prevented that from becoming the whole story, because duckbill belongs to a different meaning entirely.",
+    "Appropriation made the solve stick. Once appropriation bill clicked, the board stopped being about expenses and became a shared-ending puzzle with one unusual but perfectly fair outlier in duckbill."
+  ],
+  "lessons": [
+    {
+      "title": "A misleading theme can still point toward the right ending",
+      "body": "Money language helps you notice bill, but the board only becomes complete when you allow bill to work outside finance too."
+    },
+    {
+      "title": "One formal phrase can validate everyday ones",
+      "body": "Appropriation bill carries more structural weight than water bill because it is less replaceable and more exact."
+    },
+    {
+      "title": "Outlier clues are often proof, not noise",
+      "body": "Duck looks odd next to the finance clues, but duckbill is what proves the board is about a shared ending rather than one topic."
+    }
+  ],
+  "display": {
+    "connectorSummary": "one shared ending that spans utilities, politics, finance, and one compact compound noun",
+    "fastStrategy": "If several clues seem to belong to expenses or payments, look for the one clue that breaks that theme and ask whether the same ending still works.",
+    "clueTableRows": [
+      {
+        "clue": "Water",
+        "examplePhrase": "water bill",
+        "connectionExplained": "Water is a natural early anchor because water bill is one of the most common household payment phrases."
+      },
+      {
+        "clue": "Duck",
+        "examplePhrase": "duckbill",
+        "connectionExplained": "Duck is useful because duckbill breaks the payment theme and proves bill can also work as a beak-related word."
+      },
+      {
+        "clue": "Dollar",
+        "examplePhrase": "dollar bill",
+        "connectionExplained": "Dollar keeps bill active in money language, which is why the board can feel too financial for a while."
+      },
+      {
+        "clue": "Appropriation",
+        "examplePhrase": "appropriation bill",
+        "connectionExplained": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that makes bill feel exact across domains."
+      },
+      {
+        "clue": "Credit Card",
+        "examplePhrase": "credit card bill",
+        "connectionExplained": "Credit Card confirms the same ending in a personal-finance phrase that is more specific than water bill or dollar bill."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #600?",
-      "answer": "The answer is Words that come before 'bill': Water, Duck, Dollar, Appropriation, Credit Card."
+      "answer": "The answer is Words that come before bill because Water, Duck, Dollar, Appropriation, and Credit Card all form common phrases or compounds ending with bill."
     },
     {
-      "question": "How does 'Duck' relate to the word 'bill'?",
-      "answer": "Duck bill refers to the characteristic broad, flat beak of waterfowl, which is shaped like a bill or flat implement."
+      "question": "What is the connection in LinkedIn Pinpoint #600?",
+      "answer": "The connection is one shared ending. The clues resolve into water bill, duckbill, dollar bill, appropriation bill, and credit card bill."
     },
     {
-      "question": "What makes this puzzle particularly challenging?",
-      "answer": "The clues span completely different categories (nature, animals, finance, politics) making the common 'bill' connection non-obvious until you think about compound phrases."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #600?",
+      "answer": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that confirms bill more strongly than the everyday money clues do."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Water, Dollar, and Credit Card make bill feel possible early, but they also make the board seem narrower than it really is.",
+    "falseStarts": [
+      "money or household expenses",
+      "types of charges"
+    ],
+    "whyFalseStartPlausible": [
+      "Water bill, dollar bill, and credit card bill all sit naturally inside finance, so that theme is hard to resist.",
+      "The clue set includes several payment-adjacent ideas, which can hide the shared-ending structure for a while."
+    ],
+    "breakingClue": "Appropriation",
+    "pivot": "Appropriation changes the solve because appropriation bill is a formal phrase that confirms bill without relying on ordinary household or consumer spending language.",
+    "fullBoardConfirmation": "Duck is especially valuable after the pivot because duckbill proves the ending is not limited to invoices or money terms."
+  },
+  "turningPoint": {
+    "clue": "Appropriation",
+    "whyDecisive": "Appropriation is decisive because appropriation bill is specific, formal, and hard to replace with another ending.",
+    "whatChangedAfterIt": "Once appropriation bill clicked, Water, Duck, Dollar, and Credit Card all reorganized into clear bill completions across several meanings."
+  },
+  "clueRows": [
+    {
+      "clue": "Water",
+      "surfaceMisread": "money or expenses",
+      "resolvedPhraseOrMember": "water bill",
+      "nonObviousWhy": "Water is a natural early anchor because water bill is one of the most common household payment phrases.",
+      "searchableContext": "water bill"
+    },
+    {
+      "clue": "Duck",
+      "surfaceMisread": "money or expenses",
+      "resolvedPhraseOrMember": "duckbill",
+      "nonObviousWhy": "Duck is useful because duckbill breaks the payment theme and proves bill can also work as a beak-related word.",
+      "searchableContext": "duckbill"
+    },
+    {
+      "clue": "Dollar",
+      "surfaceMisread": "money or expenses",
+      "resolvedPhraseOrMember": "dollar bill",
+      "nonObviousWhy": "Dollar keeps bill active in money language, which is why the board can feel too financial for a while.",
+      "searchableContext": "dollar bill"
+    },
+    {
+      "clue": "Appropriation",
+      "surfaceMisread": "money or expenses",
+      "resolvedPhraseOrMember": "appropriation bill",
+      "nonObviousWhy": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that makes bill feel exact across domains.",
+      "searchableContext": "appropriation bill"
+    },
+    {
+      "clue": "Credit Card",
+      "surfaceMisread": "money or expenses",
+      "resolvedPhraseOrMember": "credit card bill",
+      "nonObviousWhy": "Credit Card confirms the same ending in a personal-finance phrase that is more specific than water bill or dollar bill.",
+      "searchableContext": "credit card bill"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #600?",
+      "answer": "The answer is Words that come before bill because Water, Duck, Dollar, Appropriation, and Credit Card all form common phrases or compounds ending with bill.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #600?",
+      "answer": "The connection is one shared ending. The clues resolve into water bill, duckbill, dollar bill, appropriation bill, and credit card bill.",
+      "tiedClue": "Appropriation"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #600?",
+      "answer": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that confirms bill more strongly than the everyday money clues do.",
+      "tiedClue": "Appropriation"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared-ending board where finance clues hide one beak compound and one legislative phrase",
+    "relatedEntities": [
+      "water bill",
+      "duckbill",
+      "dollar bill",
+      "appropriation bill",
+      "credit card bill"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared-ending board where finance clues hide one beak compound and one legislative phrase",
+      "appropriation bill",
+      "Outlier clues are often proof, not noise"
+    ]
+  }
 }
