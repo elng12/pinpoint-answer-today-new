@@ -43,21 +43,21 @@ export function buildSharedFallbackArticleBlocks(input: {
     const positionText = phrasePositionText(kind);
     const answerSlot = phraseAnswerSlot(kind);
     return [
-      `The first clues make it clear this is a shared-word phrase puzzle, but not which ${answerSlot} belongs ${positionText} every clue.`,
+      `The first clues make it clear this is a shared-word phrase puzzle, but not which ${answerSlot} belongs ${positionText} every clue without forcing the read.`,
       `"${turningPoint}" narrows that down quickly because it points to one phrase that feels exact right away.`,
       `Once that phrase appears, examples like ${sampleReadText} stop feeling guessed and start reading like ordinary language.`,
       `The answer was ${answer}.`,
-      `${finalCheckText} then work as clean confirmations that the same word belongs ${positionText} the remaining clues too.`,
+      `${finalCheckText} then work as clean confirmations that the same word belongs ${positionText} the remaining clues too and keeps the pattern stable.`,
     ];
   }
 
   return [
-    `At first, ${first} and ${second} pointed in a few different directions.`,
+    `At first, ${first} and ${second} pointed in a few different directions, so the board still felt wider than one exact category.`,
     `The turn came with "${turningPoint}".`,
-    `That clue made the answer feel concrete enough to test across the full board.`,
+    `That clue made the answer feel concrete enough to test across the full board instead of leaving the solve at vibe level.`,
     `Once I read the set through ${connectorSummary}, examples like ${sampleReadText} stopped feeling loose and started landing cleanly.`,
     `The answer was ${answer}.`,
-    `${finalCheckText} then felt like the last confirmations, not separate guesses.`,
+    `${finalCheckText} then felt like the last confirmations, not separate guesses, because they supported that answer without any stretching.`,
   ];
 }
 
