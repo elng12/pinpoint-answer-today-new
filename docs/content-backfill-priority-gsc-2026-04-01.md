@@ -38,10 +38,10 @@
 - `pinpoint-answer-9013`
   - Not a real local detail page. Search Console shows impressions on several stale URL variants such as `/linkedin-pinpoint-answers/pinpoint-answer-9013`, `/puzzles/pinpoint-answer-9013/`, and locale-prefixed aliases, while the canonical detail route currently returns `404`.
   - Treat it as a stale-index / wrong-link anomaly, not as a content backfill candidate.
-- `pinpoint-answer-563`
-  - Next clean content-depth candidate after the second batch if impressions keep holding.
-- `pinpoint-answer-679`
-  - Still sits just behind the current batch and is a reasonable follow-up if we keep expanding by performance.
+- `pinpoint-answer-501`
+  - Next clean content-depth candidate after the third batch if impressions keep holding.
+- `pinpoint-answer-518`
+  - Another clean low-volume candidate worth considering before dropping into very weak-position pages.
 
 ## Rule For This Pass
 
@@ -67,10 +67,20 @@
 9. `pinpoint-answer-597` - `6` impressions, `0` clicks, avg position `13.83`
 10. `pinpoint-answer-618` - `6` impressions, `0` clicks, avg position `17.83`
 
+## Third Batch
+
+1. `pinpoint-answer-563` - `5` impressions on canonical-style detail URLs, plus small legacy locale noise
+2. `pinpoint-answer-679` - `5` impressions, `0` clicks, avg position `6.40`
+3. `pinpoint-answer-614` - `5` impressions split across slash variants, `0` clicks
+4. `pinpoint-answer-540` - `4` impressions, `0` clicks, avg position `15.75`
+5. `pinpoint-answer-459` - `4` impressions, `0` clicks, avg position `20.50`
+
 ## Status
 
 - Queue selected on `2026-04-01`.
 - First GSC-driven content-depth pass completed for `530`, `676`, `677`, `674`, `526`, `467`, `477`, `675`, `678`, and `460` on `2026-04-01`.
 - Second GSC-driven content-depth pass completed for `529`, `481`, `458`, `531`, `600`, `604`, `490`, `634`, `597`, and `618` on `2026-04-01`.
 - The placeholder summary on `pinpoint-answer-531` was replaced with a real archived-page summary during this pass.
-- Next likely follow-up pages are `563`, `679`, `614`, `540`, and `459` if the performance-led queue keeps expanding.
+- Third GSC-driven content-depth pass completed for `563`, `679`, `614`, `540`, and `459` on `2026-04-01`.
+- `563` still shows a small amount of legacy locale-path noise, and `614` is split across slash/non-slash URL rows, but both canonical detail pages are real and valid.
+- Next likely follow-up pages are `501`, `518`, `644`, `502`, and `545` if the performance-led queue keeps expanding.

@@ -1,47 +1,201 @@
 {
+  "puzzleNumber": 679,
   "slug": "pinpoint-answer-679",
+  "publishDate": "2026-03-10",
+  "isoDate": "2026-03-10",
   "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Toad",
+    "Piranha Plant",
+    "Bowser",
+    "Luigi",
+    "Princess Peach"
+  ],
+  "answer": "Characters in Super Mario",
+  "category": "Super Mario characters",
+  "wordHints": {
+    "Toad": "Toad is a good Mario anchor because he is one of the most recognizable recurring characters in the series.",
+    "Piranha Plant": "Piranha Plant matters because it shows the board includes enemy types and creatures, not just named heroes.",
+    "Bowser": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes hard to miss.",
+    "Luigi": "Luigi reinforces the same universe from the hero side and confirms the board is about the whole cast, not only villains.",
+    "Princess Peach": "Princess Peach rounds out the franchise set with another central Mario character and keeps the category broad."
+  },
+  "spoilerHints": {
+    "Toad": "Think Nintendo mascot universe, not amphibians.",
+    "Piranha Plant": "This clue is an enemy species from the same franchise, not a real plant.",
+    "Bowser": "Think of Mario’s main villain.",
+    "Luigi": "This clue is Mario’s brother.",
+    "Princess Peach": "Think of the princess from the same Nintendo series."
+  },
+  "articleBlocks": [
+    "Toad and Luigi already point toward Nintendo character territory, but the board still wants you to confirm the exact franchise.",
+    "Piranha Plant helps because it proves the set is not limited to named protagonists or allies.",
+    "Bowser is the clue that locks the universe.",
+    "Once Bowser shows up, Princess Peach and the rest stop feeling like generic video game references and become a clean Super Mario cast board.",
+    "The answer was Characters in Super Mario.",
+    "This board is simple, but it still hides its answer by mixing heroes, villains, and enemy types instead of one character role."
+  ],
   "fullAnalysis": [
-    "Puzzle #679 gives you five clues — Toad, Piranha Plant, Bowser, Luigi, and Princess Peach — that land on a clean franchise category: Characters in Super Mario. The board mixes a friendly mushroom-person, a dangerous plant species, the main villain, a hero brother, and a royal princess, which makes the surface read feel jumbled until you recognise the shared universe.",
-    "The broader rule is that franchise puzzles never require every clue to play the same role. Heroes, villains, allies, and generic enemies can all belong to the same answer as long as they inhabit the same fictional world. Resist the urge to narrow the category to 'Mario heroes' or 'Mario villains' — the correct answer is always the most inclusive shared rule that fits all five clues."
+    "Toad and Luigi make Nintendo feel likely fast, but several game franchises have mascot-style characters, so the exact universe can still stay open for a moment.",
+    "Piranha Plant is useful because it widens the board from named people to creatures and enemy types, which is common in franchise category puzzles.",
+    "Bowser is the turning clue because he is such a Mario-specific villain anchor that the franchise becomes much more exact than a generic Nintendo read.",
+    "After that, Princess Peach, Luigi, Toad, and Piranha Plant all confirm the same Mario universe cleanly.",
+    "The answer was Characters in Super Mario.",
+    "The board works because it mixes character roles on purpose so you solve for the world first, not for hero-villain alignment."
   ],
   "solutionNarrative": [
-    "I spotted Bowser and Luigi immediately and the franchise was obvious within seconds. Mario was the clear hypothesis, so I tested the remaining three against it: Toad, Princess Peach, Piranha Plant. Toad and Peach confirmed cleanly without any hesitation.",
-    "Piranha Plant gave me a brief pause — it is a species, not a named individual, and its presence alongside personality-driven characters felt inconsistent. Then I reminded myself that Pinpoint regularly includes enemy types as representatives of a fictional world. Piranha Plant appears throughout the Mario series, which is all that matters. Five for five, answer locked."
+    "Toad and Luigi gave me Nintendo right away, but the board still wanted a tighter franchise answer than that. Piranha Plant helped by reminding me the puzzle was happy to use creatures and enemy types too, not only named protagonists.",
+    "Bowser made the answer specific. Once the main Mario villain was on the board, Princess Peach and the rest all resolved into the Super Mario cast instead of a generic video-game lineup."
   ],
-  "wordHints": {
-    "Toad": "Toad is a core Mario character and one of the clearest franchise anchors in the set.",
-    "Piranha Plant": "Piranha Plant is a recurring Mario enemy type — its presence confirms the board uses the full cast, not just named heroes.",
-    "Bowser": "Bowser is Mario's most recognizable villain and typically the fastest clue for identifying the franchise.",
-    "Luigi": "Luigi is Mario's brother and co-star, making the Mario connection unmistakable alongside Bowser.",
-    "Princess Peach": "Princess Peach is a central Mario character who closes the set with a final, unambiguous franchise confirmation."
-  },
   "lessons": [
     {
-      "title": "Franchise boards mix heroes and villains on purpose",
-      "body": "Toad and Princess Peach are heroes; Bowser and Piranha Plant are antagonists. Designers blend character types to disguise the shared universe, so always check whether a fictional world — not a character role — is what connects the clues."
+      "title": "Franchise boards care more about world than role",
+      "body": "A puzzle can mix heroes, villains, side characters, and enemy species as long as they all belong to the same fictional universe."
     },
     {
-      "title": "Lock the franchise with your two strongest clues first",
-      "body": "Bowser and Luigi together are an almost unbeatable anchor pair for Mario. When two clues point unmistakably to one franchise, apply that franchise to the other three before exploring any other hypothesis."
+      "title": "One iconic villain can confirm the whole cast",
+      "body": "Bowser carries a lot of weight because he is strongly associated with Mario and makes the franchise much harder to misread."
     },
     {
-      "title": "Species and enemy types count as characters",
-      "body": "Piranha Plant is a species, not a named individual, yet it qualifies as a Mario character. Pinpoint regularly uses generic enemy types and creature families as representatives of a franchise, so do not disqualify a clue just because it lacks a personal name."
+      "title": "Do not reject species clues too quickly",
+      "body": "Piranha Plant is not a single named person, but it still counts because Pinpoint often uses recurring enemy types as franchise markers."
     }
   ],
+  "display": {
+    "connectorSummary": "heroes, villains, and enemy types from one Nintendo franchise",
+    "fastStrategy": "When several clues are character names, lock the franchise first and worry about role differences later.",
+    "clueTableRows": [
+      {
+        "clue": "Toad",
+        "examplePhrase": "Toad",
+        "connectionExplained": "Toad is a good Mario anchor because he is one of the most recognizable recurring characters in the series."
+      },
+      {
+        "clue": "Piranha Plant",
+        "examplePhrase": "Piranha Plant",
+        "connectionExplained": "Piranha Plant matters because it shows the board includes enemy types and creatures, not just named heroes."
+      },
+      {
+        "clue": "Bowser",
+        "examplePhrase": "Bowser",
+        "connectionExplained": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes hard to miss."
+      },
+      {
+        "clue": "Luigi",
+        "examplePhrase": "Luigi",
+        "connectionExplained": "Luigi reinforces the same universe from the hero side and confirms the board is about the whole cast, not only villains."
+      },
+      {
+        "clue": "Princess Peach",
+        "examplePhrase": "Princess Peach",
+        "connectionExplained": "Princess Peach rounds out the franchise set with another central Mario character and keeps the category broad."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "What is the LinkedIn Pinpoint answer for Puzzle #679?",
-      "answer": "The answer for Puzzle #679 is Characters in Super Mario."
+      "question": "What is the answer to LinkedIn Pinpoint #679?",
+      "answer": "The answer is Characters in Super Mario because Toad, Piranha Plant, Bowser, Luigi, and Princess Peach all belong to the Mario franchise."
     },
     {
-      "question": "Why does Piranha Plant fit this board?",
-      "answer": "Piranha Plant is a well-known recurring enemy in the Mario series, so it belongs in the same character family as Bowser, Luigi, and Princess Peach."
+      "question": "What is the connection in LinkedIn Pinpoint #679?",
+      "answer": "The connection is one fictional universe. The clues are all familiar characters or enemy types from the Super Mario series."
     },
     {
-      "question": "What clue makes the answer easiest to spot?",
-      "answer": "Bowser and Luigi together are the strongest anchor pair — both are central Mario characters, and the franchise is immediately obvious once you see them side by side."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #679?",
+      "answer": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes obvious."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Toad and Luigi suggest Nintendo quickly, while Piranha Plant hints that the board may include enemy types as well as named characters.",
+    "falseStarts": [
+      "video game icons generally",
+      "Nintendo characters broadly"
+    ],
+    "whyFalseStartPlausible": [
+      "Toad and Luigi are famous enough that a broad game-character read can feel sufficient before a stronger franchise anchor appears.",
+      "Piranha Plant is a creature rather than a person, which can make the board feel more like gaming trivia than one exact franchise set."
+    ],
+    "breakingClue": "Bowser",
+    "pivot": "Bowser changes the solve because he is tightly and famously tied to Mario, making the franchise much more exact than a general Nintendo category.",
+    "fullBoardConfirmation": "Princess Peach is especially helpful after the pivot because she confirms the same Mario universe from the hero side of the cast."
+  },
+  "turningPoint": {
+    "clue": "Bowser",
+    "whyDecisive": "Bowser is decisive because he is one of the clearest franchise-specific anchors in the Mario universe.",
+    "whatChangedAfterIt": "Once Bowser appeared, Toad, Piranha Plant, Luigi, and Princess Peach all read as Mario cast members instead of generic game references."
+  },
+  "clueRows": [
+    {
+      "clue": "Toad",
+      "surfaceMisread": "video game icons generally",
+      "resolvedPhraseOrMember": "Toad",
+      "nonObviousWhy": "Toad is a good Mario anchor because he is one of the most recognizable recurring characters in the series.",
+      "searchableContext": "Toad Super Mario"
+    },
+    {
+      "clue": "Piranha Plant",
+      "surfaceMisread": "video game enemies generally",
+      "resolvedPhraseOrMember": "Piranha Plant",
+      "nonObviousWhy": "Piranha Plant matters because it shows the board includes enemy types and creatures, not just named heroes.",
+      "searchableContext": "Piranha Plant Mario"
+    },
+    {
+      "clue": "Bowser",
+      "surfaceMisread": "video game icons generally",
+      "resolvedPhraseOrMember": "Bowser",
+      "nonObviousWhy": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes hard to miss.",
+      "searchableContext": "Bowser Mario"
+    },
+    {
+      "clue": "Luigi",
+      "surfaceMisread": "video game icons generally",
+      "resolvedPhraseOrMember": "Luigi",
+      "nonObviousWhy": "Luigi reinforces the same universe from the hero side and confirms the board is about the whole cast, not only villains.",
+      "searchableContext": "Luigi Mario"
+    },
+    {
+      "clue": "Princess Peach",
+      "surfaceMisread": "video game royalty or mascots",
+      "resolvedPhraseOrMember": "Princess Peach",
+      "nonObviousWhy": "Princess Peach rounds out the franchise set with another central Mario character and keeps the category broad.",
+      "searchableContext": "Princess Peach Mario"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #679?",
+      "answer": "The answer is Characters in Super Mario because Toad, Piranha Plant, Bowser, Luigi, and Princess Peach all belong to the Mario franchise.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #679?",
+      "answer": "The connection is one fictional universe. The clues are all familiar characters or enemy types from the Super Mario series.",
+      "tiedClue": "Bowser"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #679?",
+      "answer": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes obvious.",
+      "tiedClue": "Bowser"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a franchise board where one famous villain locks a mixed cast of Mario heroes, royals, and enemies",
+    "relatedEntities": [
+      "Toad",
+      "Piranha Plant",
+      "Bowser",
+      "Luigi",
+      "Princess Peach"
+    ],
+    "doNotRepeatPatterns": [
+      "a franchise board where one famous villain locks a mixed cast of Mario heroes, royals, and enemies",
+      "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes obvious"
+    ]
+  }
 }

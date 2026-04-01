@@ -1,36 +1,201 @@
 {
+  "puzzleNumber": 563,
   "slug": "pinpoint-answer-563",
+  "publishDate": "2025-11-14",
+  "isoDate": "2025-11-14",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint 563 marches through Vent, Crater, Ash, Magma, and Lava—clues that read like a slo-mo eruption. They cover the conduit, summit bowl, airborne debris, underground fuel, and surface flow, so the only setting big enough to contain them is a volcano.",
-    "I listed the clues in chronological order: magma pools underground, pushes through a vent, reshapes the crater, blasts ash skyward, and spills out as lava. No other landform delivers that exact chain, so “parts of a volcano” became the only answer that survived every step.",
-    "Vent, crater, ash, magma, and lava all describe the structure and outputs of a volcano rather than a generic mountain or disaster. They cover the conduit, summit depression, airborne ejecta, and both subsurface and surface molten rock in one package.\nSequencing them locks in the setting: magma rises through a vent, forms or sits beneath a crater, blasts ash skyward, and cools into lava flows. No other landform or hazard fits every step of that eruption chain, so the shared idea is parts of a volcano.",
-    "Link the eruption sequence—magma to vent to crater to ash to lava—and the only connector that satisfies every clue is volcano anatomy."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Vent",
+    "Crater",
+    "Ash",
+    "Magma",
+    "Lava"
   ],
+  "answer": "Parts of a volcano",
+  "category": "Parts of a volcano",
   "wordHints": {
-    "Vent": "A vent is the opening that lets gases and magma escape.",
-    "Crater": "A crater is the bowl-shaped depression at the volcano’s top.",
-    "Ash": "Ash is the fine material ejected during an eruption.",
-    "Magma": "Magma is molten rock stored beneath the surface before it erupts.",
-    "Lava": "Lava is magma that has reached the surface and flows downhill."
+    "Vent": "Vent matters because a volcanic vent is the opening through which magma, gas, and ash escape.",
+    "Crater": "Crater keeps the board in eruption territory, though the clue can still be confused with meteor impacts until the other clues narrow it.",
+    "Ash": "Ash broadens the set from solid landform parts into eruption output, which helps point toward a full volcanic system.",
+    "Magma": "Magma is the turning clue because molten rock beneath the surface makes volcano anatomy much more exact than a generic disaster theme.",
+    "Lava": "Lava confirms the same system at the surface and pairs neatly with magma to complete the volcanic read."
   },
-  "lessons": [
-    "Sequence the process. Ordering clues from underground to surface can expose the only structure that fits them all.",
-    "Mix structure with materials. If clues include both physical parts (vent, crater) and outputs (ash, lava), look for a system that contains both.",
-    "Be wary of catch-all hazards. Labels like “natural disaster” are too broad—focus on the unique chain to lock the answer."
+  "spoilerHints": {
+    "Vent": "Think about the opening an eruption uses, not airflow inside a house.",
+    "Crater": "Picture the bowl at the summit, not an impact site.",
+    "Ash": "This clue is debris from an eruption, not fireplace residue.",
+    "Magma": "Think below the surface before it becomes lava.",
+    "Lava": "This clue is the surface version of molten rock."
+  },
+  "articleBlocks": [
+    "Vent and Crater make a geology board feel plausible right away, but they do not yet prove the puzzle is specifically about volcanoes.",
+    "Ash keeps the eruption idea alive, though some solvers can still sit inside a broader disaster or landform read at that point.",
+    "Magma is the clue that makes the category exact.",
+    "Once molten rock beneath the surface enters the board, Vent, Crater, Ash, and Lava all stop feeling generic and start behaving like parts of one volcanic system.",
+    "The answer was Parts of a volcano.",
+    "This board is strongest when you notice it mixes structures with eruption materials instead of giving you only one type of clue."
   ],
+  "fullAnalysis": [
+    "Vent and Crater both belong near volcanoes, but by themselves they still allow a broader geology reading.",
+    "Ash adds eruption language, which helps, yet the board can still feel more like a disaster scene than a named system.",
+    "Magma is the turning clue because molten rock below the surface points directly to volcano anatomy rather than to a generic landform.",
+    "After that, volcanic vent, volcanic crater, volcanic ash, and lava all become straightforward confirmations of the same setting.",
+    "The answer was Parts of a volcano.",
+    "The puzzle works because it blends interior material, surface output, and physical structure into one clean natural-science category."
+  ],
+  "solutionNarrative": [
+    "Vent and Crater suggested geology fast, and Ash made an eruption feel likely, but the board still seemed broader than a single named system. It could have been tempting to stop at something like natural-disaster clues.",
+    "Magma solved that ambiguity. Once molten rock below the surface appeared, Lava, Vent, Crater, and Ash all snapped into place as volcano anatomy rather than loose geology terms."
+  ],
+  "lessons": [
+    {
+      "title": "Mixed clue types often define one system",
+      "body": "When a board mixes structures like crater and vent with materials like ash, magma, and lava, it often wants the larger system that contains all of them."
+    },
+    {
+      "title": "Interior clues can lock a natural-science board",
+      "body": "Magma matters because it points below the surface and makes volcanoes more exact than a general eruption or mountain theory."
+    },
+    {
+      "title": "Do not stop at broad disaster labels",
+      "body": "A board about volcanoes is tighter than a board about disasters, and the later clues usually tell you when it is time to narrow down."
+    }
+  ],
+  "display": {
+    "connectorSummary": "structural features and eruption materials that all belong to one volcanic system",
+    "fastStrategy": "If some clues are structures and others are eruption materials, look for the natural system that contains both.",
+    "clueTableRows": [
+      {
+        "clue": "Vent",
+        "examplePhrase": "volcanic vent",
+        "connectionExplained": "Vent matters because a volcanic vent is the opening through which magma, gas, and ash escape."
+      },
+      {
+        "clue": "Crater",
+        "examplePhrase": "volcanic crater",
+        "connectionExplained": "Crater keeps the board in eruption territory, though the clue can still be confused with meteor impacts until the other clues narrow it."
+      },
+      {
+        "clue": "Ash",
+        "examplePhrase": "volcanic ash",
+        "connectionExplained": "Ash broadens the set from solid landform parts into eruption output, which helps point toward a full volcanic system."
+      },
+      {
+        "clue": "Magma",
+        "examplePhrase": "magma",
+        "connectionExplained": "Magma is the turning clue because molten rock beneath the surface makes volcano anatomy much more exact than a generic disaster theme."
+      },
+      {
+        "clue": "Lava",
+        "examplePhrase": "lava",
+        "connectionExplained": "Lava confirms the same system at the surface and pairs neatly with magma to complete the volcanic read."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "What connects Vent, Crater, Ash, Magma, and Lava in Pinpoint #563?",
-      "answer": "They’re all pieces of volcano anatomy, from the tunnel and summit to the materials an eruption releases."
+      "question": "What is the answer to LinkedIn Pinpoint #563?",
+      "answer": "The answer is Parts of a volcano because Vent, Crater, Ash, Magma, and Lava all belong to the same volcanic system."
     },
     {
-      "question": "Why isn’t this just about rocks?",
-      "answer": "Vent and crater are structures, ash is debris, and magma/lava are molten rock—only a volcano contains all of them."
+      "question": "What is the connection in LinkedIn Pinpoint #563?",
+      "answer": "The connection is volcano anatomy and eruption material. The clues cover a volcanic opening, summit shape, debris, underground molten rock, and surface molten rock."
     },
     {
-      "question": "Do dormant volcano parts still count?",
-      "answer": "Yes. The structures exist whether or not the volcano is actively erupting."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #563?",
+      "answer": "Magma is the turning clue because it makes volcanoes much more exact than a general geology or disaster category."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Vent and Crater make geology feel likely, while Ash nudges the board toward eruptions without fully naming the system.",
+    "falseStarts": [
+      "general geology or landforms",
+      "natural disasters generally"
+    ],
+    "whyFalseStartPlausible": [
+      "Crater and Vent can both live inside a broad earth-science read before the more specific volcanic clues stack up.",
+      "Ash and Lava can make the board feel like it is simply about destructive events instead of about one named structure."
+    ],
+    "breakingClue": "Magma",
+    "pivot": "Magma changes the solve because it brings in subsurface molten rock, which points directly to volcanoes and their internal structure.",
+    "fullBoardConfirmation": "Lava is especially useful after the pivot because it pairs with magma to show the same system below and above the surface."
+  },
+  "turningPoint": {
+    "clue": "Magma",
+    "whyDecisive": "Magma is decisive because it points to the internal geology of volcanoes, not just to surface damage or terrain.",
+    "whatChangedAfterIt": "Once Magma appeared, Vent, Crater, Ash, and Lava all reorganized into a single volcano-anatomy read."
+  },
+  "clueRows": [
+    {
+      "clue": "Vent",
+      "surfaceMisread": "general geology or landforms",
+      "resolvedPhraseOrMember": "volcanic vent",
+      "nonObviousWhy": "Vent matters because a volcanic vent is the opening through which magma, gas, and ash escape.",
+      "searchableContext": "volcanic vent"
+    },
+    {
+      "clue": "Crater",
+      "surfaceMisread": "general geology or landforms",
+      "resolvedPhraseOrMember": "volcanic crater",
+      "nonObviousWhy": "Crater keeps the board in eruption territory, though the clue can still be confused with meteor impacts until the other clues narrow it.",
+      "searchableContext": "volcanic crater"
+    },
+    {
+      "clue": "Ash",
+      "surfaceMisread": "natural disasters generally",
+      "resolvedPhraseOrMember": "volcanic ash",
+      "nonObviousWhy": "Ash broadens the set from solid landform parts into eruption output, which helps point toward a full volcanic system.",
+      "searchableContext": "volcanic ash"
+    },
+    {
+      "clue": "Magma",
+      "surfaceMisread": "natural disasters generally",
+      "resolvedPhraseOrMember": "magma",
+      "nonObviousWhy": "Magma is the turning clue because molten rock beneath the surface makes volcano anatomy much more exact than a generic disaster theme.",
+      "searchableContext": "volcano magma"
+    },
+    {
+      "clue": "Lava",
+      "surfaceMisread": "natural disasters generally",
+      "resolvedPhraseOrMember": "lava",
+      "nonObviousWhy": "Lava confirms the same system at the surface and pairs neatly with magma to complete the volcanic read.",
+      "searchableContext": "lava volcano"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #563?",
+      "answer": "The answer is Parts of a volcano because Vent, Crater, Ash, Magma, and Lava all belong to the same volcanic system.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #563?",
+      "answer": "The connection is volcano anatomy and eruption material. The clues cover a volcanic opening, summit shape, debris, underground molten rock, and surface molten rock.",
+      "tiedClue": "Magma"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #563?",
+      "answer": "Magma is the turning clue because it makes volcanoes much more exact than a general geology or disaster category.",
+      "tiedClue": "Magma"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a science board where one subsurface clue turns eruption imagery into a full volcano-system category",
+    "relatedEntities": [
+      "volcanic vent",
+      "volcanic crater",
+      "volcanic ash",
+      "magma",
+      "lava"
+    ],
+    "doNotRepeatPatterns": [
+      "a science board where one subsurface clue turns eruption imagery into a full volcano-system category",
+      "Magma is the turning clue because it makes volcanoes much more exact than a general geology or disaster category"
+    ]
+  }
 }

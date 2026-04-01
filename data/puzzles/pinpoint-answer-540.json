@@ -1,37 +1,202 @@
 {
+  "puzzleNumber": 540,
   "slug": "pinpoint-answer-540",
+  "publishDate": "2025-10-22",
+  "isoDate": "2025-10-22",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #540, you're not alone! The clues – LAME, SITTING, RUBBER, PEKING, and DONALD – seemed random at first glance. But the key was figuring out what these words had in common: they all precede the word \"duck\". Let's dive into how this feathered solution unfolded.",
-    "I initially went down a rabbit hole, trying to find a geographical connection. I even considered types of birds, but that led nowhere! My first wrong guess was something avian-related, like SWANS. Then I considered cartoon characters, which led me to a WILD GOOSE chase.\n\nThen, a glimmer of hope! I noticed a recurring theme of things associated with the word 'duck'. LAME DUCK? SITTING DUCK? Suddenly, the pattern became clear. It was like a lightbulb went off, illuminating the path to the answer.\n\nOnce I recognized the pattern, the rest fell into place quickly. Rubber duck, Peking duck, Donald Duck – each clue seamlessly connected to form a common phrase. It was a satisfying moment of clarity after some initial head-scratching.",
-    "Every clue in this set—Lame, Sitting, Rubber, Peking, and Donald—ultimately circles back to Words that come before “duck” — each clue forms a common phrase or proper noun when placed before the word duck.. Lame sparks the pattern, Rubber reinforces it, and Donald locks the shared idea in place once you view them through that lens.",
-    "When Lame and Sitting appear together, ask how they could relate to Words that come before “duck” — each clue forms a common phrase or proper noun when placed before the word duck. before exploring other stretches. The moment you test that theory, remaining clues like Donald fall neatly into place."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Lame",
+    "Sitting",
+    "Rubber",
+    "Peking",
+    "Donald"
   ],
+  "answer": "Words that come before \"duck\"",
+  "category": "Words that come before \"duck\"",
   "wordHints": {
-    "Lame": "A 'lame duck' is an official in the final period of office, especially after a successor has been elected; it's a familiar idiom.",
-    "Sitting": "A 'sitting duck' is someone vulnerable to attack; it highlights a precarious position.",
-    "Rubber": "A 'rubber duck' is a classic bath toy, instantly recognizable by almost everyone.",
-    "Peking": "'Peking duck' is a famous dish from Beijing, known for its crispy skin.",
-    "Donald": "'Donald Duck' is a beloved Disney character, famous for his temper and unique voice."
+    "Lame": "Lame is a useful early anchor because lame duck is a common political idiom and makes duck feel plausible quickly.",
+    "Sitting": "Sitting strengthens the same ending because sitting duck is another fixed idiom, this time about vulnerability.",
+    "Rubber": "Rubber broadens the board from idioms into objects, showing the same ending works outside figurative language.",
+    "Peking": "Peking adds a food clue, which keeps duck working in yet another context and makes the board feel more varied.",
+    "Donald": "Donald is the turning clue because Donald Duck is such a famous proper name that the shared ending becomes impossible to ignore."
   },
-  "lessons": [
-    "Embrace Common Phrases. This puzzle emphasizes the importance of thinking about common phrases and idioms. If a clue seems random, consider if it's part of a well-known expression, like 'LAME duck'.",
-    "Leverage Pop Culture. Don't underestimate the power of pop culture references! 'DONALD duck' is a prime example of how familiar characters can unlock the solution. It's not just about trivia; it's about shared cultural knowledge.",
-    "Consider Culinary Connections. Food-related clues can be a delicious pathway to the answer. The 'PEKING duck' clue highlights how culinary terms can be the key to solving a Pinpoint puzzle.",
-    "Assess Vulnerability Metaphors. Metaphors relating to vulnerability or ease of being victimized can be useful. The 'SITTING duck' clue illustrates how idiomatic expressions related to vulnerability can lead you to the answer."
+  "spoilerHints": {
+    "Lame": "Think idiom first, not injury.",
+    "Sitting": "This clue is about being an easy target.",
+    "Rubber": "Picture the bath toy.",
+    "Peking": "This clue points to a famous dish, not a place label only.",
+    "Donald": "Think Disney, not politics."
+  },
+  "articleBlocks": [
+    "Lame and Sitting can make duck feel possible early, but the board could still be read as a cluster of idioms rather than a full phrase family.",
+    "Rubber and Peking widen the pattern into toys and food, which helps prove the shared ending is more than a metaphor habit.",
+    "Donald is the clue that makes it unmistakable.",
+    "Once Donald Duck appears, lame duck, sitting duck, rubber duck, and Peking duck all become obvious members of the same ending family.",
+    "The answer was Words that come before \"duck\".",
+    "This board works because one simple ending survives across politics, vulnerability, bath toys, cuisine, and cartoons."
   ],
+  "fullAnalysis": [
+    "Lame and Sitting both point toward duck quickly, but because they are idioms, the board can still feel too narrow at first.",
+    "Rubber and Peking are important because they widen the ending into concrete object and food language instead of staying inside figurative speech.",
+    "Donald is the turning clue because Donald Duck is such a famous proper name that duck becomes much harder to deny.",
+    "After that, lame duck, sitting duck, rubber duck, and Peking duck all act as clean confirmations.",
+    "The answer was Words that come before \"duck\".",
+    "The puzzle lands well because it lets one ending cross idiom, product, cuisine, and pop culture without feeling repetitive."
+  ],
+  "solutionNarrative": [
+    "Lame and Sitting made duck feel likely, but those clues alone could still have left the board trapped in idiom territory. Rubber and Peking helped prove the same ending worked in more literal contexts too.",
+    "Donald finished the solve. Once the Disney name came into focus, the rest of the board stopped being a loose cluster and became a clear shared-duck phrase set."
+  ],
+  "lessons": [
+    {
+      "title": "Idioms can suggest an ending before they prove it",
+      "body": "Lame duck and sitting duck point in the right direction fast, but you still want a clue outside idiom territory before you lock the answer."
+    },
+    {
+      "title": "Proper names can be decisive on phrase boards",
+      "body": "Donald Duck carries more weight than the earlier clues because it is so culturally fixed and recognizable."
+    },
+    {
+      "title": "A strong board crosses several contexts",
+      "body": "Politics, vulnerability, toys, food, and cartoons all use duck here, which keeps the board lively while preserving a single clean ending."
+    }
+  ],
+  "display": {
+    "connectorSummary": "one shared ending that spans idioms, toys, food, and a famous cartoon name",
+    "fastStrategy": "If several clues look like they belong to different domains, test whether one familiar ending can connect idioms and proper names alike.",
+    "clueTableRows": [
+      {
+        "clue": "Lame",
+        "examplePhrase": "lame duck",
+        "connectionExplained": "Lame is a useful early anchor because lame duck is a common political idiom and makes duck feel plausible quickly."
+      },
+      {
+        "clue": "Sitting",
+        "examplePhrase": "sitting duck",
+        "connectionExplained": "Sitting strengthens the same ending because sitting duck is another fixed idiom, this time about vulnerability."
+      },
+      {
+        "clue": "Rubber",
+        "examplePhrase": "rubber duck",
+        "connectionExplained": "Rubber broadens the board from idioms into objects, showing the same ending works outside figurative language."
+      },
+      {
+        "clue": "Peking",
+        "examplePhrase": "Peking duck",
+        "connectionExplained": "Peking adds a food clue, which keeps duck working in yet another context and makes the board feel more varied."
+      },
+      {
+        "clue": "Donald",
+        "examplePhrase": "Donald Duck",
+        "connectionExplained": "Donald is the turning clue because Donald Duck is such a famous proper name that the shared ending becomes impossible to ignore."
+      }
+    ]
+  },
   "faqs": [
     {
-      "question": "Why isn't 'MALLARD' the answer?",
-      "answer": "While mallards are a type of duck, the clues weren't different TYPES of duck, but rather words that commonly precede the word 'duck' in everyday language."
+      "question": "What is the answer to LinkedIn Pinpoint #540?",
+      "answer": "The answer is Words that come before \"duck\" because Lame, Sitting, Rubber, Peking, and Donald all form familiar duck phrases or names."
     },
     {
-      "question": "What does 'PEKING' have to do with anything?",
-      "answer": "'Peking' is the old romanized spelling of Beijing, where the famous dish 'Peking duck' originated. It's a specific regional association."
+      "question": "What is the connection in LinkedIn Pinpoint #540?",
+      "answer": "The connection is one shared ending. The clues resolve into lame duck, sitting duck, rubber duck, Peking duck, and Donald Duck."
     },
     {
-      "question": "How does 'RUBBER' connect to the answer?",
-      "answer": "'Rubber' connects because it's commonly used to describe a type of toy duck, the 'rubber duck,' often found in bathtubs."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #540?",
+      "answer": "Donald is the turning clue because Donald Duck is such a famous proper name that the shared ending becomes obvious."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Lame and Sitting make duck plausible early, but because both are idioms, the board can still feel narrower than it really is.",
+    "falseStarts": [
+      "birds or animal words",
+      "political or metaphorical idioms"
+    ],
+    "whyFalseStartPlausible": [
+      "Lame duck and sitting duck can make the answer seem like it belongs mainly to figurative language or political vocabulary.",
+      "Because duck itself is an animal, it is easy to slip into bird-related thinking before the other domains appear."
+    ],
+    "breakingClue": "Donald",
+    "pivot": "Donald changes the solve because Donald Duck is a proper-name anchor that confirms duck much more strongly than the idioms do by themselves.",
+    "fullBoardConfirmation": "Peking is especially useful after the pivot because it proves the same ending works in cuisine as well as in idiom and pop culture."
+  },
+  "turningPoint": {
+    "clue": "Donald",
+    "whyDecisive": "Donald is decisive because Donald Duck is a famous, fixed name that makes the ending duck unmistakable.",
+    "whatChangedAfterIt": "Once Donald Duck appeared, Lame, Sitting, Rubber, and Peking all became easy duck completions across very different contexts."
+  },
+  "clueRows": [
+    {
+      "clue": "Lame",
+      "surfaceMisread": "birds or animal words",
+      "resolvedPhraseOrMember": "lame duck",
+      "nonObviousWhy": "Lame is a useful early anchor because lame duck is a common political idiom and makes duck feel plausible quickly.",
+      "searchableContext": "lame duck"
+    },
+    {
+      "clue": "Sitting",
+      "surfaceMisread": "birds or animal words",
+      "resolvedPhraseOrMember": "sitting duck",
+      "nonObviousWhy": "Sitting strengthens the same ending because sitting duck is another fixed idiom, this time about vulnerability.",
+      "searchableContext": "sitting duck"
+    },
+    {
+      "clue": "Rubber",
+      "surfaceMisread": "birds or animal words",
+      "resolvedPhraseOrMember": "rubber duck",
+      "nonObviousWhy": "Rubber broadens the board from idioms into objects, showing the same ending works outside figurative language.",
+      "searchableContext": "rubber duck"
+    },
+    {
+      "clue": "Peking",
+      "surfaceMisread": "birds or animal words",
+      "resolvedPhraseOrMember": "Peking duck",
+      "nonObviousWhy": "Peking adds a food clue, which keeps duck working in yet another context and makes the board feel more varied.",
+      "searchableContext": "Peking duck"
+    },
+    {
+      "clue": "Donald",
+      "surfaceMisread": "cartoon or celebrity names",
+      "resolvedPhraseOrMember": "Donald Duck",
+      "nonObviousWhy": "Donald is the turning clue because Donald Duck is such a famous proper name that the shared ending becomes impossible to ignore.",
+      "searchableContext": "Donald Duck"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #540?",
+      "answer": "The answer is Words that come before \"duck\" because Lame, Sitting, Rubber, Peking, and Donald all form familiar duck phrases or names.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #540?",
+      "answer": "The connection is one shared ending. The clues resolve into lame duck, sitting duck, rubber duck, Peking duck, and Donald Duck.",
+      "tiedClue": "Donald"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #540?",
+      "answer": "Donald is the turning clue because Donald Duck is such a famous proper name that the shared ending becomes obvious.",
+      "tiedClue": "Donald"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared-ending board where a Disney name confirms duck across idioms, food, and toys",
+    "relatedEntities": [
+      "lame duck",
+      "sitting duck",
+      "rubber duck",
+      "Peking duck",
+      "Donald Duck"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared-ending board where a Disney name confirms duck across idioms, food, and toys",
+      "Donald Duck",
+      "Proper names can be decisive on phrase boards"
+    ]
+  }
 }
