@@ -1,6 +1,8 @@
 {
   "slug": "pinpoint-answer-691",
   "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "medium",
   "articleBlocks": [
     "At first, Vines and Orangutans made this feel like a jungle board.",
     "That first read held for a moment, especially once Hammocks joined in.",
@@ -11,7 +13,7 @@
     "Vines swing. Orangutans swing. Hammocks swing.",
     "Tarzan is practically shorthand for swinging through the trees.",
     "The answer was Things that swing.",
-    "Looking back, this is one of those Pinpoint boards that only feels obvious after the right action word appears."
+    "Looking back, this is one of those boards that only feels obvious after the right action word appears."
   ],
   "fullAnalysis": [
     "At first, Vines and Orangutans made this feel like a jungle board.",
@@ -23,25 +25,25 @@
     "Vines swing. Orangutans swing. Hammocks swing.",
     "Tarzan is practically shorthand for swinging through the trees.",
     "The answer was Things that swing.",
-    "Looking back, this is one of those Pinpoint boards that only feels obvious after the right action word appears."
+    "Looking back, this is one of those boards that only feels obvious after the right action word appears."
   ],
   "solutionNarrative": [
-    "I first treated the set like a jungle or rainforest category because Vines, Orangutans, and Hammocks all live comfortably in that picture. That was plausible, but it stayed too broad and never explained why the board wanted five clues instead of one scene.",
-    "The turn came when I read Old tires as tire swing instead of junk hanging around a yard. Once swing became the shared action, the rest of the board tightened immediately: vines swing, orangutans swing, hammocks swing, and Tarzan is the most obvious swinging image of all."
+    "I first treated the set like a jungle or rainforest category because Vines, Orangutans, and Hammocks all live comfortably in that picture. That read was plausible, but it stayed too broad and never explained why the board wanted an everyday object like Old tires.",
+    "The turn came when I read Old tires as tire swing instead of as junk lying around outside. Once swing became the shared action, the rest of the board tightened immediately: vines swing, orangutans swing, hammocks swing, and Tarzan is the most obvious swinging image of all."
   ],
   "wordHints": {
-    "Vines": "Vines hang and sway from branches, so they fit the idea of things that swing.",
-    "Orangutans": "Orangutans are famous for swinging through trees, which makes this clue a natural fit.",
-    "Hammocks": "A hammock swings gently once it is hung, so it belongs in the same set.",
-    "Old tires": "An old tire often becomes a tire swing, which is the clearest concrete confirmation in the board.",
-    "Tarzan": "Tarzan is the iconic character associated with swinging on vines, so this clue confirms the same action-based answer."
+    "Vines": "Vines fit because they are one of the most familiar things people swing from, not just part of a jungle setting.",
+    "Orangutans": "Orangutans fit because they are strongly associated with swinging through branches rather than simply living in the jungle.",
+    "Hammocks": "Hammocks belong because their most familiar motion is a gentle swing once they are suspended.",
+    "Old tires": "Old tires is the real turning clue because the natural phrase is tire swing, which makes the action explicit.",
+    "Tarzan": "Tarzan confirms the answer because the character is iconic for swinging on vines rather than merely appearing in a jungle."
   },
   "spoilerHints": {
-    "Vines": "Think less about where this clue is found and more about what it does once suspended.",
-    "Orangutans": "This clue works better as an action clue than as a jungle clue.",
-    "Hammocks": "The fit becomes cleaner when you focus on motion instead of location.",
-    "Old tires": "This is the clue that makes the action frame much harder to miss.",
-    "Tarzan": "A famous image tied to this clue should confirm the same physical action."
+    "Vines": "Think less about location and more about what this clue does once it hangs freely.",
+    "Orangutans": "This clue works better as a motion clue than as a habitat clue.",
+    "Hammocks": "The clean fit appears once you focus on movement instead of scenery.",
+    "Old tires": "This is the clue that turns the board from a setting into one action.",
+    "Tarzan": "A famous image tied to this clue should confirm the same physical motion."
   },
   "lessons": [
     {
@@ -49,12 +51,12 @@
       "body": "A board can look like it is describing one place, but the better answer is often the action that ties every clue together."
     },
     {
-      "title": "Watch for the clue that turns a scene into a specific object or action",
+      "title": "Watch for the clue that turns a scene into a specific action",
       "body": "Old tires matters because it points to tire swing, which makes the rest of the clues snap into the same motion-based reading."
     },
     {
       "title": "Re-check every clue once the verb appears",
-      "body": "Once swing showed up as the real connector, each clue could be tested quickly against the same action instead of a vague category."
+      "body": "Once swing showed up as the real connector, each clue could be tested quickly against the same action instead of a vague scene."
     }
   ],
   "faqs": [
@@ -71,6 +73,82 @@
       "answer": "\"Old tires\" is the clue that unlocks the set because it naturally points to a tire swing and turns the board from a place-based guess into an action-based answer."
     }
   ],
+  "solvePath": {
+    "firstRead": "Vines and Orangutans make a jungle read feel plausible early, and Hammocks keeps the board inside that scene for another beat. That first read sounds right, but Old tires is the clue that forces the puzzle away from setting and toward one shared action.",
+    "falseStarts": [
+      "jungle things",
+      "rainforest scene"
+    ],
+    "whyFalseStartPlausible": [
+      "The first three clues live there comfortably, but Old tires does not make sense as a scene clue until you read it as tire swing.",
+      "That description stays too visual and never explains why Tarzan matters more as a motion image than as a jungle character."
+    ],
+    "breakingClue": "Old tires",
+    "pivot": "The solve turned when I read Old tires as tire swing instead of as junk lying around outside. Once swing became the shared action, the earlier clues stopped building scenery and started behaving like members of the same motion-based answer.",
+    "fullBoardConfirmation": "From there, Vines, Orangutans, Hammocks, and Tarzan all confirmed the same idea quickly. Tarzan is especially useful as the last check because the character is iconic for swinging rather than just for jungle setting."
+  },
+  "turningPoint": {
+    "clue": "Old tires",
+    "whyDecisive": "Old tires is decisive because it naturally becomes tire swing, which turns the board from a jungle scene into an action-based answer.",
+    "whatChangedAfterIt": "Once Old tires landed as tire swing, Vines, Orangutans, Hammocks, and Tarzan all started reading through the same motion instead of through one place."
+  },
+  "clueRows": [
+    {
+      "clue": "Vines",
+      "surfaceMisread": "jungle things",
+      "resolvedPhraseOrMember": "swinging on vines",
+      "nonObviousWhy": "Vines fit because they are one of the most familiar things people physically swing from, not just part of jungle scenery.",
+      "searchableContext": "swinging on vines"
+    },
+    {
+      "clue": "Orangutans",
+      "surfaceMisread": "jungle things",
+      "resolvedPhraseOrMember": "orangutans swinging through trees",
+      "nonObviousWhy": "Orangutans belong because they are strongly associated with swinging through branches rather than simply living in the forest.",
+      "searchableContext": "orangutans swinging through trees"
+    },
+    {
+      "clue": "Hammocks",
+      "surfaceMisread": "outdoor things",
+      "resolvedPhraseOrMember": "a hammock swinging gently",
+      "nonObviousWhy": "Hammocks fit because their most familiar motion is a gentle swing once they are suspended between two supports.",
+      "searchableContext": "hammock swinging gently"
+    },
+    {
+      "clue": "Old tires",
+      "surfaceMisread": "junk in a yard",
+      "resolvedPhraseOrMember": "tire swing",
+      "nonObviousWhy": "Old tires is the turning clue because the most natural transformation is into a tire swing, which makes the action explicit.",
+      "searchableContext": "tire swing"
+    },
+    {
+      "clue": "Tarzan",
+      "surfaceMisread": "jungle characters",
+      "resolvedPhraseOrMember": "Tarzan swinging on vines",
+      "nonObviousWhy": "Tarzan confirms the answer because the character is iconic for swinging through the jungle rather than just existing in it.",
+      "searchableContext": "Tarzan swinging on vines"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #691?",
+      "answer": "The answer is \"Things that swing\" because all five clues point to objects, animals, or characters associated with swinging.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #691?",
+      "answer": "The connection is swinging. The board looks like a jungle scene at first, but the better answer is the action shared by every clue.",
+      "tiedClue": "Old tires"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #691?",
+      "answer": "Old tires is the turning clue because tire swing is the first reading that turns the board from a place-based guess into one concrete action.",
+      "tiedClue": "Old tires"
+    }
+  ],
   "display": {
     "connectorSummary": "things associated with swinging",
     "fastStrategy": "If the early clues suggest a setting, check whether a later clue reveals a shared action instead.",
@@ -78,27 +156,27 @@
       {
         "clue": "Vines",
         "examplePhrase": "swinging on vines",
-        "connectionExplained": "Vines fit because they hang and sway, and they are one of the most familiar things people swing from."
+        "connectionExplained": "Vines fit because they are one of the most familiar things people physically swing from, not just part of jungle scenery."
       },
       {
         "clue": "Orangutans",
         "examplePhrase": "orangutans swinging through trees",
-        "connectionExplained": "Orangutans fit because they are strongly associated with swinging through branches."
+        "connectionExplained": "Orangutans belong because they are strongly associated with swinging through branches rather than simply living in the forest."
       },
       {
         "clue": "Hammocks",
         "examplePhrase": "a hammock swinging gently",
-        "connectionExplained": "Hammocks belong because their whole motion is a gentle swing once they are suspended."
+        "connectionExplained": "Hammocks fit because their most familiar motion is a gentle swing once they are suspended between two supports."
       },
       {
         "clue": "Old tires",
         "examplePhrase": "tire swing",
-        "connectionExplained": "Old tires is the real turning clue because an old tire naturally becomes a tire swing."
+        "connectionExplained": "Old tires is the turning clue because the most natural transformation is into a tire swing, which makes the action explicit."
       },
       {
         "clue": "Tarzan",
         "examplePhrase": "Tarzan swinging on vines",
-        "connectionExplained": "Tarzan confirms the answer because the character is iconic for swinging through the jungle."
+        "connectionExplained": "Tarzan confirms the answer because the character is iconic for swinging through the jungle rather than just existing in it."
       }
     ]
   }

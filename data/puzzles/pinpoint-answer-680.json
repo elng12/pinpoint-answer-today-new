@@ -1,33 +1,56 @@
 {
   "slug": "pinpoint-answer-680",
   "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "articleBlocks": [
+    "Cobalt and Navy immediately suggested the color blue, but that still felt a little too loose at first.",
+    "Powder and Baby could describe all kinds of things, so the board did not yet feel like one exact category.",
+    "Navy was the clue that tightened it.",
+    "\"Navy blue\" is such a fixed phrase that it turns the whole board into shade names instead of random blue associations.",
+    "Once that clicked, Cobalt blue, Powder blue, Baby blue, and Sky blue all read as named shades.",
+    "The answer was Shades of blue.",
+    "This is the kind of easier board that solves fast once you test one missing color word."
+  ],
   "fullAnalysis": [
-    "Puzzle #680 presents five clues — Cobalt, Powder, Baby, Navy, and Sky — that at first glance look like a random mix of a metal, a material, an age, a military rank, and a weather word. The surface meanings point in completely different directions, which is exactly how the designers disguise a very clean category.",
-    "The key insight is that each clue is a well-known modifier for a single color word. Cobalt blue, powder blue, baby blue, navy blue, and sky blue are all fixed phrases that appear in paint swatches, fashion catalogues, and everyday conversation. The board rewards players who test prefix or suffix word relationships early rather than grouping by surface subject matter."
+    "Cobalt and Navy immediately suggested the color blue, but that still felt a little too loose at first.",
+    "Powder and Baby could describe all kinds of things, so the board did not yet feel like one exact category.",
+    "Navy was the clue that tightened it.",
+    "\"Navy blue\" is such a fixed phrase that it turns the whole board into shade names instead of random blue associations.",
+    "Once that clicked, Cobalt blue, Powder blue, Baby blue, and Sky blue all read as named shades.",
+    "The answer was Shades of blue.",
+    "This is the kind of easier board that solves fast once you test one missing color word."
   ],
   "solutionNarrative": [
-    "I started with Navy because navy blue is one of the most common color names in clothing — it came to mind almost immediately. That sent me to Sky, then Baby, and within a few seconds the pattern was clear. I went back and tested Cobalt and Powder to confirm, and both produced familiar shade names without any stretching.",
-    "The whole board resolved cleanly in under a minute. This is the kind of puzzle where the answer feels obvious in hindsight, but only after you make the mental jump from 'things that are blue' to 'words that precede blue'. Once that shift happens, every clue falls into place instantly."
+    "I started with a vague color read because Cobalt and Navy both lean blue almost immediately. That felt close, but it was still too broad until one clue made the board behave like named shades instead of just things associated with blue.",
+    "The turn came with Navy. Once navy blue landed as a fixed everyday phrase, the rest of the board resolved quickly: cobalt blue, powder blue, baby blue, and sky blue all fit without any stretching."
   ],
   "wordHints": {
-    "Cobalt": "Cobalt blue is a standard shade name found in art and design — a strong anchor once you test the 'blue' suffix.",
-    "Powder": "Powder blue is a soft, pale shade name common in fashion and home decor.",
-    "Baby": "Baby blue is one of the most recognizable shade names, often associated with pastel palettes.",
-    "Navy": "Navy blue is among the most-used shade names in clothing and is usually the fastest anchor on this board.",
-    "Sky": "Sky blue is a direct, everyday phrase that confirms the pattern cleanly."
+    "Cobalt": "Cobalt blue is a standard shade name found in art and design, which makes the clue stronger as a named shade than as a random metal.",
+    "Powder": "Powder blue is a soft, pale shade name that shows the board is about fixed color phrases.",
+    "Baby": "Baby blue is one of the most recognizable named shades, which is why it works better as a phrase than as a loose age clue.",
+    "Navy": "Navy is the turning clue because navy blue is such a common everyday phrase that it makes the missing color word obvious.",
+    "Sky": "Sky blue is a direct everyday color phrase that confirms the same shade-name pattern."
+  },
+  "spoilerHints": {
+    "Cobalt": "Try appending one color word here before grouping by surface meaning.",
+    "Powder": "This clue behaves more like part of a named shade than part of an object list.",
+    "Baby": "Think phrase first, not age or life-stage.",
+    "Navy": "This is the clue that makes the missing color word hardest to ignore.",
+    "Sky": "Use this as the easy confirmation once the color phrase appears."
   },
   "lessons": [
     {
       "title": "Color boards reward a fast suffix test",
-      "body": "When clues feel unrelated by subject, try appending a single color word to each one. If the resulting phrase is a real, named shade — cobalt blue, navy blue, sky blue — you have found the connector. This test takes under ten seconds and eliminates a lot of wrong guesses."
+      "body": "When clues feel unrelated by subject, try appending a single color word to each one. If the resulting phrase is a real, named shade, you have likely found the connector."
     },
     {
-      "title": "Named shades are more specific than general color families",
-      "body": "The answer here is 'Shades of blue', not just 'blue things'. That distinction matters: every clue has to form a recognizable shade name, not merely describe something blue. Cobalt is a shade; a bluebell is a blue thing. Pinpoint uses the tighter definition."
+      "title": "Named shades are tighter than loose color association",
+      "body": "The answer here is not just blue things. Every clue needs to form a recognized shade name, which is a much stricter test."
     },
     {
-      "title": "Misleading surface meanings are deliberate",
-      "body": "Navy looks military, Cobalt looks like a metal, Baby looks like an age group. Pinpoint designers choose clues with strong primary meanings to slow you down. When surface meanings scatter across unrelated fields, step back and test word-family relationships instead."
+      "title": "Use the most fixed phrase as the turning clue",
+      "body": "Navy matters because navy blue is such a common phrase that it sharpens the whole board immediately."
     }
   ],
   "faqs": [
@@ -37,11 +60,85 @@
     },
     {
       "question": "What clue solves this board fastest?",
-      "answer": "Navy is usually the fastest anchor because navy blue is such a common, fixed phrase in everyday language."
+      "answer": "Navy is usually the fastest anchor because navy blue is such a fixed, everyday phrase."
     },
     {
       "question": "Why do all five clues belong together?",
       "answer": "Each clue forms a familiar blue shade name when you add the word blue: cobalt blue, powder blue, baby blue, navy blue, and sky blue."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Cobalt, Powder, and Baby all look like words that could sit before a missing color, so the board feels close to solved quickly. A loose first read like blue things is tempting, but Navy is the clue that turns that vague color association into a precise list of named shades.",
+    "falseStarts": [
+      "blue things"
+    ],
+    "whyFalseStartPlausible": [
+      "That stays too loose. Pinpoint wants a tighter pattern than shared color association, and Navy works much better as the fixed phrase navy blue than as just one blue thing."
+    ],
+    "breakingClue": "Navy",
+    "pivot": "The solve turned when I let Navy lead the board instead of treating it as one more clue that happened to suggest blue. Once navy blue landed as a fixed phrase, the rest of the clues fell into the same shade-name pattern immediately.",
+    "fullBoardConfirmation": "From there, Cobalt blue, Powder blue, Baby blue, and Sky blue all worked as named shades without any forcing. That is what makes the final answer cleaner than a vague answer like blue things."
+  },
+  "turningPoint": {
+    "clue": "Navy",
+    "whyDecisive": "Navy is decisive because navy blue is such a fixed everyday phrase that it turns the board into named shades instead of loose blue associations.",
+    "whatChangedAfterIt": "Once Navy landed as navy blue, Cobalt, Powder, Baby, and Sky all started reading as specific shade names rather than as unrelated clue words."
+  },
+  "clueRows": [
+    {
+      "clue": "Cobalt",
+      "surfaceMisread": "metals or materials",
+      "resolvedPhraseOrMember": "Cobalt blue",
+      "nonObviousWhy": "Cobalt fits because cobalt blue is a standard art and design shade name, not just a reference to the metal itself.",
+      "searchableContext": "Cobalt blue"
+    },
+    {
+      "clue": "Powder",
+      "surfaceMisread": "materials or textures",
+      "resolvedPhraseOrMember": "Powder blue",
+      "nonObviousWhy": "Powder works because powder blue is a recognized pale shade name that appears in fashion and home-color language.",
+      "searchableContext": "Powder blue"
+    },
+    {
+      "clue": "Baby",
+      "surfaceMisread": "age words",
+      "resolvedPhraseOrMember": "Baby blue",
+      "nonObviousWhy": "Baby belongs because baby blue is one of the most familiar named pastel shades in everyday speech.",
+      "searchableContext": "Baby blue"
+    },
+    {
+      "clue": "Navy",
+      "surfaceMisread": "military terms",
+      "resolvedPhraseOrMember": "Navy blue",
+      "nonObviousWhy": "Navy is the turning clue because navy blue is such a fixed phrase that it makes the whole shade pattern obvious at once.",
+      "searchableContext": "Navy blue"
+    },
+    {
+      "clue": "Sky",
+      "surfaceMisread": "weather words",
+      "resolvedPhraseOrMember": "Sky blue",
+      "nonObviousWhy": "Sky confirms the answer because sky blue is a direct everyday shade phrase that fits the same naming pattern cleanly.",
+      "searchableContext": "Sky blue"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the LinkedIn Pinpoint answer for Puzzle #680?",
+      "answer": "The answer for Puzzle #680 is Shades of blue because each clue becomes a recognized shade name once the missing color word is supplied.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "Why do all five clues belong together?",
+      "answer": "They belong together because Cobalt, Powder, Baby, Navy, and Sky all form familiar shade names when paired with blue.",
+      "tiedClue": "Navy"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "What clue solves this board fastest?",
+      "answer": "Navy is usually the fastest anchor because navy blue is such a fixed everyday phrase that it exposes the shade-name pattern immediately.",
+      "tiedClue": "Navy"
     }
   ]
 }
