@@ -1,40 +1,202 @@
 {
+  "puzzleNumber": 502,
   "slug": "pinpoint-answer-502",
+  "publishDate": "2025-09-14",
+  "isoDate": "2025-09-14",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #502 looks body-related at first, but it stays slippery until you stop asking what the clues are and start asking what can come before them. Pad, Cap, Deep, Sock, and Jerk are all familiar words on their own, yet they become much more specific when one shared body part snaps into place.",
-    "I first saw pad and cap and thought the board might be about protective gear or anatomy. That idea almost worked, but deep and jerk refused to stay inside the same category. The breakthrough came with knee-deep and knee-jerk, because those are both common expressions that feel natural instantly. Once those clicked, kneecap, knee pad, and knee sock followed without any extra stretching.",
-    "The board is neat because the shared word works in different grammatical ways. Knee pad and knee sock are concrete items. Kneecap is a body part. Knee-deep is an adjective phrase, and knee-jerk is the idiom for an automatic or unthinking response. The same connector stays strong across gear, anatomy, depth, and behavior.",
-    "That is why the answer to LinkedIn Pinpoint #502 is \"Words that follow knee.\" The puzzle hides a very ordinary word inside five different phrase types, which is why the clues feel broader before the connector appears."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Pad",
+    "Cap",
+    "Deep",
+    "Sock",
+    "Jerk"
   ],
+  "answer": "Words that follow \"knee\"",
+  "category": "Words that follow \"knee\"",
   "wordHints": {
-    "Pad": "Knee pad is the protective gear worn on the knees for sports, work, or skating.",
-    "Cap": "Kneecap names the patella, the bone at the front of the knee.",
-    "Deep": "Knee-deep means standing in something up to the knees or being deeply involved in it.",
-    "Sock": "Knee sock is the long sock that reaches up to or above the knee.",
-    "Jerk": "Knee-jerk reaction is the phrase for an automatic reflex or an unthinking response."
+    "Pad": "\"Knee pad\" works as sports or work safety gear, so Pad fits once you start testing body-part phrases.",
+    "Cap": "\"Kneecap\" is the body part clue that keeps the board grounded in ordinary language rather than niche jargon.",
+    "Deep": "\"Knee-deep\" matters because it is a very common phrase for depth or involvement, which hints that the answer is structural rather than topical.",
+    "Sock": "\"Knee sock\" broadens the set into clothing and helps show the shared word can lead both compounds and spaced phrases.",
+    "Jerk": "\"Knee-jerk\" is the turning clue because it is such a fixed idiom that the shared lead word becomes much harder to miss."
   },
-  "lessons": [
-    "Watch for clues that become instantly common when paired. Knee-deep and knee-jerk are strong tells because they sound complete the moment you test the right connector.",
-    "Do not force one noun category too early. This board mixes body parts, clothing, idioms, and descriptive phrases, so the answer has to be linguistic rather than topical.",
-    "Hyphenated clues often reveal the trick. When one candidate word creates natural hyphenated expressions, it is usually worth testing across the whole set."
+  "spoilerHints": {
+    "Pad": "Think of a body-part compound, not only a protective item.",
+    "Cap": "This clue forms a single common word with the answer.",
+    "Deep": "Treat it as a familiar phrase, not just a measurement word.",
+    "Sock": "This clue adds clothing to the board, which is a hint that the answer is linguistic.",
+    "Jerk": "This clue names a common idiom and is the cleanest lock on the set."
+  },
+  "articleBlocks": [
+    "Pad and Cap make the board feel body-related early, but that alone can still leave you guessing between anatomy and protective gear.",
+    "Sock adds a clothing angle, which is a clue that the puzzle is not a single topical category at all.",
+    "Deep starts to reveal the real trick because knee-deep is a familiar phrase rather than a concrete object.",
+    "Jerk is the clue that really locks the board.",
+    "Once knee-jerk appears, knee pad, kneecap, knee-deep, and knee sock all settle into one shared lead word instead of several unrelated body ideas.",
+    "The answer was Words that follow \"knee\".",
+    "This board is strong because the same word works across gear, anatomy, clothing, and idiom without losing its everyday feel."
   ],
+  "fullAnalysis": [
+    "Pad and Cap both fit naturally after knee, but the board can still look like it wants anatomy or protective equipment rather than a phrase pattern.",
+    "Sock complicates any simple category guess because it adds clothing instead of staying in one physical domain.",
+    "Deep is useful because knee-deep is such a familiar phrase that it pushes the board toward language structure rather than topical grouping.",
+    "Jerk is the turning clue because knee-jerk is a fixed idiom, which makes knee feel like the exact shared word instead of just one candidate among others.",
+    "After that, knee pad, kneecap, knee-deep, and knee sock all become clean confirmations of the same pattern, even though they live in different kinds of phrases.",
+    "The answer was Words that follow \"knee\"."
+  ],
+  "solutionNarrative": [
+    "Pad and Cap made me think about anatomy and protective gear, while Sock kept the board grounded in ordinary body-related language. Deep was the first clue that suggested the puzzle might be about phrase structure instead of a topical category.",
+    "Jerk finished the job. Once knee-jerk came to mind, the solve stopped being a body-theme guess and became a clean language pattern with four instant confirmations."
+  ],
+  "lessons": [
+    {
+      "title": "Idioms often beat literal clues",
+      "body": "Knee-jerk settles the puzzle faster than knee pad because a fixed idiom leaves less room for alternate shared words."
+    },
+    {
+      "title": "Mixed phrase types usually mean a structural answer",
+      "body": "This board combines a one-word compound, a hyphenated phrase, a clothing term, and a gear term, so the connector has to be linguistic."
+    },
+    {
+      "title": "A body word can travel far beyond anatomy",
+      "body": "Knee works because it appears in objects, idioms, clothing, and body-part names, which is exactly the kind of spread Pinpoint likes."
+    }
+  ],
+  "display": {
+    "connectorSummary": "one plain body word that leads a compound, an idiom, a garment phrase, and a body-part name",
+    "fastStrategy": "If the clues mix objects with an idiom-like phrase, test simple shared body words before forcing a topical category.",
+    "clueTableRows": [
+      {
+        "clue": "Pad",
+        "examplePhrase": "knee pad",
+        "connectionExplained": "\"Knee pad\" works as sports or work safety gear, so Pad fits once you start testing body-part phrases."
+      },
+      {
+        "clue": "Cap",
+        "examplePhrase": "kneecap",
+        "connectionExplained": "\"Kneecap\" is the body part clue that keeps the board grounded in ordinary language rather than niche jargon."
+      },
+      {
+        "clue": "Deep",
+        "examplePhrase": "knee-deep",
+        "connectionExplained": "\"Knee-deep\" matters because it is a very common phrase for depth or involvement, which hints that the answer is structural rather than topical."
+      },
+      {
+        "clue": "Sock",
+        "examplePhrase": "knee sock",
+        "connectionExplained": "\"Knee sock\" broadens the set into clothing and helps show the shared word can lead both compounds and spaced phrases."
+      },
+      {
+        "clue": "Jerk",
+        "examplePhrase": "knee-jerk",
+        "connectionExplained": "\"Knee-jerk\" is the turning clue because it is such a fixed idiom that the shared lead word becomes much harder to miss."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #502?",
-      "answer": "The answer is \"Words that follow knee.\" The completed phrases are knee pad, kneecap, knee-deep, knee sock, and knee-jerk."
+      "answer": "The answer is Words that follow \"knee\" because Pad, Cap, Deep, Sock, and Jerk all form common words or phrases with knee."
     },
     {
-      "question": "Why are Deep and Jerk the most useful clues in #502?",
-      "answer": "Because knee-deep and knee-jerk are both familiar expressions that feel immediate. They help confirm the connector faster than the more literal gear clues."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #502?",
+      "answer": "Jerk is the turning clue because knee-jerk is a fixed idiom that makes the shared lead word feel exact instead of tentative."
     },
     {
-      "question": "Is kneecap treated the same way as knee pad and knee sock?",
-      "answer": "Yes. Even though kneecap is usually written as one word, it follows the same pattern: the shared connector is still knee."
-    },
-    {
-      "question": "How can I solve mixed phrase boards like #502 faster?",
-      "answer": "Test short, common body words and everyday connectors whenever the clues span objects, idioms, and descriptive phrases. Those boards often hide one plain word in many different constructions."
+      "question": "Why does Cap count in LinkedIn Pinpoint #502?",
+      "answer": "Cap works because kneecap is a standard one-word body-part term. Pinpoint often mixes spaced phrases with single compounds in the same board."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Pad and Cap make the board feel body-related quickly, but not yet obviously linguistic.",
+    "falseStarts": [
+      "protective gear or anatomy",
+      "clothing and accessories"
+    ],
+    "whyFalseStartPlausible": [
+      "Knee pad and kneecap both work early, which can trick you into thinking the answer is topical rather than phrase-based.",
+      "Knee sock also fits literally, so the board can still seem like it wants body-adjacent objects instead of one shared word."
+    ],
+    "breakingClue": "Jerk",
+    "pivot": "Jerk changes the solve because knee-jerk is such a fixed expression that knee suddenly feels like the only clean lead word for the whole board.",
+    "fullBoardConfirmation": "Deep is especially useful after the pivot because knee-deep proves the answer also works in idiomatic phrasing, not just in objects like knee pad and knee sock."
+  },
+  "turningPoint": {
+    "clue": "Jerk",
+    "whyDecisive": "Jerk is decisive because knee-jerk is a fixed idiom with a strong everyday rhythm, which makes the shared word obvious.",
+    "whatChangedAfterIt": "Once knee-jerk appeared, Pad, Cap, Deep, and Sock all stopped looking like a body-theme cluster and became clean knee phrases."
+  },
+  "clueRows": [
+    {
+      "clue": "Pad",
+      "surfaceMisread": "protective gear or anatomy",
+      "resolvedPhraseOrMember": "knee pad",
+      "nonObviousWhy": "\"Knee pad\" works as sports or work safety gear, so Pad fits once you start testing body-part phrases.",
+      "searchableContext": "knee pad"
+    },
+    {
+      "clue": "Cap",
+      "surfaceMisread": "protective gear or anatomy",
+      "resolvedPhraseOrMember": "kneecap",
+      "nonObviousWhy": "\"Kneecap\" is the body part clue that keeps the board grounded in ordinary language rather than niche jargon.",
+      "searchableContext": "kneecap"
+    },
+    {
+      "clue": "Deep",
+      "surfaceMisread": "clothing and accessories",
+      "resolvedPhraseOrMember": "knee-deep",
+      "nonObviousWhy": "\"Knee-deep\" matters because it is a very common phrase for depth or involvement, which hints that the answer is structural rather than topical.",
+      "searchableContext": "knee-deep"
+    },
+    {
+      "clue": "Sock",
+      "surfaceMisread": "clothing and accessories",
+      "resolvedPhraseOrMember": "knee sock",
+      "nonObviousWhy": "\"Knee sock\" broadens the set into clothing and helps show the shared word can lead both compounds and spaced phrases.",
+      "searchableContext": "knee sock"
+    },
+    {
+      "clue": "Jerk",
+      "surfaceMisread": "protective gear or anatomy",
+      "resolvedPhraseOrMember": "knee-jerk",
+      "nonObviousWhy": "\"Knee-jerk\" is the turning clue because it is such a fixed idiom that the shared lead word becomes much harder to miss.",
+      "searchableContext": "knee-jerk"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #502?",
+      "answer": "The answer is Words that follow \"knee\" because Pad, Cap, Deep, Sock, and Jerk all form common words or phrases with knee.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #502?",
+      "answer": "Jerk is the turning clue because knee-jerk is a fixed idiom that makes the shared lead word feel exact instead of tentative.",
+      "tiedClue": "Jerk"
+    },
+    {
+      "intentType": "definition",
+      "question": "Why does Cap count in LinkedIn Pinpoint #502?",
+      "answer": "Cap works because kneecap is a standard one-word body-part term. Pinpoint often mixes spaced phrases with single compounds in the same board.",
+      "tiedClue": "Cap"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a phrase board where one body word moves through gear, anatomy, clothing, and idiom before the fixed expression gives it away",
+    "relatedEntities": [
+      "knee pad",
+      "kneecap",
+      "knee-deep",
+      "knee sock",
+      "knee-jerk"
+    ],
+    "doNotRepeatPatterns": [
+      "a phrase board where one body word moves through gear, anatomy, clothing, and idiom before the fixed expression gives it away",
+      "Jerk is decisive because knee-jerk is a fixed idiom with a strong everyday rhythm, which makes the shared word obvious."
+    ]
+  }
 }

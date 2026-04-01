@@ -75,6 +75,14 @@
 4. `pinpoint-answer-540` - `4` impressions, `0` clicks, avg position `15.75`
 5. `pinpoint-answer-459` - `4` impressions, `0` clicks, avg position `20.50`
 
+## Fourth Batch
+
+1. `pinpoint-answer-501` - `5` impressions total, with `3` on the canonical detail URL and `2` on a legacy locale path
+2. `pinpoint-answer-518` - `3` impressions, canonical detail URL only
+3. `pinpoint-answer-644` - `3` impressions split across slash and non-slash canonical variants
+4. `pinpoint-answer-502` - `3` impressions, canonical detail URL only
+5. `pinpoint-answer-545` - `3` impressions split across slash and non-slash canonical variants
+
 ## Status
 
 - Queue selected on `2026-04-01`.
@@ -83,4 +91,6 @@
 - The placeholder summary on `pinpoint-answer-531` was replaced with a real archived-page summary during this pass.
 - Third GSC-driven content-depth pass completed for `563`, `679`, `614`, `540`, and `459` on `2026-04-01`.
 - `563` still shows a small amount of legacy locale-path noise, and `614` is split across slash/non-slash URL rows, but both canonical detail pages are real and valid.
-- Next likely follow-up pages are `501`, `518`, `644`, `502`, and `545` if the performance-led queue keeps expanding.
+- Fourth GSC-driven content-depth pass completed for `501`, `518`, `644`, `502`, and `545` on `2026-04-01`.
+- `501` still shows a small amount of legacy locale-path noise, and `644` plus `545` are split across slash/non-slash canonical rows, but all five canonical detail pages are real and valid.
+- Next observation candidates from the current low-volume window are `594`, `641`, and `593`; re-run `find` before batching any of them because the queue is now down to very small impression counts.
