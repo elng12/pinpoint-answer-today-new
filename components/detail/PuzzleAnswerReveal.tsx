@@ -17,6 +17,7 @@ type PuzzleAnswerRevealProps = {
   defaultRevealed?: boolean;
   panelTitle?: string;
   detailNote?: string;
+  trackFaqSectionView?: boolean;
 };
 
 function normalizeKey(value: string): string {
@@ -44,11 +45,13 @@ export function PuzzleAnswerReveal({
   defaultRevealed = false,
   panelTitle,
   detailNote,
+  trackFaqSectionView = false,
 }: PuzzleAnswerRevealProps) {
   const [revealed, setRevealed] = useState(defaultRevealed);
   const [copied, setCopied] = useState(false);
   const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
   const hintTimerRef = useRef<number | null>(null);
+  const hasTrackedFaqSectionRef = useRef(false);
   const revealTipId = useId();
 
   const normalizedHints = useMemo(() => buildHintMap(hintMap), [hintMap]);
@@ -60,6 +63,60 @@ export function PuzzleAnswerReveal({
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (!trackFaqSectionView || hasTrackedFaqSectionRef.current) {
+      return;
+    }
+
+    let observer: IntersectionObserver | null = null;
+    let retryTimer: number | null = null;
+
+    const attachObserver = () => {
+      if (hasTrackedFaqSectionRef.current) {
+        return;
+      }
+
+      const faqSection = document.getElementById("faq");
+      if (!faqSection) {
+        retryTimer = window.setTimeout(attachObserver, 250);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry?.isIntersecting || hasTrackedFaqSectionRef.current) {
+            return;
+          }
+
+          hasTrackedFaqSectionRef.current = true;
+          trackClientEventWhenReady("faq_section_viewed", {
+            event_category: "engagement",
+            event_label: `Puzzle ${puzzleNumber}`,
+            puzzle_number: puzzleNumber,
+            detail_mode: detailMode,
+            source_slot: "detail_faq_section",
+            scroll_depth_percent: getScrollDepthPercent(),
+            value: puzzleNumber,
+          });
+          observer?.disconnect();
+        },
+        { threshold: 0.25 },
+      );
+
+      observer.observe(faqSection);
+    };
+
+    attachObserver();
+
+    return () => {
+      if (retryTimer !== null) {
+        window.clearTimeout(retryTimer);
+      }
+      observer?.disconnect();
+    };
+  }, [detailMode, puzzleNumber, trackFaqSectionView]);
 
   const handleRevealToggle = () => {
     setRevealed((current) => {

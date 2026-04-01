@@ -4,7 +4,6 @@ import { PuzzleAnswerReveal } from "@/components/detail/PuzzleAnswerReveal";
 import { PuzzleCheckin } from "@/components/detail/PuzzleCheckin";
 import { PuzzleFullAnalysis } from "@/components/detail/PuzzleFullAnalysis";
 import { DetailShareButton } from "@/components/detail/DetailShareButton";
-import { DetailSectionViewTracker } from "@/components/detail/DetailSectionViewTracker";
 import { routes } from "@/lib/paths/routes";
 
 function formatLegacyDate(isoDate: string): string {
@@ -123,22 +122,10 @@ export function PuzzleDetail({
         category={puzzle.category}
         hintMap={puzzle.wordHints}
         detailMode={puzzle.detailMode}
+        trackFaqSectionView
       />
 
       <PuzzleCheckin puzzleNumber={puzzle.number} />
-
-      <DetailSectionViewTracker
-        sectionId="faq"
-        eventName="faq_section_viewed"
-        eventParams={{
-          event_category: "engagement",
-          event_label: `Puzzle ${puzzle.number}`,
-          detail_mode: puzzle.detailMode,
-          puzzle_number: puzzle.number,
-          source_slot: "detail_faq_section",
-          value: puzzle.number,
-        }}
-      />
 
       <PuzzleFullAnalysis
         puzzle={puzzle}
