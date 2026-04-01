@@ -39,3 +39,8 @@
 - Check that the first visible analysis block reads as one spoiler-safe paragraph of 2-5 sentences.
 - Keep the turning clue, FAQ, Archive exit, and Pro Tips exit intact.
 - If GSC query data later shows an older page outside this list has more impressions, move it ahead of the recency queue.
+
+## Status
+
+- Opening-paragraph backfill for `699-680` was verified complete on `2026-04-01`.
+- The next pass for this list should focus on content richness, not first-paragraph cleanup.
