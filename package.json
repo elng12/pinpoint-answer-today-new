@@ -14,6 +14,7 @@
     "worker:health": "node scripts/worker-ops.mjs health --env prod",
     "worker:refresh-cookie": "node scripts/worker-ops.mjs refresh-cookie --targets all",
     "visual:detail": "node scripts/capture-detail-screenshots.mjs",
+    "gsc:pinpoint": "node scripts/gsc-pinpoint.mjs",
     "test:pinpoint-seo": "tsx scripts/check-pinpoint-seo-builders.ts",
     "test:pinpoint-routing": "tsx scripts/check-routing-regressions.ts",
     "test:pinpoint-guardrails": "npm run test:pinpoint-seo && npm run test:pinpoint-routing && tsx scripts/check-pinpoint-guardrails.ts",

@@ -36,7 +36,8 @@
 ## Watchlist
 
 - `pinpoint-answer-9013`
-  - Showed `86` impressions but has no local detail JSON file, so it should be treated as a routing or indexing anomaly before any content work.
+  - Not a real local detail page. Search Console shows impressions on several stale URL variants such as `/linkedin-pinpoint-answers/pinpoint-answer-9013`, `/puzzles/pinpoint-answer-9013/`, and locale-prefixed aliases, while the canonical detail route currently returns `404`.
+  - Treat it as a stale-index / wrong-link anomaly, not as a content backfill candidate.
 - `pinpoint-answer-563`
   - Next clean content-depth candidate after the second batch if impressions keep holding.
 - `pinpoint-answer-679`
