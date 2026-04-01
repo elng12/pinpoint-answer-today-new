@@ -1,77 +1,206 @@
 {
+  "puzzleNumber": 681,
   "slug": "pinpoint-answer-681",
+  "publishDate": "2026-03-12",
+  "isoDate": "2026-03-12",
   "detailState": "published",
+  "questionType": "phrase",
+  "difficultyBand": "obvious",
+  "clues": [
+    "House",
+    "Field",
+    "Optical",
+    "Mickey",
+    "Cat and 🐭"
+  ],
+  "answer": "Words that come before mouse",
+  "category": "Words that come before mouse",
+  "wordHints": {
+    "House": "\"House mouse\" fits because it is a common animal phrase and an easy early confirmation once the connector appears.",
+    "Field": "\"Field mouse\" helps because it proves the answer works in biology as well as in pop culture and technology.",
+    "Optical": "\"Optical mouse\" is the turning clue because it is a very specific product phrase that makes mouse appear quickly.",
+    "Mickey": "\"Mickey Mouse\" confirms the answer because it is one of the best-known fixed names in the language.",
+    "Cat and 🐭": "\"Cat-and-mouse\" completes the set with an idiom, showing the connector works across literal phrases and figurative ones."
+  },
+  "spoilerHints": {
+    "House": "Think of a familiar animal phrase, not just a place.",
+    "Field": "This clue belongs to the same word pattern as House, but in a different context.",
+    "Optical": "This is the clue that often makes the shared ending show up first.",
+    "Mickey": "Once the right connector appears, this clue should feel almost automatic.",
+    "Cat and 🐭": "Treat the symbol as part of a fixed idiom rather than as a separate category clue."
+  },
+  "articleBlocks": [
+    "House and Field can look like animal clues, but they do not yet tell you whether the board is about wildlife or something else.",
+    "Mickey makes the set feel more playful, though the clue still does not fully explain how technology fits in.",
+    "Optical is the clue that solves that tension.",
+    "Optical mouse is such a standard product phrase that it makes mouse appear as the shared ending almost immediately.",
+    "Once that happens, House mouse, Field mouse, Mickey Mouse, and cat-and-mouse all line up cleanly across biology, pop culture, and idiom.",
+    "The answer was Words that come before mouse.",
+    "This board is elegant because it hides one simple connector across several unrelated surface domains."
+  ],
   "fullAnalysis": [
-    "Puzzle #681 places five clues on the board — House, Field, Optical, Mickey, and Cat and 🐭 — that span biology, technology, pop culture, and idiom. On the surface they have nothing in common: a dwelling, a landscape, a hardware descriptor, a cartoon name, and a half-phrase paired with a visual hint. That surface scatter is the puzzle's main defence.",
-    "The connector is a single word appended to every clue: mouse. House mouse is a common household rodent; field mouse is the small vole-like creature found in grasslands; optical mouse is the everyday computer peripheral; Mickey Mouse is the Disney icon; and cat-and-mouse is a fixed English idiom describing a pursuit game. Every clue — including the unusual 'Cat and 🐭' — produces a recognizable, unambiguous phrase when mouse follows it."
+    "House and Field can look like animal clues, but they do not yet tell you whether the board is about wildlife or something else.",
+    "Mickey makes the set feel more playful, though the clue still does not fully explain how technology fits in.",
+    "Optical is the turning clue because optical mouse is such a fixed and familiar product term.",
+    "Once mouse appears there, House mouse, Field mouse, Mickey Mouse, and cat-and-mouse all become obvious phrase completions instead of unrelated subject clues.",
+    "The answer was Words that come before mouse.",
+    "The board works because it uses animals, computing, pop culture, and idiom to disguise a very straightforward shared ending."
   ],
   "solutionNarrative": [
-    "I looked at Optical first because it felt the most specific. 'Optical what?' I asked myself, and mouse came to mind immediately — optical mouse is the standard name for the light-based computer peripheral. That gave me a direction to test.",
-    "I tried House next: house mouse, absolutely standard. Then Field: field mouse, a real species name. Mickey was obvious once the pattern was set — Mickey Mouse is one of the most recognized names in the world. Cat and 🐭 was the last piece and the trickiest, but 'cat-and-mouse' as a single idiom locked it in. The whole board resolved in well under a minute once optical mouse gave me the pivot."
+    "House and Field first suggested small-animal phrases, but Mickey kept the board from feeling purely biological. The set looked connected, yet not in one clean way.",
+    "Optical changed that. Once optical mouse appeared, the whole puzzle shifted from subject guessing to phrase completion, and House mouse, Field mouse, Mickey Mouse, and cat-and-mouse all clicked into place right away."
   ],
-  "wordHints": {
-    "House": "House mouse is a common household rodent — a familiar phrase that confirms the pattern early.",
-    "Field": "Field mouse refers to small rodents found in open countryside; the compound is a real species name.",
-    "Optical": "Optical mouse is the standard name for the computer peripheral that uses light sensors instead of a rolling ball.",
-    "Mickey": "Mickey Mouse is the Disney cartoon character created in 1928 — one of the most recognized compound names in the world.",
-    "Cat and 🐭": "Cat-and-mouse is a fixed English idiom for a pursuit or power game; the mouse icon completes the visual clue and points straight to the idiom."
-  },
   "lessons": [
     {
-      "title": "Suffix tests reveal hidden connectors fast",
-      "body": "When five clues look unrelated by subject, try appending a common word to each one. A single test word like 'mouse' can expose a pattern across biology, technology, and idiom in seconds. This habit is one of the fastest ways to break a Pinpoint board that deliberately scatters surface meanings."
+      "title": "Cross-domain boards often hide a simple shared word",
+      "body": "When a puzzle jumps from animals to technology to pop culture, a repeated suffix or ending word is often the cleanest explanation."
     },
     {
-      "title": "Technology clues often pivot on brand or product names",
-      "body": "Optical is a rare surface word — it has no obvious biological or cultural category. In Pinpoint, a clue that resists easy grouping by subject is usually a word that works as a modifier in a fixed compound. Optical mouse is the compound; optical alone is the misdirection."
+      "title": "The most specific modern term can unlock older phrases",
+      "body": "Optical mouse is useful because it is exact and contemporary, which makes the animal and idiom clues much easier to trust afterward."
     },
     {
-      "title": "Partial phrases are valid clues",
-      "body": "'Cat and 🐭' looks playful rather than literal, but it maps cleanly to the fixed idiom 'cat-and-mouse'. Pinpoint sometimes mixes words with visual symbols to point at a set phrase. If a clue feels half-written, check whether an icon is supplying the missing word."
-    }
-  ],
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #681?",
-      "answer": "The answer to Puzzle #681 is 'Words that come before mouse'. The five clues — House, Field, Optical, Mickey, and Cat and 🐭 — all form recognizable phrases when the word mouse follows them."
-    },
-    {
-      "question": "Why is 'Cat and 🐭' shown that way?",
-      "answer": "The target phrase is 'cat-and-mouse', a fixed English idiom meaning a pursuit game. The clue uses the mouse icon as a visual shortcut for the missing word, so the phrase clicks immediately once you test mouse across the board."
-    },
-    {
-      "question": "Which clue is easiest to solve first on this board?",
-      "answer": "Optical is the most specific anchor. 'Optical mouse' is the standard product name for the common computer peripheral, so it resolves almost immediately and gives you a clear suffix to test against the remaining clues."
+      "title": "Icons and symbols may complete fixed idioms",
+      "body": "Cat and the mouse icon look playful, but they still point to the exact phrase cat-and-mouse rather than to a separate theme."
     }
   ],
   "display": {
-    "connectorSummary": "a phrase pattern built around mouse",
+    "connectorSummary": "a phrase board built around mouse across animals, tech, pop culture, and idiom",
+    "fastStrategy": "If the clues seem to belong to completely different subjects, test a shared ending word that can bridge modern product terms and older common phrases.",
     "clueTableRows": [
       {
         "clue": "House",
-        "examplePhrase": "House mouse",
-        "connectionExplained": "House mouse is a common household rodent — a familiar phrase that confirms the pattern early."
+        "examplePhrase": "house mouse",
+        "connectionExplained": "\"House mouse\" fits because it is a common animal phrase and an easy early confirmation once the connector appears."
       },
       {
         "clue": "Field",
-        "examplePhrase": "Field mouse",
-        "connectionExplained": "Field mouse refers to small rodents found in open countryside; the compound is a real species name."
+        "examplePhrase": "field mouse",
+        "connectionExplained": "\"Field mouse\" helps because it proves the answer works in biology as well as in pop culture and technology."
       },
       {
         "clue": "Optical",
-        "examplePhrase": "Optical mouse",
-        "connectionExplained": "Optical mouse is the standard name for the computer peripheral that uses light sensors instead of a rolling ball."
+        "examplePhrase": "optical mouse",
+        "connectionExplained": "\"Optical mouse\" is the turning clue because it is a very specific product phrase that makes mouse appear quickly."
       },
       {
         "clue": "Mickey",
         "examplePhrase": "Mickey Mouse",
-        "connectionExplained": "Mickey Mouse is the Disney cartoon character created in 1928 — one of the most recognized compound names in the world."
+        "connectionExplained": "\"Mickey Mouse\" confirms the answer because it is one of the best-known fixed names in the language."
       },
       {
         "clue": "Cat and 🐭",
-        "examplePhrase": "Cat-and-mouse",
-        "connectionExplained": "Cat-and-mouse is a fixed English idiom for a pursuit or power game; the mouse icon completes the visual clue and points straight to the idiom."
+        "examplePhrase": "cat-and-mouse",
+        "connectionExplained": "\"Cat-and-mouse\" completes the set with an idiom, showing the connector works across literal phrases and figurative ones."
       }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #681?",
+      "answer": "The answer is Words that come before mouse because House, Field, Optical, Mickey, and Cat and 🐭 all form familiar phrases once mouse is added."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #681?",
+      "answer": "The connection is one shared ending word. The board resolves into house mouse, field mouse, optical mouse, Mickey Mouse, and cat-and-mouse."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #681?",
+      "answer": "Optical is the turning clue because optical mouse is the most specific and least flexible phrase on the board, so it reveals the shared ending fastest."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "House and Field can make the board feel like a wildlife set at first, but Mickey keeps it from staying there. The puzzle feels connected, just not by one obvious topic.",
+    "falseStarts": [
+      "small animal clues",
+      "mixed culture and wildlife references"
+    ],
+    "whyFalseStartPlausible": [
+      "House and Field both support the animal reading early, so it feels reasonable before the tech clue appears.",
+      "Mickey and Cat and 🐭 make the set feel playful, but that broad read still does not explain Optical."
+    ],
+    "breakingClue": "Optical",
+    "pivot": "Optical changed the solve because optical mouse is such a fixed everyday phrase. Once mouse surfaced there, the rest of the clues all converted into straightforward phrase completions.",
+    "fullBoardConfirmation": "Mickey Mouse and cat-and-mouse are especially helpful after the pivot because they show the connector works in both proper names and idioms. That makes mouse feel fully secure."
+  },
+  "turningPoint": {
+    "clue": "Optical",
+    "whyDecisive": "Optical is decisive because optical mouse is the most specific and product-like phrase on the board, making the connector appear quickly.",
+    "whatChangedAfterIt": "Once optical mouse surfaced, House, Field, Mickey, and Cat and 🐭 all re-read as clean mouse phrases instead of unrelated subject clues."
+  },
+  "clueRows": [
+    {
+      "clue": "House",
+      "surfaceMisread": "small animal clues",
+      "resolvedPhraseOrMember": "house mouse",
+      "nonObviousWhy": "\"House mouse\" fits because it is a common animal phrase and an easy early confirmation once the connector appears.",
+      "searchableContext": "house mouse"
+    },
+    {
+      "clue": "Field",
+      "surfaceMisread": "small animal clues",
+      "resolvedPhraseOrMember": "field mouse",
+      "nonObviousWhy": "\"Field mouse\" helps because it proves the answer works in biology as well as in pop culture and technology.",
+      "searchableContext": "field mouse"
+    },
+    {
+      "clue": "Optical",
+      "surfaceMisread": "small animal clues",
+      "resolvedPhraseOrMember": "optical mouse",
+      "nonObviousWhy": "\"Optical mouse\" is the turning clue because it is a very specific product phrase that makes mouse appear quickly.",
+      "searchableContext": "optical mouse"
+    },
+    {
+      "clue": "Mickey",
+      "surfaceMisread": "small animal clues",
+      "resolvedPhraseOrMember": "Mickey Mouse",
+      "nonObviousWhy": "\"Mickey Mouse\" confirms the answer because it is one of the best-known fixed names in the language.",
+      "searchableContext": "Mickey Mouse"
+    },
+    {
+      "clue": "Cat and 🐭",
+      "surfaceMisread": "small animal clues",
+      "resolvedPhraseOrMember": "cat-and-mouse",
+      "nonObviousWhy": "\"Cat-and-mouse\" completes the set with an idiom, showing the connector works across literal phrases and figurative ones.",
+      "searchableContext": "cat-and-mouse"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #681?",
+      "answer": "The answer is Words that come before mouse because House, Field, Optical, Mickey, and Cat and 🐭 all form familiar phrases once mouse is added.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #681?",
+      "answer": "The connection is one shared ending word. The board resolves into house mouse, field mouse, optical mouse, Mickey Mouse, and cat-and-mouse.",
+      "tiedClue": "Optical"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #681?",
+      "answer": "Optical is the turning clue because optical mouse is the most specific and least flexible phrase on the board, so it reveals the shared ending fastest.",
+      "tiedClue": "Optical"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a cross-domain mouse board where one modern tech term unlocks animal phrases and an idiom",
+    "relatedEntities": [
+      "house mouse",
+      "field mouse",
+      "optical mouse",
+      "Mickey Mouse",
+      "cat-and-mouse"
+    ],
+    "doNotRepeatPatterns": [
+      "a cross-domain mouse board where one modern tech term unlocks animal phrases and an idiom",
+      "Cross-domain boards often hide a simple shared word",
+      "The most specific modern term can unlock older phrases",
+      "Optical is decisive because optical mouse is the most specific product phrase on the board",
+      "optical mouse",
+      "cat-and-mouse"
     ]
   }
 }

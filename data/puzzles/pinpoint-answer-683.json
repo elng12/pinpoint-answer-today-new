@@ -1,54 +1,206 @@
 {
+  "puzzleNumber": 683,
   "slug": "pinpoint-answer-683",
+  "publishDate": "2026-03-14",
+  "isoDate": "2026-03-14",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #683 feels broader than it really is because the opening clues can point in several weak directions at once. \"Start\" and \"Positive\" do not immediately suggest the same family, and \"Alarm\" could still fit a range of common compounds. That is why a vague category like dishonesty or opposites can feel tempting early on. The clue that really sharpens the board is \"Advertising (don’t believe it!),\" because the parenthetical hint points directly toward deception and makes one specific phrase much easier to see.",
-    "From there, the puzzle resolves as a phrase-pattern board built around false. False start, false positive, false alarm, false tooth, and false advertising all work as natural readings, and that tighter phrase logic explains the full set better than a broad label like lies or untrue things. Once the shared word is visible, the earlier clues stop feeling disconnected and start feeling exact."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Start",
+    "Positive",
+    "Alarm",
+    "Tooth",
+    "Advertising (don’t believe it!)"
   ],
-  "solutionNarrative": [
-    "I did not have a clean category from the first clue. \"Start\" felt wide open, and once \"Positive\" appeared I briefly drifted toward vague contrast ideas and other broad word-pair patterns. Those guesses were not ridiculous, but they never gave me a satisfying way to handle the whole set at once, especially once the clue about advertising showed up with a parenthetical nudge toward mistrust.",
-    "The turn came when I let that last clue lead the solve instead of treating it like a decorative extra. Once I read the board through false, the earlier clues stopped feeling abstract and started reading like familiar phrases: false start, false positive, false alarm, false tooth, and false advertising. At that point, the final connector was the only reading that explained all five clues cleanly without stretching."
-  ],
+  "answer": "Words that come after \"false\"",
+  "category": "Words that come after \"false\"",
   "wordHints": {
-    "Start": "\"False start\" is one of the clearest phrase matches in the set, so this clue works once the board shifts from broad categories to exact phrase logic.",
-    "Positive": "\"False positive\" points to a familiar testing phrase, which helps confirm that the board is built from natural expressions rather than loose associations.",
-    "Alarm": "\"False alarm\" is the phrase that makes the pattern feel everyday and recognizable instead of niche.",
-    "Tooth": "\"False tooth\" keeps the same structure going, showing that the answer is about what follows the shared word rather than one narrow topic area.",
-    "Advertising (don’t believe it!)": "\"False advertising\" is the clue that really tightens the set, because the parenthetical hint pushes you toward deception and away from broader guesses."
+    "Start": "\"False start\" is a familiar sports and timing phrase, but it still does not name the shared word by itself.",
+    "Positive": "\"False positive\" keeps the pattern alive because it is a very common testing phrase.",
+    "Alarm": "\"False alarm\" adds another everyday expression and helps the board feel more phrase-based than thematic.",
+    "Tooth": "\"False tooth\" works because the clue belongs to the same structure even though it comes from a different context.",
+    "Advertising (don’t believe it!)": "\"False advertising\" is the turning clue because the parenthetical hint makes deception explicit and points strongly to false."
   },
   "spoilerHints": {
-    "Start": "Think of a familiar phrase from sports or timing, not just a generic beginning.",
-    "Positive": "Read this through testing or diagnosis rather than mood or personality.",
-    "Alarm": "This clue works as a very common warning phrase, which helps lock the pattern in.",
-    "Tooth": "Do not stay in biology. Think about a replacement or artificial version.",
-    "Advertising (don’t believe it!)": "The parenthetical hint points toward deception and gives away the shared word more than the other clues do."
+    "Start": "Think of a common phrase from racing or timing, not just a generic beginning.",
+    "Positive": "This clue works best through testing or diagnosis language.",
+    "Alarm": "A very common phrase is hiding here, which helps lock the pattern in.",
+    "Tooth": "Do not stay in dentistry alone. Treat this as one more phrase completion.",
+    "Advertising (don’t believe it!)": "The parenthetical hint is doing real work here. It points toward the shared word more directly than the earlier clues do."
   },
+  "articleBlocks": [
+    "Start and Positive both feel open-ended at first, which makes the board seem wider than it really is.",
+    "Alarm helps, but the set can still look like a loose collection of warning or mistake words if you jump too early.",
+    "Advertising (don’t believe it!) is the clue that sharpens everything.",
+    "That parenthetical pushes you straight toward false advertising, which finally makes false the shared word instead of just one possible guess.",
+    "Once that happens, false start, false positive, false alarm, and false tooth all read like natural phrases instead of scattered clues.",
+    "The answer was Words that come after \"false\".",
+    "This board works because the earlier clues sound broad enough to invite weak themes until one clue names the real emotional tone behind the pattern."
+  ],
+  "fullAnalysis": [
+    "Start and Positive both feel open-ended at first, which makes the board seem wider than it really is.",
+    "Alarm helps, but the set can still look like a loose collection of warning or mistake words if you jump too early.",
+    "Advertising (don’t believe it!) is the turning clue because the parenthetical hint points directly toward false advertising.",
+    "Once false appears, false start, false positive, false alarm, and false tooth all become clean, familiar phrases that explain the board without forcing any clue.",
+    "The answer was Words that come after \"false\".",
+    "The puzzle is satisfying because the final clue does more than confirm. It gives the emotional and semantic nudge that the earlier clues were missing."
+  ],
+  "solutionNarrative": [
+    "Start and Positive showed me that the board probably wanted a shared word, but they did not tell me which one. Alarm added another strong phrase candidate, yet the connector still was not fixed enough to trust.",
+    "Advertising (don’t believe it!) solved that. Once false advertising landed, the board stopped feeling like a vague cluster of mistakes or warnings and became a clean phrase list with false start, false positive, false alarm, and false tooth."
+  ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for the clue that narrows the pattern before locking in a category."
+      "title": "Parentheticals often reveal the real connector",
+      "body": "When one clue arrives with an extra nudge, it is often there to name the exact phrase logic hiding behind broader earlier clues."
     },
     {
-      "title": "The clearest clue often arrives late",
-      "body": "Here, the advertising clue does a lot of hidden work. Once one clue produces a precise natural phrase, re-check the earlier clues under that same frame."
+      "title": "Broad emotional themes are often traps",
+      "body": "Words like start, positive, and alarm can invite big umbrella readings, but Pinpoint usually wants the tighter phrase answer."
     },
     {
-      "title": "Prefer exact phrase logic over broad topic logic",
-      "body": "A strong Pinpoint answer should explain every clue as a natural phrase, not just as a loose thematic association."
+      "title": "A late clue can make earlier phrases feel obvious",
+      "body": "False advertising matters because it turns four broad clues into four very natural expressions almost immediately."
     }
   ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared opening word",
+    "fastStrategy": "If several clues can fit a broad theme, wait for the clue that sounds most like a full expression with emotional or semantic shading built in.",
+    "clueTableRows": [
+      {
+        "clue": "Start",
+        "examplePhrase": "false start",
+        "connectionExplained": "\"False start\" is a familiar sports and timing phrase, but it still does not name the shared word by itself."
+      },
+      {
+        "clue": "Positive",
+        "examplePhrase": "false positive",
+        "connectionExplained": "\"False positive\" keeps the pattern alive because it is a very common testing phrase."
+      },
+      {
+        "clue": "Alarm",
+        "examplePhrase": "false alarm",
+        "connectionExplained": "\"False alarm\" adds another everyday expression and helps the board feel more phrase-based than thematic."
+      },
+      {
+        "clue": "Tooth",
+        "examplePhrase": "false tooth",
+        "connectionExplained": "\"False tooth\" works because the clue belongs to the same structure even though it comes from a different context."
+      },
+      {
+        "clue": "Advertising (don’t believe it!)",
+        "examplePhrase": "false advertising",
+        "connectionExplained": "\"False advertising\" is the turning clue because the parenthetical hint makes deception explicit and points strongly to false."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #683?",
-      "answer": "The answer is Words that come after \"false\" because that reading explains the full set cleanly, including the advertising clue."
+      "answer": "The answer is Words that come after \"false\" because Start, Positive, Alarm, Tooth, and Advertising all form natural phrases once false is added."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #683?",
-      "answer": "The connection is a phrase pattern built around false. Each clue resolves as a familiar expression, and the last clue gives the strongest push toward that shared word."
+      "answer": "The connection is one shared opening word. The board resolves into false start, false positive, false alarm, false tooth, and false advertising."
     },
     {
-      "question": "Which clue really unlocks the set?",
-      "answer": "Advertising (don’t believe it!) is the real turning point because the parenthetical hint makes deception explicit and helps the earlier clues snap into the same phrase pattern."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #683?",
+      "answer": "Advertising (don’t believe it!) is the turning clue because the parenthetical hint pushes directly toward false advertising, which makes the shared word much easier to trust."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Start, Positive, and Alarm all look like they could support a broad theme around mistakes, signals, or wrong turns. That is close enough to feel promising, but too vague to solve the board cleanly.",
+    "falseStarts": [
+      "mistakes or errors",
+      "warning-related words"
+    ],
+    "whyFalseStartPlausible": [
+      "Start, Positive, and Alarm all carry enough emotional or practical overlap to support a loose theme for a moment.",
+      "That broad idea still does not explain why Tooth belongs there, which is the sign that the board wants phrases instead."
+    ],
+    "breakingClue": "Advertising (don’t believe it!)",
+    "pivot": "Advertising changed the solve because the parenthetical hint makes false advertising feel immediate. Once false surfaced there, the earlier clues all snapped into place as familiar phrases.",
+    "fullBoardConfirmation": "False positive and false alarm are especially helpful after the pivot because they are such common expressions. That makes the connector feel exact, not just plausible."
+  },
+  "turningPoint": {
+    "clue": "Advertising (don’t believe it!)",
+    "whyDecisive": "This clue is decisive because the parenthetical hint points directly to false advertising and reveals the shared opening word.",
+    "whatChangedAfterIt": "Once false advertising appeared, Start, Positive, Alarm, and Tooth all re-read as clean phrase completions instead of broad theme clues."
+  },
+  "clueRows": [
+    {
+      "clue": "Start",
+      "surfaceMisread": "mistakes or errors",
+      "resolvedPhraseOrMember": "false start",
+      "nonObviousWhy": "\"False start\" is a familiar sports and timing phrase, but it still does not name the shared word by itself.",
+      "searchableContext": "false start"
+    },
+    {
+      "clue": "Positive",
+      "surfaceMisread": "mistakes or errors",
+      "resolvedPhraseOrMember": "false positive",
+      "nonObviousWhy": "\"False positive\" keeps the pattern alive because it is a very common testing phrase.",
+      "searchableContext": "false positive"
+    },
+    {
+      "clue": "Alarm",
+      "surfaceMisread": "mistakes or errors",
+      "resolvedPhraseOrMember": "false alarm",
+      "nonObviousWhy": "\"False alarm\" adds another everyday expression and helps the board feel more phrase-based than thematic.",
+      "searchableContext": "false alarm"
+    },
+    {
+      "clue": "Tooth",
+      "surfaceMisread": "mistakes or errors",
+      "resolvedPhraseOrMember": "false tooth",
+      "nonObviousWhy": "\"False tooth\" works because the clue belongs to the same structure even though it comes from a different context.",
+      "searchableContext": "false tooth"
+    },
+    {
+      "clue": "Advertising (don’t believe it!)",
+      "surfaceMisread": "mistakes or errors",
+      "resolvedPhraseOrMember": "false advertising",
+      "nonObviousWhy": "\"False advertising\" is the turning clue because the parenthetical hint makes deception explicit and points strongly to false.",
+      "searchableContext": "false advertising"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #683?",
+      "answer": "The answer is Words that come after \"false\" because Start, Positive, Alarm, Tooth, and Advertising all form natural phrases once false is added.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #683?",
+      "answer": "The connection is one shared opening word. The board resolves into false start, false positive, false alarm, false tooth, and false advertising.",
+      "tiedClue": "Advertising (don’t believe it!)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #683?",
+      "answer": "Advertising (don’t believe it!) is the turning clue because the parenthetical hint pushes directly toward false advertising, which makes the shared word much easier to trust.",
+      "tiedClue": "Advertising (don’t believe it!)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a phrase board where one parenthetical clue exposes the emotional tone behind the shared word",
+    "relatedEntities": [
+      "false start",
+      "false positive",
+      "false alarm",
+      "false tooth",
+      "false advertising"
+    ],
+    "doNotRepeatPatterns": [
+      "a phrase board where one parenthetical clue exposes the emotional tone behind the shared word",
+      "Parentheticals often reveal the real connector",
+      "Broad emotional themes are often traps",
+      "The parenthetical hint points directly to false advertising",
+      "false positive",
+      "false advertising"
+    ]
+  }
 }

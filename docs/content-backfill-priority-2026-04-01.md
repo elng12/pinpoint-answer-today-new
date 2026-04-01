@@ -45,4 +45,5 @@
 - Opening-paragraph backfill for `699-680` was verified complete on `2026-04-01`.
 - Content-depth sample pass was completed for `699`, `691`, `689`, `685`, and `680` on `2026-04-01`.
 - Content-depth batch pass was completed for `698`, `697`, `696`, `695`, `694`, `693`, `692`, `690`, `688`, and `687` on `2026-04-01`.
-- Remaining pages in this first 20-page recency queue that still need the richer content pass are `686`, `684`, `683`, `682`, and `681`.
+- Content-depth closing pass was completed for `686`, `684`, `683`, `682`, and `681` on `2026-04-01`.
+- The first 20-page recency queue now has both the opening-paragraph fix and the richer content pass completed end to end.

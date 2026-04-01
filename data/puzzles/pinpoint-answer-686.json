@@ -1,49 +1,206 @@
 {
+  "puzzleNumber": 686,
   "slug": "pinpoint-answer-686",
+  "publishDate": "2026-03-17",
+  "isoDate": "2026-03-17",
   "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Mountain",
+    "Electric",
+    "Recumbent",
+    "Tandem",
+    "Ten-Speed"
+  ],
+  "answer": "Types of bicycle",
+  "category": "Types of bicycle",
+  "wordHints": {
+    "Mountain": "Mountain fits because mountain bike is one of the most familiar named bicycle categories.",
+    "Electric": "Electric matters because e-bike language makes the cycling frame plausible even if the word could apply to many products.",
+    "Recumbent": "Recumbent helps because recumbent bike is a distinctive cycling term, not just a broad adjective.",
+    "Tandem": "Tandem confirms the answer because tandem bicycle is a classic named format with two riders.",
+    "Ten-Speed": "Ten-speed is the turning clue because ten-speed bike is such a fixed bicycle phrase that it pulls the whole board into cycling."
+  },
+  "spoilerHints": {
+    "Mountain": "Read this as a named vehicle subtype, not just as terrain.",
+    "Electric": "This clue is broader on its own, so use it only after a more specific clue narrows the board.",
+    "Recumbent": "This is jargon from one particular activity or product world.",
+    "Tandem": "Think of a well-known multi-person version of the same object.",
+    "Ten-Speed": "This is the clue that makes the cycling read hardest to ignore."
+  },
+  "articleBlocks": [
+    "Mountain and Electric both feel like they could belong to a lot of different vehicles at first, so the board starts broader than it really is.",
+    "Recumbent helps, but it still leaves room for exercise equipment or other wheeled machines if you are not careful.",
+    "Ten-Speed is the clue that really tightens the set.",
+    "Ten-speed bike is such a fixed phrase that it finally makes the category feel more like cycling than transportation in general.",
+    "Once that happens, Mountain, Electric, Recumbent, and Tandem all settle naturally as bicycle types.",
+    "The answer was Types of bicycle.",
+    "The trick here is not that the clues are obscure. It is that several of them can live in a wider vehicle world until one clue forces the narrower read."
+  ],
   "fullAnalysis": [
-    "At first glance, Mountain, Electric, Recumbent do not suggest one clean pattern. The board only tightens once a later clue makes the shared category feel much more specific. That is why guesses like \"Kinds of vehicles\" can feel plausible at the start. The clue that changes the frame is \"Tandem\".",
-    "From there, reading them as bicycle explains the board more cleanly than broader labels. Once that frame clicks, names like Mountain, Electric, Recumbent stop feeling miscellaneous and start looking like members of one shelf. The clues could be interpreted in various ways, requiring careful consideration to identify the unifying theme. The specific jargon feels less common.",
-    "I did not have a clean category from the first clue. I initially drifted toward Brands of car, which felt plausible for a moment, but these clues are not associated with specific automotive brands. Focus on the world of cycling.",
-    "The turn came when I stopped treating tandem as just another item and asked what kind of source or title it was. Once I started reading them as bicycle, clues that had seemed broad started feeling like members of the same category, especially Mountain and Electric. That was the first point where one category explained the full set without forcing any exceptions."
+    "Mountain and Electric both feel like they could belong to a lot of different vehicles at first, so the board starts broader than it really is.",
+    "Recumbent helps, but it still leaves room for exercise equipment or other wheeled machines if you are not careful.",
+    "Ten-Speed is the turning clue because ten-speed bike is such a fixed phrase that it pushes the set directly into cycling.",
+    "Once the bicycle frame appears, Mountain bike, Electric bike, Recumbent bike, and Tandem bicycle all read cleanly without any stretching.",
+    "The answer was Types of bicycle.",
+    "What makes the puzzle work is that the early clues sound like modifiers first and bike types second, so the exact category arrives a little later than it seems it should."
   ],
   "solutionNarrative": [
-    "I did not have a clean category from the first clue. I initially drifted toward Brands of car, which felt plausible for a moment, but these clues are not associated with specific automotive brands. Focus on the world of cycling.",
-    "The turn came when I stopped treating tandem as just another item and asked what kind of source or title it was. Once I started reading them as bicycle, clues that had seemed broad started feeling like members of the same category, especially Mountain and Electric. That was the first point where one category explained the full set without forcing any exceptions."
+    "Mountain and Electric first pushed me toward vehicles in general, and Recumbent did not fully break that. The set felt related, but still too wide to trust as one exact category.",
+    "Ten-Speed solved that problem. Once ten-speed bike came to mind, the board stopped feeling like general transportation language and started behaving like one clean cycling list with mountain bikes, electric bikes, recumbent bikes, and tandem bicycles."
   ],
-  "wordHints": {
-    "Mountain": "Mountain bikes are designed for off-road cycling on rugged terrain.",
-    "Electric": "Electric bikes use a motor to assist the rider, making cycling easier.",
-    "Recumbent": "Recumbent bikes place the rider in a reclined position for comfort and aerodynamics.",
-    "Tandem": "Tandem bikes are designed for two riders, one behind the other.",
-    "Ten-Speed": "Ten-speed bikes feature a range of gears for different terrains and speeds."
-  },
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+      "title": "Modifier-heavy boards often need one fixed phrase",
+      "body": "When several clues are broad adjectives or descriptors, wait for the clue that forms the most exact named term."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
-      "body": "Tandem is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "Vehicle boards often hide inside product language",
+      "body": "Electric and mountain can describe lots of things, so a more specific clue like ten-speed is what keeps the category from staying too broad."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
-      "body": "When problem-solving, consider the literal and intended meanings of each element to reveal the core connection."
+      "title": "Technical jargon can be the real anchor",
+      "body": "Recumbent and ten-speed both matter because they feel more native to cycling than to transportation in general."
     }
   ],
+  "display": {
+    "connectorSummary": "named bicycle categories hiding inside broad vehicle modifiers",
+    "fastStrategy": "If several clues can describe many products, look for the one clue that forms the most fixed term in one specific hobby or product world.",
+    "clueTableRows": [
+      {
+        "clue": "Mountain",
+        "examplePhrase": "mountain bike",
+        "connectionExplained": "Mountain fits because mountain bike is one of the most familiar named bicycle categories."
+      },
+      {
+        "clue": "Electric",
+        "examplePhrase": "electric bike",
+        "connectionExplained": "Electric matters because e-bike language makes the cycling frame plausible even if the word could apply to many products."
+      },
+      {
+        "clue": "Recumbent",
+        "examplePhrase": "recumbent bike",
+        "connectionExplained": "Recumbent helps because recumbent bike is a distinctive cycling term, not just a broad adjective."
+      },
+      {
+        "clue": "Tandem",
+        "examplePhrase": "tandem bicycle",
+        "connectionExplained": "Tandem confirms the answer because tandem bicycle is a classic named format with two riders."
+      },
+      {
+        "clue": "Ten-Speed",
+        "examplePhrase": "ten-speed bike",
+        "connectionExplained": "Ten-speed is the turning clue because ten-speed bike is such a fixed bicycle phrase that it pulls the whole board into cycling."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #686?",
-      "answer": "The answer is \"Types of bicycle\" because that reading explains the full set cleanly, including the final clue."
+      "answer": "The answer is \"Types of bicycle\" because Mountain, Electric, Recumbent, Tandem, and Ten-Speed all resolve cleanly as bicycle types once the cycling frame appears."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #686?",
-      "answer": "The connection is that all five clues point to recognizable types of bicycle. One later clue makes the category feel much more obvious."
+      "answer": "The connection is cycling. Each clue names a recognizable type of bike rather than a broad vehicle category."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #686?",
-      "answer": "Tandem is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues could be interpreted in various ways, requiring careful consideration to identify the unifying theme. The specific jargon feels less common."
+      "answer": "Ten-Speed is the turning clue because ten-speed bike is the most fixed bicycle phrase on the board and forces the whole set into cycling."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Mountain and Electric make a broad vehicle answer feel plausible at first, and Recumbent still leaves room for exercise or mobility equipment. That is why the set feels related before it feels exact.",
+    "falseStarts": [
+      "types of vehicles",
+      "wheeled equipment"
+    ],
+    "whyFalseStartPlausible": [
+      "Mountain and Electric can both describe cars, scooters, or other transportation options, so the board feels wider than it is at first.",
+      "Recumbent supports a broader equipment read until a more cycling-specific clue appears."
+    ],
+    "breakingClue": "Ten-Speed",
+    "pivot": "Ten-Speed changed the solve because ten-speed bike is such a fixed phrase that the category finally stopped floating. After that, Mountain bike, Electric bike, Recumbent bike, and Tandem bicycle all became straightforward.",
+    "fullBoardConfirmation": "Tandem helps confirm the answer after the pivot because tandem bicycle is another very natural term. That makes Types of bicycle cleaner than any broad vehicle label."
+  },
+  "turningPoint": {
+    "clue": "Ten-Speed",
+    "whyDecisive": "Ten-Speed is decisive because ten-speed bike is the least flexible and most bicycle-specific phrase on the board.",
+    "whatChangedAfterIt": "Once ten-speed bike surfaced, Mountain, Electric, Recumbent, and Tandem all re-read as named bicycle types instead of broad vehicle modifiers."
+  },
+  "clueRows": [
+    {
+      "clue": "Mountain",
+      "surfaceMisread": "types of vehicles",
+      "resolvedPhraseOrMember": "mountain bike",
+      "nonObviousWhy": "Mountain fits because mountain bike is one of the most familiar named bicycle categories.",
+      "searchableContext": "mountain bike"
+    },
+    {
+      "clue": "Electric",
+      "surfaceMisread": "types of vehicles",
+      "resolvedPhraseOrMember": "electric bike",
+      "nonObviousWhy": "Electric matters because e-bike language makes the cycling frame plausible even if the word could apply to many products.",
+      "searchableContext": "electric bike"
+    },
+    {
+      "clue": "Recumbent",
+      "surfaceMisread": "types of vehicles",
+      "resolvedPhraseOrMember": "recumbent bike",
+      "nonObviousWhy": "Recumbent helps because recumbent bike is a distinctive cycling term, not just a broad adjective.",
+      "searchableContext": "recumbent bike"
+    },
+    {
+      "clue": "Tandem",
+      "surfaceMisread": "types of vehicles",
+      "resolvedPhraseOrMember": "tandem bicycle",
+      "nonObviousWhy": "Tandem confirms the answer because tandem bicycle is a classic named format with two riders.",
+      "searchableContext": "tandem bicycle"
+    },
+    {
+      "clue": "Ten-Speed",
+      "surfaceMisread": "types of vehicles",
+      "resolvedPhraseOrMember": "ten-speed bike",
+      "nonObviousWhy": "Ten-speed is the turning clue because ten-speed bike is such a fixed bicycle phrase that it pulls the whole board into cycling.",
+      "searchableContext": "ten-speed bike"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #686?",
+      "answer": "The answer is \"Types of bicycle\" because Mountain, Electric, Recumbent, Tandem, and Ten-Speed all resolve cleanly as bicycle types once the cycling frame appears.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #686?",
+      "answer": "The connection is cycling. Each clue names a recognizable type of bike rather than a broad vehicle category.",
+      "tiedClue": "Ten-Speed"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #686?",
+      "answer": "Ten-Speed is the turning clue because ten-speed bike is the most fixed bicycle phrase on the board and forces the whole set into cycling.",
+      "tiedClue": "Ten-Speed"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a cycling board hidden inside broad transportation modifiers until one fixed bike term takes over",
+    "relatedEntities": [
+      "mountain bike",
+      "electric bike",
+      "recumbent bike",
+      "tandem bicycle",
+      "ten-speed bike"
+    ],
+    "doNotRepeatPatterns": [
+      "a cycling board hidden inside broad transportation modifiers until one fixed bike term takes over",
+      "Modifier-heavy boards often need one fixed phrase",
+      "Vehicle boards often hide inside product language",
+      "Ten-Speed is decisive because ten-speed bike is the least flexible bicycle phrase",
+      "recumbent bike",
+      "ten-speed bike"
+    ]
+  }
 }

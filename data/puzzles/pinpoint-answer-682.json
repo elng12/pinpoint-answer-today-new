@@ -1,54 +1,205 @@
 {
+  "puzzleNumber": 682,
   "slug": "pinpoint-answer-682",
+  "publishDate": "2026-03-13",
+  "isoDate": "2026-03-13",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #682 feels messy on purpose because the clues come from very different corners of culture. \"Ball-jointed\" suggests collector craftsmanship, \"Bobblehead\" feels like novelty merchandise, \"Voodoo\" points toward ritual symbolism, and \"Russian nesting (Matryoshka)\" sounds more like folk art than a toy aisle category. That spread is what makes the board feel wider than it really is. The clue that sharpens the set fastest is \"Barbie,\" because once you read that as a doll clue instead of only a brand name, the whole board starts to pull toward the same family.",
-    "From there, the puzzle resolves as a category board about dolls. Ball-jointed doll, bobblehead doll, voodoo doll, matryoshka doll, and Barbie doll all work as natural readings, and that cleaner category fit explains the set better than broader labels like toys, collectibles, or figurines. Once the doll frame is visible, the earlier clues stop feeling scattered and start reading like distinct varieties inside the same class."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Ball-jointed",
+    "Bobblehead",
+    "Voodoo",
+    "Russian nesting (Matryoshka)",
+    "Barbie"
   ],
-  "solutionNarrative": [
-    "I started with the broadest possible read and that immediately made the board feel fuzzy. \"Ball-jointed\" and \"Bobblehead\" could both live under collectibles, while \"Voodoo\" pushed me toward symbolic objects instead of toys. That made it easy to overthink the puzzle and chase categories that were technically adjacent but not precise enough to hold all five clues together.",
-    "The turn came when I let \"Barbie\" and \"Russian nesting (Matryoshka)\" do the organizing work. Once both clues were read through dolls rather than through branding or folk art alone, the rest of the board settled down quickly: ball-jointed doll, bobblehead doll, voodoo doll, matryoshka doll, and Barbie doll. At that point, \"Types of dolls\" was the only answer that explained the full set without forcing any clue into the wrong bucket."
-  ],
+  "answer": "Types of doll",
+  "category": "Types of doll",
   "wordHints": {
-    "Ball-jointed": "\"Ball-jointed doll\" is a standard collector term, so this clue fits once the board is read as a category of dolls rather than a single phrase trick.",
-    "Bobblehead": "\"Bobblehead doll\" works as a novelty-doll reading and helps widen the category beyond only traditional toy-store dolls.",
-    "Voodoo": "\"Voodoo doll\" is the clue that makes the set feel stranger than it really is, because it belongs through the doll idea even though it does not first read as a toy.",
-    "Russian nesting (Matryoshka)": "\"Matryoshka doll\" is one of the clearest category anchors on the board and helps confirm that the puzzle is asking for doll types, not collectibles in general.",
-    "Barbie": "\"Barbie doll\" is the fastest modern anchor for the whole set and usually the clue that makes the category feel most obvious."
+    "Ball-jointed": "\"Ball-jointed doll\" fits because it is a real collector term, not just a description of something that moves.",
+    "Bobblehead": "\"Bobblehead doll\" works because it keeps the category in figurines and dolls instead of a wider toys bucket.",
+    "Voodoo": "\"Voodoo doll\" is useful because it proves the board includes symbolic and cultural forms, not only commercial toys.",
+    "Russian nesting (Matryoshka)": "\"Matryoshka doll\" is the turning clue because it names a very specific traditional doll form rather than a generic collectible.",
+    "Barbie": "\"Barbie doll\" confirms the answer because it is the most mainstream and instantly recognizable member of the set."
   },
   "spoilerHints": {
-    "Ball-jointed": "Think of a specific collectible figure type, not just something that moves.",
-    "Bobblehead": "Treat this as a novelty figure clue, but keep the broader object type in mind.",
-    "Voodoo": "This clue belongs through representation, not through toys alone.",
-    "Russian nesting (Matryoshka)": "This is one of the strongest clues because it points to a famous traditional object with a very specific form.",
-    "Barbie": "This is the clue most likely to lock the category in, so use it as your anchor."
+    "Ball-jointed": "Think about a specific figure type from collecting culture, not just a moving object.",
+    "Bobblehead": "This clue belongs to novelty figures, but the category is narrower than collectibles in general.",
+    "Voodoo": "The clue works through representation and form, not through toys alone.",
+    "Russian nesting (Matryoshka)": "This is the clue that makes the object type feel precise instead of broad.",
+    "Barbie": "Use this as a mainstream anchor once the more unusual clues start to make sense."
   },
+  "articleBlocks": [
+    "Ball-jointed and Bobblehead make the board feel like collectibles at first, while Voodoo pushes it somewhere stranger.",
+    "That mix of hobby, novelty, and cultural clues is what makes the puzzle seem wider than it really is.",
+    "Russian nesting (Matryoshka) is the clue that tightens the set.",
+    "Once matryoshka doll appears, the object type becomes much clearer, and Ball-jointed doll, Bobblehead doll, Voodoo doll, and Barbie doll all line up under the same category.",
+    "The answer was Types of doll.",
+    "This board works because the clues come from very different cultural lanes, but they all point back to one physical object type."
+  ],
+  "fullAnalysis": [
+    "Ball-jointed and Bobblehead make the board feel like collectibles at first, while Voodoo pushes it somewhere stranger.",
+    "That mix of hobby, novelty, and cultural clues is what makes the puzzle seem wider than it really is.",
+    "Russian nesting (Matryoshka) is the turning clue because matryoshka doll is such a specific traditional form that it names the object class more cleanly than the earlier clues do.",
+    "After that, Ball-jointed doll, Bobblehead doll, Voodoo doll, and Barbie doll all become natural members of the same category rather than examples from neighboring worlds.",
+    "The answer was Types of doll.",
+    "The board is satisfying because it crosses folklore, collectibles, toys, and brands without ever leaving the same core object type."
+  ],
+  "solutionNarrative": [
+    "Ball-jointed and Bobblehead first made me think about collectibles, but Voodoo did not fit that neatly. The clues felt adjacent, not exact.",
+    "Russian nesting (Matryoshka) fixed that. Once matryoshka doll surfaced, the category stopped being about a vague collectible world and became about dolls, which made Barbie, Voodoo, Ball-jointed, and Bobblehead all read cleanly."
+  ],
   "lessons": [
     {
-      "title": "A category board can hide behind different cultural contexts",
-      "body": "When clues come from folklore, collectibles, brands, and craft traditions at the same time, it is often worth asking what physical object they all name before chasing abstract themes."
+      "title": "Cultural variety can hide a simple object category",
+      "body": "When clues come from brands, folklore, hobby terms, and novelty items, it is often worth asking what physical object they all still describe."
     },
     {
-      "title": "The most mainstream clue can stabilize the set",
-      "body": "Here, Barbie does quiet but important work. Once one clue gives you a familiar everyday example, re-check the stranger clues under that same category."
+      "title": "The most specific traditional term can beat the modern brand clue",
+      "body": "Barbie is familiar, but Matryoshka does more solving work because it reveals the object type instead of one famous example."
     },
     {
-      "title": "Prefer precise category fit over broad umbrella labels",
-      "body": "A strong Pinpoint answer should explain why each clue belongs inside the same class. \"Types of dolls\" is tighter and more useful than general labels like toys or collectibles."
+      "title": "Broader labels need a more precise object underneath",
+      "body": "Collectibles is close here, but dolls is tighter because it explains why every clue belongs."
     }
   ],
+  "display": {
+    "connectorSummary": "doll types drawn from folklore, collectors, novelty culture, and mainstream toys",
+    "fastStrategy": "If the clues come from very different cultural settings, test whether they still describe the same physical object rather than the same audience or market.",
+    "clueTableRows": [
+      {
+        "clue": "Ball-jointed",
+        "examplePhrase": "ball-jointed doll",
+        "connectionExplained": "\"Ball-jointed doll\" fits because it is a real collector term, not just a description of something that moves."
+      },
+      {
+        "clue": "Bobblehead",
+        "examplePhrase": "bobblehead doll",
+        "connectionExplained": "\"Bobblehead doll\" works because it keeps the category in figurines and dolls instead of a wider toys bucket."
+      },
+      {
+        "clue": "Voodoo",
+        "examplePhrase": "voodoo doll",
+        "connectionExplained": "\"Voodoo doll\" is useful because it proves the board includes symbolic and cultural forms, not only commercial toys."
+      },
+      {
+        "clue": "Russian nesting (Matryoshka)",
+        "examplePhrase": "matryoshka doll",
+        "connectionExplained": "\"Matryoshka doll\" is the turning clue because it names a very specific traditional doll form rather than a generic collectible."
+      },
+      {
+        "clue": "Barbie",
+        "examplePhrase": "Barbie doll",
+        "connectionExplained": "\"Barbie doll\" confirms the answer because it is the most mainstream and instantly recognizable member of the set."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #682?",
-      "answer": "The answer is \"Types of dolls\" because that reading cleanly accounts for ball-jointed dolls, bobblehead dolls, voodoo dolls, matryoshka dolls, and Barbie dolls."
+      "answer": "The answer is \"Types of doll\" because Ball-jointed, Bobblehead, Voodoo, Matryoshka, and Barbie all resolve as doll forms once the category is visible."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #682?",
-      "answer": "The connection is a category board about dolls. Each clue points to a recognizable doll type, even though the clues come from very different contexts such as toys, folklore, novelty items, and folk art."
+      "answer": "The connection is dolls. The clues span collectors, folklore, novelty items, and branded toys, but they all point to the same object type."
     },
     {
-      "question": "Which clue really unlocks the set?",
-      "answer": "Barbie is the fastest anchor because it makes the doll category feel obvious, while Russian nesting (Matryoshka) confirms that the board includes traditional forms as well as modern branded ones."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #682?",
+      "answer": "Russian nesting (Matryoshka) is the turning clue because matryoshka doll is the most precise object phrase on the board and makes the whole set read as dolls."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Ball-jointed, Bobblehead, and Barbie suggest collectibles or toys, but Voodoo makes that broad answer wobble. The board feels adjacent before it feels exact.",
+    "falseStarts": [
+      "collectibles",
+      "types of toys"
+    ],
+    "whyFalseStartPlausible": [
+      "Ball-jointed, Bobblehead, and Barbie all support that idea early, so the wrong umbrella answer feels close for a while.",
+      "That guess misses why Voodoo and Matryoshka belong, which is the sign that the board wants a tighter object category."
+    ],
+    "breakingClue": "Russian nesting (Matryoshka)",
+    "pivot": "Russian nesting (Matryoshka) changed the solve because matryoshka doll names the object type very cleanly. Once dolls came into focus there, the rest of the clues all behaved like members of the same class.",
+    "fullBoardConfirmation": "Barbie is especially helpful after the pivot because Barbie doll is such an immediate phrase. That makes Types of doll tighter than collectibles or toys."
+  },
+  "turningPoint": {
+    "clue": "Russian nesting (Matryoshka)",
+    "whyDecisive": "This clue is decisive because matryoshka doll is the most precise and least market-driven phrase on the board.",
+    "whatChangedAfterIt": "Once matryoshka doll appeared, Ball-jointed, Bobblehead, Voodoo, and Barbie all re-read as doll varieties instead of neighboring collectible categories."
+  },
+  "clueRows": [
+    {
+      "clue": "Ball-jointed",
+      "surfaceMisread": "collectibles",
+      "resolvedPhraseOrMember": "ball-jointed doll",
+      "nonObviousWhy": "\"Ball-jointed doll\" fits because it is a real collector term, not just a description of something that moves.",
+      "searchableContext": "ball-jointed doll"
+    },
+    {
+      "clue": "Bobblehead",
+      "surfaceMisread": "collectibles",
+      "resolvedPhraseOrMember": "bobblehead doll",
+      "nonObviousWhy": "\"Bobblehead doll\" works because it keeps the category in figurines and dolls instead of a wider toys bucket.",
+      "searchableContext": "bobblehead doll"
+    },
+    {
+      "clue": "Voodoo",
+      "surfaceMisread": "collectibles",
+      "resolvedPhraseOrMember": "voodoo doll",
+      "nonObviousWhy": "\"Voodoo doll\" is useful because it proves the board includes symbolic and cultural forms, not only commercial toys.",
+      "searchableContext": "voodoo doll"
+    },
+    {
+      "clue": "Russian nesting (Matryoshka)",
+      "surfaceMisread": "collectibles",
+      "resolvedPhraseOrMember": "matryoshka doll",
+      "nonObviousWhy": "\"Matryoshka doll\" is the turning clue because it names a very specific traditional doll form rather than a generic collectible.",
+      "searchableContext": "matryoshka doll"
+    },
+    {
+      "clue": "Barbie",
+      "surfaceMisread": "collectibles",
+      "resolvedPhraseOrMember": "Barbie doll",
+      "nonObviousWhy": "\"Barbie doll\" confirms the answer because it is the most mainstream and instantly recognizable member of the set.",
+      "searchableContext": "Barbie doll"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #682?",
+      "answer": "The answer is \"Types of doll\" because Ball-jointed, Bobblehead, Voodoo, Matryoshka, and Barbie all resolve as doll forms once the category is visible.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #682?",
+      "answer": "The connection is dolls. The clues span collectors, folklore, novelty items, and branded toys, but they all point to the same object type.",
+      "tiedClue": "Russian nesting (Matryoshka)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #682?",
+      "answer": "Russian nesting (Matryoshka) is the turning clue because matryoshka doll is the most precise object phrase on the board and makes the whole set read as dolls.",
+      "tiedClue": "Russian nesting (Matryoshka)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a doll category hidden behind folklore, brands, novelty items, and collector vocabulary",
+    "relatedEntities": [
+      "ball-jointed doll",
+      "bobblehead doll",
+      "voodoo doll",
+      "matryoshka doll",
+      "Barbie doll"
+    ],
+    "doNotRepeatPatterns": [
+      "a doll category hidden behind folklore, brands, novelty items, and collector vocabulary",
+      "Cultural variety can hide a simple object category",
+      "The most specific traditional term can beat the modern brand clue",
+      "Matryoshka doll is the most precise object phrase on the board",
+      "voodoo doll",
+      "matryoshka doll"
+    ]
+  }
 }
