@@ -47,5 +47,17 @@ export function SectionViewTracker({
     return () => observer.disconnect();
   }, [eventName, eventParams, threshold]);
 
-  return <span ref={markerRef} aria-hidden="true" className="sr-only" />;
+  return (
+    <span
+      ref={markerRef}
+      aria-hidden="true"
+      style={{
+        display: "block",
+        width: 1,
+        height: 1,
+        opacity: 0,
+        pointerEvents: "none",
+      }}
+    />
+  );
 }
