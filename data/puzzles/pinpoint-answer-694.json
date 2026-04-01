@@ -1,97 +1,206 @@
 {
+  "puzzleNumber": 694,
   "slug": "pinpoint-answer-694",
+  "publishDate": "2026-03-25",
+  "isoDate": "2026-03-25",
   "detailState": "published",
-  "articleBlocks": [
-    "This board becomes clear pretty quickly once you stop reading the clues as materials and start reading them as rock names.",
-    "Marble and Obsidian can feel a little broad at first because both words also show up in design or sculpture, but Sandstone pushes the board back toward geology.",
-    "From there, the rest settle fast: marble, obsidian, slate, granite, and sandstone all read cleanly as rock names.",
-    "The answer was \"Types of rocks\".",
-    "Once that answer is in place, the whole board reads like a straightforward list instead of a loose theme."
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Marble",
+    "Obsidian",
+    "Slate",
+    "Granite",
+    "Sandstone"
   ],
-  "fullAnalysis": [
-    "This board becomes clear pretty quickly once you stop reading the clues as materials and start reading them as rock names.",
-    "Marble and Obsidian can feel a little broad at first because both words also show up in design or sculpture, but Sandstone pushes the board back toward geology.",
-    "From there, the rest settle fast: marble rock, obsidian rock, slate rock, granite rock, and sandstone rock all point to the same category.",
-    "The answer was \"Types of rocks\".",
-    "Once that answer is in place, the whole board reads like a straightforward list instead of a loose theme."
-  ],
-  "solutionNarrative": [
-    "I first read Marble and Obsidian as materials you might see in design or home decor, not as rock names.",
-    "\"Sandstone\" was the clue that pulled me back toward geology because it sounds most natural as part of a rock list.",
-    "Once I made that shift, Marble, Obsidian, Slate, and Granite all settled into the same category without much resistance.",
-    "The answer was \"Types of rocks\"."
-  ],
+  "answer": "Types of rocks",
+  "category": "Types of rocks",
   "wordHints": {
-    "Marble": "\"Marble rock\" is a recognizable rock, so it gives the board a clean category fit.",
-    "Obsidian": "Once the board is read as rocks, \"Obsidian rock\" stops feeling broad and becomes an exact fit.",
-    "Slate": "\"Slate rock\" belongs in the same rock frame, which keeps the category specific instead of loose.",
-    "Granite": "\"Granite rock\" is a recognizable rock, so it gives the board a clean category fit.",
-    "Sandstone": "Once the board is read as rocks, \"Sandstone rock\" stops feeling broad and becomes an exact fit."
+    "Marble": "Marble fits because it is a rock, even though many solvers first meet it as tile, sculpture, or countertop material.",
+    "Obsidian": "Obsidian helps because it is a geologic term first, which pushes the board away from decor language.",
+    "Slate": "Slate confirms the answer because it works cleanly as a rock type and not just as roofing or classroom material.",
+    "Granite": "Granite keeps the geology answer honest because it is both a rock and a very familiar building material.",
+    "Sandstone": "Sandstone is the turning clue because it sounds most clearly geological and least like a design finish."
   },
   "spoilerHints": {
-    "Marble": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-    "Obsidian": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
-    "Slate": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
-    "Granite": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-    "Sandstone": "This is the clue that makes the category specific enough to verify across the whole board."
+    "Marble": "Do not stop at how this word appears in homes or sculpture. Ask what it is before it becomes a product.",
+    "Obsidian": "This clue leans more scientific than decorative.",
+    "Slate": "Try a geology reading before settling on building materials.",
+    "Granite": "This clue can mislead toward countertops, but it still belongs to the same natural category.",
+    "Sandstone": "This is the clue that makes the board feel most like geology instead of interior design."
   },
+  "articleBlocks": [
+    "Marble and Granite can make this board feel like countertops or building materials at first.",
+    "Slate keeps that read alive because it also appears in roofs, flooring, and design language.",
+    "Sandstone is the clue that tightens everything.",
+    "It sounds more geological than decorative, which makes the rest of the set easier to reread as natural rock names.",
+    "Obsidian then stops feeling like a stylish dark material and starts behaving like another clear member of the same category.",
+    "The answer was Types of rocks.",
+    "This is one of those boards where the trick is not the clues themselves, but the everyday contexts that make them feel broader than they are."
+  ],
+  "fullAnalysis": [
+    "Marble and Granite can make this board feel like countertops or building materials at first.",
+    "Slate keeps that read alive because it also appears in roofs, flooring, and design language.",
+    "Sandstone is the turning clue because it sounds most clearly geological and least like a polished home-finish word.",
+    "Once the board shifts back to geology, Marble, Obsidian, Slate, and Granite all become straightforward rock names instead of material categories.",
+    "The answer was Types of rocks.",
+    "The puzzle feels easier once the right frame appears, but the early misread works because several clues are common outside geology too."
+  ],
+  "solutionNarrative": [
+    "Marble, Slate, and Granite first pulled me toward construction or design materials, which is why the board felt broader than it really was. That read was not wrong in everyday language, but it was too surface-level for a clean Pinpoint solve.",
+    "Sandstone corrected that. It pointed back to geology, and once I followed that cue, Marble, Obsidian, Slate, and Granite all read as rock names first rather than as finished products or decor materials."
+  ],
   "lessons": [
     {
-      "title": "Wait for the clue that narrows the category",
-      "body": "When a few clues can also read as materials or finishes, look for the word that sounds most natural as part of a rock list."
+      "title": "Many category boards hide behind everyday use",
+      "body": "A clue can be a natural object first and a home or design material second."
     },
     {
-      "title": "Prefer exact fits over loose associations",
-      "body": "Marble and Obsidian can pull you toward design or decor first, but the stronger answer is the one that explains the full set directly."
+      "title": "The most scientific-sounding clue often restores the right frame",
+      "body": "Sandstone matters because it feels less like retail language and more like geology."
     },
     {
-      "title": "Re-check the earlier clues once the frame tightens",
-      "body": "After \"Sandstone\" points you toward geology, go back and make sure Marble, Obsidian, Slate, and Granite still hold under the same answer."
-    }
-  ],
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #694?",
-      "answer": "The answer is \"Types of rocks\". Each clue works as the name of a rock, and \"Sandstone\" makes that reading especially easy to verify."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #694?",
-      "answer": "The connection is rock names. The board looks a little broader at first because Marble and Obsidian also appear in non-geology contexts, but the full set settles once every clue is read as a rock."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
-      "answer": "\"Sandstone\" is the strongest anchor because it points most directly to geology and makes the category easier to test across the whole board."
+      "title": "Simple boards still need the narrowest lens",
+      "body": "Building materials is close, but Types of rocks is the cleaner category because it explains every clue at the source level."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on rocks",
-    "fastStrategy": "When a few clues can read as materials as well as rock names, look for the clue that points most directly to geology.",
+    "connectorSummary": "rock names that can be mistaken for design materials",
+    "fastStrategy": "If several clues look like materials or products, ask what they are before they become finished goods.",
     "clueTableRows": [
       {
         "clue": "Marble",
-        "examplePhrase": "Marble",
-        "connectionExplained": "Marble is both a design material and a rock name, but the geological reading fits the full board once Sandstone lands."
+        "examplePhrase": "marble rock",
+        "connectionExplained": "Marble fits because it is a rock, even though many solvers first meet it as tile, sculpture, or countertop material."
       },
       {
         "clue": "Obsidian",
-        "examplePhrase": "Obsidian",
-        "connectionExplained": "Obsidian points cleanly to geology once the board is read as rock names instead of decor or jewelry terms."
+        "examplePhrase": "obsidian rock",
+        "connectionExplained": "Obsidian helps because it is a geologic term first, which pushes the board away from decor language."
       },
       {
         "clue": "Slate",
-        "examplePhrase": "Slate",
-        "connectionExplained": "Slate works because it is an ordinary rock name, which keeps the set grounded in the same category."
+        "examplePhrase": "slate rock",
+        "connectionExplained": "Slate confirms the answer because it works cleanly as a rock type and not just as roofing or classroom material."
       },
       {
         "clue": "Granite",
-        "examplePhrase": "Granite",
-        "connectionExplained": "Granite reinforces the same geological reading, especially once the board stops being read as a materials list."
+        "examplePhrase": "granite rock",
+        "connectionExplained": "Granite keeps the geology answer honest because it is both a rock and a very familiar building material."
       },
       {
         "clue": "Sandstone",
-        "examplePhrase": "Sandstone",
-        "connectionExplained": "Sandstone is the clearest anchor in the set because it points straight to a rock category."
+        "examplePhrase": "sandstone rock",
+        "connectionExplained": "Sandstone is the turning clue because it sounds most clearly geological and least like a design finish."
       }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #694?",
+      "answer": "The answer is \"Types of rocks\" because every clue is a rock name once the board is read through geology instead of decor or construction."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #694?",
+      "answer": "The connection is geology. Marble, Obsidian, Slate, Granite, and Sandstone are all rock types, even if some of them are more familiar as materials in everyday life."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
+      "answer": "Sandstone is the turning clue because it sounds the most purely geological and helps the board move away from a vague building-materials read."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Marble, Granite, and Slate all make it easy to think about countertops, flooring, or building materials first. That surface reading feels plausible because the clues are common outside geology too.",
+    "falseStarts": [
+      "building materials",
+      "countertop materials"
+    ],
+    "whyFalseStartPlausible": [
+      "Marble, Granite, and Slate all strongly support that everyday read at the start.",
+      "That guess explains only some clues comfortably, while Sandstone and Obsidian pull the set back toward natural rock names."
+    ],
+    "breakingClue": "Sandstone",
+    "pivot": "Sandstone changed the solve because it sounds much more like geology than interior design. Once that clue reset the frame, the rest of the board became a straightforward list of rock types.",
+    "fullBoardConfirmation": "Obsidian especially helps after the pivot because it belongs naturally in geology language. At that point, Types of rocks is cleaner than any materials answer."
+  },
+  "turningPoint": {
+    "clue": "Sandstone",
+    "whyDecisive": "Sandstone is decisive because it is the least likely clue to be read as a polished product or home finish.",
+    "whatChangedAfterIt": "Once Sandstone pushed the board into geology, Marble, Obsidian, Slate, and Granite all re-read as rock names instead of material categories."
+  },
+  "clueRows": [
+    {
+      "clue": "Marble",
+      "surfaceMisread": "building materials",
+      "resolvedPhraseOrMember": "marble rock",
+      "nonObviousWhy": "Marble fits because it is a rock, even though many solvers first meet it as tile, sculpture, or countertop material.",
+      "searchableContext": "marble rock"
+    },
+    {
+      "clue": "Obsidian",
+      "surfaceMisread": "building materials",
+      "resolvedPhraseOrMember": "obsidian rock",
+      "nonObviousWhy": "Obsidian helps because it is a geologic term first, which pushes the board away from decor language.",
+      "searchableContext": "obsidian rock"
+    },
+    {
+      "clue": "Slate",
+      "surfaceMisread": "building materials",
+      "resolvedPhraseOrMember": "slate rock",
+      "nonObviousWhy": "Slate confirms the answer because it works cleanly as a rock type and not just as roofing or classroom material.",
+      "searchableContext": "slate rock"
+    },
+    {
+      "clue": "Granite",
+      "surfaceMisread": "building materials",
+      "resolvedPhraseOrMember": "granite rock",
+      "nonObviousWhy": "Granite keeps the geology answer honest because it is both a rock and a very familiar building material.",
+      "searchableContext": "granite rock"
+    },
+    {
+      "clue": "Sandstone",
+      "surfaceMisread": "building materials",
+      "resolvedPhraseOrMember": "sandstone rock",
+      "nonObviousWhy": "Sandstone is the turning clue because it sounds most clearly geological and least like a design finish.",
+      "searchableContext": "sandstone rock"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #694?",
+      "answer": "The answer is \"Types of rocks\" because every clue is a rock name once the board is read through geology instead of decor or construction.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #694?",
+      "answer": "The connection is geology. Marble, Obsidian, Slate, Granite, and Sandstone are all rock types, even if some of them are more familiar as materials in everyday life.",
+      "tiedClue": "Sandstone"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
+      "answer": "Sandstone is the turning clue because it sounds the most purely geological and helps the board move away from a vague building-materials read.",
+      "tiedClue": "Sandstone"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a geology board disguised by countertop and design language",
+    "relatedEntities": [
+      "marble rock",
+      "obsidian rock",
+      "slate rock",
+      "granite rock",
+      "sandstone rock"
+    ],
+    "doNotRepeatPatterns": [
+      "a geology board disguised by countertop and design language",
+      "Many category boards hide behind everyday use",
+      "The most scientific-sounding clue often restores the right frame",
+      "Sandstone is decisive because it is the least likely clue to be read as a polished product",
+      "obsidian rock",
+      "sandstone rock"
     ]
   }
 }

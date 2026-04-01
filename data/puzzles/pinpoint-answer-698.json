@@ -16,198 +16,192 @@
   "answer": "Things that separate properties",
   "category": "Things that separate properties",
   "wordHints": {
-    "Fence": "Fences are used to mark property lines and keep things in or out.",
-    "Moat": "Moats have historically been used as a defensive barrier around a property.",
-    "Hedge": "Hedges can act as a natural divider between properties.",
-    "Wall": "Walls clearly define the limits of a property.",
-    "Boundary line": "Boundary lines determine the legal extent of a property."
+    "Fence": "Fence fits because a fence is one of the most direct ways to divide one property from another.",
+    "Moat": "Moat works once you think about protected grounds or estates, where the water feature acts as a hard boundary.",
+    "Hedge": "Hedge matters because property lines are often marked by living dividers, not only by built structures.",
+    "Wall": "Wall confirms the category because a wall creates a clearer, heavier version of the same dividing job.",
+    "Boundary line": "Boundary line is the clue that introduces the legal property frame instead of a loose barrier theme."
   },
   "spoilerHints": {
-    "Fence": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Moat": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Hedge": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Wall": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Boundary line": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Fence": "Think about what this does to land, not just what it blocks physically.",
+    "Moat": "This clue works better if you picture protected grounds or estate edges instead of medieval scenery.",
+    "Hedge": "Try a property or lot-line reading before settling for a broad barrier answer.",
+    "Wall": "This clue confirms the same function in a more solid form.",
+    "Boundary line": "This is the clue that turns the puzzle from general obstacles into a property-specific category."
   },
   "articleBlocks": [
-    "I started this puzzle thinking about general barriers.",
-    "The clues felt like a random assortment of obstacles.",
-    "I considered \"Protective elements,\" but that was too broad.",
-    "Then I thought maybe landscaping, but 'Moat' didn't quite fit.",
-    "That theory broke down.",
-    "The clue that changed everything was 'Boundary line'.",
-    "Suddenly, it became clear: these are all examples of things that separate properties.",
-    "The answer is things that separate properties.",
-    "Each clue marks off real estate in some way.",
-    "Looking back, the category makes perfect sense."
+    "Fence, Hedge, and Wall first made me think about barriers in general, which felt close but still too loose.",
+    "Moat kept that idea alive for a moment because it is also something that keeps one space separate from another.",
+    "But Boundary line changed the board.",
+    "That clue does not just describe a barrier. It describes a property limit.",
+    "Once that legal land-reading showed up, Fence, Hedge, Wall, and even Moat all started behaving like ways to separate one property or protected set of grounds from another.",
+    "The answer was Things that separate properties.",
+    "Looking back, the puzzle is tricky because most of the clues can live inside a vague 'barriers' bucket until one clue makes the real frame much narrower."
   ],
   "fullAnalysis": [
-    "I started this puzzle thinking about general barriers.",
-    "The clues felt like a random assortment of obstacles.",
-    "I considered \"Protective elements,\" but that was too broad.",
-    "Then I thought maybe landscaping, but 'Moat' didn't quite fit.",
-    "That theory broke down.",
-    "The clue that changed everything was 'Boundary line'.",
-    "Suddenly, it became clear: these are all examples of things that separate properties.",
-    "The answer is things that separate properties.",
-    "Each clue marks off real estate in some way.",
-    "Looking back, the category makes perfect sense."
+    "Fence, Hedge, and Wall first made me think about barriers in general, which felt close but still too loose.",
+    "Moat kept that idea alive for a moment because it is also something that keeps one space separate from another.",
+    "Boundary line was the clue that changed the solve. That phrase does not sound like a random obstacle; it sounds like property law.",
+    "Once the board moved into a property-reading, Fence, Hedge, and Wall all became much cleaner because each one can divide one person's land from another person's land.",
+    "Moat then stopped feeling like a weird medieval outlier and started reading as a boundary around protected grounds or an estate.",
+    "The answer was Things that separate properties.",
+    "What makes this board hard is that 'barriers' feels nearly right. Boundary line is what forces the more precise answer."
   ],
   "solutionNarrative": [
-    "Fence and Moat first pulled me toward landscaping features, so that was the first path I tested. It held together for a moment, but boundary line never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating boundary line as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about landscaping features; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "Fence, Hedge, and Wall gave me a broad barrier read right away, and Moat did not immediately break it. That first path felt plausible because every clue did involve separation in some physical sense.",
+    "The board became solvable when Boundary line arrived. That clue pulled the whole set away from generic protection or obstruction and into a property-specific frame. After that, Fence, Hedge, Wall, and even Moat all read like ways land or grounds can be marked off from neighboring space."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+      "title": "Watch for the clue that changes function into context",
+      "body": "A board can look like it is about what objects do until one clue reveals where or why they do it."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
-      "body": "Boundary line is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "Near-right umbrella answers are common traps",
+      "body": "Barriers feels close here, but good Pinpoint solves usually need a cleaner, narrower category than the first almost-right theme."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
-      "body": "When a list seems random, look for the common purpose behind each item."
+      "title": "Legal or land language can tighten a loose physical set",
+      "body": "Boundary line matters because it points to ownership and property, not just to separation."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on things",
-    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "connectorSummary": "property dividers and boundary markers",
+    "fastStrategy": "When several clues look like broad physical objects, wait for the clue that reveals the exact setting they belong to.",
     "clueTableRows": [
       {
         "clue": "Fence",
-        "examplePhrase": "Fence type",
-        "connectionExplained": "Fences are used to mark property lines and keep things in or out."
+        "examplePhrase": "property fence",
+        "connectionExplained": "Fence fits because a fence is one of the most direct ways to divide one property from another."
       },
       {
         "clue": "Moat",
-        "examplePhrase": "Moat type",
-        "connectionExplained": "Moats have historically been used as a defensive barrier around a property."
+        "examplePhrase": "moat around an estate",
+        "connectionExplained": "Moat works once you think about protected grounds or estates, where the water feature acts as a hard boundary."
       },
       {
         "clue": "Hedge",
-        "examplePhrase": "Hedge type",
-        "connectionExplained": "Hedges can act as a natural divider between properties."
+        "examplePhrase": "hedge between yards",
+        "connectionExplained": "Hedge matters because property lines are often marked by living dividers, not only by built structures."
       },
       {
         "clue": "Wall",
-        "examplePhrase": "Wall type",
-        "connectionExplained": "Walls clearly define the limits of a property."
+        "examplePhrase": "property wall",
+        "connectionExplained": "Wall confirms the category because a wall creates a clearer, heavier version of the same dividing job."
       },
       {
         "clue": "Boundary line",
-        "examplePhrase": "Boundary line type",
-        "connectionExplained": "Boundary lines determine the legal extent of a property."
+        "examplePhrase": "boundary line on a lot",
+        "connectionExplained": "Boundary line is the clue that introduces the legal property frame instead of a loose barrier theme."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #698?",
-      "answer": "The answer is \"Things that separate properties\" because that reading explains the full set cleanly, including the final clue."
+      "answer": "The answer is \"Things that separate properties\" because every clue works as a way land or protected grounds can be marked off from adjacent space."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #698?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Boundary line is what keeps the category reading precise instead of broad."
+      "answer": "The connection is not just barriers in general. It is barriers, markers, or limits that separate one property or set of grounds from another."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #698?",
-      "answer": "Boundary line is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. Several clues seemed like general barriers at first, making the category unclear until 'Boundary line' appeared."
+      "answer": "Boundary line is the turning clue because it introduces the property-reading that the earlier clues need. Without it, the board can stay stuck in a vague barriers answer."
     }
   ],
   "solvePath": {
-    "firstRead": "Fence, Moat, and Hedge do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"landscaping features\" can feel plausible before one clue makes the answer feel concrete. Boundary line is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "firstRead": "Fence, Hedge, and Wall naturally invite a broad barrier answer, and Moat does not immediately break that reading. That is why 'barriers' or 'protective boundaries' can feel almost right at first.",
     "falseStarts": [
-      "landscaping features",
-      "protective elements"
+      "barriers",
+      "protective structures"
     ],
     "whyFalseStartPlausible": [
-      "That guess didn't quite work. A moat is not really landscaping.",
-      "protective elements feels plausible early on, but it falls apart once boundary line demands a more exact reading."
+      "Fence, Wall, and Moat all support that idea early, so it takes a more precise clue to prove the board wants more than a general function.",
+      "That guess explains the physical separation angle, but it does not naturally account for Boundary line as a property term."
     ],
     "breakingClue": "Boundary line",
-    "pivot": "The solve turned when I stopped treating boundary line as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about landscaping features; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
-    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Fence, Moat, and Hedge stop feeling disconnected and start looking like they belong together. Once boundary line is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. Several clues seemed like general barriers at first, making the category unclear until 'Boundary line' appeared."
+    "pivot": "Boundary line changed the puzzle because it framed the set around land and ownership. Once that clue arrived, I stopped asking what the objects block and started asking what they mark off.",
+    "fullBoardConfirmation": "Under that property frame, Fence, Hedge, and Wall all read cleanly as dividers, while Moat makes sense as a boundary around protected grounds. That is a tighter fit than any general barrier answer."
   },
   "turningPoint": {
     "clue": "Boundary line",
-    "whyDecisive": "Seeing 'Boundary line' made the category click for me.",
-    "whatChangedAfterIt": "Once Boundary line landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+    "whyDecisive": "Boundary line is decisive because it introduces the property frame that the earlier clues only hinted at.",
+    "whatChangedAfterIt": "Once Boundary line appeared, Fence, Hedge, Wall, and Moat stopped feeling like random barriers and started reading like ways land or grounds get separated."
   },
   "clueRows": [
     {
       "clue": "Fence",
-      "surfaceMisread": "landscaping features",
-      "resolvedPhraseOrMember": "Fence type",
-      "nonObviousWhy": "Fences are used to mark property lines and keep things in or out.",
-      "searchableContext": "Fence type"
+      "surfaceMisread": "barriers",
+      "resolvedPhraseOrMember": "property fence",
+      "nonObviousWhy": "Fence fits because a fence is one of the most direct ways to divide one property from another.",
+      "searchableContext": "property fence"
     },
     {
       "clue": "Moat",
-      "surfaceMisread": "landscaping features",
-      "resolvedPhraseOrMember": "Moat type",
-      "nonObviousWhy": "Moats have historically been used as a defensive barrier around a property.",
-      "searchableContext": "Moat type"
+      "surfaceMisread": "barriers",
+      "resolvedPhraseOrMember": "moat around an estate",
+      "nonObviousWhy": "Moat works once you think about protected grounds or estates, where the water feature acts as a hard boundary.",
+      "searchableContext": "estate moat"
     },
     {
       "clue": "Hedge",
-      "surfaceMisread": "landscaping features",
-      "resolvedPhraseOrMember": "Hedge type",
-      "nonObviousWhy": "Hedges can act as a natural divider between properties.",
-      "searchableContext": "Hedge type"
+      "surfaceMisread": "barriers",
+      "resolvedPhraseOrMember": "hedge between yards",
+      "nonObviousWhy": "Hedge matters because property lines are often marked by living dividers, not only by built structures.",
+      "searchableContext": "hedge property line"
     },
     {
       "clue": "Wall",
-      "surfaceMisread": "landscaping features",
-      "resolvedPhraseOrMember": "Wall type",
-      "nonObviousWhy": "Walls clearly define the limits of a property.",
-      "searchableContext": "Wall type"
+      "surfaceMisread": "barriers",
+      "resolvedPhraseOrMember": "property wall",
+      "nonObviousWhy": "Wall confirms the category because a wall creates a clearer, heavier version of the same dividing job.",
+      "searchableContext": "property wall"
     },
     {
       "clue": "Boundary line",
-      "surfaceMisread": "landscaping features",
-      "resolvedPhraseOrMember": "Boundary line type",
-      "nonObviousWhy": "Boundary lines determine the legal extent of a property.",
-      "searchableContext": "Boundary line type"
+      "surfaceMisread": "barriers",
+      "resolvedPhraseOrMember": "boundary line on a lot",
+      "nonObviousWhy": "Boundary line is the clue that introduces the legal property frame instead of a loose barrier theme.",
+      "searchableContext": "property boundary line"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #698?",
-      "answer": "The answer is \"Things that separate properties\" because that reading explains the full set cleanly, including the final clue.",
+      "answer": "The answer is \"Things that separate properties\" because every clue works as a way land or protected grounds can be marked off from adjacent space.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
       "question": "What is the connection in LinkedIn Pinpoint #698?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Boundary line is what keeps the category reading precise instead of broad.",
+      "answer": "The connection is not just barriers in general. It is barriers, markers, or limits that separate one property or set of grounds from another.",
       "tiedClue": "Boundary line"
     },
     {
       "intentType": "clue_background",
       "question": "Which clue really unlocks LinkedIn Pinpoint #698?",
-      "answer": "Boundary line is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. Several clues seemed like general barriers at first, making the category unclear until 'Boundary line' appeared.",
+      "answer": "Boundary line is the turning clue because it introduces the property-reading that the earlier clues need. Without it, the board can stay stuck in a vague barriers answer.",
       "tiedClue": "Boundary line"
     }
   ],
   "uniquenessSignals": {
-    "angle": "Barriers that mark off real estate",
+    "angle": "a property-line board disguised as generic barriers until a legal land clue arrives",
     "relatedEntities": [
-      "Fence type",
-      "Moat type",
-      "Hedge type",
-      "Wall type",
-      "Boundary line type"
+      "property fence",
+      "estate moat",
+      "hedge property line",
+      "property wall",
+      "property boundary line"
     ],
     "doNotRepeatPatterns": [
-      "Barriers that mark off real estate",
-      "Broad clues can create the wrong frame early",
-      "The narrowing clue matters more than the loudest clue",
-      "Prefer precise category fit over broad topic logic",
-      "Fence type",
-      "Moat type"
+      "a property-line board disguised as generic barriers until a legal land clue arrives",
+      "Watch for the clue that changes function into context",
+      "Legal or land language can tighten a loose physical set",
+      "Boundary line is decisive because it introduces the property frame",
+      "estate moat",
+      "hedge property line"
     ]
   }
 }

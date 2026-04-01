@@ -1,101 +1,206 @@
 {
+  "puzzleNumber": 692,
   "slug": "pinpoint-answer-692",
+  "publishDate": "2026-03-23",
+  "isoDate": "2026-03-23",
   "detailState": "published",
-  "articleBlocks": [
-    "At first, Spring and Tap felt more like loose water clues than one clean answer.",
-    "My first read drifted toward water in general, but that stayed too broad once Oasis and Fountain showed up.",
-    "\"Fountain\" was the clue that made the board feel testable instead of vague.",
-    "Once I stopped reading the set as water imagery and started reading it as places where someone could actually get a drink, Spring, Tap, and Well all landed much more cleanly.",
-    "\"Oasis\" also fit better as a real source of drinking water than as a scenic desert image.",
-    "The answer was \"Places to get drinking water\".",
-    "After that, \"Fountain\" felt less decorative and more like the final confirmation."
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Spring",
+    "Tap",
+    "Oasis",
+    "Well",
+    "Fountain"
   ],
-  "fullAnalysis": [
-    "At first, Spring and Tap felt more like loose water clues than one clean answer.",
-    "My first read drifted toward water in general, but that stayed too broad once Oasis and Fountain showed up.",
-    "\"Fountain\" was the clue that made the board feel testable instead of vague.",
-    "Once I stopped reading the set as water imagery and started reading it as places where someone could actually get a drink, Spring, Tap, and Well all landed much more cleanly.",
-    "\"Oasis\" also fit better as a real source of drinking water than as a scenic desert image.",
-    "The answer was \"Places to get drinking water\".",
-    "After that, \"Fountain\" felt less decorative and more like the final confirmation."
-  ],
-  "solutionNarrative": [
-    "I did not trust my first read of the board. Spring and Tap both left room for a broad water guess, but that never explained Oasis and Fountain cleanly enough.",
-    "The solve turned when \"Fountain\" gave me a more practical frame to test.",
-    "Once I read the board as places where someone could actually get drinking water, the earlier clues stopped feeling loose and started reading like part of one real set.",
-    "The answer was \"Places to get drinking water\"."
-  ],
+  "answer": "Places to get drinking water",
+  "category": "Places to get drinking water",
   "wordHints": {
-    "Spring": "\"Spring\" fits once the answer is read as a real place where drinking water can come from.",
-    "Tap": "\"Tap\" stops feeling broad once the board is read as practical sources of drinking water.",
-    "Oasis": "\"Oasis\" fits as a place where drinkable water appears in an otherwise dry setting.",
-    "Well": "\"Well\" is one of the clearest direct examples once the answer is in place.",
-    "Fountain": "\"Fountain\" is the clue that pushes the board from general water ideas toward actual places you might get a drink."
+    "Spring": "Spring fits because a natural spring can be a direct source of drinkable water.",
+    "Tap": "Tap matters because it points to an everyday access point for drinking water rather than water in general.",
+    "Oasis": "Oasis helps because it reframes the clue as a water source people rely on, not just a desert image.",
+    "Well": "Well confirms the answer because it is one of the clearest places to draw drinking water from underground.",
+    "Fountain": "Fountain is the turning clue because it points most naturally to a drinking fountain, not just decorative water."
   },
   "spoilerHints": {
-    "Spring": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Tap": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Oasis": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Well": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Fountain": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Spring": "Think about where someone could actually get water, not just where water exists in nature.",
+    "Tap": "This clue is about access, not plumbing as a topic.",
+    "Oasis": "Try reading this as a source of drinkable water instead of a scenic desert image.",
+    "Well": "This clue belongs to a practical source list more than to a poetic nature theme.",
+    "Fountain": "This is the clue that pushes the board from water imagery into places you can drink from."
   },
+  "articleBlocks": [
+    "Spring and Tap first made me think about water in general, which was close but still much too broad.",
+    "Oasis kept the water theme alive, though it still felt more scenic than practical.",
+    "Fountain is the clue that changed the board.",
+    "Once I read that as drinking fountain, the set stopped being about water imagery and started being about actual places or sources where someone can get a drink.",
+    "Spring, Tap, Well, and even Oasis all fit better under that more practical frame.",
+    "The answer was Places to get drinking water.",
+    "What makes the board work is that every clue touches water, but only one answer explains them as usable sources."
+  ],
+  "fullAnalysis": [
+    "Spring and Tap first made me think about water in general, which was close but still much too broad.",
+    "Oasis kept the water theme alive, though it still felt more scenic than practical.",
+    "Fountain was the turning clue because drinking fountain is a much tighter reading than decorative fountain.",
+    "That shift changes how the whole board behaves. Spring, Tap, Well, and Oasis all stop being water-related images and start acting like real places or sources where drinking water can be found.",
+    "The answer was Places to get drinking water.",
+    "The puzzle becomes much cleaner once the board is read through access and source rather than through water as a loose topic."
+  ],
+  "solutionNarrative": [
+    "Spring and Tap gave me the broad water theme immediately, but not the exact category. Oasis made the board feel even wider because it could belong to scenery, travel, or desert geography.",
+    "Fountain narrowed it. Once drinking fountain came to mind, the answer became about where people actually get water, and the earlier clues all re-read as practical sources rather than as general water imagery."
+  ],
   "lessons": [
     {
-      "title": "Wait for the clue that narrows the category",
-      "body": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test."
+      "title": "A broad theme often hides a practical category",
+      "body": "Water is the surface topic here, but the real answer is about access points and sources."
     },
     {
-      "title": "Prefer exact fits over loose associations",
-      "body": "A strong Pinpoint answer should explain why each clue belongs in the same set, not just why the words feel loosely related."
+      "title": "Compound phrases can reveal the right frame",
+      "body": "Fountain matters because drinking fountain is much more specific than fountain alone."
     },
     {
-      "title": "Re-check the earlier clues once the frame tightens",
-      "body": "Once \"Fountain\" lands, go back and test the earlier clues under the same category before locking the answer."
-    }
-  ],
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #692?",
-      "answer": "The answer is \"Places to get drinking water\" because that reading explains the full set cleanly, including \"Fountain\"."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #692?",
-      "answer": "The connection is that all five clues point to real places or sources where someone can get drinking water."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
-      "answer": "\"Fountain\" is the turning point because it pushes the board away from general water imagery and toward actual places where someone could get a drink."
+      "title": "Re-read scenic clues as useful ones",
+      "body": "Oasis looks poetic at first, but it fits best when treated as a place people rely on for water."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on places",
-    "fastStrategy": "When the opening clues are broad, it is often better to wait for the clue that makes the category specific enough to test.",
+    "connectorSummary": "real sources and access points for drinking water",
+    "fastStrategy": "If several clues point to the same broad substance, ask whether the board wants the substance itself or the places people actually get it from.",
     "clueTableRows": [
       {
         "clue": "Spring",
-        "examplePhrase": "Spring",
-        "connectionExplained": "\"Spring\" works once the answer is read as a real place where drinking water can come from."
+        "examplePhrase": "natural spring water source",
+        "connectionExplained": "Spring fits because a natural spring can be a direct source of drinkable water."
       },
       {
         "clue": "Tap",
-        "examplePhrase": "Tap",
-        "connectionExplained": "\"Tap\" fits as an everyday place where someone can get drinking water without leaving the house."
+        "examplePhrase": "water tap",
+        "connectionExplained": "Tap matters because it points to an everyday access point for drinking water rather than water in general."
       },
       {
         "clue": "Oasis",
-        "examplePhrase": "Oasis",
-        "connectionExplained": "\"Oasis\" fits as a natural source of drinkable water, especially in a dry environment."
+        "examplePhrase": "desert water source",
+        "connectionExplained": "Oasis helps because it reframes the clue as a water source people rely on, not just a desert image."
       },
       {
         "clue": "Well",
-        "examplePhrase": "Well",
-        "connectionExplained": "\"Well\" is one of the most direct places in the set where someone could actually get drinking water."
+        "examplePhrase": "drinking well",
+        "connectionExplained": "Well confirms the answer because it is one of the clearest places to draw drinking water from underground."
       },
       {
         "clue": "Fountain",
-        "examplePhrase": "Fountain",
-        "connectionExplained": "\"Fountain\" is the clue that makes the answer feel practical instead of decorative, which helps the rest of the set lock in."
+        "examplePhrase": "drinking fountain",
+        "connectionExplained": "Fountain is the turning clue because it points most naturally to a drinking fountain, not just decorative water."
       }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #692?",
+      "answer": "The answer is \"Places to get drinking water\" because each clue works best as a source or access point for drinkable water rather than as loose water imagery."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #692?",
+      "answer": "The connection is practical water access. Spring, Tap, Oasis, Well, and Fountain all describe places or sources where someone could get drinking water."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
+      "answer": "Fountain is the turning clue because drinking fountain is the phrase that turns the board from broad water imagery into a practical source list."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Spring and Tap point toward water immediately, but that surface topic is too broad to solve the board. Oasis can even push the puzzle further into scenery or travel imagery.",
+    "falseStarts": [
+      "water-related things",
+      "water imagery"
+    ],
+    "whyFalseStartPlausible": [
+      "All five clues involve water somehow, so the broad theme feels safe at first.",
+      "That guess notices the topic but misses the practical job each clue is doing as a source or access point."
+    ],
+    "breakingClue": "Fountain",
+    "pivot": "Fountain changed the solve because drinking fountain is an everyday place to get a drink. That phrase made me reread Spring, Tap, Oasis, and Well as sources of drinking water rather than as general water images.",
+    "fullBoardConfirmation": "Well and Tap become especially clean after the pivot because they are direct access points. That makes Places to get drinking water a tighter answer than any broad water theme."
+  },
+  "turningPoint": {
+    "clue": "Fountain",
+    "whyDecisive": "Fountain is decisive because drinking fountain reveals the practical source frame hiding under the broader water theme.",
+    "whatChangedAfterIt": "Once Fountain was read that way, Spring, Tap, Oasis, and Well all started behaving like real places or sources where people get water."
+  },
+  "clueRows": [
+    {
+      "clue": "Spring",
+      "surfaceMisread": "water-related things",
+      "resolvedPhraseOrMember": "natural spring water source",
+      "nonObviousWhy": "Spring fits because a natural spring can be a direct source of drinkable water.",
+      "searchableContext": "spring drinking water"
+    },
+    {
+      "clue": "Tap",
+      "surfaceMisread": "water-related things",
+      "resolvedPhraseOrMember": "water tap",
+      "nonObviousWhy": "Tap matters because it points to an everyday access point for drinking water rather than water in general.",
+      "searchableContext": "tap drinking water"
+    },
+    {
+      "clue": "Oasis",
+      "surfaceMisread": "water-related things",
+      "resolvedPhraseOrMember": "desert water source",
+      "nonObviousWhy": "Oasis helps because it reframes the clue as a water source people rely on, not just a desert image.",
+      "searchableContext": "oasis water source"
+    },
+    {
+      "clue": "Well",
+      "surfaceMisread": "water-related things",
+      "resolvedPhraseOrMember": "drinking well",
+      "nonObviousWhy": "Well confirms the answer because it is one of the clearest places to draw drinking water from underground.",
+      "searchableContext": "well drinking water"
+    },
+    {
+      "clue": "Fountain",
+      "surfaceMisread": "water-related things",
+      "resolvedPhraseOrMember": "drinking fountain",
+      "nonObviousWhy": "Fountain is the turning clue because it points most naturally to a drinking fountain, not just decorative water.",
+      "searchableContext": "drinking fountain"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #692?",
+      "answer": "The answer is \"Places to get drinking water\" because each clue works best as a source or access point for drinkable water rather than as loose water imagery.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #692?",
+      "answer": "The connection is practical water access. Spring, Tap, Oasis, Well, and Fountain all describe places or sources where someone could get drinking water.",
+      "tiedClue": "Fountain"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
+      "answer": "Fountain is the turning clue because drinking fountain is the phrase that turns the board from broad water imagery into a practical source list.",
+      "tiedClue": "Fountain"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a water-theme board that only becomes exact when the clues are reread as usable drinking sources",
+    "relatedEntities": [
+      "spring drinking water",
+      "tap drinking water",
+      "oasis water source",
+      "well drinking water",
+      "drinking fountain"
+    ],
+    "doNotRepeatPatterns": [
+      "a water-theme board that only becomes exact when the clues are reread as usable drinking sources",
+      "A broad theme often hides a practical category",
+      "Re-read scenic clues as useful ones",
+      "Fountain is decisive because drinking fountain reveals the practical source frame",
+      "oasis water source",
+      "drinking fountain"
     ]
   }
 }

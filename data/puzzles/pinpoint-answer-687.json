@@ -1,54 +1,205 @@
 {
+  "puzzleNumber": 687,
   "slug": "pinpoint-answer-687",
+  "publishDate": "2026-03-18",
+  "isoDate": "2026-03-18",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #687 looks broader than it really is because the board mixes atmosphere, transportation, shopping, and famous landmarks. \"Fog\" can feel especially loose on its own, and clues like \"Cable cars\" or \"Alcatraz Island\" could still sit inside a wider travel or California-themed guess. The clue that really tightens the set is \"Golden Gate Bridge,\" because once that appears, the board stops feeling like a bag of tourist references and starts reading as one clean city picture.",
-    "From there, the answer resolves as San Francisco icons. The city is famously linked with bay fog and cable cars, while Ghirardelli Square, Alcatraz Island, and the Golden Gate Bridge are all unmistakable San Francisco landmarks. That reading explains the whole board more cleanly than broader labels like California attractions or tourist destinations, because every clue points back to the same city identity."
+  "questionType": "category",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Fog",
+    "Cable cars",
+    "Ghirardelli Square",
+    "Alcatraz Island",
+    "Golden Gate Bridge"
   ],
-  "solutionNarrative": [
-    "I did not have a clean category from the first clue. \"Fog\" felt too open, and even after \"Cable cars\" appeared, I could still justify a broader travel or transportation angle. \"Ghirardelli Square\" helped narrow the frame, but I still needed one clue that made the city connection impossible to miss.",
-    "That turning point was \"Golden Gate Bridge.\" Once I let that clue lead the solve, the rest of the board stopped feeling scattered and started reading like a single San Francisco collage: fog, cable cars, Ghirardelli Square, Alcatraz Island, and the bridge itself. At that point, the city-specific reading explained the full set much better than any looser tourism label."
-  ],
+  "answer": "San Francisco icons",
+  "category": "San Francisco icons",
   "wordHints": {
-    "Fog": "Fog works because San Francisco is famously associated with its cold, rolling bay fog, making it one of the city's clearest atmosphere clues.",
-    "Cable cars": "Cable cars are one of San Francisco's most recognizable transit symbols, so this clue points to the city almost immediately once the frame appears.",
-    "Ghirardelli Square": "Ghirardelli Square is a well-known San Francisco destination, which helps keep the board tied to one city rather than a broad travel category.",
-    "Alcatraz Island": "Alcatraz Island is one of San Francisco's most famous landmarks, so it reads as a clean city-specific confirmation clue.",
-    "Golden Gate Bridge": "Golden Gate Bridge is the strongest anchor in the set because it makes the San Francisco frame explicit and helps the earlier clues snap into place."
+    "Fog": "Fog fits because San Francisco is famously associated with bay fog as part of its public image.",
+    "Cable cars": "Cable cars matter because they are one of the city's most recognizable forms of transportation.",
+    "Ghirardelli Square": "Ghirardelli Square strengthens the city read by pointing to a very specific San Francisco landmark.",
+    "Alcatraz Island": "Alcatraz Island keeps the category city-specific rather than just California-themed.",
+    "Golden Gate Bridge": "Golden Gate Bridge is the decisive clue because it makes San Francisco unmistakable."
   },
   "spoilerHints": {
-    "Fog": "Think about a city whose atmosphere is as famous as its landmarks.",
-    "Cable cars": "Treat this as a city symbol, not just a mode of transportation.",
-    "Ghirardelli Square": "This clue points to a named destination rather than a generic place type.",
-    "Alcatraz Island": "Think of a landmark that is closely tied to one specific bay city.",
-    "Golden Gate Bridge": "This is the clue that turns a broad travel board into a very specific city board."
+    "Fog": "This clue works best as part of a city identity, not as a weather board.",
+    "Cable cars": "Try reading this as a signature landmark clue rather than as transportation in general.",
+    "Ghirardelli Square": "This clue narrows the board to one city more than to one state.",
+    "Alcatraz Island": "Think iconic destination, not just geography.",
+    "Golden Gate Bridge": "This is the clue that removes most of the ambiguity."
   },
+  "articleBlocks": [
+    "Fog and Cable cars already suggest a city picture, but they do not force one location on their own.",
+    "Ghirardelli Square and Alcatraz Island narrow the board further, though it can still feel like a general California travel set for a moment.",
+    "Golden Gate Bridge is the clue that removes the doubt.",
+    "Once that landmark appears, Fog, Cable cars, Ghirardelli Square, and Alcatraz Island all re-read as unmistakable pieces of the same San Francisco identity.",
+    "The answer was San Francisco icons.",
+    "This is a straightforward board, but it works because it mixes atmosphere, transportation, and landmarks rather than listing five monuments of the same type."
+  ],
+  "fullAnalysis": [
+    "Fog and Cable cars already suggest a city picture, but they do not force one location on their own.",
+    "Ghirardelli Square and Alcatraz Island narrow the board further, though it can still feel like a general California travel set for a moment.",
+    "Golden Gate Bridge is the turning clue because it makes San Francisco unmistakable.",
+    "After that, Fog becomes the city's famous weather signature, Cable cars become its iconic transit image, and Ghirardelli Square and Alcatraz Island fall neatly into place as major San Francisco landmarks.",
+    "The answer was San Francisco icons.",
+    "The category feels clean because every clue points to the same city from a different angle."
+  ],
+  "solutionNarrative": [
+    "Fog and Cable cars made me think of a city, but not yet with total confidence. Ghirardelli Square and Alcatraz Island pushed the puzzle toward northern California, though the board still felt like a broad travel collage at first.",
+    "Golden Gate Bridge solved that uncertainty. Once that landmark appeared, the whole board snapped into one exact city picture, and the earlier clues all became obvious San Francisco signals."
+  ],
   "lessons": [
     {
-      "title": "City boards often mix landmarks with atmosphere",
-      "body": "A puzzle does not need every clue to be the same kind of thing. Weather, transportation, neighborhoods, and landmarks can all point back to one city."
+      "title": "City boards often mix different kinds of clues",
+      "body": "Weather, transportation, shopping districts, and landmarks can all point to the same place without looking uniform at first."
     },
     {
-      "title": "Wait for the clue that makes the location unmistakable",
-      "body": "Golden Gate Bridge is the clue that removes the ambiguity here. Once one clue makes the place obvious, go back and re-check the earlier references under that same frame."
+      "title": "One iconic landmark can name the whole city",
+      "body": "Golden Gate Bridge matters because it does not just fit San Francisco. It defines the city in many solvers' minds."
     },
     {
-      "title": "Prefer the cleanest geographic fit over a broad travel label",
-      "body": "A strong Pinpoint answer should explain why all five clues belong to the same place, not just why they feel like tourist-related words."
+      "title": "Broad location guesses still need the precise place",
+      "body": "California or West Coast is close, but San Francisco icons is the cleaner answer because every clue points back to that city specifically."
     }
   ],
+  "display": {
+    "connectorSummary": "a city-identity board built from signature San Francisco references",
+    "fastStrategy": "If the clues feel like travel references, ask whether they all belong to one city's public image rather than to one state or region.",
+    "clueTableRows": [
+      {
+        "clue": "Fog",
+        "examplePhrase": "San Francisco fog",
+        "connectionExplained": "Fog fits because San Francisco is famously associated with bay fog as part of its public image."
+      },
+      {
+        "clue": "Cable cars",
+        "examplePhrase": "San Francisco cable cars",
+        "connectionExplained": "Cable cars matter because they are one of the city's most recognizable forms of transportation."
+      },
+      {
+        "clue": "Ghirardelli Square",
+        "examplePhrase": "Ghirardelli Square",
+        "connectionExplained": "Ghirardelli Square strengthens the city read by pointing to a very specific San Francisco landmark."
+      },
+      {
+        "clue": "Alcatraz Island",
+        "examplePhrase": "Alcatraz Island",
+        "connectionExplained": "Alcatraz Island keeps the category city-specific rather than just California-themed."
+      },
+      {
+        "clue": "Golden Gate Bridge",
+        "examplePhrase": "Golden Gate Bridge",
+        "connectionExplained": "Golden Gate Bridge is the decisive clue because it makes San Francisco unmistakable."
+      }
+    ]
+  },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #687?",
-      "answer": "The answer is \"San Francisco icons\" because that reading cleanly explains Fog, Cable cars, Ghirardelli Square, Alcatraz Island, and Golden Gate Bridge."
+      "answer": "The answer is \"San Francisco icons\" because every clue points to something strongly associated with the city."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #687?",
-      "answer": "The connection is that all five clues point to famous things closely associated with San Francisco, including the city's weather, transportation, and best-known landmarks."
+      "answer": "The connection is San Francisco's public identity: its fog, cable cars, famous destinations, and best-known landmark all appear in the set."
     },
     {
-      "question": "Which clue really unlocks the set?",
-      "answer": "Golden Gate Bridge is the turning point because it makes the San Francisco frame unmistakable, which then makes the earlier clues read like parts of the same city picture."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #687?",
+      "answer": "Golden Gate Bridge is the turning clue because it makes San Francisco unmistakable and pulls the earlier clues into one exact city frame."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Fog and Cable cars feel like travel clues right away, but they could still point to a broad region or a general tourism board. Even Ghirardelli Square and Alcatraz Island can feel like California references before the exact city fully locks in.",
+    "falseStarts": [
+      "California attractions",
+      "West Coast travel icons"
+    ],
+    "whyFalseStartPlausible": [
+      "Several clues do belong to California, so the broad state-level answer feels close at first.",
+      "The board mixes weather, transportation, and landmarks, which can make it look like a loose travel collage before the exact city appears."
+    ],
+    "breakingClue": "Golden Gate Bridge",
+    "pivot": "Golden Gate Bridge changed the solve because it removed the state-level ambiguity and named the city almost by itself. After that, the other clues all became supporting pieces of the same San Francisco image.",
+    "fullBoardConfirmation": "Fog, Cable cars, Ghirardelli Square, and Alcatraz Island each highlight a different part of San Francisco's identity. That makes San Francisco icons much tighter than any regional travel answer."
+  },
+  "turningPoint": {
+    "clue": "Golden Gate Bridge",
+    "whyDecisive": "Golden Gate Bridge is decisive because it identifies San Francisco more directly than any other clue on the board.",
+    "whatChangedAfterIt": "Once Golden Gate Bridge appeared, Fog, Cable cars, Ghirardelli Square, and Alcatraz Island all became obvious parts of the same city picture."
+  },
+  "clueRows": [
+    {
+      "clue": "Fog",
+      "surfaceMisread": "California attractions",
+      "resolvedPhraseOrMember": "San Francisco fog",
+      "nonObviousWhy": "Fog fits because San Francisco is famously associated with bay fog as part of its public image.",
+      "searchableContext": "San Francisco fog"
+    },
+    {
+      "clue": "Cable cars",
+      "surfaceMisread": "California attractions",
+      "resolvedPhraseOrMember": "San Francisco cable cars",
+      "nonObviousWhy": "Cable cars matter because they are one of the city's most recognizable forms of transportation.",
+      "searchableContext": "San Francisco cable cars"
+    },
+    {
+      "clue": "Ghirardelli Square",
+      "surfaceMisread": "California attractions",
+      "resolvedPhraseOrMember": "Ghirardelli Square",
+      "nonObviousWhy": "Ghirardelli Square strengthens the city read by pointing to a very specific San Francisco landmark.",
+      "searchableContext": "Ghirardelli Square San Francisco"
+    },
+    {
+      "clue": "Alcatraz Island",
+      "surfaceMisread": "California attractions",
+      "resolvedPhraseOrMember": "Alcatraz Island",
+      "nonObviousWhy": "Alcatraz Island keeps the category city-specific rather than just California-themed.",
+      "searchableContext": "Alcatraz Island San Francisco"
+    },
+    {
+      "clue": "Golden Gate Bridge",
+      "surfaceMisread": "California attractions",
+      "resolvedPhraseOrMember": "Golden Gate Bridge",
+      "nonObviousWhy": "Golden Gate Bridge is the decisive clue because it makes San Francisco unmistakable.",
+      "searchableContext": "Golden Gate Bridge San Francisco"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #687?",
+      "answer": "The answer is \"San Francisco icons\" because every clue points to something strongly associated with the city.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #687?",
+      "answer": "The connection is San Francisco's public identity: its fog, cable cars, famous destinations, and best-known landmark all appear in the set.",
+      "tiedClue": "Golden Gate Bridge"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #687?",
+      "answer": "Golden Gate Bridge is the turning clue because it makes San Francisco unmistakable and pulls the earlier clues into one exact city frame.",
+      "tiedClue": "Golden Gate Bridge"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a city-identity board that mixes weather, transit, and landmarks before one bridge names the place",
+    "relatedEntities": [
+      "San Francisco fog",
+      "San Francisco cable cars",
+      "Ghirardelli Square San Francisco",
+      "Alcatraz Island San Francisco",
+      "Golden Gate Bridge San Francisco"
+    ],
+    "doNotRepeatPatterns": [
+      "a city-identity board that mixes weather, transit, and landmarks before one bridge names the place",
+      "City boards often mix different kinds of clues",
+      "One iconic landmark can name the whole city",
+      "Golden Gate Bridge is decisive because it identifies San Francisco more directly",
+      "San Francisco fog",
+      "Alcatraz Island San Francisco"
+    ]
+  }
 }

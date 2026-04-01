@@ -3,6 +3,9 @@
   "slug": "pinpoint-answer-696",
   "publishDate": "2026-03-27",
   "isoDate": "2026-03-27",
+  "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "hard",
   "clues": [
     "Scissors",
     "Golf clubs",
@@ -13,97 +16,191 @@
   "answer": "Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)",
   "category": "Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)",
   "wordHints": {
-    "Scissors": "\"Scissors\" fits more cleanly once the board is tested under the same answer as the other clues.",
-    "Golf clubs": "\"Golf clubs\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
-    "Guitars": "\"Guitars\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
-    "Helices (DNA is usually right)": "\"Helices (DNA is usually right)\" is the clue that makes the shared answer concrete enough to test across the full board.",
-    "Gloves (🫲 + 🫱)": "\"Gloves (🫲 + 🫱)\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+    "Scissors": "Scissors fit because left-handed scissors are built differently from right-handed ones, not just labeled differently.",
+    "Golf clubs": "Golf clubs matter because handedness changes how the club is made and used.",
+    "Guitars": "Guitars confirm the pattern because left-handed guitars are mirrored versions of standard right-handed ones.",
+    "Helices (DNA is usually right)": "Helices introduces the chirality idea directly, moving the board beyond everyday tools.",
+    "Gloves (🫲 + 🫱)": "Gloves lock the answer because left and right gloves are literally mirrored partners rather than interchangeable copies."
   },
   "spoilerHints": {
-    "Scissors": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Golf clubs": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Guitars": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Helices (DNA is usually right)": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Gloves (🫲 + 🫱)": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Scissors": "Think about how the object is oriented in the hand, not just what it does.",
+    "Golf clubs": "This clue is about handed form, not about sports equipment in general.",
+    "Guitars": "Try testing whether the board is about mirrored versions rather than one broad hobby theme.",
+    "Helices (DNA is usually right)": "This is the clue that introduces the scientific idea hiding underneath the everyday examples.",
+    "Gloves (🫲 + 🫱)": "Once the right concept appears, this clue should feel like the most literal proof on the board."
   },
   "articleBlocks": [
-    "At first, Scissors and Golf clubs pointed in a few different directions.",
-    "The turn came with \"Helices (DNA is usually right)\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on objects, examples like \"Scissors\" and \"Golf clubs\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\".",
-    "\"Helices (DNA is usually right)\" and \"Gloves (🫲 + 🫱)\" then felt like the last confirmations, not separate guesses."
+    "Scissors, Golf clubs, and Guitars first made the puzzle feel like it might be about specialized equipment.",
+    "That read was close in one sense, but it never explained what those objects specifically had in common.",
+    "Helices (DNA is usually right) was the clue that changed the board.",
+    "That clue pulled the puzzle away from hobbies and tools and toward chirality: the idea that something can have distinct left-handed and right-handed forms.",
+    "Once that concept appeared, Scissors, Golf clubs, Guitars, and Gloves all stopped feeling like random objects and started reading as mirrored or handed versions of the same type.",
+    "The answer was Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral).",
+    "This is a harder Pinpoint because the key idea is abstract, but the everyday clues become very clean once the science clue names it."
   ],
   "fullAnalysis": [
-    "At first, Scissors and Golf clubs pointed in a few different directions.",
-    "The turn came with \"Helices (DNA is usually right)\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on objects, examples like \"Scissors\" and \"Golf clubs\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\".",
-    "\"Helices (DNA is usually right)\" and \"Gloves (🫲 + 🫱)\" then felt like the last confirmations, not separate guesses."
+    "Scissors, Golf clubs, and Guitars first made the puzzle feel like it might be about specialized equipment.",
+    "That theory stayed alive for a bit because all three clues can have left-handed versions, even if that pattern is not obvious yet.",
+    "Helices (DNA is usually right) was the real turning clue because it introduces chirality, the idea that a structure can exist in left-handed and right-handed forms.",
+    "After that, the whole board tightened immediately. Scissors, Golf clubs, and Guitars all depend on handedness in their design, and Gloves make the concept literal because a left glove and a right glove are mirror forms.",
+    "The answer was Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral).",
+    "The puzzle is strong because it starts with practical objects, then reveals that the deeper connector is a scientific shape idea."
   ],
   "solutionNarrative": [
-    "I did not have a clean answer from the first clue. I initially drifted toward a broader category guess, but that line of thinking never explained \"Helices (DNA is usually right)\" cleanly enough.",
-    "The turn came when I let \"Helices (DNA is usually right)\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.",
-    "The answer was \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\"."
+    "Scissors, Golf clubs, and Guitars first suggested specialized gear, and that was enough to keep me from seeing the deeper connection immediately. The clues looked related by usability, but not yet by one exact principle.",
+    "Helices changed that. Once DNA's right-handed helix brought chirality into view, the everyday clues all re-read as examples of left-versus-right forms. Gloves then became the simplest proof because they are mirror partners by design."
   ],
   "lessons": [
     {
-      "title": "Wait for the clue that makes the set concrete",
-      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+      "title": "One scientific clue can explain a board of everyday objects",
+      "body": "If most clues feel practical and one clue feels technical, the technical one may be naming the real principle underneath the set."
     },
     {
-      "title": "Prefer exact fits over vague overlap",
-      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+      "title": "Look for orientation, not topic",
+      "body": "The board is not about sports or tools. It is about how objects can be mirrored or handed."
     },
     {
-      "title": "Re-check the early clues once the answer sharpens",
-      "body": "Once \"Helices (DNA is usually right)\" lands, go back and test the earlier clues under that same answer before locking it in."
+      "title": "Literal examples often confirm abstract concepts",
+      "body": "Gloves are useful here because they make chirality visible without any science vocabulary."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on objects",
-    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "connectorSummary": "objects whose design changes by left-handed and right-handed form",
+    "fastStrategy": "When one clue feels more scientific than the rest, test whether it is naming the hidden principle behind the everyday examples.",
     "clueTableRows": [
       {
         "clue": "Scissors",
-        "examplePhrase": "Scissors",
-        "connectionExplained": "\"Scissors\" fits more cleanly once the board is tested under the same answer as the other clues."
+        "examplePhrase": "left-handed scissors",
+        "connectionExplained": "Scissors fit because left-handed scissors are built differently from right-handed ones, not just labeled differently."
       },
       {
         "clue": "Golf clubs",
-        "examplePhrase": "Golf clubs",
-        "connectionExplained": "\"Golf clubs\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+        "examplePhrase": "left-handed golf club",
+        "connectionExplained": "Golf clubs matter because handedness changes how the club is made and used."
       },
       {
         "clue": "Guitars",
-        "examplePhrase": "Guitars",
-        "connectionExplained": "\"Guitars\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+        "examplePhrase": "left-handed guitar",
+        "connectionExplained": "Guitars confirm the pattern because left-handed guitars are mirrored versions of standard right-handed ones."
       },
       {
         "clue": "Helices (DNA is usually right)",
-        "examplePhrase": "Helices (DNA is usually right)",
-        "connectionExplained": "\"Helices (DNA is usually right)\" is the clue that makes the shared answer concrete enough to test across the full board."
+        "examplePhrase": "right-handed DNA helix",
+        "connectionExplained": "Helices introduces the chirality idea directly, moving the board beyond everyday tools."
       },
       {
         "clue": "Gloves (🫲 + 🫱)",
-        "examplePhrase": "Gloves (🫲 + 🫱)",
-        "connectionExplained": "\"Gloves (🫲 + 🫱)\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+        "examplePhrase": "left and right glove",
+        "connectionExplained": "Gloves lock the answer because left and right gloves are literally mirrored partners rather than interchangeable copies."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #696?",
-      "answer": "The answer is \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\". That reading is the first one that explains the whole set without forcing any clue."
+      "answer": "The answer is \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\" because every clue points to something whose shape or design changes by handed orientation."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #696?",
-      "answer": "The connection is a category board focused on objects. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+      "answer": "The connection is handedness or chirality. Some clues show it in everyday objects, while the DNA clue names the scientific version of the same idea."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #696?",
-      "answer": "\"Helices (DNA is usually right)\" is the turning point because it makes the answer concrete enough to test across all five clues."
+      "answer": "Helices (DNA is usually right) is the turning clue because it introduces chirality and makes the earlier clues re-read as left-versus-right forms instead of random equipment."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Scissors, Golf clubs, and Guitars make it tempting to think about tools, sports gear, or specialized equipment. That is close enough to feel promising, but it still does not identify one exact relationship.",
+    "falseStarts": [
+      "specialized equipment",
+      "things with custom versions"
+    ],
+    "whyFalseStartPlausible": [
+      "The first three clues all support that idea, so the puzzle can stay on the surface for a while.",
+      "That guess notices variation, but it does not explain why DNA helices belong on the same board."
+    ],
+    "breakingClue": "Helices (DNA is usually right)",
+    "pivot": "Helices changed the puzzle because it named chirality, the left-handed versus right-handed distinction. Once that concept appeared, the earlier clues all became examples instead of isolated categories.",
+    "fullBoardConfirmation": "Gloves then provide the clearest everyday proof, because a left glove and a right glove are mirror forms. That makes the abstract idea visible across the whole board."
+  },
+  "turningPoint": {
+    "clue": "Helices (DNA is usually right)",
+    "whyDecisive": "Helices is decisive because it introduces chirality, which is the hidden principle connecting the everyday clues.",
+    "whatChangedAfterIt": "Once chirality surfaced, Scissors, Golf clubs, Guitars, and Gloves all re-read as objects whose form depends on left-versus-right orientation."
+  },
+  "clueRows": [
+    {
+      "clue": "Scissors",
+      "surfaceMisread": "specialized equipment",
+      "resolvedPhraseOrMember": "left-handed scissors",
+      "nonObviousWhy": "Scissors fit because left-handed scissors are built differently from right-handed ones, not just labeled differently.",
+      "searchableContext": "left-handed scissors"
+    },
+    {
+      "clue": "Golf clubs",
+      "surfaceMisread": "specialized equipment",
+      "resolvedPhraseOrMember": "left-handed golf club",
+      "nonObviousWhy": "Golf clubs matter because handedness changes how the club is made and used.",
+      "searchableContext": "left-handed golf clubs"
+    },
+    {
+      "clue": "Guitars",
+      "surfaceMisread": "specialized equipment",
+      "resolvedPhraseOrMember": "left-handed guitar",
+      "nonObviousWhy": "Guitars confirm the pattern because left-handed guitars are mirrored versions of standard right-handed ones.",
+      "searchableContext": "left-handed guitar"
+    },
+    {
+      "clue": "Helices (DNA is usually right)",
+      "surfaceMisread": "specialized equipment",
+      "resolvedPhraseOrMember": "right-handed DNA helix",
+      "nonObviousWhy": "Helices introduces the chirality idea directly, moving the board beyond everyday tools.",
+      "searchableContext": "right-handed DNA helix"
+    },
+    {
+      "clue": "Gloves (🫲 + 🫱)",
+      "surfaceMisread": "specialized equipment",
+      "resolvedPhraseOrMember": "left and right glove",
+      "nonObviousWhy": "Gloves lock the answer because left and right gloves are literally mirrored partners rather than interchangeable copies.",
+      "searchableContext": "left right gloves"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #696?",
+      "answer": "The answer is \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\" because every clue points to something whose shape or design changes by handed orientation.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #696?",
+      "answer": "The connection is handedness or chirality. Some clues show it in everyday objects, while the DNA clue names the scientific version of the same idea.",
+      "tiedClue": "Helices (DNA is usually right)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #696?",
+      "answer": "Helices (DNA is usually right) is the turning clue because it introduces chirality and makes the earlier clues re-read as left-versus-right forms instead of random equipment.",
+      "tiedClue": "Helices (DNA is usually right)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "an abstract chirality board disguised as everyday gear until the DNA clue names the principle",
+    "relatedEntities": [
+      "left-handed scissors",
+      "left-handed golf clubs",
+      "left-handed guitar",
+      "right-handed DNA helix",
+      "left and right glove"
+    ],
+    "doNotRepeatPatterns": [
+      "an abstract chirality board disguised as everyday gear until the DNA clue names the principle",
+      "One scientific clue can explain a board of everyday objects",
+      "Look for orientation, not topic",
+      "Helices is decisive because it introduces chirality",
+      "right-handed DNA helix",
+      "left and right glove"
+    ]
+  }
 }

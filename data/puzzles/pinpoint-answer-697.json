@@ -3,6 +3,9 @@
   "slug": "pinpoint-answer-697",
   "publishDate": "2026-03-28",
   "isoDate": "2026-03-28",
+  "detailState": "published",
+  "questionType": "category",
+  "difficultyBand": "medium",
   "clues": [
     "Horn",
     "Cod",
@@ -13,104 +16,191 @@
   "answer": "Geographical capes",
   "category": "Geographical capes",
   "wordHints": {
-    "Horn": "Cape Horn is the southernmost point of South America, notorious for its rough seas.",
-    "Cod": "Cape Cod is a peninsula in Massachusetts known for its beaches and maritime history.",
-    "Verde": "Cape Verde is an island nation off the coast of West Africa.",
-    "Canaveral": "Cape Canaveral is a space launch facility in Florida.",
-    "Of Good Hope": "The Cape of Good Hope is a landmark on the southern tip of Africa."
+    "Horn": "Horn makes sense as Cape Horn, one of the most famous capes in world geography.",
+    "Cod": "Cod fits as Cape Cod, which keeps the board grounded in real place names rather than abstract features.",
+    "Verde": "Verde works because Cape Verde is a familiar geographic name and nudges the set toward named capes.",
+    "Canaveral": "Canaveral matters because Cape Canaveral sounds more natural than most other completions, which tightens the pattern.",
+    "Of Good Hope": "Of Good Hope is the strongest clue because the phrase almost begs for Cape in front of it."
   },
   "spoilerHints": {
-    "Horn": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Cod": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Verde": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Canaveral": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Of Good Hope": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Horn": "Try reading this as a place name completed by one missing geographic word.",
+    "Cod": "This clue works best once you test whether the board is built from named locations.",
+    "Verde": "Stay with geography and phrase completion rather than a broad travel theme.",
+    "Canaveral": "This clue helps if you ask which shared leading word would make it sound fully natural.",
+    "Of Good Hope": "This is the clue that makes the missing word hardest to avoid."
   },
   "articleBlocks": [
-    "At first, this looked more like famous place names than the real category.",
-    "Horn pushed me in that direction immediately.",
-    "Cod kept that theory alive for a moment, but canaveral still did not quite fit.",
-    "That was the moment the first idea stopped working.",
-    "Then Canaveral made me stop thinking about famous place names and start thinking about the real category.",
-    "Horn made sense as Cape Horn.",
-    "Cod made sense as Cape Cod.",
+    "Horn and Cod immediately felt like place names, but not yet like one clean category.",
+    "Verde kept the geography angle alive, though the board still felt more like famous locations than one exact answer.",
+    "The real turn came with Of Good Hope.",
+    "That phrase almost always appears as Cape of Good Hope, which suddenly made the missing frame obvious.",
+    "Once Cape was in mind, Horn, Cod, Verde, and Canaveral all snapped into place as capes rather than as random map terms.",
     "The answer was Geographical capes.",
-    "Canaveral and Of Good Hope then felt less surprising and more like the last pieces falling into place.",
-    "Looking back, the answer feels obvious in the best way."
+    "This board works because the early clues are recognizable enough to feel familiar, but not specific enough to force the one shared geographic label."
   ],
   "fullAnalysis": [
-    "At first, this looked more like famous place names than the real category.",
-    "Horn pushed me in that direction immediately.",
-    "Cod kept that theory alive for a moment, but canaveral still did not quite fit.",
-    "That was the moment the first idea stopped working.",
-    "Then Canaveral made me stop thinking about famous place names and start thinking about the real category.",
-    "Horn made sense as Cape Horn.",
-    "Cod made sense as Cape Cod.",
+    "Horn and Cod immediately felt like place names, but not yet like one clean category.",
+    "Verde kept the geography angle alive, though the board still felt more like famous locations than one exact answer.",
+    "Of Good Hope was the clue that changed the solve because that phrase almost always appears with Cape in front of it.",
+    "Once that completion surfaced, Horn, Cod, Verde, and Canaveral all turned into exact geographic names: Cape Horn, Cape Cod, Cape Verde, and Cape Canaveral.",
     "The answer was Geographical capes.",
-    "Canaveral and Of Good Hope then felt less surprising and more like the last pieces falling into place.",
-    "Looking back, the answer feels obvious in the best way."
+    "What makes the board satisfying is that it first reads like general world geography, then tightens into one very specific landform label."
   ],
   "solutionNarrative": [
-    "Horn and Cod first pulled me toward famous place names, so that was the first path I tested. It held together for a moment, but canaveral never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating canaveral as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about famous place names; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "Horn, Cod, and Verde pulled me toward famous place names, which was close enough to feel promising but too broad to solve the board. Canaveral helped, but it still could have been filed under general landmarks or travel geography.",
+    "The board finally locked when Of Good Hope appeared. That phrase made Cape unavoidable, and once that missing word surfaced, every earlier clue became an exact named cape instead of a loose map reference."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+      "title": "Phrase completion can hide inside category boards",
+      "body": "Some category puzzles still rely on a missing shared word before the final label becomes obvious."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
-      "body": "Canaveral is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "The least flexible location name is often the key",
+      "body": "Of Good Hope matters because it sounds incomplete without Cape, while earlier clues still have more ambiguity."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
-      "body": "Look for common geographical features when place names appear disconnected."
+      "title": "Broad geography needs one exact landform",
+      "body": "The board only settles once the clues stop being 'places you know' and start being one specific kind of place."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on geographical",
-    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "connectorSummary": "named capes from world geography",
+    "fastStrategy": "When multiple clues feel like place names, test whether one shared geographic word completes each of them cleanly.",
     "clueTableRows": [
       {
         "clue": "Horn",
         "examplePhrase": "Cape Horn",
-        "connectionExplained": "Cape Horn is the southernmost point of South America, notorious for its rough seas."
+        "connectionExplained": "Horn makes sense as Cape Horn, one of the most famous capes in world geography."
       },
       {
         "clue": "Cod",
         "examplePhrase": "Cape Cod",
-        "connectionExplained": "Cape Cod is a peninsula in Massachusetts known for its beaches and maritime history."
+        "connectionExplained": "Cod fits as Cape Cod, which keeps the board grounded in real place names rather than abstract features."
       },
       {
         "clue": "Verde",
         "examplePhrase": "Cape Verde",
-        "connectionExplained": "Cape Verde is an island nation off the coast of West Africa."
+        "connectionExplained": "Verde works because Cape Verde is a familiar geographic name and nudges the set toward named capes."
       },
       {
         "clue": "Canaveral",
         "examplePhrase": "Cape Canaveral",
-        "connectionExplained": "Cape Canaveral is a space launch facility in Florida."
+        "connectionExplained": "Canaveral matters because Cape Canaveral sounds more natural than most other completions, which tightens the pattern."
       },
       {
         "clue": "Of Good Hope",
         "examplePhrase": "Cape of Good Hope",
-        "connectionExplained": "The Cape of Good Hope is a landmark on the southern tip of Africa."
+        "connectionExplained": "Of Good Hope is the strongest clue because the phrase almost begs for Cape in front of it."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #697?",
-      "answer": "The answer is \"Geographical capes\" because that reading explains the full set cleanly, including the final clue."
+      "answer": "The answer is \"Geographical capes\" because every clue resolves cleanly as a named cape once the shared frame becomes visible."
     },
     {
       "question": "What is the connection in LinkedIn Pinpoint #697?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Canaveral is what keeps the category reading precise instead of broad."
+      "answer": "The connection is not just famous locations. It is famous geographic names built around capes, including Cape Horn, Cape Cod, Cape Verde, Cape Canaveral, and Cape of Good Hope."
     },
     {
       "question": "Which clue really unlocks LinkedIn Pinpoint #697?",
-      "answer": "Canaveral is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The clues seem unrelated until you realize they all name a specific type of geographical feature."
+      "answer": "Of Good Hope is the turning clue because it makes Cape feel almost mandatory, and that shared word then organizes the whole board."
     }
-  ]
+  ],
+  "solvePath": {
+    "firstRead": "Horn, Cod, and Verde look like geography, but not yet like one precise category. That makes guesses like famous places or coastal landmarks feel plausible early on.",
+    "falseStarts": [
+      "famous place names",
+      "coastal landmarks"
+    ],
+    "whyFalseStartPlausible": [
+      "Horn, Cod, and Canaveral all sound recognizable enough to support a loose world-geography guess for a while.",
+      "Several clues do point near coastlines, but the board only becomes exact when they are all read as capes."
+    ],
+    "breakingClue": "Of Good Hope",
+    "pivot": "Of Good Hope changed the solve because the phrase sounds unfinished without Cape. Once that missing word surfaced, the whole board stopped behaving like miscellaneous geography and started behaving like one named landform set.",
+    "fullBoardConfirmation": "Cape Horn, Cape Cod, Cape Verde, and Cape Canaveral all feel natural immediately after that. The answer tightens from general geography into Geographical capes."
+  },
+  "turningPoint": {
+    "clue": "Of Good Hope",
+    "whyDecisive": "Of Good Hope is decisive because it is the least flexible phrase on the board and strongly points to Cape of Good Hope.",
+    "whatChangedAfterIt": "Once Cape surfaced there, Horn, Cod, Verde, and Canaveral all became exact named capes instead of broad place-name fragments."
+  },
+  "clueRows": [
+    {
+      "clue": "Horn",
+      "surfaceMisread": "famous place names",
+      "resolvedPhraseOrMember": "Cape Horn",
+      "nonObviousWhy": "Horn makes sense as Cape Horn, one of the most famous capes in world geography.",
+      "searchableContext": "Cape Horn"
+    },
+    {
+      "clue": "Cod",
+      "surfaceMisread": "famous place names",
+      "resolvedPhraseOrMember": "Cape Cod",
+      "nonObviousWhy": "Cod fits as Cape Cod, which keeps the board grounded in real place names rather than abstract features.",
+      "searchableContext": "Cape Cod"
+    },
+    {
+      "clue": "Verde",
+      "surfaceMisread": "famous place names",
+      "resolvedPhraseOrMember": "Cape Verde",
+      "nonObviousWhy": "Verde works because Cape Verde is a familiar geographic name and nudges the set toward named capes.",
+      "searchableContext": "Cape Verde"
+    },
+    {
+      "clue": "Canaveral",
+      "surfaceMisread": "famous place names",
+      "resolvedPhraseOrMember": "Cape Canaveral",
+      "nonObviousWhy": "Canaveral matters because Cape Canaveral sounds more natural than most other completions, which tightens the pattern.",
+      "searchableContext": "Cape Canaveral"
+    },
+    {
+      "clue": "Of Good Hope",
+      "surfaceMisread": "famous place names",
+      "resolvedPhraseOrMember": "Cape of Good Hope",
+      "nonObviousWhy": "Of Good Hope is the strongest clue because the phrase almost begs for Cape in front of it.",
+      "searchableContext": "Cape of Good Hope"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #697?",
+      "answer": "The answer is \"Geographical capes\" because every clue resolves cleanly as a named cape once the shared frame becomes visible.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #697?",
+      "answer": "The connection is not just famous locations. It is famous geographic names built around capes, including Cape Horn, Cape Cod, Cape Verde, Cape Canaveral, and Cape of Good Hope.",
+      "tiedClue": "Of Good Hope"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #697?",
+      "answer": "Of Good Hope is the turning clue because it makes Cape feel almost mandatory, and that shared word then organizes the whole board.",
+      "tiedClue": "Of Good Hope"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "world-geography fragments that only fully settle once Cape becomes unavoidable",
+    "relatedEntities": [
+      "Cape Horn",
+      "Cape Cod",
+      "Cape Verde",
+      "Cape Canaveral",
+      "Cape of Good Hope"
+    ],
+    "doNotRepeatPatterns": [
+      "world-geography fragments that only fully settle once Cape becomes unavoidable",
+      "Phrase completion can hide inside category boards",
+      "The least flexible location name is often the key",
+      "Cape of Good Hope makes Cape feel almost mandatory",
+      "Cape Verde",
+      "Cape Canaveral"
+    ]
+  }
 }

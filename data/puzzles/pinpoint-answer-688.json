@@ -1,87 +1,206 @@
 {
+  "puzzleNumber": 688,
   "slug": "pinpoint-answer-688",
+  "publishDate": "2026-03-19",
+  "isoDate": "2026-03-19",
   "detailState": "published",
-  "fullAnalysis": [
-    "X, Sting, and Cosmic do not immediately suggest the same repeated word, so the board feels broader than it really is at the start. That is why a broad early read like \"science terms\" can feel plausible before the phrase pattern becomes clear. The clue that changes the frame is \"Cosmic\".",
-    "From there, a phrase pattern built around ray explains the board cleanly. Readings like X-ray, Stingray, and Cosmic ray stop feeling random and start behaving like one exact phrase family. Once cosmic makes the repeated word visible, the earlier clues stop feeling loose and start reading like exact fits. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough.",
-    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
-    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "X",
+    "Sting",
+    "Cosmic",
+    "Manta",
+    "Gamma (high energy radiation)"
   ],
-  "solutionNarrative": [
-    "I did not have a clean read from the first clue. X and Sting still left room for Beam, so that was the first direction I tested. That idea held for a moment, but it never explained Cosmic cleanly enough.",
-    "The turn came when I let cosmic lead the solve instead of treating it like an outlier. Once that clue made the shared word feel exact, I went back through the board and tested the pattern clue by clue. Readings like X-ray and Stingray started to feel natural instead of forced, which was the point where the puzzle finally locked in."
-  ],
+  "answer": "Words that come before \"ray\"",
+  "category": "Words that come before \"ray\"",
   "wordHints": {
-    "X": "'X-ray' is a well-known term, commonly used in medical imaging, making it a readily accessible phrase.",
-    "Sting": "'Stingray' is a type of ray known for the venomous barbs in its tail, creating a clear connection.",
-    "Cosmic": "'Cosmic ray' refers to high-energy particles originating from outer space, a direct link to the 'cosmic' theme.",
-    "Manta": "'Manta ray' is the common name for these large rays, making it a very direct and recognizable phrase.",
-    "Gamma (high energy radiation)": "'Gamma ray' is the standard term for this type of high-energy electromagnetic radiation, fitting perfectly."
+    "X": "\"X-ray\" is familiar, but the clue is too short and flexible to solve the board alone.",
+    "Sting": "\"Stingray\" is a natural phrase, though it still leaves open the possibility that the board mixes different themes.",
+    "Cosmic": "\"Cosmic ray\" strengthens the pattern because it gives the board a clean science phrase.",
+    "Manta": "\"Manta ray\" is the clue that makes the shared ending feel much harder to ignore by pairing with Sting.",
+    "Gamma (high energy radiation)": "\"Gamma ray\" confirms the answer because it matches the science side of the board as neatly as Manta and Sting match the animal side."
   },
   "spoilerHints": {
-    "X": "Try reading this as part of a familiar phrase instead of as a standalone word.",
-    "Sting": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
-    "Cosmic": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
-    "Manta": "Try reading this as part of a familiar phrase instead of as a standalone word.",
-    "Gamma (high energy radiation)": "This is the clue that makes the phrase pattern feel testable without revealing the final shared word."
+    "X": "This clue is a phrase fragment, not a category by itself.",
+    "Sting": "Try a shared ending word before assuming the board is a loose mixed-theme set.",
+    "Cosmic": "This clue supports a science phrase, which matters more once the ending word appears.",
+    "Manta": "This is the clue that gives Sting a clean partner and makes the repeated ending easier to see.",
+    "Gamma (high energy radiation)": "After the right ending appears, this clue should confirm it immediately."
   },
+  "articleBlocks": [
+    "X and Sting already hint at a phrase board, but they still point in very different directions at first.",
+    "Cosmic keeps the idea alive, though the board can still feel split between science and something else.",
+    "Manta is the clue that really tightens it.",
+    "Once Sting and Manta both point to ray, the science clues stop feeling separate and start joining the same phrase pattern.",
+    "X-ray, Cosmic ray, and Gamma ray then line up as clean counterparts to Stingray and Manta ray.",
+    "The answer was Words that come before \"ray\".",
+    "This board is satisfying because it uses two different domains to hide one simple shared ending."
+  ],
+  "fullAnalysis": [
+    "X and Sting already hint at a phrase board, but they still point in very different directions at first.",
+    "Cosmic helps, yet the board can still feel split between science language and something less clear.",
+    "Manta is the turning clue because it pairs naturally with Sting and makes ray visible as a shared ending instead of a one-off guess.",
+    "Once that animal pair appears, X-ray, Cosmic ray, and Gamma ray all stop feeling unrelated and become part of the same phrase family.",
+    "The answer was Words that come before \"ray\".",
+    "The clever part of the board is that it hides the connector across two domains: animals and radiation."
+  ],
+  "solutionNarrative": [
+    "X and Sting both looked promising, but not in the same way. One suggested science, the other suggested an animal, so the board still felt scattered at the start.",
+    "Manta solved that problem. Once Manta ray appeared beside Stingray, ray became a much stronger shared ending, and the science clues instantly clicked into the same structure with X-ray, Cosmic ray, and Gamma ray."
+  ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+      "title": "Mixed domains can hide a simple phrase answer",
+      "body": "A board that jumps from animals to science may still be waiting for one shared word."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
-      "body": "Cosmic is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "Look for the clue that creates a pair",
+      "body": "Manta matters because it gives Sting an obvious partner, and pairs make shared endings easier to trust."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
-      "body": "Consider common phrases when a list of words seems too diverse for a simple category."
-    }
-  ],
-  "faqs": [
-    {
-      "question": "What is the answer to LinkedIn Pinpoint #688?",
-      "answer": "The answer is \"Words that come before ray\" because that reading explains the full set cleanly, including the final clue."
-    },
-    {
-      "question": "What is the connection in LinkedIn Pinpoint #688?",
-      "answer": "The connection is a phrase pattern built around ray. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
-    },
-    {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
-      "answer": "Cosmic is the turning point because it narrows the board enough to make the earlier clues read cleanly instead of loosely. The variety of fields, from physics to marine biology to medicine, makes it harder to spot the connection without a breakthrough."
+      "title": "Confirmation can come from a different field",
+      "body": "Gamma ray helps because it proves the same connector works cleanly outside the animal clues."
     }
   ],
   "display": {
-    "connectorSummary": "a phrase pattern built around ray",
-    "fastStrategy": "Consider common phrases when a list of words seems too diverse for a simple category.",
+    "connectorSummary": "familiar phrases completed by one shared ending word across science and animal clues",
+    "fastStrategy": "If the board seems split across two subjects, test whether one simple phrase ending can unite both sides.",
     "clueTableRows": [
       {
         "clue": "X",
         "examplePhrase": "X-ray",
-        "connectionExplained": "'X-ray' is a well-known term, commonly used in medical imaging, making it a readily accessible phrase."
+        "connectionExplained": "\"X-ray\" is familiar, but the clue is too short and flexible to solve the board alone."
       },
       {
         "clue": "Sting",
-        "examplePhrase": "Stingray",
-        "connectionExplained": "'Stingray' is a type of ray known for the venomous barbs in its tail, creating a clear connection."
+        "examplePhrase": "stingray",
+        "connectionExplained": "\"Stingray\" is a natural phrase, though it still leaves open the possibility that the board mixes different themes."
       },
       {
         "clue": "Cosmic",
-        "examplePhrase": "Cosmic ray",
-        "connectionExplained": "'Cosmic ray' refers to high-energy particles originating from outer space, a direct link to the 'cosmic' theme."
+        "examplePhrase": "cosmic ray",
+        "connectionExplained": "\"Cosmic ray\" strengthens the pattern because it gives the board a clean science phrase."
       },
       {
         "clue": "Manta",
-        "examplePhrase": "Manta ray",
-        "connectionExplained": "'Manta ray' is the common name for these large rays, making it a very direct and recognizable phrase."
+        "examplePhrase": "manta ray",
+        "connectionExplained": "\"Manta ray\" is the clue that makes the shared ending feel much harder to ignore by pairing with Sting."
       },
       {
         "clue": "Gamma (high energy radiation)",
-        "examplePhrase": "Gamma ray",
-        "connectionExplained": "'Gamma ray' is the standard term for this type of high-energy electromagnetic radiation, fitting perfectly."
+        "examplePhrase": "gamma ray",
+        "connectionExplained": "\"Gamma ray\" confirms the answer because it matches the science side of the board as neatly as Manta and Sting match the animal side."
       }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #688?",
+      "answer": "The answer is Words that come before \"ray\" because each clue forms a familiar phrase once ray is added."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #688?",
+      "answer": "The connection is one shared ending word. X, Sting, Cosmic, Manta, and Gamma all become natural phrases with ray."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
+      "answer": "Manta is the turning clue because it pairs with Sting to make ray much easier to trust as the shared ending across the whole board."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "X and Sting can each form familiar phrases, but not in the same domain, so the board feels split at first. That makes it easy to think the clues might belong to different topics rather than one phrase family.",
+    "falseStarts": [
+      "mixed science and nature clues",
+      "radiation terms"
+    ],
+    "whyFalseStartPlausible": [
+      "X, Cosmic, and Gamma all support a science read for a while, even though Sting does not sit comfortably there.",
+      "That guess explains only part of the board, which is why the animal clues matter so much once Manta arrives."
+    ],
+    "breakingClue": "Manta",
+    "pivot": "Manta changed the solve because it made Stingray and Manta ray appear together, which made ray far more convincing as the shared ending. After that, the science clues all clicked into place under the same phrase structure.",
+    "fullBoardConfirmation": "Gamma ray is especially useful after the pivot because it confirms the science half cleanly. The board stops feeling mixed and starts feeling elegant once both domains share the same ending word."
+  },
+  "turningPoint": {
+    "clue": "Manta",
+    "whyDecisive": "Manta is decisive because it pairs naturally with Sting and makes ray visible as a repeated ending rather than an isolated guess.",
+    "whatChangedAfterIt": "Once Manta ray joined Stingray, the science clues X, Cosmic, and Gamma all re-read as part of the same phrase family."
+  },
+  "clueRows": [
+    {
+      "clue": "X",
+      "surfaceMisread": "mixed science and nature clues",
+      "resolvedPhraseOrMember": "X-ray",
+      "nonObviousWhy": "\"X-ray\" is familiar, but the clue is too short and flexible to solve the board alone.",
+      "searchableContext": "X-ray"
+    },
+    {
+      "clue": "Sting",
+      "surfaceMisread": "mixed science and nature clues",
+      "resolvedPhraseOrMember": "stingray",
+      "nonObviousWhy": "\"Stingray\" is a natural phrase, though it still leaves open the possibility that the board mixes different themes.",
+      "searchableContext": "stingray"
+    },
+    {
+      "clue": "Cosmic",
+      "surfaceMisread": "mixed science and nature clues",
+      "resolvedPhraseOrMember": "cosmic ray",
+      "nonObviousWhy": "\"Cosmic ray\" strengthens the pattern because it gives the board a clean science phrase.",
+      "searchableContext": "cosmic ray"
+    },
+    {
+      "clue": "Manta",
+      "surfaceMisread": "mixed science and nature clues",
+      "resolvedPhraseOrMember": "manta ray",
+      "nonObviousWhy": "\"Manta ray\" is the clue that makes the shared ending feel much harder to ignore by pairing with Sting.",
+      "searchableContext": "manta ray"
+    },
+    {
+      "clue": "Gamma (high energy radiation)",
+      "surfaceMisread": "mixed science and nature clues",
+      "resolvedPhraseOrMember": "gamma ray",
+      "nonObviousWhy": "\"Gamma ray\" confirms the answer because it matches the science side of the board as neatly as Manta and Sting match the animal side.",
+      "searchableContext": "gamma ray"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #688?",
+      "answer": "The answer is Words that come before \"ray\" because each clue forms a familiar phrase once ray is added.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #688?",
+      "answer": "The connection is one shared ending word. X, Sting, Cosmic, Manta, and Gamma all become natural phrases with ray.",
+      "tiedClue": "Manta"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
+      "answer": "Manta is the turning clue because it pairs with Sting to make ray much easier to trust as the shared ending across the whole board.",
+      "tiedClue": "Manta"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a two-domain phrase board where animals make the science clues snap into focus",
+    "relatedEntities": [
+      "X-ray",
+      "stingray",
+      "cosmic ray",
+      "manta ray",
+      "gamma ray"
+    ],
+    "doNotRepeatPatterns": [
+      "a two-domain phrase board where animals make the science clues snap into focus",
+      "Mixed domains can hide a simple phrase answer",
+      "Look for the clue that creates a pair",
+      "Manta is decisive because it pairs naturally with Sting",
+      "manta ray",
+      "gamma ray"
     ]
   }
 }

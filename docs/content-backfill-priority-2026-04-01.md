@@ -43,4 +43,6 @@
 ## Status
 
 - Opening-paragraph backfill for `699-680` was verified complete on `2026-04-01`.
-- The next pass for this list should focus on content richness, not first-paragraph cleanup.
+- Content-depth sample pass was completed for `699`, `691`, `689`, `685`, and `680` on `2026-04-01`.
+- Content-depth batch pass was completed for `698`, `697`, `696`, `695`, `694`, `693`, `692`, `690`, `688`, and `687` on `2026-04-01`.
+- Remaining pages in this first 20-page recency queue that still need the richer content pass are `686`, `684`, `683`, `682`, and `681`.
