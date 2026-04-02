@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 702,
+    "slug": "pinpoint-answer-702",
+    "publishDate": "2026-04-02",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Ice",
+      "Jet",
+      "Booster",
+      "Six",
+      "Back"
+    ],
+    "mainAnswer": "Words that come before \"pack\"",
+    "category": "Words that come before \"pack\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #702: Ice, Jet, Booster, Six, Back.",
+    "updatedAt": "2026-04-02T07:01:29.143Z"
+  },
+  {
     "puzzleNumber": 701,
     "slug": "pinpoint-answer-701",
     "publishDate": "2026-04-01",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "☀️",
@@ -16,7 +35,7 @@
     "category": "Weather emojis (did you solve before the storm?)",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links ☀️, 🌤️, ☁️, 🌧️, ⛈️ - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-04-01T07:02:12.772Z"
+    "updatedAt": "2026-04-02T07:01:29.143Z"
   },
   {
     "puzzleNumber": 700,

@@ -1,0 +1,195 @@
+{
+  "puzzleNumber": 702,
+  "slug": "pinpoint-answer-702",
+  "publishDate": "2026-04-02",
+  "isoDate": "2026-04-02",
+  "detailState": "generating",
+  "questionType": "phrase",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Ice",
+    "Jet",
+    "Booster",
+    "Six",
+    "Back"
+  ],
+  "answer": "Words that come before \"pack\"",
+  "category": "Words that come before \"pack\"",
+  "wordHints": {
+    "Ice": "Ice connects to \"Words that come before \"pack\"\"",
+    "Jet": "Jet connects to \"Words that come before \"pack\"\"",
+    "Booster": "Booster connects to \"Words that come before \"pack\"\"",
+    "Six": "Six connects to \"Words that come before \"pack\"\"",
+    "Back": "Back connects to \"Words that come before \"pack\"\""
+  },
+  "spoilerHints": {
+    "Ice": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Jet": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Booster": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector.",
+    "Six": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Back": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue.",
+    "\"Booster\" narrows that down quickly because it points to one phrase that feels exact right away.",
+    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language.",
+    "The answer was \"Words that come before \"pack\"\".",
+    "\"Six\" and \"Back\" then work as clean confirmations that the same word belongs after the remaining clues too."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue.",
+    "\"Booster\" narrows that down quickly because it points to one phrase that feels exact right away.",
+    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language.",
+    "The answer was \"Words that come before \"pack\"\".",
+    "\"Six\" and \"Back\" then work as clean confirmations that the same word belongs after the remaining clues too."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #702, Ice, Jet, Booster, Six, Back only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Ice",
+        "examplePhrase": "Ice pack",
+        "connectionExplained": "Ice connects to \"Words that come before \"pack\"\""
+      },
+      {
+        "clue": "Jet",
+        "examplePhrase": "Jet pack",
+        "connectionExplained": "Jet connects to \"Words that come before \"pack\"\""
+      },
+      {
+        "clue": "Booster",
+        "examplePhrase": "Booster pack",
+        "connectionExplained": "Booster connects to \"Words that come before \"pack\"\""
+      },
+      {
+        "clue": "Six",
+        "examplePhrase": "Six pack",
+        "connectionExplained": "Six connects to \"Words that come before \"pack\"\""
+      },
+      {
+        "clue": "Back",
+        "examplePhrase": "Back pack",
+        "connectionExplained": "Back connects to \"Words that come before \"pack\"\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #702?",
+      "answer": "The answer is \"Words that come before \"pack\"\". The clues Ice, Jet, Booster, Six, Back all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #702 just unlocked, and this is the fastest verified update. The board clues are Ice, Jet, Booster, Six, Back, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [],
+    "whyFalseStartPlausible": [],
+    "breakingClue": "Ice",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #702, Ice, Jet, Booster, Six, Back only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Ice lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Ice",
+    "whyDecisive": "Ice is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Ice lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Ice",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Ice",
+      "nonObviousWhy": "Ice supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Ice"
+    },
+    {
+      "clue": "Jet",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Jet",
+      "nonObviousWhy": "Jet supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Jet"
+    },
+    {
+      "clue": "Booster",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Booster",
+      "nonObviousWhy": "Booster supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Booster"
+    },
+    {
+      "clue": "Six",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Six",
+      "nonObviousWhy": "Six supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Six"
+    },
+    {
+      "clue": "Back",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Back",
+      "nonObviousWhy": "Back supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Back"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #702?",
+      "answer": "The answer is \"Words that come before \"pack\"\". The clues Ice, Jet, Booster, Six, Back all share this connection.",
+      "tiedClue": "Ice"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Ice",
+      "Jet",
+      "Booster",
+      "Six",
+      "Back"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Ice",
+      "Jet",
+      "Booster",
+      "Six"
+    ]
+  }
+}
