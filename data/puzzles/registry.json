@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-702",
     "publishDate": "2026-04-02",
     "status": "live",
-    "detailState": "generating",
+    "detailState": "validated",
     "clues": [
       "Ice",
       "Jet",
@@ -15,8 +15,8 @@
     "mainAnswer": "Words that come before \"pack\"",
     "category": "Words that come before \"pack\"",
     "difficultyLevel": "Moderate",
-    "shortSummary": "LinkedIn Pinpoint #702: Ice, Jet, Booster, Six, Back.",
-    "updatedAt": "2026-04-02T07:01:29.143Z"
+    "shortSummary": "At first glance, Ice, Jet, Booster do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
+    "updatedAt": "2026-04-02T07:01:40.420Z"
   },
   {
     "puzzleNumber": 701,

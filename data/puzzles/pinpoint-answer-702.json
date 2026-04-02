@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-702",
   "publishDate": "2026-04-02",
   "isoDate": "2026-04-02",
-  "detailState": "generating",
+  "detailState": "validated",
   "questionType": "phrase",
-  "difficultyBand": "obvious",
+  "difficultyBand": "medium",
   "clues": [
     "Ice",
     "Jet",
@@ -16,11 +16,11 @@
   "answer": "Words that come before \"pack\"",
   "category": "Words that come before \"pack\"",
   "wordHints": {
-    "Ice": "Ice connects to \"Words that come before \"pack\"\"",
-    "Jet": "Jet connects to \"Words that come before \"pack\"\"",
-    "Booster": "Booster connects to \"Words that come before \"pack\"\"",
-    "Six": "Six connects to \"Words that come before \"pack\"\"",
-    "Back": "Back connects to \"Words that come before \"pack\"\""
+    "Ice": "An 'ice pack' is a bag filled with ice, used to reduce swelling.",
+    "Jet": "A 'jet pack' is worn on the back and propels someone through the air.",
+    "Booster": "A 'booster pack' is a set of cards that enhances a player's deck.",
+    "Six": "A 'six pack' is slang for a set of abdominal muscles.",
+    "Back": "A 'back pack' is a bag worn on the back."
   },
   "spoilerHints": {
     "Ice": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -30,166 +30,186 @@
     "Back": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue.",
-    "\"Booster\" narrows that down quickly because it points to one phrase that feels exact right away.",
-    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language.",
-    "The answer was \"Words that come before \"pack\"\".",
-    "\"Six\" and \"Back\" then work as clean confirmations that the same word belongs after the remaining clues too."
+    "Initially, 'Ice' and 'Jet' felt like random nouns.",
+    "I considered things that might be grouped together, or types of travel.",
+    "That didn't lead anywhere.",
+    "The 'Six' clue misled me toward fitness themes.",
+    "But 'Ice' didn't fit that theory.",
+    "Then I landed on 'Back', and the phrase 'back pack' came to mind.",
+    "That's when I realized each clue could come before 'pack'.",
+    "The answer is: words that come before 'pack'.",
+    "Each word creates a common phrase when placed before 'pack'.",
+    "'Ice' becomes 'ice pack,' 'Jet' becomes 'jet pack,' and so on.",
+    "Looking back, the puzzle wasn't about categories, but about common word pairings.",
+    "The phrases are all very familiar."
   ],
   "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue.",
-    "\"Booster\" narrows that down quickly because it points to one phrase that feels exact right away.",
-    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language.",
-    "The answer was \"Words that come before \"pack\"\".",
-    "\"Six\" and \"Back\" then work as clean confirmations that the same word belongs after the remaining clues too."
+    "Initially, 'Ice' and 'Jet' felt like random nouns.",
+    "I considered things that might be grouped together, or types of travel.",
+    "That didn't lead anywhere.",
+    "The 'Six' clue misled me toward fitness themes.",
+    "But 'Ice' didn't fit that theory.",
+    "Then I landed on 'Back', and the phrase 'back pack' came to mind.",
+    "That's when I realized each clue could come before 'pack'.",
+    "The answer is: words that come before 'pack'.",
+    "Each word creates a common phrase when placed before 'pack'.",
+    "'Ice' becomes 'ice pack,' 'Jet' becomes 'jet pack,' and so on.",
+    "Looking back, the puzzle wasn't about categories, but about common word pairings.",
+    "The phrases are all very familiar."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #702, Ice, Jet, Booster, Six, Back only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Ice and Jet first pulled me toward famous names, so that was the first path I tested. It held together for a moment, but back never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let back lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Ice pack and Jet pack started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Back is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer exact phrase logic over loose category logic",
+      "body": "When stuck, try to think of common phrases that include the individual words."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases completed by one shared ending word",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Ice",
         "examplePhrase": "Ice pack",
-        "connectionExplained": "Ice connects to \"Words that come before \"pack\"\""
+        "connectionExplained": "An 'ice pack' is a bag filled with ice, used to reduce swelling."
       },
       {
         "clue": "Jet",
         "examplePhrase": "Jet pack",
-        "connectionExplained": "Jet connects to \"Words that come before \"pack\"\""
+        "connectionExplained": "A 'jet pack' is worn on the back and propels someone through the air."
       },
       {
         "clue": "Booster",
         "examplePhrase": "Booster pack",
-        "connectionExplained": "Booster connects to \"Words that come before \"pack\"\""
+        "connectionExplained": "A 'booster pack' is a set of cards that enhances a player's deck."
       },
       {
         "clue": "Six",
         "examplePhrase": "Six pack",
-        "connectionExplained": "Six connects to \"Words that come before \"pack\"\""
+        "connectionExplained": "A 'six pack' is slang for a set of abdominal muscles."
       },
       {
         "clue": "Back",
         "examplePhrase": "Back pack",
-        "connectionExplained": "Back connects to \"Words that come before \"pack\"\""
+        "connectionExplained": "A 'back pack' is a bag worn on the back."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #702?",
-      "answer": "The answer is \"Words that come before \"pack\"\". The clues Ice, Jet, Booster, Six, Back all share this connection."
+      "answer": "The answer is \"Words that come before pack\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #702?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #702?",
+      "answer": "Back is the turning clue because \"Back pack\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Ice pack and Jet pack. Several clues have very common meanings, so it's hard to see past the surface reads until you have a direction."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #702 just unlocked, and this is the fastest verified update. The board clues are Ice, Jet, Booster, Six, Back, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
-    "falseStarts": [],
-    "whyFalseStartPlausible": [],
-    "breakingClue": "Ice",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #702, Ice, Jet, Booster, Six, Back only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Ice lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "firstRead": "Ice, Jet, and Booster do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"famous names\" can feel plausible before the missing word finally shows itself. Back is the clue that finally makes the missing word visible.",
+    "falseStarts": [
+      "famous names"
+    ],
+    "whyFalseStartPlausible": [
+      "That felt too literal and didn't account for clues like 'Booster' or 'Ice'."
+    ],
+    "breakingClue": "Back",
+    "pivot": "The solve turned when I let back lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Ice pack and Jet pack started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Ice pack, Jet pack, and Booster pack stop feeling loose and start sounding exact. Once back makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. Several clues have very common meanings, so it's hard to see past the surface reads until you have a direction."
   },
   "turningPoint": {
-    "clue": "Ice",
-    "whyDecisive": "Ice is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Ice lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Back",
+    "whyDecisive": "The clue 'Back' made me think of what can precede 'pack'.",
+    "whatChangedAfterIt": "Once Back made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
   },
   "clueRows": [
     {
       "clue": "Ice",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Ice",
-      "nonObviousWhy": "Ice supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Ice"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Ice pack",
+      "nonObviousWhy": "An 'ice pack' is a bag filled with ice, used to reduce swelling.",
+      "searchableContext": "Ice pack"
     },
     {
       "clue": "Jet",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Jet",
-      "nonObviousWhy": "Jet supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Jet"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Jet pack",
+      "nonObviousWhy": "A 'jet pack' is worn on the back and propels someone through the air.",
+      "searchableContext": "Jet pack"
     },
     {
       "clue": "Booster",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Booster",
-      "nonObviousWhy": "Booster supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Booster"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Booster pack",
+      "nonObviousWhy": "A 'booster pack' is a set of cards that enhances a player's deck.",
+      "searchableContext": "Booster pack"
     },
     {
       "clue": "Six",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Six",
-      "nonObviousWhy": "Six supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Six"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Six pack",
+      "nonObviousWhy": "A 'six pack' is slang for a set of abdominal muscles.",
+      "searchableContext": "Six pack"
     },
     {
       "clue": "Back",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Back",
-      "nonObviousWhy": "Back supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Back"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Back pack",
+      "nonObviousWhy": "A 'back pack' is a bag worn on the back.",
+      "searchableContext": "Back pack"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #702?",
-      "answer": "The answer is \"Words that come before \"pack\"\". The clues Ice, Jet, Booster, Six, Back all share this connection.",
-      "tiedClue": "Ice"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Words that come before pack\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #702?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #702?",
+      "answer": "Back is the turning clue because \"Back pack\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Ice pack and Jet pack. Several clues have very common meanings, so it's hard to see past the surface reads until you have a direction.",
+      "tiedClue": "Back"
     }
   ],
   "uniquenessSignals": {
-    "angle": "familiar phrases completed by one shared ending word",
+    "angle": "a repeated-word phrase pattern with one missing term",
     "relatedEntities": [
-      "Ice",
-      "Jet",
-      "Booster",
-      "Six",
-      "Back"
+      "Ice pack",
+      "Jet pack",
+      "Booster pack",
+      "Six pack",
+      "Back pack"
     ],
     "doNotRepeatPatterns": [
-      "familiar phrases completed by one shared ending word",
-      "Ice",
-      "Jet",
-      "Booster",
-      "Six"
+      "a repeated-word phrase pattern with one missing term",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer exact phrase logic over loose category logic",
+      "Ice pack",
+      "Jet pack"
     ]
   }
 }
