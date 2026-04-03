@@ -167,6 +167,11 @@ function buildWorkerArticleBreakdown(
   words: string[],
   answer: string,
   turningPoint: string,
+  options?: {
+    wrongGuessCandidates?: WorkerWrongGuessCandidate[];
+    setValidationSummary?: string;
+    categoryPrecisionNote?: string;
+  },
 ): string {
   const pattern = detectWorkerAnswerPattern(answer);
   const connectorSummary = buildWorkerConnectorSummary(answer);
@@ -182,6 +187,9 @@ function buildWorkerArticleBreakdown(
     connectorSummary,
     sampleReads,
     finalChecks,
+    wrongGuessCandidates: options?.wrongGuessCandidates,
+    setValidationSummary: options?.setValidationSummary,
+    categoryPrecisionNote: options?.categoryPrecisionNote,
   });
 
   return paragraphs.join("\n\n");
@@ -196,6 +204,11 @@ function buildFallbackAnalysis(
   words: string[],
   answer: string,
   clueDetails: Array<Record<string, unknown>>,
+  options?: {
+    wrongGuessCandidates?: WorkerWrongGuessCandidate[];
+    setValidationSummary?: string;
+    categoryPrecisionNote?: string;
+  },
 ): string {
   const turningPoint =
     clueDetails.find((detail) => typeof detail?.clue === "string" && typeof detail?.explanation === "string")
@@ -205,6 +218,7 @@ function buildFallbackAnalysis(
     words,
     answer,
     turningPoint || pickWorkerTurningPoint(words, answer),
+    options,
   );
 }
 
@@ -1065,6 +1079,28 @@ function buildTemplateFallbackPayload(
       explanation: buildWorkerClueExplanation(clue, phrase, answer, index, turningPoint),
     };
   });
+  const turningPointRecord = {
+    clue: turningPoint,
+    whyDecisive: `${turningPoint} is the clue that makes the shared answer concrete enough to test across the full board.`,
+    whatChangedAfterIt: `Once ${turningPoint} lands, the earlier clues stop feeling broad and start reading under the same answer.`,
+  };
+  const wrongGuessCandidates = inferWorkerWrongGuessCandidates(answer, words, {}, turningPointRecord);
+  const fallbackWrongGuess = wrongGuessCandidates[0]?.label || (
+    pattern.kind === "before" || pattern.kind === "after"
+      ? "loose phrase guesses"
+      : pattern.kind === "typed-category"
+        ? "a broader umbrella topic"
+        : pattern.kind === "association"
+          ? "a literal category guess"
+          : "a broader category guess"
+  );
+  const clueRows = inferWorkerClueRows(
+    words,
+    clueDetails as Array<Record<string, unknown>>,
+    fallbackWrongGuess,
+  );
+  const setValidationSummary = inferWorkerSetValidationSummary(answer, words, clueRows, turningPointRecord);
+  const categoryPrecisionNote = inferWorkerCategoryPrecisionNote(answer, words);
 
   const heroSummary =
     `Pinpoint Answer Today asks: what links ${clueLabel} - and what story do they share? ` +
@@ -1086,20 +1122,18 @@ function buildTemplateFallbackPayload(
   const solutionParagraphs = [
     ...buildSharedFallbackSolutionNarrative({
       kind: pattern.kind,
-      wrongGuess: pattern.kind === "before" || pattern.kind === "after"
-        ? "loose phrase guesses"
-        : pattern.kind === "typed-category"
-          ? "a broader umbrella topic"
-          : pattern.kind === "association"
-            ? "a literal category guess"
-        : "a broader category guess",
+      wrongGuess: fallbackWrongGuess,
       turningPoint,
       clues: words,
     }),
     `The answer was "${answer}".`,
   ];
 
-  const detailedBreakdown = buildWorkerArticleBreakdown(puzzleNumber, words, answer, turningPoint);
+  const detailedBreakdown = buildWorkerArticleBreakdown(puzzleNumber, words, answer, turningPoint, {
+    wrongGuessCandidates,
+    setValidationSummary,
+    categoryPrecisionNote,
+  });
   const solutionEmergence = solutionParagraphs.join("\n\n");
   const lessons = buildSharedFallbackLessons({ kind: pattern.kind, turningPoint });
 
@@ -1142,6 +1176,11 @@ function buildTemplateFallbackPayload(
     analysis,
     summary: heroSummary,
     detailState: "fallback_full",
+    turningPoint: turningPointRecord,
+    clueRows,
+    wrongGuessCandidates,
+    setValidationSummary,
+    categoryPrecisionNote,
   });
 
   return {
@@ -1158,6 +1197,9 @@ function buildTemplateFallbackPayload(
     clueRows: detailRecord.clueRows,
     faqItems: detailRecord.faqItems,
     uniquenessSignals: detailRecord.uniquenessSignals,
+    wrongGuessCandidates: detailRecord.wrongGuessCandidates,
+    setValidationSummary: detailRecord.setValidationSummary,
+    categoryPrecisionNote: detailRecord.categoryPrecisionNote,
     publishedAtIso: buildPublishedAtIso(puzzleDate, doc.fetchedAt),
     metadata: {
       publishedAtSource: `${siteBaseUrl}/worker/template-fallback`,
@@ -2542,12 +2584,43 @@ export function buildPublishedPuzzleDetailRecord({
     { question: "How difficult was this Pinpoint puzzle?", answer: "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy." },
     { question: "What strategy helps with Pinpoint?", answer: "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept." },
   ];
-
+  const questionType = providedQuestionType ?? inferWorkerDetailQuestionType(answer);
+  const turningPoint =
+    providedTurningPoint ??
+    inferWorkerTurningPointRecord(words, sections, analysis, clueDetails as Array<Record<string, unknown>>);
+  const wrongGuessCandidates =
+    (Array.isArray(providedWrongGuessCandidates) && providedWrongGuessCandidates.length > 0
+      ? providedWrongGuessCandidates
+      : inferWorkerWrongGuessCandidates(answer, words, sections, turningPoint))
+      .slice(0, 3);
+  const wrongGuessLabel =
+    wrongGuessCandidates[0]?.label ||
+    (Array.isArray(sections.wrongGuesses) && sections.wrongGuesses.length > 0
+      ? asNonEmptyString(asRecord(sections.wrongGuesses[0])?.guess) || "an early broad guess"
+      : "an early broad guess");
+  const clueRows =
+    (Array.isArray(providedClueRows) && providedClueRows.length > 0
+      ? providedClueRows
+      : inferWorkerClueRows(words, clueDetails as Array<Record<string, unknown>>, wrongGuessLabel));
+  const setValidationSummary =
+    providedSetValidationSummary ??
+    inferWorkerSetValidationSummary(answer, words, clueRows, turningPoint);
+  const categoryPrecisionNote =
+    providedCategoryPrecisionNote ??
+    inferWorkerCategoryPrecisionNote(answer, words);
+  const difficultyBand = providedDifficultyBand ?? inferWorkerDifficultyBand(answer, sections, wrongGuessCandidates);
+  const bodyMode = providedBodyMode ?? (providedPageExperienceMode === "light-explainer" ? "short" : "standard");
+  const pageExperienceMode =
+    providedPageExperienceMode ?? (bodyMode === "short" ? "light-explainer" : "full-analysis");
   const rawAnalysisText = String(analysis.detailedBreakdown || sections.overview || "").trim();
   const rawAnalysisWordCount = rawAnalysisText ? rawAnalysisText.split(/\s+/).filter(Boolean).length : 0;
   const analysisSource = rawAnalysisWordCount >= 80
     ? rawAnalysisText
-    : buildFallbackAnalysis(puzzleNumber, words, answer, clueDetails as Array<Record<string, unknown>>);
+    : buildFallbackAnalysis(puzzleNumber, words, answer, clueDetails as Array<Record<string, unknown>>, {
+      wrongGuessCandidates,
+      setValidationSummary,
+      categoryPrecisionNote,
+    });
   const articleBlocks = toParagraphs(
     (sections as Record<string, unknown>).articleBlocks,
     analysisSource,
@@ -2559,40 +2632,13 @@ export function buildPublishedPuzzleDetailRecord({
   );
   const spoilerHints = buildWorkerSpoilerHints(words, answer);
   const display = buildWorkerDisplay(words, answer, wordHints, lessons, clueDetails as Array<Record<string, unknown>>);
-  const wrongGuessLabel =
-    Array.isArray(sections.wrongGuesses) && sections.wrongGuesses.length > 0
-      ? asNonEmptyString(asRecord(sections.wrongGuesses[0])?.guess) || "an early broad guess"
-      : "an early broad guess";
-  const questionType = providedQuestionType ?? inferWorkerDetailQuestionType(answer);
-  const turningPoint =
-    providedTurningPoint ??
-    inferWorkerTurningPointRecord(words, sections, analysis, clueDetails as Array<Record<string, unknown>>);
-  const wrongGuessCandidates =
-    (Array.isArray(providedWrongGuessCandidates) && providedWrongGuessCandidates.length > 0
-      ? providedWrongGuessCandidates
-      : inferWorkerWrongGuessCandidates(answer, words, sections, turningPoint))
-      .slice(0, 3);
-  const difficultyBand = providedDifficultyBand ?? inferWorkerDifficultyBand(answer, sections, wrongGuessCandidates);
-  const bodyMode = providedBodyMode ?? (providedPageExperienceMode === "light-explainer" ? "short" : "standard");
-  const pageExperienceMode =
-    providedPageExperienceMode ?? (bodyMode === "short" ? "light-explainer" : "full-analysis");
   const solvePath =
     providedSolvePath ?? inferWorkerSolvePath(sections, analysis, slots, turningPoint, wrongGuessCandidates);
-  const clueRows =
-    (Array.isArray(providedClueRows) && providedClueRows.length > 0
-      ? providedClueRows
-      : inferWorkerClueRows(words, clueDetails as Array<Record<string, unknown>>, wrongGuessLabel));
   const faqItems =
     (Array.isArray(providedFaqItems) && providedFaqItems.length > 0
       ? providedFaqItems
       : inferWorkerFaqItems(faqs, words));
   const uniquenessSignals = providedUniquenessSignals ?? buildWorkerUniquenessSignals(answer, clueRows);
-  const setValidationSummary =
-    providedSetValidationSummary ??
-    inferWorkerSetValidationSummary(answer, words, clueRows, turningPoint);
-  const categoryPrecisionNote =
-    providedCategoryPrecisionNote ??
-    inferWorkerCategoryPrecisionNote(answer, words);
 
   return {
     puzzleNumber,

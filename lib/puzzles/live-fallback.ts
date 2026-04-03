@@ -250,6 +250,11 @@ export function buildLiveArticleBreakdown(
   clues: string[],
   answer: string,
   turningPoint: string,
+  options?: {
+    wrongGuessCandidates?: Array<{ label: string; whyPlausible: string; whyRejected?: string }>;
+    setValidationSummary?: string;
+    categoryPrecisionNote?: string;
+  },
 ): string[] {
   const pattern = detectLiveAnswerPattern(answer);
   const connectorSummary = buildLiveConnectorSummary(answer);
@@ -266,5 +271,8 @@ export function buildLiveArticleBreakdown(
     connectorSummary,
     sampleReads,
     finalChecks,
+    wrongGuessCandidates: options?.wrongGuessCandidates,
+    setValidationSummary: options?.setValidationSummary,
+    categoryPrecisionNote: options?.categoryPrecisionNote,
   });
 }

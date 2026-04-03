@@ -7,6 +7,11 @@ export type FallbackPatternKind =
 
 type LessonItem = { title: string; body: string };
 type FaqItem = { question: string; answer: string };
+type WrongGuessCandidate = {
+  label: string;
+  whyPlausible: string;
+  whyRejected?: string;
+};
 
 function quoteJoin(values: string[]): string {
   return values.map((value) => `"${value}"`).join(" and ");
@@ -34,6 +39,48 @@ function phraseAnswerSlot(kind: FallbackPatternKind): string {
   return kind === "before" ? "ending word" : "first word";
 }
 
+function getFallbackWrongGuessPair(
+  candidates: WrongGuessCandidate[] | undefined,
+  fallbackPrimary: string,
+  fallbackSecondary: string,
+): [WrongGuessCandidate, WrongGuessCandidate | null] {
+  const normalized = Array.isArray(candidates)
+    ? candidates.filter((candidate) => candidate?.label && candidate?.whyPlausible).slice(0, 2)
+    : [];
+  const primary = normalized[0] ?? {
+    label: fallbackPrimary,
+    whyPlausible: `The opening clues can support ${fallbackPrimary} before the board narrows into a cleaner read.`,
+  };
+  const secondary = normalized[1] ?? (fallbackSecondary
+    ? {
+        label: fallbackSecondary,
+        whyPlausible: `A nearby read like ${fallbackSecondary} can also feel plausible until the full board is checked together.`,
+      }
+    : null);
+  return [primary, secondary];
+}
+
+function buildPrecisionCloser(
+  answer: string,
+  categoryPrecisionNote: string | undefined,
+  wrongGuessCandidates: WrongGuessCandidate[],
+): string {
+  const comparisons = wrongGuessCandidates
+    .map((candidate) => candidate.label)
+    .filter(Boolean)
+    .slice(0, 2);
+
+  if (categoryPrecisionNote && comparisons.length > 0) {
+    return `The answer was ${answer}. More precisely, the board resolves as ${categoryPrecisionNote}, which is why ${answer} fits better than ${comparisons.map((item) => `"${item}"`).join(" or ")} once the full set is checked.`;
+  }
+
+  if (categoryPrecisionNote) {
+    return `The answer was ${answer}. More precisely, the board resolves as ${categoryPrecisionNote}.`;
+  }
+
+  return `The answer was ${answer}.`;
+}
+
 export function buildSharedFallbackArticleBlocks(input: {
   kind: FallbackPatternKind;
   clues: string[];
@@ -42,67 +89,128 @@ export function buildSharedFallbackArticleBlocks(input: {
   connectorSummary: string;
   sampleReads: string[];
   finalChecks: string[];
+  wrongGuessCandidates?: WrongGuessCandidate[];
+  setValidationSummary?: string;
+  categoryPrecisionNote?: string;
 }): string[] {
-  const { kind, clues, answer, turningPoint, connectorSummary, sampleReads, finalChecks } = input;
+  const {
+    kind,
+    clues,
+    answer,
+    turningPoint,
+    connectorSummary,
+    sampleReads,
+    finalChecks,
+    wrongGuessCandidates = [],
+    setValidationSummary,
+    categoryPrecisionNote,
+  } = input;
   const first = clues[0] ?? "the first clue";
   const second = clues[1] ?? "the second clue";
   const sampleReadText = quoteJoin(sampleReads.slice(0, 2));
   const finalCheckText = quoteJoin(finalChecks.slice(0, 2));
+  const precisionCloser = buildPrecisionCloser(answer, categoryPrecisionNote, wrongGuessCandidates);
 
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
     const answerSlot = phraseAnswerSlot(kind);
+    const [primaryWrongGuess, secondaryWrongGuess] = getFallbackWrongGuessPair(
+      wrongGuessCandidates,
+      "loose phrase guesses",
+      "standalone clue meanings",
+    );
     return [
       `The first clues make it clear this is a shared-word phrase puzzle, but not which ${answerSlot} belongs ${positionText} every clue without forcing the read.`,
-      `"${turningPoint}" narrows that down quickly because it points to one phrase that feels exact right away.`,
-      `Once that phrase appears, examples like ${sampleReadText} stop feeling guessed and start reading like ordinary language.`,
-      `The answer was ${answer}.`,
-      `${finalCheckText} then work as clean confirmations that the same word belongs ${positionText} the remaining clues too and keeps the pattern stable.`,
+      `A nearby read was "${primaryWrongGuess.label}". ${primaryWrongGuess.whyPlausible} ${primaryWrongGuess.whyRejected ?? `"${turningPoint}" is the clue that keeps the board from staying at that broader phrase level.`}`,
+      secondaryWrongGuess
+        ? `Another easy trap was "${secondaryWrongGuess.label}". ${secondaryWrongGuess.whyPlausible} ${secondaryWrongGuess.whyRejected ?? "That line never explains the strongest clue cleanly enough."}`
+        : `"${turningPoint}" narrows the slot down quickly because it points to one phrase that feels exact right away.`,
+      `Once that phrase appears, examples like ${sampleReadText} stop feeling guessed and start reading like ordinary language under ${connectorSummary}.`,
+      setValidationSummary
+        ? setValidationSummary
+        : `${finalCheckText} then work as clean confirmations that the same word belongs ${positionText} the remaining clues too and keeps the pattern stable.`,
+      precisionCloser,
     ];
   }
 
   if (kind === "typed-category") {
     const categoryTarget = answer.replace(/^"?Types of\s+/i, "").replace(/^"?Kinds of\s+/i, "").replace(/"?$/, "").trim();
     const singularTarget = categoryTarget.replace(/\b([A-Za-z]+)s\b/i, "$1") || categoryTarget;
+    const [primaryWrongGuess, secondaryWrongGuess] = getFallbackWrongGuessPair(
+      wrongGuessCandidates,
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster",
+    );
     return [
       `At first, ${first} and ${second} can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.`,
-      `The turn came with "${turningPoint}" because that clue finally made it easier to ask what kind of ${singularTarget.toLowerCase()} each entry could be describing instead of treating the board like a vague umbrella theme.`,
-      `Once that question became the frame, ${connectorSummary} stopped sounding generic and started behaving like a real category test.`,
-      `Examples like ${sampleReadText} then read like recognizable members of the same set rather than isolated references that merely share the same mood.`,
-      `The answer was ${answer}.`,
-      `${finalCheckText} work best as full-board confirmation because they show the same category can stay precise all the way through, not just around the opening clues.`,
+      `One tempting read was "${primaryWrongGuess.label}". ${primaryWrongGuess.whyPlausible} ${primaryWrongGuess.whyRejected ?? `"${turningPoint}" is the clue that finally pushes the board down to one exact type-level category.`}`,
+      secondaryWrongGuess
+        ? `Another nearby bucket was "${secondaryWrongGuess.label}". ${secondaryWrongGuess.whyPlausible} ${secondaryWrongGuess.whyRejected ?? "That read stays too broad once the full board is checked at the same category level."}`
+        : `The turn came with "${turningPoint}" because that clue finally made it easier to ask what kind of ${singularTarget.toLowerCase()} each entry could be describing instead of treating the board like a vague umbrella theme.`,
+      `Once the board turned into a question about what kind of ${singularTarget.toLowerCase()} each clue could be, ${connectorSummary} stopped sounding generic and started behaving like a real category test. Examples like ${sampleReadText} then read like recognizable members of the same set rather than isolated references that merely share the same mood.`,
+      setValidationSummary
+        ? setValidationSummary
+        : `${finalCheckText} work best as full-board confirmation because they show the same category can stay precise all the way through, not just around the opening clues.`,
+      precisionCloser,
     ];
   }
 
   if (kind === "association") {
+    const [primaryWrongGuess, secondaryWrongGuess] = getFallbackWrongGuessPair(
+      wrongGuessCandidates,
+      "a literal category label",
+      "five unrelated references",
+    );
     return [
       `At first, ${first} and ${second} can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front.`,
-      `The turn came with "${turningPoint}", which gave the board a stronger anchor and made it easier to test one shared context instead of bouncing between unrelated guesses.`,
-      `From there, ${connectorSummary} explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts.`,
-      `Examples like ${sampleReadText} stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.`,
-      `The answer was ${answer}.`,
-      `${finalCheckText} then feel less like extra guesses and more like confirmation that the same subject really can hold the full board together.`,
+      `A tempting early label was "${primaryWrongGuess.label}". ${primaryWrongGuess.whyPlausible} ${primaryWrongGuess.whyRejected ?? `"${turningPoint}" works better as the anchor into one shared world than as proof of a literal category.`}`,
+      secondaryWrongGuess
+        ? `Another nearby read was "${secondaryWrongGuess.label}". ${secondaryWrongGuess.whyPlausible} ${secondaryWrongGuess.whyRejected ?? "That interpretation leaves too many clues floating on their own."}`
+        : `The turn came with "${turningPoint}", which gave the board a stronger anchor and made it easier to test one shared context instead of bouncing between unrelated guesses.`,
+      `From there, ${connectorSummary} explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts. Examples like ${sampleReadText} stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.`,
+      setValidationSummary
+        ? setValidationSummary
+        : `${finalCheckText} then feel less like extra guesses and more like confirmation that the same subject really can hold the full board together.`,
+      precisionCloser,
     ];
   }
 
   if (isVisualCategoryBoard(kind, clues)) {
+    const [primaryWrongGuess, secondaryWrongGuess] = getFallbackWrongGuessPair(
+      wrongGuessCandidates,
+      "a loose emoji mood list",
+      "general internet symbols",
+    );
     return [
       `At first, ${first} and ${second} can look like a random visual cluster, which is why emoji and symbol boards often tempt you into reading mood, tone, or internet shorthand before the real set appears.`,
-      `The turn came with "${turningPoint}". That clue made it easier to treat the board as one visual family instead of a pile of unrelated icons.`,
+      `One tempting read was "${primaryWrongGuess.label}". ${primaryWrongGuess.whyPlausible} ${primaryWrongGuess.whyRejected ?? `"${turningPoint}" is the clue that turns the board into one testable visual family instead of a random icon pile.`}`,
+      secondaryWrongGuess
+        ? `Another nearby bucket was "${secondaryWrongGuess.label}". ${secondaryWrongGuess.whyPlausible} ${secondaryWrongGuess.whyRejected ?? "That read stays too generic once the symbols are tested as one complete sequence."}`
+        : `The turn came with "${turningPoint}". That clue made it easier to treat the board as one visual family instead of a pile of unrelated icons.`,
       `Once I read the set through ${connectorSummary}, examples like ${sampleReadText} stopped feeling decorative and started behaving like recognizable members of the same visual system.`,
-      `That is also why the board works better as a coherent visual set than as a loose emoji mood list: every clue strengthens the same read instead of introducing a second theme.`,
-      `The answer was ${answer}.`,
-      `${finalCheckText} then land as final confirmation because they extend that same visual sequence instead of breaking it.`,
+      setValidationSummary
+        ? setValidationSummary
+        : `${finalCheckText} then land as final confirmation because they extend that same visual sequence instead of breaking it.`,
+      precisionCloser,
     ];
   }
 
+  const [primaryWrongGuess, secondaryWrongGuess] = getFallbackWrongGuessPair(
+    wrongGuessCandidates,
+    "a broader umbrella topic",
+    "a one-clue surface theme",
+  );
   return [
     `At first, ${first} and ${second} pointed in a few different directions, so the board still felt wider than one exact category.`,
-    `The turn came with "${turningPoint}".`,
-    `That clue made the answer feel concrete enough to test across the full board instead of leaving the solve at vibe level.`,
+    `One tempting read was "${primaryWrongGuess.label}". ${primaryWrongGuess.whyPlausible} ${primaryWrongGuess.whyRejected ?? `"${turningPoint}" is the clue that makes the answer concrete enough to test across the full board.`}`,
+    secondaryWrongGuess
+      ? `Another nearby read was "${secondaryWrongGuess.label}". ${secondaryWrongGuess.whyPlausible} ${secondaryWrongGuess.whyRejected ?? "That read never gives the board a precise enough edge."}`
+      : `The turn came with "${turningPoint}".`,
     `Once I read the set through ${connectorSummary}, examples like ${sampleReadText} stopped feeling loose and started landing cleanly.`,
-    `The answer was ${answer}.`,
-    `${finalCheckText} then felt like the last confirmations, not separate guesses, because they supported that answer without any stretching.`,
+    setValidationSummary
+      ? setValidationSummary
+      : `${finalCheckText} then felt like the last confirmations, not separate guesses, because they supported that answer without any stretching.`,
+    precisionCloser,
   ];
 }
 

@@ -1171,6 +1171,13 @@ async function checkPhraseFallbackDirection() {
       connectorSummary: string;
       sampleReads: string[];
       finalChecks: string[];
+      wrongGuessCandidates?: Array<{
+        label: string;
+        whyPlausible: string;
+        whyRejected?: string;
+      }>;
+      setValidationSummary?: string;
+      categoryPrecisionNote?: string;
     }) => string[];
     buildSharedFallbackFaqs: (input: {
       puzzleNumber: number;
@@ -1268,6 +1275,41 @@ async function checkPhraseFallbackDirection() {
     visualNarrative.join(" "),
     /\bemoji\b|\bicon\b|\bvisual\b/i,
     "visual category fallback narrative should acknowledge the icon-heavy solve path",
+  );
+
+  const structuredCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
+    kind: "category",
+    clues: ["Mercury", "Venus", "Earth", "Mars", "Jupiter"],
+    answer: '"Planets"',
+    turningPoint: "Jupiter",
+    connectorSummary: "a category board focused on planets",
+    sampleReads: ["Mercury", "Venus"],
+    finalChecks: ["Mars", "Jupiter"],
+    wrongGuessCandidates: [
+      {
+        label: "a broader space topic",
+        whyPlausible: "Mercury and Venus can initially feel like a loose astronomy board.",
+        whyRejected: 'Jupiter is the clue that narrows the board into one exact planet family.',
+      },
+      {
+        label: "named celestial objects",
+        whyPlausible: "The clues all look like recognizable proper nouns from the sky.",
+      },
+    ],
+    setValidationSummary:
+      "Mars and Jupiter keep the board at the same category level, so the full set reads like one exact family instead of a broad space shelf.",
+    categoryPrecisionNote:
+      "one concrete category with members that stay at the same level of specificity as planets",
+  });
+  assert.match(
+    structuredCategoryArticle.join(" "),
+    /\ba broader space topic\b/i,
+    "structured fallback article copy should pull wrongGuessCandidates into the public walkthrough instead of leaving them as dead JSON fields",
+  );
+  assert.match(
+    structuredCategoryArticle.join(" "),
+    /\bsame category level\b|\bexact family\b/i,
+    "structured fallback article copy should use setValidationSummary and categoryPrecisionNote to thicken the walkthrough",
   );
 
   console.log("ok: phrase fallback copy keeps shared-word direction straight");
