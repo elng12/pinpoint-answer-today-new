@@ -244,6 +244,7 @@ function mergeOpeningParagraphBlock(paragraphs: string[], puzzle: PuzzleDetailRe
 
 function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
   const paragraphs: string[] = [];
+  const usedWrongGuessLabels = new Set<string>();
 
   if (puzzle.solvePath?.firstRead) {
     paragraphs.push(puzzle.solvePath.firstRead);
@@ -251,10 +252,24 @@ function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
 
   puzzle.solvePath?.falseStarts.forEach((guess, index) => {
     const explanation = puzzle.solvePath?.whyFalseStartPlausible[index];
+    usedWrongGuessLabels.add(guess.trim().toLowerCase());
     paragraphs.push(
       explanation
         ? `A believable early read was "${guess}". ${explanation}`
         : `A believable early read was "${guess}".`,
+    );
+  });
+
+  puzzle.wrongGuessCandidates.forEach((candidate) => {
+    const normalizedLabel = candidate.label.trim().toLowerCase();
+    if (!normalizedLabel || usedWrongGuessLabels.has(normalizedLabel)) {
+      return;
+    }
+    usedWrongGuessLabels.add(normalizedLabel);
+    paragraphs.push(
+      candidate.whyRejected
+        ? `Another nearby read was "${candidate.label}". ${candidate.whyPlausible} ${candidate.whyRejected}`
+        : `Another nearby read was "${candidate.label}". ${candidate.whyPlausible}`,
     );
   });
 
@@ -282,6 +297,14 @@ function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
 
   if (puzzle.solvePath?.fullBoardConfirmation) {
     paragraphs.push(puzzle.solvePath.fullBoardConfirmation);
+  }
+
+  if (puzzle.setValidationSummary) {
+    paragraphs.push(puzzle.setValidationSummary);
+  }
+
+  if (puzzle.categoryPrecisionNote) {
+    paragraphs.push(`That is why the board resolves as ${puzzle.categoryPrecisionNote}.`);
   }
 
   return dedupeParagraphs(paragraphs);

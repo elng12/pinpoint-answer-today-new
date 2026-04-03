@@ -296,6 +296,12 @@ type WorkerUniquenessSignals = {
   doNotRepeatPatterns: string[];
 };
 
+type WorkerWrongGuessCandidate = {
+  label: string;
+  whyPlausible: string;
+  whyRejected?: string;
+};
+
 type EnrichPublishResult = {
   status: "enriched" | "fallback_full" | "skipped";
   reason?: string;
@@ -1827,6 +1833,9 @@ type PublishedPuzzleDetailInput = {
   clueRows?: WorkerClueRow[];
   faqItems?: WorkerFaqItem[];
   uniquenessSignals?: WorkerUniquenessSignals | null;
+  wrongGuessCandidates?: WorkerWrongGuessCandidate[];
+  setValidationSummary?: string;
+  categoryPrecisionNote?: string;
 };
 
 const MIN_DETAIL_FULL_ANALYSIS_WORDS = 80;
@@ -1968,6 +1977,9 @@ type ProvidedEvidenceFields = {
   clueRows?: WorkerClueRow[];
   faqItems?: WorkerFaqItem[];
   uniquenessSignals?: WorkerUniquenessSignals | null;
+  wrongGuessCandidates?: WorkerWrongGuessCandidate[];
+  setValidationSummary?: string;
+  categoryPrecisionNote?: string;
 };
 
 function resolveProvidedWorkerQuestionType(value: unknown): DetailQuestionType | undefined {
@@ -2094,6 +2106,21 @@ function normalizeWorkerUniquenessSignals(value: unknown): WorkerUniquenessSigna
   return { angle, relatedEntities, doNotRepeatPatterns };
 }
 
+function normalizeWorkerWrongGuessCandidates(value: unknown): WorkerWrongGuessCandidate[] | undefined {
+  const rows = normalizeWorkerRecordArray(value);
+  if (!rows) return undefined;
+  const normalized = rows
+    .map((row) => {
+      const label = asNonEmptyString(row.label) || asNonEmptyString(row.guess);
+      const whyPlausible = asNonEmptyString(row.whyPlausible) || asNonEmptyString(row.explanation);
+      const whyRejected = asNonEmptyString(row.whyRejected) || undefined;
+      if (!label || !whyPlausible) return null;
+      return { label, whyPlausible, ...(whyRejected ? { whyRejected } : {}) };
+    })
+    .filter((row): row is WorkerWrongGuessCandidate => Boolean(row));
+  return normalized.length > 0 ? normalized : undefined;
+}
+
 function extractProvidedEvidenceFields(payload: JsonRecord): ProvidedEvidenceFields {
   return {
     questionType: resolveProvidedWorkerQuestionType(payload.questionType),
@@ -2103,16 +2130,142 @@ function extractProvidedEvidenceFields(payload: JsonRecord): ProvidedEvidenceFie
     clueRows: normalizeWorkerClueRows(payload.clueRows),
     faqItems: normalizeWorkerFaqItems(payload.faqItems),
     uniquenessSignals: normalizeWorkerUniquenessSignals(payload.uniquenessSignals),
+    wrongGuessCandidates: normalizeWorkerWrongGuessCandidates(payload.wrongGuessCandidates),
+    setValidationSummary: asNonEmptyString(payload.setValidationSummary),
+    categoryPrecisionNote: asNonEmptyString(payload.categoryPrecisionNote),
   };
 }
 
-function inferWorkerDifficultyBand(answer: string, sections: JsonRecord): DetailDifficultyBand {
-  const wrongGuesses = Array.isArray(sections.wrongGuesses) ? sections.wrongGuesses : [];
-  if (wrongGuesses.length >= 2) return "hard";
-  if (wrongGuesses.length === 0 && inferWorkerDetailQuestionType(answer) !== "association") {
+function hasVisualWorkerCue(value: string): boolean {
+  return /[^\p{L}\p{N}\s()'"&,-]/u.test(value);
+}
+
+function isVisualWorkerCategoryBoard(answer: string, words: string[]): boolean {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind !== "category") return false;
+  const visualCueCount = words.filter((word) => hasVisualWorkerCue(word)).length;
+  return visualCueCount >= Math.max(2, Math.ceil(words.length / 2));
+}
+
+function inferWorkerDifficultyBand(
+  answer: string,
+  sections: JsonRecord,
+  wrongGuessCandidates: WorkerWrongGuessCandidate[] = [],
+): DetailDifficultyBand {
+  const wrongGuessCount = wrongGuessCandidates.length > 0
+    ? wrongGuessCandidates.length
+    : Array.isArray(sections.wrongGuesses)
+      ? sections.wrongGuesses.length
+      : 0;
+  if (wrongGuessCount >= 2) return "hard";
+  if (wrongGuessCount === 0 && inferWorkerDetailQuestionType(answer) !== "association") {
     return "obvious";
   }
   return "medium";
+}
+
+function inferWorkerWrongGuessCandidates(
+  answer: string,
+  words: string[],
+  sections: JsonRecord,
+  turningPoint: WorkerTurningPointRecord | null,
+): WorkerWrongGuessCandidate[] {
+  const turningClue = turningPoint?.clue || words[2] || words[0] || "the middle clue";
+  const providedRows = Array.isArray(sections.wrongGuesses)
+    ? sections.wrongGuesses
+        .map((item) => asRecord(item))
+        .filter((item): item is JsonRecord => Boolean(item))
+        .map((item) => {
+          const label = asNonEmptyString(item.guess);
+          const whyPlausible = asNonEmptyString(item.explanation);
+          if (!label || !whyPlausible) return null;
+          return {
+            label,
+            whyPlausible,
+            whyRejected:
+              `${turningClue} is the clue that keeps the board from staying at that broader surface read.`,
+          };
+        })
+        .filter((item): item is WorkerWrongGuessCandidate => Boolean(item))
+    : [];
+  if (providedRows.length > 0) {
+    return providedRows.slice(0, 3);
+  }
+
+  const pattern = detectWorkerAnswerPattern(answer);
+  const cluePreview = words.slice(0, 2).join(", ");
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return [
+      {
+        label: "a loose topic list",
+        whyPlausible: `${cluePreview} do not immediately advertise one shared phrase slot before ${turningClue} shows where the repeated word belongs.`,
+        whyRejected: `${turningClue} behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.`,
+      },
+      {
+        label: "standalone clue meanings",
+        whyPlausible: "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+        whyRejected: `Once ${turningClue} locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.`,
+      },
+    ];
+  }
+
+  if (pattern.kind === "typed-category") {
+    return [
+      {
+        label: "a broader umbrella topic",
+        whyPlausible: `${cluePreview} can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.`,
+        whyRejected: `${turningClue} pushes the solve down to one exact type-level category instead of a vague umbrella topic.`,
+      },
+      {
+        label: "a loose mascot or named-entity cluster",
+        whyPlausible: "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+        whyRejected: "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+      },
+    ];
+  }
+
+  if (pattern.kind === "association") {
+    return [
+      {
+        label: "a literal category label",
+        whyPlausible: `${cluePreview} can look like they should collapse into one tidy dictionary-style group.`,
+        whyRejected: `${turningClue} works better as an anchor into one shared world than as proof of a literal category label.`,
+      },
+      {
+        label: "five unrelated references",
+        whyPlausible: "Association boards often mix clue shapes enough to feel scattered before one anchor clue stabilizes the context.",
+        whyRejected: `Once ${turningClue} defines the subject, the other clues stop feeling random and start pointing back to the same world.`,
+      },
+    ];
+  }
+
+  if (isVisualWorkerCategoryBoard(answer, words)) {
+    return [
+      {
+        label: "a loose emoji mood list",
+        whyPlausible: "Emoji-heavy boards can look like reactions or internet shorthand before they reveal one clean visual family.",
+        whyRejected: `${turningClue} makes the board read like one recognizable visual set instead of a mood board.`,
+      },
+      {
+        label: "general internet symbols",
+        whyPlausible: "The clues all look like icons, so a generic symbol bucket is an easy first read.",
+        whyRejected: "The full set stays coherent because the icons belong to one specific visual sequence, not just the broad idea of symbols.",
+      },
+    ];
+  }
+
+  return [
+    {
+      label: "a broader umbrella topic",
+      whyPlausible: `${cluePreview} can point toward several nearby themes before one clue makes the exact category level visible.`,
+        whyRejected: `${turningClue} is the clue that narrows the board into one category with clearer boundaries.`,
+    },
+    {
+      label: "a one-clue surface theme",
+      whyPlausible: "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      whyRejected: "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    },
+  ];
 }
 
 function findWorkerMentionedClue(text: string, words: string[]): string | null {
@@ -2176,6 +2329,7 @@ function inferWorkerSolvePath(
   analysis: JsonRecord,
   slots: JsonRecord | null,
   turningPoint: WorkerTurningPointRecord | null,
+  wrongGuessCandidates: WorkerWrongGuessCandidate[] = [],
 ): WorkerSolvePathRecord {
   const firstRead =
     toParagraphs(sections.overview, asNonEmptyString(analysis.detailedBreakdown) || "")[0] ||
@@ -2185,12 +2339,20 @@ function inferWorkerSolvePath(
         .map((item) => asRecord(item))
         .filter((item): item is JsonRecord => Boolean(item))
     : [];
-  const falseStarts = wrongGuesses
-    .map((item) => asNonEmptyString(item.guess))
+  const normalizedWrongGuesses = wrongGuessCandidates.length > 0
+    ? wrongGuessCandidates.map((item) => ({ guess: item.label, explanation: item.whyPlausible }))
+    : wrongGuesses
+        .map((item) => ({
+          guess: asNonEmptyString(item.guess),
+          explanation: asNonEmptyString(item.explanation),
+        }))
+        .filter((item) => item.guess && item.explanation);
+  const falseStarts = normalizedWrongGuesses
+    .map((item) => item.guess)
     .filter((item): item is string => Boolean(item))
     .slice(0, 2);
-  const whyFalseStartPlausible = wrongGuesses
-    .map((item) => asNonEmptyString(item.explanation))
+  const whyFalseStartPlausible = normalizedWrongGuesses
+    .map((item) => item.explanation)
     .filter((item): item is string => Boolean(item))
     .slice(0, Math.max(falseStarts.length, 1));
   const pivot =
@@ -2270,6 +2432,71 @@ function buildWorkerUniquenessSignals(
   };
 }
 
+function inferWorkerSetValidationSummary(
+  answer: string,
+  words: string[],
+  clueRows: WorkerClueRow[],
+  turningPoint: WorkerTurningPointRecord | null,
+): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  const supportClues = words.slice(-3);
+  const supportPreview = supportClues.join(", ");
+  const resolvedPreview = clueRows
+    .slice(-3)
+    .map((row) => row.resolvedPhraseOrMember)
+    .filter(Boolean)
+    .join(", ");
+  const turningClue = turningPoint?.clue || words[2] || words[0] || "the middle clue";
+
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return resolvedPreview
+      ? `${resolvedPreview} show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.`
+      : `${supportPreview} all accept the same shared word in the same position, so the board behaves like one complete phrase family once ${turningClue} lands.`;
+  }
+
+  if (pattern.kind === "typed-category") {
+    return resolvedPreview
+      ? `${resolvedPreview} read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.`
+      : `${supportPreview} keep pointing to the same type-level category, which is why the solved board feels exact instead of loosely thematic.`;
+  }
+
+  if (pattern.kind === "association") {
+    return `${supportPreview} all point back to the same subject from different angles, so the board holds together as one shared world rather than five unrelated references.`;
+  }
+
+  if (isVisualWorkerCategoryBoard(answer, words)) {
+    return `${supportPreview} extend the same visual sequence, so the board reads like one familiar icon family instead of a loose emoji mood list.`;
+  }
+
+  return `${supportPreview} keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.`;
+}
+
+function inferWorkerCategoryPrecisionNote(answer: string, words: string[]): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+
+  if (pattern.kind === "before") {
+    return "one shared ending word placed after each clue, not a loose topic grouping";
+  }
+
+  if (pattern.kind === "after") {
+    return "one shared opening word placed before each clue, not a loose topic grouping";
+  }
+
+  if (pattern.kind === "typed-category") {
+    return `a typed category where each clue names a specific member of the same family around ${answer}`;
+  }
+
+  if (pattern.kind === "association") {
+    return "one shared subject or world viewed from multiple angles rather than a dictionary-style category";
+  }
+
+  if (isVisualWorkerCategoryBoard(answer, words)) {
+    return "a recognizable visual family or sequence rather than a loose emoji or icon mood";
+  }
+
+  return `one concrete category with members that stay at the same level of specificity as ${answer}`;
+}
+
 export function buildPublishedPuzzleDetailRecord({
   puzzleNumber,
   slug,
@@ -2290,6 +2517,9 @@ export function buildPublishedPuzzleDetailRecord({
   clueRows: providedClueRows,
   faqItems: providedFaqItems,
   uniquenessSignals: providedUniquenessSignals = null,
+  wrongGuessCandidates: providedWrongGuessCandidates,
+  setValidationSummary: providedSetValidationSummary,
+  categoryPrecisionNote: providedCategoryPrecisionNote,
 }: PublishedPuzzleDetailInput) {
   const clueDetails = Array.isArray(sections.clueDetails) ? sections.clueDetails : [];
 
@@ -2334,14 +2564,20 @@ export function buildPublishedPuzzleDetailRecord({
       ? asNonEmptyString(asRecord(sections.wrongGuesses[0])?.guess) || "an early broad guess"
       : "an early broad guess";
   const questionType = providedQuestionType ?? inferWorkerDetailQuestionType(answer);
-  const difficultyBand = providedDifficultyBand ?? inferWorkerDifficultyBand(answer, sections);
-  const bodyMode = providedBodyMode ?? (providedPageExperienceMode === "light-explainer" ? "short" : "standard");
-  const pageExperienceMode =
-    providedPageExperienceMode ?? (bodyMode === "short" ? "light-explainer" : "full-analysis");
   const turningPoint =
     providedTurningPoint ??
     inferWorkerTurningPointRecord(words, sections, analysis, clueDetails as Array<Record<string, unknown>>);
-  const solvePath = providedSolvePath ?? inferWorkerSolvePath(sections, analysis, slots, turningPoint);
+  const wrongGuessCandidates =
+    (Array.isArray(providedWrongGuessCandidates) && providedWrongGuessCandidates.length > 0
+      ? providedWrongGuessCandidates
+      : inferWorkerWrongGuessCandidates(answer, words, sections, turningPoint))
+      .slice(0, 3);
+  const difficultyBand = providedDifficultyBand ?? inferWorkerDifficultyBand(answer, sections, wrongGuessCandidates);
+  const bodyMode = providedBodyMode ?? (providedPageExperienceMode === "light-explainer" ? "short" : "standard");
+  const pageExperienceMode =
+    providedPageExperienceMode ?? (bodyMode === "short" ? "light-explainer" : "full-analysis");
+  const solvePath =
+    providedSolvePath ?? inferWorkerSolvePath(sections, analysis, slots, turningPoint, wrongGuessCandidates);
   const clueRows =
     (Array.isArray(providedClueRows) && providedClueRows.length > 0
       ? providedClueRows
@@ -2351,6 +2587,12 @@ export function buildPublishedPuzzleDetailRecord({
       ? providedFaqItems
       : inferWorkerFaqItems(faqs, words));
   const uniquenessSignals = providedUniquenessSignals ?? buildWorkerUniquenessSignals(answer, clueRows);
+  const setValidationSummary =
+    providedSetValidationSummary ??
+    inferWorkerSetValidationSummary(answer, words, clueRows, turningPoint);
+  const categoryPrecisionNote =
+    providedCategoryPrecisionNote ??
+    inferWorkerCategoryPrecisionNote(answer, words);
 
   return {
     puzzleNumber,
@@ -2378,6 +2620,9 @@ export function buildPublishedPuzzleDetailRecord({
     clueRows,
     faqItems,
     uniquenessSignals,
+    wrongGuessCandidates,
+    setValidationSummary,
+    categoryPrecisionNote,
   };
 }
 
@@ -2406,6 +2651,7 @@ function hasFullAnalysisStructure(record: PublishedPuzzleDetailRecord): boolean 
   const plausibleFalseStarts = Array.isArray(record.solvePath?.whyFalseStartPlausible)
     ? record.solvePath.whyFalseStartPlausible
     : [];
+  const wrongGuessCandidates = Array.isArray(record.wrongGuessCandidates) ? record.wrongGuessCandidates : [];
 
   return Boolean(
     record.pageExperienceMode === "full-analysis" &&
@@ -2413,6 +2659,9 @@ function hasFullAnalysisStructure(record: PublishedPuzzleDetailRecord): boolean 
     record.solvePath?.firstRead &&
     falseStarts.length >= requiredFalseStarts &&
     plausibleFalseStarts.length >= requiredFalseStarts &&
+    wrongGuessCandidates.length >= requiredFalseStarts &&
+    record.setValidationSummary &&
+    record.categoryPrecisionNote &&
     record.clueRows.length >= 3 &&
     record.faqItems.length >= 2 &&
     record.uniquenessSignals?.angle,

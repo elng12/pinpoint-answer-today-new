@@ -14,6 +14,7 @@ import {
   puzzleFaqIntentTypeSchema as sharedPuzzleFaqIntentTypeSchema,
   puzzleEvidenceFaqItemSchema as sharedPuzzleEvidenceFaqItemSchema,
   puzzleUniquenessSignalsSchema as sharedPuzzleUniquenessSignalsSchema,
+  puzzleWrongGuessCandidateSchema as sharedPuzzleWrongGuessCandidateSchema,
   puzzleDetailContentSchema as sharedPuzzleDetailContentSchema,
   puzzleDetailDisplayRowSchema as sharedPuzzleDetailDisplayRowSchema,
   puzzleDetailDisplaySchema as sharedPuzzleDetailDisplaySchema,
@@ -103,6 +104,11 @@ export const puzzleUniquenessSignalsSchema = sharedPuzzleUniquenessSignalsSchema
   relatedEntities: z.ZodArray<z.ZodString, "many">;
   doNotRepeatPatterns: z.ZodArray<z.ZodString, "many">;
 }>;
+export const puzzleWrongGuessCandidateSchema = sharedPuzzleWrongGuessCandidateSchema as z.ZodObject<{
+  label: z.ZodString;
+  whyPlausible: z.ZodString;
+  whyRejected: z.ZodOptional<z.ZodString>;
+}>;
 export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.ZodObject<{
   slug: z.ZodString;
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
@@ -122,6 +128,9 @@ export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.Zo
   clueRows: z.ZodOptional<z.ZodArray<typeof puzzleClueRowSchema, "many">>;
   faqItems: z.ZodOptional<z.ZodArray<typeof puzzleEvidenceFaqItemSchema, "many">>;
   uniquenessSignals: z.ZodOptional<typeof puzzleUniquenessSignalsSchema>;
+  wrongGuessCandidates: z.ZodOptional<z.ZodArray<typeof puzzleWrongGuessCandidateSchema, "many">>;
+  setValidationSummary: z.ZodOptional<z.ZodString>;
+  categoryPrecisionNote: z.ZodOptional<z.ZodString>;
   display: z.ZodOptional<typeof puzzleDetailDisplaySchema>;
 }>;
 
@@ -138,5 +147,6 @@ export type PuzzleTurningPointRecord = z.infer<typeof puzzleTurningPointSchema>;
 export type PuzzleClueRowRecord = z.infer<typeof puzzleClueRowSchema>;
 export type PuzzleEvidenceFaqItemRecord = z.infer<typeof puzzleEvidenceFaqItemSchema>;
 export type PuzzleUniquenessSignalsRecord = z.infer<typeof puzzleUniquenessSignalsSchema>;
+export type PuzzleWrongGuessCandidateRecord = z.infer<typeof puzzleWrongGuessCandidateSchema>;
 export type FaqItem = z.infer<typeof faqItemSchema>;
 export type LessonItem = z.infer<typeof lessonItemSchema>;

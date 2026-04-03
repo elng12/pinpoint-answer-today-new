@@ -25,6 +25,7 @@ const modernPuzzleDateBaseline = {
   puzzleNumber: 458,
   isoDate: "2025-08-01",
 };
+const phase1StructuredBaselinePuzzleNumber = 704;
 
 function countWords(value) {
   return value.trim().split(/\s+/).filter(Boolean).length;
@@ -78,6 +79,22 @@ function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
   );
 
   return publishDate.toISOString().slice(0, 10);
+}
+
+function requiresPhase1StructuredValidation(entry, detail) {
+  const pageExperienceMode =
+    detail.pageExperienceMode === "light-explainer" || detail.bodyMode === "short"
+      ? "light-explainer"
+      : "full-analysis";
+  const isPublicDetail =
+    detail.detailState === "published" || detail.detailState === "fallback_full" || !detail.detailState;
+
+  return (
+    isPublicDetail &&
+    pageExperienceMode === "full-analysis" &&
+    Number.isInteger(entry.puzzleNumber) &&
+    entry.puzzleNumber >= phase1StructuredBaselinePuzzleNumber
+  );
 }
 
 function validateDetailContent(entry, detail) {
@@ -197,6 +214,38 @@ function validateDetailContent(entry, detail) {
         .map((issue) => `${issue.code}${issue.field ? ` (${issue.field})` : ""}`)
         .join(", ")}`,
     );
+  }
+
+  if (!requiresPhase1StructuredValidation(entry, detail)) {
+    return;
+  }
+
+  const wrongGuessCandidates = Array.isArray(detail.wrongGuessCandidates) ? detail.wrongGuessCandidates : [];
+  const requiredWrongGuessCount = detail.difficultyBand === "obvious" ? 1 : 2;
+  if (wrongGuessCandidates.length < requiredWrongGuessCount) {
+    throw new Error(
+      `${entry.slug} is missing required wrongGuessCandidates (${wrongGuessCandidates.length}; expected at least ${requiredWrongGuessCount}).`,
+    );
+  }
+
+  wrongGuessCandidates.forEach((candidate, index) => {
+    if (!candidate?.label?.trim()) {
+      throw new Error(`${entry.slug} wrongGuessCandidates[${index}].label must be non-empty.`);
+    }
+    if (!candidate?.whyPlausible?.trim()) {
+      throw new Error(`${entry.slug} wrongGuessCandidates[${index}].whyPlausible must be non-empty.`);
+    }
+    if (candidate.whyRejected != null && !String(candidate.whyRejected).trim()) {
+      throw new Error(`${entry.slug} wrongGuessCandidates[${index}].whyRejected cannot be blank when present.`);
+    }
+  });
+
+  if (!String(detail.setValidationSummary || "").trim()) {
+    throw new Error(`${entry.slug} is missing setValidationSummary for full-analysis mode.`);
+  }
+
+  if (!String(detail.categoryPrecisionNote || "").trim()) {
+    throw new Error(`${entry.slug} is missing categoryPrecisionNote for full-analysis mode.`);
   }
 }
 

@@ -10,6 +10,7 @@ import type {
   PuzzleSolvePathRecord,
   PuzzleTurningPointRecord,
   PuzzleUniquenessSignalsRecord,
+  PuzzleWrongGuessCandidateRecord,
   PuzzleStatus,
 } from "@/lib/puzzles/schema";
 
@@ -48,6 +49,9 @@ export type PuzzleDetail = {
   clueRows: PuzzleClueRowRecord[];
   faqItems: PuzzleEvidenceFaqItemRecord[];
   uniquenessSignals: PuzzleUniquenessSignalsRecord | null;
+  wrongGuessCandidates: PuzzleWrongGuessCandidateRecord[];
+  setValidationSummary: string | null;
+  categoryPrecisionNote: string | null;
   display: PuzzleDetailDisplay;
   status: Exclude<PuzzleStatus, "draft" | "preview">;
   detailState: PuzzleDetailState;

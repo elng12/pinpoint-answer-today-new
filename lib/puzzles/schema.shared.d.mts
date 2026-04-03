@@ -92,6 +92,11 @@ export declare const puzzleUniquenessSignalsSchema: z.ZodObject<{
   relatedEntities: z.ZodArray<z.ZodString, "many">;
   doNotRepeatPatterns: z.ZodArray<z.ZodString, "many">;
 }>;
+export declare const puzzleWrongGuessCandidateSchema: z.ZodObject<{
+  label: z.ZodString;
+  whyPlausible: z.ZodString;
+  whyRejected: z.ZodOptional<z.ZodString>;
+}>;
 
 export declare const puzzleDetailContentSchema: z.ZodObject<{
   slug: z.ZodString;
@@ -112,5 +117,8 @@ export declare const puzzleDetailContentSchema: z.ZodObject<{
   clueRows: z.ZodOptional<z.ZodArray<typeof puzzleClueRowSchema, "many">>;
   faqItems: z.ZodOptional<z.ZodArray<typeof puzzleEvidenceFaqItemSchema, "many">>;
   uniquenessSignals: z.ZodOptional<typeof puzzleUniquenessSignalsSchema>;
+  wrongGuessCandidates: z.ZodOptional<z.ZodArray<typeof puzzleWrongGuessCandidateSchema, "many">>;
+  setValidationSummary: z.ZodOptional<z.ZodString>;
+  categoryPrecisionNote: z.ZodOptional<z.ZodString>;
   display: z.ZodOptional<typeof puzzleDetailDisplaySchema>;
 }>;

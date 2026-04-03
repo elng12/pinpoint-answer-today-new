@@ -517,6 +517,9 @@ async function checkWorkerDetailShape() {
       clueRows?: Array<Record<string, unknown>>;
       faqItems?: Array<Record<string, unknown>>;
       uniquenessSignals?: Record<string, unknown>;
+      wrongGuessCandidates?: Array<Record<string, unknown>>;
+      setValidationSummary?: string;
+      categoryPrecisionNote?: string;
     }) => unknown;
     resolvePublicDetailExperienceDecision: (input: {
       incoming: Record<string, unknown>;
@@ -634,6 +637,13 @@ async function checkWorkerDetailShape() {
         connectionExplained?: string;
       }>;
     };
+    wrongGuessCandidates?: Array<{
+      label?: string;
+      whyPlausible?: string;
+      whyRejected?: string;
+    }>;
+    setValidationSummary?: string;
+    categoryPrecisionNote?: string;
   };
 
   const spoilerHintKeys = Object.keys(record.spoilerHints ?? {});
@@ -679,6 +689,18 @@ async function checkWorkerDetailShape() {
   assert.ok(
     record.turningPoint?.clue?.trim(),
     "worker-published detail payload should include turningPoint.clue",
+  );
+  assert.ok(
+    Array.isArray(record.wrongGuessCandidates) && record.wrongGuessCandidates.length >= 1,
+    "worker-published detail payload should include structured wrongGuessCandidates",
+  );
+  assert.ok(
+    record.setValidationSummary?.trim(),
+    "worker-published detail payload should include setValidationSummary",
+  );
+  assert.ok(
+    record.categoryPrecisionNote?.trim(),
+    "worker-published detail payload should include categoryPrecisionNote",
   );
   assert.equal(
     record.clueRows?.length,
@@ -773,6 +795,22 @@ async function checkWorkerDetailShape() {
       relatedEntities: ["paper tiger", "paper plane", "paper trail", "paperweight", "paper clip"],
       doNotRepeatPatterns: ["office supplies opener", "generic category board", "loose desk object angle"],
     },
+    wrongGuessCandidates: [
+      {
+        label: "office supplies",
+        whyPlausible: "Weight and Clip both sound like desk objects before the phrase slot becomes clear.",
+        whyRejected: "Tiger and Plane only fit once the repeated paper connector is visible.",
+      },
+      {
+        label: "desk accessories",
+        whyPlausible: "Clip and Weight can overemphasize the office read on a quick skim.",
+        whyRejected: "The full board resolves through fixed paper phrases, not through one object shelf.",
+      },
+    ],
+    setValidationSummary:
+      "Paper tiger, paper plane, paper trail, paperweight, and paper clip all confirm the same repeated connector, so the full board behaves like one exact phrase family.",
+    categoryPrecisionNote:
+      "one shared opening word placed before each clue, not a loose office-supplies topic",
   }) as {
     questionType?: string;
     difficultyBand?: string;
@@ -781,6 +819,9 @@ async function checkWorkerDetailShape() {
     clueRows?: Array<{ clue?: string; resolvedPhraseOrMember?: string }>;
     faqItems?: Array<{ tiedClue?: string | null }>;
     uniquenessSignals?: { angle?: string };
+    wrongGuessCandidates?: Array<{ label?: string }>;
+    setValidationSummary?: string;
+    categoryPrecisionNote?: string;
   };
   assert.equal(
     providedEvidenceRecord.questionType,
@@ -815,6 +856,21 @@ async function checkWorkerDetailShape() {
   assert.ok(
     providedEvidenceRecord.uniquenessSignals?.angle?.trim(),
     "worker detail builder should preserve explicit v2 uniqueness signals from the generated payload",
+  );
+  assert.equal(
+    providedEvidenceRecord.wrongGuessCandidates?.[0]?.label,
+    "office supplies",
+    "worker detail builder should preserve explicit wrongGuessCandidates instead of overwriting them",
+  );
+  assert.match(
+    providedEvidenceRecord.setValidationSummary || "",
+    /phrase family/i,
+    "worker detail builder should preserve an explicit setValidationSummary",
+  );
+  assert.match(
+    providedEvidenceRecord.categoryPrecisionNote || "",
+    /shared opening word/i,
+    "worker detail builder should preserve an explicit categoryPrecisionNote",
   );
 
   const fallbackFullRecord = workerModule.buildPublishedPuzzleDetailRecord({

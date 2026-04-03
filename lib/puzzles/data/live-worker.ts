@@ -162,6 +162,33 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
       new Set([connectorSummary, ...clueRows.map((row) => row.searchableContext || row.resolvedPhraseOrMember)]),
     ).slice(0, 5),
   };
+  const wrongGuessCandidates = [
+    {
+      label:
+        pattern.kind === "before" || pattern.kind === "after"
+          ? "loose phrase guesses"
+          : pattern.kind === "association"
+            ? "a literal category guess"
+            : "a broader category guess",
+      whyPlausible:
+        pattern.kind === "before" || pattern.kind === "after"
+          ? "The opening clues can support more than one shared-word read before one clue locks the missing word into place."
+          : "The first two clues are broad enough to suggest a wider topic before the turning clue sharpens the board.",
+      whyRejected:
+        `Once ${turningPoint} lands, the solved answer explains the full board more cleanly than that earlier surface read.`,
+    },
+  ];
+  const setValidationSummary =
+    articleBlocks[2] ??
+    `${record.clues.slice(-3).join(", ")} keep confirming the same answer, so the full board behaves like one coherent set instead of a few lucky matches.`;
+  const categoryPrecisionNote =
+    pattern.kind === "before"
+      ? "one shared ending word placed after each clue, not a loose topic grouping"
+      : pattern.kind === "after"
+        ? "one shared opening word placed before each clue, not a loose topic grouping"
+        : pattern.kind === "association"
+          ? "one shared subject viewed from multiple angles rather than a literal category label"
+          : "one concrete category with clues that stay at the same level of specificity";
 
   return {
     number: puzzleNumber,
@@ -188,6 +215,9 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     clueRows,
     faqItems,
     uniquenessSignals,
+    wrongGuessCandidates,
+    setValidationSummary,
+    categoryPrecisionNote,
     display,
     status: "live",
     detailState: "publishing_placeholder",
