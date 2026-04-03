@@ -30,25 +30,25 @@
     "Stay the": "This is the clue that makes the puzzle feel more like a phrase family than a list of nouns."
   },
   "articleBlocks": [
-    "Golf and Main both hint that the board wants a shared ending, but they do not prove which one by themselves.",
-    "Crash keeps that idea alive, though several common phrase endings can still feel possible at that stage.",
-    "Stay the is the clue that really tightens it.",
-    "Stay the course is such a fixed idiom that course stops feeling like just one candidate and starts feeling like the answer the whole board was waiting for.",
-    "Once that happens, of course, golf course, main course, and crash course all line up immediately.",
-    "The answer was Words that come before \"course\".",
-    "This board works because the same ending word spans conversation, food, education, sports, and idiom without any clue feeling forced."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose shared-ending guess\". Golf course and main course both work early, but a good Pinpoint solve still needs the rest of the board to land naturally. Stay the is the clue that keeps the board from staying at that broader surface read.",
+    "Another easy trap was \"a learning-or-sports theme\". Crash can tempt a topic guess, but Of and Stay the prove the puzzle is really about phrase structure. Stay the is the clue that keeps the board from staying at that broader surface read.",
+    "Once that phrase appears, examples like \"of course\" and \"golf course\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word across several contexts.",
+    "main course, crash course, stay the course show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was Words that come before \"course\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"course\" fits better than \"a loose shared-ending guess\" or \"a learning-or-sports theme\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Golf and Main both hint that the board wants a shared ending, but they do not prove which one by themselves.",
-    "Crash helps because crash course is a familiar phrase, yet the board can still feel like a loose collection of partial expressions at first.",
-    "Stay the is the turning clue because stay the course is such a fixed idiom that course suddenly becomes much more exact than any other candidate.",
-    "Once course appears there, of course, golf course, main course, and crash course all become clean confirmations instead of trial completions.",
-    "The answer was Words that come before \"course\".",
-    "The set is strong because it uses the same ending in very different kinds of phrases, which makes the board feel wider than it really is."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose shared-ending guess\". Golf course and main course both work early, but a good Pinpoint solve still needs the rest of the board to land naturally. Stay the is the clue that keeps the board from staying at that broader surface read.",
+    "Another easy trap was \"a learning-or-sports theme\". Crash can tempt a topic guess, but Of and Stay the prove the puzzle is really about phrase structure. Stay the is the clue that keeps the board from staying at that broader surface read.",
+    "Once that phrase appears, examples like \"of course\" and \"golf course\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word across several contexts.",
+    "main course, crash course, stay the course show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was Words that come before \"course\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"course\" fits better than \"a loose shared-ending guess\" or \"a learning-or-sports theme\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Golf course and main course showed the board was probably about a shared ending, but I still did not trust one answer yet. Crash course fit too, but that alone still left room for other possibilities.",
-    "Stay the changed the solve. Once stay the course appeared, the connector stopped feeling optional, and the rest of the board became a straightforward phrase check rather than a guessing game."
+    "I first tried a loose shared-ending guess, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Stay the\" feel exact enough.",
+    "Once \"Stay the\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
+    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses."
   ],
   "lessons": [
     {
@@ -202,5 +202,20 @@
       "crash course",
       "stay the course"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose shared-ending guess",
+      "whyPlausible": "Golf course and main course both work early, but a good Pinpoint solve still needs the rest of the board to land naturally.",
+      "whyRejected": "Stay the is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "a learning-or-sports theme",
+      "whyPlausible": "Crash can tempt a topic guess, but Of and Stay the prove the puzzle is really about phrase structure.",
+      "whyRejected": "Stay the is the clue that keeps the board from staying at that broader surface read."
+    }
+  ],
+  "setValidationSummary": "main course, crash course, stay the course show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping",
+  "pageExperienceMode": "full-analysis"
 }
