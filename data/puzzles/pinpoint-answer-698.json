@@ -30,26 +30,24 @@
     "Boundary line": "This is the clue that turns the puzzle from general obstacles into a property-specific category."
   },
   "articleBlocks": [
-    "Fence, Hedge, and Wall first made me think about barriers in general, which felt close but still too loose.",
-    "Moat kept that idea alive for a moment because it is also something that keeps one space separate from another.",
-    "But Boundary line changed the board.",
-    "That clue does not just describe a barrier. It describes a property limit.",
-    "Once that legal land-reading showed up, Fence, Hedge, Wall, and even Moat all started behaving like ways to separate one property or protected set of grounds from another.",
-    "The answer was Things that separate properties.",
-    "Looking back, the puzzle is tricky because most of the clues can live inside a vague 'barriers' bucket until one clue makes the real frame much narrower."
+    "At first, Fence and Moat pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"barriers\". Fence, Wall, and Moat all support that idea early, so it takes a more precise clue to prove the board wants more than a general function. Boundary line is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"protective structures\". That guess explains the physical separation angle, but it does not naturally account for Boundary line as a property term. Boundary line is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through property dividers and boundary markers, examples like \"property fence\" and \"moat around an estate\" stopped feeling loose and started landing cleanly.",
+    "hedge between yards, property wall, and boundary line on a lot all keep the board inside the same land-and-property frame, which is why the set feels exact instead of like a broad barrier bucket.",
+    "The answer was Things that separate properties. More precisely, the board resolves as a land-boundary and property-divider category rather than a loose barrier or defense theme, which is why Things that separate properties fits better than \"barriers\" or \"protective structures\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Fence, Hedge, and Wall first made me think about barriers in general, which felt close but still too loose.",
-    "Moat kept that idea alive for a moment because it is also something that keeps one space separate from another.",
-    "Boundary line was the clue that changed the solve. That phrase does not sound like a random obstacle; it sounds like property law.",
-    "Once the board moved into a property-reading, Fence, Hedge, and Wall all became much cleaner because each one can divide one person's land from another person's land.",
-    "Moat then stopped feeling like a weird medieval outlier and started reading as a boundary around protected grounds or an estate.",
-    "The answer was Things that separate properties.",
-    "What makes this board hard is that 'barriers' feels nearly right. Boundary line is what forces the more precise answer."
+    "At first, Fence and Moat pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"barriers\". Fence, Wall, and Moat all support that idea early, so it takes a more precise clue to prove the board wants more than a general function. Boundary line is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"protective structures\". That guess explains the physical separation angle, but it does not naturally account for Boundary line as a property term. Boundary line is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through property dividers and boundary markers, examples like \"property fence\" and \"moat around an estate\" stopped feeling loose and started landing cleanly.",
+    "hedge between yards, property wall, and boundary line on a lot all keep the board inside the same land-and-property frame, which is why the set feels exact instead of like a broad barrier bucket.",
+    "The answer was Things that separate properties. More precisely, the board resolves as a land-boundary and property-divider category rather than a loose barrier or defense theme, which is why Things that separate properties fits better than \"barriers\" or \"protective structures\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Fence, Hedge, and Wall gave me a broad barrier read right away, and Moat did not immediately break it. That first path felt plausible because every clue did involve separation in some physical sense.",
-    "The board became solvable when Boundary line arrived. That clue pulled the whole set away from generic protection or obstruction and into a property-specific frame. After that, Fence, Hedge, Wall, and even Moat all read like ways land or grounds can be marked off from neighboring space."
+    "I did not have a clean answer from the first clue. I initially drifted toward barriers, but that line of thinking never explained \"Boundary line\" cleanly enough.",
+    "The turn came when I let \"Boundary line\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set."
   ],
   "lessons": [
     {
@@ -203,5 +201,20 @@
       "estate moat",
       "hedge property line"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "barriers",
+      "whyPlausible": "Fence, Wall, and Moat all support that idea early, so it takes a more precise clue to prove the board wants more than a general function.",
+      "whyRejected": "Boundary line is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "protective structures",
+      "whyPlausible": "That guess explains the physical separation angle, but it does not naturally account for Boundary line as a property term.",
+      "whyRejected": "Boundary line is the clue that keeps the board from staying at that broader surface read."
+    }
+  ],
+  "setValidationSummary": "hedge between yards, property wall, and boundary line on a lot all keep the board inside the same land-and-property frame, which is why the set feels exact instead of like a broad barrier bucket.",
+  "categoryPrecisionNote": "a land-boundary and property-divider category rather than a loose barrier or defense theme",
+  "pageExperienceMode": "full-analysis"
 }
