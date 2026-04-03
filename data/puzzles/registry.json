@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 703,
+    "slug": "pinpoint-answer-703",
+    "publishDate": "2026-04-03",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Goliath",
+      "Bull",
+      "Pacman (or S. American Horned)",
+      "Red-eyed Tree",
+      "Poison dart (don’t croak?)"
+    ],
+    "mainAnswer": "Types of frogs",
+    "category": "Types of frogs",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #703: Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?).",
+    "updatedAt": "2026-04-03T07:01:57.726Z"
+  },
+  {
     "puzzleNumber": 702,
     "slug": "pinpoint-answer-702",
     "publishDate": "2026-04-02",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Ice",
@@ -16,7 +35,7 @@
     "category": "Words that come before \"pack\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Ice, Jet, Booster do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-02T07:01:43.234Z"
+    "updatedAt": "2026-04-03T07:01:57.726Z"
   },
   {
     "puzzleNumber": 701,
