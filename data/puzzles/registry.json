@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-703",
     "publishDate": "2026-04-03",
     "status": "live",
-    "detailState": "generating",
+    "detailState": "validated",
     "clues": [
       "Goliath",
       "Bull",
@@ -15,8 +15,8 @@
     "mainAnswer": "Types of frogs",
     "category": "Types of frogs",
     "difficultyLevel": "Moderate",
-    "shortSummary": "LinkedIn Pinpoint #703: Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?).",
-    "updatedAt": "2026-04-03T07:01:57.726Z"
+    "shortSummary": "At first glance, Goliath, Bull, Pacman (or S. American Horned) do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-04-03T07:02:07.101Z"
   },
   {
     "puzzleNumber": 702,

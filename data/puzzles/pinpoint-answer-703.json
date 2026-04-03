@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-703",
   "publishDate": "2026-04-03",
   "isoDate": "2026-04-03",
-  "detailState": "generating",
+  "detailState": "validated",
   "questionType": "category",
-  "difficultyBand": "obvious",
+  "difficultyBand": "hard",
   "clues": [
     "Goliath",
     "Bull",
@@ -16,11 +16,11 @@
   "answer": "Types of frogs",
   "category": "Types of frogs",
   "wordHints": {
-    "Goliath": "Goliath connects to \"Types of frogs\"",
-    "Bull": "Bull connects to \"Types of frogs\"",
-    "Pacman (or S. American Horned)": "Pacman (or S. American Horned) connects to \"Types of frogs\"",
-    "Red-eyed Tree": "Red-eyed Tree connects to \"Types of frogs\"",
-    "Poison dart (don’t croak?)": "Poison dart (don’t croak?) connects to \"Types of frogs\""
+    "Goliath": "The Goliath frog is known as the largest frog on Earth.",
+    "Bull": "The bullfrog is a common species known for its loud call.",
+    "Pacman (or S. American Horned)": "The Pacman frog is also known as the South American Horned frog, known for its wide mouth.",
+    "Red-eyed Tree": "The Red-eyed Tree frog is famous for its vibrant colors and arboreal lifestyle.",
+    "Poison dart (don’t croak?)": "Poison dart frog fits once the board is read through a category board focused on frogs, especially after red-eyed Tree."
   },
   "spoilerHints": {
     "Goliath": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
@@ -30,168 +30,182 @@
     "Poison dart (don’t croak?)": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before."
   },
   "articleBlocks": [
-    "At first, Goliath and Bull pointed in a few different directions.",
-    "The turn came with \"Pacman (or S. American Horned)\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on frogs, examples like \"Goliath frog\" and \"Bull frog\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Types of frogs\".",
-    "\"Red-eyed Tree\" and \"Poison dart (don’t croak?)\" then felt like the last confirmations, not separate guesses."
+    "At first, this felt like a collection of random things: a giant, a bull, a video game reference.",
+    "Maybe this was a list of things that could be dangerous?",
+    "But then I saw \"Red-eyed Tree\".",
+    "That made me think of tree frogs, and amphibians in general.",
+    "The \"Poison dart\" clue then made perfect sense.",
+    "It was time to lock in the answer.",
+    "The answer is types of frogs.",
+    "Looking back, \"Goliath\", \"Bull\", and \"Pacman\" all have frog types named after them.",
+    "The puzzle seemed disjointed at first, but each clue had a very clear frog association.",
+    "Now the board hops along happily."
   ],
   "fullAnalysis": [
-    "At first, Goliath and Bull pointed in a few different directions.",
-    "The turn came with \"Pacman (or S. American Horned)\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on frogs, examples like \"Goliath frog\" and \"Bull frog\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Types of frogs\".",
-    "\"Red-eyed Tree\" and \"Poison dart (don’t croak?)\" then felt like the last confirmations, not separate guesses."
+    "At first, this felt like a collection of random things: a giant, a bull, a video game reference.",
+    "Maybe this was a list of things that could be dangerous?",
+    "But then I saw \"Red-eyed Tree\".",
+    "That made me think of tree frogs, and amphibians in general.",
+    "The \"Poison dart\" clue then made perfect sense.",
+    "It was time to lock in the answer.",
+    "The answer is types of frogs.",
+    "Looking back, \"Goliath\", \"Bull\", and \"Pacman\" all have frog types named after them.",
+    "The puzzle seemed disjointed at first, but each clue had a very clear frog association.",
+    "Now the board hops along happily."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #703, Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Goliath and Bull first pulled me toward Reptiles, so that was the first path I tested. It held together for a moment, but red-eyed Tree never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating red-eyed Tree as just another clue and asked what kind of frog each clue could describe. Once I made that shift, I was no longer thinking about Reptiles; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing frogs."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Red-eyed Tree is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When you feel stuck, look for the most specific association for each clue."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on frogs",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Goliath",
         "examplePhrase": "Goliath frog",
-        "connectionExplained": "Goliath connects to \"Types of frogs\""
+        "connectionExplained": "The Goliath frog is known as the largest frog on Earth."
       },
       {
         "clue": "Bull",
-        "examplePhrase": "Bull frog",
-        "connectionExplained": "Bull connects to \"Types of frogs\""
+        "examplePhrase": "Bullfrog",
+        "connectionExplained": "The bullfrog is a common species known for its loud call."
       },
       {
         "clue": "Pacman (or S. American Horned)",
-        "examplePhrase": "Pacman frog",
-        "connectionExplained": "Pacman (or S. American Horned) connects to \"Types of frogs\""
+        "examplePhrase": "Horned frog",
+        "connectionExplained": "The Pacman frog is also known as the South American Horned frog, known for its wide mouth."
       },
       {
         "clue": "Red-eyed Tree",
         "examplePhrase": "Red-eyed Tree frog",
-        "connectionExplained": "Red-eyed Tree connects to \"Types of frogs\""
+        "connectionExplained": "The Red-eyed Tree frog is famous for its vibrant colors and arboreal lifestyle."
       },
       {
         "clue": "Poison dart (don’t croak?)",
         "examplePhrase": "Poison dart frog",
-        "connectionExplained": "Poison dart (don’t croak?) connects to \"Types of frogs\""
+        "connectionExplained": "Poison dart frog fits once the board is read through a category board focused on frogs, especially after red-eyed Tree."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #703?",
-      "answer": "The answer is \"Types of frogs\". The clues Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?) all share this connection."
+      "answer": "The answer is \"Types of frogs\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #703?",
+      "answer": "The connection is that all 5 clues point to recognizable types of frogs. Red-eyed Tree is the clue that makes the category specific enough to verify across the full board."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #703?",
+      "answer": "Red-eyed Tree is the turning clue because \"Red-eyed Tree frog\" makes the shared category frame explicit. It also makes Goliath read cleanly as \"Goliath frog\". The clues are diverse, and the connection isn't immediately obvious without knowing the specific animals."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #703 just unlocked, and this is the fastest verified update. The board clues are Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
-    "falseStarts": [],
-    "whyFalseStartPlausible": [],
-    "breakingClue": "Goliath",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #703, Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Goliath lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "firstRead": "Goliath, Bull, and Pacman (or S. American Horned) do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"famous names\" can feel plausible before one clue makes the answer feel concrete. Red-eyed Tree is the clue that finally breaks that first read and makes frogs feel concrete.",
+    "falseStarts": [
+      "famous names"
+    ],
+    "whyFalseStartPlausible": [
+      "The \"Red-eyed Tree\" clue doesn't fit reptiles at all, and \"Poison dart\" also points another way."
+    ],
+    "breakingClue": "Red-eyed Tree",
+    "pivot": "The solve turned when I stopped treating red-eyed Tree as just another clue and asked what kind of frog each clue could describe. Once I made that shift, I was no longer thinking about Reptiles; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing frogs.",
+    "fullBoardConfirmation": "From there, reading them as frogs explains the board much more cleanly. Entries like Goliath, Bull, and Pacman (or S. American Horned) stop feeling disconnected and start looking like they belong together. Once red-eyed Tree is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are diverse, and the connection isn't immediately obvious without knowing the specific animals."
   },
   "turningPoint": {
-    "clue": "Goliath",
-    "whyDecisive": "Goliath is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Goliath lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Red-eyed Tree",
+    "whyDecisive": "Seeing \"Red-eyed Tree\" made the amphibian connection stick.",
+    "whatChangedAfterIt": "Once Red-eyed Tree landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Goliath",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Goliath",
-      "nonObviousWhy": "Goliath supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Goliath"
+      "surfaceMisread": "Reptiles",
+      "resolvedPhraseOrMember": "Goliath frog",
+      "nonObviousWhy": "The Goliath frog is known as the largest frog on Earth.",
+      "searchableContext": "Goliath frog"
     },
     {
       "clue": "Bull",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Bull",
-      "nonObviousWhy": "Bull supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Bull"
+      "surfaceMisread": "Reptiles",
+      "resolvedPhraseOrMember": "Bullfrog",
+      "nonObviousWhy": "The bullfrog is a common species known for its loud call.",
+      "searchableContext": "Bullfrog"
     },
     {
       "clue": "Pacman (or S. American Horned)",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Pacman (or S. American Horned)",
-      "nonObviousWhy": "Pacman (or S. American Horned) supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Pacman (or S. American Horned)"
+      "surfaceMisread": "Reptiles",
+      "resolvedPhraseOrMember": "Horned frog",
+      "nonObviousWhy": "The Pacman frog is also known as the South American Horned frog, known for its wide mouth.",
+      "searchableContext": "Horned frog"
     },
     {
       "clue": "Red-eyed Tree",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Red-eyed Tree",
-      "nonObviousWhy": "Red-eyed Tree supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Red-eyed Tree"
+      "surfaceMisread": "Reptiles",
+      "resolvedPhraseOrMember": "Red-eyed Tree frog",
+      "nonObviousWhy": "The Red-eyed Tree frog is famous for its vibrant colors and arboreal lifestyle.",
+      "searchableContext": "Red-eyed Tree frog"
     },
     {
       "clue": "Poison dart (don’t croak?)",
-      "surfaceMisread": "an early broad guess",
-      "resolvedPhraseOrMember": "Poison dart (don’t croak?)",
-      "nonObviousWhy": "Poison dart (don’t croak?) supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Poison dart (don’t croak?)"
+      "surfaceMisread": "Reptiles",
+      "resolvedPhraseOrMember": "Poison dart frog",
+      "nonObviousWhy": "Poison dart frog fits once the board is read through a category board focused on frogs, especially after red-eyed Tree.",
+      "searchableContext": "Poison dart frog"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #703?",
-      "answer": "The answer is \"Types of frogs\". The clues Goliath, Bull, Pacman (or S. American Horned), Red-eyed Tree, Poison dart (don’t croak?) all share this connection.",
-      "tiedClue": "Goliath"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Types of frogs\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #703?",
+      "answer": "The connection is that all 5 clues point to recognizable types of frogs. Red-eyed Tree is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Red-eyed Tree"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #703?",
+      "answer": "Red-eyed Tree is the turning clue because \"Red-eyed Tree frog\" makes the shared category frame explicit. It also makes Goliath read cleanly as \"Goliath frog\". The clues are diverse, and the connection isn't immediately obvious without knowing the specific animals.",
+      "tiedClue": "Red-eyed Tree"
     }
   ],
   "uniquenessSignals": {
     "angle": "a category board focused on frogs",
     "relatedEntities": [
-      "Goliath",
-      "Bull",
-      "Pacman (or S. American Horned)",
-      "Red-eyed Tree",
-      "Poison dart (don’t croak?)"
+      "Goliath frog",
+      "Bullfrog",
+      "Horned frog",
+      "Red-eyed Tree frog",
+      "Poison dart frog"
     ],
     "doNotRepeatPatterns": [
       "a category board focused on frogs",
-      "Goliath",
-      "Bull",
-      "Pacman (or S. American Horned)",
-      "Red-eyed Tree"
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
+      "Goliath frog",
+      "Bullfrog"
     ]
   }
 }
