@@ -30,22 +30,20 @@
     "⛈️": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
   },
   "articleBlocks": [
-    "At first, ☀️ and 🌤️ pointed in a few different directions.",
-    "The turn came with \"☀️\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling loose and started landing cleanly.",
-    "That is also why the board works better as a visual weather set than as a random emoji mood list.",
-    "The answer was \"Weather emojis (did you solve before the storm?)\".",
-    "\"🌧️\" and \"⛈️\" then felt like the last confirmations, not separate guesses."
+    "At first, ☀️ and 🌤️ can look like a random visual cluster, which is why emoji and symbol boards often tempt you into reading mood, tone, or internet shorthand before the real set appears.",
+    "One tempting read was \"a loose emoji mood list\". Emoji-heavy boards can look like reactions or internet shorthand before they reveal one clean visual family. 🌧️ makes the board read like one recognizable weather set instead of a general mood board.",
+    "Another nearby bucket was \"general internet symbols\". All five clues are icons, so a generic symbol bucket is an easy first read. The full set stays coherent because the icons form a weather sequence, not just the broad idea of symbols.",
+    "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling decorative and started behaving like recognizable members of the same visual system.",
+    "☁️, 🌧️, and ⛈️ extend the same forecast-like sequence, so the board reads like one familiar weather system instead of a loose emoji shelf.",
+    "The answer was \"Weather emojis (did you solve before the storm?)\". More precisely, the board resolves as a recognizable weather icon family rather than a loose emoji or mood board, which is why \"Weather emojis (did you solve before the storm?)\" fits better than \"a loose emoji mood list\" or \"general internet symbols\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "At first, ☀️ and 🌤️ pointed in a few different directions.",
-    "The turn came with \"☀️\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling loose and started landing cleanly.",
-    "That is also why the board works better as a visual weather set than as a random emoji mood list.",
-    "The answer was \"Weather emojis (did you solve before the storm?)\".",
-    "\"🌧️\" and \"⛈️\" then felt like the last confirmations, not separate guesses."
+    "At first, ☀️ and 🌤️ can look like a random visual cluster, which is why emoji and symbol boards often tempt you into reading mood, tone, or internet shorthand before the real set appears.",
+    "One tempting read was \"a loose emoji mood list\". Emoji-heavy boards can look like reactions or internet shorthand before they reveal one clean visual family. 🌧️ makes the board read like one recognizable weather set instead of a general mood board.",
+    "Another nearby bucket was \"general internet symbols\". All five clues are icons, so a generic symbol bucket is an easy first read. The full set stays coherent because the icons form a weather sequence, not just the broad idea of symbols.",
+    "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling decorative and started behaving like recognizable members of the same visual system.",
+    "☁️, 🌧️, and ⛈️ extend the same forecast-like sequence, so the board reads like one familiar weather system instead of a loose emoji shelf.",
+    "The answer was \"Weather emojis (did you solve before the storm?)\". More precisely, the board resolves as a recognizable weather icon family rather than a loose emoji or mood board, which is why \"Weather emojis (did you solve before the storm?)\" fits better than \"a loose emoji mood list\" or \"general internet symbols\" once the full set is checked."
   ],
   "solutionNarrative": [
     "I did not have a clean answer from the first clue. I initially drifted toward a broader category guess, but that line of thinking never explained \"🌧️\" cleanly enough.",
@@ -197,5 +195,20 @@
       "☁️",
       "🌧️"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose emoji mood list",
+      "whyPlausible": "Emoji-heavy boards can look like reactions or internet shorthand before they reveal one clean visual family.",
+      "whyRejected": "🌧️ makes the board read like one recognizable weather set instead of a general mood board."
+    },
+    {
+      "label": "general internet symbols",
+      "whyPlausible": "All five clues are icons, so a generic symbol bucket is an easy first read.",
+      "whyRejected": "The full set stays coherent because the icons form a weather sequence, not just the broad idea of symbols."
+    }
+  ],
+  "setValidationSummary": "☁️, 🌧️, and ⛈️ extend the same forecast-like sequence, so the board reads like one familiar weather system instead of a loose emoji shelf.",
+  "categoryPrecisionNote": "a recognizable weather icon family rather than a loose emoji or mood board",
+  "pageExperienceMode": "full-analysis"
 }
