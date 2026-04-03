@@ -67,10 +67,13 @@ export function PuzzleDetail({
   adjacentNext: ArchiveEntry | null;
 }) {
   const isShortMode = puzzle.detailMode === "short";
-  const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
+  const isLightExplainerMode = puzzle.pageExperienceMode === "light-explainer";
+  const isFallbackShortMode = isShortMode && (puzzle.detailSource === "fallback" || isLightExplainerMode);
   const isFallbackDetail = puzzle.detailSource === "fallback";
   const verificationLabel = isFallbackDetail
     ? "Auto-generated quick guide from live puzzle data"
+    : isLightExplainerMode
+      ? "Compact explainer published from verified puzzle data"
     : "Verified by Human Editor";
   const summary = buildDetailSummary(puzzle, isShortMode, isFallbackShortMode);
   const publishedAt = `${puzzle.isoDate}T00:00:00Z`;

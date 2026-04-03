@@ -402,6 +402,10 @@ export async function toPuzzleDetail(
     turningPoint,
   );
   const uniquenessSignals = resolveEvidenceUniquenessSignals(detailContent, display, clueRows);
+  const pageExperienceMode =
+    detailContent.pageExperienceMode === "light-explainer" || detailContent.bodyMode === "short"
+      ? "light-explainer"
+      : "full-analysis";
 
   return {
     number: entry.puzzleNumber,
@@ -434,6 +438,6 @@ export async function toPuzzleDetail(
     updatedAt: entry.updatedAt,
     detailMode: detailContent.bodyMode === "short" ? "short" : "full",
     detailSource: "formal",
+    pageExperienceMode,
   };
 }
-

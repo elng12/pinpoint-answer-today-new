@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Star, Lightbulb, Table } from "lucide-react";
 import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
+import { LatestAnswerCta } from "@/components/detail/LatestAnswerCta";
 import {
   formatPuzzleDifficultyBandLabel,
   formatPuzzleQuestionTypeLabel,
@@ -417,7 +418,8 @@ export function PuzzleFullAnalysis({
   adjacentNext: ArchiveEntry | null;
 }) {
   const isShortMode = puzzle.detailMode === "short";
-  const isFallbackShortMode = isShortMode && puzzle.detailSource === "fallback";
+  const isLightExplainerMode = puzzle.pageExperienceMode === "light-explainer";
+  const isFallbackShortMode = isShortMode && (puzzle.detailSource === "fallback" || isLightExplainerMode);
   const phraseToken = getSharedPhraseToken(puzzle.answer);
   const solvePathParagraphs = dedupeParagraphs(
     buildSolvePathParagraphs(puzzle).map((paragraph) => applyClueCasing(paragraph, puzzle.clues, phraseToken)),
@@ -434,7 +436,9 @@ export function PuzzleFullAnalysis({
     ? `Pinpoint ${puzzle.number} Quick Guide`
     : `Pinpoint ${puzzle.number} Answer & Full Analysis`;
   const analysisMetaLine = isFallbackShortMode
-    ? "Auto-generated quick guide from live puzzle data"
+    ? puzzle.detailSource === "fallback"
+      ? "Auto-generated quick guide from live puzzle data"
+      : "Compact explainer published from verified puzzle data"
     : isShortMode
       ? "Compact guide for a clean, obvious pattern puzzle"
       : "By Pinpoint Answer Today";
@@ -576,6 +580,7 @@ export function PuzzleFullAnalysis({
 
         <aside className="legacy-next-shell" aria-label="Recent Pinpoint answer pages">
           <h2 className="legacy-next-title">Recent Pinpoint answer pages</h2>
+          <LatestAnswerCta currentSlug={puzzle.slug} />
           <Link className="legacy-next-link" href={routes.preview}>
             {previewCtaLabel}
           </Link>

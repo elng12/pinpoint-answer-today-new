@@ -902,6 +902,33 @@
   color: var(--brand);
 }
 
+.legacy-latest-answer-shell {
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: color-mix(in oklch, var(--surface) 86%, white 14%);
+  border: 1px solid color-mix(in oklch, var(--border) 72%, var(--brand) 28%);
+  display: grid;
+  gap: 10px;
+}
+
+.legacy-latest-answer-kicker {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.legacy-latest-answer-copy {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
 .legacy-next-list {
   margin: 0;
   padding-left: 22px;

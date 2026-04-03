@@ -518,6 +518,27 @@ async function checkWorkerDetailShape() {
       faqItems?: Array<Record<string, unknown>>;
       uniquenessSignals?: Record<string, unknown>;
     }) => unknown;
+    resolvePublicDetailExperienceDecision: (input: {
+      incoming: Record<string, unknown>;
+      existingBranchSummary: {
+        slug: string;
+        detailState: string;
+        bodyMode: "full" | "short";
+        fullAnalysisWordCount: number;
+        minRequiredWords: number;
+      } | null;
+      primaryBranchSummary?: {
+        slug: string;
+        detailState: string;
+        bodyMode: "full" | "short";
+        fullAnalysisWordCount: number;
+        minRequiredWords: number;
+      } | null;
+    }) => {
+      action: string;
+      record?: Record<string, unknown>;
+      reason?: string;
+    };
     buildCronHeartbeatAlerts: (
       heartbeat: {
         enrich: {
@@ -829,6 +850,149 @@ async function checkWorkerDetailShape() {
   assert.ok(
     (fallbackFullRecord as { turningPoint?: { clue?: string } }).turningPoint?.clue?.trim(),
     "fallback_full detail records should still include turningPoint evidence so downgraded pages do not fall back to the old shell",
+  );
+
+  const downgradeCandidate = workerModule.buildPublishedPuzzleDetailRecord({
+    puzzleNumber: 698,
+    slug: "pinpoint-answer-698",
+    puzzleDate: "2026-03-31",
+    answer: 'Words that come after "paper"',
+    words: ["Tiger", "Plane", "Travel", "Weight", "Clip"],
+    sections: {
+      overview:
+        "The board reads like a phrase puzzle once Weight shows up, but this test intentionally provides a thin solvePath so the publish state machine has to downgrade the public page to a light explainer instead of shipping a weak full-analysis shell.",
+      solutionEmergence:
+        "The shared connector becomes obvious after Weight, yet the richer full-analysis structure is intentionally incomplete in this test payload.",
+      clueDetails: [
+        { clue: "Tiger", phrase: "Paper tiger", explanation: "Paper tiger is the exact phrase." },
+        { clue: "Plane", phrase: "Paper plane", explanation: "Paper plane is the exact phrase." },
+        { clue: "Travel", phrase: "Paper trail", explanation: "Travel shifts to paper trail once the connector appears." },
+        { clue: "Weight", phrase: "Paperweight", explanation: "Paperweight is the proof clue that sharpens the board." },
+        { clue: "Clip", phrase: "Paper clip", explanation: "Paper clip confirms the connector with an everyday phrase." },
+      ],
+      faqs: [
+        { question: "What is the answer to LinkedIn Pinpoint #698?", answer: 'The answer is "Words that come after paper".' },
+        { question: "Why does Weight matter?", answer: "Weight matters because paperweight makes the connector exact enough to test." },
+        { question: "How does Travel fit?", answer: "Travel shifts into paper trail once the same connector is tested across the board." },
+      ],
+    },
+    analysis: {
+      detailedBreakdown:
+        "The five clues first look like they could drift into office supplies or general travel nouns, but Weight is the clue that makes the paper connector precise enough to test across the full board. Once paperweight lands, paper tiger, paper plane, paper trail, and paper clip all sound exact rather than approximate. This test payload keeps the walkthrough readable on purpose, but the solvePath only includes one false start so the public publish guard has to demote it to a light explainer instead of pretending it is a complete long-form analysis page.",
+    },
+    difficultyBand: "hard",
+    solvePath: {
+      firstRead: "I first leaned toward office supplies because Weight and Clip both sounded literal.",
+      falseStarts: ["office supplies"],
+      whyFalseStartPlausible: [
+        "Weight and Clip both sound like desk objects before the phrase pattern becomes concrete.",
+      ],
+      breakingClue: "Weight",
+      pivot: "Weight makes the paper connector exact enough to test across the full board.",
+      fullBoardConfirmation: "Paper tiger, paper plane, paper trail, paperweight, and paper clip all confirm the same connector.",
+    },
+    turningPoint: {
+      clue: "Weight",
+      whyDecisive: "Weight is decisive because paperweight is an exact phrase instead of a loose category read.",
+      whatChangedAfterIt: "Once Weight lands, the earlier clues can all be retested under paper and they stop feeling broad.",
+    },
+    clueRows: [
+      { clue: "Tiger", resolvedPhraseOrMember: "Paper tiger", nonObviousWhy: "Tiger sounds animal-first until paper turns it into a fixed phrase." },
+      { clue: "Plane", resolvedPhraseOrMember: "Paper plane", nonObviousWhy: "Plane sounds like travel until paper makes it a folded object." },
+      { clue: "Travel", resolvedPhraseOrMember: "Paper trail", nonObviousWhy: "Travel redirects into trail once the connector is visible." },
+      { clue: "Weight", resolvedPhraseOrMember: "Paperweight", nonObviousWhy: "Weight is the clue that proves the shared connector." },
+      { clue: "Clip", resolvedPhraseOrMember: "Paper clip", nonObviousWhy: "Clip confirms the same connector in an ordinary phrase." },
+    ],
+    faqItems: [
+      { question: "What is the answer to LinkedIn Pinpoint #698?", answer: 'The answer is "Words that come after paper".', tiedClue: null, intentType: "definition" },
+      { question: "Why does Weight matter?", answer: "Weight matters because paperweight is the exact proof clue.", tiedClue: "Weight", intentType: "clue_background" },
+      { question: "How does Travel fit?", answer: "Travel shifts into paper trail once paper is in view.", tiedClue: "Travel", intentType: "clue_background" },
+    ],
+    uniquenessSignals: {
+      angle: "paper phrase board with a proof clue from a household term",
+      relatedEntities: ["paper tiger", "paper plane", "paper trail", "paperweight", "paper clip"],
+      doNotRepeatPatterns: ["office supplies opener", "generic category board", "travel-only read"],
+    },
+  }) as Record<string, unknown>;
+
+  const downgradedDecision = workerModule.resolvePublicDetailExperienceDecision({
+    incoming: downgradeCandidate,
+    existingBranchSummary: null,
+    primaryBranchSummary: null,
+  });
+  assert.equal(
+    downgradedDecision.action,
+    "downgrade-to-light-explainer",
+    "public publish guard should demote weak full-analysis records into light-explainer mode instead of shipping a thin long page",
+  );
+  assert.equal(
+    downgradedDecision.record?.bodyMode,
+    "short",
+    "downgraded public records should switch to short bodyMode for the light explainer shell",
+  );
+  assert.equal(
+    downgradedDecision.record?.pageExperienceMode,
+    "light-explainer",
+    "downgraded public records should explicitly mark pageExperienceMode=light-explainer",
+  );
+  assert.ok(
+    Array.isArray(downgradedDecision.record?.fullAnalysis) &&
+      (downgradedDecision.record?.fullAnalysis as unknown[]).length >= 3,
+    "downgraded public records should still carry a compact walkthrough instead of collapsing to an empty shell",
+  );
+
+  const unrecoverableIncoming = {
+    slug: "pinpoint-answer-799",
+    puzzleNumber: 799,
+    publishDate: "2026-04-01",
+    isoDate: "2026-04-01",
+    detailState: "published",
+    bodyMode: "full",
+    pageExperienceMode: "full-analysis",
+    difficultyBand: "hard",
+    answer: "Thin payload",
+    clues: ["A", "B", "C", "D", "E"],
+    fullAnalysis: ["Too thin."],
+    articleBlocks: ["Too thin."],
+    solutionNarrative: [],
+    lessons: [],
+    faqs: [],
+    clueRows: [],
+    faqItems: [],
+    display: { connectorSummary: "", fastStrategy: "" },
+    solvePath: {
+      firstRead: "This payload is intentionally incomplete.",
+      falseStarts: [],
+      whyFalseStartPlausible: [],
+    },
+  } as Record<string, unknown>;
+
+  const preservedDecision = workerModule.resolvePublicDetailExperienceDecision({
+    incoming: unrecoverableIncoming,
+    existingBranchSummary: {
+      slug: "pinpoint-answer-799",
+      detailState: "published",
+      bodyMode: "full",
+      fullAnalysisWordCount: 132,
+      minRequiredWords: 80,
+    },
+    primaryBranchSummary: null,
+  });
+  assert.equal(
+    preservedDecision.action,
+    "defer-to-existing-protection",
+    "public publish guard should defer to existing healthy content when neither full-analysis nor light-explainer can pass",
+  );
+
+  const blockedDecision = workerModule.resolvePublicDetailExperienceDecision({
+    incoming: unrecoverableIncoming,
+    existingBranchSummary: null,
+    primaryBranchSummary: null,
+  });
+  assert.equal(
+    blockedDecision.action,
+    "block",
+    "public publish guard should hard-block only when no healthy published detail exists to preserve",
   );
 
   const generatingRecord = workerModule.buildPublishedPuzzleDetailRecord({

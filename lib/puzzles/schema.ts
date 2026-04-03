@@ -7,6 +7,7 @@ import {
   puzzleDifficultyBandSchema as sharedPuzzleDifficultyBandSchema,
   faqItemSchema as sharedFaqItemSchema,
   lessonItemSchema as sharedLessonItemSchema,
+  puzzlePageExperienceModeSchema as sharedPuzzlePageExperienceModeSchema,
   puzzleSolvePathSchema as sharedPuzzleSolvePathSchema,
   puzzleTurningPointSchema as sharedPuzzleTurningPointSchema,
   puzzleClueRowSchema as sharedPuzzleClueRowSchema,
@@ -35,6 +36,8 @@ export const puzzleDifficultyBandSchema =
   sharedPuzzleDifficultyBandSchema as z.ZodEnum<["obvious", "medium", "hard"]>;
 export const puzzleDetailBodyModeSchema =
   sharedPuzzleDetailBodyModeSchema as z.ZodEnum<["short", "standard", "deep"]>;
+export const puzzlePageExperienceModeSchema =
+  sharedPuzzlePageExperienceModeSchema as z.ZodEnum<["full-analysis", "light-explainer"]>;
 export const puzzleRegistryEntrySchema = sharedPuzzleRegistryEntrySchema as z.ZodObject<{
   puzzleNumber: z.ZodNumber;
   slug: z.ZodString;
@@ -106,6 +109,7 @@ export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.Zo
   questionType: z.ZodOptional<typeof puzzleQuestionTypeSchema>;
   difficultyBand: z.ZodOptional<typeof puzzleDifficultyBandSchema>;
   bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;
+  pageExperienceMode: z.ZodOptional<typeof puzzlePageExperienceModeSchema>;
   articleBlocks: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   fullAnalysis: z.ZodArray<z.ZodString, "many">;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
@@ -125,6 +129,7 @@ export type PuzzleStatus = z.infer<typeof puzzleStatusSchema>;
 export type PuzzleDetailState = z.infer<typeof puzzleDetailStateSchema>;
 export type PuzzleQuestionType = z.infer<typeof puzzleQuestionTypeSchema>;
 export type PuzzleDifficultyBand = z.infer<typeof puzzleDifficultyBandSchema>;
+export type PuzzlePageExperienceMode = z.infer<typeof puzzlePageExperienceModeSchema>;
 export type PuzzleRegistryEntryRecord = z.infer<typeof puzzleRegistryEntrySchema>;
 export type PuzzleDetailContentRecord = z.infer<typeof puzzleDetailContentSchema>;
 export type PuzzleDetailDisplayRecord = z.infer<typeof puzzleDetailDisplaySchema>;

@@ -260,6 +260,8 @@ type QuickPublishResult = {
 
 type PublicDetailState = "published" | "fallback_full";
 type PublishDetailState = PublicDetailState | "generating" | "validated" | "failed";
+type DetailBodyMode = "short" | "standard" | "deep";
+type DetailPageExperienceMode = "full-analysis" | "light-explainer";
 type DetailQuestionType = "phrase" | "category" | "association" | "hybrid";
 type DetailDifficultyBand = "obvious" | "medium" | "hard";
 type WorkerTurningPointRecord = {
@@ -1810,6 +1812,8 @@ type PublishedPuzzleDetailInput = {
   slots?: JsonRecord | null;
   summary?: unknown;
   detailState?: PublishDetailState;
+  bodyMode?: DetailBodyMode;
+  pageExperienceMode?: DetailPageExperienceMode;
   questionType?: DetailQuestionType;
   difficultyBand?: DetailDifficultyBand;
   solvePath?: WorkerSolvePathRecord | null;
@@ -2271,6 +2275,8 @@ export function buildPublishedPuzzleDetailRecord({
   slots = null,
   summary,
   detailState = "published",
+  bodyMode: providedBodyMode,
+  pageExperienceMode: providedPageExperienceMode,
   questionType: providedQuestionType,
   difficultyBand: providedDifficultyBand,
   solvePath: providedSolvePath = null,
@@ -2323,6 +2329,9 @@ export function buildPublishedPuzzleDetailRecord({
       : "an early broad guess";
   const questionType = providedQuestionType ?? inferWorkerDetailQuestionType(answer);
   const difficultyBand = providedDifficultyBand ?? inferWorkerDifficultyBand(answer, sections);
+  const bodyMode = providedBodyMode ?? (providedPageExperienceMode === "light-explainer" ? "short" : "standard");
+  const pageExperienceMode =
+    providedPageExperienceMode ?? (bodyMode === "short" ? "light-explainer" : "full-analysis");
   const turningPoint =
     providedTurningPoint ??
     inferWorkerTurningPointRecord(words, sections, analysis, clueDetails as Array<Record<string, unknown>>);
@@ -2343,6 +2352,8 @@ export function buildPublishedPuzzleDetailRecord({
     publishDate: puzzleDate,
     isoDate: puzzleDate,
     detailState,
+    bodyMode,
+    pageExperienceMode,
     questionType,
     difficultyBand,
     clues: words,
@@ -2361,6 +2372,139 @@ export function buildPublishedPuzzleDetailRecord({
     clueRows,
     faqItems,
     uniquenessSignals,
+  };
+}
+
+type PublishedPuzzleDetailRecord = ReturnType<typeof buildPublishedPuzzleDetailRecord>;
+
+type PublicDetailExperienceDecision =
+  | { action: "use-full-analysis"; record: PublishedPuzzleDetailRecord }
+  | { action: "downgrade-to-light-explainer"; record: PublishedPuzzleDetailRecord; reason: string }
+  | { action: "defer-to-existing-protection"; record: PublishedPuzzleDetailRecord; reason: string }
+  | { action: "block"; reason: string };
+
+function getRequiredFalseStartCount(difficultyBand: DetailDifficultyBand): number {
+  return difficultyBand === "obvious" ? 1 : 2;
+}
+
+function hasHealthyPublishedDetail(
+  summary: PublishedPuzzleDetailSnapshot | null,
+  slug: string,
+): boolean {
+  return Boolean(summary && summary.slug === slug && isDetailSnapshotAtOrAboveFloor(summary));
+}
+
+function hasFullAnalysisStructure(record: PublishedPuzzleDetailRecord): boolean {
+  const requiredFalseStarts = getRequiredFalseStartCount(record.difficultyBand);
+  const falseStarts = Array.isArray(record.solvePath?.falseStarts) ? record.solvePath.falseStarts : [];
+  const plausibleFalseStarts = Array.isArray(record.solvePath?.whyFalseStartPlausible)
+    ? record.solvePath.whyFalseStartPlausible
+    : [];
+
+  return Boolean(
+    record.pageExperienceMode === "full-analysis" &&
+    record.turningPoint?.clue &&
+    record.solvePath?.firstRead &&
+    falseStarts.length >= requiredFalseStarts &&
+    plausibleFalseStarts.length >= requiredFalseStarts &&
+    record.clueRows.length >= 3 &&
+    record.faqItems.length >= 2 &&
+    record.uniquenessSignals?.angle,
+  );
+}
+
+function hasLightExplainerMinimumShape(record: PublishedPuzzleDetailRecord): boolean {
+  return Boolean(
+    record.bodyMode === "short" &&
+    record.pageExperienceMode === "light-explainer" &&
+    record.fullAnalysis.length >= 3 &&
+    record.display?.connectorSummary &&
+    record.display?.fastStrategy &&
+    record.clueRows.length >= 3 &&
+    record.faqs.length >= 2,
+  );
+}
+
+function buildLightExplainerParagraphs(record: PublishedPuzzleDetailRecord): string[] {
+  const cluePreview = record.clues.slice(0, 3).join(", ");
+  const clueTail = record.clues.slice(3).join(", ");
+  const turningClue = record.turningPoint?.clue || record.clues[2] || record.clues[0] || "the middle clue";
+  const turningWhy =
+    record.turningPoint?.whyDecisive ||
+    `${turningClue} is the clue that makes the shared answer concrete enough to verify across the whole board.`;
+  const fastStrategy =
+    record.display.fastStrategy ||
+    "Test one strong connector against the full board before you commit to a broader reading.";
+  const confirmation =
+    record.solvePath?.fullBoardConfirmation ||
+    record.turningPoint?.whatChangedAfterIt ||
+    `After ${turningClue} lands, the remaining clues read more like confirmations than separate guesses.`;
+
+  return [
+    `This compact explainer keeps the fastest reliable path through Pinpoint #${record.puzzleNumber}. ${cluePreview} can point in a few directions at first, but ${turningClue} is usually the clue that narrows the board into one answer you can actually test.`,
+    `Fast read: ${fastStrategy} ${record.display.connectorSummary}. ${turningWhy}`,
+    `Once ${turningClue} clicks, ${confirmation}`,
+    clueTail
+      ? `The answer is ${record.answer}. Use the clue table for ${clueTail} and the compact FAQ below to confirm each fit without waiting for a longer walkthrough.`
+      : `The answer is ${record.answer}. Use the clue table and the compact FAQ below to confirm each fit without waiting for a longer walkthrough.`,
+  ];
+}
+
+function buildLightExplainerRecord(record: PublishedPuzzleDetailRecord): PublishedPuzzleDetailRecord {
+  const fullAnalysis = buildLightExplainerParagraphs(record);
+  return {
+    ...record,
+    bodyMode: "short",
+    pageExperienceMode: "light-explainer",
+    articleBlocks: fullAnalysis,
+    fullAnalysis,
+    solutionNarrative: fullAnalysis.slice(0, 3),
+    lessons: record.lessons.slice(0, Math.max(2, Math.min(3, record.lessons.length))),
+    faqs: record.faqs.slice(0, Math.max(2, Math.min(3, record.faqs.length))),
+  };
+}
+
+export function resolvePublicDetailExperienceDecision({
+  incoming,
+  existingBranchSummary,
+  primaryBranchSummary,
+}: {
+  incoming: PublishedPuzzleDetailRecord;
+  existingBranchSummary: PublishedPuzzleDetailSnapshot | null;
+  primaryBranchSummary: PublishedPuzzleDetailSnapshot | null;
+}): PublicDetailExperienceDecision {
+  const incomingSummary = summarizePublishedPuzzleDetail(incoming);
+  if (incomingSummary && isDetailSnapshotAtOrAboveFloor(incomingSummary) && hasFullAnalysisStructure(incoming)) {
+    return { action: "use-full-analysis", record: incoming };
+  }
+
+  const lightExplainerRecord = buildLightExplainerRecord(incoming);
+  const lightSummary = summarizePublishedPuzzleDetail(lightExplainerRecord);
+  if (lightSummary && isDetailSnapshotAtOrAboveFloor(lightSummary) && hasLightExplainerMinimumShape(lightExplainerRecord)) {
+    const reason = incomingSummary
+      ? `full-analysis path missed publish guard (${describeDetailSnapshot(incomingSummary)}); downgraded to light-explainer`
+      : "full-analysis path missed publish guard; downgraded to light-explainer";
+    return {
+      action: "downgrade-to-light-explainer",
+      record: lightExplainerRecord,
+      reason,
+    };
+  }
+
+  if (
+    hasHealthyPublishedDetail(existingBranchSummary, incoming.slug) ||
+    hasHealthyPublishedDetail(primaryBranchSummary, incoming.slug)
+  ) {
+    return {
+      action: "defer-to-existing-protection",
+      record: incoming,
+      reason: "incoming record could not satisfy full-analysis or light-explainer guard; preserving healthy published detail",
+    };
+  }
+
+  return {
+    action: "block",
+    reason: "incoming record could not satisfy full-analysis or light-explainer publish guard, and no healthy published detail exists",
   };
 }
 
@@ -2560,7 +2704,7 @@ async function publishToNewSiteGitHub(
   const analysis = asRecord(enrichedPayload.analysis) ?? {};
   const slots = asRecord(enrichedPayload.slots);
   const providedEvidence = extractProvidedEvidenceFields(enrichedPayload);
-  const detailRecord = buildPublishedPuzzleDetailRecord({
+  const detailRecordCandidate = buildPublishedPuzzleDetailRecord({
     puzzleNumber,
     slug,
     puzzleDate,
@@ -2580,7 +2724,6 @@ async function publishToNewSiteGitHub(
 
   // ── 1. Write {slug}.json ──
   const slugPath = `data/puzzles/${slug}.json`;
-  const slugJson = JSON.stringify(detailRecord, null, 2);
   const existingSlug = await getFile(slugPath);
   const existingSlugContent = existingSlug ? decodeGitHubFileContent(existingSlug.content) : "";
   const existingSlugSummary = existingSlugContent
@@ -2591,6 +2734,26 @@ async function publishToNewSiteGitHub(
   const primarySlugSummary = primarySlugContent
     ? summarizePublishedPuzzleDetailContent(primarySlugContent)
     : null;
+  const detailExperienceDecision = isPublicState
+    ? resolvePublicDetailExperienceDecision({
+      incoming: detailRecordCandidate,
+      existingBranchSummary: existingSlugSummary,
+      primaryBranchSummary: primarySlugSummary,
+    })
+    : { action: "use-full-analysis" as const, record: detailRecordCandidate };
+
+  if (detailExperienceDecision.action === "block") {
+    throw new Error(`[new-site] ${detailExperienceDecision.reason}`);
+  }
+
+  if (detailExperienceDecision.action === "downgrade-to-light-explainer") {
+    console.warn(`[new-site] ${detailExperienceDecision.reason} for ${slugPath}`);
+  } else if (detailExperienceDecision.action === "defer-to-existing-protection") {
+    console.warn(`[new-site] ${detailExperienceDecision.reason} for ${slugPath}`);
+  }
+
+  const detailRecord = detailExperienceDecision.record;
+  const slugJson = JSON.stringify(detailRecord, null, 2);
   const slugProtection = resolveThinContentProtectionDecision({
     incoming: summarizePublishedPuzzleDetail(detailRecord),
     existingBranch: { summary: existingSlugSummary },

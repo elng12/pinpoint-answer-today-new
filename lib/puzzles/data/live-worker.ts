@@ -189,6 +189,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     updatedAt: record.fetchedAt,
     detailMode: "short",
     detailSource: "fallback",
+    pageExperienceMode: "light-explainer",
   };
 }
 
@@ -231,4 +232,3 @@ export async function getLiveWorkerPuzzle(
 
   return livePuzzle;
 }
-

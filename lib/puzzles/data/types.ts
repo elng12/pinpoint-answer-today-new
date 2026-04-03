@@ -5,6 +5,7 @@ import type {
   PuzzleDifficultyBand,
   PuzzleEvidenceFaqItemRecord,
   PuzzleDetailState,
+  PuzzlePageExperienceMode,
   PuzzleQuestionType,
   PuzzleSolvePathRecord,
   PuzzleTurningPointRecord,
@@ -53,6 +54,7 @@ export type PuzzleDetail = {
   updatedAt: string;
   detailMode: "full" | "short";
   detailSource: "formal" | "fallback";
+  pageExperienceMode: PuzzlePageExperienceMode;
 };
 
 export type ArchiveEntry = {
