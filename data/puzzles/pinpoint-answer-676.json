@@ -30,25 +30,25 @@
     "Volt": "This clue should verify the same connector in science language, not start a new topic."
   },
   "articleBlocks": [
-    "Phone, Hit, and Star feel unrelated on the surface, which is exactly what makes the board look harder than it is.",
-    "Byte and Volt push the clues into technical territory, but that scatter is really a signal that the answer may be a shared prefix instead of a shared topic.",
-    "Phone is the clue that unlocks it.",
-    "Megaphone is such an immediate word that it makes mega feel testable across the full board right away.",
-    "Once that happens, megahit, megastar, megabyte, and megavolt all line up naturally.",
-    "The answer was Words that come after \"mega\".",
-    "This board works because it stretches the same prefix across everyday speech, entertainment, computing, and science."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a subject-based category read\". Phone, Byte, and Volt all sound technical enough to tempt a category guess at first. Phone is the clue that keeps the board from staying at that broader surface read.",
+    "Another easy trap was \"a broad technology or fame theme\". Hit and Star can suggest entertainment, but that idea falls apart once Byte and Volt have to fit too. Phone is the clue that keeps the board from staying at that broader surface read.",
+    "Once that phrase appears, examples like \"megaphone\" and \"megahit\" stop feeling guessed and start reading like ordinary language under everyday and technical words built from one shared opening prefix.",
+    "megastar, megabyte, megavolt show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was Words that come after \"mega\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why Words that come after \"mega\" fits better than \"a subject-based category read\" or \"a broad technology or fame theme\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Phone, Hit, and Star feel unrelated on the surface, which is exactly what makes the board look harder than it is.",
-    "Byte and Volt push the clues into technical territory, but that scatter is really a sign that the board may want a shared prefix rather than a shared category.",
-    "Phone is the turning clue because megaphone is so common that mega surfaces almost immediately once you test it.",
-    "After that, megahit, megastar, megabyte, and megavolt all become clean confirmations, each one proving the same prefix works in a different domain.",
-    "The answer was Words that come after \"mega\".",
-    "The puzzle is satisfying because the clues come from completely different worlds, yet one simple prefix explains all five without strain."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a subject-based category read\". Phone, Byte, and Volt all sound technical enough to tempt a category guess at first. Phone is the clue that keeps the board from staying at that broader surface read.",
+    "Another easy trap was \"a broad technology or fame theme\". Hit and Star can suggest entertainment, but that idea falls apart once Byte and Volt have to fit too. Phone is the clue that keeps the board from staying at that broader surface read.",
+    "Once that phrase appears, examples like \"megaphone\" and \"megahit\" stop feeling guessed and start reading like ordinary language under everyday and technical words built from one shared opening prefix.",
+    "megastar, megabyte, megavolt show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was Words that come after \"mega\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why Words that come after \"mega\" fits better than \"a subject-based category read\" or \"a broad technology or fame theme\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "I first tried to group the clues by subject, but Phone, Hit, Star, Byte, and Volt were too scattered for that to hold. The board felt more like a word-part puzzle than a theme puzzle.",
-    "Phone solved it. Once megaphone appeared, mega became the obvious test, and megahit, megastar, megabyte, and megavolt all confirmed it immediately."
+    "I first tried a subject-based category read, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Phone\" feel exact enough.",
+    "Once \"Phone\" clicked, the phrase pattern was finally clear. The same word fit before the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
+    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses."
   ],
   "lessons": [
     {
@@ -202,5 +202,20 @@
       "megabyte",
       "megavolt"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a subject-based category read",
+      "whyPlausible": "Phone, Byte, and Volt all sound technical enough to tempt a category guess at first.",
+      "whyRejected": "Phone is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "a broad technology or fame theme",
+      "whyPlausible": "Hit and Star can suggest entertainment, but that idea falls apart once Byte and Volt have to fit too.",
+      "whyRejected": "Phone is the clue that keeps the board from staying at that broader surface read."
+    }
+  ],
+  "setValidationSummary": "megastar, megabyte, megavolt show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping",
+  "pageExperienceMode": "full-analysis"
 }
