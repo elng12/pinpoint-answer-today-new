@@ -1107,13 +1107,29 @@ async function checkWorkerDetailShape() {
 async function checkPhraseFallbackDirection() {
   const fallbackModulePath = "../lib/puzzles/fallback-copy.ts";
   const fallbackModule = (await import(fallbackModulePath)) as {
-    buildSharedFallbackFaqs: (input: {
-      puzzleNumber: number;
-      kind: "before" | "after";
+    buildSharedFallbackArticleBlocks: (input: {
+      kind: "typed-category" | "category" | "association";
+      clues: string[];
       answer: string;
       turningPoint: string;
       connectorSummary: string;
+      sampleReads: string[];
+      finalChecks: string[];
+    }) => string[];
+    buildSharedFallbackFaqs: (input: {
+      puzzleNumber: number;
+      kind: "before" | "after" | "typed-category" | "category" | "association";
+      answer: string;
+      turningPoint: string;
+      connectorSummary: string;
+      clues?: string[];
     }) => Array<{ answer: string }>;
+    buildSharedFallbackSolutionNarrative: (input: {
+      kind: "typed-category" | "category" | "association";
+      wrongGuess: string;
+      turningPoint: string;
+      clues?: string[];
+    }) => string[];
   };
 
   const beforeFaqs = fallbackModule.buildSharedFallbackFaqs({
@@ -1140,6 +1156,62 @@ async function checkPhraseFallbackDirection() {
     afterFaqs[1]?.answer || "",
     /\bbefore every clue\b/i,
     '"after" phrase fallback copy should say the shared word fits before every clue',
+  );
+
+  const typedCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
+    kind: "typed-category",
+    clues: ["Goliath", "Bull", "Pacman", "Red-eyed Tree", "Poison dart"],
+    answer: '"Types of frogs"',
+    turningPoint: "Red-eyed Tree",
+    connectorSummary: "a category board focused on frogs",
+    sampleReads: ["Goliath frog", "Bullfrog"],
+    finalChecks: ["Red-eyed Tree frog", "Poison dart frog"],
+  });
+  assert.match(
+    typedCategoryArticle.join(" "),
+    /what kind of frog/i,
+    'typed-category fallback copy should ask what kind of singular member each clue describes',
+  );
+
+  const visualCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
+    kind: "category",
+    clues: ["☀️", "🌤️", "☁️", "🌧️", "⛈️"],
+    answer: '"Weather emojis"',
+    turningPoint: "🌧️",
+    connectorSummary: "a category board focused on weather",
+    sampleReads: ["☀️", "🌤️"],
+    finalChecks: ["🌧️", "⛈️"],
+  });
+  assert.match(
+    visualCategoryArticle.join(" "),
+    /\bvisual family\b|\bvisual set\b|\bemoji mood list\b/i,
+    "visual category fallback copy should treat emoji-heavy boards as one visual system instead of generic category prose",
+  );
+
+  const associationFaqs = fallbackModule.buildSharedFallbackFaqs({
+    puzzleNumber: 687,
+    kind: "association",
+    answer: '"Things associated with San Francisco"',
+    turningPoint: "Golden Gate Bridge",
+    connectorSummary: "a board centered on the theme of San Francisco",
+    clues: ["Fog", "Cable cars", "Ghirardelli Square", "Alcatraz Island", "Golden Gate Bridge"],
+  });
+  assert.match(
+    associationFaqs[1]?.answer || "",
+    /\bshared context\b|\bsame subject\b/i,
+    "association fallback FAQ copy should talk about shared context instead of only literal category labels",
+  );
+
+  const visualNarrative = fallbackModule.buildSharedFallbackSolutionNarrative({
+    kind: "category",
+    wrongGuess: "a loose emoji mood list",
+    turningPoint: "🌧️",
+    clues: ["☀️", "🌤️", "☁️", "🌧️", "⛈️"],
+  });
+  assert.match(
+    visualNarrative.join(" "),
+    /\bemoji\b|\bicon\b|\bvisual\b/i,
+    "visual category fallback narrative should acknowledge the icon-heavy solve path",
   );
 
   console.log("ok: phrase fallback copy keeps shared-word direction straight");

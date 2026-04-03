@@ -227,7 +227,12 @@ export function buildLiveLessons(answer: string, turningPoint: string): LessonIt
   return buildSharedFallbackLessons({ kind: pattern.kind, turningPoint });
 }
 
-export function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint: string): FaqItem[] {
+export function buildLiveFaqs(
+  puzzleNumber: number,
+  answer: string,
+  turningPoint: string,
+  clues: string[] = [],
+): FaqItem[] {
   const pattern = detectLiveAnswerPattern(answer);
   const connectorSummary = buildLiveConnectorSummary(answer);
   return buildSharedFallbackFaqs({
@@ -236,6 +241,7 @@ export function buildLiveFaqs(puzzleNumber: number, answer: string, turningPoint
     answer,
     turningPoint,
     connectorSummary,
+    clues,
   });
 }
 

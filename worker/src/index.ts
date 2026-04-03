@@ -1082,8 +1082,13 @@ function buildTemplateFallbackPayload(
       kind: pattern.kind,
       wrongGuess: pattern.kind === "before" || pattern.kind === "after"
         ? "loose phrase guesses"
+        : pattern.kind === "typed-category"
+          ? "a broader umbrella topic"
+          : pattern.kind === "association"
+            ? "a literal category guess"
         : "a broader category guess",
       turningPoint,
+      clues: words,
     }),
     `The answer was "${answer}".`,
   ];
@@ -1099,6 +1104,7 @@ function buildTemplateFallbackPayload(
     turningPoint,
     connectorSummary,
     turningPhrase,
+    clues: words,
   });
 
   const articleBlocks = detailedBreakdown

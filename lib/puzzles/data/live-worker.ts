@@ -92,7 +92,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const connectorSummary = buildLiveConnectorSummary(answer);
   const lessons = buildLiveLessons(answer, turningPoint);
   const wordHints = buildLiveWordHints(record.clues, answer);
-  const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint);
+  const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint, record.clues);
   const fullAnalysis = buildLiveArticleBreakdown(puzzleNumber, record.clues, answer, turningPoint);
   const articleBlocks = fullAnalysis;
   const solutionNarrative = buildSharedFallbackSolutionNarrative({
@@ -100,8 +100,13 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     wrongGuess:
       pattern.kind === "before" || pattern.kind === "after"
         ? "loose phrase guesses"
+        : pattern.kind === "typed-category"
+          ? "a broader umbrella topic"
+          : pattern.kind === "association"
+            ? "a literal category guess"
         : "a broader category guess",
     turningPoint,
+    clues: record.clues,
   });
   const display: PuzzleDetailDisplay = {
     connectorSummary,
