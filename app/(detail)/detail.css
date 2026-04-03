@@ -751,6 +751,47 @@
   color: color-mix(in oklch, var(--text) 88%, white 12%);
 }
 
+.legacy-nearby-read-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.legacy-nearby-read-card,
+.legacy-precision-shell {
+  border-radius: 16px;
+  border: 1px solid var(--brand-line);
+  background: color-mix(in oklch, var(--surface) 94%, white 6%);
+  padding: 18px 20px;
+}
+
+.legacy-nearby-read-label {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: color-mix(in oklch, var(--text) 72%, white 28%);
+}
+
+.legacy-nearby-read-copy,
+.legacy-precision-summary,
+.legacy-precision-note {
+  margin: 10px 0 0;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.72;
+  color: color-mix(in oklch, var(--text) 78%, white 22%);
+}
+
+.legacy-nearby-read-copy-strong {
+  color: color-mix(in oklch, var(--text) 88%, white 12%);
+}
+
+.legacy-precision-summary {
+  margin-top: 0;
+  font-weight: 600;
+}
+
 .legacy-lesson-body {
   display: grid;
   gap: 4px;

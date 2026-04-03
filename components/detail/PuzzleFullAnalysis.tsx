@@ -427,6 +427,47 @@ function renderFaqCards(faqEntries: VisibleDetailFaqEntry[]) {
   ));
 }
 
+function renderNearbyReadCards(puzzle: PuzzleDetailRecord) {
+  if (puzzle.wrongGuessCandidates.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="legacy-nearby-read-grid">
+      {puzzle.wrongGuessCandidates.map((candidate) => (
+        <article className="legacy-nearby-read-card" key={candidate.label}>
+          <p className="legacy-nearby-read-label">{candidate.label}</p>
+          <p className="legacy-nearby-read-copy">{candidate.whyPlausible}</p>
+          {candidate.whyRejected ? (
+            <p className="legacy-nearby-read-copy legacy-nearby-read-copy-strong">
+              {candidate.whyRejected}
+            </p>
+          ) : null}
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function renderPrecisionSection(puzzle: PuzzleDetailRecord) {
+  if (!puzzle.setValidationSummary && !puzzle.categoryPrecisionNote) {
+    return null;
+  }
+
+  return (
+    <div className="legacy-precision-shell">
+      {puzzle.setValidationSummary ? (
+        <p className="legacy-precision-summary">{puzzle.setValidationSummary}</p>
+      ) : null}
+      {puzzle.categoryPrecisionNote ? (
+        <p className="legacy-precision-note">
+          {`Why the answer is tighter: ${puzzle.categoryPrecisionNote}.`}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
@@ -562,6 +603,26 @@ export function PuzzleFullAnalysis({
                 </div>
                 <p className="legacy-category-answer">{puzzle.answer}</p>
               </section>
+
+              {puzzle.wrongGuessCandidates.length > 0 ? (
+                <section className="legacy-analysis-section">
+                  <div className="legacy-section-title-row">
+                    <Lightbulb className="legacy-section-icon" aria-hidden />
+                    <h3 className="legacy-section-title">Nearby Reads We Ruled Out</h3>
+                  </div>
+                  {renderNearbyReadCards(puzzle)}
+                </section>
+              ) : null}
+
+              {puzzle.setValidationSummary || puzzle.categoryPrecisionNote ? (
+                <section className="legacy-analysis-section">
+                  <div className="legacy-section-title-row">
+                    <Star className="legacy-section-icon" aria-hidden />
+                    <h3 className="legacy-section-title">Why This Answer Fits Tighter</h3>
+                  </div>
+                  {renderPrecisionSection(puzzle)}
+                </section>
+              ) : null}
 
               <section className="legacy-analysis-section">
                 {renderClueTable(puzzle)}
