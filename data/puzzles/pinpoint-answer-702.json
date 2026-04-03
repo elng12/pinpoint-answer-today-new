@@ -30,36 +30,25 @@
     "Back": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "Initially, 'Ice' and 'Jet' felt like random nouns.",
-    "I considered things that might be grouped together, or types of travel.",
-    "That didn't lead anywhere.",
-    "The 'Six' clue misled me toward fitness themes.",
-    "But 'Ice' didn't fit that theory.",
-    "Then I landed on 'Back', and the phrase 'back pack' came to mind.",
-    "That's when I realized each clue could come before 'pack'.",
-    "The answer is: words that come before 'pack'.",
-    "Each word creates a common phrase when placed before 'pack'.",
-    "'Ice' becomes 'ice pack,' 'Jet' becomes 'jet pack,' and so on.",
-    "Looking back, the puzzle wasn't about categories, but about common word pairings.",
-    "The phrases are all very familiar."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"famous names\". That felt too literal and didn't account for clues like 'Booster' or 'Ice'. Back is the clue that keeps the board from staying at that broader surface read.",
+    "Another easy trap was \"standalone clue meanings\". A nearby read like standalone clue meanings can also feel plausible until the full board is checked together. That line never explains the strongest clue cleanly enough.",
+    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Booster pack, Six pack, Back pack show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was Words that come before \"pack\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"pack\" fits better than \"famous names\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Initially, 'Ice' and 'Jet' felt like random nouns.",
-    "I considered things that might be grouped together, or types of travel.",
-    "That didn't lead anywhere.",
-    "The 'Six' clue misled me toward fitness themes.",
-    "But 'Ice' didn't fit that theory.",
-    "Then I landed on 'Back', and the phrase 'back pack' came to mind.",
-    "That's when I realized each clue could come before 'pack'.",
-    "The answer is: words that come before 'pack'.",
-    "Each word creates a common phrase when placed before 'pack'.",
-    "'Ice' becomes 'ice pack,' 'Jet' becomes 'jet pack,' and so on.",
-    "Looking back, the puzzle wasn't about categories, but about common word pairings.",
-    "The phrases are all very familiar."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"famous names\". That felt too literal and didn't account for clues like 'Booster' or 'Ice'. Back is the clue that keeps the board from staying at that broader surface read.",
+    "Another easy trap was \"standalone clue meanings\". A nearby read like standalone clue meanings can also feel plausible until the full board is checked together. That line never explains the strongest clue cleanly enough.",
+    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Booster pack, Six pack, Back pack show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was Words that come before \"pack\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"pack\" fits better than \"famous names\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Ice and Jet first pulled me toward famous names, so that was the first path I tested. It held together for a moment, but back never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I let back lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Ice pack and Jet pack started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
+    "I first tried famous names, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Back\" feel exact enough.",
+    "Once \"Back\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
+    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses."
   ],
   "lessons": [
     {
@@ -211,5 +200,15 @@
       "Ice pack",
       "Jet pack"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "famous names",
+      "whyPlausible": "That felt too literal and didn't account for clues like 'Booster' or 'Ice'.",
+      "whyRejected": "Back is the clue that keeps the board from staying at that broader surface read."
+    }
+  ],
+  "setValidationSummary": "Booster pack, Six pack, Back pack show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping",
+  "pageExperienceMode": "full-analysis"
 }

@@ -30,25 +30,25 @@
     "Gracias": "The board is about one shared meaning expressed in several languages."
   },
   "articleBlocks": [
-    "This board is easier than most because the words start to point in one direction almost immediately.",
-    "Mahalo and Danke suggest foreign-language vocabulary, but that alone still leaves room for a broader reading.",
-    "Arigato is the clue that makes the common meaning feel clear.",
-    "At that point, the board stops being about random international words and starts being about one exact phrase repeated across languages.",
-    "Merci and Gracias then land as obvious confirmations rather than separate discoveries.",
-    "The answer was \"Thank you\" in different languages.",
-    "The trick here is not complexity. It is simply recognizing enough of the words quickly enough to trust the shared meaning."
+    "At first, Mahalo and Danke can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front.",
+    "A tempting early label was \"common foreign-language words\". Mahalo and Danke already fit that broad idea, so the board can feel solved before it actually is. Arigato is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"travel greetings\". Several clues do sound like travel vocabulary, but the answer is tighter because they all mean the same thing. Arigato is the clue that keeps the board from staying at that broader surface read.",
+    "From there, the same everyday phrase expressed across several languages explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts. Examples like \"thank you in Hawaiian\" and \"thank you in German\" stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.",
+    "thank you in Japanese, thank you in French, thank you in Spanish keep pointing back to the same repeated translation, so the board holds together as one shared meaning instead of a loose shelf of foreign-language words.",
+    "The answer was \"Thank you\" in different languages. More precisely, the board resolves as one repeated translation meaning across multiple languages rather than a broad bucket of foreign-language vocabulary, which is why \"Thank you\" in different languages fits better than \"common foreign-language words\" or \"travel greetings\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "This board is easier than most because the words start to point in one direction almost immediately.",
-    "Mahalo and Danke suggest foreign-language vocabulary, but that alone still leaves room for a broader reading like greetings or common travel words.",
-    "Arigato is the turning clue because it makes the repeated meaning feel clear instead of just international.",
-    "Once that happens, Merci and Gracias confirm the same answer cleanly, and the board becomes a translation set rather than a general language theme.",
-    "The answer was \"Thank you\" in different languages.",
-    "The puzzle works best as a recognition check: if you know a few of the words, the category appears fast."
+    "At first, Mahalo and Danke can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front.",
+    "A tempting early label was \"common foreign-language words\". Mahalo and Danke already fit that broad idea, so the board can feel solved before it actually is. Arigato is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"travel greetings\". Several clues do sound like travel vocabulary, but the answer is tighter because they all mean the same thing. Arigato is the clue that keeps the board from staying at that broader surface read.",
+    "From there, the same everyday phrase expressed across several languages explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts. Examples like \"thank you in Hawaiian\" and \"thank you in German\" stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.",
+    "thank you in Japanese, thank you in French, thank you in Spanish keep pointing back to the same repeated translation, so the board holds together as one shared meaning instead of a loose shelf of foreign-language words.",
+    "The answer was \"Thank you\" in different languages. More precisely, the board resolves as one repeated translation meaning across multiple languages rather than a broad bucket of foreign-language vocabulary, which is why \"Thank you\" in different languages fits better than \"common foreign-language words\" or \"travel greetings\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Mahalo and Danke already suggested languages, but that was still broader than the real answer. The board could have been greetings, travel words, or everyday expressions in general.",
-    "Arigato pushed it over the line. Once three clues were clearly read as the same phrase in different languages, Merci and Gracias stopped being separate facts and became straight confirmation."
+    "I first leaned toward common foreign-language words, but that still treated the board like a literal category and never gave \"Arigato\" enough weight as an anchor clue.",
+    "The turn came when I let \"Arigato\" define the context. Once the board had one stable subject behind it, the earlier clues stopped feeling scattered and started behaving like references from the same world.",
+    "That was the point where the solve stopped depending on loose overlap and started feeling like one coherent picture."
   ],
   "lessons": [
     {
@@ -202,5 +202,20 @@
       "Mahalo thank you",
       "Gracias thank you"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "common foreign-language words",
+      "whyPlausible": "Mahalo and Danke already fit that broad idea, so the board can feel solved before it actually is.",
+      "whyRejected": "Arigato is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "travel greetings",
+      "whyPlausible": "Several clues do sound like travel vocabulary, but the answer is tighter because they all mean the same thing.",
+      "whyRejected": "Arigato is the clue that keeps the board from staying at that broader surface read."
+    }
+  ],
+  "setValidationSummary": "thank you in Japanese, thank you in French, thank you in Spanish keep pointing back to the same repeated translation, so the board holds together as one shared meaning instead of a loose shelf of foreign-language words.",
+  "categoryPrecisionNote": "one repeated translation meaning across multiple languages rather than a broad bucket of foreign-language vocabulary",
+  "pageExperienceMode": "full-analysis"
 }

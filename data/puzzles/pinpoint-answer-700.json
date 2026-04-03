@@ -30,32 +30,25 @@
     "Phone screen": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before."
   },
   "articleBlocks": [
-    "I was initially thinking about different types of meetings you might have at work.",
-    "The clues seemed to cover a range of interactions, from group settings to individual discussions.",
-    "But that felt too general to really lock in.",
-    "Then I noticed 'Phone screen'.",
-    "That didn't really fit my initial idea of general meetings.",
-    "However, it's definitely a step in the job application process.",
-    "That made me rethink things.",
-    "The answer is: Types of interviews in a job search.",
-    "Each clue represents a different method used by companies to evaluate potential hires.",
-    "Once I had the right frame, the fit became obvious."
+    "At first, Panel and One-on-one can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"science terms\". That felt too broad. 'Phone screen' doesn't really fit that description, but it's a common step in hiring. Phone screen is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby bucket was \"famous names\". famous names feels plausible early on, but it falls apart once phone screen demands a more exact reading. Phone screen is the clue that keeps the board from staying at that broader surface read.",
+    "Once the board turned into a question about what kind of interview in a job search each clue could be, a category board focused on interviews in a job search stopped sounding generic and started behaving like a real category test. Examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Behavioral interviews in a job search, Technical interviews in a job search, Phone screen interviews in a job search read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was Types of interviews in a job search. More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of interviews in a job search, which is why Types of interviews in a job search fits better than \"science terms\" or \"famous names\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "I was initially thinking about different types of meetings you might have at work.",
-    "The clues seemed to cover a range of interactions, from group settings to individual discussions.",
-    "But that felt too general to really lock in.",
-    "Then I noticed 'Phone screen'.",
-    "That didn't really fit my initial idea of general meetings.",
-    "However, it's definitely a step in the job application process.",
-    "That made me rethink things.",
-    "The answer is: Types of interviews in a job search.",
-    "Each clue represents a different method used by companies to evaluate potential hires.",
-    "Once I had the right frame, the fit became obvious."
+    "At first, Panel and One-on-one can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"science terms\". That felt too broad. 'Phone screen' doesn't really fit that description, but it's a common step in hiring. Phone screen is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby bucket was \"famous names\". famous names feels plausible early on, but it falls apart once phone screen demands a more exact reading. Phone screen is the clue that keeps the board from staying at that broader surface read.",
+    "Once the board turned into a question about what kind of interview in a job search each clue could be, a category board focused on interviews in a job search stopped sounding generic and started behaving like a real category test. Examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Behavioral interviews in a job search, Technical interviews in a job search, Phone screen interviews in a job search read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was Types of interviews in a job search. More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of interviews in a job search, which is why Types of interviews in a job search fits better than \"science terms\" or \"famous names\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Panel and One-on-one first pulled me toward science terms, so that was the first path I tested. It held together for a moment, but phone screen never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating phone screen as just another clue and asked what kind of interviews in a job search each clue could describe. Once I made that shift, I was no longer thinking about science terms; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing interviews in a job search."
+    "I first drifted toward science terms, because the early clues were broad enough to sit inside a bigger umbrella topic. That read still felt too loose once \"Phone screen\" showed up.",
+    "The solve improved once I stopped asking what the clues vaguely had in common and started asking what type of thing each clue could specifically be. \"Phone screen\" was the clue that made that shift feel worth testing.",
+    "After that, the board stopped behaving like a loose topic list and started reading like one exact typed category with members you could actually name."
   ],
   "lessons": [
     {
@@ -204,5 +197,20 @@
       "Panel interviews in a job search",
       "One-on-one interviews in a job search"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "science terms",
+      "whyPlausible": "That felt too broad. 'Phone screen' doesn't really fit that description, but it's a common step in hiring.",
+      "whyRejected": "Phone screen is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "famous names",
+      "whyPlausible": "famous names feels plausible early on, but it falls apart once phone screen demands a more exact reading.",
+      "whyRejected": "Phone screen is the clue that keeps the board from staying at that broader surface read."
+    }
+  ],
+  "setValidationSummary": "Behavioral interviews in a job search, Technical interviews in a job search, Phone screen interviews in a job search read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of interviews in a job search",
+  "pageExperienceMode": "full-analysis"
 }
