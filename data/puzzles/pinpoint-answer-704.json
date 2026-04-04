@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-704",
   "publishDate": "2026-04-04",
   "isoDate": "2026-04-04",
-  "detailState": "generating",
+  "detailState": "validated",
   "questionType": "category",
-  "difficultyBand": "obvious",
+  "difficultyBand": "medium",
   "clues": [
     "Mailboxes",
     "Toasters",
@@ -16,11 +16,11 @@
   "answer": "Things with slots",
   "category": "Things with slots",
   "wordHints": {
-    "Mailboxes": "Mailboxes connects to \"Things with slots\"",
-    "Toasters": "Toasters connects to \"Things with slots\"",
-    "Television schedules": "Television schedules connects to \"Things with slots\"",
-    "Computer motherboards": "Computer motherboards connects to \"Things with slots\"",
-    "Vending machines (for coins)": "Vending machines (for coins) connects to \"Things with slots\""
+    "Mailboxes": "Mailboxes fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
+    "Toasters": "Toasters fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
+    "Television schedules": "Television schedules fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
+    "Computer motherboards": "Computer motherboards fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
+    "Vending machines (for coins)": "Vending machines (for coins) fits once the board is read through common objects that all depend on a certain opening, especially after television schedules."
   },
   "spoilerHints": {
     "Mailboxes": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -30,130 +30,143 @@
     "Vending machines (for coins)": "This is the clue that makes the category specific enough to test instead of staying broad."
   },
   "articleBlocks": [
-    "At first, Mailboxes and Toasters pointed in a few different directions.",
-    "The turn came with \"Vending machines (for coins)\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on things, examples like \"Mailboxes\" and \"Toasters\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Things with slots\".",
-    "\"Computer motherboards\" and \"Vending machines (for coins)\" then felt like the last confirmations, not separate guesses."
+    "At first, this looked more like household appliances than the real category.",
+    "Mailboxes pushed me in that direction immediately.",
+    "Toasters kept that theory alive for a moment, but television schedules still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Television schedules made me stop thinking about household appliances and start thinking about the real category.",
+    "Mailboxes fit once I read it through the answer.",
+    "Toasters fit once I read it through the answer.",
+    "The answer was Things with slots.",
+    "Computer motherboards and Vending machines (for coins) then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "fullAnalysis": [
-    "At first, Mailboxes and Toasters pointed in a few different directions.",
-    "The turn came with \"Vending machines (for coins)\".",
-    "That clue made the answer feel concrete enough to test across the full board.",
-    "Once I read the set through a category board focused on things, examples like \"Mailboxes\" and \"Toasters\" stopped feeling loose and started landing cleanly.",
-    "The answer was \"Things with slots\".",
-    "\"Computer motherboards\" and \"Vending machines (for coins)\" then felt like the last confirmations, not separate guesses."
+    "At first, this looked more like household appliances than the real category.",
+    "Mailboxes pushed me in that direction immediately.",
+    "Toasters kept that theory alive for a moment, but television schedules still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Television schedules made me stop thinking about household appliances and start thinking about the real category.",
+    "Mailboxes fit once I read it through the answer.",
+    "Toasters fit once I read it through the answer.",
+    "The answer was Things with slots.",
+    "Computer motherboards and Vending machines (for coins) then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #704, Mailboxes, Toasters, Television schedules, Computer motherboards, Vending machines (for coins) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Mailboxes and Toasters first pulled me toward household appliances, so that was the first path I tested. It held together for a moment, but television schedules never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating television schedules as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about household appliances; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Television schedules is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When a category feels too general, look for a shared functional detail instead of a general theme."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on things",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Mailboxes",
         "examplePhrase": "Mailboxes",
-        "connectionExplained": "Mailboxes connects to \"Things with slots\""
+        "connectionExplained": "Mailboxes fits once the board is read through common objects that all depend on a certain opening, especially after television schedules."
       },
       {
         "clue": "Toasters",
         "examplePhrase": "Toasters",
-        "connectionExplained": "Toasters connects to \"Things with slots\""
+        "connectionExplained": "Toasters fits once the board is read through common objects that all depend on a certain opening, especially after television schedules."
       },
       {
         "clue": "Television schedules",
         "examplePhrase": "Television schedules",
-        "connectionExplained": "Television schedules connects to \"Things with slots\""
+        "connectionExplained": "Television schedules fits once the board is read through common objects that all depend on a certain opening, especially after television schedules."
       },
       {
         "clue": "Computer motherboards",
         "examplePhrase": "Computer motherboards",
-        "connectionExplained": "Computer motherboards connects to \"Things with slots\""
+        "connectionExplained": "Computer motherboards fits once the board is read through common objects that all depend on a certain opening, especially after television schedules."
       },
       {
         "clue": "Vending machines (for coins)",
         "examplePhrase": "Vending machines (for coins)",
-        "connectionExplained": "Vending machines (for coins) connects to \"Things with slots\""
+        "connectionExplained": "Vending machines (for coins) fits once the board is read through common objects that all depend on a certain opening, especially after television schedules."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #704?",
-      "answer": "The answer is \"Things with slots\". The clues Mailboxes, Toasters, Television schedules, Computer motherboards, Vending machines (for coins) all share this connection."
+      "answer": "The answer is \"Things with slots\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #704?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Television schedules is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #704?",
+      "answer": "Television schedules is the turning clue because \"Television schedules\" makes the shared category frame explicit. It also makes Mailboxes read cleanly as \"Mailboxes\". The items seem random until you focus on a shared functional detail, not their main purpose."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #704 just unlocked, and this is the fastest verified update. The board clues are Mailboxes, Toasters, Television schedules, Computer motherboards, Vending machines (for coins), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
-    "falseStarts": [],
-    "whyFalseStartPlausible": [],
-    "breakingClue": "Mailboxes",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #704, Mailboxes, Toasters, Television schedules, Computer motherboards, Vending machines (for coins) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Mailboxes lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "firstRead": "Mailboxes, Toasters, and Television schedules do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"household appliances\" can feel plausible before one clue makes the answer feel concrete. Television schedules is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "household appliances"
+    ],
+    "whyFalseStartPlausible": [
+      "Several items fit, but not all. 'Television schedules' and 'vending machines' felt out of place as just appliances."
+    ],
+    "breakingClue": "Television schedules",
+    "pivot": "The solve turned when I stopped treating television schedules as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about household appliances; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Mailboxes, Toasters, and Television schedules stop feeling disconnected and start looking like they belong together. Once television schedules is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The items seem random until you focus on a shared functional detail, not their main purpose."
   },
   "turningPoint": {
-    "clue": "Mailboxes",
-    "whyDecisive": "Mailboxes is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Mailboxes lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Television schedules",
+    "whyDecisive": "A later clue is what finally made the answer feel concrete.",
+    "whatChangedAfterIt": "Once Television schedules landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Mailboxes",
-      "surfaceMisread": "an early broad guess",
+      "surfaceMisread": "household appliances",
       "resolvedPhraseOrMember": "Mailboxes",
-      "nonObviousWhy": "Mailboxes supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Mailboxes fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
       "searchableContext": "Mailboxes"
     },
     {
       "clue": "Toasters",
-      "surfaceMisread": "an early broad guess",
+      "surfaceMisread": "household appliances",
       "resolvedPhraseOrMember": "Toasters",
-      "nonObviousWhy": "Toasters supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Toasters fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
       "searchableContext": "Toasters"
     },
     {
       "clue": "Television schedules",
-      "surfaceMisread": "an early broad guess",
+      "surfaceMisread": "household appliances",
       "resolvedPhraseOrMember": "Television schedules",
-      "nonObviousWhy": "Television schedules supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Television schedules fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
       "searchableContext": "Television schedules"
     },
     {
       "clue": "Computer motherboards",
-      "surfaceMisread": "an early broad guess",
+      "surfaceMisread": "household appliances",
       "resolvedPhraseOrMember": "Computer motherboards",
-      "nonObviousWhy": "Computer motherboards supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Computer motherboards fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
       "searchableContext": "Computer motherboards"
     },
     {
       "clue": "Vending machines (for coins)",
-      "surfaceMisread": "an early broad guess",
+      "surfaceMisread": "household appliances",
       "resolvedPhraseOrMember": "Vending machines (for coins)",
-      "nonObviousWhy": "Vending machines (for coins) supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Vending machines (for coins) fits once the board is read through common objects that all depend on a certain opening, especially after television schedules.",
       "searchableContext": "Vending machines (for coins)"
     }
   ],
@@ -161,24 +174,24 @@
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #704?",
-      "answer": "The answer is \"Things with slots\". The clues Mailboxes, Toasters, Television schedules, Computer motherboards, Vending machines (for coins) all share this connection.",
-      "tiedClue": "Mailboxes"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Things with slots\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #704?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Television schedules is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Television schedules"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #704?",
+      "answer": "Television schedules is the turning clue because \"Television schedules\" makes the shared category frame explicit. It also makes Mailboxes read cleanly as \"Mailboxes\". The items seem random until you focus on a shared functional detail, not their main purpose.",
+      "tiedClue": "Television schedules"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a category board focused on things",
+    "angle": "Common objects that all depend on a certain opening",
     "relatedEntities": [
       "Mailboxes",
       "Toasters",
@@ -187,11 +200,12 @@
       "Vending machines (for coins)"
     ],
     "doNotRepeatPatterns": [
-      "a category board focused on things",
+      "Common objects that all depend on a certain opening",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
       "Mailboxes",
-      "Toasters",
-      "Television schedules",
-      "Computer motherboards"
+      "Toasters"
     ]
   }
 }
