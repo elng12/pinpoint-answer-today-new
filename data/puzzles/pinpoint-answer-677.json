@@ -30,25 +30,25 @@
     "Little black": "This is the clue that makes the dress reading feel least flexible."
   },
   "articleBlocks": [
-    "Cocktail and Wedding can make the board feel like events at first, which is the main trap here.",
-    "Sun and Wrap help, but only if you stop thinking about occasions and start thinking about garments.",
-    "Little black is the clue that locks it.",
-    "Little black dress is such a fixed phrase that the whole board snaps from lifestyle words into named dress styles.",
-    "After that, sundress, wrap dress, cocktail dress, and wedding dress all line up immediately.",
-    "The answer was Types of dresses.",
-    "This puzzle is cleaner than it first appears because every clue names a real dress phrase rather than a vague fashion theme."
+    "At first, Sun and Wrap can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"formal occasions\". Cocktail and Wedding both point toward events, so the wrong frame feels natural at the start. Little black is the clue that finally pushes the board down to one exact type-level category.",
+    "Another nearby bucket was \"style or lifestyle words\". Sun and Wrap can sound like general style words until the board narrows into actual garment phrases. That read stays too broad once the full board is checked at the same category level.",
+    "Once the board turned into a question about what kind of dress each clue could be, a category board focused on dresses stopped sounding generic and started behaving like a real category test. Examples like \"sundress\" and \"wrap dress\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "cocktail dress, wedding dress, and little black dress read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad fashion vibe.",
+    "The answer was Types of dresses. More precisely, the board resolves as a typed category where each clue names a specific dress phrase, not a loose style or occasion bucket, which is why Types of dresses fits better than \"formal occasions\" or \"style or lifestyle words\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Cocktail and Wedding can make the board feel like events at first, which is the main trap here.",
-    "Sun and Wrap help, but only if you stop thinking about occasions and start thinking about garments.",
-    "Little black is the turning clue because little black dress is such a fixed phrase that the fashion reading becomes far more exact than any event-based guess.",
-    "Once that phrase appears, sundress, wrap dress, cocktail dress, and wedding dress all become obvious members of the same category.",
-    "The answer was Types of dresses.",
-    "The board works because several clues can describe social settings, but the real connection is the garment each one names."
+    "At first, Sun and Wrap can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"formal occasions\". Cocktail and Wedding both point toward events, so the wrong frame feels natural at the start. Little black is the clue that finally pushes the board down to one exact type-level category.",
+    "Another nearby bucket was \"style or lifestyle words\". Sun and Wrap can sound like general style words until the board narrows into actual garment phrases. That read stays too broad once the full board is checked at the same category level.",
+    "Once the board turned into a question about what kind of dress each clue could be, a category board focused on dresses stopped sounding generic and started behaving like a real category test. Examples like \"sundress\" and \"wrap dress\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "cocktail dress, wedding dress, and little black dress read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad fashion vibe.",
+    "The answer was Types of dresses. More precisely, the board resolves as a typed category where each clue names a specific dress phrase, not a loose style or occasion bucket, which is why Types of dresses fits better than \"formal occasions\" or \"style or lifestyle words\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Cocktail and Wedding first pulled me toward events, and Sun did not completely break that. The set felt stylish, but still too broad to trust.",
-    "Little black changed the solve. Once little black dress appeared, the board stopped being about settings or moods and became a straightforward list of dress types."
+    "I first drifted toward formal occasions, because the early clues were broad enough to sit inside a bigger umbrella topic. That read still felt too loose once \"Little black\" showed up.",
+    "The solve improved once I stopped asking what the clues vaguely had in common and started asking what type of thing each clue could specifically be. \"Little black\" was the clue that made that shift feel worth testing.",
+    "After that, the board stopped behaving like a loose topic list and started reading like one exact typed category with members you could actually name."
   ],
   "lessons": [
     {
@@ -202,5 +202,20 @@
       "wrap dress",
       "little black dress"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "formal occasions",
+      "whyPlausible": "Cocktail and Wedding both point toward events, so the wrong frame feels natural at the start.",
+      "whyRejected": "Little black is the clue that finally pushes the board down to one exact type-level category."
+    },
+    {
+      "label": "style or lifestyle words",
+      "whyPlausible": "Sun and Wrap can sound like general style words until the board narrows into actual garment phrases.",
+      "whyRejected": "That read stays too broad once the full board is checked at the same category level."
+    }
+  ],
+  "setValidationSummary": "cocktail dress, wedding dress, and little black dress read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad fashion vibe.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific dress phrase, not a loose style or occasion bucket",
+  "pageExperienceMode": "full-analysis"
 }

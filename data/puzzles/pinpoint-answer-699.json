@@ -30,28 +30,24 @@
     "Mint chocolate chip": "Once you have the right category, this clue should feel like the clean final confirmation."
   },
   "articleBlocks": [
-    "I started this puzzle with a dessert-ingredient read because Pistachio, Coffee, and Vanilla all live comfortably in that world.",
-    "That held for a moment, but Cookie dough made the board feel less like pantry items and more like something you would order.",
-    "That was the clue that changed the solve.",
-    "Cookie dough is much more natural as an ice cream flavor than as a baking category on its own.",
-    "Once I read it that way, Pistachio and Coffee stopped sounding like components and started sounding like freezer-case flavors.",
-    "Mint chocolate chip then became the clean final confirmation.",
-    "The answer was Flavors of ice cream.",
-    "Looking back, the puzzle works because every clue can appear in desserts, but only one category explains all five as named menu items."
+    "At first, Pistachio and Coffee pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"dessert ingredients\". Pistachio, Coffee, and Vanilla all fit that idea for a moment, but Cookie dough and Mint chocolate chip are too specific to stay inside a pantry read. Cookie dough is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"coffeehouse flavors\". Coffee and Vanilla can live there, but Pistachio and Cookie dough do not behave like one real cafe flavor list. Mint chocolate chip makes much more sense as a scoop-shop flavor than as part of a cafe menu theme.",
+    "Once I read the set through a category board focused on named ice cream flavors, examples like \"Pistachio ice cream\" and \"Coffee ice cream\" stopped feeling loose and started landing cleanly.",
+    "Vanilla, Cookie dough, and Mint chocolate chip keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad dessert umbrella.",
+    "The answer was Flavors of ice cream. More precisely, the board resolves as named ice cream flavors rather than loose dessert ingredients or cafe tastes, which is why Flavors of ice cream fits better than \"dessert ingredients\" or \"coffeehouse flavors\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "I started this puzzle with a dessert-ingredient read because Pistachio, Coffee, and Vanilla all live comfortably in that world.",
-    "That held for a moment, but Cookie dough made the board feel less like pantry items and more like something you would order.",
-    "That was the clue that changed the solve.",
-    "Cookie dough is much more natural as an ice cream flavor than as a baking category on its own.",
-    "Once I read it that way, Pistachio and Coffee stopped sounding like components and started sounding like freezer-case flavors.",
-    "Mint chocolate chip then became the clean final confirmation.",
-    "The answer was Flavors of ice cream.",
-    "Looking back, the puzzle works because every clue can appear in desserts, but only one category explains all five as named menu items."
+    "At first, Pistachio and Coffee pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"dessert ingredients\". Pistachio, Coffee, and Vanilla all fit that idea for a moment, but Cookie dough and Mint chocolate chip are too specific to stay inside a pantry read. Cookie dough is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"coffeehouse flavors\". Coffee and Vanilla can live there, but Pistachio and Cookie dough do not behave like one real cafe flavor list. Mint chocolate chip makes much more sense as a scoop-shop flavor than as part of a cafe menu theme.",
+    "Once I read the set through a category board focused on named ice cream flavors, examples like \"Pistachio ice cream\" and \"Coffee ice cream\" stopped feeling loose and started landing cleanly.",
+    "Vanilla, Cookie dough, and Mint chocolate chip keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad dessert umbrella.",
+    "The answer was Flavors of ice cream. More precisely, the board resolves as named ice cream flavors rather than loose dessert ingredients or cafe tastes, which is why Flavors of ice cream fits better than \"dessert ingredients\" or \"coffeehouse flavors\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Pistachio, Coffee, and Vanilla first pulled me toward dessert ingredients, so that was the first path I tested. That read felt plausible, but Cookie dough and Mint chocolate chip were both too menu-like to stay inside a pantry answer for long.",
-    "The solve turned when I let Cookie dough lead instead of treating it as just another sweet clue. Once that clue pushed me toward ice cream flavors, Pistachio, Coffee, and Vanilla stopped sounding like raw components and started sounding like names you would actually see in a freezer case."
+    "I did not have a clean answer from the first clue. I initially drifted toward dessert ingredients, but that line of thinking never explained \"Cookie dough\" cleanly enough.",
+    "The turn came when I let \"Cookie dough\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set."
   ],
   "lessons": [
     {
@@ -205,5 +201,20 @@
       "Cookie dough ice cream",
       "Mint chocolate chip ice cream"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "dessert ingredients",
+      "whyPlausible": "Pistachio, Coffee, and Vanilla all fit that idea for a moment, but Cookie dough and Mint chocolate chip are too specific to stay inside a pantry read.",
+      "whyRejected": "Cookie dough is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "coffeehouse flavors",
+      "whyPlausible": "Coffee and Vanilla can live there, but Pistachio and Cookie dough do not behave like one real cafe flavor list.",
+      "whyRejected": "Mint chocolate chip makes much more sense as a scoop-shop flavor than as part of a cafe menu theme."
+    }
+  ],
+  "setValidationSummary": "Vanilla, Cookie dough, and Mint chocolate chip keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad dessert umbrella.",
+  "categoryPrecisionNote": "named ice cream flavors rather than loose dessert ingredients or cafe tastes",
+  "pageExperienceMode": "full-analysis"
 }
