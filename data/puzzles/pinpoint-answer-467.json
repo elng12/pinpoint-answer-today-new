@@ -30,24 +30,24 @@
     "Documents": "This clue works through a familiar office action, not through a kitchen read."
   },
   "articleBlocks": [
-    "Cheese, Wheat, and Lettuce can make the board feel like food preparation at first, which is the main trap.",
-    "Documents already strains that theory, but Guitar is the clue that really breaks it.",
-    "Once 'shredding on guitar' comes into view, the board stops being about one food category and becomes about the shared action word shredded.",
-    "After that, shredded cheese, Shredded Wheat, shredded lettuce, and shredded documents all line up naturally.",
-    "The answer was Things that can be shredded.",
-    "This puzzle works because it mixes literal food prep, office destruction, and musical slang under one connector."
+    "At first, Cheese and Wheat pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"food preparation\". Cheese, Wheat, and Lettuce all support that direction at first, so the wrong answer feels close. Guitar is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"kitchen items\". That read falls apart once Guitar and Documents have to fit the same connector cleanly. Guitar is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through literal and figurative uses of the same action word, examples like \"shredded cheese\" and \"shredding on guitar\" stopped feeling loose and started landing cleanly.",
+    "Shredded Wheat, shredded lettuce, and shredded documents keep the board tied to the same action across food, branding, and office language, which is what makes the answer feel tighter than a kitchen-only read.",
+    "The answer was Things that can be shredded. More precisely, the board resolves as things unified by the action word shredded rather than by one food or household category, which is why Things that can be shredded fits better than \"food preparation\" or \"kitchen items\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Cheese, Wheat, and Lettuce can make the board feel like food preparation at first, which is the main misread.",
-    "Documents already strains that theory, but the board becomes much clearer once Guitar appears in the right way.",
-    "Guitar is the turning clue because shredding on guitar is a familiar figurative use of the same word, which proves the board is about shredding itself rather than about food.",
-    "That shift makes shredded cheese, Shredded Wheat, shredded lettuce, and shredded documents all feel like natural members of the same answer.",
-    "The answer was Things that can be shredded.",
-    "The board is satisfying because one clue forces you to allow both literal and figurative uses of the same action."
+    "At first, Cheese and Wheat pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"food preparation\". Cheese, Wheat, and Lettuce all support that direction at first, so the wrong answer feels close. Guitar is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"kitchen items\". That read falls apart once Guitar and Documents have to fit the same connector cleanly. Guitar is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through literal and figurative uses of the same action word, examples like \"shredded cheese\" and \"shredding on guitar\" stopped feeling loose and started landing cleanly.",
+    "Shredded Wheat, shredded lettuce, and shredded documents keep the board tied to the same action across food, branding, and office language, which is what makes the answer feel tighter than a kitchen-only read.",
+    "The answer was Things that can be shredded. More precisely, the board resolves as things unified by the action word shredded rather than by one food or household category, which is why Things that can be shredded fits better than \"food preparation\" or \"kitchen items\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Cheese and Lettuce pulled me toward a kitchen answer early, and Wheat almost kept me there. Documents made that theory wobble, but not enough to fully replace it.",
-    "Guitar solved the puzzle. Once I let 'shredding' work as a musical verb, the whole board became about what can be shredded rather than about where the clues belong."
+    "I did not have a clean answer from the first clue. I initially drifted toward food preparation, but that line of thinking never explained \"Guitar\" cleanly enough.",
+    "The turn came when I let \"Guitar\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set."
   ],
   "lessons": [
     {
@@ -201,5 +201,20 @@
       "guitar shredding",
       "shredded documents"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "food preparation",
+      "whyPlausible": "Cheese, Wheat, and Lettuce all support that direction at first, so the wrong answer feels close.",
+      "whyRejected": "Guitar is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "kitchen items",
+      "whyPlausible": "That read falls apart once Guitar and Documents have to fit the same connector cleanly.",
+      "whyRejected": "Once Guitar lands, the board works better as one action-word answer than as a kitchen bucket."
+    }
+  ],
+  "setValidationSummary": "Shredded Wheat, shredded lettuce, and shredded documents keep the board tied to the same action across food, branding, and office language, which is what makes the answer feel tighter than a kitchen-only read.",
+  "categoryPrecisionNote": "things unified by the action word shredded rather than by one food or household category",
+  "pageExperienceMode": "full-analysis"
 }
