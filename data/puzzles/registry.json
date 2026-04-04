@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 704,
+    "slug": "pinpoint-answer-704",
+    "publishDate": "2026-04-04",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Mailboxes",
+      "Toasters",
+      "Television schedules",
+      "Computer motherboards",
+      "Vending machines (for coins)"
+    ],
+    "mainAnswer": "Things with slots",
+    "category": "Things with slots",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #704: Mailboxes, Toasters, Television schedules, Computer motherboards, Vending machines (for coins).",
+    "updatedAt": "2026-04-04T07:01:25.729Z"
+  },
+  {
     "puzzleNumber": 703,
     "slug": "pinpoint-answer-703",
     "publishDate": "2026-04-03",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Goliath",
@@ -16,7 +35,7 @@
     "category": "Types of frogs",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Goliath, Bull, Pacman (or S. American Horned) do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-03T07:02:09.396Z"
+    "updatedAt": "2026-04-04T07:01:25.729Z"
   },
   {
     "puzzleNumber": 702,
