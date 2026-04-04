@@ -30,25 +30,24 @@
     "Trampoline": "This clue confirms the same component in a much bigger and more visible form."
   },
   "articleBlocks": [
-    "Mousetrap, Stapler, and Clothespin can all feel like simple household objects at first, which makes the board look a little random.",
-    "Trampoline helps because it suggests tension and bounce, but the puzzle still gets much clearer when you stop thinking about use cases and start thinking about mechanism.",
-    "Mechanical watch is the clue that changes the solve.",
-    "Unlike the other clues, it points to a spring you do not usually see, which forces the board away from object categories and toward the shared part inside them.",
-    "Once that happens, Mousetrap, Stapler, Clothespin, and Trampoline all line up as things with springs.",
-    "The answer was Things with springs.",
-    "This board is good because it mixes visible springs and hidden springs, so the real connector is functional rather than thematic."
+    "At first, Mousetrap and Stapler pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"household tools\". Several clues are everyday tools, so that broad answer feels close at the beginning. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"objects with tension or snapping action\". That guess notices part of the function, but Mechanical watch forces a deeper mechanism-based explanation. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through objects connected by the spring mechanism they rely on, examples like \"spring-loaded mousetrap\" and \"watch mainspring\" stopped feeling loose and started landing cleanly.",
+    "Spring-loaded stapler, spring clothespin, and trampoline springs keep the board tied to the same component level, which is what makes the answer feel tighter than a broad household-object or motion theme.",
+    "The answer was Things with springs. More precisely, the board resolves as objects specifically identified by the spring component they rely on rather than by one broad use case, which is why Things with springs fits better than \"household tools\" or \"objects with tension or snapping action\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Mousetrap, Stapler, and Clothespin can all feel like simple household objects at first, which makes the board look a little random.",
-    "Trampoline helps because it suggests tension and bounce, but the puzzle still gets much clearer when you stop grouping the clues by object type and start asking what they share mechanically.",
-    "Mechanical watch is the turning clue because it points to a spring hidden inside the object rather than a spring you can see directly.",
-    "That shift makes the answer much tighter: Mousetrap, Stapler, Clothespin, and Trampoline all work because springs drive or support their function.",
-    "The answer was Things with springs.",
-    "The board works because it asks you to think about mechanism instead of category, which is why the clues feel scattered until the right perspective appears."
+    "At first, Mousetrap and Stapler pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"household tools\". Several clues are everyday tools, so that broad answer feels close at the beginning. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"objects with tension or snapping action\". That guess notices part of the function, but Mechanical watch forces a deeper mechanism-based explanation. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through objects connected by the spring mechanism they rely on, examples like \"spring-loaded mousetrap\" and \"watch mainspring\" stopped feeling loose and started landing cleanly.",
+    "Spring-loaded stapler, spring clothespin, and trampoline springs keep the board tied to the same component level, which is what makes the answer feel tighter than a broad household-object or motion theme.",
+    "The answer was Things with springs. More precisely, the board resolves as objects specifically identified by the spring component they rely on rather than by one broad use case, which is why Things with springs fits better than \"household tools\" or \"objects with tension or snapping action\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Mousetrap, Stapler, and Clothespin first made the board feel like ordinary household tools, while Trampoline looked like an outlier from another world. The set felt connected by function somehow, but not yet by one exact answer.",
-    "Mechanical watch solved that. Once I thought about the tiny spring inside a watch, the board stopped being about what the objects do and became about the shared mechanism that powers or shapes them."
+    "I did not have a clean answer from the first clue. I initially drifted toward household tools, but that line of thinking never explained \"Mechanical watch\" cleanly enough.",
+    "The turn came when I let \"Mechanical watch\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set."
   ],
   "lessons": [
     {
@@ -202,5 +201,20 @@
       "watch mainspring",
       "trampoline springs"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "household tools",
+      "whyPlausible": "Several clues are everyday tools, so that broad answer feels close at the beginning.",
+      "whyRejected": "Mechanical watch is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "objects with tension or snapping action",
+      "whyPlausible": "That guess notices part of the function, but Mechanical watch forces a deeper mechanism-based explanation.",
+      "whyRejected": "Once the watch clue lands, the board works better as one component-based answer than as a loose action theme."
+    }
+  ],
+  "setValidationSummary": "spring-loaded stapler, spring clothespin, and trampoline springs keep the board tied to the same component level, which is what makes the answer feel tighter than a broad household-object or motion theme.",
+  "categoryPrecisionNote": "objects specifically identified by the spring component they rely on rather than by one broad use case",
+  "pageExperienceMode": "full-analysis"
 }
