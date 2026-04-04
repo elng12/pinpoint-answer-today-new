@@ -30,25 +30,24 @@
     "Stadiums (for team substitutes)": "This is the clue that turns a broad seating theme into one exact object."
   },
   "articleBlocks": [
-    "Parks and Bus stops both suggest seating early, but that still leaves the board feeling broader than it should.",
-    "Courtrooms and Piano lounges help, though each one uses the same object in a different way, which can make the set feel inconsistent at first.",
-    "Stadiums (for team substitutes) is the clue that tightens it.",
-    "Once you think of the bench in sports language, the board stops being about places to sit in general and starts being about places with benches specifically.",
-    "That makes park benches, courtroom benches, piano benches, and bus stop benches all feel like one clean family.",
-    "The answer was Places with benches.",
-    "This puzzle is stronger than a generic seating board because each clue points to a slightly different kind of bench use."
+    "At first, Parks and Courtrooms pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"places to sit\". Parks and Bus stops both support that broad idea right away, which is why it feels nearly right at first. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"public waiting areas\". Parks and Bus stops can keep that frame alive for a moment, but Piano lounges and the sports meaning inside Stadiums do not fit naturally under a waiting-area theme. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through settings linked by one exact object: benches, examples like \"park bench\" and \"courtroom bench\" stopped feeling loose and started landing cleanly.",
+    "Piano bench, bus stop bench, and team bench keep the board tied to one exact object across musical, transit, and sports settings, which is what makes the answer feel tighter than a generic seating theme.",
+    "The answer was Places with benches. More precisely, the board resolves as settings specifically associated with benches rather than seating in general, which is why Places with benches fits better than \"places to sit\" or \"public waiting areas\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "Parks and Bus stops both suggest seating early, but that still leaves the board feeling broader than it should.",
-    "Courtrooms and Piano lounges help, though each one uses the same object in a different way, which can make the set feel inconsistent at first.",
-    "Stadiums (for team substitutes) is the turning clue because 'the bench' is such a fixed sports term that it reveals the exact object more clearly than a generic seating answer would.",
-    "After that, park benches, courtroom benches, piano benches, and bus stop benches all become clean members of the same category.",
-    "The answer was Places with benches.",
-    "What makes the board satisfying is that it uses public, formal, musical, and sports contexts to hide one simple object."
+    "At first, Parks and Courtrooms pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"places to sit\". Parks and Bus stops both support that broad idea right away, which is why it feels nearly right at first. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
+    "Another nearby read was \"public waiting areas\". Parks and Bus stops can keep that frame alive for a moment, but Piano lounges and the sports meaning inside Stadiums do not fit naturally under a waiting-area theme. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
+    "Once I read the set through settings linked by one exact object: benches, examples like \"park bench\" and \"courtroom bench\" stopped feeling loose and started landing cleanly.",
+    "Piano bench, bus stop bench, and team bench keep the board tied to one exact object across musical, transit, and sports settings, which is what makes the answer feel tighter than a generic seating theme.",
+    "The answer was Places with benches. More precisely, the board resolves as settings specifically associated with benches rather than seating in general, which is why Places with benches fits better than \"places to sit\" or \"public waiting areas\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Parks and Bus stops first made me think about public seating, which was close but too broad. Courtrooms and Piano lounges fit unevenly enough that I still did not feel confident about the exact object.",
-    "Stadiums changed that. Once I read the clue through the sports meaning of bench, the whole board snapped into a much tighter answer about places with benches rather than places with seats."
+    "I did not have a clean answer from the first clue. I initially drifted toward places to sit, but that line of thinking never explained \"Stadiums (for team substitutes)\" cleanly enough.",
+    "The turn came when I let \"Stadiums (for team substitutes)\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set."
   ],
   "lessons": [
     {
@@ -202,5 +201,20 @@
       "courtroom bench",
       "team bench"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "places to sit",
+      "whyPlausible": "Parks and Bus stops both support that broad idea right away, which is why it feels nearly right at first.",
+      "whyRejected": "Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read."
+    },
+    {
+      "label": "public waiting areas",
+      "whyPlausible": "Parks and Bus stops can keep that frame alive for a moment, but Courtrooms can also look like one more place where people wait or sit.",
+      "whyRejected": "Piano lounges and the sports meaning inside Stadiums do not fit naturally under a waiting-area theme."
+    }
+  ],
+  "setValidationSummary": "Piano bench, bus stop bench, and team bench keep the board tied to one exact object across musical, transit, and sports settings, which is what makes the answer feel tighter than a generic seating theme.",
+  "categoryPrecisionNote": "settings specifically associated with benches rather than seating in general",
+  "pageExperienceMode": "full-analysis"
 }
