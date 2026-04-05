@@ -209,5 +209,20 @@
       "Ancient Egyptian toothpaste",
       "Ancient Egyptian copper pipes"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "ancient civilizations",
+      "whyPlausible": "Papyrus, hieroglyphs, and the solar calendar all point toward the ancient world before the board resolves into one tighter claim.",
+      "whyRejected": "That frame is too broad because the answer is not about civilizations in general; it is about specific inventions and systems traced back to Ancient Egypt."
+    },
+    {
+      "label": "museum artifacts from Egypt",
+      "whyPlausible": "Several clues feel like things you would see described in a history exhibit, so an artifact reading is easy to test first.",
+      "whyRejected": "Toothpaste and the 365-day calendar work better as inventions or practical systems than as one shelf of artifacts, which is why the board needs the origin angle."
+    }
+  ],
+  "setValidationSummary": "Toothpaste, copper pipes, the solar calendar, papyrus, and hieroglyphs all become more exact when the board is read as innovations traced to Ancient Egypt instead of a generic history or museum theme.",
+  "categoryPrecisionNote": "specific inventions and systems linked to Ancient Egypt, not a broad ancient-history bucket",
+  "pageExperienceMode": "full-analysis"
 }

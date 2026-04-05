@@ -207,5 +207,20 @@
       "Mailboxes",
       "Toasters"
     ]
-  }
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "household appliances",
+      "whyPlausible": "Toasters and the general hardware feel make the board sound domestic at first, especially before the later clues sharpen the pattern.",
+      "whyRejected": "Mailboxes and television schedules do not behave like appliances, so that read starts breaking as soon as the full board has to fit one rule."
+    },
+    {
+      "label": "things that accept inserts",
+      "whyPlausible": "Several clues involve putting something into a physical opening, so a broad insert-based idea is an easy first stop.",
+      "whyRejected": "That wording is still too loose because the cleaner connection is the shared slot itself, not every possible action you can do with the object."
+    }
+  ],
+  "setValidationSummary": "Mailboxes, toasters, television schedules, motherboards, and vending machines all stay coherent once the board is read through the same slot-based feature instead of a broad home-or-machine theme.",
+  "categoryPrecisionNote": "a shared physical slot feature, not just a loose group of machines or containers",
+  "pageExperienceMode": "full-analysis"
 }
