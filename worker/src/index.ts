@@ -2217,7 +2217,7 @@ function inferWorkerWrongGuessCandidates(
     ? sections.wrongGuesses
         .map((item) => asRecord(item))
         .filter((item): item is JsonRecord => Boolean(item))
-        .map((item) => {
+        .map((item): WorkerWrongGuessCandidate | null => {
           const label = asNonEmptyString(item.guess);
           const whyPlausible = asNonEmptyString(item.explanation);
           if (!label || !whyPlausible) return null;
@@ -2228,7 +2228,7 @@ function inferWorkerWrongGuessCandidates(
               `${turningClue} is the clue that keeps the board from staying at that broader surface read.`,
           };
         })
-        .filter((item): item is WorkerWrongGuessCandidate => Boolean(item))
+        .filter((item): item is WorkerWrongGuessCandidate => item !== null)
     : [];
   if (providedRows.length > 0) {
     return providedRows.slice(0, 3);
@@ -2684,6 +2684,11 @@ function getRequiredFalseStartCount(difficultyBand: DetailDifficultyBand): numbe
   return difficultyBand === "obvious" ? 1 : 2;
 }
 
+type PublishGuardReadiness = {
+  ok: boolean;
+  reason: string;
+};
+
 function hasHealthyPublishedDetail(
   summary: PublishedPuzzleDetailSnapshot | null,
   slug: string,
@@ -2691,39 +2696,98 @@ function hasHealthyPublishedDetail(
   return Boolean(summary && summary.slug === slug && isDetailSnapshotAtOrAboveFloor(summary));
 }
 
-function hasFullAnalysisStructure(record: PublishedPuzzleDetailRecord): boolean {
+function getFullAnalysisStructureReadiness(record: PublishedPuzzleDetailRecord): PublishGuardReadiness {
   const requiredFalseStarts = getRequiredFalseStartCount(record.difficultyBand);
   const falseStarts = Array.isArray(record.solvePath?.falseStarts) ? record.solvePath.falseStarts : [];
   const plausibleFalseStarts = Array.isArray(record.solvePath?.whyFalseStartPlausible)
     ? record.solvePath.whyFalseStartPlausible
     : [];
   const wrongGuessCandidates = Array.isArray(record.wrongGuessCandidates) ? record.wrongGuessCandidates : [];
-
-  return Boolean(
-    record.pageExperienceMode === "full-analysis" &&
-    record.turningPoint?.clue &&
-    record.solvePath?.firstRead &&
-    falseStarts.length >= requiredFalseStarts &&
-    plausibleFalseStarts.length >= requiredFalseStarts &&
-    wrongGuessCandidates.length >= requiredFalseStarts &&
-    record.setValidationSummary &&
-    record.categoryPrecisionNote &&
-    record.clueRows.length >= 3 &&
-    record.faqItems.length >= 2 &&
-    record.uniquenessSignals?.angle,
+  const invalidWrongGuess = wrongGuessCandidates.findIndex(
+    (candidate) => !candidate?.label?.trim() || !candidate?.whyPlausible?.trim(),
   );
+
+  if (record.pageExperienceMode !== "full-analysis") {
+    return { ok: false, reason: "pageExperienceMode is not full-analysis" };
+  }
+  if (!record.turningPoint?.clue?.trim()) {
+    return { ok: false, reason: "turningPoint.clue is missing" };
+  }
+  if (!record.solvePath?.firstRead?.trim()) {
+    return { ok: false, reason: "solvePath.firstRead is missing" };
+  }
+  if (falseStarts.length < requiredFalseStarts) {
+    return { ok: false, reason: `solvePath.falseStarts has ${falseStarts.length}; expected at least ${requiredFalseStarts}` };
+  }
+  if (plausibleFalseStarts.length < requiredFalseStarts) {
+    return {
+      ok: false,
+      reason: `solvePath.whyFalseStartPlausible has ${plausibleFalseStarts.length}; expected at least ${requiredFalseStarts}`,
+    };
+  }
+  if (wrongGuessCandidates.length < requiredFalseStarts) {
+    return {
+      ok: false,
+      reason: `wrongGuessCandidates has ${wrongGuessCandidates.length}; expected at least ${requiredFalseStarts}`,
+    };
+  }
+  if (invalidWrongGuess !== -1) {
+    return {
+      ok: false,
+      reason: `wrongGuessCandidates[${invalidWrongGuess}] is missing label or whyPlausible`,
+    };
+  }
+  if (!String(record.setValidationSummary || "").trim()) {
+    return { ok: false, reason: "setValidationSummary is missing" };
+  }
+  if (!String(record.categoryPrecisionNote || "").trim()) {
+    return { ok: false, reason: "categoryPrecisionNote is missing" };
+  }
+  if (record.clueRows.length < 3) {
+    return { ok: false, reason: `clueRows has ${record.clueRows.length}; expected at least 3` };
+  }
+  if (record.faqItems.length < 2) {
+    return { ok: false, reason: `faqItems has ${record.faqItems.length}; expected at least 2` };
+  }
+  if (!record.uniquenessSignals?.angle?.trim()) {
+    return { ok: false, reason: "uniquenessSignals.angle is missing" };
+  }
+
+  return { ok: true, reason: "" };
+}
+
+function hasFullAnalysisStructure(record: PublishedPuzzleDetailRecord): boolean {
+  return getFullAnalysisStructureReadiness(record).ok;
+}
+
+function getLightExplainerReadiness(record: PublishedPuzzleDetailRecord): PublishGuardReadiness {
+  if (record.bodyMode !== "short") {
+    return { ok: false, reason: "bodyMode is not short" };
+  }
+  if (record.pageExperienceMode !== "light-explainer") {
+    return { ok: false, reason: "pageExperienceMode is not light-explainer" };
+  }
+  if (record.fullAnalysis.length < 3) {
+    return { ok: false, reason: `fullAnalysis has ${record.fullAnalysis.length}; expected at least 3 paragraphs` };
+  }
+  if (!record.display?.connectorSummary?.trim()) {
+    return { ok: false, reason: "display.connectorSummary is missing" };
+  }
+  if (!record.display?.fastStrategy?.trim()) {
+    return { ok: false, reason: "display.fastStrategy is missing" };
+  }
+  if (record.clueRows.length < 3) {
+    return { ok: false, reason: `clueRows has ${record.clueRows.length}; expected at least 3` };
+  }
+  if (record.faqs.length < 2) {
+    return { ok: false, reason: `faqs has ${record.faqs.length}; expected at least 2` };
+  }
+
+  return { ok: true, reason: "" };
 }
 
 function hasLightExplainerMinimumShape(record: PublishedPuzzleDetailRecord): boolean {
-  return Boolean(
-    record.bodyMode === "short" &&
-    record.pageExperienceMode === "light-explainer" &&
-    record.fullAnalysis.length >= 3 &&
-    record.display?.connectorSummary &&
-    record.display?.fastStrategy &&
-    record.clueRows.length >= 3 &&
-    record.faqs.length >= 2,
-  );
+  return getLightExplainerReadiness(record).ok;
 }
 
 function buildLightExplainerParagraphs(record: PublishedPuzzleDetailRecord): string[] {
@@ -2775,16 +2839,18 @@ export function resolvePublicDetailExperienceDecision({
   primaryBranchSummary: PublishedPuzzleDetailSnapshot | null;
 }): PublicDetailExperienceDecision {
   const incomingSummary = summarizePublishedPuzzleDetail(incoming);
-  if (incomingSummary && isDetailSnapshotAtOrAboveFloor(incomingSummary) && hasFullAnalysisStructure(incoming)) {
+  const fullAnalysisReadiness = getFullAnalysisStructureReadiness(incoming);
+  if (incomingSummary && isDetailSnapshotAtOrAboveFloor(incomingSummary) && fullAnalysisReadiness.ok) {
     return { action: "use-full-analysis", record: incoming };
   }
 
   const lightExplainerRecord = buildLightExplainerRecord(incoming);
   const lightSummary = summarizePublishedPuzzleDetail(lightExplainerRecord);
-  if (lightSummary && isDetailSnapshotAtOrAboveFloor(lightSummary) && hasLightExplainerMinimumShape(lightExplainerRecord)) {
+  const lightExplainerReadiness = getLightExplainerReadiness(lightExplainerRecord);
+  if (lightSummary && isDetailSnapshotAtOrAboveFloor(lightSummary) && lightExplainerReadiness.ok) {
     const reason = incomingSummary
-      ? `full-analysis path missed publish guard (${describeDetailSnapshot(incomingSummary)}); downgraded to light-explainer`
-      : "full-analysis path missed publish guard; downgraded to light-explainer";
+      ? `full-analysis path missed publish guard (${describeDetailSnapshot(incomingSummary)}; ${fullAnalysisReadiness.reason}); downgraded to light-explainer`
+      : `full-analysis path missed publish guard (${fullAnalysisReadiness.reason}); downgraded to light-explainer`;
     return {
       action: "downgrade-to-light-explainer",
       record: lightExplainerRecord,
@@ -2805,7 +2871,7 @@ export function resolvePublicDetailExperienceDecision({
 
   return {
     action: "block",
-    reason: "incoming record could not satisfy full-analysis or light-explainer publish guard, and no healthy published detail exists",
+    reason: `incoming record could not satisfy full-analysis (${fullAnalysisReadiness.reason}) or light-explainer (${lightExplainerReadiness.reason}) publish guard, and no healthy published detail exists`,
   };
 }
 
@@ -3054,6 +3120,15 @@ async function publishToNewSiteGitHub(
   }
 
   const detailRecord = detailExperienceDecision.record;
+  if (isPublicState) {
+    const finalReadiness =
+      detailRecord.pageExperienceMode === "light-explainer"
+        ? getLightExplainerReadiness(detailRecord)
+        : getFullAnalysisStructureReadiness(detailRecord);
+    if (!finalReadiness.ok) {
+      throw new Error(`[new-site] final publish guard failed for ${slugPath}: ${finalReadiness.reason}`);
+    }
+  }
   const slugJson = JSON.stringify(detailRecord, null, 2);
   const slugProtection = resolveThinContentProtectionDecision({
     incoming: summarizePublishedPuzzleDetail(detailRecord),

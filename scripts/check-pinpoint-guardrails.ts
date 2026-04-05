@@ -691,9 +691,20 @@ async function checkWorkerDetailShape() {
     "worker-published detail payload should include turningPoint.clue",
   );
   assert.ok(
-    Array.isArray(record.wrongGuessCandidates) && record.wrongGuessCandidates.length >= 1,
-    "worker-published detail payload should include structured wrongGuessCandidates",
+    Array.isArray(record.wrongGuessCandidates) &&
+      record.wrongGuessCandidates.length >= (record.difficultyBand === "obvious" ? 1 : 2),
+    "worker-published detail payload should include enough structured wrongGuessCandidates for its difficulty band",
   );
+  record.wrongGuessCandidates?.forEach((candidate, index) => {
+    assert.ok(
+      candidate.label?.trim(),
+      `worker-published detail payload should include wrongGuessCandidates[${index}].label`,
+    );
+    assert.ok(
+      candidate.whyPlausible?.trim(),
+      `worker-published detail payload should include wrongGuessCandidates[${index}].whyPlausible`,
+    );
+  });
   assert.ok(
     record.setValidationSummary?.trim(),
     "worker-published detail payload should include setValidationSummary",
