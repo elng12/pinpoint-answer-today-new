@@ -11,10 +11,12 @@ import type {
   PuzzleClueRowRecord,
   PuzzleDifficultyBand,
   PuzzleEvidenceFaqItemRecord,
+  PuzzlePageExperienceMode,
   PuzzleQuestionType,
   PuzzleSolvePathRecord,
   PuzzleTurningPointRecord,
   PuzzleUniquenessSignalsRecord,
+  PuzzleWrongGuessCandidateRecord,
 } from "@/lib/puzzles/schema";
 import { SLOT_CONTRACT, type PuzzleSlotClueDetail } from "@/lib/puzzles/slot-contract";
 import { buildPinpointDescription, buildPinpointTitle } from "@/lib/seo/pinpoint";
@@ -1554,6 +1556,210 @@ function buildGeneratedUniquenessSignals(
   };
 }
 
+function getRequiredGeneratedWrongGuessCount(difficultyBand: PuzzleDifficultyBand): number {
+  return difficultyBand === "obvious" ? 1 : 2;
+}
+
+function inferGeneratedCategoryPrecisionNote(answer: string): string {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before") {
+    return "one shared ending word placed after each clue, not a loose topic grouping";
+  }
+  if (pattern.kind === "after") {
+    return "one shared opening word placed before each clue, not a loose topic grouping";
+  }
+  if (pattern.kind === "typed-category") {
+    return `a typed category where each clue names a specific member of the same family around ${answer}`;
+  }
+  return `one concrete category with members that stay at the same level of specificity as ${answer}`;
+}
+
+function buildGeneratedWrongGuessFallbacks(
+  answer: string,
+  turningPointClue: string,
+): PuzzleWrongGuessCandidateRecord[] {
+  const pattern = detectAnswerPattern(answer);
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return [
+      {
+        label: "other shared-word phrase guesses",
+        whyPlausible:
+          "The opening clues can support more than one shared-word read before a later clue locks the exact missing term into place.",
+        whyRejected: `Once ${turningPointClue} lands, the final answer explains the board more cleanly than that looser phrase read.`,
+      },
+      {
+        label: "a broad topic label",
+        whyPlausible:
+          "Early clues can look like they belong to one general topic before the repeated-word pattern becomes visible.",
+        whyRejected: `${turningPointClue} works better as a phrase test than as proof of a broad topic bucket.`,
+      },
+    ];
+  }
+
+  if (pattern.kind === "typed-category") {
+    return [
+      {
+        label: "a broader umbrella topic",
+        whyPlausible:
+          "The early clues are broad enough to resemble a wider topic before one clue sharpens the exact type-level category.",
+        whyRejected: `Once ${turningPointClue} lands, the answer stays at one precise type-level category instead of that wider bucket.`,
+      },
+      {
+        label: "a loose workplace or culture theme",
+        whyPlausible:
+          "Boards with familiar real-world clues often first look like a broad life-theme set instead of one precise answer family.",
+        whyRejected: `${turningPointClue} demands a tighter member-by-member category read than that looser theme.`,
+      },
+    ];
+  }
+
+  return [
+    {
+      label: "a broader category guess",
+      whyPlausible:
+        "The earliest clues are broad enough to suggest a wider category before one clue makes the exact set visible.",
+      whyRejected: `Once ${turningPointClue} lands, the final answer explains the full board more cleanly than that broader read.`,
+    },
+    {
+      label: "a loose umbrella topic",
+      whyPlausible:
+        "Familiar clues often tempt a broad shelf label before the board settles into one exact answer.",
+      whyRejected: `${turningPointClue} narrows the board faster than a loose umbrella topic can.`,
+    },
+  ];
+}
+
+function buildGeneratedWrongGuessCandidates(input: {
+  answer: string;
+  difficultyBand: PuzzleDifficultyBand;
+  falseStarts: string[];
+  wrongGuesses: Array<{ guess: string; explanation: string }>;
+  turningPoint: PuzzleTurningPointRecord | undefined;
+  providedWrongGuessCandidates?: PuzzleWrongGuessCandidateRecord[];
+}): PuzzleWrongGuessCandidateRecord[] {
+  const requiredCount = getRequiredGeneratedWrongGuessCount(input.difficultyBand);
+  const turningPointClue = input.turningPoint?.clue || "the turning clue";
+  const seen = new Set<string>();
+  const candidates: PuzzleWrongGuessCandidateRecord[] = [];
+
+  const pushCandidate = (
+    label: string | null | undefined,
+    whyPlausible: string | null | undefined,
+    whyRejected?: string | null | undefined,
+  ) => {
+    const normalizedLabel = normalizeGuessLabel(label);
+    const plausible = ensureSentence(whyPlausible);
+    const rejected = ensureSentence(whyRejected);
+    if (!normalizedLabel || !plausible) return;
+    if (normalizeLooseMatch(normalizedLabel) === normalizeLooseMatch(input.answer)) return;
+    const key = normalizeLooseMatch(normalizedLabel);
+    if (!key || seen.has(key)) return;
+    seen.add(key);
+    candidates.push({
+      label: normalizedLabel,
+      whyPlausible: plausible,
+      ...(rejected ? { whyRejected: rejected } : {}),
+    });
+  };
+
+  input.providedWrongGuessCandidates?.forEach((item) => {
+    pushCandidate(item.label, item.whyPlausible, item.whyRejected);
+  });
+
+  input.wrongGuesses.forEach((item) => {
+    pushCandidate(
+      item.guess,
+      item.explanation,
+      `Once ${turningPointClue} lands, the final answer explains the board more cleanly than ${normalizeGuessLabel(item.guess) || "that early read"}.`,
+    );
+  });
+
+  input.falseStarts.forEach((guess) => {
+    pushCandidate(
+      guess,
+      buildGeneratedWrongGuessFallbacks(input.answer, turningPointClue)[0]?.whyPlausible,
+      `Once ${turningPointClue} lands, that early read stops fitting the whole board cleanly.`,
+    );
+  });
+
+  buildGeneratedWrongGuessFallbacks(input.answer, turningPointClue).forEach((item) => {
+    pushCandidate(item.label, item.whyPlausible, item.whyRejected);
+  });
+
+  return candidates.slice(0, Math.max(requiredCount, 2));
+}
+
+function buildGeneratedSetValidationSummary(input: {
+  answer: string;
+  clues: string[];
+  questionType: PuzzleQuestionType;
+}): string {
+  const pattern = detectAnswerPattern(input.answer);
+  const confirmingClues = input.clues.slice(-3).join(", ");
+  if (pattern.kind === "before" || pattern.kind === "after") {
+    return `${confirmingClues} keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.`;
+  }
+  if (pattern.kind === "typed-category") {
+    return `${confirmingClues} all behave like specific members of ${input.answer}, so the board stays precise instead of drifting into a broader umbrella topic.`;
+  }
+  return `${confirmingClues} keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.`;
+}
+
+function inferGeneratedPageExperienceMode(
+  articleBlocks: string[] | undefined,
+  providedPageExperienceMode?: PuzzlePageExperienceMode,
+): PuzzlePageExperienceMode {
+  if (providedPageExperienceMode === "light-explainer") {
+    return "light-explainer";
+  }
+  const count = Array.isArray(articleBlocks) ? articleBlocks.filter(Boolean).length : 0;
+  return count > 0 && count <= 6 ? "light-explainer" : "full-analysis";
+}
+
+function buildGeneratedStructuredPublishFields(input: {
+  answer: string;
+  clues: string[];
+  articleBlocks?: string[];
+  questionType: PuzzleQuestionType;
+  difficultyBand: PuzzleDifficultyBand;
+  solvePath?: PuzzleSolvePathRecord;
+  turningPoint?: PuzzleTurningPointRecord;
+  wrongGuesses: Array<{ guess: string; explanation: string }>;
+  providedPageExperienceMode?: PuzzlePageExperienceMode;
+  providedWrongGuessCandidates?: PuzzleWrongGuessCandidateRecord[];
+  providedSetValidationSummary?: string;
+  providedCategoryPrecisionNote?: string;
+}) {
+  const pageExperienceMode = inferGeneratedPageExperienceMode(
+    input.articleBlocks,
+    input.providedPageExperienceMode,
+  );
+  const wrongGuessCandidates = buildGeneratedWrongGuessCandidates({
+    answer: input.answer,
+    difficultyBand: input.difficultyBand,
+    falseStarts: input.solvePath?.falseStarts || [],
+    wrongGuesses: input.wrongGuesses,
+    turningPoint: input.turningPoint,
+    providedWrongGuessCandidates: input.providedWrongGuessCandidates,
+  });
+  const categoryPrecisionNote =
+    normalizeText(input.providedCategoryPrecisionNote) || inferGeneratedCategoryPrecisionNote(input.answer);
+  const setValidationSummary =
+    ensureSentence(input.providedSetValidationSummary) ||
+    ensureSentence(buildGeneratedSetValidationSummary({
+      answer: input.answer,
+      clues: input.clues,
+      questionType: input.questionType,
+    }));
+
+  return {
+    pageExperienceMode,
+    wrongGuessCandidates,
+    setValidationSummary,
+    categoryPrecisionNote,
+  };
+}
+
 function buildGeneratedEvidenceFields(input: {
   clues: string[];
   answer: string;
@@ -1762,10 +1968,21 @@ export function composeFromSlots(
     overview,
     solutionEmergence,
   });
+  const structuredPublish = buildGeneratedStructuredPublishFields({
+    answer: mainAnswer,
+    clues,
+    articleBlocks,
+    questionType: evidence.questionType,
+    difficultyBand: evidence.difficultyBand,
+    solvePath: evidence.solvePath,
+    turningPoint: evidence.turningPoint,
+    wrongGuesses,
+  });
 
   return {
     questionType: evidence.questionType,
     difficultyBand: evidence.difficultyBand,
+    pageExperienceMode: structuredPublish.pageExperienceMode,
     sections: {
       articleBlocks,
       overview,
@@ -1800,6 +2017,9 @@ export function composeFromSlots(
     clueRows: evidence.clueRows,
     faqItems: evidence.faqItems,
     uniquenessSignals: evidence.uniquenessSignals,
+    wrongGuessCandidates: structuredPublish.wrongGuessCandidates,
+    setValidationSummary: structuredPublish.setValidationSummary,
+    categoryPrecisionNote: structuredPublish.categoryPrecisionNote,
     slots: {
       heroIntroSpoilerSafe: heroSummary,
       connectorSummary,
@@ -1911,6 +2131,27 @@ export function validateAndFixGeneratedContent(
     normalized.clueRows ||= derivedEvidence.clueRows;
     normalized.faqItems ||= derivedEvidence.faqItems;
     normalized.uniquenessSignals ||= derivedEvidence.uniquenessSignals;
+  }
+
+  if (normalized.questionType && normalized.difficultyBand) {
+    const structuredPublish = buildGeneratedStructuredPublishFields({
+      answer: mainAnswer,
+      clues,
+      articleBlocks: normalized.sections.articleBlocks,
+      questionType: normalized.questionType,
+      difficultyBand: normalized.difficultyBand,
+      solvePath: normalized.solvePath,
+      turningPoint: normalized.turningPoint,
+      wrongGuesses: normalized.sections.wrongGuesses || [],
+      providedPageExperienceMode: normalized.pageExperienceMode,
+      providedWrongGuessCandidates: normalized.wrongGuessCandidates,
+      providedSetValidationSummary: normalized.setValidationSummary,
+      providedCategoryPrecisionNote: normalized.categoryPrecisionNote,
+    });
+    normalized.pageExperienceMode = structuredPublish.pageExperienceMode;
+    normalized.wrongGuessCandidates = structuredPublish.wrongGuessCandidates;
+    normalized.setValidationSummary = structuredPublish.setValidationSummary;
+    normalized.categoryPrecisionNote = structuredPublish.categoryPrecisionNote;
   }
 
   return normalized as AIGeneratedContent;

@@ -49,6 +49,16 @@ Output ONLY a valid JSON object.
 
 Minimum required shape:
 {
+  "pageExperienceMode": "full-analysis",
+  "wrongGuessCandidates": [
+    {
+      "label": "...",
+      "whyPlausible": "...",
+      "whyRejected": "..."
+    }
+  ],
+  "setValidationSummary": "...",
+  "categoryPrecisionNote": "...",
   "slots": {
     "heroIntroSpoilerSafe": "...",
     "connectorSummary": "...",
@@ -72,7 +82,13 @@ Minimum required shape:
   }
 }
 
-Optional v2 fields are allowed at the root when you can fill them cleanly:
+Required structured publish fields at the root:
+- "pageExperienceMode"
+- "wrongGuessCandidates"
+- "setValidationSummary"
+- "categoryPrecisionNote"
+
+Also include these v2 evidence fields at the root when you can fill them cleanly:
 - "questionType"
 - "difficultyBand"
 - "solvePath"
@@ -97,7 +113,14 @@ Hard requirements:
 13. sections.articleBlocks must contain 8 to 14 short paragraphs.
 14. Most articleBlocks paragraphs should be one sentence. Some can be two sentences. Avoid long blocks.
 15. articleBlocks must include one believable wrong read, one clean turning clue, one explicit answer reveal, and a resolved closing line.
-16. Output raw JSON only, no markdown.
+16. pageExperienceMode should be "full-analysis" for this long-form draft.
+17. wrongGuessCandidates must describe believable nearby reads:
+   - if difficultyBand is "obvious", include at least 1 candidate
+   - if difficultyBand is "medium" or "hard", include at least 2 candidates
+   - each candidate needs label and whyPlausible, and whyRejected when it helps
+18. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
+19. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
+20. Output raw JSON only, no markdown.
 
 Primary writing goal:
 - Build the source material for a short archive article, not a report.
@@ -153,4 +176,3 @@ Input data:
 - Answer: ${puzzleData.mainAnswer}
 `.trim();
 }
-

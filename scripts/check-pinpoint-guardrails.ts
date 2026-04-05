@@ -1457,10 +1457,15 @@ async function checkTypedCategoryGenerationKeepsGrammarNatural() {
       },
       slots?: Record<string, unknown>,
     ) => {
+      difficultyBand?: string;
+      pageExperienceMode?: string;
       sections?: {
         clueDetails?: Array<{ phrase?: string }>;
       };
       clueRows?: Array<{ resolvedPhraseOrMember?: string; surfaceMisread?: string }>;
+      wrongGuessCandidates?: Array<{ label?: string; whyPlausible?: string }>;
+      setValidationSummary?: string;
+      categoryPrecisionNote?: string;
     };
   };
   const workerModule = (await import(workerModulePath)) as {
@@ -1536,8 +1541,34 @@ async function checkTypedCategoryGenerationKeepsGrammarNatural() {
     generated.clueRows?.every((row) => !row.surfaceMisread),
     "bucket-style false starts like \"science terms\" should stay out of the clue evidence table",
   );
+  assert.equal(
+    generated.pageExperienceMode,
+    "full-analysis",
+    "deterministic generated long-form drafts should mark themselves as full-analysis",
+  );
+  assert.equal(
+    generated.difficultyBand,
+    "hard",
+    "two plausible false starts should keep the generated draft in a structured hard band",
+  );
+  assert.ok(
+    Array.isArray(generated.wrongGuessCandidates) && generated.wrongGuessCandidates.length >= 2,
+    "deterministic generated drafts should include enough structured wrongGuessCandidates for hard mode",
+  );
+  generated.wrongGuessCandidates?.forEach((candidate, index) => {
+    assert.ok(candidate.label?.trim(), `generated wrongGuessCandidates[${index}] should include label`);
+    assert.ok(candidate.whyPlausible?.trim(), `generated wrongGuessCandidates[${index}] should include whyPlausible`);
+  });
+  assert.ok(
+    generated.setValidationSummary?.trim(),
+    "deterministic generated drafts should include setValidationSummary",
+  );
+  assert.ok(
+    generated.categoryPrecisionNote?.trim(),
+    "deterministic generated drafts should include categoryPrecisionNote",
+  );
 
-  console.log("ok: typed-category generation keeps singular tails and hides bucket misreads from clueRows");
+  console.log("ok: typed-category generation keeps singular tails and emits structured publish fields");
 }
 
 async function main() {

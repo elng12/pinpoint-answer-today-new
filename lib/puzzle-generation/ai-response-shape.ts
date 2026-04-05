@@ -115,6 +115,12 @@ const ParsedClueRowSchema = z.object({
   searchableContext: z.string().trim().min(1).optional(),
 });
 
+const ParsedWrongGuessCandidateSchema = z.object({
+  label: z.string().trim().min(1),
+  whyPlausible: z.string().trim().min(1),
+  whyRejected: z.string().trim().min(1).optional(),
+});
+
 const ParsedFaqItemSchema = z.object({
   intentType: z.enum([
     "definition",
@@ -140,6 +146,7 @@ const ParsedAIResponseSchema = z
   .object({
     questionType: z.enum(["phrase", "category", "association", "hybrid"]).optional(),
     difficultyBand: z.enum(["obvious", "medium", "hard"]).optional(),
+    pageExperienceMode: z.enum(["full-analysis", "light-explainer"]).optional(),
     slots: ParsedSlotsSchema.optional(),
     sections: ParsedSectionsSchema,
     analysis: ParsedAnalysisSchema,
@@ -148,6 +155,9 @@ const ParsedAIResponseSchema = z
     clueRows: z.array(ParsedClueRowSchema).optional(),
     faqItems: z.array(ParsedFaqItemSchema).optional(),
     uniquenessSignals: ParsedUniquenessSignalsSchema,
+    wrongGuessCandidates: z.array(ParsedWrongGuessCandidateSchema).optional(),
+    setValidationSummary: z.string().trim().min(1).optional(),
+    categoryPrecisionNote: z.string().trim().min(1).optional(),
   })
   .refine((value) => Boolean(value.slots || value.sections), {
     message: 'AI response must include either "slots" or "sections".',
@@ -173,11 +183,27 @@ function sanitizeParsedResponseEvidenceFields(parsed: ParsedAIResponse): ParsedA
       parsed.difficultyBand,
       z.enum(["obvious", "medium", "hard"]),
     ),
+    pageExperienceMode: sanitizeOptionalEvidenceField(
+      parsed.pageExperienceMode,
+      z.enum(["full-analysis", "light-explainer"]),
+    ),
     solvePath: sanitizeOptionalEvidenceField(parsed.solvePath, ParsedSolvePathSchema),
     turningPoint: sanitizeOptionalEvidenceField(parsed.turningPoint, ParsedTurningPointSchema),
     clueRows: sanitizeOptionalEvidenceField(parsed.clueRows, z.array(ParsedClueRowSchema).optional()),
     faqItems: sanitizeOptionalEvidenceField(parsed.faqItems, z.array(ParsedFaqItemSchema).optional()),
     uniquenessSignals: sanitizeOptionalEvidenceField(parsed.uniquenessSignals, ParsedUniquenessSignalsSchema),
+    wrongGuessCandidates: sanitizeOptionalEvidenceField(
+      parsed.wrongGuessCandidates,
+      z.array(ParsedWrongGuessCandidateSchema).optional(),
+    ),
+    setValidationSummary: sanitizeOptionalEvidenceField(
+      parsed.setValidationSummary,
+      z.string().trim().min(1).optional(),
+    ),
+    categoryPrecisionNote: sanitizeOptionalEvidenceField(
+      parsed.categoryPrecisionNote,
+      z.string().trim().min(1).optional(),
+    ),
   };
 }
 
@@ -218,4 +244,3 @@ export function validateParsedSlotsContract(
 
   return validatedSlots;
 }
-

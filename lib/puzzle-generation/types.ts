@@ -2,10 +2,12 @@ import type {
   PuzzleClueRowRecord,
   PuzzleDifficultyBand,
   PuzzleEvidenceFaqItemRecord,
+  PuzzlePageExperienceMode,
   PuzzleQuestionType,
   PuzzleSolvePathRecord,
   PuzzleTurningPointRecord,
   PuzzleUniquenessSignalsRecord,
+  PuzzleWrongGuessCandidateRecord,
 } from "@/lib/puzzles/schema";
 import type { PuzzleSlotContractData } from "@/lib/puzzles/slot-contract";
 
@@ -20,6 +22,7 @@ export type AIGeneratedSlots = PuzzleSlotContractData;
 export interface AIGeneratedContent {
   questionType?: PuzzleQuestionType;
   difficultyBand?: PuzzleDifficultyBand;
+  pageExperienceMode?: PuzzlePageExperienceMode;
   sections: {
     articleBlocks?: string[];
     overview: string;
@@ -45,6 +48,9 @@ export interface AIGeneratedContent {
   clueRows?: PuzzleClueRowRecord[];
   faqItems?: PuzzleEvidenceFaqItemRecord[];
   uniquenessSignals?: PuzzleUniquenessSignalsRecord;
+  wrongGuessCandidates?: PuzzleWrongGuessCandidateRecord[];
+  setValidationSummary?: string;
+  categoryPrecisionNote?: string;
   slots?: AIGeneratedSlots;
 }
 

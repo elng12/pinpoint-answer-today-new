@@ -488,8 +488,80 @@ function validateDraftIssues(
     ...validateEvidenceContract(toEvidenceContractInput(puzzleData, ai), {
       requireEvidenceFields: true,
     }),
+    ...validateStructuredPublishIssues(ai),
     ...validateSlotContract(toSlotContractInput(puzzleData, ai)),
   ];
+}
+
+function validateStructuredPublishIssues(ai: unknown): ContentContractIssue[] {
+  const root = asRecord(ai) ?? {};
+  const issues: ContentContractIssue[] = [];
+  const pageExperienceMode = asString(root.pageExperienceMode);
+  const difficultyBand = asString(root.difficultyBand);
+  const wrongGuessCandidates = Array.isArray(root.wrongGuessCandidates) ? root.wrongGuessCandidates : [];
+  const requiredWrongGuessCount = difficultyBand === "obvious" ? 1 : 2;
+
+  if (pageExperienceMode !== "full-analysis" && pageExperienceMode !== "light-explainer") {
+    issues.push({
+      level: "error",
+      code: "structured.pageExperienceMode.missing",
+      message: "Structured publish payload is missing pageExperienceMode",
+      field: "pageExperienceMode",
+    });
+  }
+
+  if (!difficultyBand || !["obvious", "medium", "hard"].includes(difficultyBand)) {
+    issues.push({
+      level: "error",
+      code: "structured.difficultyBand.missing",
+      message: "Structured publish payload is missing difficultyBand",
+      field: "difficultyBand",
+    });
+    return issues;
+  }
+
+  if (pageExperienceMode === "full-analysis") {
+    if (wrongGuessCandidates.length < requiredWrongGuessCount) {
+      issues.push({
+        level: "error",
+        code: "structured.wrongGuessCandidates.count",
+        message: `Structured publish payload needs at least ${requiredWrongGuessCount} wrongGuessCandidates for ${difficultyBand} full-analysis mode`,
+        field: "wrongGuessCandidates",
+      });
+    }
+
+    wrongGuessCandidates.forEach((item, index) => {
+      const row = asRecord(item);
+      if (!asString(row?.label) || !asString(row?.whyPlausible)) {
+        issues.push({
+          level: "error",
+          code: "structured.wrongGuessCandidates.fields",
+          message: `wrongGuessCandidates[${index}] must include label and whyPlausible`,
+          field: `wrongGuessCandidates[${index}]`,
+        });
+      }
+    });
+
+    if (!asString(root.setValidationSummary)) {
+      issues.push({
+        level: "error",
+        code: "structured.setValidationSummary.missing",
+        message: "Structured publish payload is missing setValidationSummary",
+        field: "setValidationSummary",
+      });
+    }
+
+    if (!asString(root.categoryPrecisionNote)) {
+      issues.push({
+        level: "error",
+        code: "structured.categoryPrecisionNote.missing",
+        message: "Structured publish payload is missing categoryPrecisionNote",
+        field: "categoryPrecisionNote",
+      });
+    }
+  }
+
+  return issues;
 }
 
 function buildRepairPrompt(
@@ -527,10 +599,13 @@ ${articleBlockRule}
 9. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
 10. overview must not open with the exact answer text or with "The answer is".
 11. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
-12. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
-13. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
-14. Keep the prose natural and article-like, not robotic or overly analytical.
-15. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+12. Include pageExperienceMode, wrongGuessCandidates, setValidationSummary, and categoryPrecisionNote at the root.
+13. pageExperienceMode should stay "full-analysis" for this long-form repair.
+14. If difficultyBand is "obvious", include at least 1 wrongGuessCandidates item. If difficultyBand is "medium" or "hard", include at least 2. Every item needs label and whyPlausible, and whyRejected when it helps.
+15. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
+16. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
+17. Keep the prose natural and article-like, not robotic or overly analytical.
+18. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}
