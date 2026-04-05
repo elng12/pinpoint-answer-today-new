@@ -2680,6 +2680,12 @@ type PublicDetailExperienceDecision =
   | { action: "defer-to-existing-protection"; record: PublishedPuzzleDetailRecord; reason: string }
   | { action: "block"; reason: string };
 
+type PublicDetailExperienceNotice = {
+  modeLabel: string;
+  statusLabel: string;
+  reason?: string;
+};
+
 function getRequiredFalseStartCount(difficultyBand: DetailDifficultyBand): number {
   return difficultyBand === "obvious" ? 1 : 2;
 }
@@ -2788,6 +2794,42 @@ function getLightExplainerReadiness(record: PublishedPuzzleDetailRecord): Publis
 
 function hasLightExplainerMinimumShape(record: PublishedPuzzleDetailRecord): boolean {
   return getLightExplainerReadiness(record).ok;
+}
+
+function buildPublicDetailExperienceNotice(
+  decision: PublicDetailExperienceDecision,
+): PublicDetailExperienceNotice {
+  if (decision.action === "downgrade-to-light-explainer") {
+    return {
+      modeLabel: "轻量页（light-explainer）",
+      statusLabel: "已自动降级",
+      reason: decision.reason,
+    };
+  }
+
+  if (decision.action === "defer-to-existing-protection") {
+    return {
+      modeLabel: "沿用已有健康页",
+      statusLabel: "已保留旧页",
+      reason: decision.reason,
+    };
+  }
+
+  if (decision.action === "block") {
+    return {
+      modeLabel: "未发布",
+      statusLabel: "已被发布保护拦截",
+      reason: decision.reason,
+    };
+  }
+
+  return {
+    modeLabel:
+      decision.record.pageExperienceMode === "light-explainer"
+        ? "轻量页（light-explainer）"
+        : "完整页（full-analysis）",
+    statusLabel: "已通过发布保护",
+  };
 }
 
 function buildLightExplainerParagraphs(record: PublishedPuzzleDetailRecord): string[] {
@@ -3120,6 +3162,7 @@ async function publishToNewSiteGitHub(
   }
 
   const detailRecord = detailExperienceDecision.record;
+  const detailExperienceNotice = buildPublicDetailExperienceNotice(detailExperienceDecision);
   if (isPublicState) {
     const finalReadiness =
       detailRecord.pageExperienceMode === "light-explainer"
@@ -3275,12 +3318,16 @@ async function publishToNewSiteGitHub(
         { is_short: true, text: { tag: "lark_md", content: `**答案**\n${answer}` } },
         { is_short: true, text: { tag: "lark_md", content: `**发布日期**\n${puzzleDate}` } },
         { is_short: true, text: { tag: "lark_md", content: `**难度**\nModerate` } },
+        { is_short: true, text: { tag: "lark_md", content: `**页面形态**\n${detailExperienceNotice.modeLabel}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**发布保护**\n${detailExperienceNotice.statusLabel}` } },
       ]
       : [
         { is_short: true, text: { tag: "lark_md", content: `**谜题编号**\n#${puzzleNumber}` } },
         { is_short: true, text: { tag: "lark_md", content: `**答案**\n${answer}` } },
         { is_short: true, text: { tag: "lark_md", content: `**原始发布日期**\n${puzzleDate}` } },
         { is_short: true, text: { tag: "lark_md", content: `**补发日期（北京时间）**\n${beijingToday}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**页面形态**\n${detailExperienceNotice.modeLabel}` } },
+        { is_short: true, text: { tag: "lark_md", content: `**发布保护**\n${detailExperienceNotice.statusLabel}` } },
       ];
     const msg = {
       msg_type: "interactive",
@@ -3310,6 +3357,13 @@ async function publishToNewSiteGitHub(
             tag: "div",
             text: { tag: "lark_md", content: `**线索**\n${clueStr}` },
           },
+          ...(detailExperienceNotice.reason ? [{
+            tag: "div",
+            text: {
+              tag: "lark_md",
+              content: `**结构化发布说明**\n${toZhWebhookReason(detailExperienceNotice.reason)}`,
+            },
+          }] : []),
           ...(!pageReady && pageUrl ? [{
             tag: "div",
             text: {
@@ -4157,6 +4211,48 @@ async function checkAndMarkCronSuccessNotified(env: Env, date: string): Promise<
 function toZhWebhookReason(reason: string | undefined): string {
   const raw = String(reason || "").trim();
   if (!raw) return "未提供原因";
+
+  if (raw.startsWith("[new-site] final publish guard failed for")) {
+    const detail = raw.split(":").slice(1).join(":").trim();
+    return detail ? `新站最终发布保护未通过：${toZhWebhookReason(detail)}` : "新站最终发布保护未通过";
+  }
+
+  if (raw.startsWith("[new-site] incoming record could not satisfy full-analysis")) {
+    const detail = raw.replace(/^\[new-site\]\s*/, "").trim();
+    return `新站结构化页面既不满足完整页，也不满足轻量页要求：${detail}`;
+  }
+
+  if (raw.includes("downgraded to light-explainer")) {
+    const detail = raw.split(";").slice(1).join(";").trim() || raw;
+    return `完整页未达发布门槛，已自动降级为轻量页：${detail}`;
+  }
+
+  if (raw.startsWith("wrongGuessCandidates has")) {
+    const match = raw.match(/wrongGuessCandidates has (\d+); expected at least (\d+)/);
+    if (match) {
+      return `结构化误判候选数量不足（当前 ${match[1]}，至少需要 ${match[2]}）`;
+    }
+  }
+
+  if (raw.startsWith("wrongGuessCandidates[") && raw.includes("is missing label or whyPlausible")) {
+    return "结构化误判候选缺少名称或“为什么看起来合理”的解释";
+  }
+
+  if (raw === "setValidationSummary is missing") {
+    return "缺少整组校验总结（setValidationSummary）";
+  }
+
+  if (raw === "categoryPrecisionNote is missing") {
+    return "缺少分类精度说明（categoryPrecisionNote）";
+  }
+
+  if (raw === "turningPoint.clue is missing") {
+    return "缺少关键转折线索（turningPoint.clue）";
+  }
+
+  if (raw === "solvePath.firstRead is missing") {
+    return "缺少首轮误判路径说明（solvePath.firstRead）";
+  }
 
   if (raw.startsWith("stale candidate:")) {
     const detail = raw.slice("stale candidate:".length).trim();
@@ -5755,7 +5851,15 @@ export default {
                   try {
                     await publishToNewSiteGitHub(env, date, doc, enrichResult.payload, puzzleNumber);
                   } catch (newSiteErr) {
-                    console.warn("[new-site] publish failed (non-fatal):", newSiteErr);
+                    const newSiteMsg = newSiteErr instanceof Error ? newSiteErr.message : String(newSiteErr);
+                    console.warn("[new-site] publish failed (non-fatal):", newSiteMsg);
+                    await notifyCron(env, "⚠️ 新站结构化发布异常", [
+                      `日期: ${date}`,
+                      `谜题: #${puzzleNumber}`,
+                      `详情: ${detailUrl}`,
+                      `原因: ${toZhWebhookReason(newSiteMsg)}`,
+                      "说明: 英文站增强已成功，但新站结构化落库阶段没有正常完成。",
+                    ]);
                   }
                 } else {
                   heartbeat.enrich = stampHeartbeatStage(
