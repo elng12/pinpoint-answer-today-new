@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 706,
+    "slug": "pinpoint-answer-706",
+    "publishDate": "2026-04-06",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Monday",
+      "Medium",
+      "Length (in metric units)",
+      "One thousandth (in metric units)",
+      "Mass (in physics equations)"
+    ],
+    "mainAnswer": "Things that can be represented by the letter “M”",
+    "category": "Things that can be represented by the letter “M”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #706: Monday, Medium, Length (in metric units), One thousandth (in metric units), Mass (in physics equations).",
+    "updatedAt": "2026-04-06T07:01:45.706Z"
+  },
+  {
     "puzzleNumber": 705,
     "slug": "pinpoint-answer-705",
     "publishDate": "2026-04-05",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Toothpaste",
@@ -16,7 +35,7 @@
     "category": "Inventions that (most likely) originated in Ancient Egypt",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Toothpaste, Copper pipes, 365-day (solar) calendar do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-05T08:35:16.108Z"
+    "updatedAt": "2026-04-06T07:01:45.706Z"
   },
   {
     "puzzleNumber": 704,

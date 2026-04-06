@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 706,
+  "slug": "pinpoint-answer-706",
+  "publishDate": "2026-04-06",
+  "isoDate": "2026-04-06",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Monday",
+    "Medium",
+    "Length (in metric units)",
+    "One thousandth (in metric units)",
+    "Mass (in physics equations)"
+  ],
+  "answer": "Things that can be represented by the letter “M”",
+  "category": "Things that can be represented by the letter “M”",
+  "wordHints": {
+    "Monday": "Monday connects to \"Things that can be represented by the letter “M”\"",
+    "Medium": "Medium connects to \"Things that can be represented by the letter “M”\"",
+    "Length (in metric units)": "Length (in metric units) connects to \"Things that can be represented by the letter “M”\"",
+    "One thousandth (in metric units)": "One thousandth (in metric units) connects to \"Things that can be represented by the letter “M”\"",
+    "Mass (in physics equations)": "Mass (in physics equations) connects to \"Things that can be represented by the letter “M”\""
+  },
+  "spoilerHints": {
+    "Monday": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Medium": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Length (in metric units)": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "One thousandth (in metric units)": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Mass (in physics equations)": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Monday and Medium pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Monday, Medium can point toward several nearby themes before one clue makes the exact category level visible. Monday is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Monday\" and \"Medium\" stopped feeling loose and started landing cleanly.",
+    "Length (in metric units), One thousandth (in metric units), Mass (in physics equations) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that can be represented by the letter “M”\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that can be represented by the letter “M”, which is why \"Things that can be represented by the letter “M”\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Monday and Medium pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Monday, Medium can point toward several nearby themes before one clue makes the exact category level visible. Monday is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Monday\" and \"Medium\" stopped feeling loose and started landing cleanly.",
+    "Length (in metric units), One thousandth (in metric units), Mass (in physics equations) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that can be represented by the letter “M”\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that can be represented by the letter “M”, which is why \"Things that can be represented by the letter “M”\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #706, Monday, Medium, Length (in metric units), One thousandth (in metric units), Mass (in physics equations) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Monday",
+        "examplePhrase": "Monday",
+        "connectionExplained": "Monday connects to \"Things that can be represented by the letter “M”\""
+      },
+      {
+        "clue": "Medium",
+        "examplePhrase": "Medium",
+        "connectionExplained": "Medium connects to \"Things that can be represented by the letter “M”\""
+      },
+      {
+        "clue": "Length (in metric units)",
+        "examplePhrase": "Length (in metric units)",
+        "connectionExplained": "Length (in metric units) connects to \"Things that can be represented by the letter “M”\""
+      },
+      {
+        "clue": "One thousandth (in metric units)",
+        "examplePhrase": "One thousandth (in metric units)",
+        "connectionExplained": "One thousandth (in metric units) connects to \"Things that can be represented by the letter “M”\""
+      },
+      {
+        "clue": "Mass (in physics equations)",
+        "examplePhrase": "Mass (in physics equations)",
+        "connectionExplained": "Mass (in physics equations) connects to \"Things that can be represented by the letter “M”\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #706?",
+      "answer": "The answer is \"Things that can be represented by the letter “M”\". The clues Monday, Medium, Length (in metric units), One thousandth (in metric units), Mass (in physics equations) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #706 just unlocked, and this is the fastest verified update. The board clues are Monday, Medium, Length (in metric units), One thousandth (in metric units), Mass (in physics equations), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Monday, Medium can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Monday",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #706, Monday, Medium, Length (in metric units), One thousandth (in metric units), Mass (in physics equations) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Monday lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Monday",
+    "whyDecisive": "Monday is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Monday lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Monday",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Monday",
+      "nonObviousWhy": "Monday supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Monday"
+    },
+    {
+      "clue": "Medium",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Medium",
+      "nonObviousWhy": "Medium supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Medium"
+    },
+    {
+      "clue": "Length (in metric units)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Length (in metric units)",
+      "nonObviousWhy": "Length (in metric units) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Length (in metric units)"
+    },
+    {
+      "clue": "One thousandth (in metric units)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "One thousandth (in metric units)",
+      "nonObviousWhy": "One thousandth (in metric units) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "One thousandth (in metric units)"
+    },
+    {
+      "clue": "Mass (in physics equations)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Mass (in physics equations)",
+      "nonObviousWhy": "Mass (in physics equations) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Mass (in physics equations)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #706?",
+      "answer": "The answer is \"Things that can be represented by the letter “M”\". The clues Monday, Medium, Length (in metric units), One thousandth (in metric units), Mass (in physics equations) all share this connection.",
+      "tiedClue": "Monday"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Monday",
+      "Medium",
+      "Length (in metric units)",
+      "One thousandth (in metric units)",
+      "Mass (in physics equations)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Monday",
+      "Medium",
+      "Length (in metric units)",
+      "One thousandth (in metric units)"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Monday, Medium can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Monday is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Length (in metric units), One thousandth (in metric units), Mass (in physics equations) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things that can be represented by the letter “M”"
+}
