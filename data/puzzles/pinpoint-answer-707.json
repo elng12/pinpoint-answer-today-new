@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 707,
+  "slug": "pinpoint-answer-707",
+  "publishDate": "2026-04-07",
+  "isoDate": "2026-04-07",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Salvador",
+    "Manaus",
+    "São Paulo",
+    "Rio de Janeiro",
+    "Brasília"
+  ],
+  "answer": "Major cities in Brazil",
+  "category": "Major cities in Brazil",
+  "wordHints": {
+    "Salvador": "Salvador connects to \"Major cities in Brazil\"",
+    "Manaus": "Manaus connects to \"Major cities in Brazil\"",
+    "São Paulo": "São Paulo connects to \"Major cities in Brazil\"",
+    "Rio de Janeiro": "Rio de Janeiro connects to \"Major cities in Brazil\"",
+    "Brasília": "Brasília connects to \"Major cities in Brazil\""
+  },
+  "spoilerHints": {
+    "Salvador": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Manaus": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "São Paulo": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Rio de Janeiro": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Brasília": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Salvador and Manaus pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Salvador, Manaus can point toward several nearby themes before one clue makes the exact category level visible. Salvador is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on major, examples like \"Salvador\" and \"Manaus\" stopped feeling loose and started landing cleanly.",
+    "São Paulo, Rio de Janeiro, Brasília keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Major cities in Brazil\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Major cities in Brazil, which is why \"Major cities in Brazil\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Salvador and Manaus pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Salvador, Manaus can point toward several nearby themes before one clue makes the exact category level visible. Salvador is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on major, examples like \"Salvador\" and \"Manaus\" stopped feeling loose and started landing cleanly.",
+    "São Paulo, Rio de Janeiro, Brasília keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Major cities in Brazil\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Major cities in Brazil, which is why \"Major cities in Brazil\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #707, Salvador, Manaus, São Paulo, Rio de Janeiro, Brasília only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on major",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Salvador",
+        "examplePhrase": "Salvador",
+        "connectionExplained": "Salvador connects to \"Major cities in Brazil\""
+      },
+      {
+        "clue": "Manaus",
+        "examplePhrase": "Manaus",
+        "connectionExplained": "Manaus connects to \"Major cities in Brazil\""
+      },
+      {
+        "clue": "São Paulo",
+        "examplePhrase": "São Paulo",
+        "connectionExplained": "São Paulo connects to \"Major cities in Brazil\""
+      },
+      {
+        "clue": "Rio de Janeiro",
+        "examplePhrase": "Rio de Janeiro",
+        "connectionExplained": "Rio de Janeiro connects to \"Major cities in Brazil\""
+      },
+      {
+        "clue": "Brasília",
+        "examplePhrase": "Brasília",
+        "connectionExplained": "Brasília connects to \"Major cities in Brazil\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #707?",
+      "answer": "The answer is \"Major cities in Brazil\". The clues Salvador, Manaus, São Paulo, Rio de Janeiro, Brasília all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #707 just unlocked, and this is the fastest verified update. The board clues are Salvador, Manaus, São Paulo, Rio de Janeiro, Brasília, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Salvador, Manaus can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Salvador",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #707, Salvador, Manaus, São Paulo, Rio de Janeiro, Brasília only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Salvador lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Salvador",
+    "whyDecisive": "Salvador is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Salvador lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Salvador",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Salvador",
+      "nonObviousWhy": "Salvador supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Salvador"
+    },
+    {
+      "clue": "Manaus",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Manaus",
+      "nonObviousWhy": "Manaus supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Manaus"
+    },
+    {
+      "clue": "São Paulo",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "São Paulo",
+      "nonObviousWhy": "São Paulo supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "São Paulo"
+    },
+    {
+      "clue": "Rio de Janeiro",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Rio de Janeiro",
+      "nonObviousWhy": "Rio de Janeiro supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rio de Janeiro"
+    },
+    {
+      "clue": "Brasília",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Brasília",
+      "nonObviousWhy": "Brasília supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Brasília"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #707?",
+      "answer": "The answer is \"Major cities in Brazil\". The clues Salvador, Manaus, São Paulo, Rio de Janeiro, Brasília all share this connection.",
+      "tiedClue": "Salvador"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on major",
+    "relatedEntities": [
+      "Salvador",
+      "Manaus",
+      "São Paulo",
+      "Rio de Janeiro",
+      "Brasília"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on major",
+      "Salvador",
+      "Manaus",
+      "São Paulo",
+      "Rio de Janeiro"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Salvador, Manaus can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Salvador is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "São Paulo, Rio de Janeiro, Brasília keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Major cities in Brazil"
+}
