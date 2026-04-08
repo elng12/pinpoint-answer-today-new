@@ -3,11 +3,11 @@
   "slug": "pinpoint-answer-708",
   "publishDate": "2026-04-08",
   "isoDate": "2026-04-08",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
-  "difficultyBand": "hard",
+  "difficultyBand": "medium",
   "clues": [
     "Car",
     "Bill",
@@ -18,11 +18,11 @@
   "answer": "Words that come after \"electric\"",
   "category": "Words that come after \"electric\"",
   "wordHints": {
-    "Car": "Car connects to \"Words that come after \"electric\"\"",
-    "Bill": "Bill connects to \"Words that come after \"electric\"\"",
-    "Charge": "Charge connects to \"Words that come after \"electric\"\"",
-    "Eel": "Eel connects to \"Words that come after \"electric\"\"",
-    "Shock (⚡)": "Shock (⚡) connects to \"Words that come after \"electric\"\""
+    "Car": "'Electric car' is a common type of vehicle, fitting the clue perfectly.",
+    "Bill": "An 'electric bill' is the invoice for electricity usage, a direct fit.",
+    "Charge": "'Electric charge' is a physics term related to electricity, making it a perfect match.",
+    "Eel": "'Electric eel' is a specific type of eel known for its electrical discharge.",
+    "Shock (⚡)": "Electric shock (⚡) fits once the board is read through a repeated-word phrase pattern with one missing term, especially after eel."
   },
   "spoilerHints": {
     "Car": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -32,188 +32,196 @@
     "Shock (⚡)": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Car, Bill do not immediately advertise one shared phrase slot before Car shows where the repeated word belongs. Car behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Car locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"electric Car\" and \"electric Bill\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
-    "Charge, Eel, Shock (⚡) show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come after \"electric\"\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after \"electric\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "I initially thought this puzzle was about energy in general.",
+    "The clues seemed to point toward cars, bills, charges, eels, and shocks all being related to energy.",
+    "But that felt too broad to be the exact answer.",
+    "The 'Eel' clue was the turning point for me.",
+    "It made me think of 'electric eels' specifically.",
+    "That's when I realized the answer was 'words that come after electric'.",
+    "Each clue forms a common phrase when placed after 'electric': electric car, electric bill, electric charge, electric eel, and electric shock.",
+    "The puzzle isn't about broad categories, it's about exact phrases.",
+    "It was a satisfying solve once the phrase pattern clicked into place.",
+    "Now I know to look for common phrases, not just related concepts."
   ],
   "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Car, Bill do not immediately advertise one shared phrase slot before Car shows where the repeated word belongs. Car behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Car locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"electric Car\" and \"electric Bill\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
-    "Charge, Eel, Shock (⚡) show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come after \"electric\"\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after \"electric\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "I initially thought this puzzle was about energy in general.",
+    "The clues seemed to point toward cars, bills, charges, eels, and shocks all being related to energy.",
+    "But that felt too broad to be the exact answer.",
+    "The 'Eel' clue was the turning point for me.",
+    "It made me think of 'electric eels' specifically.",
+    "That's when I realized the answer was 'words that come after electric'.",
+    "Each clue forms a common phrase when placed after 'electric': electric car, electric bill, electric charge, electric eel, and electric shock.",
+    "The puzzle isn't about broad categories, it's about exact phrases.",
+    "It was a satisfying solve once the phrase pattern clicked into place.",
+    "Now I know to look for common phrases, not just related concepts."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #708, Car, Bill, Charge, Eel, Shock (⚡) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Car and Bill first pulled me toward Energy, so that was the first path I tested. It held together for a moment, but eel never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let eel lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Electric car and Electric bill started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Eel is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer exact phrase logic over loose category logic",
+      "body": "When solving phrase puzzles, look for common phrases, not just related concepts."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Car",
-        "examplePhrase": "electric Car",
-        "connectionExplained": "Car connects to \"Words that come after \"electric\"\""
+        "examplePhrase": "Electric car",
+        "connectionExplained": "'Electric car' is a common type of vehicle, fitting the clue perfectly."
       },
       {
         "clue": "Bill",
-        "examplePhrase": "electric Bill",
-        "connectionExplained": "Bill connects to \"Words that come after \"electric\"\""
+        "examplePhrase": "Electric bill",
+        "connectionExplained": "An 'electric bill' is the invoice for electricity usage, a direct fit."
       },
       {
         "clue": "Charge",
-        "examplePhrase": "electric Charge",
-        "connectionExplained": "Charge connects to \"Words that come after \"electric\"\""
+        "examplePhrase": "Electric charge",
+        "connectionExplained": "'Electric charge' is a physics term related to electricity, making it a perfect match."
       },
       {
         "clue": "Eel",
-        "examplePhrase": "electric Eel",
-        "connectionExplained": "Eel connects to \"Words that come after \"electric\"\""
+        "examplePhrase": "Electric eel",
+        "connectionExplained": "'Electric eel' is a specific type of eel known for its electrical discharge."
       },
       {
         "clue": "Shock (⚡)",
-        "examplePhrase": "Shock electric",
-        "connectionExplained": "Shock (⚡) connects to \"Words that come after \"electric\"\""
+        "examplePhrase": "Electric shock (⚡)",
+        "connectionExplained": "Electric shock (⚡) fits once the board is read through a repeated-word phrase pattern with one missing term, especially after eel."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #708?",
-      "answer": "The answer is \"Words that come after \"electric\"\". The clues Car, Bill, Charge, Eel, Shock (⚡) all share this connection."
+      "answer": "The answer is \"Words that come after electric\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #708?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #708?",
+      "answer": "Eel is the turning clue because \"Electric eel\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Electric car and Electric bill. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #708 just unlocked, and this is the fastest verified update. The board clues are Car, Bill, Charge, Eel, Shock (⚡), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Car, Bill, and Charge do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"energy\" can feel plausible before the missing word finally shows itself. Eel is the clue that finally makes the missing word visible.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "energy"
     ],
     "whyFalseStartPlausible": [
-      "Car, Bill do not immediately advertise one shared phrase slot before Car shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "While 'energy' relates to many clues, it doesn't create strong phrases with each one."
     ],
-    "breakingClue": "Car",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #708, Car, Bill, Charge, Eel, Shock (⚡) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Car lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Eel",
+    "pivot": "The solve turned when I let eel lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Electric car and Electric bill started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Electric car, Electric bill, and Electric charge stop feeling loose and start sounding exact. Once eel makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept."
   },
   "turningPoint": {
-    "clue": "Car",
-    "whyDecisive": "Car is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Car lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Eel",
+    "whyDecisive": "The 'Eel' clue made me think of electric eels specifically.",
+    "whatChangedAfterIt": "Once Eel made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
   },
   "clueRows": [
     {
       "clue": "Car",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Car",
-      "nonObviousWhy": "Car supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Car"
+      "surfaceMisread": "Energy",
+      "resolvedPhraseOrMember": "Electric car",
+      "nonObviousWhy": "'Electric car' is a common type of vehicle, fitting the clue perfectly.",
+      "searchableContext": "Electric car"
     },
     {
       "clue": "Bill",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Bill",
-      "nonObviousWhy": "Bill supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Bill"
+      "surfaceMisread": "Energy",
+      "resolvedPhraseOrMember": "Electric bill",
+      "nonObviousWhy": "An 'electric bill' is the invoice for electricity usage, a direct fit.",
+      "searchableContext": "Electric bill"
     },
     {
       "clue": "Charge",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Charge",
-      "nonObviousWhy": "Charge supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Charge"
+      "surfaceMisread": "Energy",
+      "resolvedPhraseOrMember": "Electric charge",
+      "nonObviousWhy": "'Electric charge' is a physics term related to electricity, making it a perfect match.",
+      "searchableContext": "Electric charge"
     },
     {
       "clue": "Eel",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Eel",
-      "nonObviousWhy": "Eel supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Eel"
+      "surfaceMisread": "Energy",
+      "resolvedPhraseOrMember": "Electric eel",
+      "nonObviousWhy": "'Electric eel' is a specific type of eel known for its electrical discharge.",
+      "searchableContext": "Electric eel"
     },
     {
       "clue": "Shock (⚡)",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Shock (⚡)",
-      "nonObviousWhy": "Shock (⚡) supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Shock (⚡)"
+      "surfaceMisread": "Energy",
+      "resolvedPhraseOrMember": "Electric shock (⚡)",
+      "nonObviousWhy": "Electric shock (⚡) fits once the board is read through a repeated-word phrase pattern with one missing term, especially after eel.",
+      "searchableContext": "Electric shock (⚡)"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #708?",
-      "answer": "The answer is \"Words that come after \"electric\"\". The clues Car, Bill, Charge, Eel, Shock (⚡) all share this connection.",
-      "tiedClue": "Car"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Words that come after electric\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #708?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #708?",
+      "answer": "Eel is the turning clue because \"Electric eel\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Electric car and Electric bill. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept.",
+      "tiedClue": "Eel"
     }
   ],
   "uniquenessSignals": {
-    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "angle": "a repeated-word phrase pattern with one missing term",
     "relatedEntities": [
-      "Car",
-      "Bill",
-      "Charge",
-      "Eel",
-      "Shock (⚡)"
+      "Electric car",
+      "Electric bill",
+      "Electric charge",
+      "Electric eel",
+      "Electric shock (⚡)"
     ],
     "doNotRepeatPatterns": [
-      "familiar phrases and everyday terms built with one shared opening word",
-      "Car",
-      "Bill",
-      "Charge",
-      "Eel"
+      "a repeated-word phrase pattern with one missing term",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer exact phrase logic over loose category logic",
+      "Electric car",
+      "Electric bill"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "Car, Bill do not immediately advertise one shared phrase slot before Car shows where the repeated word belongs.",
-      "whyRejected": "Car behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "Energy",
+      "whyPlausible": "While 'energy' relates to many clues, it doesn't create strong phrases with each one.",
+      "whyRejected": "Once Eel lands, the final answer explains the board more cleanly than Energy."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once Car locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "label": "other shared-word phrase guesses",
+      "whyPlausible": "The opening clues can support more than one shared-word read before a later clue locks the exact missing term into place.",
+      "whyRejected": "Once Eel lands, the final answer explains the board more cleanly than that looser phrase read."
     }
   ],
-  "setValidationSummary": "Charge, Eel, Shock (⚡) show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "setValidationSummary": "Charge, Eel, Shock (⚡) keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
   "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
 }
