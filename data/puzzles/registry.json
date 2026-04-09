@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 709,
+    "slug": "pinpoint-answer-709",
+    "publishDate": "2026-04-09",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "The Last Supper",
+      "Lady with an Ermine",
+      "Virgin of the Rocks",
+      "Vitruvian Man",
+      "Mona Lisa"
+    ],
+    "mainAnswer": "Famous works by Leonardo da Vinci",
+    "category": "Famous works by Leonardo da Vinci",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #709: The Last Supper, Lady with an Ermine, Virgin of the Rocks, Vitruvian Man, Mona Lisa.",
+    "updatedAt": "2026-04-09T07:01:25.524Z"
+  },
+  {
     "puzzleNumber": 708,
     "slug": "pinpoint-answer-708",
     "publishDate": "2026-04-08",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Car",
@@ -16,7 +35,7 @@
     "category": "Words that come after \"electric\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Car, Bill, Charge do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-08T08:44:47.651Z"
+    "updatedAt": "2026-04-09T07:01:25.524Z"
   },
   {
     "puzzleNumber": 707,
