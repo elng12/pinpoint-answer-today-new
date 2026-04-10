@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 710,
+    "slug": "pinpoint-answer-710",
+    "publishDate": "2026-04-10",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Software",
+      "Eye",
+      "Rough",
+      "Vegetable",
+      "Iron-on"
+    ],
+    "mainAnswer": "Words that come before “patch”",
+    "category": "Words that come before “patch”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #710: Software, Eye, Rough, Vegetable, Iron-on.",
+    "updatedAt": "2026-04-10T07:01:48.222Z"
+  },
+  {
     "puzzleNumber": 709,
     "slug": "pinpoint-answer-709",
     "publishDate": "2026-04-09",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "The Last Supper",
@@ -16,7 +35,7 @@
     "category": "Famous works by Leonardo da Vinci",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, The Last Supper, Lady with an Ermine, Virgin of the Rocks do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-09T07:01:38.595Z"
+    "updatedAt": "2026-04-10T07:01:48.222Z"
   },
   {
     "puzzleNumber": 708,

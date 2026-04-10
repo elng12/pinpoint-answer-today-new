@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 710,
+  "slug": "pinpoint-answer-710",
+  "publishDate": "2026-04-10",
+  "isoDate": "2026-04-10",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Software",
+    "Eye",
+    "Rough",
+    "Vegetable",
+    "Iron-on"
+  ],
+  "answer": "Words that come before “patch”",
+  "category": "Words that come before “patch”",
+  "wordHints": {
+    "Software": "Software connects to \"Words that come before “patch”\"",
+    "Eye": "Eye connects to \"Words that come before “patch”\"",
+    "Rough": "Rough connects to \"Words that come before “patch”\"",
+    "Vegetable": "Vegetable connects to \"Words that come before “patch”\"",
+    "Iron-on": "Iron-on connects to \"Words that come before “patch”\""
+  },
+  "spoilerHints": {
+    "Software": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Eye": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Rough": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Vegetable": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Iron-on": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs. Software behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Software locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Software patch\" and \"Eye patch\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Rough, Vegetable, Iron-on show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “patch”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “patch”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs. Software behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Software locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Software patch\" and \"Eye patch\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Rough, Vegetable, Iron-on show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “patch”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “patch”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #710, Software, Eye, Rough, Vegetable, Iron-on only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Software",
+        "examplePhrase": "Software patch",
+        "connectionExplained": "Software connects to \"Words that come before “patch”\""
+      },
+      {
+        "clue": "Eye",
+        "examplePhrase": "Eye patch",
+        "connectionExplained": "Eye connects to \"Words that come before “patch”\""
+      },
+      {
+        "clue": "Rough",
+        "examplePhrase": "Rough patch",
+        "connectionExplained": "Rough connects to \"Words that come before “patch”\""
+      },
+      {
+        "clue": "Vegetable",
+        "examplePhrase": "Vegetable patch",
+        "connectionExplained": "Vegetable connects to \"Words that come before “patch”\""
+      },
+      {
+        "clue": "Iron-on",
+        "examplePhrase": "Iron-on patch",
+        "connectionExplained": "Iron-on connects to \"Words that come before “patch”\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #710?",
+      "answer": "The answer is \"Words that come before “patch”\". The clues Software, Eye, Rough, Vegetable, Iron-on all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #710 just unlocked, and this is the fastest verified update. The board clues are Software, Eye, Rough, Vegetable, Iron-on, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Software",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #710, Software, Eye, Rough, Vegetable, Iron-on only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Software lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Software",
+    "whyDecisive": "Software is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Software lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Software",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Software",
+      "nonObviousWhy": "Software supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Software"
+    },
+    {
+      "clue": "Eye",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Eye",
+      "nonObviousWhy": "Eye supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Eye"
+    },
+    {
+      "clue": "Rough",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Rough",
+      "nonObviousWhy": "Rough supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rough"
+    },
+    {
+      "clue": "Vegetable",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Vegetable",
+      "nonObviousWhy": "Vegetable supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Vegetable"
+    },
+    {
+      "clue": "Iron-on",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Iron-on",
+      "nonObviousWhy": "Iron-on supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Iron-on"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #710?",
+      "answer": "The answer is \"Words that come before “patch”\". The clues Software, Eye, Rough, Vegetable, Iron-on all share this connection.",
+      "tiedClue": "Software"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Software",
+      "Eye",
+      "Rough",
+      "Vegetable",
+      "Iron-on"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Software",
+      "Eye",
+      "Rough",
+      "Vegetable"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs.",
+      "whyRejected": "Software behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Software locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Rough, Vegetable, Iron-on show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
