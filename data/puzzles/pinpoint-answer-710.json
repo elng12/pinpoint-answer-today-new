@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-710",
   "publishDate": "2026-04-10",
   "isoDate": "2026-04-10",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
@@ -18,11 +18,11 @@
   "answer": "Words that come before “patch”",
   "category": "Words that come before “patch”",
   "wordHints": {
-    "Software": "Software connects to \"Words that come before “patch”\"",
-    "Eye": "Eye connects to \"Words that come before “patch”\"",
-    "Rough": "Rough connects to \"Words that come before “patch”\"",
-    "Vegetable": "Vegetable connects to \"Words that come before “patch”\"",
-    "Iron-on": "Iron-on connects to \"Words that come before “patch”\""
+    "Software": "'Software patch' is a standard term for a quick repair to code.",
+    "Eye": "An 'eye patch' is a covering worn over an injured or missing eye.",
+    "Rough": "A 'rough patch' signifies a period of trouble or difficulty.",
+    "Vegetable": "A 'vegetable patch' is a small area for growing vegetables.",
+    "Iron-on": "An 'iron-on patch' is a decorative or repair piece attached with an iron."
   },
   "spoilerHints": {
     "Software": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -32,188 +32,198 @@
     "Iron-on": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs. Software behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Software locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"Software patch\" and \"Eye patch\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
-    "Rough, Vegetable, Iron-on show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “patch”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “patch”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "At first glance, this felt like a word association game. 'Software' and 'Eye' didn't immediately click together.",
+    "I considered a 'Pirate' theme due to the 'Eye' and 'Rough' clues. The idea of an eye patch seemed promising.",
+    "But 'Software' felt totally out of place in that frame. That theory broke down quickly.",
+    "I also thought about 'Hardware' because of 'Iron-on' and the general sense of repair implied by 'patch'. That didn't go far.",
+    "The 'Vegetable' clue was the turning point. It made me think of a 'vegetable patch'.",
+    "That unlocked the pattern: 'Words that come before patch'.",
+    "'Software patch', 'eye patch', 'rough patch', and 'iron-on patch' all fit perfectly.",
+    "Each clue now formed a common phrase ending in 'patch'.",
+    "The initial misdirection faded away, and the solution felt obvious in hindsight.",
+    "Now the board feels like a set of common phrases, not just random words."
   ],
   "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs. Software behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Software locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"Software patch\" and \"Eye patch\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
-    "Rough, Vegetable, Iron-on show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “patch”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “patch”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "At first glance, this felt like a word association game. 'Software' and 'Eye' didn't immediately click together.",
+    "I considered a 'Pirate' theme due to the 'Eye' and 'Rough' clues. The idea of an eye patch seemed promising.",
+    "But 'Software' felt totally out of place in that frame. That theory broke down quickly.",
+    "I also thought about 'Hardware' because of 'Iron-on' and the general sense of repair implied by 'patch'. That didn't go far.",
+    "The 'Vegetable' clue was the turning point. It made me think of a 'vegetable patch'.",
+    "That unlocked the pattern: 'Words that come before patch'.",
+    "'Software patch', 'eye patch', 'rough patch', and 'iron-on patch' all fit perfectly.",
+    "Each clue now formed a common phrase ending in 'patch'.",
+    "The initial misdirection faded away, and the solution felt obvious in hindsight.",
+    "Now the board feels like a set of common phrases, not just random words."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #710, Software, Eye, Rough, Vegetable, Iron-on only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Software and Eye first pulled me toward Pirate, so that was the first path I tested. It held together for a moment, but vegetable never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let vegetable lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Software patch and Eye patch started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Vegetable is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer exact phrase logic over loose category logic",
+      "body": "Look for a specific phrase that connects all the clues, rather than forcing a broad category."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases completed by one shared ending word",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Software",
         "examplePhrase": "Software patch",
-        "connectionExplained": "Software connects to \"Words that come before “patch”\""
+        "connectionExplained": "'Software patch' is a standard term for a quick repair to code."
       },
       {
         "clue": "Eye",
         "examplePhrase": "Eye patch",
-        "connectionExplained": "Eye connects to \"Words that come before “patch”\""
+        "connectionExplained": "An 'eye patch' is a covering worn over an injured or missing eye."
       },
       {
         "clue": "Rough",
         "examplePhrase": "Rough patch",
-        "connectionExplained": "Rough connects to \"Words that come before “patch”\""
+        "connectionExplained": "A 'rough patch' signifies a period of trouble or difficulty."
       },
       {
         "clue": "Vegetable",
         "examplePhrase": "Vegetable patch",
-        "connectionExplained": "Vegetable connects to \"Words that come before “patch”\""
+        "connectionExplained": "A 'vegetable patch' is a small area for growing vegetables."
       },
       {
         "clue": "Iron-on",
         "examplePhrase": "Iron-on patch",
-        "connectionExplained": "Iron-on connects to \"Words that come before “patch”\""
+        "connectionExplained": "An 'iron-on patch' is a decorative or repair piece attached with an iron."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #710?",
-      "answer": "The answer is \"Words that come before “patch”\". The clues Software, Eye, Rough, Vegetable, Iron-on all share this connection."
+      "answer": "The answer is \"Words that come before patch\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #710?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #710?",
+      "answer": "Vegetable is the turning clue because \"Vegetable patch\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Software patch and Eye patch. The clues initially seem unrelated, and several could point to different categories. It takes a specific phrase connection to resolve the board cleanly."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #710 just unlocked, and this is the fastest verified update. The board clues are Software, Eye, Rough, Vegetable, Iron-on, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Software, Eye, and Rough do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"Pirates\" can feel plausible before the missing word finally shows itself. Vegetable is the clue that finally makes the missing word visible.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "Pirates",
+      "Hardware"
     ],
     "whyFalseStartPlausible": [
-      "Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "The 'Software' clue doesn't fit a pirate theme, and 'Iron-on' feels out of place. The pirate idea requires ignoring too much.",
+      "Pirates feels plausible early on, but it falls apart once vegetable demands a more exact reading."
     ],
-    "breakingClue": "Software",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #710, Software, Eye, Rough, Vegetable, Iron-on only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Software lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Vegetable",
+    "pivot": "The solve turned when I let vegetable lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Software patch and Eye patch started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Software patch, Eye patch, and Rough patch stop feeling loose and start sounding exact. Once vegetable makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues initially seem unrelated, and several could point to different categories. It takes a specific phrase connection to resolve the board cleanly."
   },
   "turningPoint": {
-    "clue": "Software",
-    "whyDecisive": "Software is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Software lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Vegetable",
+    "whyDecisive": "The 'Vegetable' clue made the answer click into place.",
+    "whatChangedAfterIt": "Once Vegetable made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
   },
   "clueRows": [
     {
       "clue": "Software",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Software",
-      "nonObviousWhy": "Software supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Software"
+      "surfaceMisread": "Pirate",
+      "resolvedPhraseOrMember": "Software patch",
+      "nonObviousWhy": "'Software patch' is a standard term for a quick repair to code.",
+      "searchableContext": "Software patch"
     },
     {
       "clue": "Eye",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Eye",
-      "nonObviousWhy": "Eye supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Eye"
+      "surfaceMisread": "Pirate",
+      "resolvedPhraseOrMember": "Eye patch",
+      "nonObviousWhy": "An 'eye patch' is a covering worn over an injured or missing eye.",
+      "searchableContext": "Eye patch"
     },
     {
       "clue": "Rough",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Rough",
-      "nonObviousWhy": "Rough supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Rough"
+      "surfaceMisread": "Pirate",
+      "resolvedPhraseOrMember": "Rough patch",
+      "nonObviousWhy": "A 'rough patch' signifies a period of trouble or difficulty.",
+      "searchableContext": "Rough patch"
     },
     {
       "clue": "Vegetable",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Vegetable",
-      "nonObviousWhy": "Vegetable supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Vegetable"
+      "surfaceMisread": "Pirate",
+      "resolvedPhraseOrMember": "Vegetable patch",
+      "nonObviousWhy": "A 'vegetable patch' is a small area for growing vegetables.",
+      "searchableContext": "Vegetable patch"
     },
     {
       "clue": "Iron-on",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Iron-on",
-      "nonObviousWhy": "Iron-on supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Iron-on"
+      "surfaceMisread": "Pirate",
+      "resolvedPhraseOrMember": "Iron-on patch",
+      "nonObviousWhy": "An 'iron-on patch' is a decorative or repair piece attached with an iron.",
+      "searchableContext": "Iron-on patch"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #710?",
-      "answer": "The answer is \"Words that come before “patch”\". The clues Software, Eye, Rough, Vegetable, Iron-on all share this connection.",
-      "tiedClue": "Software"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Words that come before patch\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #710?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #710?",
+      "answer": "Vegetable is the turning clue because \"Vegetable patch\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Software patch and Eye patch. The clues initially seem unrelated, and several could point to different categories. It takes a specific phrase connection to resolve the board cleanly.",
+      "tiedClue": "Vegetable"
     }
   ],
   "uniquenessSignals": {
-    "angle": "familiar phrases completed by one shared ending word",
+    "angle": "a repeated-word phrase pattern with one missing term",
     "relatedEntities": [
-      "Software",
-      "Eye",
-      "Rough",
-      "Vegetable",
-      "Iron-on"
+      "Software patch",
+      "Eye patch",
+      "Rough patch",
+      "Vegetable patch",
+      "Iron-on patch"
     ],
     "doNotRepeatPatterns": [
-      "familiar phrases completed by one shared ending word",
-      "Software",
-      "Eye",
-      "Rough",
-      "Vegetable"
+      "a repeated-word phrase pattern with one missing term",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer exact phrase logic over loose category logic",
+      "Software patch",
+      "Eye patch"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "Software, Eye do not immediately advertise one shared phrase slot before Software shows where the repeated word belongs.",
-      "whyRejected": "Software behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "Pirate",
+      "whyPlausible": "The 'Software' clue doesn't fit a pirate theme, and 'Iron-on' feels out of place. The pirate idea requires ignoring too much.",
+      "whyRejected": "Once Vegetable lands, the final answer explains the board more cleanly than Pirate."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once Software locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "label": "Pirates",
+      "whyPlausible": "Pirates feels plausible early on, but it falls apart once vegetable demands a more exact reading.",
+      "whyRejected": "Once Vegetable lands, the final answer explains the board more cleanly than Pirates."
     }
   ],
-  "setValidationSummary": "Rough, Vegetable, Iron-on show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "setValidationSummary": "Rough, Vegetable, Iron-on keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
   "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
 }
