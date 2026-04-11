@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-711",
     "publishDate": "2026-04-11",
     "status": "live",
-    "detailState": "generating",
+    "detailState": "validated",
     "clues": [
       "Na'vi",
       "Klingon",
@@ -15,8 +15,8 @@
     "mainAnswer": "Constructed languages",
     "category": "Constructed languages",
     "difficultyLevel": "Moderate",
-    "shortSummary": "LinkedIn Pinpoint #711: Na'vi, Klingon, Elvish, Esperanto, Interlingua.",
-    "updatedAt": "2026-04-11T07:01:33.469Z"
+    "shortSummary": "At first glance, Na'vi, Klingon, Elvish do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-04-11T07:01:43.589Z"
   },
   {
     "puzzleNumber": 710,
