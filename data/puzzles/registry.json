@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 711,
+    "slug": "pinpoint-answer-711",
+    "publishDate": "2026-04-11",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Na'vi",
+      "Klingon",
+      "Elvish",
+      "Esperanto",
+      "Interlingua"
+    ],
+    "mainAnswer": "Constructed languages",
+    "category": "Constructed languages",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #711: Na'vi, Klingon, Elvish, Esperanto, Interlingua.",
+    "updatedAt": "2026-04-11T07:01:33.469Z"
+  },
+  {
     "puzzleNumber": 710,
     "slug": "pinpoint-answer-710",
     "publishDate": "2026-04-10",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Software",
@@ -16,7 +35,7 @@
     "category": "Words that come before “patch”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Software, Eye, Rough do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-10T07:02:01.662Z"
+    "updatedAt": "2026-04-11T07:01:33.469Z"
   },
   {
     "puzzleNumber": 709,

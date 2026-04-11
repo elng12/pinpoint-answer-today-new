@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 711,
+  "slug": "pinpoint-answer-711",
+  "publishDate": "2026-04-11",
+  "isoDate": "2026-04-11",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Na'vi",
+    "Klingon",
+    "Elvish",
+    "Esperanto",
+    "Interlingua"
+  ],
+  "answer": "Constructed languages",
+  "category": "Constructed languages",
+  "wordHints": {
+    "Na'vi": "Na'vi connects to \"Constructed languages\"",
+    "Klingon": "Klingon connects to \"Constructed languages\"",
+    "Elvish": "Elvish connects to \"Constructed languages\"",
+    "Esperanto": "Esperanto connects to \"Constructed languages\"",
+    "Interlingua": "Interlingua connects to \"Constructed languages\""
+  },
+  "spoilerHints": {
+    "Na'vi": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Klingon": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Elvish": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Esperanto": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Interlingua": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
+  "articleBlocks": [
+    "At first, Na'vi and Klingon pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Na'vi, Klingon can point toward several nearby themes before one clue makes the exact category level visible. Na'vi is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on constructed, examples like \"Na'vi\" and \"Klingon\" stopped feeling loose and started landing cleanly.",
+    "Elvish, Esperanto, Interlingua keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Constructed languages\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Constructed languages, which is why \"Constructed languages\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Na'vi and Klingon pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Na'vi, Klingon can point toward several nearby themes before one clue makes the exact category level visible. Na'vi is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on constructed, examples like \"Na'vi\" and \"Klingon\" stopped feeling loose and started landing cleanly.",
+    "Elvish, Esperanto, Interlingua keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Constructed languages\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Constructed languages, which is why \"Constructed languages\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #711, Na'vi, Klingon, Elvish, Esperanto, Interlingua only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on constructed",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Na'vi",
+        "examplePhrase": "Na'vi",
+        "connectionExplained": "Na'vi connects to \"Constructed languages\""
+      },
+      {
+        "clue": "Klingon",
+        "examplePhrase": "Klingon",
+        "connectionExplained": "Klingon connects to \"Constructed languages\""
+      },
+      {
+        "clue": "Elvish",
+        "examplePhrase": "Elvish",
+        "connectionExplained": "Elvish connects to \"Constructed languages\""
+      },
+      {
+        "clue": "Esperanto",
+        "examplePhrase": "Esperanto",
+        "connectionExplained": "Esperanto connects to \"Constructed languages\""
+      },
+      {
+        "clue": "Interlingua",
+        "examplePhrase": "Interlingua",
+        "connectionExplained": "Interlingua connects to \"Constructed languages\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #711?",
+      "answer": "The answer is \"Constructed languages\". The clues Na'vi, Klingon, Elvish, Esperanto, Interlingua all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #711 just unlocked, and this is the fastest verified update. The board clues are Na'vi, Klingon, Elvish, Esperanto, Interlingua, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Na'vi, Klingon can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Na'vi",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #711, Na'vi, Klingon, Elvish, Esperanto, Interlingua only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Na'vi lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Na'vi",
+    "whyDecisive": "Na'vi is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Na'vi lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Na'vi",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Na'vi",
+      "nonObviousWhy": "Na'vi supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Na'vi"
+    },
+    {
+      "clue": "Klingon",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Klingon",
+      "nonObviousWhy": "Klingon supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Klingon"
+    },
+    {
+      "clue": "Elvish",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Elvish",
+      "nonObviousWhy": "Elvish supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Elvish"
+    },
+    {
+      "clue": "Esperanto",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Esperanto",
+      "nonObviousWhy": "Esperanto supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Esperanto"
+    },
+    {
+      "clue": "Interlingua",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Interlingua",
+      "nonObviousWhy": "Interlingua supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Interlingua"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #711?",
+      "answer": "The answer is \"Constructed languages\". The clues Na'vi, Klingon, Elvish, Esperanto, Interlingua all share this connection.",
+      "tiedClue": "Na'vi"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on constructed",
+    "relatedEntities": [
+      "Na'vi",
+      "Klingon",
+      "Elvish",
+      "Esperanto",
+      "Interlingua"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on constructed",
+      "Na'vi",
+      "Klingon",
+      "Elvish",
+      "Esperanto"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Na'vi, Klingon can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Na'vi is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Elvish, Esperanto, Interlingua keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Constructed languages"
+}
