@@ -1,0 +1,195 @@
+{
+  "puzzleNumber": 712,
+  "slug": "pinpoint-answer-712",
+  "publishDate": "2026-04-12",
+  "isoDate": "2026-04-12",
+  "detailState": "generating",
+  "questionType": "phrase",
+  "difficultyBand": "obvious",
+  "clues": [
+    "Boy",
+    "Small",
+    "Eighth",
+    "One-hit",
+    "Stevie"
+  ],
+  "answer": "Words that come before “wonder”",
+  "category": "Words that come before “wonder”",
+  "wordHints": {
+    "Boy": "Boy connects to \"Words that come before “wonder”\"",
+    "Small": "Small connects to \"Words that come before “wonder”\"",
+    "Eighth": "Eighth connects to \"Words that come before “wonder”\"",
+    "One-hit": "One-hit connects to \"Words that come before “wonder”\"",
+    "Stevie": "Stevie connects to \"Words that come before “wonder”\""
+  },
+  "spoilerHints": {
+    "Boy": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Small": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Eighth": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "One-hit": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector.",
+    "Stevie": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue.",
+    "\"One-hit\" narrows that down quickly because it points to one phrase that feels exact right away.",
+    "Once that phrase appears, examples like \"Boy wonder\" and \"Small wonder\" stop feeling guessed and start reading like ordinary language.",
+    "The answer was \"Words that come before “wonder”\".",
+    "\"One-hit\" and \"Stevie\" then work as clean confirmations that the same word belongs after the remaining clues too."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue.",
+    "\"One-hit\" narrows that down quickly because it points to one phrase that feels exact right away.",
+    "Once that phrase appears, examples like \"Boy wonder\" and \"Small wonder\" stop feeling guessed and start reading like ordinary language.",
+    "The answer was \"Words that come before “wonder”\".",
+    "\"One-hit\" and \"Stevie\" then work as clean confirmations that the same word belongs after the remaining clues too."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #712, Boy, Small, Eighth, One-hit, Stevie only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Boy",
+        "examplePhrase": "Boy wonder",
+        "connectionExplained": "Boy connects to \"Words that come before “wonder”\""
+      },
+      {
+        "clue": "Small",
+        "examplePhrase": "Small wonder",
+        "connectionExplained": "Small connects to \"Words that come before “wonder”\""
+      },
+      {
+        "clue": "Eighth",
+        "examplePhrase": "Eighth wonder",
+        "connectionExplained": "Eighth connects to \"Words that come before “wonder”\""
+      },
+      {
+        "clue": "One-hit",
+        "examplePhrase": "One-hit wonder",
+        "connectionExplained": "One-hit connects to \"Words that come before “wonder”\""
+      },
+      {
+        "clue": "Stevie",
+        "examplePhrase": "Stevie wonder",
+        "connectionExplained": "Stevie connects to \"Words that come before “wonder”\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #712?",
+      "answer": "The answer is \"Words that come before “wonder”\". The clues Boy, Small, Eighth, One-hit, Stevie all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #712 just unlocked, and this is the fastest verified update. The board clues are Boy, Small, Eighth, One-hit, Stevie, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [],
+    "whyFalseStartPlausible": [],
+    "breakingClue": "Boy",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #712, Boy, Small, Eighth, One-hit, Stevie only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Boy lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Boy",
+    "whyDecisive": "Boy is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Boy lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Boy",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Boy",
+      "nonObviousWhy": "Boy supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Boy"
+    },
+    {
+      "clue": "Small",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Small",
+      "nonObviousWhy": "Small supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Small"
+    },
+    {
+      "clue": "Eighth",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Eighth",
+      "nonObviousWhy": "Eighth supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Eighth"
+    },
+    {
+      "clue": "One-hit",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "One-hit",
+      "nonObviousWhy": "One-hit supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "One-hit"
+    },
+    {
+      "clue": "Stevie",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Stevie",
+      "nonObviousWhy": "Stevie supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Stevie"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #712?",
+      "answer": "The answer is \"Words that come before “wonder”\". The clues Boy, Small, Eighth, One-hit, Stevie all share this connection.",
+      "tiedClue": "Boy"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Boy",
+      "Small",
+      "Eighth",
+      "One-hit",
+      "Stevie"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Boy",
+      "Small",
+      "Eighth",
+      "One-hit"
+    ]
+  }
+}
