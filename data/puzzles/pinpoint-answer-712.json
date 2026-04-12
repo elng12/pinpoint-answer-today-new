@@ -1,0 +1,225 @@
+{
+  "puzzleNumber": 712,
+  "slug": "pinpoint-answer-712",
+  "publishDate": "2026-04-12",
+  "isoDate": "2026-04-12",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "medium",
+  "clues": [
+    "Boy",
+    "Small",
+    "Eighth",
+    "One-hit",
+    "Stevie"
+  ],
+  "answer": "Words that come before “wonder”",
+  "category": "Words that come before “wonder”",
+  "wordHints": {
+    "Boy": "\"Boy wonder\" is a familiar label for a gifted young person who seems unusually talented.",
+    "Small": "\"Small wonder\" is a common expression used when something is not surprising.",
+    "Eighth": "The phrase \"eighth wonder of the world\" is a familiar way to describe something astonishing.",
+    "One-hit": "A \"one-hit wonder\" is an artist known mainly for one big hit song.",
+    "Stevie": "Stevie Wonder is the famous musician whose surname makes the missing word obvious."
+  },
+  "spoilerHints": {
+    "Boy": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Small": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Eighth": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "One-hit": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector.",
+    "Stevie": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "At first, this looked more like famous people than one repeated-word pattern.",
+    "Boy pushed me in that direction immediately.",
+    "Small kept that read alive for a moment, but Stevie still did not sound right.",
+    "That was the moment the first idea stopped working.",
+    "Then Stevie made the missing word much harder to miss.",
+    "Readings like Boy wonder and Small wonder finally sounded exact instead of approximate.",
+    "The answer was Words that come before “wonder”.",
+    "One-hit and Stevie then felt like confirmations, not extra mysteries.",
+    "Looking back, the whole pattern feels obvious in the best way."
+  ],
+  "fullAnalysis": [
+    "At first, this looked more like famous people than one repeated-word pattern.",
+    "Boy pushed me in that direction immediately.",
+    "Small kept that read alive for a moment, but Stevie still did not sound right.",
+    "That was the moment the first idea stopped working.",
+    "Then Stevie made the missing word much harder to miss.",
+    "Readings like Boy wonder and Small wonder finally sounded exact instead of approximate.",
+    "The answer was Words that come before “wonder”.",
+    "One-hit and Stevie then felt like confirmations, not extra mysteries.",
+    "Looking back, the whole pattern feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "Boy and Small first pulled me toward famous people, so that was the first path I tested. It held together for a moment, but Stevie never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let Stevie lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Boy wonder and Small wonder started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
+  ],
+  "lessons": [
+    {
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Stevie is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Prefer exact phrase logic over loose category logic",
+      "body": "Wait for the clue that turns a loose theme into one exact phrase pattern."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Boy",
+        "examplePhrase": "Boy wonder",
+        "connectionExplained": "\"Boy wonder\" is a familiar label for a gifted young person who seems unusually talented."
+      },
+      {
+        "clue": "Small",
+        "examplePhrase": "Small wonder",
+        "connectionExplained": "\"Small wonder\" is a common expression used when something is not surprising."
+      },
+      {
+        "clue": "Eighth",
+        "examplePhrase": "Eighth wonder",
+        "connectionExplained": "The phrase \"eighth wonder of the world\" is a familiar way to describe something astonishing."
+      },
+      {
+        "clue": "One-hit",
+        "examplePhrase": "One-hit wonder",
+        "connectionExplained": "A \"one-hit wonder\" is an artist known mainly for one big hit song."
+      },
+      {
+        "clue": "Stevie",
+        "examplePhrase": "Stevie Wonder",
+        "connectionExplained": "Stevie Wonder is the famous musician whose surname makes the missing word obvious."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #712?",
+      "answer": "The answer is Words that come before “wonder” because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #712?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #712?",
+      "answer": "Stevie is the turning clue because \"Stevie Wonder\" is the exact phrase that makes the missing word obvious. With the missing word in place, other clues read cleanly as Boy wonder and Small wonder. The board stays slippery because several clues feel broad until one clue exposes the shared phrase ending."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Boy, Small, and Eighth do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"famous people\" can feel plausible before the missing word finally shows itself. Stevie is the clue that finally makes the missing word visible.",
+    "falseStarts": [
+      "famous people"
+    ],
+    "whyFalseStartPlausible": [
+      "famous people feels plausible early on, but Stevie demands a more exact reading."
+    ],
+    "breakingClue": "Stevie",
+    "pivot": "The solve turned when I let Stevie lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Boy wonder and Small wonder started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Boy wonder, Small wonder, and Eighth wonder stop feeling loose and start sounding exact. Once Stevie makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The board stays slippery because several clues feel broad until one clue exposes the shared phrase ending."
+  },
+  "turningPoint": {
+    "clue": "Stevie",
+    "whyDecisive": "Stevie is the clue that finally makes the missing word impossible to miss.",
+    "whatChangedAfterIt": "Once Stevie made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
+  },
+  "clueRows": [
+    {
+      "clue": "Boy",
+      "surfaceMisread": "famous people",
+      "resolvedPhraseOrMember": "Boy wonder",
+      "nonObviousWhy": "\"Boy wonder\" is a familiar label for a gifted young person who seems unusually talented.",
+      "searchableContext": "Boy wonder"
+    },
+    {
+      "clue": "Small",
+      "surfaceMisread": "famous people",
+      "resolvedPhraseOrMember": "Small wonder",
+      "nonObviousWhy": "\"Small wonder\" is a common expression used when something is not surprising.",
+      "searchableContext": "Small wonder"
+    },
+    {
+      "clue": "Eighth",
+      "surfaceMisread": "famous people",
+      "resolvedPhraseOrMember": "Eighth wonder",
+      "nonObviousWhy": "The phrase \"eighth wonder of the world\" is a familiar way to describe something astonishing.",
+      "searchableContext": "Eighth wonder"
+    },
+    {
+      "clue": "One-hit",
+      "surfaceMisread": "famous people",
+      "resolvedPhraseOrMember": "One-hit wonder",
+      "nonObviousWhy": "A \"one-hit wonder\" is an artist known mainly for one big hit song.",
+      "searchableContext": "One-hit wonder"
+    },
+    {
+      "clue": "Stevie",
+      "surfaceMisread": "famous people",
+      "resolvedPhraseOrMember": "Stevie Wonder",
+      "nonObviousWhy": "Stevie Wonder is the famous musician whose surname makes the missing word obvious.",
+      "searchableContext": "Stevie Wonder"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #712?",
+      "answer": "The answer is Words that come before “wonder” because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #712?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #712?",
+      "answer": "Stevie is the turning clue because \"Stevie Wonder\" is the exact phrase that makes the missing word obvious. With the missing word in place, other clues read cleanly as Boy wonder and Small wonder. The board stays slippery because several clues feel broad until one clue exposes the shared phrase ending.",
+      "tiedClue": "Stevie"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a repeated-word phrase pattern with one missing term",
+    "relatedEntities": [
+      "Boy wonder",
+      "Small wonder",
+      "Eighth wonder",
+      "One-hit wonder",
+      "Stevie Wonder"
+    ],
+    "doNotRepeatPatterns": [
+      "a repeated-word phrase pattern with one missing term",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer exact phrase logic over loose category logic",
+      "Boy wonder",
+      "Small wonder"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "famous people",
+      "whyPlausible": "famous people feels plausible early on, but Stevie demands a more exact reading.",
+      "whyRejected": "Once Stevie lands, the final answer explains the board more cleanly than famous people."
+    },
+    {
+      "label": "other shared-word phrase guesses",
+      "whyPlausible": "The opening clues can support more than one shared-word read before a later clue locks the exact missing term into place.",
+      "whyRejected": "Once Stevie lands, the final answer explains the board more cleanly than that looser phrase read."
+    }
+  ],
+  "setValidationSummary": "Eighth, One-hit, and Stevie keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
