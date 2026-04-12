@@ -3,11 +3,11 @@
   "slug": "pinpoint-answer-712",
   "publishDate": "2026-04-12",
   "isoDate": "2026-04-12",
-  "detailState": "published",
+  "detailState": "generating",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
-  "difficultyBand": "medium",
+  "difficultyBand": "hard",
   "clues": [
     "Boy",
     "Small",
@@ -18,11 +18,11 @@
   "answer": "Words that come before “wonder”",
   "category": "Words that come before “wonder”",
   "wordHints": {
-    "Boy": "\"Boy wonder\" is a familiar label for a gifted young person who seems unusually talented.",
-    "Small": "\"Small wonder\" is a common expression used when something is not surprising.",
-    "Eighth": "The phrase \"eighth wonder of the world\" is a familiar way to describe something astonishing.",
-    "One-hit": "A \"one-hit wonder\" is an artist known mainly for one big hit song.",
-    "Stevie": "Stevie Wonder is the famous musician whose surname makes the missing word obvious."
+    "Boy": "Boy connects to \"Words that come before “wonder”\"",
+    "Small": "Small connects to \"Words that come before “wonder”\"",
+    "Eighth": "Eighth connects to \"Words that come before “wonder”\"",
+    "One-hit": "One-hit connects to \"Words that come before “wonder”\"",
+    "Stevie": "Stevie connects to \"Words that come before “wonder”\""
   },
   "spoilerHints": {
     "Boy": "Try reading this as part of a familiar phrase instead of as a standalone word.",
@@ -32,194 +32,188 @@
     "Stevie": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "At first, this looked more like famous people than one repeated-word pattern.",
-    "Boy pushed me in that direction immediately.",
-    "Small kept that read alive for a moment, but Stevie still did not sound right.",
-    "That was the moment the first idea stopped working.",
-    "Then Stevie made the missing word much harder to miss.",
-    "Readings like Boy wonder and Small wonder finally sounded exact instead of approximate.",
-    "The answer was Words that come before “wonder”.",
-    "One-hit and Stevie then felt like confirmations, not extra mysteries.",
-    "Looking back, the whole pattern feels obvious in the best way."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Boy, Small do not immediately advertise one shared phrase slot before Boy shows where the repeated word belongs. Boy behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Boy locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Boy wonder\" and \"Small wonder\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Eighth, One-hit, Stevie show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “wonder”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “wonder”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
   ],
   "fullAnalysis": [
-    "At first, this looked more like famous people than one repeated-word pattern.",
-    "Boy pushed me in that direction immediately.",
-    "Small kept that read alive for a moment, but Stevie still did not sound right.",
-    "That was the moment the first idea stopped working.",
-    "Then Stevie made the missing word much harder to miss.",
-    "Readings like Boy wonder and Small wonder finally sounded exact instead of approximate.",
-    "The answer was Words that come before “wonder”.",
-    "One-hit and Stevie then felt like confirmations, not extra mysteries.",
-    "Looking back, the whole pattern feels obvious in the best way."
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Boy, Small do not immediately advertise one shared phrase slot before Boy shows where the repeated word belongs. Boy behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Boy locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Boy wonder\" and \"Small wonder\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Eighth, One-hit, Stevie show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “wonder”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “wonder”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "Boy and Small first pulled me toward famous people, so that was the first path I tested. It held together for a moment, but Stevie never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I let Stevie lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Boy wonder and Small wonder started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #712, Boy, Small, Eighth, One-hit, Stevie only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
-      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
-      "body": "Stevie is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
-      "body": "Wait for the clue that turns a loose theme into one exact phrase pattern."
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases completed by one shared ending word",
-    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
     "clueTableRows": [
       {
         "clue": "Boy",
         "examplePhrase": "Boy wonder",
-        "connectionExplained": "\"Boy wonder\" is a familiar label for a gifted young person who seems unusually talented."
+        "connectionExplained": "Boy connects to \"Words that come before “wonder”\""
       },
       {
         "clue": "Small",
         "examplePhrase": "Small wonder",
-        "connectionExplained": "\"Small wonder\" is a common expression used when something is not surprising."
+        "connectionExplained": "Small connects to \"Words that come before “wonder”\""
       },
       {
         "clue": "Eighth",
         "examplePhrase": "Eighth wonder",
-        "connectionExplained": "The phrase \"eighth wonder of the world\" is a familiar way to describe something astonishing."
+        "connectionExplained": "Eighth connects to \"Words that come before “wonder”\""
       },
       {
         "clue": "One-hit",
         "examplePhrase": "One-hit wonder",
-        "connectionExplained": "A \"one-hit wonder\" is an artist known mainly for one big hit song."
+        "connectionExplained": "One-hit connects to \"Words that come before “wonder”\""
       },
       {
         "clue": "Stevie",
-        "examplePhrase": "Stevie Wonder",
-        "connectionExplained": "Stevie Wonder is the famous musician whose surname makes the missing word obvious."
+        "examplePhrase": "Stevie wonder",
+        "connectionExplained": "Stevie connects to \"Words that come before “wonder”\""
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #712?",
-      "answer": "The answer is Words that come before “wonder” because that reading explains the full set cleanly, including the final clue."
+      "answer": "The answer is \"Words that come before “wonder”\". The clues Boy, Small, Eighth, One-hit, Stevie all share this connection."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #712?",
-      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #712?",
-      "answer": "Stevie is the turning clue because \"Stevie Wonder\" is the exact phrase that makes the missing word obvious. With the missing word in place, other clues read cleanly as Boy wonder and Small wonder. The board stays slippery because several clues feel broad until one clue exposes the shared phrase ending."
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
     }
   ],
   "solvePath": {
-    "firstRead": "Boy, Small, and Eighth do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"famous people\" can feel plausible before the missing word finally shows itself. Stevie is the clue that finally makes the missing word visible.",
+    "firstRead": "LinkedIn Pinpoint #712 just unlocked, and this is the fastest verified update. The board clues are Boy, Small, Eighth, One-hit, Stevie, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
     "falseStarts": [
-      "famous people"
+      "a loose topic list",
+      "standalone clue meanings"
     ],
     "whyFalseStartPlausible": [
-      "famous people feels plausible early on, but Stevie demands a more exact reading."
+      "Boy, Small do not immediately advertise one shared phrase slot before Boy shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
-    "breakingClue": "Stevie",
-    "pivot": "The solve turned when I let Stevie lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Boy wonder and Small wonder started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
-    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Boy wonder, Small wonder, and Eighth wonder stop feeling loose and start sounding exact. Once Stevie makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The board stays slippery because several clues feel broad until one clue exposes the shared phrase ending."
+    "breakingClue": "Boy",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #712, Boy, Small, Eighth, One-hit, Stevie only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Boy lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "turningPoint": {
-    "clue": "Stevie",
-    "whyDecisive": "Stevie is the clue that finally makes the missing word impossible to miss.",
-    "whatChangedAfterIt": "Once Stevie made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
+    "clue": "Boy",
+    "whyDecisive": "Boy is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Boy lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
       "clue": "Boy",
-      "surfaceMisread": "famous people",
-      "resolvedPhraseOrMember": "Boy wonder",
-      "nonObviousWhy": "\"Boy wonder\" is a familiar label for a gifted young person who seems unusually talented.",
-      "searchableContext": "Boy wonder"
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Boy",
+      "nonObviousWhy": "Boy supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Boy"
     },
     {
       "clue": "Small",
-      "surfaceMisread": "famous people",
-      "resolvedPhraseOrMember": "Small wonder",
-      "nonObviousWhy": "\"Small wonder\" is a common expression used when something is not surprising.",
-      "searchableContext": "Small wonder"
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Small",
+      "nonObviousWhy": "Small supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Small"
     },
     {
       "clue": "Eighth",
-      "surfaceMisread": "famous people",
-      "resolvedPhraseOrMember": "Eighth wonder",
-      "nonObviousWhy": "The phrase \"eighth wonder of the world\" is a familiar way to describe something astonishing.",
-      "searchableContext": "Eighth wonder"
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Eighth",
+      "nonObviousWhy": "Eighth supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Eighth"
     },
     {
       "clue": "One-hit",
-      "surfaceMisread": "famous people",
-      "resolvedPhraseOrMember": "One-hit wonder",
-      "nonObviousWhy": "A \"one-hit wonder\" is an artist known mainly for one big hit song.",
-      "searchableContext": "One-hit wonder"
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "One-hit",
+      "nonObviousWhy": "One-hit supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "One-hit"
     },
     {
       "clue": "Stevie",
-      "surfaceMisread": "famous people",
-      "resolvedPhraseOrMember": "Stevie Wonder",
-      "nonObviousWhy": "Stevie Wonder is the famous musician whose surname makes the missing word obvious.",
-      "searchableContext": "Stevie Wonder"
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Stevie",
+      "nonObviousWhy": "Stevie supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Stevie"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #712?",
-      "answer": "The answer is Words that come before “wonder” because that reading explains the full set cleanly, including the final clue.",
+      "answer": "The answer is \"Words that come before “wonder”\". The clues Boy, Small, Eighth, One-hit, Stevie all share this connection.",
+      "tiedClue": "Boy"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
       "tiedClue": null
     },
     {
-      "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #712?",
-      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
       "tiedClue": null
-    },
-    {
-      "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #712?",
-      "answer": "Stevie is the turning clue because \"Stevie Wonder\" is the exact phrase that makes the missing word obvious. With the missing word in place, other clues read cleanly as Boy wonder and Small wonder. The board stays slippery because several clues feel broad until one clue exposes the shared phrase ending.",
-      "tiedClue": "Stevie"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a repeated-word phrase pattern with one missing term",
+    "angle": "familiar phrases completed by one shared ending word",
     "relatedEntities": [
-      "Boy wonder",
-      "Small wonder",
-      "Eighth wonder",
-      "One-hit wonder",
-      "Stevie Wonder"
+      "Boy",
+      "Small",
+      "Eighth",
+      "One-hit",
+      "Stevie"
     ],
     "doNotRepeatPatterns": [
-      "a repeated-word phrase pattern with one missing term",
-      "Broad clues can create the wrong frame early",
-      "The narrowing clue matters more than the loudest clue",
-      "Prefer exact phrase logic over loose category logic",
-      "Boy wonder",
-      "Small wonder"
+      "familiar phrases completed by one shared ending word",
+      "Boy",
+      "Small",
+      "Eighth",
+      "One-hit"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "famous people",
-      "whyPlausible": "famous people feels plausible early on, but Stevie demands a more exact reading.",
-      "whyRejected": "Once Stevie lands, the final answer explains the board more cleanly than famous people."
+      "label": "a loose topic list",
+      "whyPlausible": "Boy, Small do not immediately advertise one shared phrase slot before Boy shows where the repeated word belongs.",
+      "whyRejected": "Boy behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
     },
     {
-      "label": "other shared-word phrase guesses",
-      "whyPlausible": "The opening clues can support more than one shared-word read before a later clue locks the exact missing term into place.",
-      "whyRejected": "Once Stevie lands, the final answer explains the board more cleanly than that looser phrase read."
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Boy locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
-  "setValidationSummary": "Eighth, One-hit, and Stevie keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
+  "setValidationSummary": "Eighth, One-hit, Stevie show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
   "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
 }
