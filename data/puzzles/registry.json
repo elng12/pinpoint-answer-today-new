@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 713,
+    "slug": "pinpoint-answer-713",
+    "publishDate": "2026-04-13",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Cardinals",
+      "Stoplights",
+      "Blood",
+      "Raspberries",
+      "Rubies"
+    ],
+    "mainAnswer": "Things that are red",
+    "category": "Things that are red",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #713: Cardinals, Stoplights, Blood, Raspberries, Rubies.",
+    "updatedAt": "2026-04-13T07:01:49.595Z"
+  },
+  {
     "puzzleNumber": 712,
     "slug": "pinpoint-answer-712",
     "publishDate": "2026-04-12",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Boy",
@@ -16,7 +35,7 @@
     "category": "Words that come before “wonder”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Boy, Small, Eighth do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-12T07:34:06.810Z"
+    "updatedAt": "2026-04-13T07:01:49.595Z"
   },
   {
     "puzzleNumber": 711,

@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 713,
+  "slug": "pinpoint-answer-713",
+  "publishDate": "2026-04-13",
+  "isoDate": "2026-04-13",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Cardinals",
+    "Stoplights",
+    "Blood",
+    "Raspberries",
+    "Rubies"
+  ],
+  "answer": "Things that are red",
+  "category": "Things that are red",
+  "wordHints": {
+    "Cardinals": "Cardinals connects to \"Things that are red\"",
+    "Stoplights": "Stoplights connects to \"Things that are red\"",
+    "Blood": "Blood connects to \"Things that are red\"",
+    "Raspberries": "Raspberries connects to \"Things that are red\"",
+    "Rubies": "Rubies connects to \"Things that are red\""
+  },
+  "spoilerHints": {
+    "Cardinals": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Stoplights": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Blood": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Raspberries": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Rubies": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Cardinals and Stoplights pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Cardinals, Stoplights can point toward several nearby themes before one clue makes the exact category level visible. Cardinals is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Cardinals\" and \"Stoplights\" stopped feeling loose and started landing cleanly.",
+    "Blood, Raspberries, Rubies keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that are red\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that are red, which is why \"Things that are red\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Cardinals and Stoplights pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Cardinals, Stoplights can point toward several nearby themes before one clue makes the exact category level visible. Cardinals is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Cardinals\" and \"Stoplights\" stopped feeling loose and started landing cleanly.",
+    "Blood, Raspberries, Rubies keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that are red\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that are red, which is why \"Things that are red\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #713, Cardinals, Stoplights, Blood, Raspberries, Rubies only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Cardinals",
+        "examplePhrase": "Cardinals",
+        "connectionExplained": "Cardinals connects to \"Things that are red\""
+      },
+      {
+        "clue": "Stoplights",
+        "examplePhrase": "Stoplights",
+        "connectionExplained": "Stoplights connects to \"Things that are red\""
+      },
+      {
+        "clue": "Blood",
+        "examplePhrase": "Blood",
+        "connectionExplained": "Blood connects to \"Things that are red\""
+      },
+      {
+        "clue": "Raspberries",
+        "examplePhrase": "Raspberries",
+        "connectionExplained": "Raspberries connects to \"Things that are red\""
+      },
+      {
+        "clue": "Rubies",
+        "examplePhrase": "Rubies",
+        "connectionExplained": "Rubies connects to \"Things that are red\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #713?",
+      "answer": "The answer is \"Things that are red\". The clues Cardinals, Stoplights, Blood, Raspberries, Rubies all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #713 just unlocked, and this is the fastest verified update. The board clues are Cardinals, Stoplights, Blood, Raspberries, Rubies, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Cardinals, Stoplights can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Cardinals",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #713, Cardinals, Stoplights, Blood, Raspberries, Rubies only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Cardinals lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Cardinals",
+    "whyDecisive": "Cardinals is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Cardinals lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Cardinals",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Cardinals",
+      "nonObviousWhy": "Cardinals supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Cardinals"
+    },
+    {
+      "clue": "Stoplights",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Stoplights",
+      "nonObviousWhy": "Stoplights supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Stoplights"
+    },
+    {
+      "clue": "Blood",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Blood",
+      "nonObviousWhy": "Blood supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Blood"
+    },
+    {
+      "clue": "Raspberries",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Raspberries",
+      "nonObviousWhy": "Raspberries supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Raspberries"
+    },
+    {
+      "clue": "Rubies",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Rubies",
+      "nonObviousWhy": "Rubies supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rubies"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #713?",
+      "answer": "The answer is \"Things that are red\". The clues Cardinals, Stoplights, Blood, Raspberries, Rubies all share this connection.",
+      "tiedClue": "Cardinals"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Cardinals",
+      "Stoplights",
+      "Blood",
+      "Raspberries",
+      "Rubies"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Cardinals",
+      "Stoplights",
+      "Blood",
+      "Raspberries"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Cardinals, Stoplights can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Cardinals is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Blood, Raspberries, Rubies keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things that are red"
+}
