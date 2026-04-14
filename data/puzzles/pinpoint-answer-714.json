@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-714",
   "publishDate": "2026-04-14",
   "isoDate": "2026-04-14",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "category",
@@ -18,11 +18,11 @@
   "answer": "National anthems",
   "category": "National anthems",
   "wordHints": {
-    "Marcha Real": "Marcha Real connects to \"National anthems\"",
-    "Jana Gana Mana": "Jana Gana Mana connects to \"National anthems\"",
-    "La Marseillaise": "La Marseillaise connects to \"National anthems\"",
-    "God Save the King": "God Save the King connects to \"National anthems\"",
-    "O Canada": "O Canada connects to \"National anthems\""
+    "Marcha Real": "Marcha Real fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
+    "Jana Gana Mana": "Jana Gana Mana fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
+    "La Marseillaise": "La Marseillaise fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
+    "God Save the King": "God Save the King fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
+    "O Canada": "O Canada fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
   },
   "spoilerHints": {
     "Marcha Real": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -32,136 +32,145 @@
     "O Canada": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
   },
   "articleBlocks": [
-    "At first, Marcha Real and Jana Gana Mana pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Marcha Real, Jana Gana Mana can point toward several nearby themes before one clue makes the exact category level visible. Marcha Real is the clue that narrows the board into one category with clearer boundaries.",
-    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on national, examples like \"Marcha Real\" and \"Jana Gana Mana\" stopped feeling loose and started landing cleanly.",
-    "La Marseillaise, God Save the King, O Canada keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
-    "The answer was \"National anthems\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as National anthems, which is why \"National anthems\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+    "At first, this looked more like famous marches than the real category.",
+    "Marcha Real pushed me in that direction immediately.",
+    "Jana Gana Mana kept that theory alive for a moment, but la Marseillaise still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then La Marseillaise made me stop thinking about famous marches and start thinking about the real category.",
+    "Marcha Real fit once I read it through the answer.",
+    "Jana Gana Mana fit once I read it through the answer.",
+    "The answer was National anthems.",
+    "God Save the King and O Canada then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "fullAnalysis": [
-    "At first, Marcha Real and Jana Gana Mana pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Marcha Real, Jana Gana Mana can point toward several nearby themes before one clue makes the exact category level visible. Marcha Real is the clue that narrows the board into one category with clearer boundaries.",
-    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on national, examples like \"Marcha Real\" and \"Jana Gana Mana\" stopped feeling loose and started landing cleanly.",
-    "La Marseillaise, God Save the King, O Canada keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
-    "The answer was \"National anthems\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as National anthems, which is why \"National anthems\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+    "At first, this looked more like famous marches than the real category.",
+    "Marcha Real pushed me in that direction immediately.",
+    "Jana Gana Mana kept that theory alive for a moment, but la Marseillaise still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then La Marseillaise made me stop thinking about famous marches and start thinking about the real category.",
+    "Marcha Real fit once I read it through the answer.",
+    "Jana Gana Mana fit once I read it through the answer.",
+    "The answer was National anthems.",
+    "God Save the King and O Canada then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #714, Marcha Real, Jana Gana Mana, La Marseillaise, God Save the King, O Canada only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Marcha Real and Jana Gana Mana first pulled me toward famous marches, so that was the first path I tested. It held together for a moment, but la Marseillaise never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating la Marseillaise as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about famous marches; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "La Marseillaise is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When you see a list of titles, consider if they are all examples of the same type of thing."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on national",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Marcha Real",
         "examplePhrase": "Marcha Real",
-        "connectionExplained": "Marcha Real connects to \"National anthems\""
+        "connectionExplained": "Marcha Real fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
       },
       {
         "clue": "Jana Gana Mana",
         "examplePhrase": "Jana Gana Mana",
-        "connectionExplained": "Jana Gana Mana connects to \"National anthems\""
+        "connectionExplained": "Jana Gana Mana fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
       },
       {
         "clue": "La Marseillaise",
         "examplePhrase": "La Marseillaise",
-        "connectionExplained": "La Marseillaise connects to \"National anthems\""
+        "connectionExplained": "La Marseillaise fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
       },
       {
         "clue": "God Save the King",
         "examplePhrase": "God Save the King",
-        "connectionExplained": "God Save the King connects to \"National anthems\""
+        "connectionExplained": "God Save the King fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
       },
       {
         "clue": "O Canada",
         "examplePhrase": "O Canada",
-        "connectionExplained": "O Canada connects to \"National anthems\""
+        "connectionExplained": "O Canada fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #714?",
-      "answer": "The answer is \"National anthems\". The clues Marcha Real, Jana Gana Mana, La Marseillaise, God Save the King, O Canada all share this connection."
+      "answer": "The answer is \"National anthems\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #714?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. La Marseillaise is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #714?",
+      "answer": "La Marseillaise is the turning clue because \"La Marseillaise\" makes the shared category frame explicit. It also makes Marcha Real read cleanly as \"Marcha Real\". The clues could easily be mistaken for countries, cities, or royal houses, making the actual category less obvious."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #714 just unlocked, and this is the fastest verified update. The board clues are Marcha Real, Jana Gana Mana, La Marseillaise, God Save the King, O Canada, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Marcha Real, Jana Gana Mana, and La Marseillaise do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"capital cities\" can feel plausible before one clue makes the answer feel concrete. La Marseillaise is the clue that finally breaks that first read and makes the real category feel concrete.",
     "falseStarts": [
-      "a broader umbrella topic",
-      "a one-clue surface theme"
+      "capital cities",
+      "famous marches"
     ],
     "whyFalseStartPlausible": [
-      "Marcha Real, Jana Gana Mana can point toward several nearby themes before one clue makes the exact category level visible.",
-      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+      "While some are marches, others don't fit that musical style.",
+      "capital cities feels plausible early on, but it falls apart once la Marseillaise demands a more exact reading."
     ],
-    "breakingClue": "Marcha Real",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #714, Marcha Real, Jana Gana Mana, La Marseillaise, God Save the King, O Canada only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Marcha Real lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "La Marseillaise",
+    "pivot": "The solve turned when I stopped treating la Marseillaise as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about famous marches; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Marcha Real, Jana Gana Mana, and La Marseillaise stop feeling disconnected and start looking like they belong together. Once la Marseillaise is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues could easily be mistaken for countries, cities, or royal houses, making the actual category less obvious."
   },
   "turningPoint": {
-    "clue": "Marcha Real",
-    "whyDecisive": "Marcha Real is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Marcha Real lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "La Marseillaise",
+    "whyDecisive": "A later clue is what finally made the answer feel concrete.",
+    "whatChangedAfterIt": "Once La Marseillaise landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Marcha Real",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "famous marches",
       "resolvedPhraseOrMember": "Marcha Real",
-      "nonObviousWhy": "Marcha Real supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Marcha Real fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
       "searchableContext": "Marcha Real"
     },
     {
       "clue": "Jana Gana Mana",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "famous marches",
       "resolvedPhraseOrMember": "Jana Gana Mana",
-      "nonObviousWhy": "Jana Gana Mana supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Jana Gana Mana fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
       "searchableContext": "Jana Gana Mana"
     },
     {
       "clue": "La Marseillaise",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "famous marches",
       "resolvedPhraseOrMember": "La Marseillaise",
-      "nonObviousWhy": "La Marseillaise supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "La Marseillaise fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
       "searchableContext": "La Marseillaise"
     },
     {
       "clue": "God Save the King",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "famous marches",
       "resolvedPhraseOrMember": "God Save the King",
-      "nonObviousWhy": "God Save the King supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "God Save the King fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
       "searchableContext": "God Save the King"
     },
     {
       "clue": "O Canada",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "famous marches",
       "resolvedPhraseOrMember": "O Canada",
-      "nonObviousWhy": "O Canada supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "O Canada fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise.",
       "searchableContext": "O Canada"
     }
   ],
@@ -169,24 +178,24 @@
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #714?",
-      "answer": "The answer is \"National anthems\". The clues Marcha Real, Jana Gana Mana, La Marseillaise, God Save the King, O Canada all share this connection.",
-      "tiedClue": "Marcha Real"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"National anthems\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #714?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. La Marseillaise is what keeps the category reading precise instead of broad.",
+      "tiedClue": "La Marseillaise"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #714?",
+      "answer": "La Marseillaise is the turning clue because \"La Marseillaise\" makes the shared category frame explicit. It also makes Marcha Real read cleanly as \"Marcha Real\". The clues could easily be mistaken for countries, cities, or royal houses, making the actual category less obvious.",
+      "tiedClue": "La Marseillaise"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a category board focused on national",
+    "angle": "These songs are united by a common symbolic purpose",
     "relatedEntities": [
       "Marcha Real",
       "Jana Gana Mana",
@@ -195,25 +204,26 @@
       "O Canada"
     ],
     "doNotRepeatPatterns": [
-      "a category board focused on national",
+      "These songs are united by a common symbolic purpose",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
       "Marcha Real",
-      "Jana Gana Mana",
-      "La Marseillaise",
-      "God Save the King"
+      "Jana Gana Mana"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a broader umbrella topic",
-      "whyPlausible": "Marcha Real, Jana Gana Mana can point toward several nearby themes before one clue makes the exact category level visible.",
-      "whyRejected": "Marcha Real is the clue that narrows the board into one category with clearer boundaries."
+      "label": "famous marches",
+      "whyPlausible": "While some are marches, others don't fit that musical style.",
+      "whyRejected": "Once La Marseillaise lands, the final answer explains the board more cleanly than famous marches."
     },
     {
-      "label": "a one-clue surface theme",
-      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
-      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+      "label": "capital cities",
+      "whyPlausible": "capital cities feels plausible early on, but it falls apart once la Marseillaise demands a more exact reading.",
+      "whyRejected": "Once La Marseillaise lands, the final answer explains the board more cleanly than capital cities."
     }
   ],
-  "setValidationSummary": "La Marseillaise, God Save the King, O Canada keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "setValidationSummary": "La Marseillaise, God Save the King, O Canada keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
   "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as National anthems"
 }
