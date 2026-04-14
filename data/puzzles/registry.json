@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 714,
+    "slug": "pinpoint-answer-714",
+    "publishDate": "2026-04-14",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Marcha Real",
+      "Jana Gana Mana",
+      "La Marseillaise",
+      "God Save the King",
+      "O Canada"
+    ],
+    "mainAnswer": "National anthems",
+    "category": "National anthems",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #714: Marcha Real, Jana Gana Mana, La Marseillaise, God Save the King, O Canada.",
+    "updatedAt": "2026-04-14T07:01:31.369Z"
+  },
+  {
     "puzzleNumber": 713,
     "slug": "pinpoint-answer-713",
     "publishDate": "2026-04-13",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Cardinals",
@@ -16,7 +35,7 @@
     "category": "Things that are red",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Cardinals, Stoplights, Blood do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-13T07:02:03.853Z"
+    "updatedAt": "2026-04-14T07:01:31.369Z"
   },
   {
     "puzzleNumber": 712,
