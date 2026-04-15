@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 715,
+  "slug": "pinpoint-answer-715",
+  "publishDate": "2026-04-15",
+  "isoDate": "2026-04-15",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Finger",
+    "Oil",
+    "Spray",
+    "Latex",
+    "Acrylic"
+  ],
+  "answer": "Types of paints",
+  "category": "Types of paints",
+  "wordHints": {
+    "Finger": "Finger connects to \"Types of paints\"",
+    "Oil": "Oil connects to \"Types of paints\"",
+    "Spray": "Spray connects to \"Types of paints\"",
+    "Latex": "Latex connects to \"Types of paints\"",
+    "Acrylic": "Acrylic connects to \"Types of paints\""
+  },
+  "spoilerHints": {
+    "Finger": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Oil": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Spray": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Latex": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Acrylic": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, Finger and Oil can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Finger, Oil can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Finger pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of paint each clue could be, a category board focused on paints stopped sounding generic and started behaving like a real category test. Examples like \"Finger paint\" and \"Oil paint\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Spray, Latex, Acrylic read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of paints\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of paints, which is why \"Types of paints\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Finger and Oil can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Finger, Oil can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Finger pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of paint each clue could be, a category board focused on paints stopped sounding generic and started behaving like a real category test. Examples like \"Finger paint\" and \"Oil paint\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Spray, Latex, Acrylic read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of paints\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of paints, which is why \"Types of paints\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #715, Finger, Oil, Spray, Latex, Acrylic only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on paints",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Finger",
+        "examplePhrase": "Finger paint",
+        "connectionExplained": "Finger connects to \"Types of paints\""
+      },
+      {
+        "clue": "Oil",
+        "examplePhrase": "Oil paint",
+        "connectionExplained": "Oil connects to \"Types of paints\""
+      },
+      {
+        "clue": "Spray",
+        "examplePhrase": "Spray paint",
+        "connectionExplained": "Spray connects to \"Types of paints\""
+      },
+      {
+        "clue": "Latex",
+        "examplePhrase": "Latex paint",
+        "connectionExplained": "Latex connects to \"Types of paints\""
+      },
+      {
+        "clue": "Acrylic",
+        "examplePhrase": "Acrylic paint",
+        "connectionExplained": "Acrylic connects to \"Types of paints\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #715?",
+      "answer": "The answer is \"Types of paints\". The clues Finger, Oil, Spray, Latex, Acrylic all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #715 just unlocked, and this is the fastest verified update. The board clues are Finger, Oil, Spray, Latex, Acrylic, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Finger, Oil can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Finger",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #715, Finger, Oil, Spray, Latex, Acrylic only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Finger lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Finger",
+    "whyDecisive": "Finger is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Finger lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Finger",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Finger",
+      "nonObviousWhy": "Finger supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Finger"
+    },
+    {
+      "clue": "Oil",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Oil",
+      "nonObviousWhy": "Oil supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Oil"
+    },
+    {
+      "clue": "Spray",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Spray",
+      "nonObviousWhy": "Spray supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Spray"
+    },
+    {
+      "clue": "Latex",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Latex",
+      "nonObviousWhy": "Latex supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Latex"
+    },
+    {
+      "clue": "Acrylic",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Acrylic",
+      "nonObviousWhy": "Acrylic supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Acrylic"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #715?",
+      "answer": "The answer is \"Types of paints\". The clues Finger, Oil, Spray, Latex, Acrylic all share this connection.",
+      "tiedClue": "Finger"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on paints",
+    "relatedEntities": [
+      "Finger",
+      "Oil",
+      "Spray",
+      "Latex",
+      "Acrylic"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on paints",
+      "Finger",
+      "Oil",
+      "Spray",
+      "Latex"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Finger, Oil can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Finger pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Spray, Latex, Acrylic read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of paints"
+}

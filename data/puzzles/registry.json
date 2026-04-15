@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 715,
+    "slug": "pinpoint-answer-715",
+    "publishDate": "2026-04-15",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Finger",
+      "Oil",
+      "Spray",
+      "Latex",
+      "Acrylic"
+    ],
+    "mainAnswer": "Types of paints",
+    "category": "Types of paints",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #715: Finger, Oil, Spray, Latex, Acrylic.",
+    "updatedAt": "2026-04-15T07:01:58.175Z"
+  },
+  {
     "puzzleNumber": 714,
     "slug": "pinpoint-answer-714",
     "publishDate": "2026-04-14",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Marcha Real",
@@ -16,7 +35,7 @@
     "category": "National anthems",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Marcha Real, Jana Gana Mana, La Marseillaise do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-14T07:02:02.809Z"
+    "updatedAt": "2026-04-15T07:01:58.175Z"
   },
   {
     "puzzleNumber": 713,
