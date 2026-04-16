@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 716,
+  "slug": "pinpoint-answer-716",
+  "publishDate": "2026-04-16",
+  "isoDate": "2026-04-16",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Dum aloo",
+    "Gnocchi",
+    "Hash browns",
+    "French fries",
+    "Tater tots"
+  ],
+  "answer": "Potato dishes",
+  "category": "Potato dishes",
+  "wordHints": {
+    "Dum aloo": "Dum aloo connects to \"Potato dishes\"",
+    "Gnocchi": "Gnocchi connects to \"Potato dishes\"",
+    "Hash browns": "Hash browns connects to \"Potato dishes\"",
+    "French fries": "French fries connects to \"Potato dishes\"",
+    "Tater tots": "Tater tots connects to \"Potato dishes\""
+  },
+  "spoilerHints": {
+    "Dum aloo": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Gnocchi": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Hash browns": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "French fries": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Tater tots": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Dum aloo and Gnocchi pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Dum aloo, Gnocchi can point toward several nearby themes before one clue makes the exact category level visible. Dum aloo is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on potato, examples like \"Dum aloo\" and \"Gnocchi\" stopped feeling loose and started landing cleanly.",
+    "Hash browns, French fries, Tater tots keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Potato dishes\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Potato dishes, which is why \"Potato dishes\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Dum aloo and Gnocchi pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Dum aloo, Gnocchi can point toward several nearby themes before one clue makes the exact category level visible. Dum aloo is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on potato, examples like \"Dum aloo\" and \"Gnocchi\" stopped feeling loose and started landing cleanly.",
+    "Hash browns, French fries, Tater tots keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Potato dishes\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Potato dishes, which is why \"Potato dishes\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #716, Dum aloo, Gnocchi, Hash browns, French fries, Tater tots only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on potato",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Dum aloo",
+        "examplePhrase": "Dum aloo",
+        "connectionExplained": "Dum aloo connects to \"Potato dishes\""
+      },
+      {
+        "clue": "Gnocchi",
+        "examplePhrase": "Gnocchi",
+        "connectionExplained": "Gnocchi connects to \"Potato dishes\""
+      },
+      {
+        "clue": "Hash browns",
+        "examplePhrase": "Hash browns",
+        "connectionExplained": "Hash browns connects to \"Potato dishes\""
+      },
+      {
+        "clue": "French fries",
+        "examplePhrase": "French fries",
+        "connectionExplained": "French fries connects to \"Potato dishes\""
+      },
+      {
+        "clue": "Tater tots",
+        "examplePhrase": "Tater tots",
+        "connectionExplained": "Tater tots connects to \"Potato dishes\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #716?",
+      "answer": "The answer is \"Potato dishes\". The clues Dum aloo, Gnocchi, Hash browns, French fries, Tater tots all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #716 just unlocked, and this is the fastest verified update. The board clues are Dum aloo, Gnocchi, Hash browns, French fries, Tater tots, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Dum aloo, Gnocchi can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Dum aloo",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #716, Dum aloo, Gnocchi, Hash browns, French fries, Tater tots only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Dum aloo lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Dum aloo",
+    "whyDecisive": "Dum aloo is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Dum aloo lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Dum aloo",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Dum aloo",
+      "nonObviousWhy": "Dum aloo supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Dum aloo"
+    },
+    {
+      "clue": "Gnocchi",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Gnocchi",
+      "nonObviousWhy": "Gnocchi supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Gnocchi"
+    },
+    {
+      "clue": "Hash browns",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Hash browns",
+      "nonObviousWhy": "Hash browns supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Hash browns"
+    },
+    {
+      "clue": "French fries",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "French fries",
+      "nonObviousWhy": "French fries supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "French fries"
+    },
+    {
+      "clue": "Tater tots",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Tater tots",
+      "nonObviousWhy": "Tater tots supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Tater tots"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #716?",
+      "answer": "The answer is \"Potato dishes\". The clues Dum aloo, Gnocchi, Hash browns, French fries, Tater tots all share this connection.",
+      "tiedClue": "Dum aloo"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on potato",
+    "relatedEntities": [
+      "Dum aloo",
+      "Gnocchi",
+      "Hash browns",
+      "French fries",
+      "Tater tots"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on potato",
+      "Dum aloo",
+      "Gnocchi",
+      "Hash browns",
+      "French fries"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Dum aloo, Gnocchi can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Dum aloo is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Hash browns, French fries, Tater tots keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Potato dishes"
+}
