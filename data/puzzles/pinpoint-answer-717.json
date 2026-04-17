@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 717,
+  "slug": "pinpoint-answer-717",
+  "publishDate": "2026-04-17",
+  "isoDate": "2026-04-17",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "First",
+    "Foreign",
+    "Financial",
+    "Hearing",
+    "Band"
+  ],
+  "answer": "Words that come before \"aid\"",
+  "category": "Words that come before \"aid\"",
+  "wordHints": {
+    "First": "First connects to \"Words that come before \"aid\"\"",
+    "Foreign": "Foreign connects to \"Words that come before \"aid\"\"",
+    "Financial": "Financial connects to \"Words that come before \"aid\"\"",
+    "Hearing": "Hearing connects to \"Words that come before \"aid\"\"",
+    "Band": "Band connects to \"Words that come before \"aid\"\""
+  },
+  "spoilerHints": {
+    "First": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Foreign": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Financial": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector.",
+    "Hearing": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Band": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". First, Foreign do not immediately advertise one shared phrase slot before First shows where the repeated word belongs. First behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once First locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"First aid\" and \"Foreign aid\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Financial, Hearing, Band show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before \"aid\"\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before \"aid\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". First, Foreign do not immediately advertise one shared phrase slot before First shows where the repeated word belongs. First behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once First locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"First aid\" and \"Foreign aid\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Financial, Hearing, Band show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before \"aid\"\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before \"aid\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #717, First, Foreign, Financial, Hearing, Band only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "First",
+        "examplePhrase": "First aid",
+        "connectionExplained": "First connects to \"Words that come before \"aid\"\""
+      },
+      {
+        "clue": "Foreign",
+        "examplePhrase": "Foreign aid",
+        "connectionExplained": "Foreign connects to \"Words that come before \"aid\"\""
+      },
+      {
+        "clue": "Financial",
+        "examplePhrase": "Financial aid",
+        "connectionExplained": "Financial connects to \"Words that come before \"aid\"\""
+      },
+      {
+        "clue": "Hearing",
+        "examplePhrase": "Hearing aid",
+        "connectionExplained": "Hearing connects to \"Words that come before \"aid\"\""
+      },
+      {
+        "clue": "Band",
+        "examplePhrase": "Band aid",
+        "connectionExplained": "Band connects to \"Words that come before \"aid\"\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #717?",
+      "answer": "The answer is \"Words that come before \"aid\"\". The clues First, Foreign, Financial, Hearing, Band all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #717 just unlocked, and this is the fastest verified update. The board clues are First, Foreign, Financial, Hearing, Band, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "First, Foreign do not immediately advertise one shared phrase slot before First shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "First",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #717, First, Foreign, Financial, Hearing, Band only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once First lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "First",
+    "whyDecisive": "First is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once First lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "First",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "First",
+      "nonObviousWhy": "First supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "First"
+    },
+    {
+      "clue": "Foreign",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Foreign",
+      "nonObviousWhy": "Foreign supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Foreign"
+    },
+    {
+      "clue": "Financial",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Financial",
+      "nonObviousWhy": "Financial supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Financial"
+    },
+    {
+      "clue": "Hearing",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Hearing",
+      "nonObviousWhy": "Hearing supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Hearing"
+    },
+    {
+      "clue": "Band",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Band",
+      "nonObviousWhy": "Band supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Band"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #717?",
+      "answer": "The answer is \"Words that come before \"aid\"\". The clues First, Foreign, Financial, Hearing, Band all share this connection.",
+      "tiedClue": "First"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "First",
+      "Foreign",
+      "Financial",
+      "Hearing",
+      "Band"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "First",
+      "Foreign",
+      "Financial",
+      "Hearing"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "First, Foreign do not immediately advertise one shared phrase slot before First shows where the repeated word belongs.",
+      "whyRejected": "First behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once First locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Financial, Hearing, Band show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
