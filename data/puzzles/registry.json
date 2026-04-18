@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 718,
+    "slug": "pinpoint-answer-718",
+    "publishDate": "2026-04-18",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Brown",
+      "Rice",
+      "Duke",
+      "Sorbonne",
+      "Oxford"
+    ],
+    "mainAnswer": "Names of universities",
+    "category": "Names of universities",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #718: Brown, Rice, Duke, Sorbonne, Oxford.",
+    "updatedAt": "2026-04-18T07:01:39.775Z"
+  },
+  {
     "puzzleNumber": 717,
     "slug": "pinpoint-answer-717",
     "publishDate": "2026-04-17",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "First",
@@ -16,7 +35,7 @@
     "category": "Words that come before \"aid\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, First, Foreign, Financial do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-17T07:02:31.670Z"
+    "updatedAt": "2026-04-18T07:01:39.775Z"
   },
   {
     "puzzleNumber": 716,
