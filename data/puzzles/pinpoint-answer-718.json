@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-718",
   "publishDate": "2026-04-18",
   "isoDate": "2026-04-18",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "category",
@@ -18,11 +18,11 @@
   "answer": "Names of universities",
   "category": "Names of universities",
   "wordHints": {
-    "Brown": "Brown connects to \"Names of universities\"",
-    "Rice": "Rice connects to \"Names of universities\"",
-    "Duke": "Duke connects to \"Names of universities\"",
-    "Sorbonne": "Sorbonne connects to \"Names of universities\"",
-    "Oxford": "Oxford connects to \"Names of universities\""
+    "Brown": "Brown University is a well-known Ivy League school in Rhode Island.",
+    "Rice": "Rice University is a research university in Houston, Texas.",
+    "Duke": "Duke University is a prestigious private research university in Durham, North Carolina.",
+    "Sorbonne": "The Sorbonne is a historic university in Paris, France, now part of the University of Paris.",
+    "Oxford": "Oxford University is one of the oldest and most famous universities in the English-speaking world, located in Oxford, England."
   },
   "spoilerHints": {
     "Brown": "Treat this as one member of a narrower category, not as a broad standalone topic.",
@@ -32,188 +32,204 @@
     "Oxford": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
   },
   "articleBlocks": [
-    "At first, Brown and Rice pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Brown, Rice can point toward several nearby themes before one clue makes the exact category level visible. Brown is the clue that narrows the board into one category with clearer boundaries.",
-    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on names, examples like \"Brown\" and \"Rice\" stopped feeling loose and started landing cleanly.",
-    "Duke, Sorbonne, Oxford keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
-    "The answer was \"Names of universities\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Names of universities, which is why \"Names of universities\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+    "The initial clues felt random. Brown could be a color, Rice a grain, and Duke a title.",
+    "I was missing a clear pattern.",
+    "My first thought was that they were all elite colleges, but that felt too broad. I needed a more specific connection.",
+    "The inclusion of Sorbonne and Oxford shifted my perspective. These are both famous European universities.",
+    "That's when it clicked: they are all names of universities.",
+    "The answer is names of universities. Each clue represents a distinct institution.",
+    "Brown is Brown University, Rice is Rice University, and Duke is Duke University.",
+    "Sorbonne points to Sorbonne University in Paris, and Oxford is Oxford University in England.",
+    "The initial misdirection made the final answer more satisfying.",
+    "Now the clues form a clear and recognizable category.",
+    "The full set confirms that each clue is a well-known university.",
+    "Sometimes the most obvious answer is the one we overlook.",
+    "This puzzle highlights the importance of considering all clues before jumping to a conclusion.",
+    "Next time, I'll focus on finding the common thread among all the clues."
   ],
   "fullAnalysis": [
-    "At first, Brown and Rice pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Brown, Rice can point toward several nearby themes before one clue makes the exact category level visible. Brown is the clue that narrows the board into one category with clearer boundaries.",
-    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on names, examples like \"Brown\" and \"Rice\" stopped feeling loose and started landing cleanly.",
-    "Duke, Sorbonne, Oxford keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
-    "The answer was \"Names of universities\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Names of universities, which is why \"Names of universities\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+    "The initial clues felt random. Brown could be a color, Rice a grain, and Duke a title.",
+    "I was missing a clear pattern.",
+    "My first thought was that they were all elite colleges, but that felt too broad. I needed a more specific connection.",
+    "The inclusion of Sorbonne and Oxford shifted my perspective. These are both famous European universities.",
+    "That's when it clicked: they are all names of universities.",
+    "The answer is names of universities. Each clue represents a distinct institution.",
+    "Brown is Brown University, Rice is Rice University, and Duke is Duke University.",
+    "Sorbonne points to Sorbonne University in Paris, and Oxford is Oxford University in England.",
+    "The initial misdirection made the final answer more satisfying.",
+    "Now the clues form a clear and recognizable category.",
+    "The full set confirms that each clue is a well-known university.",
+    "Sometimes the most obvious answer is the one we overlook.",
+    "This puzzle highlights the importance of considering all clues before jumping to a conclusion.",
+    "Next time, I'll focus on finding the common thread among all the clues."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #718, Brown, Rice, Duke, Sorbonne, Oxford only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Brown and Rice first pulled me toward famous schools, so that was the first path I tested. It held together for a moment, but oxford never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating oxford as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about famous schools; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Oxford is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When solving, consider how location can affect a category."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on names",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Brown",
-        "examplePhrase": "Brown",
-        "connectionExplained": "Brown connects to \"Names of universities\""
+        "examplePhrase": "Brown University",
+        "connectionExplained": "Brown University is a well-known Ivy League school in Rhode Island."
       },
       {
         "clue": "Rice",
-        "examplePhrase": "Rice",
-        "connectionExplained": "Rice connects to \"Names of universities\""
+        "examplePhrase": "Rice University",
+        "connectionExplained": "Rice University is a research university in Houston, Texas."
       },
       {
         "clue": "Duke",
-        "examplePhrase": "Duke",
-        "connectionExplained": "Duke connects to \"Names of universities\""
+        "examplePhrase": "Duke University",
+        "connectionExplained": "Duke University is a prestigious private research university in Durham, North Carolina."
       },
       {
         "clue": "Sorbonne",
-        "examplePhrase": "Sorbonne",
-        "connectionExplained": "Sorbonne connects to \"Names of universities\""
+        "examplePhrase": "Sorbonne University",
+        "connectionExplained": "The Sorbonne is a historic university in Paris, France, now part of the University of Paris."
       },
       {
         "clue": "Oxford",
-        "examplePhrase": "Oxford",
-        "connectionExplained": "Oxford connects to \"Names of universities\""
+        "examplePhrase": "Oxford University",
+        "connectionExplained": "Oxford University is one of the oldest and most famous universities in the English-speaking world, located in Oxford, England."
       }
     ]
   },
   "faqs": [
     {
       "question": "What is the answer to LinkedIn Pinpoint #718?",
-      "answer": "The answer is \"Names of universities\". The clues Brown, Rice, Duke, Sorbonne, Oxford all share this connection."
+      "answer": "The answer is \"Names of universities\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "What is the connection in LinkedIn Pinpoint #718?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Oxford is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Which clue really unlocks LinkedIn Pinpoint #718?",
+      "answer": "Oxford is the turning clue because \"Oxford University\" makes the shared category frame explicit. It also makes Brown read cleanly as \"Brown University\". The mix of American and European schools obscures the category at first."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #718 just unlocked, and this is the fastest verified update. The board clues are Brown, Rice, Duke, Sorbonne, Oxford, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Brown, Rice, and Duke do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"elite colleges\" can feel plausible before one clue makes the answer feel concrete. Oxford is the clue that finally breaks that first read and makes the real category feel concrete.",
     "falseStarts": [
-      "a broader umbrella topic",
-      "a one-clue surface theme"
+      "elite colleges"
     ],
     "whyFalseStartPlausible": [
-      "Brown, Rice can point toward several nearby themes before one clue makes the exact category level visible.",
-      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+      "That guess is too broad. Many famous schools do not appear in the list."
     ],
-    "breakingClue": "Brown",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #718, Brown, Rice, Duke, Sorbonne, Oxford only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Brown lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Oxford",
+    "pivot": "The solve turned when I stopped treating oxford as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about famous schools; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Brown, Rice, and Duke stop feeling disconnected and start looking like they belong together. Once oxford is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of American and European schools obscures the category at first."
   },
   "turningPoint": {
-    "clue": "Brown",
-    "whyDecisive": "Brown is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Brown lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Oxford",
+    "whyDecisive": "Recognizing Sorbonne and Oxford as universities made the category click.",
+    "whatChangedAfterIt": "Once Oxford landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Brown",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Brown",
-      "nonObviousWhy": "Brown supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Brown"
+      "surfaceMisread": "famous schools",
+      "resolvedPhraseOrMember": "Brown University",
+      "nonObviousWhy": "Brown University is a well-known Ivy League school in Rhode Island.",
+      "searchableContext": "Brown University"
     },
     {
       "clue": "Rice",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Rice",
-      "nonObviousWhy": "Rice supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Rice"
+      "surfaceMisread": "famous schools",
+      "resolvedPhraseOrMember": "Rice University",
+      "nonObviousWhy": "Rice University is a research university in Houston, Texas.",
+      "searchableContext": "Rice University"
     },
     {
       "clue": "Duke",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Duke",
-      "nonObviousWhy": "Duke supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Duke"
+      "surfaceMisread": "famous schools",
+      "resolvedPhraseOrMember": "Duke University",
+      "nonObviousWhy": "Duke University is a prestigious private research university in Durham, North Carolina.",
+      "searchableContext": "Duke University"
     },
     {
       "clue": "Sorbonne",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Sorbonne",
-      "nonObviousWhy": "Sorbonne supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Sorbonne"
+      "surfaceMisread": "famous schools",
+      "resolvedPhraseOrMember": "Sorbonne University",
+      "nonObviousWhy": "The Sorbonne is a historic university in Paris, France, now part of the University of Paris.",
+      "searchableContext": "Sorbonne University"
     },
     {
       "clue": "Oxford",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Oxford",
-      "nonObviousWhy": "Oxford supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Oxford"
+      "surfaceMisread": "famous schools",
+      "resolvedPhraseOrMember": "Oxford University",
+      "nonObviousWhy": "Oxford University is one of the oldest and most famous universities in the English-speaking world, located in Oxford, England.",
+      "searchableContext": "Oxford University"
     }
   ],
   "faqItems": [
     {
       "intentType": "definition",
       "question": "What is the answer to LinkedIn Pinpoint #718?",
-      "answer": "The answer is \"Names of universities\". The clues Brown, Rice, Duke, Sorbonne, Oxford all share this connection.",
-      "tiedClue": "Brown"
-    },
-    {
-      "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "answer": "The answer is \"Names of universities\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #718?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Oxford is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Oxford"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #718?",
+      "answer": "Oxford is the turning clue because \"Oxford University\" makes the shared category frame explicit. It also makes Brown read cleanly as \"Brown University\". The mix of American and European schools obscures the category at first.",
+      "tiedClue": "Oxford"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a category board focused on names",
+    "angle": "A list of prominent universities from around the world",
     "relatedEntities": [
-      "Brown",
-      "Rice",
-      "Duke",
-      "Sorbonne",
-      "Oxford"
+      "Brown University",
+      "Rice University",
+      "Duke University",
+      "Sorbonne University",
+      "Oxford University"
     ],
     "doNotRepeatPatterns": [
-      "a category board focused on names",
-      "Brown",
-      "Rice",
-      "Duke",
-      "Sorbonne"
+      "A list of prominent universities from around the world",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
+      "Brown University",
+      "Rice University"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a broader umbrella topic",
-      "whyPlausible": "Brown, Rice can point toward several nearby themes before one clue makes the exact category level visible.",
-      "whyRejected": "Brown is the clue that narrows the board into one category with clearer boundaries."
+      "label": "famous schools",
+      "whyPlausible": "That guess is too broad. Many famous schools do not appear in the list.",
+      "whyRejected": "Once Oxford lands, the final answer explains the board more cleanly than famous schools."
     },
     {
-      "label": "a one-clue surface theme",
-      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
-      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+      "label": "elite colleges",
+      "whyPlausible": "elite colleges feels plausible early on, but it falls apart once oxford demands a more exact reading.",
+      "whyRejected": "Once Oxford lands, the final answer explains the board more cleanly than elite colleges."
     }
   ],
-  "setValidationSummary": "Duke, Sorbonne, Oxford keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "setValidationSummary": "Duke, Sorbonne, Oxford keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
   "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Names of universities"
 }

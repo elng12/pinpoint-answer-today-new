@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-718",
     "publishDate": "2026-04-18",
     "status": "live",
-    "detailState": "generating",
+    "detailState": "validated",
     "clues": [
       "Brown",
       "Rice",
@@ -15,8 +15,8 @@
     "mainAnswer": "Names of universities",
     "category": "Names of universities",
     "difficultyLevel": "Moderate",
-    "shortSummary": "LinkedIn Pinpoint #718: Brown, Rice, Duke, Sorbonne, Oxford.",
-    "updatedAt": "2026-04-18T08:36:04.538Z"
+    "shortSummary": "At first glance, Brown, Rice, Duke do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-04-18T08:36:21.837Z"
   },
   {
     "puzzleNumber": 717,
