@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 719,
+  "slug": "pinpoint-answer-719",
+  "publishDate": "2026-04-19",
+  "isoDate": "2026-04-19",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Rose",
+    "Anchor",
+    "Infinity symbol",
+    "Name and/or date",
+    "Inspirational quote"
+  ],
+  "answer": "Popular tattoos",
+  "category": "Popular tattoos",
+  "wordHints": {
+    "Rose": "Rose connects to \"Popular tattoos\"",
+    "Anchor": "Anchor connects to \"Popular tattoos\"",
+    "Infinity symbol": "Infinity symbol connects to \"Popular tattoos\"",
+    "Name and/or date": "Name and/or date connects to \"Popular tattoos\"",
+    "Inspirational quote": "Inspirational quote connects to \"Popular tattoos\""
+  },
+  "spoilerHints": {
+    "Rose": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Anchor": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Infinity symbol": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Name and/or date": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Inspirational quote": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Rose and Anchor pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Rose, Anchor can point toward several nearby themes before one clue makes the exact category level visible. Rose is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on popular, examples like \"Rose\" and \"Anchor\" stopped feeling loose and started landing cleanly.",
+    "Infinity symbol, Name and/or date, Inspirational quote keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Popular tattoos\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Popular tattoos, which is why \"Popular tattoos\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Rose and Anchor pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Rose, Anchor can point toward several nearby themes before one clue makes the exact category level visible. Rose is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on popular, examples like \"Rose\" and \"Anchor\" stopped feeling loose and started landing cleanly.",
+    "Infinity symbol, Name and/or date, Inspirational quote keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Popular tattoos\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Popular tattoos, which is why \"Popular tattoos\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #719, Rose, Anchor, Infinity symbol, Name and/or date, Inspirational quote only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on popular",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Rose",
+        "examplePhrase": "Rose",
+        "connectionExplained": "Rose connects to \"Popular tattoos\""
+      },
+      {
+        "clue": "Anchor",
+        "examplePhrase": "Anchor",
+        "connectionExplained": "Anchor connects to \"Popular tattoos\""
+      },
+      {
+        "clue": "Infinity symbol",
+        "examplePhrase": "Infinity symbol",
+        "connectionExplained": "Infinity symbol connects to \"Popular tattoos\""
+      },
+      {
+        "clue": "Name and/or date",
+        "examplePhrase": "Name and/or date",
+        "connectionExplained": "Name and/or date connects to \"Popular tattoos\""
+      },
+      {
+        "clue": "Inspirational quote",
+        "examplePhrase": "Inspirational quote",
+        "connectionExplained": "Inspirational quote connects to \"Popular tattoos\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #719?",
+      "answer": "The answer is \"Popular tattoos\". The clues Rose, Anchor, Infinity symbol, Name and/or date, Inspirational quote all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #719 just unlocked, and this is the fastest verified update. The board clues are Rose, Anchor, Infinity symbol, Name and/or date, Inspirational quote, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Rose, Anchor can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Rose",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #719, Rose, Anchor, Infinity symbol, Name and/or date, Inspirational quote only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Rose lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Rose",
+    "whyDecisive": "Rose is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Rose lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Rose",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Rose",
+      "nonObviousWhy": "Rose supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rose"
+    },
+    {
+      "clue": "Anchor",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Anchor",
+      "nonObviousWhy": "Anchor supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Anchor"
+    },
+    {
+      "clue": "Infinity symbol",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Infinity symbol",
+      "nonObviousWhy": "Infinity symbol supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Infinity symbol"
+    },
+    {
+      "clue": "Name and/or date",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Name and/or date",
+      "nonObviousWhy": "Name and/or date supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Name and/or date"
+    },
+    {
+      "clue": "Inspirational quote",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Inspirational quote",
+      "nonObviousWhy": "Inspirational quote supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Inspirational quote"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #719?",
+      "answer": "The answer is \"Popular tattoos\". The clues Rose, Anchor, Infinity symbol, Name and/or date, Inspirational quote all share this connection.",
+      "tiedClue": "Rose"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on popular",
+    "relatedEntities": [
+      "Rose",
+      "Anchor",
+      "Infinity symbol",
+      "Name and/or date",
+      "Inspirational quote"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on popular",
+      "Rose",
+      "Anchor",
+      "Infinity symbol",
+      "Name and/or date"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Rose, Anchor can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Rose is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Infinity symbol, Name and/or date, Inspirational quote keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Popular tattoos"
+}
