@@ -8,6 +8,10 @@ import { buildSiteMetadata, HOME_SEO_DESCRIPTION, HOME_SEO_TITLE } from "@/lib/s
 export const metadata: Metadata = buildSiteMetadata({
   title: HOME_SEO_TITLE,
   description: HOME_SEO_DESCRIPTION,
+  // Real pages provide their own canonical and social metadata.
+  // Keep the root fallback minimal so 404 pages do not inherit homepage signals.
+  includeAlternates: false,
+  includeSocial: false,
 });
 
 export default async function RootLayout({

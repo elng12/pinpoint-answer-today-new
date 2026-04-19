@@ -172,23 +172,24 @@ const nextConfig: NextConfig = {
         destination: "/puzzles/connector/:slug",
         permanent: true,
       },
-      // Locale numeric puzzle pages first normalize to the English legacy alias,
+      // Locale numeric puzzle pages first normalize to the English numeric alias,
       // then the app validates whether that puzzle number really exists.
       {
         source: `/${locale}/puzzles/:number(\\d+)`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/puzzles/:number",
         permanent: true,
       },
-      // Locale slug-format puzzle pages: /en/puzzles/pinpoint-answer-530 → canonical
+      // Locale slug-format puzzle pages should also flow through the numeric
+      // validator so nonexistent numbers do not mint fake canonical detail URLs.
       {
         source: `/${locale}/puzzles/pinpoint-answer-:number(\\d+)`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/puzzles/:number",
         permanent: true,
       },
-      // Locale-root puzzle alias: /en/pinpoint-answer-678 → /linkedin-pinpoint-answers/pinpoint-answer-678
+      // Locale-root puzzle alias validates the number before redirecting onward.
       {
         source: `/${locale}/pinpoint-answer-:number(\\d+)`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/puzzles/:number",
         permanent: true,
       },
       // Dynamic today alias keeps its own stable URL, then resolves to the current live detail page.
@@ -209,10 +210,11 @@ const nextConfig: NextConfig = {
         destination: "/pinpoint/:date",
         permanent: true,
       },
-      // Older "number-analysis" aliases still point at the canonical detail page when the number exists.
+      // Older "number-analysis" aliases normalize through the legacy validator
+      // so nonexistent numbers stay a clean 404.
       {
         source: `/${locale}/pinpoint/:number(\\d+)-analysis`,
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/pinpoint/:number-analysis",
         permanent: true,
       },
       // Preview page
@@ -273,10 +275,11 @@ const nextConfig: NextConfig = {
         destination: redirect.destination,
         permanent: true as const,
       })),
-      // Slug-format puzzle pages without locale: /puzzles/pinpoint-answer-530 → canonical
+      // Slug-format puzzle pages without locale should validate the number
+      // before redirecting to a canonical detail URL.
       {
         source: "/puzzles/pinpoint-answer-:number(\\d+)",
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/puzzles/:number",
         permanent: true as const,
       },
       // Legacy connectors archive root → canonical archive
@@ -291,16 +294,16 @@ const nextConfig: NextConfig = {
         destination: "/puzzles",
         permanent: true as const,
       },
-      // Old root detail alias: /pinpoint-answer-530 → canonical
+      // Old root detail alias validates the number before redirecting onward.
       {
         source: "/pinpoint-answer-:number(\\d+)",
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/puzzles/:number",
         permanent: true as const,
       },
-      // Older numeric detail alias: /linkedin-pinpoint/530 → canonical
+      // Older numeric detail alias validates the number before redirecting onward.
       {
         source: "/linkedin-pinpoint/:number(\\d+)",
-        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        destination: "/puzzles/:number",
         permanent: true as const,
       },
       // Old pinpoint archive shortcut → archive

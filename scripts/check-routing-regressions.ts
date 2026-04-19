@@ -81,14 +81,16 @@ async function checkRedirectConfig() {
     "/de/linkedin-pinpoint-answers/:slug/opengraph-image",
     "/linkedin-pinpoint-answers/:slug/opengraph-image",
   );
-  assertRedirectRule(rules, "/fr/puzzles/:number(\\d+)", "/linkedin-pinpoint-answers/pinpoint-answer-:number/");
+  assertRedirectRule(rules, "/fr/puzzles/:number(\\d+)", "/puzzles/:number");
   assertRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})", "/pinpoint/:date");
   assertRedirectRule(rules, "/en/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/puzzles/connectors", "/puzzles");
   assertRedirectRule(rules, "/sitemaps/pt-BR.xml", "/sitemap.xml");
   assertRedirectRule(rules, "/feedback", "/contact-us");
   assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
-  assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/linkedin-pinpoint-answers/pinpoint-answer-:number/");
+  assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
+  assertRedirectRule(rules, "/puzzles/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
+  assertRedirectRule(rules, "/fr/pinpoint/:number(\\d+)-analysis", "/pinpoint/:number-analysis");
 
   console.log("ok: next.config.ts preserves key locale and legacy redirect rules");
 }

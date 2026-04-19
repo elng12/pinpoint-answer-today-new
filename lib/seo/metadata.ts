@@ -158,9 +158,13 @@ function buildIconMetadata(): Pick<Metadata, "appleWebApp" | "icons" | "manifest
 export function buildSiteMetadata({
   title,
   description,
+  includeAlternates = true,
+  includeSocial = true,
 }: {
   title: string;
   description: string;
+  includeAlternates?: boolean;
+  includeSocial?: boolean;
 }): Metadata {
   const baseUrl = getSiteUrl();
   const socialImage = buildSocialImage(defaultSocialImagePath, `${siteName} social preview`);
@@ -177,23 +181,27 @@ export function buildSiteMetadata({
         google: verificationCode,
       },
     }),
-    alternates: buildCanonicalAlternates("/"),
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: absoluteUrl("/"),
-      siteName,
-      locale: SITE_LOCALE,
-      images: [socialImage],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [socialImage],
-      ...(twitterHandle ? { site: twitterHandle } : {}),
-    },
+    ...(includeAlternates && {
+      alternates: buildCanonicalAlternates("/"),
+    }),
+    ...(includeSocial && {
+      openGraph: {
+        title,
+        description,
+        type: "website",
+        url: absoluteUrl("/"),
+        siteName,
+        locale: SITE_LOCALE,
+        images: [socialImage],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [socialImage],
+        ...(twitterHandle ? { site: twitterHandle } : {}),
+      },
+    }),
   };
 }
 
