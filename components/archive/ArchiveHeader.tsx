@@ -1,17 +1,15 @@
-import { SectionHeading } from "@/components/shared/SectionHeading";
-
 export function ArchiveHeader({ totalCount }: { totalCount: number }) {
   return (
     <section className="surface" style={{ padding: 32 }}>
-      <SectionHeading
-        eyebrow="Archive"
-        title="All Pinpoint Answers"
-        description="Use the archive as the clean history hub: grouped by month, searchable by clue or puzzle number, and linked into full explanation pages."
-      />
+      <p className="eyebrow">Archive</p>
+      <h1 className="section-title">LinkedIn Pinpoint Archive</h1>
+      <p className="copy">
+        Search past LinkedIn Pinpoint answers by puzzle number or clue, then jump into the matching answer page.
+      </p>
       <div className="chip-row" style={{ marginTop: 18 }}>
-        <span className="chip">{totalCount} indexed puzzles</span>
-        <span className="chip">English-only archive</span>
-        <span className="chip">Direct links to full analysis</span>
+        <span className="chip">{totalCount} archived puzzles</span>
+        <span className="chip">Search by clue or number</span>
+        <span className="chip">Open the matching answer page</span>
       </div>
     </section>
   );

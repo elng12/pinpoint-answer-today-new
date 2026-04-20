@@ -24,7 +24,7 @@ export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
   const current = await getCurrentPuzzle();
-  const description = `Today's LinkedIn Pinpoint answer is Puzzle #${current.number} — updated daily with spoiler-safe hints, clue explanations, and solutions that protect your streak.`;
+  const description = `Today's LinkedIn Pinpoint answer is Puzzle #${current.number}. Get spoiler-safe hints, clue help, and the verified solution for the current puzzle.`;
   return buildPageMetadata({
     title: HOME_SEO_TITLE,
     description,

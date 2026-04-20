@@ -18,10 +18,10 @@ export function HomeHero({
     <section className="home-hero">
       <div className="home-hero-inner">
         <span className="home-status-badge">Live now</span>
-        <p className="home-hero-kicker">Today&apos;s Pinpoint hints, yesterday&apos;s answer, and the archive</p>
+        <p className="home-hero-kicker">Today&apos;s puzzle answer with spoiler-safe hints</p>
         <h1 className="home-hero-title">{`Today's LinkedIn Pinpoint #${puzzle.number} Answer`}</h1>
         <p className="home-hero-subtitle">
-          {`Need today's LinkedIn Pinpoint answer? Find spoiler-safe hints, yesterday's solution, and the full archive for Puzzle #${puzzle.number} in one place.`}
+          {`Need today's LinkedIn Pinpoint answer? Start with spoiler-safe hints for Puzzle #${puzzle.number}, then open the verified solution when you're ready.`}
         </p>
         <div className="button-row home-hero-actions">
           <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>
@@ -36,7 +36,7 @@ export function HomeHero({
             Play on LinkedIn
           </a>
           <Link className="button-secondary home-hero-tertiary" href={routes.archive} prefetch={false}>
-            Open full archive
+            Browse past puzzles
           </Link>
         </div>
         <p className="home-hero-detail">

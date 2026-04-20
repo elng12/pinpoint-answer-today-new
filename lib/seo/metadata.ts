@@ -3,12 +3,12 @@ import { defaultLocale } from "@/i18n.config";
 import { defaultSocialImagePath, siteName, twitterHandle } from "@/lib/site/config";
 import { fitPinpointClues } from "@/lib/seo/pinpoint-text";
 
-export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Clues, Walkthrough & Archive";
+export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Current Puzzle, Hints & Answer";
 export const HOME_SEO_DESCRIPTION =
-  "Get today's LinkedIn Pinpoint answer with spoiler-safe hints, clear clue-by-clue walkthroughs, yesterday's answer, and the full archive, all in one place.";
-export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive & Guides | Pinpoint Answer Today";
+  "Get today's LinkedIn Pinpoint answer for the current puzzle with spoiler-safe hints, clue help, and a fast path to the final solution.";
+export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive | Past Answers by Puzzle Number";
 export const ARCHIVE_SEO_DESCRIPTION =
-  "Browse LinkedIn Pinpoint walkthroughs, clue guides, archive pages, and past answers. Open the latest recap fast or revisit older puzzles in one place.";
+  "Browse past LinkedIn Pinpoint answers in one archive. Search by puzzle number or clue, then open the matching answer page fast.";
 const TITLE_MAX_LENGTH = 60;
 const TITLE_MIN_LENGTH = 55;
 const DESCRIPTION_MAX_LENGTH = 160;
