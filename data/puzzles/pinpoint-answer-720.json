@@ -1,0 +1,233 @@
+{
+  "puzzleNumber": 720,
+  "slug": "pinpoint-answer-720",
+  "publishDate": "2026-04-20",
+  "isoDate": "2026-04-20",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Spade",
+    "Rake",
+    "Trowel",
+    "Hoe",
+    "Wheelbarrow (to move soil)"
+  ],
+  "answer": "Gardening tools",
+  "category": "Gardening tools",
+  "wordHints": {
+    "Spade": "A spade is essential for digging and transplanting in a garden.",
+    "Rake": "Rakes are used to gather leaves and debris in gardens.",
+    "Trowel": "A trowel is perfect for planting seedlings and small plants.",
+    "Hoe": "Hoes help in weeding and cultivating soil in gardens.",
+    "Wheelbarrow (to move soil)": "Wheelbarrows are used to transport soil and plants around a garden."
+  },
+  "spoilerHints": {
+    "Spade": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Rake": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Trowel": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Hoe": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Wheelbarrow (to move soil)": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
+  "articleBlocks": [
+    "At first glance, this set of tools could fit a few different outdoor activities.",
+    "Are we equipping a farm, a landscaping crew, or just someone's backyard?",
+    "I initially thought of 'Landscaping equipment' because several tools can be used for larger projects.",
+    "But that theory broke when I considered the 'Wheelbarrow (to move soil)' clue.",
+    "That clue specifically pointed to moving soil, a common task in gardening.",
+    "The other tools—spade, rake, trowel, and hoe—fit perfectly into this more focused image.",
+    "The answer is: Gardening tools.",
+    "The wheelbarrow isn't hauling gravel for a patio; it's carrying compost for the tomatoes.",
+    "Now the set feels complete and precise.",
+    "Each tool has a clear role in maintaining a garden.",
+    "This puzzle highlighted how a single clarifying clue can transform a broad set into a specific category.",
+    "Next time, I'll look for clues that set the scale early."
+  ],
+  "fullAnalysis": [
+    "At first glance, this set of tools could fit a few different outdoor activities.",
+    "Are we equipping a farm, a landscaping crew, or just someone's backyard?",
+    "I initially thought of 'Landscaping equipment' because several tools can be used for larger projects.",
+    "But that theory broke when I considered the 'Wheelbarrow (to move soil)' clue.",
+    "That clue specifically pointed to moving soil, a common task in gardening.",
+    "The other tools—spade, rake, trowel, and hoe—fit perfectly into this more focused image.",
+    "The answer is: Gardening tools.",
+    "The wheelbarrow isn't hauling gravel for a patio; it's carrying compost for the tomatoes.",
+    "Now the set feels complete and precise.",
+    "Each tool has a clear role in maintaining a garden.",
+    "This puzzle highlighted how a single clarifying clue can transform a broad set into a specific category.",
+    "Next time, I'll look for clues that set the scale early."
+  ],
+  "solutionNarrative": [
+    "Spade and Rake first pulled me toward landscaping equipment, so that was the first path I tested. It held together for a moment, but wheelbarrow (to move soil) never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating wheelbarrow (to move soil) as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about landscaping equipment; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+  ],
+  "lessons": [
+    {
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Wheelbarrow (to move soil) is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "Look for clues that specify scale to narrow down broad categories."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on gardening",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Spade",
+        "examplePhrase": "Gardening spade",
+        "connectionExplained": "A spade is essential for digging and transplanting in a garden."
+      },
+      {
+        "clue": "Rake",
+        "examplePhrase": "Gardening rake",
+        "connectionExplained": "Rakes are used to gather leaves and debris in gardens."
+      },
+      {
+        "clue": "Trowel",
+        "examplePhrase": "Gardening trowel",
+        "connectionExplained": "A trowel is perfect for planting seedlings and small plants."
+      },
+      {
+        "clue": "Hoe",
+        "examplePhrase": "Gardening hoe",
+        "connectionExplained": "Hoes help in weeding and cultivating soil in gardens."
+      },
+      {
+        "clue": "Wheelbarrow (to move soil)",
+        "examplePhrase": "Gardening wheelbarrow",
+        "connectionExplained": "Wheelbarrows are used to transport soil and plants around a garden."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #720?",
+      "answer": "The answer is \"Gardening tools\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #720?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Wheelbarrow (to move soil) is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #720?",
+      "answer": "Wheelbarrow (to move soil) is the turning clue because \"Gardening wheelbarrow\" makes the shared category frame explicit. It also makes Spade read cleanly as \"Gardening spade\". The board initially feels broad until the 'Wheelbarrow' clue provides a specific context."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Spade, Rake, and Trowel do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"landscaping equipment\" can feel plausible before one clue makes the answer feel concrete. Wheelbarrow (to move soil) is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "landscaping equipment",
+      "home improvement tools"
+    ],
+    "whyFalseStartPlausible": [
+      "While some tools overlap, the specific set points to smaller-scale gardening rather than broad landscaping projects.",
+      "home improvement tools feels plausible early on, but it falls apart once wheelbarrow (to move soil) demands a more exact reading."
+    ],
+    "breakingClue": "Wheelbarrow (to move soil)",
+    "pivot": "The solve turned when I stopped treating wheelbarrow (to move soil) as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about landscaping equipment; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Spade, Rake, and Trowel stop feeling disconnected and start looking like they belong together. Once wheelbarrow (to move soil) is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board initially feels broad until the 'Wheelbarrow' clue provides a specific context."
+  },
+  "turningPoint": {
+    "clue": "Wheelbarrow (to move soil)",
+    "whyDecisive": "The 'Wheelbarrow (to move soil)' clue made the association with gardening clear.",
+    "whatChangedAfterIt": "Once Wheelbarrow (to move soil) landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Spade",
+      "surfaceMisread": "landscaping equipment",
+      "resolvedPhraseOrMember": "Gardening spade",
+      "nonObviousWhy": "A spade is essential for digging and transplanting in a garden.",
+      "searchableContext": "Gardening spade"
+    },
+    {
+      "clue": "Rake",
+      "surfaceMisread": "landscaping equipment",
+      "resolvedPhraseOrMember": "Gardening rake",
+      "nonObviousWhy": "Rakes are used to gather leaves and debris in gardens.",
+      "searchableContext": "Gardening rake"
+    },
+    {
+      "clue": "Trowel",
+      "surfaceMisread": "landscaping equipment",
+      "resolvedPhraseOrMember": "Gardening trowel",
+      "nonObviousWhy": "A trowel is perfect for planting seedlings and small plants.",
+      "searchableContext": "Gardening trowel"
+    },
+    {
+      "clue": "Hoe",
+      "surfaceMisread": "landscaping equipment",
+      "resolvedPhraseOrMember": "Gardening hoe",
+      "nonObviousWhy": "Hoes help in weeding and cultivating soil in gardens.",
+      "searchableContext": "Gardening hoe"
+    },
+    {
+      "clue": "Wheelbarrow (to move soil)",
+      "surfaceMisread": "landscaping equipment",
+      "resolvedPhraseOrMember": "Gardening wheelbarrow",
+      "nonObviousWhy": "Wheelbarrows are used to transport soil and plants around a garden.",
+      "searchableContext": "Gardening wheelbarrow"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #720?",
+      "answer": "The answer is \"Gardening tools\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #720?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Wheelbarrow (to move soil) is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Wheelbarrow (to move soil)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #720?",
+      "answer": "Wheelbarrow (to move soil) is the turning clue because \"Gardening wheelbarrow\" makes the shared category frame explicit. It also makes Spade read cleanly as \"Gardening spade\". The board initially feels broad until the 'Wheelbarrow' clue provides a specific context.",
+      "tiedClue": "Wheelbarrow (to move soil)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "Common tools used for smaller-scale planting and garden upkeep",
+    "relatedEntities": [
+      "Gardening spade",
+      "Gardening rake",
+      "Gardening trowel",
+      "Gardening hoe",
+      "Gardening wheelbarrow"
+    ],
+    "doNotRepeatPatterns": [
+      "Common tools used for smaller-scale planting and garden upkeep",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
+      "Gardening spade",
+      "Gardening rake"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "landscaping equipment",
+      "whyPlausible": "While some tools overlap, the specific set points to smaller-scale gardening rather than broad landscaping projects.",
+      "whyRejected": "Once Wheelbarrow (to move soil) lands, the final answer explains the board more cleanly than landscaping equipment."
+    },
+    {
+      "label": "home improvement tools",
+      "whyPlausible": "home improvement tools feels plausible early on, but it falls apart once wheelbarrow (to move soil) demands a more exact reading.",
+      "whyRejected": "Once Wheelbarrow (to move soil) lands, the final answer explains the board more cleanly than home improvement tools."
+    }
+  ],
+  "setValidationSummary": "Trowel, Hoe, Wheelbarrow (to move soil) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Gardening tools"
+}
