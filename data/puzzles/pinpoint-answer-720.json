@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 720,
+  "slug": "pinpoint-answer-720",
+  "publishDate": "2026-04-20",
+  "isoDate": "2026-04-20",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Spade",
+    "Rake",
+    "Trowel",
+    "Hoe",
+    "Wheelbarrow (to move soil)"
+  ],
+  "answer": "Gardening tools",
+  "category": "Gardening tools",
+  "wordHints": {
+    "Spade": "Spade connects to \"Gardening tools\"",
+    "Rake": "Rake connects to \"Gardening tools\"",
+    "Trowel": "Trowel connects to \"Gardening tools\"",
+    "Hoe": "Hoe connects to \"Gardening tools\"",
+    "Wheelbarrow (to move soil)": "Wheelbarrow (to move soil) connects to \"Gardening tools\""
+  },
+  "spoilerHints": {
+    "Spade": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Rake": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Trowel": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Hoe": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Wheelbarrow (to move soil)": "This is the clue that makes the category specific enough to test instead of staying broad."
+  },
+  "articleBlocks": [
+    "At first, Spade and Rake pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Spade, Rake can point toward several nearby themes before one clue makes the exact category level visible. Spade is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on gardening, examples like \"Spade\" and \"Rake\" stopped feeling loose and started landing cleanly.",
+    "Trowel, Hoe, Wheelbarrow (to move soil) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Gardening tools\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Gardening tools, which is why \"Gardening tools\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Spade and Rake pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Spade, Rake can point toward several nearby themes before one clue makes the exact category level visible. Spade is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on gardening, examples like \"Spade\" and \"Rake\" stopped feeling loose and started landing cleanly.",
+    "Trowel, Hoe, Wheelbarrow (to move soil) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Gardening tools\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Gardening tools, which is why \"Gardening tools\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #720, Spade, Rake, Trowel, Hoe, Wheelbarrow (to move soil) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on gardening",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Spade",
+        "examplePhrase": "Spade",
+        "connectionExplained": "Spade connects to \"Gardening tools\""
+      },
+      {
+        "clue": "Rake",
+        "examplePhrase": "Rake",
+        "connectionExplained": "Rake connects to \"Gardening tools\""
+      },
+      {
+        "clue": "Trowel",
+        "examplePhrase": "Trowel",
+        "connectionExplained": "Trowel connects to \"Gardening tools\""
+      },
+      {
+        "clue": "Hoe",
+        "examplePhrase": "Hoe",
+        "connectionExplained": "Hoe connects to \"Gardening tools\""
+      },
+      {
+        "clue": "Wheelbarrow (to move soil)",
+        "examplePhrase": "Wheelbarrow (to move soil)",
+        "connectionExplained": "Wheelbarrow (to move soil) connects to \"Gardening tools\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #720?",
+      "answer": "The answer is \"Gardening tools\". The clues Spade, Rake, Trowel, Hoe, Wheelbarrow (to move soil) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #720 just unlocked, and this is the fastest verified update. The board clues are Spade, Rake, Trowel, Hoe, Wheelbarrow (to move soil), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Spade, Rake can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Spade",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #720, Spade, Rake, Trowel, Hoe, Wheelbarrow (to move soil) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Spade lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Spade",
+    "whyDecisive": "Spade is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Spade lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Spade",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Spade",
+      "nonObviousWhy": "Spade supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Spade"
+    },
+    {
+      "clue": "Rake",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Rake",
+      "nonObviousWhy": "Rake supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rake"
+    },
+    {
+      "clue": "Trowel",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Trowel",
+      "nonObviousWhy": "Trowel supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Trowel"
+    },
+    {
+      "clue": "Hoe",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Hoe",
+      "nonObviousWhy": "Hoe supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Hoe"
+    },
+    {
+      "clue": "Wheelbarrow (to move soil)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Wheelbarrow (to move soil)",
+      "nonObviousWhy": "Wheelbarrow (to move soil) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Wheelbarrow (to move soil)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #720?",
+      "answer": "The answer is \"Gardening tools\". The clues Spade, Rake, Trowel, Hoe, Wheelbarrow (to move soil) all share this connection.",
+      "tiedClue": "Spade"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on gardening",
+    "relatedEntities": [
+      "Spade",
+      "Rake",
+      "Trowel",
+      "Hoe",
+      "Wheelbarrow (to move soil)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on gardening",
+      "Spade",
+      "Rake",
+      "Trowel",
+      "Hoe"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Spade, Rake can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Spade is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Trowel, Hoe, Wheelbarrow (to move soil) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Gardening tools"
+}
