@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 724,
+  "slug": "pinpoint-answer-724",
+  "publishDate": "2026-04-24",
+  "isoDate": "2026-04-24",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Stand",
+    "Shake",
+    "Made",
+    "Writing",
+    "Kerchief"
+  ],
+  "answer": "Words that come after “hand”",
+  "category": "Words that come after “hand”",
+  "wordHints": {
+    "Stand": "Stand connects to \"Words that come after “hand”\"",
+    "Shake": "Shake connects to \"Words that come after “hand”\"",
+    "Made": "Made connects to \"Words that come after “hand”\"",
+    "Writing": "Writing connects to \"Words that come after “hand”\"",
+    "Kerchief": "Kerchief connects to \"Words that come after “hand”\""
+  },
+  "spoilerHints": {
+    "Stand": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Shake": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Made": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Writing": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Kerchief": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Stand, Shake do not immediately advertise one shared phrase slot before Stand shows where the repeated word belongs. Stand behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Stand locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"hand Stand\" and \"hand Shake\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "Made, Writing, Kerchief show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “hand”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “hand”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Stand, Shake do not immediately advertise one shared phrase slot before Stand shows where the repeated word belongs. Stand behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Stand locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"hand Stand\" and \"hand Shake\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "Made, Writing, Kerchief show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “hand”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “hand”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #724, Stand, Shake, Made, Writing, Kerchief only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Stand",
+        "examplePhrase": "hand Stand",
+        "connectionExplained": "Stand connects to \"Words that come after “hand”\""
+      },
+      {
+        "clue": "Shake",
+        "examplePhrase": "hand Shake",
+        "connectionExplained": "Shake connects to \"Words that come after “hand”\""
+      },
+      {
+        "clue": "Made",
+        "examplePhrase": "hand Made",
+        "connectionExplained": "Made connects to \"Words that come after “hand”\""
+      },
+      {
+        "clue": "Writing",
+        "examplePhrase": "hand Writing",
+        "connectionExplained": "Writing connects to \"Words that come after “hand”\""
+      },
+      {
+        "clue": "Kerchief",
+        "examplePhrase": "hand Kerchief",
+        "connectionExplained": "Kerchief connects to \"Words that come after “hand”\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #724?",
+      "answer": "The answer is \"Words that come after “hand”\". The clues Stand, Shake, Made, Writing, Kerchief all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #724 just unlocked, and this is the fastest verified update. The board clues are Stand, Shake, Made, Writing, Kerchief, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Stand, Shake do not immediately advertise one shared phrase slot before Stand shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Stand",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #724, Stand, Shake, Made, Writing, Kerchief only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Stand lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Stand",
+    "whyDecisive": "Stand is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Stand lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Stand",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Stand",
+      "nonObviousWhy": "Stand supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Stand"
+    },
+    {
+      "clue": "Shake",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Shake",
+      "nonObviousWhy": "Shake supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Shake"
+    },
+    {
+      "clue": "Made",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Made",
+      "nonObviousWhy": "Made supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Made"
+    },
+    {
+      "clue": "Writing",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Writing",
+      "nonObviousWhy": "Writing supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Writing"
+    },
+    {
+      "clue": "Kerchief",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Kerchief",
+      "nonObviousWhy": "Kerchief supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Kerchief"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #724?",
+      "answer": "The answer is \"Words that come after “hand”\". The clues Stand, Shake, Made, Writing, Kerchief all share this connection.",
+      "tiedClue": "Stand"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "Stand",
+      "Shake",
+      "Made",
+      "Writing",
+      "Kerchief"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "Stand",
+      "Shake",
+      "Made",
+      "Writing"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Stand, Shake do not immediately advertise one shared phrase slot before Stand shows where the repeated word belongs.",
+      "whyRejected": "Stand behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Stand locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Made, Writing, Kerchief show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}

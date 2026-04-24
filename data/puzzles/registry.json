@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 724,
+    "slug": "pinpoint-answer-724",
+    "publishDate": "2026-04-24",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Stand",
+      "Shake",
+      "Made",
+      "Writing",
+      "Kerchief"
+    ],
+    "mainAnswer": "Words that come after “hand”",
+    "category": "Words that come after “hand”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #724: Stand, Shake, Made, Writing, Kerchief.",
+    "updatedAt": "2026-04-24T07:01:35.080Z"
+  },
+  {
     "puzzleNumber": 723,
     "slug": "pinpoint-answer-723",
     "publishDate": "2026-04-23",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Ribs in the human body",
@@ -16,7 +35,7 @@
     "category": "Things that come in 24 parts or units",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Ribs in the human body, Blackbirds in a pie (from rhyme), Karats in pure gold, Letters in the Greek alphabet, Hours in a day - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-04-23T07:02:48.592Z"
+    "updatedAt": "2026-04-24T07:01:35.080Z"
   },
   {
     "puzzleNumber": 722,
