@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 725,
+    "slug": "pinpoint-answer-725",
+    "publishDate": "2026-04-25",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Classical",
+      "Bass",
+      "Double-neck",
+      "Electric",
+      "Air (no instrument needed)"
+    ],
+    "mainAnswer": "Types of guitars",
+    "category": "Types of guitars",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #725: Classical, Bass, Double-neck, Electric, Air (no instrument needed).",
+    "updatedAt": "2026-04-25T07:01:44.139Z"
+  },
+  {
     "puzzleNumber": 724,
     "slug": "pinpoint-answer-724",
     "publishDate": "2026-04-24",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Stand",
@@ -16,7 +35,7 @@
     "category": "Words that come after “hand”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Stand, Shake, Made do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-24T07:01:51.733Z"
+    "updatedAt": "2026-04-25T07:01:44.139Z"
   },
   {
     "puzzleNumber": 723,

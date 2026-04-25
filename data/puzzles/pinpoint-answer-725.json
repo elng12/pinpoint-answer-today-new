@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 725,
+  "slug": "pinpoint-answer-725",
+  "publishDate": "2026-04-25",
+  "isoDate": "2026-04-25",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Classical",
+    "Bass",
+    "Double-neck",
+    "Electric",
+    "Air (no instrument needed)"
+  ],
+  "answer": "Types of guitars",
+  "category": "Types of guitars",
+  "wordHints": {
+    "Classical": "Classical connects to \"Types of guitars\"",
+    "Bass": "Bass connects to \"Types of guitars\"",
+    "Double-neck": "Double-neck connects to \"Types of guitars\"",
+    "Electric": "Electric connects to \"Types of guitars\"",
+    "Air (no instrument needed)": "Air (no instrument needed) connects to \"Types of guitars\""
+  },
+  "spoilerHints": {
+    "Classical": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Bass": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Double-neck": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Electric": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Air (no instrument needed)": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, Classical and Bass can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Classical, Bass can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Classical pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of guitar each clue could be, a category board focused on guitars stopped sounding generic and started behaving like a real category test. Examples like \"Classical guitar\" and \"Bass guitar\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Double-neck, Electric, Air (no instrument needed) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of guitars\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of guitars, which is why \"Types of guitars\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Classical and Bass can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Classical, Bass can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Classical pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of guitar each clue could be, a category board focused on guitars stopped sounding generic and started behaving like a real category test. Examples like \"Classical guitar\" and \"Bass guitar\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Double-neck, Electric, Air (no instrument needed) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of guitars\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of guitars, which is why \"Types of guitars\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #725, Classical, Bass, Double-neck, Electric, Air (no instrument needed) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on guitars",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Classical",
+        "examplePhrase": "Classical guitar",
+        "connectionExplained": "Classical connects to \"Types of guitars\""
+      },
+      {
+        "clue": "Bass",
+        "examplePhrase": "Bass guitar",
+        "connectionExplained": "Bass connects to \"Types of guitars\""
+      },
+      {
+        "clue": "Double-neck",
+        "examplePhrase": "Double-neck guitar",
+        "connectionExplained": "Double-neck connects to \"Types of guitars\""
+      },
+      {
+        "clue": "Electric",
+        "examplePhrase": "Electric guitar",
+        "connectionExplained": "Electric connects to \"Types of guitars\""
+      },
+      {
+        "clue": "Air (no instrument needed)",
+        "examplePhrase": "Air guitar",
+        "connectionExplained": "Air (no instrument needed) connects to \"Types of guitars\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #725?",
+      "answer": "The answer is \"Types of guitars\". The clues Classical, Bass, Double-neck, Electric, Air (no instrument needed) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #725 just unlocked, and this is the fastest verified update. The board clues are Classical, Bass, Double-neck, Electric, Air (no instrument needed), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Classical, Bass can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Classical",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #725, Classical, Bass, Double-neck, Electric, Air (no instrument needed) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Classical lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Classical",
+    "whyDecisive": "Classical is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Classical lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Classical",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Classical",
+      "nonObviousWhy": "Classical supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Classical"
+    },
+    {
+      "clue": "Bass",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Bass",
+      "nonObviousWhy": "Bass supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Bass"
+    },
+    {
+      "clue": "Double-neck",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Double-neck",
+      "nonObviousWhy": "Double-neck supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Double-neck"
+    },
+    {
+      "clue": "Electric",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Electric",
+      "nonObviousWhy": "Electric supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Electric"
+    },
+    {
+      "clue": "Air (no instrument needed)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Air (no instrument needed)",
+      "nonObviousWhy": "Air (no instrument needed) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Air (no instrument needed)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #725?",
+      "answer": "The answer is \"Types of guitars\". The clues Classical, Bass, Double-neck, Electric, Air (no instrument needed) all share this connection.",
+      "tiedClue": "Classical"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on guitars",
+    "relatedEntities": [
+      "Classical",
+      "Bass",
+      "Double-neck",
+      "Electric",
+      "Air (no instrument needed)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on guitars",
+      "Classical",
+      "Bass",
+      "Double-neck",
+      "Electric"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Classical, Bass can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Classical pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Double-neck, Electric, Air (no instrument needed) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of guitars"
+}
