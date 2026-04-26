@@ -15,7 +15,10 @@
     "Steam": "Wrinkled clothes are no match for the power of a steam iron."
   },
   "lessons": [
-    "Don't Overthink the Obvious. The clues were all common words, suggesting the answer would also be a common word. Avoid getting bogged down in complex relationships when the solution might be staring you in the face. The waffle clue is a great example; it's a common household item!",
+    {
+      "title": "\"Waffle\" and \"Tire\" open the \"iron — all the clues can directly precede iron to create meaningful compound words.\" phrase test",
+      "body": "The clues were all common words, suggesting the answer would also be a common word. Avoid getting bogged down in complex relationships when the solution might be staring you in the face. The waffle clue is a great example; it's a common household item!"
+    },
     "Leverage Initial Connections. When one clue sparks an idea (like TIRE leading to \"tire iron\"), immediately explore that connection. Don't dismiss it too quickly if it doesn't immediately solve the whole puzzle. Even if it seems wrong, it can lead you to the right answer.",
     "Consider Compound Words. This puzzle highlights the importance of thinking about compound words. If you see seemingly unrelated words (like BRANDING and STEAM), consider if they might form a common phrase with another word. This is especially true when dealing with concrete nouns.",
     "Iterate and Revisit. If your initial guess (like METAL) doesn't pan out, don't give up! Return to the clues with fresh eyes. Sometimes, a slight shift in perspective is all you need to unlock the solution. Each clue needs to fit; don't settle for partial solutions."

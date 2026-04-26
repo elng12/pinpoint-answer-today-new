@@ -17,8 +17,14 @@
   "lessons": [
     "Embrace Specificity. Instead of thinking broadly about general categories, consider specific items related to each clue. The clues weren't just about weather or activities, but about specific *types* of boots (like SNOW or HIKING).",
     "Consider the 'Why'. Ask yourself *why* each item exists. RAIN boots exist to keep your feet dry. STEEL-TOE boots exist to protect your feet. This line of thinking can help narrow down the possibilities.",
-    "Don't Overlook the Obvious. Sometimes the answer is staring you right in the face. The COWBOY clue seems straightforward, but it's easy to get sidetracked by other associations. Trust your first instincts!",
-    "Look for Functional Relationships. All the clues related to BOOTS that serve a specific function. Focus on the functional purpose of each clue to find the common thread."
+    {
+      "title": "\"Cowboy\" keeps the category level specific",
+      "body": "Sometimes the answer is staring you right in the face. The COWBOY clue seems straightforward, but it's easy to get sidetracked by other associations. Trust your first instincts!"
+    },
+    {
+      "title": "\"Steel-toe\" checks the solve against \"Steel-toe\"",
+      "body": "All the clues related to BOOTS that serve a specific function. Focus on the functional purpose of each clue to find the common thread."
+    }
   ],
   "faqs": [
     {

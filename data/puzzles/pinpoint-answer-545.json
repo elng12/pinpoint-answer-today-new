@@ -30,7 +30,7 @@
     "Pillow": "The final clue confirms the same ending in an ordinary household word."
   },
   "articleBlocks": [
-    "Brief can pull you into a legal reading right away, especially because it feels so naturally paired with courtroom language.",
+    "Brief can pull you into a legal reading right away, especially because it feels so naturally paired with courtroom language. The opening clues stay ambiguous until Suit gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Lower complicates that first theory because lowercase is about typography, not law, though the board can still feel unresolved.",
     "Book helps because bookcase is a clean compound, but it still might seem like the puzzle is loosely about containers or storage.",
     "Suit is the clue that really clarifies the solve.",
@@ -97,11 +97,11 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #545?",
+      "question": "What shared word links \"Brief\" and \"Lower\" in LinkedIn Pinpoint #545?",
       "answer": "The answer is Words that come before \"case\" because Brief, Lower, Book, Suit, and Pillow all form familiar compounds with case."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #545?",
+      "question": "Why is \"Suit\" the key clue in LinkedIn Pinpoint #545?",
       "answer": "Suit is the turning clue because suitcase breaks the tempting legal reading and makes case feel like the exact shared ending."
     },
     {
@@ -168,13 +168,13 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #545?",
+      "question": "What shared word links \"Brief\" and \"Lower\" in LinkedIn Pinpoint #545?",
       "answer": "The answer is Words that come before \"case\" because Brief, Lower, Book, Suit, and Pillow all form familiar compounds with case.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #545?",
+      "question": "Why is \"Suit\" the key clue in LinkedIn Pinpoint #545?",
       "answer": "Suit is the turning clue because suitcase breaks the tempting legal reading and makes case feel like the exact shared ending.",
       "tiedClue": "Suit"
     },

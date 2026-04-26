@@ -30,7 +30,7 @@
     "Punch": "This is the clue that breaks several almost-right endings and forces the real one."
   },
   "articleBlocks": [
-    "Head, Dead, and Bottom can all tempt the wrong shared ending at first, especially if you jump too quickly into broad phrase completion mode.",
+    "Head, Dead, and Bottom can all tempt the wrong shared ending at first, especially if you jump too quickly into broad phrase completion mode. The opening clues stay ambiguous until Punch gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Finish helps, but the board still feels like it could support more than one common word.",
     "Punch is the clue that really sharpens it.",
     "Punchline is such a specific and familiar phrase that it breaks weaker guesses and makes line feel much more exact than alternatives like end.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #460?",
+      "question": "What shared word links \"Head\" and \"Dead\" in LinkedIn Pinpoint #460?",
       "answer": "The answer is Words that come before \"line\" because Head, Dead, Bottom, Finish, and Punch all form familiar phrases with line."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #460?",
+      "question": "How do \"Head\" and \"Dead\" connect in LinkedIn Pinpoint #460?",
       "answer": "The connection is one shared ending word. The board resolves into headline, deadline, bottom line, finish line, and punchline."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #460?",
+      "question": "Why is \"Punch\" the key clue in LinkedIn Pinpoint #460?",
       "answer": "Punch is the turning clue because punchline is the phrase that breaks weaker candidates and makes line feel like the exact connector."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #460?",
+      "question": "What shared word links \"Head\" and \"Dead\" in LinkedIn Pinpoint #460?",
       "answer": "The answer is Words that come before \"line\" because Head, Dead, Bottom, Finish, and Punch all form familiar phrases with line.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #460?",
+      "question": "How do \"Head\" and \"Dead\" connect in LinkedIn Pinpoint #460?",
       "answer": "The connection is one shared ending word. The board resolves into headline, deadline, bottom line, finish line, and punchline.",
       "tiedClue": "Punch"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #460?",
+      "question": "Why is \"Punch\" the key clue in LinkedIn Pinpoint #460?",
       "answer": "Punch is the turning clue because punchline is the phrase that breaks weaker candidates and makes line feel like the exact connector.",
       "tiedClue": "Punch"
     }

@@ -30,7 +30,7 @@
     "Lava": "This clue is the surface version of molten rock."
   },
   "articleBlocks": [
-    "Vent and Crater make a geology board feel plausible right away, but they do not yet prove the puzzle is specifically about volcanoes.",
+    "Vent and Crater make a geology board feel plausible right away, but they do not yet prove the puzzle is specifically about volcanoes. The opening clues stay ambiguous until Magma gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Ash keeps the eruption idea alive, though some solvers can still sit inside a broader disaster or landform read at that point.",
     "Magma is the clue that makes the category exact.",
     "Once molten rock beneath the surface enters the board, Vent, Crater, Ash, and Lava all stop feeling generic and start behaving like parts of one volcanic system.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #563?",
+      "question": "What final category connects \"Vent\" and \"Crater\" in LinkedIn Pinpoint #563?",
       "answer": "The answer is Parts of a volcano because Vent, Crater, Ash, Magma, and Lava all belong to the same volcanic system."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #563?",
+      "question": "How do \"Vent\" and \"Crater\" connect in LinkedIn Pinpoint #563?",
       "answer": "The connection is volcano anatomy and eruption material. The clues cover a volcanic opening, summit shape, debris, underground molten rock, and surface molten rock."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #563?",
+      "question": "Why is \"Magma\" the key clue in LinkedIn Pinpoint #563?",
       "answer": "Magma is the turning clue because it makes volcanoes much more exact than a general geology or disaster category."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #563?",
+      "question": "What final category connects \"Vent\" and \"Crater\" in LinkedIn Pinpoint #563?",
       "answer": "The answer is Parts of a volcano because Vent, Crater, Ash, Magma, and Lava all belong to the same volcanic system.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #563?",
+      "question": "How do \"Vent\" and \"Crater\" connect in LinkedIn Pinpoint #563?",
       "answer": "The connection is volcano anatomy and eruption material. The clues cover a volcanic opening, summit shape, debris, underground molten rock, and surface molten rock.",
       "tiedClue": "Magma"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #563?",
+      "question": "Why is \"Magma\" the key clue in LinkedIn Pinpoint #563?",
       "answer": "Magma is the turning clue because it makes volcanoes much more exact than a general geology or disaster category.",
       "tiedClue": "Magma"
     }

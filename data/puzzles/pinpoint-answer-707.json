@@ -25,27 +25,14 @@
     "Brasília": "Brasília is the capital of Brazil, designed and built in the 20th century."
   },
   "spoilerHints": {
-    "Salvador": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Manaus": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "São Paulo": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Rio de Janeiro": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Brasília": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Salvador": "\"Salvador\" can fit several broad reads at first, but it later works as part of Major cities in Brazil.",
+    "Manaus": "\"Manaus\" fits once the board is read as Major cities in Brazil, so test it against the same category as the other clues.",
+    "São Paulo": "\"São Paulo\" fits once the board is read as Major cities in Brazil, so test it against the same category as the other clues.",
+    "Rio de Janeiro": "\"Rio de Janeiro\" fits once the board is read as Major cities in Brazil, so test it against the same category as the other clues.",
+    "Brasília": "\"Brasília\" is the clue that turns the board toward Major cities in Brazil, because it gives the broad clue set a concrete category to test."
   },
   "articleBlocks": [
-    "My first thought was that these were simply hotspots in South America.",
-    "But that felt too broad; there are countless tourist destinations across the continent.",
-    "Then I considered capital cities, but not every location fit that description.",
-    "Brasília made me reconsider.",
-    "It's the capital of Brazil, and that made me focus on the country itself.",
-    "That narrowed the scope and led to the answer.",
-    "These are major cities in Brazil.",
-    "Each city is a significant urban center within the country.",
-    "The puzzle isn't about tourism, or even just geography, but specifically about the most important cities in Brazil.",
-    "Sometimes the obvious answer is the correct one, once you have the right frame.",
-    "Now, looking back, the set is clearly focused on the major cities of Brazil."
-  ],
-  "fullAnalysis": [
-    "My first thought was that these were simply hotspots in South America.",
+    "My first thought was that these were simply hotspots in South America. The opening clues stay ambiguous until Brasília gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "But that felt too broad; there are countless tourist destinations across the continent.",
     "Then I considered capital cities, but not every location fit that description.",
     "Brasília made me reconsider.",
@@ -63,15 +50,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Salvador\" and \"Manaus\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Brasília\" turns the board into one specific category",
       "body": "Brasília is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Brasília\" confirms the same category level",
       "body": "When solving, consider whether you're naming the forest or just some of the trees."
     }
   ],
@@ -108,15 +95,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #707?",
+      "question": "What final category connects \"Salvador\" and \"Manaus\" in LinkedIn Pinpoint #707?",
       "answer": "The answer is \"Major cities in Brazil\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #707?",
+      "question": "How do \"Salvador\" and \"Manaus\" connect in LinkedIn Pinpoint #707?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Brasília is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #707?",
+      "question": "Why is \"Brasília\" the key clue in LinkedIn Pinpoint #707?",
       "answer": "Brasília is the turning clue because \"Brasília\" makes the shared category frame explicit. It also makes Salvador read cleanly as \"Salvador\". The clues are all recognizable cities, but it requires the right level of specificity to pinpoint the connection."
     }
   ],
@@ -179,19 +166,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #707?",
+      "question": "What final category connects \"Salvador\" and \"Manaus\" in LinkedIn Pinpoint #707?",
       "answer": "The answer is \"Major cities in Brazil\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #707?",
+      "question": "How do \"Salvador\" and \"Manaus\" connect in LinkedIn Pinpoint #707?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Brasília is what keeps the category reading precise instead of broad.",
       "tiedClue": "Brasília"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #707?",
+      "question": "Why is \"Brasília\" the key clue in LinkedIn Pinpoint #707?",
       "answer": "Brasília is the turning clue because \"Brasília\" makes the shared category frame explicit. It also makes Salvador read cleanly as \"Salvador\". The clues are all recognizable cities, but it requires the right level of specificity to pinpoint the connection.",
       "tiedClue": "Brasília"
     }

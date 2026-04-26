@@ -15,7 +15,10 @@
     "Glasses": "Glasses, or eyeglasses, are completely dependent on their frames. The frames hold the corrective lenses in position and allow them to be worn on the face."
   },
   "lessons": [
-    "Don't marry your first theory. The 'Things in a House' idea was a natural starting point, but it became a trap. It's crucial in Pinpoint to acknowledge when a theory is becoming stretched and be willing to abandon it when a clue, like 'Bicycle', proves it wrong.",
+    {
+      "title": "\"Window\" and \"Door\" set the useful boundary",
+      "body": "The 'Things in a House' idea was a natural starting point, but it became a trap. It's crucial in Pinpoint to acknowledge when a theory is becoming stretched and be willing to abandon it when a clue, like 'Bicycle', proves it wrong."
+    },
     "Let an outlier reset your perspective. The 'Bicycle' clue was the key to solving this puzzle. It was the outlier that made the initial theories of location or function impossible. Use such clues as a prompt to stop and ask, 'What physical or structural property do ALL these items share?'",
     "Think about structure over function. This puzzle was a great example of a board where the common link is a physical attribute rather than what the items do. Shifting your thinking from 'what are they for?' to 'what are they made of?' or 'what are their parts?' can unlock the right answer when other paths lead to dead ends."
   ],

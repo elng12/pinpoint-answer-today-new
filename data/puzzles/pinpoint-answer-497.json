@@ -16,12 +16,15 @@
   },
   "lessons": [
     "When the subjects do not match, test a shared feature instead of a shared field. Mixed-domain boards often hide a physical attribute in plain sight.",
-    "Pay attention to parenthetical clues. The note about Manx cats is there to sharpen the exact property you should notice.",
+    {
+      "title": "\"Cats (but not Manx Cats)\" is the clue to retest before committing",
+      "body": "The note about Manx cats is there to sharpen the exact property you should notice."
+    },
     "Use the strangest clue as the pivot. Morning coats look unrelated until you think about tails, and that clue helps the whole board snap together."
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #497?",
+      "question": "What final category connects \"Airplanes\" and \"Coins\" in LinkedIn Pinpoint #497?",
       "answer": "The answer is Things with tails. Airplanes, Coins, Morning coats, Comets, and most Cats all fit that shared feature."
     },
     {

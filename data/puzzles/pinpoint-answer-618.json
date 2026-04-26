@@ -30,7 +30,7 @@
     "Jig": "This one can mean both a tool and a puzzle cut style, but the shared word is the same."
   },
   "articleBlocks": [
-    "Band and Chain can feel like they belong to music or linked objects instead of tools, which is why the board takes a moment to settle.",
+    "Band and Chain can feel like they belong to music or linked objects instead of tools, which is why the board takes a moment to settle. The opening clues stay ambiguous until Coping gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Hack points toward equipment, but it still might not be enough if you are thinking about metaphors like hacks or chains.",
     "Coping is the clue that makes the workshop answer clear.",
     "Coping saw is too specific to ignore, and once saw clicks, band saw, chainsaw, hacksaw, and jigsaw all fall into place.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #618?",
+      "question": "Which type-level category connects \"Band\" and \"Chain\" in LinkedIn Pinpoint #618?",
       "answer": "The answer is Types of saws because Band, Chain, Hack, Coping, and Jig all form familiar saw names."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #618?",
+      "question": "How do \"Band\" and \"Chain\" connect in LinkedIn Pinpoint #618?",
       "answer": "The connection is one shared tool word. The clues resolve into band saw, chainsaw, hacksaw, coping saw, and jigsaw."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #618?",
+      "question": "Why is \"Coping\" the key clue in LinkedIn Pinpoint #618?",
       "answer": "Coping is the turning clue because coping saw is the most specialized and least flexible tool name on the board."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #618?",
+      "question": "Which type-level category connects \"Band\" and \"Chain\" in LinkedIn Pinpoint #618?",
       "answer": "The answer is Types of saws because Band, Chain, Hack, Coping, and Jig all form familiar saw names.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #618?",
+      "question": "How do \"Band\" and \"Chain\" connect in LinkedIn Pinpoint #618?",
       "answer": "The connection is one shared tool word. The clues resolve into band saw, chainsaw, hacksaw, coping saw, and jigsaw.",
       "tiedClue": "Coping"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #618?",
+      "question": "Why is \"Coping\" the key clue in LinkedIn Pinpoint #618?",
       "answer": "Coping is the turning clue because coping saw is the most specialized and least flexible tool name on the board.",
       "tiedClue": "Coping"
     }

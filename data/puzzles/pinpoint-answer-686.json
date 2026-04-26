@@ -30,7 +30,7 @@
     "Ten-Speed": "This is the clue that makes the cycling read hardest to ignore."
   },
   "articleBlocks": [
-    "Mountain and Electric both feel like they could belong to a lot of different vehicles at first, so the board starts broader than it really is.",
+    "Mountain and Electric both feel like they could belong to a lot of different vehicles at first, so the board starts broader than it really is. The opening clues stay ambiguous until Ten-Speed gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Recumbent helps, but it still leaves room for exercise equipment or other wheeled machines if you are not careful.",
     "Ten-Speed is the clue that really tightens the set.",
     "Ten-speed bike is such a fixed phrase that it finally makes the category feel more like cycling than transportation in general.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #686?",
+      "question": "Which type-level category connects \"Mountain\" and \"Electric\" in LinkedIn Pinpoint #686?",
       "answer": "The answer is \"Types of bicycle\" because Mountain, Electric, Recumbent, Tandem, and Ten-Speed all resolve cleanly as bicycle types once the cycling frame appears."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #686?",
+      "question": "How do \"Mountain\" and \"Electric\" connect in LinkedIn Pinpoint #686?",
       "answer": "The connection is cycling. Each clue names a recognizable type of bike rather than a broad vehicle category."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #686?",
+      "question": "Why is \"Ten-Speed\" the key clue in LinkedIn Pinpoint #686?",
       "answer": "Ten-Speed is the turning clue because ten-speed bike is the most fixed bicycle phrase on the board and forces the whole set into cycling."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #686?",
+      "question": "Which type-level category connects \"Mountain\" and \"Electric\" in LinkedIn Pinpoint #686?",
       "answer": "The answer is \"Types of bicycle\" because Mountain, Electric, Recumbent, Tandem, and Ten-Speed all resolve cleanly as bicycle types once the cycling frame appears.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #686?",
+      "question": "How do \"Mountain\" and \"Electric\" connect in LinkedIn Pinpoint #686?",
       "answer": "The connection is cycling. Each clue names a recognizable type of bike rather than a broad vehicle category.",
       "tiedClue": "Ten-Speed"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #686?",
+      "question": "Why is \"Ten-Speed\" the key clue in LinkedIn Pinpoint #686?",
       "answer": "Ten-Speed is the turning clue because ten-speed bike is the most fixed bicycle phrase on the board and forces the whole set into cycling.",
       "tiedClue": "Ten-Speed"
     }

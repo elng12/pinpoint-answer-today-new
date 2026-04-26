@@ -17,8 +17,14 @@
   "lessons": [
     "Specificity is Key. Like my initial thought of RESTAURANTS, a broad category might seem to fit, but Pinpoint rewards precision. Always aim for the most specific connector possible.",
     "Consider Common Combinations. Think about how words are commonly used together. The clues are almost always directly associated with the connector. Think 'ITALIAN Dressing' and not just 'Italian Food'",
-    "Don't Overthink It. Sometimes the answer is staring you right in the face. If you recognize all the clues, the connector is likely more straightforward than you think. I was lost in CONDIMENTS when the answer was starring me in the face.",
-    "Trust Your Gut. If a connector feels like a slight stretch, it probably is. The connection between the clues and the connector should feel natural and immediate. The best way is to say 'X Salad Dressing' and see if X is a choice."
+    {
+      "title": "\"Vinaigrette\" keeps the category level specific",
+      "body": "Sometimes the answer is staring you right in the face. If you recognize all the clues, the connector is likely more straightforward than you think. I was lost in CONDIMENTS when the answer was starring me in the face."
+    },
+    {
+      "title": "\"Caesar\" checks the solve against \"Caesar\"",
+      "body": "If a connector feels like a slight stretch, it probably is. The connection between the clues and the connector should feel natural and immediate. The best way is to say 'X Salad Dressing' and see if X is a choice."
+    }
   ],
   "faqs": [
     {

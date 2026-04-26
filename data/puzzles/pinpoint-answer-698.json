@@ -30,15 +30,7 @@
     "Boundary line": "This is the clue that turns the puzzle from general obstacles into a property-specific category."
   },
   "articleBlocks": [
-    "At first, Fence and Moat pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"barriers\". Fence, Wall, and Moat all support that idea early, so it takes a more precise clue to prove the board wants more than a general function. Boundary line is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby read was \"protective structures\". That guess explains the physical separation angle, but it does not naturally account for Boundary line as a property term. Boundary line is the clue that keeps the board from staying at that broader surface read.",
-    "Once I read the set through property dividers and boundary markers, examples like \"property fence\" and \"moat around an estate\" stopped feeling loose and started landing cleanly.",
-    "hedge between yards, property wall, and boundary line on a lot all keep the board inside the same land-and-property frame, which is why the set feels exact instead of like a broad barrier bucket.",
-    "The answer was Things that separate properties. More precisely, the board resolves as a land-boundary and property-divider category rather than a loose barrier or defense theme, which is why Things that separate properties fits better than \"barriers\" or \"protective structures\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Fence and Moat pointed in a few different directions, so the board still felt wider than one exact category.",
+    "At first, Fence and Moat pointed in a few different directions, so the board still felt wider than one exact category. The opening clues stay ambiguous until Boundary line gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"barriers\". Fence, Wall, and Moat all support that idea early, so it takes a more precise clue to prove the board wants more than a general function. Boundary line is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby read was \"protective structures\". That guess explains the physical separation angle, but it does not naturally account for Boundary line as a property term. Boundary line is the clue that keeps the board from staying at that broader surface read.",
     "Once I read the set through property dividers and boundary markers, examples like \"property fence\" and \"moat around an estate\" stopped feeling loose and started landing cleanly.",
@@ -96,15 +88,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #698?",
+      "question": "What final category connects \"Fence\" and \"Moat\" in LinkedIn Pinpoint #698?",
       "answer": "The answer is \"Things that separate properties\" because every clue works as a way land or protected grounds can be marked off from adjacent space."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #698?",
+      "question": "How do \"Fence\" and \"Moat\" connect in LinkedIn Pinpoint #698?",
       "answer": "The connection is not just barriers in general. It is barriers, markers, or limits that separate one property or set of grounds from another."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #698?",
+      "question": "Why is \"Boundary line\" the key clue in LinkedIn Pinpoint #698?",
       "answer": "Boundary line is the turning clue because it introduces the property-reading that the earlier clues need. Without it, the board can stay stuck in a vague barriers answer."
     }
   ],
@@ -167,19 +159,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #698?",
+      "question": "What final category connects \"Fence\" and \"Moat\" in LinkedIn Pinpoint #698?",
       "answer": "The answer is \"Things that separate properties\" because every clue works as a way land or protected grounds can be marked off from adjacent space.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #698?",
+      "question": "How do \"Fence\" and \"Moat\" connect in LinkedIn Pinpoint #698?",
       "answer": "The connection is not just barriers in general. It is barriers, markers, or limits that separate one property or set of grounds from another.",
       "tiedClue": "Boundary line"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #698?",
+      "question": "Why is \"Boundary line\" the key clue in LinkedIn Pinpoint #698?",
       "answer": "Boundary line is the turning clue because it introduces the property-reading that the earlier clues need. Without it, the board can stay stuck in a vague barriers answer.",
       "tiedClue": "Boundary line"
     }

@@ -15,7 +15,10 @@
     "Bowling": "Get your bowling shoes on and hit the lanes; this one is all about strikes and spares."
   },
   "lessons": [
-    "Don't get tunnel vision. The BOWLING clue can easily mislead you into thinking about sports or recreation in general. Remember to consider all possible interpretations of each clue.",
+    {
+      "title": "\"Dust\" and \"Fur\" open the \"ball\" phrase test",
+      "body": "The BOWLING clue can easily mislead you into thinking about sports or recreation in general. Remember to consider all possible interpretations of each clue."
+    },
     "Think about word order. The instructions specifically stated \"words that come *before* 'ball'.\" If you find yourself struggling, double-check that you're answering the question being asked.",
     "Abstract vs. Literal. While FOOT, BASKET, and BOWLING are literal, DUST and FUR are more abstract. Recognizing this can help broaden your search for connections.",
     "Embrace the 'Aha!' Moment. Sometimes the answer eludes you until you shift your perspective. When you're stuck, take a break, look at the clues in a new order, and let your subconscious work its magic."

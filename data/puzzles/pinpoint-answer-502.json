@@ -30,7 +30,7 @@
     "Jerk": "This clue names a common idiom and is the cleanest lock on the set."
   },
   "articleBlocks": [
-    "Pad and Cap make the board feel body-related early, but that alone can still leave you guessing between anatomy and protective gear.",
+    "Pad and Cap make the board feel body-related early, but that alone can still leave you guessing between anatomy and protective gear. The opening clues stay ambiguous until Jerk gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Sock adds a clothing angle, which is a clue that the puzzle is not a single topical category at all.",
     "Deep starts to reveal the real trick because knee-deep is a familiar phrase rather than a concrete object.",
     "Jerk is the clue that really locks the board.",
@@ -97,11 +97,11 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #502?",
+      "question": "What final category connects \"Pad\" and \"Cap\" in LinkedIn Pinpoint #502?",
       "answer": "The answer is Words that follow \"knee\" because Pad, Cap, Deep, Sock, and Jerk all form common words or phrases with knee."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #502?",
+      "question": "Why is \"Jerk\" the key clue in LinkedIn Pinpoint #502?",
       "answer": "Jerk is the turning clue because knee-jerk is a fixed idiom that makes the shared lead word feel exact instead of tentative."
     },
     {
@@ -168,13 +168,13 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #502?",
+      "question": "What final category connects \"Pad\" and \"Cap\" in LinkedIn Pinpoint #502?",
       "answer": "The answer is Words that follow \"knee\" because Pad, Cap, Deep, Sock, and Jerk all form common words or phrases with knee.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #502?",
+      "question": "Why is \"Jerk\" the key clue in LinkedIn Pinpoint #502?",
       "answer": "Jerk is the turning clue because knee-jerk is a fixed idiom that makes the shared lead word feel exact instead of tentative.",
       "tiedClue": "Jerk"
     },

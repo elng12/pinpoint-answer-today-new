@@ -23,22 +23,14 @@
     "⛈️": "\"⛈️\" helps confirm the same answer instead of pulling the board back toward a looser guess."
   },
   "spoilerHints": {
-    "☀️": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "🌤️": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "☁️": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "🌧️": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "⛈️": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "☀️": "\"☀️\" can fit several broad reads at first, but it later works as part of Weather emojis (did you solve before the storm?).",
+    "🌤️": "\"🌤️\" fits once the board is read as Weather emojis (did you solve before the storm?), so test it against the same category as the other clues.",
+    "☁️": "\"☁️\" fits once the board is read as Weather emojis (did you solve before the storm?), so test it against the same category as the other clues.",
+    "🌧️": "\"🌧️\" is the clue that turns the board toward Weather emojis (did you solve before the storm?), because it gives the broad clue set a concrete category to test.",
+    "⛈️": "\"⛈️\" is the final confirmation that Weather emojis (did you solve before the storm?) holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "At first, ☀️ and 🌤️ can look like a random visual cluster, which is why emoji and symbol boards often tempt you into reading mood, tone, or internet shorthand before the real set appears.",
-    "One tempting read was \"a loose emoji mood list\". Emoji-heavy boards can look like reactions or internet shorthand before they reveal one clean visual family. 🌧️ makes the board read like one recognizable weather set instead of a general mood board.",
-    "Another nearby bucket was \"general internet symbols\". All five clues are icons, so a generic symbol bucket is an easy first read. The full set stays coherent because the icons form a weather sequence, not just the broad idea of symbols.",
-    "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling decorative and started behaving like recognizable members of the same visual system.",
-    "☁️, 🌧️, and ⛈️ extend the same forecast-like sequence, so the board reads like one familiar weather system instead of a loose emoji shelf.",
-    "The answer was \"Weather emojis (did you solve before the storm?)\". More precisely, the board resolves as a recognizable weather icon family rather than a loose emoji or mood board, which is why \"Weather emojis (did you solve before the storm?)\" fits better than \"a loose emoji mood list\" or \"general internet symbols\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, ☀️ and 🌤️ can look like a random visual cluster, which is why emoji and symbol boards often tempt you into reading mood, tone, or internet shorthand before the real set appears.",
+    "At first, ☀️ and 🌤️ can look like a random visual cluster, which is why emoji and symbol boards often tempt you into reading mood, tone, or internet shorthand before the real set appears. The opening clues stay ambiguous until 🌧️ gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"a loose emoji mood list\". Emoji-heavy boards can look like reactions or internet shorthand before they reveal one clean visual family. 🌧️ makes the board read like one recognizable weather set instead of a general mood board.",
     "Another nearby bucket was \"general internet symbols\". All five clues are icons, so a generic symbol bucket is an easy first read. The full set stays coherent because the icons form a weather sequence, not just the broad idea of symbols.",
     "Once I read the set through a category board focused on weather, examples like \"☀️\" and \"🌤️\" stopped feeling decorative and started behaving like recognizable members of the same visual system.",
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #701?",
+      "question": "What visual category connects \"☀️\" and \"🌤️\" in LinkedIn Pinpoint #701?",
       "answer": "The answer is \"Weather emojis (did you solve before the storm?)\". That reading is the first one that explains the whole set without forcing any clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #701?",
+      "question": "How do \"☀️\" and \"🌤️\" connect in LinkedIn Pinpoint #701?",
       "answer": "The connection is a category board focused on weather. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #701?",
+      "question": "Why is \"🌧️\" the key clue in LinkedIn Pinpoint #701?",
       "answer": "\"🌧️\" is the turning point because it makes the answer concrete enough to test across all five clues."
     }
   ],
@@ -162,19 +154,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #701?",
+      "question": "What visual category connects \"☀️\" and \"🌤️\" in LinkedIn Pinpoint #701?",
       "answer": "The answer is \"Weather emojis (did you solve before the storm?)\". That reading is the first one that explains the whole set without forcing any clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #701?",
+      "question": "How do \"☀️\" and \"🌤️\" connect in LinkedIn Pinpoint #701?",
       "answer": "The connection is a category board focused on weather. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #701?",
+      "question": "Why is \"🌧️\" the key clue in LinkedIn Pinpoint #701?",
       "answer": "\"🌧️\" is the turning point because it makes the answer concrete enough to test across all five clues.",
       "tiedClue": "🌧️"
     }

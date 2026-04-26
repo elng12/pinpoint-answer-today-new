@@ -15,7 +15,10 @@
     "Mousse": "Chocolate mousse is a decadent dessert, known for its light and airy texture and rich chocolate flavor."
   },
   "lessons": [
-    "Don't Overthink the Obvious. This puzzle highlights the importance of not overlooking the most straightforward solution. I initially dismissed \"chocolate LAB\" as too simple, which led me down a rabbit hole of incorrect guesses. Sometimes, the simplest answer is the correct one.",
+    {
+      "title": "\"Lab\" and \"Bar\" open the \"chocolate\" phrase test",
+      "body": "This puzzle highlights the importance of not overlooking the most straightforward solution. I initially dismissed \"chocolate LAB\" as too simple, which led me down a rabbit hole of incorrect guesses. Sometimes, the simplest answer is the correct one."
+    },
     "Consider All Clues Equally. I fixated on 'chocolate CHIP' and tried to force the other clues to fit around it. This tunnel vision prevented me from seeing the bigger picture. Remember to give equal weight to all clues and consider how they interact as a whole.",
     "Take a Step Back When Stuck. When I was stuck, stepping away from the puzzle and returning with a fresh perspective helped me see the solution. Don't be afraid to take a break and clear your head; it can often reveal new insights.",
     "Literal vs. Figurative Thinking. While some Pinpoint puzzles require abstract thinking, this one rewarded a literal interpretation of the clues. The 'Words that come after chocolate' connector was a direct instruction, not a metaphorical hint."

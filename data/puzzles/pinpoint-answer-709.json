@@ -25,19 +25,13 @@
     "Mona Lisa": "The Mona Lisa is arguably Leonardo da Vinci's most famous painting."
   },
   "spoilerHints": {
-    "The Last Supper": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Lady with an Ermine": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Virgin of the Rocks": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Vitruvian Man": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Mona Lisa": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "The Last Supper": "\"The Last Supper\" can fit several broad reads at first, but it later works as part of Famous works by Leonardo da Vinci.",
+    "Lady with an Ermine": "\"Lady with an Ermine\" fits once the board is read as Famous works by Leonardo da Vinci, so test it against the same category as the other clues.",
+    "Virgin of the Rocks": "\"Virgin of the Rocks\" fits once the board is read as Famous works by Leonardo da Vinci, so test it against the same category as the other clues.",
+    "Vitruvian Man": "\"Vitruvian Man\" is the clue that turns the board toward Famous works by Leonardo da Vinci, because it gives the broad clue set a concrete category to test.",
+    "Mona Lisa": "\"Mona Lisa\" is the final confirmation that Famous works by Leonardo da Vinci holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #709. The Last Supper, Lady with an Ermine, Virgin of the Rocks can point in a few directions at first, but Vitruvian Man is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on famous. When I saw 'Vitruvian Man,' I realized all the works are by Leonardo da Vinci.",
-    "Once Vitruvian Man clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like The Last Supper, Lady with an Ermine, and Virgin of the Rocks stop feeling disconnected and start looking like they belong together. Once vitruvian Man is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues span painting and drawing, and religious and secular subjects, making it hard to see the common thread at first.",
-    "The answer is Famous works by Leonardo da Vinci. Use the clue table for Vitruvian Man, Mona Lisa and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
     "This compact explainer keeps the fastest reliable path through Pinpoint #709. The Last Supper, Lady with an Ermine, Virgin of the Rocks can point in a few directions at first, but Vitruvian Man is usually the clue that narrows the board into one answer you can actually test.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on famous. When I saw 'Vitruvian Man,' I realized all the works are by Leonardo da Vinci.",
     "Once Vitruvian Man clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like The Last Supper, Lady with an Ermine, and Virgin of the Rocks stop feeling disconnected and start looking like they belong together. Once vitruvian Man is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues span painting and drawing, and religious and secular subjects, making it hard to see the common thread at first.",
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"The Last Supper\" and \"Lady with an Ermine\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Vitruvian Man\" turns the board into one specific category",
       "body": "Vitruvian Man is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Mona Lisa\" confirms the same category level",
       "body": "When a set seems random, look for the single common creator behind all the items."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #709?",
+      "question": "What final category connects \"The Last Supper\" and \"Lady with an Ermine\" in LinkedIn Pinpoint #709?",
       "answer": "The answer is \"Famous works by Leonardo da Vinci\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #709?",
+      "question": "How do \"The Last Supper\" and \"Lady with an Ermine\" connect in LinkedIn Pinpoint #709?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Vitruvian Man is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #709?",
+      "question": "Why is \"Vitruvian Man\" the key clue in LinkedIn Pinpoint #709?",
       "answer": "Vitruvian Man is the turning clue because \"Leonardo da Vinci's Vitruvian Man\" makes the shared category frame explicit. It also makes The Last Supper read cleanly as \"Leonardo da Vinci's The Last Supper\". The clues span painting and drawing, and religious and secular subjects, making it hard to see the common thread at first."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #709?",
+      "question": "What final category connects \"The Last Supper\" and \"Lady with an Ermine\" in LinkedIn Pinpoint #709?",
       "answer": "The answer is \"Famous works by Leonardo da Vinci\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #709?",
+      "question": "How do \"The Last Supper\" and \"Lady with an Ermine\" connect in LinkedIn Pinpoint #709?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Vitruvian Man is what keeps the category reading precise instead of broad.",
       "tiedClue": "Vitruvian Man"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #709?",
+      "question": "Why is \"Vitruvian Man\" the key clue in LinkedIn Pinpoint #709?",
       "answer": "Vitruvian Man is the turning clue because \"Leonardo da Vinci's Vitruvian Man\" makes the shared category frame explicit. It also makes The Last Supper read cleanly as \"Leonardo da Vinci's The Last Supper\". The clues span painting and drawing, and religious and secular subjects, making it hard to see the common thread at first.",
       "tiedClue": "Vitruvian Man"
     }

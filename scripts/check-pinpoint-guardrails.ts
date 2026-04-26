@@ -1197,7 +1197,13 @@ async function checkPhraseFallbackDirection() {
       turningPoint: string;
       connectorSummary: string;
       clues?: string[];
-    }) => Array<{ answer: string }>;
+    }) => Array<{ question: string; answer: string }>;
+    buildSharedFallbackLessons: (input: {
+      kind: "before" | "after" | "typed-category" | "category" | "association";
+      turningPoint: string;
+      clues?: string[];
+      answer?: string;
+    }) => Array<{ title: string; body: string }>;
     buildSharedFallbackSolutionNarrative: (input: {
       kind: "typed-category" | "category" | "association";
       wrongGuess: string;
@@ -1245,6 +1251,34 @@ async function checkPhraseFallbackDirection() {
     typedCategoryArticle.join(" "),
     /what kind of frog/i,
     'typed-category fallback copy should ask what kind of singular member each clue describes',
+  );
+  const typedCategoryFaqs = fallbackModule.buildSharedFallbackFaqs({
+    puzzleNumber: 725,
+    kind: "typed-category",
+    answer: "Types of guitars",
+    turningPoint: "Air",
+    connectorSummary: "a category board focused on guitars",
+    clues: ["Bass", "Electric", "Acoustic", "Classical", "Air"],
+  });
+  const typedCategoryLessons = fallbackModule.buildSharedFallbackLessons({
+    kind: "typed-category",
+    turningPoint: "Air",
+    answer: "Types of guitars",
+    clues: ["Bass", "Electric", "Acoustic", "Classical", "Air"],
+  });
+  const typedCategoryCopy = [
+    ...typedCategoryFaqs.flatMap((item) => [item.question, item.answer]),
+    ...typedCategoryLessons.flatMap((item) => [item.title, item.body]),
+  ].join(" ");
+  assert.doesNotMatch(
+    typedCategoryCopy,
+    /\ba guitars\b|\bkind of guitars\b|\brecognizable guitars\b/i,
+    "typed-category fallback copy should not use plural category nouns with singular articles",
+  );
+  assert.match(
+    typedCategoryCopy,
+    /\ba guitar\b|\bkind of guitar\b|\brecognizable guitar\b/i,
+    "typed-category fallback copy should singularize plural category nouns in FAQs and lessons",
   );
 
   const visualCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({

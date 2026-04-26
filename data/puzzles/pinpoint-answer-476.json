@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Avoid Tunnel Vision. When you're stuck, like I was on COUNTRIES, force yourself to consider completely different categories. The 'Real' clue could be REAL numbers, or REAL estate. Broaden your mind!",
-    "Don't Marry Your First Idea. I was so convinced WEIGHTS and MEASURES was right because of 'Pound' that I ignored other possibilities. Be willing to abandon your initial assumptions quickly.",
+    {
+      "title": "\"Peso\" is the clue to retest before committing",
+      "body": "I was so convinced WEIGHTS and MEASURES was right because of 'Pound' that I ignored other possibilities. Be willing to abandon your initial assumptions quickly."
+    },
     "Look for the Common Thread. Notice how the clues shared a common theme of international scope. The 'Rupee' and 'Peso' definitely helped point me in that direction.",
     "Consider the Connector Early. I wish I had focused on 'World Currencies' from the start. It would have saved me a lot of time. The connector is there to help!"
   ],

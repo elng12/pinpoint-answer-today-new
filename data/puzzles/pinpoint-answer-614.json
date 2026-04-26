@@ -30,7 +30,7 @@
     "Frankenstein's": "This clue points to a classic horror phrase."
   },
   "articleBlocks": [
-    "Sea and Loch Ness make the board feel like it might be about myths or legendary creatures, but Cookie immediately complicates that story.",
+    "Sea and Loch Ness make the board feel like it might be about myths or legendary creatures, but Cookie immediately complicates that story. The opening clues stay ambiguous until Frankenstein's gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Gila keeps monster in play because it is a real animal name, not just a fictional label.",
     "Frankenstein's is the clue that fully locks the ending.",
     "Once Frankenstein's monster appears, Sea, Cookie, Gila, and Loch Ness all become clean monster phrases across myth, zoology, puppetry, and horror.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #614?",
+      "question": "What shared word links \"Sea\" and \"Cookie\" in LinkedIn Pinpoint #614?",
       "answer": "The answer is Words that come before \"monster\" because Sea, Cookie, Gila, Loch Ness, and Frankenstein's all form familiar monster phrases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #614?",
+      "question": "How do \"Sea\" and \"Cookie\" connect in LinkedIn Pinpoint #614?",
       "answer": "The connection is one shared ending. The clues resolve into sea monster, Cookie Monster, Gila monster, Loch Ness Monster, and Frankenstein's monster."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #614?",
+      "question": "Why is \"Frankenstein's\" the key clue in LinkedIn Pinpoint #614?",
       "answer": "Frankenstein's is the turning clue because Frankenstein's monster is the most fixed phrase on the board."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #614?",
+      "question": "What shared word links \"Sea\" and \"Cookie\" in LinkedIn Pinpoint #614?",
       "answer": "The answer is Words that come before \"monster\" because Sea, Cookie, Gila, Loch Ness, and Frankenstein's all form familiar monster phrases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #614?",
+      "question": "How do \"Sea\" and \"Cookie\" connect in LinkedIn Pinpoint #614?",
       "answer": "The connection is one shared ending. The clues resolve into sea monster, Cookie Monster, Gila monster, Loch Ness Monster, and Frankenstein's monster.",
       "tiedClue": "Frankenstein's"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #614?",
+      "question": "Why is \"Frankenstein's\" the key clue in LinkedIn Pinpoint #614?",
       "answer": "Frankenstein's is the turning clue because Frankenstein's monster is the most fixed phrase on the board.",
       "tiedClue": "Frankenstein's"
     }

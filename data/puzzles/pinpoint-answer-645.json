@@ -16,12 +16,18 @@
   },
   "lessons": [
     "Consider common word pairings when solving. Many puzzles use familiar phrases or compound terms as solutions",
-    "Test your theory across all clues. A correct pattern should work consistently with every clue",
-    "Look for idiomatic expressions. Popular phrases and sayings often form part of the solution"
+    {
+      "title": "\"Got your tongue?\" locks in the \"'cat'\" pattern",
+      "body": "A correct pattern should work consistently with every clue"
+    },
+    {
+      "title": "\"Burglar\" checks that \"'cat'\" works across the board",
+      "body": "Popular phrases and sayings often form part of the solution"
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #645?",
+      "question": "What final category connects \"Nap\" and \"Carrier\" in LinkedIn Pinpoint #645?",
       "answer": "The answer is Terms that come after 'cat': nap, carrier, burglar, litter, got your tongue?"
     },
     {

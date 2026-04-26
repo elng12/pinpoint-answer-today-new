@@ -30,15 +30,7 @@
     "Gracias": "The board is about one shared meaning expressed in several languages."
   },
   "articleBlocks": [
-    "At first, Mahalo and Danke can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front.",
-    "A tempting early label was \"common foreign-language words\". Mahalo and Danke already fit that broad idea, so the board can feel solved before it actually is. Arigato is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby read was \"travel greetings\". Several clues do sound like travel vocabulary, but the answer is tighter because they all mean the same thing. Arigato is the clue that keeps the board from staying at that broader surface read.",
-    "From there, the same everyday phrase expressed across several languages explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts. Examples like \"thank you in Hawaiian\" and \"thank you in German\" stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.",
-    "thank you in Japanese, thank you in French, thank you in Spanish keep pointing back to the same repeated translation, so the board holds together as one shared meaning instead of a loose shelf of foreign-language words.",
-    "The answer was \"Thank you\" in different languages. More precisely, the board resolves as one repeated translation meaning across multiple languages rather than a broad bucket of foreign-language vocabulary, which is why \"Thank you\" in different languages fits better than \"common foreign-language words\" or \"travel greetings\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Mahalo and Danke can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front.",
+    "At first, Mahalo and Danke can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front. The opening clues stay ambiguous until Arigato gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "A tempting early label was \"common foreign-language words\". Mahalo and Danke already fit that broad idea, so the board can feel solved before it actually is. Arigato is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby read was \"travel greetings\". Several clues do sound like travel vocabulary, but the answer is tighter because they all mean the same thing. Arigato is the clue that keeps the board from staying at that broader surface read.",
     "From there, the same everyday phrase expressed across several languages explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts. Examples like \"thank you in Hawaiian\" and \"thank you in German\" stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.",
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #693?",
+      "question": "What final category connects \"Mahalo\" and \"Danke\" in LinkedIn Pinpoint #693?",
       "answer": "The answer is \"Thank you\" in different languages because every clue is a language-specific way to express the same everyday phrase."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #693?",
+      "question": "How do \"Mahalo\" and \"Danke\" connect in LinkedIn Pinpoint #693?",
       "answer": "The connection is shared meaning across languages. Mahalo, Danke, Arigato, Merci, and Gracias all mean thank you."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #693?",
+      "question": "Why is \"Arigato\" the key clue in LinkedIn Pinpoint #693?",
       "answer": "Arigato is the turning clue because it usually takes the board from 'foreign words' to the exact repeated meaning of thank you."
     }
   ],
@@ -168,19 +160,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #693?",
+      "question": "What final category connects \"Mahalo\" and \"Danke\" in LinkedIn Pinpoint #693?",
       "answer": "The answer is \"Thank you\" in different languages because every clue is a language-specific way to express the same everyday phrase.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #693?",
+      "question": "How do \"Mahalo\" and \"Danke\" connect in LinkedIn Pinpoint #693?",
       "answer": "The connection is shared meaning across languages. Mahalo, Danke, Arigato, Merci, and Gracias all mean thank you.",
       "tiedClue": "Arigato"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #693?",
+      "question": "Why is \"Arigato\" the key clue in LinkedIn Pinpoint #693?",
       "answer": "Arigato is the turning clue because it usually takes the board from 'foreign words' to the exact repeated meaning of thank you.",
       "tiedClue": "Arigato"
     }

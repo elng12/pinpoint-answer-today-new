@@ -17,11 +17,14 @@
   "lessons": [
     "Consider multiple meanings of common terms. Words like 'bit' can have entirely different meanings across various contexts.",
     "Look for physical and abstract connections. Solutions can bridge both tangible objects and conceptual ideas.",
-    "Pay attention to parenthetical clues. Additional information in parentheses often provides crucial context."
+    {
+      "title": "\"Horse (when bridled)\" keeps the category level specific",
+      "body": "Additional information in parentheses often provides crucial context."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #662?",
+      "question": "What final category connects \"Screwdriver\" and \"Drill\" in LinkedIn Pinpoint #662?",
       "answer": "The answer is Things with bits: Screwdriver bits, Drill bits, Horse bits, Comedy bits, Computer bits."
     },
     {

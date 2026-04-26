@@ -15,9 +15,15 @@
     "Bifocal": "Referring to Bifocal Lenses, those with two distinct optical powers."
   },
   "lessons": [
-    "Don't marry your first answer. The clue 'ZOOM' immediately suggested a photography theme, leading to the initial (incorrect) guess of 'CAMERA'. It's crucial to remain flexible and re-evaluate as new clues appear.",
+    {
+      "title": "\"Contact\" and \"Zoom\" set the useful boundary",
+      "body": "The clue 'ZOOM' immediately suggested a photography theme, leading to the initial (incorrect) guess of 'CAMERA'. It's crucial to remain flexible and re-evaluate as new clues appear."
+    },
     "Consider multiple meanings of words. The word 'CONTACT' can relate to human interaction but also to 'Contact Lenses', vital to solve today.",
-    "Look for broader categories. Even if some clues point to specific items (like 'TELEPHOTO'), consider what category they belong to. In this case, all clues were types of LENSES.",
+    {
+      "title": "\"Fish-eye\" keeps the category level specific",
+      "body": "Even if some clues point to specific items (like 'TELEPHOTO'), consider what category they belong to. In this case, all clues were types of LENSES."
+    },
     "Trust the shift when it clicks. The final clue, 'BIFOCAL', forced a shift in thinking. Once the connection clicked, the answer became obvious. Pay attention to those 'aha!' moments."
   ],
   "faqs": [

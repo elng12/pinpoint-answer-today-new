@@ -30,7 +30,7 @@
     "Golden Gate Bridge": "This is the clue that removes most of the ambiguity."
   },
   "articleBlocks": [
-    "Fog and Cable cars already suggest a city picture, but they do not force one location on their own.",
+    "Fog and Cable cars already suggest a city picture, but they do not force one location on their own. The opening clues stay ambiguous until Golden Gate Bridge gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Ghirardelli Square and Alcatraz Island narrow the board further, though it can still feel like a general California travel set for a moment.",
     "Golden Gate Bridge is the clue that removes the doubt.",
     "Once that landmark appears, Fog, Cable cars, Ghirardelli Square, and Alcatraz Island all re-read as unmistakable pieces of the same San Francisco identity.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #687?",
+      "question": "What final category connects \"Fog\" and \"Cable cars\" in LinkedIn Pinpoint #687?",
       "answer": "The answer is \"San Francisco icons\" because every clue points to something strongly associated with the city."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #687?",
+      "question": "How do \"Fog\" and \"Cable cars\" connect in LinkedIn Pinpoint #687?",
       "answer": "The connection is San Francisco's public identity: its fog, cable cars, famous destinations, and best-known landmark all appear in the set."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #687?",
+      "question": "Why is \"Golden Gate Bridge\" the key clue in LinkedIn Pinpoint #687?",
       "answer": "Golden Gate Bridge is the turning clue because it makes San Francisco unmistakable and pulls the earlier clues into one exact city frame."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #687?",
+      "question": "What final category connects \"Fog\" and \"Cable cars\" in LinkedIn Pinpoint #687?",
       "answer": "The answer is \"San Francisco icons\" because every clue points to something strongly associated with the city.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #687?",
+      "question": "How do \"Fog\" and \"Cable cars\" connect in LinkedIn Pinpoint #687?",
       "answer": "The connection is San Francisco's public identity: its fog, cable cars, famous destinations, and best-known landmark all appear in the set.",
       "tiedClue": "Golden Gate Bridge"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #687?",
+      "question": "Why is \"Golden Gate Bridge\" the key clue in LinkedIn Pinpoint #687?",
       "answer": "Golden Gate Bridge is the turning clue because it makes San Francisco unmistakable and pulls the earlier clues into one exact city frame.",
       "tiedClue": "Golden Gate Bridge"
     }

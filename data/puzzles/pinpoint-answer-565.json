@@ -17,7 +17,10 @@
   "lessons": [
     "Look for repeated verbs. When nouns span settings, try pairing each with the same verb to see if natural phrases appear.",
     "Balance literal and figurative uses. A connector can cover both literal skipping (rope, stones) and figurative skipping (meetings, class) if the wording matches.",
-    "Drop partial themes quickly. If a hypothesis ignores two or more clues, move on; the right answer should cover everything."
+    {
+      "title": "\"Stones\" keeps the category level specific",
+      "body": "If a hypothesis ignores two or more clues, move on; the right answer should cover everything."
+    }
   ],
   "faqs": [
     {

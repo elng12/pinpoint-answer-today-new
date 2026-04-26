@@ -17,8 +17,14 @@
   "lessons": [
     "Look for broad categories. Sometimes the clues aren't directly related but fall under a larger umbrella. In this case, all the clues are sections you'd find within a document.",
     "Consider common documents. When you see clues like 'Education' and 'Experience', think about documents that commonly include these sections, such as a resume or CV.",
-    "Don't overthink it. The puzzle often relies on simple, straightforward connections. Resist the urge to search for complex relationships and focus on the obvious.",
-    "Say it out loud. Sometimes, saying the clues aloud can help you identify potential connections. For example, 'Skills', 'Interests', and 'Education' sound like categories in a list."
+    {
+      "title": "\"Education\" keeps the category level specific",
+      "body": "The puzzle often relies on simple, straightforward connections. Resist the urge to search for complex relationships and focus on the obvious."
+    },
+    {
+      "title": "\"References (upon request)\" checks the solve against \"References (upon request)\"",
+      "body": "Sometimes, saying the clues aloud can help you identify potential connections. For example, 'Skills', 'Interests', and 'Education' sound like categories in a list."
+    }
   ],
   "faqs": [
     {

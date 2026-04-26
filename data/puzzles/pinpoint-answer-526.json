@@ -30,15 +30,7 @@
     "Trampoline": "This clue confirms the same component in a much bigger and more visible form."
   },
   "articleBlocks": [
-    "At first, Mousetrap and Stapler pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"household tools\". Several clues are everyday tools, so that broad answer feels close at the beginning. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby read was \"objects with tension or snapping action\". That guess notices part of the function, but Mechanical watch forces a deeper mechanism-based explanation. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
-    "Once I read the set through objects connected by the spring mechanism they rely on, examples like \"spring-loaded mousetrap\" and \"watch mainspring\" stopped feeling loose and started landing cleanly.",
-    "Spring-loaded stapler, spring clothespin, and trampoline springs keep the board tied to the same component level, which is what makes the answer feel tighter than a broad household-object or motion theme.",
-    "The answer was Things with springs. More precisely, the board resolves as objects specifically identified by the spring component they rely on rather than by one broad use case, which is why Things with springs fits better than \"household tools\" or \"objects with tension or snapping action\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Mousetrap and Stapler pointed in a few different directions, so the board still felt wider than one exact category.",
+    "At first, Mousetrap and Stapler pointed in a few different directions, so the board still felt wider than one exact category. The opening clues stay ambiguous until Mechanical watch gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"household tools\". Several clues are everyday tools, so that broad answer feels close at the beginning. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby read was \"objects with tension or snapping action\". That guess notices part of the function, but Mechanical watch forces a deeper mechanism-based explanation. Mechanical watch is the clue that keeps the board from staying at that broader surface read.",
     "Once I read the set through objects connected by the spring mechanism they rely on, examples like \"spring-loaded mousetrap\" and \"watch mainspring\" stopped feeling loose and started landing cleanly.",
@@ -96,15 +88,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #526?",
+      "question": "What final category connects \"Mousetrap\" and \"Mechanical watch\" in LinkedIn Pinpoint #526?",
       "answer": "The answer is Things with springs because Mousetrap, Mechanical watch, Stapler, Clothespin, and Trampoline all rely on springs as part of how they work."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #526?",
+      "question": "How do \"Mousetrap\" and \"Mechanical watch\" connect in LinkedIn Pinpoint #526?",
       "answer": "The connection is mechanism, not surface category. Every clue points to an object that uses springs, whether the spring is visible or hidden."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #526?",
+      "question": "Why is \"Mechanical watch\" the key clue in LinkedIn Pinpoint #526?",
       "answer": "Mechanical watch is the turning clue because it forces you to think about hidden internal springs, which reveals the shared mechanism behind the whole board."
     }
   ],
@@ -167,19 +159,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #526?",
+      "question": "What final category connects \"Mousetrap\" and \"Mechanical watch\" in LinkedIn Pinpoint #526?",
       "answer": "The answer is Things with springs because Mousetrap, Mechanical watch, Stapler, Clothespin, and Trampoline all rely on springs as part of how they work.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #526?",
+      "question": "How do \"Mousetrap\" and \"Mechanical watch\" connect in LinkedIn Pinpoint #526?",
       "answer": "The connection is mechanism, not surface category. Every clue points to an object that uses springs, whether the spring is visible or hidden.",
       "tiedClue": "Mechanical watch"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #526?",
+      "question": "Why is \"Mechanical watch\" the key clue in LinkedIn Pinpoint #526?",
       "answer": "Mechanical watch is the turning clue because it forces you to think about hidden internal springs, which reveals the shared mechanism behind the whole board.",
       "tiedClue": "Mechanical watch"
     }

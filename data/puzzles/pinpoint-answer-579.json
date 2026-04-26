@@ -16,8 +16,14 @@
   },
   "lessons": [
     "Test one word after all clues. When clue words feel like they could start common phrases, try adding the same word after each one before chasing broad categories. If a single word creates five natural-sounding expressions, you are probably close to the right connector.",
-    "Drop partial themes quickly. Track and field, winter sports, and extreme activities each explain two or three clues here, but not all five. Training yourself to abandon any idea as soon as it breaks on multiple entries will keep you from overfitting half-right stories.",
-    "Say potential phrases out loud. High jump, broad jump, ski jump, parachute jump, bungee jump all feel fluent when spoken. Saying phrases aloud is a powerful way to tell the difference between a real pattern and a forced guess.",
+    {
+      "title": "\"Bungee\" is the clue to retest before committing",
+      "body": "Track and field, winter sports, and extreme activities each explain two or three clues here, but not all five. Training yourself to abandon any idea as soon as it breaks on multiple entries will keep you from overfitting half-right stories."
+    },
+    {
+      "title": "\"Ski\" keeps the category level specific",
+      "body": "High jump, broad jump, ski jump, parachute jump, bungee jump all feel fluent when spoken. Saying phrases aloud is a powerful way to tell the difference between a real pattern and a forced guess."
+    },
     "Look for the shared word, not the category. When clues span different categories (like athletics, winter sports, and extreme activities), the connector is often the shared word that links them, not a single category that tries to force them together."
   ],
   "faqs": [

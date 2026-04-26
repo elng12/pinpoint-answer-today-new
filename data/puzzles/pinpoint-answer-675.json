@@ -30,7 +30,7 @@
     "Equal": "This is the clue that makes the answer broader and more exact at the same time."
   },
   "articleBlocks": [
-    "Warning and Street make signs feel likely almost immediately, but they can also trap you in a too-literal road-and-safety reading.",
+    "Warning and Street make signs feel likely almost immediately, but they can also trap you in a too-literal road-and-safety reading. The opening clues stay ambiguous until Equal gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Peace helps widen the board, though the cleanest shift comes when one clue proves the category includes symbols and notation too.",
     "Equal is the clue that does that work.",
     "Once equal sign appears, the answer stops being about posted signage alone and becomes the broader category of signs.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #675?",
+      "question": "Which type-level category connects \"Warning\" and \"Street\" in LinkedIn Pinpoint #675?",
       "answer": "The answer is Types of signs because Warning, Street, Vital, Peace, and Equal all form recognized sign phrases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #675?",
+      "question": "How do \"Warning\" and \"Street\" connect in LinkedIn Pinpoint #675?",
       "answer": "The connection is the word sign across multiple domains: public safety, medicine, culture, and mathematics."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #675?",
+      "question": "Why is \"Equal\" the key clue in LinkedIn Pinpoint #675?",
       "answer": "Equal is the turning clue because equal sign proves the board is broader than literal street or warning signage and confirms the full category of signs."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #675?",
+      "question": "Which type-level category connects \"Warning\" and \"Street\" in LinkedIn Pinpoint #675?",
       "answer": "The answer is Types of signs because Warning, Street, Vital, Peace, and Equal all form recognized sign phrases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #675?",
+      "question": "How do \"Warning\" and \"Street\" connect in LinkedIn Pinpoint #675?",
       "answer": "The connection is the word sign across multiple domains: public safety, medicine, culture, and mathematics.",
       "tiedClue": "Equal"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #675?",
+      "question": "Why is \"Equal\" the key clue in LinkedIn Pinpoint #675?",
       "answer": "Equal is the turning clue because equal sign proves the board is broader than literal street or warning signage and confirms the full category of signs.",
       "tiedClue": "Equal"
     }

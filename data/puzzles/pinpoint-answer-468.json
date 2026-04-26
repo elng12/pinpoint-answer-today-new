@@ -17,8 +17,14 @@
   "lessons": [
     "Beware of Initial Confidence. Sometimes, the first clue can lead you down the wrong path. I was so sure about LIGHT pointing to \"ASTRONOMICAL\", but it was a total red herring. Always consider all the clues before committing to an answer.",
     "Look for Time-Related Clues. The clues LEAP and CALENDAR both hint at time and date. Recognizing these connections can help narrow down the possibilities. The common thread with \"YEAR\" is the shared aspect of time.",
-    "Consider Multiple Meanings. The clue NEW can be interpreted in various ways. Thinking about \"NEW YEAR\" helped unlock the puzzle. Don't get stuck on the first definition that comes to mind; explore different angles.",
-    "Trust the Shift in Perspective. When you're stuck, try looking at the clues from a different angle. I started with space (LIGHTYEAR), but the solution required a more grounded, calendar-based perspective."
+    {
+      "title": "\"Leap\" checks that \"'year'\" works across the board",
+      "body": "The clue NEW can be interpreted in various ways. Thinking about \"NEW YEAR\" helped unlock the puzzle. Don't get stuck on the first definition that comes to mind; explore different angles."
+    },
+    {
+      "title": "\"Calendar\" keeps the \"'year'\" read from drifting",
+      "body": "When you're stuck, try looking at the clues from a different angle. I started with space (LIGHTYEAR), but the solution required a more grounded, calendar-based perspective."
+    }
   ],
   "faqs": [
     {

@@ -16,8 +16,14 @@
   },
   "lessons": [
     "Look for visual properties, not just function. Don't assume the connection is based on what an item does. For clues like 'Pointillist paintings' and 'Morse code', asking 'What does it look like?' can be more productive than 'What is it used for?'.",
-    "Don't marry your first theory. The 'Forms of punctuation' idea was a strong but ultimately wrong path. When a new clue like 'Morse code' challenges your initial hypothesis, be ready to pivot and find a new, more universal connection.",
-    "Use outliers to stress-test your idea. The clues that seem least related, like 'Pointillist paintings', are actually the most helpful. If you can make your theme work for the outlier, it will almost certainly work for the more obvious clues."
+    {
+      "title": "\"Lowercase i's and j's\" is the clue to retest before committing",
+      "body": "The 'Forms of punctuation' idea was a strong but ultimately wrong path. When a new clue like 'Morse code' challenges your initial hypothesis, be ready to pivot and find a new, more universal connection."
+    },
+    {
+      "title": "\"Morse code\" keeps the category level specific",
+      "body": "The clues that seem least related, like 'Pointillist paintings', are actually the most helpful. If you can make your theme work for the outlier, it will almost certainly work for the more obvious clues."
+    }
   ],
   "faqs": [
     {

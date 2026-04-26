@@ -1290,34 +1290,129 @@ function buildLessons(
   connectorSummary: string,
   portableTakeaway: string,
   answer: string,
+  clues: string[],
 ) {
   const answerPattern = detectAnswerPattern(answer);
-  const finalTitle =
-    answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? "Prefer exact phrase logic over loose category logic"
-      : "Prefer precise category fit over broad topic logic";
-  const defaultTakeaway =
-    answerPattern.kind === "before" || answerPattern.kind === "after"
-      ? `A strong Pinpoint answer should explain every clue naturally through ${lowerFirst(connectorSummary)}`
-      : "A strong Pinpoint answer should explain why every clue belongs in the same category.";
+  const isPhrase = answerPattern.kind === "before" || answerPattern.kind === "after";
+  const firstClue = stripQuotes(clues[0] || "");
+  const secondClue = stripQuotes(clues[1] || "");
+  const turningClue = turningPointSubject(turningPointLabel);
+
+  const lesson1Title =
+    firstClue && secondClue
+      ? isPhrase
+        ? `"${firstClue}" and "${secondClue}" do not immediately line up around one missing word`
+        : `"${firstClue}" and "${secondClue}" can look like they belong to different categories at first`
+      : isPhrase
+        ? "The first clues rarely reveal the shared word right away"
+        : "Broad clues can create the wrong frame early";
+
+  const lesson1Body =
+    firstClue && secondClue
+      ? isPhrase
+        ? `"${firstClue}" and "${secondClue}" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.`
+        : `"${firstClue}" and "${secondClue}" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.`
+      : "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.";
+
+  const lesson2Title =
+    turningClue !== "A later clue"
+      ? isPhrase
+        ? `"${turningClue}" is what finally makes the missing word visible`
+        : answerPattern.kind === "typed-category"
+          ? `"${turningClue}" is what makes ${answerPattern.singularNoun.toLowerCase()} feel concrete instead of broad`
+          : answerPattern.kind === "category"
+            ? `"${turningClue}" anchors ${lowerFirst(connectorSummary)}`
+          : `"${turningClue}" is what makes the answer feel concrete instead of broad`
+      : "The narrowing clue matters more than the loudest clue";
+
+  const lesson2Body = ensureSentence(
+    `${turningPointReference(turningPointLabel)} is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`,
+  );
+
+  const lesson3Title = isPhrase
+    ? `Every clue should read as an everyday phrase once "${answerPattern.token}" is in place`
+    : answerPattern.kind === "typed-category"
+      ? `Every clue should name a specific kind of ${answerPattern.singularNoun.toLowerCase()} once the category sharpens`
+      : `Every clue should fit ${lowerFirst(connectorSummary)} cleanly once the answer sharpens`;
+
+  const defaultTakeaway = isPhrase
+    ? `A strong Pinpoint answer should explain every clue naturally through ${lowerFirst(connectorSummary)}`
+    : "A strong Pinpoint answer should explain why every clue belongs in the same category.";
+
   return [
-    {
-      title: "Broad clues can create the wrong frame early",
-      body: "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
-    },
-    {
-      title: "The narrowing clue matters more than the loudest clue",
-      body: ensureSentence(
-        `${turningPointSubject(turningPointLabel)} is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`,
-      ),
-    },
-    {
-      title: finalTitle,
-      body: ensureSentence(
-        `${portableTakeaway || defaultTakeaway}`,
-      ),
-    },
+    { title: lesson1Title, body: lesson1Body },
+    { title: lesson2Title, body: lesson2Body },
+    { title: lesson3Title, body: ensureSentence(portableTakeaway || defaultTakeaway) },
   ];
+}
+
+function buildComparisonFaq(
+  puzzleData: PuzzleDataForAI,
+  answerPattern: ReturnType<typeof detectAnswerPattern>,
+  clueDetails: GeneratedClueDetail[],
+  turningClue: string,
+): { question: string; answer: string } | null {
+  if (clueDetails.length < 2) return null;
+  const isPhrase = answerPattern.kind === "before" || answerPattern.kind === "after";
+  const nonTurningDetails = clueDetails.filter(
+    (d) => normalizeLooseMatch(d.clue) !== normalizeLooseMatch(turningClue),
+  );
+  if (nonTurningDetails.length === 0) return null;
+  const otherDetail = nonTurningDetails[0];
+  const otherClue = stripQuotes(otherDetail.clue);
+  const otherPhrase = stripQuotes(normalizeText(otherDetail.phrase));
+
+  if (isPhrase) {
+    return {
+      question: `Why does "${otherClue}" also work in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      answer: ensureSentence(
+        otherPhrase
+          ? `"${otherClue}" fits because "${otherPhrase}" is a natural everyday phrase once the missing word is in place. It confirms the same frame that "${turningClue}" opened.`
+          : `"${otherClue}" fits the same shared-word pattern as the other clues, confirming the answer without forcing the read.`,
+      ),
+    };
+  }
+
+  if (answerPattern.kind === "typed-category") {
+    const noun = answerPattern.singularNoun.toLowerCase();
+    return {
+      question: `How does "${otherClue}" fit as ${/^[aeiou]/i.test(noun) ? "an" : "a"} ${noun} in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      answer: ensureSentence(
+        otherPhrase
+          ? `"${otherClue}" reads as "${otherPhrase}", which is a recognizable ${noun}. That keeps the board specific instead of broadly themed.`
+          : `"${otherClue}" is a specific ${noun}, which confirms that the category is exact rather than loosely themed.`,
+      ),
+    };
+  }
+
+  return {
+    question: `How does "${otherClue}" fit the same category as "${turningClue}" in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+    answer: ensureSentence(
+      otherPhrase
+        ? `"${otherClue}" reads as "${otherPhrase}" under the same answer, so it supports the category instead of pulling toward a broader guess.`
+        : `"${otherClue}" fits the same category frame, confirming that the answer holds across the whole board.`,
+    ),
+  };
+}
+
+function buildAnswerFaqQuestion(
+  puzzleData: PuzzleDataForAI,
+  answerPattern: ReturnType<typeof detectAnswerPattern>,
+  clueDetails: GeneratedClueDetail[],
+): string {
+  const firstClue = stripQuotes(clueDetails[0]?.clue || puzzleData.rawWords[0] || "");
+  const secondClue = stripQuotes(clueDetails[1]?.clue || puzzleData.rawWords[1] || "");
+  if (!firstClue || !secondClue) {
+    return `What final answer fits this LinkedIn Pinpoint #${puzzleData.puzzleNumber} board?`;
+  }
+
+  if (answerPattern.kind === "before" || answerPattern.kind === "after") {
+    return `What shared word links "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`;
+  }
+  if (answerPattern.kind === "typed-category") {
+    return `Which type-level category connects "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`;
+  }
+  return `What final category connects "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`;
 }
 
 function buildFaqs(
@@ -1345,19 +1440,39 @@ function buildFaqs(
       : answerPattern.kind === "typed-category"
         ? `${buildCategoryConnectionAnswer(puzzleData.mainAnswer, clueCount)} ${turningPointSubject(turningPointLabel)} is the clue that makes the category specific enough to verify across the full board`
         : `${buildCategoryConnectionAnswer(puzzleData.mainAnswer, clueCount)} ${turningPointSubject(turningPointLabel)} is what keeps the category reading precise instead of broad`;
+  const firstClue = stripQuotes(clueDetails[0]?.clue || puzzleData.rawWords[0] || "");
+  const secondClue = stripQuotes(clueDetails[1]?.clue || puzzleData.rawWords[1] || "");
+  const connectionQuestion =
+    firstClue && secondClue
+      ? `How do "${firstClue}" and "${secondClue}" connect in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`
+      : `What is the connection in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`;
+
+  const turningClueQuestion =
+    turningClue !== "A later clue"
+      ? `Why is "${turningClue}" the key clue in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`
+      : `Which clue really unlocks LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`;
+
+  const comparisonFaq = buildComparisonFaq(
+    puzzleData,
+    answerPattern,
+    clueDetails,
+    turningClue,
+  );
+  const answerQuestion = buildAnswerFaqQuestion(puzzleData, answerPattern, clueDetails);
+
   return [
     {
-      question: `What is the answer to LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      question: answerQuestion,
       answer: `The answer is "${puzzleData.mainAnswer}" because that reading explains the full set cleanly, including the final clue.`,
     },
     {
-      question: `What is the connection in LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      question: connectionQuestion,
       answer: ensureSentence(
         connectionAnswer,
       ),
     },
     {
-      question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleData.puzzleNumber}?`,
+      question: turningClueQuestion,
       answer: ensureSentence(
         (answerPattern.kind === "before" || answerPattern.kind === "after")
           ? turningPhrase
@@ -1374,6 +1489,7 @@ function buildFaqs(
               : `${turningClue} is the turning clue because it is the first clue that makes the answer feel concrete enough to test across the full board. ${difficultyReason}`,
       ),
     },
+    ...(comparisonFaq ? [comparisonFaq] : []),
   ];
 }
 
@@ -1933,7 +2049,7 @@ export function composeFromSlots(
     mainAnswer,
   );
   const wrongGuesses = buildWrongGuesses(falseStarts, rejectedGuess, turningPointLabel);
-  const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway, mainAnswer);
+  const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway, mainAnswer, clues);
   const faqs = buildFaqs(
     puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer },
     connectorSummary,

@@ -15,10 +15,22 @@
     "Ballet": "Referring to Ballet Dance, a formal and graceful dance form."
   },
   "lessons": [
-    "Don't marry your first idea. I was so confident in \"Dance Floor\" that I ignored the other clues initially. Remember, Pinpoint often misleads you. Be willing to abandon your initial assumptions when new clues emerge.",
-    "Consider multiple meanings. The clue \"Line\" could refer to a line in a song, a line of dancers, or even a physical line. Explore all possible interpretations before settling on one.",
-    "Look for broader categories. Instead of thinking about specific types of dance, I should have been thinking about dance as a whole. Sometimes the answer is more general than you initially expect.",
-    "Trust the shift in meaning. The clues seemed unrelated at first, but they all shared the common element of \"Dance.\" This shift from disparate words to a unified theme is a key characteristic of Pinpoint puzzles."
+    {
+      "title": "\"Square\" and \"Line\" set the useful boundary",
+      "body": "I was so confident in \"Dance Floor\" that I ignored the other clues initially. Remember, Pinpoint often misleads you. Be willing to abandon your initial assumptions when new clues emerge."
+    },
+    {
+      "title": "\"Ballet\" is the clue to retest before committing",
+      "body": "The clue \"Line\" could refer to a line in a song, a line of dancers, or even a physical line. Explore all possible interpretations before settling on one."
+    },
+    {
+      "title": "\"Break\" keeps the category level specific",
+      "body": "Instead of thinking about specific types of dance, I should have been thinking about dance as a whole. Sometimes the answer is more general than you initially expect."
+    },
+    {
+      "title": "\"Ballet\" checks the solve against \"Ballet\"",
+      "body": "The clues seemed unrelated at first, but they all shared the common element of \"Dance.\" This shift from disparate words to a unified theme is a key characteristic of Pinpoint puzzles."
+    }
   ],
   "faqs": [
     {

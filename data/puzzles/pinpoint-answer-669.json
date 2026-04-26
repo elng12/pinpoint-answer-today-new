@@ -14,13 +14,22 @@
     "March comes in like a": "March comes in like a lion is a familiar expression or compound, so March comes in like a belongs in the set Words that come before \"lion\"."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who watch for idioms mixing with animal names in phrase puzzles before chasing a clever but unstable guess. Words that come before \"lion\" works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. check whether one connector creates both literal and figurative expressions so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, do not reject a connector just because one clue becomes an idiom. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Sea\" and \"Mountain\" open the \"lion\" phrase test",
+      "body": "This puzzle rewards solvers who watch for idioms mixing with animal names in phrase puzzles before chasing a clever but unstable guess. Words that come before \"lion\" works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"March comes in like a\" locks in the \"lion\" pattern",
+      "body": "A promising guess is not enough on its own. check whether one connector creates both literal and figurative expressions so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"African\" checks that \"lion\" works across the board",
+      "body": "When several broad answers feel possible, do not reject a connector just because one clue becomes an idiom. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #669?",
+      "question": "What shared word links \"Sea\" and \"Mountain\" in LinkedIn Pinpoint #669?",
       "answer": "The answer is Words that come before \"lion\". The five clues are Sea, Mountain, African, Cowardly, and March comes in like a."
     },
     {

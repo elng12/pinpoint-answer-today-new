@@ -70,6 +70,21 @@ const GENERIC_CLUE_EXPLANATION_PATTERNS = [
   /\bsame shared connection that leads to\b/i,
   /\bpoints back to that same connection\b/i,
 ];
+const GENERIC_LESSON_TITLE_PATTERNS = [
+  /\bBroad clues can create the wrong frame early\b/i,
+  /\bThe narrowing clue matters more than the loudest clue\b/i,
+  /\bPrefer exact phrase logic over loose category logic\b/i,
+  /\bPrefer precise category fit over broad topic logic\b/i,
+];
+const GENERIC_FAQ_QUESTION_PATTERNS = [
+  /^What is the answer to LinkedIn Pinpoint #\d+\?$/i,
+  /^What is the connection in LinkedIn Pinpoint #\d+\?$/i,
+  /^Which clue really unlocks LinkedIn Pinpoint #\d+\?$/i,
+  /^Which clue is decisive in LinkedIn Pinpoint #\d+\?$/i,
+  /^Which clue really sets the category in LinkedIn Pinpoint #\d+\?$/i,
+  /^Which clue gives the strongest anchor in LinkedIn Pinpoint #\d+\?$/i,
+  /^Which clue makes the visual set click in LinkedIn Pinpoint #\d+\?$/i,
+];
 const ANSWER_NARROWING_PREPOSITIONS = [
   "from",
   "in",
@@ -555,6 +570,32 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     }
   });
 
+  input.lessons?.forEach((item, index) => {
+    const title = normalizeText(item?.title);
+    if (!title) return;
+    if (GENERIC_LESSON_TITLE_PATTERNS.some((pattern) => pattern.test(title))) {
+      issues.push({
+        code: "lessons.genericTitle",
+        message: `Lesson ${index + 1} title is generic and repeats across puzzles instead of referencing a specific clue or answer detail`,
+        field: `lessons[${index}].title`,
+        ...(sampleText(item?.title) ? { sample: sampleText(item?.title) } : {}),
+      });
+    }
+  });
+
+  input.faqs?.forEach((item, index) => {
+    const question = normalizeText(item?.question);
+    if (!question) return;
+    if (GENERIC_FAQ_QUESTION_PATTERNS.some((pattern) => pattern.test(question))) {
+      issues.push({
+        code: "faqs.genericQuestion",
+        message: `FAQ ${index + 1} question is a generic template instead of referencing a specific clue or answer detail`,
+        field: `faqs[${index}].question`,
+        ...(sampleText(item?.question) ? { sample: sampleText(item?.question) } : {}),
+      });
+    }
+  });
+
   return issues;
 }
 
@@ -577,6 +618,8 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "faqs.genericConnectionAnswer",
   "faqs.genericTurningClueAnswer",
   "clueDetails.genericExplanation",
+  "lessons.genericTitle",
+  "faqs.genericQuestion",
   "answer.semanticNarrowing",
   "answer.alternateRestatement",
 ]);

@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Don't get locked into a category. My first instinct was to group the clues by what they are (food, body parts). Today’s puzzle was a great reminder to stop forcing clues into a semantic category and instead look for a structural relationship, like a word they combine with.",
-    "Let the odd clue guide you. When a clue like Chop or Selfie seems to break your initial theory, don't discard it. Treat it as the most important clue. It's often an outlier that reveals the true nature of the pattern you're looking for.",
+    {
+      "title": "\"Selfie\" locks in the \"stick\" pattern",
+      "body": "When a clue like Chop or Selfie seems to break your initial theory, don't discard it. Treat it as the most important clue. It's often an outlier that reveals the true nature of the pattern you're looking for."
+    },
     "Play with word order. The solution here wasn't about synonyms or categories, but about direct wordplay. If your theory feels stuck, try putting a common word before or after each clue to see if it makes a recognizable phrase."
   ],
   "faqs": [

@@ -15,10 +15,16 @@
     "Epsom": "A nod to Epsom Salt, a mineral compound used in baths and for muscle relief."
   },
   "lessons": [
-    "Consider broader categories. Instead of focusing on specific items related to 'Table,' I should have thought about broader categories like 'seasonings' or 'minerals.' This would have led me to 'SALT' faster.",
+    {
+      "title": "\"Table\" and \"Sea\" set the useful boundary",
+      "body": "Instead of focusing on specific items related to 'Table,' I should have thought about broader categories like 'seasonings' or 'minerals.' This would have led me to 'SALT' faster."
+    },
     "Test your assumptions with multiple clues. I jumped to the conclusion that 'Table' meant 'PEPPER' without considering how it would connect to the other clues. Always test your initial assumptions.",
     "Look for connections beyond the obvious. The connection between 'Bath' and 'SALT' isn't immediately obvious, but 'Bath Salt' is a common term. Think about less direct associations.",
-    "Trust the shift in theme. When the clues shifted from 'Table' to 'Sea' and 'Bath,' it was a sign that the initial 'food' theme was incorrect. Trust that shift and re-evaluate your guess."
+    {
+      "title": "\"Epsom\" checks the solve against \"Epsom\"",
+      "body": "When the clues shifted from 'Table' to 'Sea' and 'Bath,' it was a sign that the initial 'food' theme was incorrect. Trust that shift and re-evaluate your guess."
+    }
   ],
   "faqs": [
     {

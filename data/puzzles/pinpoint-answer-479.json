@@ -15,7 +15,10 @@
     "Old Town": "And finally, Old Town Square in Prague, a stunning medieval plaza."
   },
   "lessons": [
-    "Consider Multiple Meanings. The word 'Red' could refer to a color, a political affiliation, or, as in this case, part of a name. Don't get tunnel vision!",
+    {
+      "title": "\"Times\" and \"Red\" set the useful boundary",
+      "body": "The word 'Red' could refer to a color, a political affiliation, or, as in this case, part of a name. Don't get tunnel vision!"
+    },
     "Think Globally, Act Locally (with Squares). The clues spanned multiple continents. Remember to broaden your geographical horizons when tackling Pinpoint puzzles.",
     "History is Your Friend. Many famous squares, like Tahrir and Trafalgar, are steeped in history. A basic understanding can be a huge asset.",
     "Don't Overthink 'Old Town'. Sometimes the most straightforward clue is exactly what it seems, like 'Old Town' referring to a city's historical center."

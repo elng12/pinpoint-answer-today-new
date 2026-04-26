@@ -25,20 +25,14 @@
     "Rubies": "Rubies are famous for their deep red hue, making them valuable."
   },
   "spoilerHints": {
-    "Cardinals": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Stoplights": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Blood": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Raspberries": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Rubies": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Cardinals": "\"Cardinals\" can fit several broad reads at first, but it later works as part of Things that are red.",
+    "Stoplights": "\"Stoplights\" is the clue that turns the board toward Things that are red, because it gives the broad clue set a concrete category to test.",
+    "Blood": "\"Blood\" fits once the board is read as Things that are red, so test it against the same category as the other clues.",
+    "Raspberries": "\"Raspberries\" fits once the board is read as Things that are red, so test it against the same category as the other clues.",
+    "Rubies": "\"Rubies\" is the final confirmation that Things that are red holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #713. Cardinals, Stoplights, Blood can point in a few directions at first, but Stoplights is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'Stoplights' clue made the color connection click into place.",
-    "Once Stoplights clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Cardinals, Stoplights, and Blood stop feeling disconnected and start looking like they belong together. Once stoplights is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues initially seem unrelated, requiring a shift in perspective to see the underlying commonality.",
-    "The answer is Things that are red. Use the clue table for Raspberries, Rubies and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #713. Cardinals, Stoplights, Blood can point in a few directions at first, but Stoplights is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #713. Cardinals, Stoplights, Blood can point in a few directions at first, but Stoplights is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'Stoplights' clue made the color connection click into place.",
     "Once Stoplights clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Cardinals, Stoplights, and Blood stop feeling disconnected and start looking like they belong together. Once stoplights is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues initially seem unrelated, requiring a shift in perspective to see the underlying commonality.",
     "The answer is Things that are red. Use the clue table for Raspberries, Rubies and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Cardinals\" and \"Stoplights\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Stoplights\" turns the board into one specific category",
       "body": "Stoplights is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Rubies\" confirms the same category level",
       "body": "When stuck, look for simple, shared attributes instead of complex connections."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #713?",
+      "question": "What final category connects \"Cardinals\" and \"Stoplights\" in LinkedIn Pinpoint #713?",
       "answer": "The answer is \"Things that are red\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #713?",
+      "question": "How do \"Cardinals\" and \"Stoplights\" connect in LinkedIn Pinpoint #713?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Stoplights is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #713?",
+      "question": "Why is \"Stoplights\" the key clue in LinkedIn Pinpoint #713?",
       "answer": "Stoplights is the turning clue because \"Stoplights\" makes the shared category frame explicit. It also makes Cardinals read cleanly as \"Cardinals\". The clues initially seem unrelated, requiring a shift in perspective to see the underlying commonality."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #713?",
+      "question": "What final category connects \"Cardinals\" and \"Stoplights\" in LinkedIn Pinpoint #713?",
       "answer": "The answer is \"Things that are red\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #713?",
+      "question": "How do \"Cardinals\" and \"Stoplights\" connect in LinkedIn Pinpoint #713?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Stoplights is what keeps the category reading precise instead of broad.",
       "tiedClue": "Stoplights"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #713?",
+      "question": "Why is \"Stoplights\" the key clue in LinkedIn Pinpoint #713?",
       "answer": "Stoplights is the turning clue because \"Stoplights\" makes the shared category frame explicit. It also makes Cardinals read cleanly as \"Cardinals\". The clues initially seem unrelated, requiring a shift in perspective to see the underlying commonality.",
       "tiedClue": "Stoplights"
     }

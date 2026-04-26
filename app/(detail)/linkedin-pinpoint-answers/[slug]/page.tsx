@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { getVisibleDetailFaqs } from "@/lib/puzzles/detail-view";
+import { getVisibleDetailFaqEntries } from "@/lib/puzzles/detail-view";
 import {
   getAdjacentEntries,
   getAllDetailSlugs,
+  getCurrentPuzzle,
   getNextPreview,
   getPuzzleBySlug,
   getRecentEntries,
@@ -52,10 +53,7 @@ export async function generateMetadata({
   }
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
-  const isShortMode = puzzle.detailMode === "short";
-  const seoDescription = isShortMode
-    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the answer included. Answer: ${puzzle.answer}.`
-    : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
   const puzzleDetailPath = withTrailingSlash(routes.detail(puzzle.slug));
 
   return buildPageMetadata({
@@ -64,7 +62,7 @@ export async function generateMetadata({
     path: puzzleDetailPath,
     type: "article",
     socialImagePath: `${puzzleDetailPath}opengraph-image`,
-    socialImageAlt: `LinkedIn Pinpoint #${puzzle.number} social preview`,
+    socialImageAlt: `LinkedIn Pinpoint #${puzzle.number}: ${puzzle.clues.join(", ")}`,
   });
 }
 
@@ -75,11 +73,12 @@ export default async function DetailPage({
 }) {
   const detailArchiveOptions = { allowLiveWorkerFallback: false } as const;
   const { slug } = await params;
-  const [puzzle, recentPuzzles, nextPreview, adjacent] = await Promise.all([
+  const [puzzle, recentPuzzles, nextPreview, adjacent, currentPuzzle] = await Promise.all([
     getPuzzleBySlug(slug, detailArchiveOptions),
     getRecentEntries(10, slug, detailArchiveOptions),
     getNextPreview(),
     getAdjacentEntries(slug, detailArchiveOptions),
+    getCurrentPuzzle(detailArchiveOptions),
   ]);
 
   if (!puzzle) {
@@ -91,10 +90,8 @@ export default async function DetailPage({
   const detailUrl = absoluteUrl(detailPath);
   const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
   const isShortMode = puzzle.detailMode === "short";
-  const visibleFaqs = getVisibleDetailFaqs(puzzle.faqs, puzzle.detailMode);
-  const seoDescription = isShortMode
-    ? `LinkedIn Pinpoint ${puzzle.number} clues: ${puzzle.clues.join(", ")}. Spoiler-safe hints, a compact guide, and the answer included. Answer: ${puzzle.answer}.`
-    : buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
+  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   const structuredDataItems = [
     {
@@ -122,12 +119,12 @@ export default async function DetailPage({
       },
     },
     ...(
-      visibleFaqs.length > 0
+      visibleFaqEntries.length > 0
         ? [
             {
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: visibleFaqs.map((faq) => ({
+              mainEntity: visibleFaqEntries.map((faq) => ({
                 "@type": "Question",
                 name: faq.question,
                 acceptedAnswer: {
@@ -236,6 +233,7 @@ export default async function DetailPage({
         nextPreview={nextPreview}
         adjacentPrev={adjacent.prev}
         adjacentNext={adjacent.next}
+        latestPuzzle={{ number: currentPuzzle.number, slug: currentPuzzle.slug }}
       />
     </main>
   );

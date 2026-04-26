@@ -54,6 +54,11 @@ function assertRedirectRule(
   assert.equal(rule.permanent, permanent, `${source} should preserve permanent=${String(permanent)}`);
 }
 
+function assertNoRedirectRule(rules: RedirectRule[], source: string) {
+  const rule = rules.find((entry) => entry.source === source);
+  assert.equal(rule, undefined, `${source} should not be handled by next.config.ts redirects`);
+}
+
 function assertMiddlewareRedirect(inputUrl: string, expectedLocation: string) {
   const response = middleware(new NextRequest(inputUrl));
   assert.equal(response.status, 308, `${inputUrl} should issue a 308 redirect`);
@@ -69,6 +74,15 @@ function assertMiddlewarePassThrough(inputUrl: string, headers?: Record<string, 
 
 async function checkRedirectConfig() {
   const rules = await getRedirectRules();
+  const seenSources = new Set<string>();
+  for (const rule of rules) {
+    assert.ok(!seenSources.has(rule.source), `duplicate redirect source in next.config.ts: ${rule.source}`);
+    seenSources.add(rule.source);
+  }
+  assert.ok(
+    rules.length <= 256,
+    `next.config.ts redirects should stay compact and avoid per-puzzle expansion; found ${rules.length}`,
+  );
 
   assertRedirectRule(rules, "/en", "/");
   assertRedirectRule(
@@ -89,8 +103,17 @@ async function checkRedirectConfig() {
   assertRedirectRule(rules, "/feedback", "/contact-us");
   assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
+  assertRedirectRule(rules, "/linkedin-pinpoint/:number(\\d+)", "/puzzles/:number");
   assertRedirectRule(rules, "/puzzles/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
   assertRedirectRule(rules, "/fr/pinpoint/:number(\\d+)-analysis", "/pinpoint/:number-analysis");
+  assertNoRedirectRule(rules, "/pinpoint-answer-725");
+  assertNoRedirectRule(rules, "/linkedin-pinpoint/725");
+  assertNoRedirectRule(rules, "/puzzles/pinpoint-answer-725");
+  assertNoRedirectRule(rules, "/fr/puzzles/themes/:slug");
+  assertNoRedirectRule(rules, "/fr/puzzles/connectors/:slug");
+  assertNoRedirectRule(rules, "/fr/puzzles/connector/:slug");
+  assertNoRedirectRule(rules, "/puzzles/themes/types-of-dances");
+  assertNoRedirectRule(rules, "/puzzles/connectors/course");
 
   console.log("ok: next.config.ts preserves key locale and legacy redirect rules");
 }
@@ -122,6 +145,7 @@ function checkMiddlewareCanonicalization() {
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/");
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/");
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/favicon/favicon.ico");
+  assertMiddlewarePassThrough("https://pinpointanswertoday.app/puzzles/themes/definitely-not-a-real-legacy-slug");
 
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536",
@@ -135,6 +159,34 @@ function checkMiddlewareCanonicalization() {
   assertMiddlewareRedirect(
     "https://www.pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536",
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/puzzles/themes/types-of-dances",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-474/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/fr/puzzles/themes/things-you-d-find-at-a-doctor-s-office",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-495/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/de/puzzles/themes/coat",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-560/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/en/puzzles/connectors/coat",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-560/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/pt-BR/puzzles/connector/coat",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-560/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/fr/puzzles/themes/definitely-not-a-real-legacy-slug",
+    "https://pinpointanswertoday.app/puzzles/themes/definitely-not-a-real-legacy-slug",
+  );
+  assertMiddlewareRedirect(
+    "https://www.pinpointanswertoday.app/fr/puzzles/connectors/coat",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-560/",
   );
 
   console.log("ok: middleware preserves canonical slash and host normalization");

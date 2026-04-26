@@ -15,9 +15,15 @@
     "Trench": "Trench coat is the familiar belted overcoat with military roots, confirming the final connector is 'coat'."
   },
   "lessons": [
-    "Don't Marry Your First Theory. The first two clues, 'Lab' and 'House', create a powerful but misleading suggestion of 'buildings'. This puzzle teaches that your initial strong theory is often just a starting point. Be ready to abandon it as soon as the next clue doesn't fit perfectly.",
+    {
+      "title": "\"Lab\" and \"House\" open the \"coat\" phrase test",
+      "body": "The first two clues, 'Lab' and 'House', create a powerful but misleading suggestion of 'buildings'. This puzzle teaches that your initial strong theory is often just a starting point. Be ready to abandon it as soon as the next clue doesn't fit perfectly."
+    },
     "Use a Single Clue as a Pivot Point. When you're stuck, focus on one outlier clue. In this puzzle, 'Rain' was the key. Thinking about what commonly follows 'rain' immediately led to 'coat'. Using that single word as a pivot point can unlock the entire theme for you.",
-    "Test a Simple Pattern Across All Clues. If you find a potential connector, don't just assume it works. Actively test it against every single clue. Once I had the 'coat' theory, I mentally checked it: Lab coat? Yes. House coat? Yes. This methodical confirmation is what separates a guess from the correct answer."
+    {
+      "title": "\"Pea\" checks that \"coat\" works across the board",
+      "body": "If you find a potential connector, don't just assume it works. Actively test it against every single clue. Once I had the 'coat' theory, I mentally checked it: Lab coat? Yes. House coat? Yes. This methodical confirmation is what separates a guess from the correct answer."
+    }
   ],
   "faqs": [
     {

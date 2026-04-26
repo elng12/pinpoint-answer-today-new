@@ -30,15 +30,7 @@
     "Volt": "This clue should verify the same connector in science language, not start a new topic."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
-    "A nearby read was \"a subject-based category read\". Phone, Byte, and Volt all sound technical enough to tempt a category guess at first. Phone is the clue that keeps the board from staying at that broader surface read.",
-    "Another easy trap was \"a broad technology or fame theme\". Hit and Star can suggest entertainment, but that idea falls apart once Byte and Volt have to fit too. Phone is the clue that keeps the board from staying at that broader surface read.",
-    "Once that phrase appears, examples like \"megaphone\" and \"megahit\" stop feeling guessed and start reading like ordinary language under everyday and technical words built from one shared opening prefix.",
-    "megastar, megabyte, megavolt show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was Words that come after \"mega\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why Words that come after \"mega\" fits better than \"a subject-based category read\" or \"a broad technology or fame theme\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. The opening clues stay ambiguous until Phone gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "A nearby read was \"a subject-based category read\". Phone, Byte, and Volt all sound technical enough to tempt a category guess at first. Phone is the clue that keeps the board from staying at that broader surface read.",
     "Another easy trap was \"a broad technology or fame theme\". Hit and Star can suggest entertainment, but that idea falls apart once Byte and Volt have to fit too. Phone is the clue that keeps the board from staying at that broader surface read.",
     "Once that phrase appears, examples like \"megaphone\" and \"megahit\" stop feeling guessed and start reading like ordinary language under everyday and technical words built from one shared opening prefix.",
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #676?",
+      "question": "What shared word links \"Phone\" and \"Hit\" in LinkedIn Pinpoint #676?",
       "answer": "The answer is Words that come after \"mega\" because Phone, Hit, Star, Byte, and Volt all form standard words once mega is placed in front."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #676?",
+      "question": "How do \"Phone\" and \"Hit\" connect in LinkedIn Pinpoint #676?",
       "answer": "The connection is one shared prefix. The board resolves into megaphone, megahit, megastar, megabyte, and megavolt."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #676?",
+      "question": "Why is \"Phone\" the key clue in LinkedIn Pinpoint #676?",
       "answer": "Phone is the turning clue because megaphone is the most familiar and least technical word on the board, which makes mega appear quickly."
     }
   ],
@@ -168,19 +160,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #676?",
+      "question": "What shared word links \"Phone\" and \"Hit\" in LinkedIn Pinpoint #676?",
       "answer": "The answer is Words that come after \"mega\" because Phone, Hit, Star, Byte, and Volt all form standard words once mega is placed in front.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #676?",
+      "question": "How do \"Phone\" and \"Hit\" connect in LinkedIn Pinpoint #676?",
       "answer": "The connection is one shared prefix. The board resolves into megaphone, megahit, megastar, megabyte, and megavolt.",
       "tiedClue": "Phone"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #676?",
+      "question": "Why is \"Phone\" the key clue in LinkedIn Pinpoint #676?",
       "answer": "Phone is the turning clue because megaphone is the most familiar and least technical word on the board, which makes mega appear quickly.",
       "tiedClue": "Phone"
     }

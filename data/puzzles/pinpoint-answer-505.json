@@ -17,7 +17,10 @@
   "lessons": [
     "Think Broadly. When stumped, like with the CHAMPS-ÉLYSÉES, don't get stuck on specific details. Consider the overarching theme: what is the overall purpose of the landmark?",
     "Consider the Visitor. The EIFFEL TOWER clue is a huge hint! Ask yourself: what's the typical experience someone has at that place? If it's tourism, that's your angle.",
-    "Don't Overcomplicate. With THE LOUVRE, the answer isn't necessarily 'art appreciation'. It's the simple act of visiting it as a tourist.",
+    {
+      "title": "\"The Louvre\" keeps the category level specific",
+      "body": "With THE LOUVRE, the answer isn't necessarily 'art appreciation'. It's the simple act of visiting it as a tourist."
+    },
     "Geography Matters. The ARC DE TRIOMPHE, NOTRE-DAME and EIFFEL TOWER all point to one city. When multiple clues are in one city, that city is HIGHLY RELEVANT."
   ],
   "faqs": [

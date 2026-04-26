@@ -25,40 +25,34 @@
     "Sandcastles": "Sandcastles fits once the board is read through items and people commonly associated with going to the beach, especially after shells."
   },
   "spoilerHints": {
-    "Umbrellas": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Volleyballs": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Shells": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Lifeguards": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Sandcastles": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Umbrellas": "Think of the kind planted in sand for shade, not the rainy-day object by itself.",
+    "Volleyballs": "Focus on the casual outdoor setting where a ball, sand, and a net naturally belong together.",
+    "Shells": "This clue pulls the board toward a shoreline setting rather than sports equipment or weather gear.",
+    "Lifeguards": "Read this as a person tied to a supervised swimming area, then compare the surrounding objects.",
+    "Sandcastles": "This is the clearest sand-based clue; use it to retest umbrellas, volleyballs, and shells."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #721. Umbrellas, Volleyballs, Shells can point in a few directions at first, but Shells is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. A later clue is what finally made the answer feel concrete.",
-    "Once Shells clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Umbrellas, Volleyballs, and Shells stop feeling disconnected and start looking like they belong together. Once shells is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues cover a range of beach-related items, making it slightly tricky to see the common thread at first.",
-    "The answer is Things seen at a beach. Use the clue table for Lifeguards, Sandcastles and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #721. Umbrellas, Volleyballs, Shells can point in a few directions at first, but Shells is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #721. Umbrellas, Volleyballs, Shells can point in a few directions at first, but Shells is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. A later clue is what finally made the answer feel concrete.",
     "Once Shells clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Umbrellas, Volleyballs, and Shells stop feeling disconnected and start looking like they belong together. Once shells is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues cover a range of beach-related items, making it slightly tricky to see the common thread at first.",
     "The answer is Things seen at a beach. Use the clue table for Lifeguards, Sandcastles and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #721. Umbrellas, Volleyballs, Shells can point in a few directions at first, but Shells is usually the clue that narrows the board into one answer you can actually test.",
+    "My first read stayed deliberately loose because Umbrellas and Volleyballs could support more than one surface idea. The solve only became testable after Shells gave me a cleaner way to re-check the earlier clues.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. A later clue is what finally made the answer feel concrete.",
     "Once Shells clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Umbrellas, Volleyballs, and Shells stop feeling disconnected and start looking like they belong together. Once shells is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues cover a range of beach-related items, making it slightly tricky to see the common thread at first."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Umbrellas\" and \"Volleyballs\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Shells\" turns the board into one specific category",
       "body": "Shells is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Sandcastles\" confirms the same category level",
       "body": "When solving, look for the most common setting or context that unites all clues."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #721?",
+      "question": "What final category connects \"Umbrellas\" and \"Volleyballs\" in LinkedIn Pinpoint #721?",
       "answer": "The answer is \"Things seen at a beach\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #721?",
+      "question": "How do \"Umbrellas\" and \"Volleyballs\" connect in LinkedIn Pinpoint #721?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Shells is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #721?",
+      "question": "Why is \"Shells\" the key clue in LinkedIn Pinpoint #721?",
       "answer": "Shells is the turning clue because \"Shells\" makes the shared category frame explicit. It also makes Umbrellas read cleanly as \"Umbrellas\". The clues cover a range of beach-related items, making it slightly tricky to see the common thread at first."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #721?",
+      "question": "What final category connects \"Umbrellas\" and \"Volleyballs\" in LinkedIn Pinpoint #721?",
       "answer": "The answer is \"Things seen at a beach\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #721?",
+      "question": "How do \"Umbrellas\" and \"Volleyballs\" connect in LinkedIn Pinpoint #721?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Shells is what keeps the category reading precise instead of broad.",
       "tiedClue": "Shells"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #721?",
+      "question": "Why is \"Shells\" the key clue in LinkedIn Pinpoint #721?",
       "answer": "Shells is the turning clue because \"Shells\" makes the shared category frame explicit. It also makes Umbrellas read cleanly as \"Umbrellas\". The clues cover a range of beach-related items, making it slightly tricky to see the common thread at first.",
       "tiedClue": "Shells"
     }

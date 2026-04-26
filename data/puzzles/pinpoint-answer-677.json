@@ -30,15 +30,7 @@
     "Little black": "This is the clue that makes the dress reading feel least flexible."
   },
   "articleBlocks": [
-    "At first, Sun and Wrap can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
-    "One tempting read was \"formal occasions\". Cocktail and Wedding both point toward events, so the wrong frame feels natural at the start. Little black is the clue that finally pushes the board down to one exact type-level category.",
-    "Another nearby bucket was \"style or lifestyle words\". Sun and Wrap can sound like general style words until the board narrows into actual garment phrases. That read stays too broad once the full board is checked at the same category level.",
-    "Once the board turned into a question about what kind of dress each clue could be, a category board focused on dresses stopped sounding generic and started behaving like a real category test. Examples like \"sundress\" and \"wrap dress\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
-    "cocktail dress, wedding dress, and little black dress read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad fashion vibe.",
-    "The answer was Types of dresses. More precisely, the board resolves as a typed category where each clue names a specific dress phrase, not a loose style or occasion bucket, which is why Types of dresses fits better than \"formal occasions\" or \"style or lifestyle words\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Sun and Wrap can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "At first, Sun and Wrap can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start. The opening clues stay ambiguous until Little black gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"formal occasions\". Cocktail and Wedding both point toward events, so the wrong frame feels natural at the start. Little black is the clue that finally pushes the board down to one exact type-level category.",
     "Another nearby bucket was \"style or lifestyle words\". Sun and Wrap can sound like general style words until the board narrows into actual garment phrases. That read stays too broad once the full board is checked at the same category level.",
     "Once the board turned into a question about what kind of dress each clue could be, a category board focused on dresses stopped sounding generic and started behaving like a real category test. Examples like \"sundress\" and \"wrap dress\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #677?",
+      "question": "Which type-level category connects \"Sun\" and \"Wrap\" in LinkedIn Pinpoint #677?",
       "answer": "The answer is Types of dresses because Sun, Wrap, Cocktail, Wedding, and Little black all form familiar dress phrases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #677?",
+      "question": "How do \"Sun\" and \"Wrap\" connect in LinkedIn Pinpoint #677?",
       "answer": "The connection is fashion. The board resolves into sundress, wrap dress, cocktail dress, wedding dress, and little black dress."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #677?",
+      "question": "Why is \"Little black\" the key clue in LinkedIn Pinpoint #677?",
       "answer": "Little black is the turning clue because little black dress is the most fixed and least flexible phrase on the board, which makes the dress category feel exact."
     }
   ],
@@ -168,19 +160,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #677?",
+      "question": "Which type-level category connects \"Sun\" and \"Wrap\" in LinkedIn Pinpoint #677?",
       "answer": "The answer is Types of dresses because Sun, Wrap, Cocktail, Wedding, and Little black all form familiar dress phrases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #677?",
+      "question": "How do \"Sun\" and \"Wrap\" connect in LinkedIn Pinpoint #677?",
       "answer": "The connection is fashion. The board resolves into sundress, wrap dress, cocktail dress, wedding dress, and little black dress.",
       "tiedClue": "Little black"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #677?",
+      "question": "Why is \"Little black\" the key clue in LinkedIn Pinpoint #677?",
       "answer": "Little black is the turning clue because little black dress is the most fixed and least flexible phrase on the board, which makes the dress category feel exact.",
       "tiedClue": "Little black"
     }

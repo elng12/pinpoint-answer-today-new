@@ -15,10 +15,16 @@
     "Cooper": "Referring to Mini Cooper, a small British car known for its iconic design and sporty handling."
   },
   "lessons": [
-    "Don't marry your first answer. I was so sure SCHOOL BUS was right, and that blinded me. The first idea isn't always the best. Be ready to ditch it!",
+    {
+      "title": "\"Bus\" and \"Golf\" set the useful boundary",
+      "body": "I was so sure SCHOOL BUS was right, and that blinded me. The first idea isn't always the best. Be ready to ditch it!"
+    },
     "Look for overarching themes. Sometimes the clues seem random, but they might share a common attribute. In this case, all the clues can be modified by MINI. Look for these types of patterns.",
     "Consider size and scale. The clues BUS, FRIDGE, and SKIRT are all physical objects. Thinking about their relative size helped point me in the right direction. A 'smaller' version is a great starting point.",
-    "Trust the shift in perspective. After considering DRIVING RANGE, I realized it wasn't about the golf activity itself but a specific type of golf. This shift in thinking unlocked the puzzle. It's often about finding the right angle, not just the right words!"
+    {
+      "title": "\"Cooper\" checks the solve against \"Cooper\"",
+      "body": "After considering DRIVING RANGE, I realized it wasn't about the golf activity itself but a specific type of golf. This shift in thinking unlocked the puzzle. It's often about finding the right angle, not just the right words!"
+    }
   ],
   "faqs": [
     {

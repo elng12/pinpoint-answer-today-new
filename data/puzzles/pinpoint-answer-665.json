@@ -14,13 +14,22 @@
     "Sushi": "Sushi fits because it is a widely recognized part of Japanese culture or identity, matching the category Things associated with Japan."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who let culture clues expand beyond one domain like food or sport before chasing a clever but unstable guess. Things associated with Japan works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. test whether the answer covers customs, people, and products together so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, prefer the clean country-level umbrella when every clue points there. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Sake\" and \"Samurai\" set the useful boundary",
+      "body": "This puzzle rewards solvers who let culture clues expand beyond one domain like food or sport before chasing a clever but unstable guess. Things associated with Japan works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"Sushi\" is the clue to retest before committing",
+      "body": "A promising guess is not enough on its own. test whether the answer covers customs, people, and products together so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"Sumo wrestling\" keeps the category level specific",
+      "body": "When several broad answers feel possible, prefer the clean country-level umbrella when every clue points there. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #665?",
+      "question": "What shared subject links \"Sake\" and \"Samurai\" in LinkedIn Pinpoint #665?",
       "answer": "The answer is Things associated with Japan. The five clues are Sake, Samurai, Sumo wrestling, Origami, and Sushi."
     },
     {

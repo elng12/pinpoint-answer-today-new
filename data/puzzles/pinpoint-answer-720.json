@@ -25,28 +25,14 @@
     "Wheelbarrow (to move soil)": "Wheelbarrows are used to transport soil and plants around a garden."
   },
   "spoilerHints": {
-    "Spade": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Rake": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Trowel": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Hoe": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Wheelbarrow (to move soil)": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Spade": "\"Spade\" can fit several broad reads at first, but it later works as part of Gardening tools.",
+    "Rake": "\"Rake\" fits once the board is read as Gardening tools, so test it against the same category as the other clues.",
+    "Trowel": "\"Trowel\" fits once the board is read as Gardening tools, so test it against the same category as the other clues.",
+    "Hoe": "\"Hoe\" fits once the board is read as Gardening tools, so test it against the same category as the other clues.",
+    "Wheelbarrow (to move soil)": "\"Wheelbarrow (to move soil)\" is the clue that turns the board toward Gardening tools, because it gives the broad clue set a concrete category to test."
   },
   "articleBlocks": [
-    "At first glance, this set of tools could fit a few different outdoor activities.",
-    "Are we equipping a farm, a landscaping crew, or just someone's backyard?",
-    "I initially thought of 'Landscaping equipment' because several tools can be used for larger projects.",
-    "But that theory broke when I considered the 'Wheelbarrow (to move soil)' clue.",
-    "That clue specifically pointed to moving soil, a common task in gardening.",
-    "The other tools—spade, rake, trowel, and hoe—fit perfectly into this more focused image.",
-    "The answer is: Gardening tools.",
-    "The wheelbarrow isn't hauling gravel for a patio; it's carrying compost for the tomatoes.",
-    "Now the set feels complete and precise.",
-    "Each tool has a clear role in maintaining a garden.",
-    "This puzzle highlighted how a single clarifying clue can transform a broad set into a specific category.",
-    "Next time, I'll look for clues that set the scale early."
-  ],
-  "fullAnalysis": [
-    "At first glance, this set of tools could fit a few different outdoor activities.",
+    "At first glance, this set of tools could fit a few different outdoor activities. The opening clues stay ambiguous until Wheelbarrow (to move soil) gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Are we equipping a farm, a landscaping crew, or just someone's backyard?",
     "I initially thought of 'Landscaping equipment' because several tools can be used for larger projects.",
     "But that theory broke when I considered the 'Wheelbarrow (to move soil)' clue.",
@@ -65,15 +51,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Spade\" and \"Rake\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Wheelbarrow (to move soil)\" turns the board into one specific category",
       "body": "Wheelbarrow (to move soil) is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Wheelbarrow (to move soil)\" confirms the same category level",
       "body": "Look for clues that specify scale to narrow down broad categories."
     }
   ],
@@ -110,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #720?",
+      "question": "What final category connects \"Spade\" and \"Rake\" in LinkedIn Pinpoint #720?",
       "answer": "The answer is \"Gardening tools\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #720?",
+      "question": "How do \"Spade\" and \"Rake\" connect in LinkedIn Pinpoint #720?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Wheelbarrow (to move soil) is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #720?",
+      "question": "Why is \"Wheelbarrow (to move soil)\" the key clue in LinkedIn Pinpoint #720?",
       "answer": "Wheelbarrow (to move soil) is the turning clue because \"Gardening wheelbarrow\" makes the shared category frame explicit. It also makes Spade read cleanly as \"Gardening spade\". The board initially feels broad until the 'Wheelbarrow' clue provides a specific context."
     }
   ],
@@ -181,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #720?",
+      "question": "What final category connects \"Spade\" and \"Rake\" in LinkedIn Pinpoint #720?",
       "answer": "The answer is \"Gardening tools\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #720?",
+      "question": "How do \"Spade\" and \"Rake\" connect in LinkedIn Pinpoint #720?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Wheelbarrow (to move soil) is what keeps the category reading precise instead of broad.",
       "tiedClue": "Wheelbarrow (to move soil)"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #720?",
+      "question": "Why is \"Wheelbarrow (to move soil)\" the key clue in LinkedIn Pinpoint #720?",
       "answer": "Wheelbarrow (to move soil) is the turning clue because \"Gardening wheelbarrow\" makes the shared category frame explicit. It also makes Spade read cleanly as \"Gardening spade\". The board initially feels broad until the 'Wheelbarrow' clue provides a specific context.",
       "tiedClue": "Wheelbarrow (to move soil)"
     }

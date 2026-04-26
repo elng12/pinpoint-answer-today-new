@@ -30,7 +30,7 @@
     "Hopper": "Think about an insect, not a machine part."
   },
   "articleBlocks": [
-    "Fed and Land hint that grass might belong in front, but they do not rule out a countryside topic yet.",
+    "Fed and Land hint that grass might belong in front, but they do not rule out a countryside topic yet. The opening clues stay ambiguous until Hopper gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Stain and Roots keep the same opener alive while still feeling like a mixed list of outdoor words.",
     "Hopper is the clue that seals it.",
     "Grasshopper is such a specific compound that grass stops feeling thematic and starts feeling required.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #481?",
+      "question": "What shared word links \"Fed\" and \"Land\" in LinkedIn Pinpoint #481?",
       "answer": "The answer is Words that come after \"grass\" because Fed, Land, Stain, Roots, and Hopper all form common compounds or phrases with grass."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #481?",
+      "question": "How do \"Fed\" and \"Land\" connect in LinkedIn Pinpoint #481?",
       "answer": "The connection is one shared opener. The clues resolve into grass-fed, grassland, grass stain, grassroots, and grasshopper."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #481?",
+      "question": "Why is \"Hopper\" the key clue in LinkedIn Pinpoint #481?",
       "answer": "Hopper is the turning clue because grasshopper is the most fixed compound on the board and makes the shared opener feel certain."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #481?",
+      "question": "What shared word links \"Fed\" and \"Land\" in LinkedIn Pinpoint #481?",
       "answer": "The answer is Words that come after \"grass\" because Fed, Land, Stain, Roots, and Hopper all form common compounds or phrases with grass.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #481?",
+      "question": "How do \"Fed\" and \"Land\" connect in LinkedIn Pinpoint #481?",
       "answer": "The connection is one shared opener. The clues resolve into grass-fed, grassland, grass stain, grassroots, and grasshopper.",
       "tiedClue": "Hopper"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #481?",
+      "question": "Why is \"Hopper\" the key clue in LinkedIn Pinpoint #481?",
       "answer": "Hopper is the turning clue because grasshopper is the most fixed compound on the board and makes the shared opener feel certain.",
       "tiedClue": "Hopper"
     }

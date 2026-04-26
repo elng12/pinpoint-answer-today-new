@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Look for Overlapping Categories. The clues spanned dietary and environmental factors. Don't get stuck in one specific area; consider broader categories. The combination of CATS and NUTS pointed to a broader category.",
-    "Don't Overthink the Obvious. Sometimes, the most straightforward connection is the correct one. While it's tempting to find complex relationships, allergies are a very common human experience. The EGGS clue should have been a bigger hint.",
+    {
+      "title": "\"Gluten\" is the clue to retest before committing",
+      "body": "Sometimes, the most straightforward connection is the correct one. While it's tempting to find complex relationships, allergies are a very common human experience. The EGGS clue should have been a bigger hint."
+    },
     "Consider Common Knowledge. Allergies are highly discussed and well-known. Leverage your existing knowledge base! If you know POLLEN is a common allergen, that should influence your thinking.",
     "Beware of Red Herrings. CATS initially felt out of place, but it served as a reminder to think beyond just food-related items. Every clue is there for a reason, even if it's to broaden your perspective."
   ],

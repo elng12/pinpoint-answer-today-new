@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Don't get trapped by the first category. This puzzle masterfully uses the 'soccer players' category as bait. Learning to see when a strong initial connection is a hint rather than the final answer is key to avoiding these traps.",
-    "Let the odd clue guide you. When a clue like 'Decathlon' feels wildly out of place, don't ignore it. That's your brain's signal to abandon the current theory and find a connection that can accommodate the outlier.",
+    {
+      "title": "\"X (when counting in Rome)\" is the clue to retest before committing",
+      "body": "When a clue like 'Decathlon' feels wildly out of place, don't ignore it. That's your brain's signal to abandon the current theory and find a connection that can accommodate the outlier."
+    },
     "Look for a simpler, underlying structure. Sometimes the most obvious connection is a red herring. The real answer is often a more fundamental, abstract pattern that links all the seemingly disparate clues."
   ],
   "faqs": [

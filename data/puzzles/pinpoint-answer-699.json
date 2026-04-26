@@ -30,15 +30,7 @@
     "Mint chocolate chip": "Once you have the right category, this clue should feel like the clean final confirmation."
   },
   "articleBlocks": [
-    "At first, Pistachio and Coffee pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"dessert ingredients\". Pistachio, Coffee, and Vanilla all fit that idea for a moment, but Cookie dough and Mint chocolate chip are too specific to stay inside a pantry read. Cookie dough is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby read was \"coffeehouse flavors\". Coffee and Vanilla can live there, but Pistachio and Cookie dough do not behave like one real cafe flavor list. Mint chocolate chip makes much more sense as a scoop-shop flavor than as part of a cafe menu theme.",
-    "Once I read the set through a category board focused on named ice cream flavors, examples like \"Pistachio ice cream\" and \"Coffee ice cream\" stopped feeling loose and started landing cleanly.",
-    "Vanilla, Cookie dough, and Mint chocolate chip keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad dessert umbrella.",
-    "The answer was Flavors of ice cream. More precisely, the board resolves as named ice cream flavors rather than loose dessert ingredients or cafe tastes, which is why Flavors of ice cream fits better than \"dessert ingredients\" or \"coffeehouse flavors\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Pistachio and Coffee pointed in a few different directions, so the board still felt wider than one exact category.",
+    "At first, Pistachio and Coffee pointed in a few different directions, so the board still felt wider than one exact category. The opening clues stay ambiguous until Cookie dough gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"dessert ingredients\". Pistachio, Coffee, and Vanilla all fit that idea for a moment, but Cookie dough and Mint chocolate chip are too specific to stay inside a pantry read. Cookie dough is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby read was \"coffeehouse flavors\". Coffee and Vanilla can live there, but Pistachio and Cookie dough do not behave like one real cafe flavor list. Mint chocolate chip makes much more sense as a scoop-shop flavor than as part of a cafe menu theme.",
     "Once I read the set through a category board focused on named ice cream flavors, examples like \"Pistachio ice cream\" and \"Coffee ice cream\" stopped feeling loose and started landing cleanly.",
@@ -96,15 +88,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #699?",
+      "question": "What final category connects \"Pistachio\" and \"Coffee\" in LinkedIn Pinpoint #699?",
       "answer": "The answer is \"Flavors of ice cream\" because that reading explains the whole set as named menu flavors rather than as loose dessert ingredients."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #699?",
+      "question": "How do \"Pistachio\" and \"Coffee\" connect in LinkedIn Pinpoint #699?",
       "answer": "The connection is that all five clues resolve cleanly as ice cream flavors. Cookie dough is the clue that keeps the board from staying in a vague dessert-ingredient read."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #699?",
+      "question": "Why is \"Cookie dough\" the key clue in LinkedIn Pinpoint #699?",
       "answer": "Cookie dough is the turning clue because it sounds much more natural as an ice cream flavor than as a general pantry ingredient, which tightens the whole board."
     }
   ],
@@ -167,19 +159,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #699?",
+      "question": "What final category connects \"Pistachio\" and \"Coffee\" in LinkedIn Pinpoint #699?",
       "answer": "The answer is \"Flavors of ice cream\" because that reading explains the whole set as named menu flavors rather than as loose dessert ingredients.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #699?",
+      "question": "How do \"Pistachio\" and \"Coffee\" connect in LinkedIn Pinpoint #699?",
       "answer": "The connection is that all five clues resolve cleanly as ice cream flavors. Cookie dough is the clue that keeps the board from staying in a vague dessert-ingredient read.",
       "tiedClue": "Cookie dough"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #699?",
+      "question": "Why is \"Cookie dough\" the key clue in LinkedIn Pinpoint #699?",
       "answer": "Cookie dough is the turning clue because it sounds much more natural as an ice cream flavor than as a general pantry ingredient, which tightens the whole board.",
       "tiedClue": "Cookie dough"
     }

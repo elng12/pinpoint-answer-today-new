@@ -17,11 +17,14 @@
   "lessons": [
     "Look for incomplete phrases that share a common ending. When phrases seem cut off, they might all be missing the same word",
     "Consider common expressions and idioms. Many puzzles use familiar phrases from everyday language",
-    "Test your theory across all clues. A correct solution should work consistently for every clue"
+    {
+      "title": "\"Formula\" checks that \"'one'\" works across the board",
+      "body": "A correct solution should work consistently for every clue"
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #632?",
+      "question": "What final category connects \"Fast\" and \"Loved\" in LinkedIn Pinpoint #632?",
       "answer": "The answer is Phrases: Fast one, Loved one, Formula one, Back to square one, Hole in one."
     },
     {

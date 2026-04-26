@@ -177,42 +177,63 @@ export function pickLiveTurningPoint(clues: string[], answer: string): string {
 export function buildLiveClueExplanation(clue: string, answer: string, index: number, turningPoint: string): string {
   const pattern = detectLiveAnswerPattern(answer);
   const phrase = buildLiveFallbackPhrase(clue, answer);
+  const clueCount = 5; // standard Pinpoint boards
+  const isTurning = clue === turningPoint;
+  const isFirst = index === 0;
+  const isLast = index >= clueCount - 1;
 
   if (pattern.kind === "before" || pattern.kind === "after") {
+    if (isTurning) {
+      return `"${phrase}" is the clue that makes the missing word visible, because it produces the clearest phrase once "${pattern.token}" is in place.`;
+    }
+    if (isFirst) {
+      return `"${phrase}" can work in more than one phrase frame, so the first clue alone is not enough to lock in the answer.`;
+    }
+    if (isLast) {
+      return `"${phrase}" is the final confirmation that the same word fits every clue naturally.`;
+    }
     return `"${phrase}" is a familiar phrase or term, which is why this clue fits once "${pattern.token}" is in place.`;
   }
 
   if (pattern.kind === "typed-category") {
-    const variants = [
-      `"${phrase}" is a recognizable ${pattern.singularNoun.toLowerCase()}, so it gives the board a clean category fit.`,
-      `Once the board is read as ${pattern.noun.toLowerCase()}, "${phrase}" stops feeling broad and becomes an exact fit.`,
-      `"${phrase}" belongs in the same ${pattern.singularNoun.toLowerCase()} frame, which keeps the category specific instead of loose.`,
-    ];
-    return variants[index % variants.length] || variants[0];
+    const noun = pattern.singularNoun.toLowerCase();
+    if (isTurning) {
+      return `"${phrase}" is where the board starts to turn, because this clue fits ${noun} more cleanly than the earlier broad guess.`;
+    }
+    if (isFirst) {
+      return `The first clue, "${phrase}", can feel broad because it sits in more than one category before the answer sharpens.`;
+    }
+    if (isLast) {
+      return `"${phrase}" is the last proof that every clue names a specific kind of ${noun}.`;
+    }
+    return `Once the board is read as ${pattern.noun.toLowerCase()}, "${phrase}" stops feeling broad and becomes an exact fit.`;
   }
 
   if (pattern.kind === "association") {
     const subject = pattern.subject;
-    if (clue === turningPoint) {
+    if (isTurning) {
       return `"${clue}" is one of the clearest anchors for a ${subject} reading, which is why it helps lock the board into place.`;
     }
-    const variants = [
-      `"${clue}" fits naturally once the board is read through ${subject} rather than as a loose general-interest category.`,
-      `"${clue}" supports the same ${subject}-based frame as the other clues, so it reads as part of one picture instead of an isolated reference.`,
-      `"${clue}" works because it points back to the same ${subject} context that ties the whole board together.`,
-    ];
-    return variants[index % variants.length] || variants[0];
+    if (isFirst) {
+      return `"${clue}" is the opening clue and can point in several directions until the ${subject} frame becomes visible.`;
+    }
+    if (isLast) {
+      return `"${clue}" is the final clue that confirms the ${subject} reading holds across the whole board.`;
+    }
+    return `"${clue}" fits naturally once the board is read through ${subject} rather than as a loose general-interest category.`;
   }
 
-  if (clue === turningPoint) {
-    return `"${clue}" is the clue that makes the shared answer concrete enough to test across the full board.`;
+  const categoryLabel = pattern.label;
+  if (isTurning) {
+    return `"${clue}" is the clue that turns the board toward ${categoryLabel}, because it gives the broad clue set a concrete category to test.`;
   }
-  const variants = [
-    `"${clue}" fits more cleanly once the board is tested under the same answer as the other clues.`,
-    `"${clue}" helps confirm the same answer instead of pulling the board back toward a looser guess.`,
-    `"${clue}" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.`,
-  ];
-  return variants[index % variants.length] || variants[0];
+  if (isFirst) {
+    return `"${clue}" can fit several broad reads at first, but it later works as part of ${categoryLabel}.`;
+  }
+  if (isLast) {
+    return `"${clue}" is the final confirmation that ${categoryLabel} holds across all five clues without forcing any of them.`;
+  }
+  return `"${clue}" fits once the board is read as ${categoryLabel}, so test it against the same category as the other clues.`;
 }
 
 export function buildLiveWordHints(clues: string[], answer: string): Record<string, string> {
@@ -222,9 +243,9 @@ export function buildLiveWordHints(clues: string[], answer: string): Record<stri
   );
 }
 
-export function buildLiveLessons(answer: string, turningPoint: string): LessonItem[] {
+export function buildLiveLessons(answer: string, turningPoint: string, clues: string[] = []): LessonItem[] {
   const pattern = detectLiveAnswerPattern(answer);
-  return buildSharedFallbackLessons({ kind: pattern.kind, turningPoint });
+  return buildSharedFallbackLessons({ kind: pattern.kind, turningPoint, clues, answer });
 }
 
 export function buildLiveFaqs(

@@ -22,32 +22,25 @@ function getSolvedCount(): number {
 }
 
 export function PuzzleCheckin({ puzzleNumber }: { puzzleNumber: number }) {
-  const [ready, setReady] = useState(false);
   const [solved, setSolved] = useState(false);
   const [solvedCount, setSolvedCount] = useState(0);
   const storageKey = useMemo(() => getStorageKey(puzzleNumber), [puzzleNumber]);
 
   useEffect(() => {
-    try {
-      setSolved(localStorage.getItem(storageKey) === "1");
-      setSolvedCount(getSolvedCount());
-    } finally {
-      setReady(true);
-    }
+    setSolved(localStorage.getItem(storageKey) === "1");
+    setSolvedCount(getSolvedCount());
   }, [storageKey]);
 
-  if (!ready) {
-    return null;
-  }
-
   const toggleSolved = () => {
-    if (solved) {
-      localStorage.removeItem(storageKey);
-    } else {
+    const nextSolved = !solved;
+
+    if (nextSolved) {
       localStorage.setItem(storageKey, "1");
+    } else {
+      localStorage.removeItem(storageKey);
     }
 
-    setSolved((current) => !current);
+    setSolved(nextSolved);
     setSolvedCount(getSolvedCount());
   };
 

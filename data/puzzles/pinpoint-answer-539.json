@@ -16,8 +16,14 @@
   },
   "lessons": [
     "Geographic Awareness. The IGUAZU and YOSEMITE clues highlight the importance of geographic knowledge. Brush up on major landmarks; you never know when a world map will help you solve a Pinpoint puzzle.",
-    "Consider Multiple Meanings. VICTORIA could have led down several paths. Don't latch onto the first association. Always consider multiple interpretations before committing to a guess.",
-    "Look for Common Threads. The key to unlocking this puzzle was recognizing the shared characteristic of each location: WATERFALLS. Actively seek out the common theme linking all the clues.",
+    {
+      "title": "\"Niagara\" is the clue to retest before committing",
+      "body": "VICTORIA could have led down several paths. Don't latch onto the first association. Always consider multiple interpretations before committing to a guess."
+    },
+    {
+      "title": "\"Iguazu\" keeps the category level specific",
+      "body": "The key to unlocking this puzzle was recognizing the shared characteristic of each location: WATERFALLS. Actively seek out the common theme linking all the clues."
+    },
     "Embrace the Process of Elimination. If you're stuck, try ruling out possibilities. What are these clues NOT? This can help narrow your focus and lead you to the correct answer, as eliminating initial thoughts about ANGEL did for me."
   ],
   "faqs": [

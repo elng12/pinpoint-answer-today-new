@@ -17,8 +17,14 @@
   "lessons": [
     "Consider less obvious word associations. Sometimes the most direct association isn't the correct one. While 'chest' might make you think of 'treasure chest,' in this case, it was about finding 'chestnut'.",
     "Don't fixate on initial guesses. I was so set on 'acorn' after the first clue that it blinded me to other possibilities. When words can combine with one term, that's usually a strong pattern. The clue 'And breakfast' seemed strange - but it turned out to be the key. Be ready to pivot when new clues emerge.",
-    "Look for common categories. The clues CHEST, DOUGH, HAZEL, COCO, and PEA seem disparate, but they all belong to the broader category of things that can form compound words with 'NUT' at the end.",
-    "Trust the shift in perspective. When you're stuck, try thinking about the clues from a completely different angle. Instead of focusing on the literal meaning of each word, consider their potential connections to other words. Like chestnut, coconut and peanut."
+    {
+      "title": "\"Hazel\" checks that \"nut — each clue forms a common compound noun ending with nut.\" works across the board",
+      "body": "The clues CHEST, DOUGH, HAZEL, COCO, and PEA seem disparate, but they all belong to the broader category of things that can form compound words with 'NUT' at the end."
+    },
+    {
+      "title": "\"Pea\" keeps the \"nut — each clue forms a common compound noun ending with nut.\" read from drifting",
+      "body": "When you're stuck, try thinking about the clues from a completely different angle. Instead of focusing on the literal meaning of each word, consider their potential connections to other words. Like chestnut, coconut and peanut."
+    }
   ],
   "faqs": [
     {

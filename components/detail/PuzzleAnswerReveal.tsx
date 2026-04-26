@@ -255,11 +255,13 @@ export function PuzzleAnswerReveal({
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">
           {answerPanelTitle}
         </h2>
-        {revealed ? (
-          <p className="legacy-answer-title" aria-live="polite">
-            {answer}
-          </p>
-        ) : null}
+        <p
+          className={`legacy-answer-title${revealed ? " legacy-answer-title--visible" : " legacy-answer-title--hidden"}`}
+          aria-live="polite"
+          aria-hidden={!revealed}
+        >
+          {answer}
+        </p>
         <div className="legacy-answer-actions">
           <button className="button-primary legacy-answer-button" type="button" onClick={handleRevealToggle}>
             {revealed ? "Hide Pinpoint Answer" : "Reveal Pinpoint Answer"}

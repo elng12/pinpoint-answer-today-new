@@ -16,12 +16,15 @@
   },
   "lessons": [
     "Consider multiple word combinations. Words can combine differently to create new meanings",
-    "Look for category patterns. Similar modifiers often point to a common base word",
+    {
+      "title": "\"Pigs in (a)\" locks in the \"blanket\" pattern",
+      "body": "Similar modifiers often point to a common base word"
+    },
     "Pay attention to formatting clues. Parentheses and special characters can hint at word arrangement"
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #631?",
+      "question": "What final category connects \"Wet\" and \"Electric\" in LinkedIn Pinpoint #631?",
       "answer": "The answer is Terms that come before blanket: Wet, Electric, Security, Picnic, Pigs in a."
     },
     {

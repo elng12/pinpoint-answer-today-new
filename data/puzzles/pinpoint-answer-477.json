@@ -30,7 +30,7 @@
     "Cuckoo": "This clue should feel obvious once you have the right noun in place."
   },
   "articleBlocks": [
-    "Grandfather and Alarm already hint at clocks, but they can still feel almost too obvious to trust on their own.",
+    "Grandfather and Alarm already hint at clocks, but they can still feel almost too obvious to trust on their own. The opening clues stay ambiguous until Chess gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Atomic supports that read, though the board becomes much cleaner once one clue proves the category is broader than just household clocks.",
     "Chess is the clue that does that work.",
     "Chess clock makes it clear that the board is about clock types, not about home decor or only the most familiar timepieces.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #477?",
+      "question": "Which type-level category connects \"Grandfather\" and \"Chess\" in LinkedIn Pinpoint #477?",
       "answer": "The answer is Types of clocks because Grandfather, Chess, Alarm, Atomic, and Cuckoo all form standard clock phrases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #477?",
+      "question": "How do \"Grandfather\" and \"Chess\" connect in LinkedIn Pinpoint #477?",
       "answer": "The connection is timekeeping devices. The board resolves into grandfather clock, chess clock, alarm clock, atomic clock, and cuckoo clock."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #477?",
+      "question": "Why is \"Chess\" the key clue in LinkedIn Pinpoint #477?",
       "answer": "Chess is the turning clue because chess clock proves the board is about clock types broadly, not just familiar home clocks."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #477?",
+      "question": "Which type-level category connects \"Grandfather\" and \"Chess\" in LinkedIn Pinpoint #477?",
       "answer": "The answer is Types of clocks because Grandfather, Chess, Alarm, Atomic, and Cuckoo all form standard clock phrases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #477?",
+      "question": "How do \"Grandfather\" and \"Chess\" connect in LinkedIn Pinpoint #477?",
       "answer": "The connection is timekeeping devices. The board resolves into grandfather clock, chess clock, alarm clock, atomic clock, and cuckoo clock.",
       "tiedClue": "Chess"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #477?",
+      "question": "Why is \"Chess\" the key clue in LinkedIn Pinpoint #477?",
       "answer": "Chess is the turning clue because chess clock proves the board is about clock types broadly, not just familiar home clocks.",
       "tiedClue": "Chess"
     }

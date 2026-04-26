@@ -18,7 +18,10 @@
     "Look for patterns in the clues. Sometimes the Pinpoint answer isn't about a single direct connection, but a shared theme. In this puzzle, all of today's clues shared a common theme: weddings.",
     "Consider the context. Don't rush to the first answer that pops into your head. Think about how each clue interacts with the others. For example, 'Ring' alone could be many things, but in this context, it's clearly a 'Wedding Ring'.",
     "Don't be afraid to discard your initial guess. If your first idea doesn't pan out, don't stubbornly cling to it. The clues 'Reception' and 'Celebrant' should have steered you away from a generic answer like 'Jewellery'.",
-    "Trust the shift in meaning. Sometimes a clue seems simple, but the connection is more nuanced. 'Flowers' are common, but 'Wedding Flowers' is a much more specific idea that helped narrow down the answer."
+    {
+      "title": "\"Ceremony\" checks the solve against \"Ceremony\"",
+      "body": "Sometimes a clue seems simple, but the connection is more nuanced. 'Flowers' are common, but 'Wedding Flowers' is a much more specific idea that helped narrow down the answer."
+    }
   ],
   "faqs": [
     {

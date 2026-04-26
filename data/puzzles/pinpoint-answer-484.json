@@ -18,7 +18,10 @@
     "Think Function, Not Just Object. Instead of getting caught up in specific items found in a house, like a bed or a bath, consider the function of the ROOM where they are located. This shift in perspective can unlock new connections.",
     "Prefixes are Powerful. The clues FAMILY, BED, BATH, DINING and LIVING are all prefixes. Training yourself to recognize common word beginnings can streamline your puzzle-solving process.",
     "Consider the Container. The puzzle specifically was looking for words that precede \"room\". Always be aware of what the word you are looking for must connect to. This can help narrow down your options significantly.",
-    "Don't Overlook the Obvious. Sometimes, the most straightforward connection is the correct one. While it's good to brainstorm, don't dismiss the simple solution that the clues like BED, BATH, and LIVING so clearly suggest."
+    {
+      "title": "\"Living\" checks the solve against \"Living\"",
+      "body": "Sometimes, the most straightforward connection is the correct one. While it's good to brainstorm, don't dismiss the simple solution that the clues like BED, BATH, and LIVING so clearly suggest."
+    }
   ],
   "faqs": [
     {

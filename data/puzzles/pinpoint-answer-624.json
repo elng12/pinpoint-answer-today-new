@@ -17,11 +17,14 @@
   "lessons": [
     "Look for words that commonly precede or follow others. Many puzzles rely on words that form common pairs or phrases",
     "Consider technical and specialized terminology. Clues often connect through their usage in specific fields",
-    "Test your theory across all clues. Ensure your solution works consistently for every clue"
+    {
+      "title": "\"Secret\" checks that \"code\" works across the board",
+      "body": "Ensure your solution works consistently for every clue"
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #624?",
+      "question": "What shared word links \"Area\" and \"Source\" in LinkedIn Pinpoint #624?",
       "answer": "The answer is Prefixes: Area, Source, Secret, Genetic, Morse are all words that come before code."
     },
     {

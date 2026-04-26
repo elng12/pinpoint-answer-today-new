@@ -32,13 +32,7 @@
     "Band": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #717. First, Foreign, Financial can point in a few directions at first, but First is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases completed by one shared ending word. A later clue is what finally made the answer feel concrete.",
-    "Once First clicks, From there, a shared category board with one concrete theme explains the board cleanly. Readings like First aid, Foreign aid, and Financial aid stop feeling loose and start sounding exact. Once a later clue makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues initially appear unrelated, requiring a shift in perspective to see how they all modify a central concept.",
-    "The answer is Words that come before \"aid\". Use the clue table for Hearing, Band and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #717. First, Foreign, Financial can point in a few directions at first, but First is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #717. First, Foreign, Financial can point in a few directions at first, but First is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases completed by one shared ending word. A later clue is what finally made the answer feel concrete.",
     "Once First clicks, From there, a shared category board with one concrete theme explains the board cleanly. Readings like First aid, Foreign aid, and Financial aid stop feeling loose and start sounding exact. Once a later clue makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues initially appear unrelated, requiring a shift in perspective to see how they all modify a central concept.",
     "The answer is Words that come before \"aid\". Use the clue table for Hearing, Band and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"First\" and \"Foreign\" both need the \"aid\" phrase frame",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"First\" makes the \"aid\" pattern decisive",
       "body": "A later clue is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "\"Band\" confirms the \"aid\" phrase answer",
       "body": "Look for how each clue can modify a central concept, rather than searching for broad themes."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #717?",
+      "question": "What shared word links \"First\" and \"Foreign\" in LinkedIn Pinpoint #717?",
       "answer": "The answer is \"Words that come before aid\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #717?",
+      "question": "How do \"First\" and \"Foreign\" connect in LinkedIn Pinpoint #717?",
       "answer": "The connection is a shared category board with one concrete theme. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #717?",
+      "question": "Why is \"First\" the key clue in LinkedIn Pinpoint #717?",
       "answer": "A later clue is the turning clue because it is the first clue that produces an exact, familiar phrase. The clues initially appear unrelated, requiring a shift in perspective to see how they all modify a central concept."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #717?",
+      "question": "What shared word links \"First\" and \"Foreign\" in LinkedIn Pinpoint #717?",
       "answer": "The answer is \"Words that come before aid\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #717?",
+      "question": "How do \"First\" and \"Foreign\" connect in LinkedIn Pinpoint #717?",
       "answer": "The connection is a shared category board with one concrete theme. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #717?",
+      "question": "Why is \"First\" the key clue in LinkedIn Pinpoint #717?",
       "answer": "A later clue is the turning clue because it is the first clue that produces an exact, familiar phrase. The clues initially appear unrelated, requiring a shift in perspective to see how they all modify a central concept.",
       "tiedClue": "First"
     }

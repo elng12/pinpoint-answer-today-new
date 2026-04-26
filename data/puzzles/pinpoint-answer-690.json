@@ -30,7 +30,7 @@
     "Table (3×Tea most places)": "This is the clue that makes the shared ending hardest to miss."
   },
   "articleBlocks": [
-    "Tea, Soup, and Silver all felt like they belonged somewhere near dining, but that still was not the exact answer.",
+    "Tea, Soup, and Silver all felt like they belonged somewhere near dining, but that still was not the exact answer. The opening clues stay ambiguous until Table (3×Tea most places) gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Measuring made the board more functional, though the shared word still was not fully visible.",
     "Table (3×Tea most places) is the clue that solves it.",
     "That parenthetical points straight to tablespoon, which finally makes spoon unavoidable as the shared ending word.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #690?",
+      "question": "What shared word links \"Tea\" and \"Soup\" in LinkedIn Pinpoint #690?",
       "answer": "The answer is Words that come before \"spoon\" because every clue forms a familiar phrase once spoon is added."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #690?",
+      "question": "How do \"Tea\" and \"Soup\" connect in LinkedIn Pinpoint #690?",
       "answer": "The connection is one shared ending word. Tea, Soup, Silver, Measuring, and Table all become standard phrases or terms once spoon is attached."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #690?",
+      "question": "Why is \"Table (3×Tea most places)\" the key clue in LinkedIn Pinpoint #690?",
       "answer": "Table (3×Tea most places) is the turning clue because it points directly to tablespoon, which makes spoon impossible to miss as the shared ending."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #690?",
+      "question": "What shared word links \"Tea\" and \"Soup\" in LinkedIn Pinpoint #690?",
       "answer": "The answer is Words that come before \"spoon\" because every clue forms a familiar phrase once spoon is added.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #690?",
+      "question": "How do \"Tea\" and \"Soup\" connect in LinkedIn Pinpoint #690?",
       "answer": "The connection is one shared ending word. Tea, Soup, Silver, Measuring, and Table all become standard phrases or terms once spoon is attached.",
       "tiedClue": "Table (3×Tea most places)"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #690?",
+      "question": "Why is \"Table (3×Tea most places)\" the key clue in LinkedIn Pinpoint #690?",
       "answer": "Table (3×Tea most places) is the turning clue because it points directly to tablespoon, which makes spoon impossible to miss as the shared ending.",
       "tiedClue": "Table (3×Tea most places)"
     }

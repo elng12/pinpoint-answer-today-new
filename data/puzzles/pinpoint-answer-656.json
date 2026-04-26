@@ -17,11 +17,14 @@
   "lessons": [
     "Pay attention to specialized technical terms. Unique terms like 'ballonets' can quickly identify specific fields or technologies.",
     "Consider historical context when solving. Knowledge of transportation history can help identify related components.",
-    "Look for functional relationships. Components that work together often form the answer."
+    {
+      "title": "\"Propeller\" keeps the category level specific",
+      "body": "Components that work together often form the answer."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #656?",
+      "question": "What final category connects \"Tailfin\" and \"Gondola\" in LinkedIn Pinpoint #656?",
       "answer": "The answer is Parts of an airship: Tailfin, Gondola, Propeller, Ballonets, Helium gas envelope."
     },
     {

@@ -30,7 +30,7 @@
     "Channel": "This clue points to a famous body of water and is the cleanest lock on the board."
   },
   "articleBlocks": [
-    "Muffin and Horn make English feel possible early, but a broad British-culture guess can still feel safer than a full commit.",
+    "Muffin and Horn make English feel possible early, but a broad British-culture guess can still feel safer than a full commit. The opening clues stay ambiguous until Channel gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Setter keeps the same modifier alive because English setter is a familiar breed name, which already hints that the puzzle is linguistic rather than topical.",
     "Breakfast helps because English breakfast is another clean compound, yet the board can still seem like it is simply about things associated with England.",
     "Channel is the clue that really tightens the solve.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #501?",
+      "question": "What shared word links \"Muffin\" and \"Horn\" in LinkedIn Pinpoint #501?",
       "answer": "The answer is Words that come after \"English\" because Muffin, Horn, Setter, Breakfast, and Channel all form familiar phrases with English."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #501?",
+      "question": "How do \"Muffin\" and \"Horn\" connect in LinkedIn Pinpoint #501?",
       "answer": "The connection is one shared modifier. The board resolves into English muffin, English horn, English setter, English breakfast, and English Channel."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #501?",
+      "question": "Why is \"Channel\" the key clue in LinkedIn Pinpoint #501?",
       "answer": "Channel is the turning clue because English Channel is such a fixed proper noun that it makes English feel exact instead of just culturally plausible."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #501?",
+      "question": "What shared word links \"Muffin\" and \"Horn\" in LinkedIn Pinpoint #501?",
       "answer": "The answer is Words that come after \"English\" because Muffin, Horn, Setter, Breakfast, and Channel all form familiar phrases with English.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #501?",
+      "question": "How do \"Muffin\" and \"Horn\" connect in LinkedIn Pinpoint #501?",
       "answer": "The connection is one shared modifier. The board resolves into English muffin, English horn, English setter, English breakfast, and English Channel.",
       "tiedClue": "Channel"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #501?",
+      "question": "Why is \"Channel\" the key clue in LinkedIn Pinpoint #501?",
       "answer": "Channel is the turning clue because English Channel is such a fixed proper noun that it makes English feel exact instead of just culturally plausible.",
       "tiedClue": "Channel"
     }

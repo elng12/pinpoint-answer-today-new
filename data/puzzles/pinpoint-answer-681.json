@@ -30,7 +30,7 @@
     "Cat and 🐭": "Treat the symbol as part of a fixed idiom rather than as a separate category clue."
   },
   "articleBlocks": [
-    "House and Field can look like animal clues, but they do not yet tell you whether the board is about wildlife or something else.",
+    "House and Field can look like animal clues, but they do not yet tell you whether the board is about wildlife or something else. The opening clues stay ambiguous until Optical gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Mickey makes the set feel more playful, though the clue still does not fully explain how technology fits in.",
     "Optical is the clue that solves that tension.",
     "Optical mouse is such a standard product phrase that it makes mouse appear as the shared ending almost immediately.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #681?",
+      "question": "What shared word links \"House\" and \"Field\" in LinkedIn Pinpoint #681?",
       "answer": "The answer is Words that come before mouse because House, Field, Optical, Mickey, and Cat and 🐭 all form familiar phrases once mouse is added."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #681?",
+      "question": "How do \"House\" and \"Field\" connect in LinkedIn Pinpoint #681?",
       "answer": "The connection is one shared ending word. The board resolves into house mouse, field mouse, optical mouse, Mickey Mouse, and cat-and-mouse."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #681?",
+      "question": "Why is \"Optical\" the key clue in LinkedIn Pinpoint #681?",
       "answer": "Optical is the turning clue because optical mouse is the most specific and least flexible phrase on the board, so it reveals the shared ending fastest."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #681?",
+      "question": "What shared word links \"House\" and \"Field\" in LinkedIn Pinpoint #681?",
       "answer": "The answer is Words that come before mouse because House, Field, Optical, Mickey, and Cat and 🐭 all form familiar phrases once mouse is added.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #681?",
+      "question": "How do \"House\" and \"Field\" connect in LinkedIn Pinpoint #681?",
       "answer": "The connection is one shared ending word. The board resolves into house mouse, field mouse, optical mouse, Mickey Mouse, and cat-and-mouse.",
       "tiedClue": "Optical"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #681?",
+      "question": "Why is \"Optical\" the key clue in LinkedIn Pinpoint #681?",
       "answer": "Optical is the turning clue because optical mouse is the most specific and least flexible phrase on the board, so it reveals the shared ending fastest.",
       "tiedClue": "Optical"
     }

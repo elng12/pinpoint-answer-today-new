@@ -25,19 +25,13 @@
     "Tater tots": "Tater tots are small, cylindrical potato pieces, making them a potato dish."
   },
   "spoilerHints": {
-    "Dum aloo": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Gnocchi": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Hash browns": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "French fries": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Tater tots": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Dum aloo": "\"Dum aloo\" can fit several broad reads at first, but it later works as part of Potato dishes.",
+    "Gnocchi": "\"Gnocchi\" fits once the board is read as Potato dishes, so test it against the same category as the other clues.",
+    "Hash browns": "\"Hash browns\" is the clue that turns the board toward Potato dishes, because it gives the broad clue set a concrete category to test.",
+    "French fries": "\"French fries\" fits once the board is read as Potato dishes, so test it against the same category as the other clues.",
+    "Tater tots": "\"Tater tots\" is the final confirmation that Potato dishes holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #716. Dum aloo, Gnocchi, Hash browns can point in a few directions at first, but Hash browns is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on potato. The 'Hash browns' clue made the potato connection undeniable.",
-    "Once Hash browns clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Dum aloo, Gnocchi, and Hash browns stop feeling disconnected and start looking like they belong together. Once hash browns is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The variety of global cuisine origins makes it slightly harder to spot the common ingredient at first.",
-    "The answer is Potato dishes. Use the clue table for French fries, Tater tots and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
     "This compact explainer keeps the fastest reliable path through Pinpoint #716. Dum aloo, Gnocchi, Hash browns can point in a few directions at first, but Hash browns is usually the clue that narrows the board into one answer you can actually test.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on potato. The 'Hash browns' clue made the potato connection undeniable.",
     "Once Hash browns clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Dum aloo, Gnocchi, and Hash browns stop feeling disconnected and start looking like they belong together. Once hash browns is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The variety of global cuisine origins makes it slightly harder to spot the common ingredient at first.",
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Dum aloo\" and \"Gnocchi\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Hash browns\" turns the board into one specific category",
       "body": "Hash browns is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Tater tots\" confirms the same category level",
       "body": "When facing diverse items, look for a single common ingredient that unites them."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #716?",
+      "question": "What final category connects \"Dum aloo\" and \"Gnocchi\" in LinkedIn Pinpoint #716?",
       "answer": "The answer is \"Potato dishes\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #716?",
+      "question": "How do \"Dum aloo\" and \"Gnocchi\" connect in LinkedIn Pinpoint #716?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Hash browns is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #716?",
+      "question": "Why is \"Hash browns\" the key clue in LinkedIn Pinpoint #716?",
       "answer": "Hash browns is the turning clue because \"Shredded fried potatoes\" makes the shared category frame explicit. It also makes Dum aloo read cleanly as \"Potato curry\". The variety of global cuisine origins makes it slightly harder to spot the common ingredient at first."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #716?",
+      "question": "What final category connects \"Dum aloo\" and \"Gnocchi\" in LinkedIn Pinpoint #716?",
       "answer": "The answer is \"Potato dishes\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #716?",
+      "question": "How do \"Dum aloo\" and \"Gnocchi\" connect in LinkedIn Pinpoint #716?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Hash browns is what keeps the category reading precise instead of broad.",
       "tiedClue": "Hash browns"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #716?",
+      "question": "Why is \"Hash browns\" the key clue in LinkedIn Pinpoint #716?",
       "answer": "Hash browns is the turning clue because \"Shredded fried potatoes\" makes the shared category frame explicit. It also makes Dum aloo read cleanly as \"Potato curry\". The variety of global cuisine origins makes it slightly harder to spot the common ingredient at first.",
       "tiedClue": "Hash browns"
     }

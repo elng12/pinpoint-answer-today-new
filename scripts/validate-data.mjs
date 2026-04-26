@@ -41,7 +41,7 @@ const publishedContractBacklogLimits = new Map(
     "seoDescription.missingClues": 161,
     "answer.alternateRestatement": 87,
     "faqs.firstAnswerMissingExactAnswer": 87,
-    "overview.tooShort": 85,
+    "overview.tooShort": 75,
     "lessons.genericTitle": 0,
     "answer.overused": 49,
     "solutionEmergence.tooShort": 41,
@@ -49,7 +49,7 @@ const publishedContractBacklogLimits = new Map(
     "sections.sharedPhrasing": 24,
     "sections.overlap": 17,
     "answer.semanticNarrowing": 14,
-    "spoilerHints.genericHint": 15,
+    "spoilerHints.genericHint": 0,
     "mainAnswer.suspiciousCategoryLabel": 5,
     "summary.promotionalTone": 4,
   }),
@@ -210,6 +210,20 @@ function toContractFaqs(detail) {
 function validatePageSeoDescription(entry) {
   const pageSeoDescription = buildPuzzleSeoDescription(entry.puzzleNumber, entry.clues, entry.mainAnswer);
   const len = pageSeoDescription.length;
+  if (pageSeoDescription.includes("Answer: ")) {
+    const serpVisibleLen = pageSeoDescription.indexOf("Answer: ");
+    if (
+      serpVisibleLen < CONTENT_CONTRACT.metaDescriptionMinChars - 10 ||
+      serpVisibleLen > CONTENT_CONTRACT.metaDescriptionMaxChars + 5 ||
+      len > CONTENT_CONTRACT.metaDescriptionIndexMaxChars
+    ) {
+      throw new Error(
+        `${entry.slug} generated answer-aware page SEO description length is ${len} with ${serpVisibleLen} visible chars; expected visible ${CONTENT_CONTRACT.metaDescriptionMinChars - 10}-${CONTENT_CONTRACT.metaDescriptionMaxChars + 5} and total <= ${CONTENT_CONTRACT.metaDescriptionIndexMaxChars}.`,
+      );
+    }
+    return;
+  }
+
   if (len < CONTENT_CONTRACT.metaDescriptionMinChars || len > CONTENT_CONTRACT.metaDescriptionMaxChars) {
     throw new Error(
       `${entry.slug} generated page SEO description length is ${len}; expected ${CONTENT_CONTRACT.metaDescriptionMinChars}-${CONTENT_CONTRACT.metaDescriptionMaxChars}.`,

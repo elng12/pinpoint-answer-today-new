@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HomeBenefitsFaq } from "@/components/home/HomeBenefitsFaq";
+import { HomeBenefitsFaq, getFaqItems } from "@/components/home/HomeBenefitsFaq";
 import { HomeBookmarkStrip } from "@/components/home/HomeBookmarkStrip";
 import { HomeCtaFooter } from "@/components/home/HomeCtaFooter";
 import { HomeHero } from "@/components/home/HomeHero";
@@ -81,21 +81,7 @@ export default async function HomePage() {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: [
-        {
-          question: `What is the Pinpoint answer today for Puzzle ${current.number}?`,
-          answer: `The answer for Puzzle ${current.number} is ${current.answer}.`,
-        },
-        {
-          question: "Where can I browse older Pinpoint answers?",
-          answer:
-            "Open the archive page to browse recent answers, search past puzzles by keyword, and jump into older clue-by-clue walkthroughs from one place.",
-        },
-        {
-          question: "What is LinkedIn Pinpoint?",
-          answer: "It is a daily word-association puzzle built around a shared connection.",
-        },
-      ].map((faq) => ({
+      mainEntity: getFaqItems(current).map((faq) => ({
         "@type": "Question",
         name: faq.question,
         acceptedAnswer: {

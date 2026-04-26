@@ -14,13 +14,22 @@
     "Doughnut": "Doughnut fits because it is a recognized pastry type, matching the category Types of pastry."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who separate food category from cooking method before chasing a clever but unstable guess. Types of pastry works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. do not force every clue into sweet-only or savory-only buckets so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, look for the broad food family that still feels precise. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Turnover\" and \"Samosa\" set the useful boundary",
+      "body": "This puzzle rewards solvers who separate food category from cooking method before chasing a clever but unstable guess. Types of pastry works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"Doughnut\" is the clue to retest before committing",
+      "body": "A promising guess is not enough on its own. do not force every clue into sweet-only or savory-only buckets so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"Strudel\" keeps the category level specific",
+      "body": "When several broad answers feel possible, look for the broad food family that still feels precise. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #664?",
+      "question": "Which type-level category connects \"Turnover\" and \"Samosa\" in LinkedIn Pinpoint #664?",
       "answer": "The answer is Types of pastry. The five clues are Turnover, Samosa, Strudel, Croissant, and Doughnut."
     },
     {

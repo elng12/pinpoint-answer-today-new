@@ -15,9 +15,15 @@
     "Backspace": "The Backspace key deletes the character to the left of the cursor."
   },
   "lessons": [
-    "Don't Overthink the Obvious. Sometimes the most straightforward answer is the correct one. When faced with clues like ESCAPE and SHIFT, consider common, everyday objects or concepts before diving into complex theories.",
+    {
+      "title": "\"Escape\" and \"Shift\" set the useful boundary",
+      "body": "Sometimes the most straightforward answer is the correct one. When faced with clues like ESCAPE and SHIFT, consider common, everyday objects or concepts before diving into complex theories."
+    },
     "Consider the Physical Context. The clues were all physical keys. Thinking about where you might find these keys (on a KEYBOARD) is a great way to narrow down possibilities. Always look for physical connections.",
-    "Look for Functional Relationships. All the clues (CONTROL, TAB, BACKSPACE) are functional keys. If you can group clues by function, you might find categories that point to the connector.",
+    {
+      "title": "\"Control\" keeps the category level specific",
+      "body": "All the clues (CONTROL, TAB, BACKSPACE) are functional keys. If you can group clues by function, you might find categories that point to the connector."
+    },
     "Embrace the Breadth of Common Knowledge. Pinpoint puzzles often rely on general knowledge. While 'Escape' and 'Backspace' might be used in coding, their most common association is with a KEYBOARD. Don't assume specialized knowledge is needed."
   ],
   "faqs": [

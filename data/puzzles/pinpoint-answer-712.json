@@ -32,18 +32,7 @@
     "Stevie": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "At first, this looked more like star than one repeated-word pattern.",
-    "Boy pushed me in that direction immediately.",
-    "Small kept that read alive for a moment, but eighth still did not sound right.",
-    "That was the moment the first idea stopped working.",
-    "Then Eighth made the missing word much harder to miss.",
-    "Readings like Boy wonder and Small wonder finally sounded exact instead of approximate.",
-    "The answer was Words that come before wonder.",
-    "One-hit and Stevie then felt like confirmations, not extra mysteries.",
-    "Looking back, the whole pattern feels obvious in the best way."
-  ],
-  "fullAnalysis": [
-    "At first, this looked more like star than one repeated-word pattern.",
+    "At first, this looked more like star than one repeated-word pattern. The opening clues stay ambiguous until Eighth gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Boy pushed me in that direction immediately.",
     "Small kept that read alive for a moment, but eighth still did not sound right.",
     "That was the moment the first idea stopped working.",
@@ -59,15 +48,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Boy\" and \"Small\" both need the \"wonder\" phrase frame",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Eighth\" makes the \"wonder\" pattern decisive",
       "body": "Eighth is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "\"Stevie\" confirms the \"wonder\" phrase answer",
       "body": "Look for set phrases when individual clues feel only loosely related to each other."
     }
   ],
@@ -104,15 +93,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #712?",
+      "question": "What shared word links \"Boy\" and \"Small\" in LinkedIn Pinpoint #712?",
       "answer": "The answer is \"Words that come before wonder\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #712?",
+      "question": "How do \"Boy\" and \"Small\" connect in LinkedIn Pinpoint #712?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #712?",
+      "question": "Why is \"Eighth\" the key clue in LinkedIn Pinpoint #712?",
       "answer": "Eighth is the turning clue because \"Eighth wonder\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Boy wonder and Small wonder. The clues felt like they pointed in different directions, requiring a less obvious connection."
     }
   ],
@@ -175,19 +164,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #712?",
+      "question": "What shared word links \"Boy\" and \"Small\" in LinkedIn Pinpoint #712?",
       "answer": "The answer is \"Words that come before wonder\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #712?",
+      "question": "How do \"Boy\" and \"Small\" connect in LinkedIn Pinpoint #712?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #712?",
+      "question": "Why is \"Eighth\" the key clue in LinkedIn Pinpoint #712?",
       "answer": "Eighth is the turning clue because \"Eighth wonder\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Boy wonder and Small wonder. The clues felt like they pointed in different directions, requiring a less obvious connection.",
       "tiedClue": "Eighth"
     }

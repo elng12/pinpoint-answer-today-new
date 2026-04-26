@@ -30,7 +30,7 @@
     "Traffic jams": "Move from creatures to commuting."
   },
   "articleBlocks": [
-    "Tortoise, Sloth, and Snail make the board look like it might just be about famously slow animals.",
+    "Tortoise, Sloth, and Snail make the board look like it might just be about famously slow animals. The opening clues stay ambiguous until Traffic jams gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Molasses supports the same idea, but it also nudges the set toward a broader theme of sluggishness.",
     "Traffic jams are the clue that fully opens it up.",
     "Once traffic jams join the board, the category stops being about creatures and becomes the wider idea of Slow things.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #490?",
+      "question": "What final category connects \"Tortoise\" and \"Molasses (treacle)\" in LinkedIn Pinpoint #490?",
       "answer": "The answer is Slow things because Tortoise, Molasses, Sloth, Snail, and Traffic jams all point to sluggish pace."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #490?",
+      "question": "How do \"Tortoise\" and \"Molasses (treacle)\" connect in LinkedIn Pinpoint #490?",
       "answer": "The connection is slowness. Each clue is a familiar example of something people describe as slow."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #490?",
+      "question": "Why is \"Traffic jams\" the key clue in LinkedIn Pinpoint #490?",
       "answer": "Traffic jams are the turning clue because they show the board is about slow pace in general, not only about animals."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #490?",
+      "question": "What final category connects \"Tortoise\" and \"Molasses (treacle)\" in LinkedIn Pinpoint #490?",
       "answer": "The answer is Slow things because Tortoise, Molasses, Sloth, Snail, and Traffic jams all point to sluggish pace.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #490?",
+      "question": "How do \"Tortoise\" and \"Molasses (treacle)\" connect in LinkedIn Pinpoint #490?",
       "answer": "The connection is slowness. Each clue is a familiar example of something people describe as slow.",
       "tiedClue": "Traffic jams"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #490?",
+      "question": "Why is \"Traffic jams\" the key clue in LinkedIn Pinpoint #490?",
       "answer": "Traffic jams are the turning clue because they show the board is about slow pace in general, not only about animals.",
       "tiedClue": "Traffic jams"
     }

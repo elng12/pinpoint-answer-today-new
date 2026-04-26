@@ -30,7 +30,7 @@
     "Stop and smell the (🌹🌹🌹)": "The final clue confirms the shared word through a very familiar saying."
   },
   "articleBlocks": [
-    "English and Dog both feel broad at first, so the board starts with more ambiguity than it really deserves.",
+    "English and Dog both feel broad at first, so the board starts with more ambiguity than it really deserves. The opening clues stay ambiguous until Damask gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Those clues can point toward nationality, animals, or generic compound phrases if you read them too early.",
     "Damask is the clue that tightens everything.",
     "Damask roses sounds like a real horticulture phrase, which suddenly makes English roses, Dog roses, and Hybrid tea roses all feel natural too.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #684?",
+      "question": "What shared word links \"English\" and \"Dog\" in LinkedIn Pinpoint #684?",
       "answer": "The answer is Words that come before \"roses\" because English, Dog, Damask, Hybrid Tea, and the final idiom all resolve cleanly with roses."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #684?",
+      "question": "How do \"English\" and \"Dog\" connect in LinkedIn Pinpoint #684?",
       "answer": "The connection is a phrase pattern built around roses. Some clues point to rose types or classifications, while the last clue confirms the same word through a common saying."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #684?",
+      "question": "Why is \"Damask\" the key clue in LinkedIn Pinpoint #684?",
       "answer": "Damask is the turning clue because Damask roses is the most specialized and least flexible phrase on the board, which pulls the earlier clues into the same pattern."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #684?",
+      "question": "What shared word links \"English\" and \"Dog\" in LinkedIn Pinpoint #684?",
       "answer": "The answer is Words that come before \"roses\" because English, Dog, Damask, Hybrid Tea, and the final idiom all resolve cleanly with roses.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #684?",
+      "question": "How do \"English\" and \"Dog\" connect in LinkedIn Pinpoint #684?",
       "answer": "The connection is a phrase pattern built around roses. Some clues point to rose types or classifications, while the last clue confirms the same word through a common saying.",
       "tiedClue": "Damask"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #684?",
+      "question": "Why is \"Damask\" the key clue in LinkedIn Pinpoint #684?",
       "answer": "Damask is the turning clue because Damask roses is the most specialized and least flexible phrase on the board, which pulls the earlier clues into the same pattern.",
       "tiedClue": "Damask"
     }

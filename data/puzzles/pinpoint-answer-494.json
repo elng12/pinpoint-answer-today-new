@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Think Verbs, Not Just Nouns. When stuck, consider the actions associated with the theme. 'Drive' and 'Putt' (verbs) were more direct clues than focusing solely on golf equipment (nouns).",
-    "Embrace the Obvious. Don't overthink it! Sometimes the most straightforward interpretation is the correct one. 'Drive' and 'Putt' are universally known golf shots.",
+    {
+      "title": "\"Putt\" is the clue to retest before committing",
+      "body": "Don't overthink it! Sometimes the most straightforward interpretation is the correct one. 'Drive' and 'Putt' are universally known golf shots."
+    },
     "Visualize the Scenario. Imagine yourself on the golf course. Picturing the different shots helps connect the clues ('Chip,' 'Fade,' 'Pitch') to the overall theme.",
     "Reset Your Perspective. If your initial guesses are wrong, actively try a different approach. I switched from equipment to actions, which unlocked the solution."
   ],

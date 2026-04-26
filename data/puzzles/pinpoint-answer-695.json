@@ -30,7 +30,7 @@
     "Clip": "After the answer lands, this clue should confirm it almost instantly."
   },
   "articleBlocks": [
-    "Tiger and Plane make the phrase structure visible quickly, but neither one tells you which word belongs in front.",
+    "Tiger and Plane make the phrase structure visible quickly, but neither one tells you which word belongs in front. The opening clues stay ambiguous until Weight gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Towel keeps the same pattern alive, though several possible shared words can still feel plausible for a moment.",
     "Weight is the clue that solves that uncertainty.",
     "Paperweight is so specific that it turns the board from a loose phrase exercise into one exact answer.",
@@ -97,11 +97,11 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #695?",
+      "question": "What shared word links \"Tiger\" and \"Plane\" in LinkedIn Pinpoint #695?",
       "answer": "The answer is Words that come after \"paper\" because every clue forms a familiar phrase once paper is placed in front."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #695?",
+      "question": "How do \"Tiger\" and \"Plane\" connect in LinkedIn Pinpoint #695?",
       "answer": "The connection is one shared opening word. Tiger, Plane, Towel, Weight, and Clip all turn into natural phrases once paper is added."
     },
     {
@@ -168,13 +168,13 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #695?",
+      "question": "What shared word links \"Tiger\" and \"Plane\" in LinkedIn Pinpoint #695?",
       "answer": "The answer is Words that come after \"paper\" because every clue forms a familiar phrase once paper is placed in front.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #695?",
+      "question": "How do \"Tiger\" and \"Plane\" connect in LinkedIn Pinpoint #695?",
       "answer": "The connection is one shared opening word. Tiger, Plane, Towel, Weight, and Clip all turn into natural phrases once paper is added.",
       "tiedClue": "Weight"
     },

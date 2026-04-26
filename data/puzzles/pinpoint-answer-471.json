@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Embrace the 'Shift'. The clues felt random at first. But the clues shifted from literal ingredients to Types of Cakes. Trust the shift when your initial idea stalls.",
-    "Don't marry your first guess. CARROT immediately made me think of CARROTCAKE. I should have kept an open mind and looked at all the clues before committing.",
+    {
+      "title": "\"Birthday\" is the clue to retest before committing",
+      "body": "CARROT immediately made me think of CARROTCAKE. I should have kept an open mind and looked at all the clues before committing."
+    },
     "Look for category clues. The clues are all nouns, but ultimately they are sub-categories of the larger category of 'Cake'. This puzzle tested associative thinking rather than just vocabulary.",
     "Test your assumptions. I assumed the clues were all ingredients. I should have tested different combinations of the clues to find a common theme."
   ],

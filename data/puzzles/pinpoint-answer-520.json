@@ -15,10 +15,16 @@
     "Fedora": "A felt hat with a soft brim and indented crown, often associated with detectives and gangsters."
   },
   "lessons": [
-    "Don't get tunnel vision. The 'Cowboy' clue can easily lead you down a Western-themed path. Broaden your horizons and consider more general categories before committing to a specific theme.",
+    {
+      "title": "\"Top\" and \"Bucket\" set the useful boundary",
+      "body": "The 'Cowboy' clue can easily lead you down a Western-themed path. Broaden your horizons and consider more general categories before committing to a specific theme."
+    },
     "Consider parts of speech. The clue 'Top' might initially make you think of rankings or locations. Remember that it can also be an adjective or, crucially in this case, part of a compound noun like 'Top Hat'.",
     "Embrace the obscure. If you're only familiar with a few types of hats, use the known ones (like 'Fedora') as anchors. Then, brainstorm other hat names, even if you're not 100% sure they exist. 'Bucket Hat' might have saved you.",
-    "Trust your gut. If you have a feeling that a particular connection is close, explore it fully. Even if 'Top' as 'Top Hat' seemed a bit off at first, it was worth investigating, and your initial instinct might be correct."
+    {
+      "title": "\"Fedora\" checks the solve against \"Fedora\"",
+      "body": "If you have a feeling that a particular connection is close, explore it fully. Even if 'Top' as 'Top Hat' seemed a bit off at first, it was worth investigating, and your initial instinct might be correct."
+    }
   ],
   "faqs": [
     {

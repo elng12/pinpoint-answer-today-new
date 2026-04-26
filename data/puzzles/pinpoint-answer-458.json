@@ -30,7 +30,7 @@
     "First": "This clue forms an adverb about diving in before the rest of you."
   },
   "articleBlocks": [
-    "Lines, Phones, and Light all look like they could belong to different modern-life categories, which is why the board can feel scattered at first.",
+    "Lines, Phones, and Light all look like they could belong to different modern-life categories, which is why the board can feel scattered at first. The opening clues stay ambiguous until First gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Ache pulls the set toward body language, but the connector still is not obvious until one clue reads like a fixed expression.",
     "First is the clue that settles it.",
     "Headfirst is such a tight formation that head becomes the only clean shared opener, and then headlines, headphones, headlight, and headache all lock in.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #458?",
+      "question": "What shared word links \"Lines\" and \"Phones\" in LinkedIn Pinpoint #458?",
       "answer": "The answer is Words that come after 'head' because Lines, Phones, Light, Ache, and First all form common words with head."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #458?",
+      "question": "How do \"Lines\" and \"Phones\" connect in LinkedIn Pinpoint #458?",
       "answer": "The connection is a shared opener. The clues resolve into headlines, headphones, headlight, headache, and headfirst."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #458?",
+      "question": "Why is \"First\" the key clue in LinkedIn Pinpoint #458?",
       "answer": "First is the turning clue because headfirst is the most fixed and least flexible formation on the board."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #458?",
+      "question": "What shared word links \"Lines\" and \"Phones\" in LinkedIn Pinpoint #458?",
       "answer": "The answer is Words that come after 'head' because Lines, Phones, Light, Ache, and First all form common words with head.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #458?",
+      "question": "How do \"Lines\" and \"Phones\" connect in LinkedIn Pinpoint #458?",
       "answer": "The connection is a shared opener. The clues resolve into headlines, headphones, headlight, headache, and headfirst.",
       "tiedClue": "First"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #458?",
+      "question": "Why is \"First\" the key clue in LinkedIn Pinpoint #458?",
       "answer": "First is the turning clue because headfirst is the most fixed and least flexible formation on the board.",
       "tiedClue": "First"
     }

@@ -25,19 +25,13 @@
     "Mass (in physics equations)": "Mass is often represented by 'm' (lowercase) in physics equations, which is closely related to M."
   },
   "spoilerHints": {
-    "Monday": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Medium": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Length (in metric units)": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "One thousandth (in metric units)": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Mass (in physics equations)": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Monday": "\"Monday\" can fit several broad reads at first, but it later works as part of Things that can be represented by the letter “M”.",
+    "Medium": "\"Medium\" is the clue that turns the board toward Things that can be represented by the letter “M”, because it gives the broad clue set a concrete category to test.",
+    "Length (in metric units)": "\"Length (in metric units)\" fits once the board is read as Things that can be represented by the letter “M”, so test it against the same category as the other clues.",
+    "One thousandth (in metric units)": "\"One thousandth (in metric units)\" fits once the board is read as Things that can be represented by the letter “M”, so test it against the same category as the other clues.",
+    "Mass (in physics equations)": "\"Mass (in physics equations)\" is the final confirmation that Things that can be represented by the letter “M” holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #706. Monday, Medium, Length (in metric units) can point in a few directions at first, but Medium is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'Medium' clue made the letter-based connection click into place.",
-    "Once Medium clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Monday, Medium, and Length (in metric units) stop feeling disconnected and start looking like they belong together. Once medium is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues initially scatter across time, size, and physics, obscuring the underlying letter association.",
-    "The answer is Things that can be represented by the letter “M”. Use the clue table for One thousandth (in metric units), Mass (in physics equations) and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
     "This compact explainer keeps the fastest reliable path through Pinpoint #706. Monday, Medium, Length (in metric units) can point in a few directions at first, but Medium is usually the clue that narrows the board into one answer you can actually test.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'Medium' clue made the letter-based connection click into place.",
     "Once Medium clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Monday, Medium, and Length (in metric units) stop feeling disconnected and start looking like they belong together. Once medium is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues initially scatter across time, size, and physics, obscuring the underlying letter association.",
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Monday\" and \"Medium\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Medium\" turns the board into one specific category",
       "body": "Medium is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Mass (in physics equations)\" confirms the same category level",
       "body": "Look for abbreviations or symbols. The obvious word isn't always the right answer."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #706?",
+      "question": "What final category connects \"Monday\" and \"Medium\" in LinkedIn Pinpoint #706?",
       "answer": "The answer is \"Things that can be represented by the letter M\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #706?",
+      "question": "How do \"Monday\" and \"Medium\" connect in LinkedIn Pinpoint #706?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Medium is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #706?",
+      "question": "Why is \"Medium\" the key clue in LinkedIn Pinpoint #706?",
       "answer": "Medium is the turning clue because \"Medium size\" makes the shared category frame explicit. It also makes Monday read cleanly as \"Monday\". The clues initially scatter across time, size, and physics, obscuring the underlying letter association."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #706?",
+      "question": "What final category connects \"Monday\" and \"Medium\" in LinkedIn Pinpoint #706?",
       "answer": "The answer is \"Things that can be represented by the letter M\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #706?",
+      "question": "How do \"Monday\" and \"Medium\" connect in LinkedIn Pinpoint #706?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Medium is what keeps the category reading precise instead of broad.",
       "tiedClue": "Medium"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #706?",
+      "question": "Why is \"Medium\" the key clue in LinkedIn Pinpoint #706?",
       "answer": "Medium is the turning clue because \"Medium size\" makes the shared category frame explicit. It also makes Monday read cleanly as \"Monday\". The clues initially scatter across time, size, and physics, obscuring the underlying letter association.",
       "tiedClue": "Medium"
     }

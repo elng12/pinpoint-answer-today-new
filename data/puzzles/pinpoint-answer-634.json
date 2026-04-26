@@ -30,7 +30,7 @@
     "Building (through a doorway)": "Move from screens and paperwork to literal movement."
   },
   "articleBlocks": [
-    "Username, Plea, and Contest all suggest different kinds of entry, but they can still feel like a paperwork board rather than a clean category.",
+    "Username, Plea, and Contest all suggest different kinds of entry, but they can still feel like a paperwork board rather than a clean category. The opening clues stay ambiguous until Building (through a doorway) gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Spreadsheet item keeps the verb enter in play, especially if you think about data entry.",
     "Building (through a doorway) is the clue that proves the idea is much broader.",
     "Once physical movement joins legal forms, account fields, and competitions, the answer stops being about one system and becomes Things you enter.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #634?",
+      "question": "What final category connects \"Username\" and \"Plea\" in LinkedIn Pinpoint #634?",
       "answer": "The answer is Things you enter because Username, Plea, Contest, Spreadsheet item, and Building all pair naturally with the verb enter."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #634?",
+      "question": "How do \"Username\" and \"Plea\" connect in LinkedIn Pinpoint #634?",
       "answer": "The connection is one shared action. You can enter a username, enter a plea, enter a contest, enter spreadsheet data, and enter a building."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #634?",
+      "question": "Why is \"Building (through a doorway)\" the key clue in LinkedIn Pinpoint #634?",
       "answer": "Building (through a doorway) is the turning clue because it proves the answer is not limited to forms or legal language and forces the broader verb enter."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #634?",
+      "question": "What final category connects \"Username\" and \"Plea\" in LinkedIn Pinpoint #634?",
       "answer": "The answer is Things you enter because Username, Plea, Contest, Spreadsheet item, and Building all pair naturally with the verb enter.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #634?",
+      "question": "How do \"Username\" and \"Plea\" connect in LinkedIn Pinpoint #634?",
       "answer": "The connection is one shared action. You can enter a username, enter a plea, enter a contest, enter spreadsheet data, and enter a building.",
       "tiedClue": "Building (through a doorway)"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #634?",
+      "question": "Why is \"Building (through a doorway)\" the key clue in LinkedIn Pinpoint #634?",
       "answer": "Building (through a doorway) is the turning clue because it proves the answer is not limited to forms or legal language and forces the broader verb enter.",
       "tiedClue": "Building (through a doorway)"
     }

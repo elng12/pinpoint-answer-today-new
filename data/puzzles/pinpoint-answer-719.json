@@ -25,19 +25,13 @@
     "Inspirational quote": "Inspirational quotes are often chosen as tattoos to provide daily motivation or express personal beliefs."
   },
   "spoilerHints": {
-    "Rose": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Anchor": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Infinity symbol": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Name and/or date": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Inspirational quote": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Rose": "\"Rose\" can fit several broad reads at first, but it later works as part of Popular tattoos.",
+    "Anchor": "\"Anchor\" fits once the board is read as Popular tattoos, so test it against the same category as the other clues.",
+    "Infinity symbol": "\"Infinity symbol\" is the clue that turns the board toward Popular tattoos, because it gives the broad clue set a concrete category to test.",
+    "Name and/or date": "\"Name and/or date\" fits once the board is read as Popular tattoos, so test it against the same category as the other clues.",
+    "Inspirational quote": "\"Inspirational quote\" is the final confirmation that Popular tattoos holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #719. Rose, Anchor, Infinity symbol can point in a few directions at first, but Infinity symbol is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on popular. The 'Name and/or date' clue made tattoos click for me.",
-    "Once Infinity symbol clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Rose, Anchor, and Infinity symbol stop feeling disconnected and start looking like they belong together. Once infinity symbol is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues at first seem unrelated, requiring a leap to connect them under a single visual theme.",
-    "The answer is Popular tattoos. Use the clue table for Name and/or date, Inspirational quote and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
     "This compact explainer keeps the fastest reliable path through Pinpoint #719. Rose, Anchor, Infinity symbol can point in a few directions at first, but Infinity symbol is usually the clue that narrows the board into one answer you can actually test.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on popular. The 'Name and/or date' clue made tattoos click for me.",
     "Once Infinity symbol clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Rose, Anchor, and Infinity symbol stop feeling disconnected and start looking like they belong together. Once infinity symbol is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues at first seem unrelated, requiring a leap to connect them under a single visual theme.",
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Rose\" and \"Anchor\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Infinity symbol\" turns the board into one specific category",
       "body": "Infinity symbol is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Inspirational quote\" confirms the same category level",
       "body": "When stuck, consider the symbolic meaning of each element, not just the literal object."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #719?",
+      "question": "What final category connects \"Rose\" and \"Anchor\" in LinkedIn Pinpoint #719?",
       "answer": "The answer is \"Popular tattoos\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #719?",
+      "question": "How do \"Rose\" and \"Anchor\" connect in LinkedIn Pinpoint #719?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Infinity symbol is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #719?",
+      "question": "Why is \"Infinity symbol\" the key clue in LinkedIn Pinpoint #719?",
       "answer": "Infinity symbol is the turning clue because \"Infinity symbol tattoo\" makes the shared category frame explicit. It also makes Rose read cleanly as \"Rose tattoo\". The clues at first seem unrelated, requiring a leap to connect them under a single visual theme."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #719?",
+      "question": "What final category connects \"Rose\" and \"Anchor\" in LinkedIn Pinpoint #719?",
       "answer": "The answer is \"Popular tattoos\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #719?",
+      "question": "How do \"Rose\" and \"Anchor\" connect in LinkedIn Pinpoint #719?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Infinity symbol is what keeps the category reading precise instead of broad.",
       "tiedClue": "Infinity symbol"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #719?",
+      "question": "Why is \"Infinity symbol\" the key clue in LinkedIn Pinpoint #719?",
       "answer": "Infinity symbol is the turning clue because \"Infinity symbol tattoo\" makes the shared category frame explicit. It also makes Rose read cleanly as \"Rose tattoo\". The clues at first seem unrelated, requiring a leap to connect them under a single visual theme.",
       "tiedClue": "Infinity symbol"
     }

@@ -30,15 +30,7 @@
     "Back": "This clue works better once you test a fixed phrase pattern rather than a broad topic."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"famous names\". That felt too literal and didn't account for clues like 'Booster' or 'Ice'. Back is the clue that keeps the board from staying at that broader surface read.",
-    "Another easy trap was \"standalone clue meanings\". A nearby read like standalone clue meanings can also feel plausible until the full board is checked together. That line never explains the strongest clue cleanly enough.",
-    "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
-    "Booster pack, Six pack, Back pack show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was Words that come before \"pack\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"pack\" fits better than \"famous names\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. The opening clues stay ambiguous until Back gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "A nearby read was \"famous names\". That felt too literal and didn't account for clues like 'Booster' or 'Ice'. Back is the clue that keeps the board from staying at that broader surface read.",
     "Another easy trap was \"standalone clue meanings\". A nearby read like standalone clue meanings can also feel plausible until the full board is checked together. That line never explains the strongest clue cleanly enough.",
     "Once that phrase appears, examples like \"Ice pack\" and \"Jet pack\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
@@ -52,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Ice\" and \"Jet\" both need the \"pack\" phrase frame",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Back\" makes the \"pack\" pattern decisive",
       "body": "Back is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "\"Back\" confirms the \"pack\" phrase answer",
       "body": "When stuck, try to think of common phrases that include the individual words."
     }
   ],
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #702?",
+      "question": "What shared word links \"Ice\" and \"Jet\" in LinkedIn Pinpoint #702?",
       "answer": "The answer is \"Words that come before pack\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #702?",
+      "question": "How do \"Ice\" and \"Jet\" connect in LinkedIn Pinpoint #702?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #702?",
+      "question": "Why is \"Back\" the key clue in LinkedIn Pinpoint #702?",
       "answer": "Back is the turning clue because \"Back pack\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Ice pack and Jet pack. Several clues have very common meanings, so it's hard to see past the surface reads until you have a direction."
     }
   ],
@@ -166,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #702?",
+      "question": "What shared word links \"Ice\" and \"Jet\" in LinkedIn Pinpoint #702?",
       "answer": "The answer is \"Words that come before pack\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #702?",
+      "question": "How do \"Ice\" and \"Jet\" connect in LinkedIn Pinpoint #702?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #702?",
+      "question": "Why is \"Back\" the key clue in LinkedIn Pinpoint #702?",
       "answer": "Back is the turning clue because \"Back pack\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Ice pack and Jet pack. Several clues have very common meanings, so it's hard to see past the surface reads until you have a direction.",
       "tiedClue": "Back"
     }

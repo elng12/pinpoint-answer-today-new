@@ -4,18 +4,7 @@
   "questionType": "category",
   "difficultyBand": "medium",
   "articleBlocks": [
-    "At first, this looked more like a wellness shelf than a candle shelf.",
-    "Aromatherapy and Unscented both fit that read, and they kept the board feeling broad instead of exact.",
-    "Birthday still did not belong naturally on a spa-products list.",
-    "Votive was the clue that changed the solve.",
-    "The moment I read Votive as a candle type, the earlier clues stopped drifting and started behaving like product names from the same aisle.",
-    "Aromatherapy became a scented candle. Unscented became an unscented candle.",
-    "Citronella then fit as the outdoor candle, and Birthday fit as the most familiar cake candle in the set.",
-    "The answer was Types of candles.",
-    "Once the answer lands, the board feels much tighter than any loose wellness-products read."
-  ],
-  "fullAnalysis": [
-    "At first, this looked more like a wellness shelf than a candle shelf.",
+    "At first, this looked more like a wellness shelf than a candle shelf. The opening clues stay ambiguous until Votive gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Aromatherapy and Unscented both fit that read, and they kept the board feeling broad instead of exact.",
     "Birthday still did not belong naturally on a spa-products list.",
     "Votive was the clue that changed the solve.",
@@ -49,7 +38,7 @@
       "body": "When several clues feel like adjectives or use-cases, wait for the clue that names a specific product form before locking the answer."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Votive\" turns the board into one specific category",
       "body": "Votive is what makes this board exact. Once that word reads as a candle type, the earlier clues stop sounding like loose lifestyle language."
     },
     {
@@ -59,15 +48,15 @@
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #689?",
+      "question": "Which type-level category connects \"Aromatherapy\" and \"Unscented\" in LinkedIn Pinpoint #689?",
       "answer": "The answer is \"Types of candles\" because that reading explains all five clues as recognizable candle subtypes or use-cases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #689?",
+      "question": "How do \"Aromatherapy\" and \"Unscented\" connect in LinkedIn Pinpoint #689?",
       "answer": "The connection is that Aromatherapy, Unscented, Votive, Citronella, and Birthday all resolve as types of candles rather than as a loose mix of wellness or scent words."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #689?",
+      "question": "Why is \"Votive\" the key clue in LinkedIn Pinpoint #689?",
       "answer": "Votive is the turning clue because it names a very specific candle form and forces the board away from vague wellness language."
     }
   ],
@@ -130,19 +119,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #689?",
+      "question": "Which type-level category connects \"Aromatherapy\" and \"Unscented\" in LinkedIn Pinpoint #689?",
       "answer": "The answer is \"Types of candles\" because all five clues resolve as recognizable candle subtypes or use-cases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #689?",
+      "question": "How do \"Aromatherapy\" and \"Unscented\" connect in LinkedIn Pinpoint #689?",
       "answer": "The connection is candle types. The board starts with broad scent language, but the real answer is one product family with several distinct forms and uses.",
       "tiedClue": "Votive"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #689?",
+      "question": "Why is \"Votive\" the key clue in LinkedIn Pinpoint #689?",
       "answer": "Votive is the turning clue because it names a specific candle form and pulls the whole board away from vague wellness or fragrance language.",
       "tiedClue": "Votive"
     }

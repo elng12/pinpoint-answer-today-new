@@ -32,13 +32,7 @@
     "Shock (⚡)": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #708. Car, Bill, Charge can point in a few directions at first, but Eel is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases and everyday terms built with one shared opening word. The 'Eel' clue made me think of electric eels specifically.",
-    "Once Eel clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Electric car, Electric bill, and Electric charge stop feeling loose and start sounding exact. Once eel makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept.",
-    "The answer is Words that come after \"electric\". Use the clue table for Eel, Shock (⚡) and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #708. Car, Bill, Charge can point in a few directions at first, but Eel is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #708. Car, Bill, Charge can point in a few directions at first, but Eel is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases and everyday terms built with one shared opening word. The 'Eel' clue made me think of electric eels specifically.",
     "Once Eel clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Electric car, Electric bill, and Electric charge stop feeling loose and start sounding exact. Once eel makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept.",
     "The answer is Words that come after \"electric\". Use the clue table for Eel, Shock (⚡) and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Car\" and \"Bill\" both need the \"electric\" phrase frame",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Eel\" makes the \"electric\" pattern decisive",
       "body": "Eel is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "\"Shock (⚡)\" confirms the \"electric\" phrase answer",
       "body": "When solving phrase puzzles, look for common phrases, not just related concepts."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #708?",
+      "question": "What shared word links \"Car\" and \"Bill\" in LinkedIn Pinpoint #708?",
       "answer": "The answer is \"Words that come after electric\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #708?",
+      "question": "How do \"Car\" and \"Bill\" connect in LinkedIn Pinpoint #708?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #708?",
+      "question": "Why is \"Eel\" the key clue in LinkedIn Pinpoint #708?",
       "answer": "Eel is the turning clue because \"Electric eel\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Electric car and Electric bill. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #708?",
+      "question": "What shared word links \"Car\" and \"Bill\" in LinkedIn Pinpoint #708?",
       "answer": "The answer is \"Words that come after electric\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #708?",
+      "question": "How do \"Car\" and \"Bill\" connect in LinkedIn Pinpoint #708?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #708?",
+      "question": "Why is \"Eel\" the key clue in LinkedIn Pinpoint #708?",
       "answer": "Eel is the turning clue because \"Electric eel\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Electric car and Electric bill. The puzzle requires finding a precise phrase connecting each clue to 'electric', not just a related concept.",
       "tiedClue": "Eel"
     }

@@ -30,15 +30,7 @@
     "Stadiums (for team substitutes)": "This is the clue that turns a broad seating theme into one exact object."
   },
   "articleBlocks": [
-    "At first, Parks and Courtrooms pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"places to sit\". Parks and Bus stops both support that broad idea right away, which is why it feels nearly right at first. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby read was \"public waiting areas\". Parks and Bus stops can keep that frame alive for a moment, but Piano lounges and the sports meaning inside Stadiums do not fit naturally under a waiting-area theme. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
-    "Once I read the set through settings linked by one exact object: benches, examples like \"park bench\" and \"courtroom bench\" stopped feeling loose and started landing cleanly.",
-    "Piano bench, bus stop bench, and team bench keep the board tied to one exact object across musical, transit, and sports settings, which is what makes the answer feel tighter than a generic seating theme.",
-    "The answer was Places with benches. More precisely, the board resolves as settings specifically associated with benches rather than seating in general, which is why Places with benches fits better than \"places to sit\" or \"public waiting areas\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Parks and Courtrooms pointed in a few different directions, so the board still felt wider than one exact category.",
+    "At first, Parks and Courtrooms pointed in a few different directions, so the board still felt wider than one exact category. The opening clues stay ambiguous until Stadiums (for team substitutes) gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"places to sit\". Parks and Bus stops both support that broad idea right away, which is why it feels nearly right at first. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby read was \"public waiting areas\". Parks and Bus stops can keep that frame alive for a moment, but Piano lounges and the sports meaning inside Stadiums do not fit naturally under a waiting-area theme. Stadiums (for team substitutes) is the clue that keeps the board from staying at that broader surface read.",
     "Once I read the set through settings linked by one exact object: benches, examples like \"park bench\" and \"courtroom bench\" stopped feeling loose and started landing cleanly.",
@@ -96,15 +88,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #674?",
+      "question": "What final category connects \"Parks\" and \"Courtrooms\" in LinkedIn Pinpoint #674?",
       "answer": "The answer is Places with benches because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums all point to settings where a bench is a natural object."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #674?",
+      "question": "How do \"Parks\" and \"Courtrooms\" connect in LinkedIn Pinpoint #674?",
       "answer": "The connection is not seating in general. It is the more exact object bench, which appears in each setting for a slightly different reason."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #674?",
+      "question": "Why is \"Stadiums (for team substitutes)\" the key clue in LinkedIn Pinpoint #674?",
       "answer": "Stadiums (for team substitutes) is the turning clue because the sports meaning of bench makes the object much clearer than a broad seating answer."
     }
   ],
@@ -167,19 +159,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #674?",
+      "question": "What final category connects \"Parks\" and \"Courtrooms\" in LinkedIn Pinpoint #674?",
       "answer": "The answer is Places with benches because Parks, Courtrooms, Piano lounges, Bus stops, and Stadiums all point to settings where a bench is a natural object.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #674?",
+      "question": "How do \"Parks\" and \"Courtrooms\" connect in LinkedIn Pinpoint #674?",
       "answer": "The connection is not seating in general. It is the more exact object bench, which appears in each setting for a slightly different reason.",
       "tiedClue": "Stadiums (for team substitutes)"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #674?",
+      "question": "Why is \"Stadiums (for team substitutes)\" the key clue in LinkedIn Pinpoint #674?",
       "answer": "Stadiums (for team substitutes) is the turning clue because the sports meaning of bench makes the object much clearer than a broad seating answer.",
       "tiedClue": "Stadiums (for team substitutes)"
     }

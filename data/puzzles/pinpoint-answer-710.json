@@ -32,19 +32,7 @@
     "Iron-on": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
   },
   "articleBlocks": [
-    "At first glance, this felt like a word association game. 'Software' and 'Eye' didn't immediately click together.",
-    "I considered a 'Pirate' theme due to the 'Eye' and 'Rough' clues. The idea of an eye patch seemed promising.",
-    "But 'Software' felt totally out of place in that frame. That theory broke down quickly.",
-    "I also thought about 'Hardware' because of 'Iron-on' and the general sense of repair implied by 'patch'. That didn't go far.",
-    "The 'Vegetable' clue was the turning point. It made me think of a 'vegetable patch'.",
-    "That unlocked the pattern: 'Words that come before patch'.",
-    "'Software patch', 'eye patch', 'rough patch', and 'iron-on patch' all fit perfectly.",
-    "Each clue now formed a common phrase ending in 'patch'.",
-    "The initial misdirection faded away, and the solution felt obvious in hindsight.",
-    "Now the board feels like a set of common phrases, not just random words."
-  ],
-  "fullAnalysis": [
-    "At first glance, this felt like a word association game. 'Software' and 'Eye' didn't immediately click together.",
+    "At first glance, this felt like a word association game. 'Software' and 'Eye' didn't immediately click together. The opening clues stay ambiguous until Vegetable gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "I considered a 'Pirate' theme due to the 'Eye' and 'Rough' clues. The idea of an eye patch seemed promising.",
     "But 'Software' felt totally out of place in that frame. That theory broke down quickly.",
     "I also thought about 'Hardware' because of 'Iron-on' and the general sense of repair implied by 'patch'. That didn't go far.",
@@ -61,15 +49,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Software\" and \"Eye\" both need the \"patch\" phrase frame",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Vegetable\" makes the \"patch\" pattern decisive",
       "body": "Vegetable is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "\"Iron-on\" confirms the \"patch\" phrase answer",
       "body": "Look for a specific phrase that connects all the clues, rather than forcing a broad category."
     }
   ],
@@ -106,15 +94,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #710?",
+      "question": "What shared word links \"Software\" and \"Eye\" in LinkedIn Pinpoint #710?",
       "answer": "The answer is \"Words that come before patch\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #710?",
+      "question": "How do \"Software\" and \"Eye\" connect in LinkedIn Pinpoint #710?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #710?",
+      "question": "Why is \"Vegetable\" the key clue in LinkedIn Pinpoint #710?",
       "answer": "Vegetable is the turning clue because \"Vegetable patch\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Software patch and Eye patch. The clues initially seem unrelated, and several could point to different categories. It takes a specific phrase connection to resolve the board cleanly."
     }
   ],
@@ -177,19 +165,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #710?",
+      "question": "What shared word links \"Software\" and \"Eye\" in LinkedIn Pinpoint #710?",
       "answer": "The answer is \"Words that come before patch\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #710?",
+      "question": "How do \"Software\" and \"Eye\" connect in LinkedIn Pinpoint #710?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #710?",
+      "question": "Why is \"Vegetable\" the key clue in LinkedIn Pinpoint #710?",
       "answer": "Vegetable is the turning clue because \"Vegetable patch\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Software patch and Eye patch. The clues initially seem unrelated, and several could point to different categories. It takes a specific phrase connection to resolve the board cleanly.",
       "tiedClue": "Vegetable"
     }

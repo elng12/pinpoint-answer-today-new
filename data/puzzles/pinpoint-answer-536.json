@@ -18,7 +18,10 @@
     "Consider wordplay and idioms. Sometimes Pinpoint isn't just about finding words that combine, but understanding idiomatic expressions. In this puzzle, knowing the common phrase \"raise eyebrows\" helped steer towards the correct answer.",
     "Don't get tunnel vision after the first clue. It's easy to latch onto the first word association that comes to mind, but force yourself to consider alternatives. I was so confident with ISSUES that I ignored the other clues for too long.",
     "Look for verbs that connect seemingly disparate nouns. The clues seemed unrelated at first, but finding a verb that could logically link them was key. Thinking about what you can *do* with concerns, donations, children, eyebrows, and a voice all pointed to RAISE.",
-    "Say it out loud. Sometimes, just vocalizing the potential connections can help. Saying \"Raise concerns,\" \"Raise donations,\" etc., can solidify the pattern and lead to the solution."
+    {
+      "title": "\"Voice\" checks the solve against \"Voice\"",
+      "body": "Sometimes, just vocalizing the potential connections can help. Saying \"Raise concerns,\" \"Raise donations,\" etc., can solidify the pattern and lead to the solution."
+    }
   ],
   "faqs": [
     {

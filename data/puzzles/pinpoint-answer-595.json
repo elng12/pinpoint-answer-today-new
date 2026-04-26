@@ -15,8 +15,14 @@
     "Louvre": "Matches perfectly with Art museums named Louvre, one of the most famous museums in the world."
   },
   "lessons": [
-    "Trust the Shift in Perspective. Initially, focusing on the individual artists or artworks (like SUNFLOWERS) leads you down the wrong path. The shift to thinking about the *location* of the art is key.",
-    "Don't Marry Your First Idea. I was so confident with SUNFLOWERS after seeing VAN GOGH that I tried to force it. Recognize when your initial thought isn't working and be ready to pivot.",
+    {
+      "title": "\"Van Gogh\" and \"Guggenheim\" set the useful boundary",
+      "body": "Initially, focusing on the individual artists or artworks (like SUNFLOWERS) leads you down the wrong path. The shift to thinking about the *location* of the art is key."
+    },
+    {
+      "title": "\"Louvre\" is the clue to retest before committing",
+      "body": "I was so confident with SUNFLOWERS after seeing VAN GOGH that I tried to force it. Recognize when your initial thought isn't working and be ready to pivot."
+    },
     "Look for Common Denominators. The clues seem disparate at first, but they all share a common characteristic: they're all found inside ART MUSEUMS. Identifying this shared element is crucial.",
     "Consider the Broader Category. Instead of focusing on specific paintings or architectural styles, think about the broader category: these are all places where art is displayed."
   ],

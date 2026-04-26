@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Challenge Your Strongest Impulse. The 'Chocolate' and 'Potato' clues create an overwhelmingly strong food theme. The key to today's puzzle was actively challenging that first, powerful impulse rather than settling for an imperfect fit that works for only a few clues.",
-    "Test a Simple Pattern Across All Clues. When complex categories fail, try a simple linguistic or structural pattern. The solution here wasn't a deep conceptual category but a simple word that could follow each clue. Testing 'chip' against all five clues provided an immediate and perfect confirmation.",
+    {
+      "title": "\"Computer\" locks in the \"chip\" pattern",
+      "body": "When complex categories fail, try a simple linguistic or structural pattern. The solution here wasn't a deep conceptual category but a simple word that could follow each clue. Testing 'chip' against all five clues provided an immediate and perfect confirmation."
+    },
     "Let Outliers Guide Your Hypothesis. The clues that don't fit your initial theory are often the most important. 'Wood' and 'Poker' were the outliers that broke the 'food' theory. Instead of discarding them, I used them to pivot toward a completely new type of connection that could accommodate them all."
   ],
   "faqs": [

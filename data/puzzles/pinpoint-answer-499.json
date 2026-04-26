@@ -18,7 +18,10 @@
     "Consider the Obvious. Sometimes the most straightforward solution is the correct one. Don't overthink it! I initially dismissed the PAINTING EQUIPMENT connection because it seemed too simple, but the TRAY and BRUSH clues should have been my immediate signal.",
     "Eliminate Red Herrings. The DROP CLOTH clue can be misleading if you focus solely on construction or renovation. Actively try to disprove your initial assumptions using all the clues.",
     "Visualize the Process. Try to picture the scenario the clues suggest. In this case, visualizing the act of painting can help you connect the TAPE, ROLLER, and BRUSH to the overall theme.",
-    "Don't Get Tunnel Vision. When I focused too much on the TAPE and DROP CLOTH, I missed the bigger picture. Be willing to step back and consider all clues equally before settling on a hypothesis."
+    {
+      "title": "\"Brush\" checks the solve against \"Brush\"",
+      "body": "When I focused too much on the TAPE and DROP CLOTH, I missed the bigger picture. Be willing to step back and consider all clues equally before settling on a hypothesis."
+    }
   ],
   "faqs": [
     {

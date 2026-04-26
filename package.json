@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "validate:data": "node scripts/validate-data.mjs",
+    "validate:data": "tsx scripts/validate-data.mjs",
     "worker:preflight": "node scripts/worker-ops.mjs preflight --env prod",
     "worker:health": "node scripts/worker-ops.mjs health --env prod",
     "worker:refresh-cookie": "node scripts/worker-ops.mjs refresh-cookie --targets all",

@@ -30,7 +30,7 @@
     "Tooth cavity": "Think about what a dentist does to a cavity."
   },
   "articleBlocks": [
-    "Bottle and Pool can make the board feel like it wants containers or liquids, but Survey immediately fights that read.",
+    "Bottle and Pool can make the board feel like it wants containers or liquids, but Survey immediately fights that read. The opening clues stay ambiguous until Tooth cavity gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Bucket keeps the clue set concrete, which makes it easy to miss that the connector is really an action.",
     "Tooth cavity is the clue that tightens it.",
     "Fill a tooth cavity is such a specific phrase that fill stops being a loose guess and becomes the clean verb for the whole board.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #529?",
+      "question": "What final category connects \"Bottle\" and \"Survey\" in LinkedIn Pinpoint #529?",
       "answer": "The answer is Things you can fill because Bottle, Survey, Pool, Bucket, and Tooth cavity all pair naturally with fill."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #529?",
+      "question": "How do \"Bottle\" and \"Survey\" connect in LinkedIn Pinpoint #529?",
       "answer": "The connection is one shared action. You can fill a bottle, fill out a survey, fill a pool, fill a bucket, and fill a tooth cavity."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #529?",
+      "question": "Why is \"Tooth cavity\" the key clue in LinkedIn Pinpoint #529?",
       "answer": "Tooth cavity is the turning clue because fill a tooth cavity is much more specific than the other phrases and makes the shared verb feel exact."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #529?",
+      "question": "What final category connects \"Bottle\" and \"Survey\" in LinkedIn Pinpoint #529?",
       "answer": "The answer is Things you can fill because Bottle, Survey, Pool, Bucket, and Tooth cavity all pair naturally with fill.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #529?",
+      "question": "How do \"Bottle\" and \"Survey\" connect in LinkedIn Pinpoint #529?",
       "answer": "The connection is one shared action. You can fill a bottle, fill out a survey, fill a pool, fill a bucket, and fill a tooth cavity.",
       "tiedClue": "Tooth cavity"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #529?",
+      "question": "Why is \"Tooth cavity\" the key clue in LinkedIn Pinpoint #529?",
       "answer": "Tooth cavity is the turning clue because fill a tooth cavity is much more specific than the other phrases and makes the shared verb feel exact.",
       "tiedClue": "Tooth cavity"
     }

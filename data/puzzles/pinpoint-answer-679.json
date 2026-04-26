@@ -30,7 +30,7 @@
     "Princess Peach": "Think of the princess from the same Nintendo series."
   },
   "articleBlocks": [
-    "Toad and Luigi already point toward Nintendo character territory, but the board still wants you to confirm the exact franchise.",
+    "Toad and Luigi already point toward Nintendo character territory, but the board still wants you to confirm the exact franchise. The opening clues stay ambiguous until Bowser gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Piranha Plant helps because it proves the set is not limited to named protagonists or allies.",
     "Bowser is the clue that locks the universe.",
     "Once Bowser shows up, Princess Peach and the rest stop feeling like generic video game references and become a clean Super Mario cast board.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #679?",
+      "question": "What final category connects \"Toad\" and \"Piranha Plant\" in LinkedIn Pinpoint #679?",
       "answer": "The answer is Characters in Super Mario because Toad, Piranha Plant, Bowser, Luigi, and Princess Peach all belong to the Mario franchise."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #679?",
+      "question": "How do \"Toad\" and \"Piranha Plant\" connect in LinkedIn Pinpoint #679?",
       "answer": "The connection is one fictional universe. The clues are all familiar characters or enemy types from the Super Mario series."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #679?",
+      "question": "Why is \"Bowser\" the key clue in LinkedIn Pinpoint #679?",
       "answer": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes obvious."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #679?",
+      "question": "What final category connects \"Toad\" and \"Piranha Plant\" in LinkedIn Pinpoint #679?",
       "answer": "The answer is Characters in Super Mario because Toad, Piranha Plant, Bowser, Luigi, and Princess Peach all belong to the Mario franchise.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #679?",
+      "question": "How do \"Toad\" and \"Piranha Plant\" connect in LinkedIn Pinpoint #679?",
       "answer": "The connection is one fictional universe. The clues are all familiar characters or enemy types from the Super Mario series.",
       "tiedClue": "Bowser"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #679?",
+      "question": "Why is \"Bowser\" the key clue in LinkedIn Pinpoint #679?",
       "answer": "Bowser is the turning clue because he is such a strong Mario-specific villain anchor that the franchise becomes obvious.",
       "tiedClue": "Bowser"
     }

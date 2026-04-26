@@ -30,15 +30,7 @@
     "Documents": "This clue works through a familiar office action, not through a kitchen read."
   },
   "articleBlocks": [
-    "At first, Cheese and Wheat pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"food preparation\". Cheese, Wheat, and Lettuce all support that direction at first, so the wrong answer feels close. Guitar is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby read was \"kitchen items\". That read falls apart once Guitar and Documents have to fit the same connector cleanly. Guitar is the clue that keeps the board from staying at that broader surface read.",
-    "Once I read the set through literal and figurative uses of the same action word, examples like \"shredded cheese\" and \"shredding on guitar\" stopped feeling loose and started landing cleanly.",
-    "Shredded Wheat, shredded lettuce, and shredded documents keep the board tied to the same action across food, branding, and office language, which is what makes the answer feel tighter than a kitchen-only read.",
-    "The answer was Things that can be shredded. More precisely, the board resolves as things unified by the action word shredded rather than by one food or household category, which is why Things that can be shredded fits better than \"food preparation\" or \"kitchen items\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Cheese and Wheat pointed in a few different directions, so the board still felt wider than one exact category.",
+    "At first, Cheese and Wheat pointed in a few different directions, so the board still felt wider than one exact category. The opening clues stay ambiguous until Guitar gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"food preparation\". Cheese, Wheat, and Lettuce all support that direction at first, so the wrong answer feels close. Guitar is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby read was \"kitchen items\". That read falls apart once Guitar and Documents have to fit the same connector cleanly. Guitar is the clue that keeps the board from staying at that broader surface read.",
     "Once I read the set through literal and figurative uses of the same action word, examples like \"shredded cheese\" and \"shredding on guitar\" stopped feeling loose and started landing cleanly.",
@@ -96,15 +88,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #467?",
+      "question": "What final category connects \"Cheese\" and \"Guitar\" in LinkedIn Pinpoint #467?",
       "answer": "The answer is Things that can be shredded because Cheese, Guitar, Wheat, Lettuce, and Documents all connect cleanly through the action word shredded."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #467?",
+      "question": "How do \"Cheese\" and \"Guitar\" connect in LinkedIn Pinpoint #467?",
       "answer": "The connection is a shared action, not a shared subject. The board mixes food, music, branding, and office language through the word shredded."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #467?",
+      "question": "Why is \"Guitar\" the key clue in LinkedIn Pinpoint #467?",
       "answer": "Guitar is the turning clue because it proves the board is not only about food and shows that shredding can work figuratively as well as literally."
     }
   ],
@@ -167,19 +159,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #467?",
+      "question": "What final category connects \"Cheese\" and \"Guitar\" in LinkedIn Pinpoint #467?",
       "answer": "The answer is Things that can be shredded because Cheese, Guitar, Wheat, Lettuce, and Documents all connect cleanly through the action word shredded.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #467?",
+      "question": "How do \"Cheese\" and \"Guitar\" connect in LinkedIn Pinpoint #467?",
       "answer": "The connection is a shared action, not a shared subject. The board mixes food, music, branding, and office language through the word shredded.",
       "tiedClue": "Guitar"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #467?",
+      "question": "Why is \"Guitar\" the key clue in LinkedIn Pinpoint #467?",
       "answer": "Guitar is the turning clue because it proves the board is not only about food and shows that shredding can work figuratively as well as literally.",
       "tiedClue": "Guitar"
     }

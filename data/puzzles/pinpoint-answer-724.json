@@ -32,27 +32,27 @@
     "Kerchief": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #724. Stand, Shake, Made can point in a few directions at first, but Writing is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #724. Stand, Shake, Made can point in a few directions at first, but Writing is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases and everyday terms built with one shared opening word. The 'writing' clue shifted my focus from actions to language.",
     "Once Writing clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Hand stand, Hand shake, and Hand made stop feeling loose and start sounding exact. Once writing makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The puzzle initially suggests actions related to hands, but the solution requires a lateral shift to set phrases.",
     "The answer is Words that come after “hand”. Use the clue table for Writing, Kerchief and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #724. Stand, Shake, Made can point in a few directions at first, but Writing is usually the clue that narrows the board into one answer you can actually test.",
+    "My first read stayed deliberately loose because Stand and Shake could support more than one surface idea. The solve only became testable after Writing gave me a cleaner way to re-check the earlier clues.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases and everyday terms built with one shared opening word. The 'writing' clue shifted my focus from actions to language.",
     "Once Writing clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Hand stand, Hand shake, and Hand made stop feeling loose and start sounding exact. Once writing makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The puzzle initially suggests actions related to hands, but the solution requires a lateral shift to set phrases."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Stand\" and \"Shake\" both need the \"hand\" phrase frame",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Writing\" makes the \"hand\" pattern decisive",
       "body": "Writing is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "\"Kerchief\" confirms the \"hand\" phrase answer",
       "body": "When a puzzle category feels too broad, look for a more specific connection between the clues."
     }
   ],
@@ -89,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #724?",
+      "question": "What shared word links \"Stand\" and \"Shake\" in LinkedIn Pinpoint #724?",
       "answer": "The answer is \"Words that come after hand\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #724?",
+      "question": "How do \"Stand\" and \"Shake\" connect in LinkedIn Pinpoint #724?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #724?",
+      "question": "Why is \"Writing\" the key clue in LinkedIn Pinpoint #724?",
       "answer": "Writing is the turning clue because \"Hand writing\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Hand stand and Hand shake. The puzzle initially suggests actions related to hands, but the solution requires a lateral shift to set phrases."
     }
   ],
@@ -158,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #724?",
+      "question": "What shared word links \"Stand\" and \"Shake\" in LinkedIn Pinpoint #724?",
       "answer": "The answer is \"Words that come after hand\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #724?",
+      "question": "How do \"Stand\" and \"Shake\" connect in LinkedIn Pinpoint #724?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #724?",
+      "question": "Why is \"Writing\" the key clue in LinkedIn Pinpoint #724?",
       "answer": "Writing is the turning clue because \"Hand writing\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Hand stand and Hand shake. The puzzle initially suggests actions related to hands, but the solution requires a lateral shift to set phrases.",
       "tiedClue": "Writing"
     }

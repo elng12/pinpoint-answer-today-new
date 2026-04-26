@@ -17,8 +17,14 @@
   "lessons": [
     "Avoid immediate assumptions based on the first clue. My initial thought of WATER with the MOAT clue led me astray quickly. It's important to gather more clues before committing to a solution.",
     "Look for architectural themes. The presence of MOAT, DUNGEON, and DRAWBRIDGE should have been a stronger signal to focus on architectural elements rather than abstract concepts.",
-    "Consider broader categories. Instead of focusing on specific objects, consider the category they belong to. In this case, all the clues were elements of a castle.",
-    "Trust the shift in clues. When the clues start to point in a different direction, abandon your initial theory and explore new possibilities. The shift from WATER to DUNGEON should have been a red flag."
+    {
+      "title": "\"Drawbridge\" keeps the category level specific",
+      "body": "Instead of focusing on specific objects, consider the category they belong to. In this case, all the clues were elements of a castle."
+    },
+    {
+      "title": "\"Keep\" checks the solve against \"Keep\"",
+      "body": "When the clues start to point in a different direction, abandon your initial theory and explore new possibilities. The shift from WATER to DUNGEON should have been a red flag."
+    }
   ],
   "faqs": [
     {

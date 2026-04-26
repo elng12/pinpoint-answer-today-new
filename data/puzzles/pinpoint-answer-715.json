@@ -32,20 +32,7 @@
     "Acrylic": "This is the clue that makes the category specific enough to verify across the whole board."
   },
   "articleBlocks": [
-    "At first, this felt like a random collection of art supplies.",
-    "Finger suggested art projects, but Oil and Spray seemed out of place.",
-    "I briefly considered lubricants, but that theory quickly broke down.",
-    "The Latex clue didn't fit lubricants at all.",
-    "Then Acrylic appeared, and the correct category clicked into place.",
-    "Suddenly, each clue made perfect sense as a specific type under one umbrella.",
-    "Finger paint, oil paint, spray paint, latex paint, and acrylic paint.",
-    "The answer is: Types of paints.",
-    "The set is a clean list of familiar examples.",
-    "Now the initial sense of randomness has resolved into a tight fit.",
-    "Next time, I'll look for the common thread linking seemingly disparate items."
-  ],
-  "fullAnalysis": [
-    "At first, this felt like a random collection of art supplies.",
+    "At first, this felt like a random collection of art supplies. The opening clues stay ambiguous until Acrylic gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Finger suggested art projects, but Oil and Spray seemed out of place.",
     "I briefly considered lubricants, but that theory quickly broke down.",
     "The Latex clue didn't fit lubricants at all.",
@@ -63,15 +50,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Finger\" and \"Oil\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Acrylic\" turns the board into one specific category",
       "body": "Acrylic is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Acrylic\" confirms the same category level",
       "body": "When a few clues point to a category, consider whether the other clues might be specific types within that category."
     }
   ],
@@ -108,15 +95,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #715?",
+      "question": "Which type-level category connects \"Finger\" and \"Oil\" in LinkedIn Pinpoint #715?",
       "answer": "The answer is \"Types of paints\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #715?",
+      "question": "How do \"Finger\" and \"Oil\" connect in LinkedIn Pinpoint #715?",
       "answer": "The connection is that all 5 clues point to recognizable types of paints. Acrylic is the clue that makes the category specific enough to verify across the full board."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #715?",
+      "question": "Why is \"Acrylic\" the key clue in LinkedIn Pinpoint #715?",
       "answer": "Acrylic is the turning clue because \"Acrylic paint\" makes the shared category frame explicit. It also makes Finger read cleanly as \"Finger paint\". The clues are common objects, but the category is broad, and some clues have multiple meanings."
     }
   ],
@@ -179,19 +166,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #715?",
+      "question": "Which type-level category connects \"Finger\" and \"Oil\" in LinkedIn Pinpoint #715?",
       "answer": "The answer is \"Types of paints\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #715?",
+      "question": "How do \"Finger\" and \"Oil\" connect in LinkedIn Pinpoint #715?",
       "answer": "The connection is that all 5 clues point to recognizable types of paints. Acrylic is the clue that makes the category specific enough to verify across the full board.",
       "tiedClue": "Acrylic"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #715?",
+      "question": "Why is \"Acrylic\" the key clue in LinkedIn Pinpoint #715?",
       "answer": "Acrylic is the turning clue because \"Acrylic paint\" makes the shared category frame explicit. It also makes Finger read cleanly as \"Finger paint\". The clues are common objects, but the category is broad, and some clues have multiple meanings.",
       "tiedClue": "Acrylic"
     }

@@ -30,15 +30,7 @@
     "Stay the": "This is the clue that makes the puzzle feel more like a phrase family than a list of nouns."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose shared-ending guess\". Golf course and main course both work early, but a good Pinpoint solve still needs the rest of the board to land naturally. Stay the is the clue that keeps the board from staying at that broader surface read.",
-    "Another easy trap was \"a learning-or-sports theme\". Crash can tempt a topic guess, but Of and Stay the prove the puzzle is really about phrase structure. Stay the is the clue that keeps the board from staying at that broader surface read.",
-    "Once that phrase appears, examples like \"of course\" and \"golf course\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word across several contexts.",
-    "main course, crash course, stay the course show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was Words that come before \"course\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"course\" fits better than \"a loose shared-ending guess\" or \"a learning-or-sports theme\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. The opening clues stay ambiguous until Stay the gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "A nearby read was \"a loose shared-ending guess\". Golf course and main course both work early, but a good Pinpoint solve still needs the rest of the board to land naturally. Stay the is the clue that keeps the board from staying at that broader surface read.",
     "Another easy trap was \"a learning-or-sports theme\". Crash can tempt a topic guess, but Of and Stay the prove the puzzle is really about phrase structure. Stay the is the clue that keeps the board from staying at that broader surface read.",
     "Once that phrase appears, examples like \"of course\" and \"golf course\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word across several contexts.",
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #530?",
+      "question": "What shared word links \"Of\" and \"Golf\" in LinkedIn Pinpoint #530?",
       "answer": "The answer is Words that come before \"course\" because Of, Golf, Main, Crash, and Stay the all form familiar expressions with course."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #530?",
+      "question": "How do \"Of\" and \"Golf\" connect in LinkedIn Pinpoint #530?",
       "answer": "The connection is one shared ending word. The board resolves into of course, golf course, main course, crash course, and stay the course."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #530?",
+      "question": "Why is \"Stay the\" the key clue in LinkedIn Pinpoint #530?",
       "answer": "Stay the is the turning clue because stay the course is the most fixed idiom on the board and makes the shared ending feel exact instead of tentative."
     }
   ],
@@ -168,19 +160,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #530?",
+      "question": "What shared word links \"Of\" and \"Golf\" in LinkedIn Pinpoint #530?",
       "answer": "The answer is Words that come before \"course\" because Of, Golf, Main, Crash, and Stay the all form familiar expressions with course.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #530?",
+      "question": "How do \"Of\" and \"Golf\" connect in LinkedIn Pinpoint #530?",
       "answer": "The connection is one shared ending word. The board resolves into of course, golf course, main course, crash course, and stay the course.",
       "tiedClue": "Stay the"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #530?",
+      "question": "Why is \"Stay the\" the key clue in LinkedIn Pinpoint #530?",
       "answer": "Stay the is the turning clue because stay the course is the most fixed idiom on the board and makes the shared ending feel exact instead of tentative.",
       "tiedClue": "Stay the"
     }

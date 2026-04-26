@@ -5,6 +5,8 @@ import { PuzzleCheckin } from "@/components/detail/PuzzleCheckin";
 import { PuzzleFullAnalysis } from "@/components/detail/PuzzleFullAnalysis";
 import { DetailShareButton } from "@/components/detail/DetailShareButton";
 import { routes } from "@/lib/paths/routes";
+import type { LatestAnswerCtaPuzzle } from "@/components/detail/LatestAnswerCta";
+import { LatestAnswerStickyBanner } from "@/components/detail/LatestAnswerStickyBanner";
 
 function formatLegacyDate(isoDate: string): string {
   return new Intl.DateTimeFormat("en-US", {
@@ -59,12 +61,14 @@ export function PuzzleDetail({
   nextPreview,
   adjacentPrev,
   adjacentNext,
+  latestPuzzle,
 }: {
   puzzle: PuzzleDetailRecord;
   recentPuzzles: ArchiveEntry[];
   nextPreview: NextPreview | null;
   adjacentPrev: ArchiveEntry | null;
   adjacentNext: ArchiveEntry | null;
+  latestPuzzle: LatestAnswerCtaPuzzle | null;
 }) {
   const isShortMode = puzzle.detailMode === "short";
   const isLightExplainerMode = puzzle.pageExperienceMode === "light-explainer";
@@ -136,6 +140,13 @@ export function PuzzleDetail({
         nextPreview={nextPreview}
         adjacentPrev={adjacentPrev}
         adjacentNext={adjacentNext}
+        latestPuzzle={latestPuzzle}
+      />
+
+      <LatestAnswerStickyBanner
+        currentSlug={puzzle.slug}
+        currentNumber={puzzle.number}
+        latestPuzzle={latestPuzzle}
       />
     </div>
   );

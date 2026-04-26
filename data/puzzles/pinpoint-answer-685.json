@@ -4,18 +4,7 @@
   "questionType": "category",
   "difficultyBand": "medium",
   "articleBlocks": [
-    "At first, Time and The Economist made this feel like a current-affairs board.",
-    "Cosmopolitan kept the set inside publishing, but it still felt more like famous media brands than one exact category.",
-    "National Geographic was the clue that changed that read.",
-    "It is famous, but not for the same subject area as the first two titles.",
-    "That made me stop asking what these publications cover and start asking what format they share.",
-    "Once I read them as magazine titles, the whole board stopped wobbling.",
-    "Time, The Economist, Cosmopolitan, National Geographic, and Reader’s Digest all fit naturally on the same magazine rack.",
-    "The answer was Magazines (with global readership / versions).",
-    "Reader’s Digest then worked as the clean final confirmation because it sounds much more like a magazine title than a loose media brand."
-  ],
-  "fullAnalysis": [
-    "At first, Time and The Economist made this feel like a current-affairs board.",
+    "At first, Time and The Economist made this feel like a current-affairs board. The opening clues stay ambiguous until National Geographic gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Cosmopolitan kept the set inside publishing, but it still felt more like famous media brands than one exact category.",
     "National Geographic was the clue that changed that read.",
     "It is famous, but not for the same subject area as the first two titles.",
@@ -59,15 +48,15 @@
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #685?",
+      "question": "What final category connects \"Time\" and \"The Economist\" in LinkedIn Pinpoint #685?",
       "answer": "The answer is \"Magazines (with global readership / versions)\" because all five clues are most naturally recognized as magazine titles rather than as one narrow editorial topic."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #685?",
+      "question": "How do \"Time\" and \"The Economist\" connect in LinkedIn Pinpoint #685?",
       "answer": "The connection is that Time, The Economist, Cosmopolitan, National Geographic, and Reader’s Digest all fit as magazine titles with wide readership, even though their subject matter differs."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #685?",
+      "question": "Why is \"National Geographic\" the key clue in LinkedIn Pinpoint #685?",
       "answer": "National Geographic is the turning clue because it breaks a narrow current-affairs or media-brand read and forces the board toward publication format instead."
     }
   ],
@@ -130,19 +119,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #685?",
+      "question": "What final category connects \"Time\" and \"The Economist\" in LinkedIn Pinpoint #685?",
       "answer": "The answer is \"Magazines (with global readership / versions)\" because all five clues are best recognized as magazine titles rather than as one narrow editorial topic.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #685?",
+      "question": "How do \"Time\" and \"The Economist\" connect in LinkedIn Pinpoint #685?",
       "answer": "The connection is magazine titles with broad readership. The subject matter changes from politics to lifestyle to science, but the publication format stays the same.",
       "tiedClue": "National Geographic"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #685?",
+      "question": "Why is \"National Geographic\" the key clue in LinkedIn Pinpoint #685?",
       "answer": "National Geographic is the turning clue because it breaks a narrow current-affairs read and makes publication format more useful than editorial topic.",
       "tiedClue": "National Geographic"
     }

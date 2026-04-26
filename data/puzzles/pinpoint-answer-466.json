@@ -17,7 +17,10 @@
   "lessons": [
     "Look for patterns beyond literal meaning. Sometimes the Pinpoint clues aren't about the definition of the word, but its structure. In this case, recognizing that the clues were all palindromes was key.",
     "Test for wordplay. If the clues seem unrelated, consider if there's a hidden wordplay aspect. Say the words out loud, write them backwards, or look for hidden meanings.",
-    "Trust the shift in perspective. When your initial guesses are wrong, don't be afraid to completely change your approach. I was initially focused on vehicle types, but the HANNAH clue forced me to consider names and then word structures.",
+    {
+      "title": "\"Race car\" keeps the category level specific",
+      "body": "When your initial guesses are wrong, don't be afraid to completely change your approach. I was initially focused on vehicle types, but the HANNAH clue forced me to consider names and then word structures."
+    },
     "Use the process of elimination. By identifying the type of word in each clue, you may be able to guess the connection, even if you don't know exactly what it is."
   ],
   "faqs": [

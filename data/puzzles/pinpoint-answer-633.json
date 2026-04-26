@@ -16,12 +16,15 @@
   },
   "lessons": [
     "Consider multiple meanings for common words. Words like 'Nurse' can have completely different meanings in specific contexts",
-    "Look for category patterns. When several terms fit a specific category, test remaining clues against that theme",
+    {
+      "title": "\"Great white\" is the clue to retest before committing",
+      "body": "When several terms fit a specific category, test remaining clues against that theme"
+    },
     "Research unfamiliar connections. Some terms might be specialized names within a category you wouldn't immediately recognize"
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #633?",
+      "question": "Which type-level category connects \"Nurse\" and \"Sand\" in LinkedIn Pinpoint #633?",
       "answer": "The answer is Types of sharks: Nurse, Sand, Loan, Hammerhead, Great white."
     },
     {

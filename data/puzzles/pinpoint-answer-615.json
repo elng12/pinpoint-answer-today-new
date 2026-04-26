@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Consider broader categories when stuck. Instead of focusing on specific characteristics (like weapons for ARSENAL), try to think of the overarching category. In this case, the shared category was FOOTBALL TEAMS.",
-    "Trust the shift in clues. When the second clue (JUVENTUS) didn't fit your initial theory (arsenals and weapons), that should've been a signal to rethink your approach.",
+    {
+      "title": "\"Manchester United\" is the clue to retest before committing",
+      "body": "When the second clue (JUVENTUS) didn't fit your initial theory (arsenals and weapons), that should've been a signal to rethink your approach."
+    },
     "Look for geographic connections. Notice that the FOOTBALL TEAMS come from different countries. This is a clue that the puzzle is about a global theme, not something specific to one location.",
     "Use later clues to confirm your theory. Once you thought of FOOTBALL TEAMS, the appearance of REAL MADRID and MANCHESTER UNITED strongly confirmed that you were on the right track."
   ],

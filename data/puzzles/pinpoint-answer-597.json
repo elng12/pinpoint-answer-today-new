@@ -30,7 +30,7 @@
     "Stanley": "This hockey prize is likely the clue that makes the shared word obvious."
   },
   "articleBlocks": [
-    "World and Davis look like event names more than objects, which is why the board can feel sporty but still vague at first.",
+    "World and Davis look like event names more than objects, which is why the board can feel sporty but still vague at first. The opening clues stay ambiguous until Stanley gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Solheim and Webb Ellis keep the sports angle alive, yet the exact connector can stay hidden if you focus on the tournaments instead of the hardware.",
     "Stanley is the clue that makes Cup jump to the front.",
     "Once Stanley Cup clicks, World Cup, Solheim Cup, Webb Ellis Cup, and Davis Cup line up as famous trophies.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #597?",
+      "question": "What final category connects \"World\" and \"Solheim\" in LinkedIn Pinpoint #597?",
       "answer": "The answer is Trophies because World, Solheim, Webb Ellis, Davis, and Stanley all form famous cup names."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #597?",
+      "question": "How do \"World\" and \"Solheim\" connect in LinkedIn Pinpoint #597?",
       "answer": "The connection is that each clue completes a named cup trophy: World Cup, Solheim Cup, Webb Ellis Cup, Davis Cup, and Stanley Cup."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #597?",
+      "question": "Why is \"Stanley\" the key clue in LinkedIn Pinpoint #597?",
       "answer": "Stanley is the turning clue because Stanley Cup is such a famous trophy name that it makes the hidden word Cup obvious."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #597?",
+      "question": "What final category connects \"World\" and \"Solheim\" in LinkedIn Pinpoint #597?",
       "answer": "The answer is Trophies because World, Solheim, Webb Ellis, Davis, and Stanley all form famous cup names.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #597?",
+      "question": "How do \"World\" and \"Solheim\" connect in LinkedIn Pinpoint #597?",
       "answer": "The connection is that each clue completes a named cup trophy: World Cup, Solheim Cup, Webb Ellis Cup, Davis Cup, and Stanley Cup.",
       "tiedClue": "Stanley"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #597?",
+      "question": "Why is \"Stanley\" the key clue in LinkedIn Pinpoint #597?",
       "answer": "Stanley is the turning clue because Stanley Cup is such a famous trophy name that it makes the hidden word Cup obvious.",
       "tiedClue": "Stanley"
     }

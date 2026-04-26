@@ -15,10 +15,19 @@
     "Cavity": "A 'Cavity' is a hole in a tooth caused by decay, often requiring a filling."
   },
   "lessons": [
-    "Embrace Multiple Meanings. The 'Crown' clue highlights the importance of considering multiple meanings. Don't fixate on one interpretation (royalty) without exploring others (dental restoration).",
+    {
+      "title": "\"Canine\" and \"Crown\" set the useful boundary",
+      "body": "The 'Crown' clue highlights the importance of considering multiple meanings. Don't fixate on one interpretation (royalty) without exploring others (dental restoration)."
+    },
     "Leverage Specificity. The 'Incisor' clue, a relatively specific dental term, acted as a crucial pivot point. Look for clues that are more precise, as they can unlock the broader theme.",
-    "Don't Overlook the Obvious. The 'Cavity' clue, while commonplace, is a direct reference to dental health. Sometimes the most straightforward clues are the key to the solution.",
-    "Context is King. The word 'Bridge' could mean many things, but in context with the other clues, it pointed toward 'Dental Bridge' and the dental theme. Always consider context."
+    {
+      "title": "\"Bridge\" keeps the category level specific",
+      "body": "The 'Cavity' clue, while commonplace, is a direct reference to dental health. Sometimes the most straightforward clues are the key to the solution."
+    },
+    {
+      "title": "\"Cavity\" checks the solve against \"Cavity\"",
+      "body": "The word 'Bridge' could mean many things, but in context with the other clues, it pointed toward 'Dental Bridge' and the dental theme. Always consider context."
+    }
   ],
   "faqs": [
     {

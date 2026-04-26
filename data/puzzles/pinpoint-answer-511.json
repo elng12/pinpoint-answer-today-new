@@ -16,7 +16,10 @@
   },
   "lessons": [
     "Consider multiple interpretations. The clue CROSS can refer to a religious symbol or a direction. When stumped, brainstorm all possible meanings for each clue before settling on one.",
-    "Don't marry your first idea. I clung to the idea of fishing for too long because of HOOK. Be willing to abandon your initial assumptions if the other clues don't fit.",
+    {
+      "title": "\"Uppercut\" is the clue to retest before committing",
+      "body": "I clung to the idea of fishing for too long because of HOOK. Be willing to abandon your initial assumptions if the other clues don't fit."
+    },
     "Look for common themes across ALL clues. The OVERHAND clue should have nudged me toward sports sooner. Always ask what unifying concept connects ALL the clues, not just a few.",
     "Specificity matters. While 'boxing match' was related, 'boxing punches' was the more specific and accurate connector. Aim for the most precise connection possible."
   ],

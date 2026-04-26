@@ -30,7 +30,7 @@
     "Fountain": "This is the clue that pushes the board from water imagery into places you can drink from."
   },
   "articleBlocks": [
-    "Spring and Tap first made me think about water in general, which was close but still much too broad.",
+    "Spring and Tap first made me think about water in general, which was close but still much too broad. The opening clues stay ambiguous until Fountain gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Oasis kept the water theme alive, though it still felt more scenic than practical.",
     "Fountain is the clue that changed the board.",
     "Once I read that as drinking fountain, the set stopped being about water imagery and started being about actual places or sources where someone can get a drink.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #692?",
+      "question": "What final category connects \"Spring\" and \"Tap\" in LinkedIn Pinpoint #692?",
       "answer": "The answer is \"Places to get drinking water\" because each clue works best as a source or access point for drinkable water rather than as loose water imagery."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #692?",
+      "question": "How do \"Spring\" and \"Tap\" connect in LinkedIn Pinpoint #692?",
       "answer": "The connection is practical water access. Spring, Tap, Oasis, Well, and Fountain all describe places or sources where someone could get drinking water."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
+      "question": "Why is \"Fountain\" the key clue in LinkedIn Pinpoint #692?",
       "answer": "Fountain is the turning clue because drinking fountain is the phrase that turns the board from broad water imagery into a practical source list."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #692?",
+      "question": "What final category connects \"Spring\" and \"Tap\" in LinkedIn Pinpoint #692?",
       "answer": "The answer is \"Places to get drinking water\" because each clue works best as a source or access point for drinkable water rather than as loose water imagery.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #692?",
+      "question": "How do \"Spring\" and \"Tap\" connect in LinkedIn Pinpoint #692?",
       "answer": "The connection is practical water access. Spring, Tap, Oasis, Well, and Fountain all describe places or sources where someone could get drinking water.",
       "tiedClue": "Fountain"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #692?",
+      "question": "Why is \"Fountain\" the key clue in LinkedIn Pinpoint #692?",
       "answer": "Fountain is the turning clue because drinking fountain is the phrase that turns the board from broad water imagery into a practical source list.",
       "tiedClue": "Fountain"
     }

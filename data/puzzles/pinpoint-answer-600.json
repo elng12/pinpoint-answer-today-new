@@ -30,7 +30,7 @@
     "Credit Card": "Stay with charges you receive after spending."
   },
   "articleBlocks": [
-    "Water, Dollar, and Credit Card can make the board feel like it is about payments or monthly expenses.",
+    "Water, Dollar, and Credit Card can make the board feel like it is about payments or monthly expenses. The opening clues stay ambiguous until Appropriation gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Duck is the first hint that the connector is broader than invoices, but it still may not feel locked.",
     "Appropriation is the clue that makes bill unavoidable.",
     "Appropriation bill is such a specific legislative phrase that the rest of the set reorganizes immediately into water bill, duckbill, dollar bill, and credit card bill.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #600?",
+      "question": "What shared word links \"Water\" and \"Duck\" in LinkedIn Pinpoint #600?",
       "answer": "The answer is Words that come before bill because Water, Duck, Dollar, Appropriation, and Credit Card all form common phrases or compounds ending with bill."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #600?",
+      "question": "How do \"Water\" and \"Duck\" connect in LinkedIn Pinpoint #600?",
       "answer": "The connection is one shared ending. The clues resolve into water bill, duckbill, dollar bill, appropriation bill, and credit card bill."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #600?",
+      "question": "Why is \"Appropriation\" the key clue in LinkedIn Pinpoint #600?",
       "answer": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that confirms bill more strongly than the everyday money clues do."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #600?",
+      "question": "What shared word links \"Water\" and \"Duck\" in LinkedIn Pinpoint #600?",
       "answer": "The answer is Words that come before bill because Water, Duck, Dollar, Appropriation, and Credit Card all form common phrases or compounds ending with bill.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #600?",
+      "question": "How do \"Water\" and \"Duck\" connect in LinkedIn Pinpoint #600?",
       "answer": "The connection is one shared ending. The clues resolve into water bill, duckbill, dollar bill, appropriation bill, and credit card bill.",
       "tiedClue": "Appropriation"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #600?",
+      "question": "Why is \"Appropriation\" the key clue in LinkedIn Pinpoint #600?",
       "answer": "Appropriation is the turning clue because appropriation bill is a precise legislative phrase that confirms bill more strongly than the everyday money clues do.",
       "tiedClue": "Appropriation"
     }

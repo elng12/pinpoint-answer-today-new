@@ -14,13 +14,22 @@
     "Meridian (0° Longitude)": "prime meridian is a standard expression or compound, which is why Meridian (0° Longitude) fits the answer Words that come after \"prime\"."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who treat famous compounds as evidence even when they come from different domains before chasing a clever but unstable guess. Words that come after \"prime\" works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. use one clue to propose a connector, then verify with every other phrase so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, let geography and math clues confirm a phrase pattern, not derail it. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Time\" and \"Suspect\" open the \"prime\" phrase test",
+      "body": "This puzzle rewards solvers who treat famous compounds as evidence even when they come from different domains before chasing a clever but unstable guess. Words that come after \"prime\" works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"Meridian (0° Longitude)\" locks in the \"prime\" pattern",
+      "body": "A promising guess is not enough on its own. use one clue to propose a connector, then verify with every other phrase so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"Minister\" checks that \"prime\" works across the board",
+      "body": "When several broad answers feel possible, let geography and math clues confirm a phrase pattern, not derail it. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #673?",
+      "question": "What shared word links \"Time\" and \"Suspect\" in LinkedIn Pinpoint #673?",
       "answer": "The answer is Words that come after \"prime\". The five clues are Time, Suspect, Minister, Number, and Meridian (0° Longitude)."
     },
     {

@@ -15,7 +15,10 @@
     "Zealand": "New Zealand is an island country in the southwestern Pacific Ocean, known for its stunning landscapes and adventure tourism."
   },
   "lessons": [
-    "Don't Overthink the Obvious. The \"New\" connector was deceptively simple. Like with the 'ZEALAND' clue, sometimes the most straightforward connection is the correct one. Avoid getting lost in complex theories before exhausting the basic possibilities.",
+    {
+      "title": "\"England\" and \"Mexico\" set the useful boundary",
+      "body": "The \"New\" connector was deceptively simple. Like with the 'ZEALAND' clue, sometimes the most straightforward connection is the correct one. Avoid getting lost in complex theories before exhausting the basic possibilities."
+    },
     "Consider All Parts of the Clue. The clue '-FOUNDLAND' was designed to trip you up. Focus on what is there, not what is missing. The dash indicated that there was something *before* the word.",
     "Beware of Anchoring Bias. The first clue, 'ENGLAND', might have led you down a path of British history. Avoid letting one clue disproportionately influence your thinking. Each clue should be considered equally.",
     "Embrace Geographical Diversity. This puzzle spans the globe. The clues 'MEXICO', 'DELHI', and 'ZEALAND' should have signaled an international theme. Broaden your horizons!"

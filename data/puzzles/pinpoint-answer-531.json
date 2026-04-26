@@ -30,7 +30,7 @@
     "Epsilon": "This fifth clue is a math favorite."
   },
   "articleBlocks": [
-    "Alpha and Beta already hint at a sequence, but those two words also live outside the alphabet in software, finance, and ranking language.",
+    "Alpha and Beta already hint at a sequence, but those two words also live outside the alphabet in software, finance, and ranking language. The opening clues stay ambiguous until Gamma gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Gamma is the point where the board stops being suggestive and becomes specific.",
     "Once Gamma arrives, Delta and Epsilon fit neatly as the next familiar stretch of the Greek alphabet.",
     "The answer was Greek letters.",
@@ -94,15 +94,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #531?",
+      "question": "What final category connects \"Alpha\" and \"Beta\" in LinkedIn Pinpoint #531?",
       "answer": "The answer is Greek letters because Alpha, Beta, Gamma, Delta, and Epsilon are consecutive members of the Greek alphabet."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #531?",
+      "question": "How do \"Alpha\" and \"Beta\" connect in LinkedIn Pinpoint #531?",
       "answer": "The connection is a named sequence. The clues are all Greek letters, specifically the first five in a familiar run."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #531?",
+      "question": "Why is \"Gamma\" the key clue in LinkedIn Pinpoint #531?",
       "answer": "Gamma is the turning clue because alpha, beta, gamma is a much more recognizable sequence than alpha and beta alone."
     }
   ],
@@ -165,19 +165,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #531?",
+      "question": "What final category connects \"Alpha\" and \"Beta\" in LinkedIn Pinpoint #531?",
       "answer": "The answer is Greek letters because Alpha, Beta, Gamma, Delta, and Epsilon are consecutive members of the Greek alphabet.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #531?",
+      "question": "How do \"Alpha\" and \"Beta\" connect in LinkedIn Pinpoint #531?",
       "answer": "The connection is a named sequence. The clues are all Greek letters, specifically the first five in a familiar run.",
       "tiedClue": "Gamma"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #531?",
+      "question": "Why is \"Gamma\" the key clue in LinkedIn Pinpoint #531?",
       "answer": "Gamma is the turning clue because alpha, beta, gamma is a much more recognizable sequence than alpha and beta alone.",
       "tiedClue": "Gamma"
     }

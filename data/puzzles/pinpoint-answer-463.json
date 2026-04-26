@@ -15,7 +15,10 @@
     "Canoe": "A narrow, lightweight boat, pointed at both ends and propelled by one or more paddlers using a single-bladed paddle."
   },
   "lessons": [
-    "Don't marry your first theory. My initial idea of 'Literary References' felt perfect for the first two clues. I learned to step back and wait for more data instead of falling in love with an early guess. The third clue, 'Ferry,' was crucial in showing me my theory was a dead end.",
+    {
+      "title": "\"Cutter\" and \"Ark\" set the useful boundary",
+      "body": "My initial idea of 'Literary References' felt perfect for the first two clues. I learned to step back and wait for more data instead of falling in love with an early guess. The third clue, 'Ferry,' was crucial in showing me my theory was a dead end."
+    },
     "Step back and look at the big picture. When you're stuck on a specific theme, try zooming out. I was focused on abstract ideas and stories. The breakthrough happened when I considered the most basic, physical identity of each word: Cutter, Ark, Ferry, Catamaran, and Canoe are all literally things that float.",
     "Use outlier clues to stress-test your idea. 'Catamaran' was the clue that forced a new perspective. It didn't fit my literary theory and lacked the simple double-letter pattern I saw elsewhere. Using it to test my assumptions helped me pivot from incorrect abstract rules to the correct, concrete category."
   ],

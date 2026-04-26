@@ -17,8 +17,14 @@
   "lessons": [
     "Look for common functionalities. Sometimes, the connection isn't about what something *is*, but what it *does*. In this puzzle, the unifying factor wasn't the objects themselves (maps, laptops, etc.), but their shared function: using KEYS to operate.",
     "Test assumptions with unexpected clues. Don't get tunnel vision. When the clue 'Pieces of music' appeared, I was still stuck on 'travel'. By shifting focus, I could see the hint towards musical keys.",
-    "Say it out loud. If you're stuck, try saying the clues and the answer out loud. Linking 'Maps' and 'Things with keys' to 'Map keys' might trigger the connection you need.",
-    "Trust the shift in perspective. The puzzle tests not just vocabulary but also associative thinking. Did I get the keys to my house and to my piano mixed up? No, but I knew they had something in common."
+    {
+      "title": "\"Laptops\" keeps the category level specific",
+      "body": "If you're stuck, try saying the clues and the answer out loud. Linking 'Maps' and 'Things with keys' to 'Map keys' might trigger the connection you need."
+    },
+    {
+      "title": "\"Pianos\" checks the solve against \"Pianos\"",
+      "body": "The puzzle tests not just vocabulary but also associative thinking. Did I get the keys to my house and to my piano mixed up? No, but I knew they had something in common."
+    }
   ],
   "faqs": [
     {

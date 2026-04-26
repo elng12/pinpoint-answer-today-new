@@ -15,8 +15,14 @@
     "Do (or re or mi)": "This points directly to the solfège system (Do-Re-Mi-Fa-Sol-La-Ti). 'Do' is the tonic or the first note of a scale, confirming the musical theme."
   },
   "lessons": [
-    "Don't Marry Your First Theory. Starting with 'The Alphabet' for 'A' and 'B' seems logical, but Pinpoint is designed to mislead. The key is to be flexible and abandon a theory as soon as a new clue, like 'C#', invalidates it. A great solution connects *all* clues, not just the first few.",
-    "Use Outliers to Stress-Test Your Idea. The clues with symbols—'C#' and 'B♭'—are the most important for solving this puzzle. They don't fit into a simple 'letters' or 'grades' category. Always pay special attention to the clues that look different; they often break the false patterns and point toward the real connection.",
+    {
+      "title": "\"A\" and \"B\" set the useful boundary",
+      "body": "Starting with 'The Alphabet' for 'A' and 'B' seems logical, but Pinpoint is designed to mislead. The key is to be flexible and abandon a theory as soon as a new clue, like 'C#', invalidates it. A great solution connects *all* clues, not just the first few."
+    },
+    {
+      "title": "\"Do (or re or mi)\" is the clue to retest before committing",
+      "body": "The clues with symbols—'C#' and 'B♭'—are the most important for solving this puzzle. They don't fit into a simple 'letters' or 'grades' category. Always pay special attention to the clues that look different; they often break the false patterns and point toward the real connection."
+    },
     "Recognize Different Notation for the Same Thing. This puzzle shows that a single concept can be represented in multiple ways: a letter ('A'), a modified letter ('C#'), or a word from a different system ('Do'). The solution required seeing past these different formats to the underlying concept of a musical pitch."
   ],
   "faqs": [

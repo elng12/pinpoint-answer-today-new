@@ -30,15 +30,7 @@
     "Gamma (high energy radiation)": "After the right ending appears, this clue should confirm it immediately."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a split science-or-animal read\". X, Cosmic, and Gamma all support a science read for a while, even though Sting does not sit comfortably there. Manta is the clue that keeps the board from staying at that broader phrase level.",
-    "Another easy trap was \"a radiation-only theme\". That guess explains only part of the board, which is why the animal clues matter so much once Manta arrives. Once Stingray and Manta ray appear together, the answer behaves like one repeated phrase ending instead of a topic bucket.",
-    "Once that phrase appears, examples like \"X-ray\" and \"stingray\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word across science and animal clues.",
-    "cosmic ray, manta ray, and gamma ray show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was Words that come before \"ray\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before \"ray\" fits better than \"a split science-or-animal read\" or \"a radiation-only theme\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. The opening clues stay ambiguous until Manta gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "A nearby read was \"a split science-or-animal read\". X, Cosmic, and Gamma all support a science read for a while, even though Sting does not sit comfortably there. Manta is the clue that keeps the board from staying at that broader phrase level.",
     "Another easy trap was \"a radiation-only theme\". That guess explains only part of the board, which is why the animal clues matter so much once Manta arrives. Once Stingray and Manta ray appear together, the answer behaves like one repeated phrase ending instead of a topic bucket.",
     "Once that phrase appears, examples like \"X-ray\" and \"stingray\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word across science and animal clues.",
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #688?",
+      "question": "What shared word links \"X\" and \"Sting\" in LinkedIn Pinpoint #688?",
       "answer": "The answer is Words that come before \"ray\" because each clue forms a familiar phrase once ray is added."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #688?",
+      "question": "How do \"X\" and \"Sting\" connect in LinkedIn Pinpoint #688?",
       "answer": "The connection is one shared ending word. X, Sting, Cosmic, Manta, and Gamma all become natural phrases with ray."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
+      "question": "Why is \"Manta\" the key clue in LinkedIn Pinpoint #688?",
       "answer": "Manta is the turning clue because it pairs with Sting to make ray much easier to trust as the shared ending across the whole board."
     }
   ],
@@ -168,19 +160,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #688?",
+      "question": "What shared word links \"X\" and \"Sting\" in LinkedIn Pinpoint #688?",
       "answer": "The answer is Words that come before \"ray\" because each clue forms a familiar phrase once ray is added.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #688?",
+      "question": "How do \"X\" and \"Sting\" connect in LinkedIn Pinpoint #688?",
       "answer": "The connection is one shared ending word. X, Sting, Cosmic, Manta, and Gamma all become natural phrases with ray.",
       "tiedClue": "Manta"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #688?",
+      "question": "Why is \"Manta\" the key clue in LinkedIn Pinpoint #688?",
       "answer": "Manta is the turning clue because it pairs with Sting to make ray much easier to trust as the shared ending across the whole board.",
       "tiedClue": "Manta"
     }

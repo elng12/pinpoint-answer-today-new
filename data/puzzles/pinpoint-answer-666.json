@@ -14,13 +14,22 @@
     "Plug and": "Plug and play is a familiar expression or compound, so Plug and belongs in the set Terms that come before \"play\"."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who test shared phrases when multiple clues can pair with one word before chasing a clever but unstable guess. Terms that come before \"play\" works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. say each phrase out loud to check whether it sounds natural so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, use the exact connector only after every clue passes cleanly. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Foul\" and \"Horse\" open the \"play\" phrase test",
+      "body": "This puzzle rewards solvers who test shared phrases when multiple clues can pair with one word before chasing a clever but unstable guess. Terms that come before \"play\" works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"Plug and\" locks in the \"play\" pattern",
+      "body": "A promising guess is not enough on its own. say each phrase out loud to check whether it sounds natural so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"One-act\" checks that \"play\" works across the board",
+      "body": "When several broad answers feel possible, use the exact connector only after every clue passes cleanly. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #666?",
+      "question": "What final category connects \"Foul\" and \"Horse\" in LinkedIn Pinpoint #666?",
       "answer": "The answer is Terms that come before \"play\". The five clues are Foul, Horse, One-act, Child's, and Plug and."
     },
     {

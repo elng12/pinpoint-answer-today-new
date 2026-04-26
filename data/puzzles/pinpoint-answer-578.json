@@ -16,8 +16,14 @@
   },
   "lessons": [
     "Test one suffix across all clues. When several clues sound like they could start common phrases, pick one simple word—like cleaner, time, or card—and try it after each clue. If it forms five fluent combinations, you have likely found the suffix-based connector.",
-    "Drop partial themes quickly. If a hypothesis drops even one clue—like household chores or cleaning tools—switch to a simpler connector that covers all five.",
-    "Say potential phrases out loud. Testing how each clue sounds when combined with a potential connector helps you spot which combinations feel natural and which feel forced.",
+    {
+      "title": "\"Vacuum\" locks in the \"cleaner\" pattern",
+      "body": "If a hypothesis drops even one clue—like household chores or cleaning tools—switch to a simpler connector that covers all five."
+    },
+    {
+      "title": "\"Dry\" checks that \"cleaner\" works across the board",
+      "body": "Testing how each clue sounds when combined with a potential connector helps you spot which combinations feel natural and which feel forced."
+    },
     "Treat services and vehicles as hints, not outliers. When clues include services (like dry cleaner) or vehicles (like street cleaner), don't dismiss them as exceptions. They often point to a broader pattern that includes all clue types."
   ],
   "faqs": [

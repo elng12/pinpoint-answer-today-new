@@ -30,7 +30,7 @@
     "Advertising (don’t believe it!)": "The parenthetical hint is doing real work here. It points toward the shared word more directly than the earlier clues do."
   },
   "articleBlocks": [
-    "Start and Positive both feel open-ended at first, which makes the board seem wider than it really is.",
+    "Start and Positive both feel open-ended at first, which makes the board seem wider than it really is. The opening clues stay ambiguous until Advertising (don’t believe it!) gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Alarm helps, but the set can still look like a loose collection of warning or mistake words if you jump too early.",
     "Advertising (don’t believe it!) is the clue that sharpens everything.",
     "That parenthetical pushes you straight toward false advertising, which finally makes false the shared word instead of just one possible guess.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #683?",
+      "question": "What shared word links \"Start\" and \"Positive\" in LinkedIn Pinpoint #683?",
       "answer": "The answer is Words that come after \"false\" because Start, Positive, Alarm, Tooth, and Advertising all form natural phrases once false is added."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #683?",
+      "question": "How do \"Start\" and \"Positive\" connect in LinkedIn Pinpoint #683?",
       "answer": "The connection is one shared opening word. The board resolves into false start, false positive, false alarm, false tooth, and false advertising."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #683?",
+      "question": "Why is \"Advertising (don’t believe it!)\" the key clue in LinkedIn Pinpoint #683?",
       "answer": "Advertising (don’t believe it!) is the turning clue because the parenthetical hint pushes directly toward false advertising, which makes the shared word much easier to trust."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #683?",
+      "question": "What shared word links \"Start\" and \"Positive\" in LinkedIn Pinpoint #683?",
       "answer": "The answer is Words that come after \"false\" because Start, Positive, Alarm, Tooth, and Advertising all form natural phrases once false is added.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #683?",
+      "question": "How do \"Start\" and \"Positive\" connect in LinkedIn Pinpoint #683?",
       "answer": "The connection is one shared opening word. The board resolves into false start, false positive, false alarm, false tooth, and false advertising.",
       "tiedClue": "Advertising (don’t believe it!)"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #683?",
+      "question": "Why is \"Advertising (don’t believe it!)\" the key clue in LinkedIn Pinpoint #683?",
       "answer": "Advertising (don’t believe it!) is the turning clue because the parenthetical hint pushes directly toward false advertising, which makes the shared word much easier to trust.",
       "tiedClue": "Advertising (don’t believe it!)"
     }

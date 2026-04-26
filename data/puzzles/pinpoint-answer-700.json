@@ -30,15 +30,7 @@
     "Phone screen": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before."
   },
   "articleBlocks": [
-    "At first, Panel and One-on-one can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
-    "One tempting read was \"science terms\". That felt too broad. 'Phone screen' doesn't really fit that description, but it's a common step in hiring. Phone screen is the clue that keeps the board from staying at that broader surface read.",
-    "Another nearby bucket was \"famous names\". famous names feels plausible early on, but it falls apart once phone screen demands a more exact reading. Phone screen is the clue that keeps the board from staying at that broader surface read.",
-    "Once the board turned into a question about what kind of interview in a job search each clue could be, a category board focused on interviews in a job search stopped sounding generic and started behaving like a real category test. Examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
-    "Behavioral interviews in a job search, Technical interviews in a job search, Phone screen interviews in a job search read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
-    "The answer was Types of interviews in a job search. More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of interviews in a job search, which is why Types of interviews in a job search fits better than \"science terms\" or \"famous names\" once the full set is checked."
-  ],
-  "fullAnalysis": [
-    "At first, Panel and One-on-one can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "At first, Panel and One-on-one can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start. The opening clues stay ambiguous until Phone screen gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "One tempting read was \"science terms\". That felt too broad. 'Phone screen' doesn't really fit that description, but it's a common step in hiring. Phone screen is the clue that keeps the board from staying at that broader surface read.",
     "Another nearby bucket was \"famous names\". famous names feels plausible early on, but it falls apart once phone screen demands a more exact reading. Phone screen is the clue that keeps the board from staying at that broader surface read.",
     "Once the board turned into a question about what kind of interview in a job search each clue could be, a category board focused on interviews in a job search stopped sounding generic and started behaving like a real category test. Examples like \"Panel interviews in a job search\" and \"One-on-one interviews in a job search\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
@@ -52,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Panel\" and \"One-on-one\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Phone screen\" turns the board into one specific category",
       "body": "Phone screen is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Phone screen\" confirms the same category level",
       "body": "Consider the specific purpose or context behind a set of items, not just their surface similarities."
     }
   ],
@@ -97,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #700?",
+      "question": "Which type-level category connects \"Panel\" and \"One-on-one\" in LinkedIn Pinpoint #700?",
       "answer": "The answer is \"Types of interviews in a job search\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #700?",
+      "question": "How do \"Panel\" and \"One-on-one\" connect in LinkedIn Pinpoint #700?",
       "answer": "The connection is that all 5 clues point to recognizable types of interviews in a job search. Phone screen is the clue that makes the category specific enough to verify across the full board."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #700?",
+      "question": "Why is \"Phone screen\" the key clue in LinkedIn Pinpoint #700?",
       "answer": "Phone screen is the turning clue because \"Phone screen interviews in a job search\" makes the shared category frame explicit. It also makes Panel read cleanly as \"Panel interviews in a job search\". The clues cover both formats and content, making the category less obvious at first."
     }
   ],
@@ -163,19 +155,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #700?",
+      "question": "Which type-level category connects \"Panel\" and \"One-on-one\" in LinkedIn Pinpoint #700?",
       "answer": "The answer is \"Types of interviews in a job search\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #700?",
+      "question": "How do \"Panel\" and \"One-on-one\" connect in LinkedIn Pinpoint #700?",
       "answer": "The connection is that all 5 clues point to recognizable types of interviews in a job search. Phone screen is the clue that makes the category specific enough to verify across the full board.",
       "tiedClue": "Phone screen"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #700?",
+      "question": "Why is \"Phone screen\" the key clue in LinkedIn Pinpoint #700?",
       "answer": "Phone screen is the turning clue because \"Phone screen interviews in a job search\" makes the shared category frame explicit. It also makes Panel read cleanly as \"Panel interviews in a job search\". The clues cover both formats and content, making the category less obvious at first.",
       "tiedClue": "Phone screen"
     }

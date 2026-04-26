@@ -16,8 +16,14 @@
   },
   "lessons": [
     "Embrace the Breadth. The 'FAN' clue, seemingly out of place, highlights the importance of considering a wide range of contexts when solving these puzzles.",
-    "Don't Overthink the Obvious. The 'E-' clue was almost too simple, but it was the key to unlocking the entire puzzle. Sometimes the most straightforward answer is the correct one.",
-    "Context is King. The prompt specifically asked for terms *before* 'mail,' a crucial detail often overlooked in the initial scramble.",
+    {
+      "title": "\"E-\" locks in the \"mail.\" pattern",
+      "body": "The 'E-' clue was almost too simple, but it was the key to unlocking the entire puzzle. Sometimes the most straightforward answer is the correct one."
+    },
+    {
+      "title": "\"Fan\" checks that \"mail.\" works across the board",
+      "body": "The prompt specifically asked for terms *before* 'mail,' a crucial detail often overlooked in the initial scramble."
+    },
     "The Power of Lists. Recognizing that the answer formed a *list* of email types helped to confirm the solution once the initial connection was made."
   ],
   "faqs": [

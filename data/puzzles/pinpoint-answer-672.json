@@ -14,13 +14,22 @@
     "Sciences (biology studies it)": "life sciences is a standard expression or compound, which is why Sciences (biology studies it) fits the answer Words that come after \"life\"."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who test prefix-based phrases across both literal and abstract clues before chasing a clever but unstable guess. Words that come after \"life\" works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. keep going even when one clue feels scientific and another feels practical so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, use the common starter word only after both noun phrases and compounds fit. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Boat\" and \"Insurance\" open the \"life\" phrase test",
+      "body": "This puzzle rewards solvers who test prefix-based phrases across both literal and abstract clues before chasing a clever but unstable guess. Words that come after \"life\" works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"Sciences (biology studies it)\" locks in the \"life\" pattern",
+      "body": "A promising guess is not enough on its own. keep going even when one clue feels scientific and another feels practical so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"Expectancy\" checks that \"life\" works across the board",
+      "body": "When several broad answers feel possible, use the common starter word only after both noun phrases and compounds fit. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #672?",
+      "question": "What shared word links \"Boat\" and \"Insurance\" in LinkedIn Pinpoint #672?",
       "answer": "The answer is Words that come after \"life\". The five clues are Boat, Insurance, Expectancy, Preserver, and Sciences (biology studies it)."
     },
     {

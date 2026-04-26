@@ -30,7 +30,7 @@
     "Frizzy": "This clue is the one that makes the beauty-care angle much harder to ignore."
   },
   "articleBlocks": [
-    "Straight and Long are broad enough that the board can still look like a list of generic descriptors at first.",
+    "Straight and Long are broad enough that the board can still look like a list of generic descriptors at first. The opening clues stay ambiguous until Frizzy gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Oily helps by shifting the puzzle toward grooming language, though it still leaves room for texture words in other settings.",
     "Wavy makes hair feel much more plausible because it is a classic hair-type label rather than just an adjective.",
     "Frizzy is the clue that really locks the board.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #518?",
+      "question": "What final category connects \"Straight\" and \"Oily\" in LinkedIn Pinpoint #518?",
       "answer": "The answer is Ways to describe hair because Straight, Oily, Long, Wavy, and Frizzy are all common ways to talk about hair."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #518?",
+      "question": "How do \"Straight\" and \"Oily\" connect in LinkedIn Pinpoint #518?",
       "answer": "The connection is hair description. The clues cover hair length, texture, and condition rather than one narrow styling term."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #518?",
+      "question": "Why is \"Frizzy\" the key clue in LinkedIn Pinpoint #518?",
       "answer": "Frizzy is the turning clue because it sounds much more like hair vocabulary than like a generic adjective once Wavy and Oily are already in place."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #518?",
+      "question": "What final category connects \"Straight\" and \"Oily\" in LinkedIn Pinpoint #518?",
       "answer": "The answer is Ways to describe hair because Straight, Oily, Long, Wavy, and Frizzy are all common ways to talk about hair.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #518?",
+      "question": "How do \"Straight\" and \"Oily\" connect in LinkedIn Pinpoint #518?",
       "answer": "The connection is hair description. The clues cover hair length, texture, and condition rather than one narrow styling term.",
       "tiedClue": "Frizzy"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #518?",
+      "question": "Why is \"Frizzy\" the key clue in LinkedIn Pinpoint #518?",
       "answer": "Frizzy is the turning clue because it sounds much more like hair vocabulary than like a generic adjective once Wavy and Oily are already in place.",
       "tiedClue": "Frizzy"
     }

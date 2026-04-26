@@ -30,7 +30,7 @@
     "Sandstone": "This is the clue that makes the board feel most like geology instead of interior design."
   },
   "articleBlocks": [
-    "Marble and Granite can make this board feel like countertops or building materials at first.",
+    "Marble and Granite can make this board feel like countertops or building materials at first. The opening clues stay ambiguous until Sandstone gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Slate keeps that read alive because it also appears in roofs, flooring, and design language.",
     "Sandstone is the clue that tightens everything.",
     "It sounds more geological than decorative, which makes the rest of the set easier to reread as natural rock names.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #694?",
+      "question": "Which type-level category connects \"Marble\" and \"Obsidian\" in LinkedIn Pinpoint #694?",
       "answer": "The answer is \"Types of rocks\" because every clue is a rock name once the board is read through geology instead of decor or construction."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #694?",
+      "question": "How do \"Marble\" and \"Obsidian\" connect in LinkedIn Pinpoint #694?",
       "answer": "The connection is geology. Marble, Obsidian, Slate, Granite, and Sandstone are all rock types, even if some of them are more familiar as materials in everyday life."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
+      "question": "Why is \"Sandstone\" the key clue in LinkedIn Pinpoint #694?",
       "answer": "Sandstone is the turning clue because it sounds the most purely geological and helps the board move away from a vague building-materials read."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #694?",
+      "question": "Which type-level category connects \"Marble\" and \"Obsidian\" in LinkedIn Pinpoint #694?",
       "answer": "The answer is \"Types of rocks\" because every clue is a rock name once the board is read through geology instead of decor or construction.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #694?",
+      "question": "How do \"Marble\" and \"Obsidian\" connect in LinkedIn Pinpoint #694?",
       "answer": "The connection is geology. Marble, Obsidian, Slate, Granite, and Sandstone are all rock types, even if some of them are more familiar as materials in everyday life.",
       "tiedClue": "Sandstone"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #694?",
+      "question": "Why is \"Sandstone\" the key clue in LinkedIn Pinpoint #694?",
       "answer": "Sandstone is the turning clue because it sounds the most purely geological and helps the board move away from a vague building-materials read.",
       "tiedClue": "Sandstone"
     }

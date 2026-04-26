@@ -30,7 +30,7 @@
     "Gloves (🫲 + 🫱)": "Once the right concept appears, this clue should feel like the most literal proof on the board."
   },
   "articleBlocks": [
-    "Scissors, Golf clubs, and Guitars first made the puzzle feel like it might be about specialized equipment.",
+    "Scissors, Golf clubs, and Guitars first made the puzzle feel like it might be about specialized equipment. The opening clues stay ambiguous until Helices (DNA is usually right) gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "That read was close in one sense, but it never explained what those objects specifically had in common.",
     "Helices (DNA is usually right) was the clue that changed the board.",
     "That clue pulled the puzzle away from hobbies and tools and toward chirality: the idea that something can have distinct left-handed and right-handed forms.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #696?",
+      "question": "What final category connects \"Scissors\" and \"Golf clubs\" in LinkedIn Pinpoint #696?",
       "answer": "The answer is \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\" because every clue points to something whose shape or design changes by handed orientation."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #696?",
+      "question": "How do \"Scissors\" and \"Golf clubs\" connect in LinkedIn Pinpoint #696?",
       "answer": "The connection is handedness or chirality. Some clues show it in everyday objects, while the DNA clue names the scientific version of the same idea."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #696?",
+      "question": "Why is \"Helices (DNA is usually right)\" the key clue in LinkedIn Pinpoint #696?",
       "answer": "Helices (DNA is usually right) is the turning clue because it introduces chirality and makes the earlier clues re-read as left-versus-right forms instead of random equipment."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #696?",
+      "question": "What final category connects \"Scissors\" and \"Golf clubs\" in LinkedIn Pinpoint #696?",
       "answer": "The answer is \"Objects that come in left-handed and right-handed forms (i.e., are mirrored or chiral)\" because every clue points to something whose shape or design changes by handed orientation.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #696?",
+      "question": "How do \"Scissors\" and \"Golf clubs\" connect in LinkedIn Pinpoint #696?",
       "answer": "The connection is handedness or chirality. Some clues show it in everyday objects, while the DNA clue names the scientific version of the same idea.",
       "tiedClue": "Helices (DNA is usually right)"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #696?",
+      "question": "Why is \"Helices (DNA is usually right)\" the key clue in LinkedIn Pinpoint #696?",
       "answer": "Helices (DNA is usually right) is the turning clue because it introduces chirality and makes the earlier clues re-read as left-versus-right forms instead of random equipment.",
       "tiedClue": "Helices (DNA is usually right)"
     }

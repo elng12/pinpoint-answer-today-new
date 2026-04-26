@@ -16,12 +16,18 @@
   },
   "lessons": [
     "Consider common verb partnerships. Many phrases pair specific verbs with objects or actions - identifying these patterns can unlock the solution.",
-    "Look for idiomatic expressions. When clues seem unrelated, they might form part of common sayings or phrases.",
-    "Test your theory across all clues. Once you find a potential pattern, verify it works consistently with every clue."
+    {
+      "title": "\"One's breath\" locks in the \"'hold'\" pattern",
+      "body": "When clues seem unrelated, they might form part of common sayings or phrases."
+    },
+    {
+      "title": "\"Sway\" checks that \"'hold'\" works across the board",
+      "body": "Once you find a potential pattern, verify it works consistently with every clue."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #649?",
+      "question": "What final category connects \"Water\" and \"Hands\" in LinkedIn Pinpoint #649?",
       "answer": "The answer is Terms that come after 'hold': Water, Hands, Sway, The line, One's breath."
     },
     {

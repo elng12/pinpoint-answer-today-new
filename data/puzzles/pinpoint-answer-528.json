@@ -15,9 +15,18 @@
     "Coffee-table": "Matches perfectly with coffee table book, a large, visually appealing book."
   },
   "lessons": [
-    "Don't marry your first guess. It's tempting to latch onto the first word that comes to mind, but today's Pinpoint proves that's a trap. I was so sure YEAR meant 'YEARBOOK' that I ignored the other clues for too long.",
-    "Look for common categories. Sometimes the connection isn't a direct compound word but a shared category. All the clues were types of BOOKS.",
-    "Trust the shift in perspective. When you're stuck, try looking at the clues from a different angle. Instead of thinking about individual words, think about what they have in common.",
+    {
+      "title": "\"Year\" and \"Guide\" set the useful boundary",
+      "body": "It's tempting to latch onto the first word that comes to mind, but today's Pinpoint proves that's a trap. I was so sure YEAR meant 'YEARBOOK' that I ignored the other clues for too long."
+    },
+    {
+      "title": "\"Coffee-table\" is the clue to retest before committing",
+      "body": "Sometimes the connection isn't a direct compound word but a shared category. All the clues were types of BOOKS."
+    },
+    {
+      "title": "\"Sketch\" keeps the category level specific",
+      "body": "When you're stuck, try looking at the clues from a different angle. Instead of thinking about individual words, think about what they have in common."
+    },
     "Use the clues in combination. Don't just look at one clue in isolation. How do the clues work together? 'COFFEE-TABLE' and 'REFERENCE' together quickly point to the category of 'BOOKS'."
   ],
   "faqs": [

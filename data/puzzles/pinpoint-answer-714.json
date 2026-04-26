@@ -25,26 +25,14 @@
     "O Canada": "O Canada fits once the board is read through these songs are united by a common symbolic purpose, especially after la Marseillaise."
   },
   "spoilerHints": {
-    "Marcha Real": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Jana Gana Mana": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "La Marseillaise": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "God Save the King": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "O Canada": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Marcha Real": "\"Marcha Real\" can fit several broad reads at first, but it later works as part of National anthems.",
+    "Jana Gana Mana": "\"Jana Gana Mana\" fits once the board is read as National anthems, so test it against the same category as the other clues.",
+    "La Marseillaise": "\"La Marseillaise\" is the clue that turns the board toward National anthems, because it gives the broad clue set a concrete category to test.",
+    "God Save the King": "\"God Save the King\" fits once the board is read as National anthems, so test it against the same category as the other clues.",
+    "O Canada": "\"O Canada\" is the final confirmation that National anthems holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "At first, this looked more like famous marches than the real category.",
-    "Marcha Real pushed me in that direction immediately.",
-    "Jana Gana Mana kept that theory alive for a moment, but la Marseillaise still did not quite fit.",
-    "That was the moment the first idea stopped working.",
-    "Then La Marseillaise made me stop thinking about famous marches and start thinking about the real category.",
-    "Marcha Real fit once I read it through the answer.",
-    "Jana Gana Mana fit once I read it through the answer.",
-    "The answer was National anthems.",
-    "God Save the King and O Canada then felt less surprising and more like the last pieces falling into place.",
-    "Looking back, the answer feels obvious in the best way."
-  ],
-  "fullAnalysis": [
-    "At first, this looked more like famous marches than the real category.",
+    "At first, this looked more like famous marches than the real category. The opening clues stay ambiguous until La Marseillaise gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Marcha Real pushed me in that direction immediately.",
     "Jana Gana Mana kept that theory alive for a moment, but la Marseillaise still did not quite fit.",
     "That was the moment the first idea stopped working.",
@@ -61,15 +49,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Marcha Real\" and \"Jana Gana Mana\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"La Marseillaise\" turns the board into one specific category",
       "body": "La Marseillaise is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"O Canada\" confirms the same category level",
       "body": "When you see a list of titles, consider if they are all examples of the same type of thing."
     }
   ],
@@ -106,15 +94,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #714?",
+      "question": "What final category connects \"Marcha Real\" and \"Jana Gana Mana\" in LinkedIn Pinpoint #714?",
       "answer": "The answer is \"National anthems\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #714?",
+      "question": "How do \"Marcha Real\" and \"Jana Gana Mana\" connect in LinkedIn Pinpoint #714?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. La Marseillaise is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #714?",
+      "question": "Why is \"La Marseillaise\" the key clue in LinkedIn Pinpoint #714?",
       "answer": "La Marseillaise is the turning clue because \"La Marseillaise\" makes the shared category frame explicit. It also makes Marcha Real read cleanly as \"Marcha Real\". The clues could easily be mistaken for countries, cities, or royal houses, making the actual category less obvious."
     }
   ],
@@ -177,19 +165,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #714?",
+      "question": "What final category connects \"Marcha Real\" and \"Jana Gana Mana\" in LinkedIn Pinpoint #714?",
       "answer": "The answer is \"National anthems\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #714?",
+      "question": "How do \"Marcha Real\" and \"Jana Gana Mana\" connect in LinkedIn Pinpoint #714?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. La Marseillaise is what keeps the category reading precise instead of broad.",
       "tiedClue": "La Marseillaise"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #714?",
+      "question": "Why is \"La Marseillaise\" the key clue in LinkedIn Pinpoint #714?",
       "answer": "La Marseillaise is the turning clue because \"La Marseillaise\" makes the shared category frame explicit. It also makes Marcha Real read cleanly as \"Marcha Real\". The clues could easily be mistaken for countries, cities, or royal houses, making the actual category less obvious.",
       "tiedClue": "La Marseillaise"
     }

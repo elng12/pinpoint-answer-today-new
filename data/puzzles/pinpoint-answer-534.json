@@ -17,7 +17,10 @@
   "lessons": [
     "Look for common prefixes early. When words can combine with one prefix, that's usually a strong pattern. In this puzzle, recognizing that SUN could be a prefix to multiple words was key. Try to think of common \"prefix + word\" combinations.",
     "Don't fixate on literal interpretations. The clue 'Burn' could lead you down a path of fire or injuries, but in this case, it was SUNBURN. Trust the shift when the connection becomes apparent.",
-    "Say it out loud. Sometimes, saying the clues aloud can help you hear potential connections. For example, saying 'Sun...Dial,' 'Sun...Screen,' etc., might make the answer click faster.",
+    {
+      "title": "\"Glasses\" checks that \"sun (common sun- compounds).\" works across the board",
+      "body": "Sometimes, saying the clues aloud can help you hear potential connections. For example, saying 'Sun...Dial,' 'Sun...Screen,' etc., might make the answer click faster."
+    },
     "Trust the shift when a theme emerges. The clues seemed disparate at first, but once the SUN theme emerged, it became much easier to see how each clue connected. The clue 'Flower' was a perfect example of this. SUNFLOWER is the connection."
   ],
   "faqs": [

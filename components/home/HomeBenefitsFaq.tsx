@@ -76,7 +76,7 @@ function BenefitIcon({ icon }: { icon: string }) {
   );
 }
 
-function getFaqItems(puzzle: PuzzleDetail) {
+export function getFaqItems(puzzle: PuzzleDetail) {
   return [
     {
       question: "When does the daily Pinpoint solution become available?",

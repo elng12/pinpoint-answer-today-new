@@ -37,28 +37,22 @@
     "Once Jet clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Ink well, Ink pad, and Ink stain stop feeling loose and start sounding exact. Once jet makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues appear unrelated until you realize they all follow the same word to form common phrases.",
     "The answer is Words that come after “ink”. Use the clue table for Jet, Blot and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
-  "fullAnalysis": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #726. Well, Pad, Stain can point in a few directions at first, but Jet is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases and everyday terms built with one shared opening word. The clue 'Jet' made me think of printers and ink, which unlocked the whole puzzle.",
-    "Once Jet clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Ink well, Ink pad, and Ink stain stop feeling loose and start sounding exact. Once jet makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues appear unrelated until you realize they all follow the same word to form common phrases.",
-    "The answer is Words that come after “ink”. Use the clue table for Jet, Blot and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #726. Well, Pad, Stain can point in a few directions at first, but Jet is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. familiar phrases and everyday terms built with one shared opening word. The clue 'Jet' made me think of printers and ink, which unlocked the whole puzzle.",
-    "Once Jet clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Ink well, Ink pad, and Ink stain stop feeling loose and start sounding exact. Once jet makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues appear unrelated until you realize they all follow the same word to form common phrases."
+    "Start by treating Well, Pad, and Stain as unfinished compounds instead of separate topics. Each one becomes cleaner when ink sits in front of it: ink well, ink pad, and ink stain.",
+    "Jet is the pivot because inkjet is an everyday printer term, so it turns the early maybe into a rule you can test across the board.",
+    "Blot then confirms the same lead word with ink blot. With all five clues accepting ink before them, the answer resolves as words that come after “ink”."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "Let Jet test the ink pattern",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "Ink well and ink pad make the early clues exact",
       "body": "Jet is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer exact phrase logic over loose category logic",
+      "title": "Blot confirms the word-before-clue rule",
       "body": "When stuck, try thinking about what a set of words might have in common *before* or *after* them."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #726?",
+      "question": "Why does ink solve Well, Pad, Stain, Jet, and Blot?",
       "answer": "The answer is \"Words that come after ink\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #726?",
+      "question": "How do Well and Pad point to the ink pattern?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #726?",
+      "question": "Why is Jet the unlock for the ink answer?",
       "answer": "Jet is the turning clue because \"Ink jet\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Ink well and Ink pad. The clues appear unrelated until you realize they all follow the same word to form common phrases."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #726?",
+      "question": "Why does ink solve Well, Pad, Stain, Jet, and Blot?",
       "answer": "The answer is \"Words that come after ink\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #726?",
+      "question": "How do Well and Pad point to the ink pattern?",
       "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
       "tiedClue": null
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #726?",
+      "question": "Why is Jet the unlock for the ink answer?",
       "answer": "Jet is the turning clue because \"Ink jet\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Ink well and Ink pad. The clues appear unrelated until you realize they all follow the same word to form common phrases.",
       "tiedClue": "Jet"
     }

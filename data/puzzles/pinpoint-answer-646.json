@@ -16,12 +16,15 @@
   },
   "lessons": [
     "Pay attention to explicit exclusions. When a clue specifically excludes something, it often highlights the key characteristic you're looking for.",
-    "Consider physical characteristics. Sometimes the connection is about a simple physical feature rather than function or purpose.",
+    {
+      "title": "\"Bicycle (but not a tricycle)\" is the clue to retest before committing",
+      "body": "Sometimes the connection is about a simple physical feature rather than function or purpose."
+    },
     "Visualize each item carefully. Mental imagery can help identify common physical traits across different objects."
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #646?",
+      "question": "What final category connects \"Segway\" and \"Hand truck\" in LinkedIn Pinpoint #646?",
       "answer": "The answer is Two-wheeled vehicles: Segway, Hand truck, Hoverboard, Motorcycle, Bicycle."
     },
     {

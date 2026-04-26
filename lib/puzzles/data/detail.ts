@@ -13,6 +13,7 @@ import type {
 import { fetchPuzzleContent } from "@/lib/puzzles/data-sources";
 import { formatDisplayDate } from "@/lib/puzzles/data/date";
 import type { PuzzleDetail, PuzzleDetailDisplay } from "@/lib/puzzles/data/types";
+import { enhancePuzzleDetail } from "@/lib/puzzles/content-enhancer";
 import { resolveFormalDetailState } from "@/lib/puzzles/data/registry";
 import {
   buildLiveConnectorSummary,
@@ -382,8 +383,10 @@ export async function toPuzzleDetail(
     detailContent.lessons,
     detailContent.wordHints,
   );
-  const articleBlocks = detailContent.articleBlocks ?? detailContent.fullAnalysis;
-  const fullAnalysis = detailContent.fullAnalysis;
+  const rawArticleBlocks = detailContent.articleBlocks ?? [];
+  const rawFullAnalysis = detailContent.fullAnalysis ?? [];
+  const articleBlocks = rawArticleBlocks.length > 0 ? rawArticleBlocks : rawFullAnalysis;
+  const fullAnalysis = rawArticleBlocks.length > 0 ? rawFullAnalysis : [];
   const solutionNarrative = detailContent.solutionNarrative ?? [];
   const questionType = detailContent.questionType ?? inferPuzzleQuestionType(entry.mainAnswer);
   const difficultyBand = inferPuzzleDifficultyBand({
@@ -407,7 +410,7 @@ export async function toPuzzleDetail(
       ? "light-explainer"
       : "full-analysis";
 
-  return {
+  const raw: PuzzleDetail = {
     number: entry.puzzleNumber,
     slug: entry.slug,
     title: buildTitle(entry),
@@ -443,4 +446,6 @@ export async function toPuzzleDetail(
     detailSource: "formal",
     pageExperienceMode,
   };
+
+  return enhancePuzzleDetail(raw);
 }

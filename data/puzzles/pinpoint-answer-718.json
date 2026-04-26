@@ -25,20 +25,14 @@
     "Oxford": "Oxford University is one of the oldest and most famous universities in the English-speaking world, located in Oxford, England."
   },
   "spoilerHints": {
-    "Brown": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Rice": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Duke": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Sorbonne": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Oxford": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Brown": "\"Brown\" can fit several broad reads at first, but it later works as part of Names of universities.",
+    "Rice": "\"Rice\" fits once the board is read as Names of universities, so test it against the same category as the other clues.",
+    "Duke": "\"Duke\" fits once the board is read as Names of universities, so test it against the same category as the other clues.",
+    "Sorbonne": "\"Sorbonne\" fits once the board is read as Names of universities, so test it against the same category as the other clues.",
+    "Oxford": "\"Oxford\" is the clue that turns the board toward Names of universities, because it gives the broad clue set a concrete category to test."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #718. Brown, Rice, Duke can point in a few directions at first, but Oxford is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on names. Recognizing Sorbonne and Oxford as universities made the category click.",
-    "Once Oxford clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Brown, Rice, and Duke stop feeling disconnected and start looking like they belong together. Once oxford is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of American and European schools obscures the category at first.",
-    "The answer is Names of universities. Use the clue table for Sorbonne, Oxford and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
-  ],
-  "fullAnalysis": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #718. Brown, Rice, Duke can point in a few directions at first, but Oxford is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #718. Brown, Rice, Duke can point in a few directions at first, but Oxford is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on names. Recognizing Sorbonne and Oxford as universities made the category click.",
     "Once Oxford clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Brown, Rice, and Duke stop feeling disconnected and start looking like they belong together. Once oxford is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of American and European schools obscures the category at first.",
     "The answer is Names of universities. Use the clue table for Sorbonne, Oxford and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
@@ -50,15 +44,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Brown\" and \"Rice\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Oxford\" turns the board into one specific category",
       "body": "Oxford is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Oxford\" confirms the same category level",
       "body": "When solving, consider how location can affect a category."
     }
   ],
@@ -95,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #718?",
+      "question": "What final category connects \"Brown\" and \"Rice\" in LinkedIn Pinpoint #718?",
       "answer": "The answer is \"Names of universities\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #718?",
+      "question": "How do \"Brown\" and \"Rice\" connect in LinkedIn Pinpoint #718?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Oxford is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #718?",
+      "question": "Why is \"Oxford\" the key clue in LinkedIn Pinpoint #718?",
       "answer": "Oxford is the turning clue because \"Oxford University\" makes the shared category frame explicit. It also makes Brown read cleanly as \"Brown University\". The mix of American and European schools obscures the category at first."
     }
   ],
@@ -164,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #718?",
+      "question": "What final category connects \"Brown\" and \"Rice\" in LinkedIn Pinpoint #718?",
       "answer": "The answer is \"Names of universities\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #718?",
+      "question": "How do \"Brown\" and \"Rice\" connect in LinkedIn Pinpoint #718?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Oxford is what keeps the category reading precise instead of broad.",
       "tiedClue": "Oxford"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #718?",
+      "question": "Why is \"Oxford\" the key clue in LinkedIn Pinpoint #718?",
       "answer": "Oxford is the turning clue because \"Oxford University\" makes the shared category frame explicit. It also makes Brown read cleanly as \"Brown University\". The mix of American and European schools obscures the category at first.",
       "tiedClue": "Oxford"
     }

@@ -30,7 +30,7 @@
     "Cellular": "This clue confirms the same noun in a more formal register."
   },
   "articleBlocks": [
-    "Camera and Smart already suggest consumer tech, but they do not yet prove the shared noun by themselves.",
+    "Camera and Smart already suggest consumer tech, but they do not yet prove the shared noun by themselves. The opening clues stay ambiguous until Smart gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Pay and Touch-tone add older telecom language, which is what makes the board look more scattered than it really is.",
     "Smart is the clue that tightens it.",
     "Smartphone is such an automatic phrase that phone shows up right away, and once it does, the rest of the board becomes easy to check.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #678?",
+      "question": "What shared word links \"Camera\" and \"Smart\" in LinkedIn Pinpoint #678?",
       "answer": "The answer is Words that come before phone because Camera, Smart, Pay, Touch-tone, and Cellular all form familiar phone phrases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #678?",
+      "question": "How do \"Camera\" and \"Smart\" connect in LinkedIn Pinpoint #678?",
       "answer": "The connection is one shared ending noun. The board resolves into camera phone, smartphone, pay phone, touch-tone phone, and cellular phone."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #678?",
+      "question": "Why is \"Smart\" the key clue in LinkedIn Pinpoint #678?",
       "answer": "Smart is the turning clue because smartphone is the quickest and most familiar phrase on the board, which makes phone appear immediately."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #678?",
+      "question": "What shared word links \"Camera\" and \"Smart\" in LinkedIn Pinpoint #678?",
       "answer": "The answer is Words that come before phone because Camera, Smart, Pay, Touch-tone, and Cellular all form familiar phone phrases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #678?",
+      "question": "How do \"Camera\" and \"Smart\" connect in LinkedIn Pinpoint #678?",
       "answer": "The connection is one shared ending noun. The board resolves into camera phone, smartphone, pay phone, touch-tone phone, and cellular phone.",
       "tiedClue": "Smart"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #678?",
+      "question": "Why is \"Smart\" the key clue in LinkedIn Pinpoint #678?",
       "answer": "Smart is the turning clue because smartphone is the quickest and most familiar phrase on the board, which makes phone appear immediately.",
       "tiedClue": "Smart"
     }

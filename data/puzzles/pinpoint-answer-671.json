@@ -14,13 +14,22 @@
     "EDM (Electronic Dance ___)": "EDM (Electronic Dance ___) fits because it is a recognized music genre, matching the category Music genres."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who recognize when very familiar one-word clues are simply category members before chasing a clever but unstable guess. Music genres works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. use parenthetical fill-ins to complete abbreviations before guessing so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, prefer the everyday umbrella term when all clues are standard labels. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Pop\" and \"Rock\" set the useful boundary",
+      "body": "This puzzle rewards solvers who recognize when very familiar one-word clues are simply category members before chasing a clever but unstable guess. Music genres works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"EDM (Electronic Dance ___)\" is the clue to retest before committing",
+      "body": "A promising guess is not enough on its own. use parenthetical fill-ins to complete abbreviations before guessing so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"Classical\" keeps the category level specific",
+      "body": "When several broad answers feel possible, prefer the everyday umbrella term when all clues are standard labels. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #671?",
+      "question": "What final category connects \"Pop\" and \"Rock\" in LinkedIn Pinpoint #671?",
       "answer": "The answer is Music genres. The five clues are Pop, Rock, Classical, Jazz, and EDM (Electronic Dance ___)."
     },
     {

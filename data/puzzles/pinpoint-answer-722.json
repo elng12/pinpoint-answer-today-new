@@ -32,27 +32,27 @@
     "Knee-high": "This is the clue that makes the category specific enough to verify across the whole board."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #722. Tube, Dress, Crew can point in a few directions at first, but Crew is usually the clue that narrows the board into one answer you can actually test.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #722. Tube, Dress, Crew can point in a few directions at first, but Crew is usually the clue that narrows the board into one answer you can actually test. That extra clue gives the quick guide enough context before the reveal.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on socks. A later clue is what finally made the answer feel concrete.",
     "Once Crew clicks, From there, reading them as socks explains the board much more cleanly. Entries like Tube, Dress, and Crew stop feeling disconnected and start looking like they belong together. Once crew is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues seem to point in different directions at first, making it hard to see the common thread.",
     "The answer is Types of socks. Use the clue table for Ankle, Knee-high and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #722. Tube, Dress, Crew can point in a few directions at first, but Crew is usually the clue that narrows the board into one answer you can actually test.",
+    "My first read stayed deliberately loose because Tube and Dress could support more than one surface idea. The solve only became testable after Crew gave me a cleaner way to re-check the earlier clues.",
     "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on socks. A later clue is what finally made the answer feel concrete.",
     "Once Crew clicks, From there, reading them as socks explains the board much more cleanly. Entries like Tube, Dress, and Crew stop feeling disconnected and start looking like they belong together. Once crew is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues seem to point in different directions at first, making it hard to see the common thread."
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Tube\" and \"Dress\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Crew\" turns the board into one specific category",
       "body": "Crew is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Knee-high\" confirms the same category level",
       "body": "When clues seem unrelated, look for a simple category that unites them."
     }
   ],
@@ -89,15 +89,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #722?",
+      "question": "Which type-level category connects \"Tube\" and \"Dress\" in LinkedIn Pinpoint #722?",
       "answer": "The answer is \"Types of socks\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #722?",
+      "question": "How do \"Tube\" and \"Dress\" connect in LinkedIn Pinpoint #722?",
       "answer": "The connection is that all 5 clues point to recognizable types of socks. Crew is the clue that makes the category specific enough to verify across the full board."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #722?",
+      "question": "Why is \"Crew\" the key clue in LinkedIn Pinpoint #722?",
       "answer": "Crew is the turning clue because \"Crew sock\" makes the shared category frame explicit. It also makes Tube read cleanly as \"Tube sock\". The clues seem to point in different directions at first, making it hard to see the common thread."
     }
   ],
@@ -158,19 +158,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #722?",
+      "question": "Which type-level category connects \"Tube\" and \"Dress\" in LinkedIn Pinpoint #722?",
       "answer": "The answer is \"Types of socks\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #722?",
+      "question": "How do \"Tube\" and \"Dress\" connect in LinkedIn Pinpoint #722?",
       "answer": "The connection is that all 5 clues point to recognizable types of socks. Crew is the clue that makes the category specific enough to verify across the full board.",
       "tiedClue": "Crew"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #722?",
+      "question": "Why is \"Crew\" the key clue in LinkedIn Pinpoint #722?",
       "answer": "Crew is the turning clue because \"Crew sock\" makes the shared category frame explicit. It also makes Tube read cleanly as \"Tube sock\". The clues seem to point in different directions at first, making it hard to see the common thread.",
       "tiedClue": "Crew"
     }

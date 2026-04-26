@@ -15,7 +15,10 @@
     "Thermometer": "A thermometer measures a patient's body temperature to check for fever."
   },
   "lessons": [
-    "Embrace the Obvious. The THERMOMETER was a key clue. Don't overthink; sometimes the most direct association is the correct one.",
+    {
+      "title": "\"Bandage\" and \"Scale\" set the useful boundary",
+      "body": "The THERMOMETER was a key clue. Don't overthink; sometimes the most direct association is the correct one."
+    },
     "List It Out. When stumped, try creating a list related to the connector. Listing common items at a doctor's office helped me connect the SCALE to the solution.",
     "Consider Context. The BANDAGE, while general, becomes specific within the context of a doctor's office. Pay attention to how the connector modifies the clues.",
     "Simplicity Can Win. This puzzle highlights the beauty of simple connections. The TONGUE DEPRESSOR is specific to medical exams, reinforcing the overall theme."

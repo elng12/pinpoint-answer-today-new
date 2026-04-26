@@ -30,7 +30,7 @@
     "RC cars": "Read the initials literally."
   },
   "articleBlocks": [
-    "Television sets and Garage doors suggest remote controls pretty quickly, but the board can still look like a generic technology category.",
+    "Television sets and Garage doors suggest remote controls pretty quickly, but the board can still look like a generic technology category. The opening clues stay ambiguous until Nintendo Wii gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Drones and RC cars keep that idea alive, though both could also point toward toys or hobby equipment.",
     "Nintendo Wii is the clue that makes remotely controlled feel exact rather than approximate.",
     "The Wii Remote turns the board from a tech cluster into a clean action category, and then the other clues read as things you control from a distance.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #604?",
+      "question": "What final category connects \"Television sets\" and \"Garage doors\" in LinkedIn Pinpoint #604?",
       "answer": "The answer is Items controlled remotely because Television sets, Garage doors, Drones, Nintendo Wii, and RC cars are all operated from a distance."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #604?",
+      "question": "How do \"Television sets\" and \"Garage doors\" connect in LinkedIn Pinpoint #604?",
       "answer": "The connection is the method of control. Each clue points to something people typically operate remotely rather than directly by hand on the device itself."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #604?",
+      "question": "Why is \"Nintendo Wii\" the key clue in LinkedIn Pinpoint #604?",
       "answer": "Nintendo Wii is the turning clue because the Wii Remote makes the remote-control idea explicit instead of merely implied."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #604?",
+      "question": "What final category connects \"Television sets\" and \"Garage doors\" in LinkedIn Pinpoint #604?",
       "answer": "The answer is Items controlled remotely because Television sets, Garage doors, Drones, Nintendo Wii, and RC cars are all operated from a distance.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #604?",
+      "question": "How do \"Television sets\" and \"Garage doors\" connect in LinkedIn Pinpoint #604?",
       "answer": "The connection is the method of control. Each clue points to something people typically operate remotely rather than directly by hand on the device itself.",
       "tiedClue": "Nintendo Wii"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #604?",
+      "question": "Why is \"Nintendo Wii\" the key clue in LinkedIn Pinpoint #604?",
       "answer": "Nintendo Wii is the turning clue because the Wii Remote makes the remote-control idea explicit instead of merely implied.",
       "tiedClue": "Nintendo Wii"
     }

@@ -15,9 +15,15 @@
     "Freshener": "From pine trees to vanilla scents, they all fight to keep our cars smelling pleasant."
   },
   "lessons": [
-    "Embrace Multiple Meanings. The clues in Pinpoint often have multiple interpretations. Don't get tunnel vision! Thinking about 'BAG' beyond just a shopping bag could lead you to 'Air Bag' more quickly.",
+    {
+      "title": "\"Guitar\" and \"Bag\" set the useful boundary",
+      "body": "The clues in Pinpoint often have multiple interpretations. Don't get tunnel vision! Thinking about 'BAG' beyond just a shopping bag could lead you to 'Air Bag' more quickly."
+    },
     "Consider Common Collocations. When a clue feels random (like 'GUITAR'), try to think of common phrases that include it. This can spark connections you might otherwise miss and lead you to 'Air Guitar'.",
-    "Don't Overlook the Obvious. Sometimes, the simplest connection is the right one. While tempting to overthink, 'CONDITIONER' screamed 'Air Conditioner' once the theme emerged.",
+    {
+      "title": "\"Hockey\" keeps the category level specific",
+      "body": "Sometimes, the simplest connection is the right one. While tempting to overthink, 'CONDITIONER' screamed 'Air Conditioner' once the theme emerged."
+    },
     "Iterate and Eliminate. If a clue, like 'HOCKEY', doesn't immediately fit your initial theory, set it aside and come back to it. You may find that 'Air Hockey' only makes sense after you've solved the other clues."
   ],
   "faqs": [

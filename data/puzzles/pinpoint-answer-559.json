@@ -17,7 +17,10 @@
   "lessons": [
     "Avoid Assumptions. The 'AIR' clue might have pushed some towards aviation or abstract concepts. Always consider the most literal interpretation first; don't overcomplicate things!",
     "Embrace the Connector Literally. The phrase 'Words that come before \"brush\"' was key. Don't assume the connector is metaphorical. In this case, it was a direct instruction to look for words that commonly precede 'brush', so pay close attention.",
-    "Don't Get Tunnel Vision. If you're stuck on one idea (like my initial focus on art), take a step back. The 'TOOTH' clue should have broadened the scope to include personal care items, so let the clues guide you.",
+    {
+      "title": "\"Makeup\" checks that \"brush\" works across the board",
+      "body": "If you're stuck on one idea (like my initial focus on art), take a step back. The 'TOOTH' clue should have broadened the scope to include personal care items, so let the clues guide you."
+    },
     "Test Each Clue with the Connector. Once you think you're on the right track, test each clue. Does 'MAKEUP' + 'brush' make a common phrase? If not, reassess your approach. It's a checklist for your answer."
   ],
   "faqs": [

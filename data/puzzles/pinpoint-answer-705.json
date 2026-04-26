@@ -23,27 +23,14 @@
     "Heiroglyphs (𓂀𓋹𓅓)": "Hieroglyphs were the formal writing system used in Ancient Egypt for religious literature and important documents."
   },
   "spoilerHints": {
-    "Toothpaste": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Copper pipes": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "365-day (solar) calendar": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Papyrus": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Heiroglyphs (𓂀𓋹𓅓)": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Toothpaste": "\"Toothpaste\" can fit several broad reads at first, but it later works as part of Inventions that (most likely) originated in Ancient Egypt.",
+    "Copper pipes": "\"Copper pipes\" fits once the board is read as Inventions that (most likely) originated in Ancient Egypt, so test it against the same category as the other clues.",
+    "365-day (solar) calendar": "\"365-day (solar) calendar\" is the clue that turns the board toward Inventions that (most likely) originated in Ancient Egypt, because it gives the broad clue set a concrete category to test.",
+    "Papyrus": "\"Papyrus\" fits once the board is read as Inventions that (most likely) originated in Ancient Egypt, so test it against the same category as the other clues.",
+    "Heiroglyphs (𓂀𓋹𓅓)": "\"Heiroglyphs (𓂀𓋹𓅓)\" is the final confirmation that Inventions that (most likely) originated in Ancient Egypt holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This felt like a collection of random items at first.",
-    "Toothpaste and copper pipes seemed too modern to fit with hieroglyphs.",
-    "I initially jumped to a broad category like 'things found in museums.'.",
-    "That guess didn't quite work, as copper pipes could just as easily be Roman.",
-    "The '365-day (solar) calendar' was the clue that really shifted my perspective.",
-    "That brought the civilization aspect into focus.",
-    "It became clear: we're looking for inventions from Ancient Egypt.",
-    "Toothpaste, copper pipes, calendar, papyrus, and hieroglyphs all fit the bill.",
-    "The answer is inventions that originated in Ancient Egypt.",
-    "In hindsight, the mix of everyday and historical items was a clever misdirect.",
-    "It pays to think about where things started."
-  ],
-  "fullAnalysis": [
-    "This felt like a collection of random items at first.",
+    "This felt like a collection of random items at first. The opening clues stay ambiguous until 365-day (solar) calendar gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Toothpaste and copper pipes seemed too modern to fit with hieroglyphs.",
     "I initially jumped to a broad category like 'things found in museums.'.",
     "That guess didn't quite work, as copper pipes could just as easily be Roman.",
@@ -61,15 +48,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Toothpaste\" and \"Copper pipes\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"365-day (solar) calendar\" turns the board into one specific category",
       "body": "365-day (solar) calendar is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Heiroglyphs (𓂀𓋹𓅓)\" confirms the same category level",
       "body": "Consider the origins of the everyday items around you; many have surprising histories."
     }
   ],
@@ -106,15 +93,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #705?",
+      "question": "What final category connects \"Toothpaste\" and \"Copper pipes\" in LinkedIn Pinpoint #705?",
       "answer": "The answer is \"Inventions that (most likely) originated in Ancient Egypt\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #705?",
+      "question": "How do \"Toothpaste\" and \"Copper pipes\" connect in LinkedIn Pinpoint #705?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. 365-day (solar) calendar is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #705?",
+      "question": "Why is \"365-day (solar) calendar\" the key clue in LinkedIn Pinpoint #705?",
       "answer": "365-day (solar) calendar is the turning clue because \"Ancient Egyptian calendar\" makes the shared category frame explicit. It also makes Toothpaste read cleanly as \"Ancient Egyptian toothpaste\". The clues cover a wide range of categories, from daily hygiene to advanced timekeeping, which obscures the connection."
     }
   ],
@@ -175,19 +162,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #705?",
+      "question": "What final category connects \"Toothpaste\" and \"Copper pipes\" in LinkedIn Pinpoint #705?",
       "answer": "The answer is \"Inventions that (most likely) originated in Ancient Egypt\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #705?",
+      "question": "How do \"Toothpaste\" and \"Copper pipes\" connect in LinkedIn Pinpoint #705?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. 365-day (solar) calendar is what keeps the category reading precise instead of broad.",
       "tiedClue": "365-day (solar) calendar"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #705?",
+      "question": "Why is \"365-day (solar) calendar\" the key clue in LinkedIn Pinpoint #705?",
       "answer": "365-day (solar) calendar is the turning clue because \"Ancient Egyptian calendar\" makes the shared category frame explicit. It also makes Toothpaste read cleanly as \"Ancient Egyptian toothpaste\". The clues cover a wide range of categories, from daily hygiene to advanced timekeeping, which obscures the connection.",
       "tiedClue": "365-day (solar) calendar"
     }

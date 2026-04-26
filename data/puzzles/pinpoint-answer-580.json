@@ -14,7 +14,10 @@
     "Hymn of the Republic": "This is the full title of the famous song written during the American Civil War, which reflects themes of justice and righteousness."
   },
   "lessons": [
-    "Beware the First-Clue Trap. The first word often sets a tempting but misleading path. Use it to generate ideas, but be ready to completely abandon your theory when the second clue arrives. Flexibility is key to solving these puzzles quickly.",
+    {
+      "title": "\"Ship\" and \"Royale\" open the \"'battle'\" phrase test",
+      "body": "The first word often sets a tempting but misleading path. Use it to generate ideas, but be ready to completely abandon your theory when the second clue arrives. Flexibility is key to solving these puzzles quickly."
+    },
     "Think in Phrases, Not Just Categories. Sometimes the link isn't a semantic category (like \"vehicles\") but a linguistic one. Look for common prefixes or suffixes that create famous compound words, titles, or names.",
     "Pop Culture is a Valid Clue. Don't ignore connections from games (\"Battleship,\" \"Battle Royale\"), history (\"Battle Axe\"), or music (\"Battle Hymn\"). Pinpoint draws from a wide cultural vocabulary spanning entertainment, history, and everyday life.",
     "The 'Aha!' Moment is a Reset. Being proven wrong forces you to look at the clues from a fresh, more creative angle, which is where the solution is often hiding. Wrong guesses are necessary learning steps."

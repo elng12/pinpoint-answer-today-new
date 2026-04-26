@@ -17,6 +17,67 @@ function quoteJoin(values: string[]): string {
   return values.map((value) => `"${value}"`).join(" and ");
 }
 
+function stripFallbackQuotes(value: string): string {
+  return value.replace(/["\u201c\u201d]/g, "");
+}
+
+function singularizeFallbackTail(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return trimmed;
+
+  const lower = trimmed.toLowerCase();
+  const irregular: Record<string, string> = {
+    mice: "mouse",
+    geese: "goose",
+    teeth: "tooth",
+    feet: "foot",
+    men: "man",
+    women: "woman",
+    people: "person",
+    children: "child",
+  };
+  if (irregular[lower]) return irregular[lower];
+  if (/ies$/i.test(trimmed)) return `${trimmed.slice(0, -3)}y`;
+  if (/(ches|shes|xes|zes|sses)$/i.test(trimmed)) return trimmed.slice(0, -2);
+  if (/[aeiou]ves$/i.test(trimmed)) return trimmed.slice(0, -1);
+  if (/ives$/i.test(trimmed)) return `${trimmed.slice(0, -3)}fe`;
+  if (/s$/i.test(trimmed) && !/ss$/i.test(trimmed)) return trimmed.slice(0, -1);
+  return trimmed;
+}
+
+function singularizeFallbackNounPhrase(value: string): string {
+  const cleaned = stripFallbackQuotes(value)
+    .replace(/\s*\([^)]*\)\s*$/, "")
+    .split(/\s+[—–-]\s+/)[0]
+    ?.replace(/[.!?]+$/, "")
+    .replace(/\s+/g, " ")
+    .trim() ?? "";
+  if (!cleaned) return "";
+
+  const words = cleaned.split(/\s+/);
+  const prepositionIndex = words.findIndex((word, index) =>
+    index > 0 && /^(in|on|at|for|from|with|of)$/i.test(word),
+  );
+  const headWords = prepositionIndex === -1 ? words : words.slice(0, prepositionIndex);
+  const tailWords = prepositionIndex === -1 ? [] : words.slice(prepositionIndex);
+  const headLastIndex = headWords.length - 1;
+  if (headLastIndex < 0) return cleaned.toLowerCase();
+
+  const singularHead = [
+    ...headWords.slice(0, headLastIndex),
+    singularizeFallbackTail(headWords[headLastIndex] ?? ""),
+  ];
+  return [...singularHead, ...tailWords].join(" ").toLowerCase();
+}
+
+function detectFallbackNoun(answer: string): string {
+  const match = stripFallbackQuotes(answer).match(/^(?:Types|Kinds)\s+of\s+(.+)$/i);
+  if (match?.[1]) return singularizeFallbackNounPhrase(match[1]);
+  const typed = answer.match(/^(.+?)\s+\((.+?)\)/);
+  if (typed?.[2]) return singularizeFallbackNounPhrase(typed[2]);
+  return "";
+}
+
 function isPhrasePattern(kind: FallbackPatternKind): boolean {
   return kind === "before" || kind === "after";
 }
@@ -37,6 +98,33 @@ function phrasePositionText(kind: FallbackPatternKind): string {
 
 function phraseAnswerSlot(kind: FallbackPatternKind): string {
   return kind === "before" ? "ending word" : "first word";
+}
+
+function buildFallbackAnswerFaqQuestion(input: {
+  puzzleNumber: number;
+  kind: FallbackPatternKind;
+  clues: string[];
+}) {
+  const { puzzleNumber, kind, clues } = input;
+  const firstClue = stripFallbackQuotes(clues[0] || "");
+  const secondClue = stripFallbackQuotes(clues[1] || "");
+  if (!firstClue || !secondClue) {
+    return `What final answer fits this LinkedIn Pinpoint #${puzzleNumber} board?`;
+  }
+
+  if (isPhrasePattern(kind)) {
+    return `What shared word links "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleNumber}?`;
+  }
+  if (kind === "typed-category") {
+    return `Which type-level category connects "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleNumber}?`;
+  }
+  if (kind === "association") {
+    return `What shared subject links "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleNumber}?`;
+  }
+  if (isVisualCategoryBoard(kind, clues)) {
+    return `What visual category connects "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleNumber}?`;
+  }
+  return `What final category connects "${firstClue}" and "${secondClue}" in LinkedIn Pinpoint #${puzzleNumber}?`;
 }
 
 function getFallbackWrongGuessPair(
@@ -217,38 +305,54 @@ export function buildSharedFallbackArticleBlocks(input: {
 export function buildSharedFallbackLessons(input: {
   kind: FallbackPatternKind;
   turningPoint: string;
+  clues?: string[];
+  answer?: string;
 }): LessonItem[] {
-  const { kind, turningPoint } = input;
+  const { kind, turningPoint, clues = [], answer = "" } = input;
+  const firstClue = stripFallbackQuotes(clues[0] || "");
+  const secondClue = stripFallbackQuotes(clues[1] || "");
+
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
     return [
       {
-        title: "Let the clearest phrase lead",
-        body: "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase.",
+        title: firstClue && secondClue
+          ? `"${firstClue}" and "${secondClue}" do not immediately line up around one missing word`
+          : "Let the clearest phrase lead",
+        body: firstClue && secondClue
+          ? `"${firstClue}" and "${secondClue}" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.`
+          : "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase.",
       },
       {
-        title: "Prefer everyday language over loose overlap",
-        body: "A good answer should create phrases people actually say, not just words that seem related from a distance.",
-      },
-      {
-        title: "Use the easiest clue as confirmation",
+        title: `"${turningPoint}" is what finally makes the missing word visible`,
         body: `Once "${turningPoint}" lands, place the same word ${positionText} the other clues and make sure they read naturally right away.`,
+      },
+      {
+        title: `Every clue should read as an everyday phrase once the answer is in place`,
+        body: "A good answer should create phrases people actually say, not just words that seem related from a distance.",
       },
     ];
   }
 
   if (kind === "typed-category") {
+    const noun = detectFallbackNoun(answer);
     return [
       {
-        title: "Ask what type each clue could really be",
+        title: firstClue && secondClue
+          ? `"${firstClue}" and "${secondClue}" can look like they belong to different categories at first`
+          : "Ask what type each clue could really be",
         body: "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names.",
       },
       {
-        title: "The category noun should sharpen the board",
+        title: noun
+          ? `"${turningPoint}" is what makes the category feel concrete instead of broad`
+          : "The category noun should sharpen the board",
         body: "A good category answer does more than group the clues loosely. It should make each clue sound like a recognizable member of the same family.",
       },
       {
-        title: "Use the anchor clue to set the category level",
+        title: noun
+          ? `Every clue should name a specific kind of ${noun} once the category sharpens`
+          : "Use the anchor clue to set the category level",
         body: `Once "${turningPoint}" lands, check whether the rest of the clues fit that same category at the same level of precision.`,
       },
     ];
@@ -257,11 +361,13 @@ export function buildSharedFallbackLessons(input: {
   if (kind === "association") {
     return [
       {
-        title: "Look for one shared world, not one shared label",
+        title: firstClue && secondClue
+          ? `"${firstClue}" and "${secondClue}" can look like they belong to different categories at first`
+          : "Look for one shared world, not one shared label",
         body: "Association boards often mix clue types, so the right solve can be a common context instead of a tidy dictionary category.",
       },
       {
-        title: "The anchor clue should reduce the search space fast",
+        title: `"${turningPoint}" is what makes the answer feel concrete instead of broad`,
         body: "The best association clue is the one that collapses several broad guesses into one testable subject.",
       },
       {
@@ -273,11 +379,13 @@ export function buildSharedFallbackLessons(input: {
 
   return [
     {
-      title: "Wait for the clue that makes the set concrete",
+      title: firstClue && secondClue
+        ? `"${firstClue}" and "${secondClue}" can look like they belong to different categories at first`
+        : "Wait for the clue that makes the set concrete",
       body: "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
     },
     {
-      title: "Prefer exact fits over vague overlap",
+      title: `"${turningPoint}" is what makes the answer feel concrete instead of broad`,
       body: "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related.",
     },
     {
@@ -297,53 +405,68 @@ export function buildSharedFallbackFaqs(input: {
   clues?: string[];
 }): FaqItem[] {
   const { puzzleNumber, kind, answer, turningPoint, connectorSummary, turningPhrase, clues = [] } = input;
+  const firstClue = stripFallbackQuotes(clues[0] || "");
+  const secondClue = stripFallbackQuotes(clues[1] || "");
+
+  const connectionQuestion = firstClue && secondClue
+    ? `How do "${firstClue}" and "${secondClue}" connect in LinkedIn Pinpoint #${puzzleNumber}?`
+    : `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`;
+
+  const turningClueQuestion = `Why is "${turningPoint}" the key clue in LinkedIn Pinpoint #${puzzleNumber}?`;
+  const answerQuestion = buildFallbackAnswerFaqQuestion({ puzzleNumber, kind, clues });
+
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
     return [
       {
-        question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: answerQuestion,
         answer: `The answer is ${answer}. That reading is the first one that turns all five clues into familiar phrases or common terms.`,
       },
       {
-        question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: connectionQuestion,
         answer: `The connection is ${connectorSummary}. The same word fits ${positionText} every clue to create familiar phrases or everyday terms.`,
       },
       {
-        question: `Which clue is decisive in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: turningClueQuestion,
         answer: `"${turningPoint}" is the strongest clue because ${turningPhrase ? `"${turningPhrase}" points to one exact phrase much faster than the earlier clues do.` : "it points to one exact phrase much faster than the earlier clues do."}`,
       },
     ];
   }
 
   if (kind === "typed-category") {
+    const noun = detectFallbackNoun(answer);
     return [
       {
-        question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: answerQuestion,
         answer: `The answer is ${answer}. That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket.`,
       },
       {
-        question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: connectionQuestion,
         answer: `The connection is ${connectorSummary}. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of.`,
       },
       {
-        question: `Which clue really sets the category in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: turningClueQuestion,
         answer: `"${turningPoint}" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun.`,
       },
+      ...(firstClue && noun ? [{
+        question: `How does "${firstClue}" fit as ${/^[aeiou]/i.test(noun) ? "an" : "a"} ${noun} in LinkedIn Pinpoint #${puzzleNumber}?`,
+        answer: `"${firstClue}" is a recognizable ${noun}, which keeps the board specific instead of broadly themed.`,
+      }] : []),
     ];
   }
 
   if (kind === "association") {
     return [
       {
-        question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: answerQuestion,
         answer: `The answer is ${answer}. That reading works because the clues all point back to the same subject or context, even if they do not all look like the same kind of clue on first read.`,
       },
       {
-        question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: connectionQuestion,
         answer: `The connection is ${connectorSummary}. This board solves better by shared context than by forcing all 5 clues into one literal category label.`,
       },
       {
-        question: `Which clue gives the strongest anchor in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: turningClueQuestion,
         answer: `"${turningPoint}" matters most because it gives the board one clear subject to test, which is what lets the remaining clues stop feeling scattered.`,
       },
     ];
@@ -352,15 +475,15 @@ export function buildSharedFallbackFaqs(input: {
   if (isVisualCategoryBoard(kind, clues)) {
     return [
       {
-        question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: answerQuestion,
         answer: `The answer is ${answer}. That read works because the symbols form one recognizable visual family rather than a loose set of emoji reactions.`,
       },
       {
-        question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: connectionQuestion,
         answer: `The connection is ${connectorSummary}. The right way to solve boards like this is to ask what visual system the clues belong to, not just what mood they suggest.`,
       },
       {
-        question: `Which clue makes the visual set click in LinkedIn Pinpoint #${puzzleNumber}?`,
+        question: turningClueQuestion,
         answer: `"${turningPoint}" is the clue that turns the board from a random icon cluster into one testable visual category.`,
       },
     ];
@@ -368,15 +491,15 @@ export function buildSharedFallbackFaqs(input: {
 
   return [
     {
-      question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`,
+      question: answerQuestion,
       answer: `The answer is ${answer}. That reading is the first one that explains the whole set without forcing any clue.`,
     },
     {
-      question: `What is the connection in LinkedIn Pinpoint #${puzzleNumber}?`,
+      question: connectionQuestion,
       answer: `The connection is ${connectorSummary}. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.`,
     },
     {
-      question: `Which clue really unlocks LinkedIn Pinpoint #${puzzleNumber}?`,
+      question: turningClueQuestion,
       answer: `"${turningPoint}" is the turning point because it makes the answer concrete enough to test across all five clues.`,
     },
   ];

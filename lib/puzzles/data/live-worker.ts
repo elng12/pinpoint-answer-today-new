@@ -90,7 +90,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const pattern = detectLiveAnswerPattern(answer);
   const turningPoint = pickLiveTurningPoint(record.clues, answer);
   const connectorSummary = buildLiveConnectorSummary(answer);
-  const lessons = buildLiveLessons(answer, turningPoint);
+  const lessons = buildLiveLessons(answer, turningPoint, record.clues);
   const wordHints = buildLiveWordHints(record.clues, answer);
   const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint, record.clues);
   const wrongGuessCandidates = [
@@ -117,11 +117,11 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
         : pattern.kind === "association"
           ? "one shared subject viewed from multiple angles rather than a literal category label"
           : "one concrete category with clues that stay at the same level of specificity";
-  const fullAnalysis = buildLiveArticleBreakdown(puzzleNumber, record.clues, answer, turningPoint, {
+  const articleBlocks = buildLiveArticleBreakdown(puzzleNumber, record.clues, answer, turningPoint, {
     wrongGuessCandidates,
     categoryPrecisionNote,
   });
-  const articleBlocks = fullAnalysis;
+  const fullAnalysis: string[] = [];
   const setValidationSummary =
     articleBlocks[4] ??
     `${record.clues.slice(-3).join(", ")} keep confirming the same answer, so the full board behaves like one coherent set instead of a few lucky matches.`;

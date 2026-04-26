@@ -25,29 +25,14 @@
     "Interlingua": "Interlingua is an international auxiliary language designed to be easily understood by speakers of many languages."
   },
   "spoilerHints": {
-    "Na'vi": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Klingon": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Elvish": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Esperanto": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Interlingua": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Na'vi": "\"Na'vi\" can fit several broad reads at first, but it later works as part of Constructed languages.",
+    "Klingon": "\"Klingon\" fits once the board is read as Constructed languages, so test it against the same category as the other clues.",
+    "Elvish": "\"Elvish\" fits once the board is read as Constructed languages, so test it against the same category as the other clues.",
+    "Esperanto": "\"Esperanto\" is the clue that turns the board toward Constructed languages, because it gives the broad clue set a concrete category to test.",
+    "Interlingua": "\"Interlingua\" is the final confirmation that Constructed languages holds across all five clues without forcing any of them."
   },
   "articleBlocks": [
-    "This puzzle felt like a grab bag at first.",
-    "Na'vi, Klingon, and Elvish clearly pointed towards fictional languages.",
-    "But then Esperanto and Interlingua threw a wrench in that theory.",
-    "What did these seemingly disparate languages have in common?",
-    "I briefly considered 'languages used in media,' but that felt too broad.",
-    "Then, the Esperanto clue brought the puzzle into focus.",
-    "Esperanto isn't fictional, but it is *constructed*.",
-    "It was intentionally designed to be easy to learn and facilitate international communication.",
-    "That artificial element clicked into place.",
-    "The answer is Constructed languages.",
-    "That explained the whole set: languages created deliberately, not evolved naturally.",
-    "The blend of real and fictional examples made the category harder to spot initially, but the underlying principle tied it all together.",
-    "Now the full set makes sense, and the artificial nature is the key."
-  ],
-  "fullAnalysis": [
-    "This puzzle felt like a grab bag at first.",
+    "This puzzle felt like a grab bag at first. The opening clues stay ambiguous until Esperanto gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Na'vi, Klingon, and Elvish clearly pointed towards fictional languages.",
     "But then Esperanto and Interlingua threw a wrench in that theory.",
     "What did these seemingly disparate languages have in common?",
@@ -67,15 +52,15 @@
   ],
   "lessons": [
     {
-      "title": "Broad clues can create the wrong frame early",
+      "title": "\"Na'vi\" and \"Klingon\" start wider than the final category",
       "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "The narrowing clue matters more than the loudest clue",
+      "title": "\"Esperanto\" turns the board into one specific category",
       "body": "Esperanto is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Prefer precise category fit over broad topic logic",
+      "title": "\"Interlingua\" confirms the same category level",
       "body": "Consider the origin and intent behind a category's elements, not just their surface similarities."
     }
   ],
@@ -112,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #711?",
+      "question": "What final category connects \"Na'vi\" and \"Klingon\" in LinkedIn Pinpoint #711?",
       "answer": "The answer is \"Constructed languages\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #711?",
+      "question": "How do \"Na'vi\" and \"Klingon\" connect in LinkedIn Pinpoint #711?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Esperanto is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #711?",
+      "question": "Why is \"Esperanto\" the key clue in LinkedIn Pinpoint #711?",
       "answer": "Esperanto is the turning clue because \"Esperanto\" makes the shared category frame explicit. It also makes Na'vi read cleanly as \"Na'vi\". The mix of real and fictional examples makes it harder to spot the unifying element of intentional design."
     }
   ],
@@ -183,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #711?",
+      "question": "What final category connects \"Na'vi\" and \"Klingon\" in LinkedIn Pinpoint #711?",
       "answer": "The answer is \"Constructed languages\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #711?",
+      "question": "How do \"Na'vi\" and \"Klingon\" connect in LinkedIn Pinpoint #711?",
       "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Esperanto is what keeps the category reading precise instead of broad.",
       "tiedClue": "Esperanto"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #711?",
+      "question": "Why is \"Esperanto\" the key clue in LinkedIn Pinpoint #711?",
       "answer": "Esperanto is the turning clue because \"Esperanto\" makes the shared category frame explicit. It also makes Na'vi read cleanly as \"Na'vi\". The mix of real and fictional examples makes it harder to spot the unifying element of intentional design.",
       "tiedClue": "Esperanto"
     }

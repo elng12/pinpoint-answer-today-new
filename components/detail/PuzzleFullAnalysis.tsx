@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Star, Lightbulb, Table } from "lucide-react";
 import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
-import { LatestAnswerCta } from "@/components/detail/LatestAnswerCta";
+import { LatestAnswerCta, type LatestAnswerCtaPuzzle } from "@/components/detail/LatestAnswerCta";
 import {
   formatPuzzleDifficultyBandLabel,
   formatPuzzleQuestionTypeLabel,
@@ -474,12 +474,14 @@ export function PuzzleFullAnalysis({
   nextPreview,
   adjacentPrev,
   adjacentNext,
+  latestPuzzle,
 }: {
   puzzle: PuzzleDetailRecord;
   recentPuzzles: ArchiveEntry[];
   nextPreview: NextPreview | null;
   adjacentPrev: ArchiveEntry | null;
   adjacentNext: ArchiveEntry | null;
+  latestPuzzle: LatestAnswerCtaPuzzle | null;
 }) {
   const isShortMode = puzzle.detailMode === "short";
   const isLightExplainerMode = puzzle.pageExperienceMode === "light-explainer";
@@ -664,7 +666,7 @@ export function PuzzleFullAnalysis({
 
         <aside className="legacy-next-shell" aria-label="Recent Pinpoint answer pages">
           <h2 className="legacy-next-title">Recent Pinpoint answer pages</h2>
-          <LatestAnswerCta currentSlug={puzzle.slug} />
+          <LatestAnswerCta currentSlug={puzzle.slug} latestPuzzle={latestPuzzle} />
           <Link className="legacy-next-link" href={routes.preview}>
             {previewCtaLabel}
           </Link>

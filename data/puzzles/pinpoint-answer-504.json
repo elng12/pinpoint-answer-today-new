@@ -15,9 +15,15 @@
     "Teddy": "Teddy bears, named after President Theodore Roosevelt, are a popular type of stuffed toy resembling a bear."
   },
   "lessons": [
-    "Embrace Multiple Interpretations. The TEDDY clue highlights the importance of considering broader definitions. Don't get tunnel vision; sometimes, the answer isn't strictly scientific.",
+    {
+      "title": "\"Honey\" and \"Polar\" set the useful boundary",
+      "body": "The TEDDY clue highlights the importance of considering broader definitions. Don't get tunnel vision; sometimes, the answer isn't strictly scientific."
+    },
     "Look for Common Threads, Not Exact Matches. The HONEY clue is about association, not species. Use clues to guide you to thinking about associations.",
-    "Don't Overthink the Obvious. BROWN and GRIZZLY are straightforward types of bears. Remind yourself of the basics before diving into complex theories.",
+    {
+      "title": "\"Brown\" keeps the category level specific",
+      "body": "BROWN and GRIZZLY are straightforward types of bears. Remind yourself of the basics before diving into complex theories."
+    },
     "Consider the Source. Pinpoint puzzles are designed to be solvable in a short amount of time! The clues are designed to lead you to the answer so consider that when solving the puzzle."
   ],
   "faqs": [

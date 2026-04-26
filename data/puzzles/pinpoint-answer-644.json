@@ -30,7 +30,7 @@
     "Bogey (or worse)": "The parenthetical matters because it points to performance slipping past the benchmark."
   },
   "articleBlocks": [
-    "Albatross, Eagle, and Birdie can look like a bird board at first, especially because the first three clues all share that animal theme.",
+    "Albatross, Eagle, and Birdie can look like a bird board at first, especially because the first three clues all share that animal theme. The opening clues stay ambiguous until Par gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "The puzzle becomes more precise once you notice those same words also live inside golf scoring language.",
     "Par is the clue that really settles the board.",
     "Once Par appears, Albatross, Eagle, and Birdie stop behaving like birds and start reading as scores relative to the golfing baseline.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #644?",
+      "question": "What final category connects \"Albatross\" and \"Eagle\" in LinkedIn Pinpoint #644?",
       "answer": "The answer is Golf Scores because Albatross, Eagle, Birdie, Par, and Bogey are all terms for scoring relative to par."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #644?",
+      "question": "How do \"Albatross\" and \"Eagle\" connect in LinkedIn Pinpoint #644?",
       "answer": "The connection is golf scoring language. The clues move from far under par through the benchmark and then to a score above par."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #644?",
+      "question": "Why is \"Par\" the key clue in LinkedIn Pinpoint #644?",
       "answer": "Par is the turning clue because it names the scoring baseline itself and makes the earlier bird names read as golf terms instead."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #644?",
+      "question": "What final category connects \"Albatross\" and \"Eagle\" in LinkedIn Pinpoint #644?",
       "answer": "The answer is Golf Scores because Albatross, Eagle, Birdie, Par, and Bogey are all terms for scoring relative to par.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #644?",
+      "question": "How do \"Albatross\" and \"Eagle\" connect in LinkedIn Pinpoint #644?",
       "answer": "The connection is golf scoring language. The clues move from far under par through the benchmark and then to a score above par.",
       "tiedClue": "Par"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #644?",
+      "question": "Why is \"Par\" the key clue in LinkedIn Pinpoint #644?",
       "answer": "Par is the turning clue because it names the scoring baseline itself and makes the earlier bird names read as golf terms instead.",
       "tiedClue": "Par"
     }

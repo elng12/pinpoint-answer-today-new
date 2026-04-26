@@ -30,7 +30,7 @@
     "Of Good Hope": "This is the clue that makes the missing word hardest to avoid."
   },
   "articleBlocks": [
-    "Horn and Cod immediately felt like place names, but not yet like one clean category.",
+    "Horn and Cod immediately felt like place names, but not yet like one clean category. The opening clues stay ambiguous until Of Good Hope gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Verde kept the geography angle alive, though the board still felt more like famous locations than one exact answer.",
     "The real turn came with Of Good Hope.",
     "That phrase almost always appears as Cape of Good Hope, which suddenly made the missing frame obvious.",
@@ -97,15 +97,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #697?",
+      "question": "What final category connects \"Horn\" and \"Cod\" in LinkedIn Pinpoint #697?",
       "answer": "The answer is \"Geographical capes\" because every clue resolves cleanly as a named cape once the shared frame becomes visible."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #697?",
+      "question": "How do \"Horn\" and \"Cod\" connect in LinkedIn Pinpoint #697?",
       "answer": "The connection is not just famous locations. It is famous geographic names built around capes, including Cape Horn, Cape Cod, Cape Verde, Cape Canaveral, and Cape of Good Hope."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #697?",
+      "question": "Why is \"Of Good Hope\" the key clue in LinkedIn Pinpoint #697?",
       "answer": "Of Good Hope is the turning clue because it makes Cape feel almost mandatory, and that shared word then organizes the whole board."
     }
   ],
@@ -168,19 +168,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #697?",
+      "question": "What final category connects \"Horn\" and \"Cod\" in LinkedIn Pinpoint #697?",
       "answer": "The answer is \"Geographical capes\" because every clue resolves cleanly as a named cape once the shared frame becomes visible.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #697?",
+      "question": "How do \"Horn\" and \"Cod\" connect in LinkedIn Pinpoint #697?",
       "answer": "The connection is not just famous locations. It is famous geographic names built around capes, including Cape Horn, Cape Cod, Cape Verde, Cape Canaveral, and Cape of Good Hope.",
       "tiedClue": "Of Good Hope"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #697?",
+      "question": "Why is \"Of Good Hope\" the key clue in LinkedIn Pinpoint #697?",
       "answer": "Of Good Hope is the turning clue because it makes Cape feel almost mandatory, and that shared word then organizes the whole board.",
       "tiedClue": "Of Good Hope"
     }

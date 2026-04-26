@@ -14,13 +14,22 @@
     "Hot water": "Hot water fits because it is a common bottle type, matching the category Types of bottle."
   },
   "lessons": [
-    "Start with the cleanest shared structure. This puzzle rewards solvers who treat short single-word clues as modifiers to a shared object before chasing a clever but unstable guess. Types of bottle works because the structure stays consistent across all five clues.",
-    "Verify every clue before locking the answer. A promising guess is not enough on its own. look for consumer-product phrases that already exist in daily speech so the answer holds for the entire board instead of only the easiest clues.",
-    "Prefer precision over breadth. When several broad answers feel possible, prefer the object all clues complete cleanly rather than a vague container theme. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    {
+      "title": "\"Baby\" and \"Squeeze\" set the useful boundary",
+      "body": "This puzzle rewards solvers who treat short single-word clues as modifiers to a shared object before chasing a clever but unstable guess. Types of bottle works because the structure stays consistent across all five clues."
+    },
+    {
+      "title": "\"Hot water\" is the clue to retest before committing",
+      "body": "A promising guess is not enough on its own. look for consumer-product phrases that already exist in daily speech so the answer holds for the entire board instead of only the easiest clues."
+    },
+    {
+      "title": "\"Coke\" keeps the category level specific",
+      "body": "When several broad answers feel possible, prefer the object all clues complete cleanly rather than a vague container theme. That is the fastest way to separate the real Pinpoint answer from a merely adjacent theme."
+    }
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #667?",
+      "question": "Which type-level category connects \"Baby\" and \"Squeeze\" in LinkedIn Pinpoint #667?",
       "answer": "The answer is Types of bottle. The five clues are Baby, Squeeze, Coke, Spray, and Hot water."
     },
     {

@@ -30,7 +30,7 @@
     "Castle": "Think of the most stereotypical structure people build on a beach."
   },
   "articleBlocks": [
-    "Paper and Storm make sand feel possible fairly quickly, but Wood can make the board seem messier than a clean shared-word puzzle.",
+    "Paper and Storm make sand feel possible fairly quickly, but Wood can make the board seem messier than a clean shared-word puzzle. The opening clues stay ambiguous until Castle gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
     "Dollar helps because sand dollar proves the same beginning works in a beach phrase instead of only in weather or tools.",
     "Castle is the clue that really settles it.",
     "Once sandcastle appears, sandpaper, sandstorm, sand dollar, and even the slightly trickier sandalwood all make sense as the same sand-led family.",
@@ -96,15 +96,15 @@
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #459?",
+      "question": "What shared word links \"Paper\" and \"Wood\" in LinkedIn Pinpoint #459?",
       "answer": "The answer is Words that come after \"sand\" because Paper, Wood, Storm, Dollar, and Castle all resolve into familiar sand-led compounds or phrases."
     },
     {
-      "question": "What is the connection in LinkedIn Pinpoint #459?",
+      "question": "How do \"Paper\" and \"Wood\" connect in LinkedIn Pinpoint #459?",
       "answer": "The connection is a shared beginning. The clues resolve into sandpaper, sandalwood, sandstorm, sand dollar, and sandcastle."
     },
     {
-      "question": "Which clue really unlocks LinkedIn Pinpoint #459?",
+      "question": "Why is \"Castle\" the key clue in LinkedIn Pinpoint #459?",
       "answer": "Castle is the turning clue because sandcastle is such a fixed and familiar phrase that it makes the shared beginning hard to miss."
     }
   ],
@@ -167,19 +167,19 @@
   "faqItems": [
     {
       "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #459?",
+      "question": "What shared word links \"Paper\" and \"Wood\" in LinkedIn Pinpoint #459?",
       "answer": "The answer is Words that come after \"sand\" because Paper, Wood, Storm, Dollar, and Castle all resolve into familiar sand-led compounds or phrases.",
       "tiedClue": null
     },
     {
       "intentType": "category_context",
-      "question": "What is the connection in LinkedIn Pinpoint #459?",
+      "question": "How do \"Paper\" and \"Wood\" connect in LinkedIn Pinpoint #459?",
       "answer": "The connection is a shared beginning. The clues resolve into sandpaper, sandalwood, sandstorm, sand dollar, and sandcastle.",
       "tiedClue": "Castle"
     },
     {
       "intentType": "clue_background",
-      "question": "Which clue really unlocks LinkedIn Pinpoint #459?",
+      "question": "Why is \"Castle\" the key clue in LinkedIn Pinpoint #459?",
       "answer": "Castle is the turning clue because sandcastle is such a fixed and familiar phrase that it makes the shared beginning hard to miss.",
       "tiedClue": "Castle"
     }

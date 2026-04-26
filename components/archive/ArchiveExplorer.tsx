@@ -151,7 +151,7 @@ export function ArchiveExplorer({
         <>
           {filteredGroups.map((group) => (
             <section key={group.label} className="surface" style={{ padding: 28 }}>
-              <p className="eyebrow">{group.label}</p>
+              <h2 className="eyebrow">{group.label}</h2>
               <div className="grid" style={{ marginTop: 20 }}>
                 {group.items.map((item) => (
                   <ArchiveCard key={item.slug} item={item} />
@@ -178,7 +178,7 @@ export function ArchiveExplorer({
         </>
       ) : (
         <section className="surface" style={{ padding: 28 }}>
-          <p className="eyebrow">No Match Yet</p>
+          <h2 className="eyebrow">No Match Yet</h2>
           <h2 className="section-title" style={{ fontSize: 28 }}>
             Try a puzzle number or one of the clue words
           </h2>
