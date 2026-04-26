@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { defaultLocale } from "@/i18n.config";
 import { defaultSocialImagePath, siteName, twitterHandle } from "@/lib/site/config";
 import { fitPinpointClues } from "@/lib/seo/pinpoint-text";
+import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
 
 export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Current Puzzle, Hints & Answer";
 export const HOME_SEO_DESCRIPTION =
@@ -9,11 +10,23 @@ export const HOME_SEO_DESCRIPTION =
 export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive | Past Answers by Puzzle Number";
 export const ARCHIVE_SEO_DESCRIPTION =
   "Browse past LinkedIn Pinpoint answers in one archive. Search by puzzle number or clue, then open the matching answer page fast.";
-const TITLE_MAX_LENGTH = 60;
+const TITLE_ABSOLUTE_MAX = 110;
 const TITLE_MIN_LENGTH = 55;
-const DESCRIPTION_MAX_LENGTH = 160;
-const DESCRIPTION_MIN_LENGTH = 150;
+const DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
+const DESCRIPTION_MIN_LENGTH = CONTENT_CONTRACT.metaDescriptionMinChars;
 const SITE_LOCALE = "en_US";
+const DESCRIPTION_EXTENSIONS = [
+  " Use spoiler-safe hints, clue logic, and the verified answer to confirm the solve.",
+  " Use spoiler-safe hints and clue logic to confirm the solve.",
+  " Review spoiler-safe hints and clue logic.",
+  " Review clue logic and confirm the solve.",
+  " Confirm the solve with clue logic.",
+  " Spoiler-safe hints included.",
+  " More help inside.",
+  " Hints included.",
+  " Extra hints.",
+  " Hints.",
+];
 
 export function getSiteUrl(): string {
   return process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3004";
@@ -24,6 +37,18 @@ export function absoluteUrl(path: string): string {
 }
 
 export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): string {
+  const fullClues = fitPinpointClues(clues, TITLE_ABSOLUTE_MAX);
+  const allCluesTitle = `LinkedIn Pinpoint ${puzzleNumber}: ${fullClues}`;
+
+  // Prefer all 5 clues in title for maximum keyword coverage (Google indexes the
+  // full title tag even when SERP truncates the display).  Cap at ABSOLUTE_MAX
+  // to avoid absurdly long titles on pathological clue text.
+  if (allCluesTitle.length <= TITLE_ABSOLUTE_MAX && allCluesTitle.length >= TITLE_MIN_LENGTH) {
+    return allCluesTitle;
+  }
+
+  // Fallback: try shorter prefixes that fit within SERP display width so at
+  // least something is visible without truncation.
   const titlePrefixes = [
     `LinkedIn Pinpoint ${puzzleNumber}: `,
     `LinkedIn Pinpoint ${puzzleNumber}:`,
@@ -34,8 +59,8 @@ export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): stri
   ];
 
   const candidates = titlePrefixes
-    .map((prefix) => `${prefix}${fitPinpointClues(clues, TITLE_MAX_LENGTH - prefix.length)}`)
-    .filter((title) => title.length <= TITLE_MAX_LENGTH);
+    .map((prefix) => `${prefix}${fitPinpointClues(clues, TITLE_ABSOLUTE_MAX - prefix.length)}`)
+    .filter((title) => title.length <= TITLE_ABSOLUTE_MAX);
 
   const bestInRange = candidates
     .filter((title) => title.length >= TITLE_MIN_LENGTH)
@@ -48,11 +73,53 @@ export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): stri
   return candidates.sort((left, right) => right.length - left.length)[0] ?? `LinkedIn Pinpoint ${puzzleNumber}`;
 }
 
+function padDescriptionToContract(description: string): string {
+  if (description.length >= DESCRIPTION_MIN_LENGTH) {
+    return description;
+  }
+
+  const candidates = DESCRIPTION_EXTENSIONS
+    .map((extension) => `${description}${extension}`)
+    .filter((candidate) => candidate.length <= DESCRIPTION_MAX_LENGTH);
+  const inRange = candidates
+    .filter((candidate) => candidate.length >= DESCRIPTION_MIN_LENGTH)
+    .sort((left, right) => right.length - left.length)[0];
+
+  return inRange ?? candidates.sort((left, right) => right.length - left.length)[0] ?? description;
+}
+
+function pickDescriptionCandidate(candidates: string[], fallback: string): string {
+  const uniqueCandidates = Array.from(new Set([...candidates, fallback].map((candidate) => candidate.trim())))
+    .filter(Boolean)
+    .filter((candidate) => candidate.length <= DESCRIPTION_MAX_LENGTH);
+  const bestInRange = uniqueCandidates
+    .filter((candidate) => candidate.length >= DESCRIPTION_MIN_LENGTH)
+    .sort((left, right) => right.length - left.length)[0];
+
+  if (bestInRange) {
+    return bestInRange;
+  }
+
+  const paddedCandidates = uniqueCandidates.map(padDescriptionToContract);
+  const bestPaddedInRange = paddedCandidates
+    .filter((candidate) => candidate.length >= DESCRIPTION_MIN_LENGTH && candidate.length <= DESCRIPTION_MAX_LENGTH)
+    .sort((left, right) => right.length - left.length)[0];
+
+  if (bestPaddedInRange) {
+    return bestPaddedInRange;
+  }
+
+  return uniqueCandidates.sort((left, right) => right.length - left.length)[0] ?? fallback;
+}
+
 export function buildPuzzleSeoDescription(
   puzzleNumber: number,
   clues: string[],
   answer?: string,
 ): string {
+  const answerCandidates: string[] = [];
+  const candidates: string[] = [];
+
   // When the answer is known, build a description that reveals it at the end.
   // Searchers querying "pinpoint NNN answer" get the answer in the snippet,
   // which increases click-through rate significantly.
@@ -62,9 +129,8 @@ export function buildPuzzleSeoDescription(
     const maxClueLength = DESCRIPTION_MAX_LENGTH - prefix.length - suffix.length;
     if (maxClueLength > 0) {
       const clueText = fitPinpointClues(clues, maxClueLength, true);
-      const candidate = `${prefix}${clueText}${suffix}`;
-      if (candidate.length <= DESCRIPTION_MAX_LENGTH) {
-        return candidate;
+      if (clueText) {
+        answerCandidates.push(`${prefix}${clueText}${suffix}`);
       }
     }
   }
@@ -92,27 +158,36 @@ export function buildPuzzleSeoDescription(
     },
   ];
 
-  const candidates = descriptionTemplates
-    .map(({ prefix, suffix }) => {
+  candidates.push(
+    ...descriptionTemplates.map(({ prefix, suffix }) => {
       const clueText = fitPinpointClues(
         clues,
         DESCRIPTION_MAX_LENGTH - prefix.length - suffix.length - 2,
         true,
       );
       return `${prefix}${clueText}. ${suffix}`;
-    })
-    .filter((description) => description.length <= DESCRIPTION_MAX_LENGTH);
+    }),
+  );
 
-  const bestInRange = candidates
-    .filter((description) => description.length >= DESCRIPTION_MIN_LENGTH)
-    .sort((left, right) => right.length - left.length)[0];
+  if (answer) {
+    const answerDescription = pickDescriptionCandidate(
+      answerCandidates,
+      `LinkedIn Pinpoint ${puzzleNumber} answer guide with spoiler-safe hints, clue logic, a full walkthrough, and the verified solution for the current puzzle. Answer: ${answer}.`,
+    );
 
-  if (bestInRange) {
-    return bestInRange;
+    if (
+      answerDescription.includes(`Answer: ${answer}.`) &&
+      answerDescription.length >= DESCRIPTION_MIN_LENGTH &&
+      answerDescription.length <= DESCRIPTION_MAX_LENGTH
+    ) {
+      return answerDescription;
+    }
   }
 
-  return candidates.sort((left, right) => right.length - left.length)[0]
-    ?? `Explore LinkedIn Pinpoint ${puzzleNumber} with clue hints and a full walkthrough.`;
+  return pickDescriptionCandidate(
+    candidates,
+    `LinkedIn Pinpoint ${puzzleNumber} answer guide with spoiler-safe hints, clue logic, a full walkthrough, and the verified solution for the current puzzle, updated daily.`,
+  );
 }
 
 function buildSocialImage(imagePath: string, alt: string) {
