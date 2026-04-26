@@ -1,0 +1,221 @@
+{
+  "puzzleNumber": 723,
+  "slug": "pinpoint-answer-723",
+  "publishDate": "2026-04-23",
+  "isoDate": "2026-04-23",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Ribs in the human body",
+    "Blackbirds in a pie (from rhyme)",
+    "Karats in pure gold",
+    "Letters in the Greek alphabet",
+    "Hours in a day"
+  ],
+  "answer": "Things that come in 24 parts or units",
+  "category": "Things that come in 24 parts or units",
+  "wordHints": {
+    "Ribs in the human body": "\"Ribs in the human body\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Blackbirds in a pie (from rhyme)": "\"Blackbirds in a pie (from rhyme)\" is the clue that makes the shared answer concrete enough to test across the full board.",
+    "Karats in pure gold": "\"Karats in pure gold\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "Letters in the Greek alphabet": "\"Letters in the Greek alphabet\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Hours in a day": "\"Hours in a day\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+  },
+  "spoilerHints": {
+    "Ribs in the human body": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Blackbirds in a pie (from rhyme)": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Karats in pure gold": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Letters in the Greek alphabet": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Hours in a day": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Ribs in the human body and Blackbirds in a pie (from rhyme) pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Ribs in the human body, Blackbirds in a pie (from rhyme) can point toward several nearby themes before one clue makes the exact category level visible. Blackbirds in a pie (from rhyme) is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Ribs in the human body\" and \"Blackbirds in a pie (from rhyme)\" stopped feeling loose and started landing cleanly.",
+    "Karats in pure gold, Letters in the Greek alphabet, Hours in a day keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that come in 24 parts or units\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that come in 24 parts or units, which is why \"Things that come in 24 parts or units\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Ribs in the human body and Blackbirds in a pie (from rhyme) pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Ribs in the human body, Blackbirds in a pie (from rhyme) can point toward several nearby themes before one clue makes the exact category level visible. Blackbirds in a pie (from rhyme) is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Ribs in the human body\" and \"Blackbirds in a pie (from rhyme)\" stopped feeling loose and started landing cleanly.",
+    "Karats in pure gold, Letters in the Greek alphabet, Hours in a day keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that come in 24 parts or units\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that come in 24 parts or units, which is why \"Things that come in 24 parts or units\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I did not have a clean answer from the first clue. I initially drifted toward a broader umbrella topic, but that line of thinking never explained \"Blackbirds in a pie (from rhyme)\" cleanly enough.",
+    "The turn came when I let \"Blackbirds in a pie (from rhyme)\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.",
+    "The answer was \"Things that come in 24 parts or units\"."
+  ],
+  "lessons": [
+    {
+      "title": "Wait for the clue that makes the set concrete",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "Prefer exact fits over vague overlap",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once the answer sharpens",
+      "body": "Once \"Blackbirds in a pie (from rhyme)\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "Ribs in the human body",
+        "examplePhrase": "Ribs in the human body",
+        "connectionExplained": "\"Ribs in the human body\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Blackbirds in a pie (from rhyme)",
+        "examplePhrase": "Blackbirds in a pie (from rhyme)",
+        "connectionExplained": "\"Blackbirds in a pie (from rhyme)\" is the clue that makes the shared answer concrete enough to test across the full board."
+      },
+      {
+        "clue": "Karats in pure gold",
+        "examplePhrase": "Karats in pure gold",
+        "connectionExplained": "\"Karats in pure gold\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+      },
+      {
+        "clue": "Letters in the Greek alphabet",
+        "examplePhrase": "Letters in the Greek alphabet",
+        "connectionExplained": "\"Letters in the Greek alphabet\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Hours in a day",
+        "examplePhrase": "Hours in a day",
+        "connectionExplained": "\"Hours in a day\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #723?",
+      "answer": "The answer is \"Things that come in 24 parts or units\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #723?",
+      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #723?",
+      "answer": "\"Blackbirds in a pie (from rhyme)\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Ribs in the human body and Blackbirds in a pie (from rhyme) pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Ribs in the human body, Blackbirds in a pie (from rhyme) can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Blackbirds in a pie (from rhyme)",
+    "pivot": "I did not have a clean answer from the first clue. I initially drifted toward a broader umbrella topic, but that line of thinking never explained \"Blackbirds in a pie (from rhyme)\" cleanly enough.\n\nThe turn came when I let \"Blackbirds in a pie (from rhyme)\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.\n\nThe answer was \"Things that come in 24 parts or units\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on things, examples like \"Ribs in the human body\" and \"Blackbirds in a pie (from rhyme)\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "Blackbirds in a pie (from rhyme)",
+    "whyDecisive": "Blackbirds in a pie (from rhyme) is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Blackbirds in a pie (from rhyme) lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Ribs in the human body",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Ribs in the human body",
+      "nonObviousWhy": "\"Ribs in the human body\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Ribs in the human body"
+    },
+    {
+      "clue": "Blackbirds in a pie (from rhyme)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Blackbirds in a pie (from rhyme)",
+      "nonObviousWhy": "\"Blackbirds in a pie (from rhyme)\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "Blackbirds in a pie (from rhyme)"
+    },
+    {
+      "clue": "Karats in pure gold",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Karats in pure gold",
+      "nonObviousWhy": "\"Karats in pure gold\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+      "searchableContext": "Karats in pure gold"
+    },
+    {
+      "clue": "Letters in the Greek alphabet",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Letters in the Greek alphabet",
+      "nonObviousWhy": "\"Letters in the Greek alphabet\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Letters in the Greek alphabet"
+    },
+    {
+      "clue": "Hours in a day",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Hours in a day",
+      "nonObviousWhy": "\"Hours in a day\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Hours in a day"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #723?",
+      "answer": "The answer is \"Things that come in 24 parts or units\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #723?",
+      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #723?",
+      "answer": "\"Blackbirds in a pie (from rhyme)\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "Blackbirds in a pie (from rhyme)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Ribs in the human body",
+      "Blackbirds in a pie (from rhyme)",
+      "Karats in pure gold",
+      "Letters in the Greek alphabet",
+      "Hours in a day"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Ribs in the human body",
+      "Blackbirds in a pie (from rhyme)",
+      "Karats in pure gold",
+      "Letters in the Greek alphabet"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Ribs in the human body, Blackbirds in a pie (from rhyme) can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Blackbirds in a pie (from rhyme) is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Karats in pure gold, Letters in the Greek alphabet, Hours in a day keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things that come in 24 parts or units"
+}

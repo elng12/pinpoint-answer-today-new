@@ -1,0 +1,216 @@
+{
+  "puzzleNumber": 722,
+  "slug": "pinpoint-answer-722",
+  "publishDate": "2026-04-22",
+  "isoDate": "2026-04-22",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
+  "questionType": "category",
+  "difficultyBand": "medium",
+  "clues": [
+    "Tube",
+    "Dress",
+    "Crew",
+    "Ankle",
+    "Knee-high"
+  ],
+  "answer": "Types of socks",
+  "category": "Types of socks",
+  "wordHints": {
+    "Tube": "Tube sock fits once the board is read through a category board focused on socks, especially after crew.",
+    "Dress": "Dress sock fits once the board is read through a category board focused on socks, especially after crew.",
+    "Crew": "Crew sock fits once the board is read through a category board focused on socks, especially after crew.",
+    "Ankle": "Ankle sock fits once the board is read through a category board focused on socks, especially after crew.",
+    "Knee-high": "Knee-high sock fits once the board is read through a category board focused on socks, especially after crew."
+  },
+  "spoilerHints": {
+    "Tube": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Dress": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Crew": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Ankle": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Knee-high": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "This compact explainer keeps the fastest reliable path through Pinpoint #722. Tube, Dress, Crew can point in a few directions at first, but Crew is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on socks. A later clue is what finally made the answer feel concrete.",
+    "Once Crew clicks, From there, reading them as socks explains the board much more cleanly. Entries like Tube, Dress, and Crew stop feeling disconnected and start looking like they belong together. Once crew is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues seem to point in different directions at first, making it hard to see the common thread.",
+    "The answer is Types of socks. Use the clue table for Ankle, Knee-high and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
+  ],
+  "fullAnalysis": [
+    "This compact explainer keeps the fastest reliable path through Pinpoint #722. Tube, Dress, Crew can point in a few directions at first, but Crew is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on socks. A later clue is what finally made the answer feel concrete.",
+    "Once Crew clicks, From there, reading them as socks explains the board much more cleanly. Entries like Tube, Dress, and Crew stop feeling disconnected and start looking like they belong together. Once crew is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues seem to point in different directions at first, making it hard to see the common thread.",
+    "The answer is Types of socks. Use the clue table for Ankle, Knee-high and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
+  ],
+  "solutionNarrative": [
+    "This compact explainer keeps the fastest reliable path through Pinpoint #722. Tube, Dress, Crew can point in a few directions at first, but Crew is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category. a category board focused on socks. A later clue is what finally made the answer feel concrete.",
+    "Once Crew clicks, From there, reading them as socks explains the board much more cleanly. Entries like Tube, Dress, and Crew stop feeling disconnected and start looking like they belong together. Once crew is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues seem to point in different directions at first, making it hard to see the common thread."
+  ],
+  "lessons": [
+    {
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Crew is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When clues seem unrelated, look for a simple category that unites them."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on socks",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Tube",
+        "examplePhrase": "Tube sock",
+        "connectionExplained": "Tube sock fits once the board is read through a category board focused on socks, especially after crew."
+      },
+      {
+        "clue": "Dress",
+        "examplePhrase": "Dress sock",
+        "connectionExplained": "Dress sock fits once the board is read through a category board focused on socks, especially after crew."
+      },
+      {
+        "clue": "Crew",
+        "examplePhrase": "Crew sock",
+        "connectionExplained": "Crew sock fits once the board is read through a category board focused on socks, especially after crew."
+      },
+      {
+        "clue": "Ankle",
+        "examplePhrase": "Ankle sock",
+        "connectionExplained": "Ankle sock fits once the board is read through a category board focused on socks, especially after crew."
+      },
+      {
+        "clue": "Knee-high",
+        "examplePhrase": "Knee-high sock",
+        "connectionExplained": "Knee-high sock fits once the board is read through a category board focused on socks, especially after crew."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #722?",
+      "answer": "The answer is \"Types of socks\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #722?",
+      "answer": "The connection is that all 5 clues point to recognizable types of socks. Crew is the clue that makes the category specific enough to verify across the full board."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #722?",
+      "answer": "Crew is the turning clue because \"Crew sock\" makes the shared category frame explicit. It also makes Tube read cleanly as \"Tube sock\". The clues seem to point in different directions at first, making it hard to see the common thread."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Tube, Dress, and Crew do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"clothing styles\" can feel plausible before one clue makes the answer feel concrete. Crew is the clue that finally breaks that first read and makes socks feel concrete.",
+    "falseStarts": [
+      "clothing styles"
+    ],
+    "whyFalseStartPlausible": [
+      "While 'Dress' initially suggested clothing, 'Ankle' felt completely out of place. It was too specific."
+    ],
+    "breakingClue": "Crew",
+    "pivot": "The solve turned when I stopped treating crew as just another clue and asked what kind of sock each clue could describe. Once I made that shift, I was no longer thinking about clothing styles; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing socks.",
+    "fullBoardConfirmation": "From there, reading them as socks explains the board much more cleanly. Entries like Tube, Dress, and Crew stop feeling disconnected and start looking like they belong together. Once crew is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues seem to point in different directions at first, making it hard to see the common thread."
+  },
+  "turningPoint": {
+    "clue": "Crew",
+    "whyDecisive": "A later clue is what finally made the answer feel concrete.",
+    "whatChangedAfterIt": "Once Crew landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Tube",
+      "surfaceMisread": "clothing styles",
+      "resolvedPhraseOrMember": "Tube sock",
+      "nonObviousWhy": "Tube sock fits once the board is read through a category board focused on socks, especially after crew.",
+      "searchableContext": "Tube sock"
+    },
+    {
+      "clue": "Dress",
+      "surfaceMisread": "clothing styles",
+      "resolvedPhraseOrMember": "Dress sock",
+      "nonObviousWhy": "Dress sock fits once the board is read through a category board focused on socks, especially after crew.",
+      "searchableContext": "Dress sock"
+    },
+    {
+      "clue": "Crew",
+      "surfaceMisread": "clothing styles",
+      "resolvedPhraseOrMember": "Crew sock",
+      "nonObviousWhy": "Crew sock fits once the board is read through a category board focused on socks, especially after crew.",
+      "searchableContext": "Crew sock"
+    },
+    {
+      "clue": "Ankle",
+      "surfaceMisread": "clothing styles",
+      "resolvedPhraseOrMember": "Ankle sock",
+      "nonObviousWhy": "Ankle sock fits once the board is read through a category board focused on socks, especially after crew.",
+      "searchableContext": "Ankle sock"
+    },
+    {
+      "clue": "Knee-high",
+      "surfaceMisread": "clothing styles",
+      "resolvedPhraseOrMember": "Knee-high sock",
+      "nonObviousWhy": "Knee-high sock fits once the board is read through a category board focused on socks, especially after crew.",
+      "searchableContext": "Knee-high sock"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #722?",
+      "answer": "The answer is \"Types of socks\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #722?",
+      "answer": "The connection is that all 5 clues point to recognizable types of socks. Crew is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Crew"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #722?",
+      "answer": "Crew is the turning clue because \"Crew sock\" makes the shared category frame explicit. It also makes Tube read cleanly as \"Tube sock\". The clues seem to point in different directions at first, making it hard to see the common thread.",
+      "tiedClue": "Crew"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on socks",
+    "relatedEntities": [
+      "Tube sock",
+      "Dress sock",
+      "Crew sock",
+      "Ankle sock",
+      "Knee-high sock"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on socks",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
+      "Tube sock",
+      "Dress sock"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "clothing styles",
+      "whyPlausible": "While 'Dress' initially suggested clothing, 'Ankle' felt completely out of place. It was too specific.",
+      "whyRejected": "Once Crew lands, the final answer explains the board more cleanly than clothing styles."
+    },
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "The early clues are broad enough to resemble a wider topic before one clue sharpens the exact type-level category.",
+      "whyRejected": "Once Crew lands, the answer stays at one precise type-level category instead of that wider bucket."
+    }
+  ],
+  "setValidationSummary": "Crew, Ankle, Knee-high all behave like specific members of Types of socks, so the board stays precise instead of drifting into a broader umbrella topic.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of socks"
+}

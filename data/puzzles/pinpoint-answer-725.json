@@ -1,0 +1,237 @@
+{
+  "puzzleNumber": 725,
+  "slug": "pinpoint-answer-725",
+  "publishDate": "2026-04-25",
+  "isoDate": "2026-04-25",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Classical",
+    "Bass",
+    "Double-neck",
+    "Electric",
+    "Air (no instrument needed)"
+  ],
+  "answer": "Types of guitars",
+  "category": "Types of guitars",
+  "wordHints": {
+    "Classical": "Classical guitars are a distinct type known for nylon strings and fingerpicking.",
+    "Bass": "Bass guitars provide the low-end rhythm in many genres.",
+    "Double-neck": "Double-neck guitars have two separate necks, often with different tunings or string counts.",
+    "Electric": "Electric guitars use pickups to convert string vibrations into electrical signals.",
+    "Air (no instrument needed)": "Air guitar is a type of imaginary guitar, completing the list of guitars."
+  },
+  "spoilerHints": {
+    "Classical": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Bass": "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Double-neck": "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+    "Electric": "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
+    "Air (no instrument needed)": "This is the clue that makes the category specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "This puzzle felt scattered at first. 'Classical' and 'bass' made me think of music styles.",
+    "But 'double-neck' threw me off. Was this about instrument parts?",
+    "I briefly considered musical instruments in general. 'Electric' fit that idea, but something felt missing.",
+    "Then I saw 'air (no instrument needed)'. What instrument involves *no* instrument?",
+    "That's when it clicked: air guitar!",
+    "The full answer is types of guitars.",
+    "Classical guitar, bass guitar, double-neck guitar, electric guitar, and air guitar.",
+    "The clues span real and imagined instruments.",
+    "Once I had the answer, the board suddenly made sense.",
+    "Each clue is a specific type of guitar.",
+    "The 'air' clue was the key to unlocking the entire set.",
+    "Without it, I would have been stuck on musical instruments or something equally vague.",
+    "Now I know to watch out for the curveball clue that redefines everything.",
+    "That kind of misdirection makes the solve more satisfying in the end."
+  ],
+  "fullAnalysis": [
+    "This puzzle felt scattered at first. 'Classical' and 'bass' made me think of music styles.",
+    "But 'double-neck' threw me off. Was this about instrument parts?",
+    "I briefly considered musical instruments in general. 'Electric' fit that idea, but something felt missing.",
+    "Then I saw 'air (no instrument needed)'. What instrument involves *no* instrument?",
+    "That's when it clicked: air guitar!",
+    "The full answer is types of guitars.",
+    "Classical guitar, bass guitar, double-neck guitar, electric guitar, and air guitar.",
+    "The clues span real and imagined instruments.",
+    "Once I had the answer, the board suddenly made sense.",
+    "Each clue is a specific type of guitar.",
+    "The 'air' clue was the key to unlocking the entire set.",
+    "Without it, I would have been stuck on musical instruments or something equally vague.",
+    "Now I know to watch out for the curveball clue that redefines everything.",
+    "That kind of misdirection makes the solve more satisfying in the end."
+  ],
+  "solutionNarrative": [
+    "Classical and Bass first pulled me toward musical instruments, so that was the first path I tested. It held together for a moment, but air (no instrument needed) never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating air (no instrument needed) as just another clue and asked what kind of guitar each clue could describe. Once I made that shift, I was no longer thinking about musical instruments; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing guitars."
+  ],
+  "lessons": [
+    {
+      "title": "Broad clues can create the wrong frame early",
+      "body": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "The narrowing clue matters more than the loudest clue",
+      "body": "Air (no instrument needed) is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Prefer precise category fit over broad topic logic",
+      "body": "When a set feels random, look for a category where most clues fit directly and the oddball clue still belongs."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on guitars",
+    "fastStrategy": "When the first clues are very open-ended, it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Classical",
+        "examplePhrase": "Classical guitar",
+        "connectionExplained": "Classical guitars are a distinct type known for nylon strings and fingerpicking."
+      },
+      {
+        "clue": "Bass",
+        "examplePhrase": "Bass guitar",
+        "connectionExplained": "Bass guitars provide the low-end rhythm in many genres."
+      },
+      {
+        "clue": "Double-neck",
+        "examplePhrase": "Double-neck guitar",
+        "connectionExplained": "Double-neck guitars have two separate necks, often with different tunings or string counts."
+      },
+      {
+        "clue": "Electric",
+        "examplePhrase": "Electric guitar",
+        "connectionExplained": "Electric guitars use pickups to convert string vibrations into electrical signals."
+      },
+      {
+        "clue": "Air (no instrument needed)",
+        "examplePhrase": "Air guitar",
+        "connectionExplained": "Air guitar is a type of imaginary guitar, completing the list of guitars."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #725?",
+      "answer": "The answer is \"Types of guitars\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "What is the connection in LinkedIn Pinpoint #725?",
+      "answer": "The connection is that all 5 clues point to recognizable types of guitars. Air (no instrument needed) is the clue that makes the category specific enough to verify across the full board."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #725?",
+      "answer": "Air (no instrument needed) is the turning clue because \"Air guitar\" makes the shared category frame explicit. It also makes Classical read cleanly as \"Classical guitar\". The mix of common and less common terms, plus the curveball 'air' clue, makes the category less obvious."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Classical, Bass, and Double-neck do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"instruments\" can feel plausible before one clue makes the answer feel concrete. Air (no instrument needed) is the clue that finally breaks that first read and makes guitars feel concrete.",
+    "falseStarts": [
+      "instruments",
+      "music genres"
+    ],
+    "whyFalseStartPlausible": [
+      "The 'air' clue doesn't fit as a musical instrument unless you're pretending.",
+      "instruments feels plausible early on, but it falls apart once air (no instrument needed) demands a more exact reading."
+    ],
+    "breakingClue": "Air (no instrument needed)",
+    "pivot": "The solve turned when I stopped treating air (no instrument needed) as just another clue and asked what kind of guitar each clue could describe. Once I made that shift, I was no longer thinking about musical instruments; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing guitars.",
+    "fullBoardConfirmation": "From there, reading them as guitars explains the board much more cleanly. Entries like Classical, Bass, and Double-neck stop feeling disconnected and start looking like they belong together. Once air (no instrument needed) is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of common and less common terms, plus the curveball 'air' clue, makes the category less obvious."
+  },
+  "turningPoint": {
+    "clue": "Air (no instrument needed)",
+    "whyDecisive": "The 'Air (no instrument needed)' clue made it click for me.",
+    "whatChangedAfterIt": "Once Air (no instrument needed) landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Classical",
+      "surfaceMisread": "musical instruments",
+      "resolvedPhraseOrMember": "Classical guitar",
+      "nonObviousWhy": "Classical guitars are a distinct type known for nylon strings and fingerpicking.",
+      "searchableContext": "Classical guitar"
+    },
+    {
+      "clue": "Bass",
+      "surfaceMisread": "musical instruments",
+      "resolvedPhraseOrMember": "Bass guitar",
+      "nonObviousWhy": "Bass guitars provide the low-end rhythm in many genres.",
+      "searchableContext": "Bass guitar"
+    },
+    {
+      "clue": "Double-neck",
+      "surfaceMisread": "musical instruments",
+      "resolvedPhraseOrMember": "Double-neck guitar",
+      "nonObviousWhy": "Double-neck guitars have two separate necks, often with different tunings or string counts.",
+      "searchableContext": "Double-neck guitar"
+    },
+    {
+      "clue": "Electric",
+      "surfaceMisread": "musical instruments",
+      "resolvedPhraseOrMember": "Electric guitar",
+      "nonObviousWhy": "Electric guitars use pickups to convert string vibrations into electrical signals.",
+      "searchableContext": "Electric guitar"
+    },
+    {
+      "clue": "Air (no instrument needed)",
+      "surfaceMisread": "musical instruments",
+      "resolvedPhraseOrMember": "Air guitar",
+      "nonObviousWhy": "Air guitar is a type of imaginary guitar, completing the list of guitars.",
+      "searchableContext": "Air guitar"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #725?",
+      "answer": "The answer is \"Types of guitars\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "What is the connection in LinkedIn Pinpoint #725?",
+      "answer": "The connection is that all 5 clues point to recognizable types of guitars. Air (no instrument needed) is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Air (no instrument needed)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Which clue really unlocks LinkedIn Pinpoint #725?",
+      "answer": "Air (no instrument needed) is the turning clue because \"Air guitar\" makes the shared category frame explicit. It also makes Classical read cleanly as \"Classical guitar\". The mix of common and less common terms, plus the curveball 'air' clue, makes the category less obvious.",
+      "tiedClue": "Air (no instrument needed)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on guitars",
+    "relatedEntities": [
+      "Classical guitar",
+      "Bass guitar",
+      "Double-neck guitar",
+      "Electric guitar",
+      "Air guitar"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on guitars",
+      "Broad clues can create the wrong frame early",
+      "The narrowing clue matters more than the loudest clue",
+      "Prefer precise category fit over broad topic logic",
+      "Classical guitar",
+      "Bass guitar"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "musical instruments",
+      "whyPlausible": "The 'air' clue doesn't fit as a musical instrument unless you're pretending.",
+      "whyRejected": "Once Air (no instrument needed) lands, the final answer explains the board more cleanly than musical instruments."
+    },
+    {
+      "label": "instruments",
+      "whyPlausible": "instruments feels plausible early on, but it falls apart once air (no instrument needed) demands a more exact reading.",
+      "whyRejected": "Once Air (no instrument needed) lands, the final answer explains the board more cleanly than instruments."
+    }
+  ],
+  "setValidationSummary": "Double-neck, Electric, Air (no instrument needed) all behave like specific members of Types of guitars, so the board stays precise instead of drifting into a broader umbrella topic.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of guitars"
+}
