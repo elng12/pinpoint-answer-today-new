@@ -3,6 +3,13 @@ import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract.shared.mjs";
 import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
+import {
+  CONTENT_CONTRACT,
+  promotePublishBlockingIssues,
+  validateContentContract,
+} from "../lib/puzzles/content-contract";
+import { buildPuzzleSeoDescription } from "../lib/seo/metadata";
+import { buildPinpointDescription, buildPinpointTitle } from "../lib/seo/pinpoint";
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
 const adjacentQuotePattern = /["“”]{2,}/;
@@ -26,6 +33,36 @@ const modernPuzzleDateBaseline = {
   isoDate: "2025-08-01",
 };
 const phase1StructuredBaselinePuzzleNumber = 704;
+const publishedContractBacklogLimits = new Map(
+  Object.entries({
+    "faqs.genericQuestion": 0,
+    "clueDetails.count": 192,
+    "seoTitle.missingClues": 173,
+    "seoDescription.missingClues": 161,
+    "answer.alternateRestatement": 87,
+    "faqs.firstAnswerMissingExactAnswer": 87,
+    "overview.tooShort": 85,
+    "lessons.genericTitle": 0,
+    "answer.overused": 49,
+    "solutionEmergence.tooShort": 41,
+    "summary.answerSpoiler": 38,
+    "sections.sharedPhrasing": 24,
+    "sections.overlap": 17,
+    "answer.semanticNarrowing": 14,
+    "spoilerHints.genericHint": 15,
+    "mainAnswer.suspiciousCategoryLabel": 5,
+    "summary.promotionalTone": 4,
+  }),
+);
+const publishedContractBacklogCounts = new Map();
+const publishedContractBacklogSamples = new Map();
+const publishedLessonTitleOccurrences = new Map();
+const genericSpoilerHintPatterns = [
+  /\bTreat this as one member of a narrower category\b/i,
+  /\bThis clue becomes useful once you stop reading it literally\b/i,
+  /\bLook for the cleaner category fit instead of the first broad topic\b/i,
+  /\bmakes the category specific enough to test instead of staying broad\b/i,
+];
 
 function countWords(value) {
   return value.trim().split(/\s+/).filter(Boolean).length;
@@ -68,6 +105,157 @@ function assertNoWrappedQuotedAnswer(label, value, answer) {
   }
 }
 
+function recordPublishedContractBacklog(code, sample) {
+  publishedContractBacklogCounts.set(code, (publishedContractBacklogCounts.get(code) || 0) + 1);
+  const samples = publishedContractBacklogSamples.get(code) || [];
+  if (sample && samples.length < 5) {
+    samples.push(sample);
+    publishedContractBacklogSamples.set(code, samples);
+  }
+}
+
+function assertPublishedContractBacklogLimits() {
+  for (const [code, count] of publishedContractBacklogCounts.entries()) {
+    const limit = publishedContractBacklogLimits.get(code);
+    if (limit == null) {
+      throw new Error(
+        `Published content contract found new blocking issue "${code}" (${count}). Samples: ${(publishedContractBacklogSamples.get(code) || []).join(" | ")}`,
+      );
+    }
+    if (count > limit) {
+      throw new Error(
+        `Published content contract issue "${code}" increased to ${count}; allowed current backlog is ${limit}. Samples: ${(publishedContractBacklogSamples.get(code) || []).join(" | ")}`,
+      );
+    }
+  }
+}
+
+function normalizeRepeatedLessonTitle(title) {
+  return String(title || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function getRenderedLessonTitle(lesson) {
+  if (!lesson) {
+    return "";
+  }
+  if (typeof lesson === "string") {
+    const dotIdx = lesson.indexOf(". ");
+    return dotIdx > 0 ? lesson.slice(0, dotIdx).trim() : "";
+  }
+  return String(lesson.title || "").trim();
+}
+
+function recordPublishedLessonTitle(entry, lesson, index) {
+  const title = getRenderedLessonTitle(lesson);
+  const normalizedTitle = normalizeRepeatedLessonTitle(title);
+  if (!normalizedTitle) {
+    return;
+  }
+  const locations = publishedLessonTitleOccurrences.get(normalizedTitle) || [];
+  locations.push(`${entry.slug} lessons[${index}].title: ${title}`);
+  publishedLessonTitleOccurrences.set(normalizedTitle, locations);
+}
+
+function assertNoRepeatedPublishedLessonTitles() {
+  const repeated = Array.from(publishedLessonTitleOccurrences.entries())
+    .filter(([, locations]) => locations.length > 1)
+    .sort((left, right) => right[1].length - left[1].length);
+
+  if (repeated.length === 0) {
+    return;
+  }
+
+  const samples = repeated
+    .slice(0, 5)
+    .map(([, locations]) => locations.slice(0, 3).join(" | "))
+    .join(" || ");
+  throw new Error(`Published lesson titles must be page-specific; repeated titles found. Samples: ${samples}`);
+}
+
+function normalizeLessonsForContract(lessons) {
+  return (lessons || []).map((lesson) => {
+    if (typeof lesson === "string") {
+      return { title: "", body: lesson };
+    }
+    return {
+      title: typeof lesson?.title === "string" ? lesson.title : "",
+      body: typeof lesson?.body === "string" ? lesson.body : "",
+    };
+  });
+}
+
+function toContractClueDetails(detail) {
+  return Array.isArray(detail.clueRows)
+    ? detail.clueRows.map((row) => ({
+        clue: row?.clue,
+        phrase: row?.resolvedPhraseOrMember,
+        explanation: row?.nonObviousWhy,
+      }))
+    : [];
+}
+
+function toContractFaqs(detail) {
+  const source = Array.isArray(detail.faqItems) && detail.faqItems.length > 0
+    ? detail.faqItems
+    : detail.faqs;
+  return (source || []).map((faq) => ({
+    question: faq?.question,
+    answer: faq?.answer,
+  }));
+}
+
+function validatePageSeoDescription(entry) {
+  const pageSeoDescription = buildPuzzleSeoDescription(entry.puzzleNumber, entry.clues, entry.mainAnswer);
+  const len = pageSeoDescription.length;
+  if (len < CONTENT_CONTRACT.metaDescriptionMinChars || len > CONTENT_CONTRACT.metaDescriptionMaxChars) {
+    throw new Error(
+      `${entry.slug} generated page SEO description length is ${len}; expected ${CONTENT_CONTRACT.metaDescriptionMinChars}-${CONTENT_CONTRACT.metaDescriptionMaxChars}.`,
+    );
+  }
+}
+
+function validatePublishedContentContract(entry, detail, bodyParagraphs) {
+  validatePageSeoDescription(entry);
+  const solutionNarrative = Array.isArray(detail.solutionNarrative) ? detail.solutionNarrative : [];
+  const contractInput = {
+    puzzleNumber: entry.puzzleNumber,
+    bodyMode: detail.bodyMode,
+    locale: "en",
+    rawWords: entry.clues,
+    mainAnswer: entry.mainAnswer,
+    summary: entry.shortSummary,
+    seoTitle: buildPinpointTitle(entry.puzzleNumber, entry.clues),
+    seoDescription: buildPinpointDescription(entry.puzzleNumber, entry.clues),
+    overview: bodyParagraphs[0] || entry.shortSummary,
+    solutionEmergence: solutionNarrative.join(" ") || bodyParagraphs.slice(1, 3).join(" "),
+    articleBlocks: bodyParagraphs,
+    wrongGuesses: detail.wrongGuessCandidates,
+    clueDetails: toContractClueDetails(detail),
+    lessons: normalizeLessonsForContract(detail.lessons),
+    faqs: toContractFaqs(detail),
+    llmTemplateVersion: detail.llmTemplateVersion,
+  };
+  const issues = promotePublishBlockingIssues(validateContentContract(contractInput))
+    .filter((issue) => issue.level === "error");
+  const newBlockingIssues = [];
+
+  issues.forEach((issue) => {
+    const sample = `${entry.slug}${issue.field ? ` ${issue.field}` : ""}: ${issue.message}`;
+    if (publishedContractBacklogLimits.has(issue.code)) {
+      recordPublishedContractBacklog(issue.code, sample);
+    } else {
+      newBlockingIssues.push(`${issue.code}${issue.field ? ` (${issue.field})` : ""}: ${issue.message}`);
+    }
+  });
+
+  if (newBlockingIssues.length > 0) {
+    throw new Error(`${entry.slug} published content contract failed: ${newBlockingIssues.join(", ")}`);
+  }
+}
+
 function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
   if (!Number.isInteger(puzzleNumber) || puzzleNumber < modernPuzzleDateBaseline.puzzleNumber) {
     return "";
@@ -99,6 +287,19 @@ function requiresPhase1StructuredValidation(entry, detail) {
 
 function validateDetailContent(entry, detail) {
   const detailAnswer = typeof detail.answer === "string" ? detail.answer : "";
+  const articleBlocks = Array.isArray(detail.articleBlocks) ? detail.articleBlocks : [];
+  const fullAnalysis = Array.isArray(detail.fullAnalysis) ? detail.fullAnalysis : [];
+  if (
+    articleBlocks.length > 0 &&
+    fullAnalysis.length > 0 &&
+    articleBlocks.length === fullAnalysis.length &&
+    articleBlocks.every((paragraph, index) => paragraph === fullAnalysis[index])
+  ) {
+    throw new Error(`${entry.slug} articleBlocks and fullAnalysis are identical; remove the legacy duplicate fullAnalysis.`);
+  }
+
+  const bodyParagraphs = articleBlocks.length > 0 ? articleBlocks : fullAnalysis;
+  const bodyLabel = articleBlocks.length > 0 ? "articleBlocks" : "fullAnalysis";
   const hintKeys = Object.keys(detail.wordHints);
   const missingHintKeys = entry.clues.filter((clue) => !hintKeys.includes(clue));
   const extraHintKeys = hintKeys.filter((key) => !entry.clues.includes(key));
@@ -121,23 +322,23 @@ function validateDetailContent(entry, detail) {
     );
   }
 
-  const fullAnalysisWordCount = countWords(detail.fullAnalysis.join(" "));
+  const bodyWordCount = countWords(bodyParagraphs.join(" "));
   const minRequiredFullAnalysisWords =
     detail.bodyMode === "short" ? minShortModeFullAnalysisWords : minFullAnalysisWords;
-  if (fullAnalysisWordCount < minRequiredFullAnalysisWords) {
+  if (bodyWordCount < minRequiredFullAnalysisWords) {
     throw new Error(
-      `${entry.slug} fullAnalysis is too thin (${fullAnalysisWordCount} words; expected at least ${minRequiredFullAnalysisWords}).`,
+      `${entry.slug} ${bodyLabel} is too thin (${bodyWordCount} words; expected at least ${minRequiredFullAnalysisWords}).`,
     );
   }
 
-  detail.fullAnalysis.forEach((paragraph, index) => {
+  fullAnalysis.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} fullAnalysis[${index}]`, paragraph);
     assertNoLegacyTemplate(`${entry.slug} fullAnalysis[${index}]`, paragraph);
     assertNoAdjacentQuotes(`${entry.slug} fullAnalysis[${index}]`, paragraph);
     assertNoWrappedQuotedAnswer(`${entry.slug} fullAnalysis[${index}]`, paragraph, detailAnswer);
   });
 
-  detail.articleBlocks?.forEach((paragraph, index) => {
+  articleBlocks.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} articleBlocks[${index}]`, paragraph);
     assertNoLegacyTemplate(`${entry.slug} articleBlocks[${index}]`, paragraph);
     assertNoAdjacentQuotes(`${entry.slug} articleBlocks[${index}]`, paragraph);
@@ -159,9 +360,16 @@ function validateDetailContent(entry, detail) {
   Object.entries(detail.spoilerHints || {}).forEach(([clue, hint]) => {
     assertNoHtml(`${entry.slug} spoilerHints.${clue}`, hint);
     assertNoLegacyTemplate(`${entry.slug} spoilerHints.${clue}`, hint);
+    if (genericSpoilerHintPatterns.some((pattern) => pattern.test(hint))) {
+      recordPublishedContractBacklog(
+        "spoilerHints.genericHint",
+        `${entry.slug} spoilerHints.${clue}: spoiler hint is still generic`,
+      );
+    }
   });
 
   detail.lessons.forEach((lesson, index) => {
+    recordPublishedLessonTitle(entry, lesson, index);
     if (typeof lesson === "string") {
       assertNoHtml(`${entry.slug} lessons[${index}]`, lesson);
       assertNoLegacyTemplate(`${entry.slug} lessons[${index}]`, lesson);
@@ -215,6 +423,8 @@ function validateDetailContent(entry, detail) {
         .join(", ")}`,
     );
   }
+
+  validatePublishedContentContract(entry, detail, bodyParagraphs);
 
   if (!requiresPhase1StructuredValidation(entry, detail)) {
     return;
@@ -315,6 +525,9 @@ async function main() {
   if (previewCount > 1) {
     throw new Error(`Expected at most one preview puzzle, received ${previewCount}`);
   }
+
+  assertPublishedContractBacklogLimits();
+  assertNoRepeatedPublishedLessonTitles();
 
   console.log(`Validated ${registry.length} registry records successfully.`);
 }
