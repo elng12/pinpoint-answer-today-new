@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 726,
+    "slug": "pinpoint-answer-726",
+    "publishDate": "2026-04-26",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Well",
+      "Pad",
+      "Stain",
+      "Jet",
+      "Blot"
+    ],
+    "mainAnswer": "Words that come after “ink”",
+    "category": "Words that come after “ink”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #726: Well, Pad, Stain, Jet, Blot.",
+    "updatedAt": "2026-04-26T07:01:38.270Z"
+  },
+  {
     "puzzleNumber": 725,
     "slug": "pinpoint-answer-725",
     "publishDate": "2026-04-25",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Classical",
@@ -16,7 +35,7 @@
     "category": "Types of guitars",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Classical, Bass, Double-neck do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-25T07:01:59.776Z"
+    "updatedAt": "2026-04-26T07:01:38.270Z"
   },
   {
     "puzzleNumber": 724,
