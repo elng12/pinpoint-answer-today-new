@@ -19,12 +19,8 @@ import {
   buildPuzzleSeoTitle,
 } from "@/lib/seo/metadata";
 
-// Pre-render only the most recent 50 slugs at build time.
-// Older pages and new puzzles are rendered on first request (ISR fallback).
 export function generateStaticParams() {
-  return getAllDetailSlugs()
-    .slice(0, 50)
-    .map((slug) => ({ slug }));
+  return getAllDetailSlugs().map((slug) => ({ slug }));
 }
 
 export const revalidate = 86400;

@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
+import { generateStaticParams as generateDetailStaticParams } from "../app/(detail)/linkedin-pinpoint-answers/[slug]/page";
 import nextConfig from "../next.config";
 import { middleware } from "../middleware";
 import { NextRequest } from "next/server";
 import { GET as getTrafficAdviceRoute } from "../app/.well-known/traffic-advice/route";
+import { getAllDetailSlugs } from "../lib/puzzles/data";
 import {
   getLegacyConnectorRedirectSlug,
   getLegacyThemeOrConnectorRedirectSlug,
@@ -212,6 +214,24 @@ async function checkLegacyFamilyRedirectLookup() {
   console.log("ok: legacy family lookups handle apostrophe slugs and theme-to-connector fallback");
 }
 
+function checkDetailStaticParamsCoverAllPublicSlugs() {
+  const expectedSlugs = getAllDetailSlugs();
+  const staticParams = generateDetailStaticParams();
+  const actualSlugs = staticParams.map((param) => param.slug);
+
+  assert.ok(
+    expectedSlugs.length > 50,
+    "detail static params guardrail should cover the full archive, not only a recent subset",
+  );
+  assert.deepEqual(
+    actualSlugs,
+    expectedSlugs,
+    "detail generateStaticParams() should pre-render every public detail slug",
+  );
+
+  console.log("ok: detail static params cover every public detail slug");
+}
+
 async function checkTrafficAdviceRoute() {
   const response = await getTrafficAdviceRoute();
 
@@ -236,6 +256,7 @@ async function main() {
   await checkHeaderConfig();
   checkMiddlewareCanonicalization();
   await checkLegacyFamilyRedirectLookup();
+  checkDetailStaticParamsCoverAllPublicSlugs();
   await checkTrafficAdviceRoute();
   console.log("Pinpoint routing regression passed.");
 }
