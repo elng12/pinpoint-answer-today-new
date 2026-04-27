@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 727,
+  "slug": "pinpoint-answer-727",
+  "publishDate": "2026-04-27",
+  "isoDate": "2026-04-27",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Tomorrowland",
+    "Lollapalooza",
+    "Woodstock",
+    "Rock in Rio",
+    "Coachella"
+  ],
+  "answer": "Music festivals",
+  "category": "Music festivals",
+  "wordHints": {
+    "Tomorrowland": "Tomorrowland connects to \"Music festivals\"",
+    "Lollapalooza": "Lollapalooza connects to \"Music festivals\"",
+    "Woodstock": "Woodstock connects to \"Music festivals\"",
+    "Rock in Rio": "Rock in Rio connects to \"Music festivals\"",
+    "Coachella": "Coachella connects to \"Music festivals\""
+  },
+  "spoilerHints": {
+    "Tomorrowland": "Treat this as one member of a narrower category, not as a broad standalone topic.",
+    "Lollapalooza": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
+    "Woodstock": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    "Rock in Rio": "This is the clue that makes the category specific enough to test instead of staying broad.",
+    "Coachella": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+  },
+  "articleBlocks": [
+    "At first, Tomorrowland and Lollapalooza pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Tomorrowland, Lollapalooza can point toward several nearby themes before one clue makes the exact category level visible. Tomorrowland is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on music, examples like \"Tomorrowland\" and \"Lollapalooza\" stopped feeling loose and started landing cleanly.",
+    "Woodstock, Rock in Rio, Coachella keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Music festivals\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Music festivals, which is why \"Music festivals\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "At first, Tomorrowland and Lollapalooza pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Tomorrowland, Lollapalooza can point toward several nearby themes before one clue makes the exact category level visible. Tomorrowland is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on music, examples like \"Tomorrowland\" and \"Lollapalooza\" stopped feeling loose and started landing cleanly.",
+    "Woodstock, Rock in Rio, Coachella keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Music festivals\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Music festivals, which is why \"Music festivals\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #727, Tomorrowland, Lollapalooza, Woodstock, Rock in Rio, Coachella only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on music",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Tomorrowland",
+        "examplePhrase": "Tomorrowland",
+        "connectionExplained": "Tomorrowland connects to \"Music festivals\""
+      },
+      {
+        "clue": "Lollapalooza",
+        "examplePhrase": "Lollapalooza",
+        "connectionExplained": "Lollapalooza connects to \"Music festivals\""
+      },
+      {
+        "clue": "Woodstock",
+        "examplePhrase": "Woodstock",
+        "connectionExplained": "Woodstock connects to \"Music festivals\""
+      },
+      {
+        "clue": "Rock in Rio",
+        "examplePhrase": "Rock in Rio",
+        "connectionExplained": "Rock in Rio connects to \"Music festivals\""
+      },
+      {
+        "clue": "Coachella",
+        "examplePhrase": "Coachella",
+        "connectionExplained": "Coachella connects to \"Music festivals\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #727?",
+      "answer": "The answer is \"Music festivals\". The clues Tomorrowland, Lollapalooza, Woodstock, Rock in Rio, Coachella all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #727 just unlocked, and this is the fastest verified update. The board clues are Tomorrowland, Lollapalooza, Woodstock, Rock in Rio, Coachella, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Tomorrowland, Lollapalooza can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Tomorrowland",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #727, Tomorrowland, Lollapalooza, Woodstock, Rock in Rio, Coachella only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Tomorrowland lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Tomorrowland",
+    "whyDecisive": "Tomorrowland is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Tomorrowland lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Tomorrowland",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Tomorrowland",
+      "nonObviousWhy": "Tomorrowland supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Tomorrowland"
+    },
+    {
+      "clue": "Lollapalooza",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Lollapalooza",
+      "nonObviousWhy": "Lollapalooza supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Lollapalooza"
+    },
+    {
+      "clue": "Woodstock",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Woodstock",
+      "nonObviousWhy": "Woodstock supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Woodstock"
+    },
+    {
+      "clue": "Rock in Rio",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Rock in Rio",
+      "nonObviousWhy": "Rock in Rio supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rock in Rio"
+    },
+    {
+      "clue": "Coachella",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Coachella",
+      "nonObviousWhy": "Coachella supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Coachella"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #727?",
+      "answer": "The answer is \"Music festivals\". The clues Tomorrowland, Lollapalooza, Woodstock, Rock in Rio, Coachella all share this connection.",
+      "tiedClue": "Tomorrowland"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on music",
+    "relatedEntities": [
+      "Tomorrowland",
+      "Lollapalooza",
+      "Woodstock",
+      "Rock in Rio",
+      "Coachella"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on music",
+      "Tomorrowland",
+      "Lollapalooza",
+      "Woodstock",
+      "Rock in Rio"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Tomorrowland, Lollapalooza can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Tomorrowland is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Woodstock, Rock in Rio, Coachella keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Music festivals"
+}

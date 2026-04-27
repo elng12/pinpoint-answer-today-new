@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 727,
+    "slug": "pinpoint-answer-727",
+    "publishDate": "2026-04-27",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Tomorrowland",
+      "Lollapalooza",
+      "Woodstock",
+      "Rock in Rio",
+      "Coachella"
+    ],
+    "mainAnswer": "Music festivals",
+    "category": "Music festivals",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #727: Tomorrowland, Lollapalooza, Woodstock, Rock in Rio, Coachella.",
+    "updatedAt": "2026-04-27T07:01:32.229Z"
+  },
+  {
     "puzzleNumber": 726,
     "slug": "pinpoint-answer-726",
     "publishDate": "2026-04-26",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Well",
@@ -16,7 +35,7 @@
     "category": "Words that come after “ink”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Well, Pad, Stain do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-26T07:01:53.073Z"
+    "updatedAt": "2026-04-27T07:01:32.229Z"
   },
   {
     "puzzleNumber": 725,
