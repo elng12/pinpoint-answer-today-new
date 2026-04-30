@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 730,
+    "slug": "pinpoint-answer-730",
+    "publishDate": "2026-04-30",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Bread",
+      "Rice",
+      "Chocolate",
+      "Plum (or Christmas)",
+      "The proof is in the"
+    ],
+    "mainAnswer": "Words that come before \"pudding\"",
+    "category": "Words that come before \"pudding\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #730: Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the.",
+    "updatedAt": "2026-04-30T07:01:38.911Z"
+  },
+  {
     "puzzleNumber": 729,
     "slug": "pinpoint-answer-729",
     "publishDate": "2026-04-29",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Olympus",
@@ -16,7 +35,7 @@
     "category": "Camera makers (past and present)",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Olympus, Fuji, Canon do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-04-29T07:02:10.908Z"
+    "updatedAt": "2026-04-30T07:01:38.911Z"
   },
   {
     "puzzleNumber": 728,

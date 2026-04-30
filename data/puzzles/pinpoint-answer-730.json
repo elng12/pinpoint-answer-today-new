@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 730,
+  "slug": "pinpoint-answer-730",
+  "publishDate": "2026-04-30",
+  "isoDate": "2026-04-30",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Bread",
+    "Rice",
+    "Chocolate",
+    "Plum (or Christmas)",
+    "The proof is in the"
+  ],
+  "answer": "Words that come before \"pudding\"",
+  "category": "Words that come before \"pudding\"",
+  "wordHints": {
+    "Bread": "Bread connects to \"Words that come before \"pudding\"\"",
+    "Rice": "Rice connects to \"Words that come before \"pudding\"\"",
+    "Chocolate": "Chocolate connects to \"Words that come before \"pudding\"\"",
+    "Plum (or Christmas)": "Plum (or Christmas) connects to \"Words that come before \"pudding\"\"",
+    "The proof is in the": "The proof is in the connects to \"Words that come before \"pudding\"\""
+  },
+  "spoilerHints": {
+    "Bread": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Rice": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Chocolate": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Plum (or Christmas)": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "The proof is in the": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Bread, Rice do not immediately advertise one shared phrase slot before Bread shows where the repeated word belongs. Bread behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Bread locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Bread pudding\" and \"Rice pudding\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Chocolate, Plum (or Christmas), The proof is in the show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before \"pudding\"\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before \"pudding\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Bread, Rice do not immediately advertise one shared phrase slot before Bread shows where the repeated word belongs. Bread behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Bread locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Bread pudding\" and \"Rice pudding\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Chocolate, Plum (or Christmas), The proof is in the show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before \"pudding\"\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before \"pudding\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #730, Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Bread",
+        "examplePhrase": "Bread pudding",
+        "connectionExplained": "Bread connects to \"Words that come before \"pudding\"\""
+      },
+      {
+        "clue": "Rice",
+        "examplePhrase": "Rice pudding",
+        "connectionExplained": "Rice connects to \"Words that come before \"pudding\"\""
+      },
+      {
+        "clue": "Chocolate",
+        "examplePhrase": "Chocolate pudding",
+        "connectionExplained": "Chocolate connects to \"Words that come before \"pudding\"\""
+      },
+      {
+        "clue": "Plum (or Christmas)",
+        "examplePhrase": "Plum (or Christmas) pudding",
+        "connectionExplained": "Plum (or Christmas) connects to \"Words that come before \"pudding\"\""
+      },
+      {
+        "clue": "The proof is in the",
+        "examplePhrase": "The proof is in the pudding",
+        "connectionExplained": "The proof is in the connects to \"Words that come before \"pudding\"\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #730?",
+      "answer": "The answer is \"Words that come before \"pudding\"\". The clues Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #730 just unlocked, and this is the fastest verified update. The board clues are Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Bread, Rice do not immediately advertise one shared phrase slot before Bread shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Bread",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #730, Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Bread lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Bread",
+    "whyDecisive": "Bread is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Bread lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Bread",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Bread",
+      "nonObviousWhy": "Bread supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Bread"
+    },
+    {
+      "clue": "Rice",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Rice",
+      "nonObviousWhy": "Rice supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rice"
+    },
+    {
+      "clue": "Chocolate",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Chocolate",
+      "nonObviousWhy": "Chocolate supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Chocolate"
+    },
+    {
+      "clue": "Plum (or Christmas)",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Plum (or Christmas)",
+      "nonObviousWhy": "Plum (or Christmas) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Plum (or Christmas)"
+    },
+    {
+      "clue": "The proof is in the",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "The proof is in the",
+      "nonObviousWhy": "The proof is in the supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "The proof is in the"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #730?",
+      "answer": "The answer is \"Words that come before \"pudding\"\". The clues Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the all share this connection.",
+      "tiedClue": "Bread"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Bread",
+      "Rice",
+      "Chocolate",
+      "Plum (or Christmas)",
+      "The proof is in the"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Bread",
+      "Rice",
+      "Chocolate",
+      "Plum (or Christmas)"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Bread, Rice do not immediately advertise one shared phrase slot before Bread shows where the repeated word belongs.",
+      "whyRejected": "Bread behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Bread locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Chocolate, Plum (or Christmas), The proof is in the show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
