@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 731,
+    "slug": "pinpoint-answer-731",
+    "publishDate": "2026-05-01",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Day",
+      "Pole",
+      "Fly",
+      "Flower",
+      "I help you?"
+    ],
+    "mainAnswer": "Words that come after \"May\"",
+    "category": "Words that come after \"May\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #731: Day, Pole, Fly, Flower, I help you?.",
+    "updatedAt": "2026-05-01T07:01:33.336Z"
+  },
+  {
     "puzzleNumber": 730,
     "slug": "pinpoint-answer-730",
     "publishDate": "2026-04-30",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Bread",
@@ -16,7 +35,7 @@
     "category": "Words that come before “pudding”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Bread, Rice, Chocolate, Plum (or Christmas), The proof is in the - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-04-30T07:02:50.684Z"
+    "updatedAt": "2026-05-01T07:01:33.336Z"
   },
   {
     "puzzleNumber": 729,

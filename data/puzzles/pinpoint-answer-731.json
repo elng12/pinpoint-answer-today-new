@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 731,
+  "slug": "pinpoint-answer-731",
+  "publishDate": "2026-05-01",
+  "isoDate": "2026-05-01",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Day",
+    "Pole",
+    "Fly",
+    "Flower",
+    "I help you?"
+  ],
+  "answer": "Words that come after \"May\"",
+  "category": "Words that come after \"May\"",
+  "wordHints": {
+    "Day": "Day connects to \"Words that come after \"May\"\"",
+    "Pole": "Pole connects to \"Words that come after \"May\"\"",
+    "Fly": "Fly connects to \"Words that come after \"May\"\"",
+    "Flower": "Flower connects to \"Words that come after \"May\"\"",
+    "I help you?": "I help you? connects to \"Words that come after \"May\"\""
+  },
+  "spoilerHints": {
+    "Day": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "Pole": "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Fly": "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+    "Flower": "Try reading this as part of a familiar phrase instead of as a standalone word.",
+    "I help you?": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Day, Pole do not immediately advertise one shared phrase slot before Day shows where the repeated word belongs. Day behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Day locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"May Day\" and \"May Pole\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "Fly, Flower, I help you? show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after \"May\"\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after \"May\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "fullAnalysis": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Day, Pole do not immediately advertise one shared phrase slot before Day shows where the repeated word belongs. Day behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Day locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"May Day\" and \"May Pole\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "Fly, Flower, I help you? show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after \"May\"\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after \"May\"\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #731, Day, Pole, Fly, Flower, I help you? only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Day",
+        "examplePhrase": "May Day",
+        "connectionExplained": "Day connects to \"Words that come after \"May\"\""
+      },
+      {
+        "clue": "Pole",
+        "examplePhrase": "May Pole",
+        "connectionExplained": "Pole connects to \"Words that come after \"May\"\""
+      },
+      {
+        "clue": "Fly",
+        "examplePhrase": "May Fly",
+        "connectionExplained": "Fly connects to \"Words that come after \"May\"\""
+      },
+      {
+        "clue": "Flower",
+        "examplePhrase": "May Flower",
+        "connectionExplained": "Flower connects to \"Words that come after \"May\"\""
+      },
+      {
+        "clue": "I help you?",
+        "examplePhrase": "I help you May",
+        "connectionExplained": "I help you? connects to \"Words that come after \"May\"\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #731?",
+      "answer": "The answer is \"Words that come after \"May\"\". The clues Day, Pole, Fly, Flower, I help you? all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #731 just unlocked, and this is the fastest verified update. The board clues are Day, Pole, Fly, Flower, I help you?, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Day, Pole do not immediately advertise one shared phrase slot before Day shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Day",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #731, Day, Pole, Fly, Flower, I help you? only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Day lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Day",
+    "whyDecisive": "Day is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Day lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Day",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Day",
+      "nonObviousWhy": "Day supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Day"
+    },
+    {
+      "clue": "Pole",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Pole",
+      "nonObviousWhy": "Pole supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Pole"
+    },
+    {
+      "clue": "Fly",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Fly",
+      "nonObviousWhy": "Fly supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Fly"
+    },
+    {
+      "clue": "Flower",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Flower",
+      "nonObviousWhy": "Flower supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Flower"
+    },
+    {
+      "clue": "I help you?",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "I help you?",
+      "nonObviousWhy": "I help you? supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "I help you?"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #731?",
+      "answer": "The answer is \"Words that come after \"May\"\". The clues Day, Pole, Fly, Flower, I help you? all share this connection.",
+      "tiedClue": "Day"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "Day",
+      "Pole",
+      "Fly",
+      "Flower",
+      "I help you?"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "Day",
+      "Pole",
+      "Fly",
+      "Flower"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Day, Pole do not immediately advertise one shared phrase slot before Day shows where the repeated word belongs.",
+      "whyRejected": "Day behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Day locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Fly, Flower, I help you? show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}
