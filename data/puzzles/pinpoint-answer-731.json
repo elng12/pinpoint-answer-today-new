@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-731",
   "publishDate": "2026-05-01",
   "isoDate": "2026-05-01",
-  "detailState": "validated",
-  "bodyMode": "standard",
-  "pageExperienceMode": "full-analysis",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
   "questionType": "phrase",
   "difficultyBand": "medium",
   "clues": [
@@ -32,38 +32,21 @@
     "I help you?": "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector."
   },
   "articleBlocks": [
-    "I stared at this puzzle for a while, feeling like the clues were totally random.",
-    "My first thought was that it might be something related to spring, since 'Flower' was there.",
-    "But 'Pole' and 'I help you?' didn't fit that theory at all.",
-    "I considered that it might be months, but that didn't work either.",
-    "Then I focused on 'I help you?' and the phrase 'May I help you?'.",
-    "popped into my head.",
-    "That was the turning point.",
-    "Suddenly, I realized each clue could be a word that follows 'May'.",
-    "The answer is **words that come after May**.",
-    "'Day' becomes 'May Day', 'Pole' becomes 'May Pole', 'Fly' becomes 'Mayfly', and 'Flower' becomes 'Mayflower'.",
-    "Everything clicked into place.",
-    "What seemed like a random assortment of words turned out to be a clever collection of common phrases.",
-    "Now, the solution feels obvious."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #731. Day, Pole, Fly can point in a few directions at first, but I help you? is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Day\" and \"Pole\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing. familiar phrases and everyday terms built with one shared opening word. The 'I help you?' clue made me think of 'I help you May I?' which unlocked the pattern.",
+    "Once I help you? clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like May day, May pole, and Mayfly stop feeling loose and start sounding exact. Once i help you? makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem unrelated at first, making it hard to see the common thread without a specific insight.",
+    "The answer is Words that come after \"May\". Use the clue table for Flower, I help you? and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "fullAnalysis": [
-    "I stared at this puzzle for a while, feeling like the clues were totally random.",
-    "My first thought was that it might be something related to spring, since 'Flower' was there.",
-    "But 'Pole' and 'I help you?' didn't fit that theory at all.",
-    "I considered that it might be months, but that didn't work either.",
-    "Then I focused on 'I help you?' and the phrase 'May I help you?'.",
-    "popped into my head.",
-    "That was the turning point.",
-    "Suddenly, I realized each clue could be a word that follows 'May'.",
-    "The answer is **words that come after May**.",
-    "'Day' becomes 'May Day', 'Pole' becomes 'May Pole', 'Fly' becomes 'Mayfly', and 'Flower' becomes 'Mayflower'.",
-    "Everything clicked into place.",
-    "What seemed like a random assortment of words turned out to be a clever collection of common phrases.",
-    "Now, the solution feels obvious."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #731. Day, Pole, Fly can point in a few directions at first, but I help you? is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Day\" and \"Pole\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing. familiar phrases and everyday terms built with one shared opening word. The 'I help you?' clue made me think of 'I help you May I?' which unlocked the pattern.",
+    "Once I help you? clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like May day, May pole, and Mayfly stop feeling loose and start sounding exact. Once i help you? makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem unrelated at first, making it hard to see the common thread without a specific insight.",
+    "The answer is Words that come after \"May\". Use the clue table for Flower, I help you? and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "Day and Pole first pulled me toward Months, so that was the first path I tested. It held together for a moment, but i help you? never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I let i help you? lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like May day and May pole started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #731. Day, Pole, Fly can point in a few directions at first, but I help you? is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Day\" and \"Pole\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing. familiar phrases and everyday terms built with one shared opening word. The 'I help you?' clue made me think of 'I help you May I?' which unlocked the pattern.",
+    "Once I help you? clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like May day, May pole, and Mayfly stop feeling loose and start sounding exact. Once i help you? makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem unrelated at first, making it hard to see the common thread without a specific insight."
   ],
   "lessons": [
     {
@@ -122,10 +105,6 @@
     {
       "question": "Why is \"I help you?\" the key clue in LinkedIn Pinpoint #731?",
       "answer": "I help you? is the turning clue because \"May i help you?\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as May day and May pole. The clues seem unrelated at first, making it hard to see the common thread without a specific insight."
-    },
-    {
-      "question": "Why does \"Day\" also work in LinkedIn Pinpoint #731?",
-      "answer": "\"Day\" fits because \"May day\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"I help you?\" opened."
     }
   ],
   "solvePath": {
