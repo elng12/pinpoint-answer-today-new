@@ -688,7 +688,11 @@ export function sanitizePublishedAnswerLabel(raw: unknown): string {
   if (!text) return "";
 
   if (/^Words that come (before|after)\b/i.test(text)) {
-    return text;
+    return text.replace(
+      /^Words that come (before|after)\s+["“]?(.+?)["”]?$/i,
+      (_match, direction: string, token: string) =>
+        `Words that come ${direction.toLowerCase()} “${stripStraightAndCurlyQuotes(token).trim()}”`,
+    );
   }
 
   const typedCategory = text.match(/^(Types|Kinds)\s+of\s+(.+)$/i);
@@ -950,48 +954,48 @@ function buildWorkerSpoilerHint(clue: string, answer: string, index: number, tur
 
   if (pattern.kind === "before" || pattern.kind === "after") {
     if (isTurningPoint) {
-      return "This is the clue that makes the phrase pattern concrete enough to test without giving away the final connector.";
+      return `${clue} is the clue that makes the phrase pattern in ${answer.toLowerCase()} concrete enough to test.`;
     }
     const hints = [
-      "Try reading this as part of a familiar phrase instead of as a standalone word.",
-      "This clue works better once you test a fixed phrase pattern rather than a broad topic.",
-      "Look for a natural expression that absorbs this clue cleanly before locking the board.",
+      `Try reading ${clue} as part of a familiar phrase in ${answer.toLowerCase()} instead of as a standalone word.`,
+      `${clue} works better once you test a fixed phrase pattern rather than a broad topic.`,
+      `Look for a natural expression that absorbs ${clue} cleanly before locking the board.`,
     ];
     return hints[index % hints.length] || hints[0];
   }
 
   if (pattern.kind === "typed-category") {
     if (isTurningPoint) {
-      return "This is the clue that makes the category specific enough to verify across the whole board.";
+      return `${clue} is the clue that makes ${answer.toLowerCase()} specific enough to verify across the whole board.`;
     }
     const hints = [
-      "Treat this as one recognizable member of a narrower set, not as a broad topic on its own.",
-      "This clue helps more once you ask what kind of thing it is rather than where you have seen it before.",
-      "Try reading this as a specific type inside one shelf instead of as a loose general reference.",
+      `Treat ${clue} as one recognizable member of ${answer.toLowerCase()}, not as a broad topic on its own.`,
+      `${clue} helps more once you ask what kind of thing it is rather than where you have seen it before.`,
+      `Try reading ${clue} as a specific type inside ${answer.toLowerCase()} instead of as a loose general reference.`,
     ];
     return hints[index % hints.length] || hints[0];
   }
 
   if (pattern.kind === "association") {
     if (isTurningPoint) {
-      return "This is the clue that turns a loose board into one specific setting or theme.";
+      return `${clue} is the clue that turns a loose board into ${answer.toLowerCase()}.`;
     }
     const hints = [
-      "Think about one shared setting or theme that can absorb this clue naturally.",
-      "This clue points to the same world as the others once the frame gets specific enough.",
-      "Treat this as one part of a bigger picture rather than as an isolated reference.",
+      `Think about one shared setting or theme in ${answer.toLowerCase()} that can absorb ${clue} naturally.`,
+      `${clue} points to the same world as the others once the frame gets specific enough toward ${answer.toLowerCase()}.`,
+      `Treat ${clue} as one part of ${answer.toLowerCase()} rather than as an isolated reference.`,
     ];
     return hints[index % hints.length] || hints[0];
   }
 
   if (isTurningPoint) {
-    return "This is the clue that makes the category specific enough to test instead of staying broad.";
+    return `${clue} is the clue that makes ${answer.toLowerCase()} concrete enough to test across the full board.`;
   }
 
   const hints = [
-    "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
+    `${clue} should be tested as part of ${answer.toLowerCase()}, not as a standalone reference.`,
+    `Keep ${clue} in mind, then see whether ${turningPoint} supports the same answer.`,
+    `${clue} works best after the board narrows toward ${answer.toLowerCase()}.`,
   ];
   return hints[index % hints.length] || hints[0];
 }
