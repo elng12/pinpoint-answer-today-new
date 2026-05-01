@@ -25,25 +25,13 @@
     "Check engine light": "Check engine light fits once the board is read through a shared category board with one concrete theme, especially after speedometer."
   },
   "spoilerHints": {
-    "Radio": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Vent": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Speedometer": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Airbag": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Check engine light": "This is the clue that makes the category specific enough to test instead of staying broad."
+    "Radio": "Think about where this control sits in a car, not the device by itself.",
+    "Vent": "Pair this with nearby controls and gauges inside the front cabin.",
+    "Speedometer": "This narrows the location to the driver-facing dashboard area.",
+    "Airbag": "Use the car-interior context; this points to the dash area rather than a loose safety category.",
+    "Check engine light": "This indicator confirms the dashboard read because it appears in the instrument cluster."
   },
   "articleBlocks": [
-    "At first, this looked more like vehicle controls than the real category.",
-    "Radio pushed me in that direction immediately.",
-    "Vent kept that theory alive for a moment, but speedometer still did not quite fit.",
-    "That was the moment the first idea stopped working.",
-    "Then Speedometer made me stop thinking about vehicle controls and start thinking about the real category.",
-    "Radio fit once I read it through the answer.",
-    "Vent fit once I read it through the answer.",
-    "The answer was Parts of a car dashboard.",
-    "Airbag and Check engine light then felt less surprising and more like the last pieces falling into place.",
-    "Looking back, the answer feels obvious in the best way."
-  ],
-  "fullAnalysis": [
     "At first, this looked more like vehicle controls than the real category.",
     "Radio pushed me in that direction immediately.",
     "Vent kept that theory alive for a moment, but speedometer still did not quite fit.",
@@ -69,8 +57,8 @@
       "body": "speedometer is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Every clue should fit a shared category board with one concrete theme cleanly once the answer sharpens",
-      "body": "When solving, consider not just the general category, but also the specific location or context."
+      "title": "Check dashboard location before broad car-part guesses",
+      "body": "Radio, vents, gauges, warning lights, and airbags only line up once the dashboard location is part of the answer."
     }
   ],
   "display": {
@@ -217,7 +205,7 @@
       "a shared category board with one concrete theme",
       "\"Radio\" and \"Vent\" can look like they belong to different categories at first",
       "\"Speedometer\" anchors a shared category board with one concrete theme",
-      "Every clue should fit a shared category board with one concrete theme cleanly once the answer sharpens",
+      "Check dashboard location before broad car-part guesses",
       "Radio",
       "Vent"
     ]

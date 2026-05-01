@@ -25,25 +25,13 @@
     "Coachella": "Coachella fits once the board is read through a shared category board with one concrete theme, especially after woodstock."
   },
   "spoilerHints": {
-    "Tomorrowland": "Treat this as one member of a narrower category, not as a broad standalone topic.",
-    "Lollapalooza": "This clue becomes useful once you stop reading it literally and start testing one tighter set.",
-    "Woodstock": "Look for the cleaner category fit instead of the first broad topic that comes to mind.",
-    "Rock in Rio": "This is the clue that makes the category specific enough to test instead of staying broad.",
-    "Coachella": "This clue becomes useful once you stop reading it literally and start testing one tighter set."
+    "Tomorrowland": "Think of the event name rather than a fictional place; it belongs in a lineup of large live-music gatherings.",
+    "Lollapalooza": "This points toward festival culture, but wait for another famous event before narrowing the category.",
+    "Woodstock": "This clue turns the board toward historic music festivals instead of generic cultural events.",
+    "Rock in Rio": "Read this as a major festival name, not just a music genre plus a city.",
+    "Coachella": "This modern event confirms the set is music festivals, not concerts or venues broadly."
   },
   "articleBlocks": [
-    "At first, this looked more like cultural events than the real category.",
-    "Tomorrowland pushed me in that direction immediately.",
-    "Lollapalooza kept that theory alive for a moment, but woodstock still did not quite fit.",
-    "That was the moment the first idea stopped working.",
-    "Then Woodstock made me stop thinking about cultural events and start thinking about the real category.",
-    "Tomorrowland fit once I read it through the answer.",
-    "Lollapalooza fit once I read it through the answer.",
-    "The answer was Music festivals.",
-    "Rock in Rio and Coachella then felt less surprising and more like the last pieces falling into place.",
-    "Looking back, the answer feels obvious in the best way."
-  ],
-  "fullAnalysis": [
     "At first, this looked more like cultural events than the real category.",
     "Tomorrowland pushed me in that direction immediately.",
     "Lollapalooza kept that theory alive for a moment, but woodstock still did not quite fit.",
@@ -69,8 +57,8 @@
       "body": "woodstock is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Every clue should fit a shared category board with one concrete theme cleanly once the answer sharpens",
-      "body": "Look for the core activity or purpose that all clues share."
+      "title": "Use festival names from different eras as one set",
+      "body": "Tomorrowland, Woodstock, Rock in Rio, and Coachella are easier to group once you treat them as named music festivals rather than loose cultural references."
     }
   ],
   "display": {
@@ -217,7 +205,7 @@
       "a shared category board with one concrete theme",
       "\"Tomorrowland\" and \"Lollapalooza\" can look like they belong to different categories at first",
       "\"Woodstock\" anchors a shared category board with one concrete theme",
-      "Every clue should fit a shared category board with one concrete theme cleanly once the answer sharpens",
+      "Use festival names from different eras as one set",
       "Tomorrowland",
       "Lollapalooza"
     ]
