@@ -6,7 +6,7 @@
 
 - 归档页补了独立 `ItemList` 结构化数据
 - 归档页带搜索参数时，canonical 和 hreflang 不丢
-- 详情页只在有 FAQ 数据时才输出 `FAQPage`
+- 详情页结构化数据与当前 Google 富结果口径一致，不再输出 `FAQPage` / `HowTo`
 
 对应提交：
 
@@ -75,30 +75,27 @@ console.log({ canonical, hreflangEn, hreflangDefault });
 
 ---
 
-## C. 验证详情页 FAQ Schema
+## C. 验证详情页结构化数据类型
 
 打开任意一个详情页，在控制台执行：
 
 ```js
 const scripts = [...document.querySelectorAll('script[type="application/ld+json"]')];
 const parsed = scripts.map((s) => JSON.parse(s.textContent || "{}"));
-const faqPage = parsed.find((p) => p["@type"] === "FAQPage");
+const topLevelTypes = parsed.map((p) => p["@type"]);
 
 console.log({
-  hasFaqPage: !!faqPage,
-  faqCount: faqPage?.mainEntity?.length ?? 0,
+  topLevelTypes,
+  hasFaqPage: topLevelTypes.includes("FAQPage"),
+  hasHowTo: topLevelTypes.includes("HowTo"),
 });
 ```
 
 预期结果：
 
-- 当前正常详情页一般应存在 `FAQPage`
-- `faqCount` 应大于 `0`
-
-如果后续出现一个没有 FAQ 的详情页，再补做一次反向验证：
-
+- 当前详情页应输出 `Article`、`Game`、`ItemList`、`BreadcrumbList`
 - 页面里不应输出 `FAQPage`
-- 不应出现 `mainEntity: []`
+- 页面里不应输出 `HowTo`
 
 ---
 
@@ -112,8 +109,8 @@ console.log({
 预期结果：
 
 - 归档页能识别到 `ItemList`
-- 详情页的 `Article`、`BreadcrumbList`、`HowTo` 正常
-- 有 FAQ 的详情页不应出现 FAQ 空数组警告
+- 详情页的 `Article`、`Game`、`ItemList`、`BreadcrumbList` 正常
+- 详情页不应出现 `FAQPage` / `HowTo` 相关警告
 
 ---
 
@@ -124,7 +121,7 @@ console.log({
 1. `/puzzles` 页面里能读到独立 `ItemList`
 2. `ItemList` 里的条目数和归档总量一致
 3. `/puzzles?q=test` 的 canonical 不带查询参数，且 hreflang 还在
-4. 正常详情页的 FAQ Schema 非空
+4. 正常详情页不输出 `FAQPage` / `HowTo`
 5. Rich Results Test 没有新增错误
 
 ---
@@ -162,8 +159,7 @@ console.log({
 - 详情页 `/linkedin-pinpoint-answers/pinpoint-answer-687/`
 - `Article` Schema 存在
 - `datePublished = 2026-03-18T00:00:00Z`
-- `FAQPage` Schema 存在
-- `faqCount = 3`
+- `FAQPage` Schema 曾在本轮历史验收中存在；当前 2026-05-01 口径已下线
 - canonical 为带尾斜杠的正式详情页 URL
 
 当前结论：
@@ -171,6 +167,12 @@ console.log({
 - A、B、C 三项线上源码验收通过
 - 本轮代码修复已经在线上生效，没有发现回归
 - D 项中的 Google Rich Results Test 还需要人工到 Google 工具页面补一次最终复查
+
+2026-05-01 补充口径：
+
+- `FAQPage` rich results 当前主要限于权威政府/健康站点，本项目不再输出 `FAQPage`
+- `HowTo` rich results 已被 Google 下线，本项目不再输出 `HowTo`
+- 详情页当前保留 `Article`、`Game`、`ItemList`、`BreadcrumbList`
 
 ---
 

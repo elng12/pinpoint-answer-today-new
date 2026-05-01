@@ -125,7 +125,7 @@
 ### SEO 目标
 
 - 新详情页的索引口径统一，不再出现短版和正式页并行
-- 页面可见内容与 `Article`、`FAQPage` 等结构化数据真实对齐
+- 页面可见内容与 `Article`、`Game`、`ItemList`、`BreadcrumbList` 等当前保留的结构化数据真实对齐
 - 每篇至少提供 2 到 3 个 clue-specific 的长尾搜索价值点
 
 ### 工程目标
@@ -151,7 +151,7 @@
 
 - `P0，必须一起上线`：关闭公开 live fallback、明确发布状态机、把 `short mode` 首发判为失败、统一 summary/sitemap/detail 的正式口径
 - `P1，可在 P0 稳定后上线`：引入 schema v2 字段、建立新旧字段兼容渲染、把 fallback 收敛为 `fallback_full`
-- `P2，可独立上线`：正文前移、交互后移、`HowTo` 口径收紧、相关题模块替换 recent list
+- `P2，可独立上线`：正文前移、交互后移、`HowTo` 下线口径确认、相关题模块替换 recent list
 - `P3，持续收紧`：重复度 guardrail、clue-specific FAQ 规则、相关题供数优化、质量阈值调参
 
 评审和排期时默认遵循以下规则：
@@ -369,8 +369,8 @@
 - 首屏必须先回答“答案是什么、为什么成立、关键转折是什么”
 - reveal 卡、share、check-in 不能压过正文首屏
 - clue table 是正文证据区，不是正文替代品
-- `HowTo` 只在页面存在清晰步骤区时输出
-- `FAQPage` 只输出可见 FAQ
+- 不输出 `HowTo`
+- 不输出 `FAQPage`；FAQ 继续作为页面可见内容保留
 
 ### 7.5 SEO 与 URL 规则
 
@@ -480,7 +480,7 @@
 - 新题首发时，公开详情页 `short mode` 命中率必须为 `0%`
 - `registry.json / detail JSON / summary / sitemap` 这四个口径的同轮一致率必须 `>= 99%`
 - `publishing_placeholder` 不得进入 sitemap，未来 slug 在未发布前必须返回 `404`
-- `FAQPage` 仅在页面存在可见 FAQ 时输出，命中率必须 `100%`
+- `FAQPage` / `HowTo` 不得进入详情页 JSON-LD
 - `revalidate` 只能刷新正式内容，不得触发公开短版抢跑
 - `publishing_placeholder` 默认返回 `503 + Retry-After`，且发布后缓存清理必须成功
 
@@ -497,7 +497,7 @@
 - 7 天收录率相较 Phase 0 冻结基线提升 `>= 15%`
 - clue-specific 查询覆盖相较基线提升 `>= 20%`
 - detail-to-detail CTR 相较基线提升 `>= 10%`
-- FAQ rich result 仅在可见 FAQ 存在时出现，异常命中率为 `0`
+- `FAQPage` / `HowTo` 重新出现次数为 `0`
 - 最近 30 篇中 lesson 标题和 FAQ 问法的高重复样本占比降至 `<= 5%`
 
 ### 验收执行方式
@@ -642,7 +642,7 @@
 
 ### 开放问题
 
-- `HowTo` 是否直接下线，改为只保留 `Article + FAQPage + BreadcrumbList`
+- `HowTo` / `FAQPage` 已按 2026-05-01 当前 Google 口径下线，详情页保留 `Article + Game + ItemList + BreadcrumbList`
 - Phase 3 之后是否有必要为历史高流量页面批量回填 schema v2 字段
 - related clusters 的第二版是否引入 embedding 相似度或人工标签
 

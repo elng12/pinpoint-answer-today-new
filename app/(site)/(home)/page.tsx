@@ -12,13 +12,11 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import { getArchiveEntries, getCurrentPuzzle, getNextPreview, getRecentEntries } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 import { footerBadges } from "@/lib/site/badges";
-import { supportEmail } from "@/lib/site/config";
 import {
-  absoluteUrl,
   buildPageMetadata,
-  HOME_SEO_DESCRIPTION,
   HOME_SEO_TITLE,
 } from "@/lib/seo/metadata";
+import { buildHomeStructuredData } from "@/lib/seo/home-structured-data";
 
 export const revalidate = 86400;
 
@@ -41,44 +39,7 @@ export default async function HomePage() {
   ]);
 
   const previousEntry = allArchiveEntries.find((entry) => entry.number < current.number) ?? null;
-  const structuredDataItems = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Pinpoint Answer Today",
-      url: absoluteUrl(routes.home),
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl("/favicon/apple-touch-icon.png"),
-        width: 180,
-        height: 180,
-      },
-      description: HOME_SEO_DESCRIPTION,
-      email: supportEmail,
-      contactPoint: [
-        {
-          "@type": "ContactPoint",
-          contactType: "customer support",
-          email: supportEmail,
-          url: absoluteUrl(routes.contact),
-          availableLanguage: ["en"],
-        },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: "Pinpoint Answer Today",
-      url: absoluteUrl(routes.home),
-      description: HOME_SEO_DESCRIPTION,
-      inLanguage: "en-US",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: `${absoluteUrl(routes.archive)}?q={search_term_string}`,
-        "query-input": "required name=search_term_string",
-      },
-    },
-  ];
+  const structuredDataItems = buildHomeStructuredData();
 
   return (
     <main className="container" style={{ padding: "48px 0 72px" }}>

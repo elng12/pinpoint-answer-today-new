@@ -30,7 +30,7 @@ Usage:
 
 What it does:
   1. Ensure the repo is on main and clean
-  2. Run guardrails, typecheck, validate:data, and worker typecheck
+  2. Install worker dependencies, then run guardrails, typecheck, validate:data, and worker typecheck
   3. Push main to origin
   4. Wait for the Vercel deployment tied to HEAD
   5. Deploy the production Cloudflare Worker
@@ -356,6 +356,9 @@ async function main() {
   const localLiveEntry = await loadLiveRegistryEntry();
   const localLivePuzzle = await loadPublishedPuzzle(localLiveEntry.slug);
   assertReleaseEligibleDetail(localLiveEntry.slug, localLivePuzzle, "Local live detail JSON");
+
+  logStep("Installing worker dependencies");
+  await run("npm", ["ci"], { cwd: WORKER_DIR });
 
   logStep("Running local release checks");
   await run("npm", ["run", "test:pinpoint-guardrails"]);

@@ -1,13 +1,17 @@
 import assert from "node:assert/strict";
+import buildSitemap from "@/app/sitemap";
 import { generateMetadata as generateAboutMetadata } from "@/app/(site)/about-us/page";
 import { generateMetadata as generateContactMetadata } from "@/app/(site)/contact-us/page";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
+import { routes } from "@/lib/paths/routes";
 import { buildArchiveStructuredData } from "@/lib/seo/archive-structured-data";
+import { buildHomeStructuredData } from "@/lib/seo/home-structured-data";
 import {
   buildPuzzleSeoDescription,
   buildPuzzleSeoTitle,
 } from "@/lib/seo/metadata";
+import { buildPuzzleDetailStructuredData } from "@/lib/seo/puzzle-detail-structured-data";
 import {
   buildPinpointDescription,
   buildPinpointTitle,
@@ -18,6 +22,7 @@ const PAGE_DESCRIPTION_MIN_LENGTH = CONTENT_CONTRACT.metaDescriptionMinChars;
 const PAGE_DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
 const PAGE_DESCRIPTION_INDEX_MAX = CONTENT_CONTRACT.metaDescriptionIndexMaxChars;
 const ARCHIVE_SCHEMA_FIXTURE_COUNT = 60;
+const UNSUPPORTED_RICH_RESULT_TYPES = ["FAQPage", "HowTo"];
 
 function normalizeText(value: string): string {
   return value.replace(/\s+/g, " ").trim();
@@ -190,6 +195,49 @@ function getStructuredDataByType(items: Record<string, unknown>[], type: string)
   return item;
 }
 
+function getTopLevelSchemaTypes(items: Record<string, unknown>[]): string[] {
+  return items.map((item) => {
+    const schemaType = item["@type"];
+    if (typeof schemaType !== "string") {
+      assert.fail("structured data item should expose a string @type");
+    }
+    return schemaType;
+  });
+}
+
+function collectSchemaTypes(value: unknown, schemaTypes = new Set<string>()): Set<string> {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      collectSchemaTypes(item, schemaTypes);
+    }
+    return schemaTypes;
+  }
+
+  if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    const schemaType = record["@type"];
+    if (typeof schemaType === "string") {
+      schemaTypes.add(schemaType);
+    }
+    for (const nested of Object.values(record)) {
+      collectSchemaTypes(nested, schemaTypes);
+    }
+  }
+
+  return schemaTypes;
+}
+
+function assertUnsupportedRichResultSchemasAbsent(label: string, items: Record<string, unknown>[]) {
+  const schemaTypes = collectSchemaTypes(items);
+  for (const schemaType of UNSUPPORTED_RICH_RESULT_TYPES) {
+    assert.equal(
+      schemaTypes.has(schemaType),
+      false,
+      `${label} structured data should not include unsupported ${schemaType} markup`,
+    );
+  }
+}
+
 function checkArchiveStructuredDataUsesLightweightItemList() {
   const entries = Array.from({ length: ARCHIVE_SCHEMA_FIXTURE_COUNT }, (_, index) =>
     buildArchiveEntryFixture(725 - index),
@@ -240,6 +288,44 @@ function checkArchiveStructuredDataUsesLightweightItemList() {
   );
 }
 
+function checkPublicStructuredDataUsesSupportedSchemaTypes() {
+  const homeStructuredData = buildHomeStructuredData();
+  assert.deepEqual(
+    getTopLevelSchemaTypes(homeStructuredData),
+    ["Organization", "WebSite"],
+    "home structured data should stay limited to supported site-level schema",
+  );
+  assertUnsupportedRichResultSchemasAbsent("home", homeStructuredData);
+
+  const detailStructuredData = buildPuzzleDetailStructuredData({
+    puzzle: {
+      number: 812,
+      slug: "pinpoint-answer-812",
+      clues: [
+        "International Space Station",
+        "Constellation Map",
+        "Gravitational Lensing",
+        "Planetary Alignment",
+        "Astrophotography",
+      ],
+      answer: "Astronomy themes",
+      isoDate: "2026-04-20",
+      updatedAt: "2026-04-20T00:00:00.000Z",
+    },
+    recentPuzzles: [
+      { number: 812, slug: "pinpoint-answer-812" },
+      { number: 811, slug: "pinpoint-answer-811" },
+    ],
+  });
+
+  assert.deepEqual(
+    getTopLevelSchemaTypes(detailStructuredData),
+    ["Article", "Game", "ItemList", "BreadcrumbList"],
+    "detail structured data should stay limited to supported puzzle-page schema",
+  );
+  assertUnsupportedRichResultSchemasAbsent("detail", detailStructuredData);
+}
+
 function assertTrustPageMetadataIsIndexable(label: string, metadata: ReturnType<typeof generateContactMetadata>) {
   const robots = metadata.robots;
 
@@ -262,7 +348,28 @@ function checkTrustPageMetadataIsIndexable() {
   assertTrustPageMetadataIsIndexable("contact", generateContactMetadata());
 }
 
-function main() {
+async function checkSitemapExcludesNoindexLegalPages() {
+  const sitemap = await buildSitemap();
+  const sitemapPaths = new Set(sitemap.map((entry) => new URL(entry.url).pathname));
+
+  assert.equal(
+    sitemapPaths.has(routes.privacy),
+    false,
+    "sitemap should not include the noindex privacy page",
+  );
+  assert.equal(
+    sitemapPaths.has(routes.terms),
+    false,
+    "sitemap should not include the noindex terms page",
+  );
+  assert.equal(
+    sitemapPaths.has(routes.disclaimer),
+    true,
+    "sitemap should keep the indexable disclaimer page",
+  );
+}
+
+async function main() {
   checkDraftSeoBuildersKeepAllClues();
   console.log("ok: draft SEO builders preserve all clues");
 
@@ -278,10 +385,19 @@ function main() {
   checkArchiveStructuredDataUsesLightweightItemList();
   console.log("ok: archive structured data keeps lightweight full ItemList");
 
+  checkPublicStructuredDataUsesSupportedSchemaTypes();
+  console.log("ok: public structured data excludes unsupported rich-result schema");
+
   checkTrustPageMetadataIsIndexable();
   console.log("ok: trust page metadata stays indexable");
+
+  await checkSitemapExcludesNoindexLegalPages();
+  console.log("ok: sitemap excludes noindex legal pages");
 
   console.log("Pinpoint SEO builder guardrails passed.");
 }
 
-main();
+main().catch((error) => {
+  console.error(error instanceof Error ? error.message : String(error));
+  process.exitCode = 1;
+});

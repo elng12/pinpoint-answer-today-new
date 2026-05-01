@@ -129,9 +129,8 @@ Current structured data found:
 
 - `Organization`
 - `WebSite`
-- `FAQPage`
 
-The homepage FAQ is present in code and rendered content, so `FAQPage` is not obviously invalid for current page structure.
+Homepage `FAQPage` JSON-LD has been removed. Google currently limits FAQ rich results mainly to authoritative government/health sites, so homepage schema should stay limited to stable site-level types.
 
 ### 6.2 Archive `/puzzles`
 

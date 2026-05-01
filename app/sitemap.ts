@@ -18,9 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: routes.about, lastModified: getStaticRouteLastModified(routes.about), priority: 0.6 },
   ];
 
-  const legalRoutes = [
-    { path: routes.privacy, lastModified: getStaticRouteLastModified(routes.privacy) },
-    { path: routes.terms, lastModified: getStaticRouteLastModified(routes.terms) },
+  const indexableLegalRoutes = [
     { path: routes.disclaimer, lastModified: getStaticRouteLastModified(routes.disclaimer) },
   ];
 
@@ -31,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily" as const,
       priority,
     })),
-    ...legalRoutes.map(({ path, lastModified }) => ({
+    ...indexableLegalRoutes.map(({ path, lastModified }) => ({
       url: `${siteUrl}${path}`,
       lastModified,
       changeFrequency: "yearly" as const,

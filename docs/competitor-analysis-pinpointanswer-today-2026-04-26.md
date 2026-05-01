@@ -68,15 +68,15 @@ a quick rethink as the pattern becomes clearer with each reveal.
 | Schema 类型 | 竞争对手 | 我们 |
 |-------------|----------|------|
 | NewsArticle / Article | ✅ 微数据（非 JSON-LD） | ✅ JSON-LD |
-| FAQPage | ❌ 有 FAQ 内容但无 schema | ✅ JSON-LD |
+| FAQPage | ❌ 有 FAQ 内容但无 schema | 不再输出；Google 当前富结果口径不适合本站 |
 | BreadcrumbList | ❌ 缺失 | ✅ JSON-LD |
-| HowTo | ❌ 缺失 | ✅ JSON-LD |
+| HowTo | ❌ 缺失 | 不再输出；Google 已下线 HowTo 富结果 |
 | Game | ❌ 缺失 | ✅ JSON-LD |
 | ItemList | ❌ 缺失 | ✅ JSON-LD |
 | Organization | ❌ 缺失 | — |
 | WebSite | ❌ 缺失 | — |
 
-**关键差距：** 竞争对手仅使用 1 种微数据（NewsArticle），我们有 6 种 JSON-LD。这是我们的显著优势。
+**关键差距：** 竞争对手仅使用 1 种微数据（NewsArticle），我们保留更稳定的 JSON-LD 覆盖（Article、Game、ItemList、BreadcrumbList，以及站点级 Organization/WebSite），不再把已失效或受限的 rich result 类型当作优势。
 
 ### 2.3 答案可见性
 
@@ -180,7 +180,7 @@ a quick rethink as the pattern becomes clearer with each reveal.
 
 每个详情页包含 3 个 FAQ，但 FAQ 内容是关于**谜题主题领域**（如"吉他种类"），而非游戏本身。这能捕获与主题相关的长尾搜索流量。
 
-**但缺少 FAQPage schema** — 页面可见 FAQ 无法在 SERP 中显示富摘要。
+**注意：** 缺少 FAQPage schema 当前不应视为可直接利用的富摘要机会。Google 当前 FAQ rich results 主要限于权威政府/健康站点，本站不应为了追求无效富结果而重新输出 `FAQPage`。
 
 ### 3.5 答案揭示门控
 
@@ -256,12 +256,12 @@ a quick rethink as the pattern becomes clearer with each reveal.
 | **URL 格式** | `/linkedin-pinpoint-answer/pinpoint-720/` | `/linkedin-pinpoint-answers/pinpoint-answer-720/` |
 | **slug 长度** | 更短：`pinpoint-720` | 更长：`pinpoint-answer-720` |
 | **答案展示** | JS 点击揭示（门控） | 直接可见 |
-| **结构化数据** | 1 种微数据（NewsArticle） | 6 种 JSON-LD |
+| **结构化数据** | 1 种微数据（NewsArticle） | 保留受支持 JSON-LD，不堆叠已失效类型 |
 | **内容风格** | 第一人称叙事故事 | — |
 | **线索交互** | 每个线索 hover/tap 查看解释 | — |
 | **线索表格** | 3 列结构化（Word/Phrase/Meaning） | — |
 | **广告策略** | 3 个广告位 / 详情页 | — |
-| **FAQ Schema** | 有内容无 schema | 有内容有 schema |
+| **FAQ Schema** | 有内容无 schema | 有内容，但不输出受限的 FAQPage schema |
 | **标题策略** | 5 线索全塞入 title（超长被截断） | 更克制 |
 | **分析工具** | Umami + Plausible + CF 三重 | — |
 | **i18n** | 有基础设施但未启用 | — |
@@ -302,11 +302,11 @@ a quick rethink as the pattern becomes clearer with each reveal.
 
 | # | 弱点 | 严重度 | 我们的优势 / 行动建议 |
 |---|------|--------|----------------------|
-| 1 | **结构化数据严重缺失** | HIGH | 我们已有 6 种 JSON-LD。保持并扩展 |
+| 1 | **结构化数据严重缺失** | HIGH | 我们保留受支持的 JSON-LD 类型，避免重新堆叠 `FAQPage` / `HowTo` |
 | 2 | **答案不可抓取** | HIGH | 我们答案直接可见，SERP 排名优势明显。继续确保答案在初始 HTML 中 |
 | 3 | **Title 过长被截断** | MEDIUM | 我们的 title 更克制。对关键词密度做 A/B 测试找最优平衡 |
 | 4 | **CSS 折叠内容可能被降权** | MEDIUM | 我们的内容展示方式更透明。避免使用 CSS 隐藏内容 |
-| 5 | **FAQ 无 schema** | MEDIUM | 我们已有 FAQPage JSON-LD。确保每个 FAQ 保持 schema 同步 |
+| 5 | **FAQ 无 schema** | LOW | 当前不追求 FAQ rich result；保持页面可见 FAQ 内容质量即可 |
 | 6 | **i18n 基础设施闲置** | LOW | 如果我们率先推出多语言版本，可抢占国际搜索流量 |
 | 7 | **非核心页未 noindex** | LOW | 我们的 About/Privacy 页面应设 noindex，避免稀释域名权重 |
 | 8 | **详情页无串联导航** | MEDIUM | 添加 prev/next + breadcrumb，提升爬取效率和用户浏览 |
@@ -320,7 +320,7 @@ a quick rethink as the pattern becomes clearer with each reveal.
 ### P0 — 立即行动（巩固现有优势）
 
 - [ ] 确认我们所有详情页答案在初始 HTML 中可见（非 JS 渲染）
-- [ ] 确认 FAQPage JSON-LD 与页面可见 FAQ 一致（C-1 已修复，保持）
+- [ ] 确认详情页不再输出 `FAQPage` / `HowTo`，保留 Article + Game + ItemList + BreadcrumbList
 - [ ] 确认详情页 OG Type 为 `article`
 
 ### P1 — 近期行动（扩大差距）
