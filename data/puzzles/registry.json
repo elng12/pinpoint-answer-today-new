@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-731",
     "publishDate": "2026-05-01",
     "status": "live",
-    "detailState": "generating",
+    "detailState": "validated",
     "clues": [
       "Day",
       "Pole",
@@ -15,8 +15,8 @@
     "mainAnswer": "Words that come after \"May\"",
     "category": "Words that come after \"May\"",
     "difficultyLevel": "Moderate",
-    "shortSummary": "LinkedIn Pinpoint #731: Day, Pole, Fly, Flower, I help you?.",
-    "updatedAt": "2026-05-01T07:01:33.336Z"
+    "shortSummary": "At first glance, Day, Pole, Fly do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
+    "updatedAt": "2026-05-01T07:01:44.549Z"
   },
   {
     "puzzleNumber": 730,
