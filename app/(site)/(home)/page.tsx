@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HomeBenefitsFaq, getFaqItems } from "@/components/home/HomeBenefitsFaq";
+import { HomeBenefitsFaq } from "@/components/home/HomeBenefitsFaq";
 import { HomeBookmarkStrip } from "@/components/home/HomeBookmarkStrip";
 import { HomeCtaFooter } from "@/components/home/HomeCtaFooter";
 import { HomeHero } from "@/components/home/HomeHero";
@@ -77,18 +77,6 @@ export default async function HomePage() {
         target: `${absoluteUrl(routes.archive)}?q={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: getFaqItems(current).map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.answer,
-        },
-      })),
     },
   ];
 

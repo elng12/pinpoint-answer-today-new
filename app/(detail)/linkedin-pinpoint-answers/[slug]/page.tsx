@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
-import { getVisibleDetailFaqEntries } from "@/lib/puzzles/detail-view";
 import {
   getAdjacentEntries,
   getAllDetailSlugs,
@@ -85,8 +84,6 @@ export default async function DetailPage({
   const detailPath = withTrailingSlash(routes.detail(puzzle.slug));
   const detailUrl = absoluteUrl(detailPath);
   const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
-  const isShortMode = puzzle.detailMode === "short";
-  const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
   const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   const structuredDataItems = [
@@ -114,24 +111,6 @@ export default async function DetailPage({
         },
       },
     },
-    ...(
-      visibleFaqEntries.length > 0
-        ? [
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: visibleFaqEntries.map((faq) => ({
-                "@type": "Question",
-                name: faq.question,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: faq.answer,
-                },
-              })),
-            },
-          ]
-        : []
-    ),
     {
       "@context": "https://schema.org",
       "@type": "Game",
@@ -147,42 +126,6 @@ export default async function DetailPage({
         name: "Pinpoint Answer Today",
         url: absoluteUrl(routes.home),
       },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      name: `How to solve LinkedIn Pinpoint #${puzzle.number}`,
-      description: `Step-by-step method to solve LinkedIn Pinpoint #${puzzle.number} using clue grouping and connector validation.`,
-      url: detailUrl,
-      inLanguage: "en-US",
-      step: [
-        {
-          "@type": "HowToStep",
-          position: 1,
-          name: "List the clues",
-          text: `Write down the five clues: ${puzzle.clues.join(", ")}.`,
-        },
-        {
-          "@type": "HowToStep",
-          position: 2,
-          name: "Group by meaning",
-          text: "Cluster clues by domain, phrase pattern, or shared context before guessing a final connector.",
-        },
-        {
-          "@type": "HowToStep",
-          position: 3,
-          name: "Test one connector across all clues",
-          text: "Use one candidate word and verify it forms a meaningful phrase or relation with every clue.",
-        },
-        {
-          "@type": "HowToStep",
-          position: 4,
-          name: "Confirm with walkthrough",
-          text: isShortMode
-            ? `Compare your guess with the compact guide for puzzle #${puzzle.number}. Reveal the validated connector and use the table below to confirm each clue.`
-            : `Compare your guess with the full clue-by-clue walkthrough for puzzle #${puzzle.number}. Reveal the validated connector and see how each clue fits.`,
-        },
-      ],
     },
     {
       "@context": "https://schema.org",
