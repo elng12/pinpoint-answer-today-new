@@ -1922,6 +1922,12 @@ function summarizePublishedPuzzleDetail(value: unknown): PublishedPuzzleDetailSn
       .map((paragraph) => String(paragraph || "").trim())
       .filter(Boolean)
     : [];
+  const articleBlocks = Array.isArray(record.articleBlocks)
+    ? record.articleBlocks
+      .map((paragraph) => String(paragraph || "").trim())
+      .filter(Boolean)
+    : [];
+  const analysisParagraphs = fullAnalysis.length > 0 ? fullAnalysis : articleBlocks;
   const minRequiredWords =
     bodyMode === "short" ? MIN_DETAIL_SHORT_ANALYSIS_WORDS : MIN_DETAIL_FULL_ANALYSIS_WORDS;
 
@@ -1929,7 +1935,7 @@ function summarizePublishedPuzzleDetail(value: unknown): PublishedPuzzleDetailSn
     slug,
     detailState: resolvePublishDetailState(record.detailState),
     bodyMode,
-    fullAnalysisWordCount: countDetailWords(fullAnalysis),
+    fullAnalysisWordCount: countDetailWords(analysisParagraphs),
     minRequiredWords,
   };
 }
@@ -1940,6 +1946,28 @@ function summarizePublishedPuzzleDetailContent(content: string): PublishedPuzzle
   } catch {
     return null;
   }
+}
+
+function omitDuplicateFullAnalysisForStorage(record: Record<string, unknown>): JsonRecord {
+  const articleBlocks = Array.isArray(record.articleBlocks)
+    ? record.articleBlocks.map((paragraph) => String(paragraph || ""))
+    : [];
+  const fullAnalysis = Array.isArray(record.fullAnalysis)
+    ? record.fullAnalysis.map((paragraph) => String(paragraph || ""))
+    : [];
+  const isDuplicateFullAnalysis =
+    articleBlocks.length > 0 &&
+    fullAnalysis.length > 0 &&
+    articleBlocks.length === fullAnalysis.length &&
+    articleBlocks.every((paragraph, index) => paragraph === fullAnalysis[index]);
+
+  if (!isDuplicateFullAnalysis) {
+    return record as JsonRecord;
+  }
+
+  const next: JsonRecord = { ...record };
+  delete next.fullAnalysis;
+  return next;
 }
 
 function isDetailSnapshotAtOrAboveFloor(snapshot: PublishedPuzzleDetailSnapshot | null): boolean {
@@ -3176,7 +3204,7 @@ async function publishToNewSiteGitHub(
       throw new Error(`[new-site] final publish guard failed for ${slugPath}: ${finalReadiness.reason}`);
     }
   }
-  const slugJson = JSON.stringify(detailRecord, null, 2);
+  const slugJson = JSON.stringify(omitDuplicateFullAnalysisForStorage(detailRecord), null, 2);
   const slugProtection = resolveThinContentProtectionDecision({
     incoming: summarizePublishedPuzzleDetail(detailRecord),
     existingBranch: { summary: existingSlugSummary },
