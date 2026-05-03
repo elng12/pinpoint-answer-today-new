@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 733,
+  "slug": "pinpoint-answer-733",
+  "publishDate": "2026-05-03",
+  "isoDate": "2026-05-03",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Trees",
+    "Luggage racks",
+    "American cars",
+    "Swimwear collections",
+    "Elephants"
+  ],
+  "answer": "Things with trunks",
+  "category": "Things with trunks",
+  "wordHints": {
+    "Trees": "Trees connects to \"Things with trunks\"",
+    "Luggage racks": "Luggage racks connects to \"Things with trunks\"",
+    "American cars": "American cars connects to \"Things with trunks\"",
+    "Swimwear collections": "Swimwear collections connects to \"Things with trunks\"",
+    "Elephants": "Elephants connects to \"Things with trunks\""
+  },
+  "spoilerHints": {
+    "Trees": "Trees should be tested as part of things with trunks, not as a standalone reference.",
+    "Luggage racks": "Keep Luggage racks in mind, then see whether Swimwear collections supports the same answer.",
+    "American cars": "American cars works best after the board narrows toward things with trunks.",
+    "Swimwear collections": "Swimwear collections is the clue that makes things with trunks concrete enough to test across the full board.",
+    "Elephants": "Keep Elephants in mind, then see whether Swimwear collections supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, Trees and Luggage racks pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Trees, Luggage racks can point toward several nearby themes before one clue makes the exact category level visible. Trees is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Trees\" and \"Luggage racks\" stopped feeling loose and started landing cleanly.",
+    "American cars, Swimwear collections, Elephants keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things with trunks\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things with trunks, which is why \"Things with trunks\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #733, Trees, Luggage racks, American cars, Swimwear collections, Elephants only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Trees",
+        "examplePhrase": "Trees",
+        "connectionExplained": "Trees connects to \"Things with trunks\""
+      },
+      {
+        "clue": "Luggage racks",
+        "examplePhrase": "Luggage racks",
+        "connectionExplained": "Luggage racks connects to \"Things with trunks\""
+      },
+      {
+        "clue": "American cars",
+        "examplePhrase": "American cars",
+        "connectionExplained": "American cars connects to \"Things with trunks\""
+      },
+      {
+        "clue": "Swimwear collections",
+        "examplePhrase": "Swimwear collections",
+        "connectionExplained": "Swimwear collections connects to \"Things with trunks\""
+      },
+      {
+        "clue": "Elephants",
+        "examplePhrase": "Elephants",
+        "connectionExplained": "Elephants connects to \"Things with trunks\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #733?",
+      "answer": "The answer is \"Things with trunks\". The clues Trees, Luggage racks, American cars, Swimwear collections, Elephants all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #733 just unlocked, and this is the fastest verified update. The board clues are Trees, Luggage racks, American cars, Swimwear collections, Elephants, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Trees, Luggage racks can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Trees",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #733, Trees, Luggage racks, American cars, Swimwear collections, Elephants only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Trees lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Trees",
+    "whyDecisive": "Trees is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Trees lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Trees",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Trees",
+      "nonObviousWhy": "Trees supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Trees"
+    },
+    {
+      "clue": "Luggage racks",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Luggage racks",
+      "nonObviousWhy": "Luggage racks supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Luggage racks"
+    },
+    {
+      "clue": "American cars",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "American cars",
+      "nonObviousWhy": "American cars supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "American cars"
+    },
+    {
+      "clue": "Swimwear collections",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Swimwear collections",
+      "nonObviousWhy": "Swimwear collections supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Swimwear collections"
+    },
+    {
+      "clue": "Elephants",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Elephants",
+      "nonObviousWhy": "Elephants supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Elephants"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #733?",
+      "answer": "The answer is \"Things with trunks\". The clues Trees, Luggage racks, American cars, Swimwear collections, Elephants all share this connection.",
+      "tiedClue": "Trees"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Trees",
+      "Luggage racks",
+      "American cars",
+      "Swimwear collections",
+      "Elephants"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Trees",
+      "Luggage racks",
+      "American cars",
+      "Swimwear collections"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Trees, Luggage racks can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Trees is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "American cars, Swimwear collections, Elephants keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things with trunks"
+}
