@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 734,
+  "slug": "pinpoint-answer-734",
+  "publishDate": "2026-05-04",
+  "isoDate": "2026-05-04",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Mace",
+    "Luke",
+    "Obi-Wan",
+    "Yoda",
+    "Anakin (but not Darth Vader)"
+  ],
+  "answer": "Names of Jedi in the Star Wars films",
+  "category": "Names of Jedi in the Star Wars films",
+  "wordHints": {
+    "Mace": "Mace connects to \"Names of Jedi in the Star Wars films\"",
+    "Luke": "Luke connects to \"Names of Jedi in the Star Wars films\"",
+    "Obi-Wan": "Obi-Wan connects to \"Names of Jedi in the Star Wars films\"",
+    "Yoda": "Yoda connects to \"Names of Jedi in the Star Wars films\"",
+    "Anakin (but not Darth Vader)": "Anakin (but not Darth Vader) connects to \"Names of Jedi in the Star Wars films\""
+  },
+  "spoilerHints": {
+    "Mace": "Mace should be tested as part of names of jedi in the star wars films, not as a standalone reference.",
+    "Luke": "Keep Luke in mind, then see whether Anakin (but not Darth Vader) supports the same answer.",
+    "Obi-Wan": "Obi-Wan works best after the board narrows toward names of jedi in the star wars films.",
+    "Yoda": "Yoda should be tested as part of names of jedi in the star wars films, not as a standalone reference.",
+    "Anakin (but not Darth Vader)": "Anakin (but not Darth Vader) is the clue that makes names of jedi in the star wars films concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Mace and Luke pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Mace, Luke can point toward several nearby themes before one clue makes the exact category level visible. Mace is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on names, examples like \"Mace\" and \"Luke\" stopped feeling loose and started landing cleanly.",
+    "Obi-Wan, Yoda, Anakin (but not Darth Vader) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Names of Jedi in the Star Wars films\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Names of Jedi in the Star Wars films, which is why \"Names of Jedi in the Star Wars films\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #734, Mace, Luke, Obi-Wan, Yoda, Anakin (but not Darth Vader) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on names",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Mace",
+        "examplePhrase": "Mace",
+        "connectionExplained": "Mace connects to \"Names of Jedi in the Star Wars films\""
+      },
+      {
+        "clue": "Luke",
+        "examplePhrase": "Luke",
+        "connectionExplained": "Luke connects to \"Names of Jedi in the Star Wars films\""
+      },
+      {
+        "clue": "Obi-Wan",
+        "examplePhrase": "Obi-Wan",
+        "connectionExplained": "Obi-Wan connects to \"Names of Jedi in the Star Wars films\""
+      },
+      {
+        "clue": "Yoda",
+        "examplePhrase": "Yoda",
+        "connectionExplained": "Yoda connects to \"Names of Jedi in the Star Wars films\""
+      },
+      {
+        "clue": "Anakin (but not Darth Vader)",
+        "examplePhrase": "Anakin (but not Darth Vader)",
+        "connectionExplained": "Anakin (but not Darth Vader) connects to \"Names of Jedi in the Star Wars films\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #734?",
+      "answer": "The answer is \"Names of Jedi in the Star Wars films\". The clues Mace, Luke, Obi-Wan, Yoda, Anakin (but not Darth Vader) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #734 just unlocked, and this is the fastest verified update. The board clues are Mace, Luke, Obi-Wan, Yoda, Anakin (but not Darth Vader), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Mace, Luke can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Mace",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #734, Mace, Luke, Obi-Wan, Yoda, Anakin (but not Darth Vader) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Mace lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Mace",
+    "whyDecisive": "Mace is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Mace lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Mace",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Mace",
+      "nonObviousWhy": "Mace supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Mace"
+    },
+    {
+      "clue": "Luke",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Luke",
+      "nonObviousWhy": "Luke supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Luke"
+    },
+    {
+      "clue": "Obi-Wan",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Obi-Wan",
+      "nonObviousWhy": "Obi-Wan supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Obi-Wan"
+    },
+    {
+      "clue": "Yoda",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Yoda",
+      "nonObviousWhy": "Yoda supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Yoda"
+    },
+    {
+      "clue": "Anakin (but not Darth Vader)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Anakin (but not Darth Vader)",
+      "nonObviousWhy": "Anakin (but not Darth Vader) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Anakin (but not Darth Vader)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #734?",
+      "answer": "The answer is \"Names of Jedi in the Star Wars films\". The clues Mace, Luke, Obi-Wan, Yoda, Anakin (but not Darth Vader) all share this connection.",
+      "tiedClue": "Mace"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on names",
+    "relatedEntities": [
+      "Mace",
+      "Luke",
+      "Obi-Wan",
+      "Yoda",
+      "Anakin (but not Darth Vader)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on names",
+      "Mace",
+      "Luke",
+      "Obi-Wan",
+      "Yoda"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Mace, Luke can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Mace is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Obi-Wan, Yoda, Anakin (but not Darth Vader) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Names of Jedi in the Star Wars films"
+}
