@@ -1333,7 +1333,9 @@ function buildLessons(
     ? `Every clue should read as an everyday phrase once "${answerPattern.token}" is in place`
     : answerPattern.kind === "typed-category"
       ? `Every clue should name a specific kind of ${answerPattern.singularNoun.toLowerCase()} once the category sharpens`
-      : `Every clue should fit ${lowerFirst(connectorSummary)} cleanly once the answer sharpens`;
+      : turningClue !== "A later clue" && firstClue
+        ? `Use "${turningClue}" to re-check "${firstClue}" under ${lowerFirst(connectorSummary)}`
+        : `Re-check the full board under ${lowerFirst(connectorSummary)}`;
 
   const defaultTakeaway = isPhrase
     ? `A strong Pinpoint answer should explain every clue naturally through ${lowerFirst(connectorSummary)}`

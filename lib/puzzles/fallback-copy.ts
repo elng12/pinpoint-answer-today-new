@@ -389,7 +389,7 @@ export function buildSharedFallbackLessons(input: {
       body: "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related.",
     },
     {
-      title: "Re-check the early clues once the answer sharpens",
+      title: `Re-check the early clues once "${turningPoint}" sharpens the answer`,
       body: `Once "${turningPoint}" lands, go back and test the earlier clues under that same answer before locking it in.`,
     },
   ];
