@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 735,
+  "slug": "pinpoint-answer-735",
+  "publishDate": "2026-05-05",
+  "isoDate": "2026-05-05",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Vocal",
+    "Spinal",
+    "Extension",
+    "Rip",
+    "Bungee"
+  ],
+  "answer": "Types of cords",
+  "category": "Types of cords",
+  "wordHints": {
+    "Vocal": "Vocal connects to \"Types of cords\"",
+    "Spinal": "Spinal connects to \"Types of cords\"",
+    "Extension": "Extension connects to \"Types of cords\"",
+    "Rip": "Rip connects to \"Types of cords\"",
+    "Bungee": "Bungee connects to \"Types of cords\""
+  },
+  "spoilerHints": {
+    "Vocal": "Treat Vocal as one recognizable member of types of cords, not as a broad topic on its own.",
+    "Spinal": "Spinal helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Extension": "Extension is the clue that makes types of cords specific enough to verify across the whole board.",
+    "Rip": "Treat Rip as one recognizable member of types of cords, not as a broad topic on its own.",
+    "Bungee": "Bungee helps more once you ask what kind of thing it is rather than where you have seen it before."
+  },
+  "articleBlocks": [
+    "At first, Vocal and Spinal can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Vocal, Spinal can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Vocal pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of cord each clue could be, a category board focused on cords stopped sounding generic and started behaving like a real category test. Examples like \"Vocal cord\" and \"Spinal cord\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Extension, Rip, Bungee read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of cords\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of cords, which is why \"Types of cords\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #735, Vocal, Spinal, Extension, Rip, Bungee only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on cords",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Vocal",
+        "examplePhrase": "Vocal cord",
+        "connectionExplained": "Vocal connects to \"Types of cords\""
+      },
+      {
+        "clue": "Spinal",
+        "examplePhrase": "Spinal cord",
+        "connectionExplained": "Spinal connects to \"Types of cords\""
+      },
+      {
+        "clue": "Extension",
+        "examplePhrase": "Extension cord",
+        "connectionExplained": "Extension connects to \"Types of cords\""
+      },
+      {
+        "clue": "Rip",
+        "examplePhrase": "Rip cord",
+        "connectionExplained": "Rip connects to \"Types of cords\""
+      },
+      {
+        "clue": "Bungee",
+        "examplePhrase": "Bungee cord",
+        "connectionExplained": "Bungee connects to \"Types of cords\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #735?",
+      "answer": "The answer is \"Types of cords\". The clues Vocal, Spinal, Extension, Rip, Bungee all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #735 just unlocked, and this is the fastest verified update. The board clues are Vocal, Spinal, Extension, Rip, Bungee, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Vocal, Spinal can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Vocal",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #735, Vocal, Spinal, Extension, Rip, Bungee only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Vocal lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Vocal",
+    "whyDecisive": "Vocal is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Vocal lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Vocal",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Vocal",
+      "nonObviousWhy": "Vocal supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Vocal"
+    },
+    {
+      "clue": "Spinal",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Spinal",
+      "nonObviousWhy": "Spinal supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Spinal"
+    },
+    {
+      "clue": "Extension",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Extension",
+      "nonObviousWhy": "Extension supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Extension"
+    },
+    {
+      "clue": "Rip",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Rip",
+      "nonObviousWhy": "Rip supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Rip"
+    },
+    {
+      "clue": "Bungee",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Bungee",
+      "nonObviousWhy": "Bungee supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Bungee"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #735?",
+      "answer": "The answer is \"Types of cords\". The clues Vocal, Spinal, Extension, Rip, Bungee all share this connection.",
+      "tiedClue": "Vocal"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on cords",
+    "relatedEntities": [
+      "Vocal",
+      "Spinal",
+      "Extension",
+      "Rip",
+      "Bungee"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on cords",
+      "Vocal",
+      "Spinal",
+      "Extension",
+      "Rip"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Vocal, Spinal can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Vocal pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Extension, Rip, Bungee read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of cords"
+}
