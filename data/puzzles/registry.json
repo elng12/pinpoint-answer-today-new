@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 736,
+    "slug": "pinpoint-answer-736",
+    "publishDate": "2026-05-06",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Hamilton",
+      "Sofia",
+      "Lima",
+      "Athens",
+      "Mexico City"
+    ],
+    "mainAnswer": "Capital cities",
+    "category": "Capital cities",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #736: Hamilton, Sofia, Lima, Athens, Mexico City.",
+    "updatedAt": "2026-05-06T07:01:42.573Z"
+  },
+  {
     "puzzleNumber": 735,
     "slug": "pinpoint-answer-735",
     "publishDate": "2026-05-05",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Vocal",
@@ -16,7 +35,7 @@
     "category": "Types of cords",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, this puzzle feels scattered. \"Vocal\" and \"Spinal\" seem unrelated to \"Rip\" or \"Bungee.\" But a hidden connection will soon emerge.",
-    "updatedAt": "2026-05-05T07:02:14.670Z"
+    "updatedAt": "2026-05-06T07:01:42.573Z"
   },
   {
     "puzzleNumber": 734,

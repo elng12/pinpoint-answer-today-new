@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 736,
+  "slug": "pinpoint-answer-736",
+  "publishDate": "2026-05-06",
+  "isoDate": "2026-05-06",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Hamilton",
+    "Sofia",
+    "Lima",
+    "Athens",
+    "Mexico City"
+  ],
+  "answer": "Capital cities",
+  "category": "Capital cities",
+  "wordHints": {
+    "Hamilton": "Hamilton connects to \"Capital cities\"",
+    "Sofia": "Sofia connects to \"Capital cities\"",
+    "Lima": "Lima connects to \"Capital cities\"",
+    "Athens": "Athens connects to \"Capital cities\"",
+    "Mexico City": "Mexico City connects to \"Capital cities\""
+  },
+  "spoilerHints": {
+    "Hamilton": "Hamilton should be tested as part of capital cities, not as a standalone reference.",
+    "Sofia": "Keep Sofia in mind, then see whether Mexico City supports the same answer.",
+    "Lima": "Lima works best after the board narrows toward capital cities.",
+    "Athens": "Athens should be tested as part of capital cities, not as a standalone reference.",
+    "Mexico City": "Mexico City is the clue that makes capital cities concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Hamilton and Sofia pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Hamilton, Sofia can point toward several nearby themes before one clue makes the exact category level visible. Hamilton is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on capital, examples like \"Hamilton\" and \"Sofia\" stopped feeling loose and started landing cleanly.",
+    "Lima, Athens, Mexico City keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Capital cities\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Capital cities, which is why \"Capital cities\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #736, Hamilton, Sofia, Lima, Athens, Mexico City only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on capital",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Hamilton",
+        "examplePhrase": "Hamilton",
+        "connectionExplained": "Hamilton connects to \"Capital cities\""
+      },
+      {
+        "clue": "Sofia",
+        "examplePhrase": "Sofia",
+        "connectionExplained": "Sofia connects to \"Capital cities\""
+      },
+      {
+        "clue": "Lima",
+        "examplePhrase": "Lima",
+        "connectionExplained": "Lima connects to \"Capital cities\""
+      },
+      {
+        "clue": "Athens",
+        "examplePhrase": "Athens",
+        "connectionExplained": "Athens connects to \"Capital cities\""
+      },
+      {
+        "clue": "Mexico City",
+        "examplePhrase": "Mexico City",
+        "connectionExplained": "Mexico City connects to \"Capital cities\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #736?",
+      "answer": "The answer is \"Capital cities\". The clues Hamilton, Sofia, Lima, Athens, Mexico City all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #736 just unlocked, and this is the fastest verified update. The board clues are Hamilton, Sofia, Lima, Athens, Mexico City, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Hamilton, Sofia can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Hamilton",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #736, Hamilton, Sofia, Lima, Athens, Mexico City only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Hamilton lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Hamilton",
+    "whyDecisive": "Hamilton is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Hamilton lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Hamilton",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Hamilton",
+      "nonObviousWhy": "Hamilton supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Hamilton"
+    },
+    {
+      "clue": "Sofia",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Sofia",
+      "nonObviousWhy": "Sofia supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Sofia"
+    },
+    {
+      "clue": "Lima",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Lima",
+      "nonObviousWhy": "Lima supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Lima"
+    },
+    {
+      "clue": "Athens",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Athens",
+      "nonObviousWhy": "Athens supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Athens"
+    },
+    {
+      "clue": "Mexico City",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Mexico City",
+      "nonObviousWhy": "Mexico City supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Mexico City"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #736?",
+      "answer": "The answer is \"Capital cities\". The clues Hamilton, Sofia, Lima, Athens, Mexico City all share this connection.",
+      "tiedClue": "Hamilton"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on capital",
+    "relatedEntities": [
+      "Hamilton",
+      "Sofia",
+      "Lima",
+      "Athens",
+      "Mexico City"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on capital",
+      "Hamilton",
+      "Sofia",
+      "Lima",
+      "Athens"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Hamilton, Sofia can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Hamilton is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Lima, Athens, Mexico City keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Capital cities"
+}
