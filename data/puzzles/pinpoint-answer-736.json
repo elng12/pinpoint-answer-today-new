@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-736",
   "publishDate": "2026-05-06",
   "isoDate": "2026-05-06",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "category",
@@ -18,11 +18,11 @@
   "answer": "Capital cities",
   "category": "Capital cities",
   "wordHints": {
-    "Hamilton": "Hamilton connects to \"Capital cities\"",
-    "Sofia": "Sofia connects to \"Capital cities\"",
-    "Lima": "Lima connects to \"Capital cities\"",
-    "Athens": "Athens connects to \"Capital cities\"",
-    "Mexico City": "Mexico City connects to \"Capital cities\""
+    "Hamilton": "Hamilton fits once the board is read through a shared category board with one concrete theme, especially after lima.",
+    "Sofia": "Sofia fits once the board is read through a shared category board with one concrete theme, especially after lima.",
+    "Lima": "Lima fits once the board is read through a shared category board with one concrete theme, especially after lima.",
+    "Athens": "Athens fits once the board is read through a shared category board with one concrete theme, especially after lima.",
+    "Mexico City": "Mexico City fits once the board is read through a shared category board with one concrete theme, especially after lima."
   },
   "spoilerHints": {
     "Hamilton": "Hamilton should be tested as part of capital cities, not as a standalone reference.",
@@ -32,153 +32,168 @@
     "Mexico City": "Mexico City is the clue that makes capital cities concrete enough to test across the full board."
   },
   "articleBlocks": [
-    "At first, Hamilton and Sofia pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Hamilton, Sofia can point toward several nearby themes before one clue makes the exact category level visible. Hamilton is the clue that narrows the board into one category with clearer boundaries.",
-    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on capital, examples like \"Hamilton\" and \"Sofia\" stopped feeling loose and started landing cleanly.",
-    "Lima, Athens, Mexico City keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
-    "The answer was \"Capital cities\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Capital cities, which is why \"Capital cities\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+    "At first, this looked more like tourist destinations than the real category.",
+    "Hamilton pushed me in that direction immediately.",
+    "Sofia kept that theory alive for a moment, but lima still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Lima made me stop thinking about tourist destinations and start thinking about the real category.",
+    "Hamilton fit once I read it through the answer.",
+    "Sofia fit once I read it through the answer.",
+    "The answer was Capital cities.",
+    "Athens and Mexico City then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #736, Hamilton, Sofia, Lima, Athens, Mexico City only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Hamilton and Sofia first pulled me toward tourist destinations, so that was the first path I tested. It held together for a moment, but lima never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating lima as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about tourist destinations; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "\"Hamilton\" and \"Sofia\" can look like they belong to different categories at first",
+      "body": "\"Hamilton\" and \"Sofia\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "\"Lima\" anchors a shared category board with one concrete theme",
+      "body": "lima is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Use \"Lima\" to re-check \"Hamilton\" under a shared category board with one concrete theme",
+      "body": "When a set of places appears, consider what they represent beyond just locations."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on capital",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "\"Hamilton\" and \"Sofia\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Hamilton",
         "examplePhrase": "Hamilton",
-        "connectionExplained": "Hamilton connects to \"Capital cities\""
+        "connectionExplained": "Hamilton fits once the board is read through a shared category board with one concrete theme, especially after lima."
       },
       {
         "clue": "Sofia",
         "examplePhrase": "Sofia",
-        "connectionExplained": "Sofia connects to \"Capital cities\""
+        "connectionExplained": "Sofia fits once the board is read through a shared category board with one concrete theme, especially after lima."
       },
       {
         "clue": "Lima",
         "examplePhrase": "Lima",
-        "connectionExplained": "Lima connects to \"Capital cities\""
+        "connectionExplained": "Lima fits once the board is read through a shared category board with one concrete theme, especially after lima."
       },
       {
         "clue": "Athens",
         "examplePhrase": "Athens",
-        "connectionExplained": "Athens connects to \"Capital cities\""
+        "connectionExplained": "Athens fits once the board is read through a shared category board with one concrete theme, especially after lima."
       },
       {
         "clue": "Mexico City",
         "examplePhrase": "Mexico City",
-        "connectionExplained": "Mexico City connects to \"Capital cities\""
+        "connectionExplained": "Mexico City fits once the board is read through a shared category board with one concrete theme, especially after lima."
       }
     ]
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #736?",
-      "answer": "The answer is \"Capital cities\". The clues Hamilton, Sofia, Lima, Athens, Mexico City all share this connection."
+      "question": "What final category connects \"Hamilton\" and \"Sofia\" in LinkedIn Pinpoint #736?",
+      "answer": "The answer is \"Capital cities\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "How do \"Hamilton\" and \"Sofia\" connect in LinkedIn Pinpoint #736?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Lima is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Why is \"Lima\" the key clue in LinkedIn Pinpoint #736?",
+      "answer": "Lima is the turning clue because \"Lima\" makes the shared category frame explicit. It also makes Hamilton read cleanly as \"Hamilton\". The clues initially suggest merely well-known cities, but the specific selection hints at a more precise attribute."
+    },
+    {
+      "question": "How does \"Hamilton\" fit the same category as \"Lima\" in LinkedIn Pinpoint #736?",
+      "answer": "\"Hamilton\" reads as \"Hamilton\" under the same answer, so it supports the category instead of pulling toward a broader guess."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #736 just unlocked, and this is the fastest verified update. The board clues are Hamilton, Sofia, Lima, Athens, Mexico City, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Hamilton, Sofia, and Lima do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"major cities\" can feel plausible before one clue makes the answer feel concrete. Lima is the clue that finally breaks that first read and makes the real category feel concrete.",
     "falseStarts": [
-      "a broader umbrella topic",
-      "a one-clue surface theme"
+      "major cities",
+      "tourist destinations"
     ],
     "whyFalseStartPlausible": [
-      "Hamilton, Sofia can point toward several nearby themes before one clue makes the exact category level visible.",
-      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+      "While most are tourist destinations, that's too broad and doesn't explain the specific set of cities.",
+      "major cities feels plausible early on, but it falls apart once lima demands a more exact reading."
     ],
-    "breakingClue": "Hamilton",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #736, Hamilton, Sofia, Lima, Athens, Mexico City only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Hamilton lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Lima",
+    "pivot": "The solve turned when I stopped treating lima as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about tourist destinations; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Hamilton, Sofia, and Lima stop feeling disconnected and start looking like they belong together. Once lima is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues initially suggest merely well-known cities, but the specific selection hints at a more precise attribute."
   },
   "turningPoint": {
-    "clue": "Hamilton",
-    "whyDecisive": "Hamilton is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Hamilton lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Lima",
+    "whyDecisive": "A later clue is what finally made the answer feel concrete.",
+    "whatChangedAfterIt": "Once Lima landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Hamilton",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "tourist destinations",
       "resolvedPhraseOrMember": "Hamilton",
-      "nonObviousWhy": "Hamilton supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Hamilton fits once the board is read through a shared category board with one concrete theme, especially after lima.",
       "searchableContext": "Hamilton"
     },
     {
       "clue": "Sofia",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "tourist destinations",
       "resolvedPhraseOrMember": "Sofia",
-      "nonObviousWhy": "Sofia supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Sofia fits once the board is read through a shared category board with one concrete theme, especially after lima.",
       "searchableContext": "Sofia"
     },
     {
       "clue": "Lima",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "tourist destinations",
       "resolvedPhraseOrMember": "Lima",
-      "nonObviousWhy": "Lima supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Lima fits once the board is read through a shared category board with one concrete theme, especially after lima.",
       "searchableContext": "Lima"
     },
     {
       "clue": "Athens",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "tourist destinations",
       "resolvedPhraseOrMember": "Athens",
-      "nonObviousWhy": "Athens supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Athens fits once the board is read through a shared category board with one concrete theme, especially after lima.",
       "searchableContext": "Athens"
     },
     {
       "clue": "Mexico City",
-      "surfaceMisread": "a broader umbrella topic",
+      "surfaceMisread": "tourist destinations",
       "resolvedPhraseOrMember": "Mexico City",
-      "nonObviousWhy": "Mexico City supports the same answer once the shared frame becomes clear.",
+      "nonObviousWhy": "Mexico City fits once the board is read through a shared category board with one concrete theme, especially after lima.",
       "searchableContext": "Mexico City"
     }
   ],
   "faqItems": [
     {
-      "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #736?",
-      "answer": "The answer is \"Capital cities\". The clues Hamilton, Sofia, Lima, Athens, Mexico City all share this connection.",
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Hamilton\" and \"Sofia\" in LinkedIn Pinpoint #736?",
+      "answer": "The answer is \"Capital cities\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": "Hamilton"
     },
     {
       "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
-      "tiedClue": null
+      "question": "How do \"Hamilton\" and \"Sofia\" connect in LinkedIn Pinpoint #736?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Lima is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Hamilton"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Lima\" the key clue in LinkedIn Pinpoint #736?",
+      "answer": "Lima is the turning clue because \"Lima\" makes the shared category frame explicit. It also makes Hamilton read cleanly as \"Hamilton\". The clues initially suggest merely well-known cities, but the specific selection hints at a more precise attribute.",
+      "tiedClue": "Lima"
     },
     {
       "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "question": "How does \"Hamilton\" fit the same category as \"Lima\" in LinkedIn Pinpoint #736?",
+      "answer": "\"Hamilton\" reads as \"Hamilton\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Hamilton"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a category board focused on capital",
+    "angle": "a shared category board with one concrete theme",
     "relatedEntities": [
       "Hamilton",
       "Sofia",
@@ -187,25 +202,26 @@
       "Mexico City"
     ],
     "doNotRepeatPatterns": [
-      "a category board focused on capital",
+      "a shared category board with one concrete theme",
+      "\"Hamilton\" and \"Sofia\" can look like they belong to different categories at first",
+      "\"Lima\" anchors a shared category board with one concrete theme",
+      "Use \"Lima\" to re-check \"Hamilton\" under a shared category board with one concrete theme",
       "Hamilton",
-      "Sofia",
-      "Lima",
-      "Athens"
+      "Sofia"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a broader umbrella topic",
-      "whyPlausible": "Hamilton, Sofia can point toward several nearby themes before one clue makes the exact category level visible.",
-      "whyRejected": "Hamilton is the clue that narrows the board into one category with clearer boundaries."
+      "label": "tourist destinations",
+      "whyPlausible": "While most are tourist destinations, that's too broad and doesn't explain the specific set of cities.",
+      "whyRejected": "Once Lima lands, the final answer explains the board more cleanly than tourist destinations."
     },
     {
-      "label": "a one-clue surface theme",
-      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
-      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+      "label": "major cities",
+      "whyPlausible": "major cities feels plausible early on, but it falls apart once lima demands a more exact reading.",
+      "whyRejected": "Once Lima lands, the final answer explains the board more cleanly than major cities."
     }
   ],
-  "setValidationSummary": "Lima, Athens, Mexico City keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "setValidationSummary": "Lima, Athens, Mexico City keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
   "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Capital cities"
 }
