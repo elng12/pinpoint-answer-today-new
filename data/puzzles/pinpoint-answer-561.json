@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-561",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint 561 lines up The Underground, double-decker buses, the Thames, Big Ben, and Buckingham Palace—icons that weave together transit, riverside views, clock chimes, and royal ceremony. Once you picture a Union Jack backdrop, it’s obvious that every clue is part of London’s daily postcard.",
-    "The Underground and double-decker buses immediately screamed “London commute,” but I waited to confirm with the Thames and Big Ben. When Buckingham Palace arrived, the hypothesis became bulletproof—each clue is either a landmark or civic symbol tied to London, not Britain in general.",
-    "This puzzle encourages players to engage with London's iconic landmarks, weaving together history, culture, and geography. Each clue represents not just a location but a piece of London's identity, reflecting its evolution over the years. Understanding these connections enriches the solving experience.",
-    "Puzzle invites you on a mental journey through London's storied streets, where each clue is a vibrant thread in the tapestry of this historic city. Embrace the challenge and revel in the rich associations that define London!"
-  ],
   "wordHints": {
     "The Underground": "The Tube is London’s rapid-transit system.",
     "Double-decker buses": "Two-story buses are a signature way to travel London’s streets.",
@@ -32,5 +26,11 @@
       "question": "Do transportation clues really belong with landmarks?",
       "answer": "Yes—the connector is the city, so transit and monuments both qualify."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint 561 lines up The Underground, double-decker buses, the Thames, Big Ben, and Buckingham Palace—icons that weave together transit, riverside views, clock chimes, and royal ceremony. Once you picture a Union Jack backdrop, it’s obvious that every clue is part of London’s daily postcard.",
+    "The Underground and double-decker buses immediately screamed “London commute,” but I waited to confirm with the Thames and Big Ben. When Buckingham Palace arrived, the hypothesis became bulletproof—each clue is either a landmark or civic symbol tied to London, not Britain in general.",
+    "This puzzle encourages players to engage with London's iconic landmarks, weaving together history, culture, and geography. Each clue represents not just a location but a piece of London's identity, reflecting its evolution over the years. Understanding these connections enriches the solving experience.",
+    "Puzzle invites you on a mental journey through London's storied streets, where each clue is a vibrant thread in the tapestry of this historic city. Embrace the challenge and revel in the rich associations that define London!"
   ]
 }

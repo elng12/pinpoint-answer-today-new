@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-621",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's puzzle presents an intriguing collection of seemingly unrelated items that share a fundamental numerical characteristic. From the natural world of snowflakes to the gaming tables of casinos, and from the realm of insects to the refreshing world of beverages, these clues point toward a quantity that appears with remarkable consistency. The challenge lies in recognizing how these diverse elements, including athletes on ice, all conform to the same numerical pattern that's both common and significant in various contexts.",
-    "I started by examining each clue individually, wondering what could possibly connect such diverse elements. Initially, I focused on physical characteristics they might share. Looking at canned beverages and ice hockey players, I tried finding connections about containers or teams, but this led nowhere. The breakthrough came when I counted the legs on an insect - six - and suddenly the pattern emerged clearly. I verified by checking each clue: six players per hockey team, six sides on a snowflake, six faces on a die. The connection was undeniable: everything comes in groups of six.",
-    "The puzzle connects items that naturally come in groups of six: beverage six-packs, six legs on insects, six hockey players per team, six sides on snowflakes, and six faces on dice. Each clue represents a different domain where six is the standard quantity.",
-    "Today's puzzle revealed how the number six appears consistently across different contexts - from natural phenomena like snowflakes to human-designed objects like dice and beverage packaging, to sports team composition."
-  ],
   "wordHints": {
     "Canned beverages": "Six-pack (Beverage + Grouping): Standard retail unit for canned drinks",
     "Insect legs": "Hexapod (Insect + Structure): Defining characteristic of insects having six legs",
@@ -32,5 +26,11 @@
       "question": "What's the significance of six in nature?",
       "answer": "Six appears frequently in nature, from insect legs to honeycomb cells, due to efficient space-filling and structural stability."
     }
+  ],
+  "articleBlocks": [
+    "Today's puzzle presents an intriguing collection of seemingly unrelated items that share a fundamental numerical characteristic. From the natural world of snowflakes to the gaming tables of casinos, and from the realm of insects to the refreshing world of beverages, these clues point toward a quantity that appears with remarkable consistency. The challenge lies in recognizing how these diverse elements, including athletes on ice, all conform to the same numerical pattern that's both common and significant in various contexts.",
+    "I started by examining each clue individually, wondering what could possibly connect such diverse elements. Initially, I focused on physical characteristics they might share. Looking at canned beverages and ice hockey players, I tried finding connections about containers or teams, but this led nowhere. The breakthrough came when I counted the legs on an insect - six - and suddenly the pattern emerged clearly. I verified by checking each clue: six players per hockey team, six sides on a snowflake, six faces on a die. The connection was undeniable: everything comes in groups of six.",
+    "The puzzle connects items that naturally come in groups of six: beverage six-packs, six legs on insects, six hockey players per team, six sides on snowflakes, and six faces on dice. Each clue represents a different domain where six is the standard quantity.",
+    "Today's puzzle revealed how the number six appears consistently across different contexts - from natural phenomena like snowflakes to human-designed objects like dice and beverage packaging, to sports team composition."
   ]
 }

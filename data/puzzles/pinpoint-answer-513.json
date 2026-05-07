@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-513",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #513, you weren't alone! The list of names, DESMOND TUTU, MARTIN LUTHER KING, NELSON MANDELA, KOFI ANNAN, and MÉDECINS SANS FRONTIÈRES, might have seemed random at first. But a common thread binds these figures together. The answer, NOBEL PEACE PRIZE WINNERS, is that connecting element.",
-    "My initial thought process involved global humanitarian efforts, which wasn't wrong, but definitely too broad. I even considered some kind of 'International Leaders' angle, leading me down the path of WRONG_GUESS_ONE. That was a dead end.\n\nThen I looked closer at the names, specifically the sheer number of influential peacemakers. A flash of inspiration hit: they're all associated with working towards peace. But what specific honor tied them together? I briefly considered 'TIME Person of the Year', but that didn't fit Médecins Sans Frontières, leading me to the false conclusion of WRONG_GUESS_TWO.\n\nFinally, the penny dropped. The NOBEL PEACE PRIZE WINNERS angle clicked into place. It elegantly connected all the names provided; each individual or organization had been recognized with this prestigious award.",
-    "Every clue in this set—Desmond Tutu, Martin Luther King, Nelson Mandela, Kofi Annan, and Médecins Sans Frontières—ultimately circles back to Nobel Peace Prize winners. Desmond Tutu sparks the pattern, Nelson Mandela reinforces it, and Médecins Sans Frontières locks the shared idea in place once you view them through that lens.",
-    "When Desmond Tutu and Martin Luther King appear together, ask how they could relate to Nobel Peace Prize winners before exploring other stretches. The moment you test that theory, remaining clues like Médecins Sans Frontières fall neatly into place."
-  ],
   "wordHints": {
     "Desmond Tutu": "Archbishop Tutu received the prize in 1984 for his role in opposing apartheid.",
     "Martin Luther King": "King was awarded the prize in 1964 for his nonviolent resistance to racial segregation.",
@@ -33,5 +27,11 @@
       "question": "How does DESMOND TUTU connect to the NOBEL PEACE PRIZE?",
       "answer": "Desmond Tutu was awarded the Nobel Peace Prize in 1984 for his non-violent struggle against apartheid in South Africa, a key component of his work promoting peace and human rights."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #513, you weren't alone! The list of names, DESMOND TUTU, MARTIN LUTHER KING, NELSON MANDELA, KOFI ANNAN, and MÉDECINS SANS FRONTIÈRES, might have seemed random at first. But a common thread binds these figures together. The answer, NOBEL PEACE PRIZE WINNERS, is that connecting element.",
+    "My initial thought process involved global humanitarian efforts, which wasn't wrong, but definitely too broad. I even considered some kind of 'International Leaders' angle, leading me down the path of WRONG_GUESS_ONE. That was a dead end.\n\nThen I looked closer at the names, specifically the sheer number of influential peacemakers. A flash of inspiration hit: they're all associated with working towards peace. But what specific honor tied them together? I briefly considered 'TIME Person of the Year', but that didn't fit Médecins Sans Frontières, leading me to the false conclusion of WRONG_GUESS_TWO.\n\nFinally, the penny dropped. The NOBEL PEACE PRIZE WINNERS angle clicked into place. It elegantly connected all the names provided; each individual or organization had been recognized with this prestigious award.",
+    "Every clue in this set—Desmond Tutu, Martin Luther King, Nelson Mandela, Kofi Annan, and Médecins Sans Frontières—ultimately circles back to Nobel Peace Prize winners. Desmond Tutu sparks the pattern, Nelson Mandela reinforces it, and Médecins Sans Frontières locks the shared idea in place once you view them through that lens.",
+    "When Desmond Tutu and Martin Luther King appear together, ask how they could relate to Nobel Peace Prize winners before exploring other stretches. The moment you test that theory, remaining clues like Médecins Sans Frontières fall neatly into place."
   ]
 }

@@ -266,9 +266,7 @@ function buildDetailVerificationStrings(puzzle) {
   const clues = Array.isArray(puzzle?.clues) ? puzzle.clues.filter(Boolean) : [];
   const bodyBlocks = Array.isArray(puzzle?.articleBlocks) && puzzle.articleBlocks.length
     ? puzzle.articleBlocks
-    : Array.isArray(puzzle?.fullAnalysis)
-      ? puzzle.fullAnalysis
-      : [];
+    : [];
   const bodySnippet = bodyBlocks.find((entry) => String(entry || "").trim());
   const faqSnippet = Array.isArray(puzzle?.faqs)
     ? puzzle.faqs.find((item) => String(item?.answer || "").trim())?.answer

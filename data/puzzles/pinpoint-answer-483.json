@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-483",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #483 is one of those boards that feels simple, but it can still waste time if you overthink it. Garden, Fruit, Egg, Caprese, and Greek all sound food-related from the start, yet they do not belong to one ingredient family or one cuisine. The cleaner way to solve it is to ask what complete dish name each clue becomes when you add the same word.",
-    "My first read was to group the clues by flavor or course. Fruit and Caprese suggested freshness, Egg hinted at deli foods, and Greek pointed toward a regional style. That approach works loosely, but it is messier than the board needs to be. The puzzle sharpens immediately once you place salad after each clue. Garden salad, fruit salad, egg salad, Caprese salad, and Greek salad are all standard names that do not require any stretching.",
-    "This is what makes the board feel fair. The answer is broad enough to cover both classic side dishes and more specific named styles. Garden salad is generic, fruit salad is sweeter, egg salad often doubles as a sandwich filling, and Caprese and Greek salad bring in recognizable Mediterranean formats. Different ingredients, same dish category.",
-    "That is why the answer to LinkedIn Pinpoint #483 is Types of salads. Once salad becomes the shared ending, the board stops being a pile of food words and turns into one straightforward naming pattern."
-  ],
   "wordHints": {
     "Garden": "Garden salad is the familiar mixed vegetable side dish that makes the pattern easy to test.",
     "Fruit": "Fruit salad shows that the answer is about dish names, not only savory foods.",
@@ -36,5 +30,11 @@
       "question": "How do I solve easy-looking food boards faster?",
       "answer": "Test a single dish word after each clue. If several familiar menu names appear at once, trust the naming pattern instead of overcomplicating the category."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #483 is one of those boards that feels simple, but it can still waste time if you overthink it. Garden, Fruit, Egg, Caprese, and Greek all sound food-related from the start, yet they do not belong to one ingredient family or one cuisine. The cleaner way to solve it is to ask what complete dish name each clue becomes when you add the same word.",
+    "My first read was to group the clues by flavor or course. Fruit and Caprese suggested freshness, Egg hinted at deli foods, and Greek pointed toward a regional style. That approach works loosely, but it is messier than the board needs to be. The puzzle sharpens immediately once you place salad after each clue. Garden salad, fruit salad, egg salad, Caprese salad, and Greek salad are all standard names that do not require any stretching.",
+    "This is what makes the board feel fair. The answer is broad enough to cover both classic side dishes and more specific named styles. Garden salad is generic, fruit salad is sweeter, egg salad often doubles as a sandwich filling, and Caprese and Greek salad bring in recognizable Mediterranean formats. Different ingredients, same dish category.",
+    "That is why the answer to LinkedIn Pinpoint #483 is Types of salads. Once salad becomes the shared ending, the board stops being a pile of food words and turns into one straightforward naming pattern."
   ]
 }

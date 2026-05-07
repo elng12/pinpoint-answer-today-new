@@ -117,7 +117,6 @@ export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.Zo
   bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;
   pageExperienceMode: z.ZodOptional<typeof puzzlePageExperienceModeSchema>;
   articleBlocks: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-  fullAnalysis: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   wordHints: z.ZodRecord<z.ZodString, z.ZodString>;
   spoilerHints: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;

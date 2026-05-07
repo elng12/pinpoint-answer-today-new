@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-583",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #583 is a masterclass in misdirection, presenting five seemingly unrelated concepts that challenge the solver to find a common thread.",
-    "The opening trio of clues, Spell, Shadow, and Play, sets a strong 'Alphabetical Bait' trap, luring solvers into a false pattern. However, the introduction of Fishing line disrupts this narrative, forcing a strategy change. The correct logic emerges when considering the category of 'Things you cast,' where each clue fits: a spell is cast, a shadow is cast, a play is performed or cast, a fishing line is cast, and a vote is cast. The Inclusion/Exclusion criteria are defined by the action of casting, which applies to all five clues.",
-    "The puzzle starts by setting an 'Alphabetical Bait' trap with Spell, Shadow, and Play, before disrupting this pattern with Fishing line, which forces a reevaluation of the clues. The correct solution emerges by considering the action of 'casting' in relation to each clue, leading to the category 'Things you cast.' This puzzle showcases a clever use of misdirection and the importance of identifying pivot points in clue sequences.",
-    "Today's puzzle utilizes a 'Category Distractor' misdirection, with Fishing line being the key to breaking the trap and revealing the common thread among the clues."
-  ],
   "wordHints": {
     "Spell": "Spell (Spell + Noun): A clue that fits the Things you cast theme.",
     "Shadow": "Shadow (Shadow + Noun): A clue that fits the Things you cast theme.",
@@ -37,5 +31,11 @@
       "question": "Can you 'cast' a ballot?",
       "answer": "Yes, 'casting a ballot' is synonymous with 'casting a vote'. The verb 'cast' is the key connector."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #583 is a masterclass in misdirection, presenting five seemingly unrelated concepts that challenge the solver to find a common thread.",
+    "The opening trio of clues, Spell, Shadow, and Play, sets a strong 'Alphabetical Bait' trap, luring solvers into a false pattern. However, the introduction of Fishing line disrupts this narrative, forcing a strategy change. The correct logic emerges when considering the category of 'Things you cast,' where each clue fits: a spell is cast, a shadow is cast, a play is performed or cast, a fishing line is cast, and a vote is cast. The Inclusion/Exclusion criteria are defined by the action of casting, which applies to all five clues.",
+    "The puzzle starts by setting an 'Alphabetical Bait' trap with Spell, Shadow, and Play, before disrupting this pattern with Fishing line, which forces a reevaluation of the clues. The correct solution emerges by considering the action of 'casting' in relation to each clue, leading to the category 'Things you cast.' This puzzle showcases a clever use of misdirection and the importance of identifying pivot points in clue sequences.",
+    "Today's puzzle utilizes a 'Category Distractor' misdirection, with Fishing line being the key to breaking the trap and revealing the common thread among the clues."
   ]
 }

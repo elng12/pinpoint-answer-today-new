@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-493",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #493 gives a board that looks almost solved after the first two clues. Red and Black already suggest named seas, and Yellow pushes the same pattern further. The only question is whether the board wants a plain category answer or a more elaborate geography label. Once Dead and Mediterranean appear, the simplest answer wins.",
-    "My first instinct was to think in terms of world geography, but that is still too wide. Continents, countries, rivers, and oceans could all live under that umbrella. The puzzle narrows itself when you test sea after each clue. Red Sea, Black Sea, Yellow Sea, Dead Sea, and Mediterranean Sea are all standard names that people recognize immediately. No stretch, no exceptions, no need for a more ornate answer than the basic category.",
-    "The board is satisfying because it balances obvious and slightly less obvious examples. Red Sea and Black Sea feel immediate. Dead Sea is also famous, but it changes the rhythm enough to keep the board from feeling repetitive. Mediterranean Sea broadens the list beyond color-based names and confirms that the connector is not just colors or adjectives. It is named seas in general.",
-    "That is why the answer to LinkedIn Pinpoint #493 is Seas. Once you place sea after each clue, every part of the board locks into one clean geography pattern."
-  ],
   "wordHints": {
     "Red": "Red Sea is the famous body of water between northeast Africa and the Arabian Peninsula.",
     "Black": "Black Sea is the inland sea bordered by Eastern Europe and Western Asia.",
@@ -36,5 +30,11 @@
       "question": "How should I approach geography boards like #493?",
       "answer": "Try adding one place-type word after each clue. If the names become instantly recognizable, the shared geographic label is usually the answer."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #493 gives a board that looks almost solved after the first two clues. Red and Black already suggest named seas, and Yellow pushes the same pattern further. The only question is whether the board wants a plain category answer or a more elaborate geography label. Once Dead and Mediterranean appear, the simplest answer wins.",
+    "My first instinct was to think in terms of world geography, but that is still too wide. Continents, countries, rivers, and oceans could all live under that umbrella. The puzzle narrows itself when you test sea after each clue. Red Sea, Black Sea, Yellow Sea, Dead Sea, and Mediterranean Sea are all standard names that people recognize immediately. No stretch, no exceptions, no need for a more ornate answer than the basic category.",
+    "The board is satisfying because it balances obvious and slightly less obvious examples. Red Sea and Black Sea feel immediate. Dead Sea is also famous, but it changes the rhythm enough to keep the board from feeling repetitive. Mediterranean Sea broadens the list beyond color-based names and confirms that the connector is not just colors or adjectives. It is named seas in general.",
+    "That is why the answer to LinkedIn Pinpoint #493 is Seas. Once you place sea after each clue, every part of the board locks into one clean geography pattern."
   ]
 }

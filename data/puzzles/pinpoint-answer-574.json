@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-574",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint 574 lines up Hot, Cold, Rain, Baby, and Meteor—everyday words that leap between bathrooms, nurseries, and astronomy chats. Each clue paints a different scene, so the challenge is to discover the single noun that keeps showing up in the background. Can you figure out which shared menu ties them together?",
-    "Hot and Cold immediately sounded like temperature settings, so I pictured a bathroom dial. Rain reinforced the idea of water, but Baby pulled me toward celebrations, and Meteor lit up the night sky. Once I read each clue aloud with the same noun trailing after it, the pattern locked: every entry forms a fluent two-word phrase that describes a specific kind of shower: hot shower, cold shower, rain shower, baby shower, meteor shower.",
-    "\"Hot and cold describe water temperature, rain shower is a weather pattern, a baby shower is a party for expectant parents, and a meteor shower is a sky event like the Leonids. The shared connector is the word \"shower\" that follows each clue to make a common phrase.",
-    "When clues mix weather terms with an event like \"baby\" or \"meteor,\" think of a shared word that makes a phrase in every case. Listing the clues as adjective or noun plus the same noun led quickly to \"shower.\""
-  ],
   "wordHints": {
     "Hot": "A 'hot topic' refers to a subject that is currently very popular or controversial, often sparking lively discussions.",
     "Cold": "A cold case refers to a criminal investigation that has not been solved and remains open, often due to a lack of evidence or leads.",
@@ -37,5 +31,11 @@
       "question": "What if I guessed 'Bath'?",
       "answer": "'Hot bath' and 'Cold bath' work, but 'Meteor bath' and 'Rain bath' are not common phrases, so 'Shower' is the stronger answer."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint 574 lines up Hot, Cold, Rain, Baby, and Meteor—everyday words that leap between bathrooms, nurseries, and astronomy chats. Each clue paints a different scene, so the challenge is to discover the single noun that keeps showing up in the background. Can you figure out which shared menu ties them together?",
+    "Hot and Cold immediately sounded like temperature settings, so I pictured a bathroom dial. Rain reinforced the idea of water, but Baby pulled me toward celebrations, and Meteor lit up the night sky. Once I read each clue aloud with the same noun trailing after it, the pattern locked: every entry forms a fluent two-word phrase that describes a specific kind of shower: hot shower, cold shower, rain shower, baby shower, meteor shower.",
+    "\"Hot and cold describe water temperature, rain shower is a weather pattern, a baby shower is a party for expectant parents, and a meteor shower is a sky event like the Leonids. The shared connector is the word \"shower\" that follows each clue to make a common phrase.",
+    "When clues mix weather terms with an event like \"baby\" or \"meteor,\" think of a shared word that makes a phrase in every case. Listing the clues as adjective or noun plus the same noun led quickly to \"shower.\""
   ]
 }

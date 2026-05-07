@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-588",
   "detailState": "published",
-  "fullAnalysis": [
-    "When I first saw A and X on today's board, my brain immediately jumped to algebra. Then RB appeared and I thought 'Ruby?' or some chemistry abbreviation. LT made me think 'lieutenant,' and D-Pad... well, that one screamed gaming. The moment I saw 'D-Pad,' everything clicked—these aren't academic or military abbreviations. They're Xbox controller inputs. Every single one is a button or control you'd press while gaming on Microsoft's console.",
-    "My first instinct was to treat A and X as variables. Maybe this was about algebra or coordinates? But then RB showed up. Right... Back? That didn't make sense with X and A.\n\nThen I noticed 'LT (left trigger)' and suddenly the gaming angle became obvious. Left Trigger is Xbox terminology. I tested it: A button—yes, that's green on Xbox. X button—blue, on the left side. RB—Right Bumper, the shoulder button. LT—Left Trigger, on the back. D-Pad—the directional pad for menu navigation.\n\nThe beautiful thing about this puzzle is how it mixes different button types. Face buttons (A, X) are for primary actions like jumping or attacking. Bumpers (RB) are for secondary functions like aiming. Triggers (LT) control gradual inputs like braking in racing games. And the D-Pad handles directional input for menus and movement in some games. All different functions, but all Xbox controller buttons.",
-    "Today's puzzle brings together five distinct inputs from Xbox controllers: face buttons (A and X), a shoulder button (RB), a trigger (LT), and the directional pad (D-Pad). Each represents a different type of control mechanism, but they all share one essential trait: they're all physical buttons you press on an Xbox controller.",
-    "When clues are abbreviated letters and gaming terminology, think about hardware interfaces. A, X, RB, LT, and D-Pad are all distinct button types on Xbox controllers—face buttons for primary actions, bumpers and triggers for secondary functions, and the D-Pad for navigation."
-  ],
   "wordHints": {
     "A": "The green face button on the right side of the Xbox controller, typically used for primary actions like jumping, confirming selections, or interacting with objects.",
     "X": "The blue face button on the left side of the Xbox controller, commonly mapped to reloading weapons, opening inventories, or context-sensitive actions.",
@@ -37,5 +31,11 @@
       "question": "How hard is Pinpoint #588?",
       "answer": "Rated 2/5. Gamers will recognize it immediately from 'D-Pad' and 'left trigger,' but non-gamers might struggle without hardware familiarity."
     }
+  ],
+  "articleBlocks": [
+    "When I first saw A and X on today's board, my brain immediately jumped to algebra. Then RB appeared and I thought 'Ruby?' or some chemistry abbreviation. LT made me think 'lieutenant,' and D-Pad... well, that one screamed gaming. The moment I saw 'D-Pad,' everything clicked—these aren't academic or military abbreviations. They're Xbox controller inputs. Every single one is a button or control you'd press while gaming on Microsoft's console.",
+    "My first instinct was to treat A and X as variables. Maybe this was about algebra or coordinates? But then RB showed up. Right... Back? That didn't make sense with X and A.\n\nThen I noticed 'LT (left trigger)' and suddenly the gaming angle became obvious. Left Trigger is Xbox terminology. I tested it: A button—yes, that's green on Xbox. X button—blue, on the left side. RB—Right Bumper, the shoulder button. LT—Left Trigger, on the back. D-Pad—the directional pad for menu navigation.\n\nThe beautiful thing about this puzzle is how it mixes different button types. Face buttons (A, X) are for primary actions like jumping or attacking. Bumpers (RB) are for secondary functions like aiming. Triggers (LT) control gradual inputs like braking in racing games. And the D-Pad handles directional input for menus and movement in some games. All different functions, but all Xbox controller buttons.",
+    "Today's puzzle brings together five distinct inputs from Xbox controllers: face buttons (A and X), a shoulder button (RB), a trigger (LT), and the directional pad (D-Pad). Each represents a different type of control mechanism, but they all share one essential trait: they're all physical buttons you press on an Xbox controller.",
+    "When clues are abbreviated letters and gaming terminology, think about hardware interfaces. A, X, RB, LT, and D-Pad are all distinct button types on Xbox controllers—face buttons for primary actions, bumpers and triggers for secondary functions, and the D-Pad for navigation."
   ]
 }

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-509",
   "detailState": "published",
-  "fullAnalysis": [
-    "Love, All, Advantage, Fifteen, and Deuce feel abstract for a moment, but together they belong to one very specific language: tennis scoring.",
-    "The trap is letting Love and All push you toward emotions or philosophy. That falls apart once Fifteen and Deuce appear, because those words are not random concepts here. They are technical scoring terms used inside one sport.",
-    "That is why the answer to LinkedIn Pinpoint #509 is Tennis scoring terms. Love means zero, all marks a tied score, fifteen is the first point value, deuce is 40-40, and advantage is the edge a player gets after deuce.",
-    "When a board mixes ordinary words with one or two highly specific ones, trust the specialized context. A single technical clue can reveal the whole system."
-  ],
   "wordHints": {
     "Love": "In tennis, love means a score of zero. It is one of the sport's most distinctive scoring terms.",
     "All": "All is used when both players have the same score, as in 15-all or 30-all.",
@@ -36,5 +30,11 @@
       "question": "How can I solve puzzles like this faster?",
       "answer": "When your initial theory fits the first few clues but starts to strain with a new one, don't try to force it. Use that 'misfit' clue to actively search for a new, narrower category that fits everything perfectly."
     }
+  ],
+  "articleBlocks": [
+    "Love, All, Advantage, Fifteen, and Deuce feel abstract for a moment, but together they belong to one very specific language: tennis scoring.",
+    "The trap is letting Love and All push you toward emotions or philosophy. That falls apart once Fifteen and Deuce appear, because those words are not random concepts here. They are technical scoring terms used inside one sport.",
+    "That is why the answer to LinkedIn Pinpoint #509 is Tennis scoring terms. Love means zero, all marks a tied score, fifteen is the first point value, deuce is 40-40, and advantage is the edge a player gets after deuce.",
+    "When a board mixes ordinary words with one or two highly specific ones, trust the specialized context. A single technical clue can reveal the whole system."
   ]
 }

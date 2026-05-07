@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-555",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #555, you're not alone! This one had me counting everything in my apartment. The clues were SHEEP, STARS, BLESSINGS, CALORIES, and VOTES, all leading to a deceptively simple answer. Turns out, we're looking for 'Things you can count'.",
-    "Initially, I was all over the place. I considered 'Money' because, well, who *doesn't* count that? And then I jumped to the wildly incorrect 'Friends' after seeing BLESSINGS.\n\nHowever, neither of those felt quite right. I needed something that connected all five clues more directly. So I took a step back and re-examined each word, looking for the common thread.\n\nThe 'aha!' moment came when I realized each clue represented something quantifiable. SHEEP can be counted when you're trying to fall asleep, STARS twinkle in countable numbers (at least figuratively), BLESSINGS are often enumerated, CALORIES are definitely counted (unfortunately!), and VOTES...well, that's democracy in action.",
-    "This puzzle engages with our innate desire to quantify experiences and phenomena. Each clue serves as a reminder that counting isn't just for numbers; it reflects our perceptions and values in daily life. For instance, 'Counting Sheep' relates to relaxation, while 'Counting Stars' evokes wonder.",
-    "In puzzle #555, players embark on a counting journey, exploring how we quantify everything from the whimsical to the essential. It's a delightful reminder of the myriad ways we connect with the world around us."
-  ],
   "wordHints": {
     "Sheep": "This refers to the old trick of counting sheep to fall asleep, a classic image of insomnia.",
     "Stars": "While the actual number of stars is beyond comprehension, we often speak of 'counting stars' metaphorically.",
@@ -36,5 +30,11 @@
       "question": "How does the 'Sheep' clue connect to 'Things you can count'?",
       "answer": "It refers to the common practice of counting sheep as a sleep aid. The idea is that the monotonous act of counting will lull you to sleep. Therefore, counting sheep is a 'thing you can count'."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #555, you're not alone! This one had me counting everything in my apartment. The clues were SHEEP, STARS, BLESSINGS, CALORIES, and VOTES, all leading to a deceptively simple answer. Turns out, we're looking for 'Things you can count'.",
+    "Initially, I was all over the place. I considered 'Money' because, well, who *doesn't* count that? And then I jumped to the wildly incorrect 'Friends' after seeing BLESSINGS.\n\nHowever, neither of those felt quite right. I needed something that connected all five clues more directly. So I took a step back and re-examined each word, looking for the common thread.\n\nThe 'aha!' moment came when I realized each clue represented something quantifiable. SHEEP can be counted when you're trying to fall asleep, STARS twinkle in countable numbers (at least figuratively), BLESSINGS are often enumerated, CALORIES are definitely counted (unfortunately!), and VOTES...well, that's democracy in action.",
+    "This puzzle engages with our innate desire to quantify experiences and phenomena. Each clue serves as a reminder that counting isn't just for numbers; it reflects our perceptions and values in daily life. For instance, 'Counting Sheep' relates to relaxation, while 'Counting Stars' evokes wonder.",
+    "In puzzle #555, players embark on a counting journey, exploring how we quantify everything from the whimsical to the essential. It's a delightful reminder of the myriad ways we connect with the world around us."
   ]
 }

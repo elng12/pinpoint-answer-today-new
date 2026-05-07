@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-578",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle threads together five everyday words that sound like the start of chores or errands: Window, Pipe, Dry, Street, and Vacuum. Seen one by one, they tempt you toward themes like household cleaning, plumbing, or general \"life admin,\" yet none of those buckets cleanly fits all five. The real connection hides in what comes after each word, when a single everyday noun snaps them into phrases you hear all the time.",
-    "When the board opened with Window, I did what a lot of solvers would do and parked it under household chores. Then Pipe arrived and pulled my brain toward plumbing. By the time Dry showed up, I was juggling errands, tools, and laundry. Street made things even stranger. The pattern finally clicked when I stopped chasing topics and started testing the same word after every clue. Window cleaner, Pipe cleaner, Dry cleaner, Street cleaner, Vacuum cleaner. Once I heard that rhythm, all the earlier theories collapsed at once. Household chores, plumbing, and \"things you wash\" each miss at least one clue, but \"words that come before 'cleaner'\" fits every clue naturally.",
-    "Many solvers will first chase surface-level themes such as household chores, cleaning tools, or plumbing. The breakthrough usually comes from testing a single word or short phrase after every clue. When you put \"cleaner\" after Window, Pipe, Dry, Street, and Vacuum, the phrasing stays natural for each clue: Window cleaner, Pipe cleaner, Dry cleaner, Street cleaner, and Vacuum cleaner. This is a strong sign that you have the right answer. Competing themes typically fail on at least one clue, so the connector \"words that come before 'cleaner'\" stands out as the only explanation that fits the full set.",
-    "Window, Pipe, Dry, Street, and Vacuum all snap into the same pattern once you put \"cleaner\" after each one. Today's Pinpoint answer is \"words that come before 'cleaner'\" — the only connector that makes every clue sound natural."
-  ],
   "wordHints": {
     "Window": "A window cleaner is a person or tool specifically designed to clean the glass surfaces of windows.",
     "Pipe": "A drain pipe cleaner is a tool specifically designed to clean blockages in pipes, making 'drain' a fitting descriptor for 'cleaner' in this context.",
@@ -43,5 +37,11 @@
       "question": "How can I solve similar suffix puzzles faster?",
       "answer": "When several clues sound like they could start common phrases, pick one simple word—like cleaner, time, or card—and try it after each clue. If it forms five fluent combinations, you have likely found the suffix-based connector."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle threads together five everyday words that sound like the start of chores or errands: Window, Pipe, Dry, Street, and Vacuum. Seen one by one, they tempt you toward themes like household cleaning, plumbing, or general \"life admin,\" yet none of those buckets cleanly fits all five. The real connection hides in what comes after each word, when a single everyday noun snaps them into phrases you hear all the time.",
+    "When the board opened with Window, I did what a lot of solvers would do and parked it under household chores. Then Pipe arrived and pulled my brain toward plumbing. By the time Dry showed up, I was juggling errands, tools, and laundry. Street made things even stranger. The pattern finally clicked when I stopped chasing topics and started testing the same word after every clue. Window cleaner, Pipe cleaner, Dry cleaner, Street cleaner, Vacuum cleaner. Once I heard that rhythm, all the earlier theories collapsed at once. Household chores, plumbing, and \"things you wash\" each miss at least one clue, but \"words that come before 'cleaner'\" fits every clue naturally.",
+    "Many solvers will first chase surface-level themes such as household chores, cleaning tools, or plumbing. The breakthrough usually comes from testing a single word or short phrase after every clue. When you put \"cleaner\" after Window, Pipe, Dry, Street, and Vacuum, the phrasing stays natural for each clue: Window cleaner, Pipe cleaner, Dry cleaner, Street cleaner, and Vacuum cleaner. This is a strong sign that you have the right answer. Competing themes typically fail on at least one clue, so the connector \"words that come before 'cleaner'\" stands out as the only explanation that fits the full set.",
+    "Window, Pipe, Dry, Street, and Vacuum all snap into the same pattern once you put \"cleaner\" after each one. Today's Pinpoint answer is \"words that come before 'cleaner'\" — the only connector that makes every clue sound natural."
   ]
 }

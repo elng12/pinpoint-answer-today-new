@@ -1,11 +1,6 @@
 {
   "slug": "pinpoint-answer-580",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle lines up five words that span naval warfare, gaming, warfare tactics, medieval weapons, and patriotic songs: Ship, Royale, Cry, Axe, and Hymn of the Republic. At first glance, they might point to games, weapons, or military themes, but none of those categories cleanly captures all five. The real connection emerges when you add the same word before each clue, revealing a pattern that links board games, video games, warfare, and history under one shared category.",
-    "When Ship appeared first, my mind went straight to transportation—things you can board or vehicles. I confidently submitted \"boarded\" as my guess for the connecting category. Wrong! The game instantly humbled me with the second word: Royale. My \"boarded\" theory sank immediately. \"Royale\" doesn't fit that at all. But in that moment of resetting, the real connection became blindingly obvious. \"Battle Royale\" is a massive gaming and pop culture term. And then I looked back at \"Ship\"... \"Battleship\"! That was it. Both words follow \"Battle\" to form well-known compound names. I typed in \"Battle\" and finally got that satisfying green checkmark.",
-    "If you found this puzzle challenging, pay attention to how the connector behaves as a phrase. Saying each clue aloud with the connector appended or prepended often reveals which ideas sound fluent and which feel forced. Keeping a small mental library of past connectors will also make it easier to recognise similar patterns in future puzzles."
-  ],
   "wordHints": {
     "Ship": "The phrase 'ship shape' refers to something being in good order or well organized, akin to how a ship must be properly maintained and arranged for safe sailing.",
     "Royale": "A 'Battle Royale' is a genre of game or competition where a large number of players compete against each other until only one remains, reflecting the 'royale' aspect of grandeur and high stakes.",
@@ -39,5 +34,10 @@
       "question": "Is 'Battleship' always a game?",
       "answer": "No, it historically refers to a class of heavy warships. However, the puzzle allows for multiple interpretations (game or ship) as long as the word 'Battle' precedes it."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle lines up five words that span naval warfare, gaming, warfare tactics, medieval weapons, and patriotic songs: Ship, Royale, Cry, Axe, and Hymn of the Republic. At first glance, they might point to games, weapons, or military themes, but none of those categories cleanly captures all five. The real connection emerges when you add the same word before each clue, revealing a pattern that links board games, video games, warfare, and history under one shared category.",
+    "When Ship appeared first, my mind went straight to transportation—things you can board or vehicles. I confidently submitted \"boarded\" as my guess for the connecting category. Wrong! The game instantly humbled me with the second word: Royale. My \"boarded\" theory sank immediately. \"Royale\" doesn't fit that at all. But in that moment of resetting, the real connection became blindingly obvious. \"Battle Royale\" is a massive gaming and pop culture term. And then I looked back at \"Ship\"... \"Battleship\"! That was it. Both words follow \"Battle\" to form well-known compound names. I typed in \"Battle\" and finally got that satisfying green checkmark.",
+    "If you found this puzzle challenging, pay attention to how the connector behaves as a phrase. Saying each clue aloud with the connector appended or prepended often reveals which ideas sound fluent and which feel forced. Keeping a small mental library of past connectors will also make it easier to recognise similar patterns in future puzzles."
   ]
 }

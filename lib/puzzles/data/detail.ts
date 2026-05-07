@@ -297,7 +297,6 @@ function resolveEvidenceTurningPoint(
 function resolveEvidenceSolvePath(
   detailContent: PuzzleDetailContentRecord,
   articleBlocks: string[],
-  fullAnalysis: string[],
   solutionNarrative: string[],
   turningPoint: PuzzleTurningPointRecord | null,
 ): PuzzleSolvePathRecord | null {
@@ -305,7 +304,7 @@ function resolveEvidenceSolvePath(
     return detailContent.solvePath;
   }
 
-  const sourceParagraphs = [...solutionNarrative, ...articleBlocks, ...fullAnalysis]
+  const sourceParagraphs = [...solutionNarrative, ...articleBlocks]
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
   const firstRead = sourceParagraphs[0];
@@ -383,10 +382,9 @@ export async function toPuzzleDetail(
     detailContent.lessons,
     detailContent.wordHints,
   );
-  const rawArticleBlocks = detailContent.articleBlocks ?? [];
-  const rawFullAnalysis = detailContent.fullAnalysis ?? [];
-  const articleBlocks = rawArticleBlocks.length > 0 ? rawArticleBlocks : rawFullAnalysis;
-  const fullAnalysis = rawArticleBlocks.length > 0 ? rawFullAnalysis : [];
+  const legacyFullAnalysis = (detailContent as Record<string, unknown>).fullAnalysis;
+  const rawArticleBlocks = detailContent.articleBlocks ?? (Array.isArray(legacyFullAnalysis) ? legacyFullAnalysis : []);
+  const articleBlocks = rawArticleBlocks.length > 0 ? rawArticleBlocks : [];
   const solutionNarrative = detailContent.solutionNarrative ?? [];
   const questionType = detailContent.questionType ?? inferPuzzleQuestionType(entry.mainAnswer);
   const difficultyBand = inferPuzzleDifficultyBand({
@@ -400,7 +398,6 @@ export async function toPuzzleDetail(
   const solvePath = resolveEvidenceSolvePath(
     detailContent,
     articleBlocks,
-    fullAnalysis,
     solutionNarrative,
     turningPoint,
   );
@@ -424,7 +421,6 @@ export async function toPuzzleDetail(
     difficultyBand,
     shortSummary: entry.shortSummary,
     articleBlocks,
-    fullAnalysis,
     solutionNarrative,
     wordHints: detailContent.wordHints,
     spoilerHints: detailContent.spoilerHints ?? {},

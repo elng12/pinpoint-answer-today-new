@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-523",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #523 is one of those boards that feels random until you notice the shared piece is physical rather than semantic. Sewing machine, Drum kit, Car, Bicycle, and Piano do not belong to one obvious industry, but they all become much easier to group once you think about how a person operates them.",
-    "My first pass split the clues into machines, vehicles, and musical instruments. That got me nowhere because the list still felt too broad. The turning point was bicycle and piano. They look unrelated on the surface, but both immediately suggest pedals. Once that idea appeared, the rest of the board lined up: sewing machines use foot pedals, drum kits rely on kick and hi-hat pedals, and cars use accelerator, brake, and sometimes clutch pedals.",
-    "The strength of the puzzle is that the same physical feature serves very different purposes in each clue. A bicycle pedal creates motion, a piano pedal changes tone and sustain, a car pedal controls speed and braking, and a drum pedal converts foot pressure into rhythm. The sewing machine clue completes the set by bringing the same foot-operated mechanism into a craft context.",
-    "That is why the answer to LinkedIn Pinpoint #523 is Things with pedals. The clues are not about transportation, music, or machinery by themselves. They are about objects that all depend on pedals to function."
-  ],
   "wordHints": {
     "Sewing machine": "A sewing machine uses a foot pedal to control stitching speed, which makes the pedal connection direct.",
     "Drum kit": "Drum kits usually include kick and hi-hat pedals, so feet are part of the instrument's control system.",
@@ -36,5 +30,11 @@
       "question": "How should I solve mechanical-feature puzzles like #523?",
       "answer": "When the clues come from very different industries, ask what part, motion, or control method they might share. A common mechanism often reveals the category faster than a broad theme search."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #523 is one of those boards that feels random until you notice the shared piece is physical rather than semantic. Sewing machine, Drum kit, Car, Bicycle, and Piano do not belong to one obvious industry, but they all become much easier to group once you think about how a person operates them.",
+    "My first pass split the clues into machines, vehicles, and musical instruments. That got me nowhere because the list still felt too broad. The turning point was bicycle and piano. They look unrelated on the surface, but both immediately suggest pedals. Once that idea appeared, the rest of the board lined up: sewing machines use foot pedals, drum kits rely on kick and hi-hat pedals, and cars use accelerator, brake, and sometimes clutch pedals.",
+    "The strength of the puzzle is that the same physical feature serves very different purposes in each clue. A bicycle pedal creates motion, a piano pedal changes tone and sustain, a car pedal controls speed and braking, and a drum pedal converts foot pressure into rhythm. The sewing machine clue completes the set by bringing the same foot-operated mechanism into a craft context.",
+    "That is why the answer to LinkedIn Pinpoint #523 is Things with pedals. The clues are not about transportation, music, or machinery by themselves. They are about objects that all depend on pedals to function."
   ]
 }

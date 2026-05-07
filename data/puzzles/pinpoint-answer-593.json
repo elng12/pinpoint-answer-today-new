@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-593",
   "detailState": "published",
-  "fullAnalysis": [
-    "The puzzle seemed straightforward at the start. Names like Lise Meitner and Albert Einstein stood out, hinting at a scientific twist. Alfred Nobel and Marie and Pierre further complicated the picture, suggesting a deeper connection. Could these be clues to renowned chemists or physicists? The answer lay in something elemental.",
-    "Once the answer was revealed, everything made perfect sense. Here's how each clue connects:\n- Lise Meitner: Element named after physicist (Meitnerium).\n- Neils Bohr: Element named after physicist (Bohrium).\n- Alfred Nobel: Element named after inventor (Nobelium).\n- Albert Einstein: Element named after physicist (Einsteinium).\n- Marie and Pierre: Element named after chemists (Curium).",
-    "The puzzle seemed straightforward at the start. Names like Lise Meitner and Albert Einstein stood out, hinting at a scientific twist. Alfred Nobel and Marie and Pierre further complicated the picture, suggesting a deeper connection. Could these be clues to renowned chemists or physicists? The answer lay in something elemental.\n\nIn this walkthrough we retrace the solution path, showing how clues like Lise Meitner, Neils Bohr, Alfred Nobel, and Albert Einstein reinforce \"Periodic table elements named for scientists!\", and capture LinkedIn Pinpoint answers you can reuse tomorrow.",
-    "Meitner, Bohr, Nobel, Einstein, and the Curies all have one rare honor in common: they are eponyms for chemical elements (Meitnerium, Bohrium, Nobelium, Einsteinium, Curium)."
-  ],
   "wordHints": {
     "Lise Meitner": "Meitnerium is the element named after physicist Lise Meitner, so this clue points to scientists honored on the periodic table.",
     "Neils Bohr": "Bohrium is the element named after physicist Niels Bohr, fitting the pattern of elements named for scientists.",
@@ -32,5 +26,11 @@
       "question": "Why is \"Direction trap\" a common trap in LinkedIn Pinpoint #593?",
       "answer": "Swapping the order looks tempting, but keeping the connector alongside each clue produces natural phrases and consistent grammar across the board."
     }
+  ],
+  "articleBlocks": [
+    "The puzzle seemed straightforward at the start. Names like Lise Meitner and Albert Einstein stood out, hinting at a scientific twist. Alfred Nobel and Marie and Pierre further complicated the picture, suggesting a deeper connection. Could these be clues to renowned chemists or physicists? The answer lay in something elemental.",
+    "Once the answer was revealed, everything made perfect sense. Here's how each clue connects:\n- Lise Meitner: Element named after physicist (Meitnerium).\n- Neils Bohr: Element named after physicist (Bohrium).\n- Alfred Nobel: Element named after inventor (Nobelium).\n- Albert Einstein: Element named after physicist (Einsteinium).\n- Marie and Pierre: Element named after chemists (Curium).",
+    "The puzzle seemed straightforward at the start. Names like Lise Meitner and Albert Einstein stood out, hinting at a scientific twist. Alfred Nobel and Marie and Pierre further complicated the picture, suggesting a deeper connection. Could these be clues to renowned chemists or physicists? The answer lay in something elemental.\n\nIn this walkthrough we retrace the solution path, showing how clues like Lise Meitner, Neils Bohr, Alfred Nobel, and Albert Einstein reinforce \"Periodic table elements named for scientists!\", and capture LinkedIn Pinpoint answers you can reuse tomorrow.",
+    "Meitner, Bohr, Nobel, Einstein, and the Curies all have one rare honor in common: they are eponyms for chemical elements (Meitnerium, Bohrium, Nobelium, Einsteinium, Curium)."
   ]
 }

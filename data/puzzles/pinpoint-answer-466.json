@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-466",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you're scratching your head at Pinpoint today, you're not alone. The clues KAYAK, CIVIC, RACE CAR, DEIFIED, and HANNAH seemed like a random assortment at first glance. But once you see the connection, it's one of those satisfying \"aha!\" moments. It's all about recognizing a specific type of wordplay in today's clues for the Pinpoint puzzle.",
-    "My initial thought was related to types of cars when I saw CIVIC and RACE CAR. I immediately tried HONDA. Seemed logical, right? Apparently not.\n\nThen I saw KAYAK and tried to think of water-related terms. Total confusion. I even tried BOAT, thinking of different types of vehicles. Big mistake. The clues felt like they were taunting me.\n\nThe realization came when I focused on HANNAH. It's a name, but it's also something else... a word that reads the same backward and forward! PALINDROME! That's when the other clues, KAYAK, CIVIC, RACE CAR, and DEIFIED, all clicked into place.",
-    "Today's Pinpoint relied less on direct association and more on recognizing a specific linguistic pattern. The clues were all examples of palindrome words, which can be challenging if you're focused on semantic connections.",
-    "This puzzle emphasizes that Pinpoint isn't just about vocabulary; it's also about associative thinking and pattern recognition. Don't be afraid to think outside the box!"
-  ],
   "wordHints": {
     "Kayak": "Kayak is a classic example of a word that reads the same forwards and backwards, fitting perfectly with Palindrome.",
     "Civic": "Civic, like Kayak, is another word that forms a palindrome, mirroring itself when reversed.",
@@ -36,5 +30,11 @@
       "question": "How does Kayak connect to Palindrome?",
       "answer": "Kayak is a word that reads the same forwards and backwards, which is the definition of a palindrome. Therefore, it is a form of a palindrome."
     }
+  ],
+  "articleBlocks": [
+    "If you're scratching your head at Pinpoint today, you're not alone. The clues KAYAK, CIVIC, RACE CAR, DEIFIED, and HANNAH seemed like a random assortment at first glance. But once you see the connection, it's one of those satisfying \"aha!\" moments. It's all about recognizing a specific type of wordplay in today's clues for the Pinpoint puzzle.",
+    "My initial thought was related to types of cars when I saw CIVIC and RACE CAR. I immediately tried HONDA. Seemed logical, right? Apparently not.\n\nThen I saw KAYAK and tried to think of water-related terms. Total confusion. I even tried BOAT, thinking of different types of vehicles. Big mistake. The clues felt like they were taunting me.\n\nThe realization came when I focused on HANNAH. It's a name, but it's also something else... a word that reads the same backward and forward! PALINDROME! That's when the other clues, KAYAK, CIVIC, RACE CAR, and DEIFIED, all clicked into place.",
+    "Today's Pinpoint relied less on direct association and more on recognizing a specific linguistic pattern. The clues were all examples of palindrome words, which can be challenging if you're focused on semantic connections.",
+    "This puzzle emphasizes that Pinpoint isn't just about vocabulary; it's also about associative thinking and pattern recognition. Don't be afraid to think outside the box!"
   ]
 }

@@ -4,7 +4,7 @@ import { defaultSocialImagePath, siteName, twitterHandle } from "@/lib/site/conf
 import { fitPinpointClues } from "@/lib/seo/pinpoint-text";
 import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
 
-export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Current Puzzle, Hints & Answer";
+export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Hints & Solution";
 export const HOME_SEO_DESCRIPTION =
   "Get today's LinkedIn Pinpoint answer for the current puzzle with spoiler-safe hints, clue help, and a fast path to the final solution.";
 export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive | Past Answers by Puzzle Number";

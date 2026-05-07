@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-542",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #542, you're not alone! The clues DOOR, FLOOR, PLACE, DIPLO and LAUNDRO had many of us scratching our heads. The connector, \"Terms that come before 'mat',\" adds another layer of intrigue. Let's unravel this wordplay and reveal the solution.",
-    "Initially, I was completely stumped. I tried to force-fit things, thinking of things ending in -at. My first thought was something related to a 'diplomat,' which sent me down the wrong path at first. Then, I briefly considered something about 'door mats' and directions, which led nowhere.\n\nMy next attempt involved focusing on the 'mat' part of the connector. I started listing common words ending in 'mat,' but couldn't find prefixes that matched any of the clues. I even considered words that could be anagrammed, leading to a frustrating dead end with 'PLATFORM'.\n\nFinally, it clicked. The connector wasn't about random words ending in 'mat,' but terms that come before 'mat' to make a familiar word: DOOR + MAT = DOORMAT, FLOOR + MAT = FLOORMAT, PLACE + MAT = PLACEMAT, and LAUNDRO + MAT = LAUNDROMAT. Even DIPLO points toward DIPLOMAT. That was the moment the category came into focus.",
-    "Every clue in this set—Door, Floor, Place, Diplo, and Laundro—ultimately circles back to Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.”. Door sparks the pattern, Place reinforces it, and Laundro locks the shared idea in place once you view them through that lens.",
-    "When Door and Floor appear together, ask how they could relate to Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.” before exploring other stretches. The moment you test that theory, remaining clues like Laundro fall neatly into place."
-  ],
   "wordHints": {
     "Door": "Everyone wipes their shoes on one of these, hopefully!",
     "Floor": "Car owners certainly know about this one.",
@@ -36,5 +30,11 @@
       "question": "How does 'Laundro' connect to the answer?",
       "answer": "'Laundro' is a shortened form of 'laundromat'. A laundromat is a self-service laundry facility. The 'Laundro' clue leads to 'Laundromat' which fits the \"term before 'mat'\" pattern."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #542, you're not alone! The clues DOOR, FLOOR, PLACE, DIPLO and LAUNDRO had many of us scratching our heads. The connector, \"Terms that come before 'mat',\" adds another layer of intrigue. Let's unravel this wordplay and reveal the solution.",
+    "Initially, I was completely stumped. I tried to force-fit things, thinking of things ending in -at. My first thought was something related to a 'diplomat,' which sent me down the wrong path at first. Then, I briefly considered something about 'door mats' and directions, which led nowhere.\n\nMy next attempt involved focusing on the 'mat' part of the connector. I started listing common words ending in 'mat,' but couldn't find prefixes that matched any of the clues. I even considered words that could be anagrammed, leading to a frustrating dead end with 'PLATFORM'.\n\nFinally, it clicked. The connector wasn't about random words ending in 'mat,' but terms that come before 'mat' to make a familiar word: DOOR + MAT = DOORMAT, FLOOR + MAT = FLOORMAT, PLACE + MAT = PLACEMAT, and LAUNDRO + MAT = LAUNDROMAT. Even DIPLO points toward DIPLOMAT. That was the moment the category came into focus.",
+    "Every clue in this set—Door, Floor, Place, Diplo, and Laundro—ultimately circles back to Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.”. Door sparks the pattern, Place reinforces it, and Laundro locks the shared idea in place once you view them through that lens.",
+    "When Door and Floor appear together, ask how they could relate to Terms that come before “mat” — Words or prefixes that can form complete words when placed before “mat.” before exploring other stretches. The moment you test that theory, remaining clues like Laundro fall neatly into place."
   ]
 }

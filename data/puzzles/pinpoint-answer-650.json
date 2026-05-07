@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-650",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's puzzle leads us through the familiar territory of print media organization. The clues point to distinct categories of content that readers encounter daily, from entertainment features to athletic coverage. What's particularly interesting is how these elements, while seemingly disparate, come together to form a cohesive whole that has shaped information delivery for centuries. The arrangement and hierarchy of these components reflect both reader interests and editorial priorities in traditional publishing.",
-    "I initially noticed the mix of content types, thinking about different forms of media categorization. Looking at 'Lifestyle' and 'Sports,' I considered magazine departments. The presence of 'Business' and 'Classifieds' shifted my thinking toward daily publications. When I saw 'Op-ed page,' everything clicked into place – these were unmistakably newspaper sections. I double-checked my theory by confirming each clue represented a standard division found in traditional newspapers. Reflecting on the solution, I appreciated how these distinct sections have historically organized our daily news consumption, creating a familiar rhythm for readers.",
-    "The puzzle presents five key components found in traditional newspapers: Lifestyle, Sports, Business, Classifieds, and Op-ed page. These divisions represent the standard organizational structure of print newspapers, each serving a specific reader interest or need. The solution becomes clear when recognizing these as established newspaper sections.",
-    "Today's Pinpoint featured classic newspaper organization, with clues referencing standard print sections: Lifestyle, Sports, Business, Classifieds, and Op-ed page. The answer reveals the fundamental structure of traditional newspaper content."
-  ],
   "wordHints": {
     "Lifestyle": "Lifestyle (Feature Section): Articles covering fashion, food, home, and entertainment",
     "Sports": "Sports (Athletic Coverage): Dedicated area for game results, player news, and athletic analysis",
@@ -32,5 +26,11 @@
       "question": "What makes these specific sections significant?",
       "answer": "These sections represent the traditional organization of newspaper content that has influenced how we consume news for generations."
     }
+  ],
+  "articleBlocks": [
+    "Today's puzzle leads us through the familiar territory of print media organization. The clues point to distinct categories of content that readers encounter daily, from entertainment features to athletic coverage. What's particularly interesting is how these elements, while seemingly disparate, come together to form a cohesive whole that has shaped information delivery for centuries. The arrangement and hierarchy of these components reflect both reader interests and editorial priorities in traditional publishing.",
+    "I initially noticed the mix of content types, thinking about different forms of media categorization. Looking at 'Lifestyle' and 'Sports,' I considered magazine departments. The presence of 'Business' and 'Classifieds' shifted my thinking toward daily publications. When I saw 'Op-ed page,' everything clicked into place – these were unmistakably newspaper sections. I double-checked my theory by confirming each clue represented a standard division found in traditional newspapers. Reflecting on the solution, I appreciated how these distinct sections have historically organized our daily news consumption, creating a familiar rhythm for readers.",
+    "The puzzle presents five key components found in traditional newspapers: Lifestyle, Sports, Business, Classifieds, and Op-ed page. These divisions represent the standard organizational structure of print newspapers, each serving a specific reader interest or need. The solution becomes clear when recognizing these as established newspaper sections.",
+    "Today's Pinpoint featured classic newspaper organization, with clues referencing standard print sections: Lifestyle, Sports, Business, Classifieds, and Op-ed page. The answer reveals the fundamental structure of traditional newspaper content."
   ]
 }

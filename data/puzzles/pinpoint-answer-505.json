@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-505",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #505, you're not alone! The puzzle demanded we connect CHAMPS-ÉLYSÉES, ARC DE TRIOMPHE, THE LOUVRE, NOTRE-DAME, and the EIFFEL TOWER. The common thread binding these iconic landmarks? They are all top PARIS TOURIST ATTRACTIONS. Hopefully, you're already planning your next trip!",
-    "Initially, I was all over the place. I saw France, I saw history, and my brain screamed 'FRENCH REVOLUTION!' which, alas, was completely wrong. Then, for a fleeting moment, I even considered 'FAMOUS FRENCH ARTISTS'!\n\nI started listing things related to France. Food? No. Fashion? Nope. Then, focusing on the EIFFEL TOWER, it hit me. Tourists flock to see these spots. I had to think BIGGER than just France itself.\n\nFinally, the penny dropped. All the clues are MAJOR landmarks in PARIS. And what do people do in Paris? TOURISM! Paris Tourist Attractions emerged as the clear connector. Victory!",
-    "Every clue in this set—Champs-Élysées, Arc de Triomphe, The Louvre, Notre-Dame, and Eiffel Tower—ultimately circles back to Paris tourist attractions. Champs-Élysées sparks the pattern, The Louvre reinforces it, and Eiffel Tower locks the shared idea in place once you view them through that lens.",
-    "When Champs-Élysées and Arc de Triomphe appear together, ask how they could relate to Paris tourist attractions before exploring other stretches. The moment you test that theory, remaining clues like Eiffel Tower fall neatly into place."
-  ],
   "wordHints": {
     "Champs-Élysées": "The Champs-Élysées is a famous avenue in Paris that sees countless tourists strolling daily.",
     "Arc de Triomphe": "No trip to Paris is complete without snapping a picture underneath the Arc de Triomphe.",
@@ -36,5 +30,11 @@
       "question": "How does Notre-Dame connect to Paris Tourist Attractions, especially since it's under construction?",
       "answer": "Even with the ongoing construction, Notre-Dame remains a significant historical and cultural landmark that tourists still visit to appreciate its architecture and history from the outside."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #505, you're not alone! The puzzle demanded we connect CHAMPS-ÉLYSÉES, ARC DE TRIOMPHE, THE LOUVRE, NOTRE-DAME, and the EIFFEL TOWER. The common thread binding these iconic landmarks? They are all top PARIS TOURIST ATTRACTIONS. Hopefully, you're already planning your next trip!",
+    "Initially, I was all over the place. I saw France, I saw history, and my brain screamed 'FRENCH REVOLUTION!' which, alas, was completely wrong. Then, for a fleeting moment, I even considered 'FAMOUS FRENCH ARTISTS'!\n\nI started listing things related to France. Food? No. Fashion? Nope. Then, focusing on the EIFFEL TOWER, it hit me. Tourists flock to see these spots. I had to think BIGGER than just France itself.\n\nFinally, the penny dropped. All the clues are MAJOR landmarks in PARIS. And what do people do in Paris? TOURISM! Paris Tourist Attractions emerged as the clear connector. Victory!",
+    "Every clue in this set—Champs-Élysées, Arc de Triomphe, The Louvre, Notre-Dame, and Eiffel Tower—ultimately circles back to Paris tourist attractions. Champs-Élysées sparks the pattern, The Louvre reinforces it, and Eiffel Tower locks the shared idea in place once you view them through that lens.",
+    "When Champs-Élysées and Arc de Triomphe appear together, ask how they could relate to Paris tourist attractions before exploring other stretches. The moment you test that theory, remaining clues like Eiffel Tower fall neatly into place."
   ]
 }

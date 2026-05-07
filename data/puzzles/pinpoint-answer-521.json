@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-521",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #521, you're not alone. This one hinged on connecting STONE, BRONZE, ICE, SPACE, and DARK to a specific concept. The answer, AGES, represents historical periods. Did this connector throw you for a loop, or did you feel like you were in your element?",
-    "Honestly, when I first saw the clues, my brain immediately jumped to materials. The 'Stone' and 'Bronze' clues heavily suggested this. I confidently, but wrongly, typed in 'METALS'.\n\nThen, 'Space' threw me for a loop. I started thinking about eras of exploration, maybe something related to technological advancement. For a fleeting moment, I considered 'ERAS' before dismissing it as too vague. I even considered 'CIVILIZATIONS', which, in hindsight, seems even further off.\n\nFinally, it clicked! 'Stone Age,' 'Bronze Age,' 'Ice Age,' 'Space Age,' and 'Dark Ages.' The pattern was undeniable. 'Ages' neatly tied everything together, making me feel both brilliant and slightly embarrassed for not seeing it sooner.",
-    "Every clue in this set—Stone, Bronze, Ice, Space, and Dark—ultimately circles back to Ages (historical or cultural periods). Stone sparks the pattern, Ice reinforces it, and Dark locks the shared idea in place once you view them through that lens.",
-    "When Stone and Bronze appear together, ask how they could relate to Ages (historical or cultural periods) before exploring other stretches. The moment you test that theory, remaining clues like Dark fall neatly into place."
-  ],
   "wordHints": {
     "Stone": "The Stone Age refers to a prehistoric period when stone was widely used to make implements.",
     "Bronze": "The Bronze Age is characterized by the use of bronze, particularly for tools and weapons.",
@@ -33,5 +27,11 @@
       "question": "How does 'Stone' connect to 'Ages'?",
       "answer": "The clue 'Stone' connects to 'Ages' via the common phrase 'Stone Age'. The Stone Age is a broad prehistoric period during which stone was widely used to make tools and weapons. Linking the material to a specific historical era."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #521, you're not alone. This one hinged on connecting STONE, BRONZE, ICE, SPACE, and DARK to a specific concept. The answer, AGES, represents historical periods. Did this connector throw you for a loop, or did you feel like you were in your element?",
+    "Honestly, when I first saw the clues, my brain immediately jumped to materials. The 'Stone' and 'Bronze' clues heavily suggested this. I confidently, but wrongly, typed in 'METALS'.\n\nThen, 'Space' threw me for a loop. I started thinking about eras of exploration, maybe something related to technological advancement. For a fleeting moment, I considered 'ERAS' before dismissing it as too vague. I even considered 'CIVILIZATIONS', which, in hindsight, seems even further off.\n\nFinally, it clicked! 'Stone Age,' 'Bronze Age,' 'Ice Age,' 'Space Age,' and 'Dark Ages.' The pattern was undeniable. 'Ages' neatly tied everything together, making me feel both brilliant and slightly embarrassed for not seeing it sooner.",
+    "Every clue in this set—Stone, Bronze, Ice, Space, and Dark—ultimately circles back to Ages (historical or cultural periods). Stone sparks the pattern, Ice reinforces it, and Dark locks the shared idea in place once you view them through that lens.",
+    "When Stone and Bronze appear together, ask how they could relate to Ages (historical or cultural periods) before exploring other stretches. The moment you test that theory, remaining clues like Dark fall neatly into place."
   ]
 }

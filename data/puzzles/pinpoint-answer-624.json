@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-624",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle presents a fascinating exploration of prefixes and combinations. The clues 'Area' and 'Morse' initially suggest a communication or mapping theme, while 'Genetic' hints at scientific terminology. However, the real challenge lies in recognizing how these seemingly disparate terms share a common linguistic pattern. Each word serves as a modifier, creating specialized terminology when combined with another element. The connection becomes clearer when examining how these terms function as descriptors in various fields.",
-    "I started by focusing on 'Morse' and 'Genetic', thinking they might relate to types of signals or information transmission. I tried connecting them through binary systems or scientific communication. Looking at 'Area' and 'Source', I noticed they often appear as modifiers in technical contexts. The breakthrough came when I realized these words frequently precede another specific term. I tested this theory by adding 'code' after each clue - Area code, Source code, Secret code. Finally, I confirmed that all five clues can naturally pair with 'code' to form common phrases, revealing the pattern of words that precede this technical term.",
-    "The puzzle is solved by recognizing that each clue word can be followed by 'code' to form a common phrase: area code, source code, secret code, genetic code, and Morse code. This pattern reveals the answer: words that come before code.",
-    "Puzzle #624 connects Area, Source, Secret, Genetic, and Morse through their common usage as prefixes to the word 'code'. Each forms a distinct technical or specialized term when combined with 'code'."
-  ],
   "wordHints": {
     "Area": "Area (Location + Identifier): A numerical prefix used to identify geographic regions in telephone numbers",
     "Source": "Source (Programming + Foundation): The human-readable version of computer programming instructions",
@@ -35,5 +29,11 @@
       "question": "Are these the only words that can precede 'code'?",
       "answer": "No, there are many other words that can precede 'code', but these five form the specific set for this puzzle."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle presents a fascinating exploration of prefixes and combinations. The clues 'Area' and 'Morse' initially suggest a communication or mapping theme, while 'Genetic' hints at scientific terminology. However, the real challenge lies in recognizing how these seemingly disparate terms share a common linguistic pattern. Each word serves as a modifier, creating specialized terminology when combined with another element. The connection becomes clearer when examining how these terms function as descriptors in various fields.",
+    "I started by focusing on 'Morse' and 'Genetic', thinking they might relate to types of signals or information transmission. I tried connecting them through binary systems or scientific communication. Looking at 'Area' and 'Source', I noticed they often appear as modifiers in technical contexts. The breakthrough came when I realized these words frequently precede another specific term. I tested this theory by adding 'code' after each clue - Area code, Source code, Secret code. Finally, I confirmed that all five clues can naturally pair with 'code' to form common phrases, revealing the pattern of words that precede this technical term.",
+    "The puzzle is solved by recognizing that each clue word can be followed by 'code' to form a common phrase: area code, source code, secret code, genetic code, and Morse code. This pattern reveals the answer: words that come before code.",
+    "Puzzle #624 connects Area, Source, Secret, Genetic, and Morse through their common usage as prefixes to the word 'code'. Each forms a distinct technical or specialized term when combined with 'code'."
   ]
 }

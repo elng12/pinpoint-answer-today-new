@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-576",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint 576 lines up Back, Up, Directions, Credit, and Thanks—words that bounce between returning borrowed items, conceding defeat, guiding friends through city streets, acknowledging someone's work, and expressing gratitude. Each clue hints at a different interaction, so the puzzle dares you to name the single verb that sets all five phrases in motion. Can you figure out which everyday action ties them together?",
-    "Back and Up immediately felt like phrasal-verb endings—give back, give up. Directions seemed like an outlier until I tried give directions and the pattern clicked. Credit and Thanks reinforced the hypothesis: give credit, give thanks. Every clue becomes a fluent two-word phrase when you slot the same verb in front, and that verb happens to be one of the most common in English.",
-    "Back, Up, Directions, Credit, and Thanks each complete everyday expressions when paired with the same verb: give back a borrowed item, give up when you surrender, give directions to guide someone, give credit to acknowledge effort, and give thanks to show gratitude. The shared connector is the verb \"give\" preceding every clue.",
-    "When clues feel like endings to common expressions, try slotting verbs in front. Here, the simple verb \"give\" completes every phrase cleanly."
-  ],
   "wordHints": {
     "Back": "This phrase is used when someone needs to start over or rethink a plan after a failure.",
     "Up": "The phrase 'look up' is commonly used to indicate searching for information or directing one's gaze toward a higher position.",
@@ -37,5 +31,11 @@
       "question": "Does 'Credit' mean money here?",
       "answer": "Not usually. 'Give credit' means to acknowledge someone's achievement, though giving store credit is also a valid phrase."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint 576 lines up Back, Up, Directions, Credit, and Thanks—words that bounce between returning borrowed items, conceding defeat, guiding friends through city streets, acknowledging someone's work, and expressing gratitude. Each clue hints at a different interaction, so the puzzle dares you to name the single verb that sets all five phrases in motion. Can you figure out which everyday action ties them together?",
+    "Back and Up immediately felt like phrasal-verb endings—give back, give up. Directions seemed like an outlier until I tried give directions and the pattern clicked. Credit and Thanks reinforced the hypothesis: give credit, give thanks. Every clue becomes a fluent two-word phrase when you slot the same verb in front, and that verb happens to be one of the most common in English.",
+    "Back, Up, Directions, Credit, and Thanks each complete everyday expressions when paired with the same verb: give back a borrowed item, give up when you surrender, give directions to guide someone, give credit to acknowledge effort, and give thanks to show gratitude. The shared connector is the verb \"give\" preceding every clue.",
+    "When clues feel like endings to common expressions, try slotting verbs in front. Here, the simple verb \"give\" completes every phrase cleanly."
   ]
 }

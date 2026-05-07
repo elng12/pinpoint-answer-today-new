@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-562",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint 562 features Intern, Space, Friend, Champion, and Battle—nouns that span résumés, rocket launches, relationships, trophies, and warfare. The only trick that unites them is adding the same suffix so each clue becomes a familiar “-ship” word.",
-    "I tried common endings: -er, -ing, -ment... none worked across all five. Appending “ship” was the first test that landed everywhere: internship, spaceship, friendship, championship, battleship. Once that happened, the answer wrote itself.",
-    "Every entry is a standalone noun that becomes an unmistakable compound once you append “ship.” Intern → internship, Space → spaceship, Friend → friendship, Champion → championship, and Battle → battleship. The shared connector is therefore “words that precede ship.”",
-    "LinkedIn Pinpoint rewards suffix spotting. The second you realize each clue happily accepts the ending “-ship,” the entire board collapses into place."
-  ],
   "wordHints": {
     "Intern": "Add “ship” to form internship, the training period before a full-time role.",
     "Space": "Spaceship is the vehicle that travels beyond Earth.",
@@ -32,5 +26,11 @@
       "question": "Do abstract nouns like friendship count?",
       "answer": "Absolutely. As long as “ship” forms a standard word, it belongs in the set."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint 562 features Intern, Space, Friend, Champion, and Battle—nouns that span résumés, rocket launches, relationships, trophies, and warfare. The only trick that unites them is adding the same suffix so each clue becomes a familiar “-ship” word.",
+    "I tried common endings: -er, -ing, -ment... none worked across all five. Appending “ship” was the first test that landed everywhere: internship, spaceship, friendship, championship, battleship. Once that happened, the answer wrote itself.",
+    "Every entry is a standalone noun that becomes an unmistakable compound once you append “ship.” Intern → internship, Space → spaceship, Friend → friendship, Champion → championship, and Battle → battleship. The shared connector is therefore “words that precede ship.”",
+    "LinkedIn Pinpoint rewards suffix spotting. The second you realize each clue happily accepts the ending “-ship,” the entire board collapses into place."
   ]
 }

@@ -1,11 +1,6 @@
 {
   "slug": "pinpoint-answer-664",
   "detailState": "published",
-  "fullAnalysis": [
-    "LinkedIn Pinpoint #664 initially feels broad because Turnover, Samosa, Strudel, Croissant, and Doughnut seem to point in different directions. The solve gets easier when I stop hunting for a pun and instead ask what narrow category can hold every clue without exceptions. Types of pastry is the clean fit because each item is a recognized pastry type. That makes the board cohesive, specific, and strong enough to explain all five clues with one answer instead of a loose vibe or an overly broad theme.",
-    "I began by splitting the clues into smaller buckets, because Turnover, Samosa, Strudel, Croissant, and Doughnut did not look unified on a first pass. My early guesses were all too broad and kept leaving one clue behind. The breakthrough came when I asked what exact category each clue could belong to without any stretching. One by one, the pieces snapped into place: every clue is one of the recognized pastry type. After that, I reread the full set and checked whether any clue felt forced. None did. That final verification mattered because it showed Types of pastry was not just plausible, it was precise enough to explain the board cleanly from start to finish.",
-    "After checking Turnover, Samosa, Strudel, Croissant, and Doughnut against Types of pastry, the board resolves cleanly without any leftover clue."
-  ],
   "wordHints": {
     "Turnover": "Turnover fits because it is a recognized pastry type, matching the category Types of pastry.",
     "Samosa": "Samosa fits because it is a recognized pastry type, matching the category Types of pastry.",
@@ -40,5 +35,10 @@
       "question": "What solving habit helps on puzzles like this?",
       "answer": "The fastest habit is to test the narrowest clean answer against every clue instead of committing to a broad theme after only one or two matches."
     }
+  ],
+  "articleBlocks": [
+    "LinkedIn Pinpoint #664 initially feels broad because Turnover, Samosa, Strudel, Croissant, and Doughnut seem to point in different directions. The solve gets easier when I stop hunting for a pun and instead ask what narrow category can hold every clue without exceptions. Types of pastry is the clean fit because each item is a recognized pastry type. That makes the board cohesive, specific, and strong enough to explain all five clues with one answer instead of a loose vibe or an overly broad theme.",
+    "I began by splitting the clues into smaller buckets, because Turnover, Samosa, Strudel, Croissant, and Doughnut did not look unified on a first pass. My early guesses were all too broad and kept leaving one clue behind. The breakthrough came when I asked what exact category each clue could belong to without any stretching. One by one, the pieces snapped into place: every clue is one of the recognized pastry type. After that, I reread the full set and checked whether any clue felt forced. None did. That final verification mattered because it showed Types of pastry was not just plausible, it was precise enough to explain the board cleanly from start to finish.",
+    "After checking Turnover, Samosa, Strudel, Croissant, and Doughnut against Types of pastry, the board resolves cleanly without any leftover clue."
   ]
 }

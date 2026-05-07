@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-627",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's puzzle presents an intriguing collection of seemingly unrelated words that share a common linguistic partner. From the natural world to sports, and from folklore to common expressions, each clue points toward a single connecting element. The challenge lies in identifying how a piece of fruit, a mythical creature, two different sports, and a common simile could possibly be related. The solution requires recognizing familiar word combinations and everyday phrases.",
-    "I initially focused on the sports connection between baseball and cricket, wondering if there was some shared equipment or terminology. Looking at the other clues seemed to scatter my thoughts in different directions. As I wrote down each clue, I started noticing how they could form compound words or phrases. The breakthrough came when I realized 'fruit bat' was a common term - could this be the pattern? Testing my theory, I found that 'vampire bat' and 'baseball bat' were equally valid combinations. The cricket connection suddenly clicked - a cricket bat! Even 'blind as a bat' completed the pattern perfectly. Reflecting on the solution, I appreciated how each clue cleverly preceded the word 'bat' in common usage.",
-    "The puzzle presents five clues that each form common terms or phrases when paired with the word 'bat': fruit bat (a species), vampire bat (another species), cricket bat (sports equipment), baseball bat (sports equipment), and 'blind as a bat' (common expression).",
-    "Today's Pinpoint answer reveals terms that precede 'bat': fruit bat, vampire bat, cricket bat, baseball bat, and the expression 'blind as a bat'. Each clue forms a distinct and common phrase with the word 'bat'."
-  ],
   "wordHints": {
     "Fruit": "Fruit bat (Flying mammal): A large bat species that primarily feeds on fruit and nectar",
     "Vampire": "Vampire bat (Blood-feeding mammal): A bat species that feeds on blood from other animals",
@@ -32,5 +26,11 @@
       "question": "Are these all different types of bats?",
       "answer": "No, only fruit bat and vampire bat refer to actual bat species; the others are related to sports equipment and expressions."
     }
+  ],
+  "articleBlocks": [
+    "Today's puzzle presents an intriguing collection of seemingly unrelated words that share a common linguistic partner. From the natural world to sports, and from folklore to common expressions, each clue points toward a single connecting element. The challenge lies in identifying how a piece of fruit, a mythical creature, two different sports, and a common simile could possibly be related. The solution requires recognizing familiar word combinations and everyday phrases.",
+    "I initially focused on the sports connection between baseball and cricket, wondering if there was some shared equipment or terminology. Looking at the other clues seemed to scatter my thoughts in different directions. As I wrote down each clue, I started noticing how they could form compound words or phrases. The breakthrough came when I realized 'fruit bat' was a common term - could this be the pattern? Testing my theory, I found that 'vampire bat' and 'baseball bat' were equally valid combinations. The cricket connection suddenly clicked - a cricket bat! Even 'blind as a bat' completed the pattern perfectly. Reflecting on the solution, I appreciated how each clue cleverly preceded the word 'bat' in common usage.",
+    "The puzzle presents five clues that each form common terms or phrases when paired with the word 'bat': fruit bat (a species), vampire bat (another species), cricket bat (sports equipment), baseball bat (sports equipment), and 'blind as a bat' (common expression).",
+    "Today's Pinpoint answer reveals terms that precede 'bat': fruit bat, vampire bat, cricket bat, baseball bat, and the expression 'blind as a bat'. Each clue forms a distinct and common phrase with the word 'bat'."
   ]
 }

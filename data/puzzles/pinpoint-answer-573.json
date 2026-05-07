@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-573",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint 573 features Highlight, Underline, Bold, Italic, and Strikethrough—five interface verbs you click when dressing up text. Each clue hints at a different kind of emphasis or revision, so the puzzle dares you to name the single toolbar that keeps them in one row. Can you figure out which shared menu ties them together?",
-    "I first guessed these might be proofreading marks, but italics and bold live in the main font ribbon, not the editor’s margin. Listing the clues in the order I see them on the Word toolbar made it obvious: every word is a formatting toggle that changes presentation without altering wording. Once I pictured the ribbon, highlight and strikethrough slotted into place and the answer wrote itself: ways to format text.",
-    "Highlight adds a background glow to call attention; underline draws a line beneath text for emphasis; bold increases weight to make words stand out; italic tilts the letters to signal titles or nuance; strikethrough draws a line through text to mark revisions without deleting the content. The common connector is not the text itself but the formatting tools that change its presentation. These actions live together in Word, Google Docs, and most CMS editors, which makes \"ways to format text in a word processor\" the shared idea.",
-    "I first grouped the clues as editing verbs and briefly considered proofreading symbols or revision stages, but italic and bold did not fit those categories. Listing them in order made it obvious they are all toggles in the formatting menu of a word processor. Whenever multiple UI verbs sit next to each other on the same toolbar, they often belong to a single functional category—here, text formatting options."
-  ],
   "wordHints": {
     "Highlight": "A highlight reel is a compilation of the best moments from a performance or event, showcasing the most exciting or important parts.",
     "Underline": "To underline something means to emphasize its significance or to highlight its importance in a discussion.",
@@ -37,5 +31,11 @@
       "question": "Are there other formatting options?",
       "answer": "Yes, subscript, superscript, small caps etc. exist, but these five are the most standard ones found in almost every editor."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint 573 features Highlight, Underline, Bold, Italic, and Strikethrough—five interface verbs you click when dressing up text. Each clue hints at a different kind of emphasis or revision, so the puzzle dares you to name the single toolbar that keeps them in one row. Can you figure out which shared menu ties them together?",
+    "I first guessed these might be proofreading marks, but italics and bold live in the main font ribbon, not the editor’s margin. Listing the clues in the order I see them on the Word toolbar made it obvious: every word is a formatting toggle that changes presentation without altering wording. Once I pictured the ribbon, highlight and strikethrough slotted into place and the answer wrote itself: ways to format text.",
+    "Highlight adds a background glow to call attention; underline draws a line beneath text for emphasis; bold increases weight to make words stand out; italic tilts the letters to signal titles or nuance; strikethrough draws a line through text to mark revisions without deleting the content. The common connector is not the text itself but the formatting tools that change its presentation. These actions live together in Word, Google Docs, and most CMS editors, which makes \"ways to format text in a word processor\" the shared idea.",
+    "I first grouped the clues as editing verbs and briefly considered proofreading symbols or revision stages, but italic and bold did not fit those categories. Listing them in order made it obvious they are all toggles in the formatting menu of a word processor. Whenever multiple UI verbs sit next to each other on the same toolbar, they often belong to a single functional category—here, text formatting options."
   ]
 }

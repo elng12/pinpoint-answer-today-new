@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-626",
   "detailState": "published",
-  "fullAnalysis": [
-    "The letter K emerges as a versatile symbol across various domains, serving multiple functions as both a representation and abbreviation. From scientific measurements to digital communication, this singular character carries significant weight in different contexts. Today's puzzle challenges us to recognize how one letter can stand in for diverse concepts, from precious metal quality to numerical values, and even casual affirmation in our modern texting vocabulary.",
-    "I initially focused on the gold purity clue, thinking about measurements and standards. The chess king made me consider game notation and symbols. Looking at thousand, I recalled metric prefixes and common abbreviations. When I saw potassium, the periodic table connection clicked – K was the common thread. The texting shorthand 'k' for okay sealed my confidence in the pattern. I verified each clue: karat for gold, K for king in chess notation, K for thousand, K as potassium's symbol, and 'k' in texting. This elegant solution demonstrated how a single letter could serve as a powerful symbol across different fields.",
-    "The puzzle connects various uses of the letter K across different domains: karats in gold purity, K in chess notation for king, K as thousand, K as the chemical symbol for potassium, and k as text shorthand for okay.",
-    "Today's puzzle revealed how the letter K serves as a versatile symbol across different fields, from precious metal measurement to chemical elements, from chess notation to texting shorthand."
-  ],
   "wordHints": {
     "Purity of gold": "Karat (Measurement + Standard): Unit used to indicate gold purity, marked with K",
     "Chess king": "K (Symbol + Notation): Standard symbol representing the king in chess notation",
@@ -32,5 +26,11 @@
       "question": "How did K become the symbol for potassium?",
       "answer": "K comes from kalium, the Neo-Latin name for potassium"
     }
+  ],
+  "articleBlocks": [
+    "The letter K emerges as a versatile symbol across various domains, serving multiple functions as both a representation and abbreviation. From scientific measurements to digital communication, this singular character carries significant weight in different contexts. Today's puzzle challenges us to recognize how one letter can stand in for diverse concepts, from precious metal quality to numerical values, and even casual affirmation in our modern texting vocabulary.",
+    "I initially focused on the gold purity clue, thinking about measurements and standards. The chess king made me consider game notation and symbols. Looking at thousand, I recalled metric prefixes and common abbreviations. When I saw potassium, the periodic table connection clicked – K was the common thread. The texting shorthand 'k' for okay sealed my confidence in the pattern. I verified each clue: karat for gold, K for king in chess notation, K for thousand, K as potassium's symbol, and 'k' in texting. This elegant solution demonstrated how a single letter could serve as a powerful symbol across different fields.",
+    "The puzzle connects various uses of the letter K across different domains: karats in gold purity, K in chess notation for king, K as thousand, K as the chemical symbol for potassium, and k as text shorthand for okay.",
+    "Today's puzzle revealed how the letter K serves as a versatile symbol across different fields, from precious metal measurement to chemical elements, from chess notation to texting shorthand."
   ]
 }

@@ -1,66 +1,9 @@
 [
   {
-    "puzzleNumber": 737,
-    "slug": "pinpoint-answer-737",
-    "publishDate": "2026-05-07",
-    "status": "live",
-    "detailState": "published",
-    "clues": [
-      "Grip",
-      "Best Boy",
-      "Costumer",
-      "Director",
-      "Actor"
-    ],
-    "mainAnswer": "Jobs on a film set",
-    "category": "Jobs on a film set",
-    "difficultyLevel": "Moderate",
-    "shortSummary": "At first glance, Grip, Best Boy, Costumer do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-07T07:01:58.344Z"
-  },
-  {
-    "puzzleNumber": 736,
-    "slug": "pinpoint-answer-736",
-    "publishDate": "2026-05-06",
-    "status": "archived",
-    "detailState": "published",
-    "clues": [
-      "Hamilton",
-      "Sofia",
-      "Lima",
-      "Athens",
-      "Mexico City"
-    ],
-    "mainAnswer": "Capital cities",
-    "category": "Capital cities",
-    "difficultyLevel": "Moderate",
-    "shortSummary": "At first glance, Hamilton, Sofia, Lima do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-07T07:01:43.931Z"
-  },
-  {
-    "puzzleNumber": 735,
-    "slug": "pinpoint-answer-735",
-    "publishDate": "2026-05-05",
-    "status": "archived",
-    "detailState": "published",
-    "clues": [
-      "Vocal",
-      "Spinal",
-      "Extension",
-      "Rip",
-      "Bungee"
-    ],
-    "mainAnswer": "Types of cords",
-    "category": "Types of cords",
-    "difficultyLevel": "Moderate",
-    "shortSummary": "At first glance, this puzzle feels scattered. \"Vocal\" and \"Spinal\" seem unrelated to \"Rip\" or \"Bungee.\" But a hidden connection will soon emerge.",
-    "updatedAt": "2026-05-06T07:01:42.573Z"
-  },
-  {
     "puzzleNumber": 734,
     "slug": "pinpoint-answer-734",
     "publishDate": "2026-05-04",
-    "status": "archived",
+    "status": "live",
     "detailState": "published",
     "clues": [
       "Mace",
@@ -73,7 +16,7 @@
     "category": "Names of Jedi in the Star Wars films",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Mace, Luke, Obi-Wan do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-05T07:01:59.533Z"
+    "updatedAt": "2026-05-04T07:02:07.097Z"
   },
   {
     "puzzleNumber": 733,

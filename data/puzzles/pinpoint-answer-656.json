@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-656",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle explores the structural components of a lighter-than-air vessel, with clues pointing to various essential parts. From control surfaces to passenger compartments, each element plays a vital role in aerial navigation. The inclusion of specialized terms like 'ballonets' and references to gas containment systems hints at the technical nature of these magnificent flying machines, which have captivated imaginations since the golden age of airship travel.",
-    "I initially noticed the aeronautical theme with 'propeller' and 'tailfin', making me think about aircraft components. Looking at 'gondola', I first considered boats or cable cars, but its aviation context became clear. The presence of 'ballonets' was particularly revealing, as these are unique to lighter-than-air craft. The 'helium gas envelope' confirmed my suspicion about airships specifically. When I cross-referenced these terms with dirigible anatomy, everything aligned perfectly. The combination of control surfaces, passenger compartment, and buoyancy systems could only point to parts of an airship. Through careful analysis of each deceptive hint, the true connection slowly but steadily became apparent to me. It is incredibly rewarding to finally piece together the underlying logic and arrive at the correct answer.",
-    "The puzzle reveals components of an airship through five key elements: the tailfin for directional control, the gondola for passenger transport, propellers for propulsion, ballonets for buoyancy control, and the helium gas envelope for lift. Each component serves a specific function in airship operation.",
-    "Today's Pinpoint answer reveals the essential Parts of an airship, featuring control surfaces, passenger compartment, propulsion system, and buoyancy control mechanisms that make lighter-than-air flight possible."
-  ],
   "wordHints": {
     "Tailfin": "Tailfin (Control Surface): Vertical stabilizer that provides directional stability and control",
     "Gondola": "Gondola (Passenger Compartment): Suspended cabin that carries crew and passengers",
@@ -35,5 +29,11 @@
       "question": "What makes airship design unique?",
       "answer": "Airships combine lighter-than-air technology with traditional aircraft controls, requiring specialized components for buoyancy and navigation."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle explores the structural components of a lighter-than-air vessel, with clues pointing to various essential parts. From control surfaces to passenger compartments, each element plays a vital role in aerial navigation. The inclusion of specialized terms like 'ballonets' and references to gas containment systems hints at the technical nature of these magnificent flying machines, which have captivated imaginations since the golden age of airship travel.",
+    "I initially noticed the aeronautical theme with 'propeller' and 'tailfin', making me think about aircraft components. Looking at 'gondola', I first considered boats or cable cars, but its aviation context became clear. The presence of 'ballonets' was particularly revealing, as these are unique to lighter-than-air craft. The 'helium gas envelope' confirmed my suspicion about airships specifically. When I cross-referenced these terms with dirigible anatomy, everything aligned perfectly. The combination of control surfaces, passenger compartment, and buoyancy systems could only point to parts of an airship. Through careful analysis of each deceptive hint, the true connection slowly but steadily became apparent to me. It is incredibly rewarding to finally piece together the underlying logic and arrive at the correct answer.",
+    "The puzzle reveals components of an airship through five key elements: the tailfin for directional control, the gondola for passenger transport, propellers for propulsion, ballonets for buoyancy control, and the helium gas envelope for lift. Each component serves a specific function in airship operation.",
+    "Today's Pinpoint answer reveals the essential Parts of an airship, featuring control surfaces, passenger compartment, propulsion system, and buoyancy control mechanisms that make lighter-than-air flight possible."
   ]
 }

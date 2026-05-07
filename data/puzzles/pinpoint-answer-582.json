@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-582",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #582 is a compound word puzzle where each clue forms a phrase ending with 'waves,' testing solvers' ability to spot word patterns.",
-    "The opening clue 'Radio' sets an immediate trap, suggesting categories like 'Communication Devices' or 'Things with Stations.' My first guess of 'stations' failed. When 'Brain' appeared as the second clue, the connection became crystal clear: Radio waves, Brain waves. Both form compound phrases with 'waves.' Committing to this pattern paid off—'waves' was the correct answer.",
-    "The puzzle starts with 'Radio,' which is a classic first-clue trap designed to lead solvers toward obvious categories like 'Communication Devices' or 'Things with Stations.' However, when 'Brain' appears as the second clue, the compound pattern becomes clear: both can precede 'waves.' The remaining clues—Shock, Permanent, and Tidal—all follow the same 'X waves' pattern, confirming the category.",
-    "Today's puzzle showcases the 'Compound Word' pattern where each clue forms a phrase with the word 'waves.' The key insight is recognizing that 'Radio waves' and 'Brain waves' share the same structure."
-  ],
   "wordHints": {
     "Radio": "Radio waves are a type of electromagnetic wave used for communication, including broadcasting and transmitting signals in radio technology.",
     "Brain": "Brain waves are electrical impulses in the brain that represent different states of consciousness and mental activity.",
@@ -40,5 +34,11 @@
       "question": "How can I get better at spotting these compound word categories?",
       "answer": "Practice! When you see two clues, mentally try adding a common noun before or after them. Think: 'Radio ____' and 'Brain ____'. Could it be 'station'? No, because 'Brain station' doesn't work. Could it be 'wave'? Yes, both work perfectly."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #582 is a compound word puzzle where each clue forms a phrase ending with 'waves,' testing solvers' ability to spot word patterns.",
+    "The opening clue 'Radio' sets an immediate trap, suggesting categories like 'Communication Devices' or 'Things with Stations.' My first guess of 'stations' failed. When 'Brain' appeared as the second clue, the connection became crystal clear: Radio waves, Brain waves. Both form compound phrases with 'waves.' Committing to this pattern paid off—'waves' was the correct answer.",
+    "The puzzle starts with 'Radio,' which is a classic first-clue trap designed to lead solvers toward obvious categories like 'Communication Devices' or 'Things with Stations.' However, when 'Brain' appears as the second clue, the compound pattern becomes clear: both can precede 'waves.' The remaining clues—Shock, Permanent, and Tidal—all follow the same 'X waves' pattern, confirming the category.",
+    "Today's puzzle showcases the 'Compound Word' pattern where each clue forms a phrase with the word 'waves.' The key insight is recognizing that 'Radio waves' and 'Brain waves' share the same structure."
   ]
 }

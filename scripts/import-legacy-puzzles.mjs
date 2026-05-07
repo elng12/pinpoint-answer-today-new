@@ -387,7 +387,7 @@ function buildDetailContent(legacyPuzzle) {
 
   return {
     slug,
-    fullAnalysis: uniqueParagraphs([
+    articleBlocks: uniqueParagraphs([
       legacyPuzzle.sections?.overview,
       legacyPuzzle.sections?.solutionEmergence,
       legacyPuzzle.analysis?.detailedBreakdown,

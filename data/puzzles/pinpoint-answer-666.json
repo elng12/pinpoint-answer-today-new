@@ -1,11 +1,6 @@
 {
   "slug": "pinpoint-answer-666",
   "detailState": "published",
-  "fullAnalysis": [
-    "LinkedIn Pinpoint #666 looks scattered at first because Foul, Horse, One-act, Child's, and Plug and do not share an obvious topic. The faster route is to treat each clue as half of a familiar phrase. Once I tested whether every clue could sit before the same connector, the pattern became stable. Terms that come before \"play\" works because each clue forms a phrase people already recognize in everyday language, which is exactly the kind of clean phrase-building pattern Pinpoint likes to hide behind mixed domains and uneven clue styles.",
-    "I started this puzzle by looking for a topical grouping, but Foul, Horse, One-act, Child's, and Plug and refused to stay in one subject area. That pushed me toward a phrase puzzle instead of a category puzzle. I tried a few loose connectors and immediately discarded them because they only worked for part of the board. The breakthrough came when I tested \"play\" after each clue. Foul play, horse play, one-act play, child's play, and plug and play all land as familiar phrases. Once every clue passed that check, Terms that come before \"play\" stopped feeling speculative and became the only answer that explained the full board cleanly.",
-    "After checking Foul, Horse, One-act, Child's, and Plug and against Terms that come before \"play\", the board resolves cleanly without any leftover clue."
-  ],
   "wordHints": {
     "Foul": "Foul play is a familiar expression or compound, so Foul belongs in the set Terms that come before \"play\".",
     "Horse": "Horse play is a familiar expression or compound, so Horse belongs in the set Terms that come before \"play\".",
@@ -40,5 +35,10 @@
       "question": "What solving habit helps on puzzles like this?",
       "answer": "The fastest habit is to test the narrowest clean answer against every clue instead of committing to a broad theme after only one or two matches."
     }
+  ],
+  "articleBlocks": [
+    "LinkedIn Pinpoint #666 looks scattered at first because Foul, Horse, One-act, Child's, and Plug and do not share an obvious topic. The faster route is to treat each clue as half of a familiar phrase. Once I tested whether every clue could sit before the same connector, the pattern became stable. Terms that come before \"play\" works because each clue forms a phrase people already recognize in everyday language, which is exactly the kind of clean phrase-building pattern Pinpoint likes to hide behind mixed domains and uneven clue styles.",
+    "I started this puzzle by looking for a topical grouping, but Foul, Horse, One-act, Child's, and Plug and refused to stay in one subject area. That pushed me toward a phrase puzzle instead of a category puzzle. I tried a few loose connectors and immediately discarded them because they only worked for part of the board. The breakthrough came when I tested \"play\" after each clue. Foul play, horse play, one-act play, child's play, and plug and play all land as familiar phrases. Once every clue passed that check, Terms that come before \"play\" stopped feeling speculative and became the only answer that explained the full board cleanly.",
+    "After checking Foul, Horse, One-act, Child's, and Plug and against Terms that come before \"play\", the board resolves cleanly without any leftover clue."
   ]
 }

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-553",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #553, you weren't alone! The combination of GATES, LINES, PLANES, PASSENGERS, and DUTY-FREE SHOPS had many stumped. The connection? All of these are, of course, THINGS AT AIRPORTS. It's a deceptively simple answer once the penny drops, but those clues definitely made us work for it!",
-    "I initially fixated on 'travel' and 'transportation' – clearly, I was thinking too broadly. My first (terrible) guess was 'LOGISTICS', which, in hindsight, is nowhere near the right level of specificity. I then briefly considered 'SECURITY' because of the lines and passengers, but that felt incomplete.\n\nI stepped away for a coffee, and that's when it hit me. Each element – the gates, the lines, even the duty-free shops – are physical components you encounter *at* the airport. It wasn't about the *act* of traveling, but the location itself.\n\nSuddenly, 'THINGS AT AIRPORTS' felt both obvious and satisfying. It's a reminder that sometimes the most straightforward solution is the one staring you in the face, disguised by our own overthinking. I almost went with 'INFRASTRUCTURE'!",
-    "This puzzle cleverly assembles common airport-related terms, inviting solvers to engage with the intricacies of travel. Each clue offers a glimpse into the bustling world of air travel, making it relatable for anyone who has flown, while also prompting reflections on the social dynamics at play in such spaces.",
-    "Today's puzzle takes you on a journey through the airport experience, highlighting the busy yet fascinating aspects we often take for granted while traveling. It reminds us that airports are more than just transit points—they're vibrant environments filled with stories and interactions."
-  ],
   "wordHints": {
     "Gates": "Airport gates are where passengers board and disembark planes, making them a key part of the airport experience.",
     "Lines": "From security to check-in, lines are an unavoidable (and often frustrating) part of the airport landscape.",
@@ -33,5 +27,11 @@
       "question": "How do 'Lines' connect to 'THINGS AT AIRPORTS'?",
       "answer": "Think of the physical lines you stand in – security lines, check-in lines. They are a very real and often dreaded 'thing' that exists *at* airports."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #553, you weren't alone! The combination of GATES, LINES, PLANES, PASSENGERS, and DUTY-FREE SHOPS had many stumped. The connection? All of these are, of course, THINGS AT AIRPORTS. It's a deceptively simple answer once the penny drops, but those clues definitely made us work for it!",
+    "I initially fixated on 'travel' and 'transportation' – clearly, I was thinking too broadly. My first (terrible) guess was 'LOGISTICS', which, in hindsight, is nowhere near the right level of specificity. I then briefly considered 'SECURITY' because of the lines and passengers, but that felt incomplete.\n\nI stepped away for a coffee, and that's when it hit me. Each element – the gates, the lines, even the duty-free shops – are physical components you encounter *at* the airport. It wasn't about the *act* of traveling, but the location itself.\n\nSuddenly, 'THINGS AT AIRPORTS' felt both obvious and satisfying. It's a reminder that sometimes the most straightforward solution is the one staring you in the face, disguised by our own overthinking. I almost went with 'INFRASTRUCTURE'!",
+    "This puzzle cleverly assembles common airport-related terms, inviting solvers to engage with the intricacies of travel. Each clue offers a glimpse into the bustling world of air travel, making it relatable for anyone who has flown, while also prompting reflections on the social dynamics at play in such spaces.",
+    "Today's puzzle takes you on a journey through the airport experience, highlighting the busy yet fascinating aspects we often take for granted while traveling. It reminds us that airports are more than just transit points—they're vibrant environments filled with stories and interactions."
   ]
 }

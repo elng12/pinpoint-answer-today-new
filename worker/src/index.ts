@@ -1891,7 +1891,7 @@ type PublishedPuzzleDetailSnapshot = {
   slug: string;
   detailState: PublishDetailState;
   bodyMode: "full" | "short";
-  fullAnalysisWordCount: number;
+  articleBlocksWordCount: number;
   minRequiredWords: number;
 };
 
@@ -1927,7 +1927,7 @@ function summarizePublishedPuzzleDetail(value: unknown): PublishedPuzzleDetailSn
       .map((paragraph) => String(paragraph || "").trim())
       .filter(Boolean)
     : [];
-  const analysisParagraphs = fullAnalysis.length > 0 ? fullAnalysis : articleBlocks;
+  const analysisParagraphs = articleBlocks.length > 0 ? articleBlocks : fullAnalysis;
   const minRequiredWords =
     bodyMode === "short" ? MIN_DETAIL_SHORT_ANALYSIS_WORDS : MIN_DETAIL_FULL_ANALYSIS_WORDS;
 
@@ -1935,7 +1935,7 @@ function summarizePublishedPuzzleDetail(value: unknown): PublishedPuzzleDetailSn
     slug,
     detailState: resolvePublishDetailState(record.detailState),
     bodyMode,
-    fullAnalysisWordCount: countDetailWords(analysisParagraphs),
+    articleBlocksWordCount: countDetailWords(analysisParagraphs),
     minRequiredWords,
   };
 }
@@ -1948,23 +1948,10 @@ function summarizePublishedPuzzleDetailContent(content: string): PublishedPuzzle
   }
 }
 
-function omitDuplicateFullAnalysisForStorage(record: Record<string, unknown>): JsonRecord {
-  const articleBlocks = Array.isArray(record.articleBlocks)
-    ? record.articleBlocks.map((paragraph) => String(paragraph || ""))
-    : [];
-  const fullAnalysis = Array.isArray(record.fullAnalysis)
-    ? record.fullAnalysis.map((paragraph) => String(paragraph || ""))
-    : [];
-  const isDuplicateFullAnalysis =
-    articleBlocks.length > 0 &&
-    fullAnalysis.length > 0 &&
-    articleBlocks.length === fullAnalysis.length &&
-    articleBlocks.every((paragraph, index) => paragraph === fullAnalysis[index]);
-
-  if (!isDuplicateFullAnalysis) {
+function omitLegacyFullAnalysisForStorage(record: Record<string, unknown>): JsonRecord {
+  if (!("fullAnalysis" in record)) {
     return record as JsonRecord;
   }
-
   const next: JsonRecord = { ...record };
   delete next.fullAnalysis;
   return next;
@@ -1972,11 +1959,11 @@ function omitDuplicateFullAnalysisForStorage(record: Record<string, unknown>): J
 
 function isDetailSnapshotAtOrAboveFloor(snapshot: PublishedPuzzleDetailSnapshot | null): boolean {
   if (!snapshot) return false;
-  return snapshot.fullAnalysisWordCount >= snapshot.minRequiredWords;
+  return snapshot.articleBlocksWordCount >= snapshot.minRequiredWords;
 }
 
 function describeDetailSnapshot(snapshot: PublishedPuzzleDetailSnapshot): string {
-  return `${snapshot.detailState} ${snapshot.fullAnalysisWordCount}/${snapshot.minRequiredWords} words`;
+  return `${snapshot.detailState} ${snapshot.articleBlocksWordCount}/${snapshot.minRequiredWords} words`;
 }
 
 function resolveThinContentProtectionDecision({
@@ -2657,7 +2644,6 @@ export function buildPublishedPuzzleDetailRecord({
     (sections as Record<string, unknown>).articleBlocks,
     analysisSource,
   );
-  const fullAnalysis = articleBlocks;
   const solutionNarrative = toParagraphs(
     sections.solutionEmergence,
     `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
@@ -2688,7 +2674,6 @@ export function buildPublishedPuzzleDetailRecord({
     wordHints,
     spoilerHints,
     articleBlocks,
-    fullAnalysis,
     solutionNarrative,
     lessons,
     display,
@@ -2805,8 +2790,8 @@ function getLightExplainerReadiness(record: PublishedPuzzleDetailRecord): Publis
   if (record.pageExperienceMode !== "light-explainer") {
     return { ok: false, reason: "pageExperienceMode is not light-explainer" };
   }
-  if (record.fullAnalysis.length < 3) {
-    return { ok: false, reason: `fullAnalysis has ${record.fullAnalysis.length}; expected at least 3 paragraphs` };
+  if (record.articleBlocks.length < 3) {
+    return { ok: false, reason: `articleBlocks has ${record.articleBlocks.length}; expected at least 3 paragraphs` };
   }
   if (!record.display?.connectorSummary?.trim()) {
     return { ok: false, reason: "display.connectorSummary is missing" };
@@ -2890,14 +2875,13 @@ function buildLightExplainerParagraphs(record: PublishedPuzzleDetailRecord): str
 }
 
 function buildLightExplainerRecord(record: PublishedPuzzleDetailRecord): PublishedPuzzleDetailRecord {
-  const fullAnalysis = buildLightExplainerParagraphs(record);
+  const articleBlocks = buildLightExplainerParagraphs(record);
   return {
     ...record,
     bodyMode: "short",
     pageExperienceMode: "light-explainer",
-    articleBlocks: fullAnalysis,
-    fullAnalysis,
-    solutionNarrative: fullAnalysis.slice(0, 3),
+    articleBlocks,
+    solutionNarrative: articleBlocks.slice(0, 3),
     lessons: record.lessons.slice(0, Math.max(2, Math.min(3, record.lessons.length))),
     faqs: record.faqs.slice(0, Math.max(2, Math.min(3, record.faqs.length))),
   };
@@ -3204,7 +3188,7 @@ async function publishToNewSiteGitHub(
       throw new Error(`[new-site] final publish guard failed for ${slugPath}: ${finalReadiness.reason}`);
     }
   }
-  const slugJson = JSON.stringify(omitDuplicateFullAnalysisForStorage(detailRecord), null, 2);
+  const slugJson = JSON.stringify(omitLegacyFullAnalysisForStorage(detailRecord), null, 2);
   const slugProtection = resolveThinContentProtectionDecision({
     incoming: summarizePublishedPuzzleDetail(detailRecord),
     existingBranch: { summary: existingSlugSummary },

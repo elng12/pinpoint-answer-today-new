@@ -2,8 +2,8 @@ import type { PuzzleDetail } from "@/lib/puzzles/data";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
 export function DetailAnalysis({ puzzle }: { puzzle: PuzzleDetail }) {
-  const overview = puzzle.fullAnalysis[0];
-  const journey = puzzle.fullAnalysis.slice(1);
+  const overview = puzzle.articleBlocks[0];
+  const journey = puzzle.articleBlocks.slice(1);
 
   return (
     <section className="surface" style={{ padding: 32 }} id="analysis">

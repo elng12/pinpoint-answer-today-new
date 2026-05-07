@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-557",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #557, you weren't alone! The clues – VACUUMED, ZOOM, SKIING, WEEK, and NAAN – seemed disparate at first glance. But the connector, 'Words with double vowels in the center,' unlocks a surprisingly elegant solution. Hopefully, you didn't spend too long spinning your wheels before this clicked!",
-    "Initially, I was all over the place, trying to find some kind of alphabetical or thematic link between the words. I even briefly entertained the idea that it was something related to food delivery apps, a WILD goose chase I assure you.\n\nThen I started focusing on the structure of the words themselves. I played around with anagrams, letter frequencies, and even considered if it involved Morse code. The moment I considered vowel patterns, I thought, 'Could it be about DOUBLE VOWELS?' Once I went down that path, I abandoned my earlier thought that it was related to SPRING BREAK.\n\nOnce I had the double vowel idea, it became a simple process of checking for examples within each clue. Suddenly, the answer practically jumped off the screen. I was so excited I nearly spilled my coffee!",
-    "This puzzle invites players to delve into the intricacies of English spelling and phonetics. The emphasis on double vowels not only enriches vocabulary but also reflects a playful aspect of language that many may overlook. Words like 'Naan' bring cultural flavors into the mix, making the puzzle more engaging.",
-    "Puzzle is a delightful exploration of double vowels that challenges players to think linguistically. Embrace the intricate dance of letters that come together to create unique sounds and meanings!"
-  ],
   "wordHints": {
     "Vacuumed": "The 'ee' in 'agreed' sits in the center of 'vacuumed,' fulfilling the double vowel criteria.",
     "Zoom": "Centered in 'zoom' is 'oo', and that same double vowel is present in 'groom'.",
@@ -33,5 +27,11 @@
       "question": "How does the 'double vowel' idea connect to the answer?",
       "answer": "The connector phrase 'Words with double vowels in the center' dictates that the answer for each clue *must* contain a double vowel located in the central position when paired with the clue word. This constraint forms the logical link between all the clues."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #557, you weren't alone! The clues – VACUUMED, ZOOM, SKIING, WEEK, and NAAN – seemed disparate at first glance. But the connector, 'Words with double vowels in the center,' unlocks a surprisingly elegant solution. Hopefully, you didn't spend too long spinning your wheels before this clicked!",
+    "Initially, I was all over the place, trying to find some kind of alphabetical or thematic link between the words. I even briefly entertained the idea that it was something related to food delivery apps, a WILD goose chase I assure you.\n\nThen I started focusing on the structure of the words themselves. I played around with anagrams, letter frequencies, and even considered if it involved Morse code. The moment I considered vowel patterns, I thought, 'Could it be about DOUBLE VOWELS?' Once I went down that path, I abandoned my earlier thought that it was related to SPRING BREAK.\n\nOnce I had the double vowel idea, it became a simple process of checking for examples within each clue. Suddenly, the answer practically jumped off the screen. I was so excited I nearly spilled my coffee!",
+    "This puzzle invites players to delve into the intricacies of English spelling and phonetics. The emphasis on double vowels not only enriches vocabulary but also reflects a playful aspect of language that many may overlook. Words like 'Naan' bring cultural flavors into the mix, making the puzzle more engaging.",
+    "Puzzle is a delightful exploration of double vowels that challenges players to think linguistically. Embrace the intricate dance of letters that come together to create unique sounds and meanings!"
   ]
 }

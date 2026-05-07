@@ -527,14 +527,14 @@ async function checkWorkerDetailShape() {
         slug: string;
         detailState: string;
         bodyMode: "full" | "short";
-        fullAnalysisWordCount: number;
+        articleBlocksWordCount: number;
         minRequiredWords: number;
       } | null;
       primaryBranchSummary?: {
         slug: string;
         detailState: string;
         bodyMode: "full" | "short";
-        fullAnalysisWordCount: number;
+        articleBlocksWordCount: number;
         minRequiredWords: number;
       } | null;
     }) => {
@@ -1003,8 +1003,8 @@ async function checkWorkerDetailShape() {
     "downgraded public records should explicitly mark pageExperienceMode=light-explainer",
   );
   assert.ok(
-    Array.isArray(downgradedDecision.record?.fullAnalysis) &&
-      (downgradedDecision.record?.fullAnalysis as unknown[]).length >= 3,
+    Array.isArray(downgradedDecision.record?.articleBlocks) &&
+      (downgradedDecision.record?.articleBlocks as unknown[]).length >= 3,
     "downgraded public records should still carry a compact walkthrough instead of collapsing to an empty shell",
   );
 
@@ -1019,7 +1019,6 @@ async function checkWorkerDetailShape() {
     difficultyBand: "hard",
     answer: "Thin payload",
     clues: ["A", "B", "C", "D", "E"],
-    fullAnalysis: ["Too thin."],
     articleBlocks: ["Too thin."],
     solutionNarrative: [],
     lessons: [],
@@ -1040,7 +1039,7 @@ async function checkWorkerDetailShape() {
       slug: "pinpoint-answer-799",
       detailState: "published",
       bodyMode: "full",
-      fullAnalysisWordCount: 132,
+      articleBlocksWordCount: 132,
       minRequiredWords: 80,
     },
     primaryBranchSummary: null,

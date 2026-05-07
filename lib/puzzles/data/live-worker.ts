@@ -121,7 +121,6 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     wrongGuessCandidates,
     categoryPrecisionNote,
   });
-  const fullAnalysis: string[] = [];
   const setValidationSummary =
     articleBlocks[4] ??
     `${record.clues.slice(-3).join(", ")} keep confirming the same answer, so the full board behaves like one coherent set instead of a few lucky matches.`;
@@ -199,7 +198,6 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     difficultyBand,
     shortSummary,
     articleBlocks,
-    fullAnalysis,
     solutionNarrative,
     wordHints,
     spoilerHints: {},

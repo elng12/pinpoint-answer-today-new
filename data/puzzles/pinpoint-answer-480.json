@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-480",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #480, you're not alone! The clues – ENGLAND, MEXICO, -FOUNDLAND, DELHI, and ZEALAND – seemed to point in every direction but the right one. The connector, \"Places that have 'New' before them,\" was the key to unlocking this geographical head-scratcher. Did you get tripped up? Let's break it down.",
-    "Initially, I was all over the map. I saw ENGLAND and immediately thought of the British Empire and its colonies. My first instinct was COUNTRIES WITH ROYAL FAMILIES.\n\nThen I noticed DELHI and MEXICO. This threw me off completely. I started thinking about international organizations, maybe something like COUNTRIES WITH HIGH POPULATION DENSITY? That was way off.\n\nFinally, I revisited the clues and focused on the \"New\" connector. It clicked: New England, New Mexico, Newfoundland, New Delhi, and New Zealand. Sometimes, the simplest answer is the hardest to see!",
-    "Every clue in this set—England, Mexico, -foundland, Delhi, and Zealand—ultimately circles back to Places that have “New” before them. England sparks the pattern, -foundland reinforces it, and Zealand locks the shared idea in place once you view them through that lens.",
-    "When England and Mexico appear together, ask how they could relate to Places that have “New” before them before exploring other stretches. The moment you test that theory, remaining clues like Zealand fall neatly into place."
-  ],
   "wordHints": {
     "England": "New England is a region in the northeastern corner of the United States, known for its colonial history.",
     "Mexico": "New Mexico is a state in the southwestern United States, known for its desert landscapes and rich cultural heritage.",
@@ -36,5 +30,11 @@
       "question": "How does 'DELHI' connect to 'Places that have 'New' before them'?",
       "answer": "While simply 'Delhi' doesn't have 'New' before it, 'New Delhi' is a major city and the capital of India, making it a valid connection."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #480, you're not alone! The clues – ENGLAND, MEXICO, -FOUNDLAND, DELHI, and ZEALAND – seemed to point in every direction but the right one. The connector, \"Places that have 'New' before them,\" was the key to unlocking this geographical head-scratcher. Did you get tripped up? Let's break it down.",
+    "Initially, I was all over the map. I saw ENGLAND and immediately thought of the British Empire and its colonies. My first instinct was COUNTRIES WITH ROYAL FAMILIES.\n\nThen I noticed DELHI and MEXICO. This threw me off completely. I started thinking about international organizations, maybe something like COUNTRIES WITH HIGH POPULATION DENSITY? That was way off.\n\nFinally, I revisited the clues and focused on the \"New\" connector. It clicked: New England, New Mexico, Newfoundland, New Delhi, and New Zealand. Sometimes, the simplest answer is the hardest to see!",
+    "Every clue in this set—England, Mexico, -foundland, Delhi, and Zealand—ultimately circles back to Places that have “New” before them. England sparks the pattern, -foundland reinforces it, and Zealand locks the shared idea in place once you view them through that lens.",
+    "When England and Mexico appear together, ask how they could relate to Places that have “New” before them before exploring other stretches. The moment you test that theory, remaining clues like Zealand fall neatly into place."
   ]
 }

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-659",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle presents a fascinating exercise in word associations and common phrases. The clues seem disconnected at first - from sporting equipment to geometric concepts, and even a party game reference. However, there's a subtle connector that ties these seemingly random words together. Each clue serves as the second half of a compound formation, sharing a common prefix that transforms their meanings into familiar terms and everyday expressions.",
-    "I started by listing each word separately, trying to spot any obvious categories or themes. Sports equipment? Games? Nothing seemed to connect them all. Looking at 'Ball' and 'Point', I wondered about writing implements, but that didn't fit the others. Then I noticed something about 'Point' - it could pair with another word to form something new. Suddenly it hit me - these words all commonly follow another word! Testing my theory with 'pin', everything fell into place perfectly. Each clue completed a common word or phrase when 'pin' was added before it. The party game reference to 'tail on the donkey' was the final confirmation I needed.",
-    "The puzzle's answer reveals that each clue forms a common word or phrase when preceded by 'pin'. Ball becomes pinball, point becomes pinpoint, wheel becomes pinwheel, hole becomes pinhole, and 'the tail on the donkey' references the game 'pin the tail on the donkey'.",
-    "Today's Pinpoint answer focuses on words that follow 'pin' to create common terms and phrases. Each clue completes a familiar compound word or expression when combined with this prefix."
-  ],
   "wordHints": {
     "Ball": "Pinball (Pin + Game): An arcade game where players score points by manipulating a steel ball",
     "Point": "Pinpoint (Pin + Location): To locate or identify with extreme precision",
@@ -32,5 +26,11 @@
       "question": "Are all these pin-combinations common words?",
       "answer": "Yes, each combination creates a widely recognized word or phrase in English."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle presents a fascinating exercise in word associations and common phrases. The clues seem disconnected at first - from sporting equipment to geometric concepts, and even a party game reference. However, there's a subtle connector that ties these seemingly random words together. Each clue serves as the second half of a compound formation, sharing a common prefix that transforms their meanings into familiar terms and everyday expressions.",
+    "I started by listing each word separately, trying to spot any obvious categories or themes. Sports equipment? Games? Nothing seemed to connect them all. Looking at 'Ball' and 'Point', I wondered about writing implements, but that didn't fit the others. Then I noticed something about 'Point' - it could pair with another word to form something new. Suddenly it hit me - these words all commonly follow another word! Testing my theory with 'pin', everything fell into place perfectly. Each clue completed a common word or phrase when 'pin' was added before it. The party game reference to 'tail on the donkey' was the final confirmation I needed.",
+    "The puzzle's answer reveals that each clue forms a common word or phrase when preceded by 'pin'. Ball becomes pinball, point becomes pinpoint, wheel becomes pinwheel, hole becomes pinhole, and 'the tail on the donkey' references the game 'pin the tail on the donkey'.",
+    "Today's Pinpoint answer focuses on words that follow 'pin' to create common terms and phrases. Each clue completes a familiar compound word or expression when combined with this prefix."
   ]
 }

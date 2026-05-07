@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-652",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle explores common compound expressions, specifically focusing on words that pair with a common food item. The clues seem scattered at first - from insects to body parts to dairy products. However, a pattern emerges when you consider how these seemingly unrelated terms might connect through a single, everyday ingredient that's both a noun and a verb. The challenge lies in identifying the unifying element that transforms each clue into a familiar phrase or compound word.",
-    "I initially focused on dairy-related connections, noting 'milk' and 'churn' as potential indicators. The presence of 'chicken' made me think about food preparation. Looking at 'fingers,' I remembered a common snack food that gave me my first breakthrough. I tried connecting these terms through cooking terminology, but that approach felt incomplete. Then it hit me - these were all words that commonly follow 'butter.' I tested each clue: butterflies, butter fingers, buttermilk, butter chicken, and butter churn. The pattern fit perfectly. Reflecting on the solution, I appreciated how the puzzle cleverly disguised common compound words and phrases we use daily.",
-    "The puzzle presents five clues that initially seem unrelated: flies, fingers, milk, chicken, and churn. The solution reveals that each word commonly follows 'butter' to create familiar compounds or phrases: butterfly, butterfingers, buttermilk, butter chicken, and butter churn. This pattern showcases how a single word can transform various unrelated terms into meaningful expressions.",
-    "Today's Pinpoint answer reveals words that follow 'butter' to create common compounds and phrases. The solution includes butterflies, butterfingers, buttermilk, butter chicken, and butter churn - all familiar terms in everyday language."
-  ],
   "wordHints": {
     "Flies": "Butterflies (Butter + Insect): Common lepidopteran insects known for their colorful wings",
     "Fingers": "Butterfingers (Butter + Trait): Someone who tends to drop things easily",
@@ -32,5 +26,11 @@
       "question": "Are these combinations universal across cultures?",
       "answer": "While some combinations like 'butterfly' are widespread, others like 'butter chicken' may be specific to certain cuisines or cultures."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle explores common compound expressions, specifically focusing on words that pair with a common food item. The clues seem scattered at first - from insects to body parts to dairy products. However, a pattern emerges when you consider how these seemingly unrelated terms might connect through a single, everyday ingredient that's both a noun and a verb. The challenge lies in identifying the unifying element that transforms each clue into a familiar phrase or compound word.",
+    "I initially focused on dairy-related connections, noting 'milk' and 'churn' as potential indicators. The presence of 'chicken' made me think about food preparation. Looking at 'fingers,' I remembered a common snack food that gave me my first breakthrough. I tried connecting these terms through cooking terminology, but that approach felt incomplete. Then it hit me - these were all words that commonly follow 'butter.' I tested each clue: butterflies, butter fingers, buttermilk, butter chicken, and butter churn. The pattern fit perfectly. Reflecting on the solution, I appreciated how the puzzle cleverly disguised common compound words and phrases we use daily.",
+    "The puzzle presents five clues that initially seem unrelated: flies, fingers, milk, chicken, and churn. The solution reveals that each word commonly follows 'butter' to create familiar compounds or phrases: butterfly, butterfingers, buttermilk, butter chicken, and butter churn. This pattern showcases how a single word can transform various unrelated terms into meaningful expressions.",
+    "Today's Pinpoint answer reveals words that follow 'butter' to create common compounds and phrases. The solution includes butterflies, butterfingers, buttermilk, butter chicken, and butter churn - all familiar terms in everyday language."
   ]
 }

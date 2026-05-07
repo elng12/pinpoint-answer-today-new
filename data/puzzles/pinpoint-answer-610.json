@@ -1,10 +1,6 @@
 {
   "slug": "pinpoint-answer-610",
   "detailState": "published",
-  "fullAnalysis": [
-    "At first glance, LinkedIn Pinpoint #610 appears straightforward with clues like Tag, Bowl, Brush, Collar, and Leash. These everyday items might seem unrelated, spanning from personal identification to dining utensils to grooming tools. However, the puzzle's brilliance lies in recognizing a specific context that unifies all five items. The challenge requires moving beyond individual definitions to discover what situation or relationship connects these disparate objects. Each clue represents an essential item within a particular domain, and the connection becomes clear once you consider the responsibilities and necessities of pet ownership, specifically dog care.",
-    "I initially thought this puzzle might be about general household items or personal accessories, given the variety of objects presented. Tag seemed like it could relate to clothing labels, Bowl suggested kitchen items, and Brush pointed toward personal grooming or art supplies. I tried connecting them through materials or daily routines, but nothing cohesive emerged. Then Collar caught my attention - while it could refer to shirt collars, the combination with Leash suddenly shifted my perspective entirely. I realized I was looking at this from a human-centric viewpoint when I should have been thinking about pet care. Once I made that mental pivot, everything clicked into place perfectly. Tag becomes a dog tag for identification, Bowl transforms into a food or water dish, Brush becomes a grooming tool for fur care, Collar obviously fits as a neck accessory for dogs, and Leash completes the picture as a walking essential. The structural connection was clear: these are all fundamental items that responsible dog owners need to properly care for their pets."
-  ],
   "wordHints": {
     "Tag": "Tag (Tag + Dog Equipment): A small identification plate displaying the dog's name and owner's contact information",
     "Bowl": "Bowl (Bowl + Pet Supplies): A rounded container designed for holding food or water for dogs during meals",
@@ -31,5 +27,9 @@
       "question": "Could these clues fit other pet categories?",
       "answer": "While some items like bowl and brush apply to other pets, the combination of collar, leash, and tag specifically points to dog ownership."
     }
+  ],
+  "articleBlocks": [
+    "At first glance, LinkedIn Pinpoint #610 appears straightforward with clues like Tag, Bowl, Brush, Collar, and Leash. These everyday items might seem unrelated, spanning from personal identification to dining utensils to grooming tools. However, the puzzle's brilliance lies in recognizing a specific context that unifies all five items. The challenge requires moving beyond individual definitions to discover what situation or relationship connects these disparate objects. Each clue represents an essential item within a particular domain, and the connection becomes clear once you consider the responsibilities and necessities of pet ownership, specifically dog care.",
+    "I initially thought this puzzle might be about general household items or personal accessories, given the variety of objects presented. Tag seemed like it could relate to clothing labels, Bowl suggested kitchen items, and Brush pointed toward personal grooming or art supplies. I tried connecting them through materials or daily routines, but nothing cohesive emerged. Then Collar caught my attention - while it could refer to shirt collars, the combination with Leash suddenly shifted my perspective entirely. I realized I was looking at this from a human-centric viewpoint when I should have been thinking about pet care. Once I made that mental pivot, everything clicked into place perfectly. Tag becomes a dog tag for identification, Bowl transforms into a food or water dish, Brush becomes a grooming tool for fur care, Collar obviously fits as a neck accessory for dogs, and Leash completes the picture as a walking essential. The structural connection was clear: these are all fundamental items that responsible dog owners need to properly care for their pets."
   ]
 }

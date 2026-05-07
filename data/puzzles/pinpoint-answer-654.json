@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-654",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle presents an intriguing collection of seemingly unrelated items that share a common thread. From fashion accessories to celestial objects, the clues span diverse domains. When I encountered 'Black' and 'Conveyor', I initially thought of industrial equipment, but the presence of 'Orion's' suggested a cosmic connection. The key was recognizing how each term could be paired with a common word to create familiar objects and concepts we encounter in daily life, fashion, and astronomy.",
-    "I started by examining 'Black' and 'Conveyor', thinking they might relate to industrial machinery or manufacturing processes. The connection wasn't immediately clear. Next, I tried focusing on 'Orion's' and 'Asteroid', wondering if there was an astronomical theme at play. The breakthrough came when I noticed 'Seat' and remembered the term 'seat belt' from automotive safety. This sparked the realization that each clue could be paired with 'belt'. Testing the theory, 'black belt' in martial arts and 'conveyor belt' in industry fit perfectly. Verifying further, 'asteroid belt' and 'Orion's belt' in astronomy confirmed the pattern. Looking back, it was fascinating how this common accessory word connected such diverse concepts from martial arts to celestial objects.",
-    "The puzzle connects different types of belts across various domains: martial arts (black belt), astronomy (asteroid belt, Orion's belt), safety (seat belt), and industry (conveyor belt). Each clue represents a distinct usage of the word 'belt' in different contexts.",
-    "Today's puzzle linked various types of belts, from the celestial Orion's Belt and Asteroid Belt to the practical Seat Belt and Conveyor Belt, plus the achievement-marking Black Belt in martial arts."
-  ],
   "wordHints": {
     "Black": "Black (Color + Belt): Highest rank in many martial arts",
     "Asteroid": "Asteroid (Space + Belt): Ring of rocky bodies orbiting the Sun",
@@ -32,5 +26,11 @@
       "question": "What's the connection between Orion and belts?",
       "answer": "Orion's Belt is a pattern of three bright stars in the Orion constellation, forming a distinctive line."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle presents an intriguing collection of seemingly unrelated items that share a common thread. From fashion accessories to celestial objects, the clues span diverse domains. When I encountered 'Black' and 'Conveyor', I initially thought of industrial equipment, but the presence of 'Orion's' suggested a cosmic connection. The key was recognizing how each term could be paired with a common word to create familiar objects and concepts we encounter in daily life, fashion, and astronomy.",
+    "I started by examining 'Black' and 'Conveyor', thinking they might relate to industrial machinery or manufacturing processes. The connection wasn't immediately clear. Next, I tried focusing on 'Orion's' and 'Asteroid', wondering if there was an astronomical theme at play. The breakthrough came when I noticed 'Seat' and remembered the term 'seat belt' from automotive safety. This sparked the realization that each clue could be paired with 'belt'. Testing the theory, 'black belt' in martial arts and 'conveyor belt' in industry fit perfectly. Verifying further, 'asteroid belt' and 'Orion's belt' in astronomy confirmed the pattern. Looking back, it was fascinating how this common accessory word connected such diverse concepts from martial arts to celestial objects.",
+    "The puzzle connects different types of belts across various domains: martial arts (black belt), astronomy (asteroid belt, Orion's belt), safety (seat belt), and industry (conveyor belt). Each clue represents a distinct usage of the word 'belt' in different contexts.",
+    "Today's puzzle linked various types of belts, from the celestial Orion's Belt and Asteroid Belt to the practical Seat Belt and Conveyor Belt, plus the achievement-marking Black Belt in martial arts."
   ]
 }

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-475",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #475, you weren't alone! The clues MAY, MAR, OCT, JAN, and DEC felt like a random jumble, didn't they? The answer, MONTH ABBREVIATIONS, unlocks the pattern. Time to unpack this clever little brain-bender!",
-    "When I first saw MAY, MAR, OCT, JAN, and DEC, my brain immediately went to some kind of word ladder. I spent way too long trying to rearrange them into anagrams, thinking it was some kind of hidden message about HOLIDAYS. Wrong!\n\nThen I considered that they could all be things that are commonly associated with MONTHS. I even tried to make it relate to TEMPERATURES, but that was also a DEAD END. I was clearly missing something obvious.\n\nFinally, the MONTH ABBREVIATIONS clicked. The three-letter short forms we see in calendars! May is already abbreviated, and the rest are just a letter or two away from their calendar forms. Eureka!",
-    "Every clue in this set—May, Mar, Oct, Jan, and Dec—ultimately circles back to Month Abbreviations — the three-letter (or in May’s case, unchanged) short forms you see in calendars.. May sparks the pattern, Oct reinforces it, and Dec locks the shared idea in place once you view them through that lens.",
-    "When May and Mar appear together, ask how they could relate to Month Abbreviations — the three-letter (or in May’s case, unchanged) short forms you see in calendars. before exploring other stretches. The moment you test that theory, remaining clues like Dec fall neatly into place."
-  ],
   "wordHints": {
     "May": "May is already the standard three-letter abbreviation, so it fits perfectly.",
     "Mar": "March is shortened to Mar in most calendars, making it a direct match.",
@@ -33,5 +27,11 @@
       "question": "How does 'Oct' connect to 'Month Abbreviations'?",
       "answer": "'Oct' is the abbreviated form of 'October.' The puzzle's solution hinges on recognizing that each clue is the shortened, widely used version of its respective month, fitting the 'Month Abbreviations' theme."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #475, you weren't alone! The clues MAY, MAR, OCT, JAN, and DEC felt like a random jumble, didn't they? The answer, MONTH ABBREVIATIONS, unlocks the pattern. Time to unpack this clever little brain-bender!",
+    "When I first saw MAY, MAR, OCT, JAN, and DEC, my brain immediately went to some kind of word ladder. I spent way too long trying to rearrange them into anagrams, thinking it was some kind of hidden message about HOLIDAYS. Wrong!\n\nThen I considered that they could all be things that are commonly associated with MONTHS. I even tried to make it relate to TEMPERATURES, but that was also a DEAD END. I was clearly missing something obvious.\n\nFinally, the MONTH ABBREVIATIONS clicked. The three-letter short forms we see in calendars! May is already abbreviated, and the rest are just a letter or two away from their calendar forms. Eureka!",
+    "Every clue in this set—May, Mar, Oct, Jan, and Dec—ultimately circles back to Month Abbreviations — the three-letter (or in May’s case, unchanged) short forms you see in calendars.. May sparks the pattern, Oct reinforces it, and Dec locks the shared idea in place once you view them through that lens.",
+    "When May and Mar appear together, ask how they could relate to Month Abbreviations — the three-letter (or in May’s case, unchanged) short forms you see in calendars. before exploring other stretches. The moment you test that theory, remaining clues like Dec fall neatly into place."
   ]
 }

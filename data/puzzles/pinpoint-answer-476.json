@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-476",
   "detailState": "published",
-  "fullAnalysis": [
-    "If you found yourself staring at your phone trying to crack Pinpoint #476, you weren't alone! The clues REAL, POUND, WON, RUPEE, and PESO were a global scavenger hunt for your brain. The connector, WORLD CURRENCIES, pointed to a specific category of things. Hopefully this explanation will help you breathe a sigh of relief!",
-    "At first glance, I immediately jumped to COUNTRIES. It seemed logical, given the international flavor of the clues. I even tried to make a connection with 'global trade' before realizing that was a dead end.\n\nThen, I considered WEIGHTS or MEASURES, influenced by 'Pound.' I spent way too long trying to make METRIC SYSTEM work. I was clearly overthinking it, and needed to take a step back.\n\nFinally, the 'Monetary Units' clicked. Each clue was a different type of currency. The 'World Currencies' connector sealed the deal. Victory!",
-    "Every clue in this set—Real, Pound, Won, Rupee, and Peso—ultimately circles back to Monetary Units (World Currencies). Real sparks the pattern, Won reinforces it, and Peso locks the shared idea in place once you view them through that lens.",
-    "When Real and Pound appear together, ask how they could relate to Monetary Units (World Currencies) before exploring other stretches. The moment you test that theory, remaining clues like Peso fall neatly into place."
-  ],
   "wordHints": {
     "Real": "The Brazilian Real is one of the world's most traded currencies.",
     "Pound": "The British Pound is a currency with a long and storied history.",
@@ -36,5 +30,11 @@
       "question": "How does 'Real' connect to 'Monetary Units'?",
       "answer": "The 'Real' is the name of a specific monetary unit used in Brazil. It's not just a word meaning 'genuine,' in this context."
     }
+  ],
+  "articleBlocks": [
+    "If you found yourself staring at your phone trying to crack Pinpoint #476, you weren't alone! The clues REAL, POUND, WON, RUPEE, and PESO were a global scavenger hunt for your brain. The connector, WORLD CURRENCIES, pointed to a specific category of things. Hopefully this explanation will help you breathe a sigh of relief!",
+    "At first glance, I immediately jumped to COUNTRIES. It seemed logical, given the international flavor of the clues. I even tried to make a connection with 'global trade' before realizing that was a dead end.\n\nThen, I considered WEIGHTS or MEASURES, influenced by 'Pound.' I spent way too long trying to make METRIC SYSTEM work. I was clearly overthinking it, and needed to take a step back.\n\nFinally, the 'Monetary Units' clicked. Each clue was a different type of currency. The 'World Currencies' connector sealed the deal. Victory!",
+    "Every clue in this set—Real, Pound, Won, Rupee, and Peso—ultimately circles back to Monetary Units (World Currencies). Real sparks the pattern, Won reinforces it, and Peso locks the shared idea in place once you view them through that lens.",
+    "When Real and Pound appear together, ask how they could relate to Monetary Units (World Currencies) before exploring other stretches. The moment you test that theory, remaining clues like Peso fall neatly into place."
   ]
 }

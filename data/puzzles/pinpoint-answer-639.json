@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-639",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle presents a geographical journey through locations both real and fictional. The clues span multiple continents and realms, from North America to Asia, and from reality to comic book fiction. At first glance, these places seem randomly selected, but there's a subtle linguistic pattern connecting them. The presence of both Gotham and New York provides an intriguing hint about the relationship between these diverse locations and their official designations.",
-    "I initially focused on the geographical nature of the locations, thinking about capitals and major metropolitan areas. The mix of real and fictional places threw me off. I tried connecting them through their historical significance, noting that each had been an important center at some point. The breakthrough came when I noticed 'Mexico City' and 'Panama City' were the full names of those locations. I quickly verified that 'Ho Chi Minh City' and 'Vatican City' followed the same pattern. Looking at the fictional entry, 'Gotham City' completed the set, with 'New York City' as the bonus confirmation.",
-    "The puzzle presents five locations that all share the word 'City' in their official names: Mexico City, Panama City, Ho Chi Minh City, Vatican City, and Gotham City. New York (City) is provided as additional confirmation of the pattern.",
-    "Today's puzzle focused on locations that all have 'City' in their official names. Each clue represents a place known as Something City, from Mexico City to Gotham City, with New York City as a bonus confirmation."
-  ],
   "wordHints": {
     "Mexico": "Mexico City (Capital + City): The capital and most populous city of Mexico",
     "Panama": "Panama City (Capital + City): The capital and largest city of Panama",
@@ -32,5 +26,11 @@
       "question": "Are all these places capitals?",
       "answer": "No, while some like Mexico City and Panama City are capitals, others like Gotham City and Ho Chi Minh City are not national capitals."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle presents a geographical journey through locations both real and fictional. The clues span multiple continents and realms, from North America to Asia, and from reality to comic book fiction. At first glance, these places seem randomly selected, but there's a subtle linguistic pattern connecting them. The presence of both Gotham and New York provides an intriguing hint about the relationship between these diverse locations and their official designations.",
+    "I initially focused on the geographical nature of the locations, thinking about capitals and major metropolitan areas. The mix of real and fictional places threw me off. I tried connecting them through their historical significance, noting that each had been an important center at some point. The breakthrough came when I noticed 'Mexico City' and 'Panama City' were the full names of those locations. I quickly verified that 'Ho Chi Minh City' and 'Vatican City' followed the same pattern. Looking at the fictional entry, 'Gotham City' completed the set, with 'New York City' as the bonus confirmation.",
+    "The puzzle presents five locations that all share the word 'City' in their official names: Mexico City, Panama City, Ho Chi Minh City, Vatican City, and Gotham City. New York (City) is provided as additional confirmation of the pattern.",
+    "Today's puzzle focused on locations that all have 'City' in their official names. Each clue represents a place known as Something City, from Mexico City to Gotham City, with New York City as a bonus confirmation."
   ]
 }

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-611",
   "detailState": "published",
-  "fullAnalysis": [
-    "LinkedIn Pinpoint #611 reads like a list of generic self-improvement goals at first. Learn a new skill, Volunteer, Exercise more, Save money, and Not break it by Feb. this year all sound plausible on their own, but the real question is what single label explains all five at once. This is the kind of board where timing and social context matter as much as the words themselves.",
-    "I first considered broad answers like personal goals or good habits. That was close, but still too loose. Exercise more and Save money are especially strong because they are classic promises people make at the start of a new year. The final clue, Not break it by Feb. this year, is the giveaway. That clue is not another goal. It is a joke about how quickly resolutions are abandoned, and it pushes the whole board into one very specific seasonal category.",
-    "Every clue fits naturally once you read the board through that lens. Learn a new skill is a common growth-oriented resolution. Volunteer reflects a promise to give more time to other people. Exercise more and Save money are two of the most familiar January goals anywhere. Not break it by Feb. this year captures the annual struggle to keep those promises going after the first burst of motivation fades.",
-    "That is why the answer to LinkedIn Pinpoint #611 is New Year's resolutions. The board is not just about improvement. It is about the particular kind of promise people make on January 1 and then try, often unsuccessfully, to keep."
-  ],
   "wordHints": {
     "Learn a new skill": "People often resolve to study a language, pick up a hobby, or improve professionally at the start of a new year.",
     "Volunteer": "Giving more time to the community is a classic New Year's resolution because it frames the year as a chance to do better.",
@@ -36,5 +30,11 @@
       "question": "How can I solve seasonal Pinpoint boards faster?",
       "answer": "Look for references to dates, routines, holidays, or habits that only make sense during one part of the year. Those context clues often narrow a broad topic into the exact answer."
     }
+  ],
+  "articleBlocks": [
+    "LinkedIn Pinpoint #611 reads like a list of generic self-improvement goals at first. Learn a new skill, Volunteer, Exercise more, Save money, and Not break it by Feb. this year all sound plausible on their own, but the real question is what single label explains all five at once. This is the kind of board where timing and social context matter as much as the words themselves.",
+    "I first considered broad answers like personal goals or good habits. That was close, but still too loose. Exercise more and Save money are especially strong because they are classic promises people make at the start of a new year. The final clue, Not break it by Feb. this year, is the giveaway. That clue is not another goal. It is a joke about how quickly resolutions are abandoned, and it pushes the whole board into one very specific seasonal category.",
+    "Every clue fits naturally once you read the board through that lens. Learn a new skill is a common growth-oriented resolution. Volunteer reflects a promise to give more time to other people. Exercise more and Save money are two of the most familiar January goals anywhere. Not break it by Feb. this year captures the annual struggle to keep those promises going after the first burst of motivation fades.",
+    "That is why the answer to LinkedIn Pinpoint #611 is New Year's resolutions. The board is not just about improvement. It is about the particular kind of promise people make on January 1 and then try, often unsuccessfully, to keep."
   ]
 }

@@ -38,7 +38,6 @@ export type PuzzleDetail = {
   difficultyBand: PuzzleDifficultyBand;
   shortSummary: string;
   articleBlocks: string[];
-  fullAnalysis: string[];
   solutionNarrative: string[];
   wordHints: Record<string, string>;
   spoilerHints: Record<string, string>;

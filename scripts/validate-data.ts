@@ -304,17 +304,15 @@ function validateDetailContent(entry, detail) {
   const detailAnswer = typeof detail.answer === "string" ? detail.answer : "";
   const articleBlocks = Array.isArray(detail.articleBlocks) ? detail.articleBlocks : [];
   const fullAnalysis = Array.isArray(detail.fullAnalysis) ? detail.fullAnalysis : [];
-  if (
-    articleBlocks.length > 0 &&
-    fullAnalysis.length > 0 &&
-    articleBlocks.length === fullAnalysis.length &&
-    articleBlocks.every((paragraph, index) => paragraph === fullAnalysis[index])
-  ) {
-    throw new Error(`${entry.slug} articleBlocks and fullAnalysis are identical; remove the legacy duplicate fullAnalysis.`);
+  if (fullAnalysis.length > 0 && articleBlocks.length === 0) {
+    throw new Error(`${entry.slug} has legacy fullAnalysis without articleBlocks; migrate fullAnalysis to articleBlocks and remove fullAnalysis.`);
+  }
+  if (fullAnalysis.length > 0) {
+    throw new Error(`${entry.slug} still has fullAnalysis field; remove the legacy duplicate fullAnalysis.`);
   }
 
-  const bodyParagraphs = articleBlocks.length > 0 ? articleBlocks : fullAnalysis;
-  const bodyLabel = articleBlocks.length > 0 ? "articleBlocks" : "fullAnalysis";
+  const bodyParagraphs = articleBlocks.length > 0 ? articleBlocks : [];
+  const bodyLabel = "articleBlocks";
   const hintKeys = Object.keys(detail.wordHints);
   const missingHintKeys = entry.clues.filter((clue) => !hintKeys.includes(clue));
   const extraHintKeys = hintKeys.filter((key) => !entry.clues.includes(key));
@@ -345,13 +343,6 @@ function validateDetailContent(entry, detail) {
       `${entry.slug} ${bodyLabel} is too thin (${bodyWordCount} words; expected at least ${minRequiredFullAnalysisWords}).`,
     );
   }
-
-  fullAnalysis.forEach((paragraph, index) => {
-    assertNoHtml(`${entry.slug} fullAnalysis[${index}]`, paragraph);
-    assertNoLegacyTemplate(`${entry.slug} fullAnalysis[${index}]`, paragraph);
-    assertNoAdjacentQuotes(`${entry.slug} fullAnalysis[${index}]`, paragraph);
-    assertNoWrappedQuotedAnswer(`${entry.slug} fullAnalysis[${index}]`, paragraph, detailAnswer);
-  });
 
   articleBlocks.forEach((paragraph, index) => {
     assertNoHtml(`${entry.slug} articleBlocks[${index}]`, paragraph);

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-579",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle lines up five words that span athletics, winter sports, and extreme activities: High, Broad, Ski, Parachute, and Bungee. At first glance, they might point to sports, heights, or adventure, but none of those categories cleanly captures all five. The real connection emerges when you add the same word after each clue, revealing a pattern that links track and field, skiing, and extreme sports under one shared category.",
-    "When High appeared first, my mind went straight to track and field—high jump is one of the classic Olympic events. Broad followed and confirmed that athletics angle. Then Ski arrived and pulled the theme toward winter sports instead. By the time Parachute and Bungee showed up, I was juggling track events, skiing, and extreme sports with no single category that fit them all. The pattern finally clicked when I stopped thinking about sports types and started testing the same word after every clue. High jump, Broad jump, Ski jump, Parachute jump, Bungee jump. Once I heard that rhythm, the earlier theories collapsed.",
-    "Many solvers will first chase surface-level themes such as track and field, winter sports, or extreme activities. The breakthrough usually comes from testing a single word after every clue. When you put \"jump\" after High, Broad, Ski, Parachute, and Bungee, the phrasing stays natural for each clue: High jump, Broad jump, Ski jump, Parachute jump, and Bungee jump. This is a strong sign that you have the right answer. Competing themes typically fail on at least one clue, so the connector \"types of jumps\" stands out as the only explanation that fits the full set.",
-    "High, Broad, Ski, Parachute, and Bungee all snap into the same pattern once you put \"jump\" after each one. Today's Pinpoint answer is \"types of jumps\" — the only connector that makes every clue sound natural."
-  ],
   "wordHints": {
     "High": "The term 'high stakes' refers to situations or activities where the outcome has significant consequences or risks involved.",
     "Broad": "The term 'broad spectrum' is commonly used to describe a wide range of coverage or effectiveness, particularly in contexts like medicine, where it refers to antibiotics that are effective against a wide variety of bacteria.",
@@ -43,5 +37,11 @@
       "question": "How can I solve similar suffix puzzles faster?",
       "answer": "When several clues sound like they could start common phrases, pick one simple word—like jump, cleaner, or card—and try it after each clue. If it forms five fluent combinations, you have likely found the suffix-based connector."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle lines up five words that span athletics, winter sports, and extreme activities: High, Broad, Ski, Parachute, and Bungee. At first glance, they might point to sports, heights, or adventure, but none of those categories cleanly captures all five. The real connection emerges when you add the same word after each clue, revealing a pattern that links track and field, skiing, and extreme sports under one shared category.",
+    "When High appeared first, my mind went straight to track and field—high jump is one of the classic Olympic events. Broad followed and confirmed that athletics angle. Then Ski arrived and pulled the theme toward winter sports instead. By the time Parachute and Bungee showed up, I was juggling track events, skiing, and extreme sports with no single category that fit them all. The pattern finally clicked when I stopped thinking about sports types and started testing the same word after every clue. High jump, Broad jump, Ski jump, Parachute jump, Bungee jump. Once I heard that rhythm, the earlier theories collapsed.",
+    "Many solvers will first chase surface-level themes such as track and field, winter sports, or extreme activities. The breakthrough usually comes from testing a single word after every clue. When you put \"jump\" after High, Broad, Ski, Parachute, and Bungee, the phrasing stays natural for each clue: High jump, Broad jump, Ski jump, Parachute jump, and Bungee jump. This is a strong sign that you have the right answer. Competing themes typically fail on at least one clue, so the connector \"types of jumps\" stands out as the only explanation that fits the full set.",
+    "High, Broad, Ski, Parachute, and Bungee all snap into the same pattern once you put \"jump\" after each one. Today's Pinpoint answer is \"types of jumps\" — the only connector that makes every clue sound natural."
   ]
 }

@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-533",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #533 looks deceptively broad at first. Rope and Hair can send you toward materials or appearance, while Apron and Shoelaces feel more like household objects. The clue that breaks the deadlock is Football (or soccer) game. Once you stop treating the clues as nouns in separate categories and start testing actions, the answer becomes much clearer.",
-    "My first instinct was to look for objects with strings or fasteners. That almost worked for Rope, Apron, and Shoelaces, but it completely failed on Football (or soccer) game. The puzzle only unlocked when I switched from things to verbs. You can tie a rope. You can tie your hair. You can tie an apron. A football game can end in a tie. Shoelaces are tied every day. That shared action is what links the whole board together.",
-    "This is a classic Pinpoint move: use mostly physical objects, then slip in one clue that only works if you think in terms of a verb. Rope and Shoelaces point to literal tying, while Football (or soccer) game points to the sports meaning of tie as a drawn result. Once both meanings line up naturally, the connector is secure.",
-    "The clean solution is Things that can be tied. It is simple, flexible, and works across every clue without forcing awkward wording. If a future board seems split between objects and events, try testing a common action before you assume the theme is purely categorical."
-  ],
   "wordHints": {
     "Rope": "A rope can be tied into knots, loops, or around objects to secure them.",
     "Hair": "Hair is often tied back into a ponytail, bun, braid, or other style.",
@@ -32,5 +26,11 @@
       "question": "How does a football or soccer game fit the answer?",
       "answer": "A football or soccer game can finish in a tie when both teams end with the same score. That clue is the one that confirms tie is the key word."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #533 looks deceptively broad at first. Rope and Hair can send you toward materials or appearance, while Apron and Shoelaces feel more like household objects. The clue that breaks the deadlock is Football (or soccer) game. Once you stop treating the clues as nouns in separate categories and start testing actions, the answer becomes much clearer.",
+    "My first instinct was to look for objects with strings or fasteners. That almost worked for Rope, Apron, and Shoelaces, but it completely failed on Football (or soccer) game. The puzzle only unlocked when I switched from things to verbs. You can tie a rope. You can tie your hair. You can tie an apron. A football game can end in a tie. Shoelaces are tied every day. That shared action is what links the whole board together.",
+    "This is a classic Pinpoint move: use mostly physical objects, then slip in one clue that only works if you think in terms of a verb. Rope and Shoelaces point to literal tying, while Football (or soccer) game points to the sports meaning of tie as a drawn result. Once both meanings line up naturally, the connector is secure.",
+    "The clean solution is Things that can be tied. It is simple, flexible, and works across every clue without forcing awkward wording. If a future board seems split between objects and events, try testing a common action before you assume the theme is purely categorical."
   ]
 }

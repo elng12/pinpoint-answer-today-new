@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-585",
   "detailState": "published",
-  "fullAnalysis": [
-    "Pinpoint #585 is a masterclass in misdirection. It opens with the dramatic Gargoyle, triggering thoughts of Gothic cathedrals or mythical beasts, only to immediately ground you with the mundane Gutter. The challenge here isn't linguistic; it's about resolving the clash between the decorative antique and the functional modern item. The secret lies not in their era, but in their shared elevation.",
-    "The opening trio—Gargoyle, Gable, and Gutter—sets a strong 'Alphabetical Trap.' Seeing three G-words in a row is a classic bait to make you overcommit to a letter-based pattern. The disruption arrives with Shingles. This clue serves two purposes: it breaks the G-alliteration, and it destroys the 'Cathedral' theory. This is the pivot point. You must switch to a 'Spatial' theory. Once you filter for location, the pattern clears: A gargoyle sits on a roof, a gable frames a roof, a chimney pokes through a roof. They are all Parts of a roof.",
-    "Each clue maps to the theme: Gargoyle -> A carved grotesque figure acting as a water spout from a roof.; Gable -> The triangular wall section between sloping roof edges.; Gutter -> A channel along the eaves to collect and carry away rainwater.; Shingles -> Overlapping tiles or slabs that form the outer roof covering.; Chimney -> A vertical structure for venting smoke from a fireplace or furnace..",
-    "Imported from competitor archive on 2025-12-07. Answer: Parts of a roof."
-  ],
   "wordHints": {
     "Gargoyle": "A carved stone figure serving as a spout to convey water away from the roof.",
     "Gable": "The triangular portion of a wall between the edges of intersecting roof pitches.",
@@ -37,5 +31,11 @@
       "question": "What if I don't know what a Gable is?",
       "answer": "Focus on the other clues. 'Shingles', 'Gutter', and 'Chimney' are unmistakable roof parts. The majority rules in finding the category."
     }
+  ],
+  "articleBlocks": [
+    "Pinpoint #585 is a masterclass in misdirection. It opens with the dramatic Gargoyle, triggering thoughts of Gothic cathedrals or mythical beasts, only to immediately ground you with the mundane Gutter. The challenge here isn't linguistic; it's about resolving the clash between the decorative antique and the functional modern item. The secret lies not in their era, but in their shared elevation.",
+    "The opening trio—Gargoyle, Gable, and Gutter—sets a strong 'Alphabetical Trap.' Seeing three G-words in a row is a classic bait to make you overcommit to a letter-based pattern. The disruption arrives with Shingles. This clue serves two purposes: it breaks the G-alliteration, and it destroys the 'Cathedral' theory. This is the pivot point. You must switch to a 'Spatial' theory. Once you filter for location, the pattern clears: A gargoyle sits on a roof, a gable frames a roof, a chimney pokes through a roof. They are all Parts of a roof.",
+    "Each clue maps to the theme: Gargoyle -> A carved grotesque figure acting as a water spout from a roof.; Gable -> The triangular wall section between sloping roof edges.; Gutter -> A channel along the eaves to collect and carry away rainwater.; Shingles -> Overlapping tiles or slabs that form the outer roof covering.; Chimney -> A vertical structure for venting smoke from a fireplace or furnace..",
+    "Imported from competitor archive on 2025-12-07. Answer: Parts of a roof."
   ]
 }

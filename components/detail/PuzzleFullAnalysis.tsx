@@ -123,8 +123,6 @@ function buildWalkthroughParagraphs(puzzle: PuzzleDetailRecord): string[] {
   const sourceParagraphs =
     puzzle.articleBlocks.length > 0
       ? puzzle.articleBlocks
-      : puzzle.fullAnalysis.length > 0
-      ? puzzle.fullAnalysis
       : puzzle.solutionNarrative.length > 0
         ? puzzle.solutionNarrative
         : [puzzle.shortSummary];

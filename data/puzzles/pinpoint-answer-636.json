@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-636",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's culinary-themed puzzle presents a collection of terms that initially seem quite scattered. While 'Dice' might lead solvers down a gaming path and 'Quarter' could suggest monetary or time-based solutions, the true connection emerges through careful consideration of kitchen techniques. These words represent various methods of food preparation, specifically focusing on different cutting techniques employed in cooking and food preparation. The pattern becomes clearer when considering how these terms are used in recipe instructions.",
-    "I started by focusing on 'Dice' and 'Quarter', thinking they might relate to games or mathematics. The presence of numbers seemed promising. Looking at 'Mince', I initially considered meat products, but something wasn't quite right. When I noticed 'Chop' and 'Slice', a culinary theme started emerging in my mind. I tested this theory by considering each word in a cooking context, and suddenly everything aligned perfectly. The breakthrough came when I realized these were all specific cutting techniques used in food preparation. To verify my solution, I checked a cooking website's knife skills guide, confirming these exact terms. Reflecting on the puzzle, it's clever how these common cooking instructions were disguised by their multiple meanings.",
-    "The puzzle presents five common cooking terms that all relate to different ways of cutting food. Each word represents a specific cutting technique used in food preparation, from the precise cube-shapes of 'dice' to the rough cuts of 'chop'.",
-    "Today's puzzle focused on culinary cutting techniques. The answer 'Ways to cut food with a knife' connects all five clues: Dice, Quarter, Mince, Chop, and Slice - each representing a different method of cutting ingredients in food preparation."
-  ],
   "wordHints": {
     "Dice": "Dice (Cutting Technique): To cut food into small, uniform cube-shaped pieces",
     "Quarter": "Quarter (Cutting Method): To cut something into four equal parts",
@@ -32,5 +26,11 @@
       "question": "Are these terms specific to professional cooking?",
       "answer": "No, these are common cutting techniques used in both professional and home cooking."
     }
+  ],
+  "articleBlocks": [
+    "Today's culinary-themed puzzle presents a collection of terms that initially seem quite scattered. While 'Dice' might lead solvers down a gaming path and 'Quarter' could suggest monetary or time-based solutions, the true connection emerges through careful consideration of kitchen techniques. These words represent various methods of food preparation, specifically focusing on different cutting techniques employed in cooking and food preparation. The pattern becomes clearer when considering how these terms are used in recipe instructions.",
+    "I started by focusing on 'Dice' and 'Quarter', thinking they might relate to games or mathematics. The presence of numbers seemed promising. Looking at 'Mince', I initially considered meat products, but something wasn't quite right. When I noticed 'Chop' and 'Slice', a culinary theme started emerging in my mind. I tested this theory by considering each word in a cooking context, and suddenly everything aligned perfectly. The breakthrough came when I realized these were all specific cutting techniques used in food preparation. To verify my solution, I checked a cooking website's knife skills guide, confirming these exact terms. Reflecting on the puzzle, it's clever how these common cooking instructions were disguised by their multiple meanings.",
+    "The puzzle presents five common cooking terms that all relate to different ways of cutting food. Each word represents a specific cutting technique used in food preparation, from the precise cube-shapes of 'dice' to the rough cuts of 'chop'.",
+    "Today's puzzle focused on culinary cutting techniques. The answer 'Ways to cut food with a knife' connects all five clues: Dice, Quarter, Mince, Chop, and Slice - each representing a different method of cutting ingredients in food preparation."
   ]
 }

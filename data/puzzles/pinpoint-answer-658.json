@@ -1,12 +1,6 @@
 {
   "slug": "pinpoint-answer-658",
   "detailState": "published",
-  "fullAnalysis": [
-    "Today's Pinpoint puzzle presents an intriguing collection of culinary terms that might initially seem disconnected. From Asian cuisine influences to common grocery store finds, these clues share a fascinating connection in the world of edible fungi. The challenge lies in recognizing how these diverse items, ranging from delicate to robust varieties, all belong to the same botanical family. What's particularly clever is how some terms could mislead solvers toward different food categories.",
-    "I started by noting that Oyster seemed out of place among the other items, wondering if seafood was somehow involved. Looking closer at Enoki, I recognized it from Asian cuisine. The presence of White button sparked my first real insight, as it's a common grocery store staple. I suddenly realized these were all varieties of fungi, specifically different types of edible mushrooms found in cuisine worldwide. After confirming Shiitake and Portobello fit perfectly with this theme, I was confident in my answer. The variety of textures, flavors, and culinary applications these fungi offer made this puzzle particularly satisfying to solve.",
-    "The puzzle presents five mushroom varieties: Oyster, Enoki, White button, Shiitake, and Portobello. Each is a distinct type of edible fungus used in various cuisines worldwide. The connection becomes clear when recognizing these as popular culinary mushrooms, despite some potentially misleading terms like Oyster.",
-    "Today's Pinpoint answer reveals different types of mushroom. From the delicate Enoki to the meaty Portobello, each clue represents a distinct variety of edible fungi used in global cuisine."
-  ],
   "wordHints": {
     "Oyster": "Oyster mushroom (Edible Fungus): A fan-shaped mushroom with a subtle seafood-like flavor",
     "Enoki": "Enoki mushroom (Japanese Fungus): Long, thin white mushrooms with small caps",
@@ -32,5 +26,11 @@
       "question": "Are all these mushrooms edible?",
       "answer": "Yes, all five varieties are edible mushrooms commonly used in cooking worldwide."
     }
+  ],
+  "articleBlocks": [
+    "Today's Pinpoint puzzle presents an intriguing collection of culinary terms that might initially seem disconnected. From Asian cuisine influences to common grocery store finds, these clues share a fascinating connection in the world of edible fungi. The challenge lies in recognizing how these diverse items, ranging from delicate to robust varieties, all belong to the same botanical family. What's particularly clever is how some terms could mislead solvers toward different food categories.",
+    "I started by noting that Oyster seemed out of place among the other items, wondering if seafood was somehow involved. Looking closer at Enoki, I recognized it from Asian cuisine. The presence of White button sparked my first real insight, as it's a common grocery store staple. I suddenly realized these were all varieties of fungi, specifically different types of edible mushrooms found in cuisine worldwide. After confirming Shiitake and Portobello fit perfectly with this theme, I was confident in my answer. The variety of textures, flavors, and culinary applications these fungi offer made this puzzle particularly satisfying to solve.",
+    "The puzzle presents five mushroom varieties: Oyster, Enoki, White button, Shiitake, and Portobello. Each is a distinct type of edible fungus used in various cuisines worldwide. The connection becomes clear when recognizing these as popular culinary mushrooms, despite some potentially misleading terms like Oyster.",
+    "Today's Pinpoint answer reveals different types of mushroom. From the delicate Enoki to the meaty Portobello, each clue represents a distinct variety of edible fungi used in global cuisine."
   ]
 }
