@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-738",
   "publishDate": "2026-05-08",
   "isoDate": "2026-05-08",
-  "detailState": "generating",
+  "detailState": "fallback_full",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "category",
@@ -18,11 +18,11 @@
   "answer": "Types of Iicense / licence",
   "category": "Types of Iicense / licence",
   "wordHints": {
-    "Dog": "Dog connects to \"Types of Iicense / licence\"",
-    "Fishing": "Fishing connects to \"Types of Iicense / licence\"",
-    "Marriage": "Marriage connects to \"Types of Iicense / licence\"",
-    "Open-source": "Open-source connects to \"Types of Iicense / licence\"",
-    "Poetic": "Poetic connects to \"Types of Iicense / licence\""
+    "Dog": "\"Dog Iicense / licence\" is a recognizable iicense / licence, so it gives the board a clean category fit.",
+    "Fishing": "Once the board is read as iicense / licence, \"Fishing Iicense / licence\" stops feeling broad and becomes an exact fit.",
+    "Marriage": "\"Marriage Iicense / licence\" belongs in the same iicense / licence frame, which keeps the category specific instead of loose.",
+    "Open-source": "\"Open-source Iicense / licence\" is a recognizable iicense / licence, so it gives the board a clean category fit.",
+    "Poetic": "Once the board is read as iicense / licence, \"Poetic Iicense / licence\" stops feeling broad and becomes an exact fit."
   },
   "spoilerHints": {
     "Dog": "Treat Dog as one recognizable member of types of iicense / licence, not as a broad topic on its own.",
@@ -33,76 +33,83 @@
   },
   "articleBlocks": [
     "At first, Dog and Fishing can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
-    "One tempting read was \"a broader umbrella topic\". Dog, Fishing can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Dog pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "One tempting read was \"a broader umbrella topic\". Dog, Fishing can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Open-source pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
     "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
     "Once the board turned into a question about what kind of iicense / licence each clue could be, a category board focused on iicense / licence stopped sounding generic and started behaving like a real category test. Examples like \"Dog Iicense / licence\" and \"Fishing Iicense / licence\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
-    "Marriage, Open-source, Poetic read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "Marriage Iicense / licence, Open-source Iicense / licence, Poetic Iicense / licence read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
     "The answer was \"Types of Iicense / licence\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of Iicense / licence, which is why \"Types of Iicense / licence\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #738, Dog, Fishing, Marriage, Open-source, Poetic only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "I first drifted toward a broader umbrella topic, because the early clues were broad enough to sit inside a bigger umbrella topic. That read still felt too loose once \"Open-source\" showed up.",
+    "The solve improved once I stopped asking what the clues vaguely had in common and started asking what type of thing each clue could specifically be. \"Open-source\" was the clue that made that shift feel worth testing.",
+    "After that, the board stopped behaving like a loose topic list and started reading like one exact typed category with members you could actually name.",
+    "The answer was \"Types of Iicense / licence\"."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Ask what type each clue could really be",
+      "body": "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "The category noun should sharpen the board",
+      "body": "A good category answer does more than group the clues loosely. It should make each clue sound like a recognizable member of the same family."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Use the anchor clue to set the category level",
+      "body": "Once \"Open-source\" lands, check whether the rest of the clues fit that same category at the same level of precision."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on iicense / licence",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names.",
     "clueTableRows": [
       {
         "clue": "Dog",
         "examplePhrase": "Dog Iicense / licence",
-        "connectionExplained": "Dog connects to \"Types of Iicense / licence\""
+        "connectionExplained": "\"Dog Iicense / licence\" is a recognizable iicense / licence, so it gives the board a clean category fit."
       },
       {
         "clue": "Fishing",
         "examplePhrase": "Fishing Iicense / licence",
-        "connectionExplained": "Fishing connects to \"Types of Iicense / licence\""
+        "connectionExplained": "Once the board is read as iicense / licence, \"Fishing Iicense / licence\" stops feeling broad and becomes an exact fit."
       },
       {
         "clue": "Marriage",
         "examplePhrase": "Marriage Iicense / licence",
-        "connectionExplained": "Marriage connects to \"Types of Iicense / licence\""
+        "connectionExplained": "\"Marriage Iicense / licence\" belongs in the same iicense / licence frame, which keeps the category specific instead of loose."
       },
       {
         "clue": "Open-source",
         "examplePhrase": "Open-source Iicense / licence",
-        "connectionExplained": "Open-source connects to \"Types of Iicense / licence\""
+        "connectionExplained": "\"Open-source Iicense / licence\" is a recognizable iicense / licence, so it gives the board a clean category fit."
       },
       {
         "clue": "Poetic",
         "examplePhrase": "Poetic Iicense / licence",
-        "connectionExplained": "Poetic connects to \"Types of Iicense / licence\""
+        "connectionExplained": "Once the board is read as iicense / licence, \"Poetic Iicense / licence\" stops feeling broad and becomes an exact fit."
       }
     ]
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #738?",
-      "answer": "The answer is \"Types of Iicense / licence\". The clues Dog, Fishing, Marriage, Open-source, Poetic all share this connection."
+      "question": "Which type-level category connects \"Dog\" and \"Fishing\" in LinkedIn Pinpoint #738?",
+      "answer": "The answer is \"Types of Iicense / licence\". That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "How do \"Dog\" and \"Fishing\" connect in LinkedIn Pinpoint #738?",
+      "answer": "The connection is a category board focused on iicense / licence. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Why is \"Open-source\" the key clue in LinkedIn Pinpoint #738?",
+      "answer": "\"Open-source\" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun."
+    },
+    {
+      "question": "How does \"Dog\" fit as an iicense / licence in LinkedIn Pinpoint #738?",
+      "answer": "\"Dog\" is a recognizable iicense / licence, which keeps the board specific instead of broadly themed."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #738 just unlocked, and this is the fastest verified update. The board clues are Dog, Fishing, Marriage, Open-source, Poetic, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "At first, Dog and Fishing can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
     "falseStarts": [
       "a broader umbrella topic",
       "a loose mascot or named-entity cluster"
@@ -111,94 +118,100 @@
       "Dog, Fishing can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
       "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
     ],
-    "breakingClue": "Dog",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #738, Dog, Fishing, Marriage, Open-source, Poetic only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Dog lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Open-source",
+    "pivot": "I first drifted toward a broader umbrella topic, because the early clues were broad enough to sit inside a bigger umbrella topic. That read still felt too loose once \"Open-source\" showed up.\n\nThe solve improved once I stopped asking what the clues vaguely had in common and started asking what type of thing each clue could specifically be. \"Open-source\" was the clue that made that shift feel worth testing.\n\nAfter that, the board stopped behaving like a loose topic list and started reading like one exact typed category with members you could actually name.\n\nThe answer was \"Types of Iicense / licence\".",
+    "fullBoardConfirmation": "Once the board turned into a question about what kind of iicense / licence each clue could be, a category board focused on iicense / licence stopped sounding generic and started behaving like a real category test. Examples like \"Dog Iicense / licence\" and \"Fishing Iicense / licence\" then read like recognizable members of the same set rather than isolated references that merely share the same mood."
   },
   "turningPoint": {
-    "clue": "Dog",
-    "whyDecisive": "Dog is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Dog lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Open-source",
+    "whyDecisive": "Open-source is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Open-source lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
       "clue": "Dog",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Dog",
-      "nonObviousWhy": "Dog supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Dog"
+      "resolvedPhraseOrMember": "Dog Iicense / licence",
+      "nonObviousWhy": "\"Dog Iicense / licence\" is a recognizable iicense / licence, so it gives the board a clean category fit.",
+      "searchableContext": "Dog Iicense / licence"
     },
     {
       "clue": "Fishing",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Fishing",
-      "nonObviousWhy": "Fishing supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Fishing"
+      "resolvedPhraseOrMember": "Fishing Iicense / licence",
+      "nonObviousWhy": "Once the board is read as iicense / licence, \"Fishing Iicense / licence\" stops feeling broad and becomes an exact fit.",
+      "searchableContext": "Fishing Iicense / licence"
     },
     {
       "clue": "Marriage",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Marriage",
-      "nonObviousWhy": "Marriage supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Marriage"
+      "resolvedPhraseOrMember": "Marriage Iicense / licence",
+      "nonObviousWhy": "\"Marriage Iicense / licence\" belongs in the same iicense / licence frame, which keeps the category specific instead of loose.",
+      "searchableContext": "Marriage Iicense / licence"
     },
     {
       "clue": "Open-source",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Open-source",
-      "nonObviousWhy": "Open-source supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Open-source"
+      "resolvedPhraseOrMember": "Open-source Iicense / licence",
+      "nonObviousWhy": "\"Open-source Iicense / licence\" is a recognizable iicense / licence, so it gives the board a clean category fit.",
+      "searchableContext": "Open-source Iicense / licence"
     },
     {
       "clue": "Poetic",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Poetic",
-      "nonObviousWhy": "Poetic supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Poetic"
+      "resolvedPhraseOrMember": "Poetic Iicense / licence",
+      "nonObviousWhy": "Once the board is read as iicense / licence, \"Poetic Iicense / licence\" stops feeling broad and becomes an exact fit.",
+      "searchableContext": "Poetic Iicense / licence"
     }
   ],
   "faqItems": [
     {
-      "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #738?",
-      "answer": "The answer is \"Types of Iicense / licence\". The clues Dog, Fishing, Marriage, Open-source, Poetic all share this connection.",
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Dog\" and \"Fishing\" in LinkedIn Pinpoint #738?",
+      "answer": "The answer is \"Types of Iicense / licence\". That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket.",
       "tiedClue": "Dog"
     },
     {
       "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
-      "tiedClue": null
+      "question": "How do \"Dog\" and \"Fishing\" connect in LinkedIn Pinpoint #738?",
+      "answer": "The connection is a category board focused on iicense / licence. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of.",
+      "tiedClue": "Dog"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Open-source\" the key clue in LinkedIn Pinpoint #738?",
+      "answer": "\"Open-source\" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun.",
+      "tiedClue": "Open-source"
     },
     {
       "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "question": "How does \"Dog\" fit as an iicense / licence in LinkedIn Pinpoint #738?",
+      "answer": "\"Dog\" is a recognizable iicense / licence, which keeps the board specific instead of broadly themed.",
+      "tiedClue": "Dog"
     }
   ],
   "uniquenessSignals": {
     "angle": "a category board focused on iicense / licence",
     "relatedEntities": [
-      "Dog",
-      "Fishing",
-      "Marriage",
-      "Open-source",
-      "Poetic"
+      "Dog Iicense / licence",
+      "Fishing Iicense / licence",
+      "Marriage Iicense / licence",
+      "Open-source Iicense / licence",
+      "Poetic Iicense / licence"
     ],
     "doNotRepeatPatterns": [
       "a category board focused on iicense / licence",
-      "Dog",
-      "Fishing",
-      "Marriage",
-      "Open-source"
+      "Dog Iicense / licence",
+      "Fishing Iicense / licence",
+      "Marriage Iicense / licence",
+      "Open-source Iicense / licence"
     ]
   },
   "wrongGuessCandidates": [
     {
       "label": "a broader umbrella topic",
       "whyPlausible": "Dog, Fishing can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
-      "whyRejected": "Dog pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+      "whyRejected": "Open-source pushes the solve down to one exact type-level category instead of a vague umbrella topic."
     },
     {
       "label": "a loose mascot or named-entity cluster",
@@ -206,6 +219,6 @@
       "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
     }
   ],
-  "setValidationSummary": "Marriage, Open-source, Poetic read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "setValidationSummary": "Marriage Iicense / licence, Open-source Iicense / licence, Poetic Iicense / licence read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
   "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of Iicense / licence"
 }
