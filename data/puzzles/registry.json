@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 738,
+    "slug": "pinpoint-answer-738",
+    "publishDate": "2026-05-08",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Dog",
+      "Fishing",
+      "Marriage",
+      "Open-source",
+      "Poetic"
+    ],
+    "mainAnswer": "Types of Iicense / licence",
+    "category": "Types of Iicense / licence",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #738: Dog, Fishing, Marriage, Open-source, Poetic.",
+    "updatedAt": "2026-05-08T07:01:13.130Z"
+  },
+  {
     "puzzleNumber": 734,
     "slug": "pinpoint-answer-734",
     "publishDate": "2026-05-04",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Mace",
@@ -16,7 +35,7 @@
     "category": "Names of Jedi in the Star Wars films",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Mace, Luke, Obi-Wan do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-04T07:02:07.097Z"
+    "updatedAt": "2026-05-08T07:01:13.130Z"
   },
   {
     "puzzleNumber": 733,
