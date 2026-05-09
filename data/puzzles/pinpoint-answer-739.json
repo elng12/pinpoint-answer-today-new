@@ -3,11 +3,11 @@
   "slug": "pinpoint-answer-739",
   "publishDate": "2026-05-09",
   "isoDate": "2026-05-09",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
-  "difficultyBand": "hard",
+  "difficultyBand": "medium",
   "clues": [
     "Corn",
     "Form",
@@ -18,11 +18,11 @@
   "answer": "Words that come after “uni”",
   "category": "Words that come after “uni”",
   "wordHints": {
-    "Corn": "Corn connects to \"Words that come after “uni”\"",
-    "Form": "Form connects to \"Words that come after “uni”\"",
-    "Cycle": "Cycle connects to \"Words that come after “uni”\"",
-    "Verse": "Verse connects to \"Words that come after “uni”\"",
-    "Lateral": "Lateral connects to \"Words that come after “uni”\""
+    "Corn": "Unicorn is a mythical horse with a single horn, completing the clue.",
+    "Form": "Uniform means consistent in shape or appearance, completing the clue.",
+    "Cycle": "Unicycle is a one-wheeled vehicle, completing the clue.",
+    "Verse": "Universe is all of space and time, completing the clue.",
+    "Lateral": "Unilateral means performed by or affecting only one side, completing the clue."
   },
   "spoilerHints": {
     "Corn": "Try reading Corn as part of a familiar phrase in words that come after “uni” instead of as a standalone word.",
@@ -32,180 +32,193 @@
     "Lateral": "Lateral is the clue that makes the phrase pattern in words that come after “uni” concrete enough to test."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Corn, Form do not immediately advertise one shared phrase slot before Corn shows where the repeated word belongs. Corn behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Corn locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"uni Corn\" and \"uni Form\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
-    "Cycle, Verse, Lateral show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come after “uni”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “uni”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "I stared at 'Corn' and 'Form' and felt lost. This seemed like another random collection of words.",
+    "Maybe something biological? Or words with double letters?",
+    "But 'Cycle' didn't fit either of those ideas.",
+    "Then 'Verse' made me think of 'Universe'.",
+    "That's when I realized the connection: words that start with 'uni-'.",
+    "The other clues fell into place quickly: Unicorn, Uniform, Unicycle, and Unilateral.",
+    "\"Words that come after uni\" is the answer.",
+    "The initial misdirection made the final answer feel extra satisfying.",
+    "This puzzle taught me to look for prefixes when the clues seem unrelated."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #739, Corn, Form, Cycle, Verse, Lateral only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Corn and Form first pulled me toward famous names, so that was the first path I tested. It held together for a moment, but verse never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let verse lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Uni-corn and Uni-form started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "\"Corn\" and \"Form\" do not immediately line up around one missing word",
+      "body": "\"Corn\" and \"Form\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "\"Verse\" is what finally makes the missing word visible",
+      "body": "verse is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Every clue should read as an everyday phrase once \"uni\" is in place",
+      "body": "When clues seem random, look for a hidden prefix or suffix shared by all the answers."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "\"Corn\" and \"Form\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
     "clueTableRows": [
       {
         "clue": "Corn",
-        "examplePhrase": "uni Corn",
-        "connectionExplained": "Corn connects to \"Words that come after “uni”\""
+        "examplePhrase": "Uni-corn",
+        "connectionExplained": "Unicorn is a mythical horse with a single horn, completing the clue."
       },
       {
         "clue": "Form",
-        "examplePhrase": "uni Form",
-        "connectionExplained": "Form connects to \"Words that come after “uni”\""
+        "examplePhrase": "Uni-form",
+        "connectionExplained": "Uniform means consistent in shape or appearance, completing the clue."
       },
       {
         "clue": "Cycle",
-        "examplePhrase": "uni Cycle",
-        "connectionExplained": "Cycle connects to \"Words that come after “uni”\""
+        "examplePhrase": "Uni-cycle",
+        "connectionExplained": "Unicycle is a one-wheeled vehicle, completing the clue."
       },
       {
         "clue": "Verse",
-        "examplePhrase": "uni Verse",
-        "connectionExplained": "Verse connects to \"Words that come after “uni”\""
+        "examplePhrase": "Uni-verse",
+        "connectionExplained": "Universe is all of space and time, completing the clue."
       },
       {
         "clue": "Lateral",
-        "examplePhrase": "uni Lateral",
-        "connectionExplained": "Lateral connects to \"Words that come after “uni”\""
+        "examplePhrase": "Uni-lateral",
+        "connectionExplained": "Unilateral means performed by or affecting only one side, completing the clue."
       }
     ]
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #739?",
-      "answer": "The answer is \"Words that come after “uni”\". The clues Corn, Form, Cycle, Verse, Lateral all share this connection."
+      "question": "What shared word links \"Corn\" and \"Form\" in LinkedIn Pinpoint #739?",
+      "answer": "The answer is \"Words that come after uni\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "How do \"Corn\" and \"Form\" connect in LinkedIn Pinpoint #739?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Why is \"Verse\" the key clue in LinkedIn Pinpoint #739?",
+      "answer": "Verse is the turning clue because \"Uni-verse\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Uni-corn and Uni-form. The clues seem unrelated at first, and the 'uni-' connection is not immediately obvious."
+    },
+    {
+      "question": "Why does \"Corn\" also work in LinkedIn Pinpoint #739?",
+      "answer": "\"Corn\" fits because \"Uni-corn\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"Verse\" opened."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #739 just unlocked, and this is the fastest verified update. The board clues are Corn, Form, Cycle, Verse, Lateral, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Corn, Form, and Cycle do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"famous names\" can feel plausible before the missing word finally shows itself. Verse is the clue that finally makes the missing word visible.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "famous names"
     ],
     "whyFalseStartPlausible": [
-      "Corn, Form do not immediately advertise one shared phrase slot before Corn shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "That was too broad. 'Verse' doesn't fit within biology, and the other clues are a stretch."
     ],
-    "breakingClue": "Corn",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #739, Corn, Form, Cycle, Verse, Lateral only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Corn lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Verse",
+    "pivot": "The solve turned when I let verse lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Uni-corn and Uni-form started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Uni-corn, Uni-form, and Uni-cycle stop feeling loose and start sounding exact. Once verse makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem unrelated at first, and the 'uni-' connection is not immediately obvious."
   },
   "turningPoint": {
-    "clue": "Corn",
-    "whyDecisive": "Corn is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Corn lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Verse",
+    "whyDecisive": "The clue 'Verse' made the 'uni-' connection click for me.",
+    "whatChangedAfterIt": "Once Verse made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
   },
   "clueRows": [
     {
       "clue": "Corn",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Corn",
-      "nonObviousWhy": "Corn supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Corn"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Uni-corn",
+      "nonObviousWhy": "Unicorn is a mythical horse with a single horn, completing the clue.",
+      "searchableContext": "Uni-corn"
     },
     {
       "clue": "Form",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Form",
-      "nonObviousWhy": "Form supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Form"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Uni-form",
+      "nonObviousWhy": "Uniform means consistent in shape or appearance, completing the clue.",
+      "searchableContext": "Uni-form"
     },
     {
       "clue": "Cycle",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Cycle",
-      "nonObviousWhy": "Cycle supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Cycle"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Uni-cycle",
+      "nonObviousWhy": "Unicycle is a one-wheeled vehicle, completing the clue.",
+      "searchableContext": "Uni-cycle"
     },
     {
       "clue": "Verse",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Verse",
-      "nonObviousWhy": "Verse supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Verse"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Uni-verse",
+      "nonObviousWhy": "Universe is all of space and time, completing the clue.",
+      "searchableContext": "Uni-verse"
     },
     {
       "clue": "Lateral",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Lateral",
-      "nonObviousWhy": "Lateral supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Lateral"
+      "surfaceMisread": "famous names",
+      "resolvedPhraseOrMember": "Uni-lateral",
+      "nonObviousWhy": "Unilateral means performed by or affecting only one side, completing the clue.",
+      "searchableContext": "Uni-lateral"
     }
   ],
   "faqItems": [
     {
-      "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #739?",
-      "answer": "The answer is \"Words that come after “uni”\". The clues Corn, Form, Cycle, Verse, Lateral all share this connection.",
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Corn\" and \"Form\" in LinkedIn Pinpoint #739?",
+      "answer": "The answer is \"Words that come after uni\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": "Corn"
     },
     {
       "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
-      "tiedClue": null
+      "question": "How do \"Corn\" and \"Form\" connect in LinkedIn Pinpoint #739?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
+      "tiedClue": "Corn"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Verse\" the key clue in LinkedIn Pinpoint #739?",
+      "answer": "Verse is the turning clue because \"Uni-verse\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Uni-corn and Uni-form. The clues seem unrelated at first, and the 'uni-' connection is not immediately obvious.",
+      "tiedClue": "Verse"
     },
     {
       "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "question": "Why does \"Corn\" also work in LinkedIn Pinpoint #739?",
+      "answer": "\"Corn\" fits because \"Uni-corn\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"Verse\" opened.",
+      "tiedClue": "Corn"
     }
   ],
   "uniquenessSignals": {
-    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "angle": "a repeated-word phrase pattern with one missing term",
     "relatedEntities": [
-      "Corn",
-      "Form",
-      "Cycle",
-      "Verse",
-      "Lateral"
+      "Uni-corn",
+      "Uni-form",
+      "Uni-cycle",
+      "Uni-verse",
+      "Uni-lateral"
     ],
     "doNotRepeatPatterns": [
-      "familiar phrases and everyday terms built with one shared opening word",
-      "Corn",
-      "Form",
-      "Cycle",
-      "Verse"
+      "a repeated-word phrase pattern with one missing term",
+      "\"Corn\" and \"Form\" do not immediately line up around one missing word",
+      "\"Verse\" is what finally makes the missing word visible",
+      "Every clue should read as an everyday phrase once \"uni\" is in place",
+      "Uni-corn",
+      "Uni-form"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "Corn, Form do not immediately advertise one shared phrase slot before Corn shows where the repeated word belongs.",
-      "whyRejected": "Corn behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "famous names",
+      "whyPlausible": "That was too broad. 'Verse' doesn't fit within biology, and the other clues are a stretch.",
+      "whyRejected": "Once Verse lands, the final answer explains the board more cleanly than famous names."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once Corn locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "label": "other shared-word phrase guesses",
+      "whyPlausible": "The opening clues can support more than one shared-word read before a later clue locks the exact missing term into place.",
+      "whyRejected": "Once Verse lands, the final answer explains the board more cleanly than that looser phrase read."
     }
   ],
-  "setValidationSummary": "Cycle, Verse, Lateral show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "setValidationSummary": "Cycle, Verse, Lateral keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
   "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
 }
