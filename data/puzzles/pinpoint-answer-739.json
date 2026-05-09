@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-739",
   "publishDate": "2026-05-09",
   "isoDate": "2026-05-09",
-  "detailState": "validated",
-  "bodyMode": "standard",
-  "pageExperienceMode": "full-analysis",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
   "questionType": "phrase",
   "difficultyBand": "medium",
   "clues": [
@@ -32,19 +32,15 @@
     "Lateral": "Lateral is the clue that makes the phrase pattern in words that come after “uni” concrete enough to test."
   },
   "articleBlocks": [
-    "I stared at 'Corn' and 'Form' and felt lost. This seemed like another random collection of words.",
-    "Maybe something biological? Or words with double letters?",
-    "But 'Cycle' didn't fit either of those ideas.",
-    "Then 'Verse' made me think of 'Universe'.",
-    "That's when I realized the connection: words that start with 'uni-'.",
-    "The other clues fell into place quickly: Unicorn, Uniform, Unicycle, and Unilateral.",
-    "\"Words that come after uni\" is the answer.",
-    "The initial misdirection made the final answer feel extra satisfying.",
-    "This puzzle taught me to look for prefixes when the clues seem unrelated."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #739. Corn, Form, Cycle can point in a few directions at first, but Verse is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Corn\" and \"Form\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing. familiar phrases and everyday terms built with one shared opening word. The clue 'Verse' made the 'uni-' connection click for me.",
+    "Once Verse clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Uni-corn, Uni-form, and Uni-cycle stop feeling loose and start sounding exact. Once verse makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem unrelated at first, and the 'uni-' connection is not immediately obvious.",
+    "The answer is Words that come after “uni”. Use the clue table for Verse, Lateral and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "Corn and Form first pulled me toward famous names, so that was the first path I tested. It held together for a moment, but verse never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I let verse lead instead of treating it like an outlier. Once that clue exposed the missing word, readings like Uni-corn and Uni-form started to sound exact instead of approximate. That was the point where I could go back across the earlier clues, test the same word in each spot, and feel the answer lock in for real."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #739. Corn, Form, Cycle can point in a few directions at first, but Verse is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Corn\" and \"Form\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing. familiar phrases and everyday terms built with one shared opening word. The clue 'Verse' made the 'uni-' connection click for me.",
+    "Once Verse clicks, From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Uni-corn, Uni-form, and Uni-cycle stop feeling loose and start sounding exact. Once verse makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clues seem unrelated at first, and the 'uni-' connection is not immediately obvious."
   ],
   "lessons": [
     {
@@ -103,10 +99,6 @@
     {
       "question": "Why is \"Verse\" the key clue in LinkedIn Pinpoint #739?",
       "answer": "Verse is the turning clue because \"Uni-verse\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Uni-corn and Uni-form. The clues seem unrelated at first, and the 'uni-' connection is not immediately obvious."
-    },
-    {
-      "question": "Why does \"Corn\" also work in LinkedIn Pinpoint #739?",
-      "answer": "\"Corn\" fits because \"Uni-corn\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"Verse\" opened."
     }
   ],
   "solvePath": {
