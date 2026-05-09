@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 739,
+  "slug": "pinpoint-answer-739",
+  "publishDate": "2026-05-09",
+  "isoDate": "2026-05-09",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Corn",
+    "Form",
+    "Cycle",
+    "Verse",
+    "Lateral"
+  ],
+  "answer": "Words that come after “uni”",
+  "category": "Words that come after “uni”",
+  "wordHints": {
+    "Corn": "Corn connects to \"Words that come after “uni”\"",
+    "Form": "Form connects to \"Words that come after “uni”\"",
+    "Cycle": "Cycle connects to \"Words that come after “uni”\"",
+    "Verse": "Verse connects to \"Words that come after “uni”\"",
+    "Lateral": "Lateral connects to \"Words that come after “uni”\""
+  },
+  "spoilerHints": {
+    "Corn": "Try reading Corn as part of a familiar phrase in words that come after “uni” instead of as a standalone word.",
+    "Form": "Form works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Cycle": "Look for a natural expression that absorbs Cycle cleanly before locking the board.",
+    "Verse": "Try reading Verse as part of a familiar phrase in words that come after “uni” instead of as a standalone word.",
+    "Lateral": "Lateral is the clue that makes the phrase pattern in words that come after “uni” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Corn, Form do not immediately advertise one shared phrase slot before Corn shows where the repeated word belongs. Corn behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Corn locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"uni Corn\" and \"uni Form\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "Cycle, Verse, Lateral show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “uni”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “uni”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #739, Corn, Form, Cycle, Verse, Lateral only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Corn",
+        "examplePhrase": "uni Corn",
+        "connectionExplained": "Corn connects to \"Words that come after “uni”\""
+      },
+      {
+        "clue": "Form",
+        "examplePhrase": "uni Form",
+        "connectionExplained": "Form connects to \"Words that come after “uni”\""
+      },
+      {
+        "clue": "Cycle",
+        "examplePhrase": "uni Cycle",
+        "connectionExplained": "Cycle connects to \"Words that come after “uni”\""
+      },
+      {
+        "clue": "Verse",
+        "examplePhrase": "uni Verse",
+        "connectionExplained": "Verse connects to \"Words that come after “uni”\""
+      },
+      {
+        "clue": "Lateral",
+        "examplePhrase": "uni Lateral",
+        "connectionExplained": "Lateral connects to \"Words that come after “uni”\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #739?",
+      "answer": "The answer is \"Words that come after “uni”\". The clues Corn, Form, Cycle, Verse, Lateral all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #739 just unlocked, and this is the fastest verified update. The board clues are Corn, Form, Cycle, Verse, Lateral, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Corn, Form do not immediately advertise one shared phrase slot before Corn shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Corn",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #739, Corn, Form, Cycle, Verse, Lateral only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Corn lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Corn",
+    "whyDecisive": "Corn is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Corn lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Corn",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Corn",
+      "nonObviousWhy": "Corn supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Corn"
+    },
+    {
+      "clue": "Form",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Form",
+      "nonObviousWhy": "Form supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Form"
+    },
+    {
+      "clue": "Cycle",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Cycle",
+      "nonObviousWhy": "Cycle supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Cycle"
+    },
+    {
+      "clue": "Verse",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Verse",
+      "nonObviousWhy": "Verse supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Verse"
+    },
+    {
+      "clue": "Lateral",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Lateral",
+      "nonObviousWhy": "Lateral supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Lateral"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #739?",
+      "answer": "The answer is \"Words that come after “uni”\". The clues Corn, Form, Cycle, Verse, Lateral all share this connection.",
+      "tiedClue": "Corn"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "Corn",
+      "Form",
+      "Cycle",
+      "Verse",
+      "Lateral"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "Corn",
+      "Form",
+      "Cycle",
+      "Verse"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Corn, Form do not immediately advertise one shared phrase slot before Corn shows where the repeated word belongs.",
+      "whyRejected": "Corn behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Corn locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Cycle, Verse, Lateral show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}

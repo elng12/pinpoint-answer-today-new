@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 739,
+    "slug": "pinpoint-answer-739",
+    "publishDate": "2026-05-09",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Corn",
+      "Form",
+      "Cycle",
+      "Verse",
+      "Lateral"
+    ],
+    "mainAnswer": "Words that come after “uni”",
+    "category": "Words that come after “uni”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #739: Corn, Form, Cycle, Verse, Lateral.",
+    "updatedAt": "2026-05-09T07:02:02.295Z"
+  },
+  {
     "puzzleNumber": 738,
     "slug": "pinpoint-answer-738",
     "publishDate": "2026-05-08",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Dog",
@@ -16,7 +35,7 @@
     "category": "Types of Iicense / licence",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Dog, Fishing, Marriage, Open-source, Poetic - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-08T07:02:17.437Z"
+    "updatedAt": "2026-05-09T07:02:02.295Z"
   },
   {
     "puzzleNumber": 734,
