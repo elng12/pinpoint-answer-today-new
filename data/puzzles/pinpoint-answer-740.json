@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-740",
   "publishDate": "2026-05-10",
   "isoDate": "2026-05-10",
-  "detailState": "validated",
-  "bodyMode": "standard",
-  "pageExperienceMode": "full-analysis",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
   "questionType": "category",
   "difficultyBand": "hard",
   "clues": [
@@ -32,20 +32,15 @@
     "Ink chamber": "Ink chamber is the clue that makes parts of a pen concrete enough to test across the full board."
   },
   "articleBlocks": [
-    "At first, this looked more like parts of a car than the real category.",
-    "Barrel pushed me in that direction immediately.",
-    "Spring kept that theory alive for a moment, but ink chamber still did not quite fit.",
-    "That was the moment the first idea stopped working.",
-    "Then Ink chamber made me stop thinking about parts of a car and start thinking about the real category.",
-    "Barrel made sense as a pen barrel.",
-    "Spring made sense as a pen spring.",
-    "The answer was Parts of a pen.",
-    "Cap and Ink chamber then felt less surprising and more like the last pieces falling into place.",
-    "Looking back, the answer feels obvious in the best way."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #740. Barrel, Spring, Tip can point in a few directions at first, but Ink chamber is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Barrel\" and \"Spring\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on parts. The 'Ink chamber' clue really solidified the answer.",
+    "Once Ink chamber clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Barrel, Spring, and Tip stop feeling disconnected and start looking like they belong together. Once ink chamber is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are a mix of general and specific items, causing initial misdirection before the 'Ink chamber' clue focuses the answer.",
+    "The answer is Parts of a pen. Use the clue table for Cap, Ink chamber and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "Barrel and Spring first pulled me toward parts of a car, so that was the first path I tested. It held together for a moment, but ink chamber never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating ink chamber as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about parts of a car; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #740. Barrel, Spring, Tip can point in a few directions at first, but Ink chamber is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Barrel\" and \"Spring\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on parts. The 'Ink chamber' clue really solidified the answer.",
+    "Once Ink chamber clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Barrel, Spring, and Tip stop feeling disconnected and start looking like they belong together. Once ink chamber is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are a mix of general and specific items, causing initial misdirection before the 'Ink chamber' clue focuses the answer."
   ],
   "lessons": [
     {
@@ -104,10 +99,6 @@
     {
       "question": "Why is \"Ink chamber\" the key clue in LinkedIn Pinpoint #740?",
       "answer": "Ink chamber is the turning clue because \"Pen ink chamber\" makes the shared category frame explicit. It also makes Barrel read cleanly as \"Pen barrel\". The clues are a mix of general and specific items, causing initial misdirection before the 'Ink chamber' clue focuses the answer."
-    },
-    {
-      "question": "How does \"Barrel\" fit the same category as \"Ink chamber\" in LinkedIn Pinpoint #740?",
-      "answer": "\"Barrel\" reads as \"Pen barrel\" under the same answer, so it supports the category instead of pulling toward a broader guess."
     }
   ],
   "solvePath": {
