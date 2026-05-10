@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 740,
+  "slug": "pinpoint-answer-740",
+  "publishDate": "2026-05-10",
+  "isoDate": "2026-05-10",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Barrel",
+    "Spring",
+    "Tip",
+    "Cap",
+    "Ink chamber"
+  ],
+  "answer": "Parts of a pen",
+  "category": "Parts of a pen",
+  "wordHints": {
+    "Barrel": "Barrel connects to \"Parts of a pen\"",
+    "Spring": "Spring connects to \"Parts of a pen\"",
+    "Tip": "Tip connects to \"Parts of a pen\"",
+    "Cap": "Cap connects to \"Parts of a pen\"",
+    "Ink chamber": "Ink chamber connects to \"Parts of a pen\""
+  },
+  "spoilerHints": {
+    "Barrel": "Barrel should be tested as part of parts of a pen, not as a standalone reference.",
+    "Spring": "Keep Spring in mind, then see whether Ink chamber supports the same answer.",
+    "Tip": "Tip works best after the board narrows toward parts of a pen.",
+    "Cap": "Cap should be tested as part of parts of a pen, not as a standalone reference.",
+    "Ink chamber": "Ink chamber is the clue that makes parts of a pen concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Barrel and Spring pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Barrel, Spring can point toward several nearby themes before one clue makes the exact category level visible. Barrel is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on parts, examples like \"Barrel\" and \"Spring\" stopped feeling loose and started landing cleanly.",
+    "Tip, Cap, Ink chamber keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Parts of a pen\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Parts of a pen, which is why \"Parts of a pen\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #740, Barrel, Spring, Tip, Cap, Ink chamber only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on parts",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Barrel",
+        "examplePhrase": "Barrel",
+        "connectionExplained": "Barrel connects to \"Parts of a pen\""
+      },
+      {
+        "clue": "Spring",
+        "examplePhrase": "Spring",
+        "connectionExplained": "Spring connects to \"Parts of a pen\""
+      },
+      {
+        "clue": "Tip",
+        "examplePhrase": "Tip",
+        "connectionExplained": "Tip connects to \"Parts of a pen\""
+      },
+      {
+        "clue": "Cap",
+        "examplePhrase": "Cap",
+        "connectionExplained": "Cap connects to \"Parts of a pen\""
+      },
+      {
+        "clue": "Ink chamber",
+        "examplePhrase": "Ink chamber",
+        "connectionExplained": "Ink chamber connects to \"Parts of a pen\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #740?",
+      "answer": "The answer is \"Parts of a pen\". The clues Barrel, Spring, Tip, Cap, Ink chamber all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #740 just unlocked, and this is the fastest verified update. The board clues are Barrel, Spring, Tip, Cap, Ink chamber, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Barrel, Spring can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Barrel",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #740, Barrel, Spring, Tip, Cap, Ink chamber only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Barrel lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Barrel",
+    "whyDecisive": "Barrel is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Barrel lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Barrel",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Barrel",
+      "nonObviousWhy": "Barrel supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Barrel"
+    },
+    {
+      "clue": "Spring",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Spring",
+      "nonObviousWhy": "Spring supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Spring"
+    },
+    {
+      "clue": "Tip",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Tip",
+      "nonObviousWhy": "Tip supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Tip"
+    },
+    {
+      "clue": "Cap",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Cap",
+      "nonObviousWhy": "Cap supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Cap"
+    },
+    {
+      "clue": "Ink chamber",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Ink chamber",
+      "nonObviousWhy": "Ink chamber supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Ink chamber"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #740?",
+      "answer": "The answer is \"Parts of a pen\". The clues Barrel, Spring, Tip, Cap, Ink chamber all share this connection.",
+      "tiedClue": "Barrel"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on parts",
+    "relatedEntities": [
+      "Barrel",
+      "Spring",
+      "Tip",
+      "Cap",
+      "Ink chamber"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on parts",
+      "Barrel",
+      "Spring",
+      "Tip",
+      "Cap"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Barrel, Spring can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Barrel is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Tip, Cap, Ink chamber keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Parts of a pen"
+}

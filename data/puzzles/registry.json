@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 740,
+    "slug": "pinpoint-answer-740",
+    "publishDate": "2026-05-10",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Barrel",
+      "Spring",
+      "Tip",
+      "Cap",
+      "Ink chamber"
+    ],
+    "mainAnswer": "Parts of a pen",
+    "category": "Parts of a pen",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #740: Barrel, Spring, Tip, Cap, Ink chamber.",
+    "updatedAt": "2026-05-10T07:01:06.833Z"
+  },
+  {
     "puzzleNumber": 739,
     "slug": "pinpoint-answer-739",
     "publishDate": "2026-05-09",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Corn",
@@ -16,7 +35,7 @@
     "category": "Words that come after “uni”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first, the clues feel like random pieces. 'Corn' and 'Form' don't point in any clear direction. It takes a few passes to see the common thread.",
-    "updatedAt": "2026-05-09T07:02:14.458Z"
+    "updatedAt": "2026-05-10T07:01:06.833Z"
   },
   {
     "puzzleNumber": 738,
