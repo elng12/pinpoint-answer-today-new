@@ -33,14 +33,14 @@
   },
   "articleBlocks": [
     "This compact explainer keeps the fastest reliable path through Pinpoint #740. Barrel, Spring, Tip can point in a few directions at first, but Ink chamber is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: \"Barrel\" and \"Spring\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on parts. The 'Ink chamber' clue really solidified the answer.",
-    "Once Ink chamber clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Barrel, Spring, and Tip stop feeling disconnected and start looking like they belong together. Once ink chamber is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are a mix of general and specific items, causing initial misdirection before the 'Ink chamber' clue focuses the answer.",
+    "Fast read: \"Barrel\" and \"Spring\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. Ink chamber supplies that specificity: it points away from broad machinery and toward a pen as the shared object.",
+    "Once Ink chamber lands, the earlier words become much easier to sort. Barrel can be the pen body, Spring can be the click mechanism, Tip is the writing point, and Cap protects the end. The category is not just \"small parts\"; it is the specific set of parts of a pen.",
     "The answer is Parts of a pen. Use the clue table for Cap, Ink chamber and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #740. Barrel, Spring, Tip can point in a few directions at first, but Ink chamber is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: \"Barrel\" and \"Spring\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on parts. The 'Ink chamber' clue really solidified the answer.",
-    "Once Ink chamber clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Barrel, Spring, and Tip stop feeling disconnected and start looking like they belong together. Once ink chamber is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are a mix of general and specific items, causing initial misdirection before the 'Ink chamber' clue focuses the answer."
+    "I started by testing Barrel, Spring, and Tip against broad mechanical categories, but those reads left too much room for awkward fits. Cap helped, though it still did not prove which object the board wanted.",
+    "Ink chamber was the decisive clue because it named a component that belongs naturally inside a pen. With that anchor in place, barrel, spring, tip, and cap all moved into the same object instead of pointing at separate devices.",
+    "The final check is whether every clue stays at the same level of specificity. Each one can be named as a pen part, so Parts of a pen is tighter than a general category such as tools, containers, or mechanisms."
   ],
   "lessons": [
     {
