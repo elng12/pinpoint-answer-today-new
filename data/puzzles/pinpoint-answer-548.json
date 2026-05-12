@@ -39,5 +39,118 @@
     "I'll admit, I was pretty smug when I saw Pelé and then Messi . My first guess was locked in: \"Legendary soccer players.\" I was so confident I was almost ready to type it in. Then the next clue appeared: Decathlon . My brain stuttered. A decathlete is an incredible athlete, but they're not usually mentioned in the same breath as Pelé and Messi. The theory was already feeling fragile, and I hadn't even submitted it.\n\nI took a breath and looked at what connected all three: Pelé's iconic number 10, Messi who inherited that legacy, and a Decathlon, which is famously a ten-event competition. A new thought was forming: was this about the number 10 itself? When the fourth clue, Perfect score (sometimes) , came up, it all started to click. In gymnastics and figure skating, a perfect score is often a 10.0. The final clue, X (when counting in Rome) , was the final confirmation. The Roman numeral for 10 is X. The puzzle wasn't about the sport; the sport was just a clever delivery system for the number 10.\n\n- Pelé → The number 10 jersey he famously wore.\n- Messi → Also famously wore the number 10 jersey, for both club and country.\n- Decathlon → A track and field competition consisting of ten events.\n- Perfect score (sometimes) → In sports like gymnastics, a 10.0 represents a perfect, flawless routine.\n- X (when counting in Rome) → X is the Roman numeral for the number 10.\nThat was the 'aha' moment. The theme was no longer about athletes; it was about the number ten in its many forms. It was a classic misdirection, using a strong, obvious category (soccer) to hide a much simpler, more abstract connection. The remaining clues slotted into place perfectly, and I knew I had it.",
     "Seeing Pelé and then Messi in today's Pinpoint felt like a classic sports puzzle, with the answer likely being 'Famous soccer players.' I felt confident in that theory. However, the third clue, Decathlon, immediately shattered that idea. A decathlon is an event, not a person, and it's from track and field, not soccer. This forced me to reconsider the connection entirely. I started looking for a more abstract link between all three. I noted that Pelé and Messi are famous for wearing the number 10, and a decathlon has ten events. This led to a new theory: the number ten itself. The next two clues confirmed this. A 'Perfect score' in gymnastics is a 10.0, and 'X (when counting in Rome)' is the Roman numeral for 10. The puzzle wasn't about sports; it was a clever misdirection using sports icons to represent the number 10. The click happened when I realized the first two clues were just one example of the theme, not the theme itself. Once I understood this, the other clues fit effortlessly, solidifying the answer.",
     "Today's LinkedIn Pinpoint answer is 'Things associated with the number 10.' We broke down how clues like Pelé, Messi, Decathlon, Perfect score, and X all point to this simple yet elegant numerical theme."
+  ],
+  "questionType": "association",
+  "display": {
+    "connectorSummary": "people, events, scores, and symbols tied to the number ten",
+    "fastStrategy": "Use Decathlon and X to move from famous athletes to the number 10 itself.",
+    "clueTableRows": [
+      {
+        "clue": "Pelé",
+        "examplePhrase": "number 10 shirt",
+        "connectionExplained": "Pele is strongly associated with the iconic number 10 jersey."
+      },
+      {
+        "clue": "Messi",
+        "examplePhrase": "number 10 shirt",
+        "connectionExplained": "Messi reinforces the football-number signal but is not the whole category."
+      },
+      {
+        "clue": "Decathlon",
+        "examplePhrase": "ten events",
+        "connectionExplained": "Decathlon shifts the board from athletes to the number ten."
+      },
+      {
+        "clue": "Perfect score (sometimes)",
+        "examplePhrase": "10.0",
+        "connectionExplained": "A perfect score is often represented as 10, especially in familiar sports contexts."
+      },
+      {
+        "clue": "X (when counting in Rome)",
+        "examplePhrase": "Roman numeral X",
+        "connectionExplained": "X is the Roman numeral for 10 and confirms the numeric answer."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "Pelé",
+      "surfaceMisread": "football players",
+      "resolvedPhraseOrMember": "number 10 shirt",
+      "nonObviousWhy": "Pele is strongly associated with the iconic number 10 jersey.",
+      "searchableContext": "Pele number 10"
+    },
+    {
+      "clue": "Messi",
+      "surfaceMisread": "football players",
+      "resolvedPhraseOrMember": "number 10 shirt",
+      "nonObviousWhy": "Messi reinforces the football-number signal but is not the whole category.",
+      "searchableContext": "Messi number 10"
+    },
+    {
+      "clue": "Decathlon",
+      "surfaceMisread": "sports event",
+      "resolvedPhraseOrMember": "ten events",
+      "nonObviousWhy": "Decathlon shifts the board from athletes to the number ten.",
+      "searchableContext": "decathlon ten events"
+    },
+    {
+      "clue": "Perfect score (sometimes)",
+      "surfaceMisread": "sports scoring",
+      "resolvedPhraseOrMember": "10.0",
+      "nonObviousWhy": "A perfect score is often represented as 10, especially in familiar sports contexts.",
+      "searchableContext": "perfect score 10"
+    },
+    {
+      "clue": "X (when counting in Rome)",
+      "surfaceMisread": "letter X",
+      "resolvedPhraseOrMember": "Roman numeral X",
+      "nonObviousWhy": "X is the Roman numeral for 10 and confirms the numeric answer.",
+      "searchableContext": "Roman numeral X 10"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Pele and Messi make famous footballers look like the answer, but Decathlon pushes the board toward a number instead.",
+    "falseStarts": [
+      "football players",
+      "famous athletes",
+      "sports"
+    ],
+    "whyFalseStartPlausible": [
+      "Pele and Messi are both football icons, so the first two clues strongly suggest soccer.",
+      "Decathlon is also sports-related, which can keep a broad athlete or sports answer alive.",
+      "Perfect score can be sports scoring, but X is not a sport clue at all."
+    ],
+    "breakingClue": "X (when counting in Rome)",
+    "pivot": "X confirms that the common thread is the number ten rather than sports.",
+    "fullBoardConfirmation": "Pele and Messi wore 10, a decathlon has ten events, a perfect score can be 10, and X is Roman numeral 10."
+  },
+  "turningPoint": {
+    "clue": "X (when counting in Rome)",
+    "whyDecisive": "X is decisive because it names ten directly through Roman numerals and breaks a sports-only answer.",
+    "whatChangedAfterIt": "Once X lands, every earlier clue can be reread as an association with 10."
+  },
+  "setValidationSummary": "All five clues point to 10 in different forms, while famous-athlete or sports answers fail on X.",
+  "categoryPrecisionNote": "The answer is things associated with the number 10, not athletes or sports generally.",
+  "difficultyBand": "obvious",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects Pele, Messi, Decathlon, Perfect score, and X in LinkedIn Pinpoint #548?",
+      "answer": "The answer is Things associated with the number 10 because every clue points to ten in a different way.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do Pele, Messi, Decathlon, Perfect score, and X connect?",
+      "answer": "Pele and Messi are linked to number 10 shirts, a decathlon has ten events, a perfect score can be 10, and X is Roman numeral 10.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is X the key clue in Pinpoint #548?",
+      "answer": "X is the key clue because it names ten directly as a Roman numeral and moves the solve beyond sports.",
+      "tiedClue": "X (when counting in Rome)"
+    }
   ]
 }

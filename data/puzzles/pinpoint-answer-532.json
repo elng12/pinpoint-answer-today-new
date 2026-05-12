@@ -2,42 +2,154 @@
   "slug": "pinpoint-answer-532",
   "detailState": "published",
   "wordHints": {
-    "Chest": "References Chestnut, a popular type of nut often enjoyed roasted.",
-    "Dough": "Connects to Doughnut, a sweet treat that can be enjoyed any time of day.",
-    "Hazel": "A direct nod to Hazelnut, a common ingredient in chocolates and spreads.",
-    "Coco": "Refers to Coconut, a versatile nut used in cooking, drinks, and beauty products.",
-    "Pea": "Links to Peanut, technically a legume but commonly considered a nut."
+    "Chest": "Chest forms chestnut, an edible nut and the first compound that points to the suffix.",
+    "Dough": "Dough forms doughnut, which uses the same ending sound and keeps the compound-word pattern alive.",
+    "Hazel": "Hazel forms hazelnut, a direct and familiar member of the nut-ending set.",
+    "Coco": "Coco forms coconut, extending the same suffix into another common food word.",
+    "Pea": "Pea forms peanut, the final confirmation that each clue comes before nut."
   },
   "lessons": [
-    "Consider less obvious word associations. Sometimes the most direct association isn't the correct one. While 'chest' might make you think of 'treasure chest,' in this case, it was about finding 'chestnut'.",
-    "Don't fixate on initial guesses. I was so set on 'acorn' after the first clue that it blinded me to other possibilities. When words can combine with one term, that's usually a strong pattern. The clue 'And breakfast' seemed strange - but it turned out to be the key. Be ready to pivot when new clues emerge.",
     {
-      "title": "\"Hazel\" checks that \"nut — each clue forms a common compound noun ending with nut.\" works across the board",
-      "body": "The clues CHEST, DOUGH, HAZEL, COCO, and PEA seem disparate, but they all belong to the broader category of things that can form compound words with 'NUT' at the end."
+      "title": "Compound words beat loose food themes",
+      "body": "Chest and Hazel can make nuts tempting, but Dough and Coco show that the solve depends on building compounds ending in nut."
     },
     {
-      "title": "\"Pea\" keeps the \"nut — each clue forms a common compound noun ending with nut.\" read from drifting",
-      "body": "When you're stuck, try thinking about the clues from a completely different angle. Instead of focusing on the literal meaning of each word, consider their potential connections to other words. Like chestnut, coconut and peanut."
+      "title": "Test the same ending on every clue",
+      "body": "Chestnut, doughnut, hazelnut, coconut, and peanut all work because the same ending word or sound completes the clue."
+    },
+    {
+      "title": "Do not stop at the literal category",
+      "body": "Peanut is not botanically the same kind of nut as every other clue, but Pinpoint is asking for the word pattern, not a botany lesson."
     }
   ],
   "faqs": [
     {
-      "question": "Why isn't ACORN the answer?",
-      "answer": "While ACORN is related to trees and chests, it doesn't fit with the other clues like DOUGH and COCO. The unifying element is that all the clues form common compound words when combined with 'NUT'."
+      "question": "What connects Chest, Dough, Hazel, Coco, and Pea in Pinpoint #532?",
+      "answer": "The answer is Words that come before \"nut\". Chest, Dough, Hazel, Coco, and Pea form chestnut, doughnut, hazelnut, coconut, and peanut."
     },
     {
-      "question": "What does COCO mean?",
-      "answer": "COCO is a shortened version of 'coconut,' referring to the large, hard-shelled nut that grows on coconut palm trees. It is the lead in to the word Coconut."
+      "question": "Why is Dough included if a doughnut is not a nut?",
+      "answer": "The puzzle is about words that come before nut, not literal nuts. Doughnut fits because it is a common compound ending in nut."
     },
     {
-      "question": "How does CHEST connect to NUT?",
-      "answer": "CHEST connects to NUT through the word 'chestnut,' which is a type of edible nut often roasted or used in cooking. The connection relies on recognizing the common compound noun."
+      "question": "Why is Pea a strong final clue?",
+      "answer": "Pea forms peanut, which makes the shared nut ending obvious and helps confirm the compound-word pattern."
     }
   ],
   "articleBlocks": [
-    "If you're scratching your head over Pinpoint today, you're not alone. The clues CHEST, DOUGH, HAZEL, COCO, and PEA might seem unrelated at first glance, but there's a nutty connection lurking beneath the surface. This puzzle really plays on common compound words, requiring a bit of mental gymnastics to uncover the hidden link.",
-    "My initial confidence surged with CHEST, immediately conjuring images of hidden treasure. I confidently typed in ACORN, picturing squirrels and autumn leaves. That didn't work.\n\nThen came DOUGH. Total confusion. My acorn theory crumbled. I briefly considered BREAD, but that felt like a total stretch. Was I even in the right ballpark?\n\nThe final clue, PEA, was the key. It triggered the association with 'peanut,' which then unlocked the entire puzzle. The answer was NUT.",
-    "Today's Pinpoint was a testament to the game's ability to weave together seemingly unrelated words through the power of compound nouns. The key was recognizing that each clue could form a familiar word when combined with 'NUT'.",
-    "This puzzle tested not just our vocabulary but also our associative thinking skills. It's a reminder that the solution often lies in finding the common thread that binds the clues together."
+    "Pinpoint #532 uses Chest, Dough, Hazel, Coco, and Pea to hide a simple suffix pattern. The clues look like food words at first, especially with Chest, Hazel, Coco, and Pea, but Dough makes the category less literal. The clean connection appears when each clue is attached to the same ending, turning scattered food hints into one word-building solve. That shift matters because the puzzle is testing compound formation more than ingredients or botanical categories.",
+    "Chest becomes chestnut, Hazel becomes hazelnut, Coco becomes coconut, and Pea becomes peanut. Dough is the clue that prevents the answer from being just types of nuts, because doughnut fits the spelling and phrase pattern even though it is a pastry.",
+    "The full board confirms the answer as words that come before nut. A literal food or tree answer cannot explain every clue as cleanly as the compound-word pattern does.",
+    "The answer is words that come before nut: chestnut, doughnut, hazelnut, coconut, and peanut."
+  ],
+  "questionType": "phrase",
+  "answer": "Words that come before \"nut\"",
+  "category": "Words that come before \"nut\"",
+  "display": {
+    "connectorSummary": "five compound words completed by nut",
+    "fastStrategy": "Attach nut after each clue and check whether the result is a familiar compound word.",
+    "clueTableRows": [
+      {
+        "clue": "Chest",
+        "examplePhrase": "chestnut",
+        "connectionExplained": "Chest starts the compound pattern with a familiar edible nut."
+      },
+      {
+        "clue": "Dough",
+        "examplePhrase": "doughnut",
+        "connectionExplained": "Dough proves the answer is wordplay, not a literal nut category."
+      },
+      {
+        "clue": "Hazel",
+        "examplePhrase": "hazelnut",
+        "connectionExplained": "Hazel is a direct food-word confirmation of the suffix."
+      },
+      {
+        "clue": "Coco",
+        "examplePhrase": "coconut",
+        "connectionExplained": "Coco forms coconut and keeps the same ending."
+      },
+      {
+        "clue": "Pea",
+        "examplePhrase": "peanut",
+        "connectionExplained": "Pea forms peanut, making the shared ending unmistakable."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "Chest",
+      "resolvedPhraseOrMember": "chestnut",
+      "nonObviousWhy": "Chest starts the compound pattern with a familiar edible nut.",
+      "searchableContext": "chestnut"
+    },
+    {
+      "clue": "Dough",
+      "resolvedPhraseOrMember": "doughnut",
+      "nonObviousWhy": "Dough proves the answer is wordplay, not a literal nut category.",
+      "searchableContext": "doughnut"
+    },
+    {
+      "clue": "Hazel",
+      "resolvedPhraseOrMember": "hazelnut",
+      "nonObviousWhy": "Hazel is a direct food-word confirmation of the suffix.",
+      "searchableContext": "hazelnut"
+    },
+    {
+      "clue": "Coco",
+      "resolvedPhraseOrMember": "coconut",
+      "nonObviousWhy": "Coco forms coconut and keeps the same ending.",
+      "searchableContext": "coconut"
+    },
+    {
+      "clue": "Pea",
+      "resolvedPhraseOrMember": "peanut",
+      "nonObviousWhy": "Pea forms peanut, making the shared ending unmistakable.",
+      "searchableContext": "peanut"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Chest and Hazel can pull the board toward literal nuts, but Dough makes that answer too narrow.",
+    "falseStarts": [
+      "types of nuts",
+      "foods",
+      "tree nuts"
+    ],
+    "whyFalseStartPlausible": [
+      "Chestnut and hazelnut are literal edible nuts.",
+      "Coconut and peanut keep the food association alive.",
+      "Doughnut shows that the board is about a compound ending, not a strict food category."
+    ],
+    "breakingClue": "Dough",
+    "pivot": "Dough forces a word-pattern read because doughnut fits the suffix even though it is not a literal nut.",
+    "fullBoardConfirmation": "Chestnut, doughnut, hazelnut, coconut, and peanut all end with nut."
+  },
+  "turningPoint": {
+    "clue": "Dough",
+    "whyDecisive": "Dough is decisive because doughnut exposes the compound-word pattern.",
+    "whatChangedAfterIt": "Once Dough works, the remaining clues can be checked as words before nut."
+  },
+  "setValidationSummary": "The suffix nut completes every clue, while literal nut categories struggle with Dough.",
+  "categoryPrecisionNote": "The answer is words that come before nut, not literal nuts only.",
+  "difficultyBand": "obvious",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects Chest, Dough, Hazel, Coco, and Pea in LinkedIn Pinpoint #532?",
+      "answer": "The answer is Words that come before \"nut\". Chest, Dough, Hazel, Coco, and Pea all form compounds ending in nut.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do the clues connect in Pinpoint #532?",
+      "answer": "They connect as compound words: chestnut, doughnut, hazelnut, coconut, and peanut all use the same nut ending.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Dough the turning clue in Pinpoint #532?",
+      "answer": "Dough is the turning clue because doughnut proves the answer is a word pattern, not only literal nuts.",
+      "tiedClue": "Dough"
+    }
   ]
 }

@@ -30,15 +30,14 @@
     "Epsilon": "This fifth clue is a math favorite."
   },
   "articleBlocks": [
-    "Alpha and Beta already hint at a sequence, but those two words also live outside the alphabet in software, finance, and ranking language. The opening clues stay ambiguous until Gamma gives the board a cleaner test, so this guide starts with the misleading first read, then uses the later clues to show why the final connection is narrower than the early guesses and how each clue checks that same pattern without relying on the answer reveal too early.",
-    "Gamma is the point where the board stops being suggestive and becomes specific.",
-    "Once Gamma arrives, Delta and Epsilon fit neatly as the next familiar stretch of the Greek alphabet.",
-    "The answer was Greek letters.",
-    "This is an easy board, but it still works because the clues are famous enough to feel obvious only after you name the category."
+    "Pinpoint #531 is a sequence board built from Alpha, Beta, Gamma, Delta, and Epsilon. Alpha and Beta can show up in software, rankings, and finance, so the first two clues are suggestive without being fully decisive. The puzzle becomes cleaner when Gamma arrives, because three consecutive Greek names are much harder to explain as release labels or status language, and the final two clues turn that suspicion into a full sequence.",
+    "Gamma is the clue that turns a pair into a recognizable run. Once the board reads Alpha, Beta, Gamma, the Greek alphabet becomes much stronger than software releases or status labels.",
+    "Delta and Epsilon confirm the category because they continue the same Greek-letter sequence. The answer is Greek letters, specifically a familiar opening stretch of the Greek alphabet.",
+    "The full set works because every clue is a Greek letter. Other meanings are distractions borrowed from the same words."
   ],
   "solutionNarrative": [
-    "Alpha and Beta made the board feel easy, but not fully settled, because both words show up in software and status language all the time. The sequence was visible before the category was fully named.",
-    "Gamma removed the ambiguity. Once the board reached alpha, beta, gamma, the rest of the clues read as the first stretch of Greek letters instead of a loose set of technical words."
+    "Alpha and Beta made the board feel easy, but not fully settled, because both words show up in software and status language all the time. I treated the sequence as visible but not yet proven, since a two-clue pattern can still be a trap.",
+    "Gamma removed the ambiguity. Once the board reached alpha, beta, gamma, the rest of the clues read as the first stretch of Greek letters instead of a loose set of technical words. Delta and Epsilon then acted less like new evidence and more like confirmation that the board was asking for the named alphabet run. That is why I would not stop at software releases here."
   ],
   "lessons": [
     {
@@ -188,5 +187,7 @@
       "an easy sequence board where the third clue turns familiar technical words back into the Greek alphabet",
       "Gamma is the turning clue because alpha, beta, gamma is a much more recognizable sequence than alpha and beta alone"
     ]
-  }
+  },
+  "setValidationSummary": "Alpha, Beta, Gamma, Delta, and Epsilon are all Greek letters, and Gamma makes the sequence hard to misread.",
+  "categoryPrecisionNote": "The answer is Greek letters, not software release stages or ranking labels."
 }
