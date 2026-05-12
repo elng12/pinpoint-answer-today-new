@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 742,
+  "slug": "pinpoint-answer-742",
+  "publishDate": "2026-05-12",
+  "isoDate": "2026-05-12",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Scale",
+    "Beaker",
+    "pH meter",
+    "Test tube",
+    "Bunsen burner"
+  ],
+  "answer": "Things found in a chemistry laboratory",
+  "category": "Things found in a chemistry laboratory",
+  "wordHints": {
+    "Scale": "Scale connects to \"Things found in a chemistry laboratory\"",
+    "Beaker": "Beaker connects to \"Things found in a chemistry laboratory\"",
+    "pH meter": "pH meter connects to \"Things found in a chemistry laboratory\"",
+    "Test tube": "Test tube connects to \"Things found in a chemistry laboratory\"",
+    "Bunsen burner": "Bunsen burner connects to \"Things found in a chemistry laboratory\""
+  },
+  "spoilerHints": {
+    "Scale": "Scale should be tested as part of things found in a chemistry laboratory, not as a standalone reference.",
+    "Beaker": "Keep Beaker in mind, then see whether Bunsen burner supports the same answer.",
+    "pH meter": "pH meter works best after the board narrows toward things found in a chemistry laboratory.",
+    "Test tube": "Test tube should be tested as part of things found in a chemistry laboratory, not as a standalone reference.",
+    "Bunsen burner": "Bunsen burner is the clue that makes things found in a chemistry laboratory concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Scale and Beaker pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Scale, Beaker can point toward several nearby themes before one clue makes the exact category level visible. Scale is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Scale\" and \"Beaker\" stopped feeling loose and started landing cleanly.",
+    "pH meter, Test tube, Bunsen burner keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things found in a chemistry laboratory\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things found in a chemistry laboratory, which is why \"Things found in a chemistry laboratory\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #742, Scale, Beaker, pH meter, Test tube, Bunsen burner only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Scale",
+        "examplePhrase": "Scale",
+        "connectionExplained": "Scale connects to \"Things found in a chemistry laboratory\""
+      },
+      {
+        "clue": "Beaker",
+        "examplePhrase": "Beaker",
+        "connectionExplained": "Beaker connects to \"Things found in a chemistry laboratory\""
+      },
+      {
+        "clue": "pH meter",
+        "examplePhrase": "pH meter",
+        "connectionExplained": "pH meter connects to \"Things found in a chemistry laboratory\""
+      },
+      {
+        "clue": "Test tube",
+        "examplePhrase": "Test tube",
+        "connectionExplained": "Test tube connects to \"Things found in a chemistry laboratory\""
+      },
+      {
+        "clue": "Bunsen burner",
+        "examplePhrase": "Bunsen burner",
+        "connectionExplained": "Bunsen burner connects to \"Things found in a chemistry laboratory\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #742?",
+      "answer": "The answer is \"Things found in a chemistry laboratory\". The clues Scale, Beaker, pH meter, Test tube, Bunsen burner all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #742 just unlocked, and this is the fastest verified update. The board clues are Scale, Beaker, pH meter, Test tube, Bunsen burner, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Scale, Beaker can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Scale",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #742, Scale, Beaker, pH meter, Test tube, Bunsen burner only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Scale lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Scale",
+    "whyDecisive": "Scale is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Scale lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Scale",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Scale",
+      "nonObviousWhy": "Scale supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Scale"
+    },
+    {
+      "clue": "Beaker",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Beaker",
+      "nonObviousWhy": "Beaker supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Beaker"
+    },
+    {
+      "clue": "pH meter",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "pH meter",
+      "nonObviousWhy": "pH meter supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "pH meter"
+    },
+    {
+      "clue": "Test tube",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Test tube",
+      "nonObviousWhy": "Test tube supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Test tube"
+    },
+    {
+      "clue": "Bunsen burner",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Bunsen burner",
+      "nonObviousWhy": "Bunsen burner supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Bunsen burner"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #742?",
+      "answer": "The answer is \"Things found in a chemistry laboratory\". The clues Scale, Beaker, pH meter, Test tube, Bunsen burner all share this connection.",
+      "tiedClue": "Scale"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Scale",
+      "Beaker",
+      "pH meter",
+      "Test tube",
+      "Bunsen burner"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Scale",
+      "Beaker",
+      "pH meter",
+      "Test tube"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Scale, Beaker can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Scale is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "pH meter, Test tube, Bunsen burner keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things found in a chemistry laboratory"
+}
