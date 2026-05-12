@@ -45,6 +45,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 | `SITE_API_TOKEN` | 调 `/api/admin/generate-draft` 的 Bearer token（enrichment/i18n 用） | ❌ | ✅ |
 | `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | ❌ | ✅ |
 | `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致；仅正式 `main` 分支需要 | ❌ | staging 可选 / 生产必需 |
+| `NEW_SITE_SUMMARY_WATCHDOG_ENABLED` | 可选；默认开启。主抓取窗口后校验正式站 summary，未更新时提前飞书告警 | ❌ | 可选 |
 | `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
 | `FALLBACK_WEBHOOK_SECRET` | Worker 调站点 `/api/fallback/worker-pinpoint` 的 HMAC 签名密钥 | ❌ | ✅ |
 | `ADMIN_SECRET` | 受保护管理接口的密钥 | 可选 | ✅ |
@@ -95,6 +96,13 @@ npm run worker:refresh-cookie
 
 - 上面三个命令都会读取仓库根目录的 `.env.local`（需要包含 `ADMIN_PASSPHRASE`），不会打印 secret 或 cookie 内容
 - 如果你只想更新某一个环境的 cookie：`node scripts/worker-ops.mjs refresh-cookie --targets staging`
+
+生产 Worker 还会在主抓取窗口后增加一次自动校验：
+
+- 当前 production cron 覆盖北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`
+- `:25` 这次会检查正式站 `/api/puzzles/summary` 是否已经显示当天题
+- 如果 Worker 已抓到当天答案，但正式站 summary 仍停在旧日期，会先尝试 revalidate；仍失败则立即飞书告警
+- 告警通过 KV 的 `notify:site-summary-watchdog:<date>` 去重，避免同一天重复推送
 
 ### `graphql 401` 优先修复顺序
 
@@ -288,7 +296,7 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 | 配置项 | 值 |
 |---|---|
 | KV namespace | `PP_DATA`，namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` |
-| Cron | `1,3,7,10,15,20 7,8 * * *`（UTC；覆盖夏令时/冬令时，Worker 会自动跳过无效窗口），即北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20` |
+| Cron | `1,3,7,10,15,20,25 7,8 * * *`（UTC；覆盖夏令时/冬令时，Worker 会自动跳过无效窗口），即北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20 / 16:25` |
 | staging Cron | 已显式关闭：`[env.staging.triggers].crons = []` |
 | 目标仓库 | `elng12/pinpoint-answer-today-new`，分支 `main` |
 | revalidate 地址 | `https://pinpointanswertoday.app/api/revalidate` |
@@ -360,7 +368,7 @@ npm run test:pinpoint-regression:core
    - 如果同一题在几分钟内反复出现 `add answer data` / `mark live` 对应部署，说明仍有重复写入
 
 2. Worker Cron 触发
-   - 当前生产窗口：北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20`
+   - 当前生产窗口：北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20 / 16:25`
    - 正常预期：cron 可以重复触发，但不会因为同样内容反复提交 GitHub
 
 3. Worker 日志关键词
