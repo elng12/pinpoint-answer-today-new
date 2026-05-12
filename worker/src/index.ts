@@ -53,6 +53,7 @@ export interface Env {
   NEW_SITE_URL?: string;                 // e.g. https://pinpointanswertoday.app (new site)
   NEW_SITE_REVALIDATE_SECRET?: string;   // matches REVALIDATE_SECRET on Vercel
   NEW_SITE_LIVE_REFRESH_ENABLED?: string; // optional: set "true" to allow worker-triggered live refresh fallback
+  NEW_SITE_SUMMARY_WATCHDOG_ENABLED?: string; // optional: set "false" to disable post-window site summary alerts
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
@@ -252,6 +253,7 @@ const cronHeartbeatLatestKey = "monitor:cron:last";
 const cronHeartbeatDayKeyOf = (d: string) => `monitor:cron:${d}`;
 const cronHeartbeatDayRunsKeyOf = (d: string) => `monitor:cron:${d}:runs`;
 const cronHeartbeatRunKeyOf = (runId: string) => `monitor:cron:run:${runId}`;
+const siteSummaryWatchdogNotifiedKeyOf = (d: string) => `notify:site-summary-watchdog:${d}`;
 const cronHeartbeatRunsLimit = 20;
 const nonPublicDetailStateAlertThresholdMs = 15 * 60 * 1000;
 
@@ -635,6 +637,19 @@ function formatDateInTimeZone(date: Date, timeZone: string): string {
 
 function getBeijingTodayDate(now = new Date()): string {
   return formatDateInTimeZone(now, BEIJING_TIME_ZONE);
+}
+
+function formatBeijingTime(date = new Date()): string {
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone: BEIJING_TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).format(date);
 }
 
 function normalizedWordSignature(words: string[]): string {
@@ -3522,6 +3537,114 @@ async function maybeRefreshNewSiteLiveFallback(
   };
 }
 
+type SiteSummaryStatus = {
+  ok: boolean;
+  status?: number;
+  latestNumber?: number;
+  latestIso?: string;
+  error?: string;
+};
+
+async function fetchSiteSummaryStatus(env: Env, date: string): Promise<SiteSummaryStatus> {
+  const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
+  const url = `${publicSiteBaseUrl}/api/puzzles/summary?cb=worker-watchdog-${Date.now()}`;
+  try {
+    const res = await fetchWithTimeout(
+      url,
+      {
+        method: "GET",
+        headers: {
+          "cache-control": "no-cache",
+          pragma: "no-cache",
+        },
+      },
+      12_000,
+    );
+    const text = await res.text();
+    if (!res.ok) {
+      return { ok: false, status: res.status, error: text.slice(0, 240) || `HTTP ${res.status}` };
+    }
+
+    let parsed: JsonRecord | null = null;
+    try {
+      parsed = JSON.parse(text) as JsonRecord;
+    } catch {
+      return { ok: false, status: res.status, error: "summary returned non-json response" };
+    }
+
+    const latest = asRecord(parsed?.latest);
+    const latestIso = typeof latest?.isoPublishedAt === "string" ? latest.isoPublishedAt.trim() : "";
+    const latestNumberRaw = Number(latest?.puzzleNumber);
+    return {
+      ok: latestIso.startsWith(`${date}T`),
+      status: res.status,
+      latestNumber: Number.isFinite(latestNumberRaw) ? latestNumberRaw : undefined,
+      latestIso,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message : String(error || "unknown summary check error"),
+    };
+  }
+}
+
+async function checkAndMarkSiteSummaryWatchdogNotified(env: Env, date: string): Promise<boolean> {
+  try {
+    const key = siteSummaryWatchdogNotifiedKeyOf(date);
+    const existing = await env.PP_DATA.get(key);
+    if (existing !== null) return true;
+    await env.PP_DATA.put(key, new Date().toISOString(), { expirationTtl: 172800 });
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+async function maybeNotifySiteSummaryWatchdog(
+  env: Env,
+  date: string,
+  doc: Doc,
+  heartbeat: CronHeartbeat,
+  cron: string | undefined,
+): Promise<void> {
+  if (!envFlag(env.NEW_SITE_SUMMARY_WATCHDOG_ENABLED, true)) return;
+  if (!hasNotifyWebhook(env)) return;
+  if (!String(cron || "").includes(":25 ")) return;
+  if (heartbeat.triggerKind !== "scheduled" || heartbeat.outcome === "failed") return;
+
+  const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
+  const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, date);
+  let summary = await fetchSiteSummaryStatus(env, date);
+  if (summary.ok) return;
+
+  if (hasNewSiteRevalidateConfig(env)) {
+    await triggerNewSiteRevalidate(env, puzzleNumber);
+    await sleep(5000);
+    summary = await fetchSiteSummaryStatus(env, date);
+    if (summary.ok) return;
+  }
+
+  const alreadyNotified = await checkAndMarkSiteSummaryWatchdogNotified(env, date);
+  if (alreadyNotified) return;
+
+  const words = doc.answers.map((a) => a.word).slice(0, 5).join(" | ");
+  await notifyCron(env, "❌ Worker 已抓到答案，但正式站仍未更新", [
+    `日期: ${date}`,
+    `检查时间: ${formatBeijingTime()} 北京时间`,
+    `触发: Cloudflare Worker ${cron || "scheduled"} 主窗口后校验`,
+    `抓取来源: ${doc.source}`,
+    `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
+    `答案: ${words}`,
+    `预期谜题: #${puzzleNumber}`,
+    `正式站 latest: #${summary.latestNumber ?? "未知"} ${summary.latestIso || "（空）"}`,
+    `原因: ${summary.error || "summary 日期不是今天"}`,
+    `健康检查: ${publicSiteBaseUrl}/api/health`,
+    `今日接口: ${publicSiteBaseUrl}/api/pinpoint/today`,
+    `说明: 这是 15:25 左右的早期发布校验，不再等 GitHub Actions 备份任务延迟触发。`,
+  ]);
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function enrichPublishToSite(
@@ -6067,6 +6190,7 @@ export default {
       heartbeat.durationMs = durationMs;
       heartbeat.endedAt = new Date().toISOString();
       await persistCronHeartbeat(env, heartbeat);
+      await maybeNotifySiteSummaryWatchdog(env, date, doc, heartbeat, controller.cron);
       const alreadyNotified = await checkAndMarkCronSuccessNotified(env, date);
       if (!alreadyNotified) {
         await notifyCron(env, "✅ Worker 定时抓取成功", [
