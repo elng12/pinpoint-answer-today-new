@@ -121,11 +121,11 @@ const nextConfig: NextConfig = {
         destination: "/puzzles/:number",
         permanent: true,
       },
-      // Locale slug-format puzzle pages should also flow through the numeric
-      // validator so nonexistent numbers do not mint fake canonical detail URLs.
+      // Locale slug-format puzzle pages collapse directly to the canonical
+      // detail URL so old indexed URLs do not compete as canonicals.
       {
         source: `/${locale}/puzzles/pinpoint-answer-:number(\\d+)`,
-        destination: "/puzzles/:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true,
       },
       // Locale-root puzzle alias validates the number before redirecting onward.
@@ -207,11 +207,11 @@ const nextConfig: NextConfig = {
 
     // Non-locale legacy paths from the old (default) route group
     const legacyRedirects = [
-      // Slug-format puzzle pages without locale should validate the number
-      // before redirecting to a canonical detail URL.
+      // Slug-format puzzle pages without locale collapse directly to the
+      // canonical detail URL so old indexed URLs do not compete as canonicals.
       {
         source: "/puzzles/pinpoint-answer-:number(\\d+)",
-        destination: "/puzzles/:number",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true as const,
       },
       // Legacy connectors archive root → canonical archive

@@ -2,11 +2,11 @@
   "slug": "pinpoint-answer-579",
   "detailState": "published",
   "wordHints": {
-    "High": "The term 'high stakes' refers to situations or activities where the outcome has significant consequences or risks involved.",
-    "Broad": "The term 'broad spectrum' is commonly used to describe a wide range of coverage or effectiveness, particularly in contexts like medicine, where it refers to antibiotics that are effective against a wide variety of bacteria.",
-    "Ski": "A ski resort is a location that provides services and facilities for skiing, including slopes, lifts, and accommodations.",
-    "Parachute": "A parachute is a device used to slow down the fall of a person or object from an aircraft, allowing for a safe landing.",
-    "Bungee": "Bungee jumping is an adventure sport where an individual jumps from a height while connected to a large elastic cord, utilizing the elasticity of the bungee to rebound back after the fall."
+    "High": "High points to high jump, a track-and-field event where jump is the shared ending word.",
+    "Broad": "Broad forms broad jump, another established jump event and a direct match for the same suffix pattern.",
+    "Ski": "Ski becomes ski jump, moving the board beyond track events while keeping the jump pattern intact.",
+    "Parachute": "Parachute jump confirms that the answer is broader than sports because it is still a familiar kind of jump.",
+    "Bungee": "Bungee jump is the clearest late clue: it uses the exact shared ending and locks the answer as types of jumps."
   },
   "lessons": [
     "Test one word after all clues. When clue words feel like they could start common phrases, try adding the same word after each one before chasing broad categories. If a single word creates five natural-sounding expressions, you are probably close to the right connector.",
@@ -23,7 +23,7 @@
   "faqs": [
     {
       "question": "What connects High, Broad, Ski, Parachute, and Bungee in Pinpoint #579?",
-      "answer": "They are all words that come before \"jump\" in common phrases: high jump, broad jump, ski jump, parachute jump, and bungee jump. Each clue becomes a natural expression once you add the same word after it."
+      "answer": "The answer is Types of jumps. High, Broad, Ski, Parachute, and Bungee form high jump, broad jump, ski jump, parachute jump, and bungee jump."
     },
     {
       "question": "Why isn't the connector just \"track and field events\"?",
@@ -43,5 +43,118 @@
     "When High appeared first, my mind went straight to track and field—high jump is one of the classic Olympic events. Broad followed and confirmed that athletics angle. Then Ski arrived and pulled the theme toward winter sports instead. By the time Parachute and Bungee showed up, I was juggling track events, skiing, and extreme sports with no single category that fit them all. The pattern finally clicked when I stopped thinking about sports types and started testing the same word after every clue. High jump, Broad jump, Ski jump, Parachute jump, Bungee jump. Once I heard that rhythm, the earlier theories collapsed.",
     "Many solvers will first chase surface-level themes such as track and field, winter sports, or extreme activities. The breakthrough usually comes from testing a single word after every clue. When you put \"jump\" after High, Broad, Ski, Parachute, and Bungee, the phrasing stays natural for each clue: High jump, Broad jump, Ski jump, Parachute jump, and Bungee jump. This is a strong sign that you have the right answer. Competing themes typically fail on at least one clue, so the connector \"types of jumps\" stands out as the only explanation that fits the full set.",
     "High, Broad, Ski, Parachute, and Bungee all snap into the same pattern once you put \"jump\" after each one. Today's Pinpoint answer is \"types of jumps\" — the only connector that makes every clue sound natural."
+  ],
+  "questionType": "phrase",
+  "display": {
+    "connectorSummary": "five familiar phrases completed by the word jump",
+    "fastStrategy": "Test jump after every clue, then reject broader sports themes that fail on parachute or bungee.",
+    "clueTableRows": [
+      {
+        "clue": "High",
+        "examplePhrase": "high jump",
+        "connectionExplained": "High works because high jump is a standard track-and-field event."
+      },
+      {
+        "clue": "Broad",
+        "examplePhrase": "broad jump",
+        "connectionExplained": "Broad confirms the same event-style phrasing without changing the ending word."
+      },
+      {
+        "clue": "Ski",
+        "examplePhrase": "ski jump",
+        "connectionExplained": "Ski broadens the board into winter sports while preserving the jump suffix."
+      },
+      {
+        "clue": "Parachute",
+        "examplePhrase": "parachute jump",
+        "connectionExplained": "Parachute shows the answer is not only track or winter sports."
+      },
+      {
+        "clue": "Bungee",
+        "examplePhrase": "bungee jump",
+        "connectionExplained": "Bungee is the giveaway because bungee jump is a common phrase and an obvious jump type."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "High",
+      "surfaceMisread": "sports or height",
+      "resolvedPhraseOrMember": "high jump",
+      "nonObviousWhy": "High works because high jump is a standard track-and-field event.",
+      "searchableContext": "high jump event"
+    },
+    {
+      "clue": "Broad",
+      "surfaceMisread": "wide or general",
+      "resolvedPhraseOrMember": "broad jump",
+      "nonObviousWhy": "Broad confirms the same event-style phrasing without changing the ending word.",
+      "searchableContext": "broad jump event"
+    },
+    {
+      "clue": "Ski",
+      "surfaceMisread": "winter sports",
+      "resolvedPhraseOrMember": "ski jump",
+      "nonObviousWhy": "Ski broadens the board into winter sports while preserving the jump suffix.",
+      "searchableContext": "ski jump"
+    },
+    {
+      "clue": "Parachute",
+      "surfaceMisread": "skydiving equipment",
+      "resolvedPhraseOrMember": "parachute jump",
+      "nonObviousWhy": "Parachute shows the answer is not only track or winter sports.",
+      "searchableContext": "parachute jump"
+    },
+    {
+      "clue": "Bungee",
+      "surfaceMisread": "extreme sports",
+      "resolvedPhraseOrMember": "bungee jump",
+      "nonObviousWhy": "Bungee is the giveaway because bungee jump is a common phrase and an obvious jump type.",
+      "searchableContext": "bungee jump"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "High and Broad make track and field tempting, but that answer is too narrow once the board adds Ski, Parachute, and Bungee.",
+    "falseStarts": [
+      "track and field events",
+      "sports",
+      "things involving heights"
+    ],
+    "whyFalseStartPlausible": [
+      "High jump and broad jump are track events, so the first two clues naturally suggest athletics.",
+      "Ski and bungee can both feel like sports or activities, which keeps a broad sports read alive for a moment.",
+      "Several clues involve leaving the ground, but the puzzle needs a named phrase pattern rather than a loose height theme."
+    ],
+    "breakingClue": "Bungee",
+    "pivot": "Bungee makes bungee jump unavoidable, then the same suffix checks every earlier clue.",
+    "fullBoardConfirmation": "High jump, broad jump, ski jump, parachute jump, and bungee jump are all familiar phrases, so types of jumps fits the full board cleanly."
+  },
+  "turningPoint": {
+    "clue": "Bungee",
+    "whyDecisive": "Bungee is decisive because bungee jump is too direct to treat as a loose sports clue.",
+    "whatChangedAfterIt": "Once Bungee lands, every earlier clue can be reread as a phrase ending in jump."
+  },
+  "setValidationSummary": "All five clues form natural phrases ending in jump, while sports or height themes miss at least one clue.",
+  "categoryPrecisionNote": "The precise answer is types of jumps, not merely sports or activities involving height.",
+  "difficultyBand": "medium",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects High, Broad, Ski, Parachute, and Bungee in LinkedIn Pinpoint #579?",
+      "answer": "The answer is Types of jumps. High, Broad, Ski, Parachute, and Bungee all form familiar phrases ending with jump.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do the five clues connect in Pinpoint #579?",
+      "answer": "The shared connection is the word jump: high jump, broad jump, ski jump, parachute jump, and bungee jump all fit the same suffix pattern.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Bungee the key clue in Pinpoint #579?",
+      "answer": "Bungee is the key clue because bungee jump is a very common phrase and it confirms that the board is about jump types rather than sports in general.",
+      "tiedClue": "Bungee"
+    }
   ]
 }

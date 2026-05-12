@@ -40,7 +40,120 @@
   "articleBlocks": [
     "Today's Pinpoint puzzle, #549, starts with a sequence that feels deceptively simple: A and B. My mind immediately jumped to simple ordering or the alphabet. But then the third clue, C#, appeared. Suddenly, it wasn't just about letters anymore; a symbol was introduced, completely breaking my initial pattern. By the time B♭ and Do (or re or mi) showed up, it was clear the connection was something more abstract, a universal system of notation that uses both letters and words.",
     "I’ll admit, the first two clues, A and B, led me right down the garden path. I saw 'simple ordering' and my brain immediately latched onto 'Alphabet'. The first two clues fit perfectly, so I got confident. But then 'C#' appeared, and my alphabet theory immediately crashed and burned. The sharp symbol made no sense in that context.\n\nI tried to salvage it, thinking maybe it was about grades (A, B, C) or test scores, but the '#' and the later 'B♭' completely invalidated that line of thinking. The puzzle felt like it was speaking a different language entirely. That's when the clue 'Do' arrived. It's a simple word, but paired with the musical symbols, it felt like a huge nudge. I remembered the 'Do-Re-Mi' scale, and suddenly, all the clues started to click into a new framework. This wasn't about English letters; it was a system.\n\n- A → Musical Note 'A': The sixth note of the C Major scale.\n- B → Musical Note 'B': The seventh note of the C Major scale.\n- C# → Musical Note 'C#': A raised 'C' note, one semitone above the natural C.\n- B♭ → Musical Note 'B♭': A lowered 'B' note, one semitone below the natural B.\n- Do (or re or mi) → Musical Note 'Do': The first note of the solfège scale (Do-Re-Mi).\nWith that new lens, every single clue fit perfectly. The 'A' and 'B' weren't just letters, they were notes. The sharps and flats were musical modifiers. 'Do' was the final confirmation. It was a perfect moment of synthesis when a seemingly random collection of symbols and words unified under a single, elegant theme.",
-    "Today's Pinpoint puzzle, #549, starts with a sequence that feels deceptively simple: A and B. My mind immediately jumped to simple ordering or the alphabet. But then the third clue, C#, appeared. Suddenly, it wasn't just about letters anymore; a symbol was introduced, completely breaking my initial pattern. By the time B♭ and Do (or re or mi) showed up, it was clear the connection was something more abstract, a universal system of notation that uses both letters and words.\n\nI’ll admit, the first two clues, A and B, led me right down the garden path. I saw 'simple ordering' and my brain immediately latched onto 'The Alphabet'. The first two clues fit perfectly, so I got confident. But then 'C#' appeared, and my alphabet theory immediately crashed and burned. The sharp symbol made no sense in that context. I tried to salvage it, thinking maybe it was about grades, but the '#' and the later 'B♭' completely invalidated that line of thinking. The puzzle felt like it was speaking a different language entirely.\n\nThat's when the clue 'Do' arrived. It's a simple word, but paired with the musical symbols, it felt like a huge nudge. I remembered the 'Do-Re-Mi' scale, and suddenly, all the clues started to click into a new framework. This wasn't about English letters; it was about music. With that new lens, every single clue fit perfectly. The 'A' and 'B' weren't just letters, they were notes. The sharps and flats were musical modifiers. 'Do' was the final confirmation. It was a perfect moment of synthesis when a seemingly random collection of symbols and words unified under a single, elegant theme: Musical Notes.",
+    "From there, the checks are straightforward. A and B are natural note names, C# adds a sharp, B-flat adds a flat, and Do belongs to solfege alongside re and mi. Those different formats all name pitch information, so the answer does not need to choose between letter notes, accidentals, and syllables; it groups them as one musical notation set.",
     "A, B, C#, B♭, and Do (or re or mi) all point to the same connector: Musical Notes. This recap breaks down how the puzzle shifts from a simple alphabetical pattern to a broader musical framework, using various forms of notation to represent the same underlying idea."
+  ],
+  "questionType": "category",
+  "display": {
+    "connectorSummary": "different notation systems for musical notes",
+    "fastStrategy": "Treat the symbols and solfege clue as the anchors, then reread A and B as notes rather than letters.",
+    "clueTableRows": [
+      {
+        "clue": "A",
+        "examplePhrase": "A note",
+        "connectionExplained": "A is both a letter and a musical note, which creates the opening misdirection."
+      },
+      {
+        "clue": "B",
+        "examplePhrase": "B note",
+        "connectionExplained": "B keeps the alphabet false start alive while still fitting music."
+      },
+      {
+        "clue": "C#",
+        "examplePhrase": "C-sharp",
+        "connectionExplained": "C# introduces musical notation and breaks a plain alphabet answer."
+      },
+      {
+        "clue": "B♭",
+        "examplePhrase": "B-flat",
+        "connectionExplained": "B-flat confirms accidentals and points firmly to musical notes."
+      },
+      {
+        "clue": "Do (or re or mi)",
+        "examplePhrase": "solfege note",
+        "connectionExplained": "Do, re, and mi are solfege names for notes, completing the music frame."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "A",
+      "surfaceMisread": "alphabet letter",
+      "resolvedPhraseOrMember": "A note",
+      "nonObviousWhy": "A is both a letter and a musical note, which creates the opening misdirection.",
+      "searchableContext": "A musical note"
+    },
+    {
+      "clue": "B",
+      "surfaceMisread": "alphabet letter",
+      "resolvedPhraseOrMember": "B note",
+      "nonObviousWhy": "B keeps the alphabet false start alive while still fitting music.",
+      "searchableContext": "B musical note"
+    },
+    {
+      "clue": "C#",
+      "surfaceMisread": "letter plus symbol",
+      "resolvedPhraseOrMember": "C-sharp",
+      "nonObviousWhy": "C# introduces musical notation and breaks a plain alphabet answer.",
+      "searchableContext": "C sharp musical note"
+    },
+    {
+      "clue": "B♭",
+      "surfaceMisread": "letter plus symbol",
+      "resolvedPhraseOrMember": "B-flat",
+      "nonObviousWhy": "B-flat confirms accidentals and points firmly to musical notes.",
+      "searchableContext": "B flat musical note"
+    },
+    {
+      "clue": "Do (or re or mi)",
+      "surfaceMisread": "song lyric or syllables",
+      "resolvedPhraseOrMember": "solfege note",
+      "nonObviousWhy": "Do, re, and mi are solfege names for notes, completing the music frame.",
+      "searchableContext": "do re mi solfege notes"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "A and B make the alphabet feel likely, but C# and B-flat introduce musical symbols that the alphabet cannot explain.",
+    "falseStarts": [
+      "alphabet letters",
+      "grades",
+      "symbols"
+    ],
+    "whyFalseStartPlausible": [
+      "A and B are consecutive letters, so the first two clues invite an alphabet answer.",
+      "A and B can also be grades, which briefly explains the letters but not the later notation.",
+      "C# could be read as a programming language, but B-flat and solfege move the board into music."
+    ],
+    "breakingClue": "C#",
+    "pivot": "C# changes the solve because sharp notation is native to music, not the alphabet.",
+    "fullBoardConfirmation": "A, B, C-sharp, B-flat, and Do are all ways to name musical notes."
+  },
+  "turningPoint": {
+    "clue": "C#",
+    "whyDecisive": "C# is decisive because it introduces sharp notation and breaks a simple alphabet sequence.",
+    "whatChangedAfterIt": "After C#, B-flat and Do confirm the board as musical notes."
+  },
+  "setValidationSummary": "Every clue is a note name or note notation, while alphabet and grade guesses fail on the sharp, flat, and solfege clues.",
+  "categoryPrecisionNote": "The answer is musical notes across letter, accidental, and solfege notation.",
+  "difficultyBand": "obvious",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects A, B, C#, B-flat, and Do in LinkedIn Pinpoint #549?",
+      "answer": "The answer is Musical Notes because A, B, C#, B-flat, and Do are all ways to name notes.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do the symbols and words connect in Pinpoint #549?",
+      "answer": "They connect through music notation: A and B are note letters, C# and B-flat are accidentals, and Do is solfege.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is C# the key clue in Pinpoint #549?",
+      "answer": "C# is the key clue because sharp notation points directly to music and breaks a simple alphabet answer.",
+      "tiedClue": "C#"
+    }
   ]
 }

@@ -2,35 +2,157 @@
   "slug": "pinpoint-answer-670",
   "detailState": "published",
   "wordHints": {
-    "File folder": "File folder (Storage + Category): A container for organizing and storing documents.",
-    "Guitar music": "Guitar music (Sound + Category): Music produced by a guitar, often associated with leisure.",
-    "Drink can": "Drink can (Container + Category): A metal container used for packaging drinks.",
-    "Spreadsheet": "Spreadsheet (Software + Category): An application for organizing and analyzing data.",
-    "Web browser (too many open?)": "Web browser (Software + Category): A software application for accessing information on the internet."
+    "File folder": "A file folder can have a tab label that helps identify the contents.",
+    "Guitar music": "Guitar music is often written as tablature, commonly shortened to tabs.",
+    "Drink can": "A drink can has a pull tab used to open it.",
+    "Spreadsheet": "A spreadsheet uses sheet tabs to switch between worksheets.",
+    "Web browser (too many open?)": "A web browser can have many open tabs, which is the most direct digital clue."
   },
   "lessons": [
-    "Always consider the digital context of clues. Understanding how everyday items relate to digital tools can enhance problem-solving.",
-    "Think beyond the obvious. Many clues may have deeper connections that are not immediately apparent.",
-    "Combine recreational and organizational aspects. Successful clues often bridge work and play, reflecting our multifaceted lives."
+    {
+      "title": "Tabs appear in physical and digital places",
+      "body": "File folders, cans, spreadsheets, and browsers all use tabs in different ways, so avoid forcing the board into only software."
+    },
+    {
+      "title": "Guitar music prevents a narrow office-tools answer",
+      "body": "Guitar tabs are tablature, which keeps the answer broad enough to include music as well as objects and apps."
+    },
+    {
+      "title": "Use the parenthetical clue carefully",
+      "body": "Too many open browser tabs points straight at the shared word and helps confirm the other meanings."
+    }
   ],
   "faqs": [
     {
-      "question": "What final category connects \"File folder\" and \"Guitar music\" in LinkedIn Pinpoint #670?",
-      "answer": "The answer is Category: Things with tabs."
+      "question": "What connects File folder, Guitar music, Drink can, Spreadsheet, and Web browser in Pinpoint #670?",
+      "answer": "The answer is Things with tabs. The clues resolve as folder tabs, guitar tabs, pull tabs on cans, spreadsheet tabs, and browser tabs."
     },
     {
-      "question": "How can I improve my solving skills?",
-      "answer": "Practice with varied puzzles and engage with different categories to enhance adaptability."
+      "question": "How does Guitar music fit things with tabs?",
+      "answer": "Guitar music can be written as guitar tabs, short for tablature, which tells players where to place their fingers."
     },
     {
-      "question": "What strategies can help with tougher puzzles?",
-      "answer": "Break down clues, explore synonyms, and consider multiple meanings for each hint."
+      "question": "Why is Web browser the key clue?",
+      "answer": "The parenthetical “too many open?” points directly to browser tabs, making the shared word easier to test across the other clues."
     }
   ],
   "articleBlocks": [
-    "In the world of multitasking, we often find ourselves juggling various tools and applications. The clues provided—File folder, Guitar music, Drink can, Spreadsheet, Web browser (too many open?)—hint at the everyday objects that help us stay organized and entertained. However, the twist lies in how these items relate to a common theme. As I pondered over the connections, I realized these clues reflect everyday items that have a pivotal role in our digital lives, leading to a broader understanding of organization and efficiency.",
-    "I thought about how each clue represents something I use daily. My first attempt was to categorize them based on their functions. I initially grouped File folder and Spreadsheet as organizational tools, while Guitar music and Drink can seemed more recreational. The breakthrough came when I considered how all these items could exist simultaneously in a digital format. As I explored this idea, I started to see that they all relate to things with tabs. Verification was simple; I visualized my browser with multiple tabs open, each representing one of the clues. Finally, reflecting on this, I realized how integral these 'tabs' are in our lives, enhancing both productivity and leisure.",
-    "The clues provided for LinkedIn Pinpoint #670 led to the realization that they all relate to things with tabs. I first categorized them based on their functions but soon discovered that they all represent items often used in a digital context. Verification came from visualizing the multiple tabs open on a web browser, each tab symbolizing the different clues. This connection not only highlights everyday items but also emphasizes the importance of organization in our digital lives.",
-    "For LinkedIn Pinpoint #670, the answer is things with tabs, connecting various everyday items we use in both work and leisure."
+    "Pinpoint #670 connects File folder, Guitar music, Drink can, Spreadsheet, and Web browser through one shared feature: tabs. The clues deliberately mix physical objects, music notation, containers, office software, and browsing habits, so any single-domain answer feels too narrow. That spread is the point: each clue uses tabs in a different setting, which makes the category broad but still exact without collapsing into only browser behavior.",
+    "A file folder can have a tab label. Guitar music can be written as tabs, short for tablature. A drink can has a pull tab. A spreadsheet has sheet tabs, and a web browser can have too many open tabs. Once the browser clue lands, the same word checks every earlier clue.",
+    "The answer is Things with tabs. It is broader than office supplies or digital tools because the clue set includes a can and guitar music as well as folders, spreadsheets, and browsers.",
+    "The full board confirms one exact category: folder tabs, guitar tabs, pull tabs, spreadsheet tabs, and browser tabs."
+  ],
+  "questionType": "category",
+  "display": {
+    "connectorSummary": "physical, musical, and digital things that use tabs",
+    "fastStrategy": "Use browser tabs as the anchor, then test whether each other clue has a real tab meaning.",
+    "clueTableRows": [
+      {
+        "clue": "File folder",
+        "examplePhrase": "folder tab",
+        "connectionExplained": "File folders often use labeled tabs for organization."
+      },
+      {
+        "clue": "Guitar music",
+        "examplePhrase": "guitar tabs",
+        "connectionExplained": "Guitar music fits because guitar tabs are a common shorthand for tablature."
+      },
+      {
+        "clue": "Drink can",
+        "examplePhrase": "pull tab",
+        "connectionExplained": "Drink cans commonly open with a pull tab."
+      },
+      {
+        "clue": "Spreadsheet",
+        "examplePhrase": "sheet tab",
+        "connectionExplained": "Spreadsheet apps use sheet tabs to move between worksheets."
+      },
+      {
+        "clue": "Web browser (too many open?)",
+        "examplePhrase": "browser tabs",
+        "connectionExplained": "The parenthetical points directly at open browser tabs."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "File folder",
+      "surfaceMisread": "office supplies",
+      "resolvedPhraseOrMember": "folder tab",
+      "nonObviousWhy": "File folders often use labeled tabs for organization.",
+      "searchableContext": "file folder tab"
+    },
+    {
+      "clue": "Guitar music",
+      "surfaceMisread": "songs or instruments",
+      "resolvedPhraseOrMember": "guitar tabs",
+      "nonObviousWhy": "Guitar music fits because guitar tabs are a common shorthand for tablature, not because the clue is generally musical.",
+      "searchableContext": "guitar tabs tablature"
+    },
+    {
+      "clue": "Drink can",
+      "surfaceMisread": "containers",
+      "resolvedPhraseOrMember": "pull tab",
+      "nonObviousWhy": "Drink cans commonly open with a pull tab.",
+      "searchableContext": "drink can pull tab"
+    },
+    {
+      "clue": "Spreadsheet",
+      "surfaceMisread": "software",
+      "resolvedPhraseOrMember": "sheet tab",
+      "nonObviousWhy": "Spreadsheet fits because spreadsheet apps use sheet tabs to move between worksheets in the same file.",
+      "searchableContext": "spreadsheet sheet tabs"
+    },
+    {
+      "clue": "Web browser (too many open?)",
+      "surfaceMisread": "software",
+      "resolvedPhraseOrMember": "browser tabs",
+      "nonObviousWhy": "The parenthetical points directly at open browser tabs.",
+      "searchableContext": "browser tabs"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "File folder and Spreadsheet can suggest office organization, but Guitar music and Drink can make that category too narrow.",
+    "falseStarts": [
+      "office supplies",
+      "digital tools",
+      "things used for organization"
+    ],
+    "whyFalseStartPlausible": [
+      "File folders and spreadsheets both organize information.",
+      "The browser clue can make the board feel digital at first.",
+      "Drink can and guitar music require a broader shared word."
+    ],
+    "breakingClue": "Web browser (too many open?)",
+    "pivot": "The browser parenthetical points directly to tabs, which then explains the physical and music clues too.",
+    "fullBoardConfirmation": "Folder tabs, guitar tabs, pull tabs, spreadsheet tabs, and browser tabs all make the answer Things with tabs precise."
+  },
+  "turningPoint": {
+    "clue": "Web browser (too many open?)",
+    "whyDecisive": "The parenthetical is decisive because too many open browser tabs names the shared word directly.",
+    "whatChangedAfterIt": "After browser tabs, the other clues resolve as folder tabs, guitar tabs, pull tabs, and sheet tabs."
+  },
+  "setValidationSummary": "Each clue has a real tab meaning, spanning folders, music, cans, spreadsheets, and browsers.",
+  "categoryPrecisionNote": "The answer is things with tabs across several domains, not only browser or spreadsheet tabs.",
+  "difficultyBand": "medium",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects File folder, Guitar music, Drink can, Spreadsheet, and Web browser in LinkedIn Pinpoint #670?",
+      "answer": "The answer is Things with tabs because each clue has a real tab meaning across folders, music, cans, spreadsheets, and browsers.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do File folder, Guitar music, Drink can, Spreadsheet, and Web browser connect?",
+      "answer": "They connect through tabs: folder tabs, guitar tabs, pull tabs, spreadsheet sheet tabs, and browser tabs.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Web browser the key clue in Pinpoint #670?",
+      "answer": "Web browser is the key clue because the parenthetical about too many open points directly to browser tabs.",
+      "tiedClue": "Web browser (too many open?)"
+    }
   ]
 }

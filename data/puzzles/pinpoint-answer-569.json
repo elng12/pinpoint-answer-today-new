@@ -2,11 +2,11 @@
   "slug": "pinpoint-answer-569",
   "detailState": "published",
   "wordHints": {
-    "Basketball Courts": "The three-point line is a designated area on basketball courts that defines where shots are worth three points, illustrating the concept of lanes within the court.",
-    "Running Tracks": "Running tracks are designed with designated lanes for athletes to compete in races.",
-    "Olympic Swimming Pools": "Olympic swimming pools are designed with multiple designated lanes for swimmers to compete in, ensuring organized races.",
-    "Highways": "Highways often feature express lanes, which are designated lanes for faster-moving traffic, enhancing roadway efficiency.",
-    "Bowling Alleys": "A bowling alley features multiple lanes where players roll bowling balls to knock down pins."
+    "Basketball Courts": "Basketball courts include the free throw lane, so the clue fits the places-with-lanes category even though sports is the first temptation.",
+    "Running Tracks": "Running tracks are divided into lanes for races, making the structural feature visible.",
+    "Olympic Swimming Pools": "Olympic swimming pools use marked lanes so swimmers stay separated during races.",
+    "Highways": "Highways have traffic lanes, which breaks the sports-only theory and confirms the shared feature.",
+    "Bowling Alleys": "Bowling alleys are built around bowling lanes, making lane the most exact shared feature."
   },
   "lessons": [
     "Adjectives can be traps. The word 'Olympic' in 'Olympic Swimming Pools' was unnecessary for the definition but vital for the misdirection. Strip away descriptive adjectives to see the core object clearly.",
@@ -37,5 +37,118 @@
     "I fell for the detailed misdirection hook, line, and sinker. 'Basketball Courts' plus 'Running Tracks'? Easy - sports. Add 'Olympic Swimming Pools'? Done - Olympic Venues. I was ready to type it in.\n\nThen 'Highways' appeared. I stared at it. Is highway driving a sport? No. I tried to pivot to 'Paved Surfaces' or 'Concrete Things,' but that felt weak. I looked at 'Bowling Alleys' next. It wasn't about the game, because you don't play games on a highway. I closed my eyes and visualized each place. A swimmer staying in their lane... a car merging into the left lane... a bowler aiming down the lane... a sprinter in lane 4.\n\nThe word screamed out: LANES. It wasn't about what you do there, but how the space is divided. The 'Olympic' adjective was just noise to distract from the simple geometry of a lane.",
     "Today's puzzle started with a classic misdirection. 'Basketball Courts' and 'Running Tracks' immediately suggested a theme of 'Olympic Sports' or 'Athletic Venues.' This theory felt confirmed when 'Olympic Swimming Pools' appeared. The repetition of 'Olympic' felt like a clear signal. However, this led to a dead end when 'Highways' was revealed, as it shattered the sports theory completely.\n\nForced to rethink, I analyzed the visual structure of each clue. I pictured a running track's distinct lanes and realized that concept could be applied elsewhere. A quick check confirmed the new theory: Olympic Swimming Pools have lanes, highways have traffic lanes, and Bowling Alleys are, by definition, a collection of lanes. The lanes were the hidden, simple structural element. The initial focus on activity was a distraction from the common physical feature. The solution emerged not from what these places are used for, but from how they are organized.",
     "Basketball Courts, Running Tracks, Olympic Swimming Pools, Highways, and Bowling Alleys all connect as Places with lanes. This recap explains how the puzzle uses misdirection about sports to hide the simple structural connector."
+  ],
+  "questionType": "category",
+  "display": {
+    "connectorSummary": "places organized by marked or functional lanes",
+    "fastStrategy": "Look past the activity and ask how each place is physically divided.",
+    "clueTableRows": [
+      {
+        "clue": "Basketball Courts",
+        "examplePhrase": "free throw lane",
+        "connectionExplained": "Basketball courts include a lane area under and near the basket."
+      },
+      {
+        "clue": "Running Tracks",
+        "examplePhrase": "track lanes",
+        "connectionExplained": "Running tracks are visibly divided into lanes for racers."
+      },
+      {
+        "clue": "Olympic Swimming Pools",
+        "examplePhrase": "swim lanes",
+        "connectionExplained": "Competition pools are divided into marked swim lanes, matching the same lane structure as tracks and highways."
+      },
+      {
+        "clue": "Highways",
+        "examplePhrase": "traffic lanes",
+        "connectionExplained": "Highways prove the answer is not just sports venues."
+      },
+      {
+        "clue": "Bowling Alleys",
+        "examplePhrase": "bowling lanes",
+        "connectionExplained": "Bowling alleys are defined by the lanes players roll down."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "Basketball Courts",
+      "surfaceMisread": "sports venues",
+      "resolvedPhraseOrMember": "free throw lane",
+      "nonObviousWhy": "Basketball courts include a lane area under and near the basket.",
+      "searchableContext": "basketball free throw lane"
+    },
+    {
+      "clue": "Running Tracks",
+      "surfaceMisread": "sports venues",
+      "resolvedPhraseOrMember": "track lanes",
+      "nonObviousWhy": "Running tracks are visibly divided into lanes for racers.",
+      "searchableContext": "running track lanes"
+    },
+    {
+      "clue": "Olympic Swimming Pools",
+      "surfaceMisread": "Olympic venues",
+      "resolvedPhraseOrMember": "swim lanes",
+      "nonObviousWhy": "Olympic swimming pools fit because competition pools are divided into marked swim lanes, matching the same lane structure as tracks and highways.",
+      "searchableContext": "swimming pool lanes"
+    },
+    {
+      "clue": "Highways",
+      "surfaceMisread": "roads or pavement",
+      "resolvedPhraseOrMember": "traffic lanes",
+      "nonObviousWhy": "Highways prove the answer is not just sports venues.",
+      "searchableContext": "highway traffic lanes"
+    },
+    {
+      "clue": "Bowling Alleys",
+      "surfaceMisread": "games or sports",
+      "resolvedPhraseOrMember": "bowling lanes",
+      "nonObviousWhy": "Bowling alleys are defined by the lanes players roll down.",
+      "searchableContext": "bowling lanes"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first three clues make sports or Olympic venues look plausible, but Highways breaks that read.",
+    "falseStarts": [
+      "sports venues",
+      "Olympic places",
+      "paved surfaces"
+    ],
+    "whyFalseStartPlausible": [
+      "Basketball courts, running tracks, and Olympic pools are all athletic spaces.",
+      "The word Olympic makes a competition theme feel intentional.",
+      "Highways and bowling alleys can both be paved or lane-like, but pavement is too broad."
+    ],
+    "breakingClue": "Highways",
+    "pivot": "Highways shift the solve from activity to physical structure: all five places have lanes.",
+    "fullBoardConfirmation": "The same lane idea appears as free throw lanes, race lanes, swim lanes, traffic lanes, and bowling lanes."
+  },
+  "turningPoint": {
+    "clue": "Highways",
+    "whyDecisive": "Highways are decisive because they do not fit a sports-only answer but clearly have lanes.",
+    "whatChangedAfterIt": "After Highways, Bowling Alleys confirms that lane is the shared structural feature."
+  },
+  "setValidationSummary": "Each clue names a place where lanes organize movement or play, which is tighter than sports or paved places.",
+  "categoryPrecisionNote": "The answer is places with lanes, meaning the shared physical feature, not the activities performed there.",
+  "difficultyBand": "hard",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects Basketball Courts, Running Tracks, Olympic Swimming Pools, Highways, and Bowling Alleys in LinkedIn Pinpoint #569?",
+      "answer": "The answer is Places with lanes because basketball courts, running tracks, Olympic swimming pools, highways, and bowling alleys all use lanes.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do these places connect in Pinpoint #569?",
+      "answer": "They connect by structure rather than activity: each place is organized by lanes for players, runners, swimmers, cars, or bowlers.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Highways the key clue in Pinpoint #569?",
+      "answer": "Highways are the key clue because they do not fit a sports-only theory, but they clearly have traffic lanes.",
+      "tiedClue": "Highways"
+    }
   ]
 }

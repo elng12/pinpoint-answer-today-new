@@ -2,11 +2,11 @@
   "slug": "pinpoint-answer-574",
   "detailState": "published",
   "wordHints": {
-    "Hot": "A 'hot topic' refers to a subject that is currently very popular or controversial, often sparking lively discussions.",
-    "Cold": "A cold case refers to a criminal investigation that has not been solved and remains open, often due to a lack of evidence or leads.",
-    "Rain": "A 'rain check' is a promise to reschedule or take a later opportunity, originally referring to a ticket given to spectators to return for a postponed event due to rain.",
-    "Baby": "This phrase refers to small, incremental progress or actions taken towards a larger goal, often used to emphasize the importance of starting slow and building up.",
-    "Meteor": "A meteor shower occurs when multiple meteors are observed entering the Earth's atmosphere, typically associated with a specific comet's debris."
+    "Hot": "Hot forms hot shower, one of the two temperature clues that starts the phrase pattern.",
+    "Cold": "Cold forms cold shower, pairing with Hot but still requiring a broader shared noun.",
+    "Rain": "Rain forms rain shower, moving the board from bathroom language into weather.",
+    "Baby": "Baby forms baby shower, proving the answer is not just water or weather.",
+    "Meteor": "Meteor forms meteor shower, the astronomy clue that confirms shower as the shared ending word."
   },
   "lessons": [
     "Test repeated nouns. Read each clue with the same noun placed after it; if the phrase still sounds natural, you may have found the connector.",
@@ -17,7 +17,7 @@
   "faqs": [
     {
       "question": "What connects Hot, Cold, Rain, Baby, and Meteor in Pinpoint #574?",
-      "answer": "Each word forms a familiar phrase when paired with the same noun: shower. The walkthrough shows how every clue fits: hot shower, cold shower, rain shower, baby shower, meteor shower."
+      "answer": "The answer is Words that come before \"shower\". Hot, Cold, Rain, Baby, and Meteor form hot shower, cold shower, rain shower, baby shower, and meteor shower."
     },
     {
       "question": "Why isn't weather the right connector?",
@@ -33,9 +33,122 @@
     }
   ],
   "articleBlocks": [
-    "Pinpoint 574 lines up Hot, Cold, Rain, Baby, and Meteor—everyday words that leap between bathrooms, nurseries, and astronomy chats. Each clue paints a different scene, so the challenge is to discover the single noun that keeps showing up in the background. Can you figure out which shared menu ties them together?",
-    "Hot and Cold immediately sounded like temperature settings, so I pictured a bathroom dial. Rain reinforced the idea of water, but Baby pulled me toward celebrations, and Meteor lit up the night sky. Once I read each clue aloud with the same noun trailing after it, the pattern locked: every entry forms a fluent two-word phrase that describes a specific kind of shower: hot shower, cold shower, rain shower, baby shower, meteor shower.",
-    "\"Hot and cold describe water temperature, rain shower is a weather pattern, a baby shower is a party for expectant parents, and a meteor shower is a sky event like the Leonids. The shared connector is the word \"shower\" that follows each clue to make a common phrase.",
-    "When clues mix weather terms with an event like \"baby\" or \"meteor,\" think of a shared word that makes a phrase in every case. Listing the clues as adjective or noun plus the same noun led quickly to \"shower.\""
+    "Pinpoint 574 lines up Hot, Cold, Rain, Baby, and Meteor. Hot and Cold first suggest temperature or water, but Baby and Meteor quickly prove the answer cannot be just bathrooms or weather. The clean solve is to place one shared noun after every clue.",
+    "Hot shower and cold shower are the obvious opening pair. Rain shower keeps the same word but changes the setting, which is the first sign that the board is about phrasing rather than one subject area. Baby shower then breaks any water-only theory, and meteor shower moves the same ending word into astronomy.",
+    "The full check is simple: hot shower, cold shower, rain shower, baby shower, and meteor shower. Every clue becomes a familiar phrase, while alternatives like weather, bath, or water fail on at least one clue.",
+    "The answer is words that come before shower. The clue set works because shower can describe temperature, weather, celebrations, and sky events depending on the word before it."
+  ],
+  "questionType": "phrase",
+  "display": {
+    "connectorSummary": "five familiar phrases completed by the word shower",
+    "fastStrategy": "Put shower after each clue, then reject water-only guesses that cannot explain Baby or Meteor.",
+    "clueTableRows": [
+      {
+        "clue": "Hot",
+        "examplePhrase": "hot shower",
+        "connectionExplained": "Hot starts the bathroom-temperature read but still follows the shared suffix."
+      },
+      {
+        "clue": "Cold",
+        "examplePhrase": "cold shower",
+        "connectionExplained": "Cold pairs with Hot and keeps shower as the same ending word."
+      },
+      {
+        "clue": "Rain",
+        "examplePhrase": "rain shower",
+        "connectionExplained": "Rain shows the suffix works outside a bathroom setting."
+      },
+      {
+        "clue": "Baby",
+        "examplePhrase": "baby shower",
+        "connectionExplained": "Baby breaks a water-only theory and confirms the phrase pattern."
+      },
+      {
+        "clue": "Meteor",
+        "examplePhrase": "meteor shower",
+        "connectionExplained": "Meteor confirms shower as the shared noun across a completely different domain."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "Hot",
+      "surfaceMisread": "temperature",
+      "resolvedPhraseOrMember": "hot shower",
+      "nonObviousWhy": "Hot starts the bathroom-temperature read but still follows the shared suffix.",
+      "searchableContext": "hot shower"
+    },
+    {
+      "clue": "Cold",
+      "surfaceMisread": "temperature",
+      "resolvedPhraseOrMember": "cold shower",
+      "nonObviousWhy": "Cold pairs with Hot and keeps shower as the same ending word.",
+      "searchableContext": "cold shower"
+    },
+    {
+      "clue": "Rain",
+      "surfaceMisread": "weather",
+      "resolvedPhraseOrMember": "rain shower",
+      "nonObviousWhy": "Rain shows the suffix works outside a bathroom setting.",
+      "searchableContext": "rain shower"
+    },
+    {
+      "clue": "Baby",
+      "surfaceMisread": "family or children",
+      "resolvedPhraseOrMember": "baby shower",
+      "nonObviousWhy": "Baby breaks a water-only theory and confirms the phrase pattern.",
+      "searchableContext": "baby shower"
+    },
+    {
+      "clue": "Meteor",
+      "surfaceMisread": "space",
+      "resolvedPhraseOrMember": "meteor shower",
+      "nonObviousWhy": "Meteor confirms shower as the shared noun across a completely different domain.",
+      "searchableContext": "meteor shower"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Hot and Cold make water or temperature feel obvious, and Rain seems to support that first read.",
+    "falseStarts": [
+      "weather",
+      "water",
+      "bath"
+    ],
+    "whyFalseStartPlausible": [
+      "Rain, hot, and cold can all point to weather or water.",
+      "Hot bath and cold bath are real phrases, so bath can feel tempting early.",
+      "Baby and Meteor are the clues that expose those guesses as too narrow."
+    ],
+    "breakingClue": "Baby",
+    "pivot": "Baby shower proves the board is about a shared ending word, not a water category.",
+    "fullBoardConfirmation": "Meteor shower confirms the same suffix in astronomy, completing hot shower, cold shower, rain shower, baby shower, and meteor shower."
+  },
+  "turningPoint": {
+    "clue": "Baby",
+    "whyDecisive": "Baby is decisive because baby shower is a common phrase that has nothing to do with water or weather.",
+    "whatChangedAfterIt": "Once Baby works, Meteor becomes another confirmation of shower as the shared suffix."
+  },
+  "setValidationSummary": "All five clues form common phrases ending in shower; water and weather guesses fail on Baby.",
+  "categoryPrecisionNote": "The precise answer is words that come before shower, not shower-related things generally.",
+  "difficultyBand": "obvious",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects Hot, Cold, Rain, Baby, and Meteor in LinkedIn Pinpoint #574?",
+      "answer": "The answer is Words that come before \"shower\". Hot, Cold, Rain, Baby, and Meteor all form common phrases ending with shower.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do Hot, Cold, Rain, Baby, and Meteor connect?",
+      "answer": "They connect through the shared suffix shower: hot shower, cold shower, rain shower, baby shower, and meteor shower.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Baby the turning clue in Pinpoint #574?",
+      "answer": "Baby is the turning clue because baby shower is a familiar phrase that breaks water-only or weather-only guesses.",
+      "tiedClue": "Baby"
+    }
   ]
 }

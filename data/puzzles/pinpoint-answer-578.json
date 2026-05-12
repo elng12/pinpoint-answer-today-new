@@ -2,11 +2,11 @@
   "slug": "pinpoint-answer-578",
   "detailState": "published",
   "wordHints": {
-    "Window": "A window cleaner is a person or tool specifically designed to clean the glass surfaces of windows.",
-    "Pipe": "A drain pipe cleaner is a tool specifically designed to clean blockages in pipes, making 'drain' a fitting descriptor for 'cleaner' in this context.",
-    "Dry": "Dry cleaning is a method of cleaning clothes and textiles using chemical solvents instead of water.",
-    "Street": "A street cleaner is a vehicle or person responsible for cleaning streets and public roadways.",
-    "Vacuum": "A shop vacuum is a powerful cleaning tool designed for use in workshops and garages, emphasizing its practical application in such environments."
+    "Window": "Window forms window cleaner, a person or product used to clean glass.",
+    "Pipe": "Pipe forms pipe cleaner, a flexible tool for clearing or crafting with pipe-shaped material.",
+    "Dry": "Dry forms dry cleaner, a service or business for cleaning clothes without water.",
+    "Street": "Street forms street cleaner, either a worker or a vehicle that cleans roads.",
+    "Vacuum": "Vacuum forms vacuum cleaner, the household device that makes the suffix pattern obvious."
   },
   "lessons": [
     "Test one suffix across all clues. When several clues sound like they could start common phrases, pick one simple word—like cleaner, time, or card—and try it after each clue. If it forms five fluent combinations, you have likely found the suffix-based connector.",
@@ -23,7 +23,7 @@
   "faqs": [
     {
       "question": "What connects Window, Pipe, Dry, Street, and Vacuum in Pinpoint #578?",
-      "answer": "They are all words that come before \"cleaner\" in everyday phrases: window cleaner, pipe cleaner, dry cleaner, street cleaner, and vacuum cleaner. Each clue becomes a natural expression once you add the same word after it."
+      "answer": "The answer is Words that come before \"cleaner\". Window cleaner, pipe cleaner, dry cleaner, street cleaner, and vacuum cleaner all use the same ending word."
     },
     {
       "question": "Why isn't the connector just \"cleaning tools\"?",
@@ -43,5 +43,113 @@
     "When the board opened with Window, I did what a lot of solvers would do and parked it under household chores. Then Pipe arrived and pulled my brain toward plumbing. By the time Dry showed up, I was juggling errands, tools, and laundry. Street made things even stranger. The pattern finally clicked when I stopped chasing topics and started testing the same word after every clue. Window cleaner, Pipe cleaner, Dry cleaner, Street cleaner, Vacuum cleaner. Once I heard that rhythm, all the earlier theories collapsed at once. Household chores, plumbing, and \"things you wash\" each miss at least one clue, but \"words that come before 'cleaner'\" fits every clue naturally.",
     "Many solvers will first chase surface-level themes such as household chores, cleaning tools, or plumbing. The breakthrough usually comes from testing a single word or short phrase after every clue. When you put \"cleaner\" after Window, Pipe, Dry, Street, and Vacuum, the phrasing stays natural for each clue: Window cleaner, Pipe cleaner, Dry cleaner, Street cleaner, and Vacuum cleaner. This is a strong sign that you have the right answer. Competing themes typically fail on at least one clue, so the connector \"words that come before 'cleaner'\" stands out as the only explanation that fits the full set.",
     "Window, Pipe, Dry, Street, and Vacuum all snap into the same pattern once you put \"cleaner\" after each one. Today's Pinpoint answer is \"words that come before 'cleaner'\" — the only connector that makes every clue sound natural."
+  ],
+  "questionType": "phrase",
+  "display": {
+    "connectorSummary": "five everyday phrases completed by the word cleaner",
+    "fastStrategy": "Try cleaner after every clue and check that the result is a common noun phrase.",
+    "clueTableRows": [
+      {
+        "clue": "Window",
+        "examplePhrase": "window cleaner",
+        "connectionExplained": "Window cleaner is a familiar person, product, or tool for glass."
+      },
+      {
+        "clue": "Pipe",
+        "examplePhrase": "pipe cleaner",
+        "connectionExplained": "Pipe cleaner is a standard compound phrase and not just a plumbing hint."
+      },
+      {
+        "clue": "Dry",
+        "examplePhrase": "dry cleaner",
+        "connectionExplained": "Dry cleaner confirms that the pattern includes services, not only tools."
+      },
+      {
+        "clue": "Street",
+        "examplePhrase": "street cleaner",
+        "connectionExplained": "Street cleaner moves the board outside the home while keeping the same ending word."
+      },
+      {
+        "clue": "Vacuum",
+        "examplePhrase": "vacuum cleaner",
+        "connectionExplained": "Vacuum cleaner is the cleanest household confirmation of the shared suffix."
+      }
+    ]
+  },
+  "clueRows": [
+    {
+      "clue": "Window",
+      "resolvedPhraseOrMember": "window cleaner",
+      "nonObviousWhy": "Window cleaner is a familiar person, product, or tool for glass.",
+      "searchableContext": "window cleaner"
+    },
+    {
+      "clue": "Pipe",
+      "resolvedPhraseOrMember": "pipe cleaner",
+      "nonObviousWhy": "Pipe cleaner is a standard compound phrase and not just a plumbing hint.",
+      "searchableContext": "pipe cleaner"
+    },
+    {
+      "clue": "Dry",
+      "resolvedPhraseOrMember": "dry cleaner",
+      "nonObviousWhy": "Dry cleaner confirms that the pattern includes services, not only tools.",
+      "searchableContext": "dry cleaner"
+    },
+    {
+      "clue": "Street",
+      "resolvedPhraseOrMember": "street cleaner",
+      "nonObviousWhy": "Street cleaner moves the board outside the home while keeping the same ending word.",
+      "searchableContext": "street cleaner"
+    },
+    {
+      "clue": "Vacuum",
+      "resolvedPhraseOrMember": "vacuum cleaner",
+      "nonObviousWhy": "Vacuum cleaner is the cleanest household confirmation of the shared suffix.",
+      "searchableContext": "vacuum cleaner"
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Window and Vacuum can make the board look like cleaning supplies, but Dry and Street quickly show that the answer is a phrase pattern.",
+    "falseStarts": [
+      "cleaning tools",
+      "household chores",
+      "plumbing"
+    ],
+    "whyFalseStartPlausible": [
+      "Window cleaner and vacuum cleaner are both household cleaning ideas.",
+      "Dry cleaner points to an errand, which can still feel like chores at first.",
+      "Pipe may briefly suggest plumbing instead of a shared suffix."
+    ],
+    "breakingClue": "Street",
+    "pivot": "Street cleaner proves the answer is not just household cleaning, but words that come before cleaner.",
+    "fullBoardConfirmation": "Window cleaner, pipe cleaner, dry cleaner, street cleaner, and vacuum cleaner all use cleaner as the same ending word."
+  },
+  "turningPoint": {
+    "clue": "Street",
+    "whyDecisive": "Street is decisive because street cleaner keeps the suffix pattern while breaking a household-only answer.",
+    "whatChangedAfterIt": "Once Street works, the whole board reads as words before cleaner."
+  },
+  "setValidationSummary": "The cleaner suffix works for all five clues and explains why tools, services, and vehicles can appear in the same set.",
+  "categoryPrecisionNote": "The precise answer is words that come before cleaner, not a generic list of cleaning tools.",
+  "difficultyBand": "medium",
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What answer connects Window, Pipe, Dry, Street, and Vacuum in LinkedIn Pinpoint #578?",
+      "answer": "The answer is Words that come before \"cleaner\". Window, Pipe, Dry, Street, and Vacuum all form common phrases with cleaner as the ending word.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "category_context",
+      "question": "How do the clues connect in Pinpoint #578?",
+      "answer": "Each clue becomes a familiar compound with cleaner: window cleaner, pipe cleaner, dry cleaner, street cleaner, and vacuum cleaner.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Street important in Pinpoint #578?",
+      "answer": "Street is important because street cleaner breaks a household-only guess while still preserving the exact cleaner suffix pattern.",
+      "tiedClue": "Street"
+    }
   ]
 }

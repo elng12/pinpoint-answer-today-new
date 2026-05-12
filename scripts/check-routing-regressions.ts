@@ -106,7 +106,16 @@ async function checkRedirectConfig() {
   assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
   assertRedirectRule(rules, "/linkedin-pinpoint/:number(\\d+)", "/puzzles/:number");
-  assertRedirectRule(rules, "/puzzles/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
+  assertRedirectRule(
+    rules,
+    "/puzzles/pinpoint-answer-:number(\\d+)",
+    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+  );
+  assertRedirectRule(
+    rules,
+    "/fr/puzzles/pinpoint-answer-:number(\\d+)",
+    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+  );
   assertRedirectRule(rules, "/fr/pinpoint/:number(\\d+)-analysis", "/pinpoint/:number-analysis");
   assertNoRedirectRule(rules, "/pinpoint-answer-725");
   assertNoRedirectRule(rules, "/linkedin-pinpoint/725");
