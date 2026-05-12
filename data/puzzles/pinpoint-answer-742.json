@@ -32,15 +32,15 @@
     "Bunsen burner": "Bunsen burner is the clue that makes things found in a chemistry laboratory concrete enough to test across the full board."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #742. Scale, Beaker, pH meter can point in a few directions at first, but pH meter is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: \"Scale\" and \"Beaker\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'pH meter' clue made me think of a chemistry lab.",
-    "Once pH meter clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Scale, Beaker, and pH meter stop feeling disconnected and start looking like they belong together. Once pH meter is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board mixes general lab tools with items that are specific to chemistry, making it harder to narrow down at first.",
+    "This compact explainer keeps the fastest reliable path through Pinpoint #742. Scale and Beaker can initially suggest broad equipment lists, but pH meter quickly points the solve toward a chemistry laboratory rather than a generic room of tools.",
+    "Fast read: start with the most specialized clue. A pH meter is strongly tied to testing solutions, and that context turns Beaker, Test tube, Bunsen burner, and Scale into ordinary chemistry-lab equipment instead of scattered objects.",
+    "After that pivot, the set becomes easier to verify from both ends of the board. Bunsen burner and Test tube lock in the laboratory setting, while Scale works as a lab scale used for measuring substances during experiments.",
     "The answer is Things found in a chemistry laboratory. Use the clue table for Test tube, Bunsen burner and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #742. Scale, Beaker, pH meter can point in a few directions at first, but pH meter is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: \"Scale\" and \"Beaker\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'pH meter' clue made me think of a chemistry lab.",
-    "Once pH meter clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Scale, Beaker, and pH meter stop feeling disconnected and start looking like they belong together. Once pH meter is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board mixes general lab tools with items that are specific to chemistry, making it harder to narrow down at first."
+    "Start by resisting the broad equipment reading. Scale and Beaker are flexible, but pH meter is specific enough to name a chemistry setting, and that makes the category much less ambiguous.",
+    "With that anchor in place, Test tube and Bunsen burner confirm the same lab environment from the other side of the list. Scale then resolves as a measuring tool for experiments rather than a separate weighing or balance theme.",
+    "The finished set is not just science equipment in general. Each clue can be found in a chemistry laboratory, which explains both the ordinary containers and the more specialized testing and heating tools."
   ],
   "lessons": [
     {
@@ -111,7 +111,7 @@
     ],
     "breakingClue": "pH meter",
     "pivot": "The solve turned when I stopped treating pH meter as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about medical equipment; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
-    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Scale, Beaker, and pH meter stop feeling disconnected and start looking like they belong together. Once pH meter is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board mixes general lab tools with items that are specific to chemistry, making it harder to narrow down at first."
+    "fullBoardConfirmation": "The final check is concrete: a chemistry laboratory can contain a lab scale, beaker, pH meter, test tube, and Bunsen burner. That full-board fit is narrower than a generic science or medical-equipment guess."
   },
   "turningPoint": {
     "clue": "pH meter",
