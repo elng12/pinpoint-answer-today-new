@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-742",
   "publishDate": "2026-05-12",
   "isoDate": "2026-05-12",
-  "detailState": "validated",
-  "bodyMode": "standard",
-  "pageExperienceMode": "full-analysis",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
   "questionType": "category",
   "difficultyBand": "medium",
   "clues": [
@@ -32,22 +32,15 @@
     "Bunsen burner": "Bunsen burner is the clue that makes things found in a chemistry laboratory concrete enough to test across the full board."
   },
   "articleBlocks": [
-    "Initially, the clues felt like they could fit a general science lab.",
-    "I was thinking about science classrooms in general.",
-    "A 'scale' and 'beaker' are common in various scientific settings.",
-    "Then I saw 'pH meter'.",
-    "That made me think of chemistry specifically, where pH measurement is crucial.",
-    "The inclusion of a 'Bunsen burner' further solidified this idea, as it's a standard tool for heating substances in chemistry experiments.",
-    "And the remaining clue, 'test tube', is a common piece of glassware for mixing small amounts of chemicals.",
-    "So, the answer is things found in a chemistry laboratory.",
-    "The clues work together to paint a picture of a typical chemistry lab setup.",
-    "Each item plays a specific role in conducting chemical experiments.",
-    "The pH meter was the turning point, but the Bunsen burner confirmed it.",
-    "In hindsight, the combination makes sense."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #742. Scale, Beaker, pH meter can point in a few directions at first, but pH meter is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Scale\" and \"Beaker\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'pH meter' clue made me think of a chemistry lab.",
+    "Once pH meter clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Scale, Beaker, and pH meter stop feeling disconnected and start looking like they belong together. Once pH meter is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board mixes general lab tools with items that are specific to chemistry, making it harder to narrow down at first.",
+    "The answer is Things found in a chemistry laboratory. Use the clue table for Test tube, Bunsen burner and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "Scale and Beaker first pulled me toward medical equipment, so that was the first path I tested. It held together for a moment, but pH meter never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating pH meter as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about medical equipment; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #742. Scale, Beaker, pH meter can point in a few directions at first, but pH meter is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Scale\" and \"Beaker\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on things. The 'pH meter' clue made me think of a chemistry lab.",
+    "Once pH meter clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Scale, Beaker, and pH meter stop feeling disconnected and start looking like they belong together. Once pH meter is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board mixes general lab tools with items that are specific to chemistry, making it harder to narrow down at first."
   ],
   "lessons": [
     {
@@ -106,10 +99,6 @@
     {
       "question": "Why is \"pH meter\" the key clue in LinkedIn Pinpoint #742?",
       "answer": "pH meter is the turning clue because \"pH testing tool\" makes the shared category frame explicit. It also makes Scale read cleanly as \"Lab scale\". The board mixes general lab tools with items that are specific to chemistry, making it harder to narrow down at first."
-    },
-    {
-      "question": "How does \"Scale\" fit the same category as \"pH meter\" in LinkedIn Pinpoint #742?",
-      "answer": "\"Scale\" reads as \"Lab scale\" under the same answer, so it supports the category instead of pulling toward a broader guess."
     }
   ],
   "solvePath": {
