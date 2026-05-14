@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 744,
+  "slug": "pinpoint-answer-744",
+  "publishDate": "2026-05-14",
+  "isoDate": "2026-05-14",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Diet",
+    "Assembly",
+    "Council",
+    "Congress",
+    "Parliament"
+  ],
+  "answer": "Legislative bodies",
+  "category": "Legislative bodies",
+  "wordHints": {
+    "Diet": "Diet connects to \"Legislative bodies\"",
+    "Assembly": "Assembly connects to \"Legislative bodies\"",
+    "Council": "Council connects to \"Legislative bodies\"",
+    "Congress": "Congress connects to \"Legislative bodies\"",
+    "Parliament": "Parliament connects to \"Legislative bodies\""
+  },
+  "spoilerHints": {
+    "Diet": "Diet should be tested as part of legislative bodies, not as a standalone reference.",
+    "Assembly": "Keep Assembly in mind, then see whether Parliament supports the same answer.",
+    "Council": "Council works best after the board narrows toward legislative bodies.",
+    "Congress": "Congress should be tested as part of legislative bodies, not as a standalone reference.",
+    "Parliament": "Parliament is the clue that makes legislative bodies concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Diet and Assembly pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Diet, Assembly can point toward several nearby themes before one clue makes the exact category level visible. Diet is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on legislative, examples like \"Diet\" and \"Assembly\" stopped feeling loose and started landing cleanly.",
+    "Council, Congress, Parliament keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Legislative bodies\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Legislative bodies, which is why \"Legislative bodies\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #744, Diet, Assembly, Council, Congress, Parliament only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on legislative",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Diet",
+        "examplePhrase": "Diet",
+        "connectionExplained": "Diet connects to \"Legislative bodies\""
+      },
+      {
+        "clue": "Assembly",
+        "examplePhrase": "Assembly",
+        "connectionExplained": "Assembly connects to \"Legislative bodies\""
+      },
+      {
+        "clue": "Council",
+        "examplePhrase": "Council",
+        "connectionExplained": "Council connects to \"Legislative bodies\""
+      },
+      {
+        "clue": "Congress",
+        "examplePhrase": "Congress",
+        "connectionExplained": "Congress connects to \"Legislative bodies\""
+      },
+      {
+        "clue": "Parliament",
+        "examplePhrase": "Parliament",
+        "connectionExplained": "Parliament connects to \"Legislative bodies\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #744?",
+      "answer": "The answer is \"Legislative bodies\". The clues Diet, Assembly, Council, Congress, Parliament all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #744 just unlocked, and this is the fastest verified update. The board clues are Diet, Assembly, Council, Congress, Parliament, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Diet, Assembly can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Diet",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #744, Diet, Assembly, Council, Congress, Parliament only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Diet lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Diet",
+    "whyDecisive": "Diet is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Diet lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Diet",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Diet",
+      "nonObviousWhy": "Diet supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Diet"
+    },
+    {
+      "clue": "Assembly",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Assembly",
+      "nonObviousWhy": "Assembly supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Assembly"
+    },
+    {
+      "clue": "Council",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Council",
+      "nonObviousWhy": "Council supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Council"
+    },
+    {
+      "clue": "Congress",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Congress",
+      "nonObviousWhy": "Congress supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Congress"
+    },
+    {
+      "clue": "Parliament",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Parliament",
+      "nonObviousWhy": "Parliament supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Parliament"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #744?",
+      "answer": "The answer is \"Legislative bodies\". The clues Diet, Assembly, Council, Congress, Parliament all share this connection.",
+      "tiedClue": "Diet"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on legislative",
+    "relatedEntities": [
+      "Diet",
+      "Assembly",
+      "Council",
+      "Congress",
+      "Parliament"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on legislative",
+      "Diet",
+      "Assembly",
+      "Council",
+      "Congress"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Diet, Assembly can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Diet is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Council, Congress, Parliament keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Legislative bodies"
+}

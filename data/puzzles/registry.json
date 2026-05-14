@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 744,
+    "slug": "pinpoint-answer-744",
+    "publishDate": "2026-05-14",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Diet",
+      "Assembly",
+      "Council",
+      "Congress",
+      "Parliament"
+    ],
+    "mainAnswer": "Legislative bodies",
+    "category": "Legislative bodies",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #744: Diet, Assembly, Council, Congress, Parliament.",
+    "updatedAt": "2026-05-14T07:07:20.362Z"
+  },
+  {
     "puzzleNumber": 743,
     "slug": "pinpoint-answer-743",
     "publishDate": "2026-05-13",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "The Magic Flute",
@@ -16,7 +35,7 @@
     "category": "Operas",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, The Magic Flute, Carmen, Porgy and Bess do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-13T07:02:04.282Z"
+    "updatedAt": "2026-05-14T07:07:20.362Z"
   },
   {
     "puzzleNumber": 742,
