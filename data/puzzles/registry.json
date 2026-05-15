@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 745,
+    "slug": "pinpoint-answer-745",
+    "publishDate": "2026-05-15",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Fan",
+      "Mobile",
+      "Smoke detector",
+      "Skylight",
+      "Chandelier"
+    ],
+    "mainAnswer": "Things found on a ceiling",
+    "category": "Things found on a ceiling",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #745: Fan, Mobile, Smoke detector, Skylight, Chandelier.",
+    "updatedAt": "2026-05-15T07:03:59.357Z"
+  },
+  {
     "puzzleNumber": 744,
     "slug": "pinpoint-answer-744",
     "publishDate": "2026-05-14",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Diet",
@@ -16,7 +35,7 @@
     "category": "Legislative bodies",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Diet, Assembly, Council do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-14T07:07:41.285Z"
+    "updatedAt": "2026-05-15T07:03:59.357Z"
   },
   {
     "puzzleNumber": 743,
