@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 746,
+    "slug": "pinpoint-answer-746",
+    "publishDate": "2026-05-16",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Clear",
+      "Short",
+      "Tax",
+      "Director's",
+      "Hair"
+    ],
+    "mainAnswer": "Words that come before “cut”",
+    "category": "Words that come before “cut”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #746: Clear, Short, Tax, Director's, Hair.",
+    "updatedAt": "2026-05-16T07:07:14.769Z"
+  },
+  {
     "puzzleNumber": 745,
     "slug": "pinpoint-answer-745",
     "publishDate": "2026-05-15",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Fan",
@@ -16,7 +35,7 @@
     "category": "Things found on a ceiling",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Fan, Mobile, Smoke detector, Skylight, Chandelier - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-15T07:05:10.770Z"
+    "updatedAt": "2026-05-16T07:07:14.769Z"
   },
   {
     "puzzleNumber": 744,
