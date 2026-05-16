@@ -78,7 +78,7 @@ export async function POST(req: Request) {
       }
 
       try {
-        const competitorPayload = await loadCompetitorWorkerFallback();
+        const competitorPayload = await loadCompetitorWorkerFallback(requestedDate);
         return NextResponse.json(
           { ...competitorPayload, mode: requestedMode, date: requestedDate },
           { status: 200, headers: buildNoStoreHeaders() },
@@ -111,7 +111,7 @@ export async function POST(req: Request) {
     }
 
     try {
-      const competitorPayload = await loadCompetitorWorkerFallback();
+      const competitorPayload = await loadCompetitorWorkerFallback(requestedDate);
       return NextResponse.json({ ...competitorPayload, mode: requestedMode, date: requestedDate }, {
         status: 200,
         headers: buildNoStoreHeaders(),

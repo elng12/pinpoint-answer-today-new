@@ -21,6 +21,7 @@ type CompetitorSnapshot = {
   clue4?: unknown;
   clue5?: unknown;
   answer?: unknown;
+  createdAt?: unknown;
 };
 
 const COMPETITOR_CLUE_KEYS = ["clue1", "clue2", "clue3", "clue4", "clue5"] as const;
@@ -36,6 +37,33 @@ function normalizeAnswerWords(words: string[]): WorkerFallbackAnswer[] {
 
 function normalizeDate(date: string): string | null {
   return /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : null;
+}
+
+function addUtcDays(date: string, deltaDays: number): string {
+  const parsed = new Date(`${date}T00:00:00.000Z`);
+  if (Number.isNaN(parsed.getTime())) return date;
+  parsed.setUTCDate(parsed.getUTCDate() + deltaDays);
+  return parsed.toISOString().slice(0, 10);
+}
+
+function normalizedWordSignature(words: string[]): string {
+  return words
+    .map((word) => word.trim().toLowerCase())
+    .filter((word) => word.length > 0)
+    .join("|");
+}
+
+function normalizedAnswerText(raw: unknown): string {
+  if (typeof raw !== "string") return "";
+  return raw.trim().toLowerCase();
+}
+
+function getSnapshotIsoDate(snapshot: CompetitorSnapshot): string | null {
+  const raw = typeof snapshot.createdAt === "string" ? snapshot.createdAt.trim() : "";
+  if (!raw) return null;
+  const parsed = new Date(raw);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed.toISOString().slice(0, 10);
 }
 
 export function normalizeWorkerFallbackMode(input: unknown): WorkerFallbackMode {
@@ -124,7 +152,23 @@ function extractCompetitorClues(snapshot: CompetitorSnapshot): string[] {
     .filter((value) => value.length > 0);
 }
 
-export async function loadCompetitorWorkerFallback(): Promise<WorkerFallbackPayload> {
+async function isSameAsPreviousBundledFallback(date: string, answers: string[], mainAnswer: string): Promise<boolean> {
+  const isoDate = normalizeDate(date);
+  if (!isoDate) return false;
+
+  const previousPayload = await loadBundledWorkerFallback(addUtcDays(isoDate, -1));
+  if (!previousPayload) return false;
+
+  const previousAnswers = previousPayload.answers.map((answer) => answer.word);
+  const sameAnswers = normalizedWordSignature(answers) === normalizedWordSignature(previousAnswers);
+  const sameMainAnswer =
+    normalizedAnswerText(mainAnswer).length > 0 &&
+    normalizedAnswerText(mainAnswer) === normalizedAnswerText(previousPayload.mainAnswer || previousPayload.theme);
+
+  return sameAnswers && sameMainAnswer;
+}
+
+export async function loadCompetitorWorkerFallback(date?: string): Promise<WorkerFallbackPayload> {
   const targetUrl = normalizeCompetitorUrl(process.env.PINPOINT_BASE_URL);
   const timeoutMs = Number.parseInt(process.env.COMPETITOR_FETCH_TIMEOUT_MS ?? "30000", 10);
   const controller = new AbortController();
@@ -157,6 +201,15 @@ export async function loadCompetitorWorkerFallback(): Promise<WorkerFallbackPayl
       throw new Error(
         `competitor snapshot invalid (answers=${answers.length}, theme=${mainAnswer ? "ok" : "missing"})`,
       );
+    }
+
+    const snapshotDate = getSnapshotIsoDate(snapshot);
+    if (date && snapshotDate && snapshotDate !== date) {
+      throw new Error(`competitor snapshot date ${snapshotDate} does not match requested date ${date}`);
+    }
+
+    if (date && (await isSameAsPreviousBundledFallback(date, answers, mainAnswer))) {
+      throw new Error("competitor snapshot still matches previous day");
     }
 
     return {
