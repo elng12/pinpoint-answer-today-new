@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-746",
   "publishDate": "2026-05-16",
   "isoDate": "2026-05-16",
-  "detailState": "generating",
+  "detailState": "fallback_full",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
@@ -18,11 +18,11 @@
   "answer": "Words that come before “cut”",
   "category": "Words that come before “cut”",
   "wordHints": {
-    "Clear": "Clear connects to \"Words that come before “cut”\"",
-    "Short": "Short connects to \"Words that come before “cut”\"",
-    "Tax": "Tax connects to \"Words that come before “cut”\"",
-    "Director's": "Director's connects to \"Words that come before “cut”\"",
-    "Hair": "Hair connects to \"Words that come before “cut”\""
+    "Clear": "\"Clear cut\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Short": "\"Short cut\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Tax": "Once the shared word is in place, \"Tax cut\" reads like ordinary language instead of a forced compound.",
+    "Director's": "\"Director's cut\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Hair": "\"Hair cut\" is common enough to confirm the same missing word without stretching the phrasing."
   },
   "spoilerHints": {
     "Clear": "Try reading Clear as part of a familiar phrase in words that come before “cut” instead of as a standalone word.",
@@ -33,179 +33,182 @@
   },
   "articleBlocks": [
     "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Clear, Short do not immediately advertise one shared phrase slot before Clear shows where the repeated word belongs. Clear behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Clear locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "A nearby read was \"a loose topic list\". Clear, Short do not immediately advertise one shared phrase slot before Director's shows where the repeated word belongs. Director's behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Director's locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"Clear cut\" and \"Short cut\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
-    "Tax, Director's, Hair show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "Tax cut, Director's cut, Hair cut show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
     "The answer was \"Words that come before “cut”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “cut”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #746, Clear, Short, Tax, Director's, Hair only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Director's\" feel exact enough.",
+    "Once \"Director's\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
+    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
+    "The answer was \"Words that come before “cut”\"."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "Let the clearest phrase lead",
+      "body": "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "\"Director's\" is what finally makes the missing word visible",
+      "body": "Once \"Director's\" lands, place the same word after the other clues and make sure they read naturally right away."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Every clue should read as an everyday phrase once the answer is in place",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
     }
   ],
   "display": {
     "connectorSummary": "familiar phrases completed by one shared ending word",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase.",
     "clueTableRows": [
       {
         "clue": "Clear",
         "examplePhrase": "Clear cut",
-        "connectionExplained": "Clear connects to \"Words that come before “cut”\""
+        "connectionExplained": "\"Clear cut\" is a familiar phrase, so it helps reveal the shared word quickly."
       },
       {
         "clue": "Short",
         "examplePhrase": "Short cut",
-        "connectionExplained": "Short connects to \"Words that come before “cut”\""
+        "connectionExplained": "\"Short cut\" is common enough to confirm the same missing word without stretching the phrasing."
       },
       {
         "clue": "Tax",
         "examplePhrase": "Tax cut",
-        "connectionExplained": "Tax connects to \"Words that come before “cut”\""
+        "connectionExplained": "Once the shared word is in place, \"Tax cut\" reads like ordinary language instead of a forced compound."
       },
       {
         "clue": "Director's",
         "examplePhrase": "Director's cut",
-        "connectionExplained": "Director's connects to \"Words that come before “cut”\""
+        "connectionExplained": "\"Director's cut\" is a familiar phrase, so it helps reveal the shared word quickly."
       },
       {
         "clue": "Hair",
         "examplePhrase": "Hair cut",
-        "connectionExplained": "Hair connects to \"Words that come before “cut”\""
+        "connectionExplained": "\"Hair cut\" is common enough to confirm the same missing word without stretching the phrasing."
       }
     ]
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #746?",
-      "answer": "The answer is \"Words that come before “cut”\". The clues Clear, Short, Tax, Director's, Hair all share this connection."
+      "question": "What shared word links \"Clear\" and \"Short\" in LinkedIn Pinpoint #746?",
+      "answer": "The answer is \"Words that come before “cut”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "How do \"Clear\" and \"Short\" connect in LinkedIn Pinpoint #746?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Why is \"Director's\" the key clue in LinkedIn Pinpoint #746?",
+      "answer": "\"Director's\" is the strongest clue because \"Director's cut\" points to one exact phrase much faster than the earlier clues do."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #746 just unlocked, and this is the fastest verified update. The board clues are Clear, Short, Tax, Director's, Hair, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
     "falseStarts": [
       "a loose topic list",
       "standalone clue meanings"
     ],
     "whyFalseStartPlausible": [
-      "Clear, Short do not immediately advertise one shared phrase slot before Clear shows where the repeated word belongs.",
+      "Clear, Short do not immediately advertise one shared phrase slot before Director's shows where the repeated word belongs.",
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
-    "breakingClue": "Clear",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #746, Clear, Short, Tax, Director's, Hair only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Clear lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Director's",
+    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Director's\" feel exact enough.\n\nOnce \"Director's\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was \"Words that come before “cut”\".",
+    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Director's locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
-    "clue": "Clear",
-    "whyDecisive": "Clear is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Clear lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Director's",
+    "whyDecisive": "Director's is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Director's lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
       "clue": "Clear",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Clear",
-      "nonObviousWhy": "Clear supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Clear"
+      "resolvedPhraseOrMember": "Clear cut",
+      "nonObviousWhy": "\"Clear cut\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Clear cut"
     },
     {
       "clue": "Short",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Short",
-      "nonObviousWhy": "Short supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Short"
+      "resolvedPhraseOrMember": "Short cut",
+      "nonObviousWhy": "\"Short cut\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Short cut"
     },
     {
       "clue": "Tax",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Tax",
-      "nonObviousWhy": "Tax supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Tax"
+      "resolvedPhraseOrMember": "Tax cut",
+      "nonObviousWhy": "Once the shared word is in place, \"Tax cut\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Tax cut"
     },
     {
       "clue": "Director's",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Director's",
-      "nonObviousWhy": "Director's supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Director's"
+      "resolvedPhraseOrMember": "Director's cut",
+      "nonObviousWhy": "\"Director's cut\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Director's cut"
     },
     {
       "clue": "Hair",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "Hair",
-      "nonObviousWhy": "Hair supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Hair"
+      "resolvedPhraseOrMember": "Hair cut",
+      "nonObviousWhy": "\"Hair cut\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Hair cut"
     }
   ],
   "faqItems": [
     {
-      "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #746?",
-      "answer": "The answer is \"Words that come before “cut”\". The clues Clear, Short, Tax, Director's, Hair all share this connection.",
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Clear\" and \"Short\" in LinkedIn Pinpoint #746?",
+      "answer": "The answer is \"Words that come before “cut”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
       "tiedClue": "Clear"
     },
     {
       "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
-      "tiedClue": null
+      "question": "How do \"Clear\" and \"Short\" connect in LinkedIn Pinpoint #746?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Clear"
     },
     {
-      "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "intentType": "clue_background",
+      "question": "Why is \"Director's\" the key clue in LinkedIn Pinpoint #746?",
+      "answer": "\"Director's\" is the strongest clue because \"Director's cut\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Director's"
     }
   ],
   "uniquenessSignals": {
     "angle": "familiar phrases completed by one shared ending word",
     "relatedEntities": [
-      "Clear",
-      "Short",
-      "Tax",
-      "Director's",
-      "Hair"
+      "Clear cut",
+      "Short cut",
+      "Tax cut",
+      "Director's cut",
+      "Hair cut"
     ],
     "doNotRepeatPatterns": [
       "familiar phrases completed by one shared ending word",
-      "Clear",
-      "Short",
-      "Tax",
-      "Director's"
+      "Clear cut",
+      "Short cut",
+      "Tax cut",
+      "Director's cut"
     ]
   },
   "wrongGuessCandidates": [
     {
       "label": "a loose topic list",
-      "whyPlausible": "Clear, Short do not immediately advertise one shared phrase slot before Clear shows where the repeated word belongs.",
-      "whyRejected": "Clear behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "whyPlausible": "Clear, Short do not immediately advertise one shared phrase slot before Director's shows where the repeated word belongs.",
+      "whyRejected": "Director's behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
     },
     {
       "label": "standalone clue meanings",
       "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once Clear locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "whyRejected": "Once Director's locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
-  "setValidationSummary": "Tax, Director's, Hair show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "setValidationSummary": "Tax cut, Director's cut, Hair cut show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
   "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
 }
