@@ -37,17 +37,17 @@
     "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Director's locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"Clear cut\" and \"Short cut\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
     "Tax cut, Director's cut, Hair cut show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “cut”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “cut”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "The answer was the phrase pattern Words that come before “cut”. More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why Words that come before “cut” fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
   ],
   "solutionNarrative": [
     "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Director's\" feel exact enough.",
     "Once \"Director's\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
     "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
-    "The answer was \"Words that come before “cut”\"."
+    "The answer was the phrase pattern Words that come before “cut”."
   ],
   "lessons": [
     {
-      "title": "Let the clearest phrase lead",
+      "title": "Use \"Director's cut\" to lock the shared ending",
       "body": "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase."
     },
     {
@@ -93,7 +93,7 @@
   "faqs": [
     {
       "question": "What shared word links \"Clear\" and \"Short\" in LinkedIn Pinpoint #746?",
-      "answer": "The answer is \"Words that come before “cut”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+      "answer": "The answer is the phrase pattern Words that come before “cut”. That reading is the first one that turns all five clues into familiar phrases or common terms."
     },
     {
       "question": "How do \"Clear\" and \"Short\" connect in LinkedIn Pinpoint #746?",
@@ -115,7 +115,7 @@
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
     "breakingClue": "Director's",
-    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Director's\" feel exact enough.\n\nOnce \"Director's\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was \"Words that come before “cut”\".",
+    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Director's\" feel exact enough.\n\nOnce \"Director's\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was the phrase pattern Words that come before “cut”.",
     "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Director's locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
@@ -164,7 +164,7 @@
     {
       "intentType": "solve_strategy",
       "question": "What shared word links \"Clear\" and \"Short\" in LinkedIn Pinpoint #746?",
-      "answer": "The answer is \"Words that come before “cut”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "answer": "The answer is the phrase pattern Words that come before “cut”. That reading is the first one that turns all five clues into familiar phrases or common terms.",
       "tiedClue": "Clear"
     },
     {
