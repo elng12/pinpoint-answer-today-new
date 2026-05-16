@@ -255,6 +255,7 @@ const cronHeartbeatDayRunsKeyOf = (d: string) => `monitor:cron:${d}:runs`;
 const cronHeartbeatRunKeyOf = (runId: string) => `monitor:cron:run:${runId}`;
 const siteSummaryWatchdogNotifiedKeyOf = (d: string) => `notify:site-summary-watchdog:${d}`;
 const cronHeartbeatRunsLimit = 20;
+const staleAlertDedupeTtlSec = 60 * 60 * 2;
 const nonPublicDetailStateAlertThresholdMs = 15 * 60 * 1000;
 
 const SUPPORTED_I18N_LOCALES = ["fr", "de", "pt-BR"] as const;
@@ -1270,6 +1271,22 @@ async function isLikelyStaleCandidate(
     };
   }
   return { stale: false };
+}
+
+async function markStaleCandidateAlert(env: Env, date: string, doc: Doc, reason: string): Promise<boolean> {
+  const words = extractWordsFromDoc(doc);
+  const signature = (await sha256Hex(JSON.stringify({
+    words: normalizedWordSignature(words),
+    mainAnswer: normalizedAnswerText(doc.mainAnswer || doc.theme),
+    checksum: String(doc.checksum || "").trim(),
+    source: doc.source,
+    reason,
+  }))).slice(0, 24);
+  const key = `alert:stale:${date}:${signature}`;
+  const existing = await env.PP_DATA.get(key);
+  if (existing) return false;
+  await env.PP_DATA.put(key, new Date().toISOString(), { expirationTtl: staleAlertDedupeTtlSec });
+  return true;
 }
 
 function createQuickOverview(puzzleNumber: number, words: string[]): string {
@@ -5864,6 +5881,7 @@ export default {
       if (staleCheck.stale) {
         const durationMs = Date.now() - startedAt;
         const words = doc.answers.map((a) => a.word).slice(0, 5).join(" | ");
+        const staleReason = staleCheck.reason || "same as yesterday";
         heartbeat.triggerSeen = true;
         heartbeat.quickPublish = stampHeartbeatStage(heartbeat.quickPublish, "skipped", "stale candidate");
         heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "skipped", "stale candidate");
@@ -5872,15 +5890,24 @@ export default {
         heartbeat.durationMs = durationMs;
         heartbeat.endedAt = new Date().toISOString();
         await persistCronHeartbeat(env, heartbeat);
-        await notifyCron(env, "⚠️ Worker 定时抓取到疑似旧数据（已跳过发布）", [
-          `日期: ${date}`,
-          `来源: ${doc.source}`,
-          `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
-          `答案: ${words}`,
-          `对比日期: ${staleCheck.comparedDate || "未知"}`,
-          `原因: ${toZhWebhookReason(staleCheck.reason || "same as yesterday")}`,
-          `耗时(ms): ${durationMs}`,
-        ]);
+        const shouldNotify = await markStaleCandidateAlert(env, date, doc, staleReason);
+        if (shouldNotify) {
+          await notifyCron(env, "⚠️ Worker 定时抓取到疑似旧数据（已跳过发布）", [
+            `日期: ${date}`,
+            `来源: ${doc.source}`,
+            `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
+            `答案: ${words}`,
+            `对比日期: ${staleCheck.comparedDate || "未知"}`,
+            `原因: ${toZhWebhookReason(staleReason)}`,
+            `耗时(ms): ${durationMs}`,
+          ]);
+        } else {
+          console.log("duplicate stale candidate alert skipped", {
+            date,
+            source: doc.source,
+            reason: staleReason,
+          });
+        }
         return;
       }
 
