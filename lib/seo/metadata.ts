@@ -14,8 +14,6 @@ const TITLE_ABSOLUTE_MAX = 110;
 const TITLE_MIN_LENGTH = 55;
 const DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
 const DESCRIPTION_MIN_LENGTH = CONTENT_CONTRACT.metaDescriptionMinChars;
-const DESCRIPTION_INDEX_MAX = CONTENT_CONTRACT.metaDescriptionIndexMaxChars;
-const ANSWER_AWARE_VISIBLE_MIN = DESCRIPTION_MIN_LENGTH - 10;
 const SITE_LOCALE = "en_US";
 const DESCRIPTION_EXTENSIONS = [
   " Use spoiler-safe hints, clue logic, and the verified answer to confirm the solve.",
@@ -94,90 +92,32 @@ function pickDescriptionCandidate(candidates: string[], fallback: string): strin
   const uniqueCandidates = Array.from(new Set([...candidates, fallback].map((candidate) => candidate.trim())))
     .filter(Boolean);
 
-  // For answer-aware descriptions the total may exceed 160 chars (answer text
-  // lives beyond the SERP snippet). Enforce a higher index cap for those, and
-  // the standard 160 cap for non-answer candidates.
-  const withAnswer = uniqueCandidates.filter((c) => /Answer: /.test(c));
-  const withoutAnswer = uniqueCandidates.filter((c) => !/Answer: /.test(c));
-
-  const validWithAnswer = withAnswer.filter(
-    (c) =>
-      // SERP-visible portion (before "Answer:") must stay near the normal
-      // description range; long answers should fall back to non-answer copy.
-      c.indexOf("Answer: ") >= ANSWER_AWARE_VISIBLE_MIN &&
-      c.indexOf("Answer: ") <= DESCRIPTION_MAX_LENGTH + 5 &&
-      // Total must stay within index cap
-      c.length <= DESCRIPTION_INDEX_MAX,
-  );
-  const validWithoutAnswer = withoutAnswer.filter(
+  const inRange = uniqueCandidates.filter(
     (c) => c.length >= DESCRIPTION_MIN_LENGTH && c.length <= DESCRIPTION_MAX_LENGTH,
   );
 
-  // Prefer answer-aware candidates (higher SEO value)
-  const bestWithAnswer = validWithAnswer.sort((left, right) => right.length - left.length)[0];
-  if (bestWithAnswer) return bestWithAnswer;
-
-  const bestInRange = validWithoutAnswer
+  const bestInRange = inRange
     .sort((left, right) => right.length - left.length)[0];
   if (bestInRange) return bestInRange;
 
-  // Pad short candidates (non-answer only — answer ones are already oversized)
-  const paddedCandidates = withoutAnswer.map(padDescriptionToContract);
+  const paddedCandidates = uniqueCandidates.map(padDescriptionToContract);
   const bestPaddedInRange = paddedCandidates
     .filter((candidate) => candidate.length >= DESCRIPTION_MIN_LENGTH && candidate.length <= DESCRIPTION_MAX_LENGTH)
     .sort((left, right) => right.length - left.length)[0];
 
   if (bestPaddedInRange) return bestPaddedInRange;
 
-  return withoutAnswer.sort((left, right) => right.length - left.length)[0] ?? fallback;
+  return uniqueCandidates.sort((left, right) => right.length - left.length)[0] ?? fallback;
 }
 
 export function buildPuzzleSeoDescription(
   puzzleNumber: number,
   clues: string[],
-  answer?: string,
+  _answer?: string,
 ): string {
   const candidates: string[] = [];
 
-  // Primary strategy: first ~160 chars are SERP-visible (narrative + clues, no
-  // answer → suspense drives CTR). After 160 chars, append "Answer: X." so
-  // Google indexes the answer text for "pinpoint NNN answer" queries even
-  // though the SERP snippet truncates it.
-  if (answer) {
-    const answerSuffix = ` Answer: ${answer}.`;
-    const narrativeTemplates = [
-      { prefix: `LinkedIn Pinpoint ${puzzleNumber} starts with `, connector: " — " },
-      { prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `, connector: ". " },
-      { prefix: `Solve LinkedIn Pinpoint ${puzzleNumber} using `, connector: ". " },
-      { prefix: `Find LinkedIn Pinpoint ${puzzleNumber} from `, connector: ". " },
-    ];
-    const ctaVariants = [
-      "Get spoiler-safe hints, clue logic, a full walkthrough, and the verified answer.",
-      "Get spoiler-safe hints, clue logic, and a full walkthrough.",
-      "Get spoiler-safe hints and a full walkthrough.",
-      "Hints and a full walkthrough included.",
-      "Spoiler-safe hints inside.",
-    ];
-
-    for (const { prefix, connector } of narrativeTemplates) {
-      for (const cta of ctaVariants) {
-        const maxClueLength = DESCRIPTION_MAX_LENGTH - prefix.length - connector.length - cta.length;
-        if (maxClueLength <= 0) continue;
-        const clueText = fitPinpointClues(clues, maxClueLength, true);
-        if (!clueText) continue;
-        const serpVisible = `${prefix}${clueText}${connector}${cta}`;
-        // SERP-visible portion should be near 150-160 chars. If the answer
-        // suffix is too long to fit the index cap, fall back to non-answer copy.
-        if (serpVisible.length >= ANSWER_AWARE_VISIBLE_MIN && serpVisible.length <= DESCRIPTION_MAX_LENGTH) {
-          candidates.push(serpVisible + answerSuffix);
-        }
-      }
-    }
-  }
-
-  // Fallback templates without answer (used when answer is unknown or no
-  // answer-aware candidate fits).
-  const fallbackTemplates = [
+  const descriptionTemplates = [
     {
       prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `,
       suffix: "Get spoiler-safe hints, clue logic, a full walkthrough, and the verified answer fast.",
@@ -201,7 +141,7 @@ export function buildPuzzleSeoDescription(
   ];
 
   candidates.push(
-    ...fallbackTemplates.map(({ prefix, suffix }) => {
+    ...descriptionTemplates.map(({ prefix, suffix }) => {
       const clueText = fitPinpointClues(
         clues,
         DESCRIPTION_MAX_LENGTH - prefix.length - suffix.length - 2,
