@@ -3,9 +3,9 @@
   "slug": "pinpoint-answer-747",
   "publishDate": "2026-05-17",
   "isoDate": "2026-05-17",
-  "detailState": "validated",
-  "bodyMode": "standard",
-  "pageExperienceMode": "full-analysis",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
   "questionType": "category",
   "difficultyBand": "medium",
   "clues": [
@@ -32,23 +32,15 @@
     "Cabernet Sauvignon": "Keep Cabernet Sauvignon in mind, then see whether Thompson Seedless (Sultana) supports the same answer."
   },
   "articleBlocks": [
-    "At first, this felt like a random assortment of words. Kyoho?",
-    "Red Globe? Were these places, or brands, or just unusual terms?",
-    "I briefly considered \"things that are red\" because of the Red Globe clue.",
-    "But that didn't account for the other clues, and felt too simple.",
-    "Then Chardonnay appeared, and the board snapped into focus.",
-    "Chardonnay is a type of grape used to make wine.",
-    "That meant the other clues were likely related to grapes as well.",
-    "Aha! The answer is varieties of grape.",
-    "Kyoho and Red Globe are types of table grapes, while Thompson Seedless is another common variety.",
-    "Cabernet Sauvignon is another popular wine grape, completing the set.",
-    "The mix of table grapes and wine grapes made this set trickier than expected, but each clue fits perfectly once you know the category.",
-    "So, the next time you're faced with a seemingly random list, look for the common thread that ties them all together, even if it's not immediately obvious.",
-    "Sometimes the most unexpected connections lead to the most satisfying solutions. This set is a reminder to keep exploring until the pattern clicks."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #747. Kyoho, Red globe, Thompson Seedless (Sultana) can point in a few directions at first, but Chardonnay is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on varieties. Seeing Chardonnay in the mix made the focus on grapes unavoidable.",
+    "Once Chardonnay clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Kyoho, Red globe, and Thompson Seedless (Sultana) stop feeling disconnected and start looking like they belong together. Once chardonnay is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of well-known and obscure names throws off the solve, because the category is broader than just wine.",
+    "The answer is Varieties of grape. Use the clue table for Chardonnay, Cabernet Sauvignon and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "Kyoho and Red globe first pulled me toward different fruits, so that was the first path I tested. It held together for a moment, but chardonnay never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating chardonnay as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about different fruits; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "This compact explainer keeps the fastest reliable path through Pinpoint #747. Kyoho, Red globe, Thompson Seedless (Sultana) can point in a few directions at first, but Chardonnay is usually the clue that narrows the board into one answer you can actually test.",
+    "Fast read: \"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on varieties. Seeing Chardonnay in the mix made the focus on grapes unavoidable.",
+    "Once Chardonnay clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Kyoho, Red globe, and Thompson Seedless (Sultana) stop feeling disconnected and start looking like they belong together. Once chardonnay is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of well-known and obscure names throws off the solve, because the category is broader than just wine."
   ],
   "lessons": [
     {
@@ -107,10 +99,6 @@
     {
       "question": "Why is \"Chardonnay\" the key clue in LinkedIn Pinpoint #747?",
       "answer": "Chardonnay is the turning clue because \"Chardonnay grape\" makes the shared category frame explicit. It also makes Kyoho read cleanly as \"Kyoho grape variety\". The mix of well-known and obscure names throws off the solve, because the category is broader than just wine."
-    },
-    {
-      "question": "How does \"Kyoho\" fit the same category as \"Chardonnay\" in LinkedIn Pinpoint #747?",
-      "answer": "\"Kyoho\" reads as \"Kyoho grape variety\" under the same answer, so it supports the category instead of pulling toward a broader guess."
     }
   ],
   "solvePath": {
