@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 747,
+  "slug": "pinpoint-answer-747",
+  "publishDate": "2026-05-17",
+  "isoDate": "2026-05-17",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Kyoho",
+    "Red globe",
+    "Thompson Seedless (Sultana)",
+    "Chardonnay",
+    "Cabernet Sauvignon"
+  ],
+  "answer": "Varieties of grape",
+  "category": "Varieties of grape",
+  "wordHints": {
+    "Kyoho": "Kyoho connects to \"Varieties of grape\"",
+    "Red globe": "Red globe connects to \"Varieties of grape\"",
+    "Thompson Seedless (Sultana)": "Thompson Seedless (Sultana) connects to \"Varieties of grape\"",
+    "Chardonnay": "Chardonnay connects to \"Varieties of grape\"",
+    "Cabernet Sauvignon": "Cabernet Sauvignon connects to \"Varieties of grape\""
+  },
+  "spoilerHints": {
+    "Kyoho": "Kyoho should be tested as part of varieties of grape, not as a standalone reference.",
+    "Red globe": "Keep Red globe in mind, then see whether Thompson Seedless (Sultana) supports the same answer.",
+    "Thompson Seedless (Sultana)": "Thompson Seedless (Sultana) is the clue that makes varieties of grape concrete enough to test across the full board.",
+    "Chardonnay": "Chardonnay should be tested as part of varieties of grape, not as a standalone reference.",
+    "Cabernet Sauvignon": "Keep Cabernet Sauvignon in mind, then see whether Thompson Seedless (Sultana) supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, Kyoho and Red globe pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Kyoho, Red globe can point toward several nearby themes before one clue makes the exact category level visible. Kyoho is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on varieties, examples like \"Kyoho\" and \"Red globe\" stopped feeling loose and started landing cleanly.",
+    "Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Varieties of grape\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Varieties of grape, which is why \"Varieties of grape\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #747, Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on varieties",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Kyoho",
+        "examplePhrase": "Kyoho",
+        "connectionExplained": "Kyoho connects to \"Varieties of grape\""
+      },
+      {
+        "clue": "Red globe",
+        "examplePhrase": "Red globe",
+        "connectionExplained": "Red globe connects to \"Varieties of grape\""
+      },
+      {
+        "clue": "Thompson Seedless (Sultana)",
+        "examplePhrase": "Thompson Seedless (Sultana)",
+        "connectionExplained": "Thompson Seedless (Sultana) connects to \"Varieties of grape\""
+      },
+      {
+        "clue": "Chardonnay",
+        "examplePhrase": "Chardonnay",
+        "connectionExplained": "Chardonnay connects to \"Varieties of grape\""
+      },
+      {
+        "clue": "Cabernet Sauvignon",
+        "examplePhrase": "Cabernet Sauvignon",
+        "connectionExplained": "Cabernet Sauvignon connects to \"Varieties of grape\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #747?",
+      "answer": "The answer is \"Varieties of grape\". The clues Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #747 just unlocked, and this is the fastest verified update. The board clues are Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Kyoho, Red globe can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Kyoho",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #747, Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Kyoho lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Kyoho",
+    "whyDecisive": "Kyoho is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Kyoho lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Kyoho",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Kyoho",
+      "nonObviousWhy": "Kyoho supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Kyoho"
+    },
+    {
+      "clue": "Red globe",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Red globe",
+      "nonObviousWhy": "Red globe supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Red globe"
+    },
+    {
+      "clue": "Thompson Seedless (Sultana)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Thompson Seedless (Sultana)",
+      "nonObviousWhy": "Thompson Seedless (Sultana) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Thompson Seedless (Sultana)"
+    },
+    {
+      "clue": "Chardonnay",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Chardonnay",
+      "nonObviousWhy": "Chardonnay supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Chardonnay"
+    },
+    {
+      "clue": "Cabernet Sauvignon",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Cabernet Sauvignon",
+      "nonObviousWhy": "Cabernet Sauvignon supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Cabernet Sauvignon"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #747?",
+      "answer": "The answer is \"Varieties of grape\". The clues Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon all share this connection.",
+      "tiedClue": "Kyoho"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on varieties",
+    "relatedEntities": [
+      "Kyoho",
+      "Red globe",
+      "Thompson Seedless (Sultana)",
+      "Chardonnay",
+      "Cabernet Sauvignon"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on varieties",
+      "Kyoho",
+      "Red globe",
+      "Thompson Seedless (Sultana)",
+      "Chardonnay"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Kyoho, Red globe can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Kyoho is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Varieties of grape"
+}

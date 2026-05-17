@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 747,
+    "slug": "pinpoint-answer-747",
+    "publishDate": "2026-05-17",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Kyoho",
+      "Red globe",
+      "Thompson Seedless (Sultana)",
+      "Chardonnay",
+      "Cabernet Sauvignon"
+    ],
+    "mainAnswer": "Varieties of grape",
+    "category": "Varieties of grape",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #747: Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon.",
+    "updatedAt": "2026-05-17T07:03:51.146Z"
+  },
+  {
     "puzzleNumber": 746,
     "slug": "pinpoint-answer-746",
     "publishDate": "2026-05-16",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Clear",
@@ -16,7 +35,7 @@
     "category": "Words that come before “cut”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Clear, Short, Tax, Director's, Hair - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-16T07:08:32.229Z"
+    "updatedAt": "2026-05-17T07:03:51.146Z"
   },
   {
     "puzzleNumber": 745,
