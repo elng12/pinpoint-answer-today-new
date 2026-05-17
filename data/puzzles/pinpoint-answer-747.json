@@ -3,11 +3,11 @@
   "slug": "pinpoint-answer-747",
   "publishDate": "2026-05-17",
   "isoDate": "2026-05-17",
-  "detailState": "generating",
+  "detailState": "validated",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "category",
-  "difficultyBand": "hard",
+  "difficultyBand": "medium",
   "clues": [
     "Kyoho",
     "Red globe",
@@ -18,11 +18,11 @@
   "answer": "Varieties of grape",
   "category": "Varieties of grape",
   "wordHints": {
-    "Kyoho": "Kyoho connects to \"Varieties of grape\"",
-    "Red globe": "Red globe connects to \"Varieties of grape\"",
-    "Thompson Seedless (Sultana)": "Thompson Seedless (Sultana) connects to \"Varieties of grape\"",
-    "Chardonnay": "Chardonnay connects to \"Varieties of grape\"",
-    "Cabernet Sauvignon": "Cabernet Sauvignon connects to \"Varieties of grape\""
+    "Kyoho": "Kyoho is a popular type of dark-colored table grape.",
+    "Red globe": "Red Globe is a large, popular variety of red table grape.",
+    "Thompson Seedless (Sultana)": "Thompson Seedless, also known as Sultana, is a very common type of green grape.",
+    "Chardonnay": "Chardonnay is a widely planted green grape used to make white wine.",
+    "Cabernet Sauvignon": "Cabernet Sauvignon is one of the most recognized red wine grape varieties."
   },
   "spoilerHints": {
     "Kyoho": "Kyoho should be tested as part of varieties of grape, not as a standalone reference.",
@@ -32,180 +32,197 @@
     "Cabernet Sauvignon": "Keep Cabernet Sauvignon in mind, then see whether Thompson Seedless (Sultana) supports the same answer."
   },
   "articleBlocks": [
-    "At first, Kyoho and Red globe pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Kyoho, Red globe can point toward several nearby themes before one clue makes the exact category level visible. Kyoho is the clue that narrows the board into one category with clearer boundaries.",
-    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on varieties, examples like \"Kyoho\" and \"Red globe\" stopped feeling loose and started landing cleanly.",
-    "Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
-    "The answer was \"Varieties of grape\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Varieties of grape, which is why \"Varieties of grape\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+    "At first, this felt like a random assortment of words. Kyoho?",
+    "Red Globe? Were these places, or brands, or just unusual terms?",
+    "I briefly considered \"things that are red\" because of the Red Globe clue.",
+    "But that didn't account for the other clues, and felt too simple.",
+    "Then Chardonnay appeared, and the board snapped into focus.",
+    "Chardonnay is a type of grape used to make wine.",
+    "That meant the other clues were likely related to grapes as well.",
+    "Aha! The answer is varieties of grape.",
+    "Kyoho and Red Globe are types of table grapes, while Thompson Seedless is another common variety.",
+    "Cabernet Sauvignon is another popular wine grape, completing the set.",
+    "The mix of table grapes and wine grapes made this set trickier than expected, but each clue fits perfectly once you know the category.",
+    "So, the next time you're faced with a seemingly random list, look for the common thread that ties them all together, even if it's not immediately obvious.",
+    "Sometimes the most unexpected connections lead to the most satisfying solutions. This set is a reminder to keep exploring until the pattern clicks."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #747, Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+    "Kyoho and Red globe first pulled me toward different fruits, so that was the first path I tested. It held together for a moment, but chardonnay never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating chardonnay as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about different fruits; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
-      "title": "Look for word patterns",
-      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+      "title": "\"Kyoho\" and \"Red globe\" can look like they belong to different categories at first",
+      "body": "\"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "Test each clue",
-      "body": "Verify the connection holds for all 5 clues before committing."
+      "title": "\"Chardonnay\" anchors a shared category board with one concrete theme",
+      "body": "chardonnay is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Trust your instinct",
-      "body": "If a theme fits most clues naturally, it is usually correct."
+      "title": "Use \"Chardonnay\" to re-check \"Kyoho\" under a shared category board with one concrete theme",
+      "body": "When you see a mix of common and uncommon items, try to think of a category that includes both."
     }
   ],
   "display": {
     "connectorSummary": "a category board focused on varieties",
-    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "fastStrategy": "\"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
     "clueTableRows": [
       {
         "clue": "Kyoho",
-        "examplePhrase": "Kyoho",
-        "connectionExplained": "Kyoho connects to \"Varieties of grape\""
+        "examplePhrase": "Kyoho grape variety",
+        "connectionExplained": "Kyoho is a popular type of dark-colored table grape."
       },
       {
         "clue": "Red globe",
-        "examplePhrase": "Red globe",
-        "connectionExplained": "Red globe connects to \"Varieties of grape\""
+        "examplePhrase": "Red Globe grape",
+        "connectionExplained": "Red Globe is a large, popular variety of red table grape."
       },
       {
         "clue": "Thompson Seedless (Sultana)",
-        "examplePhrase": "Thompson Seedless (Sultana)",
-        "connectionExplained": "Thompson Seedless (Sultana) connects to \"Varieties of grape\""
+        "examplePhrase": "Thompson Seedless grape",
+        "connectionExplained": "Thompson Seedless, also known as Sultana, is a very common type of green grape."
       },
       {
         "clue": "Chardonnay",
-        "examplePhrase": "Chardonnay",
-        "connectionExplained": "Chardonnay connects to \"Varieties of grape\""
+        "examplePhrase": "Chardonnay grape",
+        "connectionExplained": "Chardonnay is a widely planted green grape used to make white wine."
       },
       {
         "clue": "Cabernet Sauvignon",
-        "examplePhrase": "Cabernet Sauvignon",
-        "connectionExplained": "Cabernet Sauvignon connects to \"Varieties of grape\""
+        "examplePhrase": "Cabernet Sauvignon grape",
+        "connectionExplained": "Cabernet Sauvignon is one of the most recognized red wine grape varieties."
       }
     ]
   },
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #747?",
-      "answer": "The answer is \"Varieties of grape\". The clues Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon all share this connection."
+      "question": "What final category connects \"Kyoho\" and \"Red globe\" in LinkedIn Pinpoint #747?",
+      "answer": "The answer is \"Varieties of grape\" because that reading explains the full set cleanly, including the final clue."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "How do \"Kyoho\" and \"Red globe\" connect in LinkedIn Pinpoint #747?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Chardonnay is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "Why is \"Chardonnay\" the key clue in LinkedIn Pinpoint #747?",
+      "answer": "Chardonnay is the turning clue because \"Chardonnay grape\" makes the shared category frame explicit. It also makes Kyoho read cleanly as \"Kyoho grape variety\". The mix of well-known and obscure names throws off the solve, because the category is broader than just wine."
+    },
+    {
+      "question": "How does \"Kyoho\" fit the same category as \"Chardonnay\" in LinkedIn Pinpoint #747?",
+      "answer": "\"Kyoho\" reads as \"Kyoho grape variety\" under the same answer, so it supports the category instead of pulling toward a broader guess."
     }
   ],
   "solvePath": {
-    "firstRead": "LinkedIn Pinpoint #747 just unlocked, and this is the fastest verified update. The board clues are Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "firstRead": "Kyoho, Red globe, and Thompson Seedless (Sultana) do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"different fruits\" can feel plausible before one clue makes the answer feel concrete. Chardonnay is the clue that finally breaks that first read and makes the real category feel concrete.",
     "falseStarts": [
-      "a broader umbrella topic",
-      "a one-clue surface theme"
+      "different fruits"
     ],
     "whyFalseStartPlausible": [
-      "Kyoho, Red globe can point toward several nearby themes before one clue makes the exact category level visible.",
-      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+      "That theory died as soon as I saw Chardonnay, which is clearly a grape."
     ],
-    "breakingClue": "Kyoho",
-    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #747, Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
-    "fullBoardConfirmation": "Once Kyoho lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "breakingClue": "Chardonnay",
+    "pivot": "The solve turned when I stopped treating chardonnay as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about different fruits; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Kyoho, Red globe, and Thompson Seedless (Sultana) stop feeling disconnected and start looking like they belong together. Once chardonnay is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of well-known and obscure names throws off the solve, because the category is broader than just wine."
   },
   "turningPoint": {
-    "clue": "Kyoho",
-    "whyDecisive": "Kyoho is the clue that makes the answer precise enough to test across the full board.",
-    "whatChangedAfterIt": "Once Kyoho lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "clue": "Chardonnay",
+    "whyDecisive": "Seeing Chardonnay in the mix made the focus on grapes unavoidable.",
+    "whatChangedAfterIt": "Once Chardonnay landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
       "clue": "Kyoho",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Kyoho",
-      "nonObviousWhy": "Kyoho supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Kyoho"
+      "surfaceMisread": "different fruits",
+      "resolvedPhraseOrMember": "Kyoho grape variety",
+      "nonObviousWhy": "Kyoho is a popular type of dark-colored table grape.",
+      "searchableContext": "Kyoho grape variety"
     },
     {
       "clue": "Red globe",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Red globe",
-      "nonObviousWhy": "Red globe supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Red globe"
+      "surfaceMisread": "different fruits",
+      "resolvedPhraseOrMember": "Red Globe grape",
+      "nonObviousWhy": "Red Globe is a large, popular variety of red table grape.",
+      "searchableContext": "Red Globe grape"
     },
     {
       "clue": "Thompson Seedless (Sultana)",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Thompson Seedless (Sultana)",
-      "nonObviousWhy": "Thompson Seedless (Sultana) supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Thompson Seedless (Sultana)"
+      "surfaceMisread": "different fruits",
+      "resolvedPhraseOrMember": "Thompson Seedless grape",
+      "nonObviousWhy": "Thompson Seedless, also known as Sultana, is a very common type of green grape.",
+      "searchableContext": "Thompson Seedless grape"
     },
     {
       "clue": "Chardonnay",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Chardonnay",
-      "nonObviousWhy": "Chardonnay supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Chardonnay"
+      "surfaceMisread": "different fruits",
+      "resolvedPhraseOrMember": "Chardonnay grape",
+      "nonObviousWhy": "Chardonnay is a widely planted green grape used to make white wine.",
+      "searchableContext": "Chardonnay grape"
     },
     {
       "clue": "Cabernet Sauvignon",
-      "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Cabernet Sauvignon",
-      "nonObviousWhy": "Cabernet Sauvignon supports the same answer once the shared frame becomes clear.",
-      "searchableContext": "Cabernet Sauvignon"
+      "surfaceMisread": "different fruits",
+      "resolvedPhraseOrMember": "Cabernet Sauvignon grape",
+      "nonObviousWhy": "Cabernet Sauvignon is one of the most recognized red wine grape varieties.",
+      "searchableContext": "Cabernet Sauvignon grape"
     }
   ],
   "faqItems": [
     {
-      "intentType": "definition",
-      "question": "What is the answer to LinkedIn Pinpoint #747?",
-      "answer": "The answer is \"Varieties of grape\". The clues Kyoho, Red globe, Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon all share this connection.",
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Kyoho\" and \"Red globe\" in LinkedIn Pinpoint #747?",
+      "answer": "The answer is \"Varieties of grape\" because that reading explains the full set cleanly, including the final clue.",
       "tiedClue": "Kyoho"
     },
     {
       "intentType": "solve_strategy",
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
-      "tiedClue": null
+      "question": "How do \"Kyoho\" and \"Red globe\" connect in LinkedIn Pinpoint #747?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Chardonnay is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Kyoho"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Chardonnay\" the key clue in LinkedIn Pinpoint #747?",
+      "answer": "Chardonnay is the turning clue because \"Chardonnay grape\" makes the shared category frame explicit. It also makes Kyoho read cleanly as \"Kyoho grape variety\". The mix of well-known and obscure names throws off the solve, because the category is broader than just wine.",
+      "tiedClue": "Chardonnay"
     },
     {
       "intentType": "solve_strategy",
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
-      "tiedClue": null
+      "question": "How does \"Kyoho\" fit the same category as \"Chardonnay\" in LinkedIn Pinpoint #747?",
+      "answer": "\"Kyoho\" reads as \"Kyoho grape variety\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Kyoho"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a category board focused on varieties",
+    "angle": "a shared category board with one concrete theme",
     "relatedEntities": [
-      "Kyoho",
-      "Red globe",
-      "Thompson Seedless (Sultana)",
-      "Chardonnay",
-      "Cabernet Sauvignon"
+      "Kyoho grape variety",
+      "Red Globe grape",
+      "Thompson Seedless grape",
+      "Chardonnay grape",
+      "Cabernet Sauvignon grape"
     ],
     "doNotRepeatPatterns": [
-      "a category board focused on varieties",
-      "Kyoho",
-      "Red globe",
-      "Thompson Seedless (Sultana)",
-      "Chardonnay"
+      "a shared category board with one concrete theme",
+      "\"Kyoho\" and \"Red globe\" can look like they belong to different categories at first",
+      "\"Chardonnay\" anchors a shared category board with one concrete theme",
+      "Use \"Chardonnay\" to re-check \"Kyoho\" under a shared category board with one concrete theme",
+      "Kyoho grape variety",
+      "Red Globe grape"
     ]
   },
   "wrongGuessCandidates": [
     {
-      "label": "a broader umbrella topic",
-      "whyPlausible": "Kyoho, Red globe can point toward several nearby themes before one clue makes the exact category level visible.",
-      "whyRejected": "Kyoho is the clue that narrows the board into one category with clearer boundaries."
+      "label": "different fruits",
+      "whyPlausible": "That theory died as soon as I saw Chardonnay, which is clearly a grape.",
+      "whyRejected": "Once Chardonnay lands, the final answer explains the board more cleanly than different fruits."
     },
     {
-      "label": "a one-clue surface theme",
-      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
-      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+      "label": "a broader category guess",
+      "whyPlausible": "The earliest clues are broad enough to suggest a wider category before one clue makes the exact set visible.",
+      "whyRejected": "Once Chardonnay lands, the final answer explains the full board more cleanly than that broader read."
     }
   ],
-  "setValidationSummary": "Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "setValidationSummary": "Thompson Seedless (Sultana), Chardonnay, Cabernet Sauvignon keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
   "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Varieties of grape"
 }
