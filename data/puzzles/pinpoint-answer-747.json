@@ -32,15 +32,15 @@
     "Cabernet Sauvignon": "Keep Cabernet Sauvignon in mind, then see whether Thompson Seedless (Sultana) supports the same answer."
   },
   "articleBlocks": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #747. Kyoho, Red globe, Thompson Seedless (Sultana) can point in a few directions at first, but Chardonnay is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: \"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on varieties. Seeing Chardonnay in the mix made the focus on grapes unavoidable.",
-    "Once Chardonnay clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Kyoho, Red globe, and Thompson Seedless (Sultana) stop feeling disconnected and start looking like they belong together. Once chardonnay is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of well-known and obscure names throws off the solve, because the category is broader than just wine.",
+    "Pinpoint #747 starts with grape names that do not all feel equally familiar. Kyoho, Red globe, and Thompson Seedless (Sultana) can read like grocery-store produce, while Chardonnay and Cabernet Sauvignon push the board toward wine. Keeping table grapes and wine grapes in view is the key to the set.",
+    "Fast read: \"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. Chardonnay changes the board because it is not just a wine label here; it is also the name of the grape behind that wine.",
+    "The solve turns when Chardonnay makes the grape reading unavoidable. After that pivot, Kyoho works as a Japanese table grape, Red globe as a large red table grape, and Thompson Seedless as the familiar green seedless grape also called Sultana. Cabernet Sauvignon then confirms that the set is not limited to supermarket grapes or wine terms alone. Each clue is a named grape, so the board resolves as one exact category instead of a broad fruit guess.",
     "The answer is Varieties of grape. Use the clue table for Chardonnay, Cabernet Sauvignon and the compact FAQ below to confirm each fit without waiting for a longer walkthrough."
   ],
   "solutionNarrative": [
-    "This compact explainer keeps the fastest reliable path through Pinpoint #747. Kyoho, Red globe, Thompson Seedless (Sultana) can point in a few directions at first, but Chardonnay is usually the clue that narrows the board into one answer you can actually test.",
-    "Fast read: \"Kyoho\" and \"Red globe\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category. a category board focused on varieties. Seeing Chardonnay in the mix made the focus on grapes unavoidable.",
-    "Once Chardonnay clicks, From there, reading them through one specific category frame explains the board much more cleanly. Entries like Kyoho, Red globe, and Thompson Seedless (Sultana) stop feeling disconnected and start looking like they belong together. Once chardonnay is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of well-known and obscure names throws off the solve, because the category is broader than just wine."
+    "The first pass can split the clues into separate buckets: Kyoho and Red globe sound like table grapes, Thompson Seedless is recognizable but wordy, and Chardonnay may initially feel like a wine clue.",
+    "The important move is to treat Chardonnay as the agricultural name behind the wine instead of stopping at the bottle label. That same move makes Cabernet Sauvignon fit cleanly too.",
+    "Once the wine-grape clues are read that way, the earlier produce-style clues no longer compete with them. Kyoho, Red globe, Thompson Seedless, Chardonnay, and Cabernet Sauvignon are all grape varieties, which is more precise than a loose answer such as fruit or wine."
   ],
   "lessons": [
     {
@@ -49,7 +49,7 @@
     },
     {
       "title": "\"Chardonnay\" anchors a shared category board with one concrete theme",
-      "body": "chardonnay is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "body": "Chardonnay is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
       "title": "Use \"Chardonnay\" to re-check \"Kyoho\" under a shared category board with one concrete theme",
@@ -111,7 +111,7 @@
     ],
     "breakingClue": "Chardonnay",
     "pivot": "The solve turned when I stopped treating chardonnay as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about different fruits; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
-    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Kyoho, Red globe, and Thompson Seedless (Sultana) stop feeling disconnected and start looking like they belong together. Once chardonnay is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of well-known and obscure names throws off the solve, because the category is broader than just wine."
+    "fullBoardConfirmation": "After that, the board resolves from both ends. Kyoho, Red globe, and Thompson Seedless (Sultana) cover recognizable table-grape names, while Chardonnay and Cabernet Sauvignon cover wine grapes that are also grape cultivars. The mix of familiar and less familiar entries is the trap: the category is broader than just wine but narrower than fruit."
   },
   "turningPoint": {
     "clue": "Chardonnay",
