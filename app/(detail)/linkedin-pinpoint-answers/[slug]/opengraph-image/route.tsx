@@ -22,22 +22,30 @@ export async function GET(
   const puzzle = getBundledRegistryEntries().find((entry) => entry.slug === slug && isPublicDetailEntry(entry));
   const puzzleNumber = slug.match(/(\d+)$/)?.[1];
 
+  let res: Response;
+
   if (puzzle) {
     const titlePrefix = `Pinpoint #${puzzle.puzzleNumber}: `;
     const clueText = fitPinpointClues(puzzle.clues, 92 - titlePrefix.length);
 
-    return createSocialImageResponse({
+    res = createSocialImageResponse({
       eyebrow: `LinkedIn Pinpoint #${puzzle.puzzleNumber}`,
       title: clueText ? `${titlePrefix}${clueText}` : `Pinpoint #${puzzle.puzzleNumber} answer guide`,
       subtitle: "Spoiler-safe clue help, solve logic, and full answer walkthrough.",
     });
+  } else {
+    res = createSocialImageResponse({
+      eyebrow: puzzleNumber ? `Puzzle #${puzzleNumber}` : "LinkedIn Pinpoint archive",
+      title: "Pinpoint Answer Today",
+      subtitle: puzzleNumber
+        ? `Spoiler-safe hints, full walkthrough, and archive recap for Puzzle ${puzzleNumber}.`
+        : "Open the latest verified answer, spoiler-safe hints, and puzzle archive recap.",
+    });
   }
 
-  return createSocialImageResponse({
-    eyebrow: puzzleNumber ? `Puzzle #${puzzleNumber}` : "LinkedIn Pinpoint archive",
-    title: "Pinpoint Answer Today",
-    subtitle: puzzleNumber
-      ? `Spoiler-safe hints, full walkthrough, and archive recap for Puzzle ${puzzleNumber}.`
-      : "Open the latest verified answer, spoiler-safe hints, and puzzle archive recap.",
-  });
+  res.headers.set(
+    "Cache-Control",
+    "public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800",
+  );
+  return res;
 }

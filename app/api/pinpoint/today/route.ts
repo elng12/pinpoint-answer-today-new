@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 const DEFAULT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.dev/health";
 
@@ -16,6 +16,14 @@ function resolveWorkerBaseUrl(): URL {
   } catch {
     return new URL("https://pinpoint-worker.2296744453m.workers.dev");
   }
+}
+
+function buildCachedHeaders(contentType?: string | null): Headers {
+  const headers = new Headers({
+    "Cache-Control": "public, max-age=60, s-maxage=60, stale-while-revalidate=300",
+  });
+  if (contentType) headers.set("content-type", contentType);
+  return headers;
 }
 
 function buildNoStoreHeaders(contentType?: string | null): Headers {
@@ -39,10 +47,11 @@ export async function GET(req: Request) {
   try {
     const upstream = await fetch(upstreamUrl, { cache: "no-store" });
     const body = await upstream.text();
+    const contentType = upstream.headers.get("content-type") || "application/json";
 
     return new NextResponse(body, {
       status: upstream.status,
-      headers: buildNoStoreHeaders(upstream.headers.get("content-type") || "application/json"),
+      headers: upstream.ok ? buildCachedHeaders(contentType) : buildNoStoreHeaders(contentType),
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "upstream unavailable";
@@ -52,4 +61,3 @@ export async function GET(req: Request) {
     );
   }
 }
-

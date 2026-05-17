@@ -3,12 +3,11 @@ import { notFound } from "next/navigation";
 import { PuzzleDetail } from "@/components/detail/PuzzleDetail";
 import { StructuredData } from "@/components/seo/StructuredData";
 import {
-  getAdjacentEntries,
   getAllDetailSlugs,
+  getArchiveEntries,
   getCurrentPuzzle,
   getNextPreview,
   getPuzzleBySlug,
-  getRecentEntries,
 } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 import {
@@ -68,13 +67,19 @@ export default async function DetailPage({
 }) {
   const detailArchiveOptions = { allowLiveWorkerFallback: false } as const;
   const { slug } = await params;
-  const [puzzle, recentPuzzles, nextPreview, adjacent, currentPuzzle] = await Promise.all([
+  const [puzzle, entries, nextPreview, currentPuzzle] = await Promise.all([
     getPuzzleBySlug(slug, detailArchiveOptions),
-    getRecentEntries(10, slug, detailArchiveOptions),
+    getArchiveEntries(detailArchiveOptions),
     getNextPreview(),
-    getAdjacentEntries(slug, detailArchiveOptions),
     getCurrentPuzzle(detailArchiveOptions),
   ]);
+
+  const idx = entries.findIndex((e) => e.slug === slug);
+  const adjacent = {
+    prev: idx < entries.length - 1 ? { ...entries[idx + 1]! } : null,
+    next: idx > 0 ? { ...entries[idx - 1]! } : null,
+  };
+  const recentPuzzles = entries.filter((e) => e.slug !== slug).slice(0, 10);
 
   if (!puzzle) {
     notFound();

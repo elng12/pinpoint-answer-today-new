@@ -10,6 +10,11 @@ import {
   buildSharedFallbackSolutionNarrative,
 } from "../../lib/puzzles/fallback-copy";
 import { getPinpointUnlockUtcHour } from "../../lib/utils/pinpoint-unlock";
+import {
+  generatePuzzleDraft,
+  regeneratePuzzleDraft,
+  type EnrichInput,
+} from "./enrich-llm";
 
 export interface Env {
   PP_DATA: KVNamespace;
@@ -45,6 +50,8 @@ export interface Env {
   AUTO_I18N_TIMEOUT_MS?: string;    // optional: timeout for localize requests
   AUTO_ENRICH_MODEL?: string;       // optional: explicit model override for enrich draft
   AUTO_I18N_MODEL?: string;         // optional: explicit model override for i18n localize draft
+  LLM_API_KEY?: string;             // API key for direct LLM calls from Worker (avoids Vercel Fluid CPU)
+  LLM_BASE_URL?: string;            // optional: OpenAI-compatible base URL (e.g. OpenRouter)
 
   // New site (pinpoint-answer-today-new) GitHub publishing
   GITHUB_TOKEN_NEW_SITE?: string;        // Classic PAT with repo scope
@@ -3727,70 +3734,177 @@ async function enrichPublishToSite(
       console.warn("[new-site] generating state publish failed (non-fatal):", statusError);
     }
 
+    const llmApiKey = String(env.LLM_API_KEY || "").trim();
+    const llmBaseUrl = String(env.LLM_BASE_URL || "").trim();
+
     let draftResp: JsonRecord | null = null;
     let lastDraftError: unknown = null;
     let qualityGateSummary = "";
     let publishDetailState: PublicDetailState = "published";
-    for (let attempt = 1; attempt <= draftAttempts; attempt += 1) {
-      const draftModel = attempt === 1 ? enrichModel : retryModel;
-      try {
-        draftResp = await postSiteJson(
-          `${siteBaseUrl}/api/admin/generate-draft`,
-          token,
-          {
-            type: "draft",
-            model: draftModel,
-            puzzleNumber,
-            rawWords: words,
-            mainAnswer: answer,
-          },
-          timeoutMs,
-        );
-        break;
-      } catch (error) {
-        lastDraftError = error;
-        if (!isDraftQualityGateError(error)) {
-          throw error;
-        }
-        qualityGateSummary = extractDraftFailureSummary(error);
-        if (attempt >= draftAttempts) {
-          publishDetailState = "fallback_full";
-          const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-          const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
-          await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 fallback_full 保底全文页", [
-            `日期: ${puzzleDate}`,
-            `谜题: #${puzzleNumber}`,
-            `答案: ${answer}`,
-            `尝试次数: ${draftAttempts}`,
-            `结果: AI 长文未过线，已切换为 fallback_full 保底全文页`,
-            `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
-          ]);
-          draftResp = {
-            success: true,
-            data: fallbackPayload,
-          };
-          lastDraftError = null;
-          console.warn("[enrich] draft blocked by quality gates; switched to fallback_full", {
+
+    if (llmApiKey) {
+      // Direct LLM path — call LLM from Worker (no Vercel Fluid CPU),
+      // then validate on Vercel via lightweight endpoint.
+      const enrichInput: EnrichInput = { puzzleNumber, rawWords: words, mainAnswer: answer };
+      let candidateData: Record<string, unknown> | null = null;
+      let lastValidationIssues: Array<{ message: string }> = [];
+
+      for (let attempt = 1; attempt <= draftAttempts; attempt += 1) {
+        const draftModel = attempt === 1 ? enrichModel : retryModel;
+        try {
+          if (attempt === 1) {
+            const result = await generatePuzzleDraft(enrichInput, {
+              apiKey: llmApiKey,
+              model: draftModel,
+              baseUrl: llmBaseUrl || undefined,
+            });
+            candidateData = result.data;
+          } else {
+            const result = await regeneratePuzzleDraft(
+              enrichInput,
+              candidateData ?? {},
+              lastValidationIssues,
+              { apiKey: llmApiKey, model: draftModel, baseUrl: llmBaseUrl || undefined },
+            );
+            candidateData = result.data;
+          }
+
+          const validateResp = await postSiteJson(
+            `${siteBaseUrl}/api/admin/validate-draft`,
+            token,
+            {
+              puzzleNumber,
+              rawWords: words,
+              mainAnswer: answer,
+              candidate: candidateData,
+            },
+            parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000),
+          );
+
+          if (validateResp.valid) {
+            draftResp = { success: true, data: candidateData };
+            break;
+          }
+
+          const issues = Array.isArray(validateResp.issues) ? validateResp.issues : [];
+          const errorIssues = issues.filter(
+            (i: Record<string, unknown>) => i?.level === "error",
+          );
+          lastValidationIssues = errorIssues
+            .map((i: Record<string, unknown>) => ({ message: String(i?.message || "") }))
+            .filter((issue) => issue.message);
+          qualityGateSummary = errorIssues
+            .map((i: Record<string, unknown>) => String(i?.message || ""))
+            .join(" | ");
+
+          if (attempt >= draftAttempts) {
+            publishDetailState = "fallback_full";
+            const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+            const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
+            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 fallback_full 保底全文页", [
+              `日期: ${puzzleDate}`,
+              `谜题: #${puzzleNumber}`,
+              `答案: ${answer}`,
+              `尝试次数: ${draftAttempts}`,
+              `结果: AI 长文未过线，已切换为 fallback_full 保底全文页`,
+              `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
+            ]);
+            draftResp = { success: true, data: fallbackPayload };
+            lastDraftError = null;
+            console.warn("[enrich] draft blocked by quality gates; switched to fallback_full", {
+              puzzleDate,
+              puzzleNumber,
+              attempt,
+              draftAttempts,
+              reason,
+            });
+            break;
+          }
+
+          console.warn("[enrich] draft blocked by quality gates; regenerating (Worker LLM)", {
             puzzleDate,
             puzzleNumber,
             attempt,
             draftAttempts,
+            model: draftModel,
+            issues: qualityGateSummary,
+          });
+          await sleep(800 * attempt);
+        } catch (error) {
+          lastDraftError = error;
+          if (isRetryableSitePostError(error)) {
+            console.warn("[enrich] retryable LLM/validation error; retrying", {
+              puzzleDate,
+              puzzleNumber,
+              attempt,
+              error: error instanceof Error ? error.message : String(error),
+            });
+            await sleep(800 * attempt);
+            continue;
+          }
+          throw error;
+        }
+      }
+    } else {
+      // Fallback path — no LLM_API_KEY, delegate to Vercel generate-draft endpoint.
+      for (let attempt = 1; attempt <= draftAttempts; attempt += 1) {
+        const draftModel = attempt === 1 ? enrichModel : retryModel;
+        try {
+          draftResp = await postSiteJson(
+            `${siteBaseUrl}/api/admin/generate-draft`,
+            token,
+            {
+              type: "draft",
+              model: draftModel,
+              puzzleNumber,
+              rawWords: words,
+              mainAnswer: answer,
+            },
+            timeoutMs,
+          );
+          break;
+        } catch (error) {
+          lastDraftError = error;
+          if (!isDraftQualityGateError(error)) {
+            throw error;
+          }
+          qualityGateSummary = extractDraftFailureSummary(error);
+          if (attempt >= draftAttempts) {
+            publishDetailState = "fallback_full";
+            const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+            const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
+            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 fallback_full 保底全文页", [
+              `日期: ${puzzleDate}`,
+              `谜题: #${puzzleNumber}`,
+              `答案: ${answer}`,
+              `尝试次数: ${draftAttempts}`,
+              `结果: AI 长文未过线，已切换为 fallback_full 保底全文页`,
+              `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
+            ]);
+            draftResp = { success: true, data: fallbackPayload };
+            lastDraftError = null;
+            console.warn("[enrich] draft blocked by quality gates; switched to fallback_full", {
+              puzzleDate,
+              puzzleNumber,
+              attempt,
+              draftAttempts,
+              reason,
+            });
+            break;
+          }
+          const reason = error instanceof Error ? error.message : String(error);
+          const delayMs = 800 * attempt;
+          console.warn("[enrich] draft blocked by quality gates; regenerating (Vercel)", {
+            puzzleDate,
+            puzzleNumber,
+            attempt,
+            draftAttempts,
+            model: draftModel,
+            nextModel: retryModel,
             reason,
           });
-          break;
+          await sleep(delayMs);
         }
-        const reason = error instanceof Error ? error.message : String(error);
-        const delayMs = 800 * attempt;
-        console.warn("[enrich] draft blocked by quality gates; regenerating", {
-          puzzleDate,
-          puzzleNumber,
-          attempt,
-          draftAttempts,
-          model: draftModel,
-          nextModel: retryModel,
-          reason,
-        });
-        await sleep(delayMs);
       }
     }
     if (!draftResp) {

@@ -160,7 +160,8 @@ export async function getNextPreview(): Promise<NextPreview | null> {
   };
 }
 
-export async function getSitemapDetailEntries() {
-  const entries = await getDetailEntries();
+export function getSitemapDetailEntries() {
+  // getBundledRegistryEntries already sorts by puzzleNumber desc
+  const entries = getBundledRegistryEntries().filter(isPublicDetailEntry);
   return entries.map((e) => ({ slug: e.slug, updatedAt: e.updatedAt }));
 }

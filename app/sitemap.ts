@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  const detailItems = await getSitemapDetailEntries();
+  const detailItems = getSitemapDetailEntries();
   const detailEntries = detailItems.map((item, index) => ({
     url: `${siteUrl}${withTrailingSlash(routes.detail(item.slug))}`,
     lastModified: new Date(item.updatedAt),
