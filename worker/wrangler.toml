@@ -55,6 +55,9 @@ AUTO_I18N_MODEL             = "google/gemini-2.0-flash-001"
 # Legacy publish base — leave empty; old publish API no longer exists
 SITE_BASE_URL               = ""
 
+# Worker-side LLM (avoids Vercel Fluid CPU for enrichment)
+LLM_BASE_URL                = ""
+
 # ---------------------------------------------------------------------------
 # Secrets — set via Cloudflare Dashboard or `wrangler secret put <NAME>`
 # See worker/README.md for full list
@@ -63,6 +66,7 @@ SITE_BASE_URL               = ""
 # GRAPHQL_TOKEN                — Optional bearer token for GraphQL endpoint
 # GRAPHQL_CSRF_TOKEN           — Optional CSRF token for Voyager GraphQL
 # SITE_API_TOKEN               — Bearer token for /api/admin/generate-draft (enrichment)
+# LLM_API_KEY                  — API key for direct LLM calls from Worker (same as OPENAI_API_KEY on Vercel)
 # GITHUB_TOKEN_NEW_SITE        — Fine-grained PAT: contents:write on new repo
 # NEW_SITE_REVALIDATE_SECRET   — Must match REVALIDATE_SECRET in Vercel env
 # FEISHU_WEBHOOK_URL           — Feishu webhook URL for cron alerts
@@ -110,6 +114,7 @@ AUTO_I18N_TIMEOUT_MS        = "90000"
 AUTO_ENRICH_MODEL           = "google/gemini-2.0-flash-001"
 AUTO_I18N_MODEL             = "google/gemini-2.0-flash-001"
 SITE_BASE_URL               = ""
+LLM_BASE_URL                = ""
 
 [[env.shadow.kv_namespaces]]
 binding = "PP_DATA"
@@ -147,6 +152,7 @@ AUTO_I18N_TIMEOUT_MS        = "90000"
 AUTO_ENRICH_MODEL           = "google/gemini-2.0-flash-001"
 AUTO_I18N_MODEL             = "google/gemini-2.0-flash-001"
 SITE_BASE_URL               = ""
+LLM_BASE_URL                = ""
 
 [[env.staging.kv_namespaces]]
 binding = "PP_DATA"

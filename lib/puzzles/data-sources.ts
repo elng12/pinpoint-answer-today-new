@@ -67,15 +67,30 @@ async function fetchPuzzleContentFromRemote(slug: string): Promise<PuzzleDetailC
   return puzzleDetailContentSchema.parse(json);
 }
 
+type RegistryCacheEntry = { data: PuzzleRegistryEntryRecord[]; ts: number };
+let registryCache: RegistryCacheEntry | null = null;
+const REGISTRY_CACHE_TTL_MS = 30_000;
+
 export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
+  // Short-lived module-level cache so consecutive ISR renders (e.g. from
+  // generateMetadata → page component, or from crawler requests to nearby
+  // pages) share the same parsed registry without re-running Zod.
+  if (registryCache && Date.now() - registryCache.ts < REGISTRY_CACHE_TTL_MS) {
+    return registryCache.data;
+  }
+
   // In production we prefer remote first so publish + revalidate can reflect
   // new puzzles without waiting for a full redeploy artifact refresh.
   const shouldTryRemoteFirst =
     process.env.NODE_ENV === "production" && hasRemotePuzzleDataSource();
 
+  let result: PuzzleRegistryEntryRecord[];
+
   if (shouldTryRemoteFirst) {
     try {
-      return await fetchRegistryFromRemote();
+      result = await fetchRegistryFromRemote();
+      registryCache = { data: result, ts: Date.now() };
+      return result;
     } catch (error) {
       warnRemoteFallback("Remote registry unavailable, falling back to local file", error);
     }
@@ -86,37 +101,58 @@ export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]
     const filePath = resolve(resolveDataDir(), "registry.json");
     if (existsSync(filePath)) {
       const raw = readFileSync(filePath, "utf8");
-      return registrySchema
+      result = registrySchema
         .parse(JSON.parse(raw))
         .slice()
         .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
+      registryCache = { data: result, ts: Date.now() };
+      return result;
     }
   } catch {
     // fall through to final remote attempt
   }
 
   if (!hasRemotePuzzleDataSource()) {
-    return getBundledRegistryEntries();
+    result = getBundledRegistryEntries();
+    registryCache = { data: result, ts: Date.now() };
+    return result;
   }
 
   // Final remote attempt (covers environments where filesystem is unavailable)
   try {
-    return await fetchRegistryFromRemote();
+    result = await fetchRegistryFromRemote();
   } catch (error) {
     warnRemoteFallback("Falling back to bundled registry", error);
-    return getBundledRegistryEntries();
+    result = getBundledRegistryEntries();
   }
+
+  registryCache = { data: result, ts: Date.now() };
+  return result;
 });
 
+const puzzleContentCache = new Map<string, { data: PuzzleDetailContentRecord; ts: number }>();
+const PUZZLE_CONTENT_CACHE_TTL_MS = 60_000;
+
 export const fetchPuzzleContent = cache(async (slug: string): Promise<PuzzleDetailContentRecord> => {
+  // Short-lived module-level cache so generateMetadata → page component
+  // double-render of the same slug shares the parsed detail JSON.
+  const cached = puzzleContentCache.get(slug);
+  if (cached && Date.now() - cached.ts < PUZZLE_CONTENT_CACHE_TTL_MS) {
+    return cached.data;
+  }
+
   // Match registry behavior so production revalidation can pull fresh detail JSON
   // without waiting for a fresh deployment artifact.
   const shouldTryRemoteFirst =
     process.env.NODE_ENV === "production" && hasRemotePuzzleDataSource();
 
+  let result: PuzzleDetailContentRecord;
+
   if (shouldTryRemoteFirst) {
     try {
-      return await fetchPuzzleContentFromRemote(slug);
+      result = await fetchPuzzleContentFromRemote(slug);
+      puzzleContentCache.set(slug, { data: result, ts: Date.now() });
+      return result;
     } catch (error) {
       warnRemoteFallback(
         `Remote detail JSON unavailable for ${slug}, falling back to local file`,
@@ -129,22 +165,28 @@ export const fetchPuzzleContent = cache(async (slug: string): Promise<PuzzleDeta
   try {
     const filePath = resolve(resolveDataDir(), `${slug}.json`);
     if (existsSync(filePath)) {
-      return loadDetailContentFromFilesystem(slug);
+      result = loadDetailContentFromFilesystem(slug);
+      puzzleContentCache.set(slug, { data: result, ts: Date.now() });
+      return result;
     }
   } catch {
     // fall through to optional remote fetch
   }
 
   if (!hasRemotePuzzleDataSource()) {
-    return loadDetailContentFromFilesystem(slug);
+    result = loadDetailContentFromFilesystem(slug);
+    puzzleContentCache.set(slug, { data: result, ts: Date.now() });
+    return result;
   }
 
   // Final remote attempt (covers environments where filesystem is unavailable)
   try {
-    return await fetchPuzzleContentFromRemote(slug);
+    result = await fetchPuzzleContentFromRemote(slug);
   } catch (error) {
     warnRemoteFallback(`Falling back to local detail JSON for ${slug}`, error);
+    result = loadDetailContentFromFilesystem(slug);
   }
 
-  return loadDetailContentFromFilesystem(slug);
+  puzzleContentCache.set(slug, { data: result, ts: Date.now() });
+  return result;
 });

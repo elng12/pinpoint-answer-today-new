@@ -107,5 +107,11 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/:path*",
+  /*
+   * Match all request paths except:
+   * - _next (static assets, image optimization)
+   * - api (API routes — already bypassed by shouldBypassCanonicalization)
+   * - static files (any path with a file extension)
+   */
+  matcher: "/((?!_next|api|.*\\.[a-z0-9]+$).*)",
 };
