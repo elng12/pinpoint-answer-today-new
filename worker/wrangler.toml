@@ -56,7 +56,7 @@ AUTO_I18N_MODEL             = "google/gemini-2.0-flash-001"
 SITE_BASE_URL               = ""
 
 # Worker-side LLM (avoids Vercel Fluid CPU for enrichment)
-LLM_BASE_URL                = ""
+LLM_BASE_URL                = "https://openrouter.ai/api/v1"
 
 # ---------------------------------------------------------------------------
 # Secrets — set via Cloudflare Dashboard or `wrangler secret put <NAME>`
@@ -114,7 +114,7 @@ AUTO_I18N_TIMEOUT_MS        = "90000"
 AUTO_ENRICH_MODEL           = "google/gemini-2.0-flash-001"
 AUTO_I18N_MODEL             = "google/gemini-2.0-flash-001"
 SITE_BASE_URL               = ""
-LLM_BASE_URL                = ""
+LLM_BASE_URL                = "https://openrouter.ai/api/v1"
 
 [[env.shadow.kv_namespaces]]
 binding = "PP_DATA"
@@ -152,7 +152,7 @@ AUTO_I18N_TIMEOUT_MS        = "90000"
 AUTO_ENRICH_MODEL           = "google/gemini-2.0-flash-001"
 AUTO_I18N_MODEL             = "google/gemini-2.0-flash-001"
 SITE_BASE_URL               = ""
-LLM_BASE_URL                = ""
+LLM_BASE_URL                = "https://openrouter.ai/api/v1"
 
 [[env.staging.kv_namespaces]]
 binding = "PP_DATA"
