@@ -3781,6 +3781,11 @@ async function enrichPublishToSite(
             parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000),
           );
 
+          const normalizedCandidateData = asRecord(validateResp.candidate);
+          if (normalizedCandidateData) {
+            candidateData = normalizedCandidateData;
+          }
+
           if (validateResp.valid) {
             draftResp = { success: true, data: candidateData };
             break;

@@ -48,6 +48,17 @@ export function buildDeterministicPuzzleContent(
   return composeFromSlots(slots, puzzleData);
 }
 
+export function normalizeGeneratedPuzzleContent(
+  parsed: unknown,
+  puzzleData?: PuzzleDataForAI,
+): AIGeneratedContent {
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("AI response missing JSON object");
+  }
+
+  return validateAndFixGeneratedContent(parsed as ParsedAIResponse, puzzleData);
+}
+
 export async function generatePuzzleContentFromPrompt(
   prompt: string,
   apiKey: string,
@@ -75,4 +86,3 @@ export async function generatePuzzleContentFromPrompt(
     puzzleData,
   );
 }
-

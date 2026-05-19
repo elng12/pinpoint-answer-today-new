@@ -67,15 +67,28 @@ async function fetchPuzzleContentFromRemote(slug: string): Promise<PuzzleDetailC
   return puzzleDetailContentSchema.parse(json);
 }
 
-type RegistryCacheEntry = { data: PuzzleRegistryEntryRecord[]; ts: number };
+type RegistryCacheEntry = { key: string; data: PuzzleRegistryEntryRecord[]; ts: number };
 let registryCache: RegistryCacheEntry | null = null;
 const REGISTRY_CACHE_TTL_MS = 30_000;
+
+function getPuzzleDataSourceCacheKey(): string {
+  return [
+    process.env.NODE_ENV ?? "",
+    getGithubRawBase(),
+    resolveDataDir(),
+  ].join("|");
+}
 
 export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]> => {
   // Short-lived module-level cache so consecutive ISR renders (e.g. from
   // generateMetadata → page component, or from crawler requests to nearby
   // pages) share the same parsed registry without re-running Zod.
-  if (registryCache && Date.now() - registryCache.ts < REGISTRY_CACHE_TTL_MS) {
+  const cacheKey = getPuzzleDataSourceCacheKey();
+  if (
+    registryCache &&
+    registryCache.key === cacheKey &&
+    Date.now() - registryCache.ts < REGISTRY_CACHE_TTL_MS
+  ) {
     return registryCache.data;
   }
 
@@ -89,7 +102,7 @@ export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]
   if (shouldTryRemoteFirst) {
     try {
       result = await fetchRegistryFromRemote();
-      registryCache = { data: result, ts: Date.now() };
+      registryCache = { key: cacheKey, data: result, ts: Date.now() };
       return result;
     } catch (error) {
       warnRemoteFallback("Remote registry unavailable, falling back to local file", error);
@@ -105,7 +118,7 @@ export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]
         .parse(JSON.parse(raw))
         .slice()
         .sort((a, b) => b.puzzleNumber - a.puzzleNumber);
-      registryCache = { data: result, ts: Date.now() };
+      registryCache = { key: cacheKey, data: result, ts: Date.now() };
       return result;
     }
   } catch {
@@ -114,7 +127,7 @@ export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]
 
   if (!hasRemotePuzzleDataSource()) {
     result = getBundledRegistryEntries();
-    registryCache = { data: result, ts: Date.now() };
+    registryCache = { key: cacheKey, data: result, ts: Date.now() };
     return result;
   }
 
@@ -126,7 +139,7 @@ export const fetchRegistry = cache(async (): Promise<PuzzleRegistryEntryRecord[]
     result = getBundledRegistryEntries();
   }
 
-  registryCache = { data: result, ts: Date.now() };
+  registryCache = { key: cacheKey, data: result, ts: Date.now() };
   return result;
 });
 

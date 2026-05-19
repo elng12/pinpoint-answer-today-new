@@ -110,10 +110,24 @@ function pickDescriptionCandidate(candidates: string[], fallback: string): strin
   return uniqueCandidates.sort((left, right) => right.length - left.length)[0] ?? fallback;
 }
 
+function normalizeSeoAnswer(answer?: string): string {
+  return (answer ?? "").replace(/\s+/g, " ").trim().replace(/[.!?]+$/, "");
+}
+
+function appendAnswerWhenItFits(description: string, answer?: string): string {
+  const normalizedAnswer = normalizeSeoAnswer(answer);
+  if (!normalizedAnswer) return description;
+
+  const suffix = ` Answer: ${normalizedAnswer}.`;
+  if (description.includes(suffix.trim())) return description;
+  const next = `${description}${suffix}`;
+  return next.length <= CONTENT_CONTRACT.metaDescriptionIndexMaxChars ? next : description;
+}
+
 export function buildPuzzleSeoDescription(
   puzzleNumber: number,
   clues: string[],
-  _answer?: string,
+  answer?: string,
 ): string {
   const candidates: string[] = [];
 
@@ -151,10 +165,11 @@ export function buildPuzzleSeoDescription(
     }),
   );
 
-  return pickDescriptionCandidate(
+  const baseDescription = pickDescriptionCandidate(
     candidates,
     `LinkedIn Pinpoint ${puzzleNumber} answer guide with spoiler-safe hints, clue logic, a full walkthrough, and the verified solution for the current puzzle, updated daily.`,
   );
+  return appendAnswerWhenItFits(baseDescription, answer);
 }
 
 function buildSocialImage(imagePath: string, alt: string) {

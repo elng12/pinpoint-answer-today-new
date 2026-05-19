@@ -4,6 +4,11 @@ import { createServer } from "node:http";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { NextRequest } from "next/server";
+import { normalizeGeneratedPuzzleContent } from "../lib/puzzle-generation";
+import {
+  validateDraftLanguage,
+  validateDraftStructure,
+} from "../lib/puzzles/draft-validator";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
@@ -1604,6 +1609,224 @@ async function checkTypedCategoryGenerationKeepsGrammarNatural() {
   console.log("ok: typed-category generation keeps singular tails and emits structured publish fields");
 }
 
+function countWords(value: unknown): number {
+  return String(value || "").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function checkWorkerLlmSlotsOnlyDraftNormalizesBeforeValidation() {
+  const puzzleData = {
+    puzzleNumber: 749,
+    rawWords: ["Thermal", "Laser", "3D", "Dot matrix", "Inkjet"],
+    mainAnswer: "Types of printers",
+  };
+  const candidate = {
+    pageExperienceMode: "full-analysis",
+    wrongGuessCandidates: [
+      {
+        label: "office technology",
+        whyPlausible: "The opening clues can sound like a broad workplace technology category.",
+        whyRejected: "Dot matrix makes the exact printer category harder to avoid.",
+      },
+    ],
+    setValidationSummary:
+      "Thermal, Laser, 3D, Dot matrix, and Inkjet all behave like specific printer types, so the board stays precise.",
+    categoryPrecisionNote: "a typed category where each clue names a specific printer family",
+    slots: {
+      heroIntroSpoilerSafe:
+        "Thermal, Laser, and 3D first look like broad technology clues, but the later entries narrow the board into a much more specific device family.",
+      connectorSummary: "a category board focused on printer types",
+      turningPoint:
+        "Dot matrix is the clue that turns broad office technology into a printer-specific read.",
+      falseStarts: ["office technology", "printing materials"],
+      rejectedGuess: {
+        guess: "office technology",
+        explanation:
+          "That broad read fits Laser and 3D loosely, but Dot matrix and Inkjet demand a more exact device family.",
+      },
+      clueDetails: [
+        {
+          clue: "Thermal",
+          surfaceRead: "a heat or science clue",
+          phrase: "Thermal printer",
+          whyItWorks:
+            "Thermal printers use heat-based printing, so the clue names a recognizable member of the category.",
+        },
+        {
+          clue: "Laser",
+          surfaceRead: "a light or physics clue",
+          phrase: "Laser printer",
+          whyItWorks:
+            "Laser printers are a common office printer type, which makes the clue concrete rather than just scientific.",
+        },
+        {
+          clue: "3D",
+          surfaceRead: "a design or modeling clue",
+          phrase: "3D printer",
+          whyItWorks:
+            "3D printers are additive manufacturing devices, so the clue stays inside the printer family.",
+        },
+        {
+          clue: "Dot matrix",
+          surfaceRead: "an old display or pattern clue",
+          phrase: "Dot matrix printer",
+          whyItWorks:
+            "Dot matrix printers are a classic impact printer type, and this clue makes the category unmistakable.",
+        },
+        {
+          clue: "Inkjet",
+          surfaceRead: "an ink technology clue",
+          phrase: "Inkjet printer",
+          whyItWorks:
+            "Inkjet printers are a standard consumer printer type, confirming the same device category.",
+        },
+      ],
+      difficultyReason:
+        "The board feels tricky because early clues can sound like technologies before the printer family becomes exact.",
+      portableTakeaway:
+        "Wait for the clue that turns broad technology into one exact device category.",
+    },
+    sections: {
+      articleBlocks: [
+        "At first, this looked more like office technology than printer types.",
+        "Thermal pushed me in that direction immediately.",
+        "Laser kept that theory alive for a moment, but Dot matrix still did not quite fit.",
+        "That was the moment the first idea stopped working.",
+        "Then Dot matrix made me stop thinking about office technology and start thinking about printer types.",
+        "Thermal made sense as a thermal printer.",
+        "Laser made sense as a laser printer.",
+        "The answer was Types of printers.",
+        "3D and Inkjet then felt less surprising and more like the last pieces falling into place.",
+        "Looking back, the answer feels obvious in the best way.",
+      ],
+    },
+  };
+
+  const normalized = normalizeGeneratedPuzzleContent(candidate, puzzleData);
+  const errors = [
+    ...validateDraftStructure(puzzleData, normalized),
+    ...validateDraftLanguage(normalized),
+  ].filter((issue) => issue.level === "error");
+
+  assert.equal(
+    errors.length,
+    0,
+    `slots-only Worker LLM draft should validate after normalization: ${errors.map((issue) => issue.message).join(" | ")}`,
+  );
+  assert.ok(
+    countWords(normalized.sections.overview) >= 65,
+    "slots-only Worker LLM draft should receive a full overview before validation",
+  );
+  assert.ok(
+    countWords(normalized.sections.solutionEmergence) >= 90,
+    "slots-only Worker LLM draft should receive a first-person solutionEmergence before validation",
+  );
+  assert.deepEqual(
+    normalized.clueRows?.map((row) => row.clue),
+    puzzleData.rawWords,
+    "normalized Worker LLM evidence clueRows should preserve original clue order",
+  );
+  assert.match(
+    normalized.faqItems?.[0]?.answer || "",
+    /Types of printers/,
+    "normalized Worker LLM FAQ evidence should preserve the exact answer text",
+  );
+
+  console.log("ok: Worker LLM slots-only drafts normalize before validation");
+}
+
+async function checkValidateDraftDoesNotNormalizeEmptySlots() {
+  const routeModulePath = `../app/api/admin/validate-draft/route.ts?empty-slots-guardrail=${Date.now()}`;
+  const routeModule = (await import(routeModulePath)) as {
+    POST: (request: NextRequest) => Promise<Response>;
+  };
+  const request = new NextRequest("http://localhost/api/admin/validate-draft", {
+    method: "POST",
+    headers: {
+      authorization: "Bearer admin-secret-dev",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      puzzleNumber: 749,
+      rawWords: ["Thermal", "Laser", "3D", "Dot matrix", "Inkjet"],
+      mainAnswer: "Types of printers",
+      candidate: { slots: {} },
+    }),
+  });
+
+  const response = await routeModule.POST(request);
+  const body = await response.json() as {
+    valid?: boolean;
+    candidate?: unknown;
+    issues?: Array<{ code?: string; message?: string }>;
+  };
+
+  assert.equal(response.status, 200, "validate-draft should return validation result for empty slots");
+  assert.equal(body.valid, false, "validate-draft must not pass empty slots through deterministic normalization");
+  assert.deepEqual(body.candidate, { slots: {} }, "validate-draft should preserve an underfilled raw candidate");
+  assert.ok(
+    body.issues?.some((issue) => issue.code === "overview.tooShort"),
+    "empty slots should still surface the original content-contract failure",
+  );
+
+  console.log("ok: validate-draft rejects empty slots instead of template-normalizing them");
+}
+
+async function checkValidateDraftDoesNotNormalizeIncompleteSlotRows() {
+  const routeModulePath = `../app/api/admin/validate-draft/route.ts?incomplete-slots-guardrail=${Date.now()}`;
+  const routeModule = (await import(routeModulePath)) as {
+    POST: (request: NextRequest) => Promise<Response>;
+  };
+  const request = new NextRequest("http://localhost/api/admin/validate-draft", {
+    method: "POST",
+    headers: {
+      authorization: "Bearer admin-secret-dev",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      puzzleNumber: 749,
+      rawWords: ["Thermal", "Laser", "3D", "Dot matrix", "Inkjet"],
+      mainAnswer: "Types of printers",
+      candidate: {
+        slots: {
+          heroIntroSpoilerSafe:
+            "Thermal, Laser, and 3D first look broad, but later entries point toward one specific device family.",
+          connectorSummary: "a category board focused on printer types",
+          turningPoint:
+            "Dot matrix is the clue that turns broad office technology into a printer-specific read.",
+          clueDetails: [
+            { clue: "Thermal", surfaceRead: "a heat clue", phrase: "Thermal printer" },
+            { clue: "Laser", surfaceRead: "a light clue", phrase: "Laser printer" },
+            { clue: "3D", surfaceRead: "a design clue", phrase: "3D printer" },
+            { clue: "Dot matrix", surfaceRead: "a pattern clue", phrase: "Dot matrix printer" },
+            { clue: "Inkjet", surfaceRead: "an ink clue", phrase: "Inkjet printer" },
+          ],
+        },
+      },
+    }),
+  });
+
+  const response = await routeModule.POST(request);
+  const body = await response.json() as {
+    valid?: boolean;
+    candidate?: { slots?: { clueDetails?: Array<{ whyItWorks?: string }> } };
+    issues?: Array<{ code?: string; message?: string }>;
+  };
+
+  assert.equal(response.status, 200, "validate-draft should return validation result for incomplete slots");
+  assert.equal(body.valid, false, "validate-draft must not normalize slot rows missing whyItWorks");
+  assert.equal(
+    body.candidate?.slots?.clueDetails?.some((detail) => detail.whyItWorks),
+    false,
+    "validate-draft should preserve incomplete raw clueDetails instead of filling them",
+  );
+  assert.ok(
+    body.issues?.some((issue) => issue.code === "overview.tooShort"),
+    "incomplete slot rows should still fail before deterministic article synthesis",
+  );
+
+  console.log("ok: validate-draft rejects incomplete slot rows instead of template-normalizing them");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -1614,6 +1837,9 @@ async function main() {
   await checkPhraseFallbackDirection();
   await checkEvidenceContractGuardsMeaningfulV2Fields();
   await checkTypedCategoryGenerationKeepsGrammarNatural();
+  checkWorkerLlmSlotsOnlyDraftNormalizesBeforeValidation();
+  await checkValidateDraftDoesNotNormalizeEmptySlots();
+  await checkValidateDraftDoesNotNormalizeIncompleteSlotRows();
   console.log("Pinpoint guardrail regression passed.");
 }
 

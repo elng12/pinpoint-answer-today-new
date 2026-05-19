@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { PuzzleDataForAI } from "@/lib/puzzle-generation";
+import {
+  normalizeGeneratedPuzzleContent,
+  type PuzzleDataForAI,
+} from "@/lib/puzzle-generation";
 import { normalizeAnswerLabel } from "@/lib/puzzles/content-contract";
 import {
   validateDraftInputLanguage,
@@ -12,6 +15,43 @@ const ADMIN_TOKENS = [
   process.env.ADMIN_PASSPHRASE,
   process.env.NODE_ENV === "production" ? null : "admin-secret-dev",
 ].filter(Boolean);
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return null;
+  }
+  return value as Record<string, unknown>;
+}
+
+function asNonEmptyString(value: unknown): string | null {
+  return typeof value === "string" && value.trim().length > 0 ? value.trim() : null;
+}
+
+function hasMinimumSlotsForNormalization(candidate: unknown): boolean {
+  const root = asRecord(candidate);
+  const slots = asRecord(root?.slots);
+  if (!slots) return false;
+
+  const clueDetails = Array.isArray(slots.clueDetails) ? slots.clueDetails : [];
+  const hasCompleteClueDetails =
+    clueDetails.length === 5 &&
+    clueDetails.every((item) => {
+      const detail = asRecord(item);
+      return Boolean(
+        asNonEmptyString(detail?.clue) &&
+          asNonEmptyString(detail?.surfaceRead) &&
+          asNonEmptyString(detail?.phrase) &&
+          asNonEmptyString(detail?.whyItWorks),
+      );
+    });
+
+  return Boolean(
+    asNonEmptyString(slots.heroIntroSpoilerSafe) &&
+      asNonEmptyString(slots.connectorSummary) &&
+      asNonEmptyString(slots.turningPoint) &&
+      hasCompleteClueDetails,
+  );
+}
 
 /**
  * POST /api/admin/validate-draft
@@ -67,13 +107,26 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const structureIssues = validateDraftStructure(puzzleData, candidate);
-    const languageIssues = validateDraftLanguage(candidate);
+    let normalizedCandidate = candidate;
+    if (hasMinimumSlotsForNormalization(candidate)) {
+      try {
+        normalizedCandidate = normalizeGeneratedPuzzleContent(candidate, puzzleData);
+      } catch (normalizationError) {
+        console.warn(
+          "[API] Validate Draft normalization skipped:",
+          normalizationError instanceof Error ? normalizationError.message : String(normalizationError),
+        );
+      }
+    }
+
+    const structureIssues = validateDraftStructure(puzzleData, normalizedCandidate);
+    const languageIssues = validateDraftLanguage(normalizedCandidate);
     const allIssues = [...structureIssues, ...languageIssues];
     const errorIssues = allIssues.filter((issue) => issue.level === "error");
 
     return NextResponse.json({
       valid: errorIssues.length === 0,
+      candidate: normalizedCandidate,
       issues: allIssues,
     });
   } catch (error) {
