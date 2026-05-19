@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 749,
+  "slug": "pinpoint-answer-749",
+  "publishDate": "2026-05-19",
+  "isoDate": "2026-05-19",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Thermal",
+    "Laser",
+    "3D",
+    "Dot matrix",
+    "Inkjet"
+  ],
+  "answer": "Types of printers",
+  "category": "Types of printers",
+  "wordHints": {
+    "Thermal": "Thermal connects to \"Types of printers\"",
+    "Laser": "Laser connects to \"Types of printers\"",
+    "3D": "3D connects to \"Types of printers\"",
+    "Dot matrix": "Dot matrix connects to \"Types of printers\"",
+    "Inkjet": "Inkjet connects to \"Types of printers\""
+  },
+  "spoilerHints": {
+    "Thermal": "Treat Thermal as one recognizable member of types of printers, not as a broad topic on its own.",
+    "Laser": "Laser helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "3D": "Try reading 3D as a specific type inside types of printers instead of as a loose general reference.",
+    "Dot matrix": "Dot matrix is the clue that makes types of printers specific enough to verify across the whole board.",
+    "Inkjet": "Inkjet helps more once you ask what kind of thing it is rather than where you have seen it before."
+  },
+  "articleBlocks": [
+    "At first, Thermal and Laser can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Thermal, Laser can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Thermal pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of printer each clue could be, a category board focused on printers stopped sounding generic and started behaving like a real category test. Examples like \"Thermal printer\" and \"Laser printer\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "3D, Dot matrix, Inkjet read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of printers\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of printers, which is why \"Types of printers\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #749, Thermal, Laser, 3D, Dot matrix, Inkjet only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on printers",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Thermal",
+        "examplePhrase": "Thermal printer",
+        "connectionExplained": "Thermal connects to \"Types of printers\""
+      },
+      {
+        "clue": "Laser",
+        "examplePhrase": "Laser printer",
+        "connectionExplained": "Laser connects to \"Types of printers\""
+      },
+      {
+        "clue": "3D",
+        "examplePhrase": "3D printer",
+        "connectionExplained": "3D connects to \"Types of printers\""
+      },
+      {
+        "clue": "Dot matrix",
+        "examplePhrase": "Dot matrix printer",
+        "connectionExplained": "Dot matrix connects to \"Types of printers\""
+      },
+      {
+        "clue": "Inkjet",
+        "examplePhrase": "Inkjet printer",
+        "connectionExplained": "Inkjet connects to \"Types of printers\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #749?",
+      "answer": "The answer is \"Types of printers\". The clues Thermal, Laser, 3D, Dot matrix, Inkjet all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #749 just unlocked, and this is the fastest verified update. The board clues are Thermal, Laser, 3D, Dot matrix, Inkjet, and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Thermal, Laser can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Thermal",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #749, Thermal, Laser, 3D, Dot matrix, Inkjet only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Thermal lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Thermal",
+    "whyDecisive": "Thermal is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Thermal lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Thermal",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Thermal",
+      "nonObviousWhy": "Thermal supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Thermal"
+    },
+    {
+      "clue": "Laser",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Laser",
+      "nonObviousWhy": "Laser supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Laser"
+    },
+    {
+      "clue": "3D",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "3D",
+      "nonObviousWhy": "3D supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "3D"
+    },
+    {
+      "clue": "Dot matrix",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Dot matrix",
+      "nonObviousWhy": "Dot matrix supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Dot matrix"
+    },
+    {
+      "clue": "Inkjet",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Inkjet",
+      "nonObviousWhy": "Inkjet supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Inkjet"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #749?",
+      "answer": "The answer is \"Types of printers\". The clues Thermal, Laser, 3D, Dot matrix, Inkjet all share this connection.",
+      "tiedClue": "Thermal"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on printers",
+    "relatedEntities": [
+      "Thermal",
+      "Laser",
+      "3D",
+      "Dot matrix",
+      "Inkjet"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on printers",
+      "Thermal",
+      "Laser",
+      "3D",
+      "Dot matrix"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Thermal, Laser can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Thermal pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "3D, Dot matrix, Inkjet read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of printers"
+}
