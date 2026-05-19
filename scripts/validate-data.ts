@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract.shared.mjs";
@@ -64,6 +64,12 @@ const genericSpoilerHintPatterns = [
   /\bLook for the cleaner category fit instead of the first broad topic\b/i,
   /\bmakes the category specific enough to test instead of staying broad\b/i,
 ];
+const publicDetailStates = new Set(["published", "fallback_full"]);
+const publicRegistryStatuses = new Set(["live", "archived"]);
+const recentContinuityWindow = 30;
+const allowedRecentContinuityGaps = new Map([
+  // [750, "Documented reason for an intentional public numbering gap"],
+]);
 
 function countWords(value) {
   return value.trim().split(/\s+/).filter(Boolean).length;
@@ -300,6 +306,81 @@ function requiresPhase1StructuredValidation(entry, detail) {
   );
 }
 
+function resolveRegistryDetailState(entry) {
+  if (entry.detailState) {
+    return entry.detailState;
+  }
+
+  return entry.status === "draft" || entry.status === "preview" ? "draft" : "published";
+}
+
+function isPublicRegistryEntry(entry) {
+  return (
+    publicRegistryStatuses.has(entry.status) &&
+    publicDetailStates.has(resolveRegistryDetailState(entry)) &&
+    Boolean(entry.mainAnswer) &&
+    Boolean(entry.category)
+  );
+}
+
+async function readPublicDetailFileSlugs(dataDir) {
+  const fileNames = await readdir(dataDir);
+  const publicSlugs = [];
+
+  for (const fileName of fileNames) {
+    if (!/^pinpoint-answer-\d+\.json$/.test(fileName)) {
+      continue;
+    }
+
+    const rawDetail = await readFile(resolve(dataDir, fileName), "utf8");
+    const detail = puzzleDetailContentSchema.parse(JSON.parse(rawDetail));
+    const detailState = detail.detailState || "published";
+
+    if (publicDetailStates.has(detailState)) {
+      publicSlugs.push(detail.slug || fileName.replace(/\.json$/, ""));
+    }
+  }
+
+  return publicSlugs.sort();
+}
+
+function assertPublicDetailsAreRegistered(publicDetailSlugs, registrySlugs) {
+  const missing = publicDetailSlugs.filter((slug) => !registrySlugs.has(slug));
+
+  if (missing.length > 0) {
+    throw new Error(
+      `Public detail JSON missing from registry: ${missing.slice(0, 20).join(", ")}${missing.length > 20 ? `, ... (${missing.length} total)` : ""}`,
+    );
+  }
+}
+
+function assertRecentPublicRegistryContinuity(registry) {
+  const publicNumbers = registry
+    .filter(isPublicRegistryEntry)
+    .map((entry) => entry.puzzleNumber)
+    .filter((value) => Number.isInteger(value))
+    .sort((left, right) => right - left);
+  const latestNumber = publicNumbers[0];
+
+  if (!latestNumber) {
+    throw new Error("Expected at least one public registry entry for continuity validation.");
+  }
+
+  const publicNumberSet = new Set(publicNumbers);
+  const missing = [];
+  for (let number = latestNumber; number > latestNumber - recentContinuityWindow; number -= 1) {
+    if (!publicNumberSet.has(number) && !allowedRecentContinuityGaps.has(number)) {
+      missing.push(number);
+    }
+  }
+
+  if (missing.length > 0) {
+    throw new Error(
+      `Recent public registry puzzle numbers must be continuous for the latest ${recentContinuityWindow}; missing ${missing.join(", ")}. If a gap is intentional, add it to allowedRecentContinuityGaps with a reason.`,
+    );
+  }
+}
+
 function validateDetailContent(entry, detail) {
   const detailAnswer = typeof detail.answer === "string" ? detail.answer : "";
   const articleBlocks = Array.isArray(detail.articleBlocks) ? detail.articleBlocks : [];
@@ -470,9 +551,11 @@ async function main() {
   const registryPath = resolve(dataDir, "registry.json");
   const rawRegistry = await readFile(registryPath, "utf8");
   const registry = registrySchema.parse(JSON.parse(rawRegistry));
+  const publicDetailSlugs = await readPublicDetailFileSlugs(dataDir);
 
   const numbers = new Set();
   const slugs = new Set();
+  const publicRegistrySlugs = new Set();
   const dates = new Set();
   let liveCount = 0;
   let previewCount = 0;
@@ -498,6 +581,9 @@ async function main() {
     numbers.add(entry.puzzleNumber);
     slugs.add(entry.slug);
     dates.add(entry.publishDate);
+    if (isPublicRegistryEntry(entry)) {
+      publicRegistrySlugs.add(entry.slug);
+    }
 
     if (entry.status === "live") {
       liveCount += 1;
@@ -531,6 +617,9 @@ async function main() {
   if (previewCount > 1) {
     throw new Error(`Expected at most one preview puzzle, received ${previewCount}`);
   }
+
+  assertPublicDetailsAreRegistered(publicDetailSlugs, publicRegistrySlugs);
+  assertRecentPublicRegistryContinuity(registry);
 
   assertPublishedContractBacklogLimits();
   assertNoRepeatedPublishedLessonTitles();
