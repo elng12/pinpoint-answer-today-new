@@ -2913,14 +2913,36 @@ function buildLightExplainerParagraphs(record: PublishedPuzzleDetailRecord): str
   ];
 }
 
+function buildLightExplainerSolutionNarrative(record: PublishedPuzzleDetailRecord): string[] {
+  const firstClues = record.clues.slice(0, 2).join(" and ") || "the first clues";
+  const wrongGuess =
+    record.wrongGuessCandidates?.[0]?.label ||
+    record.solvePath?.falseStarts?.[0] ||
+    "an early broad guess";
+  const turningClue = record.turningPoint?.clue || record.clues[2] || record.clues[0] || "the turning clue";
+  const phraseList = record.clueRows
+    .slice(0, Math.max(3, Math.min(5, record.clueRows.length)))
+    .map((row) => row.resolvedPhraseOrMember || row.searchableContext || row.clue)
+    .filter((value) => value && value.trim())
+    .join(", ");
+
+  return [
+    `My first pass grouped ${firstClues} near ${wrongGuess}, because the early clues were broad enough to support that guess for a moment. The mismatch appeared when ${turningClue} needed a phrase-level answer rather than another general topic.`,
+    phraseList
+      ? `After that, I checked whether every clue could form a familiar phrase: ${phraseList}. That test was cleaner than the first guess, and it made ${record.answer} narrow enough to verify across the whole board.`
+      : `After that, I checked whether every clue could form the same familiar phrase pattern. That test was cleaner than the first guess, and it made ${record.answer} narrow enough to verify across the whole board.`,
+  ];
+}
+
 function buildLightExplainerRecord(record: PublishedPuzzleDetailRecord): PublishedPuzzleDetailRecord {
   const articleBlocks = buildLightExplainerParagraphs(record);
+  const solutionNarrative = buildLightExplainerSolutionNarrative(record);
   return {
     ...record,
     bodyMode: "short",
     pageExperienceMode: "light-explainer",
     articleBlocks,
-    solutionNarrative: articleBlocks.slice(0, 3),
+    solutionNarrative,
     lessons: record.lessons.slice(0, Math.max(2, Math.min(3, record.lessons.length))),
     faqs: record.faqs.slice(0, Math.max(2, Math.min(3, record.faqs.length))),
   };
