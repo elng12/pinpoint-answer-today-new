@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 750,
+  "slug": "pinpoint-answer-750",
+  "publishDate": "2026-05-20",
+  "isoDate": "2026-05-20",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "False",
+    "Paper",
+    "Nature",
+    "Campaign",
+    "Breadcrumb (from Hansel & Gretel)"
+  ],
+  "answer": "Types of trails",
+  "category": "Types of trails",
+  "wordHints": {
+    "False": "False connects to \"Types of trails\"",
+    "Paper": "Paper connects to \"Types of trails\"",
+    "Nature": "Nature connects to \"Types of trails\"",
+    "Campaign": "Campaign connects to \"Types of trails\"",
+    "Breadcrumb (from Hansel & Gretel)": "Breadcrumb (from Hansel & Gretel) connects to \"Types of trails\""
+  },
+  "spoilerHints": {
+    "False": "Treat False as one recognizable member of types of trails, not as a broad topic on its own.",
+    "Paper": "Paper helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Nature": "Try reading Nature as a specific type inside types of trails instead of as a loose general reference.",
+    "Campaign": "Treat Campaign as one recognizable member of types of trails, not as a broad topic on its own.",
+    "Breadcrumb (from Hansel & Gretel)": "Breadcrumb (from Hansel & Gretel) is the clue that makes types of trails specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, False and Paper can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". False, Paper can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. False pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of trail each clue could be, a category board focused on trails stopped sounding generic and started behaving like a real category test. Examples like \"False trail\" and \"Paper trail\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Nature, Campaign, Breadcrumb (from Hansel & Gretel) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of trails\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of trails, which is why \"Types of trails\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #750, False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on trails",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "False",
+        "examplePhrase": "False trail",
+        "connectionExplained": "False connects to \"Types of trails\""
+      },
+      {
+        "clue": "Paper",
+        "examplePhrase": "Paper trail",
+        "connectionExplained": "Paper connects to \"Types of trails\""
+      },
+      {
+        "clue": "Nature",
+        "examplePhrase": "Nature trail",
+        "connectionExplained": "Nature connects to \"Types of trails\""
+      },
+      {
+        "clue": "Campaign",
+        "examplePhrase": "Campaign trail",
+        "connectionExplained": "Campaign connects to \"Types of trails\""
+      },
+      {
+        "clue": "Breadcrumb (from Hansel & Gretel)",
+        "examplePhrase": "Breadcrumb trail",
+        "connectionExplained": "Breadcrumb (from Hansel & Gretel) connects to \"Types of trails\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #750?",
+      "answer": "The answer is \"Types of trails\". The clues False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #750 just unlocked, and this is the fastest verified update. The board clues are False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "False, Paper can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "False",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #750, False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once False lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "False",
+    "whyDecisive": "False is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once False lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "False",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "False",
+      "nonObviousWhy": "False supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "False"
+    },
+    {
+      "clue": "Paper",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Paper",
+      "nonObviousWhy": "Paper supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Paper"
+    },
+    {
+      "clue": "Nature",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Nature",
+      "nonObviousWhy": "Nature supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Nature"
+    },
+    {
+      "clue": "Campaign",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Campaign",
+      "nonObviousWhy": "Campaign supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Campaign"
+    },
+    {
+      "clue": "Breadcrumb (from Hansel & Gretel)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Breadcrumb (from Hansel & Gretel)",
+      "nonObviousWhy": "Breadcrumb (from Hansel & Gretel) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Breadcrumb (from Hansel & Gretel)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #750?",
+      "answer": "The answer is \"Types of trails\". The clues False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel) all share this connection.",
+      "tiedClue": "False"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on trails",
+    "relatedEntities": [
+      "False",
+      "Paper",
+      "Nature",
+      "Campaign",
+      "Breadcrumb (from Hansel & Gretel)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on trails",
+      "False",
+      "Paper",
+      "Nature",
+      "Campaign"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "False, Paper can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "False pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Nature, Campaign, Breadcrumb (from Hansel & Gretel) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of trails"
+}

@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 750,
+    "slug": "pinpoint-answer-750",
+    "publishDate": "2026-05-20",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "False",
+      "Paper",
+      "Nature",
+      "Campaign",
+      "Breadcrumb (from Hansel & Gretel)"
+    ],
+    "mainAnswer": "Types of trails",
+    "category": "Types of trails",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #750: False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel).",
+    "updatedAt": "2026-05-20T07:07:58.286Z"
+  },
+  {
     "puzzleNumber": 749,
     "slug": "pinpoint-answer-749",
     "publishDate": "2026-05-19",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Thermal",
@@ -16,7 +35,7 @@
     "category": "Types of printers",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Thermal, Laser, 3D, Dot matrix, Inkjet - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-19T07:07:49.377Z"
+    "updatedAt": "2026-05-20T07:07:58.286Z"
   },
   {
     "puzzleNumber": 748,
