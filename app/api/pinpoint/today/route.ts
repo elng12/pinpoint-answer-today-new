@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { buildCachedHeaders, buildNoStoreHeaders } from "@/lib/api-headers";
+import { parseAndValidateUrl } from "@/lib/security/url-allowlist";
 
 export const runtime = "nodejs";
 export const revalidate = 60;
@@ -8,7 +10,16 @@ const DEFAULT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.d
 function resolveWorkerBaseUrl(): URL {
   const raw = String(process.env.PINPOINT_WORKER_HEALTH_URL || DEFAULT_WORKER_HEALTH_URL).trim();
   try {
-    const url = new URL(raw);
+    const url = parseAndValidateUrl(
+      raw,
+      {
+        allowedSchemes: ["https:"],
+        allowedHosts: ["pinpoint-worker.2296744453m.workers.dev"],
+        allowedHostSuffixes: [".workers.dev"],
+        allowLocalhost: process.env.NODE_ENV !== "production",
+      },
+      "PINPOINT_WORKER_HEALTH_URL",
+    );
     url.pathname = "";
     url.search = "";
     url.hash = "";
@@ -16,20 +27,6 @@ function resolveWorkerBaseUrl(): URL {
   } catch {
     return new URL("https://pinpoint-worker.2296744453m.workers.dev");
   }
-}
-
-function buildCachedHeaders(contentType?: string | null): Headers {
-  const headers = new Headers({
-    "Cache-Control": "public, max-age=60, s-maxage=60, stale-while-revalidate=300",
-  });
-  if (contentType) headers.set("content-type", contentType);
-  return headers;
-}
-
-function buildNoStoreHeaders(contentType?: string | null): Headers {
-  const headers = new Headers({ "Cache-Control": "no-store" });
-  if (contentType) headers.set("content-type", contentType);
-  return headers;
 }
 
 /**
@@ -53,10 +50,9 @@ export async function GET(req: Request) {
       status: upstream.status,
       headers: upstream.ok ? buildCachedHeaders(contentType) : buildNoStoreHeaders(contentType),
     });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "upstream unavailable";
+  } catch {
     return NextResponse.json(
-      { error: message, upstreamUrl: upstreamUrl.toString() },
+      { error: "upstream unavailable" },
       { status: 503, headers: buildNoStoreHeaders("application/json") },
     );
   }

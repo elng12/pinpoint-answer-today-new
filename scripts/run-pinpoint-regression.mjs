@@ -6,7 +6,11 @@ import process from "node:process";
 const ROOT = process.cwd();
 const PORT = Number(process.env.PINPOINT_REGRESSION_PORT || 3004);
 const BASE_URL = process.env.PINPOINT_REGRESSION_BASE_URL || `http://127.0.0.1:${PORT}`;
-const ADMIN_TOKEN = process.env.PINPOINT_REGRESSION_ADMIN_TOKEN || process.env.ADMIN_PASSPHRASE || "admin-secret-dev";
+const ADMIN_TOKEN =
+  process.env.PINPOINT_REGRESSION_ADMIN_TOKEN ||
+  process.env.DEV_ADMIN_TOKEN ||
+  process.env.ADMIN_PASSPHRASE ||
+  "admin-secret-dev";
 
 const SAMPLE_SETS = {
   quick: [683, 682, 684, 679],
@@ -366,7 +370,11 @@ function startDevServer() {
   const child = spawn("npm", ["run", "dev"], {
     cwd: ROOT,
     stdio: ["ignore", "pipe", "pipe"],
-    env: { ...process.env, FORCE_COLOR: "0" },
+    env: {
+      ...process.env,
+      DEV_ADMIN_TOKEN: process.env.DEV_ADMIN_TOKEN || ADMIN_TOKEN,
+      FORCE_COLOR: "0",
+    },
   });
 
   child.stdout.on("data", () => {});

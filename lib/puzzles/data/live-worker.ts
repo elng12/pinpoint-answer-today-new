@@ -21,6 +21,7 @@ import {
   pickLiveTurningPoint,
 } from "@/lib/puzzles/live-fallback";
 import { buildSharedFallbackSolutionNarrative } from "@/lib/puzzles/fallback-copy";
+import { parseAndValidateUrl } from "@/lib/security/url-allowlist";
 
 type LiveWorkerPuzzleRecord = {
   puzzleDate: string;
@@ -39,7 +40,21 @@ function asRecord(value: unknown): Record<string, unknown> | null {
 }
 
 function getPinpointWorkerHealthUrl(): string {
-  return (process.env.PINPOINT_WORKER_HEALTH_URL ?? DEFAULT_PINPOINT_WORKER_HEALTH_URL).trim();
+  const raw = (process.env.PINPOINT_WORKER_HEALTH_URL ?? DEFAULT_PINPOINT_WORKER_HEALTH_URL).trim();
+  try {
+    return parseAndValidateUrl(
+      raw,
+      {
+        allowedSchemes: ["https:"],
+        allowedHosts: ["pinpoint-worker.2296744453m.workers.dev"],
+        allowedHostSuffixes: [".workers.dev"],
+        allowLocalhost: process.env.NODE_ENV !== "production",
+      },
+      "PINPOINT_WORKER_HEALTH_URL",
+    ).toString();
+  } catch {
+    return DEFAULT_PINPOINT_WORKER_HEALTH_URL;
+  }
 }
 
 function parseLiveWorkerPuzzleRecord(raw: unknown): LiveWorkerPuzzleRecord | null {

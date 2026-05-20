@@ -1,6 +1,7 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
 import { getPuzzleBySlug } from "@/lib/puzzles/data";
+import { safeEqual } from "@/lib/site/admin-auth";
 
 async function pingIndexNow(urls: string[]) {
   const key = process.env.INDEXNOW_KEY;
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
   const secret = bearerSecret || headerSecret;
 
   const stored = (process.env.REVALIDATE_SECRET ?? "").trim();
-  if (!stored || secret !== stored) {
+  if (!stored || !safeEqual(secret, stored)) {
     return NextResponse.json({ error: "Invalid secret" }, { status: 401 });
   }
 
