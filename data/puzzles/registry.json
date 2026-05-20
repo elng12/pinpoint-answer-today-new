@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-750",
     "publishDate": "2026-05-20",
     "status": "live",
-    "detailState": "generating",
+    "detailState": "validated",
     "clues": [
       "False",
       "Paper",
@@ -15,8 +15,8 @@
     "mainAnswer": "Types of trails",
     "category": "Types of trails",
     "difficultyLevel": "Moderate",
-    "shortSummary": "LinkedIn Pinpoint #750: False, Paper, Nature, Campaign, Breadcrumb (from Hansel & Gretel).",
-    "updatedAt": "2026-05-20T07:07:58.286Z"
+    "shortSummary": "At first glance, False, Paper, Nature do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-05-20T07:08:13.996Z"
   },
   {
     "puzzleNumber": 749,
