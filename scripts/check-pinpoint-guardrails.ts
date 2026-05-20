@@ -354,7 +354,7 @@ async function checkTodayRouteShowsPublishingPlaceholder() {
 
 async function checkWorkerProxyErrorsDoNotExposeInternalUrls() {
   const previousWorkerHealthUrl = process.env.PINPOINT_WORKER_HEALTH_URL;
-  const internalWorkerUrl = "https://pinpoint-worker.2296744453m.workers.dev.invalid/health";
+  const internalWorkerUrl = "http://127.0.0.1:9/health";
   process.env.PINPOINT_WORKER_HEALTH_URL = internalWorkerUrl;
 
   try {
