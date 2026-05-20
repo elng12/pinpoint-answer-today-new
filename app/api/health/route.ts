@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { buildCachedHeaders, buildNoStoreHeaders } from "@/lib/api-headers";
+import { parseAndValidateUrl } from "@/lib/security/url-allowlist";
 
 export const runtime = "nodejs";
 export const revalidate = 60;
@@ -8,24 +10,19 @@ const DEFAULT_WORKER_HEALTH_URL = "https://pinpoint-worker.2296744453m.workers.d
 function resolveWorkerHealthUrl(): URL {
   const raw = String(process.env.PINPOINT_WORKER_HEALTH_URL || DEFAULT_WORKER_HEALTH_URL).trim();
   try {
-    return new URL(raw);
+    return parseAndValidateUrl(
+      raw,
+      {
+        allowedSchemes: ["https:"],
+        allowedHosts: ["pinpoint-worker.2296744453m.workers.dev"],
+        allowedHostSuffixes: [".workers.dev"],
+        allowLocalhost: process.env.NODE_ENV !== "production",
+      },
+      "PINPOINT_WORKER_HEALTH_URL",
+    );
   } catch {
     return new URL(DEFAULT_WORKER_HEALTH_URL);
   }
-}
-
-function buildCachedHeaders(contentType?: string | null): Headers {
-  const headers = new Headers({
-    "Cache-Control": "public, max-age=60, s-maxage=60, stale-while-revalidate=300",
-  });
-  if (contentType) headers.set("content-type", contentType);
-  return headers;
-}
-
-function buildNoStoreHeaders(contentType?: string | null): Headers {
-  const headers = new Headers({ "Cache-Control": "no-store" });
-  if (contentType) headers.set("content-type", contentType);
-  return headers;
 }
 
 /**
@@ -46,10 +43,9 @@ export async function GET() {
       status: upstream.status,
       headers: upstream.ok ? buildCachedHeaders(contentType) : buildNoStoreHeaders(contentType),
     });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "upstream unavailable";
+  } catch {
     return NextResponse.json(
-      { error: message, workerHealthUrl: workerHealthUrl.toString() },
+      { error: "upstream unavailable" },
       { status: 503, headers: buildNoStoreHeaders("application/json") },
     );
   }

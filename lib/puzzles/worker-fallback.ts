@@ -1,4 +1,5 @@
 import { getPuzzleBySlug, getPuzzleSlugByPublishDate } from "@/lib/puzzles/data";
+import { parseAndValidateUrl } from "@/lib/security/url-allowlist";
 
 export type WorkerFallbackAnswer = {
   rank: number;
@@ -98,7 +99,16 @@ export async function loadBundledWorkerFallback(date: string): Promise<WorkerFal
 
 function normalizeCompetitorUrl(input: string | undefined): string {
   const raw = String(input || "").trim() || DEFAULT_COMPETITOR_URL;
-  return raw.endsWith("/") ? raw : `${raw}/`;
+  const url = parseAndValidateUrl(
+    raw.endsWith("/") ? raw : `${raw}/`,
+    {
+      allowedSchemes: ["https:"],
+      allowedHosts: ["pinpointanswer.today"],
+      allowLocalhost: process.env.NODE_ENV !== "production",
+    },
+    "PINPOINT_BASE_URL",
+  );
+  return url.toString();
 }
 
 function extractCompetitorTodayBlock(html: string): CompetitorSnapshot {

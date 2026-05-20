@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { cache } from "react";
 import { getBundledRegistryEntries } from "@/lib/puzzles/registry-bundled";
+import { parseAndValidateUrl } from "@/lib/security/url-allowlist";
 import {
   puzzleDetailContentSchema,
   registrySchema,
@@ -10,7 +11,21 @@ import {
 } from "@/lib/puzzles/schema";
 
 function getGithubRawBase(): string {
-  return process.env.GITHUB_RAW_BASE?.trim() ?? "";
+  const raw = process.env.GITHUB_RAW_BASE?.trim() ?? "";
+  if (!raw) return "";
+  const url = parseAndValidateUrl(
+    raw,
+    {
+      allowedSchemes: ["https:"],
+      allowedHosts: ["githubusercontent.com"],
+      allowedHostSuffixes: [".githubusercontent.com"],
+      allowLocalhost:
+        process.env.NODE_ENV !== "production" ||
+        process.env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE === "true",
+    },
+    "GITHUB_RAW_BASE",
+  );
+  return url.toString().replace(/\/+$/, "");
 }
 
 function hasRemotePuzzleDataSource(): boolean {

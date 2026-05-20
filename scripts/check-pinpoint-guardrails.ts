@@ -13,6 +13,8 @@ import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
+const GUARDRAIL_ADMIN_TOKEN = process.env.DEV_ADMIN_TOKEN || "guardrail-local-admin-token";
+process.env.DEV_ADMIN_TOKEN = GUARDRAIL_ADMIN_TOKEN;
 
 type RegistryEntry = {
   puzzleNumber: number;
@@ -350,11 +352,166 @@ async function checkTodayRouteShowsPublishingPlaceholder() {
   console.log("ok: /pinpoint/today returns a 503 publishing placeholder for unpublished worker puzzles");
 }
 
+async function checkWorkerProxyErrorsDoNotExposeInternalUrls() {
+  const previousWorkerHealthUrl = process.env.PINPOINT_WORKER_HEALTH_URL;
+  const internalWorkerUrl = "https://pinpoint-worker.2296744453m.workers.dev.invalid/health";
+  process.env.PINPOINT_WORKER_HEALTH_URL = internalWorkerUrl;
+
+  try {
+    const healthRouteModulePath = `../app/api/health/route.ts?proxy-error-guardrail=${Date.now()}`;
+    const todayRouteModulePath = `../app/api/pinpoint/today/route.ts?proxy-error-guardrail=${Date.now()}`;
+    const healthRouteModule = (await import(healthRouteModulePath)) as {
+      GET: () => Promise<Response>;
+    };
+    const todayRouteModule = (await import(todayRouteModulePath)) as {
+      GET: (request: NextRequest) => Promise<Response>;
+    };
+
+    const healthResponse = await healthRouteModule.GET();
+    const todayResponse = await todayRouteModule.GET(
+      new NextRequest("http://localhost/api/pinpoint/today", { method: "GET" }),
+    );
+
+    for (const [label, response] of [
+      ["health", healthResponse],
+      ["today", todayResponse],
+    ] as const) {
+      assert.equal(response.status, 503, `${label} proxy should return 503 when the worker fetch fails`);
+      const body = await response.text();
+      assert.doesNotMatch(body, /workers\.dev/i, `${label} proxy error must not expose workers.dev URLs`);
+      assert.doesNotMatch(body, /workerHealthUrl|upstreamUrl/i, `${label} proxy error must not expose internal URL keys`);
+      assert.match(body, /upstream unavailable/i, `${label} proxy error should keep a generic public message`);
+    }
+  } finally {
+    if (previousWorkerHealthUrl === undefined) {
+      delete process.env.PINPOINT_WORKER_HEALTH_URL;
+    } else {
+      process.env.PINPOINT_WORKER_HEALTH_URL = previousWorkerHealthUrl;
+    }
+  }
+
+  console.log("ok: worker proxy errors do not expose internal URLs");
+}
+
+async function checkRemoteUrlAllowlistsRejectUnsafeHosts() {
+  const env = process.env as Record<string, string | undefined>;
+  const previousNodeEnv = process.env.NODE_ENV;
+  const previousGithubRawBase = process.env.GITHUB_RAW_BASE;
+  const previousPinpointBaseUrl = process.env.PINPOINT_BASE_URL;
+  const previousAllowLocalDataSource = process.env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
+
+  try {
+    env.NODE_ENV = "production";
+    delete env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
+    env.GITHUB_RAW_BASE = "https://githubusercontent.com.evil.test/raw";
+    env.PINPOINT_BASE_URL = "https://pinpointanswer.today.evil.test/";
+
+    const dataModulePath = `../lib/puzzles/data.ts?unsafe-url-guardrail=${Date.now()}`;
+    const allowlistModulePath = `../lib/security/url-allowlist.ts?unsafe-url-guardrail=${Date.now()}`;
+    const workerFallbackModulePath = `../lib/puzzles/worker-fallback.ts?unsafe-url-guardrail=${Date.now()}`;
+    const dataModule = (await import(dataModulePath)) as {
+      getPuzzleBySlug: (
+        slug: string,
+        options?: { allowLiveWorkerFallback?: boolean },
+      ) => Promise<{ slug: string } | null>;
+    };
+    const allowlistModule = (await import(allowlistModulePath)) as {
+      parseAndValidateUrl: (raw: string, rule: {
+        allowedSchemes: readonly string[];
+        allowedHosts?: readonly string[];
+        allowedHostSuffixes?: readonly string[];
+      }, label: string) => URL;
+    };
+    const workerFallbackModule = (await import(workerFallbackModulePath)) as {
+      loadCompetitorWorkerFallback: (date?: string) => Promise<unknown>;
+    };
+
+    await assert.rejects(
+      () => dataModule.getPuzzleBySlug("pinpoint-answer-695", { allowLiveWorkerFallback: false }),
+      /GITHUB_RAW_BASE.*host/i,
+      "unsafe GITHUB_RAW_BASE host should be rejected",
+    );
+
+    assert.throws(
+      () => allowlistModule.parseAndValidateUrl(
+        "https://workers.dev.evil.test/health",
+        {
+          allowedSchemes: ["https:"],
+          allowedHosts: ["pinpoint-worker.2296744453m.workers.dev"],
+          allowedHostSuffixes: [".workers.dev"],
+        },
+        "PINPOINT_WORKER_HEALTH_URL",
+      ),
+      /PINPOINT_WORKER_HEALTH_URL.*host/i,
+      "unsafe worker health host should be rejected by allowlist",
+    );
+
+    assert.throws(
+      () => allowlistModule.parseAndValidateUrl(
+        "file:///etc/passwd",
+        {
+          allowedSchemes: ["https:"],
+          allowedHosts: ["pinpointanswer.today"],
+        },
+        "PINPOINT_BASE_URL",
+      ),
+      /PINPOINT_BASE_URL.*scheme/i,
+      "file URLs should be rejected by allowlist",
+    );
+
+    assert.throws(
+      () => allowlistModule.parseAndValidateUrl(
+        "https://user:password@pinpointanswer.today/",
+        {
+          allowedSchemes: ["https:"],
+          allowedHosts: ["pinpointanswer.today"],
+        },
+        "PINPOINT_BASE_URL",
+      ),
+      /PINPOINT_BASE_URL.*credentials/i,
+      "credential-bearing URLs should be rejected by allowlist",
+    );
+
+    await assert.rejects(
+      () => workerFallbackModule.loadCompetitorWorkerFallback(),
+      /PINPOINT_BASE_URL.*host/i,
+      "unsafe competitor URL host should be rejected",
+    );
+  } finally {
+    if (previousNodeEnv === undefined) {
+      delete env.NODE_ENV;
+    } else {
+      env.NODE_ENV = previousNodeEnv;
+    }
+
+    if (previousGithubRawBase === undefined) {
+      delete env.GITHUB_RAW_BASE;
+    } else {
+      env.GITHUB_RAW_BASE = previousGithubRawBase;
+    }
+
+    if (previousPinpointBaseUrl === undefined) {
+      delete env.PINPOINT_BASE_URL;
+    } else {
+      env.PINPOINT_BASE_URL = previousPinpointBaseUrl;
+    }
+
+    if (previousAllowLocalDataSource === undefined) {
+      delete env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
+    } else {
+      env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE = previousAllowLocalDataSource;
+    }
+  }
+
+  console.log("ok: remote URL allowlists reject unsafe hosts");
+}
+
 async function checkProductionDetailUsesRemoteFirst() {
   const slug = "pinpoint-answer-695";
   const env = process.env as Record<string, string | undefined>;
   const previousNodeEnv = process.env.NODE_ENV;
   const previousGithubRawBase = process.env.GITHUB_RAW_BASE;
+  const previousAllowLocalDataSource = process.env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
   const registry = JSON.parse(
     await readFile(resolve(ROOT, "data", "puzzles", "registry.json"), "utf8"),
   ) as unknown;
@@ -385,6 +542,7 @@ async function checkProductionDetailUsesRemoteFirst() {
       async (mockBaseUrl) => {
         env.NODE_ENV = "production";
         env.GITHUB_RAW_BASE = mockBaseUrl;
+        env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE = "true";
 
         const dataModulePath = `../lib/puzzles/data.ts?remote-detail=${Date.now()}`;
         const dataModule = (await import(dataModulePath)) as {
@@ -418,6 +576,12 @@ async function checkProductionDetailUsesRemoteFirst() {
     } else {
       env.GITHUB_RAW_BASE = previousGithubRawBase;
     }
+
+    if (previousAllowLocalDataSource === undefined) {
+      delete env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
+    } else {
+      env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE = previousAllowLocalDataSource;
+    }
   }
 
   console.log("ok: production detail lookups prefer remote JSON over local files");
@@ -427,6 +591,7 @@ async function checkCurrentPuzzleSkipsNonPublicLiveEntry() {
   const env = process.env as Record<string, string | undefined>;
   const previousNodeEnv = process.env.NODE_ENV;
   const previousGithubRawBase = process.env.GITHUB_RAW_BASE;
+  const previousAllowLocalDataSource = process.env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
   const registry = JSON.parse(
     await readFile(resolve(ROOT, "data", "puzzles", "registry.json"), "utf8"),
   ) as Array<RegistryEntry & { detailState?: string }>;
@@ -460,6 +625,7 @@ async function checkCurrentPuzzleSkipsNonPublicLiveEntry() {
       async (mockBaseUrl) => {
         env.NODE_ENV = "production";
         env.GITHUB_RAW_BASE = mockBaseUrl;
+        env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE = "true";
 
         const dataModulePath = `../lib/puzzles/data.ts?detail-state-current=${Date.now()}`;
         const dataModule = (await import(dataModulePath)) as {
@@ -496,6 +662,12 @@ async function checkCurrentPuzzleSkipsNonPublicLiveEntry() {
       delete env.GITHUB_RAW_BASE;
     } else {
       env.GITHUB_RAW_BASE = previousGithubRawBase;
+    }
+
+    if (previousAllowLocalDataSource === undefined) {
+      delete env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE;
+    } else {
+      env.PINPOINT_ALLOW_LOCAL_DATA_SOURCE = previousAllowLocalDataSource;
     }
   }
 
@@ -1742,7 +1914,7 @@ async function checkValidateDraftDoesNotNormalizeEmptySlots() {
   const request = new NextRequest("http://localhost/api/admin/validate-draft", {
     method: "POST",
     headers: {
-      authorization: "Bearer admin-secret-dev",
+      authorization: `Bearer ${GUARDRAIL_ADMIN_TOKEN}`,
       "content-type": "application/json",
     },
     body: JSON.stringify({
@@ -1779,7 +1951,7 @@ async function checkValidateDraftDoesNotNormalizeIncompleteSlotRows() {
   const request = new NextRequest("http://localhost/api/admin/validate-draft", {
     method: "POST",
     headers: {
-      authorization: "Bearer admin-secret-dev",
+      authorization: `Bearer ${GUARDRAIL_ADMIN_TOKEN}`,
       "content-type": "application/json",
     },
     body: JSON.stringify({
@@ -1827,12 +1999,99 @@ async function checkValidateDraftDoesNotNormalizeIncompleteSlotRows() {
   console.log("ok: validate-draft rejects incomplete slot rows instead of template-normalizing them");
 }
 
+async function checkAdminApiRateLimit() {
+  const previousWindowMs = process.env.ADMIN_RATE_LIMIT_WINDOW_MS;
+  const previousMax = process.env.ADMIN_RATE_LIMIT_MAX;
+  process.env.ADMIN_RATE_LIMIT_WINDOW_MS = "600000";
+  process.env.ADMIN_RATE_LIMIT_MAX = "20";
+
+  try {
+    const cacheBust = Date.now();
+    const validateRouteModulePath = `../app/api/admin/validate-draft/route.ts?admin-rate-limit=${cacheBust}`;
+    const generateRouteModulePath = `../app/api/admin/generate-draft/route.ts?admin-rate-limit=${cacheBust}`;
+    const validateRouteModule = (await import(validateRouteModulePath)) as {
+      POST: (request: NextRequest) => Promise<Response>;
+    };
+    const generateRouteModule = (await import(generateRouteModulePath)) as {
+      POST: (request: NextRequest) => Promise<Response>;
+    };
+
+    function buildValidateRequest(index: number) {
+      return new NextRequest("http://localhost/api/admin/validate-draft", {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${GUARDRAIL_ADMIN_TOKEN}`,
+          "content-type": "application/json",
+          "x-forwarded-for": "203.0.113.20",
+          "user-agent": "admin-rate-limit-guardrail",
+        },
+        body: JSON.stringify({
+          puzzleNumber: 749,
+          rawWords: ["Thermal", "Laser", "3D", "Dot matrix", "Inkjet"],
+          mainAnswer: "Types of printers",
+          candidate: { slots: {}, requestIndex: index },
+        }),
+      });
+    }
+
+    for (let index = 1; index <= 20; index += 1) {
+      const response = await validateRouteModule.POST(buildValidateRequest(index));
+      assert.notEqual(response.status, 429, `admin request ${index} should be allowed before the limit`);
+    }
+
+    const limitedResponse = await generateRouteModule.POST(
+      new NextRequest("http://localhost/api/admin/generate-draft", {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${GUARDRAIL_ADMIN_TOKEN}`,
+          "content-type": "application/json",
+          "x-forwarded-for": "203.0.113.20",
+          "user-agent": "admin-rate-limit-guardrail",
+        },
+        body: JSON.stringify({
+          puzzleNumber: 749,
+          rawWords: ["Thermal", "Laser", "3D", "Dot matrix", "Inkjet"],
+          mainAnswer: "Types of printers",
+        }),
+      }),
+    );
+    const limitedBody = await limitedResponse.json() as { message?: string };
+
+    assert.equal(limitedResponse.status, 429, "admin routes should share the same rate-limit bucket");
+    assert.match(
+      limitedBody.message ?? "",
+      /too many admin requests/i,
+      "admin rate-limit response should include a clear public message",
+    );
+    assert.ok(
+      Number(limitedResponse.headers.get("retry-after")) > 0,
+      "admin rate-limit response should include retry-after",
+    );
+  } finally {
+    if (previousWindowMs === undefined) {
+      delete process.env.ADMIN_RATE_LIMIT_WINDOW_MS;
+    } else {
+      process.env.ADMIN_RATE_LIMIT_WINDOW_MS = previousWindowMs;
+    }
+
+    if (previousMax === undefined) {
+      delete process.env.ADMIN_RATE_LIMIT_MAX;
+    } else {
+      process.env.ADMIN_RATE_LIMIT_MAX = previousMax;
+    }
+  }
+
+  console.log("ok: admin APIs enforce shared rate limiting");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
   await checkPublishedSummaryRoute();
   await checkRevalidateRejectsUnpublishedOrLiveRequests();
   await checkTodayRouteShowsPublishingPlaceholder();
+  await checkWorkerProxyErrorsDoNotExposeInternalUrls();
+  await checkRemoteUrlAllowlistsRejectUnsafeHosts();
   await checkWorkerDetailShape();
   await checkPhraseFallbackDirection();
   await checkEvidenceContractGuardsMeaningfulV2Fields();
@@ -1840,6 +2099,7 @@ async function main() {
   checkWorkerLlmSlotsOnlyDraftNormalizesBeforeValidation();
   await checkValidateDraftDoesNotNormalizeEmptySlots();
   await checkValidateDraftDoesNotNormalizeIncompleteSlotRows();
+  await checkAdminApiRateLimit();
   console.log("Pinpoint guardrail regression passed.");
 }
 

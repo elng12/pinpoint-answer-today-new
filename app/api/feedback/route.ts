@@ -1,34 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { createInMemoryRateLimiter, readPositiveIntegerEnv } from "@/lib/rate-limit";
+import { parseAndValidateUrl, validateUrlAgainstAllowlist } from "@/lib/security/url-allowlist";
 import { feedbackWebhookSource, supportEmail } from "@/lib/site/config";
 
 export const runtime = "nodejs";
 
-function readPositiveIntegerEnv(name: string, fallback: number): number {
-  const raw = process.env[name]?.trim();
-  if (!raw) {
-    return fallback;
-  }
-
-  const parsed = Number.parseInt(raw, 10);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-}
-
 const feedbackRateLimitWindowMs = readPositiveIntegerEnv("FEEDBACK_RATE_LIMIT_WINDOW_MS", 10 * 60 * 1000);
 const feedbackRateLimitMaxRequests = readPositiveIntegerEnv("FEEDBACK_RATE_LIMIT_MAX", 5);
-
-type RateLimitBucket = {
-  count: number;
-  resetAt: number;
-};
-
-const globalForRateLimit = globalThis as typeof globalThis & {
-  __feedbackRateLimitStore?: Map<string, RateLimitBucket>;
-};
-
-const feedbackRateLimitStore =
-  globalForRateLimit.__feedbackRateLimitStore
-  ?? (globalForRateLimit.__feedbackRateLimitStore = new Map<string, RateLimitBucket>());
+const getRateLimitRetryAfter = createInMemoryRateLimiter({
+  storeKey: "feedback",
+  windowMs: feedbackRateLimitWindowMs,
+  maxRequests: feedbackRateLimitMaxRequests,
+});
 
 const feedbackSchema = z.object({
   name: z.string().trim().max(80).optional().default(""),
@@ -67,50 +51,6 @@ function hasInvalidOrigin(req: NextRequest): boolean {
   }
 }
 
-function getFeedbackRateLimitKey(req: NextRequest): string {
-  const cfConnectingIp = req.headers.get("cf-connecting-ip")?.trim();
-  const forwardedFor = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  const realIp = req.headers.get("x-real-ip")?.trim();
-  const userAgent = req.headers.get("user-agent")?.trim() || "unknown";
-  return `${cfConnectingIp || forwardedFor || realIp || "unknown"}::${userAgent}`;
-}
-
-function getRateLimitRetryAfter(req: NextRequest): number | null {
-  const now = Date.now();
-
-  for (const [key, bucket] of feedbackRateLimitStore.entries()) {
-    if (bucket.resetAt <= now) {
-      feedbackRateLimitStore.delete(key);
-    }
-  }
-
-  const rateLimitKey = getFeedbackRateLimitKey(req);
-  const currentBucket = feedbackRateLimitStore.get(rateLimitKey);
-  if (!currentBucket) {
-    feedbackRateLimitStore.set(rateLimitKey, {
-      count: 1,
-      resetAt: now + feedbackRateLimitWindowMs,
-    });
-    return null;
-  }
-
-  if (currentBucket.resetAt <= now) {
-    feedbackRateLimitStore.set(rateLimitKey, {
-      count: 1,
-      resetAt: now + feedbackRateLimitWindowMs,
-    });
-    return null;
-  }
-
-  if (currentBucket.count >= feedbackRateLimitMaxRequests) {
-    return Math.max(1, Math.ceil((currentBucket.resetAt - now) / 1000));
-  }
-
-  currentBucket.count += 1;
-  feedbackRateLimitStore.set(rateLimitKey, currentBucket);
-  return null;
-}
-
 function isFeishuWebhook(url: string): boolean {
   const normalized = url.toLowerCase();
   return normalized.includes("feishu.cn") || normalized.includes("lark");
@@ -118,6 +58,79 @@ function isFeishuWebhook(url: string): boolean {
 
 function isSlackWebhook(url: string): boolean {
   return url.toLowerCase().includes("hooks.slack.com");
+}
+
+function normalizeGenericWebhookUrl(raw: string): string {
+  return parseAndValidateUrl(
+    raw,
+    {
+      allowedSchemes: ["https:"],
+      allowAnyHost: true,
+      allowLocalhost: process.env.NODE_ENV !== "production",
+    },
+    "FEEDBACK_WEBHOOK_URL",
+  ).toString();
+}
+
+function normalizeFeishuWebhookUrl(raw: string): string {
+  const url = parseAndValidateUrl(
+    raw,
+    {
+      allowedSchemes: ["https:"],
+      allowedHostSuffixes: [".feishu.cn", ".larksuite.com", ".larksuite.com.cn"],
+      allowLocalhost: process.env.NODE_ENV !== "production",
+    },
+    "FEISHU_WEBHOOK_URL",
+  );
+  return url.toString();
+}
+
+function normalizeSlackWebhookUrl(raw: string): string {
+  const url = parseAndValidateUrl(
+    raw,
+    {
+      allowedSchemes: ["https:"],
+      allowedHosts: ["hooks.slack.com"],
+      allowLocalhost: process.env.NODE_ENV !== "production",
+    },
+    "SLACK_WEBHOOK_URL",
+  );
+  return url.toString();
+}
+
+function normalizeAlertWebhookUrl(raw: string): string {
+  const url = parseAndValidateUrl(
+    raw,
+    {
+      allowedSchemes: ["https:"],
+      allowAnyHost: true,
+      allowLocalhost: process.env.NODE_ENV !== "production",
+    },
+    "ALERT_WEBHOOK_URL",
+  );
+  if (isFeishuWebhook(url.toString())) {
+    validateUrlAgainstAllowlist(
+      url,
+      {
+        allowedSchemes: ["https:"],
+        allowedHostSuffixes: [".feishu.cn", ".larksuite.com", ".larksuite.com.cn"],
+        allowLocalhost: process.env.NODE_ENV !== "production",
+      },
+      "ALERT_WEBHOOK_URL",
+    );
+  }
+  if (isSlackWebhook(url.toString())) {
+    validateUrlAgainstAllowlist(
+      url,
+      {
+        allowedSchemes: ["https:"],
+        allowedHosts: ["hooks.slack.com"],
+        allowLocalhost: process.env.NODE_ENV !== "production",
+      },
+      "ALERT_WEBHOOK_URL",
+    );
+  }
+  return url.toString();
 }
 
 function buildFeedbackLines(payload: {
@@ -238,14 +251,14 @@ async function sendFeedbackWebhook(payload: {
   const webhookUrl = process.env.FEEDBACK_WEBHOOK_URL?.trim();
   const secret = process.env.FEEDBACK_WEBHOOK_SECRET?.trim();
   if (webhookUrl) {
-    await postJsonWebhook(webhookUrl, payload, secret);
+    await postJsonWebhook(normalizeGenericWebhookUrl(webhookUrl), payload, secret);
     return;
   }
 
   const candidateUrls = [
-    process.env.FEISHU_WEBHOOK_URL?.trim(),
-    process.env.ALERT_WEBHOOK_URL?.trim(),
-    process.env.SLACK_WEBHOOK_URL?.trim(),
+    process.env.FEISHU_WEBHOOK_URL?.trim() ? normalizeFeishuWebhookUrl(process.env.FEISHU_WEBHOOK_URL.trim()) : null,
+    process.env.ALERT_WEBHOOK_URL?.trim() ? normalizeAlertWebhookUrl(process.env.ALERT_WEBHOOK_URL.trim()) : null,
+    process.env.SLACK_WEBHOOK_URL?.trim() ? normalizeSlackWebhookUrl(process.env.SLACK_WEBHOOK_URL.trim()) : null,
   ].filter(Boolean) as string[];
 
   const deliveries: Promise<void>[] = [];

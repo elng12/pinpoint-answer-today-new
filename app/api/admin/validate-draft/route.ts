@@ -9,12 +9,8 @@ import {
   validateDraftLanguage,
   validateDraftStructure,
 } from "@/lib/puzzles/draft-validator";
-
-const ADMIN_TOKENS = [
-  process.env.API_SECRET_TOKEN,
-  process.env.ADMIN_PASSPHRASE,
-  process.env.NODE_ENV === "production" ? null : "admin-secret-dev",
-].filter(Boolean);
+import { authenticateAdmin } from "@/lib/site/admin-auth";
+import { enforceAdminRateLimit } from "@/lib/site/admin-rate-limit";
 
 function asRecord(value: unknown): Record<string, unknown> | null {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
@@ -68,11 +64,14 @@ function hasMinimumSlotsForNormalization(candidate: unknown): boolean {
  */
 export async function POST(req: NextRequest) {
   try {
+    const rateLimited = enforceAdminRateLimit(req);
+    if (rateLimited) return rateLimited;
+
     const authHeader = req.headers.get("authorization");
     const adminPassHeader = req.headers.get("x-admin-pass");
     const token = authHeader?.replace("Bearer ", "") || adminPassHeader;
 
-    if (!token || !ADMIN_TOKENS.includes(token)) {
+    if (!token || !authenticateAdmin(token)) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 

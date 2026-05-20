@@ -5,6 +5,8 @@ import {
   normalizeWorkerFallbackMode,
   type WorkerFallbackMode,
 } from "@/lib/puzzles/worker-fallback";
+import { buildNoStoreHeaders } from "@/lib/api-headers";
+import { safeEqual } from "@/lib/site/admin-auth";
 
 type WorkerRequestBody = {
   date?: unknown;
@@ -20,19 +22,12 @@ function normalizeRequestedDate(input: unknown): string | null {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
 
-function buildNoStoreHeaders(extra?: HeadersInit): HeadersInit {
-  return {
-    "Cache-Control": "no-store",
-    ...extra,
-  };
-}
-
 export async function POST(req: Request) {
   try {
     const expectedSecret = String(process.env.FALLBACK_WEBHOOK_SECRET || "").trim();
     const providedSecret = String(req.headers.get("x-webhook-secret") || "").trim();
 
-    if (expectedSecret && providedSecret !== expectedSecret) {
+    if (expectedSecret && !safeEqual(providedSecret, expectedSecret)) {
       return new NextResponse("unauthorized", { status: 401 });
     }
 
