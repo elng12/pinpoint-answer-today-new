@@ -14,14 +14,47 @@ permissions:
   contents: read
 
 jobs:
+  preflight:
+    name: CI Preflight
+    runs-on: ubuntu-latest
+    outputs:
+      skip_checks: ${{ steps.intermediate.outputs.skip_checks }}
+      reason: ${{ steps.intermediate.outputs.reason }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect Pinpoint intermediate state commit
+        id: intermediate
+        run: |
+          if [[ "${{ github.event_name }}" != "push" || "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "skip_checks=false" >> "$GITHUB_OUTPUT"
+            echo "reason=not a main push" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if node scripts/pinpoint-intermediate-state.mjs skip-if-intermediate; then
+            echo "skip_checks=true" >> "$GITHUB_OUTPUT"
+            echo "reason=Pinpoint intermediate state-only commit" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip_checks=false" >> "$GITHUB_OUTPUT"
+            echo "reason=site-affecting or public commit" >> "$GITHUB_OUTPUT"
+          fi
+
   checks:
     name: Lint, Typecheck, Guardrails
+    needs: preflight
+    if: needs.preflight.outputs.skip_checks != 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -43,4 +76,3 @@ jobs:
 
       - name: Pinpoint Guardrails
         run: npm run test:pinpoint-guardrails
-
