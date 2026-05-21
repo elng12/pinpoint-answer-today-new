@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 751,
+    "slug": "pinpoint-answer-751",
+    "publishDate": "2026-05-21",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Barn",
+      "Snowy",
+      "Screech",
+      "Great",
+      "Horned Hoot (named like its sound)"
+    ],
+    "mainAnswer": "Types of owls",
+    "category": "Types of owls",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #751: Barn, Snowy, Screech, Great, Horned Hoot (named like its sound).",
+    "updatedAt": "2026-05-21T07:04:12.985Z"
+  },
+  {
     "puzzleNumber": 750,
     "slug": "pinpoint-answer-750",
     "publishDate": "2026-05-20",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "False",
@@ -16,7 +35,7 @@
     "category": "Types of trails",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, False, Paper, Nature do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-20T07:08:18.154Z"
+    "updatedAt": "2026-05-21T07:04:12.985Z"
   },
   {
     "puzzleNumber": 749,

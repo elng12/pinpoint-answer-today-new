@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 751,
+  "slug": "pinpoint-answer-751",
+  "publishDate": "2026-05-21",
+  "isoDate": "2026-05-21",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Barn",
+    "Snowy",
+    "Screech",
+    "Great",
+    "Horned Hoot (named like its sound)"
+  ],
+  "answer": "Types of owls",
+  "category": "Types of owls",
+  "wordHints": {
+    "Barn": "Barn connects to \"Types of owls\"",
+    "Snowy": "Snowy connects to \"Types of owls\"",
+    "Screech": "Screech connects to \"Types of owls\"",
+    "Great": "Great connects to \"Types of owls\"",
+    "Horned Hoot (named like its sound)": "Horned Hoot (named like its sound) connects to \"Types of owls\""
+  },
+  "spoilerHints": {
+    "Barn": "Treat Barn as one recognizable member of types of owls, not as a broad topic on its own.",
+    "Snowy": "Snowy helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Screech": "Try reading Screech as a specific type inside types of owls instead of as a loose general reference.",
+    "Great": "Treat Great as one recognizable member of types of owls, not as a broad topic on its own.",
+    "Horned Hoot (named like its sound)": "Horned Hoot (named like its sound) is the clue that makes types of owls specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, Barn and Snowy can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "One tempting read was \"a broader umbrella topic\". Barn, Snowy can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Barn pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of owl each clue could be, a category board focused on owls stopped sounding generic and started behaving like a real category test. Examples like \"Barn owl\" and \"Snowy owl\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Screech, Great, Horned Hoot (named like its sound) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of owls\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of owls, which is why \"Types of owls\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #751, Barn, Snowy, Screech, Great, Horned Hoot (named like its sound) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on owls",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Barn",
+        "examplePhrase": "Barn owl",
+        "connectionExplained": "Barn connects to \"Types of owls\""
+      },
+      {
+        "clue": "Snowy",
+        "examplePhrase": "Snowy owl",
+        "connectionExplained": "Snowy connects to \"Types of owls\""
+      },
+      {
+        "clue": "Screech",
+        "examplePhrase": "Screech owl",
+        "connectionExplained": "Screech connects to \"Types of owls\""
+      },
+      {
+        "clue": "Great",
+        "examplePhrase": "Great owl",
+        "connectionExplained": "Great connects to \"Types of owls\""
+      },
+      {
+        "clue": "Horned Hoot (named like its sound)",
+        "examplePhrase": "Horned Hoot owl",
+        "connectionExplained": "Horned Hoot (named like its sound) connects to \"Types of owls\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #751?",
+      "answer": "The answer is \"Types of owls\". The clues Barn, Snowy, Screech, Great, Horned Hoot (named like its sound) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #751 just unlocked, and this is the fastest verified update. The board clues are Barn, Snowy, Screech, Great, Horned Hoot (named like its sound), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Barn, Snowy can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Barn",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #751, Barn, Snowy, Screech, Great, Horned Hoot (named like its sound) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Barn lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Barn",
+    "whyDecisive": "Barn is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Barn lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Barn",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Barn",
+      "nonObviousWhy": "Barn supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Barn"
+    },
+    {
+      "clue": "Snowy",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Snowy",
+      "nonObviousWhy": "Snowy supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Snowy"
+    },
+    {
+      "clue": "Screech",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Screech",
+      "nonObviousWhy": "Screech supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Screech"
+    },
+    {
+      "clue": "Great",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Great",
+      "nonObviousWhy": "Great supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Great"
+    },
+    {
+      "clue": "Horned Hoot (named like its sound)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Horned Hoot (named like its sound)",
+      "nonObviousWhy": "Horned Hoot (named like its sound) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Horned Hoot (named like its sound)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #751?",
+      "answer": "The answer is \"Types of owls\". The clues Barn, Snowy, Screech, Great, Horned Hoot (named like its sound) all share this connection.",
+      "tiedClue": "Barn"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on owls",
+    "relatedEntities": [
+      "Barn",
+      "Snowy",
+      "Screech",
+      "Great",
+      "Horned Hoot (named like its sound)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on owls",
+      "Barn",
+      "Snowy",
+      "Screech",
+      "Great"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Barn, Snowy can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Barn pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Screech, Great, Horned Hoot (named like its sound) read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of owls"
+}
