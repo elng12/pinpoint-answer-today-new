@@ -15,6 +15,7 @@ export declare const puzzleQuestionTypeSchema: z.ZodEnum<["phrase", "category", 
 export declare const puzzleDifficultyBandSchema: z.ZodEnum<["obvious", "medium", "hard"]>;
 export declare const puzzleDetailBodyModeSchema: z.ZodEnum<["short", "standard", "deep"]>;
 export declare const puzzlePageExperienceModeSchema: z.ZodEnum<["full-analysis", "light-explainer"]>;
+export declare const puzzlePublishModeSchema: z.ZodEnum<["answer-first", "full-analysis", "failed"]>;
 
 export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   puzzleNumber: z.ZodNumber;
@@ -26,6 +27,7 @@ export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   category: z.ZodNullable<z.ZodString>;
   difficultyLevel: z.ZodOptional<typeof difficultyLevelSchema>;
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
+  publishMode: z.ZodOptional<typeof puzzlePublishModeSchema>;
   shortSummary: z.ZodString;
   updatedAt: z.ZodString;
 }>;
@@ -101,6 +103,7 @@ export declare const puzzleWrongGuessCandidateSchema: z.ZodObject<{
 export declare const puzzleDetailContentSchema: z.ZodObject<{
   slug: z.ZodString;
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
+  publishMode: z.ZodOptional<typeof puzzlePublishModeSchema>;
   questionType: z.ZodOptional<typeof puzzleQuestionTypeSchema>;
   difficultyBand: z.ZodOptional<typeof puzzleDifficultyBandSchema>;
   bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;

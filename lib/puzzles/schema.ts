@@ -8,6 +8,7 @@ import {
   faqItemSchema as sharedFaqItemSchema,
   lessonItemSchema as sharedLessonItemSchema,
   puzzlePageExperienceModeSchema as sharedPuzzlePageExperienceModeSchema,
+  puzzlePublishModeSchema as sharedPuzzlePublishModeSchema,
   puzzleSolvePathSchema as sharedPuzzleSolvePathSchema,
   puzzleTurningPointSchema as sharedPuzzleTurningPointSchema,
   puzzleClueRowSchema as sharedPuzzleClueRowSchema,
@@ -39,6 +40,8 @@ export const puzzleDetailBodyModeSchema =
   sharedPuzzleDetailBodyModeSchema as z.ZodEnum<["short", "standard", "deep"]>;
 export const puzzlePageExperienceModeSchema =
   sharedPuzzlePageExperienceModeSchema as z.ZodEnum<["full-analysis", "light-explainer"]>;
+export const puzzlePublishModeSchema =
+  sharedPuzzlePublishModeSchema as z.ZodEnum<["answer-first", "full-analysis", "failed"]>;
 export const puzzleRegistryEntrySchema = sharedPuzzleRegistryEntrySchema as z.ZodObject<{
   puzzleNumber: z.ZodNumber;
   slug: z.ZodString;
@@ -49,6 +52,7 @@ export const puzzleRegistryEntrySchema = sharedPuzzleRegistryEntrySchema as z.Zo
   category: z.ZodNullable<z.ZodString>;
   difficultyLevel: z.ZodOptional<typeof difficultyLevelSchema>;
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
+  publishMode: z.ZodOptional<typeof puzzlePublishModeSchema>;
   shortSummary: z.ZodString;
   updatedAt: z.ZodString;
 }>;
@@ -112,6 +116,7 @@ export const puzzleWrongGuessCandidateSchema = sharedPuzzleWrongGuessCandidateSc
 export const puzzleDetailContentSchema = sharedPuzzleDetailContentSchema as z.ZodObject<{
   slug: z.ZodString;
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
+  publishMode: z.ZodOptional<typeof puzzlePublishModeSchema>;
   questionType: z.ZodOptional<typeof puzzleQuestionTypeSchema>;
   difficultyBand: z.ZodOptional<typeof puzzleDifficultyBandSchema>;
   bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;
@@ -138,6 +143,7 @@ export type PuzzleDetailState = z.infer<typeof puzzleDetailStateSchema>;
 export type PuzzleQuestionType = z.infer<typeof puzzleQuestionTypeSchema>;
 export type PuzzleDifficultyBand = z.infer<typeof puzzleDifficultyBandSchema>;
 export type PuzzlePageExperienceMode = z.infer<typeof puzzlePageExperienceModeSchema>;
+export type PuzzlePublishMode = z.infer<typeof puzzlePublishModeSchema>;
 export type PuzzleRegistryEntryRecord = z.infer<typeof puzzleRegistryEntrySchema>;
 export type PuzzleDetailContentRecord = z.infer<typeof puzzleDetailContentSchema>;
 export type PuzzleDetailDisplayRecord = z.infer<typeof puzzleDetailDisplaySchema>;

@@ -3,6 +3,10 @@ import process from "node:process";
 import { dirname, resolve } from "node:path";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import {
+  formatPublishGateIssues,
+  validatePublishEligibility,
+} from "../lib/puzzles/publish-eligibility.shared.mjs";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -246,7 +250,20 @@ async function loadLiveRegistryEntry() {
   return liveEntry;
 }
 
-function assertReleaseEligibleDetail(slug, puzzle, contextLabel) {
+function assertReleaseEligibleDetail(slug, puzzle, contextLabel, registryEntry = {}) {
+  const eligibility = validatePublishEligibility({
+    slug,
+    detail: puzzle,
+    registryEntry,
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+  });
+  if (!eligibility.ok) {
+    throw new Error(
+      `${contextLabel} failed publish eligibility for ${slug}: ${formatPublishGateIssues(eligibility.issues)}`,
+    );
+  }
+
   const detailState = String(puzzle?.detailState || "published").trim().toLowerCase();
   if (detailState !== "published" && detailState !== "fallback_full") {
     throw new Error(
@@ -254,12 +271,6 @@ function assertReleaseEligibleDetail(slug, puzzle, contextLabel) {
     );
   }
 
-  const bodyMode = String(puzzle?.bodyMode || "").trim().toLowerCase();
-  if (bodyMode === "short") {
-    throw new Error(
-      `${contextLabel} is still short mode for ${slug}. Production release only allows formal full detail pages.`,
-    );
-  }
 }
 
 function buildDetailVerificationStrings(puzzle) {
@@ -353,7 +364,7 @@ async function main() {
 
   const localLiveEntry = await loadLiveRegistryEntry();
   const localLivePuzzle = await loadPublishedPuzzle(localLiveEntry.slug);
-  assertReleaseEligibleDetail(localLiveEntry.slug, localLivePuzzle, "Local live detail JSON");
+  assertReleaseEligibleDetail(localLiveEntry.slug, localLivePuzzle, "Local live detail JSON", localLiveEntry);
 
   logStep("Installing worker dependencies");
   await run("npm", ["ci"], { cwd: WORKER_DIR });
@@ -391,7 +402,7 @@ async function main() {
   const summary = await checkSummaryApi(`${DEFAULT_SITE_URL}/api/puzzles/summary`);
   const workerHealth = await checkWorkerHealth(DEFAULT_WORKER_HEALTH_URL);
   const publishedPuzzle = await loadPublishedPuzzle(summary.latest.slug);
-  assertReleaseEligibleDetail(summary.latest.slug, publishedPuzzle, "Published detail JSON");
+  assertReleaseEligibleDetail(summary.latest.slug, publishedPuzzle, "Published detail JSON", summary.latest);
   const detail = await waitForLatestDetailContent(DEFAULT_SITE_URL, summary.latest.slug, publishedPuzzle);
 
   logStep("Production release finished");
