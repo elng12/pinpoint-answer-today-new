@@ -93,6 +93,9 @@ export const puzzleClueRowSchema = sharedPuzzleClueRowSchema as z.ZodObject<{
   resolvedPhraseOrMember: z.ZodString;
   nonObviousWhy: z.ZodString;
   searchableContext: z.ZodOptional<z.ZodString>;
+  evidenceRef: z.ZodOptional<z.ZodString>;
+  phraseExample: z.ZodOptional<z.ZodString>;
+  fitConfidence: z.ZodOptional<z.ZodEnum<["confirmed", "manual", "weak"]>>;
 }>;
 export const puzzleFaqIntentTypeSchema = sharedPuzzleFaqIntentTypeSchema as z.ZodEnum<
   ["definition", "clue_background", "comparison", "solve_strategy", "category_context"]

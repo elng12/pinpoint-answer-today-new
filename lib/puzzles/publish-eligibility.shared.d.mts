@@ -38,5 +38,9 @@ export declare function validatePublishEligibility(input?: {
   expectedMode?: PublishMode;
   answerFirstPublicEnabled?: boolean;
   sourceConfidence?: "confirmed" | "manual" | "inferred" | "weak" | "unknown";
+  evidenceArtifact?: Record<string, unknown> | null;
+  evidenceArtifactPath?: string;
+  requireEvidenceForFullAnalysis?: boolean;
+  productionEvidence?: boolean;
 }): PublishGateResult;
 export declare function formatPublishGateIssues(issues: PublishGateIssue[]): string;

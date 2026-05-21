@@ -15,6 +15,8 @@ import {
   updateLightweightPublishFailureStreak,
 } from "../lib/puzzles/publish-failure-summary.shared.mjs";
 import { validatePublishEligibility } from "../lib/puzzles/publish-eligibility.shared.mjs";
+import { validatePinpointEvidenceV1 } from "../lib/puzzles/pinpoint-evidence-v1.shared.mjs";
+import { validateReleaseOverrideDryRun } from "../lib/puzzles/release-override.shared.mjs";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -2221,6 +2223,169 @@ function checkLightweightPublishFailureSummary() {
   console.log("ok: lightweight publish failure summary preserves issue codes and streaks");
 }
 
+async function checkPinpointEvidenceV1Guards724Mapping() {
+  const fixturePath = resolve(ROOT, "tests/fixtures/pinpoint/evidence/pinpoint-answer-724.evidence.fixture.json");
+  const badFixturePath = resolve(ROOT, "tests/fixtures/pinpoint/evidence/pinpoint-answer-724.bad-mapping.evidence.fixture.json");
+  const goodEvidence = JSON.parse(await readFile(fixturePath, "utf8"));
+  const badEvidence = JSON.parse(await readFile(badFixturePath, "utf8"));
+  const registryEntry = {
+    puzzleNumber: 724,
+    slug: "pinpoint-answer-724",
+    publishDate: "2026-04-24",
+    status: "live",
+    detailState: "published",
+    clues: ["Stand", "Shake", "Made", "Writing", "Kerchief"],
+    mainAnswer: "Words that come after “hand”",
+  };
+  const detail = {
+    slug: "pinpoint-answer-724",
+    puzzleNumber: 724,
+    publishDate: "2026-04-24",
+    detailState: "published",
+    publishMode: "full-analysis",
+    answer: "Words that come after “hand”",
+    clues: ["Stand", "Shake", "Made", "Writing", "Kerchief"],
+    clueRows: [
+      { clue: "Stand", resolvedPhraseOrMember: "Handstand", nonObviousWhy: "Stand combines with hand.", evidenceRef: "clue-0-stand" },
+      { clue: "Shake", resolvedPhraseOrMember: "Handshake", nonObviousWhy: "Shake combines with hand.", evidenceRef: "clue-1-shake" },
+      { clue: "Made", resolvedPhraseOrMember: "Handmade", nonObviousWhy: "Made combines with hand.", evidenceRef: "clue-2-made" },
+      { clue: "Writing", resolvedPhraseOrMember: "Handwriting", nonObviousWhy: "Writing combines with hand.", evidenceRef: "clue-3-writing" },
+      { clue: "Kerchief", resolvedPhraseOrMember: "Handkerchief", nonObviousWhy: "Kerchief combines with hand.", evidenceRef: "clue-4-kerchief" },
+    ],
+  };
+
+  const goodIssues = validatePinpointEvidenceV1({
+    evidence: goodEvidence,
+    artifactPath: "tests/fixtures/pinpoint/evidence/pinpoint-answer-724.evidence.fixture.json",
+    production: false,
+    detail,
+    registryEntry,
+  });
+  assert.deepEqual(goodIssues, [], "valid #724 evidence fixture should pass dry-run validation");
+
+  const badIssues = validatePinpointEvidenceV1({
+    evidence: badEvidence,
+    artifactPath: "tests/fixtures/pinpoint/evidence/pinpoint-answer-724.bad-mapping.evidence.fixture.json",
+    production: false,
+    detail,
+    registryEntry,
+  });
+  const badCodes = badIssues.map((issue) => issue.code);
+  assert.ok(
+    badCodes.includes("evidence.clueTextMismatch"),
+    "#724 bad fixture should catch swapped clue mapping",
+  );
+  assert.ok(
+    badCodes.includes("evidence.weakFit"),
+    "#724 bad fixture should catch weak clue support",
+  );
+
+  const productionFixtureIssues = validatePublishEligibility({
+    slug: "pinpoint-answer-724",
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+    requireEvidenceForFullAnalysis: true,
+    productionEvidence: true,
+    evidenceArtifact: goodEvidence,
+    evidenceArtifactPath: "tests/fixtures/pinpoint/evidence/pinpoint-answer-724.evidence.fixture.json",
+    registryEntry,
+    detail,
+  });
+  assert.equal(productionFixtureIssues.ok, false, "fixture evidence must not pass production eligibility");
+  assert.ok(
+    productionFixtureIssues.issues.some((issue) => issue.code === "evidence.fixtureInProduction"),
+    "production eligibility should return evidence.fixtureInProduction for fixture paths",
+  );
+
+  const missingEvidence = validatePublishEligibility({
+    slug: "pinpoint-answer-724",
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+    requireEvidenceForFullAnalysis: true,
+    registryEntry,
+    detail,
+  });
+  assert.equal(missingEvidence.ok, false, "required evidence should block full-analysis without an artifact");
+  assert.ok(
+    missingEvidence.issues.some((issue) => issue.code === "evidence.missingArtifact"),
+    "required evidence should produce evidence.missingArtifact",
+  );
+
+  console.log("ok: Pinpoint evidence V1 catches #724 mapping, weak support, and fixture production use");
+}
+
+function checkReleaseOverrideDryRunSchema() {
+  const nowMs = Date.parse("2026-05-21T00:00:00.000Z");
+  const missing = validateReleaseOverrideDryRun({
+    override: {
+      slug: "pinpoint-answer-750",
+      issueCodes: ["publishMode.inferredLegacy"],
+    },
+    slug: "pinpoint-answer-750",
+    activeIssueCodes: ["publishMode.inferredLegacy"],
+    nowMs,
+  });
+  const missingCodes = missing.issues.map((issue) => issue.code);
+  assert.ok(missingCodes.includes("override.reviewerMissing"), "override dry-run should require reviewer");
+  assert.ok(missingCodes.includes("override.reasonMissing"), "override dry-run should require reason");
+  assert.ok(missingCodes.includes("override.createdAtMissing"), "override dry-run should require createdAt");
+  assert.ok(missingCodes.includes("override.expiresAtMissing"), "override dry-run should require expiresAt");
+
+  const expired = validateReleaseOverrideDryRun({
+    override: {
+      slug: "pinpoint-answer-750",
+      issueCodes: ["publishMode.inferredLegacy"],
+      reviewer: "release-maintainer",
+      reason: "Dry-run fixture for non-blocking warning override.",
+      createdAt: "2026-05-18T00:00:00.000Z",
+      expiresAt: "2026-05-20T00:00:00.000Z",
+    },
+    slug: "pinpoint-answer-750",
+    activeIssueCodes: ["publishMode.inferredLegacy"],
+    nowMs,
+  });
+  assert.ok(
+    expired.issues.some((issue) => issue.code === "override.expired"),
+    "override dry-run should reject expired overrides",
+  );
+
+  const disallowed = validateReleaseOverrideDryRun({
+    override: {
+      slug: "pinpoint-answer-750",
+      issueCodes: ["answer.missing"],
+      reviewer: "release-maintainer",
+      reason: "Should never override missing answer.",
+      createdAt: "2026-05-21T00:00:00.000Z",
+      expiresAt: "2026-05-21T12:00:00.000Z",
+    },
+    slug: "pinpoint-answer-750",
+    activeIssueCodes: ["answer.missing"],
+    nowMs,
+  });
+  assert.ok(
+    disallowed.issues.some((issue) => issue.code === "override.disallowedIssueCode"),
+    "override dry-run should reject core blocking issue overrides",
+  );
+
+  const dryRunOk = validateReleaseOverrideDryRun({
+    override: {
+      slug: "pinpoint-answer-750",
+      issueCodes: ["publishMode.inferredLegacy"],
+      reviewer: "release-maintainer",
+      reason: "Dry-run only; production effectiveness remains disabled.",
+      createdAt: "2026-05-21T00:00:00.000Z",
+      expiresAt: "2026-05-22T00:00:00.000Z",
+    },
+    slug: "pinpoint-answer-750",
+    activeIssueCodes: ["publishMode.inferredLegacy"],
+    nowMs,
+  });
+  assert.equal(dryRunOk.ok, true, "well-formed warning override should pass dry-run schema validation");
+  assert.equal(dryRunOk.productionEffective, false, "PR3 override dry-run must not enable production bypass");
+
+  console.log("ok: release override schema validates dry-run only without production bypass");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -2239,6 +2404,8 @@ async function main() {
   await checkAdminApiRateLimit();
   checkPublishEligibilityBlocksShortPublishedAsFullAnalysis();
   checkLightweightPublishFailureSummary();
+  await checkPinpointEvidenceV1Guards724Mapping();
+  checkReleaseOverrideDryRunSchema();
   console.log("Pinpoint guardrail regression passed.");
 }
 
