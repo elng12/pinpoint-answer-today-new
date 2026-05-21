@@ -11,6 +11,10 @@ import {
 } from "../../lib/puzzles/fallback-copy";
 import { getPinpointUnlockUtcHour } from "../../lib/utils/pinpoint-unlock";
 import {
+  formatPublishGateIssues,
+  validatePublishEligibility,
+} from "../../lib/puzzles/publish-eligibility.shared.mjs";
+import {
   generatePuzzleDraft,
   regeneratePuzzleDraft,
   type EnrichInput,
@@ -77,6 +81,13 @@ type Doc = {
 };
 
 type JsonRecord = Record<string, unknown>;
+
+class PublishEligibilityBlockedError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "PublishEligibilityBlockedError";
+  }
+}
 
 type GraphQLOperation = {
   isPrimary?: boolean;
@@ -3248,6 +3259,27 @@ async function publishToNewSiteGitHub(
     if (!finalReadiness.ok) {
       throw new Error(`[new-site] final publish guard failed for ${slugPath}: ${finalReadiness.reason}`);
     }
+
+    const eligibility = validatePublishEligibility({
+      slug,
+      detail: detailRecord as Record<string, unknown>,
+      registryEntry: {
+        puzzleNumber,
+        slug,
+        publishDate: puzzleDate,
+        status: "live",
+        detailState,
+        clues: words,
+        mainAnswer: answer,
+      },
+      expectedMode: "full-analysis",
+      answerFirstPublicEnabled: false,
+    });
+    if (!eligibility.ok) {
+      throw new PublishEligibilityBlockedError(
+        `[new-site] publish eligibility failed for ${slugPath}: ${formatPublishGateIssues(eligibility.issues)}`,
+      );
+    }
   }
   const slugJson = JSON.stringify(omitLegacyFullAnalysisForStorage(detailRecord), null, 2);
   const slugProtection = resolveThinContentProtectionDecision({
@@ -4003,6 +4035,10 @@ async function enrichPublishToSite(
       detailState: publishDetailState,
     };
   } catch (error) {
+    if (error instanceof PublishEligibilityBlockedError) {
+      await options.onDetailStateChange?.("failed", error.message);
+      throw error;
+    }
     try {
       await publishToNewSiteGitHub(env, puzzleDate, doc, failedPayload, puzzleNumber);
       await options.onDetailStateChange?.(

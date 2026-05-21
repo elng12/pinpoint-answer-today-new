@@ -1,8 +1,15 @@
-// @ts-nocheck
+// @ts-nocheck — This build-time validation script accesses raw JSON fields
+// (e.g. detail.answer, detail.fullAnalysis) that exist on the parsed data
+// but are not represented in the Zod-inferred PuzzleDetailContentRecord type.
+// The runtime behavior is correct; the type gaps are schema-only.
 import { readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract.shared.mjs";
+import {
+  formatPublishGateIssues,
+  validatePublishEligibility,
+} from "../lib/puzzles/publish-eligibility.shared.mjs";
 import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
 import {
   CONTENT_CONTRACT,
@@ -11,6 +18,7 @@ import {
 } from "../lib/puzzles/content-contract";
 import { buildPuzzleSeoDescription } from "../lib/seo/metadata";
 import { buildPinpointDescription, buildPinpointTitle } from "../lib/seo/pinpoint";
+import type { PuzzleRegistryEntryRecord, PuzzleDetailContentRecord } from "../lib/puzzles/schema";
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
 const adjacentQuotePattern = /["“”]{2,}/;
@@ -55,9 +63,9 @@ const publishedContractBacklogLimits = new Map(
     "summary.promotionalTone": 4,
   }),
 );
-const publishedContractBacklogCounts = new Map();
-const publishedContractBacklogSamples = new Map();
-const publishedLessonTitleOccurrences = new Map();
+const publishedContractBacklogCounts = new Map<string, number>();
+const publishedContractBacklogSamples = new Map<string, string[]>();
+const publishedLessonTitleOccurrences = new Map<string, string[]>();
 const genericSpoilerHintPatterns = [
   /\bTreat this as one member of a narrower category\b/i,
   /\bThis clue becomes useful once you stop reading it literally\b/i,
@@ -71,17 +79,17 @@ const allowedRecentContinuityGaps = new Map([
   // [750, "Documented reason for an intentional public numbering gap"],
 ]);
 
-function countWords(value) {
+function countWords(value: string) {
   return value.trim().split(/\s+/).filter(Boolean).length;
 }
 
-function assertNoHtml(label, value) {
+function assertNoHtml(label: string, value: string) {
   if (htmlTagPattern.test(value)) {
     throw new Error(`${label} contains HTML markup and must be plain text.`);
   }
 }
 
-function assertNoLegacyTemplate(label, value) {
+function assertNoLegacyTemplate(label: string, value: string) {
   const normalized = String(value || "").toLowerCase();
   const matched = legacyTemplateMarkers.find((marker) => normalized.includes(marker));
   if (matched) {
@@ -89,13 +97,13 @@ function assertNoLegacyTemplate(label, value) {
   }
 }
 
-function assertNoAdjacentQuotes(label, value) {
+function assertNoAdjacentQuotes(label: string, value: string) {
   if (adjacentQuotePattern.test(String(value || ""))) {
     throw new Error(`${label} contains malformed adjacent quote characters.`);
   }
 }
 
-function assertNoWrappedQuotedAnswer(label, value, answer) {
+function assertNoWrappedQuotedAnswer(label: string, value: string, answer: string) {
   const text = String(value || "");
   const normalizedAnswer = String(answer || "").trim();
   if (!normalizedAnswer || !/["“”]/.test(normalizedAnswer)) {
@@ -112,7 +120,7 @@ function assertNoWrappedQuotedAnswer(label, value, answer) {
   }
 }
 
-function recordPublishedContractBacklog(code, sample) {
+function recordPublishedContractBacklog(code: string, sample: string) {
   publishedContractBacklogCounts.set(code, (publishedContractBacklogCounts.get(code) || 0) + 1);
   const samples = publishedContractBacklogSamples.get(code) || [];
   if (sample && samples.length < 5) {
@@ -137,14 +145,14 @@ function assertPublishedContractBacklogLimits() {
   }
 }
 
-function normalizeRepeatedLessonTitle(title) {
+function normalizeRepeatedLessonTitle(title: string) {
   return String(title || "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
 }
 
-function getRenderedLessonTitle(lesson) {
+function getRenderedLessonTitle(lesson: string | { title?: string; body?: string } | null) {
   if (!lesson) {
     return "";
   }
@@ -155,7 +163,7 @@ function getRenderedLessonTitle(lesson) {
   return String(lesson.title || "").trim();
 }
 
-function recordPublishedLessonTitle(entry, lesson, index) {
+function recordPublishedLessonTitle(entry: PuzzleRegistryEntryRecord, lesson: string | { title?: string; body?: string } | null, index: number) {
   const title = getRenderedLessonTitle(lesson);
   const normalizedTitle = normalizeRepeatedLessonTitle(title);
   if (!normalizedTitle) {
@@ -182,7 +190,7 @@ function assertNoRepeatedPublishedLessonTitles() {
   throw new Error(`Published lesson titles must be page-specific; repeated titles found. Samples: ${samples}`);
 }
 
-function normalizeLessonsForContract(lessons) {
+function normalizeLessonsForContract(lessons: PuzzleDetailContentRecord["lessons"]) {
   return (lessons || []).map((lesson) => {
     if (typeof lesson === "string") {
       return { title: "", body: lesson };
@@ -194,7 +202,7 @@ function normalizeLessonsForContract(lessons) {
   });
 }
 
-function toContractClueDetails(detail) {
+function toContractClueDetails(detail: PuzzleDetailContentRecord) {
   return Array.isArray(detail.clueRows)
     ? detail.clueRows.map((row) => ({
         clue: row?.clue,
@@ -204,7 +212,7 @@ function toContractClueDetails(detail) {
     : [];
 }
 
-function toContractFaqs(detail) {
+function toContractFaqs(detail: PuzzleDetailContentRecord) {
   const source = Array.isArray(detail.faqItems) && detail.faqItems.length > 0
     ? detail.faqItems
     : detail.faqs;
@@ -214,7 +222,7 @@ function toContractFaqs(detail) {
   }));
 }
 
-function validatePageSeoDescription(entry) {
+function validatePageSeoDescription(entry: PuzzleRegistryEntryRecord) {
   const pageSeoDescription = buildPuzzleSeoDescription(entry.puzzleNumber, entry.clues, entry.mainAnswer);
   const len = pageSeoDescription.length;
   if (pageSeoDescription.includes("Answer: ")) {
@@ -238,7 +246,7 @@ function validatePageSeoDescription(entry) {
   }
 }
 
-function validatePublishedContentContract(entry, detail, bodyParagraphs) {
+function validatePublishedContentContract(entry: PuzzleRegistryEntryRecord, detail: PuzzleDetailContentRecord, bodyParagraphs: string[]) {
   validatePageSeoDescription(entry);
   const solutionNarrative = Array.isArray(detail.solutionNarrative) ? detail.solutionNarrative : [];
   const contractInput = {
@@ -277,7 +285,7 @@ function validatePublishedContentContract(entry, detail, bodyParagraphs) {
   }
 }
 
-function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
+function getExpectedPublishDateForPuzzleNumber(puzzleNumber: number) {
   if (!Number.isInteger(puzzleNumber) || puzzleNumber < modernPuzzleDateBaseline.puzzleNumber) {
     return "";
   }
@@ -290,7 +298,7 @@ function getExpectedPublishDateForPuzzleNumber(puzzleNumber) {
   return publishDate.toISOString().slice(0, 10);
 }
 
-function requiresPhase1StructuredValidation(entry, detail) {
+function requiresPhase1StructuredValidation(entry: PuzzleRegistryEntryRecord, detail: PuzzleDetailContentRecord) {
   const pageExperienceMode =
     detail.pageExperienceMode === "light-explainer" || detail.bodyMode === "short"
       ? "light-explainer"
@@ -306,7 +314,7 @@ function requiresPhase1StructuredValidation(entry, detail) {
   );
 }
 
-function resolveRegistryDetailState(entry) {
+function resolveRegistryDetailState(entry: PuzzleRegistryEntryRecord) {
   if (entry.detailState) {
     return entry.detailState;
   }
@@ -314,7 +322,7 @@ function resolveRegistryDetailState(entry) {
   return entry.status === "draft" || entry.status === "preview" ? "draft" : "published";
 }
 
-function isPublicRegistryEntry(entry) {
+function isPublicRegistryEntry(entry: PuzzleRegistryEntryRecord) {
   return (
     publicRegistryStatuses.has(entry.status) &&
     publicDetailStates.has(resolveRegistryDetailState(entry)) &&
@@ -323,7 +331,7 @@ function isPublicRegistryEntry(entry) {
   );
 }
 
-async function readPublicDetailFileSlugs(dataDir) {
+async function readPublicDetailFileSlugs(dataDir: string) {
   const fileNames = await readdir(dataDir);
   const publicSlugs = [];
 
@@ -344,7 +352,7 @@ async function readPublicDetailFileSlugs(dataDir) {
   return publicSlugs.sort();
 }
 
-function assertPublicDetailsAreRegistered(publicDetailSlugs, registrySlugs) {
+function assertPublicDetailsAreRegistered(publicDetailSlugs: string[], registrySlugs: Set<string>) {
   const missing = publicDetailSlugs.filter((slug) => !registrySlugs.has(slug));
 
   if (missing.length > 0) {
@@ -354,7 +362,7 @@ function assertPublicDetailsAreRegistered(publicDetailSlugs, registrySlugs) {
   }
 }
 
-function assertRecentPublicRegistryContinuity(registry) {
+function assertRecentPublicRegistryContinuity(registry: PuzzleRegistryEntryRecord[]) {
   const publicNumbers = registry
     .filter(isPublicRegistryEntry)
     .map((entry) => entry.puzzleNumber)
@@ -381,7 +389,20 @@ function assertRecentPublicRegistryContinuity(registry) {
   }
 }
 
-function validateDetailContent(entry, detail) {
+function validateDetailContent(entry: PuzzleRegistryEntryRecord, detail: PuzzleDetailContentRecord) {
+  if (detail.publishMode || entry.publishMode) {
+    const eligibility = validatePublishEligibility({
+      slug: entry.slug,
+      registryEntry: entry,
+      detail,
+      expectedMode: detail.publishMode === "answer-first" ? "answer-first" : "full-analysis",
+      answerFirstPublicEnabled: false,
+    });
+    if (!eligibility.ok) {
+      throw new Error(`${entry.slug} failed publish eligibility: ${formatPublishGateIssues(eligibility.issues)}`);
+    }
+  }
+
   const detailAnswer = typeof detail.answer === "string" ? detail.answer : "";
   const articleBlocks = Array.isArray(detail.articleBlocks) ? detail.articleBlocks : [];
   const fullAnalysis = Array.isArray(detail.fullAnalysis) ? detail.fullAnalysis : [];
@@ -553,10 +574,10 @@ async function main() {
   const registry = registrySchema.parse(JSON.parse(rawRegistry));
   const publicDetailSlugs = await readPublicDetailFileSlugs(dataDir);
 
-  const numbers = new Set();
-  const slugs = new Set();
-  const publicRegistrySlugs = new Set();
-  const dates = new Set();
+  const numbers = new Set<number>();
+  const slugs = new Set<string>();
+  const publicRegistrySlugs = new Set<string>();
+  const dates = new Set<string>();
   let liveCount = 0;
   let previewCount = 0;
 

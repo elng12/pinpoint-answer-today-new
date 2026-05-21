@@ -10,6 +10,7 @@ import {
   validateDraftStructure,
 } from "../lib/puzzles/draft-validator";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
+import { validatePublishEligibility } from "../lib/puzzles/publish-eligibility.shared.mjs";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -2084,6 +2085,48 @@ async function checkAdminApiRateLimit() {
   console.log("ok: admin APIs enforce shared rate limiting");
 }
 
+function checkPublishEligibilityBlocksShortPublishedAsFullAnalysis() {
+  const result = validatePublishEligibility({
+    slug: "pinpoint-answer-750",
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+    registryEntry: {
+      puzzleNumber: 750,
+      slug: "pinpoint-answer-750",
+      publishDate: "2026-05-20",
+      status: "live",
+      detailState: "published",
+      clues: ["False", "Paper", "Nature", "Campaign", "Breadcrumb"],
+      mainAnswer: "Types of trails",
+    },
+    detail: {
+      slug: "pinpoint-answer-750",
+      detailState: "published",
+      bodyMode: "short",
+      pageExperienceMode: "light-explainer",
+      answer: "Types of trails",
+      clues: ["False", "Paper", "Nature", "Campaign", "Breadcrumb"],
+    },
+  });
+
+  assert.equal(result.ok, false, "short/light detail must not pass as full-analysis");
+  const codes = result.issues.map((issue) => issue.code);
+  assert.ok(
+    codes.includes("publishMode.bodyModeMismatch"),
+    "short body mode should return publishMode.bodyModeMismatch",
+  );
+  assert.ok(
+    codes.includes("publishMode.pageExperienceMismatch"),
+    "light explainer should return publishMode.pageExperienceMismatch",
+  );
+  assert.ok(
+    codes.includes("publishMode.answerFirstDisabled"),
+    "answer-first should be blocked when public answer-first is disabled",
+  );
+
+  console.log("ok: publish eligibility blocks short published payloads as full-analysis");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -2100,6 +2143,7 @@ async function main() {
   await checkValidateDraftDoesNotNormalizeEmptySlots();
   await checkValidateDraftDoesNotNormalizeIncompleteSlotRows();
   await checkAdminApiRateLimit();
+  checkPublishEligibilityBlocksShortPublishedAsFullAnalysis();
   console.log("Pinpoint guardrail regression passed.");
 }
 
