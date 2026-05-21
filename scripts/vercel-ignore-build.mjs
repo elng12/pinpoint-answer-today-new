@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 
 const SAFE_PREFIXES = [
   ".claude/",
@@ -76,6 +77,26 @@ function getChangedFilesBetween(from, to) {
     .filter(Boolean);
 }
 
+function isPinpointIntermediateStateOnly(from, to, files) {
+  try {
+    execFileSync(
+      process.execPath,
+      [
+        fileURLToPath(new URL("./pinpoint-intermediate-state.mjs", import.meta.url)),
+        "skip-if-intermediate",
+        `--range=${from}..${to}`,
+        `--files=${files.join(",")}`,
+      ],
+      {
+        stdio: "inherit",
+      },
+    );
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function getChangedFilesFromVercelRange() {
   const currentSha = readEnv("VERCEL_GIT_COMMIT_SHA");
   const previousSha = readEnv("VERCEL_GIT_PREVIOUS_SHA");
@@ -104,13 +125,13 @@ function isProductionDeployment() {
 let changedFiles = process.argv.slice(2).map(normalizePath).filter(Boolean);
 
 if (changedFiles.length === 0) {
-  if (isProductionDeployment()) {
-    continueBuild("Production deployment detected, so Vercel should build.");
-  }
-
   changedFiles = getChangedFilesFromVercelRange();
 
   if (changedFiles === null) {
+    if (isProductionDeployment()) {
+      continueBuild("Production deployment detected without a commit range, so Vercel should build.");
+    }
+
     continueBuild("Vercel commit SHAs are unavailable, so Vercel should build.");
   }
 }
@@ -122,6 +143,18 @@ if (changedFiles.length === 0) {
 const buildTriggerFiles = changedFiles.filter((file) => !isSafeFile(file));
 
 if (buildTriggerFiles.length > 0) {
+  const currentSha = readEnv("VERCEL_GIT_COMMIT_SHA");
+  const previousSha = readEnv("VERCEL_GIT_PREVIOUS_SHA");
+  if (
+    previousSha &&
+    currentSha &&
+    gitCommitExists(previousSha) &&
+    gitCommitExists(currentSha) &&
+    isPinpointIntermediateStateOnly(previousSha, currentSha, changedFiles)
+  ) {
+    skipBuild("Only a non-public Pinpoint intermediate state changed, so Vercel can skip this build.", changedFiles);
+  }
+
   continueBuild("Site-affecting changes were detected, so Vercel should build.", buildTriggerFiles);
 }
 

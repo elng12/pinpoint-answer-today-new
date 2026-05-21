@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { createServer } from "node:http";
 import { dirname, resolve } from "node:path";
@@ -2386,6 +2387,43 @@ function checkReleaseOverrideDryRunSchema() {
   console.log("ok: release override schema validates dry-run only without production bypass");
 }
 
+function checkIntermediateStateCommitDetection() {
+  const scriptPath = resolve(ROOT, "scripts/pinpoint-intermediate-state.mjs");
+  const generating = execFileSync(
+    process.execPath,
+    [scriptPath, "json", "--range=eb2763d^..eb2763d"],
+    { encoding: "utf8" },
+  );
+  const generatingResult = JSON.parse(generating) as {
+    isIntermediateStateOnly?: boolean;
+    afterState?: string;
+  };
+  assert.equal(
+    generatingResult.isIntermediateStateOnly,
+    true,
+    "historical #751 generating state-only commit should be detected as skippable",
+  );
+  assert.equal(generatingResult.afterState, "generating");
+
+  const published = execFileSync(
+    process.execPath,
+    [scriptPath, "json", "--range=a953f0d^..a953f0d"],
+    { encoding: "utf8" },
+  );
+  const publishedResult = JSON.parse(published) as {
+    isIntermediateStateOnly?: boolean;
+    afterState?: string;
+  };
+  assert.equal(
+    publishedResult.isIntermediateStateOnly,
+    false,
+    "historical #751 publish commit must not be detected as skippable",
+  );
+  assert.equal(publishedResult.afterState, "published");
+
+  console.log("ok: intermediate-state commit detector skips only non-public state-only updates");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -2406,6 +2444,7 @@ async function main() {
   checkLightweightPublishFailureSummary();
   await checkPinpointEvidenceV1Guards724Mapping();
   checkReleaseOverrideDryRunSchema();
+  checkIntermediateStateCommitDetection();
   console.log("Pinpoint guardrail regression passed.");
 }
 
