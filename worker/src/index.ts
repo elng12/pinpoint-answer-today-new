@@ -15,6 +15,10 @@ import {
   validatePublishEligibility,
 } from "../../lib/puzzles/publish-eligibility.shared.mjs";
 import {
+  buildLightweightPublishFailureSummary,
+  updateLightweightPublishFailureStreak,
+} from "../../lib/puzzles/publish-failure-summary.shared.mjs";
+import {
   generatePuzzleDraft,
   regeneratePuzzleDraft,
   type EnrichInput,
@@ -82,10 +86,44 @@ type Doc = {
 
 type JsonRecord = Record<string, unknown>;
 
+type PublishGateIssueRecord = {
+  code: string;
+  level: "blocking" | "warning" | "info";
+  message: string;
+  field?: string;
+};
+
+type PublishGateResultRecord = {
+  ok: boolean;
+  slug?: string;
+  puzzleNumber?: number;
+  publishMode?: "answer-first" | "full-analysis" | "failed";
+  issues: PublishGateIssueRecord[];
+};
+
+type LightweightPublishFailureSummaryRecord = {
+  version: 1;
+  kind: "pinpoint-lightweight-publish-failure-summary";
+  generatedAt: string;
+  slug: string;
+  logicalGameDate: string;
+  puzzleNumber?: number;
+  publishMode: "answer-first" | "full-analysis" | "failed" | "unknown";
+  issueCodes: string[];
+  blockingIssueCodes: string[];
+  sourceConfidence: "confirmed" | "manual" | "inferred" | "weak" | "unknown";
+  retryCount: number;
+  reason: string;
+  nextAction: string;
+};
+
 class PublishEligibilityBlockedError extends Error {
-  constructor(message: string) {
+  result?: PublishGateResultRecord;
+
+  constructor(message: string, result?: PublishGateResultRecord) {
     super(message);
     this.name = "PublishEligibilityBlockedError";
+    this.result = result;
   }
 }
 
@@ -3278,6 +3316,7 @@ async function publishToNewSiteGitHub(
     if (!eligibility.ok) {
       throw new PublishEligibilityBlockedError(
         `[new-site] publish eligibility failed for ${slugPath}: ${formatPublishGateIssues(eligibility.issues)}`,
+        eligibility as PublishGateResultRecord,
       );
     }
   }
@@ -4036,6 +4075,7 @@ async function enrichPublishToSite(
     };
   } catch (error) {
     if (error instanceof PublishEligibilityBlockedError) {
+      await recordPublishEligibilityBlocked(env, puzzleDate, puzzleNumber, error);
       await options.onDetailStateChange?.("failed", error.message);
       throw error;
     }
@@ -4520,6 +4560,113 @@ async function notifyCron(env: Env, title: string, lines: string[]): Promise<voi
   if (tasks.length > 0) {
     await Promise.all(tasks);
   }
+}
+
+const publishFailureSummaryKeyOf = (logicalGameDate: string, slug: string) =>
+  `publish:failure-summary:${logicalGameDate}:${slug}`;
+const publishFailureStreakKeyOf = () => "publish:failure-streak:pinpoint";
+const publishFailureStreakNotifyKeyOf = (logicalGameDate: string, count: number) =>
+  `notify:publish-failure-streak:${logicalGameDate}:${count}`;
+const publishEligibilityBlockedNotifyKeyOf = (
+  logicalGameDate: string,
+  slug: string,
+  issueCodes: string[],
+) => {
+  const issueSignature = (issueCodes.length > 0 ? issueCodes : ["unknown"])
+    .map((code) => encodeURIComponent(code))
+    .join("|")
+    .slice(0, 180);
+  return `notify:publish-eligibility-blocked:${logicalGameDate}:${slug}:${issueSignature}`;
+};
+
+async function persistLightweightPublishFailureSummary(
+  env: Env,
+  summary: LightweightPublishFailureSummaryRecord,
+): Promise<void> {
+  if (!summary.logicalGameDate || !summary.slug) return;
+
+  const summaryKey = publishFailureSummaryKeyOf(summary.logicalGameDate, summary.slug);
+  await env.PP_DATA.put(summaryKey, JSON.stringify(summary), {
+    expirationTtl: 60 * 60 * 24 * 400,
+  }).catch((error) => {
+    console.warn("[new-site] failed to persist lightweight publish failure summary", error);
+  });
+
+  const streakKey = publishFailureStreakKeyOf();
+  const previousRaw = await env.PP_DATA.get(streakKey).catch(() => null);
+  let previous: JsonRecord | null = null;
+  if (previousRaw) {
+    try {
+      previous = JSON.parse(previousRaw) as JsonRecord;
+    } catch {
+      previous = null;
+    }
+  }
+
+  const streak = updateLightweightPublishFailureStreak(previous, summary, { threshold: 3 });
+  await env.PP_DATA.put(streakKey, JSON.stringify(streak), {
+    expirationTtl: 60 * 60 * 24 * 45,
+  }).catch((error) => {
+    console.warn("[new-site] failed to persist lightweight publish failure streak", error);
+  });
+
+  if (streak.triggered) {
+    const notifyKey = publishFailureStreakNotifyKeyOf(streak.lastLogicalGameDate, streak.count);
+    const alreadyNotified = await env.PP_DATA.get(notifyKey).then((value) => value !== null).catch(() => false);
+    if (!alreadyNotified) {
+      await env.PP_DATA.put(notifyKey, "1", { expirationTtl: 60 * 60 * 24 * 7 }).catch(() => undefined);
+      await notifyCron(env, "🚨 Pinpoint 连续发布降级/失败告警", [
+        `连续次数: ${streak.count}`,
+        `最近日期: ${streak.lastLogicalGameDate}`,
+        `最近页面: ${streak.lastSlug}`,
+        `最近模式: ${streak.lastPublishMode}`,
+        `阻断码: ${streak.lastIssueCodes.join(", ") || "unknown"}`,
+        "下一步: 聚合最近失败摘要，优先修复共性 publish eligibility 问题。",
+      ]);
+    }
+  }
+}
+
+async function recordPublishEligibilityBlocked(
+  env: Env,
+  puzzleDate: string,
+  puzzleNumber: number,
+  error: PublishEligibilityBlockedError,
+): Promise<LightweightPublishFailureSummaryRecord> {
+  const slug = error.result?.slug || `pinpoint-answer-${puzzleNumber}`;
+  const summary = buildLightweightPublishFailureSummary({
+    slug,
+    logicalGameDate: puzzleDate,
+    puzzleNumber: error.result?.puzzleNumber || puzzleNumber,
+    publishMode: error.result?.publishMode || "unknown",
+    issues: error.result?.issues || [],
+    sourceConfidence: "unknown",
+    reason: error.message,
+    retryCount: 0,
+  }) as LightweightPublishFailureSummaryRecord;
+
+  await persistLightweightPublishFailureSummary(env, summary);
+  const blockingIssueCodes = summary.blockingIssueCodes.length > 0 ? summary.blockingIssueCodes : summary.issueCodes;
+  const notifyKey = publishEligibilityBlockedNotifyKeyOf(
+    summary.logicalGameDate,
+    summary.slug,
+    blockingIssueCodes,
+  );
+  const alreadyNotified = await env.PP_DATA.get(notifyKey).then((value) => value !== null).catch(() => false);
+  if (!alreadyNotified) {
+    await env.PP_DATA.put(notifyKey, "1", { expirationTtl: 60 * 60 * 48 }).catch(() => undefined);
+    await notifyCron(env, "⛔ 新站 publish eligibility 阻断", [
+      `日期: ${summary.logicalGameDate}`,
+      `谜题: #${summary.puzzleNumber ?? puzzleNumber}`,
+      `页面: ${summary.slug}`,
+      `模式: ${summary.publishMode}`,
+      `Source confidence: ${summary.sourceConfidence}`,
+      `阻断码: ${blockingIssueCodes.join(", ") || "unknown"}`,
+      `下一步: ${summary.nextAction}`,
+    ]);
+  }
+
+  return summary;
 }
 
 /**

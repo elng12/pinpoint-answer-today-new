@@ -10,6 +10,10 @@ import {
   validateDraftStructure,
 } from "../lib/puzzles/draft-validator";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
+import {
+  buildLightweightPublishFailureSummary,
+  updateLightweightPublishFailureStreak,
+} from "../lib/puzzles/publish-failure-summary.shared.mjs";
 import { validatePublishEligibility } from "../lib/puzzles/publish-eligibility.shared.mjs";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
@@ -2127,6 +2131,96 @@ function checkPublishEligibilityBlocksShortPublishedAsFullAnalysis() {
   console.log("ok: publish eligibility blocks short published payloads as full-analysis");
 }
 
+function checkLightweightPublishFailureSummary() {
+  const gateResult = validatePublishEligibility({
+    slug: "pinpoint-answer-750",
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+    registryEntry: {
+      puzzleNumber: 750,
+      slug: "pinpoint-answer-750",
+      publishDate: "2026-05-20",
+      status: "live",
+      detailState: "published",
+      clues: ["False", "Paper", "Nature", "Campaign", "Breadcrumb"],
+      mainAnswer: "Types of trails",
+    },
+    detail: {
+      slug: "pinpoint-answer-750",
+      detailState: "published",
+      bodyMode: "short",
+      pageExperienceMode: "light-explainer",
+      answer: "Types of trails",
+      clues: ["False", "Paper", "Nature", "Campaign", "Breadcrumb"],
+    },
+  });
+
+  const summary = buildLightweightPublishFailureSummary({
+    slug: gateResult.slug,
+    logicalGameDate: "2026-05-20",
+    puzzleNumber: gateResult.puzzleNumber,
+    publishMode: gateResult.publishMode,
+    issues: gateResult.issues,
+    sourceConfidence: "unknown",
+    generatedAt: "2026-05-20T18:30:00.000Z",
+    reason: "publish eligibility blocked",
+  });
+
+  assert.equal(summary.kind, "pinpoint-lightweight-publish-failure-summary");
+  assert.equal(summary.slug, "pinpoint-answer-750");
+  assert.equal(summary.logicalGameDate, "2026-05-20");
+  assert.equal(summary.puzzleNumber, 750);
+  assert.equal(summary.publishMode, "answer-first");
+  assert.equal(summary.sourceConfidence, "unknown");
+  assert.ok(
+    summary.blockingIssueCodes.includes("publishMode.answerFirstDisabled"),
+    "failure summary should preserve blocking issue codes",
+  );
+  assert.ok(
+    summary.nextAction.includes("publish eligibility issue codes"),
+    "failure summary should include an actionable next step",
+  );
+
+  const day1 = updateLightweightPublishFailureStreak(null, {
+    ...summary,
+    logicalGameDate: "2026-05-20",
+  }, {
+    threshold: 3,
+    updatedAt: "2026-05-20T18:30:00.000Z",
+  });
+  const sameDay = updateLightweightPublishFailureStreak(day1, {
+    ...summary,
+    logicalGameDate: "2026-05-20",
+  }, {
+    threshold: 3,
+    updatedAt: "2026-05-20T18:45:00.000Z",
+  });
+  const day2 = updateLightweightPublishFailureStreak(sameDay, {
+    ...summary,
+    logicalGameDate: "2026-05-21",
+    slug: "pinpoint-answer-751",
+  }, {
+    threshold: 3,
+    updatedAt: "2026-05-21T18:30:00.000Z",
+  });
+  const day3 = updateLightweightPublishFailureStreak(day2, {
+    ...summary,
+    logicalGameDate: "2026-05-22",
+    slug: "pinpoint-answer-752",
+  }, {
+    threshold: 3,
+    updatedAt: "2026-05-22T18:30:00.000Z",
+  });
+
+  assert.equal(day1.count, 1, "first failure should start the streak");
+  assert.equal(sameDay.count, 1, "same-day retries should not inflate the failure streak");
+  assert.equal(day2.count, 2, "next-day failure should increment the streak");
+  assert.equal(day3.count, 3, "third consecutive day should reach the streak threshold");
+  assert.equal(day3.triggered, true, "third consecutive failure should trigger the alert");
+
+  console.log("ok: lightweight publish failure summary preserves issue codes and streaks");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -2144,6 +2238,7 @@ async function main() {
   await checkValidateDraftDoesNotNormalizeIncompleteSlotRows();
   await checkAdminApiRateLimit();
   checkPublishEligibilityBlocksShortPublishedAsFullAnalysis();
+  checkLightweightPublishFailureSummary();
   console.log("Pinpoint guardrail regression passed.");
 }
 
