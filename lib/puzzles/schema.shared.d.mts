@@ -76,6 +76,9 @@ export declare const puzzleClueRowSchema: z.ZodObject<{
   resolvedPhraseOrMember: z.ZodString;
   nonObviousWhy: z.ZodString;
   searchableContext: z.ZodOptional<z.ZodString>;
+  evidenceRef: z.ZodOptional<z.ZodString>;
+  phraseExample: z.ZodOptional<z.ZodString>;
+  fitConfidence: z.ZodOptional<z.ZodEnum<["confirmed", "manual", "weak"]>>;
 }>;
 
 export declare const puzzleFaqIntentTypeSchema: z.ZodEnum<

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "slug": "pinpoint-answer-724",
+  "puzzleNumber": 724,
+  "logicalGameDate": "2026-04-24",
+  "source": {
+    "provider": "manual",
+    "fetchedAt": "2026-04-24T18:00:00.000Z",
+    "timezone": "America/New_York",
+    "timezoneSource": "assumption",
+    "rawResponseHash": "sha256:fixture-pinpoint-answer-724-bad"
+  },
+  "answer": {
+    "value": "Words that come after “hand”",
+    "confidence": "manual",
+    "confirmedAt": "2026-04-24T18:00:00.000Z"
+  },
+  "clues": [
+    {
+      "index": 0,
+      "text": "Stand",
+      "fit": "Handstand",
+      "evidenceRef": "clue-0-stand",
+      "supportLevel": "manual",
+      "fitConfidence": "manual",
+      "phraseExample": "handstand"
+    },
+    {
+      "index": 1,
+      "text": "Made",
+      "fit": "Handmade",
+      "evidenceRef": "clue-1-made-wrong",
+      "supportLevel": "manual",
+      "fitConfidence": "manual",
+      "phraseExample": "handmade"
+    },
+    {
+      "index": 2,
+      "text": "Shake",
+      "fit": "Handshake",
+      "evidenceRef": "clue-2-shake-wrong",
+      "supportLevel": "manual",
+      "fitConfidence": "manual",
+      "phraseExample": "handshake"
+    },
+    {
+      "index": 3,
+      "text": "Writing",
+      "fit": "Handwriting",
+      "evidenceRef": "clue-3-writing",
+      "supportLevel": "weak",
+      "fitConfidence": "weak",
+      "phraseExample": "handwriting"
+    },
+    {
+      "index": 4,
+      "text": "Kerchief",
+      "fit": "Handkerchief",
+      "evidenceRef": "clue-4-kerchief",
+      "supportLevel": "manual",
+      "fitConfidence": "manual",
+      "phraseExample": "handkerchief"
+    }
+  ],
+  "manualReview": {
+    "reviewer": "pinpoint-editor",
+    "timestamp": "2026-04-24T18:05:00.000Z",
+    "reason": "Bad fixture intentionally swaps clue order and marks one clue as weak.",
+    "changedFields": ["clues", "answer"]
+  }
+}
