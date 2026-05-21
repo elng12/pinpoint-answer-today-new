@@ -1,0 +1,221 @@
+# Phase 0 SEO Integrity Day 0 Check - 2026-05-19
+
+## Summary
+
+Phase 0 production integrity fixes were merged and deployed on 2026-05-19.
+
+Result: production integrity checks passed. The site now exposes fresh sitemap `lastmod` values for the main public routes and restores public access/sitemap coverage for Pinpoint #735, #736, and #737.
+
+Do not use same-day GSC data to judge ranking recovery. The next decision checkpoint is after Google has recrawled the affected URLs and at least 5 full natural days have elapsed.
+
+## Release
+
+| Item | Result |
+|---|---|
+| PR | https://github.com/elng12/pinpoint-answer-today-new/pull/40 |
+| Merge commit | `94ff8c56b2acd905738471109f689afc921cee99` |
+| Merge time | 2026-05-19 11:16 UTC |
+| Production deploy | Vercel success at 2026-05-19 11:17:58 UTC |
+| Main CI | Passed: Validate Data, Lint, Typecheck, Pinpoint Guardrails |
+
+## Non-SEO Release Marker
+
+A follow-up security-only release was merged after the Phase 0 SEO integrity deployment.
+Record it as a non-SEO variable when reviewing logs, GSC movement, or production metrics.
+
+| Item | Result |
+|---|---|
+| PR | https://github.com/elng12/pinpoint-answer-today-new/pull/41 |
+| Merge commit | `04f00595366cb73442b8fe90d28ea1010adbb917` |
+| Merge time | 2026-05-20 03:03:45 UTC |
+| Production deploy | Vercel success at 2026-05-20 03:05:06 UTC |
+| Main CI | Passed: Lint, Typecheck, Guardrails |
+| Scope | Admin auth hardening, timing-safe secret comparison, outbound URL allowlists, proxy error redaction, API rate limiting |
+| SEO surface | No homepage, title, schema, sitemap, canonical, URL, or content changes |
+
+Production spot checks after deploy:
+
+| URL | Status | Notes |
+|---|---:|---|
+| `https://pinpointanswertoday.app/` | 200 | Homepage served successfully; no SEO surface change intended |
+| `https://pinpointanswertoday.app/api/health` | 200 | API noindex header present; platform HSTS still single header |
+
+## Production URL Checks
+
+Checked after production deploy completed.
+
+| URL | Status | Canonical | Robots | Notes |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | Latest detail link present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | `https://pinpointanswertoday.app/puzzles` | `index, follow` | #735, #736, #737 present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | Latest detail link present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | Core content present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | Core content present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | Core content present |
+
+## Sitemap Checks
+
+`https://pinpointanswertoday.app/sitemap.xml` returned `200` with `content-type: application/xml`.
+
+| URL | Found | lastmod | changefreq | priority |
+|---|---|---|---|---:|
+| `/` | yes | `2026-05-19T07:07:49.377Z` | daily | 1.0 |
+| `/puzzles` | yes | `2026-05-19T07:07:49.377Z` | daily | 0.9 |
+| `/next-pinpoint-preview` | yes | `2026-05-19T07:07:49.377Z` | daily | 0.8 |
+| `/linkedin-pinpoint-answers/pinpoint-answer-735/` | yes | `2026-05-06T07:01:42.573Z` | daily | 0.8 |
+| `/linkedin-pinpoint-answers/pinpoint-answer-736/` | yes | `2026-05-07T07:01:43.931Z` | daily | 0.8 |
+| `/linkedin-pinpoint-answers/pinpoint-answer-737/` | yes | `2026-05-07T07:01:58.344Z` | daily | 0.8 |
+
+## Googlebot Smartphone HTML Check
+
+Fetched with a Googlebot Smartphone user agent. HTML contained indexable content and links.
+
+| URL | Status | Visible markers |
+|---|---:|---|
+| `/` | 200 | today detail link, #749, #737 content |
+| `/linkedin-pinpoint-answers/pinpoint-answer-749/` | 200 | today detail link, #749, #737 content |
+| `/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | today detail link, #749, #735 content, #737 content |
+| `/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | today detail link, #749, #736 content, #737 content |
+| `/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | today detail link, #749, #737 content |
+
+Note: some cross-markers come from adjacent/recent-answer links and are expected.
+
+## GSC Baseline
+
+Source: Search Console API, `sc-domain:pinpointanswertoday.app`.
+
+Window: 2026-05-12 to 2026-05-18. Same-day data excluded.
+
+### Homepage
+
+`https://pinpointanswertoday.app/`
+
+| Metric | Value |
+|---|---:|
+| clicks | 2 |
+| impressions | 155 |
+| CTR | 1.3% |
+| avg position | 45.54 |
+| desktop impressions | 113 |
+| mobile impressions | 16 |
+
+Core query examples:
+
+| Query | Impressions | Position |
+|---|---:|---:|
+| `linkedin pinpoint answer today` | 10 | 61.70 |
+| `pinpoint answer today` | 15 | 48.40 |
+| `pinpoint answers today` | 10 | 48.10 |
+| `linkedin pinpoint today` | 4 | 58.75 |
+
+### Archive
+
+`https://pinpointanswertoday.app/puzzles`
+
+| Metric | Value |
+|---|---:|
+| clicks | 0 |
+| impressions | 23 |
+| avg position | 11.74 |
+
+### Recent Detail Pages
+
+Latest 20 detail pages aggregate:
+
+| Metric | Value |
+|---|---:|
+| clicks | 0 |
+| impressions | 108 |
+| pages with clicks | 0 / 20 |
+
+Top recent detail rows:
+
+| Puzzle | Impressions | Position |
+|---|---:|---:|
+| #742 | 49 | 7.82 |
+| #748 | 26 | 8.00 |
+| #743 | 17 | 5.00 |
+| #741 | 7 | 8.00 |
+| #746 | 4 | 7.25 |
+
+#748 page detail:
+
+| Metric | Value |
+|---|---:|
+| clicks | 0 |
+| impressions | 26 |
+| avg position | 8.00 |
+| desktop impressions | 12 |
+| mobile impressions | 11 |
+
+Top #748 query examples:
+
+| Query | Impressions | Position |
+|---|---:|---:|
+| `butter chicken vindaloo pinpoint` | 8 | 9.00 |
+| `butter chicken vindaloo palak paneer naan biryani` | 7 | 7.86 |
+| `vindaloo butter chicken pinpoint` | 7 | 8.43 |
+| `butter chicken pinpoint` | 1 | 3.00 |
+
+### #735-#737 Pre-Fix GSC Visibility
+
+Search Console `find` rows for 2026-05-12 to 2026-05-18:
+
+| Slug | Matching rows | Impressions |
+|---|---:|---:|
+| `pinpoint-answer-735` | 0 | 0 |
+| `pinpoint-answer-736` | 0 | 0 |
+| `pinpoint-answer-737` | 0 | 0 |
+
+This supports the production-integrity issue: the files existed locally, but the pages had no GSC page visibility in the pre-fix window.
+
+## SERP Snapshot
+
+Captured on 2026-05-19.
+
+Observed from web search snapshots:
+
+- Queries for `linkedin pinpoint answer today` and `pinpoint answer today #749` surface multiple direct competitors with current-day answer pages.
+- Competitor patterns visible in snippets include direct `#749` targeting, current-day dates, clues, and answer/reveal language.
+- `site:pinpointanswertoday.app` style results still showed stale older snippets in at least one snapshot, including old #734-oriented language. Treat this as recrawl/snippet lag until proven otherwise.
+
+Do not infer recovery or failure from these SERP checks alone. Use them as Day 0 external context.
+
+## GSC URL Inspection
+
+Attempted URL Inspection API calls for homepage, archive, #749, #735, #736, and #737. The Search Console API token endpoint timed out twice from the local network during this step, while Search Analytics API calls succeeded.
+
+Manual GSC UI action still required:
+
+1. Run URL Inspection Live Test for:
+   - `https://pinpointanswertoday.app/`
+   - `https://pinpointanswertoday.app/puzzles`
+   - `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-749/`
+   - `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/`
+   - `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/`
+   - `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/`
+2. Save screenshots for Mobile render, user-declared canonical, Google-selected canonical, indexing allowed, and page fetch status.
+3. Request indexing for homepage, latest detail page, and #735-#737 if GSC allows it.
+4. Resubmit `https://pinpointanswertoday.app/sitemap.xml`.
+
+## Next Checkpoints
+
+Day 1-3:
+
+- Confirm Googlebot fetches in server/Vercel logs if available.
+- Re-run production URL checks.
+- Re-run sitemap checks.
+- Complete GSC UI Live Test screenshots if not already done.
+
+Day 5:
+
+- Re-run Search Analytics for 2026-05-19 onward, but avoid over-reading low sample query rows.
+- Check whether #735-#737 get any page rows after sitemap restoration.
+- Check whether homepage core today-query position stops worsening.
+
+Do not start Phase 1 homepage changes before:
+
+- Phase 0 has at least 5 full natural days in production.
+- GSC UI mobile live tests pass.
+- Sitemap and affected detail URLs remain stable.
+- No new 404/canonical/indexing regressions are found.
