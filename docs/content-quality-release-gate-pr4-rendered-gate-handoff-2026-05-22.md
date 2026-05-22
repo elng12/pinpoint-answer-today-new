@@ -99,4 +99,3 @@ If build time becomes too high:
 1. Keep `Build` and rendered gate on pull requests.
 2. Consider limiting push-to-main rendered checks with `PINPOINT_RENDERED_CHECK_LIMIT=50` only as a temporary mitigation.
 3. Restore all-page checking before enabling candidate branch auto-promote.
-

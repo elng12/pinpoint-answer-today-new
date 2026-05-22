@@ -37,4 +37,3 @@ export declare const releaseQueueActions: ReleaseQueueAction[];
 export declare function decidePinpointReleaseQueueAction(
   input?: ReleaseQueuePolicyInput,
 ): ReleaseQueuePolicyDecision;
-
