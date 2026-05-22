@@ -1,9 +1,27 @@
 [
   {
+    "puzzleNumber": 752,
+    "slug": "pinpoint-answer-752",
+    "publishDate": "2026-05-22",
+    "status": "live",
+    "clues": [
+      "Motor",
+      "Damage",
+      "Quality",
+      "Remote",
+      "Air traffic"
+    ],
+    "mainAnswer": "Words that come before \"control\"",
+    "category": "Words that come before \"control\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #752: Motor, Damage, Quality, Remote, Air traffic.",
+    "updatedAt": "2026-05-22T07:07:53.767Z"
+  },
+  {
     "puzzleNumber": 751,
     "slug": "pinpoint-answer-751",
     "publishDate": "2026-05-21",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Barn",
@@ -16,7 +34,7 @@
     "category": "Types of owls",
     "difficultyLevel": "Moderate",
     "shortSummary": "Barn, Snowy, Screech do not immediately look like a clean, obvious category set. The solve only becomes clear after a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-21T07:04:58.159Z"
+    "updatedAt": "2026-05-22T07:07:53.767Z"
   },
   {
     "puzzleNumber": 750,
