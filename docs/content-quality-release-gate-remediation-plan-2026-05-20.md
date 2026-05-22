@@ -1,6 +1,6 @@
 # Pinpoint 内容质量与上线门禁修复方案 - 2026-05-20
 
-更新状态：2026-05-22 第一阶段 PR1-PR3 已落地到 `main`，本文档作为后续治理蓝图和历史执行规格保留。
+更新状态：2026-05-22 第一阶段 PR1-PR3 已落地到 `main`；PR4 rendered gate / manual Playwright smoke、PR5A queue policy、PR5B candidate branch writer 已在本地实现并等待审查；本文档作为后续治理蓝图和历史执行规格保留。
 
 ## 2026-05-22 执行状态
 
@@ -10,7 +10,11 @@
 - PR2 publish failure summaries/streak alert 已落地：`2a713ce`。
 - PR3 Evidence V1 dry-run 和 override schema dry-run 已落地：`4b98ea4`。
 - 第一阶段相关 guardrails 已纳入 `npm run test:pinpoint-guardrails`。
-- 后续阶段仍保留为 backlog：rendered HTML gate、link graph gate、schema/sitemap freshness gate、Playwright 可见性检查、SLA cron、candidate branch promotion、production model routing、KV/runtime override、production-effective override。
+- PR4 rendered HTML / sitemap freshness / structured data gate 已在本地实现，待审查合并：`scripts/check-pinpoint-rendered-content.ts`、`npm run test:pinpoint-rendered`、CI post-build gate。
+- PR4 Playwright 可见性检查已作为 manual smoke 实现，暂不作为 CI blocking gate：`scripts/check-pinpoint-visibility-smoke.mjs`、`npm run visual:pinpoint-smoke`。
+- PR5A release queue policy 纯决策函数已在本地实现，待审查合并：`lib/puzzles/release-queue-policy.shared.mjs`，当前不改变 Worker 发布路径。
+- PR5B candidate branch writer 已实现并通过 staging dry-run，默认关闭：`PINPOINT_CANDIDATE_BRANCH_ENABLED=false`；开启后 public payload 写入 `pinpoint/candidate/<logicalGameDate>-<slug>`，不触发 ISR revalidate 或生产发布通知去重。验收 runbook：`docs/content-quality-release-gate-pr5b-dry-run-acceptance-2026-05-22.md`。
+- 后续阶段仍保留为 backlog：full link graph gate、candidate branch promotion、deployment queue 状态接入、SLA cron、production model routing、KV/runtime override、production-effective override、Playwright CI blocking gate。
 
 本版文档不再只把目标定义为“避免 Vercel build 被坏 JSON 拦住”，而是把目标升级为：
 
@@ -595,6 +599,8 @@ Worker 宕机不重置 SLA。
 3. 如果 `answer-first` 发布后 30 分钟内生成 full-analysis，优先合并为一次 candidate promote，而不是连续触发两次 production build。
 4. 如果 production 队列已有更新中的同 slug build，后续 enrichment 只更新 candidate branch，不追加 production commit。
 5. 超过 SLA 后仍未 promote 的 full-analysis 草稿进入 review queue，由人工决定是否立即发布、延后到下一次 release batch，或保留 answer-first。
+
+2026-05-22 本地实现状态：PR5B 已提供默认关闭的 candidate branch writer。它只负责把 public payload 写入 candidate branch；deployment queue 状态读取、自动选择何时从 `main` 改写 candidate、以及 candidate promote 仍未接入。
 
 验收标准：
 

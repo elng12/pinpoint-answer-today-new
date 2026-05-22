@@ -69,6 +69,8 @@ export interface Env {
   NEW_SITE_REVALIDATE_SECRET?: string;   // matches REVALIDATE_SECRET on Vercel
   NEW_SITE_LIVE_REFRESH_ENABLED?: string; // optional: set "true" to allow worker-triggered live refresh fallback
   NEW_SITE_SUMMARY_WATCHDOG_ENABLED?: string; // optional: set "false" to disable post-window site summary alerts
+  PINPOINT_CANDIDATE_BRANCH_ENABLED?: string; // optional: set "true" to write public payloads to candidate branches
+  PINPOINT_CANDIDATE_BRANCH_PREFIX?: string;  // default: pinpoint/candidate
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
@@ -465,6 +467,38 @@ function envFlag(value: string | undefined, fallback = false): boolean {
   if (value == null || value.trim().length === 0) return fallback;
   const normalized = value.trim().toLowerCase();
   return normalized === "1" || normalized === "true" || normalized === "yes" || normalized === "on";
+}
+
+function normalizeGitHubBranchName(input: string | undefined, fallback: string): string {
+  const raw = String(input || fallback || "").trim().replace(/^refs\/heads\//, "").replace(/^\/+|\/+$/g, "");
+  return raw || fallback;
+}
+
+function encodeGitHubBranchRef(branch: string): string {
+  return branch.split("/").map((segment) => encodeURIComponent(segment)).join("/");
+}
+
+function sanitizeGitBranchSegment(input: string, fallback: string): string {
+  const safe = String(input || "")
+    .trim()
+    .replace(/[^A-Za-z0-9._-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/\.+$/g, "")
+    .slice(0, 96);
+  return safe || fallback;
+}
+
+function buildPinpointCandidateBranchName(env: Env, puzzleDate: string, slug: string): string {
+  const rawPrefix = String(env.PINPOINT_CANDIDATE_BRANCH_PREFIX || "pinpoint/candidate").trim();
+  const prefix = rawPrefix
+    .replace(/^refs\/heads\//, "")
+    .split("/")
+    .map((segment) => sanitizeGitBranchSegment(segment, "candidate"))
+    .filter(Boolean)
+    .join("/") || "pinpoint/candidate";
+  const dateSegment = sanitizeGitBranchSegment(puzzleDate, "unknown-date");
+  const slugSegment = sanitizeGitBranchSegment(slug, "pinpoint-answer");
+  return `${prefix}/${dateSegment}-${slugSegment}`;
 }
 
 function normalizeBaseUrl(input: string | undefined, fallback: string): string {
@@ -3103,12 +3137,13 @@ async function publishToNewSiteGitHub(
   if (!token) return;
 
   const repo = String(env.GITHUB_REPO_NEW_SITE || "elng12/pinpoint-answer-today-new").trim();
-  const branch = String(env.GITHUB_BRANCH_NEW_SITE || "main").trim();
+  const baseBranch = normalizeGitHubBranchName(env.GITHUB_BRANCH_NEW_SITE, "main");
+  let branch = baseBranch;
+  let isPrimaryBranch = isPrimaryNewSiteBranch(branch);
+  let isCandidateBranch = false;
   const newSiteUrl = String(env.NEW_SITE_URL || "").trim();
   const revalidateSecret = String(env.NEW_SITE_REVALIDATE_SECRET || "").trim();
-  const isPrimaryBranch = isPrimaryNewSiteBranch(branch);
   const slug = `pinpoint-answer-${puzzleNumber}`;
-  const encodedBranchRef = branch.split("/").map((segment) => encodeURIComponent(segment)).join("/");
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -3156,6 +3191,54 @@ async function publishToNewSiteGitHub(
     if (!res.ok) throw new Error(`${errorPrefix}: ${res.status} ${await res.text()}`);
   };
 
+  const getBranchRef = async (targetBranch: string): Promise<JsonRecord | null> => {
+    const res = await fetch(
+      `https://api.github.com/repos/${repo}/git/ref/heads/${encodeGitHubBranchRef(targetBranch)}`,
+      { headers },
+    );
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error(`GitHub GET ref ${targetBranch}: ${res.status} ${await res.text()}`);
+    return (asRecord(await res.json()) ?? {}) as JsonRecord;
+  };
+
+  const createBranchRef = async (targetBranch: string, sha: string): Promise<void> => {
+    const res = await fetch(`https://api.github.com/repos/${repo}/git/refs`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        ref: `refs/heads/${targetBranch}`,
+        sha,
+      }),
+    });
+    if (res.status === 422) {
+      const existingRef = await getBranchRef(targetBranch);
+      if (existingRef) return;
+    }
+    if (!res.ok) throw new Error(`GitHub POST ref ${targetBranch}: ${res.status} ${await res.text()}`);
+  };
+
+  const ensureBranchRef = async (targetBranch: string, allowCreate: boolean): Promise<JsonRecord> => {
+    const existingRef = await getBranchRef(targetBranch);
+    if (existingRef) return existingRef;
+    if (!allowCreate) {
+      throw new Error(`GitHub GET ref ${targetBranch}: 404`);
+    }
+
+    const baseRef = await getBranchRef(baseBranch);
+    const baseCommitSha = String(asRecord(baseRef?.object)?.sha || "").trim();
+    if (!baseCommitSha) {
+      throw new Error(`GitHub base ref ${baseBranch} missing commit sha for candidate ${targetBranch}`);
+    }
+
+    await createBranchRef(targetBranch, baseCommitSha);
+    const createdRef = await getBranchRef(targetBranch);
+    if (!createdRef) {
+      throw new Error(`GitHub candidate ref ${targetBranch} was not created`);
+    }
+    console.log(`[new-site] created candidate branch ${targetBranch} from ${baseBranch}`);
+    return createdRef;
+  };
+
   const stagedFiles: Array<{ path: string; content: string }> = [];
   const stageFile = (
     path: string,
@@ -3171,10 +3254,7 @@ async function publishToNewSiteGitHub(
   };
 
   const commitStagedFiles = async (message: string): Promise<void> => {
-    const refJson = await getJson(
-      `https://api.github.com/repos/${repo}/git/ref/heads/${encodedBranchRef}`,
-      `GitHub GET ref ${branch}`,
-    );
+    const refJson = await ensureBranchRef(branch, isCandidateBranch);
     const currentCommitSha = String(asRecord(refJson.object)?.sha || "").trim();
     if (!currentCommitSha) {
       throw new Error(`GitHub ref ${branch} missing commit sha`);
@@ -3222,7 +3302,7 @@ async function publishToNewSiteGitHub(
     }
 
     await patchJson(
-      `https://api.github.com/repos/${repo}/git/refs/heads/${encodedBranchRef}`,
+      `https://api.github.com/repos/${repo}/git/refs/heads/${encodeGitHubBranchRef(branch)}`,
       { sha: newCommitSha, force: false },
       `GitHub PATCH ref ${branch}`,
     );
@@ -3235,6 +3315,15 @@ async function publishToNewSiteGitHub(
   const answer = sanitizePublishedAnswerLabel(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "");
   const detailState = resolvePublishDetailState(enrichedPayload.detailState);
   const isPublicState = isPublicPublishDetailState(detailState);
+  if (envFlag(env.PINPOINT_CANDIDATE_BRANCH_ENABLED, false) && isPublicState) {
+    branch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
+    isCandidateBranch = branch !== baseBranch;
+    isPrimaryBranch = isPrimaryNewSiteBranch(branch);
+    if (isCandidateBranch) {
+      await ensureBranchRef(branch, true);
+      console.log(`[new-site] candidate branch write enabled for #${puzzleNumber}: ${branch}`);
+    }
+  }
   const sections = asRecord(enrichedPayload.sections) ?? {};
   const analysis = asRecord(enrichedPayload.analysis) ?? {};
   const slots = asRecord(enrichedPayload.slots);
@@ -3421,15 +3510,17 @@ async function publishToNewSiteGitHub(
 
   const hasContentChanges = slugChanged || registryChanged;
   if (!hasContentChanges) {
-    console.log(`[new-site] GitHub publish skipped for #${puzzleNumber} (${detailState}, no content changes)`);
+    console.log(`[new-site] GitHub publish skipped for #${puzzleNumber} (${detailState}, ${branch}, no content changes)`);
     return;
   }
 
-  const commitMessage = isPublicState
-    ? `feat: publish Pinpoint #${puzzleNumber}`
-    : `chore: update Pinpoint #${puzzleNumber} state to ${detailState}`;
+  const commitMessage = isCandidateBranch
+    ? `chore: stage ${slug} candidate for ${puzzleDate} (${detailState}, candidate-branch-enabled)`
+    : isPublicState
+      ? `feat: publish Pinpoint #${puzzleNumber}`
+      : `chore: update Pinpoint #${puzzleNumber} state to ${detailState}`;
   await commitStagedFiles(commitMessage);
-  console.log(`[new-site] committed ${stagedFiles.length} file(s) for #${puzzleNumber} (${detailState})`);
+  console.log(`[new-site] committed ${stagedFiles.length} file(s) to ${branch} for #${puzzleNumber} (${detailState})`);
 
   // ── 3. Trigger ISR revalidation on the new site ──
   if (isPublicState && isPrimaryBranch && newSiteUrl && revalidateSecret) {
@@ -3450,13 +3541,14 @@ async function publishToNewSiteGitHub(
   // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
   const publishNotifyKey = `notify:publish:${puzzleDate}:${puzzleNumber}`;
-  const alreadyPublishNotified = feishuWebhook
+  const shouldSendPublishNotification = isPublicState && isPrimaryBranch && feishuWebhook;
+  const alreadyPublishNotified = shouldSendPublishNotification
     ? await env.PP_DATA.get(publishNotifyKey).then((v) => v !== null).catch(() => false)
     : true;
-  if (!alreadyPublishNotified) {
+  if (shouldSendPublishNotification && !alreadyPublishNotified) {
     await env.PP_DATA.put(publishNotifyKey, "1", { expirationTtl: 172800 }).catch(() => undefined);
   }
-  if (isPublicState && isPrimaryBranch && feishuWebhook && !alreadyPublishNotified) {
+  if (shouldSendPublishNotification && !alreadyPublishNotified) {
     const beijingToday = getBeijingTodayDate();
     const isTodayPublish = puzzleDate === beijingToday;
     const clueStr = words.map((w, i) => `${i + 1}. ${w}`).join("\n");
@@ -5654,6 +5746,71 @@ export default {
           headers: { "content-type": "application/json; charset=utf-8" },
         });
       }
+    }
+
+    if (url.pathname === "/admin/candidate-branch-dry-run" && req.method === "POST") {
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
+      const secret = url.searchParams.get("secret");
+      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
+
+      const baseBranch = normalizeGitHubBranchName(env.GITHUB_BRANCH_NEW_SITE, "main");
+      if (isPrimaryNewSiteBranch(baseBranch)) {
+        return new Response("candidate dry-run is blocked on the primary branch", { status: 409 });
+      }
+      if (!envFlag(env.PINPOINT_CANDIDATE_BRANCH_ENABLED, false)) {
+        return new Response("PINPOINT_CANDIDATE_BRANCH_ENABLED must be true for dry-run", { status: 409 });
+      }
+
+      const requestedDate = String(url.searchParams.get("date") || "").trim();
+      const puzzleDate = /^\d{4}-\d{2}-\d{2}$/.test(requestedDate) ? requestedDate : getBeijingTodayDate();
+      const requestedPuzzleNumber = String(url.searchParams.get("puzzleNumber") || "").trim();
+      const puzzleNumber = inferPuzzleNumber(requestedPuzzleNumber || undefined, puzzleDate);
+      const slug = `pinpoint-answer-${puzzleNumber}`;
+      const answer = sanitizePublishedAnswerLabel(url.searchParams.get("answer") || "Candidate Dry Run");
+      const rawWords = String(url.searchParams.get("words") || "ALPHA,BRAVO,CHARLIE,DELTA,ECHO")
+        .split(",")
+        .map((word) => word.trim())
+        .filter(Boolean);
+      if (rawWords.length !== 5) {
+        return new Response("words must contain exactly five comma-separated clues", { status: 400 });
+      }
+
+      const answers: Answer[] = rawWords.map((word, index) => ({ rank: index + 1, word }));
+      const fetchedAt = new Date().toISOString();
+      const doc: Doc = {
+        version: 1,
+        puzzleDate,
+        answers,
+        source: "fallback-local",
+        fetchedAt,
+        checksum: `sha256:${await sha256Hex(JSON.stringify({ puzzleDate, answers, answer, fetchedAt }))}`,
+        theme: answer,
+        mainAnswer: answer,
+      };
+      const payload = {
+        ...buildTemplateFallbackPayload(getPublicSiteBaseUrl(env), puzzleDate, doc, puzzleNumber, rawWords),
+        detailState: "fallback_full",
+      };
+      const candidateBranch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
+
+      await publishToNewSiteGitHub(env, puzzleDate, doc, payload, puzzleNumber);
+
+      return new Response(JSON.stringify({
+        ok: true,
+        mode: "candidate-branch-dry-run",
+        repo: String(env.GITHUB_REPO_NEW_SITE || "elng12/pinpoint-answer-today-new").trim(),
+        baseBranch,
+        candidateBranch,
+        slug,
+        puzzleDate,
+        puzzleNumber,
+        detailState: "fallback_full",
+        productionBranchTouched: false,
+        revalidateTriggered: false,
+      }), {
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
     }
 
     if (url.pathname === "/admin/run") {

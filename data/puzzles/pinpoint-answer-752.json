@@ -3,6 +3,9 @@
   "slug": "pinpoint-answer-752",
   "publishDate": "2026-05-22",
   "isoDate": "2026-05-22",
+  "detailState": "published",
+  "bodyMode": "short",
+  "pageExperienceMode": "light-explainer",
   "clues": [
     "Motor",
     "Damage",
@@ -13,18 +16,18 @@
   "answer": "Words that come before \"control\"",
   "category": "Words that come before \"control\"",
   "wordHints": {
-    "Motor": "Motor is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
-    "Damage": "Damage is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
-    "Quality": "Quality is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
-    "Remote": "Remote is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
-    "Air traffic": "Air traffic is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board."
+    "Motor": "Motor resolves cleanly once you test whether it can sit before the connector control across the full board.",
+    "Damage": "Damage resolves cleanly once you test whether it can sit before the connector control across the full board.",
+    "Quality": "Quality resolves cleanly once you test whether it can sit before the connector control across the full board.",
+    "Remote": "Remote resolves cleanly once you test whether it can sit before the connector control across the full board.",
+    "Air traffic": "Air traffic resolves cleanly once you test whether it can sit before the connector control across the full board."
   },
-  "fullAnalysis": [
+  "articleBlocks": [
     "Puzzle #752 opens with Motor, Damage, Quality, Remote, and Air traffic, a set of clues that appear to belong to completely different categories on first read. That spread is what makes the board deceptive: instead of pointing toward a single subject area, the clues push you toward toys, brands, folklore, or everyday vocabulary all at once. When Pinpoint does this, the safer move is to stop grouping by topic and start testing whether the same missing word can complete every clue naturally.",
-    "That approach resolves this board quickly. The shared connector is \"control\". Once you test \"control\" across the full list, each phrase settles into a clean compound and the noise disappears. The answer \"Words that come before \"control\"\" works because it explains every clue with the same exact pattern, not because one or two clues feel loosely related. If one connector completes all five without stretching the meaning, that is usually the correct Pinpoint solution."
+    "That approach resolves this board quickly. The shared connector is \"control\". Once you test \"control\" across the full list, each phrase settles into a clean compound and the noise disappears. The answer is the phrase pattern where every clue comes before control, and it works because it explains the whole set with the same exact move. If one connector completes all five without stretching the meaning, that is usually the correct Pinpoint solution."
   ],
   "solutionNarrative": [
-    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #752, Motor, Damage, Quality, Remote, Air traffic consistently map to Words that come before \"control\". That shared fit across all five clues is why Words that come before \"control\" is the correct answer. I will expand this with richer clue context in the full version."
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #752, Motor, Damage, Quality, Remote, and Air traffic consistently map to words that come before control. Motor control can describe movement regulation, damage control describes limiting harm, quality control checks standards, remote control operates a device, and air traffic control coordinates flights. That shared fit across all five clues is why the control-phrase pattern is the correct answer. The important step is not spotting one familiar phrase; it is confirming that every clue takes the same word after it without changing the rule."
   ],
   "lessons": [
     {
@@ -42,16 +45,16 @@
   ],
   "faqs": [
     {
-      "question": "What is the answer to LinkedIn Pinpoint #752?",
-      "answer": "The answer is \"Words that come before \"control\"\". The clues Motor, Damage, Quality, Remote, Air traffic all share this connection."
+      "question": "Why do Motor and Damage point to control in LinkedIn Pinpoint #752?",
+      "answer": "The answer is Words that come before \"control\". Motor control and damage control both use the same connector pattern, and Quality, Remote, and Air traffic confirm it across the full board."
     },
     {
-      "question": "How difficult was this Pinpoint puzzle?",
-      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+      "question": "How do Quality, Remote, and Air traffic confirm the #752 pattern?",
+      "answer": "Quality control, remote control, and air traffic control are all natural phrases, so they verify that the board is looking for words that come before control."
     },
     {
-      "question": "What strategy helps with Pinpoint?",
-      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+      "question": "What solving move helps with phrase-pattern Pinpoint boards like #752?",
+      "answer": "Test one connector against every clue before choosing a category. Here, control works after all five clues, which is stronger than grouping them by topic."
     }
   ]
 }
