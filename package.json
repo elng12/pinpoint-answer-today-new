@@ -13,6 +13,7 @@
     "worker:preflight": "node scripts/worker-ops.mjs preflight --env prod",
     "worker:health": "node scripts/worker-ops.mjs health --env prod",
     "worker:release-queue-dry-run": "node scripts/worker-ops.mjs release-queue-dry-run --env staging",
+    "worker:release-queue-observe": "node scripts/worker-ops.mjs release-queue-observe --env prod",
     "worker:refresh-cookie": "node scripts/worker-ops.mjs refresh-cookie --targets all",
     "visual:detail": "node scripts/capture-detail-screenshots.mjs",
     "visual:pinpoint-smoke": "node scripts/check-pinpoint-visibility-smoke.mjs",

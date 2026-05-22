@@ -19,6 +19,8 @@ const WORKER_BASE_URLS = {
   shadow: "https://pinpoint-worker-shadow.2296744453m.workers.dev",
 };
 
+const GITHUB_REPO = "elng12/pinpoint-answer-today-new";
+const CANDIDATE_BRANCH_PREFIX = "pinpoint/candidate/";
 const USER_AGENT = "curl/8.0 (pinpoint-worker-ops)";
 
 function loadEnvFile(filePath) {
@@ -67,6 +69,7 @@ function printUsage() {
   node scripts/worker-ops.mjs preflight [--env prod|staging|shadow] [--date YYYY-MM-DD]
   node scripts/worker-ops.mjs health    [--env prod|staging|shadow]
   node scripts/worker-ops.mjs release-queue-dry-run [--env staging|shadow|prod] [--date YYYY-MM-DD] [--puzzle-number N]
+  node scripts/worker-ops.mjs release-queue-observe [--env prod|staging|shadow] [--date YYYY-MM-DD] [--puzzle-number N] [--json]
   node scripts/worker-ops.mjs refresh-cookie [--targets prod,staging,shadow|all]
 `);
 }
@@ -186,6 +189,41 @@ async function fetchJson(url, options = {}) {
     json = null;
   }
   return { ok: res.ok, status: res.status, json, text };
+}
+
+function runCommand(command, args) {
+  const result = spawnSync(command, args, {
+    cwd: ROOT,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  if (result.status !== 0) {
+    const detail = String(result.stderr || result.stdout || `${command} failed`).trim();
+    throw new Error(`${command} ${args.join(" ")} failed: ${detail}`);
+  }
+  return String(result.stdout || "").trim();
+}
+
+function ghJson(pathname) {
+  const raw = runCommand("gh", ["api", pathname]);
+  return JSON.parse(raw);
+}
+
+function listGitHubBranchNames(repo) {
+  const raw = runCommand("gh", ["api", "--paginate", `repos/${repo}/branches?per_page=100`, "--jq", ".[].name"]);
+  return raw
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+function formatShortSha(sha) {
+  return String(sha || "").slice(0, 7);
+}
+
+function resolveVercelCommitStatus(statusJson) {
+  const statuses = Array.isArray(statusJson?.statuses) ? statusJson.statuses : [];
+  return statuses.find((item) => String(item?.context || "").trim().toLowerCase() === "vercel") || null;
 }
 
 function getReleaseQueueDryRunScenarios(nowIso) {
@@ -413,6 +451,100 @@ async function main() {
     }
 
     console.log(`[${envName}] release queue dry-run matrix passed (${scenarios.length} scenarios)`);
+    return;
+  }
+
+  if (cmd === "release-queue-observe") {
+    const envName = normalizeEnvName(getOption(argv, "--env") || "prod");
+    const emitJson = argv.includes("--json");
+    const requestedDate = getOption(argv, "--date");
+    const requestedPuzzleNumber = getOption(argv, "--puzzle-number") || getOption(argv, "--puzzleNumber");
+    const requestedSlug = getOption(argv, "--slug");
+    const baseUrl = WORKER_BASE_URLS[envName];
+
+    const healthResult = await fetchJson(`${baseUrl}/health`);
+    if (!healthResult.ok) {
+      console.error(`[${envName}] health failed: HTTP ${healthResult.status}`);
+      console.error(String(healthResult.text || "").slice(0, 500));
+      process.exit(1);
+    }
+
+    const health = healthResult.json || {};
+    const observationDate = requestedDate || health.puzzleDate || new Date().toISOString().slice(0, 10);
+    const slug = requestedSlug || (requestedPuzzleNumber ? `pinpoint-answer-${requestedPuzzleNumber}` : "");
+    const mainCommit = ghJson(`repos/${GITHUB_REPO}/commits/main`);
+    const mainSha = String(mainCommit?.sha || "");
+    const statusJson = ghJson(`repos/${GITHUB_REPO}/commits/${mainSha}/status`);
+    const vercelStatus = resolveVercelCommitStatus(statusJson);
+    const candidateBranches = listGitHubBranchNames(GITHUB_REPO)
+      .filter((name) => name.startsWith(CANDIDATE_BRANCH_PREFIX));
+    const matchingCandidates = candidateBranches.filter((name) => {
+      if (slug) return name.includes(`${observationDate}-${slug}`);
+      return name.includes(observationDate);
+    });
+
+    const report = {
+      env: envName,
+      checkedAt: new Date().toISOString(),
+      worker: {
+        baseUrl,
+        healthOk: true,
+        puzzleDate: health.puzzleDate || null,
+        source: health.source || null,
+        fetchedAt: health.fetchedAt || null,
+        mainAnswer: health.mainAnswer || health.theme || null,
+        words: Array.isArray(health.answers)
+          ? health.answers
+              .map((item) => String(item?.word || "").trim())
+              .filter(Boolean)
+              .slice(0, 5)
+          : [],
+      },
+      github: {
+        repo: GITHUB_REPO,
+        mainSha,
+        mainShortSha: formatShortSha(mainSha),
+        mainCommitDate: mainCommit?.commit?.author?.date || null,
+        mainCommitTitle: String(mainCommit?.commit?.message || "").split(/\r?\n/)[0] || null,
+      },
+      deploymentStatus: {
+        combinedState: statusJson?.state || "unknown",
+        vercelState: vercelStatus?.state || "missing",
+        vercelDescription: vercelStatus?.description || "",
+        vercelTargetUrl: vercelStatus?.target_url || "",
+      },
+      releaseQueue: {
+        observationDate,
+        slug: slug || null,
+        candidateBranchCount: candidateBranches.length,
+        matchingCandidateBranches: matchingCandidates,
+      },
+    };
+
+    if (emitJson) {
+      console.log(JSON.stringify(report, null, 2));
+      return;
+    }
+
+    console.log(`[${envName}] release queue observation`);
+    console.log(
+      `worker health: puzzleDate=${report.worker.puzzleDate ?? ""} source=${report.worker.source ?? ""} mainAnswer=${report.worker.mainAnswer ?? ""}`,
+    );
+    console.log(
+      `main: ${report.github.mainShortSha} status=${report.deploymentStatus.combinedState} vercel=${report.deploymentStatus.vercelState} title=${report.github.mainCommitTitle ?? ""}`,
+    );
+    if (report.deploymentStatus.vercelDescription) {
+      console.log(`vercel: ${report.deploymentStatus.vercelDescription}`);
+    }
+    console.log(
+      `candidates: total=${report.releaseQueue.candidateBranchCount} matching=${report.releaseQueue.matchingCandidateBranches.length}`,
+    );
+    for (const branch of report.releaseQueue.matchingCandidateBranches.slice(0, 10)) {
+      console.log(`- ${branch}`);
+    }
+    if (report.releaseQueue.matchingCandidateBranches.length > 10) {
+      console.log(`- ... ${report.releaseQueue.matchingCandidateBranches.length - 10} more`);
+    }
     return;
   }
 
