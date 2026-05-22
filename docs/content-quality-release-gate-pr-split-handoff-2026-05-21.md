@@ -1,9 +1,21 @@
 # Content Quality Release Gate - PR Split Handoff
 
 Date: 2026-05-21
-Status: implementation patch ready for review, not staged, not committed
+Status: superseded by merged main-branch implementation
 
-## Goal
+## Status Update - 2026-05-22
+
+This document is now historical handoff context, not an active worktree instruction.
+
+- PR1 landed in `main` as `1aa6204` (`Add shared Pinpoint publish eligibility gate`).
+- PR2 landed in `main` as `2a713ce` (`Record Pinpoint publish failure summaries`).
+- PR3 landed in `main` as `4b98ea4` (`Add Pinpoint Evidence V1 dry-run guards`).
+- Follow-up docs were merged in PR #45 and PR #46.
+- Current `main` also includes later production changes through `2af7874`.
+
+Do not interpret the original "not staged, not committed" notes below as current repository state.
+
+## Original Goal
 
 Split the current working-tree implementation into three reviewable PRs without expanding scope:
 

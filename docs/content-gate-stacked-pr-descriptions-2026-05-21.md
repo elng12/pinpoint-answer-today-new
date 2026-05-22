@@ -2,6 +2,16 @@
 
 Date: 2026-05-21
 
+Status update: 2026-05-22
+
+This document is retained as historical PR-description source material. The stacked PR work has already landed in `main`:
+
+- PR1: `1aa6204` (`Add shared Pinpoint publish eligibility gate`)
+- PR2: `2a713ce` (`Record Pinpoint publish failure summaries`)
+- PR3: `4b98ea4` (`Add Pinpoint Evidence V1 dry-run guards`)
+
+The branch/base notes below should not be treated as current action items.
+
 ## PR1
 
 Branch: `codex/content-gate-pr1`

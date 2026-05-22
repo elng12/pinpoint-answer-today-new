@@ -1,6 +1,16 @@
 # Pinpoint 内容质量与上线门禁修复方案 - 2026-05-20
 
-更新状态：2026-05-21 根据本地竞争站静态产物复盘修订。
+更新状态：2026-05-22 第一阶段 PR1-PR3 已落地到 `main`，本文档作为后续治理蓝图和历史执行规格保留。
+
+## 2026-05-22 执行状态
+
+第一阶段不再是待审批/待实现状态：
+
+- PR1 publish eligibility gate 已落地：`1aa6204`。
+- PR2 publish failure summaries/streak alert 已落地：`2a713ce`。
+- PR3 Evidence V1 dry-run 和 override schema dry-run 已落地：`4b98ea4`。
+- 第一阶段相关 guardrails 已纳入 `npm run test:pinpoint-guardrails`。
+- 后续阶段仍保留为 backlog：rendered HTML gate、link graph gate、schema/sitemap freshness gate、Playwright 可见性检查、SLA cron、candidate branch promotion、production model routing、KV/runtime override、production-effective override。
 
 本版文档不再只把目标定义为“避免 Vercel build 被坏 JSON 拦住”，而是把目标升级为：
 
@@ -11,9 +21,9 @@
 
 ## 执行边界与审批状态
 
-审批状态：待审批。
+审批状态：第一阶段已执行；后续阶段仍需逐项审批。
 
-建议审批结论：条件批准 PR1；PR2/PR3 需完成本节列出的边界修正后再执行。
+原建议审批结论：条件批准 PR1；PR2/PR3 需完成本节列出的边界修正后再执行。
 
 本文档分两层使用：
 
@@ -2812,6 +2822,8 @@ flowchart TD
 ```
 
 ## 第一阶段每日执行检查表
+
+状态更新（2026-05-22）：PR1-PR3 已完成并进入 `main`。以下清单保留为复盘模板；不要把未勾选项理解为当前代码缺口。
 
 每个 PR 开发前：
 

@@ -218,4 +218,40 @@ Do not start Phase 1 homepage changes before:
 - Phase 0 has at least 5 full natural days in production.
 - GSC UI mobile live tests pass.
 - Sitemap and affected detail URLs remain stable.
+
+## Daily Observation - 2026-05-22
+
+Context:
+
+- Phase 0 SEO integrity fixes deployed via PR #40 at 2026-05-19 11:17:58 UTC.
+- Non-SEO variable (security-only): PR #41 deployed at 2026-05-20 03:05:06 UTC.
+- Latest public detail (local registry): `pinpoint-answer-751` (updatedAt `2026-05-21T07:04:58.159Z`).
+
+Result: PASS
+
+Production URLs checked under Googlebot Smartphone UA:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, h1, canonical tag; latest slug present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | `https://pinpointanswertoday.app/puzzles` | `index, follow` | title, h1, canonical tag; #735-#737 and latest present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | title, h1, canonical tag; latest slug present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | title, h1, canonical tag; self slug present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | title, h1, canonical tag; self slug present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | title, h1, canonical tag; self slug present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-751/` | 200 | self | `index, follow` | title, h1, canonical tag; self slug present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, latest `#751`.
+- Main route `lastmod` values align with live registry updatedAt (`2026-05-21T07:04:58.159Z`) and remain stable for older details (#735-#737).
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, no sitemap omissions, no missing-core-mobile-HTML indicators observed.
+
+Next action:
+
+- Re-run this observer daily; do not judge GSC recovery before 2026-05-26 UTC (Search Console lags and same-day windows are noisy).
 - No new 404/canonical/indexing regressions are found.

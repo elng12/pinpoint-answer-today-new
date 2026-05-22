@@ -15,6 +15,8 @@
 
 > **Phase 0 已完成**（commit `94ff8c5`，2026-05-19 11:16 UTC），修复了 sitemap lastmod 动态化和 #735/#736/#737 registry 恢复。本方案描述的是 Phase 1-5 新增修复。
 
+> **2026-05-22 状态更新**：Phase 1a Next.js 安全升级已执行并部署（commit `2af7874`）。Phase 3.1 归档页 ItemList JSON-LD 截断已执行并部署（commit `485d743`）。线上验证确认 `/puzzles` ItemList 为 100 条、约 12.5KB，页面 HTML 和 sitemap 仍保留 294 个详情页入口。
+
 ---
 
 ## v2 审批复核结论
@@ -35,7 +37,16 @@
 
 ## Phase 1a: Next.js 安全升级（P0 安全项 — 独立 PR，需发布闸门）
 
-### 1a.1 升级 Next.js 15.0.5 → 15.5.18
+### 1a.1 升级 Next.js 15.0.5 → 15.5.18 ✅ 已完成
+
+**完成记录（2026-05-22）**：
+
+- Commit: `2af7874` (`chore: upgrade Next.js security dependencies`)
+- 实际升级：`next@^15.5.18`、`eslint-config-next@^15.5.18`、`react@^19.2.6`、`react-dom@^19.2.6`
+- 额外处理：`postcss` 通过 npm `overrides` 固定到 `^8.5.15`，因为 `next@15.5.18` 依赖的 `postcss@8.4.31` 仍触发当前 audit。
+- 额外处理：`next lint` 已迁移到 ESLint CLI，新增 `eslint.config.mjs` 并删除旧 `.eslintrc.json`。
+- 验证：`npm audit` / `npm audit --omit=dev` 均为 0 vulnerabilities；`npm run lint`、`npm run typecheck`、`npm run test:pinpoint-guardrails`、`npm run build` 均通过。
+- 生产：Vercel deployment completed，GitHub checks `CI Preflight` 和 `Lint, Typecheck, Guardrails` 均通过。
 
 - **文件**: `package.json`
 - **操作**: `npm install next@15.5.18 eslint-config-next@15.5.18 react@19.2.6 react-dom@19.2.6`
@@ -318,30 +329,39 @@
 
 > SEO 修复从原 P2 提升到 P1，因为 impressions 下降 86.5% 是生存级问题。
 
-### 3.1 归档页 ItemList JSON-LD 截断
+### 3.1 归档页 ItemList JSON-LD 截断 ✅ 已完成
+
+**完成记录（2026-05-22）**：
+
+- Commit: `485d743` (`fix(seo): cap archive ItemList structured data`)
+- 实际实现：`CollectionPage.hasPart` 保持 20 条；`ItemList` 改为描述最近 100 条答案页。
+- SEO 口径修正：`ItemList.numberOfItems` 现在等于结构化列表实际条数 `100`，避免声明全量但只提供部分 `itemListElement` 的语义不一致。
+- 每个 `ListItem` 保持 Google summary-page 形状：`@type`、`position`、`url`。
+- 全量发现路径不变：生产 `/puzzles` HTML 仍有 294 个详情页链接，`sitemap.xml` 仍有 294 个详情页 URL。
+- 生产验证：`/puzzles` ItemList 为 100 条，JSON-LD 约 12.5KB，低于 20KB 目标。
 
 - **文件**: `lib/seo/archive-structured-data.ts`（第 29-38 行）
-- **当前问题**: `ItemList.itemListElement` 对全部 `archiveEntries` 做 `.map()`，无截断。复核时当前 registry 约 292 条，ItemList JSON 约 33KB；截断到 100 条预计约 11KB。修复目标是降低移动端 HTML/JSON-LD 体积和解析成本，不应把“Google 一定放弃解析”写成确定性结论。
-- **修改**:
+- **原问题**: `ItemList.itemListElement` 对全部 `archiveEntries` 做 `.map()`，无截断。复核时当前 registry 约 292 条，ItemList JSON 约 33KB；截断到 100 条预计约 11KB。修复目标是降低移动端 HTML/JSON-LD 体积和解析成本，不应把“Google 一定放弃解析”写成确定性结论。
+- **原修改草案**:
   ```ts
   const ITEM_LIST_DISPLAY_LIMIT = 100;
+  const itemListEntries = archiveEntries.slice(0, ITEM_LIST_DISPLAY_LIMIT);
 
   // CollectionPage.hasPart 已有 20 条限制（COLLECTION_HAS_PART_LIMIT）
-  // ItemList 截断到最近 100 条，用 numberOfItems 声明总数
+  // ItemList 截断到最近 100 条
   {
     "@type": "ItemList",
-    numberOfItems: archiveEntries.length,
-    itemListElement: archiveEntries.slice(0, ITEM_LIST_DISPLAY_LIMIT).map((item, index) => ({
+    numberOfItems: itemListEntries.length,
+    itemListElement: itemListEntries.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       url: absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
-      name: item.title,
     })),
   }
   ```
 - **验证**:
   - `curl http://localhost:3004/puzzles | grep 'application/ld+json'` 检查 JSON-LD 体积
-  - 确认 `numberOfItems` 正确反映全量条目数
+  - 确认 `numberOfItems` 正确反映结构化列表条目数
   - `npx next build` 通过
 - **回滚方案**: `git revert <sha>`
 
@@ -436,16 +456,16 @@ Phase 4 → 独立 PR → 文档和项目索引，无需部署验证
 
 ### 本地验证
 
-- [ ] `npx tsc --noEmit` 零错误
-- [ ] `npx next lint` 零警告
-- [ ] `npx next build` 成功
-- [ ] `npm audit --omit=dev` 无生产依赖 critical/high
-- [ ] `npm audit` 中 Next.js 相关 critical/high 已清零；剩余 dev/transitive high 单独记录
+- [x] `npx tsc --noEmit` 零错误（2026-05-22 通过 `npm run typecheck` 验证）
+- [x] `npm run lint` 零警告（2026-05-22 已从 `next lint` 迁移到 ESLint CLI）
+- [x] `npx next build` 成功（2026-05-22 通过 `npm run build` 验证）
+- [x] `npm audit --omit=dev` 无生产依赖 critical/high（2026-05-22 为 0 vulnerabilities）
+- [x] `npm audit` 中 Next.js 相关 critical/high 已清零；剩余 dev/transitive high 单独记录（2026-05-22 全量 audit 为 0 vulnerabilities）
 - [ ] 源码中 `admin-secret-dev` 仅出现在 regression 脚本回退值和启动警告中
 - [ ] 重定向 `curl -v http://localhost:3004/en/pinpoint/123-analysis` 目标 URL 正确
 - [ ] `curl http://localhost:3004/en/pinpoint/123-analysis -I` 确认目标 URL 为 `/pinpoint/123-analysis`
 - [ ] 如 Contact sitemap 决策被批准，`curl http://localhost:3004/sitemap.xml | grep contact-us` 确认出现
-- [ ] 归档页 JSON-LD 体积 < 20KB
+- [x] 归档页 JSON-LD 体积 < 20KB（2026-05-22 生产 `/puzzles` ItemList 约 12.5KB）
 - [ ] 设置非法环境变量验证 SSRF 防护报错
 - [ ] SSRF PR 执行前已确认生产 webhook 域名清单
 - [ ] 管理员 API 速率限制：连续请求确认 429
@@ -453,13 +473,15 @@ Phase 4 → 独立 PR → 文档和项目索引，无需部署验证
 ### 生产部署后验证
 
 - [ ] Vercel 构建日志无 warning
-- [ ] `curl -I https://pinpointanswertoday.app` 确认 `Strict-Transport-Security` 头存在且仅一个
-- [ ] `curl -I https://pinpointanswertoday.app` 确认无重复 HSTS 头
-- [ ] `curl https://pinpointanswertoday.app/api/health` 错误响应中不含 `workers.dev` URL
+- [x] `curl -I https://pinpointanswertoday.app` 确认 `Strict-Transport-Security` 头存在且仅一个（2026-05-22）
+- [x] `curl -I https://pinpointanswertoday.app` 确认无重复 HSTS 头（2026-05-22）
+- [x] `curl https://pinpointanswertoday.app/api/health` 响应中不含 `workers.dev` URL（2026-05-22）
 - [ ] `curl -s https://pinpointanswertoday.app | grep twitter:site` 确认输出
 - [ ] 如 Contact sitemap 决策被批准，`curl -s https://pinpointanswertoday.app/sitemap.xml | grep contact-us` 确认出现
 - [ ] 生产 `/api/revalidate` 用真实 secret 测试认证正常
 - [ ] #735/#736/#737 页面 `robots` 为 `index, follow`
+
+备注（2026-05-22）：`npm run build` 与生产部署均成功，但 build 输出仍包含既有提示 `Using edge runtime on a page currently disables static generation for that page`，因此“Vercel 构建日志无 warning”未勾选。
 
 ### SEO 恢复监控（与 GSC 恢复方案联动）
 
