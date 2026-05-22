@@ -21,7 +21,8 @@ const PAGE_TITLE_MAX_LENGTH = 110;
 const PAGE_DESCRIPTION_MIN_LENGTH = CONTENT_CONTRACT.metaDescriptionMinChars;
 const PAGE_DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
 const PAGE_DESCRIPTION_INDEX_MAX = CONTENT_CONTRACT.metaDescriptionIndexMaxChars;
-const ARCHIVE_SCHEMA_FIXTURE_COUNT = 60;
+const ARCHIVE_SCHEMA_FIXTURE_COUNT = 120;
+const ARCHIVE_ITEM_LIST_EXPECTED_COUNT = 100;
 const UNSUPPORTED_RICH_RESULT_TYPES = ["FAQPage", "HowTo"];
 
 function normalizeText(value: string): string {
@@ -254,33 +255,36 @@ function checkArchiveStructuredDataUsesLightweightItemList() {
   assert.ok(Array.isArray(listElements), "archive ItemList.itemListElement should be an array");
   assert.equal(
     itemList.numberOfItems,
-    entries.length,
-    "archive ItemList.numberOfItems should report the full archive count",
+    ARCHIVE_ITEM_LIST_EXPECTED_COUNT,
+    "archive ItemList.numberOfItems should report the capped structured list count",
   );
   assert.equal(
     listElements.length,
-    entries.length,
-    "archive ItemList should include all visible archive entries as lightweight ListItems",
+    ARCHIVE_ITEM_LIST_EXPECTED_COUNT,
+    "archive ItemList should cap structured entries",
+  );
+  assert.ok(
+    entries.length > listElements.length,
+    "archive fixture should prove ItemList truncation while HTML/sitemap paths preserve the full archive",
   );
 
   const firstListItem = listElements[0] as Record<string, unknown>;
   assert.deepEqual(
     Object.keys(firstListItem).sort(),
-    ["@type", "name", "position", "url"].sort(),
-    "archive ItemList entries should stay lightweight and avoid nested Article payloads",
+    ["@type", "position", "url"].sort(),
+    "archive ItemList entries should stay lightweight and follow Google's summary-page shape",
   );
   assert.equal(firstListItem["@type"], "ListItem", "archive ItemList entries should be ListItem nodes");
   assert.equal(firstListItem.position, 1, "archive ItemList positions should start at 1");
   assert.equal(typeof firstListItem.url, "string", "archive ItemList entries should expose a URL");
-  assert.equal(typeof firstListItem.name, "string", "archive ItemList entries should expose a name");
   assert.equal(
     JSON.stringify(itemList).includes('"@type":"Article"'),
     false,
     "archive ItemList should not embed full Article objects",
   );
   assert.ok(
-    JSON.stringify(itemList).length < entries.length * 220,
-    "archive ItemList JSON-LD should remain compact per entry",
+    JSON.stringify(itemList).length < 20_000,
+    "archive ItemList JSON-LD should stay below the 20KB archive budget",
   );
   assert.ok(
     Array.isArray(breadcrumbList.itemListElement),
@@ -383,7 +387,7 @@ async function main() {
   console.log("ok: page SEO description fallback stays in range");
 
   checkArchiveStructuredDataUsesLightweightItemList();
-  console.log("ok: archive structured data keeps lightweight full ItemList");
+  console.log("ok: archive structured data keeps lightweight capped ItemList");
 
   checkPublicStructuredDataUsesSupportedSchemaTypes();
   console.log("ok: public structured data excludes unsupported rich-result schema");

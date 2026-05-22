@@ -6,12 +6,15 @@ import {
 } from "@/lib/seo/metadata";
 
 const COLLECTION_HAS_PART_LIMIT = 20;
+const ITEM_LIST_LIMIT = 100;
 
 function withTrailingSlash(path: string): string {
   return path.endsWith("/") ? path : `${path}/`;
 }
 
 export function buildArchiveStructuredData(archiveEntries: ArchiveEntry[]): Record<string, unknown>[] {
+  const itemListEntries = archiveEntries.slice(0, ITEM_LIST_LIMIT);
+
   return [
     {
       "@context": "https://schema.org",
@@ -27,14 +30,14 @@ export function buildArchiveStructuredData(archiveEntries: ArchiveEntry[]): Reco
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      name: "LinkedIn Pinpoint Answers Archive",
+      name: "Latest LinkedIn Pinpoint Answers",
+      description: `The ${itemListEntries.length} most recent Pinpoint answer pages. The full archive remains linked in the page HTML and sitemap.`,
       url: absoluteUrl(routes.archive),
-      numberOfItems: archiveEntries.length,
-      itemListElement: archiveEntries.map((item, index) => ({
+      numberOfItems: itemListEntries.length,
+      itemListElement: itemListEntries.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
         url: absoluteUrl(withTrailingSlash(routes.detail(item.slug))),
-        name: item.title,
       })),
     },
     {
