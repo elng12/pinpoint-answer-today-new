@@ -38,6 +38,23 @@ With the flag enabled:
 - a second same-slug production push inside the 60-minute window writes candidate unless `PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH=true`
 - candidate branches are not auto-promoted
 
+## First-Run Observation
+
+Use the production observation command after each cron window until the first real publish has been reviewed:
+
+```bash
+npm run worker:release-queue-observe -- --date 2026-05-23
+```
+
+The command checks:
+
+- production Worker `/health`
+- latest GitHub `main` commit
+- combined commit status and Vercel status
+- candidate branches matching the observation date or slug
+
+If a same-day candidate branch appears, inspect it before merging or promoting it. If no candidate branch appears and the Worker produced a single healthy production commit, the first-run observation can be marked complete.
+
 ## Rollback
 
 If production publishing is unexpectedly held or routed to candidate:
