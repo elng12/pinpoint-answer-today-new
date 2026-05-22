@@ -22,6 +22,7 @@ import { decidePinpointReleaseQueueAction } from "../lib/puzzles/release-queue-p
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
+const CANDIDATE_BRANCH_PREFIX = "pinpoint/candidate/";
 const GUARDRAIL_ADMIN_TOKEN = process.env.DEV_ADMIN_TOKEN || "guardrail-local-admin-token";
 process.env.DEV_ADMIN_TOKEN = GUARDRAIL_ADMIN_TOKEN;
 
@@ -2611,6 +2612,35 @@ async function checkReleaseQueueDryRunOpsScript() {
   console.log("ok: worker ops exposes release queue dry-run matrix");
 }
 
+async function checkReleaseQueueObservationOpsScript() {
+  const opsSource = await readFile(resolve(ROOT, "scripts/worker-ops.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["worker:release-queue-observe"]?.includes("release-queue-observe"),
+    "package.json must expose the production release queue observation script",
+  );
+  assert.ok(
+    opsSource.includes('cmd === "release-queue-observe"') &&
+      opsSource.includes("/health") &&
+      opsSource.includes("commits/main") &&
+      opsSource.includes(CANDIDATE_BRANCH_PREFIX),
+    "worker ops observation must check Worker health, main commit status, and candidate branches",
+  );
+  assert.ok(
+    !opsSource.includes('cmd === "release-queue-observe"') ||
+      !opsSource.slice(
+        opsSource.indexOf('cmd === "release-queue-observe"'),
+        opsSource.indexOf('cmd === "refresh-cookie"'),
+      ).includes("requireAdminSecret()"),
+    "release queue observation must not require admin secrets",
+  );
+
+  console.log("ok: worker ops exposes production release queue observation");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -2694,6 +2724,7 @@ async function main() {
   await checkCandidateBranchDryRunRouteSafety();
   await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueDryRunOpsScript();
+  await checkReleaseQueueObservationOpsScript();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }
