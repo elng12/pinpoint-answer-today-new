@@ -1,0 +1,57 @@
+{
+  "puzzleNumber": 752,
+  "slug": "pinpoint-answer-752",
+  "publishDate": "2026-05-22",
+  "isoDate": "2026-05-22",
+  "clues": [
+    "Motor",
+    "Damage",
+    "Quality",
+    "Remote",
+    "Air traffic"
+  ],
+  "answer": "Words that come before \"control\"",
+  "category": "Words that come before \"control\"",
+  "wordHints": {
+    "Motor": "Motor is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
+    "Damage": "Damage is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
+    "Quality": "Quality is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
+    "Remote": "Remote is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board.",
+    "Air traffic": "Air traffic is one of the clue phrases that resolves cleanly once you test the shared answer pattern \"Words that come before \"control\"\" across the full board."
+  },
+  "fullAnalysis": [
+    "Puzzle #752 opens with Motor, Damage, Quality, Remote, and Air traffic, a set of clues that appear to belong to completely different categories on first read. That spread is what makes the board deceptive: instead of pointing toward a single subject area, the clues push you toward toys, brands, folklore, or everyday vocabulary all at once. When Pinpoint does this, the safer move is to stop grouping by topic and start testing whether the same missing word can complete every clue naturally.",
+    "That approach resolves this board quickly. The shared connector is \"control\". Once you test \"control\" across the full list, each phrase settles into a clean compound and the noise disappears. The answer \"Words that come before \"control\"\" works because it explains every clue with the same exact pattern, not because one or two clues feel loosely related. If one connector completes all five without stretching the meaning, that is usually the correct Pinpoint solution."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #752, Motor, Damage, Quality, Remote, Air traffic consistently map to Words that come before \"control\". That shared fit across all five clues is why Words that come before \"control\" is the correct answer. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #752?",
+      "answer": "The answer is \"Words that come before \"control\"\". The clues Motor, Damage, Quality, Remote, Air traffic all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ]
+}
