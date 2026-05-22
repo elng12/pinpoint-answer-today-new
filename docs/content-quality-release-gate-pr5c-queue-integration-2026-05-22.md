@@ -63,6 +63,15 @@ Use the admin-only, read-only simulation endpoint instead:
 curl -X POST "https://pinpoint-worker-staging.<account>.workers.dev/admin/release-queue-dry-run?secret=<admin-secret>&simulatePrimary=1&releaseQueueEnabled=1&date=2026-05-22&puzzleNumber=752&deploymentState=queued"
 ```
 
+For the full repeatable matrix, prefer the repo script:
+
+```bash
+ADMIN_SECRET=<staging-worker-admin-secret> \
+  npm run worker:release-queue-dry-run -- --date 2026-05-22 --puzzle-number 752
+```
+
+The script intentionally reads the secret only from environment variables or local ignored env files; it never writes the secret to the repository.
+
 Expected behavior:
 
 - `readOnly=true`

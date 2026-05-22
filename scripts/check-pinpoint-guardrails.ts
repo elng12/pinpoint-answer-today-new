@@ -2573,6 +2573,44 @@ async function checkReleaseQueueDryRunRouteSafety() {
   console.log("ok: release queue dry-run route is admin-gated and read-only");
 }
 
+async function checkReleaseQueueDryRunOpsScript() {
+  const opsSource = await readFile(resolve(ROOT, "scripts/worker-ops.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["worker:release-queue-dry-run"]?.includes("release-queue-dry-run"),
+    "package.json must expose the release queue dry-run matrix script",
+  );
+  assert.ok(
+    opsSource.includes('cmd === "release-queue-dry-run"') &&
+      opsSource.includes("/admin/release-queue-dry-run"),
+    "worker ops script must call the release queue dry-run endpoint",
+  );
+  assert.ok(
+    opsSource.includes("simulatePrimary") &&
+      opsSource.includes("releaseQueueEnabled") &&
+      opsSource.includes("queueEligible"),
+    "worker ops script must simulate the primary queue path without changing Worker config",
+  );
+  for (const expectedReason of [
+    "production-deployment-queued",
+    "production-deployment-building",
+    "production-deployment-unknown",
+    "production-deployment-failed",
+    "production-push-budget-exhausted",
+    "production-push-allowed",
+  ]) {
+    assert.ok(
+      opsSource.includes(expectedReason),
+      `worker ops release queue matrix must cover ${expectedReason}`,
+    );
+  }
+
+  console.log("ok: worker ops exposes release queue dry-run matrix");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -2655,6 +2693,7 @@ async function main() {
   checkReleaseQueuePolicy();
   await checkCandidateBranchDryRunRouteSafety();
   await checkReleaseQueueDryRunRouteSafety();
+  await checkReleaseQueueDryRunOpsScript();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }

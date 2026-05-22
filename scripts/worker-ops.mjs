@@ -66,6 +66,7 @@ function printUsage() {
   console.log(`Usage:
   node scripts/worker-ops.mjs preflight [--env prod|staging|shadow] [--date YYYY-MM-DD]
   node scripts/worker-ops.mjs health    [--env prod|staging|shadow]
+  node scripts/worker-ops.mjs release-queue-dry-run [--env staging|shadow|prod] [--date YYYY-MM-DD] [--puzzle-number N]
   node scripts/worker-ops.mjs refresh-cookie [--targets prod,staging,shadow|all]
 `);
 }
@@ -119,7 +120,8 @@ function resolveProxyUrl() {
   return "";
 }
 
-function fetchJsonViaCurl(url, proxyUrl) {
+function fetchJsonViaCurl(url, proxyUrl, options = {}) {
+  const method = String(options.method || "GET").toUpperCase();
   const args = [
     "-sS",
     "-L",
@@ -131,6 +133,7 @@ function fetchJsonViaCurl(url, proxyUrl) {
     `user-agent: ${USER_AGENT}`,
     "-H",
     "accept: application/json",
+    ...(method !== "GET" ? ["-X", method] : []),
     "--write-out",
     "\n__STATUS__:%{http_code}",
     url,
@@ -162,13 +165,14 @@ function fetchJsonViaCurl(url, proxyUrl) {
   return { ok: status >= 200 && status < 300, status, json, text };
 }
 
-async function fetchJson(url) {
+async function fetchJson(url, options = {}) {
   const proxyUrl = resolveProxyUrl();
   if (proxyUrl) {
-    return fetchJsonViaCurl(url, proxyUrl);
+    return fetchJsonViaCurl(url, proxyUrl, options);
   }
 
   const res = await fetch(url, {
+    method: options.method || "GET",
     headers: {
       "user-agent": USER_AGENT,
       accept: "application/json",
@@ -182,6 +186,56 @@ async function fetchJson(url) {
     json = null;
   }
   return { ok: res.ok, status: res.status, json, text };
+}
+
+function getReleaseQueueDryRunScenarios(nowIso) {
+  return [
+    {
+      name: "queued",
+      params: { deploymentState: "queued" },
+      expectedAction: "write-candidate",
+      expectedReasonCode: "production-deployment-queued",
+    },
+    {
+      name: "building",
+      params: { deploymentState: "building" },
+      expectedAction: "write-candidate",
+      expectedReasonCode: "production-deployment-building",
+    },
+    {
+      name: "unknown",
+      params: { deploymentState: "unknown" },
+      expectedAction: "write-candidate",
+      expectedReasonCode: "production-deployment-unknown",
+    },
+    {
+      name: "failed",
+      params: { deploymentState: "failed" },
+      expectedAction: "hold-review",
+      expectedReasonCode: "production-deployment-failed",
+    },
+    {
+      name: "same-slug-budget",
+      params: {
+        deploymentState: "ready",
+        lastProductionPushAt: nowIso,
+        now: nowIso,
+      },
+      expectedAction: "write-candidate",
+      expectedReasonCode: "production-push-budget-exhausted",
+    },
+    {
+      name: "override-second-push",
+      params: {
+        deploymentState: "ready",
+        lastProductionPushAt: nowIso,
+        now: nowIso,
+        overrideSecondProductionPush: "1",
+      },
+      expectedAction: "push-production",
+      expectedReasonCode: "production-push-allowed",
+    },
+  ];
 }
 
 function extractEdgeCookie() {
@@ -303,6 +357,62 @@ async function main() {
     console.log(
       `[${envName}] puzzleDate=${puzzleDate} source=${source} fetchedAt=${fetchedAt ?? ""} words=${words} mainAnswer=${mainAnswer ?? ""}`,
     );
+    return;
+  }
+
+  if (cmd === "release-queue-dry-run") {
+    const envName = normalizeEnvName(getOption(argv, "--env") || "staging");
+    const date = getOption(argv, "--date") || new Date().toISOString().slice(0, 10);
+    const puzzleNumber = getOption(argv, "--puzzle-number") || getOption(argv, "--puzzleNumber");
+    const secret = requireAdminSecret();
+    const baseUrl = WORKER_BASE_URLS[envName];
+    const nowIso = new Date().toISOString();
+    const scenarios = getReleaseQueueDryRunScenarios(nowIso);
+
+    for (const scenario of scenarios) {
+      const url = new URL(`${baseUrl}/admin/release-queue-dry-run`);
+      url.searchParams.set("secret", secret);
+      url.searchParams.set("simulatePrimary", "1");
+      url.searchParams.set("releaseQueueEnabled", "1");
+      url.searchParams.set("date", date);
+      if (puzzleNumber) url.searchParams.set("puzzleNumber", puzzleNumber);
+      for (const [key, value] of Object.entries(scenario.params)) {
+        url.searchParams.set(key, String(value));
+      }
+
+      const { ok, status, json, text } = await fetchJson(url.toString(), { method: "POST" });
+      if (!ok) {
+        console.error(`[${envName}] release queue dry-run ${scenario.name} failed: HTTP ${status}`);
+        console.error(String(text || "").slice(0, 500));
+        process.exit(1);
+      }
+
+      const action = json?.decision?.action;
+      const reasonCode = json?.decision?.reasonCode;
+      if (
+        json?.ok !== true ||
+        json?.readOnly !== true ||
+        json?.queueEligible !== true ||
+        action !== scenario.expectedAction ||
+        reasonCode !== scenario.expectedReasonCode
+      ) {
+        console.error(`[${envName}] release queue dry-run ${scenario.name} returned unexpected decision`);
+        console.error(JSON.stringify({
+          ok: json?.ok,
+          readOnly: json?.readOnly,
+          queueEligible: json?.queueEligible,
+          action,
+          reasonCode,
+          expectedAction: scenario.expectedAction,
+          expectedReasonCode: scenario.expectedReasonCode,
+        }, null, 2));
+        process.exit(1);
+      }
+
+      console.log(`[${envName}] ${scenario.name} ok action=${action} reason=${reasonCode}`);
+    }
+
+    console.log(`[${envName}] release queue dry-run matrix passed (${scenarios.length} scenarios)`);
     return;
   }
 
