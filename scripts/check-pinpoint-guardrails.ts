@@ -18,6 +18,7 @@ import {
 import { validatePublishEligibility } from "../lib/puzzles/publish-eligibility.shared.mjs";
 import { validatePinpointEvidenceV1 } from "../lib/puzzles/pinpoint-evidence-v1.shared.mjs";
 import { validateReleaseOverrideDryRun } from "../lib/puzzles/release-override.shared.mjs";
+import { decidePinpointReleaseQueueAction } from "../lib/puzzles/release-queue-policy.shared.mjs";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -2424,6 +2425,108 @@ function checkIntermediateStateCommitDetection() {
   console.log("ok: intermediate-state commit detector skips only non-public state-only updates");
 }
 
+function checkReleaseQueuePolicy() {
+  const baseInput = {
+    slug: "pinpoint-answer-752",
+    logicalGameDate: "2026-05-22",
+    publishMode: "full-analysis",
+    nowMs: Date.parse("2026-05-22T08:30:00.000Z"),
+  };
+
+  const queued = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "queued",
+  });
+  assert.equal(queued.action, "write-candidate", "queued production deployment should write candidate");
+  assert.equal(queued.reasonCode, "production-deployment-queued");
+  assert.equal(queued.productionPushSkipped, true);
+
+  const building = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "building",
+  });
+  assert.equal(building.action, "write-candidate", "building production deployment should write candidate");
+
+  const unknown = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "does-not-exist",
+  });
+  assert.equal(unknown.action, "write-candidate", "unknown deployment state should not push production");
+  assert.equal(unknown.notificationFields.deploymentState, "unknown");
+
+  const recentPush = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    lastProductionPushAt: "2026-05-22T08:00:00.000Z",
+  });
+  assert.equal(recentPush.action, "write-candidate", "second production push inside SLA window needs override");
+  assert.equal(recentPush.reasonCode, "production-push-budget-exhausted");
+  assert.ok(
+    typeof recentPush.notificationFields.remainingWindowMs === "number" &&
+      recentPush.notificationFields.remainingWindowMs > 0,
+    "recent production push decision should expose remaining window",
+  );
+
+  const overridden = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    lastProductionPushAt: "2026-05-22T08:00:00.000Z",
+    overrideSecondProductionPush: true,
+  });
+  assert.equal(overridden.action, "push-production", "override can allow second production push");
+
+  const staleCandidate = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    candidateBranchExists: true,
+    candidateIsCurrent: false,
+  });
+  assert.equal(staleCandidate.action, "write-candidate", "stale candidate should be updated before production push");
+  assert.equal(staleCandidate.reasonCode, "candidate-branch-outdated");
+
+  const failed = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "failed",
+  });
+  assert.equal(failed.action, "hold-review", "failed production deployment should go to review");
+
+  const allowed = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "none",
+  });
+  assert.equal(allowed.action, "push-production", "no active deployment and no recent push can push production");
+  assert.equal(
+    allowed.notificationFields.candidateBranch,
+    "pinpoint/candidate/2026-05-22-pinpoint-answer-752",
+  );
+
+  console.log("ok: release queue policy blocks duplicate production pushes and unsafe deployment states");
+}
+
+async function checkCandidateBranchDryRunRouteSafety() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+
+  assert.ok(
+    workerSource.includes('url.pathname === "/admin/candidate-branch-dry-run" && req.method === "POST"'),
+    "candidate branch dry-run route must be POST-only",
+  );
+  assert.ok(
+    workerSource.includes("candidate dry-run is blocked on the primary branch"),
+    "candidate branch dry-run route must reject primary-branch environments",
+  );
+  assert.ok(
+    workerSource.includes("PINPOINT_CANDIDATE_BRANCH_ENABLED must be true for dry-run"),
+    "candidate branch dry-run route must require explicit candidate flag enablement",
+  );
+  assert.ok(
+    workerSource.includes("productionBranchTouched: false") &&
+      workerSource.includes("revalidateTriggered: false"),
+    "candidate branch dry-run response must report that production branch and revalidate are not touched",
+  );
+
+  console.log("ok: candidate branch dry-run route is admin-gated and blocked on primary branch");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -2445,6 +2548,8 @@ async function main() {
   await checkPinpointEvidenceV1Guards724Mapping();
   checkReleaseOverrideDryRunSchema();
   checkIntermediateStateCommitDetection();
+  checkReleaseQueuePolicy();
+  await checkCandidateBranchDryRunRouteSafety();
   console.log("Pinpoint guardrail regression passed.");
 }
 

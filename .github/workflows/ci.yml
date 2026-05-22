@@ -48,7 +48,7 @@ jobs:
     needs: preflight
     if: needs.preflight.outputs.skip_checks != 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -76,3 +76,9 @@ jobs:
 
       - name: Pinpoint Guardrails
         run: npm run test:pinpoint-guardrails
+
+      - name: Build
+        run: npm run build
+
+      - name: Pinpoint Rendered Content Gate
+        run: npm run test:pinpoint-rendered
