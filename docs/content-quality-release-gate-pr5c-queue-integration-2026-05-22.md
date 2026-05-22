@@ -53,6 +53,36 @@ Actions:
 
 If a candidate branch already exists, the Worker does not auto-promote it. Even a current candidate stays in `write-candidate` with `candidate-branch-awaiting-promotion` unless a future maintainer-controlled promotion path explicitly passes `allowCandidatePromotion`.
 
+## Read-Only Staging Simulation
+
+Staging cannot safely exercise the real release queue by pointing `GITHUB_BRANCH_NEW_SITE` at `main`: that would make an admin publish capable of touching the production branch.
+
+Use the admin-only, read-only simulation endpoint instead:
+
+```bash
+curl -X POST "https://pinpoint-worker-staging.<account>.workers.dev/admin/release-queue-dry-run?secret=<admin-secret>&simulatePrimary=1&releaseQueueEnabled=1&date=2026-05-22&puzzleNumber=752&deploymentState=queued"
+```
+
+Expected behavior:
+
+- `readOnly=true`
+- `simulatePrimary=true`
+- `queueEligible=true`
+- `decision.action=write-candidate`
+- no GitHub ref writes
+- no ISR revalidation
+- no queue notification
+
+Useful scenarios:
+
+| Scenario | Query params | Expected decision |
+| --- | --- | --- |
+| Vercel queue/build pressure | `deploymentState=queued` or `deploymentState=building` | `write-candidate` |
+| Missing Vercel status | `deploymentState=unknown` | `write-candidate` |
+| Failed production deployment | `deploymentState=failed` | `hold-review` |
+| Same-slug push budget exhausted | `deploymentState=ready&lastProductionPushAt=<ISO time within 60 min>` | `write-candidate` |
+| Explicit second-push override | `deploymentState=ready&lastProductionPushAt=<ISO time within 60 min>&overrideSecondProductionPush=1` | `push-production` |
+
 ## What This Does Not Do
 
 This PR does not add automatic promotion.

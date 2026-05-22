@@ -2549,6 +2549,30 @@ async function checkCandidateBranchDryRunRouteSafety() {
   console.log("ok: candidate branch dry-run route is admin-gated and blocked on primary branch");
 }
 
+async function checkReleaseQueueDryRunRouteSafety() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const routeStart = workerSource.indexOf('url.pathname === "/admin/release-queue-dry-run" && req.method === "POST"');
+  const routeEnd = workerSource.indexOf('url.pathname === "/admin/run"', routeStart);
+  assert.ok(routeStart >= 0, "release queue dry-run route must exist and be POST-only");
+  assert.ok(routeEnd > routeStart, "release queue dry-run route must stay before the real admin run route");
+
+  const routeSource = workerSource.slice(routeStart, routeEnd);
+  assert.ok(routeSource.includes("getAdminSecret(env)"), "release queue dry-run route must be admin-gated");
+  assert.ok(routeSource.includes("readOnly: true"), "release queue dry-run response must identify itself as read-only");
+  assert.ok(
+    routeSource.includes("simulatePrimary") && routeSource.includes("queueEligible"),
+    "release queue dry-run route must support staging-safe primary-branch simulation",
+  );
+  assert.ok(
+    !routeSource.includes("publishToNewSiteGitHub(") &&
+      !routeSource.includes("ensureBranchRef(") &&
+      !routeSource.includes("notifyPinpointReleaseQueueDecision("),
+    "release queue dry-run route must not write GitHub refs or send queue notifications",
+  );
+
+  console.log("ok: release queue dry-run route is admin-gated and read-only");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -2630,6 +2654,7 @@ async function main() {
   checkIntermediateStateCommitDetection();
   checkReleaseQueuePolicy();
   await checkCandidateBranchDryRunRouteSafety();
+  await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }
