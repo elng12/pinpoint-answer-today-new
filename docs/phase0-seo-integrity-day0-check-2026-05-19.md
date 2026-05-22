@@ -255,3 +255,66 @@ Next action:
 
 - Re-run this observer daily; do not judge GSC recovery before 2026-05-26 UTC (Search Console lags and same-day windows are noisy).
 - No new 404/canonical/indexing regressions are found.
+
+## Daily Observation - 2026-05-22 (rerun @ 2026-05-22T07:37:00Z, superseded)
+
+Result: PASS
+
+Scope note: this run checked `pinpoint-answer-751` before `pinpoint-answer-752` became the live latest detail. Keep it as historical evidence only; use the later 2026-05-22 rerun below for the current latest-page check.
+
+Production URLs checked under Googlebot Smartphone UA:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | self | `index, follow` | title, h1, canonical tag (no JSON-LD detected) |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-751/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, checked detail `#751`.
+- This run did not cover `#752`, which later became live with registry updatedAt `2026-05-22T08:37:36.665Z`.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex` (meta robots present as `index, follow`), no canonical mismatch, no sitemap omissions, no missing-core-mobile-HTML indicators observed.
+
+Next action:
+
+- Use the later 2026-05-22 rerun below for current latest-page status.
+
+## Daily Observation - 2026-05-22 (latest rerun @ 2026-05-22T14:57:35Z)
+
+Result: PASS
+
+Production URLs checked under Googlebot Smartphone UA:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, h1, canonical tag, JSON-LD present, latest slug present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | `https://pinpointanswertoday.app/puzzles` | `index, follow` | title, h1, canonical tag, JSON-LD present, latest slug present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | title, h1, canonical tag, latest slug present (no JSON-LD detected) |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-752/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present, self slug present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, latest `#752`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, and `#752` matches latest registry updatedAt (`2026-05-22T08:37:36.665Z`).
+- Older detail `lastmod` values remain stable for `#735`, `#736`, and `#737`.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex` (meta robots present as `index, follow`), no canonical mismatch, no sitemap omissions, no missing-core-mobile-HTML indicators observed.
+
+Next action:
+
+- Continue daily observer runs; do not judge GSC recovery before 2026-05-26 UTC.
