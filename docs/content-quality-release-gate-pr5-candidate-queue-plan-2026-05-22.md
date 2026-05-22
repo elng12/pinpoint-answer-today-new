@@ -1,7 +1,7 @@
 # Content Quality Release Gate - PR5 Candidate Branch and Queue Plan
 
 Date: 2026-05-22
-Status: PR5A and PR5B implementation ready for review; PR5B remote staging dry-run passed; PR5C+ not started
+Status: PR5A and PR5B merged to `main`; PR5C implemented behind a disabled-by-default Worker flag and ready for review
 
 ## Status Update
 
@@ -21,6 +21,16 @@ PR5B has also been implemented locally as a disabled-by-default Worker candidate
 - A staging-only dry-run endpoint is available for acceptance: `POST /admin/candidate-branch-dry-run`.
 
 PR5B does not add automatic promotion, queue-state API integration, Vercel CLI promotion, or automatic draft PR creation.
+
+PR5C now connects the queue policy to the Worker publish path behind `PINPOINT_RELEASE_QUEUE_ENABLED=false`:
+
+- reads GitHub/Vercel commit status from the base branch
+- records same-slug production push timestamps in KV
+- routes unsafe public writes to deterministic candidate branches
+- holds review on failed deployment state
+- keeps existing candidate branches waiting for explicit promotion instead of auto-promoting
+- sends queue notifications for candidate/hold decisions
+- still does not auto-promote or auto-merge candidate branches
 
 Remote staging dry-run result:
 
@@ -181,6 +191,8 @@ Dry-run acceptance runbook:
 ### PR5C - Maintainer Promotion Flow
 
 Do not auto-merge in PR5.
+
+2026-05-22 implementation note: PR5C currently implements the Worker queue decision and candidate/hold routing only. Maintainer promotion remains manual.
 
 First acceptable flow:
 
