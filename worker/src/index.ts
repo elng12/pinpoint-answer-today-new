@@ -514,6 +514,30 @@ function parsePositiveNumber(value: string | undefined): number | undefined {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
 }
 
+function parseOptionalBooleanParam(params: URLSearchParams, name: string): boolean | undefined {
+  const raw = params.get(name);
+  if (raw == null || raw.trim().length === 0) return undefined;
+  const normalized = raw.trim().toLowerCase();
+  if (normalized === "1" || normalized === "true" || normalized === "yes" || normalized === "on") return true;
+  if (normalized === "0" || normalized === "false" || normalized === "no" || normalized === "off") return false;
+  return undefined;
+}
+
+function parseDeploymentStateParam(value: string | null): DeploymentState {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (
+    normalized === "none" ||
+    normalized === "queued" ||
+    normalized === "building" ||
+    normalized === "ready" ||
+    normalized === "failed" ||
+    normalized === "unknown"
+  ) {
+    return normalized;
+  }
+  return "unknown";
+}
+
 function releaseQueueLastProductionPushKeyOf(slug: string): string {
   return `pinpoint:release-queue:last-production-push:${slug}`;
 }
@@ -5990,6 +6014,99 @@ export default {
         detailState: "fallback_full",
         productionBranchTouched: false,
         revalidateTriggered: false,
+      }), {
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+
+    if (url.pathname === "/admin/release-queue-dry-run" && req.method === "POST") {
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
+      const secret = url.searchParams.get("secret");
+      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
+
+      const params = url.searchParams;
+      const requestedDate = String(params.get("date") || "").trim();
+      const puzzleDate = /^\d{4}-\d{2}-\d{2}$/.test(requestedDate) ? requestedDate : getBeijingTodayDate();
+      const requestedPuzzleNumber = String(params.get("puzzleNumber") || "").trim();
+      const puzzleNumber = inferPuzzleNumber(requestedPuzzleNumber || undefined, puzzleDate);
+      const defaultSlug = `pinpoint-answer-${puzzleNumber}`;
+      const requestedSlug = String(params.get("slug") || "").trim();
+      const slug = /^[A-Za-z0-9][A-Za-z0-9._-]{1,126}$/.test(requestedSlug) ? requestedSlug : defaultSlug;
+      const detailState = resolvePublishDetailState(params.get("detailState"));
+      const isPublicState = isPublicPublishDetailState(detailState);
+      const baseBranch = normalizeGitHubBranchName(env.GITHUB_BRANCH_NEW_SITE, "main");
+      const actualIsPrimaryBranch = isPrimaryNewSiteBranch(baseBranch);
+      const simulatePrimary = parseOptionalBooleanParam(params, "simulatePrimary") === true;
+      const effectiveIsPrimaryBranch = simulatePrimary || actualIsPrimaryBranch;
+      const candidateBranch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
+      const candidateBranchEnabled =
+        parseOptionalBooleanParam(params, "candidateBranchEnabled") ??
+        envFlag(env.PINPOINT_CANDIDATE_BRANCH_ENABLED, false);
+      const releaseQueueFlag =
+        parseOptionalBooleanParam(params, "releaseQueueEnabled") ??
+        envFlag(env.PINPOINT_RELEASE_QUEUE_ENABLED, false);
+      const forceCandidateBranch = candidateBranchEnabled && isPublicState;
+      const queueEligible = releaseQueueFlag && isPublicState && effectiveIsPrimaryBranch && !forceCandidateBranch;
+      const deploymentState = parseDeploymentStateParam(params.get("deploymentState"));
+      const localGatesPassed = parseOptionalBooleanParam(params, "localGatesPassed");
+      const overrideSecondProductionPush =
+        parseOptionalBooleanParam(params, "overrideSecondProductionPush") ??
+        envFlag(env.PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH, false);
+      const allowCandidatePromotion = parseOptionalBooleanParam(params, "allowCandidatePromotion");
+      const candidateBranchExists = parseOptionalBooleanParam(params, "candidateBranchExists");
+      const candidateIsCurrent = parseOptionalBooleanParam(params, "candidateIsCurrent");
+      const lastProductionPushAt = String(params.get("lastProductionPushAt") || "").trim() || undefined;
+      const nowMs = String(params.get("now") || "").trim() || undefined;
+      const publishMode = String(params.get("publishMode") || "full-analysis").trim() || "full-analysis";
+
+      const decision = decidePinpointReleaseQueueAction({
+        slug,
+        logicalGameDate: puzzleDate,
+        publishMode,
+        deploymentState,
+        lastProductionPushAt,
+        slaWindowMinutes: parsePositiveNumber(env.PINPOINT_RELEASE_QUEUE_SLA_WINDOW_MINUTES),
+        candidateBranch,
+        candidateBranchExists,
+        candidateIsCurrent,
+        overrideSecondProductionPush,
+        allowCandidatePromotion,
+        localGatesPassed,
+        nowMs,
+      });
+
+      return new Response(JSON.stringify({
+        ok: true,
+        mode: "release-queue-dry-run",
+        readOnly: true,
+        baseBranch,
+        actualIsPrimaryBranch,
+        simulatePrimary,
+        effectiveIsPrimaryBranch,
+        releaseQueueFlag,
+        candidateBranchEnabled,
+        forceCandidateBranch,
+        detailState,
+        isPublicState,
+        queueEligible,
+        wouldApplyDecision: queueEligible,
+        candidateBranch,
+        input: {
+          slug,
+          puzzleDate,
+          puzzleNumber,
+          publishMode,
+          deploymentState,
+          lastProductionPushAt,
+          overrideSecondProductionPush,
+          allowCandidatePromotion,
+          candidateBranchExists,
+          candidateIsCurrent,
+          localGatesPassed,
+          nowMs,
+        },
+        decision,
       }), {
         headers: { "content-type": "application/json; charset=utf-8" },
       });
