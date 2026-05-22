@@ -12,6 +12,7 @@ export type ReleaseQueuePolicyInput = {
   candidateBranch?: string;
   candidateBranchExists?: boolean;
   candidateIsCurrent?: boolean;
+  allowCandidatePromotion?: boolean;
   overrideSecondProductionPush?: boolean;
   localGatesPassed?: boolean;
 };

@@ -12,8 +12,9 @@
 - 第一阶段相关 guardrails 已纳入 `npm run test:pinpoint-guardrails`。
 - PR4 rendered HTML / sitemap freshness / structured data gate 已在本地实现，待审查合并：`scripts/check-pinpoint-rendered-content.ts`、`npm run test:pinpoint-rendered`、CI post-build gate。
 - PR4 Playwright 可见性检查已作为 manual smoke 实现，暂不作为 CI blocking gate：`scripts/check-pinpoint-visibility-smoke.mjs`、`npm run visual:pinpoint-smoke`。
-- PR5A release queue policy 纯决策函数已在本地实现，待审查合并：`lib/puzzles/release-queue-policy.shared.mjs`，当前不改变 Worker 发布路径。
-- PR5B candidate branch writer 已实现并通过 staging dry-run，默认关闭：`PINPOINT_CANDIDATE_BRANCH_ENABLED=false`；开启后 public payload 写入 `pinpoint/candidate/<logicalGameDate>-<slug>`，不触发 ISR revalidate 或生产发布通知去重。验收 runbook：`docs/content-quality-release-gate-pr5b-dry-run-acceptance-2026-05-22.md`。
+- PR5A release queue policy 纯决策函数已合并：`lib/puzzles/release-queue-policy.shared.mjs`。
+- PR5B candidate branch writer 已合并并通过 staging dry-run，默认关闭：`PINPOINT_CANDIDATE_BRANCH_ENABLED=false`；开启后 public payload 写入 `pinpoint/candidate/<logicalGameDate>-<slug>`，不触发 ISR revalidate 或生产发布通知去重。验收 runbook：`docs/content-quality-release-gate-pr5b-dry-run-acceptance-2026-05-22.md`。
+- PR5C release queue integration 已实现并等待审查，默认关闭：`PINPOINT_RELEASE_QUEUE_ENABLED=false`；开启后 Worker 会读取 GitHub/Vercel commit status、KV 同 slug production push budget、candidate freshness，再决定 push production、write candidate 或 hold review。实施说明：`docs/content-quality-release-gate-pr5c-queue-integration-2026-05-22.md`。
 - 后续阶段仍保留为 backlog：full link graph gate、candidate branch promotion、deployment queue 状态接入、SLA cron、production model routing、KV/runtime override、production-effective override、Playwright CI blocking gate。
 
 本版文档不再只把目标定义为“避免 Vercel build 被坏 JSON 拦住”，而是把目标升级为：

@@ -2484,6 +2484,28 @@ function checkReleaseQueuePolicy() {
   assert.equal(staleCandidate.action, "write-candidate", "stale candidate should be updated before production push");
   assert.equal(staleCandidate.reasonCode, "candidate-branch-outdated");
 
+  const currentCandidateAwaitingPromotion = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    candidateBranchExists: true,
+    candidateIsCurrent: true,
+  });
+  assert.equal(
+    currentCandidateAwaitingPromotion.action,
+    "write-candidate",
+    "current candidate should still wait for explicit promotion approval",
+  );
+  assert.equal(currentCandidateAwaitingPromotion.reasonCode, "candidate-branch-awaiting-promotion");
+
+  const explicitlyPromotedCandidate = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    candidateBranchExists: true,
+    candidateIsCurrent: true,
+    allowCandidatePromotion: true,
+  });
+  assert.equal(explicitlyPromotedCandidate.action, "push-production", "explicit approval can promote a current candidate");
+
   const failed = decidePinpointReleaseQueueAction({
     ...baseInput,
     deploymentState: "failed",
@@ -2527,6 +2549,64 @@ async function checkCandidateBranchDryRunRouteSafety() {
   console.log("ok: candidate branch dry-run route is admin-gated and blocked on primary branch");
 }
 
+async function checkReleaseQueueWorkerIntegration() {
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    resolvePinpointReleaseDeploymentStateFromGithubStatus: (statusJson: unknown) => string;
+  };
+
+  assert.equal(
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({
+      statuses: [{ context: "Vercel", state: "pending" }],
+    }),
+    "building",
+    "pending Vercel commit status should block a second production push",
+  );
+  assert.equal(
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({
+      statuses: [{ context: "Vercel", state: "success" }],
+    }),
+    "ready",
+    "successful Vercel commit status should be eligible for a production push if budget allows",
+  );
+  assert.equal(
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({
+      statuses: [{ context: "Vercel", state: "failure" }],
+    }),
+    "failed",
+    "failed Vercel commit status should hold review instead of pushing production",
+  );
+  assert.equal(
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({ statuses: [] }),
+    "unknown",
+    "missing Vercel status should not allow an automatic production push",
+  );
+
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  assert.ok(
+    workerSource.includes("PINPOINT_RELEASE_QUEUE_ENABLED"),
+    "release queue integration must stay behind an explicit feature flag",
+  );
+  assert.ok(
+    workerSource.includes("decidePinpointReleaseQueueAction({") &&
+      workerSource.includes("lastProductionPushAt") &&
+      workerSource.includes("candidateIsCurrent"),
+    "worker publish path must pass deployment state, production push budget, and candidate freshness to the queue policy",
+  );
+  assert.ok(
+    workerSource.includes("getCombinedCommitStatus") &&
+      workerSource.includes("/commits/${sha}/status"),
+    "worker publish path must read GitHub/Vercel commit status before queue decisions",
+  );
+  assert.ok(
+    workerSource.includes("releaseQueueLastProductionPushKeyOf") &&
+      workerSource.includes("PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH"),
+    "worker publish path must persist same-slug production push budget and require explicit override for a second push",
+  );
+
+  console.log("ok: worker release queue integration maps deployment status and protects production pushes");
+}
+
 async function main() {
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
@@ -2550,6 +2630,7 @@ async function main() {
   checkIntermediateStateCommitDetection();
   checkReleaseQueuePolicy();
   await checkCandidateBranchDryRunRouteSafety();
+  await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }
 

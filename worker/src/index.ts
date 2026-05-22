@@ -19,6 +19,11 @@ import {
   updateLightweightPublishFailureStreak,
 } from "../../lib/puzzles/publish-failure-summary.shared.mjs";
 import {
+  decidePinpointReleaseQueueAction,
+  type DeploymentState,
+  type ReleaseQueuePolicyDecision,
+} from "../../lib/puzzles/release-queue-policy.shared.mjs";
+import {
   generatePuzzleDraft,
   regeneratePuzzleDraft,
   type EnrichInput,
@@ -71,6 +76,9 @@ export interface Env {
   NEW_SITE_SUMMARY_WATCHDOG_ENABLED?: string; // optional: set "false" to disable post-window site summary alerts
   PINPOINT_CANDIDATE_BRANCH_ENABLED?: string; // optional: set "true" to write public payloads to candidate branches
   PINPOINT_CANDIDATE_BRANCH_PREFIX?: string;  // default: pinpoint/candidate
+  PINPOINT_RELEASE_QUEUE_ENABLED?: string;    // optional: set "true" to route unsafe public writes to candidate branches
+  PINPOINT_RELEASE_QUEUE_SLA_WINDOW_MINUTES?: string; // default: 60
+  PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH?: string; // optional: set "true" to allow a second same-slug production push
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
@@ -499,6 +507,77 @@ function buildPinpointCandidateBranchName(env: Env, puzzleDate: string, slug: st
   const dateSegment = sanitizeGitBranchSegment(puzzleDate, "unknown-date");
   const slugSegment = sanitizeGitBranchSegment(slug, "pinpoint-answer");
   return `${prefix}/${dateSegment}-${slugSegment}`;
+}
+
+function parsePositiveNumber(value: string | undefined): number | undefined {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
+}
+
+function releaseQueueLastProductionPushKeyOf(slug: string): string {
+  return `pinpoint:release-queue:last-production-push:${slug}`;
+}
+
+function releaseQueueNotifyKeyOf(decision: ReleaseQueuePolicyDecision): string {
+  const fields = decision.notificationFields;
+  return [
+    "notify:pinpoint-release-queue",
+    fields.logicalGameDate || "unknown-date",
+    fields.slug || "unknown-slug",
+    fields.action,
+    fields.reasonCode,
+  ].map((segment) => encodeURIComponent(segment)).join(":");
+}
+
+export function resolvePinpointReleaseDeploymentStateFromGithubStatus(statusJson: unknown): DeploymentState {
+  const status = asRecord(statusJson);
+  const rawStatuses = Array.isArray(status?.statuses) ? status.statuses : [];
+  const vercelStatus = rawStatuses
+    .map((item) => asRecord(item))
+    .filter((item): item is JsonRecord => Boolean(item))
+    .find((item) => String(item.context || "").trim().toLowerCase() === "vercel");
+
+  if (!vercelStatus) {
+    return "unknown";
+  }
+
+  const state = String(vercelStatus.state || status?.state || "").trim().toLowerCase();
+  if (state === "pending") return "building";
+  if (state === "success") return "ready";
+  if (state === "failure" || state === "error") return "failed";
+  return "unknown";
+}
+
+async function notifyPinpointReleaseQueueDecision(
+  env: Env,
+  decision: ReleaseQueuePolicyDecision,
+): Promise<void> {
+  if (!decision.productionPushSkipped) return;
+
+  const notifyKey = releaseQueueNotifyKeyOf(decision);
+  const alreadyNotified = await env.PP_DATA.get(notifyKey).then((value) => value !== null).catch(() => false);
+  if (alreadyNotified) return;
+
+  await env.PP_DATA.put(notifyKey, "1", { expirationTtl: 60 * 60 * 6 }).catch(() => undefined);
+  const fields = decision.notificationFields;
+  const remainingMinutes =
+    typeof fields.remainingWindowMs === "number"
+      ? Math.ceil(fields.remainingWindowMs / 60000)
+      : undefined;
+  const title = decision.action === "hold-review"
+    ? "⛔ Pinpoint 发布进入人工 review"
+    : "⏳ Pinpoint 发布已写入 candidate branch";
+  await notifyCron(env, title, [
+    `日期: ${fields.logicalGameDate || "unknown"}`,
+    `页面: ${fields.slug || "unknown"}`,
+    `模式: ${fields.publishMode || "unknown"}`,
+    `部署状态: ${fields.deploymentState}`,
+    `动作: ${fields.action}`,
+    `原因: ${fields.reasonCode}`,
+    `候选分支: ${fields.candidateBranch || "n/a"}`,
+    `跳过 production push: ${decision.productionPushSkipped ? "yes" : "no"}`,
+    ...(remainingMinutes !== undefined ? [`SLA 剩余分钟: ${remainingMinutes}`] : []),
+  ]);
 }
 
 function normalizeBaseUrl(input: string | undefined, fallback: string): string {
@@ -3141,6 +3220,7 @@ async function publishToNewSiteGitHub(
   let branch = baseBranch;
   let isPrimaryBranch = isPrimaryNewSiteBranch(branch);
   let isCandidateBranch = false;
+  let releaseQueueDecision: ReleaseQueuePolicyDecision | null = null;
   const newSiteUrl = String(env.NEW_SITE_URL || "").trim();
   const revalidateSecret = String(env.NEW_SITE_REVALIDATE_SECRET || "").trim();
   const slug = `pinpoint-answer-${puzzleNumber}`;
@@ -3199,6 +3279,31 @@ async function publishToNewSiteGitHub(
     if (res.status === 404) return null;
     if (!res.ok) throw new Error(`GitHub GET ref ${targetBranch}: ${res.status} ${await res.text()}`);
     return (asRecord(await res.json()) ?? {}) as JsonRecord;
+  };
+
+  const getCombinedCommitStatus = async (sha: string): Promise<JsonRecord> => {
+    const res = await fetch(`https://api.github.com/repos/${repo}/commits/${sha}/status`, { headers });
+    if (!res.ok) throw new Error(`GitHub GET combined status ${sha}: ${res.status} ${await res.text()}`);
+    return (asRecord(await res.json()) ?? {}) as JsonRecord;
+  };
+
+  const getBaseBranchDeploymentState = async (): Promise<DeploymentState> => {
+    const baseRef = await getBranchRef(baseBranch);
+    const baseCommitSha = String(asRecord(baseRef?.object)?.sha || "").trim();
+    if (!baseCommitSha) return "unknown";
+    const statusJson = await getCombinedCommitStatus(baseCommitSha);
+    return resolvePinpointReleaseDeploymentStateFromGithubStatus(statusJson);
+  };
+
+  const isCandidateBranchCurrentWithBase = async (targetBranch: string): Promise<boolean> => {
+    const encodedBase = encodeURIComponent(baseBranch);
+    const encodedHead = encodeURIComponent(targetBranch);
+    const res = await fetch(`https://api.github.com/repos/${repo}/compare/${encodedBase}...${encodedHead}`, { headers });
+    if (res.status === 404) return false;
+    if (!res.ok) throw new Error(`GitHub compare ${baseBranch}...${targetBranch}: ${res.status} ${await res.text()}`);
+    const compare = asRecord(await res.json()) ?? {};
+    const behindBy = Number(compare.behind_by);
+    return Number.isFinite(behindBy) && behindBy === 0;
   };
 
   const createBranchRef = async (targetBranch: string, sha: string): Promise<void> => {
@@ -3315,13 +3420,78 @@ async function publishToNewSiteGitHub(
   const answer = sanitizePublishedAnswerLabel(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "");
   const detailState = resolvePublishDetailState(enrichedPayload.detailState);
   const isPublicState = isPublicPublishDetailState(detailState);
-  if (envFlag(env.PINPOINT_CANDIDATE_BRANCH_ENABLED, false) && isPublicState) {
-    branch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
+  const candidateBranch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
+  const forceCandidateBranch = envFlag(env.PINPOINT_CANDIDATE_BRANCH_ENABLED, false) && isPublicState;
+  const releaseQueueEnabled =
+    envFlag(env.PINPOINT_RELEASE_QUEUE_ENABLED, false) &&
+    isPublicState &&
+    isPrimaryBranch &&
+    !forceCandidateBranch;
+
+  if (forceCandidateBranch) {
+    branch = candidateBranch;
     isCandidateBranch = branch !== baseBranch;
     isPrimaryBranch = isPrimaryNewSiteBranch(branch);
     if (isCandidateBranch) {
       await ensureBranchRef(branch, true);
       console.log(`[new-site] candidate branch write enabled for #${puzzleNumber}: ${branch}`);
+    }
+  } else if (releaseQueueEnabled) {
+    let deploymentState: DeploymentState = "unknown";
+    try {
+      deploymentState = await getBaseBranchDeploymentState();
+    } catch (error) {
+      console.warn("[new-site] release queue could not read deployment state; defaulting to unknown", error);
+    }
+
+    const lastProductionPushAt = await env.PP_DATA.get(releaseQueueLastProductionPushKeyOf(slug)).catch(() => null);
+    const candidateRef = await getBranchRef(candidateBranch).catch((error) => {
+      console.warn(`[new-site] release queue could not read candidate branch ${candidateBranch}`, error);
+      return null;
+    });
+    const candidateBranchExists = Boolean(candidateRef);
+    const candidateIsCurrent = candidateBranchExists
+      ? await isCandidateBranchCurrentWithBase(candidateBranch).catch((error) => {
+        console.warn(`[new-site] release queue could not compare candidate branch ${candidateBranch}`, error);
+        return false;
+      })
+      : false;
+
+    releaseQueueDecision = decidePinpointReleaseQueueAction({
+      slug,
+      logicalGameDate: puzzleDate,
+      publishMode: "full-analysis",
+      deploymentState,
+      lastProductionPushAt,
+      slaWindowMinutes: parsePositiveNumber(env.PINPOINT_RELEASE_QUEUE_SLA_WINDOW_MINUTES),
+      candidateBranch,
+      candidateBranchExists,
+      candidateIsCurrent,
+      overrideSecondProductionPush: envFlag(env.PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH, false),
+    });
+
+    if (releaseQueueDecision.action === "hold-review") {
+      console.warn(
+        `[new-site] release queue held #${puzzleNumber}: ${releaseQueueDecision.reasonCode} (${deploymentState})`,
+      );
+      await notifyPinpointReleaseQueueDecision(env, releaseQueueDecision);
+      return;
+    }
+
+    if (releaseQueueDecision.action === "write-candidate") {
+      branch = candidateBranch;
+      isCandidateBranch = branch !== baseBranch;
+      isPrimaryBranch = isPrimaryNewSiteBranch(branch);
+      if (isCandidateBranch) {
+        await ensureBranchRef(branch, true);
+        console.log(
+          `[new-site] release queue routed #${puzzleNumber} to candidate ${branch}: ${releaseQueueDecision.reasonCode}`,
+        );
+      }
+    } else {
+      console.log(
+        `[new-site] release queue allows production push for #${puzzleNumber}: ${releaseQueueDecision.reasonCode}`,
+      );
     }
   }
   const sections = asRecord(enrichedPayload.sections) ?? {};
@@ -3514,13 +3684,25 @@ async function publishToNewSiteGitHub(
     return;
   }
 
+  const candidateReason = releaseQueueDecision?.reasonCode ?? "candidate-branch-enabled";
   const commitMessage = isCandidateBranch
-    ? `chore: stage ${slug} candidate for ${puzzleDate} (${detailState}, candidate-branch-enabled)`
+    ? `chore: stage ${slug} candidate for ${puzzleDate} (${detailState}, ${candidateReason})`
     : isPublicState
       ? `feat: publish Pinpoint #${puzzleNumber}`
       : `chore: update Pinpoint #${puzzleNumber} state to ${detailState}`;
+  const committedAt = new Date().toISOString();
   await commitStagedFiles(commitMessage);
   console.log(`[new-site] committed ${stagedFiles.length} file(s) to ${branch} for #${puzzleNumber} (${detailState})`);
+  if (isPublicState && isPrimaryBranch) {
+    await env.PP_DATA.put(releaseQueueLastProductionPushKeyOf(slug), committedAt, {
+      expirationTtl: 60 * 60 * 24 * 7,
+    }).catch((error) => {
+      console.warn(`[new-site] failed to record release queue production push for ${slug}`, error);
+    });
+  }
+  if (isCandidateBranch && releaseQueueDecision) {
+    await notifyPinpointReleaseQueueDecision(env, releaseQueueDecision);
+  }
 
   // ── 3. Trigger ISR revalidation on the new site ──
   if (isPublicState && isPrimaryBranch && newSiteUrl && revalidateSecret) {
