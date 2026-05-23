@@ -372,6 +372,33 @@ export type FullAnalysisSlotIssue = {
   suggestedAction: string;
 };
 
+export type FullAnalysisClueFitGenerationIssueCode =
+  | "UNSUPPORTED_PUZZLE_TYPE"
+  | "MISSING_ANSWER_CATEGORY"
+  | "MISSING_REVIEWED_DICTIONARIES"
+  | "MISSING_REVIEWED_CATEGORY_MEMBER"
+  | "INCOMPLETE_CLUE_FIT_COVERAGE";
+
+export type FullAnalysisClueFitGenerationIssue = {
+  issueCode: FullAnalysisClueFitGenerationIssueCode;
+  fieldPath: string;
+  message: string;
+  suggestedAction: string;
+};
+
+export type FullAnalysisClueFitGenerationResult =
+  | {
+      ok: true;
+      clueFits: FullAnalysisClueFitSlot[];
+      evidenceRecords: ContentKitchenEvidenceRecord[];
+    }
+  | {
+      ok: false;
+      clueFits: FullAnalysisClueFitSlot[];
+      evidenceRecords: ContentKitchenEvidenceRecord[];
+      issues: FullAnalysisClueFitGenerationIssue[];
+    };
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;
