@@ -82,6 +82,21 @@ export type ScanAnswerFirstEnrichmentQueueResult = {
   }>;
 };
 
+export type RunAnswerFirstEnrichmentWorkerTickInput = {
+  jobs: AnswerFirstEnrichmentJob[];
+  now: string;
+  workerId: string;
+  limit?: number;
+  lockMinutes?: number;
+};
+
+export type RunAnswerFirstEnrichmentWorkerTickResult = {
+  updatedJobs: AnswerFirstEnrichmentJob[];
+  claimedJobs: AnswerFirstEnrichmentJob[];
+  skippedJobs: ScanAnswerFirstEnrichmentQueueResult["skippedJobs"];
+  stateAdvancements: AdvanceAnswerFirstEnrichmentJobStateResult[];
+};
+
 const ACTIVE_ENRICHMENT_JOB_STATES = new Set<EnrichmentJobState>([
   "queued",
   "running",
@@ -414,6 +429,45 @@ export function scanAnswerFirstEnrichmentQueue(
   return {
     runnableJobs,
     skippedJobs,
+  };
+}
+
+export function runAnswerFirstEnrichmentWorkerTick(
+  input: RunAnswerFirstEnrichmentWorkerTickInput,
+): RunAnswerFirstEnrichmentWorkerTickResult {
+  const workerId = requireText(input.workerId, "workerId");
+  const stateAdvancements = input.jobs.map((job) => advanceAnswerFirstEnrichmentJobState({
+    job,
+    now: input.now,
+  }));
+  const advancedJobs = stateAdvancements.map((result) => result.job);
+  const scan = scanAnswerFirstEnrichmentQueue({
+    jobs: advancedJobs,
+    now: input.now,
+    limit: input.limit,
+  });
+  const claimedJobs: AnswerFirstEnrichmentJob[] = [];
+  const claimedByJobId = new Map<string, AnswerFirstEnrichmentJob>();
+
+  for (const job of scan.runnableJobs) {
+    const claimed = claimAnswerFirstEnrichmentJob({
+      job,
+      now: input.now,
+      workerId,
+      lockMinutes: input.lockMinutes,
+    });
+
+    if (claimed) {
+      claimedJobs.push(claimed);
+      claimedByJobId.set(job.jobId, claimed);
+    }
+  }
+
+  return {
+    updatedJobs: advancedJobs.map((job) => claimedByJobId.get(job.jobId) ?? job),
+    claimedJobs,
+    skippedJobs: scan.skippedJobs,
+    stateAdvancements,
   };
 }
 

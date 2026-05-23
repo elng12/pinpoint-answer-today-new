@@ -2119,6 +2119,13 @@ PR9 fifth implementation slice:
 - preserve completed and already-dead-letter jobs unchanged
 - return the issue codes newly added by the advancement step so later artifacts/notifications can explain the change
 
+PR9 sixth implementation slice:
+
+- add a local worker tick that advances job states, scans the queue, and claims runnable jobs in one deterministic pass
+- return updated jobs, claimed jobs, skipped jobs, and state advancement summaries
+- claim jobs only after state advancement so review/dead-letter transitions happen before work is picked up
+- keep this slice local-only; do not attach it to durable storage, Worker cron, or Feishu notifications yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
