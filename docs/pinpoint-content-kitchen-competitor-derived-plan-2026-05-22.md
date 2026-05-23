@@ -2089,6 +2089,16 @@ PR9 second implementation slice:
 - block stale job results when the published source revision, input snapshot hash, or target revision no longer matches
 - keep this slice local-only; later PR9 slices can attach it to storage, locks, resume behavior, and notifications
 
+PR9 third implementation slice:
+
+- add local job claim, lock expiry, retry, completion, and dead-letter helpers; do not attach them to Worker scanning yet
+- allow queued jobs to be claimed only when `nextAttemptAt` has arrived
+- allow running jobs to be claimed by another worker only after `lockedUntil` expires
+- increment `attemptCount` on each claim and clear locks after failure or completion
+- schedule retry delays from the configured backoff strategy
+- move jobs to `dead_letter` after `maxAttempts`
+- keep stale-result protection from the job contract unchanged
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
