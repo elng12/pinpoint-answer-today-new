@@ -1,0 +1,74 @@
+{
+  "name": "full-analysis-cumulative-confirmation.valid",
+  "input": {
+    "canonicalConfig": {
+      "siteBaseUrl": "https://example.com",
+      "detailRoutePrefix": "/linkedin-pinpoint-answers",
+      "trailingSlash": true
+    },
+    "existingRoutes": ["/linkedin-pinpoint-answers/pinpoint-answer-899/"],
+    "renderedHtml": "<main><h1>Types of guitar</h1><p>Bass Classical Electric Acoustic Steel</p><section><h2>FAQ</h2><h3>Why does Bass fit?</h3><p>Bass is a guitar type in this board.</p><h3>Why does Electric matter?</h3><p>Electric confirms the guitar-type answer.</p></section></main>",
+    "l1Input": {
+      "puzzleId": "pinpoint-900-2026-05-23",
+      "puzzleNumber": 900,
+      "logicalGameDate": "2026-05-23",
+      "source": "official_capture",
+      "answer": "Types of guitar",
+      "clues": [
+        { "clueId": "clue-1", "text": "Bass", "position": 1 },
+        { "clueId": "clue-2", "text": "Classical", "position": 2 },
+        { "clueId": "clue-3", "text": "Electric", "position": 3 },
+        { "clueId": "clue-4", "text": "Acoustic", "position": 4 },
+        { "clueId": "clue-5", "text": "Steel", "position": 5 }
+      ]
+    },
+    "candidate": {
+      "puzzleId": "pinpoint-900-2026-05-23",
+      "slug": "pinpoint-answer-900",
+      "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-900/",
+      "contentMode": "full-analysis",
+      "revisionId": "rev-full-analysis-cumulative",
+      "inputSnapshotHash": "__HASH_L1__",
+      "contentHash": "sha256:content-full-analysis-cumulative",
+      "answer": "Types of guitar",
+      "clues": [
+        { "clueId": "clue-1", "text": "Bass", "position": 1 },
+        { "clueId": "clue-2", "text": "Classical", "position": 2 },
+        { "clueId": "clue-3", "text": "Electric", "position": 3 },
+        { "clueId": "clue-4", "text": "Acoustic", "position": 4 },
+        { "clueId": "clue-5", "text": "Steel", "position": 5 }
+      ],
+      "clueRows": [
+        { "clueId": "clue-1", "clueText": "Bass", "fit": "Bass guitar", "whyItSupportsAnswer": "Bass is a standard guitar type.", "evidenceRefs": ["ev-bass"] },
+        { "clueId": "clue-2", "clueText": "Classical", "fit": "Classical guitar", "whyItSupportsAnswer": "Classical is a recognized guitar type.", "evidenceRefs": ["ev-classical"] },
+        { "clueId": "clue-3", "clueText": "Electric", "fit": "Electric guitar", "whyItSupportsAnswer": "Electric gives the strongest guitar-specific clue.", "evidenceRefs": ["ev-electric"] },
+        { "clueId": "clue-4", "clueText": "Acoustic", "fit": "Acoustic guitar", "whyItSupportsAnswer": "Acoustic supports the same answer set.", "evidenceRefs": ["ev-acoustic"] },
+        { "clueId": "clue-5", "clueText": "Steel", "fit": "Steel guitar", "whyItSupportsAnswer": "Steel confirms the board is about guitar types.", "evidenceRefs": ["ev-steel"] }
+      ],
+      "reasoning": {
+        "pattern": "cumulative_confirmation",
+        "clueIds": ["clue-1", "clue-2", "clue-3"],
+        "text": "Bass and Classical establish two members of the guitar family, while Electric, Acoustic, and Steel confirm the same answer through separate examples."
+      },
+      "faqItems": [
+        { "question": "Why does Bass fit?", "answer": "Bass is a guitar type in this board." },
+        { "question": "Why does Electric matter?", "answer": "Electric confirms the guitar-type answer." }
+      ],
+      "schemaTypes": ["Article", "FAQPage"],
+      "internalLinks": [
+        { "href": "/linkedin-pinpoint-answers/pinpoint-answer-899/", "label": "Previous Pinpoint answer" }
+      ]
+    }
+  },
+  "expected": {
+    "outcome": "pass_full_analysis",
+    "policies": {
+      "indexPolicy": "index",
+      "sitemapPolicy": "include",
+      "schemaPolicy": "article_only",
+      "internalLinkPolicy": "normal",
+      "requiredAction": "none"
+    },
+    "issueCodes": []
+  }
+}

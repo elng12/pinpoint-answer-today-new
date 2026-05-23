@@ -24,6 +24,22 @@ export const FULL_ANALYSIS_REVIEW_POLICIES: ValidationPolicies = {
   requiredAction: "review",
 };
 
+export const FULL_ANALYSIS_PASS_POLICIES: ValidationPolicies = {
+  indexPolicy: "index",
+  sitemapPolicy: "include",
+  schemaPolicy: "article_only",
+  internalLinkPolicy: "normal",
+  requiredAction: "none",
+};
+
+export const DOWNGRADE_TO_ANSWER_FIRST_POLICIES: ValidationPolicies = {
+  indexPolicy: "noindex",
+  sitemapPolicy: "exclude",
+  schemaPolicy: "none",
+  internalLinkPolicy: "hidden_from_recent",
+  requiredAction: "enrich",
+};
+
 export function derivePolicies(input: Pick<ValidateCandidateInput, "candidate" | "allowAnswerFirstIndex">): ValidationPolicies {
   const candidate = input.candidate as Partial<ContentCandidate> | null | undefined;
 

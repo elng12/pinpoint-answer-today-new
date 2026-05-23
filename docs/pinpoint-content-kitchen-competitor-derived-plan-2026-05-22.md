@@ -699,6 +699,7 @@ Not all issue codes are implemented in PR6. Implementation ownership is defined 
 | `CANDIDATE_L1_MISMATCH` | P0 | `block_publish` |
 | `MISSING_CLUE_ROW` | P0 | `downgrade_to_answer_first` or `block_publish` |
 | `DUPLICATE_CLUE_ROW` | P0 | `block_publish` |
+| `MISSING_EVIDENCE_REF` | P0 | `downgrade_to_answer_first` or `requires_review` |
 | `FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED` | P1 | `requires_review` |
 | `UNSUPPORTED_CLUE_FIT` | P0 | `requires_review` or `downgrade_to_answer_first` |
 | `WEAK_FIT_EVIDENCE` | P1 | `requires_review` or `downgrade_to_answer_first` |
@@ -724,6 +725,7 @@ Not all issue codes are implemented in PR6. Implementation ownership is defined 
 | `DATE_MODIFIED_MISMATCH` | P1 | repair or `requires_review` |
 | `SCHEMA_MODE_MISMATCH` | P1 | repair or `requires_review` |
 | `FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ` | P0 | `block_publish` |
+| `INVALID_FAQ_STRUCTURE` | P1 | repair or `downgrade_to_answer_first` |
 | `DUPLICATE_TITLE_META` | P1 | repair or `requires_review` |
 | `ARCHIVE_LINK_MISSING` | P1 | repair or `requires_review` |
 | `RECENT_LINK_POINTS_TO_NOINDEX` | P1 | repair or `requires_review` |
@@ -1530,10 +1532,13 @@ PR6B issue-code mapping:
 | clue row missing | `MISSING_CLUE_ROW` |
 | duplicate clue row | `DUPLICATE_CLUE_ROW` |
 | clue row points to unknown clue id | `MISSING_CLUE_ROW` |
+| clue row is missing evidence refs | `MISSING_EVIDENCE_REF` |
 | reasoning missing | `MISSING_REASONING_PATTERN` |
 | reasoning pattern unsupported | `UNSUPPORTED_REASONING_PATTERN` |
 | reasoning text generic | `GENERIC_REASONING_PATTERN` |
 | FAQ schema present but visible FAQ missing | `FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ` |
+| FAQ item count invalid | `INVALID_FAQ_STRUCTURE` |
+| internal link is not route-shaped | `INTERNAL_LINK_BROKEN` |
 | internal link target missing from provided route index | `INTERNAL_LINK_BROKEN` |
 
 PR6B fixture plan:
@@ -1850,9 +1855,9 @@ Defer:
 
 | Phase | Issue codes |
 | --- | --- |
-| PR6A/PR6B P0 | `MISSING_L1_INPUT`, `INVALID_L1_INPUT`, `INVALID_CANDIDATE_METADATA`, `CANDIDATE_L1_MISMATCH`, `MISSING_CLUE_ROW`, `DUPLICATE_CLUE_ROW`, `ANSWER_HIDDEN_FROM_RENDERED_HTML`, `MISSING_REASONING_PATTERN`, `CANONICAL_URL_MISMATCH`, `FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ`, `NOINDEX_REQUIRED_BUT_MISSING` |
-| PR6A/PR6B P1 | `FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED` |
-| PR7/PR8 | `UNSUPPORTED_CLUE_FIT`, `WEAK_FIT_EVIDENCE`, `L4_ONLY_EVIDENCE`, `INVENTED_FALSE_START`, `UNSUPPORTED_REASONING_PATTERN`, `GENERIC_REASONING_PATTERN`, `FULL_ANALYSIS_WITH_LOW_CONFIDENCE` |
+| PR6A/PR6B P0 | `MISSING_L1_INPUT`, `INVALID_L1_INPUT`, `INVALID_CANDIDATE_METADATA`, `CANDIDATE_L1_MISMATCH`, `MISSING_CLUE_ROW`, `DUPLICATE_CLUE_ROW`, `MISSING_EVIDENCE_REF`, `ANSWER_HIDDEN_FROM_RENDERED_HTML`, `MISSING_REASONING_PATTERN`, `UNSUPPORTED_REASONING_PATTERN`, `CANONICAL_URL_MISMATCH`, `FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ`, `NOINDEX_REQUIRED_BUT_MISSING` |
+| PR6A/PR6B P1 | `FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED`, `GENERIC_REASONING_PATTERN`, `INVALID_FAQ_STRUCTURE`, `INTERNAL_LINK_BROKEN` |
+| PR7/PR8 | `UNSUPPORTED_CLUE_FIT`, `WEAK_FIT_EVIDENCE`, `L4_ONLY_EVIDENCE`, `INVENTED_FALSE_START`, `FULL_ANALYSIS_WITH_LOW_CONFIDENCE` |
 | PR10 | review artifact completeness and reviewer decision consistency issues |
 | PR11 | `PUBLIC_HTML_FETCH_FAILED`, `PUBLIC_HTML_RENDER_FAILED`, `SITEMAP_LASTMOD_MISSING`, `SCHEMA_DATE_MODIFIED_MISSING`, `INTERNAL_LINK_BROKEN`, `SITEMAP_POLICY_MISMATCH`, `ROBOTS_POLICY_MISMATCH`, `DATE_MODIFIED_MISMATCH`, `SCHEMA_MODE_MISMATCH` |
 
