@@ -16,6 +16,12 @@ import {
   readContentKitchenDictionaries,
   readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
+import {
+  canApplyEnrichmentJobResult,
+  createAnswerFirstEnrichmentJob,
+  findActiveEnrichmentJobForTarget,
+  isActiveEnrichmentJob,
+} from "../lib/puzzles/content-kitchen/enrichment-job";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
 import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
 import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/false-start-generator";
@@ -1386,6 +1392,95 @@ function assertAnswerFirstSlaClock() {
   assert.equal(notApplicable.policies.requiredAction, "keep_current", "full-analysis pages should keep current content");
 }
 
+function assertAnswerFirstEnrichmentJobContract() {
+  const job = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-900-2026-05-23",
+    sourceRevisionId: "rev-answer-first-900",
+    targetRevision: "rev-full-analysis-900",
+    inputSnapshotHash: "sha256:l1-900",
+    answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+    now: "2026-05-23T08:05:00.000Z",
+  });
+
+  assert.equal(job.jobVersion, "answer-first-enrichment-job-v0", "enrichment job version should be stable");
+  assert.equal(
+    job.idempotencyKey,
+    "content-kitchen:answer-first-enrichment:pinpoint-900-2026-05-23:rev-full-analysis-900",
+    "enrichment job idempotency key should be stable for puzzleId + targetRevision",
+  );
+  assert.equal(job.state, "queued", "new enrichment jobs should start queued");
+  assert.equal(job.nextAttemptAt, "2026-05-23T08:05:00.000Z", "new enrichment jobs should be immediately runnable");
+  assert.equal(job.attemptCount, 0, "new enrichment jobs should start with zero attempts");
+  assert.equal(job.maxAttempts, 3, "new enrichment jobs should default to three attempts");
+  assert.equal(job.backoffStrategy, "exponential", "new enrichment jobs should default to exponential backoff");
+  assert.equal(job.deadlineAt, "2026-05-23T08:30:00.000Z", "deadline should match target full-analysis time");
+  assert.equal(job.targetFullAnalysisAt, "2026-05-23T08:30:00.000Z", "target full-analysis time should be 30 minutes");
+  assert.equal(job.firstAlertAt, "2026-05-23T08:30:00.000Z", "first alert should be 30 minutes");
+  assert.equal(job.reviewRequiredAt, "2026-05-23T09:00:00.000Z", "review should be required after 60 minutes");
+  assert.equal(job.thinPageNoindexAt, "2026-05-23T10:00:00.000Z", "thin indexed fallback should be after 2 hours");
+  assert.equal(job.highPriorityAlertAt, "2026-05-23T14:00:00.000Z", "high priority alert should be after 6 hours");
+  assert.deepEqual(job.failureReasonCodes, [], "new enrichment jobs should not start with failure reasons");
+
+  assert.equal(isActiveEnrichmentJob(job), true, "queued enrichment jobs should count as active");
+  assert.equal(
+    isActiveEnrichmentJob({ ...job, state: "completed" }),
+    false,
+    "completed enrichment jobs should not count as active",
+  );
+  assert.equal(
+    Boolean(findActiveEnrichmentJobForTarget([{ ...job, state: "completed" }, job], job)),
+    true,
+    "active job lookup should find queued jobs for the same puzzleId + targetRevision",
+  );
+  assert.equal(
+    findActiveEnrichmentJobForTarget([{ ...job, state: "completed" }], job),
+    undefined,
+    "active job lookup should ignore completed jobs",
+  );
+
+  const runningJob = { ...job, state: "running" as const };
+  assert.equal(
+    canApplyEnrichmentJobResult({
+      job: runningJob,
+      currentPublishedRevisionId: "rev-answer-first-900",
+      currentInputSnapshotHash: "sha256:l1-900",
+      resultTargetRevision: "rev-full-analysis-900",
+    }),
+    true,
+    "running jobs should apply when source revision, input hash, and target revision still match",
+  );
+  assert.equal(
+    canApplyEnrichmentJobResult({
+      job: runningJob,
+      currentPublishedRevisionId: "rev-newer-answer-first-900",
+      currentInputSnapshotHash: "sha256:l1-900",
+      resultTargetRevision: "rev-full-analysis-900",
+    }),
+    false,
+    "stale jobs should not overwrite a newer published revision",
+  );
+  assert.equal(
+    canApplyEnrichmentJobResult({
+      job: runningJob,
+      currentPublishedRevisionId: "rev-answer-first-900",
+      currentInputSnapshotHash: "sha256:new-l1-900",
+      resultTargetRevision: "rev-full-analysis-900",
+    }),
+    false,
+    "stale jobs should not overwrite content generated from newer L1 input",
+  );
+  assert.equal(
+    canApplyEnrichmentJobResult({
+      job: runningJob,
+      currentPublishedRevisionId: "rev-answer-first-900",
+      currentInputSnapshotHash: "sha256:l1-900",
+      resultTargetRevision: "rev-other-full-analysis-900",
+    }),
+    false,
+    "stale jobs should not apply a result for a different target revision",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1422,6 +1517,7 @@ async function main() {
   assertLocalRepairLoop(dictionaries);
   assertLocalPipelineSmoke(dictionaries);
   assertAnswerFirstSlaClock();
+  assertAnswerFirstEnrichmentJobContract();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

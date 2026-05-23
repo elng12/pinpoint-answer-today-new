@@ -543,6 +543,42 @@ export type AnswerFirstSlaDecision = {
   policies: ValidationPolicies;
 };
 
+export type EnrichmentJobState =
+  | "queued"
+  | "running"
+  | "review_required"
+  | "dead_letter"
+  | "completed";
+
+export type EnrichmentBackoffStrategy = "fixed" | "exponential";
+
+export type AnswerFirstEnrichmentJob = {
+  jobVersion: "answer-first-enrichment-job-v0";
+  jobId: string;
+  idempotencyKey: string;
+  puzzleId: string;
+  sourceRevisionId: string;
+  targetRevision: string;
+  inputSnapshotHash: string;
+  state: EnrichmentJobState;
+  createdAt: string;
+  updatedAt: string;
+  nextAttemptAt: string;
+  attemptCount: number;
+  maxAttempts: number;
+  backoffStrategy: EnrichmentBackoffStrategy;
+  deadlineAt: string;
+  targetFullAnalysisAt: string;
+  firstAlertAt: string;
+  reviewRequiredAt: string;
+  thinPageNoindexAt: string;
+  highPriorityAlertAt: string;
+  lockedBy?: string;
+  lockedUntil?: string;
+  failureReasonCodes: ContentKitchenIssueCode[];
+  deadLetterAt?: string;
+};
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;

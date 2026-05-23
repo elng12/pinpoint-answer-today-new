@@ -2080,6 +2080,15 @@ PR9 first implementation slice:
 - return `upgrade_ready` as soon as a safe full-analysis candidate exists
 - do not send Feishu messages in this slice; only return the alert level that a later notification layer can use
 
+PR9 second implementation slice:
+
+- add a local answer-first enrichment job contract; do not create durable storage or Worker scanning yet
+- include `idempotencyKey`, `inputSnapshotHash`, `sourceRevisionId`, `targetRevision`, queue state, attempt counters, backoff strategy, lock fields, SLA timestamps, and failure reason codes
+- make the idempotency key stable for one `puzzleId + targetRevision`
+- treat queued, running, and review-required jobs as active for duplicate prevention
+- block stale job results when the published source revision, input snapshot hash, or target revision no longer matches
+- keep this slice local-only; later PR9 slices can attach it to storage, locks, resume behavior, and notifications
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
