@@ -16,6 +16,7 @@ import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clu
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { classifyFullAnalysisPuzzleType } from "../lib/puzzles/content-kitchen/puzzle-type-classifier";
+import { generateFullAnalysisReasoning } from "../lib/puzzles/content-kitchen/reasoning-generator";
 import {
   CONTENT_KITCHEN_ISSUE_REGISTRY,
   getIssueDefinition,
@@ -706,6 +707,120 @@ function assertClueFitGenerator(dictionaries: ContentKitchenDictionaries) {
   );
 }
 
+function assertReasoningPatternGenerator(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const classification = classifyFullAnalysisPuzzleType({
+    l1Input,
+    dictionaries,
+  });
+  const generatedFits = generateFullAnalysisClueFits({
+    l1Input,
+    classification,
+    dictionaries,
+    evidenceIdPrefix: "slot",
+  });
+  assert.equal(generatedFits.ok, true, "reasoning generator setup should produce clue fits");
+  if (!generatedFits.ok) {
+    throw new Error("expected clue-fit generation to pass before reasoning generation");
+  }
+
+  const generatedReasoning = generateFullAnalysisReasoning({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(generatedReasoning.ok, true, "reasoning generator should produce reasoning for complete clue fits");
+  if (!generatedReasoning.ok) {
+    throw new Error("expected reasoning generation to pass");
+  }
+  assert.equal(
+    generatedReasoning.reasoning.pattern,
+    "cumulative_confirmation",
+    "reasoning generator should use cumulative confirmation for category membership",
+  );
+  assert.deepEqual(
+    generatedReasoning.reasoning.clueIds,
+    l1Input.clues.map((clue) => clue.clueId),
+    "reasoning generator should cite all L1 clue ids in order",
+  );
+  assert.equal(
+    generatedReasoning.reasoning.evidenceRefs?.length,
+    5,
+    "reasoning generator should carry all clue-fit evidence refs",
+  );
+  assert.ok(
+    generatedReasoning.reasoning.text.includes("Types of guitar"),
+    "reasoning text should mention the selected answer category",
+  );
+
+  const generatedSlotPlan: FullAnalysisSlotPlanV0 = {
+    ...makeValidSlotPlan(),
+    clueFits: generatedFits.clueFits,
+    reasoning: generatedReasoning.reasoning,
+  };
+  assert.deepEqual(
+    validateFullAnalysisSlotPlan({ l1Input, slotPlan: generatedSlotPlan }),
+    [],
+    "generated reasoning should satisfy the full-analysis slot contract",
+  );
+
+  const unsupported = generateFullAnalysisReasoning({
+    l1Input,
+    classification: {
+      ...classification,
+      puzzleType: "unknown",
+      answerCategory: undefined,
+    },
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(unsupported.ok, false, "unknown puzzle type should not generate reasoning");
+  if (unsupported.ok) {
+    throw new Error("expected unsupported reasoning generation to fail");
+  }
+  assert.deepEqual(
+    unsupported.issues.map((issue) => issue.issueCode),
+    ["UNSUPPORTED_REASONING_PUZZLE_TYPE"],
+    "unsupported reasoning should return a clear issue code",
+  );
+
+  const incomplete = generateFullAnalysisReasoning({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits.slice(0, 4),
+  });
+  assert.equal(incomplete.ok, false, "incomplete clue fits should not generate reasoning");
+  if (incomplete.ok) {
+    throw new Error("expected incomplete reasoning generation to fail");
+  }
+  assert.ok(
+    incomplete.issues.some((issue) => issue.issueCode === "INCOMPLETE_REASONING_CLUE_FIT_COVERAGE"),
+    "incomplete reasoning should report incomplete clue-fit coverage",
+  );
+
+  const missingEvidence = generateFullAnalysisReasoning({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits.map((fit, index) => {
+      if (index === 0) {
+        return {
+          ...fit,
+          evidenceRefs: [],
+        };
+      }
+
+      return fit;
+    }),
+  });
+  assert.equal(missingEvidence.ok, false, "missing evidence refs should not generate reasoning");
+  if (missingEvidence.ok) {
+    throw new Error("expected missing-evidence reasoning generation to fail");
+  }
+  assert.ok(
+    missingEvidence.issues.some((issue) => issue.issueCode === "MISSING_REASONING_EVIDENCE_REF"),
+    "missing-evidence reasoning should report missing evidence refs",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -735,6 +850,7 @@ async function main() {
   const dictionaries = await assertDictionariesAreReadable();
   assertPuzzleTypeClassifier(dictionaries);
   assertClueFitGenerator(dictionaries);
+  assertReasoningPatternGenerator(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
