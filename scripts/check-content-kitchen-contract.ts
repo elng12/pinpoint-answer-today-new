@@ -4,7 +4,9 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildCategoryMembershipEvidenceRecords,
+  buildPublishedEvidenceUsageRecords,
   dictionaryDiffRequiresReviewArtifacts,
+  findAffectedPublishedPages,
   lookupAliases,
   lookupCategoryMembership,
   readContentKitchenDictionaries,
@@ -273,6 +275,37 @@ async function assertDictionariesAreReadable() {
     evidenceRecords,
   });
   assert.equal(actual.outcome, "pass_full_analysis", "dictionary-built evidence should support full-analysis validation");
+
+  const usageRecords = buildPublishedEvidenceUsageRecords({
+    slug: "pinpoint-answer-900",
+    canonicalUrl: "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-900/",
+    revisionId: "rev-full-analysis-cumulative",
+    contentMode: "full-analysis",
+    evidenceRecords,
+  });
+  assert.equal(usageRecords.length, 5, "published evidence usage index should include one row per evidence record");
+
+  const affectedByVersion = findAffectedPublishedPages(usageRecords, {
+    lookupVersion: dictionaries.categoryMembership.versionId,
+    dictionaryName: "category_membership",
+  });
+  assert.deepEqual(
+    affectedByVersion.map((page) => page.slug),
+    ["pinpoint-answer-900"],
+    "affected page lookup should find pages by dictionary lookup version",
+  );
+
+  const affectedByMember = findAffectedPublishedPages(usageRecords, {
+    dictionaryName: "category_membership",
+    category: "Types of guitar",
+    member: "Bass",
+  });
+  assert.deepEqual(
+    affectedByMember.map((page) => page.slug),
+    ["pinpoint-answer-900"],
+    "affected page lookup should find pages by dictionary category and member",
+  );
+  assert.equal(affectedByMember[0]?.needsReview, true, "affected pages should be marked for review by default");
 
   const dictionaryDerived = validateCandidate({
     ...hydratedInput,

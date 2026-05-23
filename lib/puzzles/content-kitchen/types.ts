@@ -155,6 +155,11 @@ export type ContentKitchenEvidenceRecord = {
   humanVerifiedBy?: string;
   humanVerifiedAt?: string;
   conflictStatus?: EvidenceConflictStatus;
+  dictionaryName?: DictionaryName;
+  dictionaryCategory?: string;
+  normalizedDictionaryCategory?: string;
+  dictionaryMember?: string;
+  normalizedDictionaryMember?: string;
   notes?: string;
 };
 
@@ -250,6 +255,28 @@ export type ContentKitchenDictionaryDiff = {
   reviewedAt: string;
   changes: DictionaryDiffChange[];
   affectedPublishedPages: DictionaryDiffAffectedPage[];
+};
+
+export type PublishedEvidenceUsageRecord = {
+  slug: string;
+  canonicalUrl?: string;
+  revisionId: string;
+  contentMode?: ContentMode;
+  evidenceId: string;
+  clueId?: string;
+  lookupVersion?: string;
+  dictionaryName?: DictionaryName;
+  dictionaryCategory?: string;
+  normalizedDictionaryCategory?: string;
+  dictionaryMember?: string;
+  normalizedDictionaryMember?: string;
+};
+
+export type DictionaryAffectedPageQuery = {
+  lookupVersion?: string;
+  dictionaryName?: DictionaryName;
+  category?: string;
+  member?: string;
 };
 
 export type FaqCandidate = {
