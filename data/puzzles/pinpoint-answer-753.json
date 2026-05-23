@@ -1,0 +1,211 @@
+{
+  "puzzleNumber": 753,
+  "slug": "pinpoint-answer-753",
+  "publishDate": "2026-05-23",
+  "isoDate": "2026-05-23",
+  "detailState": "generating",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Titan",
+    "Triton",
+    "Phobos",
+    "Io",
+    "Ganymede (seen by Galileo)"
+  ],
+  "answer": "Moons in our solar system",
+  "category": "Moons in our solar system",
+  "wordHints": {
+    "Titan": "Titan connects to \"Moons in our solar system\"",
+    "Triton": "Triton connects to \"Moons in our solar system\"",
+    "Phobos": "Phobos connects to \"Moons in our solar system\"",
+    "Io": "Io connects to \"Moons in our solar system\"",
+    "Ganymede (seen by Galileo)": "Ganymede (seen by Galileo) connects to \"Moons in our solar system\""
+  },
+  "spoilerHints": {
+    "Titan": "Titan should be tested as part of moons in our solar system, not as a standalone reference.",
+    "Triton": "Keep Triton in mind, then see whether Ganymede (seen by Galileo) supports the same answer.",
+    "Phobos": "Phobos works best after the board narrows toward moons in our solar system.",
+    "Io": "Io should be tested as part of moons in our solar system, not as a standalone reference.",
+    "Ganymede (seen by Galileo)": "Ganymede (seen by Galileo) is the clue that makes moons in our solar system concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Titan and Triton pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Titan, Triton can point toward several nearby themes before one clue makes the exact category level visible. Titan is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on moons, examples like \"Titan\" and \"Triton\" stopped feeling loose and started landing cleanly.",
+    "Phobos, Io, Ganymede (seen by Galileo) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Moons in our solar system\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Moons in our solar system, which is why \"Moons in our solar system\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I tested each clue against the same connector and checked whether the phrase stayed natural. For #753, Titan, Triton, Phobos, Io, Ganymede (seen by Galileo) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version."
+  ],
+  "lessons": [
+    {
+      "title": "Look for word patterns",
+      "body": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer."
+    },
+    {
+      "title": "Test each clue",
+      "body": "Verify the connection holds for all 5 clues before committing."
+    },
+    {
+      "title": "Trust your instinct",
+      "body": "If a theme fits most clues naturally, it is usually correct."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on moons",
+    "fastStrategy": "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+    "clueTableRows": [
+      {
+        "clue": "Titan",
+        "examplePhrase": "Titan",
+        "connectionExplained": "Titan connects to \"Moons in our solar system\""
+      },
+      {
+        "clue": "Triton",
+        "examplePhrase": "Triton",
+        "connectionExplained": "Triton connects to \"Moons in our solar system\""
+      },
+      {
+        "clue": "Phobos",
+        "examplePhrase": "Phobos",
+        "connectionExplained": "Phobos connects to \"Moons in our solar system\""
+      },
+      {
+        "clue": "Io",
+        "examplePhrase": "Io",
+        "connectionExplained": "Io connects to \"Moons in our solar system\""
+      },
+      {
+        "clue": "Ganymede (seen by Galileo)",
+        "examplePhrase": "Ganymede (seen by Galileo)",
+        "connectionExplained": "Ganymede (seen by Galileo) connects to \"Moons in our solar system\""
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What is the answer to LinkedIn Pinpoint #753?",
+      "answer": "The answer is \"Moons in our solar system\". The clues Titan, Triton, Phobos, Io, Ganymede (seen by Galileo) all share this connection."
+    },
+    {
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy."
+    },
+    {
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "LinkedIn Pinpoint #753 just unlocked, and this is the fastest verified update. The board clues are Titan, Triton, Phobos, Io, Ganymede (seen by Galileo), and the set looks broader than it really is at first. This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared. A deeper clue-by-clue walkthrough will be added shortly.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Titan, Triton can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Titan",
+    "pivot": "I tested each clue against the same connector and checked whether the phrase stayed natural. For #753, Titan, Triton, Phobos, Io, Ganymede (seen by Galileo) only start to make sense once one shared reading locks the set together. That shared fit across all five clues is why the final connector holds up cleanly. I will expand this with richer clue context in the full version.",
+    "fullBoardConfirmation": "Once Titan lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "turningPoint": {
+    "clue": "Titan",
+    "whyDecisive": "Titan is the clue that makes the answer precise enough to test across the full board.",
+    "whatChangedAfterIt": "Once Titan lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Titan",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Titan",
+      "nonObviousWhy": "Titan supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Titan"
+    },
+    {
+      "clue": "Triton",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Triton",
+      "nonObviousWhy": "Triton supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Triton"
+    },
+    {
+      "clue": "Phobos",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Phobos",
+      "nonObviousWhy": "Phobos supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Phobos"
+    },
+    {
+      "clue": "Io",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Io",
+      "nonObviousWhy": "Io supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Io"
+    },
+    {
+      "clue": "Ganymede (seen by Galileo)",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Ganymede (seen by Galileo)",
+      "nonObviousWhy": "Ganymede (seen by Galileo) supports the same answer once the shared frame becomes clear.",
+      "searchableContext": "Ganymede (seen by Galileo)"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "definition",
+      "question": "What is the answer to LinkedIn Pinpoint #753?",
+      "answer": "The answer is \"Moons in our solar system\". The clues Titan, Triton, Phobos, Io, Ganymede (seen by Galileo) all share this connection.",
+      "tiedClue": "Titan"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How difficult was this Pinpoint puzzle?",
+      "answer": "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy.",
+      "tiedClue": null
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "What strategy helps with Pinpoint?",
+      "answer": "Look for compound words, prefix/suffix patterns, or phrases that link all five clues to one word or concept.",
+      "tiedClue": null
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on moons",
+    "relatedEntities": [
+      "Titan",
+      "Triton",
+      "Phobos",
+      "Io",
+      "Ganymede (seen by Galileo)"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on moons",
+      "Titan",
+      "Triton",
+      "Phobos",
+      "Io"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Titan, Triton can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Titan is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Phobos, Io, Ganymede (seen by Galileo) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Moons in our solar system"
+}

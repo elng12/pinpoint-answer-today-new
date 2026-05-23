@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 753,
+    "slug": "pinpoint-answer-753",
+    "publishDate": "2026-05-23",
+    "status": "live",
+    "detailState": "generating",
+    "clues": [
+      "Titan",
+      "Triton",
+      "Phobos",
+      "Io",
+      "Ganymede (seen by Galileo)"
+    ],
+    "mainAnswer": "Moons in our solar system",
+    "category": "Moons in our solar system",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "LinkedIn Pinpoint #753: Titan, Triton, Phobos, Io, Ganymede (seen by Galileo).",
+    "updatedAt": "2026-05-23T07:08:01.579Z"
+  },
+  {
     "puzzleNumber": 752,
     "slug": "pinpoint-answer-752",
     "publishDate": "2026-05-22",
-    "status": "live",
+    "status": "archived",
     "clues": [
       "Motor",
       "Damage",
@@ -15,7 +34,7 @@
     "category": "Words that come before \"control\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "LinkedIn Pinpoint #752: Motor, Damage, Quality, Remote, Air traffic.",
-    "updatedAt": "2026-05-22T08:37:36.665Z"
+    "updatedAt": "2026-05-23T07:08:01.579Z"
   },
   {
     "puzzleNumber": 751,
