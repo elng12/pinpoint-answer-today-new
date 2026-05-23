@@ -2126,6 +2126,13 @@ PR9 sixth implementation slice:
 - claim jobs only after state advancement so review/dead-letter transitions happen before work is picked up
 - keep this slice local-only; do not attach it to durable storage, Worker cron, or Feishu notifications yet
 
+PR9 seventh implementation slice:
+
+- add a local job store interface so worker ticks can load jobs and write updated jobs through one boundary
+- include an in-memory store for contract tests and local dry runs only
+- make the store return cloned job objects so tests do not accidentally mutate persisted state
+- keep the final durable backend undecided; do not attach this slice to production storage, Worker cron, or Feishu notifications yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
