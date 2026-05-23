@@ -16,6 +16,7 @@ import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clu
 import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
 import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/false-start-generator";
 import { assembleFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-assembler";
+import { generateFullAnalysisLocalPipeline } from "../lib/puzzles/content-kitchen/full-analysis-local-pipeline";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { buildFullAnalysisRepairPlan } from "../lib/puzzles/content-kitchen/local-repair-loop";
@@ -1202,6 +1203,81 @@ function assertLocalRepairLoop(dictionaries: ContentKitchenDictionaries) {
   );
 }
 
+function assertLocalPipelineSmoke(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const generated = generateFullAnalysisLocalPipeline({
+    l1Input,
+    dictionaries,
+    evidenceIdPrefix: "pipeline",
+  });
+
+  assert.equal(generated.ok, true, "local pipeline should produce a full-analysis slot plan");
+  if (!generated.ok) {
+    throw new Error("expected local pipeline to pass");
+  }
+  assert.equal(generated.stage, "complete", "local pipeline should report complete stage on success");
+  assert.equal(generated.classification.puzzleType, "category_membership", "local pipeline should classify the puzzle");
+  assert.equal(generated.clueFitResult.clueFits.length, 5, "local pipeline should produce five clue fits");
+  assert.equal(generated.clueFitResult.evidenceRecords.length, 5, "local pipeline should produce five evidence records");
+  assert.equal(generated.reasoningResult.reasoning.pattern, "cumulative_confirmation", "local pipeline should produce reasoning");
+  assert.equal(generated.falseStartResult.falseStart.status, "omitted", "local pipeline should omit unsupported false starts");
+  assert.equal(generated.faqResult.faqItems.length, 3, "local pipeline should produce stable FAQ items");
+  assert.deepEqual(
+    validateFullAnalysisSlotPlan({ l1Input, slotPlan: generated.assemblyResult.slotPlan }),
+    [],
+    "local pipeline output should satisfy the full-analysis slot contract",
+  );
+  assert.deepEqual(generated.repairPlan.actions, [], "successful local pipeline should not request repairs");
+
+  const missingDictionaries = generateFullAnalysisLocalPipeline({
+    l1Input,
+  });
+  assert.equal(missingDictionaries.ok, false, "local pipeline should fail clearly without dictionaries");
+  if (missingDictionaries.ok) {
+    throw new Error("expected missing-dictionary local pipeline to fail");
+  }
+  assert.equal(missingDictionaries.stage, "clue_fits", "missing dictionaries should stop before clue-fit generation");
+  assert.deepEqual(
+    missingDictionaries.issues.map((issue) => issue.issueCode),
+    ["MISSING_REVIEWED_DICTIONARIES"],
+    "missing dictionaries should return a direct issue code",
+  );
+  assert.equal(
+    missingDictionaries.repairPlan.actions[0]?.actionCode,
+    "load_reviewed_dictionaries",
+    "missing dictionaries should route to dictionary loading",
+  );
+
+  const unsupported = generateFullAnalysisLocalPipeline({
+    l1Input: {
+      ...l1Input,
+      answer: "Unknown category",
+      clues: [
+        { clueId: "clue-1", text: "Bass", position: 1 },
+        { clueId: "clue-2", text: "Alpha", position: 2 },
+        { clueId: "clue-3", text: "Bravo", position: 3 },
+        { clueId: "clue-4", text: "Charlie", position: 4 },
+        { clueId: "clue-5", text: "Delta", position: 5 },
+      ],
+    },
+    dictionaries,
+  });
+  assert.equal(unsupported.ok, false, "local pipeline should fail unsupported puzzle types");
+  if (unsupported.ok) {
+    throw new Error("expected unsupported local pipeline to fail");
+  }
+  assert.equal(unsupported.stage, "clue_fits", "unsupported puzzle type should stop at clue fits");
+  assert.ok(
+    unsupported.issues.some((issue) => issue.issueCode === "UNSUPPORTED_PUZZLE_TYPE"),
+    "unsupported puzzle type should report a clear issue",
+  );
+  assert.equal(
+    unsupported.repairPlan.canAutoRepair,
+    false,
+    "unsupported puzzle type should not be marked auto-repairable",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1236,6 +1312,7 @@ async function main() {
   assertFaqGenerator(dictionaries);
   assertDeterministicAssembler(dictionaries);
   assertLocalRepairLoop(dictionaries);
+  assertLocalPipelineSmoke(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
