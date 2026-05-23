@@ -10,6 +10,8 @@ import type {
   ContentKitchenDictionaryBase,
   ContentKitchenDictionaryDiff,
   ContentKitchenEvidenceRecord,
+  ContentMode,
+  DictionaryAffectedPageQuery,
   DictionaryChangeType,
   DictionaryDiffAffectedPage,
   DictionaryDiffChange,
@@ -17,6 +19,7 @@ import type {
   DictionaryReviewStatus,
   DictionaryRisk,
   L1PuzzleInput,
+  PublishedEvidenceUsageRecord,
 } from "./types";
 
 type CategoryEvidenceInput = {
@@ -24,6 +27,14 @@ type CategoryEvidenceInput = {
   category: string;
   dictionary: CategoryMembershipDictionary;
   evidenceIdPrefix?: string;
+};
+
+type PublishedEvidenceUsageInput = {
+  slug: string;
+  canonicalUrl?: string;
+  revisionId: string;
+  contentMode?: ContentMode;
+  evidenceRecords: Partial<ContentKitchenEvidenceRecord>[];
 };
 
 export const DEFAULT_CATEGORY_MEMBERSHIP_EVIDENCE_ID_PREFIX = "ev";
@@ -483,6 +494,11 @@ export function buildCategoryMembershipEvidenceRecords(input: CategoryEvidenceIn
         claim: `${entry.member} is reviewed as a member of ${entry.category}.`,
         confidence: entry.risk === "low" ? "high" : "medium",
         lookupVersion: input.dictionary.versionId,
+        dictionaryName: "category_membership",
+        dictionaryCategory: entry.category,
+        normalizedDictionaryCategory: entry.normalizedCategory,
+        dictionaryMember: entry.member,
+        normalizedDictionaryMember: entry.normalizedMember,
         notes: entry.sourceNote,
       },
     ];
@@ -492,4 +508,79 @@ export function buildCategoryMembershipEvidenceRecords(input: CategoryEvidenceIn
 export function dictionaryDiffRequiresReviewArtifacts(diff: ContentKitchenDictionaryDiff): boolean {
   return diff.changes.some((change) => change.risk === "medium" || change.risk === "high") &&
     diff.affectedPublishedPages.some((page) => page.needsReview);
+}
+
+export function buildPublishedEvidenceUsageRecords(input: PublishedEvidenceUsageInput): PublishedEvidenceUsageRecord[] {
+  return input.evidenceRecords.flatMap((record) => {
+    const evidenceId = normalizeIdentityText(record.evidenceId);
+    if (!evidenceId) {
+      return [];
+    }
+
+    return [
+      {
+        slug: input.slug,
+        ...(optionalString(input.canonicalUrl) ? { canonicalUrl: optionalString(input.canonicalUrl) } : {}),
+        revisionId: input.revisionId,
+        ...(input.contentMode ? { contentMode: input.contentMode } : {}),
+        evidenceId,
+        ...(optionalString(record.clueId) ? { clueId: optionalString(record.clueId) } : {}),
+        ...(optionalString(record.lookupVersion) ? { lookupVersion: optionalString(record.lookupVersion) } : {}),
+        ...(record.dictionaryName ? { dictionaryName: record.dictionaryName } : {}),
+        ...(optionalString(record.dictionaryCategory) ? { dictionaryCategory: optionalString(record.dictionaryCategory) } : {}),
+        ...(optionalString(record.normalizedDictionaryCategory)
+          ? { normalizedDictionaryCategory: optionalString(record.normalizedDictionaryCategory) }
+          : {}),
+        ...(optionalString(record.dictionaryMember) ? { dictionaryMember: optionalString(record.dictionaryMember) } : {}),
+        ...(optionalString(record.normalizedDictionaryMember)
+          ? { normalizedDictionaryMember: optionalString(record.normalizedDictionaryMember) }
+          : {}),
+      },
+    ];
+  });
+}
+
+export function findAffectedPublishedPages(
+  usageRecords: PublishedEvidenceUsageRecord[],
+  query: DictionaryAffectedPageQuery,
+): DictionaryDiffAffectedPage[] {
+  const lookupVersion = normalizeIdentityText(query.lookupVersion);
+  const dictionaryName = query.dictionaryName;
+  const normalizedCategory = normalizeDictionaryValue(query.category);
+  const normalizedMember = normalizeDictionaryValue(query.member);
+  const affected = new Map<string, DictionaryDiffAffectedPage>();
+
+  for (const record of usageRecords) {
+    if (lookupVersion && record.lookupVersion !== lookupVersion) {
+      continue;
+    }
+
+    if (dictionaryName && record.dictionaryName !== dictionaryName) {
+      continue;
+    }
+
+    if (normalizedCategory && record.normalizedDictionaryCategory !== normalizedCategory) {
+      continue;
+    }
+
+    if (normalizedMember && record.normalizedDictionaryMember !== normalizedMember) {
+      continue;
+    }
+
+    const key = `${record.slug}:${record.revisionId}`;
+    if (!affected.has(key)) {
+      affected.set(key, {
+        slug: record.slug,
+        ...(record.canonicalUrl ? { canonicalUrl: record.canonicalUrl } : {}),
+        revisionId: record.revisionId,
+        ...(record.lookupVersion ? { lookupVersion: record.lookupVersion } : {}),
+        reason: `Uses dictionary evidence ${record.evidenceId}.`,
+        needsReview: true,
+      });
+    }
+  }
+
+  return [...affected.values()].sort((left, right) => {
+    return `${left.slug}:${left.revisionId ?? ""}`.localeCompare(`${right.slug}:${right.revisionId ?? ""}`);
+  });
 }
