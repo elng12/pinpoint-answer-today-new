@@ -7,6 +7,7 @@ import {
   CONTENT_KITCHEN_ISSUE_REGISTRY,
   getIssueDefinition,
   getPr6P0IssueCodes,
+  getPr7IssueCodes,
 } from "../lib/puzzles/content-kitchen/issue-registry";
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
@@ -143,6 +144,23 @@ function assertPr6P0Coverage(fixtures: Fixture[]) {
   assert.deepEqual(missing, [], "every PR6 P0 issue code should have at least one negative fixture");
 }
 
+function assertPr7Coverage(fixtures: Fixture[]) {
+  const negativeIssueCodes = new Set<ContentKitchenIssueCode>();
+
+  for (const fixture of fixtures) {
+    if (fixture.expected.outcome === "pass_answer_first" || fixture.expected.outcome === "pass_full_analysis") {
+      continue;
+    }
+
+    for (const issueCode of fixture.expected.issueCodes ?? []) {
+      negativeIssueCodes.add(issueCode);
+    }
+  }
+
+  const missing = getPr7IssueCodes().filter((issueCode) => !negativeIssueCodes.has(issueCode));
+  assert.deepEqual(missing, [], "every PR7 issue code should have at least one negative fixture");
+}
+
 function assertIssueRegistryIsStable() {
   const seen = new Set<ContentKitchenIssueCode>();
   for (const definition of CONTENT_KITCHEN_ISSUE_REGISTRY) {
@@ -228,6 +246,7 @@ async function main() {
   checkHashExcludesVolatileFields();
   assertIssueRegistryIsStable();
   assertPr6P0Coverage(fixtures);
+  assertPr7Coverage(fixtures);
   await assertExamplesAreValidJson();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }

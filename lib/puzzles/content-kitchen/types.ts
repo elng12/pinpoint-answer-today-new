@@ -46,7 +46,13 @@ export type ContentKitchenIssueCode =
   | "GENERIC_REASONING_PATTERN"
   | "FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ"
   | "INVALID_FAQ_STRUCTURE"
-  | "INTERNAL_LINK_BROKEN";
+  | "INTERNAL_LINK_BROKEN"
+  | "UNSUPPORTED_CLUE_FIT"
+  | "WEAK_FIT_EVIDENCE"
+  | "L4_ONLY_EVIDENCE"
+  | "FULL_ANALYSIS_WITH_LOW_CONFIDENCE"
+  | "PROHIBITED_EVIDENCE_SOURCE"
+  | "EVIDENCE_SOURCE_CONFLICT";
 
 export type Pr6aIssueCode = ContentKitchenIssueCode;
 
@@ -109,6 +115,49 @@ export type FullAnalysisReasoning =
   | TurningPointReasoning
   | CumulativeConfirmationReasoning;
 
+export type EvidenceSourceLevel = "L1" | "L2" | "L3" | "L4" | "L5";
+
+export type EvidenceSourceType =
+  | "official_capture"
+  | "category_membership"
+  | "alias_dictionary"
+  | "deterministic_lookup"
+  | "retrievable_source"
+  | "wikidata"
+  | "wikipedia"
+  | "dictionary_source"
+  | "official_source"
+  | "multi_model_consensus"
+  | "human_review"
+  | "competitor_answer_page"
+  | "answer_aggregator"
+  | "ai_summary"
+  | "search_snippet"
+  | "generated_page"
+  | "unknown";
+
+export type EvidenceSupportKind = "fact" | "fit";
+
+export type EvidenceConfidence = "high" | "medium" | "low";
+
+export type EvidenceConflictStatus = "none" | "unresolved" | "resolved";
+
+export type ContentKitchenEvidenceRecord = {
+  evidenceId: string;
+  clueId?: string;
+  sourceLevel: EvidenceSourceLevel;
+  sourceType: EvidenceSourceType;
+  supportKind: EvidenceSupportKind;
+  claim: string;
+  confidence: EvidenceConfidence;
+  lookupVersion?: string;
+  retrievedAt?: string;
+  humanVerifiedBy?: string;
+  humanVerifiedAt?: string;
+  conflictStatus?: EvidenceConflictStatus;
+  notes?: string;
+};
+
 export type FaqCandidate = {
   question: string;
   answer: string;
@@ -163,6 +212,7 @@ export type ValidateCandidateInput = {
   renderedHtml?: string;
   allowAnswerFirstIndex?: boolean;
   existingRoutes?: string[];
+  evidenceRecords?: Partial<ContentKitchenEvidenceRecord>[];
 };
 
 export type ValidateCandidateOutput = {

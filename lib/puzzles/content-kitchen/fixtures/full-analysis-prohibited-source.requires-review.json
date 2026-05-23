@@ -1,14 +1,14 @@
 {
-  "name": "full-analysis-turning-point.valid",
+  "name": "full-analysis-prohibited-source.requires-review",
   "input": {
     "canonicalConfig": {
       "siteBaseUrl": "https://example.com",
       "detailRoutePrefix": "/linkedin-pinpoint-answers",
       "trailingSlash": true
     },
-    "renderedHtml": "<main><h1>Types of guitar</h1><p>Bass Classical Electric Acoustic Steel</p><section>Electric changes the solve because it narrows the board from instruments generally to guitar types.</section></main>",
+    "renderedHtml": "<main><h1>Types of guitar</h1><p>Bass Classical Electric Acoustic Steel</p></main>",
     "evidenceRecords": [
-      { "evidenceId": "ev-bass", "clueId": "clue-1", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Bass is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
+      { "evidenceId": "ev-bass", "clueId": "clue-1", "sourceLevel": "L3", "sourceType": "competitor_answer_page", "supportKind": "fit", "claim": "A competitor page says Bass fits.", "confidence": "high", "retrievedAt": "2026-05-23T00:00:00.000Z" },
       { "evidenceId": "ev-classical", "clueId": "clue-2", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Classical is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
       { "evidenceId": "ev-electric", "clueId": "clue-3", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Electric is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
       { "evidenceId": "ev-acoustic", "clueId": "clue-4", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Acoustic is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
@@ -33,9 +33,9 @@
       "slug": "pinpoint-answer-900",
       "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-900/",
       "contentMode": "full-analysis",
-      "revisionId": "rev-full-analysis-turning-point",
+      "revisionId": "rev-prohibited-source",
       "inputSnapshotHash": "__HASH_L1__",
-      "contentHash": "sha256:content-full-analysis-turning-point",
+      "contentHash": "sha256:content-prohibited-source",
       "answer": "Types of guitar",
       "clues": [
         { "clueId": "clue-1", "text": "Bass", "position": 1 },
@@ -45,30 +45,29 @@
         { "clueId": "clue-5", "text": "Steel", "position": 5 }
       ],
       "clueRows": [
-        { "clueId": "clue-1", "clueText": "Bass", "fit": "Bass guitar", "whyItSupportsAnswer": "Bass is a standard guitar type.", "evidenceRefs": ["ev-bass"] },
-        { "clueId": "clue-2", "clueText": "Classical", "fit": "Classical guitar", "whyItSupportsAnswer": "Classical is a recognized guitar type.", "evidenceRefs": ["ev-classical"] },
-        { "clueId": "clue-3", "clueText": "Electric", "fit": "Electric guitar", "whyItSupportsAnswer": "Electric gives the strongest guitar-specific clue.", "evidenceRefs": ["ev-electric"] },
-        { "clueId": "clue-4", "clueText": "Acoustic", "fit": "Acoustic guitar", "whyItSupportsAnswer": "Acoustic supports the same answer set.", "evidenceRefs": ["ev-acoustic"] },
-        { "clueId": "clue-5", "clueText": "Steel", "fit": "Steel guitar", "whyItSupportsAnswer": "Steel confirms the board is about guitar types.", "evidenceRefs": ["ev-steel"] }
+        { "clueId": "clue-1", "fit": "Bass guitar", "whyItSupportsAnswer": "Bass is a guitar type.", "evidenceRefs": ["ev-bass"] },
+        { "clueId": "clue-2", "fit": "Classical guitar", "whyItSupportsAnswer": "Classical is a guitar type.", "evidenceRefs": ["ev-classical"] },
+        { "clueId": "clue-3", "fit": "Electric guitar", "whyItSupportsAnswer": "Electric is a guitar type.", "evidenceRefs": ["ev-electric"] },
+        { "clueId": "clue-4", "fit": "Acoustic guitar", "whyItSupportsAnswer": "Acoustic is a guitar type.", "evidenceRefs": ["ev-acoustic"] },
+        { "clueId": "clue-5", "fit": "Steel guitar", "whyItSupportsAnswer": "Steel is a guitar type.", "evidenceRefs": ["ev-steel"] }
       ],
       "reasoning": {
-        "pattern": "turning_point",
-        "clueId": "clue-3",
-        "brokenTheory": "general instruments",
-        "supportedTheory": "types of guitar",
-        "text": "Electric changes the solve because it narrows the board from instruments generally to guitar types, then Bass and Classical confirm that reading."
+        "pattern": "cumulative_confirmation",
+        "clueIds": ["clue-1", "clue-2", "clue-3"],
+        "text": "Bass and Classical point toward guitar types, while Electric, Acoustic, and Steel support the same answer from separate clues."
       }
     }
   },
   "expected": {
-    "outcome": "pass_full_analysis",
+    "outcome": "requires_review",
     "policies": {
-      "indexPolicy": "index",
-      "sitemapPolicy": "include",
+      "indexPolicy": "review_required",
+      "sitemapPolicy": "include_after_audit",
       "schemaPolicy": "article_only",
-      "internalLinkPolicy": "normal",
-      "requiredAction": "none"
+      "internalLinkPolicy": "deemphasized",
+      "requiredAction": "review"
     },
-    "issueCodes": []
+    "issueCodes": ["PROHIBITED_EVIDENCE_SOURCE"],
+    "mustCreateArtifact": true
   }
 }

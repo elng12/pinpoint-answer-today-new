@@ -5,12 +5,14 @@ import {
   normalizeIdentityMatch,
   normalizeIdentityText,
 } from "./identity";
+import { validateFullAnalysisEvidence } from "./evidence";
 import { validateFullAnalysisStructure } from "./full-analysis";
 import {
   BLOCK_PUBLISH_POLICIES,
   DOWNGRADE_TO_ANSWER_FIRST_POLICIES,
   derivePolicies,
   FULL_ANALYSIS_PASS_POLICIES,
+  FULL_ANALYSIS_REVIEW_POLICIES,
   REVIEW_POLICIES,
 } from "./policies";
 import {
@@ -332,7 +334,7 @@ export function validateCandidate(input: ValidateCandidateInput): ValidateCandid
     }
 
     if (!renderedHtmlShowsAnswerAndClues(input.renderedHtml, validatedL1)) {
-      return output("requires_review", REVIEW_POLICIES, [
+      return output("requires_review", FULL_ANALYSIS_REVIEW_POLICIES, [
         makeIssue(
           "ANSWER_HIDDEN_FROM_RENDERED_HTML",
           "renderedHtml",
@@ -341,6 +343,16 @@ export function validateCandidate(input: ValidateCandidateInput): ValidateCandid
           { blocking: false, candidateRevisionId },
         ),
       ]);
+    }
+
+    const evidenceIssues = validateFullAnalysisEvidence({
+      candidate,
+      l1Input: validatedL1,
+      evidenceRecords: input.evidenceRecords,
+    });
+
+    if (evidenceIssues.length > 0) {
+      return output("requires_review", FULL_ANALYSIS_REVIEW_POLICIES, evidenceIssues);
     }
 
     return output("pass_full_analysis", FULL_ANALYSIS_PASS_POLICIES, []);

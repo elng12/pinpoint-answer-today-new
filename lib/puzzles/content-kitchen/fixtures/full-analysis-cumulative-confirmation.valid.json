@@ -8,6 +8,13 @@
     },
     "existingRoutes": ["/linkedin-pinpoint-answers/pinpoint-answer-899/"],
     "renderedHtml": "<main><h1>Types of guitar</h1><p>Bass Classical Electric Acoustic Steel</p><section><h2>FAQ</h2><h3>Why does Bass fit?</h3><p>Bass is a guitar type in this board.</p><h3>Why does Electric matter?</h3><p>Electric confirms the guitar-type answer.</p></section></main>",
+    "evidenceRecords": [
+      { "evidenceId": "ev-bass", "clueId": "clue-1", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Bass is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
+      { "evidenceId": "ev-classical", "clueId": "clue-2", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Classical is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
+      { "evidenceId": "ev-electric", "clueId": "clue-3", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Electric is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
+      { "evidenceId": "ev-acoustic", "clueId": "clue-4", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Acoustic is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" },
+      { "evidenceId": "ev-steel", "clueId": "clue-5", "sourceLevel": "L2", "sourceType": "category_membership", "supportKind": "fit", "claim": "Steel is a member of Types of guitar.", "confidence": "high", "lookupVersion": "category_membership_2026_05_23" }
+    ],
     "l1Input": {
       "puzzleId": "pinpoint-900-2026-05-23",
       "puzzleNumber": 900,
