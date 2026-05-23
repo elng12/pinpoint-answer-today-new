@@ -2099,6 +2099,16 @@ PR9 third implementation slice:
 - move jobs to `dead_letter` after `maxAttempts`
 - keep stale-result protection from the job contract unchanged
 
+PR9 fourth implementation slice:
+
+- add a local queue scanner; do not attach it to durable storage or Worker cron yet
+- return due queued jobs and running jobs whose locks have expired
+- skip queued jobs whose `nextAttemptAt` is still in the future
+- skip running jobs whose lock is still active
+- skip completed, review-required, and dead-letter jobs
+- skip jobs that have reached `maxAttempts`
+- support a batch limit and mark otherwise-runnable overflow jobs as `over_limit`
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

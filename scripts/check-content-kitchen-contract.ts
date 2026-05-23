@@ -24,8 +24,10 @@ import {
   createAnswerFirstEnrichmentJob,
   failAnswerFirstEnrichmentJob,
   findActiveEnrichmentJobForTarget,
+  getEnrichmentQueueSkipReason,
   isActiveEnrichmentJob,
   isEnrichmentJobLockExpired,
+  scanAnswerFirstEnrichmentQueue,
 } from "../lib/puzzles/content-kitchen/enrichment-job";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
 import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
@@ -1607,6 +1609,143 @@ function assertAnswerFirstEnrichmentJobRetryAndLock() {
   );
 }
 
+function assertAnswerFirstEnrichmentQueueScan() {
+  const dueQueued = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-902-2026-05-23",
+    sourceRevisionId: "rev-answer-first-902",
+    targetRevision: "rev-full-analysis-902",
+    inputSnapshotHash: "sha256:l1-902",
+    answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+    now: "2026-05-23T08:05:00.000Z",
+  });
+  const futureQueued = {
+    ...createAnswerFirstEnrichmentJob({
+      puzzleId: "pinpoint-903-2026-05-23",
+      sourceRevisionId: "rev-answer-first-903",
+      targetRevision: "rev-full-analysis-903",
+      inputSnapshotHash: "sha256:l1-903",
+      answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+      now: "2026-05-23T08:05:00.000Z",
+    }),
+    nextAttemptAt: "2026-05-23T08:30:00.000Z",
+  };
+  const runningLocked = {
+    ...createAnswerFirstEnrichmentJob({
+      puzzleId: "pinpoint-904-2026-05-23",
+      sourceRevisionId: "rev-answer-first-904",
+      targetRevision: "rev-full-analysis-904",
+      inputSnapshotHash: "sha256:l1-904",
+      answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+      now: "2026-05-23T08:05:00.000Z",
+    }),
+    state: "running" as const,
+    attemptCount: 1,
+    lockedBy: "worker-a",
+    lockedUntil: "2026-05-23T08:25:00.000Z",
+  };
+  const runningExpired = {
+    ...runningLocked,
+    puzzleId: "pinpoint-905-2026-05-23",
+    targetRevision: "rev-full-analysis-905",
+    lockedUntil: "2026-05-23T08:09:00.000Z",
+  };
+  const completed = {
+    ...dueQueued,
+    puzzleId: "pinpoint-906-2026-05-23",
+    targetRevision: "rev-full-analysis-906",
+    state: "completed" as const,
+  };
+  const deadLetter = {
+    ...dueQueued,
+    puzzleId: "pinpoint-907-2026-05-23",
+    targetRevision: "rev-full-analysis-907",
+    state: "dead_letter" as const,
+  };
+  const maxAttemptsReached = {
+    ...dueQueued,
+    puzzleId: "pinpoint-908-2026-05-23",
+    targetRevision: "rev-full-analysis-908",
+    attemptCount: 3,
+    maxAttempts: 3,
+  };
+
+  assert.equal(
+    getEnrichmentQueueSkipReason(dueQueued, "2026-05-23T08:10:00.000Z"),
+    null,
+    "due queued jobs should be runnable",
+  );
+  assert.equal(
+    getEnrichmentQueueSkipReason(futureQueued, "2026-05-23T08:10:00.000Z"),
+    "not_due",
+    "future queued jobs should be skipped as not due",
+  );
+  assert.equal(
+    getEnrichmentQueueSkipReason(runningLocked, "2026-05-23T08:10:00.000Z"),
+    "lock_active",
+    "running jobs with a live lock should be skipped",
+  );
+  assert.equal(
+    getEnrichmentQueueSkipReason(completed, "2026-05-23T08:10:00.000Z"),
+    "terminal_state",
+    "completed jobs should be skipped as terminal",
+  );
+  assert.equal(
+    getEnrichmentQueueSkipReason(deadLetter, "2026-05-23T08:10:00.000Z"),
+    "terminal_state",
+    "dead-letter jobs should be skipped as terminal",
+  );
+  assert.equal(
+    getEnrichmentQueueSkipReason(maxAttemptsReached, "2026-05-23T08:10:00.000Z"),
+    "max_attempts_reached",
+    "jobs at max attempts should be skipped",
+  );
+
+  const scan = scanAnswerFirstEnrichmentQueue({
+    jobs: [
+      dueQueued,
+      futureQueued,
+      runningLocked,
+      runningExpired,
+      completed,
+      deadLetter,
+      maxAttemptsReached,
+    ],
+    now: "2026-05-23T08:10:00.000Z",
+  });
+  assert.deepEqual(
+    scan.runnableJobs.map((job) => job.puzzleId),
+    ["pinpoint-902-2026-05-23", "pinpoint-905-2026-05-23"],
+    "queue scan should return due queued jobs and expired-lock running jobs",
+  );
+  assert.deepEqual(
+    scan.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+    [
+      ["pinpoint-903-2026-05-23", "not_due"],
+      ["pinpoint-904-2026-05-23", "lock_active"],
+      ["pinpoint-906-2026-05-23", "terminal_state"],
+      ["pinpoint-907-2026-05-23", "terminal_state"],
+      ["pinpoint-908-2026-05-23", "max_attempts_reached"],
+    ],
+    "queue scan should keep clear skip reasons",
+  );
+
+  const limitedScan = scanAnswerFirstEnrichmentQueue({
+    jobs: [dueQueued, runningExpired],
+    now: "2026-05-23T08:10:00.000Z",
+    limit: 1,
+  });
+  assert.deepEqual(
+    limitedScan.runnableJobs.map((job) => job.puzzleId),
+    ["pinpoint-902-2026-05-23"],
+    "queue scan limit should cap runnable jobs",
+  );
+  assert.deepEqual(
+    limitedScan.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+    [["pinpoint-905-2026-05-23", "over_limit"]],
+    "queue scan should explain jobs skipped only because the batch limit was reached",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1645,6 +1784,7 @@ async function main() {
   assertAnswerFirstSlaClock();
   assertAnswerFirstEnrichmentJobContract();
   assertAnswerFirstEnrichmentJobRetryAndLock();
+  assertAnswerFirstEnrichmentQueueScan();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

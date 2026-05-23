@@ -44,6 +44,27 @@ export type CompleteAnswerFirstEnrichmentJobInput = {
   now: string;
 };
 
+export type EnrichmentQueueSkipReason =
+  | "not_due"
+  | "lock_active"
+  | "max_attempts_reached"
+  | "terminal_state"
+  | "over_limit";
+
+export type ScanAnswerFirstEnrichmentQueueInput = {
+  jobs: AnswerFirstEnrichmentJob[];
+  now: string;
+  limit?: number;
+};
+
+export type ScanAnswerFirstEnrichmentQueueResult = {
+  runnableJobs: AnswerFirstEnrichmentJob[];
+  skippedJobs: Array<{
+    job: AnswerFirstEnrichmentJob;
+    reason: EnrichmentQueueSkipReason;
+  }>;
+};
+
 const ACTIVE_ENRICHMENT_JOB_STATES = new Set<EnrichmentJobState>([
   "queued",
   "running",
@@ -174,19 +195,7 @@ export function canClaimAnswerFirstEnrichmentJob(
   job: AnswerFirstEnrichmentJob,
   now: string,
 ): boolean {
-  if (job.attemptCount >= job.maxAttempts) {
-    return false;
-  }
-
-  if (job.state === "queued") {
-    return parseTimestamp(job.nextAttemptAt, "nextAttemptAt") <= parseTimestamp(now, "now");
-  }
-
-  if (job.state === "running") {
-    return isEnrichmentJobLockExpired(job, now);
-  }
-
-  return false;
+  return getEnrichmentQueueSkipReason(job, now) === null;
 }
 
 export function claimAnswerFirstEnrichmentJob(
@@ -247,6 +256,55 @@ export function completeAnswerFirstEnrichmentJob(
     state: "completed",
     updatedAt: now,
     nextAttemptAt: now,
+  };
+}
+
+export function getEnrichmentQueueSkipReason(
+  job: AnswerFirstEnrichmentJob,
+  now: string,
+): EnrichmentQueueSkipReason | null {
+  if (job.state === "completed" || job.state === "dead_letter" || job.state === "review_required") {
+    return "terminal_state";
+  }
+
+  if (job.attemptCount >= job.maxAttempts) {
+    return "max_attempts_reached";
+  }
+
+  if (job.state === "queued") {
+    return parseTimestamp(job.nextAttemptAt, "nextAttemptAt") <= parseTimestamp(now, "now") ? null : "not_due";
+  }
+
+  if (job.state === "running") {
+    return isEnrichmentJobLockExpired(job, now) ? null : "lock_active";
+  }
+
+  return "terminal_state";
+}
+
+export function scanAnswerFirstEnrichmentQueue(
+  input: ScanAnswerFirstEnrichmentQueueInput,
+): ScanAnswerFirstEnrichmentQueueResult {
+  const runnableJobs: AnswerFirstEnrichmentJob[] = [];
+  const skippedJobs: ScanAnswerFirstEnrichmentQueueResult["skippedJobs"] = [];
+  const limit = input.limit ?? input.jobs.length;
+
+  for (const job of input.jobs) {
+    const reason = getEnrichmentQueueSkipReason(job, input.now);
+    if (!reason && runnableJobs.length < limit) {
+      runnableJobs.push(job);
+      continue;
+    }
+
+    skippedJobs.push({
+      job,
+      reason: reason ?? "over_limit",
+    });
+  }
+
+  return {
+    runnableJobs,
+    skippedJobs,
   };
 }
 
