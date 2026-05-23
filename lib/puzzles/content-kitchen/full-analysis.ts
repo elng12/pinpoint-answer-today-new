@@ -210,7 +210,7 @@ function validateReasoning(input: FullAnalysisStructureInput): ValidationIssue |
       "candidate.reasoning.text",
       "Reasoning text is too generic for full-analysis.",
       "Explain the actual clue path with specific clue ids.",
-      { candidateRevisionId },
+      { severity: "P1", candidateRevisionId },
     );
   }
 
@@ -276,7 +276,7 @@ function validateFaq(input: FullAnalysisStructureInput): ValidationIssue | null 
         "candidate.faqItems",
         "Full-analysis FAQ items must be 2 to 4 when present.",
         "Keep 2 to 4 specific FAQ items or omit FAQ items.",
-        { candidateRevisionId },
+        { severity: "P1", candidateRevisionId },
       );
     }
   }
@@ -335,7 +335,7 @@ function validateInternalLinks(input: FullAnalysisStructureInput): ValidationIss
         fieldPath,
         "Internal link must be a route-shaped path.",
         "Use a local route path that starts with one slash.",
-        { candidateRevisionId },
+        { severity: "P1", candidateRevisionId },
       );
     }
 
@@ -345,7 +345,7 @@ function validateInternalLinks(input: FullAnalysisStructureInput): ValidationIss
         fieldPath,
         "Internal link target is not in the provided route index.",
         "Use an existing public route or update the route index.",
-        { candidateRevisionId },
+        { severity: "P1", candidateRevisionId },
       );
     }
   }

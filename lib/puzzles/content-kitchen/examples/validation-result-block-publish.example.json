@@ -1,0 +1,22 @@
+{
+  "examplePurpose": "Shows the stable validation result shape for a blocked candidate.",
+  "outcome": "block_publish",
+  "policies": {
+    "indexPolicy": "block_publish",
+    "sitemapPolicy": "exclude",
+    "schemaPolicy": "none",
+    "internalLinkPolicy": "hidden_from_recent",
+    "requiredAction": "block_publish"
+  },
+  "issues": [
+    {
+      "issueCode": "CANONICAL_URL_MISMATCH",
+      "severity": "P0",
+      "fieldPath": "candidate.canonicalUrl",
+      "message": "Candidate canonical URL does not match the L1-derived canonical URL.",
+      "suggestedAction": "Use buildCanonicalUrl(canonicalConfig, expectedSlug).",
+      "blocking": true,
+      "candidateRevisionId": "rev_example"
+    }
+  ]
+}

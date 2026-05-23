@@ -1,0 +1,22 @@
+{
+  "artifactVersion": "content-kitchen-review-artifact-v0",
+  "artifactType": "review",
+  "examplePurpose": "Shows the stable review artifact shape for a full-analysis downgrade.",
+  "requiredFields": [
+    "artifactId",
+    "createdAt",
+    "candidateRevisionId",
+    "validation.outcome",
+    "validation.policies",
+    "validation.issueCodes",
+    "issueCodesRequiringDecision",
+    "recommendedAction",
+    "allowedReviewerActions"
+  ],
+  "mustNotContain": [
+    "raw model prompt",
+    "cookies",
+    "API keys",
+    "renderedHtml"
+  ]
+}

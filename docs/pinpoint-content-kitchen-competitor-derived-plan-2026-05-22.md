@@ -1602,6 +1602,20 @@ PR6C should add:
 4. Snapshot-like JSON examples that stay stable.
 5. A fixture test that proves every PR6 P0 issue code has at least one negative fixture.
 
+PR6C implementation files:
+
+- `lib/puzzles/content-kitchen/issue-registry.ts`
+- `lib/puzzles/content-kitchen/review-artifact.ts`
+- `lib/puzzles/content-kitchen/examples/*.json`
+- `scripts/check-content-kitchen-contract.ts`
+
+The contract fixture runner owns the first coverage check:
+
+- every emitted issue code must exist in the registry
+- every PR6 P0 issue code must appear in at least one negative fixture
+- every failed validation outcome must be able to build a review artifact v0
+- review artifacts must not include raw rendered HTML content
+
 Issue registry shape:
 
 ```ts
@@ -1855,8 +1869,8 @@ Defer:
 
 | Phase | Issue codes |
 | --- | --- |
-| PR6A/PR6B P0 | `MISSING_L1_INPUT`, `INVALID_L1_INPUT`, `INVALID_CANDIDATE_METADATA`, `CANDIDATE_L1_MISMATCH`, `MISSING_CLUE_ROW`, `DUPLICATE_CLUE_ROW`, `MISSING_EVIDENCE_REF`, `ANSWER_HIDDEN_FROM_RENDERED_HTML`, `MISSING_REASONING_PATTERN`, `UNSUPPORTED_REASONING_PATTERN`, `CANONICAL_URL_MISMATCH`, `FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ`, `NOINDEX_REQUIRED_BUT_MISSING` |
-| PR6A/PR6B P1 | `FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED`, `GENERIC_REASONING_PATTERN`, `INVALID_FAQ_STRUCTURE`, `INTERNAL_LINK_BROKEN` |
+| PR6A/PR6B/PR6C P0 | `MISSING_L1_INPUT`, `INVALID_L1_INPUT`, `INVALID_CANDIDATE_METADATA`, `CANDIDATE_L1_MISMATCH`, `MISSING_CLUE_ROW`, `DUPLICATE_CLUE_ROW`, `MISSING_EVIDENCE_REF`, `ANSWER_HIDDEN_FROM_RENDERED_HTML`, `MISSING_REASONING_PATTERN`, `UNSUPPORTED_REASONING_PATTERN`, `CANONICAL_URL_MISMATCH`, `FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ`, `NOINDEX_REQUIRED_BUT_MISSING` |
+| PR6A/PR6B/PR6C P1 | `FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED`, `GENERIC_REASONING_PATTERN`, `INVALID_FAQ_STRUCTURE`, `INTERNAL_LINK_BROKEN` |
 | PR7/PR8 | `UNSUPPORTED_CLUE_FIT`, `WEAK_FIT_EVIDENCE`, `L4_ONLY_EVIDENCE`, `INVENTED_FALSE_START`, `FULL_ANALYSIS_WITH_LOW_CONFIDENCE` |
 | PR10 | review artifact completeness and reviewer decision consistency issues |
 | PR11 | `PUBLIC_HTML_FETCH_FAILED`, `PUBLIC_HTML_RENDER_FAILED`, `SITEMAP_LASTMOD_MISSING`, `SCHEMA_DATE_MODIFIED_MISSING`, `INTERNAL_LINK_BROKEN`, `SITEMAP_POLICY_MISMATCH`, `ROBOTS_POLICY_MISMATCH`, `DATE_MODIFIED_MISMATCH`, `SCHEMA_MODE_MISMATCH` |
