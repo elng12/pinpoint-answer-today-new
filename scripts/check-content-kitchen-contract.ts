@@ -31,6 +31,10 @@ import {
   runAnswerFirstEnrichmentWorkerTick,
   scanAnswerFirstEnrichmentQueue,
 } from "../lib/puzzles/content-kitchen/enrichment-job";
+import {
+  createInMemoryAnswerFirstEnrichmentJobStore,
+  runAnswerFirstEnrichmentWorkerTickFromStore,
+} from "../lib/puzzles/content-kitchen/enrichment-job-store";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
 import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
 import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/false-start-generator";
@@ -1966,6 +1970,102 @@ function assertAnswerFirstEnrichmentWorkerTick() {
   );
 }
 
+async function assertAnswerFirstEnrichmentJobStoreAdapter() {
+  const dueQueued = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-914-2026-05-23",
+    sourceRevisionId: "rev-answer-first-914",
+    targetRevision: "rev-full-analysis-914",
+    inputSnapshotHash: "sha256:l1-914",
+    answerFirstPublishedAt: "2026-05-23T08:45:00.000Z",
+    now: "2026-05-23T08:55:00.000Z",
+  });
+  const reviewDue = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-915-2026-05-23",
+    sourceRevisionId: "rev-answer-first-915",
+    targetRevision: "rev-full-analysis-915",
+    inputSnapshotHash: "sha256:l1-915",
+    answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+    now: "2026-05-23T08:05:00.000Z",
+  });
+  const store = createInMemoryAnswerFirstEnrichmentJobStore([dueQueued, reviewDue]);
+
+  const loaded = await store.listAnswerFirstEnrichmentJobs();
+  loaded[0].state = "dead_letter";
+  loaded[0].failureReasonCodes.push("ANSWER_FIRST_HIGH_PRIORITY_ALERT");
+
+  const unchangedSnapshot = store.snapshot();
+  assert.equal(
+    unchangedSnapshot[0].state,
+    "queued",
+    "in-memory job store should return cloned jobs from list",
+  );
+  assert.deepEqual(
+    unchangedSnapshot[0].failureReasonCodes,
+    [],
+    "in-memory job store should protect stored failure reasons from caller mutation",
+  );
+
+  const tick = await runAnswerFirstEnrichmentWorkerTickFromStore({
+    store,
+    now: "2026-05-23T09:01:00.000Z",
+    workerId: "worker-store",
+    lockMinutes: 12,
+  });
+
+  assert.deepEqual(
+    tick.claimedJobs.map((job) => job.puzzleId),
+    ["pinpoint-914-2026-05-23"],
+    "store-backed worker tick should claim due jobs loaded from the store",
+  );
+  assert.deepEqual(
+    tick.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+    [["pinpoint-915-2026-05-23", "terminal_state"]],
+    "store-backed worker tick should skip jobs moved to review during advancement",
+  );
+
+  const storedAfterTick = store.snapshot();
+  const storedByPuzzleId = new Map(storedAfterTick.map((job) => [job.puzzleId, job]));
+  assert.equal(
+    storedByPuzzleId.get("pinpoint-914-2026-05-23")?.state,
+    "running",
+    "store-backed worker tick should write claimed jobs back to the store",
+  );
+  assert.equal(
+    storedByPuzzleId.get("pinpoint-914-2026-05-23")?.lockedBy,
+    "worker-store",
+    "store-backed worker tick should persist the worker lock",
+  );
+  assert.equal(
+    storedByPuzzleId.get("pinpoint-914-2026-05-23")?.lockedUntil,
+    "2026-05-23T09:13:00.000Z",
+    "store-backed worker tick should persist the requested lock window",
+  );
+  assert.equal(
+    storedByPuzzleId.get("pinpoint-915-2026-05-23")?.state,
+    "review_required",
+    "store-backed worker tick should write review-required advancement back to the store",
+  );
+  assert.deepEqual(
+    storedByPuzzleId.get("pinpoint-915-2026-05-23")?.failureReasonCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "store-backed worker tick should persist SLA issue codes from state advancement",
+  );
+
+  const replacement = completeAnswerFirstEnrichmentJob({
+    job: storedByPuzzleId.get("pinpoint-914-2026-05-23")!,
+    now: "2026-05-23T09:20:00.000Z",
+  });
+  await store.upsertAnswerFirstEnrichmentJobs([replacement]);
+  assert.deepEqual(
+    store.snapshot().map((job) => [job.puzzleId, job.state]),
+    [
+      ["pinpoint-914-2026-05-23", "completed"],
+      ["pinpoint-915-2026-05-23", "review_required"],
+    ],
+    "in-memory job store should replace jobs by jobId without duplicating them",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -2007,6 +2107,7 @@ async function main() {
   assertAnswerFirstEnrichmentQueueScan();
   assertAnswerFirstEnrichmentStateAdvance();
   assertAnswerFirstEnrichmentWorkerTick();
+  await assertAnswerFirstEnrichmentJobStoreAdapter();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
