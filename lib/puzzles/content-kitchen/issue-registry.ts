@@ -137,6 +137,54 @@ export const CONTENT_KITCHEN_ISSUE_REGISTRY: IssueCodeDefinition[] = [
     defaultRequiredAction: "enrich",
     description: "Internal link is not route-shaped or is absent from the provided route index.",
   },
+  {
+    code: "UNSUPPORTED_CLUE_FIT",
+    phaseOwner: "PR7",
+    defaultSeverity: "P0",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "A full-analysis clue row lacks a matching clue-fit evidence record.",
+  },
+  {
+    code: "WEAK_FIT_EVIDENCE",
+    phaseOwner: "PR7",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "A full-analysis clue row has evidence, but it is not strong enough for automatic full-analysis.",
+  },
+  {
+    code: "L4_ONLY_EVIDENCE",
+    phaseOwner: "PR7",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "A full-analysis clue row is supported only by model-consensus evidence.",
+  },
+  {
+    code: "FULL_ANALYSIS_WITH_LOW_CONFIDENCE",
+    phaseOwner: "PR7",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "A full-analysis clue row has only low-confidence evidence.",
+  },
+  {
+    code: "PROHIBITED_EVIDENCE_SOURCE",
+    phaseOwner: "PR7",
+    defaultSeverity: "P0",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "A candidate uses a prohibited source such as a competitor page, answer aggregator, AI summary, snippet, or generated page.",
+  },
+  {
+    code: "EVIDENCE_SOURCE_CONFLICT",
+    phaseOwner: "PR7",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "A candidate has an unresolved evidence conflict.",
+  },
 ];
 
 export const CONTENT_KITCHEN_ISSUE_DEFINITIONS = new Map<ContentKitchenIssueCode, IssueCodeDefinition>(
@@ -156,5 +204,11 @@ export function getPr6P0IssueCodes(): ContentKitchenIssueCode[] {
     .filter((definition) => {
       return definition.defaultSeverity === "P0" && definition.phaseOwner.startsWith("PR6");
     })
+    .map((definition) => definition.code);
+}
+
+export function getPr7IssueCodes(): ContentKitchenIssueCode[] {
+  return CONTENT_KITCHEN_ISSUE_REGISTRY
+    .filter((definition) => definition.phaseOwner === "PR7")
     .map((definition) => definition.code);
 }
