@@ -2015,6 +2015,15 @@ PR8 seventh implementation slice:
 - return slot-level validation issues with assembly failures for debugging/repair
 - do not connect this assembler to live publishing or LLM generation yet
 
+PR8 eighth implementation slice:
+
+- add a local repair loop planner for full-analysis generation failures
+- collect generator, assembly, and slot-contract issues into deduped repair actions
+- keep answer and L1 clue data immutable; repair actions only target classification, dictionaries, clue-fit slots, reasoning, FAQ, false-start, or assembly
+- mark missing reviewed dictionary facts as not auto-repairable
+- keep local structural issues auto-repairable by rerunning the relevant local generator and assembler
+- do not connect this repair planner to live publishing or LLM generation yet
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.

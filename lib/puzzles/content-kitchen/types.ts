@@ -477,6 +477,28 @@ export type FullAnalysisAssemblyResult =
       slotIssues: FullAnalysisSlotIssue[];
     };
 
+export type FullAnalysisRepairActionCode =
+  | "rerun_puzzle_type_classifier"
+  | "load_reviewed_dictionaries"
+  | "repair_dictionary_coverage"
+  | "regenerate_clue_fits"
+  | "regenerate_reasoning"
+  | "regenerate_faq"
+  | "keep_false_start_omitted"
+  | "rerun_assembler";
+
+export type FullAnalysisRepairAction = {
+  actionCode: FullAnalysisRepairActionCode;
+  target: string;
+  reason: string;
+  issueCodes: string[];
+};
+
+export type FullAnalysisRepairPlan = {
+  canAutoRepair: boolean;
+  actions: FullAnalysisRepairAction[];
+};
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;
