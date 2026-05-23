@@ -6218,15 +6218,6 @@ export default {
             );
             await persistCronHeartbeat(env, manualHeartbeat);
 
-            // Publish to new site (non-blocking, failures don't affect old site)
-            if (isSuccessfulEnrichResult(enrichResult)) {
-              try {
-                await publishToNewSiteGitHub(env, date, doc, enrichResult.payload, puzzleNumber);
-              } catch (newSiteErr) {
-                console.warn("[new-site] publish failed (non-fatal):", newSiteErr);
-              }
-            }
-
             let payloadForI18n = enrichResult.payload ?? null;
             if (
               !payloadForI18n &&
@@ -6745,19 +6736,6 @@ export default {
                 if (isSuccessfulEnrichResult(enrichResult)) {
                   heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "published");
                   await persistCronHeartbeat(env, heartbeat);
-                  try {
-                    await publishToNewSiteGitHub(env, date, doc, enrichResult.payload, puzzleNumber);
-                  } catch (newSiteErr) {
-                    const newSiteMsg = newSiteErr instanceof Error ? newSiteErr.message : String(newSiteErr);
-                    console.warn("[new-site] publish failed (non-fatal):", newSiteMsg);
-                    await notifyCron(env, "⚠️ 新站结构化发布异常", [
-                      `日期: ${date}`,
-                      `谜题: #${puzzleNumber}`,
-                      `详情: ${detailUrl}`,
-                      `原因: ${toZhWebhookReason(newSiteMsg)}`,
-                      "说明: 英文站增强已成功，但新站结构化落库阶段没有正常完成。",
-                    ]);
-                  }
                 } else {
                   heartbeat.enrich = stampHeartbeatStage(
                     heartbeat.enrich,

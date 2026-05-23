@@ -2455,6 +2455,10 @@ async function checkWorkerEnrichCommitsOnlyFinalPublicPayload() {
       !enrichSource.includes("failedPayload"),
     "worker enrich path must not build GitHub payloads for non-public intermediate states",
   );
+  assert.ok(
+    !workerSource.includes("publishToNewSiteGitHub(env, date, doc, enrichResult.payload"),
+    "manual and scheduled callers must not duplicate the final GitHub publish already handled by enrichPublishToSite",
+  );
 
   console.log("ok: worker enrich writes only final public payloads to GitHub");
 }
