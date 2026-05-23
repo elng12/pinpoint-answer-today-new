@@ -1,5 +1,5 @@
 {
-  "name": "full-analysis-basic-identity.downgrade",
+  "name": "full-analysis-generic-reasoning.invalid",
   "input": {
     "canonicalConfig": {
       "siteBaseUrl": "https://example.com",
@@ -25,9 +25,9 @@
       "slug": "pinpoint-answer-900",
       "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-900/",
       "contentMode": "full-analysis",
-      "revisionId": "rev-full-analysis-001",
+      "revisionId": "rev-generic-reasoning",
       "inputSnapshotHash": "__HASH_L1__",
-      "contentHash": "sha256:content-full-analysis-001",
+      "contentHash": "sha256:content-generic-reasoning",
       "answer": "Types of guitar",
       "clues": [
         { "clueId": "clue-1", "text": "Bass", "position": 1 },
@@ -35,18 +35,25 @@
         { "clueId": "clue-3", "text": "Electric", "position": 3 },
         { "clueId": "clue-4", "text": "Acoustic", "position": 4 },
         { "clueId": "clue-5", "text": "Steel", "position": 5 }
-      ]
+      ],
+      "clueRows": [
+        { "clueId": "clue-1", "fit": "Bass guitar", "whyItSupportsAnswer": "Bass is a guitar type.", "evidenceRefs": ["ev-bass"] },
+        { "clueId": "clue-2", "fit": "Classical guitar", "whyItSupportsAnswer": "Classical is a guitar type.", "evidenceRefs": ["ev-classical"] },
+        { "clueId": "clue-3", "fit": "Electric guitar", "whyItSupportsAnswer": "Electric is a guitar type.", "evidenceRefs": ["ev-electric"] },
+        { "clueId": "clue-4", "fit": "Acoustic guitar", "whyItSupportsAnswer": "Acoustic is a guitar type.", "evidenceRefs": ["ev-acoustic"] },
+        { "clueId": "clue-5", "fit": "Steel guitar", "whyItSupportsAnswer": "Steel is a guitar type.", "evidenceRefs": ["ev-steel"] }
+      ],
+      "reasoning": {
+        "pattern": "turning_point",
+        "clueId": "clue-3",
+        "brokenTheory": "general instruments",
+        "supportedTheory": "types of guitar",
+        "text": "All clues point to the same shared category."
+      }
     }
   },
   "expected": {
     "outcome": "downgrade_to_answer_first",
-    "policies": {
-      "indexPolicy": "noindex",
-      "sitemapPolicy": "exclude",
-      "schemaPolicy": "none",
-      "internalLinkPolicy": "hidden_from_recent",
-      "requiredAction": "enrich"
-    },
-    "issueCodes": ["MISSING_CLUE_ROW"]
+    "issueCodes": ["GENERIC_REASONING_PATTERN"]
   }
 }

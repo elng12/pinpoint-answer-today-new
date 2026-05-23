@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import type {
-  Pr6aIssueCode,
+  ContentKitchenIssueCode,
   ValidateCandidateInput,
   ValidationOutcome,
   ValidationPolicies,
@@ -21,7 +21,7 @@ type Fixture = {
   expected: {
     outcome: ValidationOutcome;
     policies?: Partial<ValidationPolicies>;
-    issueCodes?: Pr6aIssueCode[];
+    issueCodes?: ContentKitchenIssueCode[];
   };
 };
 
@@ -64,7 +64,11 @@ function assertPolicySubset(
   }
 }
 
-function assertIssueCodes(fileName: string, actualCodes: Pr6aIssueCode[], expectedCodes: Pr6aIssueCode[] = []) {
+function assertIssueCodes(
+  fileName: string,
+  actualCodes: ContentKitchenIssueCode[],
+  expectedCodes: ContentKitchenIssueCode[] = [],
+) {
   assert.deepEqual(
     actualCodes,
     expectedCodes,

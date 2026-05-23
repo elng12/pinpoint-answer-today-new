@@ -29,7 +29,7 @@ export type DegradationAction =
   | "hide_from_recent"
   | "create_fix_task";
 
-export type Pr6aIssueCode =
+export type ContentKitchenIssueCode =
   | "MISSING_L1_INPUT"
   | "INVALID_L1_INPUT"
   | "INVALID_CANDIDATE_METADATA"
@@ -37,7 +37,18 @@ export type Pr6aIssueCode =
   | "CANONICAL_URL_MISMATCH"
   | "ANSWER_HIDDEN_FROM_RENDERED_HTML"
   | "NOINDEX_REQUIRED_BUT_MISSING"
-  | "FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED";
+  | "FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED"
+  | "MISSING_CLUE_ROW"
+  | "DUPLICATE_CLUE_ROW"
+  | "MISSING_EVIDENCE_REF"
+  | "MISSING_REASONING_PATTERN"
+  | "UNSUPPORTED_REASONING_PATTERN"
+  | "GENERIC_REASONING_PATTERN"
+  | "FAQ_SCHEMA_WITHOUT_VISIBLE_FAQ"
+  | "INVALID_FAQ_STRUCTURE"
+  | "INTERNAL_LINK_BROKEN";
+
+export type Pr6aIssueCode = ContentKitchenIssueCode;
 
 export type ContentKitchenIssueSeverity = "P0" | "P1" | "P2";
 
@@ -70,6 +81,44 @@ export type ContentCandidateClue = {
   position: number;
 };
 
+export type FullAnalysisClueRowCandidate = {
+  clueId: string;
+  clueText?: string;
+  fit: string;
+  whyItSupportsAnswer: string;
+  evidenceRefs: string[];
+};
+
+export type TurningPointReasoning = {
+  pattern: "turning_point";
+  clueId: string;
+  brokenTheory: string;
+  supportedTheory: string;
+  text: string;
+  evidenceRefs?: string[];
+};
+
+export type CumulativeConfirmationReasoning = {
+  pattern: "cumulative_confirmation";
+  clueIds: string[];
+  text: string;
+  evidenceRefs?: string[];
+};
+
+export type FullAnalysisReasoning =
+  | TurningPointReasoning
+  | CumulativeConfirmationReasoning;
+
+export type FaqCandidate = {
+  question: string;
+  answer: string;
+};
+
+export type InternalLinkCandidate = {
+  href: string;
+  label?: string;
+};
+
 export type ContentCandidate = {
   puzzleId: string;
   slug: string;
@@ -81,10 +130,15 @@ export type ContentCandidate = {
   answer: string;
   clues: ContentCandidateClue[];
   summary?: string;
+  clueRows?: FullAnalysisClueRowCandidate[];
+  reasoning?: FullAnalysisReasoning;
+  faqItems?: FaqCandidate[];
+  internalLinks?: InternalLinkCandidate[];
+  schemaTypes?: string[];
 };
 
 export type ValidationIssue = {
-  issueCode: Pr6aIssueCode;
+  issueCode: ContentKitchenIssueCode;
   severity: ContentKitchenIssueSeverity;
   fieldPath: string;
   message: string;
@@ -108,6 +162,7 @@ export type ValidateCandidateInput = {
   canonicalConfig: CanonicalConfig;
   renderedHtml?: string;
   allowAnswerFirstIndex?: boolean;
+  existingRoutes?: string[];
 };
 
 export type ValidateCandidateOutput = {

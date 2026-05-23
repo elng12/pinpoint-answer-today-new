@@ -5,19 +5,21 @@ import {
   normalizeIdentityMatch,
   normalizeIdentityText,
 } from "./identity";
+import { validateFullAnalysisStructure } from "./full-analysis";
 import {
   BLOCK_PUBLISH_POLICIES,
+  DOWNGRADE_TO_ANSWER_FIRST_POLICIES,
   derivePolicies,
-  FULL_ANALYSIS_REVIEW_POLICIES,
+  FULL_ANALYSIS_PASS_POLICIES,
   REVIEW_POLICIES,
 } from "./policies";
 import {
   CONTENT_KITCHEN_CLUE_COUNT,
   type ContentCandidate,
   type ContentCandidateClue,
+  type ContentKitchenIssueCode,
   type L1PuzzleClue,
   type L1PuzzleInput,
-  type Pr6aIssueCode,
   type ValidateCandidateInput,
   type ValidateCandidateOutput,
   type ValidationIssue,
@@ -26,7 +28,7 @@ import {
 } from "./types";
 
 function makeIssue(
-  issueCode: Pr6aIssueCode,
+  issueCode: ContentKitchenIssueCode,
   fieldPath: string,
   message: string,
   suggestedAction: string,
@@ -297,15 +299,30 @@ export function validateCandidate(input: ValidateCandidateInput): ValidateCandid
   }
 
   if (candidate.contentMode === "full-analysis") {
-    return output("requires_review", FULL_ANALYSIS_REVIEW_POLICIES, [
-      makeIssue(
-        "FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED",
-        "candidate.contentMode",
-        "PR6A validates identity only; full-analysis structure waits for PR6B.",
-        "Run PR6B structural validation before publish.",
-        { severity: "P1", blocking: false, candidateRevisionId },
-      ),
-    ]);
+    const structureIssues = validateFullAnalysisStructure({
+      candidate,
+      l1Input: validatedL1,
+      renderedHtml: input.renderedHtml,
+      existingRoutes: input.existingRoutes,
+    });
+
+    if (structureIssues.length > 0) {
+      return output("downgrade_to_answer_first", DOWNGRADE_TO_ANSWER_FIRST_POLICIES, structureIssues);
+    }
+
+    if (!renderedHtmlShowsAnswerAndClues(input.renderedHtml, validatedL1)) {
+      return output("requires_review", REVIEW_POLICIES, [
+        makeIssue(
+          "ANSWER_HIDDEN_FROM_RENDERED_HTML",
+          "renderedHtml",
+          "Indexable full-analysis candidate lacks rendered HTML proof for the answer and all five clues.",
+          "Provide renderedHtml proof before indexing full-analysis.",
+          { blocking: false, candidateRevisionId },
+        ),
+      ]);
+    }
+
+    return output("pass_full_analysis", FULL_ANALYSIS_PASS_POLICIES, []);
   }
 
   return output("pass_answer_first", preliminaryPolicies, []);
