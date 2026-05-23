@@ -3,6 +3,10 @@ import { readdir, readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  DEFAULT_ANSWER_FIRST_SLA_CONFIG,
+  evaluateAnswerFirstSla,
+} from "../lib/puzzles/content-kitchen/answer-first-sla";
+import {
   buildCategoryMembershipEvidenceRecords,
   buildPublishedEvidenceUsageRecords,
   dictionaryDiffRequiresReviewArtifacts,
@@ -1278,6 +1282,110 @@ function assertLocalPipelineSmoke(dictionaries: ContentKitchenDictionaries) {
   );
 }
 
+function assertAnswerFirstSlaClock() {
+  const publishedAt = "2026-05-23T08:00:00.000Z";
+  const baseInput = {
+    contentMode: "answer-first" as const,
+    answerFirstPublishedAt: publishedAt,
+  };
+
+  assert.equal(
+    DEFAULT_ANSWER_FIRST_SLA_CONFIG.targetFullAnalysisMinutes,
+    30,
+    "answer-first SLA should target full-analysis within 30 minutes",
+  );
+
+  const withinSla = evaluateAnswerFirstSla({
+    ...baseInput,
+    now: "2026-05-23T08:29:00.000Z",
+  });
+  assert.equal(withinSla.status, "within_sla", "fresh answer-first pages should stay within SLA");
+  assert.equal(withinSla.notificationLevel, "none", "fresh answer-first pages should not alert");
+  assert.deepEqual(withinSla.issueCodes, [], "fresh answer-first pages should not have SLA issue codes");
+  assert.equal(withinSla.policies.indexPolicy, "noindex", "v0 answer-first should remain noindex");
+  assert.equal(withinSla.policies.sitemapPolicy, "exclude", "v0 answer-first should stay out of sitemap");
+  assert.equal(withinSla.policies.requiredAction, "enrich", "fresh answer-first pages should still target enrichment");
+
+  const alertDue = evaluateAnswerFirstSla({
+    ...baseInput,
+    now: "2026-05-23T08:31:00.000Z",
+  });
+  assert.equal(alertDue.status, "normal_alert_due", "answer-first pages past 30 minutes should alert");
+  assert.equal(alertDue.notificationLevel, "normal", "30-minute SLA misses should use normal alert level");
+  assert.deepEqual(alertDue.issueCodes, ["ANSWER_FIRST_OVER_SLA"], "30-minute SLA misses should keep one issue code");
+
+  const reviewRequired = evaluateAnswerFirstSla({
+    ...baseInput,
+    now: "2026-05-23T09:01:00.000Z",
+  });
+  assert.equal(reviewRequired.status, "review_required", "answer-first pages past 60 minutes should enter review");
+  assert.equal(reviewRequired.policies.indexPolicy, "review_required", "review-stage answer-first should require review");
+  assert.equal(
+    reviewRequired.policies.sitemapPolicy,
+    "remove_on_next_build",
+    "review-stage answer-first should be removed from sitemap on the next build",
+  );
+  assert.equal(reviewRequired.policies.requiredAction, "review", "review-stage answer-first should require review");
+  assert.deepEqual(
+    reviewRequired.issueCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "review-stage answer-first should report over-SLA and review issue codes",
+  );
+
+  const indexedStale = evaluateAnswerFirstSla({
+    ...baseInput,
+    now: "2026-05-23T10:01:00.000Z",
+    isIndexedAnswerFirst: true,
+  });
+  assert.equal(
+    indexedStale.status,
+    "thin_page_noindex_required",
+    "future indexed answer-first pages older than two hours should fall back to noindex",
+  );
+  assert.equal(indexedStale.policies.requiredAction, "degrade", "stale indexed answer-first pages should degrade");
+  assert.deepEqual(
+    indexedStale.policies.degradationActions,
+    ["apply_noindex", "remove_from_sitemap", "hide_from_recent"],
+    "stale indexed answer-first pages should reduce SEO and recent-link exposure",
+  );
+  assert.ok(
+    indexedStale.issueCodes.includes("INDEXED_ANSWER_FIRST_STALE"),
+    "stale indexed answer-first pages should report the indexed stale issue",
+  );
+
+  const highPriority = evaluateAnswerFirstSla({
+    ...baseInput,
+    now: "2026-05-23T14:01:00.000Z",
+  });
+  assert.equal(
+    highPriority.status,
+    "high_priority_alert_due",
+    "unresolved answer-first pages past six hours should need high-priority alert",
+  );
+  assert.equal(highPriority.notificationLevel, "high_priority", "six-hour unresolved pages should use high priority");
+  assert.ok(
+    highPriority.issueCodes.includes("ANSWER_FIRST_HIGH_PRIORITY_ALERT"),
+    "six-hour unresolved pages should report the high-priority issue",
+  );
+
+  const upgradeReady = evaluateAnswerFirstSla({
+    ...baseInput,
+    now: "2026-05-23T08:10:00.000Z",
+    hasSafeFullAnalysisUpgrade: true,
+  });
+  assert.equal(upgradeReady.status, "upgrade_ready", "safe full-analysis candidates should be upgraded immediately");
+  assert.equal(upgradeReady.policies.requiredAction, "upgrade", "safe full-analysis candidates should request upgrade");
+  assert.deepEqual(upgradeReady.issueCodes, [], "safe full-analysis candidates should not carry SLA issue codes");
+
+  const notApplicable = evaluateAnswerFirstSla({
+    contentMode: "full-analysis",
+    answerFirstPublishedAt: publishedAt,
+    now: "2026-05-23T14:01:00.000Z",
+  });
+  assert.equal(notApplicable.status, "not_applicable", "full-analysis pages should not use answer-first SLA handling");
+  assert.equal(notApplicable.policies.requiredAction, "keep_current", "full-analysis pages should keep current content");
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1313,6 +1421,7 @@ async function main() {
   assertDeterministicAssembler(dictionaries);
   assertLocalRepairLoop(dictionaries);
   assertLocalPipelineSmoke(dictionaries);
+  assertAnswerFirstSlaClock();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

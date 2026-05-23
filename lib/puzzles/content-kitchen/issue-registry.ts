@@ -185,6 +185,38 @@ export const CONTENT_KITCHEN_ISSUE_REGISTRY: IssueCodeDefinition[] = [
     defaultRequiredAction: "review",
     description: "A candidate has an unresolved evidence conflict.",
   },
+  {
+    code: "ANSWER_FIRST_OVER_SLA",
+    phaseOwner: "PR9",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "enrich",
+    description: "An answer-first page missed its target full-analysis upgrade time.",
+  },
+  {
+    code: "ANSWER_FIRST_REVIEW_REQUIRED",
+    phaseOwner: "PR9",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "An unresolved answer-first page is old enough to require human review.",
+  },
+  {
+    code: "INDEXED_ANSWER_FIRST_STALE",
+    phaseOwner: "PR9",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "degrade",
+    description: "A future indexed answer-first page stayed unresolved long enough to require noindex fallback.",
+  },
+  {
+    code: "ANSWER_FIRST_HIGH_PRIORITY_ALERT",
+    phaseOwner: "PR9",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "review",
+    description: "An answer-first page is still unresolved at the high-priority alert deadline.",
+  },
 ];
 
 export const CONTENT_KITCHEN_ISSUE_DEFINITIONS = new Map<ContentKitchenIssueCode, IssueCodeDefinition>(
