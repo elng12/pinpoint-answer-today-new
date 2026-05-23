@@ -10,8 +10,8 @@ export type ValidationOutcome =
   | "block_publish";
 
 export type IndexPolicy = "index" | "noindex" | "review_required" | "block_publish";
-export type SitemapPolicy = "include" | "exclude" | "include_after_audit";
-export type SchemaPolicy = "none" | "article_only";
+export type SitemapPolicy = "include" | "exclude" | "remove_on_next_build" | "include_after_audit";
+export type SchemaPolicy = "none" | "article_only" | "faq_allowed" | "block_schema";
 export type InternalLinkPolicy = "normal" | "deemphasized" | "hidden_from_recent";
 
 export type RequiredAction =
@@ -19,8 +19,12 @@ export type RequiredAction =
   | "enrich"
   | "review"
   | "block_publish"
+  | "upgrade"
+  | "rollback"
   | "degrade"
-  | "create_fix_task";
+  | "create_fix_task"
+  | "dead_letter"
+  | "keep_current";
 
 export type DegradationAction =
   | "remove_faq_schema"
@@ -52,7 +56,11 @@ export type ContentKitchenIssueCode =
   | "L4_ONLY_EVIDENCE"
   | "FULL_ANALYSIS_WITH_LOW_CONFIDENCE"
   | "PROHIBITED_EVIDENCE_SOURCE"
-  | "EVIDENCE_SOURCE_CONFLICT";
+  | "EVIDENCE_SOURCE_CONFLICT"
+  | "ANSWER_FIRST_OVER_SLA"
+  | "ANSWER_FIRST_REVIEW_REQUIRED"
+  | "INDEXED_ANSWER_FIRST_STALE"
+  | "ANSWER_FIRST_HIGH_PRIORITY_ALERT";
 
 export type Pr6aIssueCode = ContentKitchenIssueCode;
 
@@ -499,6 +507,42 @@ export type FullAnalysisRepairPlan = {
   actions: FullAnalysisRepairAction[];
 };
 
+export type SiteIndexHealthGuard = {
+  maxIndexedAnswerFirstRatio: number;
+  targetFullAnalysisMinutes: number;
+  firstAlertAfterMinutes: number;
+  reviewAfterMinutes: number;
+  thinPageAutoNoindexAfterMinutes: number;
+  highPriorityAlertAfterHours: number;
+  autoNoindexIfOverSLA: boolean;
+  excludeFromRecentIfNoindex: boolean;
+  notificationChannel: "feishu" | "none" | "custom";
+};
+
+export type AnswerFirstSlaStatus =
+  | "not_applicable"
+  | "within_sla"
+  | "upgrade_ready"
+  | "normal_alert_due"
+  | "review_required"
+  | "thin_page_noindex_required"
+  | "high_priority_alert_due";
+
+export type AnswerFirstSlaNotificationLevel = "none" | "normal" | "high_priority";
+
+export type AnswerFirstSlaDecision = {
+  status: AnswerFirstSlaStatus;
+  elapsedMinutes: number;
+  targetFullAnalysisAt: string;
+  firstAlertAt: string;
+  reviewRequiredAt: string;
+  thinPageNoindexAt: string;
+  highPriorityAlertAt: string;
+  notificationLevel: AnswerFirstSlaNotificationLevel;
+  issueCodes: ContentKitchenIssueCode[];
+  policies: ValidationPolicies;
+};
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;
@@ -565,6 +609,7 @@ export type IssuePhaseOwner =
   | "PR6C"
   | "PR7"
   | "PR8"
+  | "PR9"
   | "PR10"
   | "PR11";
 

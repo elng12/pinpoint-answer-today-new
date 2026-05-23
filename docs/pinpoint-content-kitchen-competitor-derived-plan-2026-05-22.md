@@ -2069,6 +2069,17 @@ Acceptance:
 - stale jobs cannot overwrite newer revisions
 - successful enrichment updates `dateModified` only when content substantively changes
 
+PR9 first implementation slice:
+
+- add a local answer-first SLA clock; do not create the durable queue yet
+- keep v0 answer-first pages `noindex + sitemap exclude` while they are still waiting for enrichment
+- return `normal_alert_due` after 30 minutes without a safe full-analysis upgrade
+- return `review_required` after 60 minutes without a safe full-analysis upgrade
+- return `thin_page_noindex_required` for future indexed answer-first pages older than 2 hours without a safe upgrade
+- return `high_priority_alert_due` after 6 hours unresolved
+- return `upgrade_ready` as soon as a safe full-analysis candidate exists
+- do not send Feishu messages in this slice; only return the alert level that a later notification layer can use
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
