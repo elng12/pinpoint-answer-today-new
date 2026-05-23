@@ -5,6 +5,7 @@ import {
   normalizeIdentityMatch,
   normalizeIdentityText,
 } from "./identity";
+import { buildCategoryMembershipEvidenceRecords } from "./dictionary";
 import { validateFullAnalysisEvidence } from "./evidence";
 import { validateFullAnalysisStructure } from "./full-analysis";
 import {
@@ -19,6 +20,7 @@ import {
   CONTENT_KITCHEN_CLUE_COUNT,
   type ContentCandidate,
   type ContentCandidateClue,
+  type ContentKitchenEvidenceRecord,
   type ContentKitchenIssueCode,
   type L1PuzzleClue,
   type L1PuzzleInput,
@@ -133,6 +135,30 @@ function renderedHtmlHasNoindex(renderedHtml: string | undefined): boolean {
 
 function isContentMode(value: unknown): value is ContentCandidate["contentMode"] {
   return value === "answer-first" || value === "full-analysis";
+}
+
+function resolveEvidenceRecords(
+  input: ValidateCandidateInput,
+  candidate: Partial<ContentCandidate>,
+  l1Input: L1PuzzleInput,
+): Partial<ContentKitchenEvidenceRecord>[] | undefined {
+  if (Array.isArray(input.evidenceRecords) && input.evidenceRecords.length > 0) {
+    return input.evidenceRecords;
+  }
+
+  const categoryMembership = input.dictionaries?.categoryMembership;
+  const category = normalizeIdentityText(candidate.answerCategory || candidate.answer);
+  if (!categoryMembership || !category) {
+    return input.evidenceRecords;
+  }
+
+  const dictionaryEvidence = buildCategoryMembershipEvidenceRecords({
+    l1Input,
+    category,
+    dictionary: categoryMembership,
+  });
+
+  return dictionaryEvidence.length > 0 ? dictionaryEvidence : input.evidenceRecords;
 }
 
 export function validateCandidate(input: ValidateCandidateInput): ValidateCandidateOutput {
@@ -348,7 +374,7 @@ export function validateCandidate(input: ValidateCandidateInput): ValidateCandid
     const evidenceIssues = validateFullAnalysisEvidence({
       candidate,
       l1Input: validatedL1,
-      evidenceRecords: input.evidenceRecords,
+      evidenceRecords: resolveEvidenceRecords(input, candidate, validatedL1),
     });
 
     if (evidenceIssues.length > 0) {
