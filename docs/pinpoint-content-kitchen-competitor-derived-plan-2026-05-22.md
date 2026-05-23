@@ -2024,6 +2024,14 @@ PR8 eighth implementation slice:
 - keep local structural issues auto-repairable by rerunning the relevant local generator and assembler
 - do not connect this repair planner to live publishing or LLM generation yet
 
+PR8 ninth implementation slice:
+
+- add a local full-analysis pipeline entrypoint that runs classification, clue-fit generation, reasoning, false-start handling, FAQ generation, assembly, and repair planning in order
+- return a complete slot plan only when every local step passes
+- stop early with a repair plan when reviewed dictionaries are missing, puzzle type is unsupported, a generator fails, or assembly fails
+- keep the pipeline local-only and deterministic; do not connect it to live publishing, background queues, external search, or LLM generation yet
+- cover the happy path, missing dictionary path, and unsupported puzzle type path in the content-kitchen contract test
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.
