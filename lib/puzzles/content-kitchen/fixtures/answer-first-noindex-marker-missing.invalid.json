@@ -1,0 +1,47 @@
+{
+  "name": "answer-first-noindex-marker-missing.invalid",
+  "input": {
+    "renderedHtml": "<main><h1>Types of guitar</h1><p>Bass Classical Electric Acoustic Steel</p></main>",
+    "canonicalConfig": {
+      "siteBaseUrl": "https://example.com",
+      "detailRoutePrefix": "/linkedin-pinpoint-answers",
+      "trailingSlash": true
+    },
+    "l1Input": {
+      "puzzleId": "pinpoint-900-2026-05-23",
+      "puzzleNumber": 900,
+      "logicalGameDate": "2026-05-23",
+      "source": "official_capture",
+      "answer": "Types of guitar",
+      "clues": [
+        { "clueId": "clue-1", "text": "Bass", "position": 1 },
+        { "clueId": "clue-2", "text": "Classical", "position": 2 },
+        { "clueId": "clue-3", "text": "Electric", "position": 3 },
+        { "clueId": "clue-4", "text": "Acoustic", "position": 4 },
+        { "clueId": "clue-5", "text": "Steel", "position": 5 }
+      ]
+    },
+    "candidate": {
+      "puzzleId": "pinpoint-900-2026-05-23",
+      "slug": "pinpoint-answer-900",
+      "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-900/",
+      "contentMode": "answer-first",
+      "revisionId": "rev-noindex-marker-missing",
+      "inputSnapshotHash": "__HASH_L1__",
+      "contentHash": "sha256:content-noindex-marker-missing",
+      "answer": "Types of guitar",
+      "clues": [
+        { "clueId": "clue-1", "text": "Bass", "position": 1 },
+        { "clueId": "clue-2", "text": "Classical", "position": 2 },
+        { "clueId": "clue-3", "text": "Electric", "position": 3 },
+        { "clueId": "clue-4", "text": "Acoustic", "position": 4 },
+        { "clueId": "clue-5", "text": "Steel", "position": 5 }
+      ]
+    }
+  },
+  "expected": {
+    "outcome": "block_publish",
+    "issueCodes": ["NOINDEX_REQUIRED_BUT_MISSING"],
+    "mustCreateArtifact": true
+  }
+}

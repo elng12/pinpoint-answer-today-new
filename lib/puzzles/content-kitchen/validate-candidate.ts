@@ -124,6 +124,11 @@ function renderedHtmlShowsAnswerAndClues(renderedHtml: string | undefined, l1Inp
   });
 }
 
+function renderedHtmlHasNoindex(renderedHtml: string | undefined): boolean {
+  const normalizedHtml = normalizeIdentityMatch(renderedHtml);
+  return Boolean(normalizedHtml && normalizedHtml.includes("noindex"));
+}
+
 function isContentMode(value: unknown): value is ContentCandidate["contentMode"] {
   return value === "answer-first" || value === "full-analysis";
 }
@@ -286,6 +291,22 @@ export function validateCandidate(input: ValidateCandidateInput): ValidateCandid
   }
 
   const preliminaryPolicies = derivePolicies(input);
+  if (
+    preliminaryPolicies.indexPolicy === "noindex" &&
+    normalizeIdentityText(input.renderedHtml) &&
+    !renderedHtmlHasNoindex(input.renderedHtml)
+  ) {
+    return block(
+      makeIssue(
+        "NOINDEX_REQUIRED_BUT_MISSING",
+        "renderedHtml",
+        "Candidate requires noindex, but rendered HTML proof does not contain a noindex marker.",
+        "Add a noindex marker or do not provide rendered HTML proof for this candidate yet.",
+        { candidateRevisionId },
+      ),
+    );
+  }
+
   if (preliminaryPolicies.indexPolicy === "index" && !renderedHtmlShowsAnswerAndClues(input.renderedHtml, validatedL1)) {
     return output("requires_review", REVIEW_POLICIES, [
       makeIssue(

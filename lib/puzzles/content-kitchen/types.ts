@@ -170,3 +170,67 @@ export type ValidateCandidateOutput = {
   policies: ValidationPolicies;
   issues: ValidationIssue[];
 };
+
+export type IssuePhaseOwner =
+  | "PR6A"
+  | "PR6B"
+  | "PR6C"
+  | "PR7"
+  | "PR8"
+  | "PR10"
+  | "PR11";
+
+export type IssueCodeDefinition = {
+  code: ContentKitchenIssueCode;
+  phaseOwner: IssuePhaseOwner;
+  defaultSeverity: ContentKitchenIssueSeverity;
+  defaultOutcome: ValidationOutcome;
+  defaultRequiredAction: RequiredAction;
+  description: string;
+};
+
+export type FixtureExpectation = {
+  name: string;
+  expectedOutcome: ValidationOutcome;
+  expectedPolicies?: Partial<ValidationPolicies>;
+  expectedIssueCodes: ContentKitchenIssueCode[];
+  mustCreateArtifact?: boolean;
+};
+
+export type ReviewArtifactType = "review";
+
+export type ReviewArtifactReviewerAction =
+  | "approve_candidate"
+  | "approve_downgrade"
+  | "reject_candidate"
+  | "request_full_analysis_fix"
+  | "create_fix_task";
+
+export type ReviewArtifactEvidenceSummary = {
+  evidenceRefCount?: number;
+  sourceLevels?: string[];
+  notes?: string[];
+};
+
+export type ReviewArtifactV0 = {
+  artifactVersion: "content-kitchen-review-artifact-v0";
+  artifactId: string;
+  artifactType: ReviewArtifactType;
+  createdAt: string;
+  puzzleId?: string;
+  canonicalUrl?: string;
+  contentMode?: ContentMode;
+  candidateRevisionId?: string;
+  publishedRevisionId?: string;
+  validation: {
+    outcome: ValidationOutcome;
+    policies: ValidationPolicies;
+    issueCodes: ContentKitchenIssueCode[];
+    issues: ValidationIssue[];
+  };
+  issueCodesRequiringDecision: ContentKitchenIssueCode[];
+  recommendedAction: RequiredAction;
+  allowedReviewerActions: ReviewArtifactReviewerAction[];
+  evidenceSummary?: ReviewArtifactEvidenceSummary;
+  renderedPreviewUrl?: string;
+};
