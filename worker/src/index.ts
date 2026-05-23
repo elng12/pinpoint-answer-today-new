@@ -3201,20 +3201,6 @@ function isPrimaryNewSiteBranch(branch: string): boolean {
   return branch.trim() === "main";
 }
 
-function buildNewSiteStatusPayload(
-  siteBaseUrl: string,
-  puzzleDate: string,
-  doc: Doc,
-  puzzleNumber: number,
-  words: string[],
-  detailState: PublishDetailState,
-): JsonRecord {
-  return {
-    ...createQuickPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words),
-    detailState,
-  };
-}
-
 function isSuccessfulEnrichResult(
   result: EnrichPublishResult,
 ): result is EnrichPublishResult & {
@@ -4100,30 +4086,9 @@ async function enrichPublishToSite(
   const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "google/gemini-2.0-flash-001");
   const retryModel = selectModel(env.AUTO_ENRICH_RETRY_MODEL, enrichModel);
   const draftAttempts = parseAttemptCount(env.AUTO_ENRICH_DRAFT_ATTEMPTS, 2, 3);
-  const generatingPayload = buildNewSiteStatusPayload(
-    siteBaseUrl,
-    puzzleDate,
-    doc,
-    puzzleNumber,
-    words,
-    "generating",
-  );
-  const failedPayload = buildNewSiteStatusPayload(
-    siteBaseUrl,
-    puzzleDate,
-    doc,
-    puzzleNumber,
-    words,
-    "failed",
-  );
 
   try {
-    try {
-      await publishToNewSiteGitHub(env, puzzleDate, doc, generatingPayload, puzzleNumber);
-      await options.onDetailStateChange?.("generating");
-    } catch (statusError) {
-      console.warn("[new-site] generating state publish failed (non-fatal):", statusError);
-    }
+    await options.onDetailStateChange?.("generating");
 
     const llmApiKey = String(env.LLM_API_KEY || "").trim();
     const llmBaseUrl = String(env.LLM_BASE_URL || "").trim();
@@ -4347,16 +4312,7 @@ async function enrichPublishToSite(
     };
 
     if (publishDetailState === "published") {
-      const validatedPayload: JsonRecord = {
-        ...enrichedPayload,
-        detailState: "validated",
-      };
-      try {
-        await publishToNewSiteGitHub(env, puzzleDate, doc, validatedPayload, puzzleNumber);
-        await options.onDetailStateChange?.("validated");
-      } catch (statusError) {
-        console.warn("[new-site] validated state publish failed (non-fatal):", statusError);
-      }
+      await options.onDetailStateChange?.("validated");
     }
 
     await publishToNewSiteGitHub(env, puzzleDate, doc, enrichedPayload, puzzleNumber);
@@ -4377,15 +4333,10 @@ async function enrichPublishToSite(
       await options.onDetailStateChange?.("failed", error.message);
       throw error;
     }
-    try {
-      await publishToNewSiteGitHub(env, puzzleDate, doc, failedPayload, puzzleNumber);
-      await options.onDetailStateChange?.(
-        "failed",
-        error instanceof Error ? error.message : String(error),
-      );
-    } catch (statusError) {
-      console.warn("[new-site] failed state publish failed (non-fatal):", statusError);
-    }
+    await options.onDetailStateChange?.(
+      "failed",
+      error instanceof Error ? error.message : String(error),
+    );
     throw error;
   } finally {
     await env.PP_DATA.delete(runningKey);

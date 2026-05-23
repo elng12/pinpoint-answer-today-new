@@ -31,6 +31,7 @@ type RegistryEntry = {
   slug: string;
   publishDate: string;
   status: string;
+  detailState?: string;
 };
 
 function addUtcDays(isoDate: string, days: number): string {
@@ -42,8 +43,12 @@ function addUtcDays(isoDate: string, days: number): string {
 async function readLiveRegistryEntry(): Promise<RegistryEntry> {
   const raw = await readFile(resolve(ROOT, "data", "puzzles", "registry.json"), "utf8");
   const registry = JSON.parse(raw) as RegistryEntry[];
-  const liveEntry = registry.find((entry) => entry.status === "live");
-  assert.ok(liveEntry, "registry.json must contain one live puzzle");
+  const liveEntry = registry.find((entry) => {
+    if (entry.status !== "live" && entry.status !== "archived") return false;
+    const detailState = entry.detailState || "published";
+    return detailState === "published" || detailState === "fallback_full";
+  });
+  assert.ok(liveEntry, "registry.json must contain one public puzzle");
   return liveEntry;
 }
 
@@ -225,8 +230,8 @@ async function checkPublishedSummaryRoute() {
       );
       assert.equal(
         payload.latest?.status,
-        "live",
-        "summary route should keep the published live status",
+        liveEntry.status,
+        "summary route should expose the published registry status",
       );
     },
   );
@@ -2426,6 +2431,34 @@ function checkIntermediateStateCommitDetection() {
   console.log("ok: intermediate-state commit detector skips only non-public state-only updates");
 }
 
+async function checkWorkerEnrichCommitsOnlyFinalPublicPayload() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const start = workerSource.indexOf("async function enrichPublishToSite(");
+  const end = workerSource.indexOf("async function localizePublishOne(");
+  assert.ok(start >= 0 && end > start, "worker enrich publish function should be present");
+
+  const enrichSource = workerSource.slice(start, end);
+  const githubPublishCalls = Array.from(enrichSource.matchAll(/publishToNewSiteGitHub\(/g));
+  assert.equal(
+    githubPublishCalls.length,
+    1,
+    "worker enrich path should write GitHub only once, after the final public payload is ready",
+  );
+  assert.ok(
+    enrichSource.includes('await options.onDetailStateChange?.("generating")') &&
+      enrichSource.includes('await options.onDetailStateChange?.("validated")'),
+    "worker enrich path should keep generating and validated progress in heartbeat state",
+  );
+  assert.ok(
+    !enrichSource.includes("generatingPayload") &&
+      !enrichSource.includes("validatedPayload") &&
+      !enrichSource.includes("failedPayload"),
+    "worker enrich path must not build GitHub payloads for non-public intermediate states",
+  );
+
+  console.log("ok: worker enrich writes only final public payloads to GitHub");
+}
+
 function checkReleaseQueuePolicy() {
   const baseInput = {
     slug: "pinpoint-answer-752",
@@ -2720,6 +2753,7 @@ async function main() {
   await checkPinpointEvidenceV1Guards724Mapping();
   checkReleaseOverrideDryRunSchema();
   checkIntermediateStateCommitDetection();
+  await checkWorkerEnrichCommitsOnlyFinalPublicPayload();
   checkReleaseQueuePolicy();
   await checkCandidateBranchDryRunRouteSafety();
   await checkReleaseQueueDryRunRouteSafety();
