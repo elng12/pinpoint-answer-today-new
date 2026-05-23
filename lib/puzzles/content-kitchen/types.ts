@@ -399,6 +399,29 @@ export type FullAnalysisClueFitGenerationResult =
       issues: FullAnalysisClueFitGenerationIssue[];
     };
 
+export type FullAnalysisReasoningGenerationIssueCode =
+  | "UNSUPPORTED_REASONING_PUZZLE_TYPE"
+  | "MISSING_REASONING_ANSWER_CATEGORY"
+  | "INCOMPLETE_REASONING_CLUE_FIT_COVERAGE"
+  | "MISSING_REASONING_EVIDENCE_REF";
+
+export type FullAnalysisReasoningGenerationIssue = {
+  issueCode: FullAnalysisReasoningGenerationIssueCode;
+  fieldPath: string;
+  message: string;
+  suggestedAction: string;
+};
+
+export type FullAnalysisReasoningGenerationResult =
+  | {
+      ok: true;
+      reasoning: FullAnalysisReasoning;
+    }
+  | {
+      ok: false;
+      issues: FullAnalysisReasoningGenerationIssue[];
+    };
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;

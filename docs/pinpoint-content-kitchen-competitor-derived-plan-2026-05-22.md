@@ -1979,6 +1979,15 @@ PR8 third implementation slice:
 - preserve any safely generated clue-fit rows in failed output for review/debugging
 - do not connect this generator to live publishing or LLM generation yet
 
+PR8 fourth implementation slice:
+
+- add a local reasoning pattern generator for `category_membership`
+- generate `cumulative_confirmation` only after complete 5/5 clue-fit coverage exists
+- carry evidence refs from the clue-fit rows into the reasoning slot
+- fail when puzzle type is unsupported, answer category is missing, clue-fit coverage is incomplete, or evidence refs are missing
+- do not generate turning-point reasoning until a later slice has specific false-start support
+- do not connect this generator to live publishing or LLM generation yet
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.
