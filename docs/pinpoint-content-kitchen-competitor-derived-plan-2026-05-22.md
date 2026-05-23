@@ -2006,6 +2006,15 @@ PR8 sixth implementation slice:
 - keep FAQ output structural only; rendered FAQ/schema checks still belong to validator and later public-page audits
 - do not connect this generator to live publishing or LLM generation yet
 
+PR8 seventh implementation slice:
+
+- add a deterministic assembler for `full-analysis-slot-plan-v0`
+- combine puzzle classification, clue-fit rows, reasoning, false-start, and FAQ slots without changing their content
+- immediately run the full-analysis slot contract validator on the assembled plan
+- fail when answer category is missing or assembled slots do not pass the slot contract
+- return slot-level validation issues with assembly failures for debugging/repair
+- do not connect this assembler to live publishing or LLM generation yet
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.

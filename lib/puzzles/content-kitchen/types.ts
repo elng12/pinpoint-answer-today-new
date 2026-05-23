@@ -454,6 +454,29 @@ export type FullAnalysisFaqGenerationResult =
       issues: FullAnalysisFaqGenerationIssue[];
     };
 
+export type FullAnalysisAssemblyIssueCode =
+  | "MISSING_ASSEMBLY_ANSWER_CATEGORY"
+  | "INVALID_ASSEMBLED_SLOT_PLAN";
+
+export type FullAnalysisAssemblyIssue = {
+  issueCode: FullAnalysisAssemblyIssueCode;
+  fieldPath: string;
+  message: string;
+  suggestedAction: string;
+};
+
+export type FullAnalysisAssemblyResult =
+  | {
+      ok: true;
+      slotPlan: FullAnalysisSlotPlanV0;
+    }
+  | {
+      ok: false;
+      slotPlan: Partial<FullAnalysisSlotPlanV0>;
+      issues: FullAnalysisAssemblyIssue[];
+      slotIssues: FullAnalysisSlotIssue[];
+    };
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;
