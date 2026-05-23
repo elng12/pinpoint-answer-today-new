@@ -28,6 +28,7 @@ import {
   getEnrichmentQueueSkipReason,
   isActiveEnrichmentJob,
   isEnrichmentJobLockExpired,
+  runAnswerFirstEnrichmentWorkerTick,
   scanAnswerFirstEnrichmentQueue,
 } from "../lib/puzzles/content-kitchen/enrichment-job";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
@@ -1838,6 +1839,133 @@ function assertAnswerFirstEnrichmentStateAdvance() {
   assert.equal(deadLetterAdvance.job.deadLetterAt, "2026-05-23T14:01:00.000Z", "deadLetterAt should stay stable");
 }
 
+function assertAnswerFirstEnrichmentWorkerTick() {
+  const dueQueued = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-910-2026-05-23",
+    sourceRevisionId: "rev-answer-first-910",
+    targetRevision: "rev-full-analysis-910",
+    inputSnapshotHash: "sha256:l1-910",
+    answerFirstPublishedAt: "2026-05-23T08:45:00.000Z",
+    now: "2026-05-23T08:55:00.000Z",
+  });
+  const futureQueued = {
+    ...createAnswerFirstEnrichmentJob({
+      puzzleId: "pinpoint-911-2026-05-23",
+      sourceRevisionId: "rev-answer-first-911",
+      targetRevision: "rev-full-analysis-911",
+      inputSnapshotHash: "sha256:l1-911",
+      answerFirstPublishedAt: "2026-05-23T08:45:00.000Z",
+      now: "2026-05-23T08:55:00.000Z",
+    }),
+    nextAttemptAt: "2026-05-23T09:30:00.000Z",
+  };
+  const reviewDue = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-912-2026-05-23",
+    sourceRevisionId: "rev-answer-first-912",
+    targetRevision: "rev-full-analysis-912",
+    inputSnapshotHash: "sha256:l1-912",
+    answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+    now: "2026-05-23T08:05:00.000Z",
+  });
+  const expiredRunning = {
+    ...createAnswerFirstEnrichmentJob({
+      puzzleId: "pinpoint-913-2026-05-23",
+      sourceRevisionId: "rev-answer-first-913",
+      targetRevision: "rev-full-analysis-913",
+      inputSnapshotHash: "sha256:l1-913",
+      answerFirstPublishedAt: "2026-05-23T08:45:00.000Z",
+      now: "2026-05-23T08:55:00.000Z",
+    }),
+    state: "running" as const,
+    attemptCount: 1,
+    lockedBy: "worker-old",
+    lockedUntil: "2026-05-23T09:00:00.000Z",
+  };
+
+  const tick = runAnswerFirstEnrichmentWorkerTick({
+    jobs: [dueQueued, futureQueued, reviewDue, expiredRunning],
+    now: "2026-05-23T09:01:00.000Z",
+    workerId: "worker-tick",
+    lockMinutes: 10,
+    limit: 2,
+  });
+
+  assert.deepEqual(
+    tick.claimedJobs.map((job) => job.puzzleId),
+    ["pinpoint-910-2026-05-23", "pinpoint-913-2026-05-23"],
+    "worker tick should claim due queued jobs and expired-lock running jobs",
+  );
+  assert.deepEqual(
+    tick.claimedJobs.map((job) => [job.state, job.lockedBy, job.lockedUntil]),
+    [
+      ["running", "worker-tick", "2026-05-23T09:11:00.000Z"],
+      ["running", "worker-tick", "2026-05-23T09:11:00.000Z"],
+    ],
+    "worker tick should lock claimed jobs for the requested worker",
+  );
+  assert.deepEqual(
+    tick.claimedJobs.map((job) => [job.puzzleId, job.attemptCount]),
+    [
+      ["pinpoint-910-2026-05-23", 1],
+      ["pinpoint-913-2026-05-23", 2],
+    ],
+    "worker tick should increment attempts when claiming jobs",
+  );
+  assert.deepEqual(
+    tick.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+    [
+      ["pinpoint-911-2026-05-23", "not_due"],
+      ["pinpoint-912-2026-05-23", "terminal_state"],
+    ],
+    "worker tick should report skipped jobs after state advancement",
+  );
+  assert.deepEqual(
+    tick.stateAdvancements.map((result) => [result.job.puzzleId, result.transition]),
+    [
+      ["pinpoint-910-2026-05-23", "unchanged"],
+      ["pinpoint-911-2026-05-23", "unchanged"],
+      ["pinpoint-912-2026-05-23", "review_required"],
+      ["pinpoint-913-2026-05-23", "unchanged"],
+    ],
+    "worker tick should advance states before scanning the queue",
+  );
+
+  const updatedByPuzzleId = new Map(tick.updatedJobs.map((job) => [job.puzzleId, job]));
+  assert.equal(
+    updatedByPuzzleId.get("pinpoint-912-2026-05-23")?.state,
+    "review_required",
+    "worker tick should keep review-required advancement in updated jobs",
+  );
+  assert.equal(
+    updatedByPuzzleId.get("pinpoint-912-2026-05-23")?.lockedBy,
+    undefined,
+    "worker tick should clear locks for review-required jobs",
+  );
+  assert.equal(
+    updatedByPuzzleId.get("pinpoint-910-2026-05-23")?.lockedBy,
+    "worker-tick",
+    "worker tick should return claimed queued jobs in updated jobs",
+  );
+
+  const limitedTick = runAnswerFirstEnrichmentWorkerTick({
+    jobs: [dueQueued, expiredRunning],
+    now: "2026-05-23T09:01:00.000Z",
+    workerId: "worker-tick",
+    lockMinutes: 10,
+    limit: 1,
+  });
+  assert.deepEqual(
+    limitedTick.claimedJobs.map((job) => job.puzzleId),
+    ["pinpoint-910-2026-05-23"],
+    "worker tick limit should cap claimed jobs",
+  );
+  assert.deepEqual(
+    limitedTick.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+    [["pinpoint-913-2026-05-23", "over_limit"]],
+    "worker tick should keep over-limit skip reasons from the queue scanner",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1878,6 +2006,7 @@ async function main() {
   assertAnswerFirstEnrichmentJobRetryAndLock();
   assertAnswerFirstEnrichmentQueueScan();
   assertAnswerFirstEnrichmentStateAdvance();
+  assertAnswerFirstEnrichmentWorkerTick();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
