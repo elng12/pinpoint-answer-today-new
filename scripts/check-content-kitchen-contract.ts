@@ -12,6 +12,7 @@ import {
   readContentKitchenDictionaries,
   readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
+import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { classifyFullAnalysisPuzzleType } from "../lib/puzzles/content-kitchen/puzzle-type-classifier";
@@ -603,6 +604,108 @@ function assertPuzzleTypeClassifier(dictionaries: ContentKitchenDictionaries) {
   );
 }
 
+function assertClueFitGenerator(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const classification = classifyFullAnalysisPuzzleType({
+    l1Input,
+    dictionaries,
+  });
+  const generated = generateFullAnalysisClueFits({
+    l1Input,
+    classification,
+    dictionaries,
+    evidenceIdPrefix: "slot",
+  });
+
+  assert.equal(generated.ok, true, "clue-fit generator should produce slots for reviewed category membership");
+  if (!generated.ok) {
+    throw new Error("expected clue-fit generation to pass");
+  }
+  assert.equal(generated.clueFits.length, 5, "clue-fit generator should produce five clue-fit slots");
+  assert.equal(generated.evidenceRecords.length, 5, "clue-fit generator should produce five evidence records");
+  assert.deepEqual(
+    generated.clueFits.map((clueFit) => clueFit.clueId),
+    l1Input.clues.map((clue) => clue.clueId),
+    "clue-fit generator should preserve L1 clue order",
+  );
+  assert.ok(
+    generated.clueFits.every((clueFit) => clueFit.evidenceRefs.length === 1 && clueFit.whyItSupportsAnswer.includes("Types of guitar")),
+    "generated clue fits should cite one evidence ref and explain the answer category",
+  );
+
+  const generatedSlotPlan: FullAnalysisSlotPlanV0 = {
+    ...makeValidSlotPlan(),
+    clueFits: generated.clueFits,
+  };
+  assert.deepEqual(
+    validateFullAnalysisSlotPlan({ l1Input, slotPlan: generatedSlotPlan }),
+    [],
+    "generated clue-fit slots should satisfy the full-analysis slot contract",
+  );
+
+  const unsupported = generateFullAnalysisClueFits({
+    l1Input,
+    classification: {
+      ...classification,
+      puzzleType: "unknown",
+      answerCategory: undefined,
+    },
+    dictionaries,
+  });
+  assert.equal(unsupported.ok, false, "unknown puzzle type should not generate clue-fit slots");
+  if (unsupported.ok) {
+    throw new Error("expected unsupported clue-fit generation to fail");
+  }
+  assert.deepEqual(
+    unsupported.issues.map((issue) => issue.issueCode),
+    ["UNSUPPORTED_PUZZLE_TYPE"],
+    "unsupported puzzle type should return a clear issue code",
+  );
+
+  const noDictionaries = generateFullAnalysisClueFits({
+    l1Input,
+    classification,
+  });
+  assert.equal(noDictionaries.ok, false, "missing dictionaries should not generate clue-fit slots");
+  if (noDictionaries.ok) {
+    throw new Error("expected missing-dictionary clue-fit generation to fail");
+  }
+  assert.deepEqual(
+    noDictionaries.issues.map((issue) => issue.issueCode),
+    ["MISSING_REVIEWED_DICTIONARIES"],
+    "missing dictionaries should return a clear issue code",
+  );
+
+  const incompleteL1 = {
+    ...l1Input,
+    clues: [
+      { clueId: "clue-1", text: "Bass", position: 1 },
+      { clueId: "clue-2", text: "Classical", position: 2 },
+      { clueId: "clue-3", text: "Electric", position: 3 },
+      { clueId: "clue-4", text: "Acoustic", position: 4 },
+      { clueId: "clue-5", text: "Not in dictionary", position: 5 },
+    ],
+  };
+  const incomplete = generateFullAnalysisClueFits({
+    l1Input: incompleteL1,
+    classification,
+    dictionaries,
+  });
+  assert.equal(incomplete.ok, false, "incomplete dictionary coverage should not pass clue-fit generation");
+  if (incomplete.ok) {
+    throw new Error("expected incomplete clue-fit generation to fail");
+  }
+  assert.equal(incomplete.clueFits.length, 4, "incomplete generation should keep generated safe clue fits");
+  assert.ok(
+    incomplete.issues.some((issue) => issue.issueCode === "MISSING_REVIEWED_CATEGORY_MEMBER"),
+    "incomplete generation should report the missing dictionary member",
+  );
+  assert.ok(
+    incomplete.issues.some((issue) => issue.issueCode === "INCOMPLETE_CLUE_FIT_COVERAGE"),
+    "incomplete generation should report incomplete 5/5 coverage",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -631,6 +734,7 @@ async function main() {
   await assertExamplesAreValidJson();
   const dictionaries = await assertDictionariesAreReadable();
   assertPuzzleTypeClassifier(dictionaries);
+  assertClueFitGenerator(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

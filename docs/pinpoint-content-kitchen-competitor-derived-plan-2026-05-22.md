@@ -1970,6 +1970,15 @@ PR8 second implementation slice:
 - do not infer `phrase_pattern`, `wordplay`, or `entity_set` without dedicated later rules
 - do not change generator, Worker, sitemap, rendering, or publish flow
 
+PR8 third implementation slice:
+
+- add a local clue-fit generator for `category_membership`
+- generate one clue-fit slot per L1 clue only from reviewed dictionary evidence
+- return evidence records next to the generated slots so validation can trace every claim
+- fail when dictionaries are missing, puzzle type is unsupported, answer category is missing, or coverage is not 5/5
+- preserve any safely generated clue-fit rows in failed output for review/debugging
+- do not connect this generator to live publishing or LLM generation yet
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.
