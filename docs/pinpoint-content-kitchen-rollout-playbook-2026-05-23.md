@@ -269,6 +269,16 @@ Before PR7 can support automatic `full-analysis`:
 - dictionary versioning must be recorded
 - affected-page lookup by dictionary version must be possible
 
+PR7 v0 implementation status as of 2026-05-23:
+
+- local reviewed dictionary files exist for `category_membership.json` and `alias_dictionary.json`
+- dictionary readers validate owner, reviewer, review timestamp, review status, version id, normalized keys, source notes, and risk
+- validator can derive L2 category-membership evidence from reviewed local dictionaries
+- dictionary diffs are checked in for current seed versions
+- affected-page lookup has a v0 shape based on published evidence usage records
+
+This does not enable automatic production `full-analysis` publishing yet. Auto-publish still needs production integration, persisted usage records, review ownership, review capacity, rollout owner, cost budget, and canary approval.
+
 Unreviewed dictionary changes:
 
 - may run in shadow

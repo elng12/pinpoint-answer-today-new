@@ -1903,6 +1903,31 @@ Acceptance:
 - competitor pages cannot be used as L2/L3 evidence
 - ambiguous clue fits require deterministic lookup, stronger independent support, or human review
 
+Status as of 2026-05-23:
+
+Implemented in PR7 v0:
+
+- PR #61 added the content-kitchen evidence source validator, PR7 issue codes, L2 allowlist, L4-only handling, prohibited source handling, low-confidence handling, and unresolved-conflict handling.
+- PR #62 added reviewed local JSON dictionaries: `category_membership.json` and `alias_dictionary.json`, plus dictionary readers and validation.
+- PR #63 allowed `validateCandidate` to derive L2 category-membership evidence from reviewed local dictionaries when explicit `evidenceRecords` are not supplied.
+- PR #64 added dictionary diff records so checked-in dictionary changes record version movement, reviewer, risk, and affected-page placeholders.
+- PR #65 added a v0 affected-page lookup shape using published evidence usage records, lookup version, dictionary category, and dictionary member.
+
+Still not implemented in PR7 v0:
+
+- no production publish path reads these dictionaries yet
+- no Worker queue or release flow uses dictionary-derived evidence yet
+- no review UI exists for dictionary diffs or affected pages yet
+- no persistent production store exists for published evidence usage records yet
+- no L3 retrieval/search provider is enabled
+- no automatic `full-analysis` publishing is enabled from this layer alone
+
+Current boundary:
+
+- PR7 v0 proves the local contract and validation behavior.
+- It is safe for fixtures, tests, shadow/manual review work, and later integration.
+- It is not yet permission to turn on production auto-publish.
+
 ### PR8 — Full-Analysis Generator
 
 Goal: replace one-shot article generation with structured slot generation.
