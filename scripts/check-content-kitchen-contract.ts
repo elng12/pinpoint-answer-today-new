@@ -18,9 +18,14 @@ import {
 } from "../lib/puzzles/content-kitchen/dictionary";
 import {
   canApplyEnrichmentJobResult,
+  canClaimAnswerFirstEnrichmentJob,
+  claimAnswerFirstEnrichmentJob,
+  completeAnswerFirstEnrichmentJob,
   createAnswerFirstEnrichmentJob,
+  failAnswerFirstEnrichmentJob,
   findActiveEnrichmentJobForTarget,
   isActiveEnrichmentJob,
+  isEnrichmentJobLockExpired,
 } from "../lib/puzzles/content-kitchen/enrichment-job";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
 import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
@@ -1481,6 +1486,127 @@ function assertAnswerFirstEnrichmentJobContract() {
   );
 }
 
+function assertAnswerFirstEnrichmentJobRetryAndLock() {
+  const job = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-901-2026-05-23",
+    sourceRevisionId: "rev-answer-first-901",
+    targetRevision: "rev-full-analysis-901",
+    inputSnapshotHash: "sha256:l1-901",
+    answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+    now: "2026-05-23T08:05:00.000Z",
+    maxAttempts: 2,
+  });
+
+  assert.equal(
+    canClaimAnswerFirstEnrichmentJob(job, "2026-05-23T08:04:59.000Z"),
+    false,
+    "jobs should not be claimable before nextAttemptAt",
+  );
+  assert.equal(
+    canClaimAnswerFirstEnrichmentJob(job, "2026-05-23T08:05:00.000Z"),
+    true,
+    "queued jobs should be claimable at nextAttemptAt",
+  );
+
+  const firstClaim = claimAnswerFirstEnrichmentJob({
+    job,
+    workerId: "worker-a",
+    now: "2026-05-23T08:05:00.000Z",
+  });
+  assert.ok(firstClaim, "claiming a due queued job should return a running job");
+  assert.equal(firstClaim.state, "running", "claimed jobs should move to running");
+  assert.equal(firstClaim.attemptCount, 1, "claiming a job should increment attempt count");
+  assert.equal(firstClaim.lockedBy, "worker-a", "claimed jobs should store the worker id");
+  assert.equal(firstClaim.lockedUntil, "2026-05-23T08:20:00.000Z", "claimed jobs should default to a 15 minute lock");
+  assert.equal(
+    isEnrichmentJobLockExpired(firstClaim, "2026-05-23T08:19:59.000Z"),
+    false,
+    "fresh locks should not be expired",
+  );
+  assert.equal(
+    isEnrichmentJobLockExpired(firstClaim, "2026-05-23T08:20:00.000Z"),
+    true,
+    "locks should expire at lockedUntil",
+  );
+  assert.equal(
+    claimAnswerFirstEnrichmentJob({
+      job: firstClaim,
+      workerId: "worker-b",
+      now: "2026-05-23T08:10:00.000Z",
+    }),
+    null,
+    "running jobs with a live lock should not be claimed by another worker",
+  );
+
+  const failedOnce = failAnswerFirstEnrichmentJob({
+    job: firstClaim,
+    now: "2026-05-23T08:06:00.000Z",
+    failureReasonCodes: ["ANSWER_FIRST_OVER_SLA"],
+  });
+  assert.equal(failedOnce.state, "queued", "failed jobs with attempts remaining should return to queued");
+  assert.equal(failedOnce.nextAttemptAt, "2026-05-23T08:11:00.000Z", "first exponential retry should wait 5 minutes");
+  assert.equal(failedOnce.lockedBy, undefined, "failed jobs should clear lockedBy");
+  assert.equal(failedOnce.lockedUntil, undefined, "failed jobs should clear lockedUntil");
+  assert.deepEqual(failedOnce.failureReasonCodes, ["ANSWER_FIRST_OVER_SLA"], "failed jobs should keep reason codes");
+
+  const secondClaim = claimAnswerFirstEnrichmentJob({
+    job: failedOnce,
+    workerId: "worker-b",
+    now: "2026-05-23T08:11:00.000Z",
+  });
+  assert.ok(secondClaim, "retryable jobs should be claimable at their next attempt time");
+  assert.equal(secondClaim.attemptCount, 2, "second claim should increment attempt count again");
+
+  const deadLetter = failAnswerFirstEnrichmentJob({
+    job: secondClaim,
+    now: "2026-05-23T08:12:00.000Z",
+    failureReasonCodes: ["ANSWER_FIRST_REVIEW_REQUIRED", "ANSWER_FIRST_OVER_SLA"],
+  });
+  assert.equal(deadLetter.state, "dead_letter", "jobs should enter dead letter after max attempts");
+  assert.equal(deadLetter.deadLetterAt, "2026-05-23T08:12:00.000Z", "dead-letter jobs should store deadLetterAt");
+  assert.equal(deadLetter.nextAttemptAt, "2026-05-23T08:12:00.000Z", "dead-letter jobs should not schedule another retry");
+  assert.deepEqual(
+    deadLetter.failureReasonCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "dead-letter jobs should dedupe failure reason codes",
+  );
+  assert.equal(
+    canClaimAnswerFirstEnrichmentJob(deadLetter, "2026-05-23T08:13:00.000Z"),
+    false,
+    "dead-letter jobs should not be claimable",
+  );
+
+  const expiredClaim = claimAnswerFirstEnrichmentJob({
+    job: {
+      ...job,
+      state: "running",
+      attemptCount: 1,
+      lockedBy: "worker-a",
+      lockedUntil: "2026-05-23T08:20:00.000Z",
+    },
+    workerId: "worker-b",
+    now: "2026-05-23T08:21:00.000Z",
+    lockMinutes: 10,
+  });
+  assert.ok(expiredClaim, "running jobs with expired locks should be claimable");
+  assert.equal(expiredClaim.lockedBy, "worker-b", "expired locks should be replaced by the new worker");
+  assert.equal(expiredClaim.lockedUntil, "2026-05-23T08:31:00.000Z", "custom lock minutes should be applied");
+  assert.equal(expiredClaim.attemptCount, 2, "expired-lock claims should count as a new attempt");
+
+  const completed = completeAnswerFirstEnrichmentJob({
+    job: expiredClaim,
+    now: "2026-05-23T08:22:00.000Z",
+  });
+  assert.equal(completed.state, "completed", "completed jobs should move to completed");
+  assert.equal(completed.lockedBy, undefined, "completed jobs should clear lockedBy");
+  assert.equal(completed.lockedUntil, undefined, "completed jobs should clear lockedUntil");
+  assert.equal(
+    canClaimAnswerFirstEnrichmentJob(completed, "2026-05-23T08:23:00.000Z"),
+    false,
+    "completed jobs should not be claimable",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1518,6 +1644,7 @@ async function main() {
   assertLocalPipelineSmoke(dictionaries);
   assertAnswerFirstSlaClock();
   assertAnswerFirstEnrichmentJobContract();
+  assertAnswerFirstEnrichmentJobRetryAndLock();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

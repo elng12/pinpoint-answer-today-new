@@ -2,6 +2,7 @@ import { DEFAULT_ANSWER_FIRST_SLA_CONFIG } from "./answer-first-sla";
 import { normalizeIdentityMatch, normalizeIdentityText } from "./identity";
 import type {
   AnswerFirstEnrichmentJob,
+  ContentKitchenIssueCode,
   EnrichmentJobState,
   SiteIndexHealthGuard,
 } from "./types";
@@ -25,11 +26,32 @@ export type CanApplyEnrichmentJobResultInput = {
   resultTargetRevision: string;
 };
 
+export type ClaimAnswerFirstEnrichmentJobInput = {
+  job: AnswerFirstEnrichmentJob;
+  workerId: string;
+  now: string;
+  lockMinutes?: number;
+};
+
+export type FailAnswerFirstEnrichmentJobInput = {
+  job: AnswerFirstEnrichmentJob;
+  now: string;
+  failureReasonCodes: ContentKitchenIssueCode[];
+};
+
+export type CompleteAnswerFirstEnrichmentJobInput = {
+  job: AnswerFirstEnrichmentJob;
+  now: string;
+};
+
 const ACTIVE_ENRICHMENT_JOB_STATES = new Set<EnrichmentJobState>([
   "queued",
   "running",
   "review_required",
 ]);
+const DEFAULT_ENRICHMENT_LOCK_MINUTES = 15;
+const BASE_RETRY_DELAY_MINUTES = 5;
+const MAX_RETRY_DELAY_MINUTES = 60;
 
 function parseTimestamp(value: string, fieldPath: string): number {
   const timestamp = Date.parse(value);
@@ -43,6 +65,10 @@ function addMinutes(timestamp: number, minutes: number): string {
   return new Date(timestamp + minutes * 60_000).toISOString();
 }
 
+function addMinutesNumber(timestamp: number, minutes: number): number {
+  return timestamp + minutes * 60_000;
+}
+
 function safeId(value: string): string {
   return normalizeIdentityMatch(value).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "unknown";
 }
@@ -53,6 +79,31 @@ function requireText(value: string, fieldPath: string): string {
     throw new Error(`${fieldPath} is required`);
   }
   return normalized;
+}
+
+function clearLock(job: AnswerFirstEnrichmentJob): AnswerFirstEnrichmentJob {
+  const { lockedBy: _lockedBy, lockedUntil: _lockedUntil, ...rest } = job;
+  return rest;
+}
+
+function mergeFailureReasonCodes(
+  existing: ContentKitchenIssueCode[],
+  incoming: ContentKitchenIssueCode[],
+): ContentKitchenIssueCode[] {
+  return [...new Set([...existing, ...incoming])];
+}
+
+export function calculateEnrichmentRetryDelayMinutes(
+  job: Pick<AnswerFirstEnrichmentJob, "attemptCount" | "backoffStrategy">,
+): number {
+  if (job.backoffStrategy === "fixed") {
+    return BASE_RETRY_DELAY_MINUTES;
+  }
+
+  return Math.min(
+    MAX_RETRY_DELAY_MINUTES,
+    BASE_RETRY_DELAY_MINUTES * 2 ** Math.max(0, job.attemptCount - 1),
+  );
 }
 
 export function buildEnrichmentJobIdempotencyKey(input: Pick<
@@ -106,6 +157,97 @@ export function createAnswerFirstEnrichmentJob(
 
 export function isActiveEnrichmentJob(job: Pick<AnswerFirstEnrichmentJob, "state">): boolean {
   return ACTIVE_ENRICHMENT_JOB_STATES.has(job.state);
+}
+
+export function isEnrichmentJobLockExpired(
+  job: Pick<AnswerFirstEnrichmentJob, "lockedUntil">,
+  now: string,
+): boolean {
+  if (!job.lockedUntil) {
+    return true;
+  }
+
+  return parseTimestamp(job.lockedUntil, "lockedUntil") <= parseTimestamp(now, "now");
+}
+
+export function canClaimAnswerFirstEnrichmentJob(
+  job: AnswerFirstEnrichmentJob,
+  now: string,
+): boolean {
+  if (job.attemptCount >= job.maxAttempts) {
+    return false;
+  }
+
+  if (job.state === "queued") {
+    return parseTimestamp(job.nextAttemptAt, "nextAttemptAt") <= parseTimestamp(now, "now");
+  }
+
+  if (job.state === "running") {
+    return isEnrichmentJobLockExpired(job, now);
+  }
+
+  return false;
+}
+
+export function claimAnswerFirstEnrichmentJob(
+  input: ClaimAnswerFirstEnrichmentJobInput,
+): AnswerFirstEnrichmentJob | null {
+  if (!canClaimAnswerFirstEnrichmentJob(input.job, input.now)) {
+    return null;
+  }
+
+  const now = parseTimestamp(input.now, "now");
+  const workerId = requireText(input.workerId, "workerId");
+  const lockMinutes = input.lockMinutes ?? DEFAULT_ENRICHMENT_LOCK_MINUTES;
+
+  return {
+    ...input.job,
+    state: "running",
+    updatedAt: new Date(now).toISOString(),
+    nextAttemptAt: new Date(now).toISOString(),
+    attemptCount: input.job.attemptCount + 1,
+    lockedBy: workerId,
+    lockedUntil: new Date(addMinutesNumber(now, lockMinutes)).toISOString(),
+  };
+}
+
+export function failAnswerFirstEnrichmentJob(
+  input: FailAnswerFirstEnrichmentJobInput,
+): AnswerFirstEnrichmentJob {
+  const now = parseTimestamp(input.now, "now");
+  const failed = {
+    ...clearLock(input.job),
+    updatedAt: new Date(now).toISOString(),
+    failureReasonCodes: mergeFailureReasonCodes(input.job.failureReasonCodes, input.failureReasonCodes),
+  };
+
+  if (input.job.attemptCount >= input.job.maxAttempts) {
+    return {
+      ...failed,
+      state: "dead_letter",
+      nextAttemptAt: new Date(now).toISOString(),
+      deadLetterAt: new Date(now).toISOString(),
+    };
+  }
+
+  const delayMinutes = calculateEnrichmentRetryDelayMinutes(input.job);
+  return {
+    ...failed,
+    state: "queued",
+    nextAttemptAt: new Date(addMinutesNumber(now, delayMinutes)).toISOString(),
+  };
+}
+
+export function completeAnswerFirstEnrichmentJob(
+  input: CompleteAnswerFirstEnrichmentJobInput,
+): AnswerFirstEnrichmentJob {
+  const now = new Date(parseTimestamp(input.now, "now")).toISOString();
+  return {
+    ...clearLock(input.job),
+    state: "completed",
+    updatedAt: now,
+    nextAttemptAt: now,
+  };
 }
 
 export function findActiveEnrichmentJobForTarget(
