@@ -158,6 +158,61 @@ export type ContentKitchenEvidenceRecord = {
   notes?: string;
 };
 
+export type DictionaryReviewStatus = "draft" | "shadow" | "reviewed";
+export type DictionaryRisk = "low" | "medium" | "high";
+
+export type ContentKitchenDictionaryBase = {
+  dictionaryName: string;
+  schemaVersion: string;
+  versionId: string;
+  owner: string;
+  reviewedBy: string;
+  reviewedAt: string;
+  reviewStatus: DictionaryReviewStatus;
+};
+
+export type CategoryMembershipEntry = {
+  category: string;
+  normalizedCategory: string;
+  member: string;
+  normalizedMember: string;
+  sourceNote: string;
+  reviewer: string;
+  risk: DictionaryRisk;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CategoryMembershipDictionary = ContentKitchenDictionaryBase & {
+  dictionaryName: "category_membership";
+  schemaVersion: "content-kitchen-category-membership-v0";
+  entries: CategoryMembershipEntry[];
+};
+
+export type AliasDictionaryEntry = {
+  aliasType: "answer" | "category" | "clue" | "phrase";
+  canonicalValue: string;
+  normalizedCanonicalValue: string;
+  alias: string;
+  normalizedAlias: string;
+  sourceNote: string;
+  reviewer: string;
+  risk: DictionaryRisk;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type AliasDictionary = ContentKitchenDictionaryBase & {
+  dictionaryName: "alias_dictionary";
+  schemaVersion: "content-kitchen-alias-dictionary-v0";
+  entries: AliasDictionaryEntry[];
+};
+
+export type ContentKitchenDictionaries = {
+  categoryMembership: CategoryMembershipDictionary;
+  aliasDictionary: AliasDictionary;
+};
+
 export type FaqCandidate = {
   question: string;
   answer: string;

@@ -2,6 +2,12 @@ import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  buildCategoryMembershipEvidenceRecords,
+  lookupAliases,
+  lookupCategoryMembership,
+  readContentKitchenDictionaries,
+} from "../lib/puzzles/content-kitchen/dictionary";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import {
   CONTENT_KITCHEN_ISSUE_REGISTRY,
@@ -13,6 +19,7 @@ import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzle
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import type {
   ContentKitchenIssueCode,
+  L1PuzzleInput,
   ValidateCandidateInput,
   ValidationOutcome,
   ValidationPolicies,
@@ -182,6 +189,68 @@ async function assertExamplesAreValidJson() {
   }
 }
 
+async function assertDictionariesAreReadable() {
+  const dictionaries = await readContentKitchenDictionaries(ROOT);
+
+  assert.equal(
+    dictionaries.categoryMembership.versionId,
+    "category_membership_2026_05_23",
+    "category membership dictionary version should be stable",
+  );
+  assert.equal(
+    dictionaries.aliasDictionary.versionId,
+    "alias_dictionary_2026_05_23",
+    "alias dictionary version should be stable",
+  );
+
+  for (const member of ["Bass", "Classical", "Electric", "Acoustic", "Steel"]) {
+    assert.ok(
+      lookupCategoryMembership(dictionaries.categoryMembership, {
+        category: "Types of guitar",
+        member,
+      }),
+      `category_membership should include ${member} as a Types of guitar member`,
+    );
+  }
+
+  const categoryAliases = lookupAliases(dictionaries.aliasDictionary, {
+    alias: "guitar types",
+    aliasType: "category",
+  });
+  assert.equal(categoryAliases.length, 1, "alias_dictionary should resolve category aliases");
+  assert.equal(categoryAliases[0]?.canonicalValue, "Types of guitar", "category alias should point to canonical value");
+
+  const fixture = await readFixture("full-analysis-cumulative-confirmation.valid.json");
+  const hydratedInput = hydrateFixtureInput(fixture.input);
+  assert.ok(hydratedInput.l1Input, "dictionary evidence fixture should include L1 input");
+  assert.ok(hydratedInput.candidate, "dictionary evidence fixture should include a candidate");
+  const l1Input = hydratedInput.l1Input as L1PuzzleInput;
+
+  const evidenceRecords = buildCategoryMembershipEvidenceRecords({
+    l1Input,
+    category: "Types of guitar",
+    dictionary: dictionaries.categoryMembership,
+    evidenceIdPrefix: "ev",
+  });
+
+  assert.equal(evidenceRecords.length, 5, "category membership dictionary should produce five L2 evidence records");
+  assert.ok(
+    evidenceRecords.every((record) => {
+      return record.sourceLevel === "L2" &&
+        record.sourceType === "category_membership" &&
+        record.supportKind === "fit" &&
+        record.lookupVersion === dictionaries.categoryMembership.versionId;
+    }),
+    "dictionary-built evidence records should be reviewed L2 fit evidence",
+  );
+
+  const actual = validateCandidate({
+    ...hydratedInput,
+    evidenceRecords,
+  });
+  assert.equal(actual.outcome, "pass_full_analysis", "dictionary-built evidence should support full-analysis validation");
+}
+
 function checkHashExcludesVolatileFields() {
   const base = {
     puzzleId: "pinpoint-900-2026-05-23",
@@ -248,6 +317,7 @@ async function main() {
   assertPr6P0Coverage(fixtures);
   assertPr7Coverage(fixtures);
   await assertExamplesAreValidJson();
+  await assertDictionariesAreReadable();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

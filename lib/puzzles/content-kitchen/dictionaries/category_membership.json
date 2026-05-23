@@ -1,0 +1,66 @@
+{
+  "dictionaryName": "category_membership",
+  "schemaVersion": "content-kitchen-category-membership-v0",
+  "versionId": "category_membership_2026_05_23",
+  "owner": "pinpoint-editor",
+  "reviewedBy": "pinpoint-editor",
+  "reviewedAt": "2026-05-23T00:00:00.000Z",
+  "reviewStatus": "reviewed",
+  "entries": [
+    {
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Bass",
+      "normalizedMember": "bass",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low",
+      "createdAt": "2026-05-23T00:00:00.000Z",
+      "updatedAt": "2026-05-23T00:00:00.000Z"
+    },
+    {
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Classical",
+      "normalizedMember": "classical",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low",
+      "createdAt": "2026-05-23T00:00:00.000Z",
+      "updatedAt": "2026-05-23T00:00:00.000Z"
+    },
+    {
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Electric",
+      "normalizedMember": "electric",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low",
+      "createdAt": "2026-05-23T00:00:00.000Z",
+      "updatedAt": "2026-05-23T00:00:00.000Z"
+    },
+    {
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Acoustic",
+      "normalizedMember": "acoustic",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low",
+      "createdAt": "2026-05-23T00:00:00.000Z",
+      "updatedAt": "2026-05-23T00:00:00.000Z"
+    },
+    {
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Steel",
+      "normalizedMember": "steel",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low",
+      "createdAt": "2026-05-23T00:00:00.000Z",
+      "updatedAt": "2026-05-23T00:00:00.000Z"
+    }
+  ]
+}
