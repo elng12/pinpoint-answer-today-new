@@ -1950,6 +1950,17 @@ Acceptance:
 - false starts are omitted when unsupported
 - competitor-style synthetic fixtures produce readable pages without template collapse
 
+PR8 first implementation slice:
+
+- add only the `full-analysis-slot-plan-v0` contract and local validator
+- do not change the live generator, Worker, sitemap, rendering, or publish flow
+- require exactly five clue-fit slots, one per L1 clue, each with evidence refs
+- require a supported reasoning slot before deterministic assembly can happen
+- require `falseStart.status = "omitted"` when no supported false start exists
+- allow `falseStart.status = "included"` only when rejectedTheory and whyRejected are both present
+- require two to four FAQ slots before a full-analysis slot plan can be assembled
+- leave puzzle type classifier, slot generators, deterministic assembler, and repair loop for later PR8 slices
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.

@@ -284,6 +284,68 @@ export type FaqCandidate = {
   answer: string;
 };
 
+export type FullAnalysisPuzzleType =
+  | "category_membership"
+  | "phrase_pattern"
+  | "wordplay"
+  | "entity_set"
+  | "unknown";
+
+export type FullAnalysisSlotInput = {
+  l1Input: L1PuzzleInput;
+  answerCategory?: string;
+  evidenceRecords?: Partial<ContentKitchenEvidenceRecord>[];
+};
+
+export type FullAnalysisClueFitSlot = FullAnalysisClueRowCandidate;
+
+export type FullAnalysisFalseStartSlot =
+  | {
+      status: "omitted";
+      rejectedTheory?: string;
+      whyRejected?: string;
+      evidenceRefs?: string[];
+    }
+  | {
+      status: "included";
+      rejectedTheory: string;
+      whyRejected: string;
+      evidenceRefs?: string[];
+    };
+
+export type FullAnalysisFaqSlot = FaqCandidate & {
+  evidenceRefs?: string[];
+};
+
+export type FullAnalysisSlotPlanV0 = {
+  slotVersion: "full-analysis-slot-plan-v0";
+  puzzleType: FullAnalysisPuzzleType;
+  answerCategory?: string;
+  clueFits: FullAnalysisClueFitSlot[];
+  reasoning: FullAnalysisReasoning;
+  falseStart: FullAnalysisFalseStartSlot;
+  faqItems: FullAnalysisFaqSlot[];
+};
+
+export type FullAnalysisSlotIssueCode =
+  | "INVALID_SLOT_PLAN_VERSION"
+  | "MISSING_SLOT_PUZZLE_TYPE"
+  | "MISSING_SLOT_CLUE_FIT"
+  | "DUPLICATE_SLOT_CLUE_FIT"
+  | "UNKNOWN_SLOT_CLUE"
+  | "MISSING_SLOT_EVIDENCE_REF"
+  | "MISSING_SLOT_REASONING"
+  | "UNSUPPORTED_SLOT_REASONING"
+  | "INVALID_FALSE_START_SLOT"
+  | "MISSING_SLOT_FAQ";
+
+export type FullAnalysisSlotIssue = {
+  issueCode: FullAnalysisSlotIssueCode;
+  fieldPath: string;
+  message: string;
+  suggestedAction: string;
+};
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;

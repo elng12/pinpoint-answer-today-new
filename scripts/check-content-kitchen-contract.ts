@@ -12,6 +12,7 @@ import {
   readContentKitchenDictionaries,
   readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
+import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import {
   CONTENT_KITCHEN_ISSUE_REGISTRY,
@@ -23,6 +24,8 @@ import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzle
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import type {
   ContentKitchenIssueCode,
+  FullAnalysisSlotIssueCode,
+  FullAnalysisSlotPlanV0,
   L1PuzzleInput,
   ValidateCandidateInput,
   ValidationOutcome,
@@ -364,6 +367,151 @@ function checkHashExcludesVolatileFields() {
   );
 }
 
+function makeSlotContractL1Input(): L1PuzzleInput {
+  return {
+    puzzleId: "pinpoint-900-2026-05-23",
+    puzzleNumber: 900,
+    logicalGameDate: "2026-05-23",
+    source: "official_capture",
+    answer: "Types of guitar",
+    clues: [
+      { clueId: "clue-1", text: "Bass", position: 1 },
+      { clueId: "clue-2", text: "Classical", position: 2 },
+      { clueId: "clue-3", text: "Electric", position: 3 },
+      { clueId: "clue-4", text: "Acoustic", position: 4 },
+      { clueId: "clue-5", text: "Steel", position: 5 },
+    ],
+  };
+}
+
+function makeValidSlotPlan(): FullAnalysisSlotPlanV0 {
+  const l1Input = makeSlotContractL1Input();
+
+  return {
+    slotVersion: "full-analysis-slot-plan-v0",
+    puzzleType: "category_membership",
+    answerCategory: "Types of guitar",
+    clueFits: l1Input.clues.map((clue) => ({
+      clueId: clue.clueId,
+      clueText: clue.text,
+      fit: `${clue.text} is a type of guitar.`,
+      whyItSupportsAnswer: `${clue.text} supports the shared category Types of guitar.`,
+      evidenceRefs: [`ev-${clue.clueId}`],
+    })),
+    reasoning: {
+      pattern: "cumulative_confirmation",
+      clueIds: ["clue-1", "clue-2", "clue-3"],
+      text: "Bass, Classical, and Electric all work as named types of guitar, so the other clues confirm the same category.",
+      evidenceRefs: ["ev-clue-1", "ev-clue-2", "ev-clue-3"],
+    },
+    falseStart: {
+      status: "omitted",
+    },
+    faqItems: [
+      {
+        question: "Why is Bass a fit?",
+        answer: "Bass is a type of guitar in this clue set.",
+        evidenceRefs: ["ev-clue-1"],
+      },
+      {
+        question: "Why is Electric a fit?",
+        answer: "Electric is another type of guitar in the same category.",
+        evidenceRefs: ["ev-clue-3"],
+      },
+    ],
+  };
+}
+
+function getSlotIssueCodes(slotPlan: Partial<FullAnalysisSlotPlanV0>): FullAnalysisSlotIssueCode[] {
+  return validateFullAnalysisSlotPlan({
+    l1Input: makeSlotContractL1Input(),
+    slotPlan,
+  }).map((issue) => issue.issueCode);
+}
+
+function assertSlotIssueIncluded(
+  name: string,
+  slotPlan: Partial<FullAnalysisSlotPlanV0>,
+  expectedIssueCode: FullAnalysisSlotIssueCode,
+) {
+  assert.ok(
+    getSlotIssueCodes(slotPlan).includes(expectedIssueCode),
+    `${name}: expected slot issue ${expectedIssueCode}`,
+  );
+}
+
+function assertFullAnalysisSlotContract() {
+  const validPlan = makeValidSlotPlan();
+  assert.deepEqual(getSlotIssueCodes(validPlan), [], "valid full-analysis slot plan should pass");
+
+  const includedFalseStart: FullAnalysisSlotPlanV0 = {
+    ...validPlan,
+    falseStart: {
+      status: "included",
+      rejectedTheory: "The clues might be instrument parts.",
+      whyRejected: "The clues fit better as whole guitar types, not parts.",
+      evidenceRefs: ["ev-clue-1"],
+    },
+  };
+  assert.deepEqual(getSlotIssueCodes(includedFalseStart), [], "included false-start slot should pass when complete");
+
+  const duplicateClueFit: FullAnalysisSlotPlanV0 = {
+    ...validPlan,
+    clueFits: validPlan.clueFits.map((clueFit, index) => {
+      if (index === 4) {
+        return {
+          ...clueFit,
+          clueId: "clue-1",
+        };
+      }
+
+      return clueFit;
+    }),
+  };
+  assertSlotIssueIncluded("duplicate clue fit", duplicateClueFit, "DUPLICATE_SLOT_CLUE_FIT");
+
+  const unknownClueFit: FullAnalysisSlotPlanV0 = {
+    ...validPlan,
+    clueFits: validPlan.clueFits.map((clueFit, index) => {
+      if (index === 0) {
+        return {
+          ...clueFit,
+          clueId: "not-a-real-clue",
+        };
+      }
+
+      return clueFit;
+    }),
+  };
+  assertSlotIssueIncluded("unknown clue fit", unknownClueFit, "UNKNOWN_SLOT_CLUE");
+
+  assertSlotIssueIncluded(
+    "weak cumulative reasoning",
+    {
+      ...validPlan,
+      reasoning: {
+        pattern: "cumulative_confirmation",
+        clueIds: ["clue-1"],
+        text: "Only one clue is not enough to support cumulative reasoning.",
+      },
+    },
+    "UNSUPPORTED_SLOT_REASONING",
+  );
+
+  assertSlotIssueIncluded(
+    "incomplete false start",
+    {
+      ...validPlan,
+      falseStart: {
+        status: "included",
+        rejectedTheory: "The answer might be instrument parts.",
+        whyRejected: "",
+      },
+    },
+    "INVALID_FALSE_START_SLOT",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -385,6 +533,7 @@ async function main() {
   }
 
   checkHashExcludesVolatileFields();
+  assertFullAnalysisSlotContract();
   assertIssueRegistryIsStable();
   assertPr6P0Coverage(fixtures);
   assertPr7Coverage(fixtures);
