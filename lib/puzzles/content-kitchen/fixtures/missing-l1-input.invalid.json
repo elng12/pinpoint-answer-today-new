@@ -1,0 +1,33 @@
+{
+  "name": "missing-l1-input.invalid",
+  "input": {
+    "canonicalConfig": {
+      "siteBaseUrl": "https://example.com",
+      "detailRoutePrefix": "/linkedin-pinpoint-answers",
+      "trailingSlash": true
+    },
+    "l1Input": null,
+    "candidate": {
+      "puzzleId": "pinpoint-900-2026-05-23",
+      "slug": "pinpoint-answer-900",
+      "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-900/",
+      "contentMode": "answer-first",
+      "revisionId": "rev-missing-l1",
+      "inputSnapshotHash": "sha256:any",
+      "contentHash": "sha256:content",
+      "answer": "Types of guitar",
+      "clues": []
+    }
+  },
+  "expected": {
+    "outcome": "block_publish",
+    "policies": {
+      "indexPolicy": "block_publish",
+      "sitemapPolicy": "exclude",
+      "schemaPolicy": "none",
+      "internalLinkPolicy": "hidden_from_recent",
+      "requiredAction": "block_publish"
+    },
+    "issueCodes": ["MISSING_L1_INPUT"]
+  }
+}

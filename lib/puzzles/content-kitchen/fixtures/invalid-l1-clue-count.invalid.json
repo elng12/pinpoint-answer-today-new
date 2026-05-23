@@ -1,0 +1,28 @@
+{
+  "name": "invalid-l1-clue-count.invalid",
+  "input": {
+    "canonicalConfig": {
+      "siteBaseUrl": "https://example.com",
+      "detailRoutePrefix": "/linkedin-pinpoint-answers",
+      "trailingSlash": true
+    },
+    "l1Input": {
+      "puzzleId": "pinpoint-900-2026-05-23",
+      "puzzleNumber": 900,
+      "logicalGameDate": "2026-05-23",
+      "source": "official_capture",
+      "answer": "Types of guitar",
+      "clues": [
+        { "clueId": "clue-1", "text": "Bass", "position": 1 },
+        { "clueId": "clue-2", "text": "Classical", "position": 2 },
+        { "clueId": "clue-3", "text": "Electric", "position": 3 },
+        { "clueId": "clue-4", "text": "Acoustic", "position": 4 }
+      ]
+    },
+    "candidate": null
+  },
+  "expected": {
+    "outcome": "block_publish",
+    "issueCodes": ["INVALID_L1_INPUT"]
+  }
+}
