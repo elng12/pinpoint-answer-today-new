@@ -232,6 +232,7 @@ export type ContentCandidate = {
   inputSnapshotHash: string;
   contentHash: string;
   answer: string;
+  answerCategory?: string;
   clues: ContentCandidateClue[];
   summary?: string;
   clueRows?: FullAnalysisClueRowCandidate[];
@@ -268,6 +269,7 @@ export type ValidateCandidateInput = {
   allowAnswerFirstIndex?: boolean;
   existingRoutes?: string[];
   evidenceRecords?: Partial<ContentKitchenEvidenceRecord>[];
+  dictionaries?: ContentKitchenDictionaries;
 };
 
 export type ValidateCandidateOutput = {

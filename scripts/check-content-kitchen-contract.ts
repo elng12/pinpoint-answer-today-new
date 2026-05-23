@@ -249,6 +249,21 @@ async function assertDictionariesAreReadable() {
     evidenceRecords,
   });
   assert.equal(actual.outcome, "pass_full_analysis", "dictionary-built evidence should support full-analysis validation");
+
+  const dictionaryDerived = validateCandidate({
+    ...hydratedInput,
+    candidate: {
+      ...hydratedInput.candidate,
+      answerCategory: "Types of guitar",
+    },
+    evidenceRecords: undefined,
+    dictionaries,
+  });
+  assert.equal(
+    dictionaryDerived.outcome,
+    "pass_full_analysis",
+    "validator should derive category-membership evidence from reviewed dictionaries",
+  );
 }
 
 function checkHashExcludesVolatileFields() {

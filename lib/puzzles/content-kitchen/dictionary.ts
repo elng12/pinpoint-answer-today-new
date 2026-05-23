@@ -21,6 +21,8 @@ type CategoryEvidenceInput = {
   evidenceIdPrefix?: string;
 };
 
+export const DEFAULT_CATEGORY_MEMBERSHIP_EVIDENCE_ID_PREFIX = "ev";
+
 const DICTIONARY_REVIEW_STATUSES = new Set<DictionaryReviewStatus>(["draft", "shadow", "reviewed"]);
 const DICTIONARY_RISKS = new Set<DictionaryRisk>(["low", "medium", "high"]);
 const ALIAS_TYPES = new Set<AliasDictionaryEntry["aliasType"]>(["answer", "category", "clue", "phrase"]);
@@ -279,7 +281,7 @@ export function lookupAliases(
 
 export function buildCategoryMembershipEvidenceRecords(input: CategoryEvidenceInput): ContentKitchenEvidenceRecord[] {
   const category = normalizeIdentityText(input.category);
-  const evidenceIdPrefix = normalizeIdentityText(input.evidenceIdPrefix) || "l2-category";
+  const evidenceIdPrefix = normalizeIdentityText(input.evidenceIdPrefix) || DEFAULT_CATEGORY_MEMBERSHIP_EVIDENCE_ID_PREFIX;
 
   return input.l1Input.clues.flatMap((clue) => {
     const entry = lookupCategoryMembership(input.dictionary, {
