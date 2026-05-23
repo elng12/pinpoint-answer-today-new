@@ -17,6 +17,7 @@ import {
   readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
 import {
+  advanceAnswerFirstEnrichmentJobState,
   canApplyEnrichmentJobResult,
   canClaimAnswerFirstEnrichmentJob,
   claimAnswerFirstEnrichmentJob,
@@ -1746,6 +1747,97 @@ function assertAnswerFirstEnrichmentQueueScan() {
   );
 }
 
+function assertAnswerFirstEnrichmentStateAdvance() {
+  const job = createAnswerFirstEnrichmentJob({
+    puzzleId: "pinpoint-909-2026-05-23",
+    sourceRevisionId: "rev-answer-first-909",
+    targetRevision: "rev-full-analysis-909",
+    inputSnapshotHash: "sha256:l1-909",
+    answerFirstPublishedAt: "2026-05-23T08:00:00.000Z",
+    now: "2026-05-23T08:05:00.000Z",
+  });
+
+  const fresh = advanceAnswerFirstEnrichmentJobState({
+    job,
+    now: "2026-05-23T08:29:00.000Z",
+  });
+  assert.equal(fresh.transition, "unchanged", "fresh jobs should not advance");
+  assert.equal(fresh.job.state, "queued", "fresh jobs should stay queued");
+  assert.deepEqual(fresh.issueCodesAdded, [], "fresh jobs should not add issue codes");
+
+  const overSla = advanceAnswerFirstEnrichmentJobState({
+    job,
+    now: "2026-05-23T08:31:00.000Z",
+  });
+  assert.equal(overSla.transition, "marked_over_sla", "jobs past 30 minutes should be marked over SLA");
+  assert.equal(overSla.job.state, "queued", "over-SLA jobs should keep their current queue state before review time");
+  assert.equal(overSla.job.updatedAt, "2026-05-23T08:31:00.000Z", "over-SLA jobs should update updatedAt");
+  assert.deepEqual(overSla.issueCodesAdded, ["ANSWER_FIRST_OVER_SLA"], "over-SLA jobs should add one issue code");
+  assert.deepEqual(overSla.job.failureReasonCodes, ["ANSWER_FIRST_OVER_SLA"], "over-SLA jobs should keep failure reasons");
+
+  const runningJob = {
+    ...job,
+    state: "running" as const,
+    attemptCount: 1,
+    lockedBy: "worker-a",
+    lockedUntil: "2026-05-23T09:10:00.000Z",
+  };
+  const reviewRequired = advanceAnswerFirstEnrichmentJobState({
+    job: runningJob,
+    now: "2026-05-23T09:01:00.000Z",
+  });
+  assert.equal(reviewRequired.transition, "review_required", "jobs past 60 minutes should enter review");
+  assert.equal(reviewRequired.job.state, "review_required", "review-stage jobs should use review_required state");
+  assert.equal(reviewRequired.job.lockedBy, undefined, "review-stage jobs should clear lockedBy");
+  assert.equal(reviewRequired.job.lockedUntil, undefined, "review-stage jobs should clear lockedUntil");
+  assert.deepEqual(
+    reviewRequired.job.failureReasonCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "review-stage jobs should keep over-SLA and review reason codes",
+  );
+  assert.deepEqual(
+    reviewRequired.issueCodesAdded,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "review-stage jobs should report newly added issue codes",
+  );
+
+  const highPriority = advanceAnswerFirstEnrichmentJobState({
+    job: reviewRequired.job,
+    now: "2026-05-23T14:01:00.000Z",
+  });
+  assert.equal(highPriority.transition, "dead_letter", "jobs past six hours should enter dead letter");
+  assert.equal(highPriority.job.state, "dead_letter", "six-hour unresolved jobs should use dead_letter state");
+  assert.equal(highPriority.job.deadLetterAt, "2026-05-23T14:01:00.000Z", "dead-letter jobs should set deadLetterAt");
+  assert.deepEqual(
+    highPriority.job.failureReasonCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED", "ANSWER_FIRST_HIGH_PRIORITY_ALERT"],
+    "dead-letter jobs should keep all SLA reason codes",
+  );
+  assert.deepEqual(
+    highPriority.issueCodesAdded,
+    ["ANSWER_FIRST_HIGH_PRIORITY_ALERT"],
+    "dead-letter transition should report only newly added issue codes",
+  );
+
+  const completed = completeAnswerFirstEnrichmentJob({
+    job,
+    now: "2026-05-23T08:20:00.000Z",
+  });
+  const completedAdvance = advanceAnswerFirstEnrichmentJobState({
+    job: completed,
+    now: "2026-05-23T14:01:00.000Z",
+  });
+  assert.equal(completedAdvance.transition, "unchanged", "completed jobs should not be advanced by SLA");
+  assert.equal(completedAdvance.job.state, "completed", "completed jobs should stay completed");
+
+  const deadLetterAdvance = advanceAnswerFirstEnrichmentJobState({
+    job: highPriority.job,
+    now: "2026-05-23T15:00:00.000Z",
+  });
+  assert.equal(deadLetterAdvance.transition, "unchanged", "dead-letter jobs should not be advanced again");
+  assert.equal(deadLetterAdvance.job.deadLetterAt, "2026-05-23T14:01:00.000Z", "deadLetterAt should stay stable");
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1785,6 +1877,7 @@ async function main() {
   assertAnswerFirstEnrichmentJobContract();
   assertAnswerFirstEnrichmentJobRetryAndLock();
   assertAnswerFirstEnrichmentQueueScan();
+  assertAnswerFirstEnrichmentStateAdvance();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
