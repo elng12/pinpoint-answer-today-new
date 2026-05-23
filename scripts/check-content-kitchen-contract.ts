@@ -15,6 +15,7 @@ import {
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
 import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
 import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/false-start-generator";
+import { assembleFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-assembler";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { classifyFullAnalysisPuzzleType } from "../lib/puzzles/content-kitchen/puzzle-type-classifier";
@@ -953,6 +954,109 @@ function assertFaqGenerator(dictionaries: ContentKitchenDictionaries) {
   );
 }
 
+function assertDeterministicAssembler(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const classification = classifyFullAnalysisPuzzleType({
+    l1Input,
+    dictionaries,
+  });
+  const generatedFits = generateFullAnalysisClueFits({
+    l1Input,
+    classification,
+    dictionaries,
+    evidenceIdPrefix: "slot",
+  });
+  assert.equal(generatedFits.ok, true, "assembler setup should produce clue fits");
+  if (!generatedFits.ok) {
+    throw new Error("expected clue-fit generation to pass before assembly");
+  }
+
+  const generatedReasoning = generateFullAnalysisReasoning({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(generatedReasoning.ok, true, "assembler setup should produce reasoning");
+  if (!generatedReasoning.ok) {
+    throw new Error("expected reasoning generation to pass before assembly");
+  }
+
+  const generatedFalseStart = generateFullAnalysisFalseStart();
+  const generatedFaq = generateFullAnalysisFaqItems({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(generatedFaq.ok, true, "assembler setup should produce FAQ items");
+  if (!generatedFaq.ok) {
+    throw new Error("expected FAQ generation to pass before assembly");
+  }
+
+  const assembled = assembleFullAnalysisSlotPlan({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+    reasoning: generatedReasoning.reasoning,
+    falseStart: generatedFalseStart.falseStart,
+    faqItems: generatedFaq.faqItems,
+  });
+  assert.equal(assembled.ok, true, "assembler should produce a valid full-analysis slot plan");
+  if (!assembled.ok) {
+    throw new Error("expected assembly to pass");
+  }
+  assert.equal(assembled.slotPlan.slotVersion, "full-analysis-slot-plan-v0", "assembler should set slot plan version");
+  assert.equal(assembled.slotPlan.puzzleType, "category_membership", "assembler should preserve puzzle type");
+  assert.equal(assembled.slotPlan.answerCategory, "Types of guitar", "assembler should preserve answer category");
+  assert.equal(assembled.slotPlan.clueFits.length, 5, "assembler should preserve five clue fits");
+  assert.equal(assembled.slotPlan.faqItems.length, 3, "assembler should preserve generated FAQ items");
+  assert.deepEqual(
+    validateFullAnalysisSlotPlan({ l1Input, slotPlan: assembled.slotPlan }),
+    [],
+    "assembled slot plan should satisfy the full-analysis slot contract",
+  );
+
+  const missingCategory = assembleFullAnalysisSlotPlan({
+    l1Input,
+    classification: {
+      ...classification,
+      answerCategory: undefined,
+    },
+    clueFits: generatedFits.clueFits,
+    reasoning: generatedReasoning.reasoning,
+    falseStart: generatedFalseStart.falseStart,
+    faqItems: generatedFaq.faqItems,
+  });
+  assert.equal(missingCategory.ok, false, "assembler should fail without answer category");
+  if (missingCategory.ok) {
+    throw new Error("expected missing-category assembly to fail");
+  }
+  assert.ok(
+    missingCategory.issues.some((issue) => issue.issueCode === "MISSING_ASSEMBLY_ANSWER_CATEGORY"),
+    "missing-category assembly should return a clear issue code",
+  );
+
+  const invalidPlan = assembleFullAnalysisSlotPlan({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits.slice(0, 4),
+    reasoning: generatedReasoning.reasoning,
+    falseStart: generatedFalseStart.falseStart,
+    faqItems: generatedFaq.faqItems,
+  });
+  assert.equal(invalidPlan.ok, false, "assembler should fail when upstream slots break the slot contract");
+  if (invalidPlan.ok) {
+    throw new Error("expected invalid assembly to fail");
+  }
+  assert.ok(
+    invalidPlan.issues.some((issue) => issue.issueCode === "INVALID_ASSEMBLED_SLOT_PLAN"),
+    "invalid assembly should return a clear assembly issue code",
+  );
+  assert.ok(
+    invalidPlan.slotIssues.some((issue) => issue.issueCode === "MISSING_SLOT_CLUE_FIT"),
+    "invalid assembly should return slot contract issues for debugging",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -985,6 +1089,7 @@ async function main() {
   assertReasoningPatternGenerator(dictionaries);
   assertFalseStartGenerator();
   assertFaqGenerator(dictionaries);
+  assertDeterministicAssembler(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
