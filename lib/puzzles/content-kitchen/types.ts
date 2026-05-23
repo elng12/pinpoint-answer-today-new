@@ -430,6 +430,30 @@ export type FullAnalysisFalseStartGenerationResult = {
   reasonCodes: FullAnalysisFalseStartGenerationReasonCode[];
 };
 
+export type FullAnalysisFaqGenerationIssueCode =
+  | "UNSUPPORTED_FAQ_PUZZLE_TYPE"
+  | "MISSING_FAQ_ANSWER_CATEGORY"
+  | "INCOMPLETE_FAQ_CLUE_FIT_COVERAGE"
+  | "MISSING_FAQ_EVIDENCE_REF";
+
+export type FullAnalysisFaqGenerationIssue = {
+  issueCode: FullAnalysisFaqGenerationIssueCode;
+  fieldPath: string;
+  message: string;
+  suggestedAction: string;
+};
+
+export type FullAnalysisFaqGenerationResult =
+  | {
+      ok: true;
+      faqItems: FullAnalysisFaqSlot[];
+    }
+  | {
+      ok: false;
+      faqItems: FullAnalysisFaqSlot[];
+      issues: FullAnalysisFaqGenerationIssue[];
+    };
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;

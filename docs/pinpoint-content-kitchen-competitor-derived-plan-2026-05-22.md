@@ -1997,6 +1997,15 @@ PR8 fifth implementation slice:
 - do not generate `falseStart.status = "included"` until a later slice defines supported false-start evidence
 - do not connect this generator to live publishing or LLM generation yet
 
+PR8 sixth implementation slice:
+
+- add a local FAQ generator for `category_membership`
+- generate two to four FAQ items only after complete 5/5 clue-fit coverage exists
+- carry evidence refs from clue-fit rows into the FAQ items
+- fail when puzzle type is unsupported, answer category is missing, clue-fit coverage is incomplete, or evidence refs are missing
+- keep FAQ output structural only; rendered FAQ/schema checks still belong to validator and later public-page audits
+- do not connect this generator to live publishing or LLM generation yet
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.
