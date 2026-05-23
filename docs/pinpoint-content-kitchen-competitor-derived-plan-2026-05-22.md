@@ -1961,6 +1961,15 @@ PR8 first implementation slice:
 - require two to four FAQ slots before a full-analysis slot plan can be assembled
 - leave puzzle type classifier, slot generators, deterministic assembler, and repair loop for later PR8 slices
 
+PR8 second implementation slice:
+
+- add a conservative puzzle type classifier before generation
+- classify as `category_membership` only when reviewed local dictionaries can map all five L1 clues to one category
+- mark direct answer/category matches and reviewed answer aliases as high confidence
+- keep partial, missing, or ambiguous dictionary coverage as `unknown`
+- do not infer `phrase_pattern`, `wordplay`, or `entity_set` without dedicated later rules
+- do not change generator, Worker, sitemap, rendering, or publish flow
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.

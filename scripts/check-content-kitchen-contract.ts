@@ -14,6 +14,7 @@ import {
 } from "../lib/puzzles/content-kitchen/dictionary";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
+import { classifyFullAnalysisPuzzleType } from "../lib/puzzles/content-kitchen/puzzle-type-classifier";
 import {
   CONTENT_KITCHEN_ISSUE_REGISTRY,
   getIssueDefinition,
@@ -23,6 +24,7 @@ import {
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import type {
+  ContentKitchenDictionaries,
   ContentKitchenIssueCode,
   FullAnalysisSlotIssueCode,
   FullAnalysisSlotPlanV0,
@@ -196,7 +198,7 @@ async function assertExamplesAreValidJson() {
   }
 }
 
-async function assertDictionariesAreReadable() {
+async function assertDictionariesAreReadable(): Promise<ContentKitchenDictionaries> {
   const dictionaries = await readContentKitchenDictionaries(ROOT);
   const dictionaryDiffs = await readContentKitchenDictionaryDiffs(ROOT);
 
@@ -324,6 +326,8 @@ async function assertDictionariesAreReadable() {
     "pass_full_analysis",
     "validator should derive category-membership evidence from reviewed dictionaries",
   );
+
+  return dictionaries;
 }
 
 function checkHashExcludesVolatileFields() {
@@ -512,6 +516,93 @@ function assertFullAnalysisSlotContract() {
   );
 }
 
+function assertPuzzleTypeClassifier(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const direct = classifyFullAnalysisPuzzleType({
+    l1Input,
+    dictionaries,
+  });
+
+  assert.equal(direct.puzzleType, "category_membership", "classifier should detect reviewed category membership");
+  assert.equal(direct.confidence, "high", "direct answer/category match should be high confidence");
+  assert.equal(direct.answerCategory, "Types of guitar", "classifier should return the selected category");
+  assert.equal(direct.matchedClueCount, 5, "classifier should match all five clues");
+  assert.deepEqual(direct.unmatchedClueIds, [], "classifier should have no unmatched clues for full coverage");
+  assert.ok(
+    direct.reasonCodes.includes("ANSWER_CATEGORY_HINT_MATCHED"),
+    "classifier should explain direct answer/category match",
+  );
+
+  const alias = classifyFullAnalysisPuzzleType({
+    l1Input: {
+      ...l1Input,
+      answer: "Kinds of guitar",
+    },
+    dictionaries,
+  });
+  assert.equal(alias.puzzleType, "category_membership", "classifier should use reviewed answer aliases");
+  assert.equal(alias.confidence, "high", "reviewed answer alias should be high confidence");
+  assert.ok(
+    alias.reasonCodes.includes("ANSWER_ALIAS_MATCHED_CATEGORY"),
+    "classifier should explain answer alias match",
+  );
+
+  const partial = classifyFullAnalysisPuzzleType({
+    l1Input: {
+      ...l1Input,
+      answer: "Unknown category",
+      clues: [
+        { clueId: "clue-1", text: "Bass", position: 1 },
+        { clueId: "clue-2", text: "Alpha", position: 2 },
+        { clueId: "clue-3", text: "Bravo", position: 3 },
+        { clueId: "clue-4", text: "Charlie", position: 4 },
+        { clueId: "clue-5", text: "Delta", position: 5 },
+      ],
+    },
+    dictionaries,
+  });
+  assert.equal(partial.puzzleType, "unknown", "partial category coverage should stay unknown");
+  assert.equal(partial.confidence, "low", "partial category coverage should stay low confidence");
+  assert.equal(partial.matchedClueCount, 1, "partial category coverage should report best match count");
+  assert.ok(
+    partial.reasonCodes.includes("PARTIAL_REVIEWED_CATEGORY_COVERAGE"),
+    "classifier should explain partial category coverage",
+  );
+
+  const noDictionary = classifyFullAnalysisPuzzleType({ l1Input });
+  assert.equal(noDictionary.puzzleType, "unknown", "classifier should stay unknown without dictionaries");
+  assert.ok(
+    noDictionary.reasonCodes.includes("NO_REVIEWED_CATEGORY_COVERAGE"),
+    "classifier should explain missing reviewed coverage",
+  );
+
+  const ambiguous = classifyFullAnalysisPuzzleType({
+    l1Input: {
+      ...l1Input,
+      answer: "Shared set",
+    },
+    dictionaries: {
+      ...dictionaries,
+      categoryMembership: {
+        ...dictionaries.categoryMembership,
+        entries: [
+          ...dictionaries.categoryMembership.entries,
+          ...dictionaries.categoryMembership.entries.map((entry) => ({
+            ...entry,
+            category: "Instrument labels",
+            normalizedCategory: "instrument labels",
+          })),
+        ],
+      },
+    },
+  });
+  assert.equal(ambiguous.puzzleType, "unknown", "ambiguous full category coverage should stay unknown");
+  assert.ok(
+    ambiguous.reasonCodes.includes("AMBIGUOUS_REVIEWED_CATEGORY_COVERAGE"),
+    "classifier should explain ambiguous reviewed coverage",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -538,7 +629,8 @@ async function main() {
   assertPr6P0Coverage(fixtures);
   assertPr7Coverage(fixtures);
   await assertExamplesAreValidJson();
-  await assertDictionariesAreReadable();
+  const dictionaries = await assertDictionariesAreReadable();
+  assertPuzzleTypeClassifier(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

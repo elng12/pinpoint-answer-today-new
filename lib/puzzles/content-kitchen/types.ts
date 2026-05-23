@@ -291,6 +291,32 @@ export type FullAnalysisPuzzleType =
   | "entity_set"
   | "unknown";
 
+export type FullAnalysisPuzzleTypeClassificationReason =
+  | "ANSWER_CATEGORY_HINT_MATCHED"
+  | "ANSWER_ALIAS_MATCHED_CATEGORY"
+  | "ALL_CLUES_MATCH_REVIEWED_CATEGORY"
+  | "PARTIAL_REVIEWED_CATEGORY_COVERAGE"
+  | "AMBIGUOUS_REVIEWED_CATEGORY_COVERAGE"
+  | "NO_REVIEWED_CATEGORY_COVERAGE";
+
+export type FullAnalysisPuzzleTypeCandidateCategory = {
+  category: string;
+  matchedClueCount: number;
+  matchedClueIds: string[];
+  lookupVersion: string;
+};
+
+export type FullAnalysisPuzzleTypeClassification = {
+  puzzleType: FullAnalysisPuzzleType;
+  confidence: EvidenceConfidence;
+  answerCategory?: string;
+  matchedClueCount: number;
+  matchedClueIds: string[];
+  unmatchedClueIds: string[];
+  candidateCategories: FullAnalysisPuzzleTypeCandidateCategory[];
+  reasonCodes: FullAnalysisPuzzleTypeClassificationReason[];
+};
+
 export type FullAnalysisSlotInput = {
   l1Input: L1PuzzleInput;
   answerCategory?: string;
