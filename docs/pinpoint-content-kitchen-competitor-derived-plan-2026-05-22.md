@@ -2109,6 +2109,16 @@ PR9 fourth implementation slice:
 - skip jobs that have reached `maxAttempts`
 - support a batch limit and mark otherwise-runnable overflow jobs as `over_limit`
 
+PR9 fifth implementation slice:
+
+- add a local job state advancer; do not attach it to durable storage, Worker cron, or Feishu notifications yet
+- keep fresh jobs unchanged before the 30-minute target
+- mark jobs past 30 minutes with `ANSWER_FIRST_OVER_SLA` while preserving the current queue state
+- move unresolved jobs past 60 minutes to `review_required` and clear locks
+- move unresolved jobs past 6 hours to `dead_letter` and set `deadLetterAt`
+- preserve completed and already-dead-letter jobs unchanged
+- return the issue codes newly added by the advancement step so later artifacts/notifications can explain the change
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

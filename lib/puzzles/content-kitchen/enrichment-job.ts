@@ -44,6 +44,23 @@ export type CompleteAnswerFirstEnrichmentJobInput = {
   now: string;
 };
 
+export type AdvanceAnswerFirstEnrichmentJobStateInput = {
+  job: AnswerFirstEnrichmentJob;
+  now: string;
+};
+
+export type EnrichmentJobStateAdvanceTransition =
+  | "unchanged"
+  | "marked_over_sla"
+  | "review_required"
+  | "dead_letter";
+
+export type AdvanceAnswerFirstEnrichmentJobStateResult = {
+  job: AnswerFirstEnrichmentJob;
+  transition: EnrichmentJobStateAdvanceTransition;
+  issueCodesAdded: ContentKitchenIssueCode[];
+};
+
 export type EnrichmentQueueSkipReason =
   | "not_due"
   | "lock_active"
@@ -112,6 +129,24 @@ function mergeFailureReasonCodes(
   incoming: ContentKitchenIssueCode[],
 ): ContentKitchenIssueCode[] {
   return [...new Set([...existing, ...incoming])];
+}
+
+function addedFailureReasonCodes(
+  before: ContentKitchenIssueCode[],
+  after: ContentKitchenIssueCode[],
+): ContentKitchenIssueCode[] {
+  const beforeSet = new Set(before);
+  return after.filter((issueCode) => !beforeSet.has(issueCode));
+}
+
+function withFailureReasonCodes(
+  job: AnswerFirstEnrichmentJob,
+  issueCodes: ContentKitchenIssueCode[],
+): AnswerFirstEnrichmentJob {
+  return {
+    ...job,
+    failureReasonCodes: mergeFailureReasonCodes(job.failureReasonCodes, issueCodes),
+  };
 }
 
 export function calculateEnrichmentRetryDelayMinutes(
@@ -256,6 +291,80 @@ export function completeAnswerFirstEnrichmentJob(
     state: "completed",
     updatedAt: now,
     nextAttemptAt: now,
+  };
+}
+
+export function advanceAnswerFirstEnrichmentJobState(
+  input: AdvanceAnswerFirstEnrichmentJobStateInput,
+): AdvanceAnswerFirstEnrichmentJobStateResult {
+  const now = parseTimestamp(input.now, "now");
+  const nowIso = new Date(now).toISOString();
+
+  if (input.job.state === "completed" || input.job.state === "dead_letter") {
+    return {
+      job: input.job,
+      transition: "unchanged",
+      issueCodesAdded: [],
+    };
+  }
+
+  if (parseTimestamp(input.job.highPriorityAlertAt, "highPriorityAlertAt") <= now) {
+    const withReasons = withFailureReasonCodes(input.job, [
+      "ANSWER_FIRST_OVER_SLA",
+      "ANSWER_FIRST_REVIEW_REQUIRED",
+      "ANSWER_FIRST_HIGH_PRIORITY_ALERT",
+    ]);
+    const advanced = {
+      ...clearLock(withReasons),
+      state: "dead_letter" as const,
+      updatedAt: nowIso,
+      nextAttemptAt: nowIso,
+      deadLetterAt: nowIso,
+    };
+
+    return {
+      job: advanced,
+      transition: "dead_letter",
+      issueCodesAdded: addedFailureReasonCodes(input.job.failureReasonCodes, advanced.failureReasonCodes),
+    };
+  }
+
+  if (parseTimestamp(input.job.reviewRequiredAt, "reviewRequiredAt") <= now) {
+    const withReasons = withFailureReasonCodes(input.job, [
+      "ANSWER_FIRST_OVER_SLA",
+      "ANSWER_FIRST_REVIEW_REQUIRED",
+    ]);
+    const advanced = {
+      ...clearLock(withReasons),
+      state: "review_required" as const,
+      updatedAt: nowIso,
+      nextAttemptAt: nowIso,
+    };
+
+    return {
+      job: advanced,
+      transition: "review_required",
+      issueCodesAdded: addedFailureReasonCodes(input.job.failureReasonCodes, advanced.failureReasonCodes),
+    };
+  }
+
+  if (parseTimestamp(input.job.targetFullAnalysisAt, "targetFullAnalysisAt") <= now) {
+    const advanced = {
+      ...withFailureReasonCodes(input.job, ["ANSWER_FIRST_OVER_SLA"]),
+      updatedAt: nowIso,
+    };
+
+    return {
+      job: advanced,
+      transition: "marked_over_sla",
+      issueCodesAdded: addedFailureReasonCodes(input.job.failureReasonCodes, advanced.failureReasonCodes),
+    };
+  }
+
+  return {
+    job: input.job,
+    transition: "unchanged",
+    issueCodesAdded: [],
   };
 }
 
