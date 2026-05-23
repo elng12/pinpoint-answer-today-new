@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "content-kitchen-dictionary-diff-v0",
+  "dictionaryName": "alias_dictionary",
+  "fromVersion": "none",
+  "toVersion": "alias_dictionary_2026_05_23",
+  "createdAt": "2026-05-23T00:00:00.000Z",
+  "reviewedBy": "pinpoint-editor",
+  "reviewedAt": "2026-05-23T00:00:00.000Z",
+  "changes": [
+    {
+      "type": "add",
+      "aliasType": "category",
+      "canonicalValue": "Types of guitar",
+      "normalizedCanonicalValue": "types of guitar",
+      "alias": "guitar types",
+      "normalizedAlias": "guitar types",
+      "sourceNote": "Common wording alias for the seeded PR7 fixture category.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    },
+    {
+      "type": "add",
+      "aliasType": "category",
+      "canonicalValue": "Types of guitar",
+      "normalizedCanonicalValue": "types of guitar",
+      "alias": "guitar family",
+      "normalizedAlias": "guitar family",
+      "sourceNote": "Common wording alias for the seeded PR7 fixture category.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    },
+    {
+      "type": "add",
+      "aliasType": "answer",
+      "canonicalValue": "Types of guitar",
+      "normalizedCanonicalValue": "types of guitar",
+      "alias": "Kinds of guitar",
+      "normalizedAlias": "kinds of guitar",
+      "sourceNote": "Common wording alias for the seeded PR7 fixture answer.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    }
+  ],
+  "affectedPublishedPages": []
+}

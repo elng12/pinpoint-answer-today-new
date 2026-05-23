@@ -4,9 +4,11 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   buildCategoryMembershipEvidenceRecords,
+  dictionaryDiffRequiresReviewArtifacts,
   lookupAliases,
   lookupCategoryMembership,
   readContentKitchenDictionaries,
+  readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import {
@@ -191,6 +193,7 @@ async function assertExamplesAreValidJson() {
 
 async function assertDictionariesAreReadable() {
   const dictionaries = await readContentKitchenDictionaries(ROOT);
+  const dictionaryDiffs = await readContentKitchenDictionaryDiffs(ROOT);
 
   assert.equal(
     dictionaries.categoryMembership.versionId,
@@ -201,6 +204,27 @@ async function assertDictionariesAreReadable() {
     dictionaries.aliasDictionary.versionId,
     "alias_dictionary_2026_05_23",
     "alias dictionary version should be stable",
+  );
+  assert.ok(dictionaryDiffs.length >= 2, "dictionary diffs should record checked-in dictionary changes");
+
+  const categoryDiff = dictionaryDiffs.find((diff) => diff.toVersion === dictionaries.categoryMembership.versionId);
+  assert.ok(categoryDiff, "category membership dictionary should have a matching diff record");
+  assert.equal(categoryDiff.dictionaryName, "category_membership", "category diff should identify its dictionary");
+  assert.equal(categoryDiff.changes.length, 5, "category seed diff should record five additions");
+  assert.equal(
+    dictionaryDiffRequiresReviewArtifacts(categoryDiff),
+    false,
+    "low-risk seed category diff should not require review artifacts",
+  );
+
+  const aliasDiff = dictionaryDiffs.find((diff) => diff.toVersion === dictionaries.aliasDictionary.versionId);
+  assert.ok(aliasDiff, "alias dictionary should have a matching diff record");
+  assert.equal(aliasDiff.dictionaryName, "alias_dictionary", "alias diff should identify its dictionary");
+  assert.equal(aliasDiff.changes.length, 3, "alias seed diff should record three additions");
+  assert.equal(
+    dictionaryDiffRequiresReviewArtifacts(aliasDiff),
+    false,
+    "low-risk seed alias diff should not require review artifacts",
   );
 
   for (const member of ["Bass", "Classical", "Electric", "Acoustic", "Steel"]) {

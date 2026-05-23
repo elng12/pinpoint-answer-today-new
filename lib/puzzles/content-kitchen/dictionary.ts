@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { normalizeIdentityMatch, normalizeIdentityText } from "./identity";
 import type {
@@ -8,7 +8,12 @@ import type {
   CategoryMembershipEntry,
   ContentKitchenDictionaries,
   ContentKitchenDictionaryBase,
+  ContentKitchenDictionaryDiff,
   ContentKitchenEvidenceRecord,
+  DictionaryChangeType,
+  DictionaryDiffAffectedPage,
+  DictionaryDiffChange,
+  DictionaryName,
   DictionaryReviewStatus,
   DictionaryRisk,
   L1PuzzleInput,
@@ -25,6 +30,8 @@ export const DEFAULT_CATEGORY_MEMBERSHIP_EVIDENCE_ID_PREFIX = "ev";
 
 const DICTIONARY_REVIEW_STATUSES = new Set<DictionaryReviewStatus>(["draft", "shadow", "reviewed"]);
 const DICTIONARY_RISKS = new Set<DictionaryRisk>(["low", "medium", "high"]);
+const DICTIONARY_NAMES = new Set<DictionaryName>(["category_membership", "alias_dictionary"]);
+const DICTIONARY_CHANGE_TYPES = new Set<DictionaryChangeType>(["add", "update", "delete"]);
 const ALIAS_TYPES = new Set<AliasDictionaryEntry["aliasType"]>(["answer", "category", "clue", "phrase"]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -181,6 +188,127 @@ function validateAliasEntry(input: unknown, index: number): AliasDictionaryEntry
   };
 }
 
+function validateDictionaryName(value: unknown, fieldPath: string): DictionaryName {
+  const dictionaryName = requireString(value, fieldPath) as DictionaryName;
+  if (!DICTIONARY_NAMES.has(dictionaryName)) {
+    throw new Error(`${fieldPath} is unsupported`);
+  }
+  return dictionaryName;
+}
+
+function validateChangeType(value: unknown, fieldPath: string): DictionaryChangeType {
+  const type = requireString(value, fieldPath) as DictionaryChangeType;
+  if (!DICTIONARY_CHANGE_TYPES.has(type)) {
+    throw new Error(`${fieldPath} is unsupported`);
+  }
+  return type;
+}
+
+function optionalString(value: unknown): string | undefined {
+  const normalized = normalizeIdentityText(value);
+  return normalized || undefined;
+}
+
+function validateCategoryDiffFields(input: Record<string, unknown>, fieldPath: string) {
+  const category = requireString(input.category, `${fieldPath}.category`);
+  const normalizedCategory = requireString(input.normalizedCategory, `${fieldPath}.normalizedCategory`);
+  const member = requireString(input.member, `${fieldPath}.member`);
+  const normalizedMember = requireString(input.normalizedMember, `${fieldPath}.normalizedMember`);
+
+  if (normalizedCategory !== normalizeDictionaryValue(category)) {
+    throw new Error(`${fieldPath}.normalizedCategory must match normalized category`);
+  }
+
+  if (normalizedMember !== normalizeDictionaryValue(member)) {
+    throw new Error(`${fieldPath}.normalizedMember must match normalized member`);
+  }
+
+  return {
+    category,
+    normalizedCategory,
+    member,
+    normalizedMember,
+  };
+}
+
+function validateAliasDiffFields(input: Record<string, unknown>, fieldPath: string) {
+  const aliasType = requireString(input.aliasType, `${fieldPath}.aliasType`) as AliasDictionaryEntry["aliasType"];
+  if (!ALIAS_TYPES.has(aliasType)) {
+    throw new Error(`${fieldPath}.aliasType is unsupported`);
+  }
+
+  const canonicalValue = requireString(input.canonicalValue, `${fieldPath}.canonicalValue`);
+  const normalizedCanonicalValue = requireString(input.normalizedCanonicalValue, `${fieldPath}.normalizedCanonicalValue`);
+  const alias = requireString(input.alias, `${fieldPath}.alias`);
+  const normalizedAlias = requireString(input.normalizedAlias, `${fieldPath}.normalizedAlias`);
+
+  if (normalizedCanonicalValue !== normalizeDictionaryValue(canonicalValue)) {
+    throw new Error(`${fieldPath}.normalizedCanonicalValue must match normalized canonicalValue`);
+  }
+
+  if (normalizedAlias !== normalizeDictionaryValue(alias)) {
+    throw new Error(`${fieldPath}.normalizedAlias must match normalized alias`);
+  }
+
+  return {
+    aliasType,
+    canonicalValue,
+    normalizedCanonicalValue,
+    alias,
+    normalizedAlias,
+  };
+}
+
+function validateDictionaryDiffChange(
+  input: unknown,
+  index: number,
+  dictionaryName: DictionaryName,
+): DictionaryDiffChange {
+  if (!isRecord(input)) {
+    throw new Error(`changes[${index}] must be an object`);
+  }
+
+  const fieldPath = `changes[${index}]`;
+  const base = {
+    type: validateChangeType(input.type, `${fieldPath}.type`),
+    sourceNote: requireString(input.sourceNote, `${fieldPath}.sourceNote`),
+    reviewer: requireString(input.reviewer, `${fieldPath}.reviewer`),
+    risk: validateRisk(input.risk, `${fieldPath}.risk`),
+  };
+
+  if (dictionaryName === "category_membership") {
+    return {
+      ...base,
+      ...validateCategoryDiffFields(input, fieldPath),
+    };
+  }
+
+  return {
+    ...base,
+    ...validateAliasDiffFields(input, fieldPath),
+  };
+}
+
+function validateAffectedPage(input: unknown, index: number): DictionaryDiffAffectedPage {
+  if (!isRecord(input)) {
+    throw new Error(`affectedPublishedPages[${index}] must be an object`);
+  }
+
+  const fieldPath = `affectedPublishedPages[${index}]`;
+  if (typeof input.needsReview !== "boolean") {
+    throw new Error(`${fieldPath}.needsReview must be boolean`);
+  }
+
+  return {
+    slug: requireString(input.slug, `${fieldPath}.slug`),
+    ...(optionalString(input.canonicalUrl) ? { canonicalUrl: optionalString(input.canonicalUrl) } : {}),
+    ...(optionalString(input.revisionId) ? { revisionId: optionalString(input.revisionId) } : {}),
+    ...(optionalString(input.lookupVersion) ? { lookupVersion: optionalString(input.lookupVersion) } : {}),
+    reason: requireString(input.reason, `${fieldPath}.reason`),
+    needsReview: input.needsReview,
+  };
+}
+
 function assertNoDuplicateKeys(keys: string[], label: string) {
   const seen = new Set<string>();
   for (const key of keys) {
@@ -245,6 +373,47 @@ async function readJson(path: string): Promise<unknown> {
   return JSON.parse(await readFile(path, "utf8")) as unknown;
 }
 
+export function validateDictionaryDiff(input: unknown): ContentKitchenDictionaryDiff {
+  if (!isRecord(input)) {
+    throw new Error("dictionary diff must be an object");
+  }
+
+  const schemaVersion = requireString(input.schemaVersion, "schemaVersion");
+  if (schemaVersion !== "content-kitchen-dictionary-diff-v0") {
+    throw new Error("schemaVersion must be content-kitchen-dictionary-diff-v0");
+  }
+
+  const dictionaryName = validateDictionaryName(input.dictionaryName, "dictionaryName");
+  const fromVersion = requireString(input.fromVersion, "fromVersion");
+  const toVersion = requireString(input.toVersion, "toVersion");
+  if (fromVersion === toVersion) {
+    throw new Error("fromVersion and toVersion must differ");
+  }
+
+  if (!Array.isArray(input.changes) || input.changes.length === 0) {
+    throw new Error("changes must be a non-empty array");
+  }
+
+  const changes = input.changes.map((change, index) => {
+    return validateDictionaryDiffChange(change, index, dictionaryName);
+  });
+  const affectedPublishedPages = Array.isArray(input.affectedPublishedPages)
+    ? input.affectedPublishedPages.map(validateAffectedPage)
+    : [];
+
+  return {
+    schemaVersion,
+    dictionaryName,
+    fromVersion,
+    toVersion,
+    createdAt: requireIsoUtc(input.createdAt, "createdAt"),
+    reviewedBy: requireString(input.reviewedBy, "reviewedBy"),
+    reviewedAt: requireIsoUtc(input.reviewedAt, "reviewedAt"),
+    changes,
+    affectedPublishedPages,
+  };
+}
+
 export async function readContentKitchenDictionaries(rootDir = process.cwd()): Promise<ContentKitchenDictionaries> {
   const dictionaryDir = resolve(rootDir, "lib", "puzzles", "content-kitchen", "dictionaries");
   const [categoryMembershipJson, aliasDictionaryJson] = await Promise.all([
@@ -256,6 +425,17 @@ export async function readContentKitchenDictionaries(rootDir = process.cwd()): P
     categoryMembership: validateCategoryMembershipDictionary(categoryMembershipJson),
     aliasDictionary: validateAliasDictionary(aliasDictionaryJson),
   };
+}
+
+export async function readContentKitchenDictionaryDiffs(rootDir = process.cwd()): Promise<ContentKitchenDictionaryDiff[]> {
+  const diffDir = resolve(rootDir, "lib", "puzzles", "content-kitchen", "dictionaries", "diffs");
+  const fileNames = (await readdir(diffDir)).filter((fileName) => fileName.endsWith(".json")).sort();
+  const diffs = await Promise.all(
+    fileNames.map(async (fileName) => {
+      return validateDictionaryDiff(await readJson(resolve(diffDir, fileName)));
+    }),
+  );
+  return diffs;
 }
 
 export function lookupCategoryMembership(
@@ -307,4 +487,9 @@ export function buildCategoryMembershipEvidenceRecords(input: CategoryEvidenceIn
       },
     ];
   });
+}
+
+export function dictionaryDiffRequiresReviewArtifacts(diff: ContentKitchenDictionaryDiff): boolean {
+  return diff.changes.some((change) => change.risk === "medium" || change.risk === "high") &&
+    diff.affectedPublishedPages.some((page) => page.needsReview);
 }

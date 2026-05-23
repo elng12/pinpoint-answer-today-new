@@ -160,6 +160,8 @@ export type ContentKitchenEvidenceRecord = {
 
 export type DictionaryReviewStatus = "draft" | "shadow" | "reviewed";
 export type DictionaryRisk = "low" | "medium" | "high";
+export type DictionaryName = "category_membership" | "alias_dictionary";
+export type DictionaryChangeType = "add" | "update" | "delete";
 
 export type ContentKitchenDictionaryBase = {
   dictionaryName: string;
@@ -211,6 +213,43 @@ export type AliasDictionary = ContentKitchenDictionaryBase & {
 export type ContentKitchenDictionaries = {
   categoryMembership: CategoryMembershipDictionary;
   aliasDictionary: AliasDictionary;
+};
+
+export type DictionaryDiffChange = {
+  type: DictionaryChangeType;
+  category?: string;
+  normalizedCategory?: string;
+  member?: string;
+  normalizedMember?: string;
+  aliasType?: AliasDictionaryEntry["aliasType"];
+  canonicalValue?: string;
+  normalizedCanonicalValue?: string;
+  alias?: string;
+  normalizedAlias?: string;
+  sourceNote: string;
+  reviewer: string;
+  risk: DictionaryRisk;
+};
+
+export type DictionaryDiffAffectedPage = {
+  slug: string;
+  canonicalUrl?: string;
+  revisionId?: string;
+  lookupVersion?: string;
+  reason: string;
+  needsReview: boolean;
+};
+
+export type ContentKitchenDictionaryDiff = {
+  schemaVersion: "content-kitchen-dictionary-diff-v0";
+  dictionaryName: DictionaryName;
+  fromVersion: string;
+  toVersion: string;
+  createdAt: string;
+  reviewedBy: string;
+  reviewedAt: string;
+  changes: DictionaryDiffChange[];
+  affectedPublishedPages: DictionaryDiffAffectedPage[];
 };
 
 export type FaqCandidate = {
