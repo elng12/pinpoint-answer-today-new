@@ -18,6 +18,7 @@ import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/f
 import { assembleFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-assembler";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
+import { buildFullAnalysisRepairPlan } from "../lib/puzzles/content-kitchen/local-repair-loop";
 import { classifyFullAnalysisPuzzleType } from "../lib/puzzles/content-kitchen/puzzle-type-classifier";
 import { generateFullAnalysisReasoning } from "../lib/puzzles/content-kitchen/reasoning-generator";
 import {
@@ -1057,6 +1058,150 @@ function assertDeterministicAssembler(dictionaries: ContentKitchenDictionaries) 
   );
 }
 
+function assertLocalRepairLoop(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const classification = classifyFullAnalysisPuzzleType({
+    l1Input,
+    dictionaries,
+  });
+  const generatedFits = generateFullAnalysisClueFits({
+    l1Input,
+    classification,
+    dictionaries,
+    evidenceIdPrefix: "slot",
+  });
+  assert.equal(generatedFits.ok, true, "repair loop setup should produce clue fits");
+  if (!generatedFits.ok) {
+    throw new Error("expected clue-fit generation to pass before repair loop checks");
+  }
+
+  const generatedReasoning = generateFullAnalysisReasoning({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(generatedReasoning.ok, true, "repair loop setup should produce reasoning");
+  if (!generatedReasoning.ok) {
+    throw new Error("expected reasoning generation to pass before repair loop checks");
+  }
+
+  const generatedFalseStart = generateFullAnalysisFalseStart();
+  const generatedFaq = generateFullAnalysisFaqItems({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(generatedFaq.ok, true, "repair loop setup should produce FAQ items");
+  if (!generatedFaq.ok) {
+    throw new Error("expected FAQ generation to pass before repair loop checks");
+  }
+
+  const invalidPlan = assembleFullAnalysisSlotPlan({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits.slice(0, 4),
+    reasoning: generatedReasoning.reasoning,
+    falseStart: generatedFalseStart.falseStart,
+    faqItems: generatedFaq.faqItems,
+  });
+  assert.equal(invalidPlan.ok, false, "repair loop fixture should start from failed assembly");
+  if (invalidPlan.ok) {
+    throw new Error("expected invalid assembly to fail before repair loop checks");
+  }
+
+  const plan = buildFullAnalysisRepairPlan({
+    issues: [...invalidPlan.issues, ...invalidPlan.slotIssues],
+  });
+  assert.equal(plan.canAutoRepair, true, "repair loop should auto-repair local slot omissions");
+  assert.ok(
+    plan.actions.some((action) => {
+      return action.actionCode === "regenerate_clue_fits" && action.issueCodes.includes("MISSING_SLOT_CLUE_FIT");
+    }),
+    "repair loop should ask for clue-fit regeneration when clue rows are missing",
+  );
+  assert.ok(
+    plan.actions.some((action) => {
+      return action.actionCode === "rerun_assembler" && action.issueCodes.includes("INVALID_ASSEMBLED_SLOT_PLAN");
+    }),
+    "repair loop should ask for assembler rerun after upstream fixes",
+  );
+
+  const dictionaryCoveragePlan = buildFullAnalysisRepairPlan({
+    issues: [
+      {
+        issueCode: "MISSING_REVIEWED_CATEGORY_MEMBER",
+        fieldPath: "l1Input.clues[4]",
+        suggestedAction: "Add reviewed dictionary coverage.",
+      },
+      {
+        issueCode: "INCOMPLETE_CLUE_FIT_COVERAGE",
+        fieldPath: "clueFits",
+        suggestedAction: "Regenerate clue fits after coverage is complete.",
+      },
+    ],
+  });
+  assert.equal(
+    dictionaryCoveragePlan.canAutoRepair,
+    false,
+    "repair loop should not auto-repair missing reviewed dictionary facts",
+  );
+  assert.ok(
+    dictionaryCoveragePlan.actions.some((action) => action.actionCode === "repair_dictionary_coverage"),
+    "repair loop should route missing dictionary facts to dictionary repair",
+  );
+  assert.ok(
+    dictionaryCoveragePlan.actions.some((action) => action.actionCode === "regenerate_clue_fits"),
+    "repair loop should still request clue-fit regeneration after dictionary repair",
+  );
+
+  const deduped = buildFullAnalysisRepairPlan({
+    issues: [
+      { issueCode: "MISSING_SLOT_CLUE_FIT", fieldPath: "slotPlan.clueFits" },
+      { issueCode: "MISSING_SLOT_EVIDENCE_REF", fieldPath: "slotPlan.clueFits[0].evidenceRefs" },
+      { issueCode: "INCOMPLETE_REASONING_CLUE_FIT_COVERAGE", fieldPath: "clueFits" },
+    ],
+  });
+  assert.equal(
+    deduped.actions.filter((action) => action.actionCode === "regenerate_clue_fits").length,
+    1,
+    "repair loop should dedupe repeated clue-fit repair actions",
+  );
+  assert.deepEqual(
+    deduped.actions.find((action) => action.actionCode === "regenerate_clue_fits")?.issueCodes.sort(),
+    ["INCOMPLETE_REASONING_CLUE_FIT_COVERAGE", "MISSING_SLOT_CLUE_FIT", "MISSING_SLOT_EVIDENCE_REF"].sort(),
+    "deduped repair action should keep all source issue codes",
+  );
+
+  const unsupportedTypePlan = buildFullAnalysisRepairPlan({
+    issues: [
+      { issueCode: "UNSUPPORTED_PUZZLE_TYPE", fieldPath: "classification.puzzleType" },
+      { issueCode: "UNSUPPORTED_FAQ_PUZZLE_TYPE", fieldPath: "classification.puzzleType" },
+    ],
+  });
+  assert.equal(
+    unsupportedTypePlan.canAutoRepair,
+    false,
+    "repair loop should not auto-repair unsupported puzzle types",
+  );
+  assert.deepEqual(
+    unsupportedTypePlan.actions.find((action) => action.actionCode === "rerun_puzzle_type_classifier")?.issueCodes.sort(),
+    ["UNSUPPORTED_FAQ_PUZZLE_TYPE", "UNSUPPORTED_PUZZLE_TYPE"].sort(),
+    "unsupported type repair should dedupe classification reruns",
+  );
+
+  const unknownIssuePlan = buildFullAnalysisRepairPlan({
+    issues: [
+      { issueCode: "SOME_FUTURE_ISSUE", fieldPath: "l1Input.answer", suggestedAction: "Future issue." },
+    ],
+  });
+  assert.equal(unknownIssuePlan.canAutoRepair, false, "repair loop should not auto-repair unknown future issues");
+  assert.equal(
+    unknownIssuePlan.actions[0]?.target,
+    "slotPlan",
+    "unknown issue fallback should not suggest changing L1 answer or clues",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -1090,6 +1235,7 @@ async function main() {
   assertFalseStartGenerator();
   assertFaqGenerator(dictionaries);
   assertDeterministicAssembler(dictionaries);
+  assertLocalRepairLoop(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
