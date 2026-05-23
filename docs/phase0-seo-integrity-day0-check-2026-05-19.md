@@ -318,3 +318,85 @@ Pass/Fail:
 Next action:
 
 - Continue daily observer runs; do not judge GSC recovery before 2026-05-26 UTC.
+
+## Daily Observation - 2026-05-23 (@ 2026-05-23T03:33:24Z)
+
+Result: PASS
+
+Scope note: this run checked `pinpoint-answer-752` before `pinpoint-answer-753` became the live latest detail. Keep it as same-day historical evidence only; use the later 2026-05-23 rerun below for the current latest-page check.
+
+Release context (non-SEO variable only):
+
+- Phase 0 SEO integrity fixes: PR #40 deployed at `2026-05-19T11:17:58Z`.
+- Security-only hardening: PR #41 deployed at `2026-05-20T03:05:06Z`.
+
+Latest public detail (registry):
+
+- `#752` (`/linkedin-pinpoint-answers/pinpoint-answer-752/`) is `status=live` (registry `updatedAt=2026-05-22T08:37:36.665Z`).
+
+Production URLs checked under Googlebot Smartphone UA:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, h1, canonical tag, JSON-LD present, latest slug present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | `https://pinpointanswertoday.app/puzzles` | `index, follow` | title, h1, canonical tag, JSON-LD present, latest slug present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | title, h1, canonical tag, latest slug present (no JSON-LD detected) |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-752/` | 200 | self | `index, follow` | title, h1, canonical tag, JSON-LD present, self slug present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, latest `#752`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, and `#752` matches latest registry updatedAt (`2026-05-22T08:37:36.665Z`).
+- Older detail `lastmod` values remain stable for `#735`, `#736`, and `#737`.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, no sitemap omissions, no missing-core-mobile-HTML indicators observed.
+
+Next action:
+
+- Keep running this daily observer.
+- Reminder: today is before 2026-05-26 UTC, so do not judge GSC “recovery” yet (Search Console is delayed and same-day data is noisy).
+
+## Daily Observation - 2026-05-23 Rerun (@ 2026-05-23T09:10:28Z)
+
+Result: PASS
+
+Release context (non-SEO variable only):
+
+- Phase 0 SEO integrity fixes: PR #40 deployed at `2026-05-19T11:17:58Z`.
+- Security-only hardening: PR #41 deployed at `2026-05-20T03:05:06Z`.
+
+Latest public detail (registry):
+
+- `#753` (`/linkedin-pinpoint-answers/pinpoint-answer-753/`) is `status=live`, `detailState=published`, and has registry `updatedAt=2026-05-23T07:32:30.000Z`.
+- Prior latest `#752` is still present in the sitemap with `lastmod=2026-05-23T07:08:01.579Z`.
+
+Production URLs checked under Googlebot Smartphone UA:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, canonical tag, JSON-LD present, latest slug present, latest answer present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | `https://pinpointanswertoday.app/puzzles` | `index, follow` | title, canonical tag, JSON-LD present, latest slug present, latest answer present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | title, canonical tag, latest slug present (no JSON-LD detected) |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-753/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, self slug present, answer present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, latest `#753`, and prior detail `#752`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, and `#753` matches latest registry updatedAt (`2026-05-23T07:32:30.000Z`).
+- Prior detail `#752` remains present with `lastmod=2026-05-23T07:08:01.579Z`.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, no sitemap omissions, no missing-core-mobile-HTML indicators observed.
+
+Next action:
+
+- Keep running this daily observer.
+- Reminder: today is before 2026-05-26 UTC, so do not judge GSC recovery yet (Search Console is delayed and same-day data is noisy).
