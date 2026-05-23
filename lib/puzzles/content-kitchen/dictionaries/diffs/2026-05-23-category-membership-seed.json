@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "content-kitchen-dictionary-diff-v0",
+  "dictionaryName": "category_membership",
+  "fromVersion": "none",
+  "toVersion": "category_membership_2026_05_23",
+  "createdAt": "2026-05-23T00:00:00.000Z",
+  "reviewedBy": "pinpoint-editor",
+  "reviewedAt": "2026-05-23T00:00:00.000Z",
+  "changes": [
+    {
+      "type": "add",
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Bass",
+      "normalizedMember": "bass",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    },
+    {
+      "type": "add",
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Classical",
+      "normalizedMember": "classical",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    },
+    {
+      "type": "add",
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Electric",
+      "normalizedMember": "electric",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    },
+    {
+      "type": "add",
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Acoustic",
+      "normalizedMember": "acoustic",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    },
+    {
+      "type": "add",
+      "category": "Types of guitar",
+      "normalizedCategory": "types of guitar",
+      "member": "Steel",
+      "normalizedMember": "steel",
+      "sourceNote": "Seeded PR7 fixture dictionary entry for content-kitchen validation.",
+      "reviewer": "pinpoint-editor",
+      "risk": "low"
+    }
+  ],
+  "affectedPublishedPages": []
+}
