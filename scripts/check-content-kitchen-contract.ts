@@ -13,6 +13,7 @@ import {
   readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
+import { generateFullAnalysisFaqItems } from "../lib/puzzles/content-kitchen/faq-generator";
 import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/false-start-generator";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
@@ -848,6 +849,110 @@ function assertFalseStartGenerator() {
   );
 }
 
+function assertFaqGenerator(dictionaries: ContentKitchenDictionaries) {
+  const l1Input = makeSlotContractL1Input();
+  const classification = classifyFullAnalysisPuzzleType({
+    l1Input,
+    dictionaries,
+  });
+  const generatedFits = generateFullAnalysisClueFits({
+    l1Input,
+    classification,
+    dictionaries,
+    evidenceIdPrefix: "slot",
+  });
+  assert.equal(generatedFits.ok, true, "FAQ generator setup should produce clue fits");
+  if (!generatedFits.ok) {
+    throw new Error("expected clue-fit generation to pass before FAQ generation");
+  }
+
+  const generatedFaq = generateFullAnalysisFaqItems({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(generatedFaq.ok, true, "FAQ generator should produce FAQ items for complete clue fits");
+  if (!generatedFaq.ok) {
+    throw new Error("expected FAQ generation to pass");
+  }
+  assert.equal(generatedFaq.faqItems.length, 3, "FAQ generator should produce three stable FAQ items");
+  assert.ok(
+    generatedFaq.faqItems.every((faqItem) => faqItem.question.trim() && faqItem.answer.includes("Types of guitar")),
+    "generated FAQ items should have specific question and answer text",
+  );
+  assert.ok(
+    generatedFaq.faqItems.every((faqItem) => Array.isArray(faqItem.evidenceRefs) && faqItem.evidenceRefs.length > 0),
+    "generated FAQ items should carry evidence refs",
+  );
+
+  const generatedSlotPlan: FullAnalysisSlotPlanV0 = {
+    ...makeValidSlotPlan(),
+    clueFits: generatedFits.clueFits,
+    faqItems: generatedFaq.faqItems,
+  };
+  assert.deepEqual(
+    validateFullAnalysisSlotPlan({ l1Input, slotPlan: generatedSlotPlan }),
+    [],
+    "generated FAQ items should satisfy the full-analysis slot contract",
+  );
+
+  const unsupported = generateFullAnalysisFaqItems({
+    l1Input,
+    classification: {
+      ...classification,
+      puzzleType: "unknown",
+      answerCategory: undefined,
+    },
+    clueFits: generatedFits.clueFits,
+  });
+  assert.equal(unsupported.ok, false, "unknown puzzle type should not generate FAQ items");
+  if (unsupported.ok) {
+    throw new Error("expected unsupported FAQ generation to fail");
+  }
+  assert.deepEqual(
+    unsupported.issues.map((issue) => issue.issueCode),
+    ["UNSUPPORTED_FAQ_PUZZLE_TYPE"],
+    "unsupported FAQ generation should return a clear issue code",
+  );
+
+  const incomplete = generateFullAnalysisFaqItems({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits.slice(0, 4),
+  });
+  assert.equal(incomplete.ok, false, "incomplete clue fits should not generate FAQ items");
+  if (incomplete.ok) {
+    throw new Error("expected incomplete FAQ generation to fail");
+  }
+  assert.ok(
+    incomplete.issues.some((issue) => issue.issueCode === "INCOMPLETE_FAQ_CLUE_FIT_COVERAGE"),
+    "incomplete FAQ generation should report incomplete clue-fit coverage",
+  );
+
+  const missingEvidence = generateFullAnalysisFaqItems({
+    l1Input,
+    classification,
+    clueFits: generatedFits.clueFits.map((fit, index) => {
+      if (index === 0) {
+        return {
+          ...fit,
+          evidenceRefs: [],
+        };
+      }
+
+      return fit;
+    }),
+  });
+  assert.equal(missingEvidence.ok, false, "missing evidence refs should not generate FAQ items");
+  if (missingEvidence.ok) {
+    throw new Error("expected missing-evidence FAQ generation to fail");
+  }
+  assert.ok(
+    missingEvidence.issues.some((issue) => issue.issueCode === "MISSING_FAQ_EVIDENCE_REF"),
+    "missing-evidence FAQ generation should report missing evidence refs",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -879,6 +984,7 @@ async function main() {
   assertClueFitGenerator(dictionaries);
   assertReasoningPatternGenerator(dictionaries);
   assertFalseStartGenerator();
+  assertFaqGenerator(dictionaries);
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
