@@ -13,6 +13,7 @@ import {
   readContentKitchenDictionaryDiffs,
 } from "../lib/puzzles/content-kitchen/dictionary";
 import { generateFullAnalysisClueFits } from "../lib/puzzles/content-kitchen/clue-fit-generator";
+import { generateFullAnalysisFalseStart } from "../lib/puzzles/content-kitchen/false-start-generator";
 import { validateFullAnalysisSlotPlan } from "../lib/puzzles/content-kitchen/full-analysis-slots";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { classifyFullAnalysisPuzzleType } from "../lib/puzzles/content-kitchen/puzzle-type-classifier";
@@ -821,6 +822,32 @@ function assertReasoningPatternGenerator(dictionaries: ContentKitchenDictionarie
   );
 }
 
+function assertFalseStartGenerator() {
+  const l1Input = makeSlotContractL1Input();
+  const generated = generateFullAnalysisFalseStart();
+
+  assert.deepEqual(
+    generated.falseStart,
+    { status: "omitted" },
+    "false-start generator should omit unsupported false starts instead of inventing one",
+  );
+  assert.deepEqual(
+    generated.reasonCodes,
+    ["NO_SUPPORTED_FALSE_START_EVIDENCE"],
+    "false-start generator should explain why the slot was omitted",
+  );
+
+  const generatedSlotPlan: FullAnalysisSlotPlanV0 = {
+    ...makeValidSlotPlan(),
+    falseStart: generated.falseStart,
+  };
+  assert.deepEqual(
+    validateFullAnalysisSlotPlan({ l1Input, slotPlan: generatedSlotPlan }),
+    [],
+    "omitted false-start output should satisfy the full-analysis slot contract",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -851,6 +878,7 @@ async function main() {
   assertPuzzleTypeClassifier(dictionaries);
   assertClueFitGenerator(dictionaries);
   assertReasoningPatternGenerator(dictionaries);
+  assertFalseStartGenerator();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

@@ -1988,6 +1988,15 @@ PR8 fourth implementation slice:
 - do not generate turning-point reasoning until a later slice has specific false-start support
 - do not connect this generator to live publishing or LLM generation yet
 
+PR8 fifth implementation slice:
+
+- add the false-start generator empty-state path
+- return `falseStart.status = "omitted"` when no supported false-start evidence exists
+- include a reason code so review/debugging can see why no false start was generated
+- do not invent a rejected theory just to fill the article
+- do not generate `falseStart.status = "included"` until a later slice defines supported false-start evidence
+- do not connect this generator to live publishing or LLM generation yet
+
 ### PR9 — Answer-First Enrichment SLA
 
 Goal: make `answer-first` temporary.

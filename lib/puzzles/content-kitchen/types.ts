@@ -422,6 +422,14 @@ export type FullAnalysisReasoningGenerationResult =
       issues: FullAnalysisReasoningGenerationIssue[];
     };
 
+export type FullAnalysisFalseStartGenerationReasonCode =
+  | "NO_SUPPORTED_FALSE_START_EVIDENCE";
+
+export type FullAnalysisFalseStartGenerationResult = {
+  falseStart: FullAnalysisFalseStartSlot;
+  reasonCodes: FullAnalysisFalseStartGenerationReasonCode[];
+};
+
 export type InternalLinkCandidate = {
   href: string;
   label?: string;
