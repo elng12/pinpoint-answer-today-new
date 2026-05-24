@@ -3,11 +3,13 @@ import type {
   ContentKitchenIssueCode,
   ReviewArtifactV0,
   ReviewDecisionV0,
+  ReviewDecisionEffectPlanV0,
   ReviewDecisionValidationResult,
   ReviewRouteResult,
 } from "./types";
 
 export const REVIEW_DECISION_VERSION = "content-kitchen-review-decision-v0";
+export const REVIEW_DECISION_EFFECT_PLAN_VERSION = "content-kitchen-review-decision-effect-plan-v0";
 export const MODEL_REVIEW_MIN_CONFIDENCE = 0.75;
 
 const HARD_RULE_AUTO_REJECT_ISSUES = new Set<ContentKitchenIssueCode>([
@@ -275,5 +277,142 @@ export function validateReviewDecision(input: {
     valid: errors.length === 0,
     errors,
     derivedRoute,
+  };
+}
+
+function remainingIssueCodesAfterOverride(artifact: ReviewArtifactV0, decision: ReviewDecisionV0): ContentKitchenIssueCode[] {
+  const overriddenIssueCodes = new Set(decision.issueCodes);
+  return artifact.validation.issueCodes.filter((issueCode) => !overriddenIssueCodes.has(issueCode));
+}
+
+export function buildReviewDecisionEffectPlan(input: {
+  artifact: ReviewArtifactV0;
+  decision: ReviewDecisionV0;
+  modelConfidenceThreshold?: number;
+}): ReviewDecisionEffectPlanV0 {
+  const decisionValidation = validateReviewDecision(input);
+  if (!decisionValidation.valid) {
+    return {
+      effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      valid: false,
+      effect: "invalid_decision",
+      publishAllowed: false,
+      artifactStatus: "open",
+      nextRequiredAction: "review",
+      overriddenIssueCodes: [],
+      remainingIssueCodes: [...input.artifact.validation.issueCodes],
+      notes: [
+        "Decision is invalid; no downstream action is allowed.",
+        ...decisionValidation.errors,
+      ],
+      decisionValidation,
+    };
+  }
+
+  if (input.decision.action === "approve") {
+    return {
+      effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      valid: true,
+      effect: "approved",
+      publishAllowed: false,
+      artifactStatus: "decided",
+      nextRequiredAction: "none",
+      overriddenIssueCodes: [],
+      remainingIssueCodes: [],
+      notes: [
+        "Review decision approves this candidate revision.",
+        "PR10 v0 never publishes content; downstream publish gates must still run.",
+      ],
+      decisionValidation,
+    };
+  }
+
+  if (input.decision.action === "reject") {
+    return {
+      effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      valid: true,
+      effect: "rejected",
+      publishAllowed: false,
+      artifactStatus: "decided",
+      nextRequiredAction: "block_publish",
+      overriddenIssueCodes: [],
+      remainingIssueCodes: [...input.artifact.validation.issueCodes],
+      notes: [
+        "Review decision rejects this candidate revision.",
+        "The same candidate revision must not publish without a new review decision.",
+      ],
+      decisionValidation,
+    };
+  }
+
+  if (input.decision.action === "request_regeneration") {
+    return {
+      effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      valid: true,
+      effect: "regeneration_requested",
+      publishAllowed: false,
+      artifactStatus: "decided",
+      nextRequiredAction: "enrich",
+      overriddenIssueCodes: [],
+      remainingIssueCodes: [...input.artifact.validation.issueCodes],
+      notes: [
+        "Review decision requests a regenerated candidate.",
+        "The current candidate revision remains unpublished.",
+      ],
+      decisionValidation,
+    };
+  }
+
+  if (input.decision.action === "force_answer_first") {
+    return {
+      effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      valid: true,
+      effect: "answer_first_forced",
+      publishAllowed: false,
+      artifactStatus: "decided",
+      nextRequiredAction: "degrade",
+      overriddenIssueCodes: [],
+      remainingIssueCodes: [...input.artifact.validation.issueCodes],
+      notes: [
+        "Review decision requests answer-first fallback.",
+        "PR10 v0 records the requested effect only; it does not change production rendering.",
+      ],
+      decisionValidation,
+    };
+  }
+
+  if (input.decision.action === "override_issue") {
+    const remainingIssueCodes = remainingIssueCodesAfterOverride(input.artifact, input.decision);
+    return {
+      effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      valid: true,
+      effect: "issue_override_recorded",
+      publishAllowed: false,
+      artifactStatus: remainingIssueCodes.length > 0 ? "open" : "decided",
+      nextRequiredAction: remainingIssueCodes.length > 0 ? "review" : "none",
+      overriddenIssueCodes: [...input.decision.issueCodes],
+      remainingIssueCodes,
+      notes: [
+        "Human override is scoped to the named issue codes on this artifact only.",
+        "PR10 v0 records the override; it does not publish content.",
+      ],
+      decisionValidation,
+    };
+  }
+
+  return {
+    effectPlanVersion: REVIEW_DECISION_EFFECT_PLAN_VERSION,
+    valid: true,
+    effect: "human_escalation_required",
+    publishAllowed: false,
+    artifactStatus: "open",
+    nextRequiredAction: "review",
+    overriddenIssueCodes: [],
+    remainingIssueCodes: [...input.artifact.validation.issueCodes],
+    notes: [
+      "Decision escalates this artifact to human review.",
+      "No publish, regeneration, downgrade, or override action is applied in PR10 v0.",
+    ],
+    decisionValidation,
   };
 }

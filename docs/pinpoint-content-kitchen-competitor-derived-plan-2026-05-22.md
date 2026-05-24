@@ -2265,6 +2265,16 @@ PR10 second implementation slice:
 - make the contract test prove the examples validate, revision mismatch fails, model override fails, and override of an absent issue code fails
 - keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
 
+PR10 third implementation slice:
+
+- add a local `ReviewDecisionEffectPlan` that turns a valid review decision into the next local consequence
+- map `approve` to `approved`, `reject` to `rejected`, `request_regeneration` to `regeneration_requested`, `force_answer_first` to `answer_first_forced`, `override_issue` to `issue_override_recorded`, and `escalate_to_human` to `human_escalation_required`
+- keep `publishAllowed: false` for every PR10 v0 effect plan; approval is not automatic publish
+- preserve override scope by listing overridden issue codes and remaining issue codes separately
+- make invalid decisions return `invalid_decision` with no downstream action allowed
+- include the effect plan in the local review decision runner output
+- keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.

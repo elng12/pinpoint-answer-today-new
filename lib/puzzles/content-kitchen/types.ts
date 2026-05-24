@@ -754,3 +754,29 @@ export type ReviewDecisionValidationResult = {
   errors: string[];
   derivedRoute: ReviewRouteResult;
 };
+
+export type ReviewDecisionEffect =
+  | "approved"
+  | "rejected"
+  | "regeneration_requested"
+  | "answer_first_forced"
+  | "issue_override_recorded"
+  | "human_escalation_required"
+  | "invalid_decision";
+
+export type ReviewDecisionEffectArtifactStatus =
+  | "open"
+  | "decided";
+
+export type ReviewDecisionEffectPlanV0 = {
+  effectPlanVersion: "content-kitchen-review-decision-effect-plan-v0";
+  valid: boolean;
+  effect: ReviewDecisionEffect;
+  publishAllowed: false;
+  artifactStatus: ReviewDecisionEffectArtifactStatus;
+  nextRequiredAction: RequiredAction;
+  overriddenIssueCodes: ContentKitchenIssueCode[];
+  remainingIssueCodes: ContentKitchenIssueCode[];
+  notes: string[];
+  decisionValidation: ReviewDecisionValidationResult;
+};

@@ -2,11 +2,13 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  buildReviewDecisionEffectPlan,
   deriveReviewRoute,
   validateReviewDecision,
 } from "../lib/puzzles/content-kitchen/review-decision";
 import type {
   ReviewArtifactV0,
+  ReviewDecisionEffectPlanV0,
   ReviewDecisionV0,
   ReviewDecisionValidationResult,
   ReviewRouteResult,
@@ -24,6 +26,7 @@ export type ContentKitchenReviewDecisionRunnerResult = {
   route: ReviewRouteResult;
   decision?: ReviewDecisionV0;
   decisionValidation?: ReviewDecisionValidationResult;
+  effectPlan?: ReviewDecisionEffectPlanV0;
 };
 
 type ParsedArgs = {
@@ -146,6 +149,9 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
   const decisionValidation = decision
     ? validateReviewDecision({ artifact, decision })
     : undefined;
+  const effectPlan = decision
+    ? buildReviewDecisionEffectPlan({ artifact, decision })
+    : undefined;
   const result: ContentKitchenReviewDecisionRunnerResult = {
     schemaVersion: REVIEW_DECISION_RUNNER_RESULT_VERSION,
     dryRunOnly: true,
@@ -155,6 +161,7 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
     route,
     ...(decision ? { decision } : {}),
     ...(decisionValidation ? { decisionValidation } : {}),
+    ...(effectPlan ? { effectPlan } : {}),
   };
 
   if (outputPath) {
