@@ -5,6 +5,7 @@ import type {
   ReviewDecisionV0,
   ReviewDecisionEffectPlanV0,
   ReviewDecisionValidationResult,
+  ReviewNotificationDraftV0,
   ReviewQueueDraftReason,
   ReviewQueueDraftV0,
   ReviewRouteResult,
@@ -13,6 +14,7 @@ import type {
 export const REVIEW_DECISION_VERSION = "content-kitchen-review-decision-v0";
 export const REVIEW_DECISION_EFFECT_PLAN_VERSION = "content-kitchen-review-decision-effect-plan-v0";
 export const REVIEW_QUEUE_DRAFT_VERSION = "content-kitchen-review-queue-draft-v0";
+export const REVIEW_NOTIFICATION_DRAFT_VERSION = "content-kitchen-review-notification-draft-v0";
 export const MODEL_REVIEW_MIN_CONFIDENCE = 0.75;
 
 const HARD_RULE_AUTO_REJECT_ISSUES = new Set<ContentKitchenIssueCode>([
@@ -297,6 +299,23 @@ function reviewQueuePriority(issueCodes: ContentKitchenIssueCode[]): ReviewQueue
   return issueCodes.includes("ANSWER_FIRST_HIGH_PRIORITY_ALERT") ? "high_priority" : "normal";
 }
 
+function maxIssueSeverity(issueCodes: ContentKitchenIssueCode[]): ReviewNotificationDraftV0["issueSeverity"] {
+  const severities = issueCodes.map((issueCode) => getIssueDefinition(issueCode).defaultSeverity);
+
+  if (severities.includes("P0")) {
+    return "P0";
+  }
+  if (severities.includes("P1")) {
+    return "P1";
+  }
+
+  return "P2";
+}
+
+function logicalDateFromPuzzleId(puzzleId: string): string | undefined {
+  return puzzleId.match(/\d{4}-\d{2}-\d{2}$/)?.[0];
+}
+
 function reviewQueueReason(input: {
   route: ReviewRouteResult;
   effectPlan?: ReviewDecisionEffectPlanV0;
@@ -406,6 +425,74 @@ export function buildReviewQueueDraft(input: {
       "Draft only: not written to review queue storage.",
       "Publish allowed: false.",
     ],
+  };
+}
+
+export function buildReviewNotificationDraft(input: {
+  artifact: ReviewArtifactV0;
+  queueDraft: ReviewQueueDraftV0;
+  reviewUrl?: string;
+  createdAt?: string;
+}): ReviewNotificationDraftV0 {
+  const createdAt = input.createdAt ?? new Date().toISOString();
+  const title =
+    input.queueDraft.priority === "high_priority"
+      ? "Content Kitchen high-priority review alert"
+      : "Content Kitchen review alert";
+  const issueSeverity = maxIssueSeverity(input.queueDraft.issueCodes);
+  const logicalDate = logicalDateFromPuzzleId(input.queueDraft.puzzleId);
+  const lines = [
+    title,
+    `Artifact: ${input.queueDraft.artifactId}`,
+    `Puzzle: ${input.queueDraft.puzzleId}`,
+    `Logical date: ${logicalDate ?? "unknown"}`,
+    `Mode: ${input.artifact.contentMode ?? "unknown"}`,
+    `Severity: ${issueSeverity}`,
+    `Route: ${input.queueDraft.route} (${input.queueDraft.routeReason})`,
+    `Priority: ${input.queueDraft.priority}`,
+    `Issue codes: ${input.queueDraft.issueCodes.length > 0 ? input.queueDraft.issueCodes.join(", ") : "none"}`,
+    `Recommended action: ${input.queueDraft.recommendedAction}`,
+    `Public URL: ${input.queueDraft.publicUrl ?? "unavailable"}`,
+    `Review URL: ${input.reviewUrl ?? "unavailable"}`,
+    "Draft only: not sent to Feishu.",
+  ];
+
+  return {
+    notificationDraftVersion: REVIEW_NOTIFICATION_DRAFT_VERSION,
+    draftId: `feishu:${safeQueueIdPart(input.queueDraft.draftId)}`,
+    draftOnly: true,
+    dispatchStatus: "not_sent",
+    channel: "feishu",
+    priority: input.queueDraft.priority,
+    reason: input.queueDraft.reason,
+    title,
+    artifactId: input.queueDraft.artifactId,
+    puzzleId: input.queueDraft.puzzleId,
+    candidateRevisionId: input.queueDraft.candidateRevisionId,
+    ...(input.artifact.contentMode ? { contentMode: input.artifact.contentMode } : {}),
+    ...(logicalDate ? { logicalDate } : {}),
+    issueSeverity,
+    route: input.queueDraft.route,
+    issueCodes: [...input.queueDraft.issueCodes],
+    recommendedAction: input.queueDraft.recommendedAction,
+    ...(input.queueDraft.publicUrl ? { publicUrl: input.queueDraft.publicUrl } : {}),
+    ...(input.reviewUrl ? { reviewUrl: input.reviewUrl } : {}),
+    dedupeKey: [
+      "content-kitchen",
+      "review-notification",
+      input.queueDraft.priority,
+      input.queueDraft.artifactId,
+      input.queueDraft.candidateRevisionId,
+      input.queueDraft.reason,
+    ].join(":"),
+    createdAt,
+    lines,
+    payload: {
+      msg_type: "text",
+      content: {
+        text: lines.join("\n"),
+      },
+    },
   };
 }
 

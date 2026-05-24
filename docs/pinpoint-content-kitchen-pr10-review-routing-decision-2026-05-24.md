@@ -172,6 +172,7 @@ The runner prints:
 - decision validation
 - effect plan
 - review queue draft when review remains open
+- Feishu notification draft when a review queue draft exists
 
 The effect plan explains the local consequence of the decision:
 
@@ -230,12 +231,54 @@ It must not include raw rendered HTML, model prompts, secrets, or production sto
 
 The local runner includes `reviewQueueDraft` only when the draft exists.
 
+## Review Notification Draft
+
+PR10.5 adds a local Feishu notification draft.
+
+It uses `notificationDraftVersion: "content-kitchen-review-notification-draft-v0"`.
+
+It exists only when a review queue draft exists.
+
+Required fields:
+
+- `draftOnly: true`
+- `dispatchStatus: "not_sent"`
+- `channel: "feishu"`
+- `priority`
+- `reason`
+- `artifactId`
+- `puzzleId`
+- `candidateRevisionId`
+- `issueSeverity`
+- `recommendedAction`
+- `dedupeKey`
+- `payload`
+
+Payload shape:
+
+- `msg_type: "text"`
+- `content.text` is built from the draft lines
+
+Feishu notification drafts include puzzle id, logical date, current mode, issue severity, recommended action, public URL, and review URL when available.
+
+Rules:
+
+- `normal` queue drafts create normal Feishu notification drafts
+- `high_priority` queue drafts create high-priority Feishu notification drafts
+- the draft may include `reviewUrl` when a later Review UI provides one
+- the draft never reads a webhook URL
+- the draft never sends a Feishu message
+- the draft must not include raw rendered HTML, model prompts, secrets, or production storage ids
+
+The local runner includes `reviewNotificationDraft` only when a review queue draft exists.
+
 Write the result to a local file:
 
 ```bash
 npm run content-kitchen:review-decision -- \
   --artifact lib/puzzles/content-kitchen/examples/review-decision-model-review.artifact.example.json \
   --decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json \
+  --review-url https://example.com/admin/content-kitchen/review/art_review_human_override_example \
   --output /tmp/content-kitchen-review-decision-result.json \
   --pretty
 ```
@@ -245,6 +288,7 @@ Route without a decision file:
 ```bash
 npm run content-kitchen:review-decision -- \
   --artifact lib/puzzles/content-kitchen/examples/review-decision-human-override.artifact.example.json \
+  --review-url https://example.com/admin/content-kitchen/review/art_review_human_override_example \
   --pretty
 ```
 
@@ -255,6 +299,7 @@ Rules:
 - the runner is for local inspection only
 - the runner does not call a model
 - the runner does not send Feishu messages
+- the runner does not read Feishu webhook secrets
 - the runner does not write review queue storage
 - the runner does not touch production storage
 - the runner does not publish content
