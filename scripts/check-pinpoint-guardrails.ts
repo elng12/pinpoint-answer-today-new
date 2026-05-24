@@ -24,6 +24,8 @@ const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
 const CANDIDATE_BRANCH_PREFIX = "pinpoint/candidate/";
 const GUARDRAIL_ADMIN_TOKEN = process.env.DEV_ADMIN_TOKEN || "guardrail-local-admin-token";
+const OFFICIAL_SITE_HOST = "pinpointanswertoday.app";
+const COMPETITOR_SITE_HOST = "pinpointanswer.today";
 process.env.DEV_ADMIN_TOKEN = GUARDRAIL_ADMIN_TOKEN;
 
 type RegistryEntry = {
@@ -50,6 +52,66 @@ async function readLiveRegistryEntry(): Promise<RegistryEntry> {
   });
   assert.ok(liveEntry, "registry.json must contain one public puzzle");
   return liveEntry;
+}
+
+async function readProjectFile(relativePath: string): Promise<string> {
+  return readFile(resolve(ROOT, relativePath), "utf8");
+}
+
+async function checkOfficialDomainGuardrail() {
+  const officialRuntimeFiles = [
+    {
+      path: "middleware.ts",
+      required: [OFFICIAL_SITE_HOST, `www.${OFFICIAL_SITE_HOST}`],
+    },
+    {
+      path: "app/api/revalidate/route.ts",
+      required: [`https://${OFFICIAL_SITE_HOST}`],
+    },
+    {
+      path: "scripts/release-production.mjs",
+      required: [`https://${OFFICIAL_SITE_HOST}`],
+    },
+    {
+      path: "scripts/gsc-pinpoint.mjs",
+      required: [`sc-domain:${OFFICIAL_SITE_HOST}`, `https://${OFFICIAL_SITE_HOST}`],
+    },
+    {
+      path: "worker/src/index.ts",
+      required: [`https://${OFFICIAL_SITE_HOST}`],
+    },
+    {
+      path: "worker/wrangler.toml",
+      required: [
+        `https://${OFFICIAL_SITE_HOST}/api/fallback/worker-pinpoint`,
+        `NEW_SITE_URL                = "https://${OFFICIAL_SITE_HOST}"`,
+      ],
+    },
+    {
+      path: "lib/site/config.ts",
+      required: [`support@${OFFICIAL_SITE_HOST}`, `${OFFICIAL_SITE_HOST}/contact-us`],
+    },
+  ];
+
+  for (const file of officialRuntimeFiles) {
+    const source = await readProjectFile(file.path);
+    for (const requiredText of file.required) {
+      assert.ok(source.includes(requiredText), `${file.path} must use official domain ${requiredText}`);
+    }
+    assert.ok(
+      !source.includes(COMPETITOR_SITE_HOST),
+      `${file.path} must not use competitor domain ${COMPETITOR_SITE_HOST} as a runtime site default`,
+    );
+  }
+
+  const workerFallbackSource = await readProjectFile("lib/puzzles/worker-fallback.ts");
+  assert.ok(
+    workerFallbackSource.includes(`const DEFAULT_COMPETITOR_URL = "https://${COMPETITOR_SITE_HOST}/";`) &&
+      workerFallbackSource.includes(`allowedHosts: ["${COMPETITOR_SITE_HOST}"]`),
+    "competitor fallback may reference pinpointanswer.today only as the competitor source",
+  );
+
+  console.log("ok: official domain guardrail keeps runtime defaults on pinpointanswertoday.app");
 }
 
 async function withMockWorkerHealth<T>(
@@ -2737,6 +2799,7 @@ async function checkReleaseQueueWorkerIntegration() {
 }
 
 async function main() {
+  await checkOfficialDomainGuardrail();
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
   await checkPublishedSummaryRoute();
