@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "content-kitchen-post-publish-audit-runner-input-v0",
+  "artifactId": "art_post_publish_audit_pass_example",
+  "checkedAt": "2026-05-24T10:00:00.000Z",
+  "expected": {
+    "puzzleId": "pinpoint-925-2026-05-24",
+    "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-925/",
+    "revisionId": "rev-full-analysis-925",
+    "contentMode": "full-analysis",
+    "answer": "BASS",
+    "clues": [
+      "Low instrument",
+      "Fishing target",
+      "Deep voice",
+      "Speaker setting",
+      "Music section"
+    ],
+    "policies": {
+      "indexPolicy": "index",
+      "sitemapPolicy": "include",
+      "schemaPolicy": "faq_allowed",
+      "internalLinkPolicy": "normal",
+      "requiredAction": "none"
+    },
+    "schemaTypes": ["Article", "FAQPage"],
+    "sitemapLastmod": "2026-05-24",
+    "schemaDateModified": "2026-05-24",
+    "expectedInternalLinks": ["/linkedin-pinpoint-answers/pinpoint-answer-924/"]
+  },
+  "observed": {
+    "fetchedUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-925/",
+    "httpStatus": 200,
+    "fetchOk": true,
+    "renderOk": true,
+    "answerVisible": true,
+    "visibleClues": [
+      "Low instrument",
+      "Fishing target",
+      "Deep voice",
+      "Speaker setting",
+      "Music section"
+    ],
+    "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-925/",
+    "noindexPresent": false,
+    "sitemapIncluded": true,
+    "sitemapLastmod": "2026-05-24",
+    "schemaTypes": ["Article", "FAQPage"],
+    "schemaDateModified": "2026-05-24",
+    "internalLinks": ["/linkedin-pinpoint-answers/pinpoint-answer-924/"]
+  }
+}

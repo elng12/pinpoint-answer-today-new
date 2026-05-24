@@ -91,6 +91,13 @@ import {
   runContentKitchenReviewDecisionFromFiles,
 } from "./run-content-kitchen-review-decision";
 import {
+  POST_PUBLISH_AUDIT_RUNNER_INPUT_VERSION,
+  POST_PUBLISH_AUDIT_RUNNER_RESULT_VERSION,
+  parsePostPublishAuditRunnerInput,
+  runCli as runContentKitchenPostPublishAuditCli,
+  runContentKitchenPostPublishAuditFromFile,
+} from "./run-content-kitchen-post-publish-audit";
+import {
   REVIEW_UI_SURFACE_VERSION,
   renderReviewUiInputHtml,
 } from "./content-kitchen-review-ui-surface";
@@ -3620,6 +3627,16 @@ async function assertPostPublishAuditDoc() {
     "it does not run a browser",
     "it does not send Feishu messages",
     "it does not publish content",
+    "Local Runner",
+    "content-kitchen-post-publish-audit-runner-input-v0",
+    "content-kitchen-post-publish-audit-runner-result-v0",
+    "npm run content-kitchen:post-publish-audit",
+    "--input lib/puzzles/content-kitchen/examples/post-publish-audit-pass.input.example.json",
+    "--output /tmp/content-kitchen-post-publish-audit.json",
+    "`--output` must not equal `--input`",
+    "The output file is the audit artifact itself.",
+    "post-publish-audit-pass.input.example.json",
+    "post-publish-audit-policy-mismatch.input.example.json",
   ];
 
   for (const snippet of requiredSnippets) {
@@ -4220,6 +4237,124 @@ function assertPostPublishAuditContract() {
   );
 }
 
+async function assertPostPublishAuditRunnerAndExamples() {
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-audit"]?.includes(
+      "run-content-kitchen-post-publish-audit.ts",
+    ),
+    "package.json should expose the content-kitchen post-publish audit runner",
+  );
+
+  const passExamplePath = resolve(EXAMPLE_DIR, "post-publish-audit-pass.input.example.json");
+  const mismatchExamplePath = resolve(EXAMPLE_DIR, "post-publish-audit-policy-mismatch.input.example.json");
+  const passRaw = await readFile(passExamplePath, "utf8");
+  const parsedPassInput = parsePostPublishAuditRunnerInput(passRaw);
+  assert.equal(
+    parsedPassInput.schemaVersion,
+    POST_PUBLISH_AUDIT_RUNNER_INPUT_VERSION,
+    "post-publish audit runner input version should be stable",
+  );
+  assert.equal(parsedPassInput.expected.clues.length, 5, "post-publish audit example should include five clues");
+  assert.equal(
+    parsedPassInput.observed.fetchOk,
+    true,
+    "post-publish audit example should include fetch facts",
+  );
+
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-post-publish-audit-"));
+  try {
+    const outputPath = resolve(tmpDir, "post-publish-audit.json");
+    const passResult = await runContentKitchenPostPublishAuditFromFile({
+      inputPath: passExamplePath,
+      outputPath,
+    });
+    const writtenArtifact = JSON.parse(await readFile(outputPath, "utf8")) as {
+      artifactVersion: string;
+      artifactType: string;
+      auditOutcome: string;
+      issueCodes: string[];
+      safety: {
+        rawRenderedHtmlIncluded: boolean;
+        publicFetchPerformedByContract: boolean;
+        publishAllowed: boolean;
+      };
+    };
+
+    assert.equal(
+      passResult.schemaVersion,
+      POST_PUBLISH_AUDIT_RUNNER_RESULT_VERSION,
+      "post-publish audit runner result version should be stable",
+    );
+    assert.equal(passResult.dryRunOnly, true, "post-publish audit runner should stay dry-run only");
+    assert.equal(passResult.sourcePath, passExamplePath, "post-publish audit runner should record source path");
+    assert.equal(passResult.outputPath, outputPath, "post-publish audit runner should record output path");
+    assert.equal(
+      passResult.auditArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "pass example should create passing audit artifact",
+    );
+    assert.equal(
+      writtenArtifact.artifactVersion,
+      POST_PUBLISH_AUDIT_VERSION,
+      "post-publish audit output file should be the audit artifact itself",
+    );
+    assert.equal(writtenArtifact.artifactType, "post_publish_audit", "post-publish audit output should be an artifact");
+    assert.equal(
+      writtenArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "post-publish audit output should include audit outcome",
+    );
+    assert.deepEqual(writtenArtifact.issueCodes, [], "passing post-publish audit output should have no issues");
+    assert.equal(
+      writtenArtifact.safety.rawRenderedHtmlIncluded,
+      false,
+      "post-publish audit output should not include raw rendered HTML",
+    );
+    assert.equal(
+      writtenArtifact.safety.publicFetchPerformedByContract,
+      false,
+      "post-publish audit runner should not fetch public URLs itself",
+    );
+    assert.equal(writtenArtifact.safety.publishAllowed, false, "post-publish audit runner should not publish");
+
+    const mismatchResult = await runContentKitchenPostPublishAuditFromFile({
+      inputPath: mismatchExamplePath,
+    });
+    assert.equal(
+      mismatchResult.auditArtifact.auditOutcome,
+      "published_but_audit_failed",
+      "policy mismatch example should fail audit without marking fetch failed",
+    );
+    assert.deepEqual(
+      mismatchResult.auditArtifact.issueCodes,
+      ["SITEMAP_POLICY_MISMATCH"],
+      "policy mismatch example should expose sitemap policy issue",
+    );
+    assert.equal(
+      mismatchResult.auditArtifact.recommendedAction,
+      "degrade",
+      "policy mismatch example should recommend degrade",
+    );
+
+    await assert.rejects(
+      () => runContentKitchenPostPublishAuditCli(["--input", passExamplePath, "--output", passExamplePath]),
+      /--output must be different from --input/,
+      "post-publish audit CLI should reject output paths that would overwrite input",
+    );
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+
+  assert.throws(
+    () => parsePostPublishAuditRunnerInput(passRaw.replace('"observed": {', '"rawRenderedHtml": "<main></main>", "observed": {')),
+    /must not include raw HTML, model prompts, or secrets/,
+    "post-publish audit parser should reject raw rendered HTML",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -4271,6 +4406,7 @@ async function main() {
   await assertPostPublishAuditDoc();
   await assertReviewDecisionExamplesAndRunner();
   assertPostPublishAuditContract();
+  await assertPostPublishAuditRunnerAndExamples();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
