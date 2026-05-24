@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  buildReviewNotificationDraft,
   buildReviewQueueDraft,
   buildReviewDecisionEffectPlan,
   deriveReviewRoute,
@@ -12,6 +13,7 @@ import type {
   ReviewDecisionEffectPlanV0,
   ReviewDecisionV0,
   ReviewDecisionValidationResult,
+  ReviewNotificationDraftV0,
   ReviewQueueDraftV0,
   ReviewRouteResult,
 } from "../lib/puzzles/content-kitchen/types";
@@ -30,6 +32,7 @@ export type ContentKitchenReviewDecisionRunnerResult = {
   decisionValidation?: ReviewDecisionValidationResult;
   effectPlan?: ReviewDecisionEffectPlanV0;
   reviewQueueDraft?: ReviewQueueDraftV0;
+  reviewNotificationDraft?: ReviewNotificationDraftV0;
 };
 
 type ParsedArgs = {
@@ -37,6 +40,7 @@ type ParsedArgs = {
   decisionPath?: string;
   outputPath?: string;
   modelConfidence?: number;
+  reviewUrl?: string;
   pretty: boolean;
 };
 
@@ -63,6 +67,7 @@ function parseArgs(argv: string[]): ParsedArgs {
   let decisionPath: string | undefined;
   let outputPath: string | undefined;
   let modelConfidence: number | undefined;
+  let reviewUrl: string | undefined;
   let pretty = true;
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -91,6 +96,12 @@ function parseArgs(argv: string[]): ParsedArgs {
       continue;
     }
 
+    if (arg === "--review-url") {
+      reviewUrl = readArgValue(argv, index, "--review-url");
+      index += 1;
+      continue;
+    }
+
     if (arg === "--compact") {
       pretty = false;
       continue;
@@ -103,7 +114,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--help" || arg === "-h") {
       throw new Error(
-        "Usage: npm run content-kitchen:review-decision -- --artifact <path> [--decision <path>] [--output <path>] [--model-confidence <0..1>] [--pretty|--compact]",
+        "Usage: npm run content-kitchen:review-decision -- --artifact <path> [--decision <path>] [--output <path>] [--model-confidence <0..1>] [--review-url <url>] [--pretty|--compact]",
       );
     }
 
@@ -125,6 +136,7 @@ function parseArgs(argv: string[]): ParsedArgs {
     decisionPath,
     outputPath,
     modelConfidence,
+    reviewUrl,
     pretty,
   };
 }
@@ -138,6 +150,7 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
   decisionPath?: string;
   outputPath?: string;
   modelConfidence?: number;
+  reviewUrl?: string;
 }): Promise<ContentKitchenReviewDecisionRunnerResult> {
   const artifactPath = resolve(input.artifactPath);
   const decisionPath = input.decisionPath ? resolve(input.decisionPath) : undefined;
@@ -160,6 +173,13 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
     route,
     ...(effectPlan ? { effectPlan } : {}),
   });
+  const reviewNotificationDraft = reviewQueueDraft
+    ? buildReviewNotificationDraft({
+      artifact,
+      queueDraft: reviewQueueDraft,
+      ...(input.reviewUrl ? { reviewUrl: input.reviewUrl } : {}),
+    })
+    : undefined;
   const result: ContentKitchenReviewDecisionRunnerResult = {
     schemaVersion: REVIEW_DECISION_RUNNER_RESULT_VERSION,
     dryRunOnly: true,
@@ -171,6 +191,7 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
     ...(decisionValidation ? { decisionValidation } : {}),
     ...(effectPlan ? { effectPlan } : {}),
     ...(reviewQueueDraft ? { reviewQueueDraft } : {}),
+    ...(reviewNotificationDraft ? { reviewNotificationDraft } : {}),
   };
 
   if (outputPath) {

@@ -815,3 +815,36 @@ export type ReviewQueueDraftV0 = {
   createdAt: string;
   lines: string[];
 };
+
+export type FeishuTextPayloadV0 = {
+  msg_type: "text";
+  content: {
+    text: string;
+  };
+};
+
+export type ReviewNotificationDraftV0 = {
+  notificationDraftVersion: "content-kitchen-review-notification-draft-v0";
+  draftId: string;
+  draftOnly: true;
+  dispatchStatus: "not_sent";
+  channel: "feishu";
+  priority: ReviewQueueDraftPriority;
+  reason: ReviewQueueDraftReason;
+  title: string;
+  artifactId: string;
+  puzzleId: string;
+  candidateRevisionId: string;
+  contentMode?: ContentMode;
+  logicalDate?: string;
+  issueSeverity: ContentKitchenIssueSeverity;
+  route: ReviewRoute;
+  issueCodes: ContentKitchenIssueCode[];
+  recommendedAction: RequiredAction;
+  publicUrl?: string;
+  reviewUrl?: string;
+  dedupeKey: string;
+  createdAt: string;
+  lines: string[];
+  payload: FeishuTextPayloadV0;
+};

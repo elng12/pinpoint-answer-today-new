@@ -2287,6 +2287,18 @@ PR10 fourth implementation slice:
 - include the review queue draft in the local review decision runner output only when one exists
 - keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
 
+PR10 fifth implementation slice:
+
+- add a local Feishu-shaped `ReviewNotificationDraft` for review queue drafts
+- include `artifactId`, `puzzleId`, `candidateRevisionId`, route, priority, issue codes, issue severity, recommended action, public URL, and review URL when available
+- derive logical date from puzzle id when it has a date suffix
+- include a Feishu text payload with `msg_type: "text"` and human-readable lines
+- mark every notification draft as `draftOnly: true`, `dispatchStatus: "not_sent"`, `channel: "feishu"`, and never read webhook secrets
+- create normal notification drafts for normal review queue drafts and high-priority notification drafts for high-priority review queue drafts
+- do not create notification drafts when no review queue draft exists
+- include the notification draft in the local review decision runner output only when one exists
+- keep this local-only; do not build Review UI, call a model, send Feishu messages, read Feishu webhook secrets, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.

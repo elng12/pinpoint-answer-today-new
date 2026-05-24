@@ -55,8 +55,10 @@ import {
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import {
   REVIEW_DECISION_EFFECT_PLAN_VERSION,
+  REVIEW_NOTIFICATION_DRAFT_VERSION,
   REVIEW_QUEUE_DRAFT_VERSION,
   REVIEW_DECISION_VERSION,
+  buildReviewNotificationDraft,
   buildReviewQueueDraft,
   buildReviewDecisionEffectPlan,
   deriveReviewRoute,
@@ -439,6 +441,46 @@ function assertReviewRoutingAndDecisionContract() {
   assert.equal(lowConfidenceQueueDraft.reason, "decision_escalated_to_human", "model escalation should explain why it is queued");
   assert.equal(lowConfidenceQueueDraft.effect, "human_escalation_required", "queue draft should carry the effect");
   assert.equal(lowConfidenceQueueDraft.publishAllowed, false, "queue draft must not allow direct publish");
+  const lowConfidenceNotificationDraft = buildReviewNotificationDraft({
+    artifact: softArtifact,
+    queueDraft: lowConfidenceQueueDraft,
+    reviewUrl: "https://example.com/admin/content-kitchen/review/art_review_decision_contract",
+    createdAt: "2026-05-24T00:03:00.000Z",
+  });
+  assert.equal(
+    lowConfidenceNotificationDraft.notificationDraftVersion,
+    REVIEW_NOTIFICATION_DRAFT_VERSION,
+    "review notification draft version should be stable",
+  );
+  assert.equal(lowConfidenceNotificationDraft.draftOnly, true, "review notification draft should stay draft-only");
+  assert.equal(
+    lowConfidenceNotificationDraft.dispatchStatus,
+    "not_sent",
+    "review notification draft should not pretend it was sent",
+  );
+  assert.equal(lowConfidenceNotificationDraft.channel, "feishu", "review notification draft should target Feishu");
+  assert.equal(lowConfidenceNotificationDraft.priority, "normal", "normal queue drafts should create normal notifications");
+  assert.equal(lowConfidenceNotificationDraft.logicalDate, "2026-05-23", "notification draft should derive the logical date");
+  assert.equal(lowConfidenceNotificationDraft.contentMode, "full-analysis", "notification draft should include current content mode");
+  assert.equal(lowConfidenceNotificationDraft.issueSeverity, "P1", "notification draft should include issue severity");
+  assert.equal(
+    lowConfidenceNotificationDraft.reviewUrl,
+    "https://example.com/admin/content-kitchen/review/art_review_decision_contract",
+    "notification draft should include review URL when available",
+  );
+  assert.equal(
+    lowConfidenceNotificationDraft.payload.msg_type,
+    "text",
+    "notification draft should create a Feishu text payload",
+  );
+  assert.ok(
+    lowConfidenceNotificationDraft.payload.content.text.includes("Draft only: not sent to Feishu."),
+    "notification payload should clearly say it was not sent",
+  );
+  assert.ok(
+    !JSON.stringify(lowConfidenceNotificationDraft).includes("<main"),
+    "review notification draft should not include raw rendered HTML",
+  );
 
   const modelOverride = validateReviewDecision({
     artifact: hardRuleArtifact,
@@ -624,6 +666,25 @@ function assertReviewRoutingAndDecisionContract() {
     highPriorityQueueDraft.persistenceStatus,
     "not_persisted",
     "high-priority queue drafts should still not write storage in PR10 v0",
+  );
+  const highPriorityNotificationDraft = buildReviewNotificationDraft({
+    artifact: highPriorityQueueArtifact,
+    queueDraft: highPriorityQueueDraft,
+    createdAt: "2026-05-24T00:03:00.000Z",
+  });
+  assert.equal(
+    highPriorityNotificationDraft.priority,
+    "high_priority",
+    "high-priority queue drafts should create high-priority Feishu notification drafts",
+  );
+  assert.equal(
+    highPriorityNotificationDraft.dispatchStatus,
+    "not_sent",
+    "high-priority notification drafts should still not send Feishu in PR10 v0",
+  );
+  assert.ok(
+    highPriorityNotificationDraft.dedupeKey.includes("review-notification:high_priority"),
+    "notification dedupe key should include notification type and priority",
   );
 }
 
@@ -3357,6 +3418,13 @@ async function assertReviewRoutingDecisionDoc() {
     "`ANSWER_FIRST_HIGH_PRIORITY_ALERT` creates `high_priority`",
     "It must not include raw rendered HTML, model prompts, secrets, or production storage ids.",
     "The local runner includes `reviewQueueDraft` only when the draft exists.",
+    "Review Notification Draft",
+    "notificationDraftVersion: \"content-kitchen-review-notification-draft-v0\"",
+    "`dispatchStatus: \"not_sent\"`",
+    "`channel: \"feishu\"`",
+    "`msg_type: \"text\"`",
+    "Feishu notification drafts include puzzle id, logical date, current mode, issue severity, recommended action, public URL, and review URL when available.",
+    "The local runner includes `reviewNotificationDraft` only when a review queue draft exists.",
     "review-decision-auto-approve.*.example.json",
     "review-decision-auto-reject.*.example.json",
     "review-decision-model-review.*.example.json",
@@ -3365,12 +3433,14 @@ async function assertReviewRoutingDecisionDoc() {
     "npm run content-kitchen:review-decision",
     "--artifact lib/puzzles/content-kitchen/examples/review-decision-model-review.artifact.example.json",
     "--decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json",
+    "--review-url https://example.com/admin/content-kitchen/review/art_review_human_override_example",
     "--output /tmp/content-kitchen-review-decision-result.json",
     "`--output` must not equal `--artifact`",
     "`--output` must not equal `--decision`",
     "does not build Review UI",
     "does not call a model",
     "does not send Feishu messages",
+    "does not read Feishu webhook secrets",
     "does not write review queue storage",
     "does not touch production storage",
     "does not publish content",
@@ -3452,6 +3522,27 @@ async function assertReviewDecisionExamplesAndRunner() {
         result.reviewQueueDraft.publishAllowed,
         false,
         `${baseName}: review queue draft must not allow direct publish`,
+      );
+      assert.equal(
+        result.reviewNotificationDraft?.notificationDraftVersion,
+        REVIEW_NOTIFICATION_DRAFT_VERSION,
+        `${baseName}: review notification draft version should be stable`,
+      );
+      assert.equal(
+        result.reviewNotificationDraft?.dispatchStatus,
+        "not_sent",
+        `${baseName}: review notification draft should not send Feishu`,
+      );
+      assert.equal(
+        result.reviewNotificationDraft?.payload.msg_type,
+        "text",
+        `${baseName}: review notification draft should include a Feishu text payload`,
+      );
+    } else {
+      assert.equal(
+        result.reviewNotificationDraft,
+        undefined,
+        `${baseName}: runner should not include a notification draft without a queue draft`,
       );
     }
   }
@@ -3590,6 +3681,7 @@ async function assertReviewDecisionExamplesAndRunner() {
   );
   const routeOnlyResult = await runContentKitchenReviewDecisionFromFiles({
     artifactPath: resolve(EXAMPLE_DIR, "review-decision-human-override.artifact.example.json"),
+    reviewUrl: "https://example.com/admin/content-kitchen/review/art_review_human_override_example",
   });
   assert.equal(
     routeOnlyResult.reviewQueueDraft?.queueDraftVersion,
@@ -3600,6 +3692,21 @@ async function assertReviewDecisionExamplesAndRunner() {
     routeOnlyResult.reviewQueueDraft?.persistenceStatus,
     "not_persisted",
     "route-only review queue draft should not write storage",
+  );
+  assert.equal(
+    routeOnlyResult.reviewNotificationDraft?.notificationDraftVersion,
+    REVIEW_NOTIFICATION_DRAFT_VERSION,
+    "route-only human review runner output should include a Feishu notification draft",
+  );
+  assert.equal(
+    routeOnlyResult.reviewNotificationDraft?.dispatchStatus,
+    "not_sent",
+    "route-only Feishu notification draft should not send",
+  );
+  assert.equal(
+    routeOnlyResult.reviewNotificationDraft?.reviewUrl,
+    "https://example.com/admin/content-kitchen/review/art_review_human_override_example",
+    "route-only notification draft should include review URL when provided",
   );
 }
 
