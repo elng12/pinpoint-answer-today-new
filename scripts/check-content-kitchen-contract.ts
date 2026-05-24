@@ -55,6 +55,7 @@ import {
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import { ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION } from "./content-kitchen-enrichment-file-store";
+import { ENRICHMENT_WORKER_RUN_SUMMARY_VERSION } from "./content-kitchen-enrichment-run-summary";
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
   parseAnswerFirstEnrichmentWorkerDryRunInput,
@@ -2098,6 +2099,58 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
     },
     "worker dry-run should summarize claimed, skipped, and advanced jobs",
   );
+  assert.equal(
+    result.runSummary.schemaVersion,
+    ENRICHMENT_WORKER_RUN_SUMMARY_VERSION,
+    "worker dry-run should include a stable run summary schema",
+  );
+  assert.equal(
+    result.runSummary.headline,
+    "worker-dry-run @ 2026-05-23T09:01:00.000Z; 1 claimed job; 2 skipped jobs; 1 state change; 1 review; 0 dead-letter",
+    "worker dry-run should include a short human-readable headline",
+  );
+  assert.deepEqual(
+    result.runSummary.counts,
+    {
+      inputJobs: 3,
+      outputJobs: 3,
+      claimedJobs: 1,
+      skippedJobs: 2,
+      stateChanges: 1,
+      reviewRequiredJobs: 1,
+      deadLetterJobs: 0,
+      overSlaJobs: 1,
+      highPriorityJobs: 0,
+    },
+    "worker dry-run run summary should count important job states",
+  );
+  assert.deepEqual(
+    result.runSummary.bySkipReason,
+    {
+      not_due: 1,
+      terminal_state: 1,
+    },
+    "worker dry-run run summary should count skip reasons",
+  );
+  assert.deepEqual(
+    result.runSummary.byOutputState,
+    {
+      queued: 1,
+      review_required: 1,
+      running: 1,
+    },
+    "worker dry-run run summary should count output states",
+  );
+  assert.deepEqual(
+    result.runSummary.issueCodesAdded,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "worker dry-run run summary should list issue codes added this run",
+  );
+  assert.deepEqual(
+    result.runSummary.activeIssueCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "worker dry-run run summary should list active issue codes after the run",
+  );
   assert.deepEqual(
     result.claimedJobs.map((job) => [job.puzzleId, job.state, job.lockedBy, job.lockedUntil]),
     [["pinpoint-916-2026-05-23", "running", "worker-dry-run", "2026-05-23T09:11:00.000Z"]],
@@ -2205,6 +2258,11 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       lockMinutes: 10,
     });
     const resumedResult = await runAnswerFirstEnrichmentWorkerJsonDryRun(resumedInput);
+    assert.equal(
+      resumedResult.runSummary.headline,
+      "worker-dry-run-next @ 2026-05-23T09:12:00.000Z; 1 claimed job; 2 skipped jobs; 1 state change; 1 review; 0 dead-letter",
+      "resumed worker dry-run should include an updated run summary headline",
+    );
     assert.deepEqual(
       resumedResult.claimedJobs.map((job) => [job.puzzleId, job.attemptCount, job.lockedBy, job.lockedUntil]),
       [["pinpoint-916-2026-05-23", 2, "worker-dry-run-next", "2026-05-23T09:22:00.000Z"]],

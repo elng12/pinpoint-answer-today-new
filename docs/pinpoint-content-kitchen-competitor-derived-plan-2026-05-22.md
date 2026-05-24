@@ -2154,6 +2154,13 @@ PR9 tenth implementation slice:
 - keep resumed dry runs local-only and read-only against the previous output unless a separate output path is provided
 - do not attach this slice to production storage, Worker cron, or Feishu notifications yet
 
+PR9 eleventh implementation slice:
+
+- add a local worker run summary for dry-run results
+- include a short headline, human-readable lines, important counts, skip reason counts, output state counts, and issue code lists
+- keep the summary machine-readable so later notification and review queue layers can reuse it
+- keep this local-only; do not attach it to Feishu, review queue storage, production storage, or Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

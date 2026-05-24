@@ -10,6 +10,10 @@ import {
   ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION,
   createJsonFileAnswerFirstEnrichmentJobStore,
 } from "./content-kitchen-enrichment-file-store";
+import {
+  buildAnswerFirstEnrichmentWorkerRunSummary,
+  type AnswerFirstEnrichmentWorkerRunSummary,
+} from "./content-kitchen-enrichment-run-summary";
 
 export const ENRICHMENT_WORKER_DRY_RUN_INPUT_VERSION = "content-kitchen-enrichment-worker-dry-run-v0";
 export const ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION = "content-kitchen-enrichment-worker-dry-run-result-v0";
@@ -51,6 +55,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
     skippedJobs: number;
     stateAdvancements: number;
   };
+  runSummary: AnswerFirstEnrichmentWorkerRunSummary;
   outputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
   skippedJobs: Array<{
@@ -216,6 +221,15 @@ function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichment
       skippedJobs: input.skippedJobs.length,
       stateAdvancements: input.stateAdvancements.filter((result) => result.transition !== "unchanged").length,
     },
+    runSummary: buildAnswerFirstEnrichmentWorkerRunSummary({
+      now: input.input.now,
+      workerId: input.input.workerId,
+      inputJobs: input.input.jobs.length,
+      outputJobs: input.outputJobs,
+      claimedJobs: input.claimedJobs,
+      skippedJobs: input.skippedJobs,
+      stateAdvancements: input.stateAdvancements,
+    }),
     outputPath: input.outputPath,
     claimedJobs: input.claimedJobs.map(summarizeJob),
     skippedJobs: input.skippedJobs.map((entry) => ({
