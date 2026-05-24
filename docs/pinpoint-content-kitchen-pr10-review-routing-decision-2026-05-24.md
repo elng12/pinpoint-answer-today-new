@@ -131,6 +131,9 @@ The content-kitchen contract test covers:
 - missing `artifactId` fails
 - revision mismatch fails
 - override of an absent issue code fails
+- valid decisions produce an effect plan
+- invalid decisions produce `invalid_decision`
+- `auto_approve` still does not allow automatic publish
 
 ## Example Files
 
@@ -162,6 +165,24 @@ npm run content-kitchen:review-decision -- \
   --decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json \
   --pretty
 ```
+
+The runner prints:
+
+- derived route
+- decision validation
+- effect plan
+
+The effect plan explains the local consequence of the decision:
+
+- `approved`: reviewer approved this candidate revision
+- `rejected`: candidate revision must not publish
+- `regeneration_requested`: regenerate before continuing
+- `answer_first_forced`: record answer-first fallback request
+- `issue_override_recorded`: record a human-only issue override
+- `human_escalation_required`: keep the artifact in human review
+- `invalid_decision`: do not apply any downstream action
+
+In PR10 v0, every effect plan has `publishAllowed: false`.
 
 Write the result to a local file:
 

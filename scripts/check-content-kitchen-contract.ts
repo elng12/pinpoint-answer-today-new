@@ -54,7 +54,9 @@ import {
 } from "../lib/puzzles/content-kitchen/issue-registry";
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import {
+  REVIEW_DECISION_EFFECT_PLAN_VERSION,
   REVIEW_DECISION_VERSION,
+  buildReviewDecisionEffectPlan,
   deriveReviewRoute,
   validateReviewDecision,
 } from "../lib/puzzles/content-kitchen/review-decision";
@@ -298,6 +300,13 @@ function assertReviewRoutingAndDecisionContract() {
     true,
     "rule engine should be able to approve a low-risk artifact locally",
   );
+  const lowRiskEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: lowRiskArtifact,
+    decision: makeReviewDecisionForArtifact(lowRiskArtifact),
+  });
+  assert.equal(lowRiskEffectPlan.effect, "approved", "approved decisions should produce approved effect");
+  assert.equal(lowRiskEffectPlan.publishAllowed, false, "auto_approve must not mean automatic publish");
+  assert.equal(lowRiskEffectPlan.nextRequiredAction, "none", "approved effect should not request more local action");
 
   const hardRuleArtifact = makeReviewArtifactForDecision(["CANDIDATE_L1_MISMATCH"], {
     validation: {
@@ -328,6 +337,12 @@ function assertReviewRoutingAndDecisionContract() {
     true,
     "rule engine should be able to reject obvious hard-rule failures",
   );
+  const hardRuleEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: hardRuleArtifact,
+    decision: makeReviewDecisionForArtifact(hardRuleArtifact),
+  });
+  assert.equal(hardRuleEffectPlan.effect, "rejected", "reject decisions should produce rejected effect");
+  assert.equal(hardRuleEffectPlan.nextRequiredAction, "block_publish", "rejected effect should block publish");
 
   const softArtifact = makeReviewArtifactForDecision(["GENERIC_REASONING_PATTERN"]);
   const softRoute = deriveReviewRoute(softArtifact);
@@ -352,6 +367,16 @@ function assertReviewRoutingAndDecisionContract() {
     true,
     "model reviewers should be able to recommend regeneration for soft issues",
   );
+  const modelEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: softArtifact,
+    decision: modelDecision,
+  });
+  assert.equal(
+    modelEffectPlan.effect,
+    "regeneration_requested",
+    "request_regeneration decisions should produce regeneration_requested effect",
+  );
+  assert.equal(modelEffectPlan.nextRequiredAction, "enrich", "regeneration effect should request enrich");
 
   const lowConfidenceRoute = deriveReviewRoute(softArtifact, { modelConfidence: 0.4 });
   assert.equal(lowConfidenceRoute.route, "human_review", "low-confidence model review should route to human_review");
@@ -370,6 +395,16 @@ function assertReviewRoutingAndDecisionContract() {
     true,
     "low-confidence model decisions should be valid only when escalated to human",
   );
+  const lowConfidenceEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: softArtifact,
+    decision: lowConfidenceDecision,
+  });
+  assert.equal(
+    lowConfidenceEffectPlan.effect,
+    "human_escalation_required",
+    "escalate_to_human decisions should keep the artifact in human review",
+  );
+  assert.equal(lowConfidenceEffectPlan.artifactStatus, "open", "human escalation should keep artifact open");
 
   const modelOverride = validateReviewDecision({
     artifact: hardRuleArtifact,
@@ -439,6 +474,67 @@ function assertReviewRoutingAndDecisionContract() {
     invalidOverride.errors.some((error) => error.includes("not in the review artifact")),
     "absent override issue codes should produce a specific validation error",
   );
+
+  const invalidEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: softArtifact,
+    decision: {
+      ...modelDecision,
+      candidateRevisionId: "rev-other",
+    },
+  });
+  assert.equal(invalidEffectPlan.valid, false, "invalid decisions should produce invalid effect plans");
+  assert.equal(invalidEffectPlan.effect, "invalid_decision", "invalid decisions should not produce a passing effect");
+  assert.equal(invalidEffectPlan.publishAllowed, false, "invalid effect plans must never allow publish");
+
+  const forceAnswerFirstArtifact = makeReviewArtifactForDecision(["FULL_ANALYSIS_STRUCTURE_NOT_VALIDATED"]);
+  const forceAnswerFirstEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: forceAnswerFirstArtifact,
+    decision: makeReviewDecisionForArtifact(forceAnswerFirstArtifact, {
+      route: "human_review",
+      reviewerType: "human",
+      reviewerId: "human-reviewer",
+      action: "force_answer_first",
+      note: "Human requests answer-first fallback for this candidate revision.",
+    }),
+  });
+  assert.equal(
+    forceAnswerFirstEffectPlan.effect,
+    "answer_first_forced",
+    "force_answer_first decisions should produce answer_first_forced effect",
+  );
+  assert.equal(forceAnswerFirstEffectPlan.nextRequiredAction, "degrade", "force answer-first should request degrade");
+
+  const partialOverrideArtifact = makeReviewArtifactForDecision([
+    "EVIDENCE_SOURCE_CONFLICT",
+    "ANSWER_FIRST_REVIEW_REQUIRED",
+  ]);
+  const partialOverrideEffectPlan = buildReviewDecisionEffectPlan({
+    artifact: partialOverrideArtifact,
+    decision: makeReviewDecisionForArtifact(partialOverrideArtifact, {
+      route: "human_review",
+      reviewerType: "human",
+      reviewerId: "human-reviewer",
+      action: "override_issue",
+      issueCodes: ["EVIDENCE_SOURCE_CONFLICT"],
+      note: "Human override applies only to the exact evidence conflict.",
+    }),
+  });
+  assert.equal(
+    partialOverrideEffectPlan.effect,
+    "issue_override_recorded",
+    "override_issue decisions should produce issue_override_recorded effect",
+  );
+  assert.deepEqual(
+    partialOverrideEffectPlan.overriddenIssueCodes,
+    ["EVIDENCE_SOURCE_CONFLICT"],
+    "override effect should name only overridden issue codes",
+  );
+  assert.deepEqual(
+    partialOverrideEffectPlan.remainingIssueCodes,
+    ["ANSWER_FIRST_REVIEW_REQUIRED"],
+    "override effect should preserve non-overridden issue codes",
+  );
+  assert.equal(partialOverrideEffectPlan.nextRequiredAction, "review", "remaining issues should keep review action");
 }
 
 function assertPr6P0Coverage(fixtures: Fixture[]) {
@@ -3151,6 +3247,18 @@ async function assertReviewRoutingDecisionDoc() {
     "model decisions cannot override issues",
     "model decisions below confidence threshold must escalate to human",
     "override of an absent issue code fails",
+    "valid decisions produce an effect plan",
+    "invalid decisions produce `invalid_decision`",
+    "`auto_approve` still does not allow automatic publish",
+    "effect plan",
+    "`approved`: reviewer approved this candidate revision",
+    "`rejected`: candidate revision must not publish",
+    "`regeneration_requested`: regenerate before continuing",
+    "`answer_first_forced`: record answer-first fallback request",
+    "`issue_override_recorded`: record a human-only issue override",
+    "`human_escalation_required`: keep the artifact in human review",
+    "`invalid_decision`: do not apply any downstream action",
+    "`publishAllowed: false`",
     "review-decision-auto-approve.*.example.json",
     "review-decision-auto-reject.*.example.json",
     "review-decision-model-review.*.example.json",
@@ -3178,11 +3286,11 @@ async function assertReviewRoutingDecisionDoc() {
 
 async function assertReviewDecisionExamplesAndRunner() {
   const pairs = [
-    ["review-decision-auto-approve", "auto_approve"],
-    ["review-decision-auto-reject", "auto_reject"],
-    ["review-decision-model-review", "model_review"],
-    ["review-decision-low-confidence-human", "human_review"],
-    ["review-decision-human-override", "human_review"],
+    ["review-decision-auto-approve", "auto_approve", "approved"],
+    ["review-decision-auto-reject", "auto_reject", "rejected"],
+    ["review-decision-model-review", "model_review", "regeneration_requested"],
+    ["review-decision-low-confidence-human", "human_review", "human_escalation_required"],
+    ["review-decision-human-override", "human_review", "issue_override_recorded"],
   ] as const;
 
   const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
@@ -3195,7 +3303,7 @@ async function assertReviewDecisionExamplesAndRunner() {
     "package.json should expose the content-kitchen review decision runner",
   );
 
-  for (const [baseName, expectedRoute] of pairs) {
+  for (const [baseName, expectedRoute, expectedEffect] of pairs) {
     const artifactPath = resolve(EXAMPLE_DIR, `${baseName}.artifact.example.json`);
     const decisionPath = resolve(EXAMPLE_DIR, `${baseName}.decision.example.json`);
     const result = await runContentKitchenReviewDecisionFromFiles({
@@ -3217,6 +3325,14 @@ async function assertReviewDecisionExamplesAndRunner() {
       true,
       `${baseName}: example decision should validate`,
     );
+    assert.equal(
+      result.effectPlan?.effectPlanVersion,
+      REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      `${baseName}: effect plan version should be stable`,
+    );
+    assert.equal(result.effectPlan?.valid, true, `${baseName}: effect plan should be valid`);
+    assert.equal(result.effectPlan?.effect, expectedEffect, `${baseName}: effect plan should match decision action`);
+    assert.equal(result.effectPlan?.publishAllowed, false, `${baseName}: effect plan must not allow direct publish`);
   }
 
   const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-review-decision-"));
@@ -3235,6 +3351,13 @@ async function assertReviewDecisionExamplesAndRunner() {
       outputPath: string;
       route: { route: string };
       decisionValidation: { valid: boolean };
+      effectPlan: {
+        effectPlanVersion: string;
+        valid: boolean;
+        effect: string;
+        publishAllowed: boolean;
+        nextRequiredAction: string;
+      };
     };
 
     assert.equal(outputResult.outputPath, outputPath, "review decision runner should report output path");
@@ -3250,6 +3373,27 @@ async function assertReviewDecisionExamplesAndRunner() {
       writtenOutput.decisionValidation.valid,
       true,
       "review decision runner output should include decision validation",
+    );
+    assert.equal(
+      writtenOutput.effectPlan.effectPlanVersion,
+      REVIEW_DECISION_EFFECT_PLAN_VERSION,
+      "review decision runner output should include the stable effect plan version",
+    );
+    assert.equal(writtenOutput.effectPlan.valid, true, "review decision runner output should include a valid effect plan");
+    assert.equal(
+      writtenOutput.effectPlan.effect,
+      "regeneration_requested",
+      "review decision runner output should include the decision effect",
+    );
+    assert.equal(
+      writtenOutput.effectPlan.publishAllowed,
+      false,
+      "review decision runner output should not allow direct publish",
+    );
+    assert.equal(
+      writtenOutput.effectPlan.nextRequiredAction,
+      "enrich",
+      "review decision runner output should include the next required action",
     );
 
     await assert.rejects(
