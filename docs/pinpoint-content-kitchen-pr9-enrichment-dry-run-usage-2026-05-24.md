@@ -39,9 +39,31 @@ This prints:
 - updated job state preview
 - `runSummary`
 - `actionDrafts`
+- `healthReport`
 - claimed jobs
 - skipped jobs
 - state advancement decisions
+
+## Health Report
+
+Start with `healthReport.status` before reading the full output.
+
+The status values are:
+
+- `ok`: no review action is needed
+- `needs_review`: inspect review queue drafts before allowing automatic enrichment to continue
+- `high_priority`: inspect high-priority action drafts before any future publish automation
+- `blocked`: inspect dead-letter or max-attempt jobs before retrying the queue
+
+The health report also includes:
+
+- compact counts
+- claimed job ids
+- review job ids
+- dead-letter job ids
+- high-priority job ids
+- active issue codes
+- skip reasons
 
 ## Write Job State Preview
 

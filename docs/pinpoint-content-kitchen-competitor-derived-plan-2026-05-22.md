@@ -2192,6 +2192,14 @@ PR9 fifteenth implementation slice:
 - make the contract test check that the usage note names the dry-run command, output flags, and local-only safety markers
 - keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
 
+PR9 sixteenth implementation slice:
+
+- add a local worker health report derived from the dry-run summary and action drafts
+- return one compact status: `ok`, `needs_review`, `high_priority`, or `blocked`
+- include compact counts, important job ids, active issue codes, skip reasons, and a recommended operator action
+- cover all four health statuses in the content-kitchen contract test
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
