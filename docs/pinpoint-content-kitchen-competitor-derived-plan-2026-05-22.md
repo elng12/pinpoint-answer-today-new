@@ -2243,6 +2243,19 @@ Acceptance:
 - Feishu notifications include puzzle number, logical date, current mode, issue severity, recommended action, public URL, and review URL when available
 - normal Feishu alerts are used for 30-minute upgrade misses; high-priority Feishu alerts are used for 6-hour unresolved pages and P0 publish/audit issues
 
+PR10 first implementation slice:
+
+- add a local `ReviewRoute` contract with `auto_approve`, `auto_reject`, `model_review`, and `human_review`
+- add a local `ReviewDecision` contract that binds every decision to `artifactId`, `puzzleId`, `candidateRevisionId`, issue codes, reviewer type, reviewer id, timestamp, and note
+- route obvious hard-rule failures to `auto_reject`; do not let model review overrule answer, identity, canonical, clue-count, missing-evidence, noindex, or schema-visibility failures
+- route soft quality issues to `model_review` without calling a real model in this slice
+- route low-confidence model results, source conflicts, prohibited sources, unsupported clue fits, and escalation cases to `human_review`
+- allow `rule_engine` to approve low-risk artifacts and reject hard-rule failures only
+- allow `model` to recommend approve, reject, regeneration, or human escalation for soft issues only
+- allow only `human` decisions to use `override_issue`
+- reject decisions with missing artifact id, puzzle id mismatch, candidate revision mismatch, model override attempts, or override issue codes that are not present on the artifact
+- keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.

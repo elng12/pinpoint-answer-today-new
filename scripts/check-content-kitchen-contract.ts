@@ -53,6 +53,11 @@ import {
   getPr7IssueCodes,
 } from "../lib/puzzles/content-kitchen/issue-registry";
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
+import {
+  REVIEW_DECISION_VERSION,
+  deriveReviewRoute,
+  validateReviewDecision,
+} from "../lib/puzzles/content-kitchen/review-decision";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import { ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION } from "./content-kitchen-enrichment-file-store";
 import { ENRICHMENT_WORKER_ACTION_DRAFTS_VERSION } from "./content-kitchen-enrichment-action-drafts";
@@ -73,6 +78,8 @@ import type {
   FullAnalysisSlotIssueCode,
   FullAnalysisSlotPlanV0,
   L1PuzzleInput,
+  ReviewArtifactV0,
+  ReviewDecisionV0,
   ValidateCandidateInput,
   ValidationOutcome,
   ValidationPolicies,
@@ -87,6 +94,11 @@ const PR9_ENRICHMENT_DRY_RUN_USAGE_DOC_PATH = resolve(
   ROOT,
   "docs",
   "pinpoint-content-kitchen-pr9-enrichment-dry-run-usage-2026-05-24.md",
+);
+const PR10_REVIEW_ROUTING_DECISION_DOC_PATH = resolve(
+  ROOT,
+  "docs",
+  "pinpoint-content-kitchen-pr10-review-routing-decision-2026-05-24.md",
 );
 
 type Fixture = {
@@ -191,6 +203,237 @@ function assertReviewArtifactBehavior(fileName: string, fixture: Fixture, actual
     );
   }
   assert.ok(!serialized.includes("secret"), `${fileName}: artifact must not include obvious secret strings`);
+}
+
+function makeReviewArtifactForDecision(
+  issueCodes: ContentKitchenIssueCode[],
+  overrides: Partial<ReviewArtifactV0> = {},
+): ReviewArtifactV0 {
+  const validationIssues = issueCodes.map((issueCode) => {
+    const definition = getIssueDefinition(issueCode);
+    return {
+      issueCode,
+      severity: definition.defaultSeverity,
+      fieldPath: "candidate",
+      message: definition.description,
+      suggestedAction: definition.defaultRequiredAction,
+      blocking: definition.defaultSeverity === "P0",
+      candidateRevisionId: "rev-full-analysis-916",
+    };
+  });
+
+  return {
+    artifactVersion: "content-kitchen-review-artifact-v0",
+    artifactId: "art_review_decision_contract",
+    artifactType: "review",
+    createdAt: "2026-05-24T00:00:00.000Z",
+    puzzleId: "pinpoint-916-2026-05-23",
+    canonicalUrl: "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-916/",
+    contentMode: "full-analysis",
+    candidateRevisionId: "rev-full-analysis-916",
+    validation: {
+      outcome: issueCodes.length > 0 ? "requires_review" : "pass_full_analysis",
+      policies: {
+        indexPolicy: issueCodes.length > 0 ? "review_required" : "index",
+        sitemapPolicy: issueCodes.length > 0 ? "include_after_audit" : "include",
+        schemaPolicy: "article_only",
+        internalLinkPolicy: issueCodes.length > 0 ? "deemphasized" : "normal",
+        requiredAction: issueCodes.length > 0 ? "review" : "none",
+      },
+      issueCodes,
+      issues: validationIssues,
+    },
+    issueCodesRequiringDecision: issueCodes,
+    recommendedAction: issueCodes.length > 0 ? "review" : "none",
+    allowedReviewerActions: ["approve_candidate", "reject_candidate", "create_fix_task"],
+    ...overrides,
+  };
+}
+
+function makeReviewDecisionForArtifact(
+  artifact: ReviewArtifactV0,
+  overrides: Partial<ReviewDecisionV0> = {},
+): ReviewDecisionV0 {
+  const route = deriveReviewRoute(artifact, {
+    modelConfidence: overrides.reviewerType === "model" ? overrides.confidence : undefined,
+  }).route;
+
+  return {
+    decisionVersion: REVIEW_DECISION_VERSION,
+    artifactId: artifact.artifactId,
+    puzzleId: artifact.puzzleId ?? "pinpoint-916-2026-05-23",
+    candidateRevisionId: artifact.candidateRevisionId ?? "rev-full-analysis-916",
+    issueCodes: artifact.validation.issueCodes,
+    route,
+    action: route === "auto_reject" ? "reject" : "approve",
+    reviewerType: route === "model_review" ? "model" : "rule_engine",
+    reviewerId: route === "model_review" ? "model-reviewer" : "content-kitchen-rules",
+    reviewedAt: "2026-05-24T00:01:00.000Z",
+    note: "Local contract test decision.",
+    ...(route === "model_review"
+      ? {
+        confidence: 0.9,
+        modelName: "contract-model",
+        modelVersion: "v0",
+      }
+      : {}),
+    ...overrides,
+  };
+}
+
+function assertReviewRoutingAndDecisionContract() {
+  const lowRiskArtifact = makeReviewArtifactForDecision([]);
+  const lowRiskRoute = deriveReviewRoute(lowRiskArtifact);
+  assert.equal(lowRiskRoute.route, "auto_approve", "low-risk review artifacts should route to auto_approve");
+  assert.equal(
+    validateReviewDecision({
+      artifact: lowRiskArtifact,
+      decision: makeReviewDecisionForArtifact(lowRiskArtifact),
+    }).valid,
+    true,
+    "rule engine should be able to approve a low-risk artifact locally",
+  );
+
+  const hardRuleArtifact = makeReviewArtifactForDecision(["CANDIDATE_L1_MISMATCH"], {
+    validation: {
+      ...makeReviewArtifactForDecision(["CANDIDATE_L1_MISMATCH"]).validation,
+      outcome: "block_publish",
+      policies: {
+        indexPolicy: "block_publish",
+        sitemapPolicy: "exclude",
+        schemaPolicy: "block_schema",
+        internalLinkPolicy: "hidden_from_recent",
+        requiredAction: "block_publish",
+      },
+    },
+    recommendedAction: "block_publish",
+  });
+  const hardRuleRoute = deriveReviewRoute(hardRuleArtifact);
+  assert.equal(hardRuleRoute.route, "auto_reject", "hard-rule failures should route to auto_reject");
+  assert.deepEqual(
+    hardRuleRoute.hardRuleIssueCodes,
+    ["CANDIDATE_L1_MISMATCH"],
+    "hard-rule routes should expose the exact hard issue code",
+  );
+  assert.equal(
+    validateReviewDecision({
+      artifact: hardRuleArtifact,
+      decision: makeReviewDecisionForArtifact(hardRuleArtifact),
+    }).valid,
+    true,
+    "rule engine should be able to reject obvious hard-rule failures",
+  );
+
+  const softArtifact = makeReviewArtifactForDecision(["GENERIC_REASONING_PATTERN"]);
+  const softRoute = deriveReviewRoute(softArtifact);
+  assert.equal(softRoute.route, "model_review", "soft quality issues should route to model_review");
+  assert.deepEqual(
+    softRoute.modelReviewIssueCodes,
+    ["GENERIC_REASONING_PATTERN"],
+    "model review routes should expose soft issue codes",
+  );
+
+  const modelDecision = makeReviewDecisionForArtifact(softArtifact, {
+    reviewerType: "model",
+    reviewerId: "model-reviewer",
+    action: "request_regeneration",
+    confidence: 0.9,
+    modelName: "contract-model",
+    modelVersion: "v0",
+    note: "Reasoning is too generic; regenerate the explanation.",
+  });
+  assert.equal(
+    validateReviewDecision({ artifact: softArtifact, decision: modelDecision }).valid,
+    true,
+    "model reviewers should be able to recommend regeneration for soft issues",
+  );
+
+  const lowConfidenceRoute = deriveReviewRoute(softArtifact, { modelConfidence: 0.4 });
+  assert.equal(lowConfidenceRoute.route, "human_review", "low-confidence model review should route to human_review");
+  const lowConfidenceDecision = makeReviewDecisionForArtifact(softArtifact, {
+    route: "human_review",
+    reviewerType: "model",
+    reviewerId: "model-reviewer",
+    action: "escalate_to_human",
+    confidence: 0.4,
+    modelName: "contract-model",
+    modelVersion: "v0",
+    note: "Model confidence is too low for a final decision.",
+  });
+  assert.equal(
+    validateReviewDecision({ artifact: softArtifact, decision: lowConfidenceDecision }).valid,
+    true,
+    "low-confidence model decisions should be valid only when escalated to human",
+  );
+
+  const modelOverride = validateReviewDecision({
+    artifact: hardRuleArtifact,
+    decision: makeReviewDecisionForArtifact(hardRuleArtifact, {
+      route: "auto_reject",
+      reviewerType: "model",
+      reviewerId: "model-reviewer",
+      action: "override_issue",
+      confidence: 0.9,
+      modelName: "contract-model",
+      modelVersion: "v0",
+      note: "Model tried to override a hard rule.",
+    }),
+  });
+  assert.equal(modelOverride.valid, false, "model reviewers must not override hard-rule failures");
+  assert.ok(
+    modelOverride.errors.some((error) => error.includes("cannot override")),
+    "model override validation should explain the override failure",
+  );
+
+  const missingArtifactId = validateReviewDecision({
+    artifact: softArtifact,
+    decision: makeReviewDecisionForArtifact(softArtifact, {
+      artifactId: "",
+      reviewerType: "model",
+      action: "request_regeneration",
+      confidence: 0.9,
+      modelName: "contract-model",
+      modelVersion: "v0",
+    }),
+  });
+  assert.equal(missingArtifactId.valid, false, "review decisions without artifactId should fail");
+  assert.ok(
+    missingArtifactId.errors.includes("artifactId is required"),
+    "missing artifactId should produce a specific validation error",
+  );
+
+  const revisionMismatch = validateReviewDecision({
+    artifact: softArtifact,
+    decision: makeReviewDecisionForArtifact(softArtifact, {
+      candidateRevisionId: "rev-other",
+      reviewerType: "model",
+      action: "request_regeneration",
+      confidence: 0.9,
+      modelName: "contract-model",
+      modelVersion: "v0",
+    }),
+  });
+  assert.equal(revisionMismatch.valid, false, "review decisions with revision mismatch should fail");
+  assert.ok(
+    revisionMismatch.errors.includes("candidateRevisionId must match the review artifact"),
+    "revision mismatch should produce a specific validation error",
+  );
+
+  const invalidOverride = validateReviewDecision({
+    artifact: hardRuleArtifact,
+    decision: makeReviewDecisionForArtifact(hardRuleArtifact, {
+      reviewerType: "human",
+      reviewerId: "human-reviewer",
+      action: "override_issue",
+      issueCodes: ["WEAK_FIT_EVIDENCE"],
+      note: "Human tried to override an issue that is not on this artifact.",
+    }),
+  });
+  assert.equal(invalidOverride.valid, false, "override decisions for absent issue codes should fail");
+  assert.ok(
+    invalidOverride.errors.some((error) => error.includes("not in the review artifact")),
+    "absent override issue codes should produce a specific validation error",
+  );
 }
 
 function assertPr6P0Coverage(fixtures: Fixture[]) {
@@ -2883,6 +3126,40 @@ async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
   }
 }
 
+async function assertReviewRoutingDecisionDoc() {
+  const doc = await readFile(PR10_REVIEW_ROUTING_DECISION_DOC_PATH, "utf8");
+  const requiredSnippets = [
+    "PR10 Review Routing And Decision Contract",
+    "`ReviewRoute`",
+    "`auto_approve`: rules found no review issue",
+    "`auto_reject`: hard rules found a clear failure",
+    "`model_review`: only soft quality issues remain",
+    "`human_review`: risk is too high, unclear, or low-confidence",
+    "`auto_approve` means local rules think no reviewer is needed. It does not mean automatic publishing.",
+    "Hard-rule failures are not sent to model review.",
+    "Model review is only a route in PR10.1. No model is called in this slice.",
+    "Only a human can use `override_issue`.",
+    "decisionVersion: \"content-kitchen-review-decision-v0\"",
+    "`artifactId`",
+    "`puzzleId`",
+    "`candidateRevisionId`",
+    "model decisions cannot override issues",
+    "model decisions below confidence threshold must escalate to human",
+    "override of an absent issue code fails",
+    "does not build Review UI",
+    "does not call a model",
+    "does not send Feishu messages",
+    "does not write review queue storage",
+    "does not touch production storage",
+    "does not publish content",
+    "does not run Worker cron",
+  ];
+
+  for (const snippet of requiredSnippets) {
+    assert.ok(doc.includes(snippet), `PR10 review routing decision doc should include: ${snippet}`);
+  }
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -2906,6 +3183,7 @@ async function main() {
   checkHashExcludesVolatileFields();
   assertFullAnalysisSlotContract();
   assertIssueRegistryIsStable();
+  assertReviewRoutingAndDecisionContract();
   assertPr6P0Coverage(fixtures);
   assertPr7Coverage(fixtures);
   await assertExamplesAreValidJson();
@@ -2929,6 +3207,7 @@ async function main() {
   await assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun();
   await assertAnswerFirstEnrichmentWorkerHealthStatuses();
   await assertAnswerFirstEnrichmentDryRunUsageDoc();
+  await assertReviewRoutingDecisionDoc();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
