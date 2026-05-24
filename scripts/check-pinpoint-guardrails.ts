@@ -2778,6 +2778,34 @@ async function checkReleaseQueueObservationOpsScript() {
   console.log("ok: worker ops exposes production release queue observation");
 }
 
+async function checkProductionReleaseRunsPublicFetchAudit() {
+  const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-public-fetch-audit"]?.includes(
+      "run-content-kitchen-post-publish-public-fetch-audit.ts",
+    ),
+    "package.json must expose the PR11 public fetch audit command",
+  );
+  assert.ok(
+    releaseSource.includes("runPostPublishPublicFetchAudit") &&
+      releaseSource.includes("content-kitchen:post-publish-public-fetch-audit") &&
+      releaseSource.includes("published_and_audit_passed"),
+    "release:production must run PR11 public fetch audit and require a passing audit outcome",
+  );
+  assert.ok(
+    releaseSource.includes("expectedInternalLinks") &&
+      releaseSource.includes("sitemapLastmod") &&
+      releaseSource.includes("schemaDateModified"),
+    "release:production must feed PR11 expected link, sitemap, and schema facts",
+  );
+
+  console.log("ok: production release runs PR11 public fetch audit before declaring success");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -2864,6 +2892,7 @@ async function main() {
   await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueDryRunOpsScript();
   await checkReleaseQueueObservationOpsScript();
+  await checkProductionReleaseRunsPublicFetchAudit();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }

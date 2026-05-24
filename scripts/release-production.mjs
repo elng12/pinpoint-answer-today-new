@@ -1,7 +1,8 @@
 import { spawn } from "node:child_process";
+import { tmpdir } from "node:os";
 import process from "node:process";
 import { dirname, resolve } from "node:path";
-import { readFile } from "node:fs/promises";
+import { mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import {
   formatPublishGateIssues,
@@ -38,7 +39,7 @@ What it does:
   3. Push main to origin
   4. Wait for the Vercel deployment tied to HEAD
   5. Deploy the production Cloudflare Worker
-  6. Verify homepage, summary API, and worker health
+  6. Verify homepage, summary API, worker health, detail HTML, and PR11 public fetch audit
 
 Options:
   --dry-run   Run all local preflight checks, then stop before push/deploy
@@ -250,6 +251,44 @@ async function loadLiveRegistryEntry() {
   return liveEntry;
 }
 
+function resolveRegistryDetailState(entry) {
+  if (entry?.detailState) {
+    return String(entry.detailState);
+  }
+  const status = String(entry?.status || "");
+  return status === "draft" || status === "preview" ? "draft" : "published";
+}
+
+function isPublicRegistryEntry(entry) {
+  const status = String(entry?.status || "");
+  const detailState = resolveRegistryDetailState(entry);
+  return (
+    (status === "live" || status === "archived") &&
+    (detailState === "published" || detailState === "fallback_full") &&
+    Boolean(entry?.slug)
+  );
+}
+
+function findRegistryEntryBySlug(registry, slug) {
+  return Array.isArray(registry)
+    ? registry.find((entry) => String(entry?.slug || "") === slug)
+    : null;
+}
+
+function findPreviousPublicDetailPath(registry, slug) {
+  if (!Array.isArray(registry)) {
+    return "";
+  }
+
+  const index = registry.findIndex((entry) => String(entry?.slug || "") === slug);
+  if (index < 0) {
+    return "";
+  }
+
+  const previous = registry.slice(index + 1).find(isPublicRegistryEntry);
+  return previous?.slug ? `/linkedin-pinpoint-answers/${previous.slug}/` : "";
+}
+
 function assertReleaseEligibleDetail(slug, puzzle, contextLabel, registryEntry = {}) {
   const eligibility = validatePublishEligibility({
     slug,
@@ -349,6 +388,103 @@ async function waitForLatestDetailContent(siteUrl, slug, puzzle) {
   );
 }
 
+function buildPostPublishPublicFetchAuditInput({
+  siteUrl,
+  sha,
+  registry,
+  registryEntry,
+  puzzle,
+}) {
+  const slug = String(registryEntry?.slug || puzzle?.slug || "").trim();
+  const puzzleNumber = registryEntry?.puzzleNumber ?? puzzle?.puzzleNumber ?? puzzle?.number;
+  const publishDate = String(registryEntry?.publishDate || puzzle?.publishDate || puzzle?.isoDate || "").trim();
+  const updatedAt = String(registryEntry?.updatedAt || puzzle?.updatedAt || "").trim();
+  const answer = String(puzzle?.answer || registryEntry?.mainAnswer || "").trim();
+  const clues = Array.isArray(puzzle?.clues) && puzzle.clues.length
+    ? puzzle.clues
+    : Array.isArray(registryEntry?.clues)
+      ? registryEntry.clues
+      : [];
+
+  if (!slug || !puzzleNumber || !publishDate || !updatedAt || !answer || clues.length !== 5) {
+    throw new Error(`Cannot build post-publish audit input for ${slug || "(missing slug)"}.`);
+  }
+
+  const normalizedSiteUrl = siteUrl.replace(/\/$/, "");
+  const previousDetailPath = findPreviousPublicDetailPath(registry, slug);
+
+  return {
+    schemaVersion: "content-kitchen-post-publish-public-fetch-audit-input-v0",
+    artifactId: `release-post-publish-public-fetch-${slug}-${sha.slice(0, 12)}`,
+    checkedAt: new Date().toISOString(),
+    expected: {
+      puzzleId: `pinpoint-${puzzleNumber}-${publishDate}`,
+      canonicalUrl: `${normalizedSiteUrl}/linkedin-pinpoint-answers/${slug}/`,
+      revisionId: sha,
+      contentMode: "full-analysis",
+      answer,
+      clues,
+      policies: {
+        indexPolicy: "index",
+        sitemapPolicy: "include",
+        schemaPolicy: "faq_allowed",
+        internalLinkPolicy: "normal",
+        requiredAction: "none",
+      },
+      schemaTypes: ["Article", "Game", "ItemList", "BreadcrumbList"],
+      sitemapLastmod: updatedAt,
+      schemaDateModified: updatedAt,
+      ...(previousDetailPath ? { expectedInternalLinks: [previousDetailPath] } : {}),
+    },
+    publicFetch: {
+      sitemapUrl: `${normalizedSiteUrl}/sitemap.xml`,
+      timeoutMs: 15000,
+      userAgent: `PinpointReleaseAudit/0.1 ${sha.slice(0, 12)}`,
+    },
+  };
+}
+
+async function runPostPublishPublicFetchAudit({ siteUrl, sha, registry, registryEntry, puzzle }) {
+  const tempDir = await mkdtemp(resolve(tmpdir(), "pinpoint-post-publish-audit-"));
+  const inputPath = resolve(tempDir, "public-fetch-audit-input.json");
+  const outputPath = resolve(tempDir, "post-publish-audit.json");
+  const input = buildPostPublishPublicFetchAuditInput({
+    siteUrl,
+    sha,
+    registry,
+    registryEntry,
+    puzzle,
+  });
+
+  await writeFile(inputPath, `${JSON.stringify(input, null, 2)}\n`, "utf8");
+  await run("npm", [
+    "run",
+    "content-kitchen:post-publish-public-fetch-audit",
+    "--",
+    "--input",
+    inputPath,
+    "--output",
+    outputPath,
+    "--compact",
+  ], { capture: true });
+
+  const auditArtifact = JSON.parse(await readFile(outputPath, "utf8"));
+  if (auditArtifact.auditOutcome !== "published_and_audit_passed") {
+    const issueCodes = Array.isArray(auditArtifact.issueCodes)
+      ? auditArtifact.issueCodes.join(", ")
+      : "unknown";
+    throw new Error(
+      `Post-publish public fetch audit failed for ${input.expected.canonicalUrl}: ${auditArtifact.auditOutcome} (${issueCodes})`,
+    );
+  }
+
+  return {
+    outputPath,
+    auditOutcome: auditArtifact.auditOutcome,
+    issueCodes: auditArtifact.issueCodes,
+  };
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -384,7 +520,7 @@ async function main() {
     console.log(`Would push commit ${sha} to origin/main`);
     console.log("Would wait for the matching Vercel deployment to succeed");
     console.log("Would deploy the production Cloudflare Worker");
-    console.log(`Would verify ${DEFAULT_SITE_URL}/, ${DEFAULT_SITE_URL}/api/puzzles/summary, and ${DEFAULT_WORKER_HEALTH_URL}`);
+    console.log(`Would verify ${DEFAULT_SITE_URL}/, ${DEFAULT_SITE_URL}/api/puzzles/summary, ${DEFAULT_WORKER_HEALTH_URL}, and PR11 public fetch audit`);
     return;
   }
 
@@ -402,8 +538,22 @@ async function main() {
   const summary = await checkSummaryApi(`${DEFAULT_SITE_URL}/api/puzzles/summary`);
   const workerHealth = await checkWorkerHealth(DEFAULT_WORKER_HEALTH_URL);
   const publishedPuzzle = await loadPublishedPuzzle(summary.latest.slug);
-  assertReleaseEligibleDetail(summary.latest.slug, publishedPuzzle, "Published detail JSON", summary.latest);
+  const registry = await loadRegistryEntries();
+  const publishedRegistryEntry = findRegistryEntryBySlug(registry, summary.latest.slug);
+  if (!publishedRegistryEntry) {
+    throw new Error(`registry.json does not contain published summary slug ${summary.latest.slug}`);
+  }
+  assertReleaseEligibleDetail(summary.latest.slug, publishedPuzzle, "Published detail JSON", publishedRegistryEntry);
   const detail = await waitForLatestDetailContent(DEFAULT_SITE_URL, summary.latest.slug, publishedPuzzle);
+
+  logStep("Running PR11 public fetch audit");
+  const postPublishAudit = await runPostPublishPublicFetchAudit({
+    siteUrl: DEFAULT_SITE_URL,
+    sha,
+    registry,
+    registryEntry: publishedRegistryEntry,
+    puzzle: publishedPuzzle,
+  });
 
   logStep("Production release finished");
   console.log(`Commit: ${sha}`);
@@ -412,6 +562,7 @@ async function main() {
   console.log(`Summary publishedAt: ${summary.latest.isoPublishedAt}`);
   console.log(`Worker puzzleDate: ${workerHealth.puzzleDate}`);
   console.log(`Verified detail page: ${detail.detailUrl}`);
+  console.log(`Post-publish audit: ${postPublishAudit.auditOutcome} (${postPublishAudit.outputPath})`);
 }
 
 main().catch((error) => {
