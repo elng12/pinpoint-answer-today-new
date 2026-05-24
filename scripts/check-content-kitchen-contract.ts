@@ -53,6 +53,11 @@ import {
 } from "../lib/puzzles/content-kitchen/issue-registry";
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
+import {
+  ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
+  runAnswerFirstEnrichmentWorkerJsonDryRun,
+  type AnswerFirstEnrichmentWorkerDryRunInput,
+} from "./run-content-kitchen-enrichment-worker-dry-run";
 import type {
   ContentKitchenDictionaries,
   ContentKitchenIssueCode,
@@ -68,6 +73,7 @@ const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
 const FIXTURE_DIR = resolve(ROOT, "lib", "puzzles", "content-kitchen", "fixtures");
 const EXAMPLE_DIR = resolve(ROOT, "lib", "puzzles", "content-kitchen", "examples");
+const PACKAGE_JSON_PATH = resolve(ROOT, "package.json");
 
 type Fixture = {
   name: string;
@@ -2066,6 +2072,82 @@ async function assertAnswerFirstEnrichmentJobStoreAdapter() {
   );
 }
 
+async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
+  const raw = await readFile(resolve(EXAMPLE_DIR, "enrichment-worker-dry-run.input.json"), "utf8");
+  const input = JSON.parse(raw) as AnswerFirstEnrichmentWorkerDryRunInput;
+  const result = await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
+
+  assert.equal(
+    result.schemaVersion,
+    ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
+    "worker dry-run result schema version should be stable",
+  );
+  assert.deepEqual(
+    result.summary,
+    {
+      inputJobs: 3,
+      outputJobs: 3,
+      claimedJobs: 1,
+      skippedJobs: 2,
+      stateAdvancements: 1,
+    },
+    "worker dry-run should summarize claimed, skipped, and advanced jobs",
+  );
+  assert.deepEqual(
+    result.claimedJobs.map((job) => [job.puzzleId, job.state, job.lockedBy, job.lockedUntil]),
+    [["pinpoint-916-2026-05-23", "running", "worker-dry-run", "2026-05-23T09:11:00.000Z"]],
+    "worker dry-run should claim due queued jobs from the JSON input",
+  );
+  assert.deepEqual(
+    result.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+    [
+      ["pinpoint-917-2026-05-23", "not_due"],
+      ["pinpoint-918-2026-05-23", "terminal_state"],
+    ],
+    "worker dry-run should explain skipped jobs",
+  );
+  assert.deepEqual(
+    result.stateAdvancements.map((entry) => [entry.job.puzzleId, entry.transition, entry.issueCodesAdded]),
+    [
+      ["pinpoint-916-2026-05-23", "unchanged", []],
+      ["pinpoint-917-2026-05-23", "unchanged", []],
+      [
+        "pinpoint-918-2026-05-23",
+        "review_required",
+        ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+      ],
+    ],
+    "worker dry-run should report every state advancement decision",
+  );
+
+  const outputByPuzzleId = new Map(result.outputJobs.map((job) => [job.puzzleId, job]));
+  assert.equal(
+    outputByPuzzleId.get("pinpoint-916-2026-05-23")?.state,
+    "running",
+    "worker dry-run output should include claimed job state",
+  );
+  assert.equal(
+    outputByPuzzleId.get("pinpoint-917-2026-05-23")?.state,
+    "queued",
+    "worker dry-run output should keep future jobs queued",
+  );
+  assert.deepEqual(
+    outputByPuzzleId.get("pinpoint-918-2026-05-23")?.failureReasonCodes,
+    ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "worker dry-run output should include review-required issue codes",
+  );
+
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:enrichment-dry-run"]?.includes(
+      "run-content-kitchen-enrichment-worker-dry-run.ts",
+    ),
+    "package.json should expose the content-kitchen enrichment dry-run script",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -2108,6 +2190,7 @@ async function main() {
   assertAnswerFirstEnrichmentStateAdvance();
   assertAnswerFirstEnrichmentWorkerTick();
   await assertAnswerFirstEnrichmentJobStoreAdapter();
+  await assertAnswerFirstEnrichmentWorkerJsonDryRun();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
