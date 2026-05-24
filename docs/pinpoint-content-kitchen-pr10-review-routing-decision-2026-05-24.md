@@ -173,6 +173,7 @@ The runner prints:
 - effect plan
 - review queue draft when review remains open
 - Feishu notification draft when a review queue draft exists
+- Review UI input when a review queue draft exists
 
 The effect plan explains the local consequence of the decision:
 
@@ -272,6 +273,49 @@ Rules:
 
 The local runner includes `reviewNotificationDraft` only when a review queue draft exists.
 
+## Review UI Input
+
+PR10.6 adds a local Review UI input contract.
+
+It uses `reviewUiInputVersion: "content-kitchen-review-ui-input-v0"`.
+
+It exists only when a review queue draft exists.
+
+It is not a real UI.
+
+Required safety fields:
+
+- `localOnly: true`
+- `renderStatus: "not_rendered"`
+- `safety.rawRenderedHtmlIncluded: false`
+- `safety.modelPromptIncluded: false`
+- `safety.secretsIncluded: false`
+- `safety.publishAllowed: false`
+
+The UI input groups together:
+
+- artifact id and artifact type
+- puzzle snapshot
+- candidate and published revision ids
+- validation outcome
+- validation policies
+- issue groups by severity
+- route result
+- review queue draft
+- notification draft when available
+- effect plan when available
+- evidence summary when available
+- public URL and rendered preview URL when available
+- review URL when available
+- recommended action
+- allowed reviewer actions
+
+Puzzle snapshot status is explicit: `provided` or `missing`.
+
+If a puzzle snapshot is missing, the UI input must not invent answer text or clue text.
+
+The local runner includes `reviewUiInput` only when a review queue draft exists.
+
 Write the result to a local file:
 
 ```bash
@@ -301,5 +345,6 @@ Rules:
 - the runner does not send Feishu messages
 - the runner does not read Feishu webhook secrets
 - the runner does not write review queue storage
+- the runner does not render Review UI
 - the runner does not touch production storage
 - the runner does not publish content

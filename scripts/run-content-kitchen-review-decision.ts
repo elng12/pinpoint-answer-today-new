@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  buildReviewUiInput,
   buildReviewNotificationDraft,
   buildReviewQueueDraft,
   buildReviewDecisionEffectPlan,
@@ -15,6 +16,7 @@ import type {
   ReviewDecisionValidationResult,
   ReviewNotificationDraftV0,
   ReviewQueueDraftV0,
+  ReviewUiInputV0,
   ReviewRouteResult,
 } from "../lib/puzzles/content-kitchen/types";
 
@@ -33,6 +35,7 @@ export type ContentKitchenReviewDecisionRunnerResult = {
   effectPlan?: ReviewDecisionEffectPlanV0;
   reviewQueueDraft?: ReviewQueueDraftV0;
   reviewNotificationDraft?: ReviewNotificationDraftV0;
+  reviewUiInput?: ReviewUiInputV0;
 };
 
 type ParsedArgs = {
@@ -180,6 +183,16 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
       ...(input.reviewUrl ? { reviewUrl: input.reviewUrl } : {}),
     })
     : undefined;
+  const reviewUiInput = reviewQueueDraft
+    ? buildReviewUiInput({
+      artifact,
+      queueDraft: reviewQueueDraft,
+      route,
+      ...(effectPlan ? { effectPlan } : {}),
+      ...(reviewNotificationDraft ? { notificationDraft: reviewNotificationDraft } : {}),
+      ...(input.reviewUrl ? { reviewUrl: input.reviewUrl } : {}),
+    })
+    : undefined;
   const result: ContentKitchenReviewDecisionRunnerResult = {
     schemaVersion: REVIEW_DECISION_RUNNER_RESULT_VERSION,
     dryRunOnly: true,
@@ -192,6 +205,7 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
     ...(effectPlan ? { effectPlan } : {}),
     ...(reviewQueueDraft ? { reviewQueueDraft } : {}),
     ...(reviewNotificationDraft ? { reviewNotificationDraft } : {}),
+    ...(reviewUiInput ? { reviewUiInput } : {}),
   };
 
   if (outputPath) {

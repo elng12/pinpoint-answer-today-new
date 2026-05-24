@@ -848,3 +848,77 @@ export type ReviewNotificationDraftV0 = {
   lines: string[];
   payload: FeishuTextPayloadV0;
 };
+
+export type ReviewUiPuzzleClueSnapshotV0 = {
+  clueId?: string;
+  position: number;
+  text: string;
+};
+
+export type ReviewUiPuzzleSnapshotV0 = {
+  snapshotStatus: "provided" | "missing";
+  puzzleId: string;
+  puzzleNumber?: number;
+  logicalDate?: string;
+  answer?: string;
+  clues: ReviewUiPuzzleClueSnapshotV0[];
+  clueCount: number;
+};
+
+export type ReviewUiAction =
+  | ReviewDecisionAction
+  | "add_human_note";
+
+export type ReviewUiActionButtonV0 = {
+  action: ReviewUiAction;
+  enabled: boolean;
+  reason: string;
+};
+
+export type ReviewUiIssueGroupV0 = {
+  severity: ContentKitchenIssueSeverity;
+  issueCodes: ContentKitchenIssueCode[];
+  issues: ValidationIssue[];
+};
+
+export type ReviewUiInputV0 = {
+  reviewUiInputVersion: "content-kitchen-review-ui-input-v0";
+  inputId: string;
+  localOnly: true;
+  renderStatus: "not_rendered";
+  createdAt: string;
+  artifact: {
+    artifactId: string;
+    artifactType: ReviewArtifactType;
+    artifactCreatedAt: string;
+  };
+  puzzle: ReviewUiPuzzleSnapshotV0;
+  revisions: {
+    currentPublishedMode?: ContentMode;
+    candidateAttemptedMode?: ContentMode;
+    publishedRevisionId?: string;
+    candidateRevisionId: string;
+  };
+  validation: {
+    outcome: ValidationOutcome;
+    policies: ValidationPolicies;
+    issueCodes: ContentKitchenIssueCode[];
+    issueGroups: ReviewUiIssueGroupV0[];
+  };
+  route: ReviewRouteResult;
+  queueDraft: ReviewQueueDraftV0;
+  notificationDraft?: ReviewNotificationDraftV0;
+  effectPlan?: ReviewDecisionEffectPlanV0;
+  evidenceSummary?: ReviewArtifactEvidenceSummary;
+  publicUrl?: string;
+  renderedPreviewUrl?: string;
+  reviewUrl?: string;
+  recommendedAction: RequiredAction;
+  allowedActions: ReviewUiActionButtonV0[];
+  safety: {
+    rawRenderedHtmlIncluded: false;
+    modelPromptIncluded: false;
+    secretsIncluded: false;
+    publishAllowed: false;
+  };
+};

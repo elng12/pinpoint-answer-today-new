@@ -8,6 +8,10 @@ import type {
   ReviewNotificationDraftV0,
   ReviewQueueDraftReason,
   ReviewQueueDraftV0,
+  ReviewUiActionButtonV0,
+  ReviewUiInputV0,
+  ReviewUiIssueGroupV0,
+  ReviewUiPuzzleSnapshotV0,
   ReviewRouteResult,
 } from "./types";
 
@@ -15,6 +19,7 @@ export const REVIEW_DECISION_VERSION = "content-kitchen-review-decision-v0";
 export const REVIEW_DECISION_EFFECT_PLAN_VERSION = "content-kitchen-review-decision-effect-plan-v0";
 export const REVIEW_QUEUE_DRAFT_VERSION = "content-kitchen-review-queue-draft-v0";
 export const REVIEW_NOTIFICATION_DRAFT_VERSION = "content-kitchen-review-notification-draft-v0";
+export const REVIEW_UI_INPUT_VERSION = "content-kitchen-review-ui-input-v0";
 export const MODEL_REVIEW_MIN_CONFIDENCE = 0.75;
 
 const HARD_RULE_AUTO_REJECT_ISSUES = new Set<ContentKitchenIssueCode>([
@@ -316,6 +321,11 @@ function logicalDateFromPuzzleId(puzzleId: string): string | undefined {
   return puzzleId.match(/\d{4}-\d{2}-\d{2}$/)?.[0];
 }
 
+function puzzleNumberFromPuzzleId(puzzleId: string): number | undefined {
+  const parsed = Number(puzzleId.match(/pinpoint-(\d+)/)?.[1]);
+  return Number.isFinite(parsed) ? parsed : undefined;
+}
+
 function reviewQueueReason(input: {
   route: ReviewRouteResult;
   effectPlan?: ReviewDecisionEffectPlanV0;
@@ -492,6 +502,141 @@ export function buildReviewNotificationDraft(input: {
       content: {
         text: lines.join("\n"),
       },
+    },
+  };
+}
+
+function issueGroupsForUi(artifact: ReviewArtifactV0): ReviewUiIssueGroupV0[] {
+  const severities = ["P0", "P1", "P2"] as const;
+
+  return severities.flatMap((severity) => {
+    const issues = artifact.validation.issues.filter((issue) => issue.severity === severity);
+    if (issues.length === 0) {
+      return [];
+    }
+
+    return [{
+      severity,
+      issueCodes: [...new Set(issues.map((issue) => issue.issueCode))],
+      issues,
+    }];
+  });
+}
+
+function actionButtonsForUi(artifact: ReviewArtifactV0, queueDraft: ReviewQueueDraftV0): ReviewUiActionButtonV0[] {
+  const allowed = new Set(artifact.allowedReviewerActions);
+  const isHumanReview = queueDraft.route === "human_review";
+
+  return [
+    {
+      action: "approve",
+      enabled: allowed.has("approve_candidate") || allowed.has("approve_downgrade"),
+      reason: "Allowed when the artifact permits candidate or downgrade approval.",
+    },
+    {
+      action: "reject",
+      enabled: allowed.has("reject_candidate"),
+      reason: "Allowed when the artifact permits candidate rejection.",
+    },
+    {
+      action: "request_regeneration",
+      enabled: allowed.has("request_full_analysis_fix") || queueDraft.recommendedAction === "enrich",
+      reason: "Allowed when full-analysis repair or enrichment is the next local action.",
+    },
+    {
+      action: "force_answer_first",
+      enabled: isHumanReview && artifact.contentMode === "full-analysis",
+      reason: "Only human review can request answer-first fallback for a full-analysis candidate.",
+    },
+    {
+      action: "override_issue",
+      enabled: isHumanReview && queueDraft.issueCodes.length > 0,
+      reason: "Only human review can override specific issue codes on this artifact.",
+    },
+    {
+      action: "add_human_note",
+      enabled: isHumanReview || queueDraft.route === "model_review",
+      reason: "Reviewers can add notes while an artifact remains in review.",
+    },
+  ];
+}
+
+function puzzleSnapshotForUi(input: {
+  artifact: ReviewArtifactV0;
+  puzzleSnapshot?: Omit<ReviewUiPuzzleSnapshotV0, "snapshotStatus" | "clueCount">;
+}): ReviewUiPuzzleSnapshotV0 {
+  const puzzleId = input.puzzleSnapshot?.puzzleId ?? input.artifact.puzzleId ?? "unknown";
+  const clues = input.puzzleSnapshot?.clues ?? [];
+
+  return {
+    snapshotStatus: input.puzzleSnapshot ? "provided" : "missing",
+    puzzleId,
+    ...(input.puzzleSnapshot?.puzzleNumber ?? puzzleNumberFromPuzzleId(puzzleId)
+      ? { puzzleNumber: input.puzzleSnapshot?.puzzleNumber ?? puzzleNumberFromPuzzleId(puzzleId) }
+      : {}),
+    ...(input.puzzleSnapshot?.logicalDate ?? logicalDateFromPuzzleId(puzzleId)
+      ? { logicalDate: input.puzzleSnapshot?.logicalDate ?? logicalDateFromPuzzleId(puzzleId) }
+      : {}),
+    ...(input.puzzleSnapshot?.answer ? { answer: input.puzzleSnapshot.answer } : {}),
+    clues: [...clues],
+    clueCount: clues.length,
+  };
+}
+
+export function buildReviewUiInput(input: {
+  artifact: ReviewArtifactV0;
+  queueDraft: ReviewQueueDraftV0;
+  route?: ReviewRouteResult;
+  notificationDraft?: ReviewNotificationDraftV0;
+  effectPlan?: ReviewDecisionEffectPlanV0;
+  puzzleSnapshot?: Omit<ReviewUiPuzzleSnapshotV0, "snapshotStatus" | "clueCount">;
+  reviewUrl?: string;
+  createdAt?: string;
+}): ReviewUiInputV0 {
+  const route = input.route ?? input.effectPlan?.decisionValidation.derivedRoute ?? deriveReviewRoute(input.artifact);
+  const createdAt = input.createdAt ?? new Date().toISOString();
+
+  return {
+    reviewUiInputVersion: REVIEW_UI_INPUT_VERSION,
+    inputId: `review-ui:${safeQueueIdPart(input.queueDraft.draftId)}`,
+    localOnly: true,
+    renderStatus: "not_rendered",
+    createdAt,
+    artifact: {
+      artifactId: input.artifact.artifactId,
+      artifactType: input.artifact.artifactType,
+      artifactCreatedAt: input.artifact.createdAt,
+    },
+    puzzle: puzzleSnapshotForUi({
+      artifact: input.artifact,
+      puzzleSnapshot: input.puzzleSnapshot,
+    }),
+    revisions: {
+      ...(input.artifact.contentMode ? { candidateAttemptedMode: input.artifact.contentMode } : {}),
+      ...(input.artifact.publishedRevisionId ? { publishedRevisionId: input.artifact.publishedRevisionId } : {}),
+      candidateRevisionId: input.queueDraft.candidateRevisionId,
+    },
+    validation: {
+      outcome: input.artifact.validation.outcome,
+      policies: input.artifact.validation.policies,
+      issueCodes: [...input.artifact.validation.issueCodes],
+      issueGroups: issueGroupsForUi(input.artifact),
+    },
+    route,
+    queueDraft: input.queueDraft,
+    ...(input.notificationDraft ? { notificationDraft: input.notificationDraft } : {}),
+    ...(input.effectPlan ? { effectPlan: input.effectPlan } : {}),
+    ...(input.artifact.evidenceSummary ? { evidenceSummary: input.artifact.evidenceSummary } : {}),
+    ...(input.artifact.canonicalUrl ? { publicUrl: input.artifact.canonicalUrl } : {}),
+    ...(input.artifact.renderedPreviewUrl ? { renderedPreviewUrl: input.artifact.renderedPreviewUrl } : {}),
+    ...(input.reviewUrl ? { reviewUrl: input.reviewUrl } : {}),
+    recommendedAction: input.queueDraft.recommendedAction,
+    allowedActions: actionButtonsForUi(input.artifact, input.queueDraft),
+    safety: {
+      rawRenderedHtmlIncluded: false,
+      modelPromptIncluded: false,
+      secretsIncluded: false,
+      publishAllowed: false,
     },
   };
 }

@@ -2299,6 +2299,16 @@ PR10 fifth implementation slice:
 - include the notification draft in the local review decision runner output only when one exists
 - keep this local-only; do not build Review UI, call a model, send Feishu messages, read Feishu webhook secrets, write review queue storage, attach production storage, publish content, or run Worker cron yet
 
+PR10 sixth implementation slice:
+
+- add a local `ReviewUiInput` contract for artifacts that still need review
+- include artifact summary, puzzle snapshot, revision ids, validation outcome, policy enums, issue groups by severity, route result, queue draft, notification draft, effect plan, evidence summary, URLs, recommended action, and allowed reviewer actions
+- make puzzle snapshot status explicit as `provided` or `missing`; do not invent answer or clue text when the snapshot is absent
+- mark every UI input as `localOnly: true`, `renderStatus: "not_rendered"`, and `safety.publishAllowed: false`
+- prove UI input does not include raw rendered HTML, model prompts, secrets, or production storage ids
+- include the UI input in the local review decision runner output only when a review queue draft exists
+- keep this local-only; do not build Review UI, call a model, send Feishu messages, read Feishu webhook secrets, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.
