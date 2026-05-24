@@ -23,6 +23,7 @@
     "content-kitchen:post-publish-audit": "tsx scripts/run-content-kitchen-post-publish-audit.ts",
     "content-kitchen:post-publish-observed-facts": "tsx scripts/run-content-kitchen-post-publish-observed-facts.ts",
     "content-kitchen:post-publish-build-output-adapter": "tsx scripts/run-content-kitchen-post-publish-build-output-adapter.ts",
+    "content-kitchen:post-publish-local-audit": "tsx scripts/run-content-kitchen-post-publish-local-audit-chain.ts",
     "test:pinpoint-seo": "tsx scripts/check-pinpoint-seo-builders.ts",
     "test:content-kitchen": "tsx scripts/check-content-kitchen-contract.ts",
     "test:pinpoint-routing": "tsx scripts/check-routing-regressions.ts",

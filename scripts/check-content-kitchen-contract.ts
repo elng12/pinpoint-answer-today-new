@@ -110,6 +110,11 @@ import {
   runContentKitchenPostPublishBuildOutputAdapterFromFile,
 } from "./run-content-kitchen-post-publish-build-output-adapter";
 import {
+  POST_PUBLISH_LOCAL_AUDIT_CHAIN_RESULT_VERSION,
+  runCli as runContentKitchenPostPublishLocalAuditChainCli,
+  runContentKitchenPostPublishLocalAuditChainFromFile,
+} from "./run-content-kitchen-post-publish-local-audit-chain";
+import {
   REVIEW_UI_SURFACE_VERSION,
   renderReviewUiInputHtml,
 } from "./content-kitchen-review-ui-surface";
@@ -3675,6 +3680,11 @@ async function assertPostPublishAuditDoc() {
     "`buildOutput.sitemapPath`",
     "`--output` must not equal the resolved HTML source",
     "`--output` must not equal the resolved sitemap source",
+    "Local Audit Chain",
+    "content-kitchen-post-publish-local-audit-chain-result-v0",
+    "npm run content-kitchen:post-publish-local-audit",
+    "The chain reads the same input as the build output adapter.",
+    "The output file is the final post-publish audit artifact.",
   ];
 
   for (const snippet of requiredSnippets) {
@@ -4670,6 +4680,128 @@ async function assertPostPublishBuildOutputAdapterAndExamples() {
   );
 }
 
+async function assertPostPublishLocalAuditChainAndExamples() {
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-local-audit"]?.includes(
+      "run-content-kitchen-post-publish-local-audit-chain.ts",
+    ),
+    "package.json should expose the content-kitchen post-publish local audit chain",
+  );
+
+  const observedExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.input.example.json");
+  const htmlExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.html.example");
+  const sitemapExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-sitemap.xml.example");
+  const observedExample = JSON.parse(await readFile(observedExamplePath, "utf8")) as {
+    expected: PostPublishAuditExpectedStateV0;
+  };
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-local-audit-chain-"));
+  try {
+    const appDir = resolve(tmpDir, ".next", "server", "app");
+    const detailDir = resolve(appDir, "linkedin-pinpoint-answers");
+    await mkdir(detailDir, { recursive: true });
+    const htmlPath = resolve(detailDir, "pinpoint-answer-925.html");
+    const sitemapPath = resolve(appDir, "sitemap.xml.body");
+    await writeFile(htmlPath, await readFile(htmlExamplePath, "utf8"), "utf8");
+    await writeFile(sitemapPath, await readFile(sitemapExamplePath, "utf8"), "utf8");
+
+    const chainInputPath = resolve(tmpDir, "local-audit-chain-input.json");
+    await writeFile(
+      chainInputPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: POST_PUBLISH_BUILD_OUTPUT_ADAPTER_INPUT_VERSION,
+          artifactId: "art_post_publish_local_audit_chain_contract_test",
+          checkedAt: "2026-05-24T10:40:00.000Z",
+          expected: observedExample.expected,
+          buildOutput: {
+            appDir: ".next/server/app",
+            siteBaseUrl: "https://example.com",
+            httpStatus: 200,
+          },
+        },
+        null,
+        2,
+      )}\n`,
+      "utf8",
+    );
+
+    const outputPath = resolve(tmpDir, "post-publish-audit.json");
+    const result = await runContentKitchenPostPublishLocalAuditChainFromFile({
+      inputPath: chainInputPath,
+      outputPath,
+    });
+    const writtenArtifact = JSON.parse(await readFile(outputPath, "utf8")) as {
+      artifactVersion: string;
+      artifactType: string;
+      auditOutcome: string;
+      issueCodes: string[];
+      safety: {
+        rawRenderedHtmlIncluded: boolean;
+        publicFetchPerformedByContract: boolean;
+        publishAllowed: boolean;
+      };
+    };
+
+    assert.equal(
+      result.schemaVersion,
+      POST_PUBLISH_LOCAL_AUDIT_CHAIN_RESULT_VERSION,
+      "local audit chain result version should be stable",
+    );
+    assert.equal(result.dryRunOnly, true, "local audit chain should stay dry-run only");
+    assert.equal(result.sourceFiles.appDir, appDir, "local audit chain should resolve appDir");
+    assert.equal(result.sourceFiles.htmlPath, htmlPath, "local audit chain should find static detail HTML");
+    assert.equal(result.sourceFiles.sitemapPath, sitemapPath, "local audit chain should find sitemap.xml.body");
+    assert.equal(
+      result.auditArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "local audit chain should produce a passing audit artifact",
+    );
+    assert.deepEqual(result.auditArtifact.issueCodes, [], "local audit chain should produce no issue codes");
+    assert.equal(writtenArtifact.artifactType, "post_publish_audit", "local audit chain output should be an artifact");
+    assert.equal(
+      writtenArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "local audit chain output file should be the final audit artifact",
+    );
+    assert.equal(
+      writtenArtifact.safety.rawRenderedHtmlIncluded,
+      false,
+      "local audit chain output should not include raw rendered HTML",
+    );
+    assert.equal(
+      writtenArtifact.safety.publicFetchPerformedByContract,
+      false,
+      "local audit chain should not fetch public URLs itself",
+    );
+    assert.equal(writtenArtifact.safety.publishAllowed, false, "local audit chain should not publish");
+    assert.ok(
+      !JSON.stringify(writtenArtifact).includes("<main"),
+      "local audit chain output should not include raw rendered HTML",
+    );
+
+    await assert.rejects(
+      () => runContentKitchenPostPublishLocalAuditChainCli(["--input", chainInputPath, "--output", chainInputPath]),
+      /--output must be different from --input/,
+      "local audit chain CLI should reject output paths that overwrite input",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishLocalAuditChainCli(["--input", chainInputPath, "--output", htmlPath]),
+      /--output must be different from resolved HTML source/,
+      "local audit chain CLI should reject output paths that overwrite HTML source",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishLocalAuditChainCli(["--input", chainInputPath, "--output", sitemapPath]),
+      /--output must be different from resolved sitemap source/,
+      "local audit chain CLI should reject output paths that overwrite sitemap source",
+    );
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -4724,6 +4856,7 @@ async function main() {
   await assertPostPublishAuditRunnerAndExamples();
   await assertPostPublishObservedFactsBuilderAndExamples();
   await assertPostPublishBuildOutputAdapterAndExamples();
+  await assertPostPublishLocalAuditChainAndExamples();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

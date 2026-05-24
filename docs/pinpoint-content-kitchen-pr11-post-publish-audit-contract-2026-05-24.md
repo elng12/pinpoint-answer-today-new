@@ -290,3 +290,42 @@ Adapter rules:
 - the adapter does not send Feishu messages
 - the adapter does not write review queue storage
 - the adapter does not publish content
+
+## Local Audit Chain
+
+PR11.5 adds a one-command local audit chain.
+
+Chain result uses `content-kitchen-post-publish-local-audit-chain-result-v0`.
+
+The chain reads the same input as the build output adapter.
+
+Run it after a local build with:
+
+```bash
+npm run content-kitchen:post-publish-local-audit -- \
+  --input lib/puzzles/content-kitchen/examples/post-publish-build-output-adapter.input.example.json \
+  --output /tmp/content-kitchen-post-publish-audit.json \
+  --pretty
+```
+
+The output file is the final post-publish audit artifact.
+
+The chain does these local steps:
+
+1. locate build output HTML and sitemap from `.next/server/app`
+2. extract observed facts from local HTML and local sitemap
+3. build the `content-kitchen-post-publish-audit-v0` artifact
+
+Chain rules:
+
+- `--input` is required
+- `--output` is optional
+- `--output` must not equal `--input`
+- `--output` must not equal the resolved HTML source
+- `--output` must not equal the resolved sitemap source
+- output must not include raw HTML
+- the chain does not fetch public URLs
+- the chain does not run a browser
+- the chain does not send Feishu messages
+- the chain does not write review queue storage
+- the chain does not publish content
