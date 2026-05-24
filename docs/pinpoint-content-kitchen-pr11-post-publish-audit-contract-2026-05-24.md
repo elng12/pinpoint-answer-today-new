@@ -161,3 +161,66 @@ Runner rules:
 - the runner does not send Feishu messages
 - the runner does not write review queue storage
 - the runner does not publish content
+
+## Observed Facts Builder
+
+PR11.3 adds a local observed facts builder.
+
+Input uses `content-kitchen-post-publish-observed-facts-builder-input-v0`.
+
+Builder result uses `content-kitchen-post-publish-observed-facts-builder-result-v0`.
+
+Run it with:
+
+```bash
+npm run content-kitchen:post-publish-observed-facts -- \
+  --input lib/puzzles/content-kitchen/examples/post-publish-observed-facts-pass.input.example.json \
+  --output /tmp/content-kitchen-post-publish-audit-input.json \
+  --pretty
+```
+
+The output file is audit runner input. It can be passed to:
+
+```bash
+npm run content-kitchen:post-publish-audit -- \
+  --input /tmp/content-kitchen-post-publish-audit-input.json \
+  --output /tmp/content-kitchen-post-publish-audit.json \
+  --pretty
+```
+
+Example files:
+
+- `post-publish-observed-facts-pass.input.example.json`
+- `post-publish-observed-facts-pass.html.example`
+- `post-publish-observed-facts-sitemap.xml.example`
+
+The builder reads local files only:
+
+- `sources.htmlPath`
+- `sources.sitemapPath` when provided
+
+It extracts:
+
+- public fetch status from the local builder input
+- visible answer
+- visible L1 clues
+- canonical URL
+- robots noindex state
+- sitemap inclusion and `lastmod`
+- JSON-LD schema types
+- JSON-LD `dateModified`
+- internal links
+
+Builder rules:
+
+- `--input` is required
+- `--output` is optional
+- `--output` must not equal `--input`
+- `--output` must not equal `sources.htmlPath`
+- `--output` must not equal `sources.sitemapPath`
+- output must not include raw HTML
+- the builder does not fetch public URLs
+- the builder does not run a browser
+- the builder does not send Feishu messages
+- the builder does not write review queue storage
+- the builder does not publish content

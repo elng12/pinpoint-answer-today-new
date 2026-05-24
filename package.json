@@ -21,6 +21,7 @@
     "content-kitchen:enrichment-dry-run": "tsx scripts/run-content-kitchen-enrichment-worker-dry-run.ts",
     "content-kitchen:review-decision": "tsx scripts/run-content-kitchen-review-decision.ts",
     "content-kitchen:post-publish-audit": "tsx scripts/run-content-kitchen-post-publish-audit.ts",
+    "content-kitchen:post-publish-observed-facts": "tsx scripts/run-content-kitchen-post-publish-observed-facts.ts",
     "test:pinpoint-seo": "tsx scripts/check-pinpoint-seo-builders.ts",
     "test:content-kitchen": "tsx scripts/check-content-kitchen-contract.ts",
     "test:pinpoint-routing": "tsx scripts/check-routing-regressions.ts",

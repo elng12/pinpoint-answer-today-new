@@ -98,6 +98,12 @@ import {
   runContentKitchenPostPublishAuditFromFile,
 } from "./run-content-kitchen-post-publish-audit";
 import {
+  POST_PUBLISH_OBSERVED_FACTS_BUILDER_INPUT_VERSION,
+  POST_PUBLISH_OBSERVED_FACTS_BUILDER_RESULT_VERSION,
+  runCli as runContentKitchenPostPublishObservedFactsCli,
+  runContentKitchenPostPublishObservedFactsFromFile,
+} from "./run-content-kitchen-post-publish-observed-facts";
+import {
   REVIEW_UI_SURFACE_VERSION,
   renderReviewUiInputHtml,
 } from "./content-kitchen-review-ui-surface";
@@ -3637,6 +3643,20 @@ async function assertPostPublishAuditDoc() {
     "The output file is the audit artifact itself.",
     "post-publish-audit-pass.input.example.json",
     "post-publish-audit-policy-mismatch.input.example.json",
+    "Observed Facts Builder",
+    "content-kitchen-post-publish-observed-facts-builder-input-v0",
+    "content-kitchen-post-publish-observed-facts-builder-result-v0",
+    "npm run content-kitchen:post-publish-observed-facts",
+    "--input lib/puzzles/content-kitchen/examples/post-publish-observed-facts-pass.input.example.json",
+    "--output /tmp/content-kitchen-post-publish-audit-input.json",
+    "post-publish-observed-facts-pass.input.example.json",
+    "post-publish-observed-facts-pass.html.example",
+    "post-publish-observed-facts-sitemap.xml.example",
+    "`sources.htmlPath`",
+    "`sources.sitemapPath`",
+    "`--output` must not equal `sources.htmlPath`",
+    "`--output` must not equal `sources.sitemapPath`",
+    "output must not include raw HTML",
   ];
 
   for (const snippet of requiredSnippets) {
@@ -4355,6 +4375,144 @@ async function assertPostPublishAuditRunnerAndExamples() {
   );
 }
 
+async function assertPostPublishObservedFactsBuilderAndExamples() {
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-observed-facts"]?.includes(
+      "run-content-kitchen-post-publish-observed-facts.ts",
+    ),
+    "package.json should expose the content-kitchen post-publish observed facts builder",
+  );
+
+  const inputPath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.input.example.json");
+  const htmlPath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.html.example");
+  const sitemapPath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-sitemap.xml.example");
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-observed-facts-"));
+  try {
+    const outputPath = resolve(tmpDir, "audit-runner-input.json");
+    const result = await runContentKitchenPostPublishObservedFactsFromFile({
+      inputPath,
+      outputPath,
+    });
+    const writtenInput = JSON.parse(await readFile(outputPath, "utf8")) as {
+      schemaVersion: string;
+      artifactId: string;
+      observed: {
+        fetchedUrl: string;
+        httpStatus: number;
+        fetchOk: boolean;
+        renderOk: boolean;
+        answerVisible: boolean;
+        visibleClues: string[];
+        canonicalUrl: string;
+        noindexPresent: boolean;
+        sitemapIncluded: boolean;
+        sitemapLastmod: string;
+        schemaTypes: string[];
+        schemaDateModified: string;
+        internalLinks: string[];
+      };
+    };
+
+    assert.equal(
+      result.schemaVersion,
+      POST_PUBLISH_OBSERVED_FACTS_BUILDER_RESULT_VERSION,
+      "observed facts builder result version should be stable",
+    );
+    assert.equal(result.dryRunOnly, true, "observed facts builder should stay dry-run only");
+    assert.equal(
+      result.auditRunnerInput.schemaVersion,
+      POST_PUBLISH_AUDIT_RUNNER_INPUT_VERSION,
+      "observed facts builder should output audit runner input",
+    );
+    assert.equal(
+      writtenInput.schemaVersion,
+      POST_PUBLISH_AUDIT_RUNNER_INPUT_VERSION,
+      "observed facts builder output file should be audit runner input",
+    );
+    assert.equal(
+      result.sourceFiles.htmlPath,
+      htmlPath,
+      "observed facts builder should resolve HTML path relative to input",
+    );
+    assert.equal(
+      result.sourceFiles.sitemapPath,
+      sitemapPath,
+      "observed facts builder should resolve sitemap path relative to input",
+    );
+    assert.equal(writtenInput.observed.fetchOk, true, "observed facts should mark local HTML fetch as ok");
+    assert.equal(writtenInput.observed.renderOk, true, "observed facts should mark local HTML render as ok");
+    assert.equal(writtenInput.observed.answerVisible, true, "observed facts should detect visible answer");
+    assert.deepEqual(
+      writtenInput.observed.visibleClues,
+      ["Low instrument", "Fishing target", "Deep voice", "Speaker setting", "Music section"],
+      "observed facts should list visible expected clues",
+    );
+    assert.equal(
+      writtenInput.observed.canonicalUrl,
+      "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-925/",
+      "observed facts should extract canonical URL",
+    );
+    assert.equal(writtenInput.observed.noindexPresent, false, "observed facts should detect noindex absence");
+    assert.equal(writtenInput.observed.sitemapIncluded, true, "observed facts should detect sitemap inclusion");
+    assert.equal(writtenInput.observed.sitemapLastmod, "2026-05-24", "observed facts should extract sitemap lastmod");
+    assert.deepEqual(
+      writtenInput.observed.schemaTypes,
+      ["Article", "FAQPage"],
+      "observed facts should extract schema types",
+    );
+    assert.equal(
+      writtenInput.observed.schemaDateModified,
+      "2026-05-24",
+      "observed facts should extract schema dateModified",
+    );
+    assert.deepEqual(
+      writtenInput.observed.internalLinks,
+      ["/linkedin-pinpoint-answers/pinpoint-answer-924/"],
+      "observed facts should extract local internal links",
+    );
+    assert.ok(
+      !JSON.stringify(writtenInput).includes("<main"),
+      "observed facts output should not include raw rendered HTML",
+    );
+
+    const auditResult = await runContentKitchenPostPublishAuditFromFile({
+      inputPath: outputPath,
+    });
+    assert.equal(
+      auditResult.auditArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "observed facts output should feed the audit runner",
+    );
+
+    await assert.rejects(
+      () => runContentKitchenPostPublishObservedFactsCli(["--input", inputPath, "--output", inputPath]),
+      /--output must be different from --input/,
+      "observed facts CLI should reject output paths that overwrite input",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishObservedFactsCli(["--input", inputPath, "--output", htmlPath]),
+      /--output must be different from sources.htmlPath/,
+      "observed facts CLI should reject output paths that overwrite HTML source",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishObservedFactsCli(["--input", inputPath, "--output", sitemapPath]),
+      /--output must be different from sources.sitemapPath/,
+      "observed facts CLI should reject output paths that overwrite sitemap source",
+    );
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+
+  const inputRaw = await readFile(inputPath, "utf8");
+  assert.ok(
+    inputRaw.includes(POST_PUBLISH_OBSERVED_FACTS_BUILDER_INPUT_VERSION),
+    "observed facts builder example should use stable input version",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -4407,6 +4565,7 @@ async function main() {
   await assertReviewDecisionExamplesAndRunner();
   assertPostPublishAuditContract();
   await assertPostPublishAuditRunnerAndExamples();
+  await assertPostPublishObservedFactsBuilderAndExamples();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
