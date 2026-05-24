@@ -2169,6 +2169,14 @@ PR9 twelfth implementation slice:
 - mark notification drafts as `not_sent` and review queue drafts as `not_persisted`
 - keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
 
+PR9 thirteenth implementation slice:
+
+- add a checked local dry-run example for answer-first enrichment jobs older than the high-priority deadline
+- prove the worker advances those jobs to `dead_letter` before claiming work
+- prove the run summary counts `dead_letter` and high-priority jobs
+- prove the local action drafts include a high-priority Feishu-shaped notification draft and a high-priority review queue draft
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
