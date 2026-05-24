@@ -2147,6 +2147,13 @@ PR9 ninth implementation slice:
 - keep the input file read-only and preserve non-runnable jobs in the output
 - keep this local-only; do not attach it to production storage, Worker cron, or Feishu notifications yet
 
+PR9 tenth implementation slice:
+
+- allow the dry-run runner to use a file-store output JSON as the next input
+- support command-line overrides for the next run timestamp, worker id, batch limit, and lock window
+- keep resumed dry runs local-only and read-only against the previous output unless a separate output path is provided
+- do not attach this slice to production storage, Worker cron, or Feishu notifications yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

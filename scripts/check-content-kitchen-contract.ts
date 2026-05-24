@@ -57,6 +57,7 @@ import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candi
 import { ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION } from "./content-kitchen-enrichment-file-store";
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
+  parseAnswerFirstEnrichmentWorkerDryRunInput,
   runAnswerFirstEnrichmentWorkerJsonDryRun,
   runAnswerFirstEnrichmentWorkerJsonDryRunToFile,
   type AnswerFirstEnrichmentWorkerDryRunInput,
@@ -2196,6 +2197,26 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       await readFile(examplePath, "utf8"),
       raw,
       "worker dry-run file mode should not mutate the input file",
+    );
+
+    const resumedInput = parseAnswerFirstEnrichmentWorkerDryRunInput(output, {
+      now: "2026-05-23T09:12:00.000Z",
+      workerId: "worker-dry-run-next",
+      lockMinutes: 10,
+    });
+    const resumedResult = await runAnswerFirstEnrichmentWorkerJsonDryRun(resumedInput);
+    assert.deepEqual(
+      resumedResult.claimedJobs.map((job) => [job.puzzleId, job.attemptCount, job.lockedBy, job.lockedUntil]),
+      [["pinpoint-916-2026-05-23", 2, "worker-dry-run-next", "2026-05-23T09:22:00.000Z"]],
+      "worker dry-run should be able to use a file-store output as the next input",
+    );
+    assert.deepEqual(
+      resumedResult.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
+      [
+        ["pinpoint-917-2026-05-23", "not_due"],
+        ["pinpoint-918-2026-05-23", "terminal_state"],
+      ],
+      "resumed worker dry-run should preserve skipped job reasons from the output file state",
     );
   } finally {
     await rm(tmpDir, { recursive: true, force: true });
