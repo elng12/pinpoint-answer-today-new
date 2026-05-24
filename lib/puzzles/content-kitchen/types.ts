@@ -60,7 +60,15 @@ export type ContentKitchenIssueCode =
   | "ANSWER_FIRST_OVER_SLA"
   | "ANSWER_FIRST_REVIEW_REQUIRED"
   | "INDEXED_ANSWER_FIRST_STALE"
-  | "ANSWER_FIRST_HIGH_PRIORITY_ALERT";
+  | "ANSWER_FIRST_HIGH_PRIORITY_ALERT"
+  | "PUBLIC_HTML_FETCH_FAILED"
+  | "PUBLIC_HTML_RENDER_FAILED"
+  | "SITEMAP_LASTMOD_MISSING"
+  | "SCHEMA_DATE_MODIFIED_MISSING"
+  | "SITEMAP_POLICY_MISMATCH"
+  | "ROBOTS_POLICY_MISMATCH"
+  | "DATE_MODIFIED_MISMATCH"
+  | "SCHEMA_MODE_MISMATCH";
 
 export type Pr6aIssueCode = ContentKitchenIssueCode;
 
@@ -919,6 +927,94 @@ export type ReviewUiInputV0 = {
     rawRenderedHtmlIncluded: false;
     modelPromptIncluded: false;
     secretsIncluded: false;
+    publishAllowed: false;
+  };
+};
+
+export type PostPublishAuditOutcome =
+  | "publish_failed"
+  | "published_but_audit_failed"
+  | "published_and_audit_passed";
+
+export type PostPublishAuditCheckName =
+  | "public_fetch"
+  | "public_render"
+  | "answer_visible"
+  | "all_clues_visible"
+  | "canonical_matches"
+  | "robots_policy_matches"
+  | "sitemap_policy_matches"
+  | "sitemap_lastmod_matches"
+  | "schema_date_modified_matches"
+  | "schema_mode_matches"
+  | "internal_links_valid";
+
+export type PostPublishAuditCheckStatus =
+  | "pass"
+  | "fail"
+  | "not_checked";
+
+export type PostPublishAuditCheckV0 = {
+  name: PostPublishAuditCheckName;
+  status: PostPublishAuditCheckStatus;
+  message: string;
+  issueCode?: ContentKitchenIssueCode;
+  severity?: ContentKitchenIssueSeverity;
+  expected?: string;
+  observed?: string;
+};
+
+export type PostPublishAuditExpectedStateV0 = {
+  puzzleId: string;
+  canonicalUrl: string;
+  revisionId: string;
+  contentMode: ContentMode;
+  answer: string;
+  clues: string[];
+  policies: ValidationPolicies;
+  schemaTypes?: string[];
+  sitemapLastmod?: string;
+  schemaDateModified?: string;
+  expectedInternalLinks?: string[];
+};
+
+export type PostPublishAuditObservedStateV0 = {
+  fetchedUrl: string;
+  httpStatus?: number;
+  fetchOk: boolean;
+  renderOk: boolean;
+  answerVisible?: boolean;
+  visibleClues?: string[];
+  canonicalUrl?: string;
+  noindexPresent?: boolean;
+  sitemapIncluded?: boolean;
+  sitemapLastmod?: string;
+  schemaTypes?: string[];
+  schemaDateModified?: string;
+  internalLinks?: string[];
+};
+
+export type PostPublishAuditArtifactV0 = {
+  artifactVersion: "content-kitchen-post-publish-audit-v0";
+  artifactType: "post_publish_audit";
+  artifactId: string;
+  createdAt: string;
+  checkedAt: string;
+  puzzleId: string;
+  canonicalUrl: string;
+  revisionId: string;
+  contentMode: ContentMode;
+  fetchedUrl: string;
+  httpStatus?: number;
+  auditOutcome: PostPublishAuditOutcome;
+  issueCodes: ContentKitchenIssueCode[];
+  issues: ValidationIssue[];
+  checks: PostPublishAuditCheckV0[];
+  recommendedPolicies: ValidationPolicies;
+  recommendedAction: RequiredAction;
+  safety: {
+    rawRenderedHtmlIncluded: false;
+    publicFetchPerformedByContract: false;
     publishAllowed: false;
   };
 };

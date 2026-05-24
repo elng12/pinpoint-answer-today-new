@@ -217,6 +217,70 @@ export const CONTENT_KITCHEN_ISSUE_REGISTRY: IssueCodeDefinition[] = [
     defaultRequiredAction: "review",
     description: "An answer-first page is still unresolved at the high-priority alert deadline.",
   },
+  {
+    code: "PUBLIC_HTML_FETCH_FAILED",
+    phaseOwner: "PR11",
+    defaultSeverity: "P0",
+    defaultOutcome: "block_publish",
+    defaultRequiredAction: "rollback",
+    description: "The published public URL could not be fetched with a successful HTTP status.",
+  },
+  {
+    code: "PUBLIC_HTML_RENDER_FAILED",
+    phaseOwner: "PR11",
+    defaultSeverity: "P0",
+    defaultOutcome: "block_publish",
+    defaultRequiredAction: "rollback",
+    description: "The published public HTML could not be rendered or inspected after fetch.",
+  },
+  {
+    code: "SITEMAP_LASTMOD_MISSING",
+    phaseOwner: "PR11",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "create_fix_task",
+    description: "The published sitemap entry is missing an expected lastmod value.",
+  },
+  {
+    code: "SCHEMA_DATE_MODIFIED_MISSING",
+    phaseOwner: "PR11",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "create_fix_task",
+    description: "The published structured data is missing an expected dateModified value.",
+  },
+  {
+    code: "SITEMAP_POLICY_MISMATCH",
+    phaseOwner: "PR11",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "degrade",
+    description: "The published sitemap inclusion state does not match the expected policy.",
+  },
+  {
+    code: "ROBOTS_POLICY_MISMATCH",
+    phaseOwner: "PR11",
+    defaultSeverity: "P0",
+    defaultOutcome: "block_publish",
+    defaultRequiredAction: "rollback",
+    description: "The published noindex or indexable state does not match the expected policy.",
+  },
+  {
+    code: "DATE_MODIFIED_MISMATCH",
+    phaseOwner: "PR11",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "create_fix_task",
+    description: "The published sitemap lastmod or schema dateModified does not match the expected revision date.",
+  },
+  {
+    code: "SCHEMA_MODE_MISMATCH",
+    phaseOwner: "PR11",
+    defaultSeverity: "P1",
+    defaultOutcome: "requires_review",
+    defaultRequiredAction: "create_fix_task",
+    description: "The published structured-data schema types do not match the expected content mode.",
+  },
 ];
 
 export const CONTENT_KITCHEN_ISSUE_DEFINITIONS = new Map<ContentKitchenIssueCode, IssueCodeDefinition>(
@@ -242,5 +306,11 @@ export function getPr6P0IssueCodes(): ContentKitchenIssueCode[] {
 export function getPr7IssueCodes(): ContentKitchenIssueCode[] {
   return CONTENT_KITCHEN_ISSUE_REGISTRY
     .filter((definition) => definition.phaseOwner === "PR7")
+    .map((definition) => definition.code);
+}
+
+export function getPr11IssueCodes(): ContentKitchenIssueCode[] {
+  return CONTENT_KITCHEN_ISSUE_REGISTRY
+    .filter((definition) => definition.phaseOwner === "PR11")
     .map((definition) => definition.code);
 }

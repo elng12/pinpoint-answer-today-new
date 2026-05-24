@@ -49,9 +49,14 @@ import { generateFullAnalysisReasoning } from "../lib/puzzles/content-kitchen/re
 import {
   CONTENT_KITCHEN_ISSUE_REGISTRY,
   getIssueDefinition,
+  getPr11IssueCodes,
   getPr6P0IssueCodes,
   getPr7IssueCodes,
 } from "../lib/puzzles/content-kitchen/issue-registry";
+import {
+  POST_PUBLISH_AUDIT_VERSION,
+  buildPostPublishAudit,
+} from "../lib/puzzles/content-kitchen/post-publish-audit";
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import {
   REVIEW_DECISION_EFFECT_PLAN_VERSION,
@@ -97,6 +102,7 @@ import type {
   L1PuzzleInput,
   ReviewArtifactV0,
   ReviewDecisionV0,
+  PostPublishAuditExpectedStateV0,
   ValidateCandidateInput,
   ValidationOutcome,
   ValidationPolicies,
@@ -116,6 +122,11 @@ const PR10_REVIEW_ROUTING_DECISION_DOC_PATH = resolve(
   ROOT,
   "docs",
   "pinpoint-content-kitchen-pr10-review-routing-decision-2026-05-24.md",
+);
+const PR11_POST_PUBLISH_AUDIT_DOC_PATH = resolve(
+  ROOT,
+  "docs",
+  "pinpoint-content-kitchen-pr11-post-publish-audit-contract-2026-05-24.md",
 );
 
 type Fixture = {
@@ -3567,6 +3578,55 @@ async function assertReviewRoutingDecisionDoc() {
   }
 }
 
+async function assertPostPublishAuditDoc() {
+  const doc = await readFile(PR11_POST_PUBLISH_AUDIT_DOC_PATH, "utf8");
+  const requiredSnippets = [
+    "PR11 Post-Publish Audit Contract",
+    "artifactVersion: \"content-kitchen-post-publish-audit-v0\"",
+    "artifactType: \"post_publish_audit\"",
+    "`publish_failed`: public fetch failed or returned a bad status",
+    "`published_but_audit_failed`: public page exists, but one or more audit checks failed",
+    "`published_and_audit_passed`: all checked facts match the expected published state",
+    "`public_fetch`",
+    "`public_render`",
+    "`answer_visible`",
+    "`all_clues_visible`",
+    "`canonical_matches`",
+    "`robots_policy_matches`",
+    "`sitemap_policy_matches`",
+    "`sitemap_lastmod_matches`",
+    "`schema_date_modified_matches`",
+    "`schema_mode_matches`",
+    "`internal_links_valid`",
+    "`PUBLIC_HTML_FETCH_FAILED`",
+    "`PUBLIC_HTML_RENDER_FAILED`",
+    "`SITEMAP_LASTMOD_MISSING`",
+    "`SCHEMA_DATE_MODIFIED_MISSING`",
+    "`SITEMAP_POLICY_MISMATCH`",
+    "`ROBOTS_POLICY_MISMATCH`",
+    "`DATE_MODIFIED_MISMATCH`",
+    "`SCHEMA_MODE_MISMATCH`",
+    "`ANSWER_HIDDEN_FROM_RENDERED_HTML`",
+    "`MISSING_CLUE_ROW`",
+    "`CANONICAL_URL_MISMATCH`",
+    "`INTERNAL_LINK_BROKEN`",
+    "`recommendedAction` becomes `rollback`",
+    "`recommendedAction` becomes `create_fix_task` by default",
+    "sitemap or robots policy mismatch can recommend `degrade`",
+    "`safety.rawRenderedHtmlIncluded: false`",
+    "`safety.publicFetchPerformedByContract: false`",
+    "`safety.publishAllowed: false`",
+    "it does not fetch public URLs",
+    "it does not run a browser",
+    "it does not send Feishu messages",
+    "it does not publish content",
+  ];
+
+  for (const snippet of requiredSnippets) {
+    assert.ok(doc.includes(snippet), `PR11 post-publish audit doc should include: ${snippet}`);
+  }
+}
+
 async function assertReviewDecisionExamplesAndRunner() {
   const pairs = [
     ["review-decision-auto-approve", "auto_approve", "approved", false],
@@ -3938,6 +3998,228 @@ async function assertReviewDecisionExamplesAndRunner() {
   );
 }
 
+function makePostPublishExpectedState(
+  overrides: Partial<PostPublishAuditExpectedStateV0> = {},
+): PostPublishAuditExpectedStateV0 {
+  return {
+    puzzleId: "pinpoint-925-2026-05-24",
+    canonicalUrl: "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-925/",
+    revisionId: "rev-full-analysis-925",
+    contentMode: "full-analysis",
+    answer: "BASS",
+    clues: ["Low instrument", "Fishing target", "Deep voice", "Speaker setting", "Music section"],
+    policies: {
+      indexPolicy: "index",
+      sitemapPolicy: "include",
+      schemaPolicy: "faq_allowed",
+      internalLinkPolicy: "normal",
+      requiredAction: "none",
+    },
+    schemaTypes: ["Article", "FAQPage"],
+    sitemapLastmod: "2026-05-24",
+    schemaDateModified: "2026-05-24",
+    expectedInternalLinks: ["/linkedin-pinpoint-answers/pinpoint-answer-924/"],
+    ...overrides,
+  };
+}
+
+function assertPostPublishAuditContract() {
+  const pr11IssueCodes = getPr11IssueCodes();
+  assert.deepEqual(
+    pr11IssueCodes,
+    [
+      "PUBLIC_HTML_FETCH_FAILED",
+      "PUBLIC_HTML_RENDER_FAILED",
+      "SITEMAP_LASTMOD_MISSING",
+      "SCHEMA_DATE_MODIFIED_MISSING",
+      "SITEMAP_POLICY_MISMATCH",
+      "ROBOTS_POLICY_MISMATCH",
+      "DATE_MODIFIED_MISMATCH",
+      "SCHEMA_MODE_MISMATCH",
+    ],
+    "PR11 issue code ownership should be explicit",
+  );
+  for (const issueCode of pr11IssueCodes) {
+    assert.equal(getIssueDefinition(issueCode).phaseOwner, "PR11", `${issueCode}: issue owner should be PR11`);
+  }
+
+  const expected = makePostPublishExpectedState();
+  const passedAudit = buildPostPublishAudit({
+    artifactId: "art_post_publish_audit_passed",
+    checkedAt: "2026-05-24T10:00:00.000Z",
+    expected,
+    observed: {
+      fetchedUrl: expected.canonicalUrl,
+      httpStatus: 200,
+      fetchOk: true,
+      renderOk: true,
+      answerVisible: true,
+      visibleClues: [...expected.clues],
+      canonicalUrl: expected.canonicalUrl,
+      noindexPresent: false,
+      sitemapIncluded: true,
+      sitemapLastmod: "2026-05-24",
+      schemaTypes: ["Article", "FAQPage"],
+      schemaDateModified: "2026-05-24",
+      internalLinks: ["/linkedin-pinpoint-answers/pinpoint-answer-924/"],
+    },
+  });
+  assert.equal(
+    passedAudit.artifactVersion,
+    POST_PUBLISH_AUDIT_VERSION,
+    "post-publish audit artifact version should be stable",
+  );
+  assert.equal(passedAudit.artifactType, "post_publish_audit", "post-publish audit artifact type should be stable");
+  assert.equal(
+    passedAudit.auditOutcome,
+    "published_and_audit_passed",
+    "clean observed state should pass post-publish audit",
+  );
+  assert.deepEqual(passedAudit.issueCodes, [], "clean post-publish audit should have no issue codes");
+  assert.equal(passedAudit.recommendedAction, "none", "clean post-publish audit should require no action");
+  assert.deepEqual(
+    passedAudit.recommendedPolicies,
+    expected.policies,
+    "clean post-publish audit should preserve expected policies",
+  );
+  assert.equal(
+    passedAudit.safety.rawRenderedHtmlIncluded,
+    false,
+    "post-publish audit artifact should not include raw rendered HTML",
+  );
+  assert.equal(
+    passedAudit.safety.publicFetchPerformedByContract,
+    false,
+    "PR11.1 audit contract should not fetch public URLs itself",
+  );
+  assert.equal(passedAudit.safety.publishAllowed, false, "post-publish audit must not publish content");
+  assert.ok(
+    passedAudit.checks.every((check) => check.status === "pass" || check.status === "not_checked"),
+    "clean audit checks should pass or be explicitly skipped",
+  );
+  assert.ok(
+    !JSON.stringify(passedAudit).includes("<main"),
+    "post-publish audit artifact should not include raw HTML",
+  );
+
+  const fetchFailedAudit = buildPostPublishAudit({
+    artifactId: "art_post_publish_audit_fetch_failed",
+    checkedAt: "2026-05-24T10:05:00.000Z",
+    expected,
+    observed: {
+      fetchedUrl: expected.canonicalUrl,
+      httpStatus: 500,
+      fetchOk: false,
+      renderOk: false,
+    },
+  });
+  assert.equal(fetchFailedAudit.auditOutcome, "publish_failed", "bad public fetch should be publish_failed");
+  assert.deepEqual(
+    fetchFailedAudit.issueCodes,
+    ["PUBLIC_HTML_FETCH_FAILED"],
+    "bad public fetch should create the fetch failure issue only",
+  );
+  assert.equal(fetchFailedAudit.recommendedAction, "rollback", "P0 post-publish failures should request rollback");
+  assert.equal(
+    fetchFailedAudit.recommendedPolicies.sitemapPolicy,
+    "remove_on_next_build",
+    "P0 post-publish failures should recommend sitemap removal",
+  );
+  assert.equal(
+    fetchFailedAudit.issues[0]?.blocking,
+    true,
+    "P0 post-publish audit issue should be blocking",
+  );
+  assert.equal(
+    fetchFailedAudit.checks.find((check) => check.name === "answer_visible")?.status,
+    "not_checked",
+    "render-only checks should be skipped when fetch fails",
+  );
+
+  const answerFirstExpected = makePostPublishExpectedState({
+    contentMode: "answer-first",
+    revisionId: "rev-answer-first-925",
+    policies: {
+      indexPolicy: "noindex",
+      sitemapPolicy: "exclude",
+      schemaPolicy: "none",
+      internalLinkPolicy: "hidden_from_recent",
+      requiredAction: "enrich",
+    },
+    schemaTypes: [],
+    schemaDateModified: undefined,
+    sitemapLastmod: undefined,
+    expectedInternalLinks: [],
+  });
+  const policyMismatchAudit = buildPostPublishAudit({
+    artifactId: "art_post_publish_audit_policy_mismatch",
+    checkedAt: "2026-05-24T10:10:00.000Z",
+    expected: answerFirstExpected,
+    observed: {
+      fetchedUrl: answerFirstExpected.canonicalUrl,
+      httpStatus: 200,
+      fetchOk: true,
+      renderOk: true,
+      answerVisible: true,
+      visibleClues: [...answerFirstExpected.clues],
+      canonicalUrl: answerFirstExpected.canonicalUrl,
+      noindexPresent: true,
+      sitemapIncluded: true,
+    },
+  });
+  assert.equal(
+    policyMismatchAudit.auditOutcome,
+    "published_but_audit_failed",
+    "non-P0 audit failure should keep page published but failed",
+  );
+  assert.deepEqual(
+    policyMismatchAudit.issueCodes,
+    ["SITEMAP_POLICY_MISMATCH"],
+    "answer-first sitemap mismatch should be captured separately",
+  );
+  assert.equal(policyMismatchAudit.recommendedAction, "degrade", "policy mismatch should recommend degrade");
+  assert.deepEqual(
+    policyMismatchAudit.recommendedPolicies.degradationActions,
+    ["apply_noindex", "remove_from_sitemap", "hide_from_recent", "create_fix_task"],
+    "degrade audit policy should name exact degradation actions",
+  );
+  assert.equal(
+    policyMismatchAudit.issues[0]?.blocking,
+    false,
+    "P1 post-publish audit issue should not be blocking",
+  );
+
+  const schemaMissingAudit = buildPostPublishAudit({
+    artifactId: "art_post_publish_audit_schema_missing",
+    checkedAt: "2026-05-24T10:15:00.000Z",
+    expected,
+    observed: {
+      fetchedUrl: expected.canonicalUrl,
+      httpStatus: 200,
+      fetchOk: true,
+      renderOk: true,
+      answerVisible: true,
+      visibleClues: [...expected.clues],
+      canonicalUrl: expected.canonicalUrl,
+      noindexPresent: false,
+      sitemapIncluded: true,
+      sitemapLastmod: "2026-05-24",
+      schemaTypes: ["Article", "FAQPage"],
+      internalLinks: ["/linkedin-pinpoint-answers/pinpoint-answer-924/"],
+    },
+  });
+  assert.equal(
+    schemaMissingAudit.issueCodes.includes("SCHEMA_DATE_MODIFIED_MISSING"),
+    true,
+    "missing schema dateModified should be a PR11 issue",
+  );
+  assert.equal(
+    schemaMissingAudit.recommendedAction,
+    "create_fix_task",
+    "missing schema dateModified should create a fix task",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -3986,7 +4268,9 @@ async function main() {
   await assertAnswerFirstEnrichmentWorkerHealthStatuses();
   await assertAnswerFirstEnrichmentDryRunUsageDoc();
   await assertReviewRoutingDecisionDoc();
+  await assertPostPublishAuditDoc();
   await assertReviewDecisionExamplesAndRunner();
+  assertPostPublishAuditContract();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

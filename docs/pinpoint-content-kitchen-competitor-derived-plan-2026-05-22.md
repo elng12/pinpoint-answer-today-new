@@ -2346,6 +2346,16 @@ Acceptance:
 - P0 audit failures such as 404/500, hidden answer, missing clues, or broken canonical block or rollback the publish
 - P1/P2 audit failures create fix tasks or review states without always blocking the page
 
+PR11 first implementation slice:
+
+- add a local `PostPublishAudit` contract with `publish_failed`, `published_but_audit_failed`, and `published_and_audit_passed`
+- add `content-kitchen-post-publish-audit-v0` artifact output for observed post-publish facts
+- add checks for public fetch, render availability, answer visibility, clue visibility, canonical, robots/noindex policy, sitemap policy, sitemap `lastmod`, schema `dateModified`, schema mode, and internal links
+- add PR11 issue codes for public fetch/render, sitemap/schema date, sitemap/robots policy, date modified, and schema mode failures
+- map P0 audit failures to rollback or block-style policies; map non-P0 failures to fix task or degradation policies
+- mark audit artifacts with `rawRenderedHtmlIncluded: false`, `publicFetchPerformedByContract: false`, and `publishAllowed: false`
+- keep this local-only; do not fetch public URLs, run a browser, read sitemap files, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
+
 
 ## Review UI Requirements
 
