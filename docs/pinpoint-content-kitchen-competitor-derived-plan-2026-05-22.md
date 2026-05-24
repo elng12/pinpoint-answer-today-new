@@ -2177,6 +2177,14 @@ PR9 thirteenth implementation slice:
 - prove the local action drafts include a high-priority Feishu-shaped notification draft and a high-priority review queue draft
 - keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
 
+PR9 fourteenth implementation slice:
+
+- add a local `--action-output` option to the enrichment dry-run runner
+- write only the action drafts to the action output JSON file, including `sourcePath` and `writtenAt`
+- keep the existing `--output` job-state file separate from the action output file
+- reject unsafe paths where `--action-output` equals `--input` or `--output`
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

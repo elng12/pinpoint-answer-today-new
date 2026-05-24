@@ -1,5 +1,5 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   createInMemoryAnswerFirstEnrichmentJobStore,
@@ -62,6 +62,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
   runSummary: AnswerFirstEnrichmentWorkerRunSummary;
   actionDrafts: AnswerFirstEnrichmentWorkerActionDrafts;
   outputPath?: string;
+  actionOutputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
   skippedJobs: Array<{
     job: AnswerFirstEnrichmentWorkerDryRunJobSummary;
@@ -78,6 +79,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
 type ParsedArgs = {
   inputPath: string;
   outputPath?: string;
+  actionOutputPath?: string;
   now?: string;
   workerId?: string;
   limit?: number;
@@ -90,6 +92,11 @@ type DryRunInputOverrides = {
   workerId?: string;
   limit?: number;
   lockMinutes?: number;
+};
+
+export type AnswerFirstEnrichmentWorkerActionDraftsFileOutput = AnswerFirstEnrichmentWorkerActionDrafts & {
+  sourcePath: string;
+  writtenAt: string;
 };
 
 function requireObject(value: unknown, fieldPath: string): Record<string, unknown> {
@@ -261,6 +268,7 @@ function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichment
 function parseArgs(argv: string[]): ParsedArgs {
   let inputPath = "";
   let outputPath: string | undefined;
+  let actionOutputPath: string | undefined;
   let now: string | undefined;
   let workerId: string | undefined;
   let limit: number | undefined;
@@ -277,6 +285,12 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--output") {
       outputPath = resolve(readArgValue(argv, index, "--output"));
+      index += 1;
+      continue;
+    }
+
+    if (arg === "--action-output") {
+      actionOutputPath = resolve(readArgValue(argv, index, "--action-output"));
       index += 1;
       continue;
     }
@@ -317,7 +331,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--help" || arg === "-h") {
       throw new Error(
-        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--now <timestamp>] [--worker-id <id>] [--limit <n>] [--lock-minutes <n>] [--pretty|--compact]",
+        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--action-output <path>] [--now <timestamp>] [--worker-id <id>] [--limit <n>] [--lock-minutes <n>] [--pretty|--compact]",
       );
     }
 
@@ -332,10 +346,17 @@ function parseArgs(argv: string[]): ParsedArgs {
   if (outputPath === resolvedInputPath) {
     throw new Error("--output must be different from --input");
   }
+  if (actionOutputPath === resolvedInputPath) {
+    throw new Error("--action-output must be different from --input");
+  }
+  if (actionOutputPath && outputPath === actionOutputPath) {
+    throw new Error("--action-output must be different from --output");
+  }
 
   return {
     inputPath: resolvedInputPath,
     outputPath,
+    actionOutputPath,
     now,
     workerId,
     limit,
@@ -376,15 +397,30 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
       input,
       inputPath: args.inputPath,
       outputPath: args.outputPath,
+      actionOutputPath: args.actionOutputPath,
     })
     : await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
-  console.log(JSON.stringify(result, null, args.pretty ? 2 : 0));
+  const outputResult = args.actionOutputPath && !args.outputPath
+    ? { ...result, actionOutputPath: args.actionOutputPath }
+    : result;
+
+  if (args.actionOutputPath && !args.outputPath) {
+    await writeAnswerFirstEnrichmentWorkerActionDraftsFile({
+      actionDrafts: result.actionDrafts,
+      inputPath: args.inputPath,
+      actionOutputPath: args.actionOutputPath,
+      writtenAt: input.now,
+    });
+  }
+
+  console.log(JSON.stringify(outputResult, null, args.pretty ? 2 : 0));
 }
 
 export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
   input: AnswerFirstEnrichmentWorkerDryRunInput;
   inputPath: string;
   outputPath: string;
+  actionOutputPath?: string;
 }): Promise<AnswerFirstEnrichmentWorkerDryRunResult> {
   const store = createJsonFileAnswerFirstEnrichmentJobStore({
     inputPath: input.inputPath,
@@ -399,7 +435,7 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
     lockMinutes: input.input.lockMinutes,
   });
 
-  return buildDryRunResult({
+  const result = buildDryRunResult({
     input: input.input,
     outputPath: input.outputPath,
     outputJobs: tick.updatedJobs,
@@ -407,6 +443,38 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
     skippedJobs: tick.skippedJobs,
     stateAdvancements: tick.stateAdvancements,
   });
+
+  if (input.actionOutputPath) {
+    await writeAnswerFirstEnrichmentWorkerActionDraftsFile({
+      actionDrafts: result.actionDrafts,
+      inputPath: input.inputPath,
+      actionOutputPath: input.actionOutputPath,
+      writtenAt: input.input.now,
+    });
+  }
+
+  return {
+    ...result,
+    actionOutputPath: input.actionOutputPath,
+  };
+}
+
+export async function writeAnswerFirstEnrichmentWorkerActionDraftsFile(input: {
+  actionDrafts: AnswerFirstEnrichmentWorkerActionDrafts;
+  inputPath: string;
+  actionOutputPath: string;
+  writtenAt: string;
+}): Promise<AnswerFirstEnrichmentWorkerActionDraftsFileOutput> {
+  const output: AnswerFirstEnrichmentWorkerActionDraftsFileOutput = {
+    ...input.actionDrafts,
+    sourcePath: resolve(input.inputPath),
+    writtenAt: new Date(Date.parse(input.writtenAt)).toISOString(),
+  };
+
+  await mkdir(dirname(input.actionOutputPath), { recursive: true });
+  await writeFile(input.actionOutputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+
+  return output;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
