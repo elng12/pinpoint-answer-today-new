@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "content-kitchen-enrichment-worker-dry-run-v0",
+  "now": "2026-05-23T15:05:00.000Z",
+  "workerId": "worker-high-priority-dry-run",
+  "limit": 2,
+  "lockMinutes": 10,
+  "jobs": [
+    {
+      "jobVersion": "answer-first-enrichment-job-v0",
+      "jobId": "job-pinpoint-919-2026-05-23-rev-full-analysis-919",
+      "idempotencyKey": "content-kitchen:answer-first-enrichment:pinpoint-919-2026-05-23:rev-full-analysis-919",
+      "puzzleId": "pinpoint-919-2026-05-23",
+      "sourceRevisionId": "rev-answer-first-919",
+      "targetRevision": "rev-full-analysis-919",
+      "inputSnapshotHash": "sha256:l1-919",
+      "state": "queued",
+      "createdAt": "2026-05-23T08:00:00.000Z",
+      "updatedAt": "2026-05-23T08:00:00.000Z",
+      "nextAttemptAt": "2026-05-23T08:00:00.000Z",
+      "attemptCount": 0,
+      "maxAttempts": 3,
+      "backoffStrategy": "exponential",
+      "deadlineAt": "2026-05-23T08:30:00.000Z",
+      "targetFullAnalysisAt": "2026-05-23T08:30:00.000Z",
+      "firstAlertAt": "2026-05-23T08:30:00.000Z",
+      "reviewRequiredAt": "2026-05-23T09:00:00.000Z",
+      "thinPageNoindexAt": "2026-05-23T10:00:00.000Z",
+      "highPriorityAlertAt": "2026-05-23T14:00:00.000Z",
+      "failureReasonCodes": []
+    }
+  ]
+}

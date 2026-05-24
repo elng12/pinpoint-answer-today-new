@@ -2334,6 +2334,116 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
   }
 }
 
+async function assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun() {
+  const examplePath = resolve(EXAMPLE_DIR, "enrichment-worker-high-priority.input.json");
+  const raw = await readFile(examplePath, "utf8");
+  const input = JSON.parse(raw) as AnswerFirstEnrichmentWorkerDryRunInput;
+  const result = await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
+
+  assert.deepEqual(
+    result.summary,
+    {
+      inputJobs: 1,
+      outputJobs: 1,
+      claimedJobs: 0,
+      skippedJobs: 1,
+      stateAdvancements: 1,
+    },
+    "high-priority worker dry-run should summarize dead-letter advancement",
+  );
+  assert.equal(
+    result.runSummary.headline,
+    "worker-high-priority-dry-run @ 2026-05-23T15:05:00.000Z; 0 claimed jobs; 1 skipped job; 1 state change; 0 review; 1 dead-letter",
+    "high-priority worker dry-run should include dead-letter in the headline",
+  );
+  assert.deepEqual(
+    result.runSummary.counts,
+    {
+      inputJobs: 1,
+      outputJobs: 1,
+      claimedJobs: 0,
+      skippedJobs: 1,
+      stateChanges: 1,
+      reviewRequiredJobs: 0,
+      deadLetterJobs: 1,
+      overSlaJobs: 1,
+      highPriorityJobs: 1,
+    },
+    "high-priority worker dry-run should count dead-letter and high-priority jobs",
+  );
+  assert.deepEqual(
+    result.runSummary.byOutputState,
+    {
+      dead_letter: 1,
+    },
+    "high-priority worker dry-run should count dead-letter output state",
+  );
+  assert.deepEqual(
+    result.runSummary.bySkipReason,
+    {
+      terminal_state: 1,
+    },
+    "high-priority worker dry-run should skip the advanced dead-letter job as terminal",
+  );
+  assert.deepEqual(
+    result.runSummary.issueCodesAdded,
+    ["ANSWER_FIRST_HIGH_PRIORITY_ALERT", "ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+    "high-priority worker dry-run should list all newly-added escalation codes",
+  );
+  assert.deepEqual(
+    result.actionDrafts.notificationDrafts.map((draft) => [
+      draft.priority,
+      draft.reason,
+      draft.dispatchStatus,
+      draft.jobIds,
+      draft.issueCodes,
+    ]),
+    [
+      [
+        "high_priority",
+        "answer_first_high_priority_alert",
+        "not_sent",
+        ["job-pinpoint-919-2026-05-23-rev-full-analysis-919"],
+        ["ANSWER_FIRST_HIGH_PRIORITY_ALERT", "ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+      ],
+    ],
+    "high-priority worker dry-run should create a high-priority notification draft without sending it",
+  );
+  assert.deepEqual(
+    result.actionDrafts.reviewQueueDrafts.map((draft) => [
+      draft.priority,
+      draft.reason,
+      draft.persistenceStatus,
+      draft.state,
+      draft.jobId,
+      draft.issueCodes,
+    ]),
+    [
+      [
+        "high_priority",
+        "answer_first_dead_letter",
+        "not_persisted",
+        "dead_letter",
+        "job-pinpoint-919-2026-05-23-rev-full-analysis-919",
+        ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED", "ANSWER_FIRST_HIGH_PRIORITY_ALERT"],
+      ],
+    ],
+    "high-priority worker dry-run should create a high-priority review queue draft without persisting it",
+  );
+  assert.deepEqual(
+    result.stateAdvancements.map((entry) => [entry.job.puzzleId, entry.transition, entry.issueCodesAdded]),
+    [
+      [
+        "pinpoint-919-2026-05-23",
+        "dead_letter",
+        ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED", "ANSWER_FIRST_HIGH_PRIORITY_ALERT"],
+      ],
+    ],
+    "high-priority worker dry-run should advance stale answer-first jobs to dead-letter",
+  );
+  assert.equal(await readFile(examplePath, "utf8"), raw, "high-priority worker dry-run should not mutate the example");
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -2377,6 +2487,7 @@ async function main() {
   assertAnswerFirstEnrichmentWorkerTick();
   await assertAnswerFirstEnrichmentJobStoreAdapter();
   await assertAnswerFirstEnrichmentWorkerJsonDryRun();
+  await assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
