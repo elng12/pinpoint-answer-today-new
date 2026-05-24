@@ -25,6 +25,8 @@ import {
 
 export const ENRICHMENT_WORKER_DRY_RUN_INPUT_VERSION = "content-kitchen-enrichment-worker-dry-run-v0";
 export const ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION = "content-kitchen-enrichment-worker-dry-run-result-v0";
+export const ENRICHMENT_WORKER_RUN_MANIFEST_VERSION =
+  "content-kitchen-enrichment-worker-run-manifest-v0";
 
 export type AnswerFirstEnrichmentWorkerDryRunInput = {
   schemaVersion?:
@@ -69,6 +71,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
   outputPath?: string;
   actionOutputPath?: string;
   healthOutputPath?: string;
+  manifestOutputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
   skippedJobs: Array<{
     job: AnswerFirstEnrichmentWorkerDryRunJobSummary;
@@ -87,6 +90,7 @@ type ParsedArgs = {
   outputPath?: string;
   actionOutputPath?: string;
   healthOutputPath?: string;
+  manifestOutputPath?: string;
   now?: string;
   workerId?: string;
   limit?: number;
@@ -109,6 +113,26 @@ export type AnswerFirstEnrichmentWorkerActionDraftsFileOutput = AnswerFirstEnric
 export type AnswerFirstEnrichmentWorkerHealthReportFileOutput = AnswerFirstEnrichmentWorkerHealthReport & {
   sourcePath: string;
   writtenAt: string;
+};
+
+export type AnswerFirstEnrichmentWorkerRunManifestFileOutput = {
+  schemaVersion: typeof ENRICHMENT_WORKER_RUN_MANIFEST_VERSION;
+  dryRunOnly: true;
+  sourcePath: string;
+  writtenAt: string;
+  workerId: string;
+  paths: {
+    inputPath: string;
+    outputPath?: string;
+    actionOutputPath?: string;
+    healthOutputPath?: string;
+    manifestOutputPath: string;
+  };
+  summary: AnswerFirstEnrichmentWorkerDryRunResult["summary"];
+  healthStatus: AnswerFirstEnrichmentWorkerHealthReport["status"];
+  healthRecommendation: string;
+  counts: AnswerFirstEnrichmentWorkerHealthReport["counts"];
+  activeIssueCodes: string[];
 };
 
 function requireObject(value: unknown, fieldPath: string): Record<string, unknown> {
@@ -287,6 +311,7 @@ function parseArgs(argv: string[]): ParsedArgs {
   let outputPath: string | undefined;
   let actionOutputPath: string | undefined;
   let healthOutputPath: string | undefined;
+  let manifestOutputPath: string | undefined;
   let now: string | undefined;
   let workerId: string | undefined;
   let limit: number | undefined;
@@ -315,6 +340,12 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--health-output") {
       healthOutputPath = resolve(readArgValue(argv, index, "--health-output"));
+      index += 1;
+      continue;
+    }
+
+    if (arg === "--manifest-output") {
+      manifestOutputPath = resolve(readArgValue(argv, index, "--manifest-output"));
       index += 1;
       continue;
     }
@@ -355,7 +386,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--help" || arg === "-h") {
       throw new Error(
-        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--action-output <path>] [--health-output <path>] [--now <timestamp>] [--worker-id <id>] [--limit <n>] [--lock-minutes <n>] [--pretty|--compact]",
+        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--action-output <path>] [--health-output <path>] [--manifest-output <path>] [--now <timestamp>] [--worker-id <id>] [--limit <n>] [--lock-minutes <n>] [--pretty|--compact]",
       );
     }
 
@@ -385,12 +416,25 @@ function parseArgs(argv: string[]): ParsedArgs {
   if (healthOutputPath && actionOutputPath === healthOutputPath) {
     throw new Error("--health-output must be different from --action-output");
   }
+  if (manifestOutputPath === resolvedInputPath) {
+    throw new Error("--manifest-output must be different from --input");
+  }
+  if (manifestOutputPath && outputPath === manifestOutputPath) {
+    throw new Error("--manifest-output must be different from --output");
+  }
+  if (manifestOutputPath && actionOutputPath === manifestOutputPath) {
+    throw new Error("--manifest-output must be different from --action-output");
+  }
+  if (manifestOutputPath && healthOutputPath === manifestOutputPath) {
+    throw new Error("--manifest-output must be different from --health-output");
+  }
 
   return {
     inputPath: resolvedInputPath,
     outputPath,
     actionOutputPath,
     healthOutputPath,
+    manifestOutputPath,
     now,
     workerId,
     limit,
@@ -433,13 +477,9 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
       outputPath: args.outputPath,
       actionOutputPath: args.actionOutputPath,
       healthOutputPath: args.healthOutputPath,
+      manifestOutputPath: args.manifestOutputPath,
     })
     : await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
-  const outputResult = {
-    ...result,
-    actionOutputPath: args.actionOutputPath ?? result.actionOutputPath,
-    healthOutputPath: args.healthOutputPath ?? result.healthOutputPath,
-  };
 
   if (args.actionOutputPath && !args.outputPath) {
     await writeAnswerFirstEnrichmentWorkerActionDraftsFile({
@@ -457,6 +497,24 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
       writtenAt: input.now,
     });
   }
+  if (args.manifestOutputPath && !args.outputPath) {
+    await writeAnswerFirstEnrichmentWorkerRunManifestFile({
+      result,
+      inputPath: args.inputPath,
+      outputPath: args.outputPath,
+      actionOutputPath: args.actionOutputPath,
+      healthOutputPath: args.healthOutputPath,
+      manifestOutputPath: args.manifestOutputPath,
+      writtenAt: input.now,
+    });
+  }
+
+  const outputResult = {
+    ...result,
+    actionOutputPath: args.actionOutputPath ?? result.actionOutputPath,
+    healthOutputPath: args.healthOutputPath ?? result.healthOutputPath,
+    manifestOutputPath: args.manifestOutputPath ?? result.manifestOutputPath,
+  };
 
   console.log(JSON.stringify(outputResult, null, args.pretty ? 2 : 0));
 }
@@ -467,6 +525,7 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
   outputPath: string;
   actionOutputPath?: string;
   healthOutputPath?: string;
+  manifestOutputPath?: string;
 }): Promise<AnswerFirstEnrichmentWorkerDryRunResult> {
   const store = createJsonFileAnswerFirstEnrichmentJobStore({
     inputPath: input.inputPath,
@@ -506,11 +565,23 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
       writtenAt: input.input.now,
     });
   }
+  if (input.manifestOutputPath) {
+    await writeAnswerFirstEnrichmentWorkerRunManifestFile({
+      result,
+      inputPath: input.inputPath,
+      outputPath: input.outputPath,
+      actionOutputPath: input.actionOutputPath,
+      healthOutputPath: input.healthOutputPath,
+      manifestOutputPath: input.manifestOutputPath,
+      writtenAt: input.input.now,
+    });
+  }
 
   return {
     ...result,
     actionOutputPath: input.actionOutputPath,
     healthOutputPath: input.healthOutputPath,
+    manifestOutputPath: input.manifestOutputPath,
   };
 }
 
@@ -546,6 +617,41 @@ export async function writeAnswerFirstEnrichmentWorkerHealthReportFile(input: {
 
   await mkdir(dirname(input.healthOutputPath), { recursive: true });
   await writeFile(input.healthOutputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+
+  return output;
+}
+
+export async function writeAnswerFirstEnrichmentWorkerRunManifestFile(input: {
+  result: AnswerFirstEnrichmentWorkerDryRunResult;
+  inputPath: string;
+  outputPath?: string;
+  actionOutputPath?: string;
+  healthOutputPath?: string;
+  manifestOutputPath: string;
+  writtenAt: string;
+}): Promise<AnswerFirstEnrichmentWorkerRunManifestFileOutput> {
+  const output: AnswerFirstEnrichmentWorkerRunManifestFileOutput = {
+    schemaVersion: ENRICHMENT_WORKER_RUN_MANIFEST_VERSION,
+    dryRunOnly: true,
+    sourcePath: resolve(input.inputPath),
+    writtenAt: new Date(Date.parse(input.writtenAt)).toISOString(),
+    workerId: input.result.workerId,
+    paths: {
+      inputPath: resolve(input.inputPath),
+      outputPath: input.outputPath ? resolve(input.outputPath) : undefined,
+      actionOutputPath: input.actionOutputPath ? resolve(input.actionOutputPath) : undefined,
+      healthOutputPath: input.healthOutputPath ? resolve(input.healthOutputPath) : undefined,
+      manifestOutputPath: resolve(input.manifestOutputPath),
+    },
+    summary: input.result.summary,
+    healthStatus: input.result.healthReport.status,
+    healthRecommendation: input.result.healthReport.recommendation,
+    counts: input.result.healthReport.counts,
+    activeIssueCodes: [...input.result.healthReport.activeIssueCodes],
+  };
+
+  await mkdir(dirname(input.manifestOutputPath), { recursive: true });
+  await writeFile(input.manifestOutputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
 
   return output;
 }
