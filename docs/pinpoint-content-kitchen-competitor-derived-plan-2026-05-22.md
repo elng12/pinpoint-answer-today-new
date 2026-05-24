@@ -2185,6 +2185,13 @@ PR9 fourteenth implementation slice:
 - reject unsafe paths where `--action-output` equals `--input` or `--output`
 - keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
 
+PR9 fifteenth implementation slice:
+
+- add a local usage note for the enrichment dry-run runner
+- document inspect-only mode, `--output`, `--action-output`, writing both files, and resuming from a previous output
+- make the contract test check that the usage note names the dry-run command, output flags, and local-only safety markers
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

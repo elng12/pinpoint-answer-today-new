@@ -81,6 +81,11 @@ const ROOT = resolve(SCRIPT_DIR, "..");
 const FIXTURE_DIR = resolve(ROOT, "lib", "puzzles", "content-kitchen", "fixtures");
 const EXAMPLE_DIR = resolve(ROOT, "lib", "puzzles", "content-kitchen", "examples");
 const PACKAGE_JSON_PATH = resolve(ROOT, "package.json");
+const PR9_ENRICHMENT_DRY_RUN_USAGE_DOC_PATH = resolve(
+  ROOT,
+  "docs",
+  "pinpoint-content-kitchen-pr9-enrichment-dry-run-usage-2026-05-24.md",
+);
 
 type Fixture = {
   name: string;
@@ -2531,6 +2536,28 @@ async function assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun() {
   assert.equal(await readFile(examplePath, "utf8"), raw, "high-priority worker dry-run should not mutate the example");
 }
 
+async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
+  const doc = await readFile(PR9_ENRICHMENT_DRY_RUN_USAGE_DOC_PATH, "utf8");
+  const requiredSnippets = [
+    "npm run content-kitchen:enrichment-dry-run",
+    "--input lib/puzzles/content-kitchen/examples/enrichment-worker-dry-run.input.json",
+    "--output /tmp/content-kitchen-worker-output.json",
+    "--action-output /tmp/content-kitchen-action-drafts.json",
+    "--action-output must not equal `--input`",
+    "--action-output must not equal `--output`",
+    "dispatchStatus: \"not_sent\"",
+    "persistenceStatus: \"not_persisted\"",
+    "does not send Feishu messages",
+    "does not write review queue storage",
+    "does not touch production storage",
+    "does not run Worker cron",
+  ];
+
+  for (const snippet of requiredSnippets) {
+    assert.ok(doc.includes(snippet), `PR9 enrichment dry-run usage doc should include: ${snippet}`);
+  }
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -2575,6 +2602,7 @@ async function main() {
   await assertAnswerFirstEnrichmentJobStoreAdapter();
   await assertAnswerFirstEnrichmentWorkerJsonDryRun();
   await assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun();
+  await assertAnswerFirstEnrichmentDryRunUsageDoc();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
