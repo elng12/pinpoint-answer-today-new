@@ -96,6 +96,12 @@ const nextConfig: NextConfig = {
         destination: "/puzzles",
         permanent: true,
       },
+      // Legacy singular answer archive: /en/linkedin-pinpoint-answer → /puzzles
+      {
+        source: `/${locale}/linkedin-pinpoint-answer`,
+        destination: "/puzzles",
+        permanent: true,
+      },
       // Puzzles archive: /en/puzzles → /puzzles
       {
         source: `/${locale}/puzzles`,
@@ -125,6 +131,13 @@ const nextConfig: NextConfig = {
       // detail URL so old indexed URLs do not compete as canonicals.
       {
         source: `/${locale}/puzzles/pinpoint-answer-:number(\\d+)`,
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+        permanent: true,
+      },
+      // Legacy singular answer detail:
+      // /en/linkedin-pinpoint-answer/pinpoint-678 → /linkedin-pinpoint-answers/pinpoint-answer-678/
+      {
+        source: `/${locale}/linkedin-pinpoint-answer/pinpoint-:number(\\d+)`,
         destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true,
       },
@@ -224,6 +237,18 @@ const nextConfig: NextConfig = {
       {
         source: "/linkedin-pinpoint",
         destination: "/puzzles",
+        permanent: true as const,
+      },
+      // Legacy singular answer archive → canonical archive
+      {
+        source: "/linkedin-pinpoint-answer",
+        destination: "/puzzles",
+        permanent: true as const,
+      },
+      // Legacy singular answer detail → canonical detail
+      {
+        source: "/linkedin-pinpoint-answer/pinpoint-:number(\\d+)",
+        destination: "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
         permanent: true as const,
       },
       // Old root detail alias validates the number before redirecting onward.

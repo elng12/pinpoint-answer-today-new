@@ -100,12 +100,19 @@ async function checkRedirectConfig() {
   assertRedirectRule(rules, "/fr/puzzles/:number(\\d+)", "/puzzles/:number");
   assertRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})", "/pinpoint/:date");
   assertRedirectRule(rules, "/en/linkedin-pinpoint", "/puzzles");
+  assertRedirectRule(rules, "/de/linkedin-pinpoint-answer", "/puzzles");
   assertRedirectRule(rules, "/puzzles/connectors", "/puzzles");
   assertRedirectRule(rules, "/sitemaps/pt-BR.xml", "/sitemap.xml");
   assertRedirectRule(rules, "/feedback", "/contact-us");
   assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
+  assertRedirectRule(rules, "/linkedin-pinpoint-answer", "/puzzles");
   assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
   assertRedirectRule(rules, "/linkedin-pinpoint/:number(\\d+)", "/puzzles/:number");
+  assertRedirectRule(
+    rules,
+    "/linkedin-pinpoint-answer/pinpoint-:number(\\d+)",
+    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+  );
   assertRedirectRule(
     rules,
     "/puzzles/pinpoint-answer-:number(\\d+)",
@@ -114,6 +121,11 @@ async function checkRedirectConfig() {
   assertRedirectRule(
     rules,
     "/fr/puzzles/pinpoint-answer-:number(\\d+)",
+    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
+  );
+  assertRedirectRule(
+    rules,
+    "/fr/linkedin-pinpoint-answer/pinpoint-:number(\\d+)",
     "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
   );
   assertRedirectRule(rules, "/fr/pinpoint/:number(\\d+)-analysis", "/pinpoint/:number-analysis");
