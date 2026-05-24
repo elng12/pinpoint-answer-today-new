@@ -2200,6 +2200,14 @@ PR9 sixteenth implementation slice:
 - cover all four health statuses in the content-kitchen contract test
 - keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
 
+PR9 seventeenth implementation slice:
+
+- add a local `--health-output` option to the enrichment dry-run runner
+- write only the compact `healthReport` to the health output JSON file, including `sourcePath` and `writtenAt`
+- keep `--output`, `--action-output`, and `--health-output` as three separate local files
+- reject unsafe paths where `--health-output` equals `--input`, `--output`, or `--action-output`
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
