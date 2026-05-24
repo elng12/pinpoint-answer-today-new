@@ -2309,6 +2309,19 @@ PR10 sixth implementation slice:
 - include the UI input in the local review decision runner output only when a review queue draft exists
 - keep this local-only; do not build Review UI, call a model, send Feishu messages, read Feishu webhook secrets, write review queue storage, attach production storage, publish content, or run Worker cron yet
 
+PR10 seventh implementation slice:
+
+- add a local read-only Review UI surface that renders `ReviewUiInput` into a static HTML file
+- add `--ui-output` to the local review decision runner
+- write the surface only when a review queue draft exists; reject `--ui-output` when no review UI input exists
+- reject unsafe paths where `--ui-output` equals `--artifact`, `--decision`, or `--output`
+- keep the surface as `content-kitchen-review-ui-surface-v0`
+- include no JavaScript, no form submit, no storage writes, no Feishu send, and no publish action
+- include `<meta name="robots" content="noindex, nofollow">`
+- prove the generated HTML shows issue codes, route state, policy output, queue draft, notification draft, safety flags, and allowed action readiness
+- verify the generated local file in a browser
+- keep this local-only; do not build a production Review UI route, add a sitemap entry, call a model, send Feishu messages, read Feishu webhook secrets, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.

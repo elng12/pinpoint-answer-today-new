@@ -85,6 +85,10 @@ import {
   runCli as runContentKitchenReviewDecisionCli,
   runContentKitchenReviewDecisionFromFiles,
 } from "./run-content-kitchen-review-decision";
+import {
+  REVIEW_UI_SURFACE_VERSION,
+  renderReviewUiInputHtml,
+} from "./content-kitchen-review-ui-surface";
 import type {
   ContentKitchenDictionaries,
   ContentKitchenIssueCode,
@@ -534,6 +538,33 @@ function assertReviewRoutingAndDecisionContract() {
     !JSON.stringify(lowConfidenceReviewUiInput).includes("<main"),
     "review UI input should not include raw rendered HTML",
   );
+  const lowConfidenceReviewUiHtml = renderReviewUiInputHtml(lowConfidenceReviewUiInput);
+  assert.ok(
+    lowConfidenceReviewUiHtml.includes(REVIEW_UI_SURFACE_VERSION),
+    "review UI local surface should include its stable version",
+  );
+  assert.ok(
+    lowConfidenceReviewUiHtml.includes("Content Kitchen Review"),
+    "review UI local surface should include a clear title",
+  );
+  assert.ok(
+    lowConfidenceReviewUiHtml.includes("GENERIC_REASONING_PATTERN"),
+    "review UI local surface should show issue codes",
+  );
+  assert.ok(
+    lowConfidenceReviewUiHtml.includes("Draft only: not sent to Feishu."),
+    "review UI local surface should show notification drafts are not sent",
+  );
+  assert.ok(
+    lowConfidenceReviewUiHtml.includes("Raw HTML included: false"),
+    "review UI local surface should expose the raw HTML safety flag",
+  );
+  assert.ok(
+    !lowConfidenceReviewUiHtml.includes("raw model prompt"),
+    "review UI local surface should not include model prompts",
+  );
+  assert.ok(!lowConfidenceReviewUiHtml.includes("<script"), "review UI local surface should not include scripts");
+  assert.ok(!lowConfidenceReviewUiHtml.includes("<form"), "review UI local surface should not include forms");
 
   const modelOverride = validateReviewDecision({
     artifact: hardRuleArtifact,
@@ -3501,6 +3532,13 @@ async function assertReviewRoutingDecisionDoc() {
     "`renderStatus: \"not_rendered\"`",
     "Puzzle snapshot status is explicit: `provided` or `missing`.",
     "The local runner includes `reviewUiInput` only when a review queue draft exists.",
+    "Review UI Read-only Local Surface",
+    "content-kitchen-review-ui-surface-v0",
+    "--ui-output /tmp/content-kitchen-review-ui.html",
+    "`--ui-output` must not equal `--artifact`",
+    "`--ui-output` must not equal `--decision`",
+    "`--ui-output` must not equal `--output`",
+    "`--ui-output` requires a review queue draft",
     "review-decision-auto-approve.*.example.json",
     "review-decision-auto-reject.*.example.json",
     "review-decision-model-review.*.example.json",
@@ -3513,12 +3551,12 @@ async function assertReviewRoutingDecisionDoc() {
     "--output /tmp/content-kitchen-review-decision-result.json",
     "`--output` must not equal `--artifact`",
     "`--output` must not equal `--decision`",
-    "does not build Review UI",
+    "does not build a production Review UI route",
     "does not call a model",
     "does not send Feishu messages",
     "does not read Feishu webhook secrets",
     "does not write review queue storage",
-    "does not render Review UI",
+    "does not render production content",
     "does not touch production storage",
     "does not publish content",
     "does not run Worker cron",
@@ -3706,6 +3744,46 @@ async function assertReviewDecisionExamplesAndRunner() {
       "review decision runner output should include the next required action",
     );
 
+    const humanReviewArtifactPath = resolve(EXAMPLE_DIR, "review-decision-human-override.artifact.example.json");
+    const uiOutputPath = resolve(tmpDir, "review-ui.html");
+    const uiOutputResult = await runContentKitchenReviewDecisionFromFiles({
+      artifactPath: humanReviewArtifactPath,
+      reviewUrl: "https://example.com/admin/content-kitchen/review/art_review_human_override_example",
+      uiOutputPath,
+    });
+    const writtenUiOutput = await readFile(uiOutputPath, "utf8");
+    assert.equal(
+      uiOutputResult.reviewUiOutputPath,
+      uiOutputPath,
+      "review decision runner should report review UI output path",
+    );
+    assert.ok(
+      writtenUiOutput.includes(REVIEW_UI_SURFACE_VERSION),
+      "review UI output file should include the stable surface version",
+    );
+    assert.ok(
+      writtenUiOutput.includes("Content Kitchen Review"),
+      "review UI output file should include the local page title",
+    );
+    assert.ok(
+      writtenUiOutput.includes("EVIDENCE_SOURCE_CONFLICT"),
+      "review UI output file should include human review issue codes",
+    );
+    assert.ok(
+      writtenUiOutput.includes("not_rendered"),
+      "review UI output file should keep renderStatus explicit",
+    );
+    assert.ok(
+      writtenUiOutput.includes("Draft only: not sent to Feishu."),
+      "review UI output file should show notifications are draft-only",
+    );
+    assert.ok(
+      writtenUiOutput.includes("Raw HTML included: false"),
+      "review UI output file should show raw HTML is not included",
+    );
+    assert.ok(!writtenUiOutput.includes("<script"), "review UI output file should not include scripts");
+    assert.ok(!writtenUiOutput.includes("<form"), "review UI output file should not include forms");
+
     await assert.rejects(
       () => runContentKitchenReviewDecisionCli(["--artifact", artifactPath, "--output", artifactPath]),
       /--output must be different from --artifact/,
@@ -3722,6 +3800,43 @@ async function assertReviewDecisionExamplesAndRunner() {
       ]),
       /--output must be different from --decision/,
       "review decision CLI should reject output paths that would overwrite the decision",
+    );
+    await assert.rejects(
+      () => runContentKitchenReviewDecisionCli(["--artifact", humanReviewArtifactPath, "--ui-output", humanReviewArtifactPath]),
+      /--ui-output must be different from --artifact/,
+      "review decision CLI should reject UI output paths that would overwrite the artifact",
+    );
+    await assert.rejects(
+      () => runContentKitchenReviewDecisionCli([
+        "--artifact",
+        humanReviewArtifactPath,
+        "--decision",
+        decisionPath,
+        "--ui-output",
+        decisionPath,
+      ]),
+      /--ui-output must be different from --decision/,
+      "review decision CLI should reject UI output paths that would overwrite the decision",
+    );
+    await assert.rejects(
+      () => runContentKitchenReviewDecisionCli([
+        "--artifact",
+        humanReviewArtifactPath,
+        "--output",
+        outputPath,
+        "--ui-output",
+        outputPath,
+      ]),
+      /--ui-output must be different from --output/,
+      "review decision CLI should reject UI output paths that would overwrite the JSON output",
+    );
+    await assert.rejects(
+      () => runContentKitchenReviewDecisionFromFiles({
+        artifactPath: resolve(EXAMPLE_DIR, "review-decision-auto-approve.artifact.example.json"),
+        uiOutputPath: resolve(tmpDir, "auto-approve-ui.html"),
+      }),
+      /--ui-output requires a review queue draft/,
+      "review decision runner should only write UI when a review queue draft exists",
     );
   } finally {
     await rm(tmpDir, { recursive: true, force: true });

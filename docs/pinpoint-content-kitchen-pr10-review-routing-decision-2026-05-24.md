@@ -1,15 +1,17 @@
 # PR10 Review Routing And Decision Contract
 
-This is the local contract note for PR10.1 through PR10.4.
+This is the local contract note for PR10.1 through PR10.7.
 
 It defines how a review artifact is routed and how a final review decision is recorded.
 
 It is intentionally local-only:
 
-- it does not build Review UI
+- it does not build a production Review UI route
+- it does not add any sitemap entry
 - it does not call a model
 - it does not send Feishu messages
 - it does not write review queue storage
+- it does not render production content
 - it does not touch production storage
 - it does not publish content
 - it does not run Worker cron
@@ -316,6 +318,43 @@ If a puzzle snapshot is missing, the UI input must not invent answer text or clu
 
 The local runner includes `reviewUiInput` only when a review queue draft exists.
 
+## Review UI Read-only Local Surface
+
+PR10.7 adds a local static HTML surface for the Review UI input.
+
+It uses `content-kitchen-review-ui-surface-v0`.
+
+This is only a local file preview. It is not a Next route, not a production page, and not included in sitemap.
+
+Use `--ui-output` to write it:
+
+```bash
+npm run content-kitchen:review-decision -- \
+  --artifact lib/puzzles/content-kitchen/examples/review-decision-human-override.artifact.example.json \
+  --review-url https://example.com/admin/content-kitchen/review/art_review_human_override_example \
+  --ui-output /tmp/content-kitchen-review-ui.html \
+  --pretty
+```
+
+The generated HTML:
+
+- shows artifact id, puzzle id, revision id, route, policy output, issue groups, queue draft, notification draft, safety flags, and allowed actions
+- shows five L1 clues only when a puzzle snapshot is provided
+- does not invent answer text or clue text when the puzzle snapshot is missing
+- includes `<meta name="robots" content="noindex, nofollow">`
+- has no JavaScript
+- has no form submit
+- writes no storage
+- sends no Feishu message
+- publishes no content
+
+Rules:
+
+- `--ui-output` requires a review queue draft
+- `--ui-output` must not equal `--artifact`
+- `--ui-output` must not equal `--decision`
+- `--ui-output` must not equal `--output`
+
 Write the result to a local file:
 
 ```bash
@@ -324,6 +363,7 @@ npm run content-kitchen:review-decision -- \
   --decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json \
   --review-url https://example.com/admin/content-kitchen/review/art_review_human_override_example \
   --output /tmp/content-kitchen-review-decision-result.json \
+  --ui-output /tmp/content-kitchen-review-ui.html \
   --pretty
 ```
 
@@ -340,11 +380,15 @@ Rules:
 
 - `--output` must not equal `--artifact`
 - `--output` must not equal `--decision`
+- `--ui-output` must not equal `--artifact`
+- `--ui-output` must not equal `--decision`
+- `--ui-output` must not equal `--output`
 - the runner is for local inspection only
 - the runner does not call a model
 - the runner does not send Feishu messages
 - the runner does not read Feishu webhook secrets
 - the runner does not write review queue storage
-- the runner does not render Review UI
+- the runner does not build a production Review UI route
+- the runner does not render production content
 - the runner does not touch production storage
 - the runner does not publish content
