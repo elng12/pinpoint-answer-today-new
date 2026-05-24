@@ -2378,6 +2378,18 @@ PR11 third implementation slice:
 - prove the output does not include raw rendered HTML
 - keep this local-only; do not fetch public URLs, run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
 
+PR11 fourth implementation slice:
+
+- add a local build output adapter command
+- read `content-kitchen-post-publish-build-output-adapter-input-v0` JSON from `--input`
+- read local `buildOutput.appDir`, usually `.next/server/app`
+- locate the built detail page HTML from `expected.canonicalUrl`
+- locate `sitemap.xml.body` or `sitemap.xml` from the local build output, unless `buildOutput.sitemapPath` is provided
+- output `content-kitchen-post-publish-observed-facts-builder-input-v0` JSON that can feed the observed facts builder
+- reject unsafe paths where `--output` equals `--input`, the resolved HTML source, or the resolved sitemap source
+- prove the output does not include raw rendered HTML
+- keep this local-only; do not fetch public URLs, run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
+
 
 ## Review UI Requirements
 

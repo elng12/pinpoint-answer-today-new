@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtemp, readdir, readFile, rm } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -103,6 +103,12 @@ import {
   runCli as runContentKitchenPostPublishObservedFactsCli,
   runContentKitchenPostPublishObservedFactsFromFile,
 } from "./run-content-kitchen-post-publish-observed-facts";
+import {
+  POST_PUBLISH_BUILD_OUTPUT_ADAPTER_INPUT_VERSION,
+  POST_PUBLISH_BUILD_OUTPUT_ADAPTER_RESULT_VERSION,
+  runCli as runContentKitchenPostPublishBuildOutputAdapterCli,
+  runContentKitchenPostPublishBuildOutputAdapterFromFile,
+} from "./run-content-kitchen-post-publish-build-output-adapter";
 import {
   REVIEW_UI_SURFACE_VERSION,
   renderReviewUiInputHtml,
@@ -3657,6 +3663,18 @@ async function assertPostPublishAuditDoc() {
     "`--output` must not equal `sources.htmlPath`",
     "`--output` must not equal `sources.sitemapPath`",
     "output must not include raw HTML",
+    "Build Output Adapter",
+    "content-kitchen-post-publish-build-output-adapter-input-v0",
+    "content-kitchen-post-publish-build-output-adapter-result-v0",
+    "npm run content-kitchen:post-publish-build-output-adapter",
+    "--input lib/puzzles/content-kitchen/examples/post-publish-build-output-adapter.input.example.json",
+    "--output /tmp/content-kitchen-post-publish-observed-facts-input.json",
+    "post-publish-build-output-adapter.input.example.json",
+    "`buildOutput.appDir`",
+    "`buildOutput.siteBaseUrl`",
+    "`buildOutput.sitemapPath`",
+    "`--output` must not equal the resolved HTML source",
+    "`--output` must not equal the resolved sitemap source",
   ];
 
   for (const snippet of requiredSnippets) {
@@ -4513,6 +4531,145 @@ async function assertPostPublishObservedFactsBuilderAndExamples() {
   );
 }
 
+async function assertPostPublishBuildOutputAdapterAndExamples() {
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-build-output-adapter"]?.includes(
+      "run-content-kitchen-post-publish-build-output-adapter.ts",
+    ),
+    "package.json should expose the content-kitchen post-publish build output adapter",
+  );
+
+  const adapterExamplePath = resolve(EXAMPLE_DIR, "post-publish-build-output-adapter.input.example.json");
+  const observedExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.input.example.json");
+  const htmlExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.html.example");
+  const sitemapExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-sitemap.xml.example");
+  const observedExample = JSON.parse(await readFile(observedExamplePath, "utf8")) as {
+    expected: PostPublishAuditExpectedStateV0;
+  };
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-build-output-adapter-"));
+  try {
+    const appDir = resolve(tmpDir, ".next", "server", "app");
+    const detailDir = resolve(appDir, "linkedin-pinpoint-answers");
+    await mkdir(detailDir, { recursive: true });
+    const htmlPath = resolve(detailDir, "pinpoint-answer-925.html");
+    const sitemapPath = resolve(appDir, "sitemap.xml.body");
+    await writeFile(htmlPath, await readFile(htmlExamplePath, "utf8"), "utf8");
+    await writeFile(sitemapPath, await readFile(sitemapExamplePath, "utf8"), "utf8");
+
+    const adapterInputPath = resolve(tmpDir, "adapter-input.json");
+    await writeFile(
+      adapterInputPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: POST_PUBLISH_BUILD_OUTPUT_ADAPTER_INPUT_VERSION,
+          artifactId: "art_post_publish_build_output_adapter_contract_test",
+          checkedAt: "2026-05-24T10:30:00.000Z",
+          expected: observedExample.expected,
+          buildOutput: {
+            appDir: ".next/server/app",
+            siteBaseUrl: "https://example.com",
+            httpStatus: 200,
+          },
+        },
+        null,
+        2,
+      )}\n`,
+      "utf8",
+    );
+
+    const outputPath = resolve(tmpDir, "observed-facts-builder-input.json");
+    const result = await runContentKitchenPostPublishBuildOutputAdapterFromFile({
+      inputPath: adapterInputPath,
+      outputPath,
+    });
+    const writtenInput = JSON.parse(await readFile(outputPath, "utf8")) as {
+      schemaVersion: string;
+      sources: {
+        fetchedUrl: string;
+        httpStatus: number;
+        htmlPath: string;
+        sitemapPath: string;
+      };
+    };
+
+    assert.equal(
+      result.schemaVersion,
+      POST_PUBLISH_BUILD_OUTPUT_ADAPTER_RESULT_VERSION,
+      "build output adapter result version should be stable",
+    );
+    assert.equal(result.dryRunOnly, true, "build output adapter should stay dry-run only");
+    assert.equal(
+      result.observedFactsBuilderInput.schemaVersion,
+      POST_PUBLISH_OBSERVED_FACTS_BUILDER_INPUT_VERSION,
+      "build output adapter should output observed facts builder input",
+    );
+    assert.equal(
+      writtenInput.schemaVersion,
+      POST_PUBLISH_OBSERVED_FACTS_BUILDER_INPUT_VERSION,
+      "build output adapter output file should be observed facts builder input",
+    );
+    assert.equal(result.sourceFiles.appDir, appDir, "build output adapter should resolve appDir");
+    assert.equal(result.sourceFiles.htmlPath, htmlPath, "build output adapter should find static detail HTML");
+    assert.equal(result.sourceFiles.sitemapPath, sitemapPath, "build output adapter should find sitemap.xml.body");
+    assert.equal(
+      writtenInput.sources.fetchedUrl,
+      "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-925/",
+      "build output adapter should use expected canonical URL as fetchedUrl",
+    );
+    assert.equal(writtenInput.sources.httpStatus, 200, "build output adapter should preserve local status");
+    assert.equal(writtenInput.sources.htmlPath, htmlPath, "build output adapter should write resolved HTML path");
+    assert.equal(
+      writtenInput.sources.sitemapPath,
+      sitemapPath,
+      "build output adapter should write resolved sitemap path",
+    );
+    assert.ok(
+      !JSON.stringify(writtenInput).includes("<main"),
+      "build output adapter output should not include raw rendered HTML",
+    );
+
+    const observedFactsResult = await runContentKitchenPostPublishObservedFactsFromFile({
+      inputPath: outputPath,
+      outputPath: resolve(tmpDir, "audit-runner-input.json"),
+    });
+    const auditResult = await runContentKitchenPostPublishAuditFromFile({
+      inputPath: observedFactsResult.outputPath ?? "",
+    });
+    assert.equal(
+      auditResult.auditArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "build output adapter output should feed observed facts builder and audit runner",
+    );
+
+    await assert.rejects(
+      () => runContentKitchenPostPublishBuildOutputAdapterCli(["--input", adapterInputPath, "--output", adapterInputPath]),
+      /--output must be different from --input/,
+      "build output adapter CLI should reject output paths that overwrite input",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishBuildOutputAdapterCli(["--input", adapterInputPath, "--output", htmlPath]),
+      /--output must be different from resolved HTML source/,
+      "build output adapter CLI should reject output paths that overwrite HTML source",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishBuildOutputAdapterCli(["--input", adapterInputPath, "--output", sitemapPath]),
+      /--output must be different from resolved sitemap source/,
+      "build output adapter CLI should reject output paths that overwrite sitemap source",
+    );
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+
+  const inputRaw = await readFile(adapterExamplePath, "utf8");
+  assert.ok(
+    inputRaw.includes(POST_PUBLISH_BUILD_OUTPUT_ADAPTER_INPUT_VERSION),
+    "build output adapter example should use stable input version",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -4566,6 +4723,7 @@ async function main() {
   assertPostPublishAuditContract();
   await assertPostPublishAuditRunnerAndExamples();
   await assertPostPublishObservedFactsBuilderAndExamples();
+  await assertPostPublishBuildOutputAdapterAndExamples();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 
