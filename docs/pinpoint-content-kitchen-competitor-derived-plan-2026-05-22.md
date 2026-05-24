@@ -2390,6 +2390,18 @@ PR11 fourth implementation slice:
 - prove the output does not include raw rendered HTML
 - keep this local-only; do not fetch public URLs, run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
 
+PR11 fifth implementation slice:
+
+- add a one-command local audit chain
+- read the same input as the build output adapter
+- locate local build output HTML and sitemap
+- extract observed facts from the local files
+- output the final `content-kitchen-post-publish-audit-v0` artifact
+- keep the chain dry-run only and local-only
+- reject unsafe paths where `--output` equals `--input`, the resolved HTML source, or the resolved sitemap source
+- prove the output does not include raw rendered HTML
+- do not fetch public URLs, run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
+
 
 ## Review UI Requirements
 
