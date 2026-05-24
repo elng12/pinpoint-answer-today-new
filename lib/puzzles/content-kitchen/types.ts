@@ -780,3 +780,38 @@ export type ReviewDecisionEffectPlanV0 = {
   notes: string[];
   decisionValidation: ReviewDecisionValidationResult;
 };
+
+export type ReviewQueueDraftPriority =
+  | "normal"
+  | "high_priority";
+
+export type ReviewQueueDraftReason =
+  | "model_review_required"
+  | "human_review_required"
+  | "decision_escalated_to_human"
+  | "remaining_issue_review_required";
+
+export type ReviewQueueDraftV0 = {
+  queueDraftVersion: "content-kitchen-review-queue-draft-v0";
+  draftId: string;
+  draftOnly: true;
+  persistenceStatus: "not_persisted";
+  queueName: "content-kitchen-review";
+  artifactId: string;
+  puzzleId: string;
+  candidateRevisionId: string;
+  route: ReviewRoute;
+  routeReason: string;
+  priority: ReviewQueueDraftPriority;
+  reason: ReviewQueueDraftReason;
+  issueCodes: ContentKitchenIssueCode[];
+  recommendedAction: RequiredAction;
+  effect?: ReviewDecisionEffect;
+  effectPlanVersion?: "content-kitchen-review-decision-effect-plan-v0";
+  effectPlanValid?: boolean;
+  publishAllowed: false;
+  publicUrl?: string;
+  renderedPreviewUrl?: string;
+  createdAt: string;
+  lines: string[];
+};

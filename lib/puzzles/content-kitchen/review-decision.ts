@@ -5,11 +5,14 @@ import type {
   ReviewDecisionV0,
   ReviewDecisionEffectPlanV0,
   ReviewDecisionValidationResult,
+  ReviewQueueDraftReason,
+  ReviewQueueDraftV0,
   ReviewRouteResult,
 } from "./types";
 
 export const REVIEW_DECISION_VERSION = "content-kitchen-review-decision-v0";
 export const REVIEW_DECISION_EFFECT_PLAN_VERSION = "content-kitchen-review-decision-effect-plan-v0";
+export const REVIEW_QUEUE_DRAFT_VERSION = "content-kitchen-review-queue-draft-v0";
 export const MODEL_REVIEW_MIN_CONFIDENCE = 0.75;
 
 const HARD_RULE_AUTO_REJECT_ISSUES = new Set<ContentKitchenIssueCode>([
@@ -283,6 +286,127 @@ export function validateReviewDecision(input: {
 function remainingIssueCodesAfterOverride(artifact: ReviewArtifactV0, decision: ReviewDecisionV0): ContentKitchenIssueCode[] {
   const overriddenIssueCodes = new Set(decision.issueCodes);
   return artifact.validation.issueCodes.filter((issueCode) => !overriddenIssueCodes.has(issueCode));
+}
+
+function safeQueueIdPart(value: string | undefined): string {
+  const normalized = value?.trim().replace(/[^a-zA-Z0-9_-]+/g, "-").replace(/^-+|-+$/g, "");
+  return normalized && normalized.length > 0 ? normalized : "unknown";
+}
+
+function reviewQueuePriority(issueCodes: ContentKitchenIssueCode[]): ReviewQueueDraftV0["priority"] {
+  return issueCodes.includes("ANSWER_FIRST_HIGH_PRIORITY_ALERT") ? "high_priority" : "normal";
+}
+
+function reviewQueueReason(input: {
+  route: ReviewRouteResult;
+  effectPlan?: ReviewDecisionEffectPlanV0;
+}): ReviewQueueDraftReason | null {
+  if (input.effectPlan) {
+    if (input.effectPlan.effect === "human_escalation_required") {
+      return "decision_escalated_to_human";
+    }
+
+    if (
+      input.effectPlan.valid &&
+      input.effectPlan.artifactStatus === "open" &&
+      input.effectPlan.remainingIssueCodes.length > 0
+    ) {
+      return "remaining_issue_review_required";
+    }
+
+    return null;
+  }
+
+  if (input.route.route === "model_review") {
+    return "model_review_required";
+  }
+
+  if (input.route.route === "human_review") {
+    return "human_review_required";
+  }
+
+  return null;
+}
+
+function reviewQueueRecommendedAction(input: {
+  artifact: ReviewArtifactV0;
+  effectPlan?: ReviewDecisionEffectPlanV0;
+}): ReviewQueueDraftV0["recommendedAction"] {
+  if (!input.effectPlan) {
+    return input.artifact.recommendedAction;
+  }
+
+  if (input.effectPlan.nextRequiredAction === "none") {
+    return input.artifact.recommendedAction;
+  }
+
+  return input.effectPlan.nextRequiredAction;
+}
+
+export function buildReviewQueueDraft(input: {
+  artifact: ReviewArtifactV0;
+  route?: ReviewRouteResult;
+  effectPlan?: ReviewDecisionEffectPlanV0;
+  createdAt?: string;
+}): ReviewQueueDraftV0 | null {
+  const route = input.route ?? input.effectPlan?.decisionValidation.derivedRoute ?? deriveReviewRoute(input.artifact);
+  const reason = reviewQueueReason({ route, effectPlan: input.effectPlan });
+
+  if (!reason) {
+    return null;
+  }
+
+  const issueCodes =
+    input.effectPlan && input.effectPlan.remainingIssueCodes.length > 0
+      ? input.effectPlan.remainingIssueCodes
+      : route.issueCodes;
+  const createdAt = input.createdAt ?? new Date().toISOString();
+  const artifactId = input.artifact.artifactId;
+  const puzzleId = input.artifact.puzzleId ?? "unknown";
+  const candidateRevisionId = input.artifact.candidateRevisionId ?? "unknown";
+  const recommendedAction = reviewQueueRecommendedAction({
+    artifact: input.artifact,
+    effectPlan: input.effectPlan,
+  });
+
+  return {
+    queueDraftVersion: REVIEW_QUEUE_DRAFT_VERSION,
+    draftId: `review-queue:${safeQueueIdPart(artifactId)}:${safeQueueIdPart(candidateRevisionId)}:${route.route}`,
+    draftOnly: true,
+    persistenceStatus: "not_persisted",
+    queueName: "content-kitchen-review",
+    artifactId,
+    puzzleId,
+    candidateRevisionId,
+    route: route.route,
+    routeReason: route.reason,
+    priority: reviewQueuePriority(issueCodes),
+    reason,
+    issueCodes: [...issueCodes],
+    recommendedAction,
+    ...(input.effectPlan
+      ? {
+        effect: input.effectPlan.effect,
+        effectPlanVersion: input.effectPlan.effectPlanVersion,
+        effectPlanValid: input.effectPlan.valid,
+      }
+      : {}),
+    publishAllowed: false,
+    ...(input.artifact.canonicalUrl ? { publicUrl: input.artifact.canonicalUrl } : {}),
+    ...(input.artifact.renderedPreviewUrl ? { renderedPreviewUrl: input.artifact.renderedPreviewUrl } : {}),
+    createdAt,
+    lines: [
+      `Artifact: ${artifactId}`,
+      `Puzzle: ${puzzleId}`,
+      `Revision: ${candidateRevisionId}`,
+      `Route: ${route.route} (${route.reason})`,
+      `Priority: ${reviewQueuePriority(issueCodes)}`,
+      `Issue codes: ${issueCodes.length > 0 ? issueCodes.join(", ") : "none"}`,
+      `Recommended action: ${recommendedAction}`,
+      "Draft only: not written to review queue storage.",
+      "Publish allowed: false.",
+    ],
+  };
 }
 
 export function buildReviewDecisionEffectPlan(input: {
