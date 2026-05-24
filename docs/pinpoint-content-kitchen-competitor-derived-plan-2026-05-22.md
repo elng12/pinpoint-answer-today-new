@@ -2356,6 +2356,17 @@ PR11 first implementation slice:
 - mark audit artifacts with `rawRenderedHtmlIncluded: false`, `publicFetchPerformedByContract: false`, and `publishAllowed: false`
 - keep this local-only; do not fetch public URLs, run a browser, read sitemap files, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
 
+PR11 second implementation slice:
+
+- add a local post-publish audit runner command
+- read `content-kitchen-post-publish-audit-runner-input-v0` JSON from `--input`
+- write `content-kitchen-post-publish-audit-v0` artifact JSON to `--output` when provided
+- keep the output file as the audit artifact itself, not a production storage record
+- reject unsafe paths where `--output` equals `--input`
+- add example inputs for a passing full-analysis audit and an answer-first sitemap policy mismatch
+- reject raw rendered HTML, model prompts, and obvious secrets in the runner input
+- keep this local-only; do not fetch public URLs, run a browser, read sitemap files, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
+
 
 ## Review UI Requirements
 

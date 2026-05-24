@@ -125,3 +125,39 @@ The content-kitchen contract test proves:
 - PR11 issue codes are registered with `phaseOwner: "PR11"`
 - audit artifacts do not include raw rendered HTML
 - PR11.1 does not fetch public URLs itself
+
+## Local Runner
+
+PR11.2 adds a local runner.
+
+Input uses `content-kitchen-post-publish-audit-runner-input-v0`.
+
+Runner result uses `content-kitchen-post-publish-audit-runner-result-v0`.
+
+Run it with:
+
+```bash
+npm run content-kitchen:post-publish-audit -- \
+  --input lib/puzzles/content-kitchen/examples/post-publish-audit-pass.input.example.json \
+  --output /tmp/content-kitchen-post-publish-audit.json \
+  --pretty
+```
+
+The output file is the audit artifact itself.
+
+Example inputs:
+
+- `post-publish-audit-pass.input.example.json`
+- `post-publish-audit-policy-mismatch.input.example.json`
+
+Runner rules:
+
+- `--input` is required
+- `--output` is optional
+- `--output` must not equal `--input`
+- the runner rejects raw rendered HTML, model prompts, and obvious secrets in the input file
+- the runner does not fetch public URLs
+- the runner does not run a browser
+- the runner does not send Feishu messages
+- the runner does not write review queue storage
+- the runner does not publish content
