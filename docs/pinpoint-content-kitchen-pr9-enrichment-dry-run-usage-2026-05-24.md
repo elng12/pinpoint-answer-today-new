@@ -65,6 +65,37 @@ The health report also includes:
 - active issue codes
 - skip reasons
 
+## Write Health Report
+
+Write only the compact health report to a separate local file:
+
+```bash
+npm run content-kitchen:enrichment-dry-run -- \
+  --input lib/puzzles/content-kitchen/examples/enrichment-worker-dry-run.input.json \
+  --health-output /tmp/content-kitchen-health-report.json \
+  --pretty
+```
+
+The health output contains:
+
+- `sourcePath`
+- `writtenAt`
+- `status`
+- `recommendation`
+- compact counts
+- important job ids
+- active issue codes
+- skip reasons
+
+Rules:
+
+- --health-output must not equal `--input`
+- --health-output must not equal `--output`
+- --health-output must not equal `--action-output`
+- health output is for inspection only
+- health output is not sent to Feishu
+- health output is not written to review queue storage
+
 ## Write Job State Preview
 
 Write updated job state to a separate local file:
@@ -117,6 +148,7 @@ npm run content-kitchen:enrichment-dry-run -- \
   --input lib/puzzles/content-kitchen/examples/enrichment-worker-dry-run.input.json \
   --output /tmp/content-kitchen-worker-output.json \
   --action-output /tmp/content-kitchen-action-drafts.json \
+  --health-output /tmp/content-kitchen-health-report.json \
   --pretty
 ```
 
@@ -131,6 +163,7 @@ npm run content-kitchen:enrichment-dry-run -- \
   --input /tmp/content-kitchen-worker-output.json \
   --output /tmp/content-kitchen-worker-output-next.json \
   --action-output /tmp/content-kitchen-action-drafts-next.json \
+  --health-output /tmp/content-kitchen-health-report-next.json \
   --now 2026-05-23T09:12:00.000Z \
   --worker-id worker-dry-run-next \
   --lock-minutes 10 \

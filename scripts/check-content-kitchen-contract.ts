@@ -2304,11 +2304,13 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
   try {
     const outputPath = resolve(tmpDir, "worker-output.json");
     const actionOutputPath = resolve(tmpDir, "worker-action-drafts.json");
+    const healthOutputPath = resolve(tmpDir, "worker-health-report.json");
     const fileResult = await runAnswerFirstEnrichmentWorkerJsonDryRunToFile({
       input,
       inputPath: examplePath,
       outputPath,
       actionOutputPath,
+      healthOutputPath,
     });
     const output = JSON.parse(await readFile(outputPath, "utf8")) as {
       schemaVersion: string;
@@ -2335,6 +2337,22 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
         issueCodes: string[];
       }>;
     };
+    const healthOutput = JSON.parse(await readFile(healthOutputPath, "utf8")) as {
+      schemaVersion: string;
+      status: string;
+      sourcePath: string;
+      writtenAt: string;
+      recommendation: string;
+      counts: {
+        inputJobs: number;
+        notificationDrafts: number;
+        reviewQueueDrafts: number;
+      };
+      jobIds: {
+        reviewRequired: string[];
+      };
+      activeIssueCodes: string[];
+    };
 
     assert.equal(
       fileResult.outputPath,
@@ -2345,6 +2363,11 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       fileResult.actionOutputPath,
       actionOutputPath,
       "worker dry-run file mode should report the action output path",
+    );
+    assert.equal(
+      fileResult.healthOutputPath,
+      healthOutputPath,
+      "worker dry-run file mode should report the health output path",
     );
     assert.equal(
       output.schemaVersion,
@@ -2411,6 +2434,38 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       "worker dry-run action output should write review queue drafts without persisting them",
     );
     assert.equal(
+      healthOutput.schemaVersion,
+      ENRICHMENT_WORKER_HEALTH_REPORT_VERSION,
+      "worker dry-run health output file should use the health report schema version",
+    );
+    assert.equal(healthOutput.status, "needs_review", "worker dry-run health output should expose the health status");
+    assert.equal(healthOutput.sourcePath, examplePath, "worker dry-run health output should record the source path");
+    assert.equal(healthOutput.writtenAt, input.now, "worker dry-run health output should use the dry-run timestamp");
+    assert.equal(
+      healthOutput.recommendation,
+      "Inspect review queue drafts before allowing automatic enrichment to continue.",
+      "worker dry-run health output should include the operator recommendation",
+    );
+    assert.deepEqual(
+      [
+        healthOutput.counts.inputJobs,
+        healthOutput.counts.notificationDrafts,
+        healthOutput.counts.reviewQueueDrafts,
+      ],
+      [3, 1, 1],
+      "worker dry-run health output should write compact counts",
+    );
+    assert.deepEqual(
+      healthOutput.jobIds.reviewRequired,
+      ["job-pinpoint-918-2026-05-23-rev-full-analysis-918"],
+      "worker dry-run health output should write review-required job ids",
+    );
+    assert.deepEqual(
+      healthOutput.activeIssueCodes,
+      ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+      "worker dry-run health output should write active issue codes",
+    );
+    assert.equal(
       await readFile(examplePath, "utf8"),
       raw,
       "worker dry-run file mode should not mutate the input file",
@@ -2431,6 +2486,35 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       ]),
       /--action-output must be different from --output/,
       "worker dry-run CLI should keep job output and action output paths separate",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli(["--input", examplePath, "--health-output", examplePath]),
+      /--health-output must be different from --input/,
+      "worker dry-run CLI should reject health output paths that would overwrite the input",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli([
+        "--input",
+        examplePath,
+        "--output",
+        outputPath,
+        "--health-output",
+        outputPath,
+      ]),
+      /--health-output must be different from --output/,
+      "worker dry-run CLI should keep job output and health output paths separate",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli([
+        "--input",
+        examplePath,
+        "--action-output",
+        actionOutputPath,
+        "--health-output",
+        actionOutputPath,
+      ]),
+      /--health-output must be different from --action-output/,
+      "worker dry-run CLI should keep action output and health output paths separate",
     );
 
     const resumedInput = parseAnswerFirstEnrichmentWorkerDryRunInput(output, {
@@ -2638,6 +2722,7 @@ async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
     "--input lib/puzzles/content-kitchen/examples/enrichment-worker-dry-run.input.json",
     "--output /tmp/content-kitchen-worker-output.json",
     "--action-output /tmp/content-kitchen-action-drafts.json",
+    "--health-output /tmp/content-kitchen-health-report.json",
     "`healthReport`",
     "`ok`: no review action is needed",
     "`needs_review`: inspect review queue drafts before allowing automatic enrichment to continue",
@@ -2645,6 +2730,9 @@ async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
     "`blocked`: inspect dead-letter or max-attempt jobs before retrying the queue",
     "--action-output must not equal `--input`",
     "--action-output must not equal `--output`",
+    "--health-output must not equal `--input`",
+    "--health-output must not equal `--output`",
+    "--health-output must not equal `--action-output`",
     "dispatchStatus: \"not_sent\"",
     "persistenceStatus: \"not_persisted\"",
     "does not send Feishu messages",

@@ -68,6 +68,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
   healthReport: AnswerFirstEnrichmentWorkerHealthReport;
   outputPath?: string;
   actionOutputPath?: string;
+  healthOutputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
   skippedJobs: Array<{
     job: AnswerFirstEnrichmentWorkerDryRunJobSummary;
@@ -85,6 +86,7 @@ type ParsedArgs = {
   inputPath: string;
   outputPath?: string;
   actionOutputPath?: string;
+  healthOutputPath?: string;
   now?: string;
   workerId?: string;
   limit?: number;
@@ -100,6 +102,11 @@ type DryRunInputOverrides = {
 };
 
 export type AnswerFirstEnrichmentWorkerActionDraftsFileOutput = AnswerFirstEnrichmentWorkerActionDrafts & {
+  sourcePath: string;
+  writtenAt: string;
+};
+
+export type AnswerFirstEnrichmentWorkerHealthReportFileOutput = AnswerFirstEnrichmentWorkerHealthReport & {
   sourcePath: string;
   writtenAt: string;
 };
@@ -279,6 +286,7 @@ function parseArgs(argv: string[]): ParsedArgs {
   let inputPath = "";
   let outputPath: string | undefined;
   let actionOutputPath: string | undefined;
+  let healthOutputPath: string | undefined;
   let now: string | undefined;
   let workerId: string | undefined;
   let limit: number | undefined;
@@ -301,6 +309,12 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--action-output") {
       actionOutputPath = resolve(readArgValue(argv, index, "--action-output"));
+      index += 1;
+      continue;
+    }
+
+    if (arg === "--health-output") {
+      healthOutputPath = resolve(readArgValue(argv, index, "--health-output"));
       index += 1;
       continue;
     }
@@ -341,7 +355,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--help" || arg === "-h") {
       throw new Error(
-        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--action-output <path>] [--now <timestamp>] [--worker-id <id>] [--limit <n>] [--lock-minutes <n>] [--pretty|--compact]",
+        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--action-output <path>] [--health-output <path>] [--now <timestamp>] [--worker-id <id>] [--limit <n>] [--lock-minutes <n>] [--pretty|--compact]",
       );
     }
 
@@ -362,11 +376,21 @@ function parseArgs(argv: string[]): ParsedArgs {
   if (actionOutputPath && outputPath === actionOutputPath) {
     throw new Error("--action-output must be different from --output");
   }
+  if (healthOutputPath === resolvedInputPath) {
+    throw new Error("--health-output must be different from --input");
+  }
+  if (healthOutputPath && outputPath === healthOutputPath) {
+    throw new Error("--health-output must be different from --output");
+  }
+  if (healthOutputPath && actionOutputPath === healthOutputPath) {
+    throw new Error("--health-output must be different from --action-output");
+  }
 
   return {
     inputPath: resolvedInputPath,
     outputPath,
     actionOutputPath,
+    healthOutputPath,
     now,
     workerId,
     limit,
@@ -408,17 +432,28 @@ export async function runCli(argv: string[] = process.argv.slice(2)): Promise<vo
       inputPath: args.inputPath,
       outputPath: args.outputPath,
       actionOutputPath: args.actionOutputPath,
+      healthOutputPath: args.healthOutputPath,
     })
     : await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
-  const outputResult = args.actionOutputPath && !args.outputPath
-    ? { ...result, actionOutputPath: args.actionOutputPath }
-    : result;
+  const outputResult = {
+    ...result,
+    actionOutputPath: args.actionOutputPath ?? result.actionOutputPath,
+    healthOutputPath: args.healthOutputPath ?? result.healthOutputPath,
+  };
 
   if (args.actionOutputPath && !args.outputPath) {
     await writeAnswerFirstEnrichmentWorkerActionDraftsFile({
       actionDrafts: result.actionDrafts,
       inputPath: args.inputPath,
       actionOutputPath: args.actionOutputPath,
+      writtenAt: input.now,
+    });
+  }
+  if (args.healthOutputPath && !args.outputPath) {
+    await writeAnswerFirstEnrichmentWorkerHealthReportFile({
+      healthReport: result.healthReport,
+      inputPath: args.inputPath,
+      healthOutputPath: args.healthOutputPath,
       writtenAt: input.now,
     });
   }
@@ -431,6 +466,7 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
   inputPath: string;
   outputPath: string;
   actionOutputPath?: string;
+  healthOutputPath?: string;
 }): Promise<AnswerFirstEnrichmentWorkerDryRunResult> {
   const store = createJsonFileAnswerFirstEnrichmentJobStore({
     inputPath: input.inputPath,
@@ -462,10 +498,19 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
       writtenAt: input.input.now,
     });
   }
+  if (input.healthOutputPath) {
+    await writeAnswerFirstEnrichmentWorkerHealthReportFile({
+      healthReport: result.healthReport,
+      inputPath: input.inputPath,
+      healthOutputPath: input.healthOutputPath,
+      writtenAt: input.input.now,
+    });
+  }
 
   return {
     ...result,
     actionOutputPath: input.actionOutputPath,
+    healthOutputPath: input.healthOutputPath,
   };
 }
 
@@ -483,6 +528,24 @@ export async function writeAnswerFirstEnrichmentWorkerActionDraftsFile(input: {
 
   await mkdir(dirname(input.actionOutputPath), { recursive: true });
   await writeFile(input.actionOutputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
+
+  return output;
+}
+
+export async function writeAnswerFirstEnrichmentWorkerHealthReportFile(input: {
+  healthReport: AnswerFirstEnrichmentWorkerHealthReport;
+  inputPath: string;
+  healthOutputPath: string;
+  writtenAt: string;
+}): Promise<AnswerFirstEnrichmentWorkerHealthReportFileOutput> {
+  const output: AnswerFirstEnrichmentWorkerHealthReportFileOutput = {
+    ...input.healthReport,
+    sourcePath: resolve(input.inputPath),
+    writtenAt: new Date(Date.parse(input.writtenAt)).toISOString(),
+  };
+
+  await mkdir(dirname(input.healthOutputPath), { recursive: true });
+  await writeFile(input.healthOutputPath, `${JSON.stringify(output, null, 2)}\n`, "utf8");
 
   return output;
 }
