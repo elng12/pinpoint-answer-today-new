@@ -40,13 +40,13 @@
     "The answer was \"Things shaped like discs\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things shaped like discs, which is why \"Things shaped like discs\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "I did not have a clean answer from the first clue. I initially drifted toward a broader umbrella topic, but that line of thinking never explained \"CDs and DVDs (it's the last D)\" cleanly enough.",
-    "The turn came when I let \"CDs and DVDs (it's the last D)\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.",
-    "The answer was \"Things shaped like discs\"."
+    "I did not have a clean answer from the first clue. Plates and Coins first made me think about everyday objects, money, or table settings, but none of those reads gave the whole board one clean rule.",
+    "The turn came when I let \"CDs and DVDs (it's the last D)\" lead the solve. A disc is the physical shape shared by that clue, and once I tested that shape against the rest of the board, Frisbees and Manhole covers stopped feeling loose and started fitting the same category.",
+    "That left Plates and Coins as confirmation clues rather than separate themes. Each one is a flat round object, so the full board points to \"Things shaped like discs\" instead of a broader idea about objects, games, or household items."
   ],
   "lessons": [
     {
-      "title": "Wait for the clue that makes the set concrete",
+      "title": "Use the disc-shaped clues to lock the category",
       "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
     },
     {
@@ -114,7 +114,7 @@
       "Early clues often tempt you to overfit the board around one obvious surface similarity."
     ],
     "breakingClue": "CDs and DVDs (it's the last D)",
-    "pivot": "I did not have a clean answer from the first clue. I initially drifted toward a broader umbrella topic, but that line of thinking never explained \"CDs and DVDs (it's the last D)\" cleanly enough.\n\nThe turn came when I let \"CDs and DVDs (it's the last D)\" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.\n\nThe answer was \"Things shaped like discs\".",
+    "pivot": "I did not have a clean answer from the first clue. Plates and Coins first made me think about everyday objects, money, or table settings, but none of those reads gave the whole board one clean rule.\n\nThe turn came when I let \"CDs and DVDs (it's the last D)\" lead the solve. A disc is the physical shape shared by that clue, and once I tested that shape against the rest of the board, Frisbees and Manhole covers stopped feeling loose and started fitting the same category.\n\nThat left Plates and Coins as confirmation clues rather than separate themes. Each one is a flat round object, so the full board points to \"Things shaped like discs\" instead of a broader idea about objects, games, or household items.",
     "fullBoardConfirmation": "Once I read the set through a category board focused on things, examples like \"Plates\" and \"Coins\" stopped feeling loose and started landing cleanly."
   },
   "turningPoint": {
