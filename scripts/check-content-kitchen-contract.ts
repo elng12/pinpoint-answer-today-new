@@ -60,6 +60,7 @@ import { ENRICHMENT_WORKER_RUN_SUMMARY_VERSION } from "./content-kitchen-enrichm
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
   parseAnswerFirstEnrichmentWorkerDryRunInput,
+  runCli as runAnswerFirstEnrichmentWorkerDryRunCli,
   runAnswerFirstEnrichmentWorkerJsonDryRun,
   runAnswerFirstEnrichmentWorkerJsonDryRunToFile,
   type AnswerFirstEnrichmentWorkerDryRunInput,
@@ -2261,10 +2262,12 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
   const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-worker-"));
   try {
     const outputPath = resolve(tmpDir, "worker-output.json");
+    const actionOutputPath = resolve(tmpDir, "worker-action-drafts.json");
     const fileResult = await runAnswerFirstEnrichmentWorkerJsonDryRunToFile({
       input,
       inputPath: examplePath,
       outputPath,
+      actionOutputPath,
     });
     const output = JSON.parse(await readFile(outputPath, "utf8")) as {
       schemaVersion: string;
@@ -2272,11 +2275,35 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       writtenAt: string;
       jobs: Array<{ puzzleId: string; state: string; lockedBy?: string; failureReasonCodes: string[] }>;
     };
+    const actionOutput = JSON.parse(await readFile(actionOutputPath, "utf8")) as {
+      schemaVersion: string;
+      dryRunOnly: boolean;
+      sourcePath: string;
+      writtenAt: string;
+      workerId: string;
+      notificationDrafts: Array<{
+        dispatchStatus: string;
+        priority: string;
+        jobIds: string[];
+        issueCodes: string[];
+      }>;
+      reviewQueueDrafts: Array<{
+        persistenceStatus: string;
+        priority: string;
+        jobId: string;
+        issueCodes: string[];
+      }>;
+    };
 
     assert.equal(
       fileResult.outputPath,
       outputPath,
       "worker dry-run file mode should report the output path",
+    );
+    assert.equal(
+      fileResult.actionOutputPath,
+      actionOutputPath,
+      "worker dry-run file mode should report the action output path",
     );
     assert.equal(
       output.schemaVersion,
@@ -2300,9 +2327,69 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       "worker dry-run file output should persist updated job states",
     );
     assert.equal(
+      actionOutput.schemaVersion,
+      ENRICHMENT_WORKER_ACTION_DRAFTS_VERSION,
+      "worker dry-run action output file should use the action draft schema version",
+    );
+    assert.equal(actionOutput.dryRunOnly, true, "worker dry-run action output file should stay dry-run only");
+    assert.equal(actionOutput.sourcePath, examplePath, "worker dry-run action output should record the source path");
+    assert.equal(actionOutput.writtenAt, input.now, "worker dry-run action output should use the dry-run timestamp");
+    assert.equal(actionOutput.workerId, input.workerId, "worker dry-run action output should record the worker id");
+    assert.deepEqual(
+      actionOutput.notificationDrafts.map((draft) => [
+        draft.dispatchStatus,
+        draft.priority,
+        draft.jobIds,
+        draft.issueCodes,
+      ]),
+      [
+        [
+          "not_sent",
+          "normal",
+          ["job-pinpoint-918-2026-05-23-rev-full-analysis-918"],
+          ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+        ],
+      ],
+      "worker dry-run action output should write notification drafts without sending them",
+    );
+    assert.deepEqual(
+      actionOutput.reviewQueueDrafts.map((draft) => [
+        draft.persistenceStatus,
+        draft.priority,
+        draft.jobId,
+        draft.issueCodes,
+      ]),
+      [
+        [
+          "not_persisted",
+          "normal",
+          "job-pinpoint-918-2026-05-23-rev-full-analysis-918",
+          ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+        ],
+      ],
+      "worker dry-run action output should write review queue drafts without persisting them",
+    );
+    assert.equal(
       await readFile(examplePath, "utf8"),
       raw,
       "worker dry-run file mode should not mutate the input file",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli(["--input", examplePath, "--action-output", examplePath]),
+      /--action-output must be different from --input/,
+      "worker dry-run CLI should reject action output paths that would overwrite the input",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli([
+        "--input",
+        examplePath,
+        "--output",
+        outputPath,
+        "--action-output",
+        outputPath,
+      ]),
+      /--action-output must be different from --output/,
+      "worker dry-run CLI should keep job output and action output paths separate",
     );
 
     const resumedInput = parseAnswerFirstEnrichmentWorkerDryRunInput(output, {
