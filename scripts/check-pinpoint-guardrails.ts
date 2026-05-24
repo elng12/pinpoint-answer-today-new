@@ -11,6 +11,7 @@ import {
   validateDraftStructure,
 } from "../lib/puzzles/draft-validator";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
+import { collectSemanticLintIssues } from "../lib/puzzles/semantic-lint";
 import {
   buildLightweightPublishFailureSummary,
   updateLightweightPublishFailureStreak,
@@ -1575,6 +1576,43 @@ async function checkPhraseFallbackDirection() {
     "visual category fallback narrative should acknowledge the icon-heavy solve path",
   );
 
+  const genericCategoryNarrative = fallbackModule.buildSharedFallbackSolutionNarrative({
+    kind: "category",
+    wrongGuess: "a loose shape theme",
+    turningPoint: "CDs and DVDs (it's the last D)",
+    clues: ["Plates", "Coins", "Frisbees", "Manhole covers", "CDs and DVDs (it's the last D)"],
+  });
+  assert.doesNotMatch(
+    genericCategoryNarrative.join(" "),
+    /\bstopped feeling broad and started reading like parts of one real set\b/i,
+    "category fallback narrative should not reuse the old generic one-real-set pivot",
+  );
+  assert.match(
+    genericCategoryNarrative.join(" "),
+    /\bPlates and Coins\b/i,
+    "category fallback narrative should name early clues when it explains the pivot",
+  );
+
+  const genericFallbackIssueCodes = collectSemanticLintIssues({
+    mainAnswer: "Things shaped like discs",
+    solutionEmergence:
+      'I did not have a clean answer from the first clue. I initially drifted toward a broader umbrella topic, but that line of thinking never explained "CDs and DVDs (it\'s the last D)" cleanly enough. The turn came when I let "CDs and DVDs (it\'s the last D)" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.',
+    lessons: [
+      {
+        title: "Wait for the clue that makes the set concrete",
+        body: "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+      },
+    ],
+  }).map((issue) => issue.code);
+  assert.ok(
+    genericFallbackIssueCodes.includes("solutionEmergence.genericPivot"),
+    "semantic lint should block the old generic one-real-set pivot",
+  );
+  assert.ok(
+    genericFallbackIssueCodes.includes("lessons.genericTitle"),
+    "semantic lint should block the old generic set-concrete lesson title",
+  );
+
   const structuredCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
     kind: "category",
     clues: ["Mercury", "Venus", "Earth", "Mars", "Jupiter"],
@@ -2740,6 +2778,34 @@ async function checkReleaseQueueObservationOpsScript() {
   console.log("ok: worker ops exposes production release queue observation");
 }
 
+async function checkProductionReleaseRunsPublicFetchAudit() {
+  const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-public-fetch-audit"]?.includes(
+      "run-content-kitchen-post-publish-public-fetch-audit.ts",
+    ),
+    "package.json must expose the PR11 public fetch audit command",
+  );
+  assert.ok(
+    releaseSource.includes("runPostPublishPublicFetchAudit") &&
+      releaseSource.includes("content-kitchen:post-publish-public-fetch-audit") &&
+      releaseSource.includes("published_and_audit_passed"),
+    "release:production must run PR11 public fetch audit and require a passing audit outcome",
+  );
+  assert.ok(
+    releaseSource.includes("expectedInternalLinks") &&
+      releaseSource.includes("sitemapLastmod") &&
+      releaseSource.includes("schemaDateModified"),
+    "release:production must feed PR11 expected link, sitemap, and schema facts",
+  );
+
+  console.log("ok: production release runs PR11 public fetch audit before declaring success");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -2826,6 +2892,7 @@ async function main() {
   await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueDryRunOpsScript();
   await checkReleaseQueueObservationOpsScript();
+  await checkProductionReleaseRunsPublicFetchAudit();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }
