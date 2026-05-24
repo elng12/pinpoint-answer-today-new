@@ -1,0 +1,27 @@
+{
+  "artifactVersion": "content-kitchen-review-artifact-v0",
+  "artifactId": "art_review_auto_approve_example",
+  "artifactType": "review",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "puzzleId": "pinpoint-920-2026-05-24",
+  "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-920/",
+  "contentMode": "full-analysis",
+  "candidateRevisionId": "rev-full-analysis-920",
+  "validation": {
+    "outcome": "pass_full_analysis",
+    "policies": {
+      "indexPolicy": "index",
+      "sitemapPolicy": "include",
+      "schemaPolicy": "article_only",
+      "internalLinkPolicy": "normal",
+      "requiredAction": "none"
+    },
+    "issueCodes": [],
+    "issues": []
+  },
+  "issueCodesRequiringDecision": [],
+  "recommendedAction": "none",
+  "allowedReviewerActions": [
+    "approve_candidate"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "artifactVersion": "content-kitchen-review-artifact-v0",
+  "artifactId": "art_review_low_confidence_human_example",
+  "artifactType": "review",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "puzzleId": "pinpoint-923-2026-05-24",
+  "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-923/",
+  "contentMode": "full-analysis",
+  "candidateRevisionId": "rev-full-analysis-923",
+  "validation": {
+    "outcome": "requires_review",
+    "policies": {
+      "indexPolicy": "review_required",
+      "sitemapPolicy": "include_after_audit",
+      "schemaPolicy": "article_only",
+      "internalLinkPolicy": "deemphasized",
+      "requiredAction": "review"
+    },
+    "issueCodes": [
+      "GENERIC_REASONING_PATTERN"
+    ],
+    "issues": [
+      {
+        "issueCode": "GENERIC_REASONING_PATTERN",
+        "severity": "P1",
+        "fieldPath": "candidate.fullAnalysis.reasoning",
+        "message": "Reasoning is too generic and model confidence is low.",
+        "suggestedAction": "Escalate to human review.",
+        "blocking": false,
+        "candidateRevisionId": "rev-full-analysis-923"
+      }
+    ]
+  },
+  "issueCodesRequiringDecision": [
+    "GENERIC_REASONING_PATTERN"
+  ],
+  "recommendedAction": "review",
+  "allowedReviewerActions": [
+    "approve_candidate",
+    "reject_candidate",
+    "request_full_analysis_fix"
+  ]
+}

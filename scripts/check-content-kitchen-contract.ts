@@ -72,6 +72,11 @@ import {
   runAnswerFirstEnrichmentWorkerJsonDryRunToFile,
   type AnswerFirstEnrichmentWorkerDryRunInput,
 } from "./run-content-kitchen-enrichment-worker-dry-run";
+import {
+  REVIEW_DECISION_RUNNER_RESULT_VERSION,
+  runCli as runContentKitchenReviewDecisionCli,
+  runContentKitchenReviewDecisionFromFiles,
+} from "./run-content-kitchen-review-decision";
 import type {
   ContentKitchenDictionaries,
   ContentKitchenIssueCode,
@@ -3146,6 +3151,17 @@ async function assertReviewRoutingDecisionDoc() {
     "model decisions cannot override issues",
     "model decisions below confidence threshold must escalate to human",
     "override of an absent issue code fails",
+    "review-decision-auto-approve.*.example.json",
+    "review-decision-auto-reject.*.example.json",
+    "review-decision-model-review.*.example.json",
+    "review-decision-low-confidence-human.*.example.json",
+    "review-decision-human-override.*.example.json",
+    "npm run content-kitchen:review-decision",
+    "--artifact lib/puzzles/content-kitchen/examples/review-decision-model-review.artifact.example.json",
+    "--decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json",
+    "--output /tmp/content-kitchen-review-decision-result.json",
+    "`--output` must not equal `--artifact`",
+    "`--output` must not equal `--decision`",
     "does not build Review UI",
     "does not call a model",
     "does not send Feishu messages",
@@ -3158,6 +3174,155 @@ async function assertReviewRoutingDecisionDoc() {
   for (const snippet of requiredSnippets) {
     assert.ok(doc.includes(snippet), `PR10 review routing decision doc should include: ${snippet}`);
   }
+}
+
+async function assertReviewDecisionExamplesAndRunner() {
+  const pairs = [
+    ["review-decision-auto-approve", "auto_approve"],
+    ["review-decision-auto-reject", "auto_reject"],
+    ["review-decision-model-review", "model_review"],
+    ["review-decision-low-confidence-human", "human_review"],
+    ["review-decision-human-override", "human_review"],
+  ] as const;
+
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:review-decision"]?.includes(
+      "run-content-kitchen-review-decision.ts",
+    ),
+    "package.json should expose the content-kitchen review decision runner",
+  );
+
+  for (const [baseName, expectedRoute] of pairs) {
+    const artifactPath = resolve(EXAMPLE_DIR, `${baseName}.artifact.example.json`);
+    const decisionPath = resolve(EXAMPLE_DIR, `${baseName}.decision.example.json`);
+    const result = await runContentKitchenReviewDecisionFromFiles({
+      artifactPath,
+      decisionPath,
+    });
+
+    assert.equal(
+      result.schemaVersion,
+      REVIEW_DECISION_RUNNER_RESULT_VERSION,
+      `${baseName}: review decision runner result schema should be stable`,
+    );
+    assert.equal(result.dryRunOnly, true, `${baseName}: review decision runner should stay dry-run only`);
+    assert.equal(result.sourceArtifactPath, artifactPath, `${baseName}: runner should record artifact path`);
+    assert.equal(result.sourceDecisionPath, decisionPath, `${baseName}: runner should record decision path`);
+    assert.equal(result.route.route, expectedRoute, `${baseName}: route should match expected route`);
+    assert.equal(
+      result.decisionValidation?.valid,
+      true,
+      `${baseName}: example decision should validate`,
+    );
+  }
+
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-review-decision-"));
+  try {
+    const artifactPath = resolve(EXAMPLE_DIR, "review-decision-model-review.artifact.example.json");
+    const decisionPath = resolve(EXAMPLE_DIR, "review-decision-model-review.decision.example.json");
+    const outputPath = resolve(tmpDir, "review-decision-result.json");
+    const outputResult = await runContentKitchenReviewDecisionFromFiles({
+      artifactPath,
+      decisionPath,
+      outputPath,
+    });
+    const writtenOutput = JSON.parse(await readFile(outputPath, "utf8")) as {
+      schemaVersion: string;
+      dryRunOnly: boolean;
+      outputPath: string;
+      route: { route: string };
+      decisionValidation: { valid: boolean };
+    };
+
+    assert.equal(outputResult.outputPath, outputPath, "review decision runner should report output path");
+    assert.equal(
+      writtenOutput.schemaVersion,
+      REVIEW_DECISION_RUNNER_RESULT_VERSION,
+      "review decision runner output file should use the stable schema",
+    );
+    assert.equal(writtenOutput.dryRunOnly, true, "review decision runner output file should stay dry-run only");
+    assert.equal(writtenOutput.outputPath, outputPath, "review decision runner output file should record its path");
+    assert.equal(writtenOutput.route.route, "model_review", "review decision runner output should include the route");
+    assert.equal(
+      writtenOutput.decisionValidation.valid,
+      true,
+      "review decision runner output should include decision validation",
+    );
+
+    await assert.rejects(
+      () => runContentKitchenReviewDecisionCli(["--artifact", artifactPath, "--output", artifactPath]),
+      /--output must be different from --artifact/,
+      "review decision CLI should reject output paths that would overwrite the artifact",
+    );
+    await assert.rejects(
+      () => runContentKitchenReviewDecisionCli([
+        "--artifact",
+        artifactPath,
+        "--decision",
+        decisionPath,
+        "--output",
+        decisionPath,
+      ]),
+      /--output must be different from --decision/,
+      "review decision CLI should reject output paths that would overwrite the decision",
+    );
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+
+  const artifact = JSON.parse(
+    await readFile(resolve(EXAMPLE_DIR, "review-decision-model-review.artifact.example.json"), "utf8"),
+  ) as ReviewArtifactV0;
+  const decision = JSON.parse(
+    await readFile(resolve(EXAMPLE_DIR, "review-decision-model-review.decision.example.json"), "utf8"),
+  ) as ReviewDecisionV0;
+  const revisionMismatch = validateReviewDecision({
+    artifact,
+    decision: {
+      ...decision,
+      candidateRevisionId: "rev-other",
+    },
+  });
+  assert.equal(revisionMismatch.valid, false, "example revision mismatch should fail validation");
+  assert.ok(
+    revisionMismatch.errors.includes("candidateRevisionId must match the review artifact"),
+    "example revision mismatch should include a clear error",
+  );
+
+  const modelOverride = validateReviewDecision({
+    artifact,
+    decision: {
+      ...decision,
+      action: "override_issue",
+    },
+  });
+  assert.equal(modelOverride.valid, false, "example model override should fail validation");
+  assert.ok(
+    modelOverride.errors.some((error) => error.includes("cannot override")),
+    "example model override should include a clear error",
+  );
+
+  const overrideArtifact = JSON.parse(
+    await readFile(resolve(EXAMPLE_DIR, "review-decision-human-override.artifact.example.json"), "utf8"),
+  ) as ReviewArtifactV0;
+  const overrideDecision = JSON.parse(
+    await readFile(resolve(EXAMPLE_DIR, "review-decision-human-override.decision.example.json"), "utf8"),
+  ) as ReviewDecisionV0;
+  const absentIssueOverride = validateReviewDecision({
+    artifact: overrideArtifact,
+    decision: {
+      ...overrideDecision,
+      issueCodes: ["WEAK_FIT_EVIDENCE"],
+    },
+  });
+  assert.equal(absentIssueOverride.valid, false, "example override for absent issue code should fail validation");
+  assert.ok(
+    absentIssueOverride.errors.some((error) => error.includes("not in the review artifact")),
+    "example override for absent issue code should include a clear error",
+  );
 }
 
 async function main() {
@@ -3208,6 +3373,7 @@ async function main() {
   await assertAnswerFirstEnrichmentWorkerHealthStatuses();
   await assertAnswerFirstEnrichmentDryRunUsageDoc();
   await assertReviewRoutingDecisionDoc();
+  await assertReviewDecisionExamplesAndRunner();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

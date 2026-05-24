@@ -1,0 +1,18 @@
+{
+  "decisionVersion": "content-kitchen-review-decision-v0",
+  "artifactId": "art_review_low_confidence_human_example",
+  "puzzleId": "pinpoint-923-2026-05-24",
+  "candidateRevisionId": "rev-full-analysis-923",
+  "issueCodes": [
+    "GENERIC_REASONING_PATTERN"
+  ],
+  "route": "human_review",
+  "action": "escalate_to_human",
+  "reviewerType": "model",
+  "reviewerId": "model-reviewer",
+  "reviewedAt": "2026-05-24T00:04:00.000Z",
+  "confidence": 0.4,
+  "modelName": "contract-model",
+  "modelVersion": "v0",
+  "note": "Model confidence is below threshold, so this must go to a human."
+}

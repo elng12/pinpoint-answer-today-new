@@ -2256,6 +2256,15 @@ PR10 first implementation slice:
 - reject decisions with missing artifact id, puzzle id mismatch, candidate revision mismatch, model override attempts, or override issue codes that are not present on the artifact
 - keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
 
+PR10 second implementation slice:
+
+- add checked local example artifacts and decisions for `auto_approve`, `auto_reject`, `model_review`, low-confidence `human_review`, and human `override_issue`
+- add a local review decision runner that reads a review artifact JSON file and optional decision JSON file, then prints the derived route and decision validation result
+- allow the runner to write its result to a separate local `--output` file
+- reject unsafe paths where `--output` equals `--artifact` or `--decision`
+- make the contract test prove the examples validate, revision mismatch fails, model override fails, and override of an absent issue code fails
+- keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.
