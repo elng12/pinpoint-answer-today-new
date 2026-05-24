@@ -2367,6 +2367,17 @@ PR11 second implementation slice:
 - reject raw rendered HTML, model prompts, and obvious secrets in the runner input
 - keep this local-only; do not fetch public URLs, run a browser, read sitemap files, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
 
+PR11 third implementation slice:
+
+- add a local observed facts builder command
+- read `content-kitchen-post-publish-observed-facts-builder-input-v0` JSON from `--input`
+- read local `sources.htmlPath` and optional `sources.sitemapPath`
+- output `content-kitchen-post-publish-audit-runner-input-v0` JSON that can feed the PR11 audit runner
+- extract visible answer, visible L1 clues, canonical URL, robots noindex state, sitemap inclusion, sitemap `lastmod`, JSON-LD schema types, JSON-LD `dateModified`, and internal links
+- reject unsafe paths where `--output` equals `--input`, `sources.htmlPath`, or `sources.sitemapPath`
+- prove the output does not include raw rendered HTML
+- keep this local-only; do not fetch public URLs, run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
+
 
 ## Review UI Requirements
 
