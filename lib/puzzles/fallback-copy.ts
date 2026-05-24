@@ -311,6 +311,7 @@ export function buildSharedFallbackLessons(input: {
   const { kind, turningPoint, clues = [], answer = "" } = input;
   const firstClue = stripFallbackQuotes(clues[0] || "");
   const secondClue = stripFallbackQuotes(clues[1] || "");
+  const answerLabel = stripFallbackQuotes(answer);
 
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
@@ -381,7 +382,9 @@ export function buildSharedFallbackLessons(input: {
     {
       title: firstClue && secondClue
         ? `"${firstClue}" and "${secondClue}" can look like they belong to different categories at first`
-        : "Wait for the clue that makes the set concrete",
+        : answerLabel
+          ? `Use "${turningPoint}" to test ${answerLabel}`
+          : `"${turningPoint}" is the clue that makes the set concrete`,
       body: "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
     },
     {
@@ -512,6 +515,11 @@ export function buildSharedFallbackSolutionNarrative(input: {
   clues?: string[];
 }): string[] {
   const { kind, wrongGuess, turningPoint, clues = [] } = input;
+  const earlyCheckText = clues
+    .map(stripFallbackQuotes)
+    .filter((clue) => clue && clue !== stripFallbackQuotes(turningPoint))
+    .slice(0, 2)
+    .join(" and ");
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
     return [
@@ -547,6 +555,8 @@ export function buildSharedFallbackSolutionNarrative(input: {
 
   return [
     `I did not have a clean answer from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningPoint}" cleanly enough.`,
-    `The turn came when I let "${turningPoint}" lead the solve. Once the answer sharpened, the earlier clues stopped feeling broad and started reading like parts of one real set.`,
+    earlyCheckText
+      ? `The turn came when I let "${turningPoint}" lead the solve. After that, ${earlyCheckText} had to earn their place under the same answer instead of just sharing a loose surface feel.`
+      : `The turn came when I let "${turningPoint}" lead the solve. That clue gave me a concrete check on the rest of the board instead of a loose theme.`,
   ];
 }

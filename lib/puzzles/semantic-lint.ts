@@ -51,6 +51,7 @@ const GENERIC_CATEGORY_PIVOT_PATTERNS = [
   /\bwhat kind of source or title it was\b/i,
   /\bwhat kind of item each clue described\b/i,
   /\bwhat kind of item it was\b/i,
+  /\bstopped feeling broad and started reading like parts of one real set\b/i,
 ];
 const GENERIC_CONNECTION_FAQ_PATTERNS = [
   /\bsame category once the board is read in the right frame\b/i,
@@ -75,6 +76,7 @@ const GENERIC_LESSON_TITLE_PATTERNS = [
   /\bThe narrowing clue matters more than the loudest clue\b/i,
   /\bPrefer exact phrase logic over loose category logic\b/i,
   /\bPrefer precise category fit over broad topic logic\b/i,
+  /\bWait for the clue that makes the set concrete\b/i,
 ];
 const GENERIC_FAQ_QUESTION_PATTERNS = [
   /^What is the answer to LinkedIn Pinpoint #\d+\?$/i,

@@ -1420,7 +1420,7 @@ function buildTemplateFallbackPayload(
     categoryPrecisionNote,
   });
   const solutionEmergence = solutionParagraphs.join("\n\n");
-  const lessons = buildSharedFallbackLessons({ kind: pattern.kind, turningPoint });
+  const lessons = buildSharedFallbackLessons({ kind: pattern.kind, turningPoint, clues: words, answer });
 
   const faqs = buildSharedFallbackFaqs({
     puzzleNumber,
