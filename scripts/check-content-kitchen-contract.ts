@@ -60,6 +60,7 @@ import { ENRICHMENT_WORKER_HEALTH_REPORT_VERSION } from "./content-kitchen-enric
 import { ENRICHMENT_WORKER_RUN_SUMMARY_VERSION } from "./content-kitchen-enrichment-run-summary";
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
+  ENRICHMENT_WORKER_RUN_MANIFEST_VERSION,
   parseAnswerFirstEnrichmentWorkerDryRunInput,
   runCli as runAnswerFirstEnrichmentWorkerDryRunCli,
   runAnswerFirstEnrichmentWorkerJsonDryRun,
@@ -2305,12 +2306,14 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
     const outputPath = resolve(tmpDir, "worker-output.json");
     const actionOutputPath = resolve(tmpDir, "worker-action-drafts.json");
     const healthOutputPath = resolve(tmpDir, "worker-health-report.json");
+    const manifestOutputPath = resolve(tmpDir, "worker-run-manifest.json");
     const fileResult = await runAnswerFirstEnrichmentWorkerJsonDryRunToFile({
       input,
       inputPath: examplePath,
       outputPath,
       actionOutputPath,
       healthOutputPath,
+      manifestOutputPath,
     });
     const output = JSON.parse(await readFile(outputPath, "utf8")) as {
       schemaVersion: string;
@@ -2353,6 +2356,34 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       };
       activeIssueCodes: string[];
     };
+    const manifestOutput = JSON.parse(await readFile(manifestOutputPath, "utf8")) as {
+      schemaVersion: string;
+      dryRunOnly: boolean;
+      sourcePath: string;
+      writtenAt: string;
+      workerId: string;
+      paths: {
+        inputPath: string;
+        outputPath: string;
+        actionOutputPath: string;
+        healthOutputPath: string;
+        manifestOutputPath: string;
+      };
+      summary: {
+        inputJobs: number;
+        claimedJobs: number;
+        skippedJobs: number;
+        stateAdvancements: number;
+      };
+      healthStatus: string;
+      healthRecommendation: string;
+      counts: {
+        inputJobs: number;
+        notificationDrafts: number;
+        reviewQueueDrafts: number;
+      };
+      activeIssueCodes: string[];
+    };
 
     assert.equal(
       fileResult.outputPath,
@@ -2368,6 +2399,11 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       fileResult.healthOutputPath,
       healthOutputPath,
       "worker dry-run file mode should report the health output path",
+    );
+    assert.equal(
+      fileResult.manifestOutputPath,
+      manifestOutputPath,
+      "worker dry-run file mode should report the manifest output path",
     );
     assert.equal(
       output.schemaVersion,
@@ -2466,6 +2502,60 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       "worker dry-run health output should write active issue codes",
     );
     assert.equal(
+      manifestOutput.schemaVersion,
+      ENRICHMENT_WORKER_RUN_MANIFEST_VERSION,
+      "worker dry-run manifest output file should use the manifest schema version",
+    );
+    assert.equal(manifestOutput.dryRunOnly, true, "worker dry-run manifest output should stay dry-run only");
+    assert.equal(manifestOutput.sourcePath, examplePath, "worker dry-run manifest should record the source path");
+    assert.equal(manifestOutput.writtenAt, input.now, "worker dry-run manifest should use the dry-run timestamp");
+    assert.equal(manifestOutput.workerId, input.workerId, "worker dry-run manifest should record the worker id");
+    assert.deepEqual(
+      manifestOutput.paths,
+      {
+        inputPath: examplePath,
+        outputPath,
+        actionOutputPath,
+        healthOutputPath,
+        manifestOutputPath,
+      },
+      "worker dry-run manifest should point to every local run file",
+    );
+    assert.deepEqual(
+      [
+        manifestOutput.summary.inputJobs,
+        manifestOutput.summary.claimedJobs,
+        manifestOutput.summary.skippedJobs,
+        manifestOutput.summary.stateAdvancements,
+      ],
+      [3, 1, 2, 1],
+      "worker dry-run manifest should include the compact run summary",
+    );
+    assert.equal(
+      manifestOutput.healthStatus,
+      "needs_review",
+      "worker dry-run manifest should include the health status",
+    );
+    assert.equal(
+      manifestOutput.healthRecommendation,
+      "Inspect review queue drafts before allowing automatic enrichment to continue.",
+      "worker dry-run manifest should include the health recommendation",
+    );
+    assert.deepEqual(
+      [
+        manifestOutput.counts.inputJobs,
+        manifestOutput.counts.notificationDrafts,
+        manifestOutput.counts.reviewQueueDrafts,
+      ],
+      [3, 1, 1],
+      "worker dry-run manifest should include compact health counts",
+    );
+    assert.deepEqual(
+      manifestOutput.activeIssueCodes,
+      ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+      "worker dry-run manifest should include active issue codes",
+    );
+    assert.equal(
       await readFile(examplePath, "utf8"),
       raw,
       "worker dry-run file mode should not mutate the input file",
@@ -2515,6 +2605,47 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       ]),
       /--health-output must be different from --action-output/,
       "worker dry-run CLI should keep action output and health output paths separate",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli(["--input", examplePath, "--manifest-output", examplePath]),
+      /--manifest-output must be different from --input/,
+      "worker dry-run CLI should reject manifest output paths that would overwrite the input",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli([
+        "--input",
+        examplePath,
+        "--output",
+        outputPath,
+        "--manifest-output",
+        outputPath,
+      ]),
+      /--manifest-output must be different from --output/,
+      "worker dry-run CLI should keep job output and manifest output paths separate",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli([
+        "--input",
+        examplePath,
+        "--action-output",
+        actionOutputPath,
+        "--manifest-output",
+        actionOutputPath,
+      ]),
+      /--manifest-output must be different from --action-output/,
+      "worker dry-run CLI should keep action output and manifest output paths separate",
+    );
+    await assert.rejects(
+      () => runAnswerFirstEnrichmentWorkerDryRunCli([
+        "--input",
+        examplePath,
+        "--health-output",
+        healthOutputPath,
+        "--manifest-output",
+        healthOutputPath,
+      ]),
+      /--manifest-output must be different from --health-output/,
+      "worker dry-run CLI should keep health output and manifest output paths separate",
     );
 
     const resumedInput = parseAnswerFirstEnrichmentWorkerDryRunInput(output, {
@@ -2723,7 +2854,9 @@ async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
     "--output /tmp/content-kitchen-worker-output.json",
     "--action-output /tmp/content-kitchen-action-drafts.json",
     "--health-output /tmp/content-kitchen-health-report.json",
+    "--manifest-output /tmp/content-kitchen-run-manifest.json",
     "`healthReport`",
+    "`healthStatus`",
     "`ok`: no review action is needed",
     "`needs_review`: inspect review queue drafts before allowing automatic enrichment to continue",
     "`high_priority`: inspect high-priority action drafts before any future publish automation",
@@ -2733,6 +2866,10 @@ async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
     "--health-output must not equal `--input`",
     "--health-output must not equal `--output`",
     "--health-output must not equal `--action-output`",
+    "--manifest-output must not equal `--input`",
+    "--manifest-output must not equal `--output`",
+    "--manifest-output must not equal `--action-output`",
+    "--manifest-output must not equal `--health-output`",
     "dispatchStatus: \"not_sent\"",
     "persistenceStatus: \"not_persisted\"",
     "does not send Feishu messages",

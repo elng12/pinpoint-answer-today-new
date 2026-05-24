@@ -2208,6 +2208,14 @@ PR9 seventeenth implementation slice:
 - reject unsafe paths where `--health-output` equals `--input`, `--output`, or `--action-output`
 - keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
 
+PR9 eighteenth implementation slice:
+
+- add a local `--manifest-output` option to the enrichment dry-run runner
+- write a compact run manifest with `sourcePath`, `writtenAt`, worker id, local file paths, run summary, health status, health recommendation, health counts, and active issue codes
+- keep the manifest as a local index for one dry-run pass; do not make it a durable queue record
+- reject unsafe paths where `--manifest-output` equals `--input`, `--output`, `--action-output`, or `--health-output`
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

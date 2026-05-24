@@ -40,6 +40,7 @@ This prints:
 - `runSummary`
 - `actionDrafts`
 - `healthReport`
+- optional run manifest path
 - claimed jobs
 - skipped jobs
 - state advancement decisions
@@ -96,6 +97,43 @@ Rules:
 - health output is not sent to Feishu
 - health output is not written to review queue storage
 
+## Write Run Manifest
+
+Write a small local manifest that points to the files produced by one dry run:
+
+```bash
+npm run content-kitchen:enrichment-dry-run -- \
+  --input lib/puzzles/content-kitchen/examples/enrichment-worker-dry-run.input.json \
+  --output /tmp/content-kitchen-worker-output.json \
+  --action-output /tmp/content-kitchen-action-drafts.json \
+  --health-output /tmp/content-kitchen-health-report.json \
+  --manifest-output /tmp/content-kitchen-run-manifest.json \
+  --pretty
+```
+
+The manifest output contains:
+
+- `sourcePath`
+- `writtenAt`
+- `workerId`
+- all local run file paths
+- compact run summary
+- `healthStatus`
+- `healthRecommendation`
+- compact health counts
+- active issue codes
+
+Rules:
+
+- --manifest-output must not equal `--input`
+- --manifest-output must not equal `--output`
+- --manifest-output must not equal `--action-output`
+- --manifest-output must not equal `--health-output`
+- manifest output is for local inspection only
+- manifest output is not sent to Feishu
+- manifest output is not written to review queue storage
+- manifest output is not written to production storage
+
 ## Write Job State Preview
 
 Write updated job state to a separate local file:
@@ -149,10 +187,11 @@ npm run content-kitchen:enrichment-dry-run -- \
   --output /tmp/content-kitchen-worker-output.json \
   --action-output /tmp/content-kitchen-action-drafts.json \
   --health-output /tmp/content-kitchen-health-report.json \
+  --manifest-output /tmp/content-kitchen-run-manifest.json \
   --pretty
 ```
 
-Use this when manually checking one worker pass before any future production wiring.
+Use this when manually checking one worker pass before any future production wiring. The manifest is the small index file for that run.
 
 ## Resume From Output
 
@@ -164,6 +203,7 @@ npm run content-kitchen:enrichment-dry-run -- \
   --output /tmp/content-kitchen-worker-output-next.json \
   --action-output /tmp/content-kitchen-action-drafts-next.json \
   --health-output /tmp/content-kitchen-health-report-next.json \
+  --manifest-output /tmp/content-kitchen-run-manifest-next.json \
   --now 2026-05-23T09:12:00.000Z \
   --worker-id worker-dry-run-next \
   --lock-minutes 10 \
