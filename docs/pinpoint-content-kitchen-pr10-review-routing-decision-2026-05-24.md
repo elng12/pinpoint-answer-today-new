@@ -131,3 +131,63 @@ The content-kitchen contract test covers:
 - missing `artifactId` fails
 - revision mismatch fails
 - override of an absent issue code fails
+
+## Example Files
+
+Checked examples live in `lib/puzzles/content-kitchen/examples`.
+
+Each example has an artifact file and a decision file:
+
+- `review-decision-auto-approve.*.example.json`
+- `review-decision-auto-reject.*.example.json`
+- `review-decision-model-review.*.example.json`
+- `review-decision-low-confidence-human.*.example.json`
+- `review-decision-human-override.*.example.json`
+
+These examples cover:
+
+- low-risk route to `auto_approve`
+- hard-rule route to `auto_reject`
+- soft quality route to `model_review`
+- low-confidence model route to `human_review`
+- human-only `override_issue`
+
+## Local Runner
+
+Use the local runner to inspect a route and validate a decision file:
+
+```bash
+npm run content-kitchen:review-decision -- \
+  --artifact lib/puzzles/content-kitchen/examples/review-decision-model-review.artifact.example.json \
+  --decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json \
+  --pretty
+```
+
+Write the result to a local file:
+
+```bash
+npm run content-kitchen:review-decision -- \
+  --artifact lib/puzzles/content-kitchen/examples/review-decision-model-review.artifact.example.json \
+  --decision lib/puzzles/content-kitchen/examples/review-decision-model-review.decision.example.json \
+  --output /tmp/content-kitchen-review-decision-result.json \
+  --pretty
+```
+
+Route without a decision file:
+
+```bash
+npm run content-kitchen:review-decision -- \
+  --artifact lib/puzzles/content-kitchen/examples/review-decision-human-override.artifact.example.json \
+  --pretty
+```
+
+Rules:
+
+- `--output` must not equal `--artifact`
+- `--output` must not equal `--decision`
+- the runner is for local inspection only
+- the runner does not call a model
+- the runner does not send Feishu messages
+- the runner does not write review queue storage
+- the runner does not touch production storage
+- the runner does not publish content

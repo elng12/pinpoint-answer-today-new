@@ -1,0 +1,15 @@
+{
+  "decisionVersion": "content-kitchen-review-decision-v0",
+  "artifactId": "art_review_auto_reject_example",
+  "puzzleId": "pinpoint-921-2026-05-24",
+  "candidateRevisionId": "rev-full-analysis-921",
+  "issueCodes": [
+    "CANDIDATE_L1_MISMATCH"
+  ],
+  "route": "auto_reject",
+  "action": "reject",
+  "reviewerType": "rule_engine",
+  "reviewerId": "content-kitchen-rules",
+  "reviewedAt": "2026-05-24T00:02:00.000Z",
+  "note": "Hard rule failed. The model must not overrule this."
+}

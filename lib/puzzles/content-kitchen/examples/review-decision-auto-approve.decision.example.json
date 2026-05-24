@@ -1,0 +1,13 @@
+{
+  "decisionVersion": "content-kitchen-review-decision-v0",
+  "artifactId": "art_review_auto_approve_example",
+  "puzzleId": "pinpoint-920-2026-05-24",
+  "candidateRevisionId": "rev-full-analysis-920",
+  "issueCodes": [],
+  "route": "auto_approve",
+  "action": "approve",
+  "reviewerType": "rule_engine",
+  "reviewerId": "content-kitchen-rules",
+  "reviewedAt": "2026-05-24T00:01:00.000Z",
+  "note": "Rules found no review issue. This does not publish content."
+}

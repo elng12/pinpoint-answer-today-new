@@ -1,0 +1,18 @@
+{
+  "decisionVersion": "content-kitchen-review-decision-v0",
+  "artifactId": "art_review_model_review_example",
+  "puzzleId": "pinpoint-922-2026-05-24",
+  "candidateRevisionId": "rev-full-analysis-922",
+  "issueCodes": [
+    "GENERIC_REASONING_PATTERN"
+  ],
+  "route": "model_review",
+  "action": "request_regeneration",
+  "reviewerType": "model",
+  "reviewerId": "model-reviewer",
+  "reviewedAt": "2026-05-24T00:03:00.000Z",
+  "confidence": 0.9,
+  "modelName": "contract-model",
+  "modelVersion": "v0",
+  "note": "The explanation is too generic. Regenerate before any publish decision."
+}

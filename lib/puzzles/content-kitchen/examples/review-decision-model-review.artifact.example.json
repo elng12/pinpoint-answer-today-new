@@ -1,0 +1,43 @@
+{
+  "artifactVersion": "content-kitchen-review-artifact-v0",
+  "artifactId": "art_review_model_review_example",
+  "artifactType": "review",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "puzzleId": "pinpoint-922-2026-05-24",
+  "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-922/",
+  "contentMode": "full-analysis",
+  "candidateRevisionId": "rev-full-analysis-922",
+  "validation": {
+    "outcome": "requires_review",
+    "policies": {
+      "indexPolicy": "review_required",
+      "sitemapPolicy": "include_after_audit",
+      "schemaPolicy": "article_only",
+      "internalLinkPolicy": "deemphasized",
+      "requiredAction": "review"
+    },
+    "issueCodes": [
+      "GENERIC_REASONING_PATTERN"
+    ],
+    "issues": [
+      {
+        "issueCode": "GENERIC_REASONING_PATTERN",
+        "severity": "P1",
+        "fieldPath": "candidate.fullAnalysis.reasoning",
+        "message": "Reasoning is too generic to trust as a solve path.",
+        "suggestedAction": "Ask for a more specific explanation or regenerate.",
+        "blocking": false,
+        "candidateRevisionId": "rev-full-analysis-922"
+      }
+    ]
+  },
+  "issueCodesRequiringDecision": [
+    "GENERIC_REASONING_PATTERN"
+  ],
+  "recommendedAction": "review",
+  "allowedReviewerActions": [
+    "approve_candidate",
+    "reject_candidate",
+    "request_full_analysis_fix"
+  ]
+}

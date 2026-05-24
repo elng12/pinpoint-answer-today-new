@@ -1,0 +1,42 @@
+{
+  "artifactVersion": "content-kitchen-review-artifact-v0",
+  "artifactId": "art_review_auto_reject_example",
+  "artifactType": "review",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "puzzleId": "pinpoint-921-2026-05-24",
+  "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-921/",
+  "contentMode": "full-analysis",
+  "candidateRevisionId": "rev-full-analysis-921",
+  "validation": {
+    "outcome": "block_publish",
+    "policies": {
+      "indexPolicy": "block_publish",
+      "sitemapPolicy": "exclude",
+      "schemaPolicy": "block_schema",
+      "internalLinkPolicy": "hidden_from_recent",
+      "requiredAction": "block_publish"
+    },
+    "issueCodes": [
+      "CANDIDATE_L1_MISMATCH"
+    ],
+    "issues": [
+      {
+        "issueCode": "CANDIDATE_L1_MISMATCH",
+        "severity": "P0",
+        "fieldPath": "candidate.answer",
+        "message": "Candidate answer or clue data does not match L1.",
+        "suggestedAction": "Reject this candidate and regenerate from the current L1 input.",
+        "blocking": true,
+        "candidateRevisionId": "rev-full-analysis-921"
+      }
+    ]
+  },
+  "issueCodesRequiringDecision": [
+    "CANDIDATE_L1_MISMATCH"
+  ],
+  "recommendedAction": "block_publish",
+  "allowedReviewerActions": [
+    "reject_candidate",
+    "create_fix_task"
+  ]
+}

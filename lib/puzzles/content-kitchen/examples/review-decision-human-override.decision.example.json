@@ -1,0 +1,15 @@
+{
+  "decisionVersion": "content-kitchen-review-decision-v0",
+  "artifactId": "art_review_human_override_example",
+  "puzzleId": "pinpoint-924-2026-05-24",
+  "candidateRevisionId": "rev-full-analysis-924",
+  "issueCodes": [
+    "EVIDENCE_SOURCE_CONFLICT"
+  ],
+  "route": "human_review",
+  "action": "override_issue",
+  "reviewerType": "human",
+  "reviewerId": "human-reviewer",
+  "reviewedAt": "2026-05-24T00:05:00.000Z",
+  "note": "Human reviewer resolved this exact evidence conflict for this candidate revision only."
+}

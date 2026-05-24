@@ -1,0 +1,43 @@
+{
+  "artifactVersion": "content-kitchen-review-artifact-v0",
+  "artifactId": "art_review_human_override_example",
+  "artifactType": "review",
+  "createdAt": "2026-05-24T00:00:00.000Z",
+  "puzzleId": "pinpoint-924-2026-05-24",
+  "canonicalUrl": "https://example.com/linkedin-pinpoint-answers/pinpoint-answer-924/",
+  "contentMode": "full-analysis",
+  "candidateRevisionId": "rev-full-analysis-924",
+  "validation": {
+    "outcome": "requires_review",
+    "policies": {
+      "indexPolicy": "review_required",
+      "sitemapPolicy": "include_after_audit",
+      "schemaPolicy": "article_only",
+      "internalLinkPolicy": "deemphasized",
+      "requiredAction": "review"
+    },
+    "issueCodes": [
+      "EVIDENCE_SOURCE_CONFLICT"
+    ],
+    "issues": [
+      {
+        "issueCode": "EVIDENCE_SOURCE_CONFLICT",
+        "severity": "P1",
+        "fieldPath": "evidenceRecords",
+        "message": "Evidence sources conflict and require human judgment.",
+        "suggestedAction": "Human reviewer may resolve or override the specific conflict.",
+        "blocking": false,
+        "candidateRevisionId": "rev-full-analysis-924"
+      }
+    ]
+  },
+  "issueCodesRequiringDecision": [
+    "EVIDENCE_SOURCE_CONFLICT"
+  ],
+  "recommendedAction": "review",
+  "allowedReviewerActions": [
+    "approve_candidate",
+    "reject_candidate",
+    "create_fix_task"
+  ]
+}
