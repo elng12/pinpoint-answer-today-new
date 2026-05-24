@@ -11,6 +11,10 @@ import {
   createJsonFileAnswerFirstEnrichmentJobStore,
 } from "./content-kitchen-enrichment-file-store";
 import {
+  buildAnswerFirstEnrichmentWorkerActionDrafts,
+  type AnswerFirstEnrichmentWorkerActionDrafts,
+} from "./content-kitchen-enrichment-action-drafts";
+import {
   buildAnswerFirstEnrichmentWorkerRunSummary,
   type AnswerFirstEnrichmentWorkerRunSummary,
 } from "./content-kitchen-enrichment-run-summary";
@@ -56,6 +60,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
     stateAdvancements: number;
   };
   runSummary: AnswerFirstEnrichmentWorkerRunSummary;
+  actionDrafts: AnswerFirstEnrichmentWorkerActionDrafts;
   outputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
   skippedJobs: Array<{
@@ -209,6 +214,16 @@ type BuildDryRunResultInput = {
 };
 
 function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichmentWorkerDryRunResult {
+  const runSummary = buildAnswerFirstEnrichmentWorkerRunSummary({
+    now: input.input.now,
+    workerId: input.input.workerId,
+    inputJobs: input.input.jobs.length,
+    outputJobs: input.outputJobs,
+    claimedJobs: input.claimedJobs,
+    skippedJobs: input.skippedJobs,
+    stateAdvancements: input.stateAdvancements,
+  });
+
   return {
     schemaVersion: ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
     dryRun: true,
@@ -221,14 +236,12 @@ function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichment
       skippedJobs: input.skippedJobs.length,
       stateAdvancements: input.stateAdvancements.filter((result) => result.transition !== "unchanged").length,
     },
-    runSummary: buildAnswerFirstEnrichmentWorkerRunSummary({
+    runSummary,
+    actionDrafts: buildAnswerFirstEnrichmentWorkerActionDrafts({
       now: input.input.now,
       workerId: input.input.workerId,
-      inputJobs: input.input.jobs.length,
+      runSummary,
       outputJobs: input.outputJobs,
-      claimedJobs: input.claimedJobs,
-      skippedJobs: input.skippedJobs,
-      stateAdvancements: input.stateAdvancements,
     }),
     outputPath: input.outputPath,
     claimedJobs: input.claimedJobs.map(summarizeJob),

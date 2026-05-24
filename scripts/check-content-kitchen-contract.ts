@@ -55,6 +55,7 @@ import {
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import { ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION } from "./content-kitchen-enrichment-file-store";
+import { ENRICHMENT_WORKER_ACTION_DRAFTS_VERSION } from "./content-kitchen-enrichment-action-drafts";
 import { ENRICHMENT_WORKER_RUN_SUMMARY_VERSION } from "./content-kitchen-enrichment-run-summary";
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
@@ -2150,6 +2151,58 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
     result.runSummary.activeIssueCodes,
     ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
     "worker dry-run run summary should list active issue codes after the run",
+  );
+  assert.equal(
+    result.actionDrafts.schemaVersion,
+    ENRICHMENT_WORKER_ACTION_DRAFTS_VERSION,
+    "worker dry-run should include stable local action drafts",
+  );
+  assert.equal(result.actionDrafts.dryRunOnly, true, "worker dry-run action drafts must stay local-only");
+  assert.deepEqual(
+    result.actionDrafts.notificationDrafts.map((draft) => [
+      draft.channel,
+      draft.priority,
+      draft.dispatchStatus,
+      draft.reason,
+      draft.jobIds,
+      draft.issueCodes,
+    ]),
+    [
+      [
+        "feishu",
+        "normal",
+        "not_sent",
+        "answer_first_sla_alert",
+        ["job-pinpoint-918-2026-05-23-rev-full-analysis-918"],
+        ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+      ],
+    ],
+    "worker dry-run should produce a Feishu-shaped notification draft without sending it",
+  );
+  assert.ok(
+    result.actionDrafts.notificationDrafts[0]?.lines.some((line) => line.includes("not sent to Feishu")),
+    "worker dry-run notification draft should say it is not sent",
+  );
+  assert.deepEqual(
+    result.actionDrafts.reviewQueueDrafts.map((draft) => [
+      draft.queueName,
+      draft.persistenceStatus,
+      draft.priority,
+      draft.reason,
+      draft.jobId,
+      draft.issueCodes,
+    ]),
+    [
+      [
+        "content-kitchen-review",
+        "not_persisted",
+        "normal",
+        "answer_first_review_required",
+        "job-pinpoint-918-2026-05-23-rev-full-analysis-918",
+        ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+      ],
+    ],
+    "worker dry-run should produce a review queue draft without persisting it",
   );
   assert.deepEqual(
     result.claimedJobs.map((job) => [job.puzzleId, job.state, job.lockedBy, job.lockedUntil]),

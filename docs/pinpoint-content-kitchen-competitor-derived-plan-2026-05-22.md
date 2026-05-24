@@ -2161,6 +2161,14 @@ PR9 eleventh implementation slice:
 - keep the summary machine-readable so later notification and review queue layers can reuse it
 - keep this local-only; do not attach it to Feishu, review queue storage, production storage, or Worker cron yet
 
+PR9 twelfth implementation slice:
+
+- add local action drafts derived from the worker dry-run summary
+- include a Feishu-shaped notification draft with priority, issue codes, job ids, puzzle ids, and a dedupe key
+- include a review queue draft for `review_required` and `dead_letter` jobs with revision ids, snapshot hash, deadlines, issue codes, and recommended action
+- mark notification drafts as `not_sent` and review queue drafts as `not_persisted`
+- keep this local-only; do not send Feishu messages, write review queue storage, attach production storage, or run Worker cron yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
