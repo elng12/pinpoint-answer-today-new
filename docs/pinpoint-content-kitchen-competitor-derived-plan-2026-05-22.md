@@ -2133,6 +2133,13 @@ PR9 seventh implementation slice:
 - make the store return cloned job objects so tests do not accidentally mutate persisted state
 - keep the final durable backend undecided; do not attach this slice to production storage, Worker cron, or Feishu notifications yet
 
+PR9 eighth implementation slice:
+
+- add a local JSON dry-run runner that reads enrichment jobs from a file, runs one worker tick, and prints a machine-readable result
+- include a checked example input under content-kitchen examples
+- expose the runner through an npm script for local inspection
+- keep the dry run read-only; do not mutate the input file or attach it to production storage, Worker cron, or Feishu notifications yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.

@@ -18,6 +18,7 @@
     "visual:detail": "node scripts/capture-detail-screenshots.mjs",
     "visual:pinpoint-smoke": "node scripts/check-pinpoint-visibility-smoke.mjs",
     "gsc:pinpoint": "node scripts/gsc-pinpoint.mjs",
+    "content-kitchen:enrichment-dry-run": "tsx scripts/run-content-kitchen-enrichment-worker-dry-run.ts",
     "test:pinpoint-seo": "tsx scripts/check-pinpoint-seo-builders.ts",
     "test:content-kitchen": "tsx scripts/check-content-kitchen-contract.ts",
     "test:pinpoint-routing": "tsx scripts/check-routing-regressions.ts",
