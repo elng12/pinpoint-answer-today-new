@@ -15,6 +15,10 @@ import {
   type AnswerFirstEnrichmentWorkerActionDrafts,
 } from "./content-kitchen-enrichment-action-drafts";
 import {
+  buildAnswerFirstEnrichmentWorkerHealthReport,
+  type AnswerFirstEnrichmentWorkerHealthReport,
+} from "./content-kitchen-enrichment-health-report";
+import {
   buildAnswerFirstEnrichmentWorkerRunSummary,
   type AnswerFirstEnrichmentWorkerRunSummary,
 } from "./content-kitchen-enrichment-run-summary";
@@ -61,6 +65,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
   };
   runSummary: AnswerFirstEnrichmentWorkerRunSummary;
   actionDrafts: AnswerFirstEnrichmentWorkerActionDrafts;
+  healthReport: AnswerFirstEnrichmentWorkerHealthReport;
   outputPath?: string;
   actionOutputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
@@ -230,6 +235,12 @@ function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichment
     skippedJobs: input.skippedJobs,
     stateAdvancements: input.stateAdvancements,
   });
+  const actionDrafts = buildAnswerFirstEnrichmentWorkerActionDrafts({
+    now: input.input.now,
+    workerId: input.input.workerId,
+    runSummary,
+    outputJobs: input.outputJobs,
+  });
 
   return {
     schemaVersion: ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
@@ -244,11 +255,10 @@ function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichment
       stateAdvancements: input.stateAdvancements.filter((result) => result.transition !== "unchanged").length,
     },
     runSummary,
-    actionDrafts: buildAnswerFirstEnrichmentWorkerActionDrafts({
-      now: input.input.now,
-      workerId: input.input.workerId,
+    actionDrafts,
+    healthReport: buildAnswerFirstEnrichmentWorkerHealthReport({
       runSummary,
-      outputJobs: input.outputJobs,
+      actionDrafts,
     }),
     outputPath: input.outputPath,
     claimedJobs: input.claimedJobs.map(summarizeJob),

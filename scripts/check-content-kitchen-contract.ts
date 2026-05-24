@@ -56,6 +56,7 @@ import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzle
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
 import { ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION } from "./content-kitchen-enrichment-file-store";
 import { ENRICHMENT_WORKER_ACTION_DRAFTS_VERSION } from "./content-kitchen-enrichment-action-drafts";
+import { ENRICHMENT_WORKER_HEALTH_REPORT_VERSION } from "./content-kitchen-enrichment-health-report";
 import { ENRICHMENT_WORKER_RUN_SUMMARY_VERSION } from "./content-kitchen-enrichment-run-summary";
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
@@ -2210,6 +2211,41 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
     ],
     "worker dry-run should produce a review queue draft without persisting it",
   );
+  assert.equal(
+    result.healthReport.schemaVersion,
+    ENRICHMENT_WORKER_HEALTH_REPORT_VERSION,
+    "worker dry-run should include a stable health report schema",
+  );
+  assert.equal(result.healthReport.status, "needs_review", "worker dry-run health should surface review needs");
+  assert.equal(
+    result.healthReport.recommendation,
+    "Inspect review queue drafts before allowing automatic enrichment to continue.",
+    "worker dry-run health should recommend review for normal SLA misses",
+  );
+  assert.deepEqual(
+    result.healthReport.counts,
+    {
+      inputJobs: 3,
+      claimedJobs: 1,
+      skippedJobs: 2,
+      reviewRequiredJobs: 1,
+      deadLetterJobs: 0,
+      highPriorityJobs: 0,
+      notificationDrafts: 1,
+      reviewQueueDrafts: 1,
+    },
+    "worker dry-run health should include compact counts",
+  );
+  assert.deepEqual(
+    result.healthReport.jobIds,
+    {
+      claimed: ["job-pinpoint-916-2026-05-23-rev-full-analysis-916"],
+      reviewRequired: ["job-pinpoint-918-2026-05-23-rev-full-analysis-918"],
+      deadLetter: [],
+      highPriority: [],
+    },
+    "worker dry-run health should include compact job id groups",
+  );
   assert.deepEqual(
     result.claimedJobs.map((job) => [job.puzzleId, job.state, job.lockedBy, job.lockedUntil]),
     [["pinpoint-916-2026-05-23", "running", "worker-dry-run", "2026-05-23T09:11:00.000Z"]],
@@ -2413,6 +2449,11 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
       [["pinpoint-916-2026-05-23", 2, "worker-dry-run-next", "2026-05-23T09:22:00.000Z"]],
       "worker dry-run should be able to use a file-store output as the next input",
     );
+    assert.equal(
+      resumedResult.healthReport.status,
+      "needs_review",
+      "resumed worker dry-run health should keep surfacing unresolved review work",
+    );
     assert.deepEqual(
       resumedResult.skippedJobs.map((entry) => [entry.job.puzzleId, entry.reason]),
       [
@@ -2522,6 +2563,21 @@ async function assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun() {
     ],
     "high-priority worker dry-run should create a high-priority review queue draft without persisting it",
   );
+  assert.equal(
+    result.healthReport.status,
+    "high_priority",
+    "high-priority worker dry-run health should surface urgent action",
+  );
+  assert.deepEqual(
+    result.healthReport.jobIds.highPriority,
+    ["job-pinpoint-919-2026-05-23-rev-full-analysis-919"],
+    "high-priority worker dry-run health should include high-priority job ids",
+  );
+  assert.equal(
+    result.healthReport.recommendation,
+    "Inspect high-priority action drafts before any future publish automation.",
+    "high-priority worker dry-run health should recommend urgent inspection",
+  );
   assert.deepEqual(
     result.stateAdvancements.map((entry) => [entry.job.puzzleId, entry.transition, entry.issueCodesAdded]),
     [
@@ -2536,6 +2592,45 @@ async function assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun() {
   assert.equal(await readFile(examplePath, "utf8"), raw, "high-priority worker dry-run should not mutate the example");
 }
 
+async function assertAnswerFirstEnrichmentWorkerHealthStatuses() {
+  const examplePath = resolve(EXAMPLE_DIR, "enrichment-worker-dry-run.input.json");
+  const raw = await readFile(examplePath, "utf8");
+  const input = JSON.parse(raw) as AnswerFirstEnrichmentWorkerDryRunInput;
+  const freshResult = await runAnswerFirstEnrichmentWorkerJsonDryRun({
+    ...input,
+    jobs: [input.jobs[0]],
+  });
+  assert.equal(freshResult.healthReport.status, "ok", "fresh runnable jobs should produce ok health");
+  assert.equal(
+    freshResult.healthReport.recommendation,
+    "No review action is needed for this dry run.",
+    "ok health should not ask for review",
+  );
+
+  const maxAttemptsResult = await runAnswerFirstEnrichmentWorkerJsonDryRun({
+    ...input,
+    jobs: [{
+      ...input.jobs[0],
+      attemptCount: input.jobs[0].maxAttempts,
+    }],
+  });
+  assert.equal(
+    maxAttemptsResult.healthReport.status,
+    "blocked",
+    "jobs at max attempts should produce blocked health",
+  );
+  assert.deepEqual(
+    maxAttemptsResult.healthReport.skipReasons,
+    { max_attempts_reached: 1 },
+    "blocked health should expose the max-attempt skip reason",
+  );
+  assert.equal(
+    maxAttemptsResult.healthReport.recommendation,
+    "Inspect dead-letter or max-attempt jobs before retrying the queue.",
+    "blocked health should recommend queue inspection before retrying",
+  );
+}
+
 async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
   const doc = await readFile(PR9_ENRICHMENT_DRY_RUN_USAGE_DOC_PATH, "utf8");
   const requiredSnippets = [
@@ -2543,6 +2638,11 @@ async function assertAnswerFirstEnrichmentDryRunUsageDoc() {
     "--input lib/puzzles/content-kitchen/examples/enrichment-worker-dry-run.input.json",
     "--output /tmp/content-kitchen-worker-output.json",
     "--action-output /tmp/content-kitchen-action-drafts.json",
+    "`healthReport`",
+    "`ok`: no review action is needed",
+    "`needs_review`: inspect review queue drafts before allowing automatic enrichment to continue",
+    "`high_priority`: inspect high-priority action drafts before any future publish automation",
+    "`blocked`: inspect dead-letter or max-attempt jobs before retrying the queue",
     "--action-output must not equal `--input`",
     "--action-output must not equal `--output`",
     "dispatchStatus: \"not_sent\"",
@@ -2602,6 +2702,7 @@ async function main() {
   await assertAnswerFirstEnrichmentJobStoreAdapter();
   await assertAnswerFirstEnrichmentWorkerJsonDryRun();
   await assertAnswerFirstEnrichmentWorkerHighPriorityJsonDryRun();
+  await assertAnswerFirstEnrichmentWorkerHealthStatuses();
   await assertAnswerFirstEnrichmentDryRunUsageDoc();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
