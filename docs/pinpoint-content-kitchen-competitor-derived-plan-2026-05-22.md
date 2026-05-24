@@ -2275,6 +2275,18 @@ PR10 third implementation slice:
 - include the effect plan in the local review decision runner output
 - keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
 
+PR10 fourth implementation slice:
+
+- add a local `ReviewQueueDraft` envelope for artifacts that still need model or human review
+- include `artifactId`, `puzzleId`, `candidateRevisionId`, route, route reason, priority, issue codes, recommended action, public URL when available, and human-readable lines
+- mark every draft as `draftOnly: true`, `persistenceStatus: "not_persisted"`, `queueName: "content-kitchen-review"`, and `publishAllowed: false`
+- create drafts for route-only `model_review` and `human_review`, model decisions that escalate to human, and partial human overrides with remaining issue codes
+- do not create drafts for `auto_approve`, `auto_reject`, or fully decided effects that no longer need review
+- make `ANSWER_FIRST_HIGH_PRIORITY_ALERT` create a `high_priority` review queue draft
+- prove queue drafts do not include raw rendered HTML, model prompts, secrets, or production storage ids
+- include the review queue draft in the local review decision runner output only when one exists
+- keep this local-only; do not build Review UI, call a model, send Feishu messages, write review queue storage, attach production storage, publish content, or run Worker cron yet
+
 ### PR11 — Post-Publish Content Audit
 
 Goal: verify what users and crawlers see after publish.

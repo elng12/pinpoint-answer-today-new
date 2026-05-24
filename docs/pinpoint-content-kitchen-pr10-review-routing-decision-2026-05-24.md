@@ -1,6 +1,6 @@
 # PR10 Review Routing And Decision Contract
 
-This is the local contract note for PR10.1.
+This is the local contract note for PR10.1 through PR10.4.
 
 It defines how a review artifact is routed and how a final review decision is recorded.
 
@@ -171,6 +171,7 @@ The runner prints:
 - derived route
 - decision validation
 - effect plan
+- review queue draft when review remains open
 
 The effect plan explains the local consequence of the decision:
 
@@ -183,6 +184,51 @@ The effect plan explains the local consequence of the decision:
 - `invalid_decision`: do not apply any downstream action
 
 In PR10 v0, every effect plan has `publishAllowed: false`.
+
+## Review Queue Draft
+
+PR10.4 adds a local review queue draft envelope.
+
+It uses `queueDraftVersion: "content-kitchen-review-queue-draft-v0"`.
+
+It exists only when an artifact still needs model or human review.
+
+Examples:
+
+- route-only `model_review` artifacts create a model-review queue draft
+- route-only `human_review` artifacts create a human-review queue draft
+- model decisions with `human_escalation_required` create a human queue draft
+- partial human overrides create a queue draft for remaining issue codes
+- `auto_approve`, `auto_reject`, and fully decided effects do not create a queue draft
+
+Required fields:
+
+- `draftOnly: true`
+- `persistenceStatus: "not_persisted"`
+- `queueName: "content-kitchen-review"`
+- `artifactId`
+- `puzzleId`
+- `candidateRevisionId`
+- `route`
+- `routeReason`
+- `priority`
+- `reason`
+- `issueCodes`
+- `recommendedAction`
+- `publishAllowed: false`
+- `createdAt`
+- `lines`
+
+Priority rules:
+
+- `ANSWER_FIRST_HIGH_PRIORITY_ALERT` creates `high_priority`
+- all other PR10.4 review queue drafts use `normal`
+
+The queue draft may include `publicUrl` from the artifact canonical URL and `renderedPreviewUrl` from the artifact preview URL.
+
+It must not include raw rendered HTML, model prompts, secrets, or production storage ids.
+
+The local runner includes `reviewQueueDraft` only when the draft exists.
 
 Write the result to a local file:
 

@@ -55,7 +55,9 @@ import {
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import {
   REVIEW_DECISION_EFFECT_PLAN_VERSION,
+  REVIEW_QUEUE_DRAFT_VERSION,
   REVIEW_DECISION_VERSION,
+  buildReviewQueueDraft,
   buildReviewDecisionEffectPlan,
   deriveReviewRoute,
   validateReviewDecision,
@@ -307,6 +309,16 @@ function assertReviewRoutingAndDecisionContract() {
   assert.equal(lowRiskEffectPlan.effect, "approved", "approved decisions should produce approved effect");
   assert.equal(lowRiskEffectPlan.publishAllowed, false, "auto_approve must not mean automatic publish");
   assert.equal(lowRiskEffectPlan.nextRequiredAction, "none", "approved effect should not request more local action");
+  assert.equal(
+    buildReviewQueueDraft({
+      artifact: lowRiskArtifact,
+      route: lowRiskRoute,
+      effectPlan: lowRiskEffectPlan,
+      createdAt: "2026-05-24T00:02:00.000Z",
+    }),
+    null,
+    "auto_approve decisions should not create a review queue draft",
+  );
 
   const hardRuleArtifact = makeReviewArtifactForDecision(["CANDIDATE_L1_MISMATCH"], {
     validation: {
@@ -405,6 +417,28 @@ function assertReviewRoutingAndDecisionContract() {
     "escalate_to_human decisions should keep the artifact in human review",
   );
   assert.equal(lowConfidenceEffectPlan.artifactStatus, "open", "human escalation should keep artifact open");
+  const lowConfidenceQueueDraft = buildReviewQueueDraft({
+    artifact: softArtifact,
+    route: lowConfidenceRoute,
+    effectPlan: lowConfidenceEffectPlan,
+    createdAt: "2026-05-24T00:02:00.000Z",
+  });
+  assert.ok(lowConfidenceQueueDraft, "human_review escalation should create a review queue draft");
+  assert.equal(
+    lowConfidenceQueueDraft.queueDraftVersion,
+    REVIEW_QUEUE_DRAFT_VERSION,
+    "review queue draft version should be stable",
+  );
+  assert.equal(lowConfidenceQueueDraft.draftOnly, true, "review queue draft should stay draft-only");
+  assert.equal(
+    lowConfidenceQueueDraft.persistenceStatus,
+    "not_persisted",
+    "review queue draft should not pretend it was written to storage",
+  );
+  assert.equal(lowConfidenceQueueDraft.queueName, "content-kitchen-review", "review queue draft should name the queue");
+  assert.equal(lowConfidenceQueueDraft.reason, "decision_escalated_to_human", "model escalation should explain why it is queued");
+  assert.equal(lowConfidenceQueueDraft.effect, "human_escalation_required", "queue draft should carry the effect");
+  assert.equal(lowConfidenceQueueDraft.publishAllowed, false, "queue draft must not allow direct publish");
 
   const modelOverride = validateReviewDecision({
     artifact: hardRuleArtifact,
@@ -503,6 +537,23 @@ function assertReviewRoutingAndDecisionContract() {
     "force_answer_first decisions should produce answer_first_forced effect",
   );
   assert.equal(forceAnswerFirstEffectPlan.nextRequiredAction, "degrade", "force answer-first should request degrade");
+  const humanReviewQueueDraft = buildReviewQueueDraft({
+    artifact: forceAnswerFirstArtifact,
+    route: deriveReviewRoute(forceAnswerFirstArtifact),
+    createdAt: "2026-05-24T00:02:00.000Z",
+  });
+  assert.ok(humanReviewQueueDraft, "human_review artifacts should create a local review queue draft before decision");
+  assert.equal(humanReviewQueueDraft.reason, "human_review_required", "human review queue draft should explain the route");
+  assert.equal(humanReviewQueueDraft.priority, "normal", "normal human review issues should create normal priority drafts");
+  assert.equal(
+    humanReviewQueueDraft.publicUrl,
+    forceAnswerFirstArtifact.canonicalUrl,
+    "review queue draft should carry the public canonical URL when available",
+  );
+  assert.ok(
+    !JSON.stringify(humanReviewQueueDraft).includes("<main"),
+    "review queue draft should not include raw rendered HTML",
+  );
 
   const partialOverrideArtifact = makeReviewArtifactForDecision([
     "EVIDENCE_SOURCE_CONFLICT",
@@ -535,6 +586,45 @@ function assertReviewRoutingAndDecisionContract() {
     "override effect should preserve non-overridden issue codes",
   );
   assert.equal(partialOverrideEffectPlan.nextRequiredAction, "review", "remaining issues should keep review action");
+  const partialOverrideQueueDraft = buildReviewQueueDraft({
+    artifact: partialOverrideArtifact,
+    effectPlan: partialOverrideEffectPlan,
+    createdAt: "2026-05-24T00:02:00.000Z",
+  });
+  assert.ok(partialOverrideQueueDraft, "partial overrides should keep a queue draft for remaining issues");
+  assert.equal(
+    partialOverrideQueueDraft.reason,
+    "remaining_issue_review_required",
+    "partial override queue draft should explain that issues remain",
+  );
+  assert.deepEqual(
+    partialOverrideQueueDraft.issueCodes,
+    ["ANSWER_FIRST_REVIEW_REQUIRED"],
+    "partial override queue draft should include only remaining issue codes",
+  );
+  assert.equal(
+    partialOverrideQueueDraft.recommendedAction,
+    "review",
+    "partial override queue draft should keep review as the next action",
+  );
+
+  const highPriorityQueueArtifact = makeReviewArtifactForDecision(["ANSWER_FIRST_HIGH_PRIORITY_ALERT"]);
+  const highPriorityQueueDraft = buildReviewQueueDraft({
+    artifact: highPriorityQueueArtifact,
+    route: deriveReviewRoute(highPriorityQueueArtifact),
+    createdAt: "2026-05-24T00:02:00.000Z",
+  });
+  assert.ok(highPriorityQueueDraft, "high-priority review issues should create a queue draft");
+  assert.equal(
+    highPriorityQueueDraft.priority,
+    "high_priority",
+    "ANSWER_FIRST_HIGH_PRIORITY_ALERT should create a high-priority review queue draft",
+  );
+  assert.equal(
+    highPriorityQueueDraft.persistenceStatus,
+    "not_persisted",
+    "high-priority queue drafts should still not write storage in PR10 v0",
+  );
 }
 
 function assertPr6P0Coverage(fixtures: Fixture[]) {
@@ -3259,6 +3349,14 @@ async function assertReviewRoutingDecisionDoc() {
     "`human_escalation_required`: keep the artifact in human review",
     "`invalid_decision`: do not apply any downstream action",
     "`publishAllowed: false`",
+    "Review Queue Draft",
+    "queueDraftVersion: \"content-kitchen-review-queue-draft-v0\"",
+    "`draftOnly: true`",
+    "`persistenceStatus: \"not_persisted\"`",
+    "`queueName: \"content-kitchen-review\"`",
+    "`ANSWER_FIRST_HIGH_PRIORITY_ALERT` creates `high_priority`",
+    "It must not include raw rendered HTML, model prompts, secrets, or production storage ids.",
+    "The local runner includes `reviewQueueDraft` only when the draft exists.",
     "review-decision-auto-approve.*.example.json",
     "review-decision-auto-reject.*.example.json",
     "review-decision-model-review.*.example.json",
@@ -3286,11 +3384,11 @@ async function assertReviewRoutingDecisionDoc() {
 
 async function assertReviewDecisionExamplesAndRunner() {
   const pairs = [
-    ["review-decision-auto-approve", "auto_approve", "approved"],
-    ["review-decision-auto-reject", "auto_reject", "rejected"],
-    ["review-decision-model-review", "model_review", "regeneration_requested"],
-    ["review-decision-low-confidence-human", "human_review", "human_escalation_required"],
-    ["review-decision-human-override", "human_review", "issue_override_recorded"],
+    ["review-decision-auto-approve", "auto_approve", "approved", false],
+    ["review-decision-auto-reject", "auto_reject", "rejected", false],
+    ["review-decision-model-review", "model_review", "regeneration_requested", false],
+    ["review-decision-low-confidence-human", "human_review", "human_escalation_required", true],
+    ["review-decision-human-override", "human_review", "issue_override_recorded", false],
   ] as const;
 
   const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
@@ -3303,7 +3401,7 @@ async function assertReviewDecisionExamplesAndRunner() {
     "package.json should expose the content-kitchen review decision runner",
   );
 
-  for (const [baseName, expectedRoute, expectedEffect] of pairs) {
+  for (const [baseName, expectedRoute, expectedEffect, expectedQueueDraft] of pairs) {
     const artifactPath = resolve(EXAMPLE_DIR, `${baseName}.artifact.example.json`);
     const decisionPath = resolve(EXAMPLE_DIR, `${baseName}.decision.example.json`);
     const result = await runContentKitchenReviewDecisionFromFiles({
@@ -3333,6 +3431,29 @@ async function assertReviewDecisionExamplesAndRunner() {
     assert.equal(result.effectPlan?.valid, true, `${baseName}: effect plan should be valid`);
     assert.equal(result.effectPlan?.effect, expectedEffect, `${baseName}: effect plan should match decision action`);
     assert.equal(result.effectPlan?.publishAllowed, false, `${baseName}: effect plan must not allow direct publish`);
+    assert.equal(
+      Boolean(result.reviewQueueDraft),
+      expectedQueueDraft,
+      `${baseName}: runner should only include a review queue draft when review remains open`,
+    );
+    if (result.reviewQueueDraft) {
+      assert.equal(
+        result.reviewQueueDraft.queueDraftVersion,
+        REVIEW_QUEUE_DRAFT_VERSION,
+        `${baseName}: review queue draft version should be stable`,
+      );
+      assert.equal(result.reviewQueueDraft.draftOnly, true, `${baseName}: review queue draft should be draft-only`);
+      assert.equal(
+        result.reviewQueueDraft.persistenceStatus,
+        "not_persisted",
+        `${baseName}: review queue draft should not claim storage persistence`,
+      );
+      assert.equal(
+        result.reviewQueueDraft.publishAllowed,
+        false,
+        `${baseName}: review queue draft must not allow direct publish`,
+      );
+    }
   }
 
   const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-review-decision-"));
@@ -3466,6 +3587,19 @@ async function assertReviewDecisionExamplesAndRunner() {
   assert.ok(
     absentIssueOverride.errors.some((error) => error.includes("not in the review artifact")),
     "example override for absent issue code should include a clear error",
+  );
+  const routeOnlyResult = await runContentKitchenReviewDecisionFromFiles({
+    artifactPath: resolve(EXAMPLE_DIR, "review-decision-human-override.artifact.example.json"),
+  });
+  assert.equal(
+    routeOnlyResult.reviewQueueDraft?.queueDraftVersion,
+    REVIEW_QUEUE_DRAFT_VERSION,
+    "route-only human review runner output should include a review queue draft",
+  );
+  assert.equal(
+    routeOnlyResult.reviewQueueDraft?.persistenceStatus,
+    "not_persisted",
+    "route-only review queue draft should not write storage",
   );
 }
 
