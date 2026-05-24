@@ -57,9 +57,11 @@ import {
   REVIEW_DECISION_EFFECT_PLAN_VERSION,
   REVIEW_NOTIFICATION_DRAFT_VERSION,
   REVIEW_QUEUE_DRAFT_VERSION,
+  REVIEW_UI_INPUT_VERSION,
   REVIEW_DECISION_VERSION,
   buildReviewNotificationDraft,
   buildReviewQueueDraft,
+  buildReviewUiInput,
   buildReviewDecisionEffectPlan,
   deriveReviewRoute,
   validateReviewDecision,
@@ -481,6 +483,57 @@ function assertReviewRoutingAndDecisionContract() {
     !JSON.stringify(lowConfidenceNotificationDraft).includes("<main"),
     "review notification draft should not include raw rendered HTML",
   );
+  const lowConfidenceReviewUiInput = buildReviewUiInput({
+    artifact: softArtifact,
+    queueDraft: lowConfidenceQueueDraft,
+    route: lowConfidenceRoute,
+    notificationDraft: lowConfidenceNotificationDraft,
+    effectPlan: lowConfidenceEffectPlan,
+    reviewUrl: "https://example.com/admin/content-kitchen/review/art_review_decision_contract",
+    puzzleSnapshot: {
+      puzzleId: "pinpoint-916-2026-05-23",
+      puzzleNumber: 916,
+      logicalDate: "2026-05-23",
+      answer: "BASS",
+      clues: [
+        { clueId: "clue-1", position: 1, text: "Low instrument" },
+        { clueId: "clue-2", position: 2, text: "Fishing target" },
+        { clueId: "clue-3", position: 3, text: "Deep voice" },
+        { clueId: "clue-4", position: 4, text: "Speaker setting" },
+        { clueId: "clue-5", position: 5, text: "Music section" },
+      ],
+    },
+    createdAt: "2026-05-24T00:04:00.000Z",
+  });
+  assert.equal(
+    lowConfidenceReviewUiInput.reviewUiInputVersion,
+    REVIEW_UI_INPUT_VERSION,
+    "review UI input version should be stable",
+  );
+  assert.equal(lowConfidenceReviewUiInput.localOnly, true, "review UI input should stay local-only");
+  assert.equal(lowConfidenceReviewUiInput.renderStatus, "not_rendered", "PR10.6 should not build a real UI");
+  assert.equal(lowConfidenceReviewUiInput.puzzle.snapshotStatus, "provided", "provided puzzle snapshot should be marked");
+  assert.equal(lowConfidenceReviewUiInput.puzzle.clueCount, 5, "review UI input should carry five clue rows when provided");
+  assert.equal(lowConfidenceReviewUiInput.puzzle.answer, "BASS", "review UI input should carry the answer when provided");
+  assert.deepEqual(
+    lowConfidenceReviewUiInput.validation.issueGroups.map((group) => [group.severity, group.issueCodes]),
+    [["P1", ["GENERIC_REASONING_PATTERN"]]],
+    "review UI input should group issues by severity",
+  );
+  assert.equal(
+    lowConfidenceReviewUiInput.allowedActions.some((button) => button.action === "add_human_note" && button.enabled),
+    true,
+    "review UI input should expose the human note action while review is open",
+  );
+  assert.equal(
+    lowConfidenceReviewUiInput.safety.publishAllowed,
+    false,
+    "review UI input must not allow publishing",
+  );
+  assert.ok(
+    !JSON.stringify(lowConfidenceReviewUiInput).includes("<main"),
+    "review UI input should not include raw rendered HTML",
+  );
 
   const modelOverride = validateReviewDecision({
     artifact: hardRuleArtifact,
@@ -685,6 +738,23 @@ function assertReviewRoutingAndDecisionContract() {
   assert.ok(
     highPriorityNotificationDraft.dedupeKey.includes("review-notification:high_priority"),
     "notification dedupe key should include notification type and priority",
+  );
+  const missingSnapshotReviewUiInput = buildReviewUiInput({
+    artifact: highPriorityQueueArtifact,
+    queueDraft: highPriorityQueueDraft,
+    notificationDraft: highPriorityNotificationDraft,
+    createdAt: "2026-05-24T00:04:00.000Z",
+  });
+  assert.equal(
+    missingSnapshotReviewUiInput.puzzle.snapshotStatus,
+    "missing",
+    "review UI input should not pretend puzzle snapshot exists when it was not provided",
+  );
+  assert.equal(missingSnapshotReviewUiInput.puzzle.clueCount, 0, "missing puzzle snapshot should have zero clues");
+  assert.equal(
+    missingSnapshotReviewUiInput.notificationDraft?.dispatchStatus,
+    "not_sent",
+    "review UI input should preserve notification draft send status",
   );
 }
 
@@ -3425,6 +3495,12 @@ async function assertReviewRoutingDecisionDoc() {
     "`msg_type: \"text\"`",
     "Feishu notification drafts include puzzle id, logical date, current mode, issue severity, recommended action, public URL, and review URL when available.",
     "The local runner includes `reviewNotificationDraft` only when a review queue draft exists.",
+    "Review UI Input",
+    "reviewUiInputVersion: \"content-kitchen-review-ui-input-v0\"",
+    "`localOnly: true`",
+    "`renderStatus: \"not_rendered\"`",
+    "Puzzle snapshot status is explicit: `provided` or `missing`.",
+    "The local runner includes `reviewUiInput` only when a review queue draft exists.",
     "review-decision-auto-approve.*.example.json",
     "review-decision-auto-reject.*.example.json",
     "review-decision-model-review.*.example.json",
@@ -3442,6 +3518,7 @@ async function assertReviewRoutingDecisionDoc() {
     "does not send Feishu messages",
     "does not read Feishu webhook secrets",
     "does not write review queue storage",
+    "does not render Review UI",
     "does not touch production storage",
     "does not publish content",
     "does not run Worker cron",
@@ -3538,11 +3615,32 @@ async function assertReviewDecisionExamplesAndRunner() {
         "text",
         `${baseName}: review notification draft should include a Feishu text payload`,
       );
+      assert.equal(
+        result.reviewUiInput?.reviewUiInputVersion,
+        REVIEW_UI_INPUT_VERSION,
+        `${baseName}: review UI input version should be stable`,
+      );
+      assert.equal(result.reviewUiInput?.localOnly, true, `${baseName}: review UI input should stay local-only`);
+      assert.equal(
+        result.reviewUiInput?.renderStatus,
+        "not_rendered",
+        `${baseName}: review decision runner should not render UI`,
+      );
+      assert.equal(
+        result.reviewUiInput?.puzzle.snapshotStatus,
+        "missing",
+        `${baseName}: runner should not pretend a puzzle snapshot was provided`,
+      );
     } else {
       assert.equal(
         result.reviewNotificationDraft,
         undefined,
         `${baseName}: runner should not include a notification draft without a queue draft`,
+      );
+      assert.equal(
+        result.reviewUiInput,
+        undefined,
+        `${baseName}: runner should not include UI input without a queue draft`,
       );
     }
   }
@@ -3707,6 +3805,21 @@ async function assertReviewDecisionExamplesAndRunner() {
     routeOnlyResult.reviewNotificationDraft?.reviewUrl,
     "https://example.com/admin/content-kitchen/review/art_review_human_override_example",
     "route-only notification draft should include review URL when provided",
+  );
+  assert.equal(
+    routeOnlyResult.reviewUiInput?.reviewUiInputVersion,
+    REVIEW_UI_INPUT_VERSION,
+    "route-only human review runner output should include review UI input",
+  );
+  assert.equal(
+    routeOnlyResult.reviewUiInput?.reviewUrl,
+    "https://example.com/admin/content-kitchen/review/art_review_human_override_example",
+    "route-only UI input should include review URL when provided",
+  );
+  assert.equal(
+    routeOnlyResult.reviewUiInput?.safety.rawRenderedHtmlIncluded,
+    false,
+    "route-only UI input should not include raw rendered HTML",
   );
 }
 
