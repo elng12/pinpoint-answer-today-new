@@ -703,3 +703,54 @@ export type ReviewArtifactV0 = {
   evidenceSummary?: ReviewArtifactEvidenceSummary;
   renderedPreviewUrl?: string;
 };
+
+export type ReviewRoute =
+  | "auto_approve"
+  | "auto_reject"
+  | "model_review"
+  | "human_review";
+
+export type ReviewDecisionAction =
+  | "approve"
+  | "reject"
+  | "request_regeneration"
+  | "force_answer_first"
+  | "override_issue"
+  | "escalate_to_human";
+
+export type ReviewDecisionReviewerType =
+  | "rule_engine"
+  | "model"
+  | "human";
+
+export type ReviewRouteResult = {
+  route: ReviewRoute;
+  reason: string;
+  issueCodes: ContentKitchenIssueCode[];
+  hardRuleIssueCodes: ContentKitchenIssueCode[];
+  modelReviewIssueCodes: ContentKitchenIssueCode[];
+  humanReviewIssueCodes: ContentKitchenIssueCode[];
+};
+
+export type ReviewDecisionV0 = {
+  decisionVersion: "content-kitchen-review-decision-v0";
+  artifactId: string;
+  puzzleId: string;
+  candidateRevisionId: string;
+  issueCodes: ContentKitchenIssueCode[];
+  route: ReviewRoute;
+  action: ReviewDecisionAction;
+  reviewerType: ReviewDecisionReviewerType;
+  reviewerId: string;
+  reviewedAt: string;
+  confidence?: number;
+  modelName?: string;
+  modelVersion?: string;
+  note: string;
+};
+
+export type ReviewDecisionValidationResult = {
+  valid: boolean;
+  errors: string[];
+  derivedRoute: ReviewRouteResult;
+};
