@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { createServer, type Server } from "node:http";
+import type { AddressInfo } from "node:net";
 import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -114,6 +116,12 @@ import {
   runCli as runContentKitchenPostPublishLocalAuditChainCli,
   runContentKitchenPostPublishLocalAuditChainFromFile,
 } from "./run-content-kitchen-post-publish-local-audit-chain";
+import {
+  POST_PUBLISH_PUBLIC_FETCH_AUDIT_INPUT_VERSION,
+  POST_PUBLISH_PUBLIC_FETCH_AUDIT_RESULT_VERSION,
+  runCli as runContentKitchenPostPublishPublicFetchAuditCli,
+  runContentKitchenPostPublishPublicFetchAuditFromFile,
+} from "./run-content-kitchen-post-publish-public-fetch-audit";
 import {
   REVIEW_UI_SURFACE_VERSION,
   renderReviewUiInputHtml,
@@ -3685,6 +3693,16 @@ async function assertPostPublishAuditDoc() {
     "npm run content-kitchen:post-publish-local-audit",
     "The chain reads the same input as the build output adapter.",
     "The output file is the final post-publish audit artifact.",
+    "Public Fetch Audit",
+    "content-kitchen-post-publish-public-fetch-audit-input-v0",
+    "content-kitchen-post-publish-public-fetch-audit-result-v0",
+    "npm run content-kitchen:post-publish-public-fetch-audit",
+    "--input lib/puzzles/content-kitchen/examples/post-publish-public-fetch-audit.input.example.json",
+    "post-publish-public-fetch-audit.input.example.json",
+    "`publicFetch.sitemapUrl`",
+    "`publicFetch.timeoutMs`",
+    "`publicFetch.userAgent`",
+    "The public fetch reader is read-only.",
   ];
 
   for (const snippet of requiredSnippets) {
@@ -4802,6 +4820,196 @@ async function assertPostPublishLocalAuditChainAndExamples() {
   }
 }
 
+function listenOnLocalhost(server: Server): Promise<number> {
+  return new Promise((resolveListen, rejectListen) => {
+    server.once("error", rejectListen);
+    server.listen(0, "127.0.0.1", () => {
+      const address = server.address() as AddressInfo;
+      server.off("error", rejectListen);
+      resolveListen(address.port);
+    });
+  });
+}
+
+function closeServer(server: Server): Promise<void> {
+  return new Promise((resolveClose, rejectClose) => {
+    if (!server.listening) {
+      resolveClose();
+      return;
+    }
+    server.close((error) => {
+      if (error) rejectClose(error);
+      else resolveClose();
+    });
+  });
+}
+
+async function assertPostPublishPublicFetchAuditAndExamples() {
+  const packageJson = JSON.parse(await readFile(PACKAGE_JSON_PATH, "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  assert.ok(
+    packageJson.scripts?.["content-kitchen:post-publish-public-fetch-audit"]?.includes(
+      "run-content-kitchen-post-publish-public-fetch-audit.ts",
+    ),
+    "package.json should expose the content-kitchen post-publish public fetch audit",
+  );
+
+  const publicFetchExamplePath = resolve(EXAMPLE_DIR, "post-publish-public-fetch-audit.input.example.json");
+  const observedExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.input.example.json");
+  const htmlExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-pass.html.example");
+  const sitemapExamplePath = resolve(EXAMPLE_DIR, "post-publish-observed-facts-sitemap.xml.example");
+  const observedExample = JSON.parse(await readFile(observedExamplePath, "utf8")) as {
+    expected: PostPublishAuditExpectedStateV0;
+  };
+  const htmlExample = await readFile(htmlExamplePath, "utf8");
+  const sitemapExample = await readFile(sitemapExamplePath, "utf8");
+  let baseUrl = "";
+  const server = createServer((request, response) => {
+    if (request.url === "/linkedin-pinpoint-answers/pinpoint-answer-925/") {
+      response.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+      response.end(htmlExample.replaceAll("https://example.com", baseUrl));
+      return;
+    }
+    if (request.url === "/sitemap.xml") {
+      response.writeHead(200, { "content-type": "application/xml; charset=utf-8" });
+      response.end(sitemapExample.replaceAll("https://example.com", baseUrl));
+      return;
+    }
+    response.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
+    response.end("not found");
+  });
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-public-fetch-audit-"));
+  try {
+    const port = await listenOnLocalhost(server);
+    baseUrl = `http://127.0.0.1:${port}`;
+    const publicFetchInputPath = resolve(tmpDir, "public-fetch-audit-input.json");
+    await writeFile(
+      publicFetchInputPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: POST_PUBLISH_PUBLIC_FETCH_AUDIT_INPUT_VERSION,
+          artifactId: "art_post_publish_public_fetch_audit_contract_test",
+          checkedAt: "2026-05-24T11:00:00.000Z",
+          expected: {
+            ...observedExample.expected,
+            canonicalUrl: `${baseUrl}/linkedin-pinpoint-answers/pinpoint-answer-925/`,
+          },
+          publicFetch: {
+            sitemapUrl: `${baseUrl}/sitemap.xml`,
+            timeoutMs: 5000,
+            userAgent: "PinpointContentKitchenAudit/0.1",
+          },
+        },
+        null,
+        2,
+      )}\n`,
+      "utf8",
+    );
+
+    const outputPath = resolve(tmpDir, "post-publish-audit.json");
+    const result = await runContentKitchenPostPublishPublicFetchAuditFromFile({
+      inputPath: publicFetchInputPath,
+      outputPath,
+    });
+    const writtenArtifact = JSON.parse(await readFile(outputPath, "utf8")) as {
+      artifactVersion: string;
+      artifactType: string;
+      auditOutcome: string;
+      issueCodes: string[];
+      safety: {
+        rawRenderedHtmlIncluded: boolean;
+        publicFetchPerformedByContract: boolean;
+        publishAllowed: boolean;
+      };
+    };
+
+    assert.equal(
+      result.schemaVersion,
+      POST_PUBLISH_PUBLIC_FETCH_AUDIT_RESULT_VERSION,
+      "public fetch audit result version should be stable",
+    );
+    assert.equal(result.readOnly, true, "public fetch audit should stay read-only");
+    assert.equal(result.dryRunOnly, true, "public fetch audit should stay dry-run only");
+    assert.equal(
+      result.publicFetchPerformedByReader,
+      true,
+      "public fetch audit should clearly mark that the reader fetched public URLs",
+    );
+    assert.equal(result.fetched.httpStatus, 200, "public fetch audit should record page HTTP status");
+    assert.equal(result.fetched.sitemapHttpStatus, 200, "public fetch audit should record sitemap HTTP status");
+    assert.equal(
+      result.auditArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "public fetch audit should produce a passing audit artifact",
+    );
+    assert.deepEqual(result.auditArtifact.issueCodes, [], "public fetch audit should produce no issue codes");
+    assert.equal(writtenArtifact.artifactType, "post_publish_audit", "public fetch output should be an artifact");
+    assert.equal(
+      writtenArtifact.auditOutcome,
+      "published_and_audit_passed",
+      "public fetch output file should be the final audit artifact",
+    );
+    assert.equal(
+      writtenArtifact.safety.rawRenderedHtmlIncluded,
+      false,
+      "public fetch audit output should not include raw rendered HTML",
+    );
+    assert.equal(
+      writtenArtifact.safety.publicFetchPerformedByContract,
+      false,
+      "public fetch audit should keep the core artifact contract fetch-free",
+    );
+    assert.equal(writtenArtifact.safety.publishAllowed, false, "public fetch audit should not publish");
+    assert.ok(
+      !JSON.stringify(writtenArtifact).includes("<main"),
+      "public fetch audit output should not include raw rendered HTML",
+    );
+
+    await assert.rejects(
+      () => runContentKitchenPostPublishPublicFetchAuditCli(["--input", publicFetchInputPath, "--output", publicFetchInputPath]),
+      /--output must be different from --input/,
+      "public fetch audit CLI should reject output paths that overwrite input",
+    );
+
+    const badSitemapInputPath = resolve(tmpDir, "bad-sitemap-origin.json");
+    await writeFile(
+      badSitemapInputPath,
+      `${JSON.stringify(
+        {
+          schemaVersion: POST_PUBLISH_PUBLIC_FETCH_AUDIT_INPUT_VERSION,
+          artifactId: "art_post_publish_public_fetch_bad_sitemap_origin",
+          checkedAt: "2026-05-24T11:05:00.000Z",
+          expected: {
+            ...observedExample.expected,
+            canonicalUrl: `${baseUrl}/linkedin-pinpoint-answers/pinpoint-answer-925/`,
+          },
+          publicFetch: {
+            sitemapUrl: "https://example.org/sitemap.xml",
+          },
+        },
+        null,
+        2,
+      )}\n`,
+      "utf8",
+    );
+    await assert.rejects(
+      () => runContentKitchenPostPublishPublicFetchAuditFromFile({ inputPath: badSitemapInputPath }),
+      /publicFetch.sitemapUrl must use the same origin/,
+      "public fetch audit should reject sitemap URLs from another origin",
+    );
+  } finally {
+    await closeServer(server);
+    await rm(tmpDir, { recursive: true, force: true });
+  }
+
+  const inputRaw = await readFile(publicFetchExamplePath, "utf8");
+  assert.ok(
+    inputRaw.includes(POST_PUBLISH_PUBLIC_FETCH_AUDIT_INPUT_VERSION),
+    "public fetch audit example should use stable input version",
+  );
+}
+
 async function main() {
   const fileNames = (await readdir(FIXTURE_DIR)).filter((fileName) => fileName.endsWith(".json")).sort();
   assert.ok(fileNames.length >= 6, "content kitchen should have at least 6 fixtures");
@@ -4857,6 +5065,7 @@ async function main() {
   await assertPostPublishObservedFactsBuilderAndExamples();
   await assertPostPublishBuildOutputAdapterAndExamples();
   await assertPostPublishLocalAuditChainAndExamples();
+  await assertPostPublishPublicFetchAuditAndExamples();
   console.log(`content-kitchen contract fixtures passed (${fileNames.length} fixtures)`);
 }
 

@@ -2402,6 +2402,20 @@ PR11 fifth implementation slice:
 - prove the output does not include raw rendered HTML
 - do not fetch public URLs, run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
 
+PR11 sixth implementation slice:
+
+- add a read-only public fetch audit command
+- read `content-kitchen-post-publish-public-fetch-audit-input-v0` JSON from `--input`
+- fetch `expected.canonicalUrl`
+- fetch same-origin `publicFetch.sitemapUrl` when provided, or `/sitemap.xml` by default
+- extract observed facts from fetched HTML and sitemap text in memory
+- output the final `content-kitchen-post-publish-audit-v0` artifact
+- mark the reader result with `publicFetchPerformedByReader: true`
+- keep the core audit artifact contract fact-only, with `safety.publicFetchPerformedByContract: false`
+- reject unsafe inputs containing raw rendered HTML, model prompts, or secrets
+- reject cross-origin sitemap URLs
+- keep this read-only; do not run a browser, read production storage, write review queue storage, send Feishu messages, publish content, or run Worker cron yet
+
 
 ## Review UI Requirements
 

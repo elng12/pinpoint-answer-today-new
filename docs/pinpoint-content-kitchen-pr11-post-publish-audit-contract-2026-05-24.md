@@ -329,3 +329,59 @@ Chain rules:
 - the chain does not send Feishu messages
 - the chain does not write review queue storage
 - the chain does not publish content
+
+## Public Fetch Audit
+
+PR11.6 adds a read-only public fetch audit command.
+
+Input uses `content-kitchen-post-publish-public-fetch-audit-input-v0`.
+
+Reader result uses `content-kitchen-post-publish-public-fetch-audit-result-v0`.
+
+Run it with:
+
+```bash
+npm run content-kitchen:post-publish-public-fetch-audit -- \
+  --input lib/puzzles/content-kitchen/examples/post-publish-public-fetch-audit.input.example.json \
+  --output /tmp/content-kitchen-post-publish-audit.json \
+  --pretty
+```
+
+Example file:
+
+- `post-publish-public-fetch-audit.input.example.json`
+
+The public fetch reader is read-only.
+
+It reads:
+
+- `expected.canonicalUrl`
+- `publicFetch.sitemapUrl` when provided
+- `publicFetch.timeoutMs` when provided
+- `publicFetch.userAgent` when provided
+
+If `publicFetch.sitemapUrl` is missing, it tries `/sitemap.xml` on the same site origin as `expected.canonicalUrl`.
+
+It does these steps:
+
+1. fetch the public canonical URL
+2. fetch the same-origin sitemap URL when the page fetch succeeds
+3. extract observed facts from the fetched HTML and sitemap text in memory
+4. build the final `content-kitchen-post-publish-audit-v0` artifact
+
+Reader rules:
+
+- `--input` is required
+- `--output` is optional
+- `--output` must not equal `--input`
+- `expected.canonicalUrl` must use `http` or `https`
+- `publicFetch.sitemapUrl` must use the same origin as `expected.canonicalUrl`
+- `publicFetch.timeoutMs` must be between 500 and 30000 when provided
+- output must not include raw HTML
+- the reader does not run a browser
+- the reader does not send Feishu messages
+- the reader does not write review queue storage
+- the reader does not publish content
+- the reader does not run Worker cron
+
+The result wrapper marks `publicFetchPerformedByReader: true`. The audit artifact still marks `safety.publicFetchPerformedByContract: false` because the core audit contract only consumes facts; the reader is the part that performs the fetch.

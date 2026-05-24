@@ -441,6 +441,23 @@ export async function buildPostPublishObservedFacts(input: {
   sitemapPath?: string;
 }): Promise<PostPublishAuditObservedStateV0> {
   const html = await readFile(input.htmlPath, "utf8");
+  const sitemapXml = input.sitemapPath ? await readFile(input.sitemapPath, "utf8") : undefined;
+
+  return buildPostPublishObservedFactsFromHtml({
+    expected: input.expected,
+    sources: input.sources,
+    html,
+    ...(sitemapXml ? { sitemapXml } : {}),
+  });
+}
+
+export function buildPostPublishObservedFactsFromHtml(input: {
+  expected: PostPublishAuditExpectedStateV0;
+  sources: Pick<PostPublishObservedFactsBuilderInput["sources"], "fetchedUrl" | "httpStatus">;
+  html: string;
+  sitemapXml?: string;
+}): PostPublishAuditObservedStateV0 {
+  const html = input.html;
   const visibleText = visibleTextFromHtml(html);
   const normalizedVisibleText = normalizeForMatch(visibleText);
   const schemaObjects = parseJsonLdObjects(html);
@@ -449,8 +466,8 @@ export async function buildPostPublishObservedFacts(input: {
       .map((href) => normalizeInternalLink(href, input.expected.canonicalUrl))
       .filter((href): href is string => Boolean(href)),
   )];
-  const sitemapFacts = input.sitemapPath
-    ? parseSitemap(await readFile(input.sitemapPath, "utf8"), input.expected.canonicalUrl)
+  const sitemapFacts = input.sitemapXml
+    ? parseSitemap(input.sitemapXml, input.expected.canonicalUrl)
     : {};
   const statusOk =
     input.sources.httpStatus === undefined ||
