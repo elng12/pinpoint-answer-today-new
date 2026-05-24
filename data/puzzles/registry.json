@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 754,
+    "slug": "pinpoint-answer-754",
+    "publishDate": "2026-05-24",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Plates",
+      "Coins",
+      "Frisbees",
+      "Manhole covers",
+      "CDs and DVDs (it's the last D)"
+    ],
+    "mainAnswer": "Things shaped like discs",
+    "category": "Things shaped like discs",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Plates, Coins, Frisbees, Manhole covers, CDs and DVDs (it's the last D) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-05-24T07:04:15.594Z"
+  },
+  {
     "puzzleNumber": 753,
     "slug": "pinpoint-answer-753",
     "publishDate": "2026-05-23",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Titan",
@@ -16,7 +35,7 @@
     "category": "Moons in our solar system",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Titan, Triton, Phobos do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-23T07:32:30.000Z"
+    "updatedAt": "2026-05-24T07:04:15.594Z"
   },
   {
     "puzzleNumber": 752,
