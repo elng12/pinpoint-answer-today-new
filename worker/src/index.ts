@@ -589,18 +589,18 @@ async function notifyPinpointReleaseQueueDecision(
       ? Math.ceil(fields.remainingWindowMs / 60000)
       : undefined;
   const title = decision.action === "hold-review"
-    ? "⛔ Pinpoint 发布进入人工 review"
-    : "⏳ Pinpoint 发布已写入 candidate branch";
+    ? "⛔ Pinpoint 发布进入人工检查"
+    : "⏳ Pinpoint 发布已写入候选分支";
   await notifyCron(env, title, [
-    `日期: ${fields.logicalGameDate || "unknown"}`,
-    `页面: ${fields.slug || "unknown"}`,
-    `模式: ${fields.publishMode || "unknown"}`,
-    `部署状态: ${fields.deploymentState}`,
-    `动作: ${fields.action}`,
-    `原因: ${fields.reasonCode}`,
-    `候选分支: ${fields.candidateBranch || "n/a"}`,
-    `跳过 production push: ${decision.productionPushSkipped ? "yes" : "no"}`,
-    ...(remainingMinutes !== undefined ? [`SLA 剩余分钟: ${remainingMinutes}`] : []),
+    `日期: ${fields.logicalGameDate || "未知"}`,
+    `页面: ${fields.slug || "未知"}`,
+    `模式: ${getPublishModeLabel(fields.publishMode)}`,
+    `部署状态: ${getDeploymentStateLabel(fields.deploymentState)}`,
+    `动作: ${getReleaseQueueActionLabel(fields.action)}`,
+    `原因: ${getReleaseQueueReasonLabel(fields.reasonCode)}`,
+    `候选分支: ${fields.candidateBranch || "无"}`,
+    `跳过正式站推送: ${getYesNoLabel(decision.productionPushSkipped)}`,
+    ...(remainingMinutes !== undefined ? [`上线保护窗口剩余分钟: ${remainingMinutes}`] : []),
   ]);
 }
 
@@ -644,8 +644,80 @@ function getFallbackModeLabel(mode: FallbackMode): string {
 function getFallbackSourceLabel(source: DocSource): string {
   if (source === "fallback-local") return "本地兜底";
   if (source === "fallback-competitor") return "竞争对手兜底";
-  if (source === "fallback-webhook") return "fallback webhook";
+  if (source === "fallback-webhook") return "备用 webhook";
   return "官方抓取";
+}
+
+function getPublishModeLabel(value: unknown): string {
+  const raw = String(value || "").trim();
+  const map: Record<string, string> = {
+    "answer-first": "先给答案页",
+    "full-analysis": "完整分析页",
+    failed: "失败页",
+    published: "已发布",
+    fallback_full: "保底全文页",
+    unknown: "未知",
+  };
+  return map[raw] ?? (raw || "未知");
+}
+
+function getDeploymentStateLabel(value: unknown): string {
+  const raw = String(value || "").trim();
+  const map: Record<string, string> = {
+    none: "没有部署",
+    queued: "排队中",
+    building: "正在构建",
+    ready: "已完成",
+    failed: "失败",
+    unknown: "未知",
+  };
+  return map[raw] ?? (raw || "未知");
+}
+
+function getReleaseQueueActionLabel(value: unknown): string {
+  const raw = String(value || "").trim();
+  const map: Record<string, string> = {
+    "push-production": "推到正式站",
+    "write-candidate": "写入候选分支",
+    "hold-review": "等待人工检查",
+  };
+  return map[raw] ?? (raw || "未知");
+}
+
+function getReleaseQueueReasonLabel(value: unknown): string {
+  const raw = String(value || "").trim();
+  const map: Record<string, string> = {
+    "local-gates-failed": "本地检查没通过",
+    "production-deployment-failed": "正式站部署失败",
+    "production-deployment-queued": "正式站还有部署在排队",
+    "production-deployment-building": "正式站正在部署中",
+    "production-deployment-unknown": "正式站部署状态不清楚，为了安全先不推正式站",
+    "production-push-budget-exhausted": "短时间内已经推过一次正式站，为了安全先写候选分支",
+    "candidate-branch-outdated": "候选分支不是最新，需要先更新",
+    "candidate-branch-awaiting-promotion": "候选分支已准备好，等待人工确认上线",
+    "candidate-branch-enabled": "已开启只写候选分支",
+    "production-push-allowed": "允许推到正式站",
+  };
+  return map[raw] ?? (raw || "未知");
+}
+
+function getSourceConfidenceLabel(value: unknown): string {
+  const raw = String(value || "").trim();
+  const map: Record<string, string> = {
+    confirmed: "已确认",
+    manual: "人工确认",
+    inferred: "推断",
+    weak: "较弱",
+    high: "高",
+    medium: "中",
+    low: "低",
+    unknown: "未知",
+  };
+  return map[raw] ?? (raw || "未知");
+}
+
+function getYesNoLabel(value: boolean): string {
+  return value ? "是" : "否";
 }
 
 function getPublicSiteBaseUrl(env: Env): string {
@@ -4034,7 +4106,7 @@ async function maybeNotifySiteSummaryWatchdog(
     `日期: ${date}`,
     `检查时间: ${formatBeijingTime()} 北京时间`,
     `触发: Cloudflare Worker ${cron || "scheduled"} 主窗口后校验`,
-    `抓取来源: ${doc.source}`,
+    `抓取来源: ${getFallbackSourceLabel(doc.source)}`,
     `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
     `答案: ${words}`,
     `预期谜题: #${puzzleNumber}`,
@@ -4162,13 +4234,13 @@ async function enrichPublishToSite(
             publishDetailState = "fallback_full";
             const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
             const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
-            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 fallback_full 保底全文页", [
+            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为保底全文页", [
               `日期: ${puzzleDate}`,
               `谜题: #${puzzleNumber}`,
               `答案: ${answer}`,
               `尝试次数: ${draftAttempts}`,
-              `结果: AI 长文未过线，已切换为 fallback_full 保底全文页`,
-              `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
+              `结果: AI 长文未过线，已切换为保底全文页`,
+              `原因: ${toZhDraftQualitySummary(qualityGateSummary || "draft quality gate blocked")}`,
             ]);
             draftResp = { success: true, data: fallbackPayload };
             lastDraftError = null;
@@ -4234,13 +4306,13 @@ async function enrichPublishToSite(
             publishDetailState = "fallback_full";
             const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
             const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
-            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为 fallback_full 保底全文页", [
+            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为保底全文页", [
               `日期: ${puzzleDate}`,
               `谜题: #${puzzleNumber}`,
               `答案: ${answer}`,
               `尝试次数: ${draftAttempts}`,
-              `结果: AI 长文未过线，已切换为 fallback_full 保底全文页`,
-              `原因: ${qualityGateSummary || "draft quality gate blocked"}`,
+              `结果: AI 长文未过线，已切换为保底全文页`,
+              `原因: ${toZhDraftQualitySummary(qualityGateSummary || "draft quality gate blocked")}`,
             ]);
             draftResp = { success: true, data: fallbackPayload };
             lastDraftError = null;
@@ -4904,14 +4976,14 @@ async function recordPublishEligibilityBlocked(
   const alreadyNotified = await env.PP_DATA.get(notifyKey).then((value) => value !== null).catch(() => false);
   if (!alreadyNotified) {
     await env.PP_DATA.put(notifyKey, "1", { expirationTtl: 60 * 60 * 48 }).catch(() => undefined);
-    await notifyCron(env, "⛔ 新站 publish eligibility 阻断", [
+    await notifyCron(env, "⛔ 新站发布资格检查被拦住", [
       `日期: ${summary.logicalGameDate}`,
       `谜题: #${summary.puzzleNumber ?? puzzleNumber}`,
       `页面: ${summary.slug}`,
-      `模式: ${summary.publishMode}`,
-      `Source confidence: ${summary.sourceConfidence}`,
-      `阻断码: ${blockingIssueCodes.join(", ") || "unknown"}`,
-      `下一步: ${summary.nextAction}`,
+      `模式: ${getPublishModeLabel(summary.publishMode)}`,
+      `来源可信度: ${getSourceConfidenceLabel(summary.sourceConfidence)}`,
+      `阻断码: ${blockingIssueCodes.join(", ") || "未知"}`,
+      `下一步: ${toZhWebhookReason(summary.nextAction)}`,
     ]);
   }
 
@@ -4937,9 +5009,103 @@ async function checkAndMarkCronSuccessNotified(env: Env, date: string): Promise<
   }
 }
 
+function toZhDraftQualityIssue(issue: string): string {
+  const raw = String(issue || "").trim();
+  if (!raw) return "";
+
+  const withoutFallbackSuffix = raw
+    .replace(/;?\s*used fallback_full$/i, "")
+    .replace(/;?\s*used short fallback$/i, "")
+    .replace(/;?\s*used template fallback$/i, "")
+    .trim();
+  if (!withoutFallbackSuffix && /^used\s+(fallback_full|short fallback|template fallback)$/i.test(raw)) return "";
+
+  const map: Record<string, string> = {
+    "draft quality gate blocked": "草稿质量检查没过",
+    "First FAQ answer does not include the exact answer text": "第一个 FAQ 回答里没有写出准确答案",
+    "Category-style answer label looks over-qualified or machine-made": "分类答案写得太刻意，像机器生成的",
+    "Wrong-guess label sounds machine-made instead of like a believable human false start": "误判标题太像机器写的，不像真人一开始会猜错的说法",
+    "Hero summary reveals the exact answer before the opt-in reveal": "页面开头太早把正确答案说出来了",
+    "Overview opens by stating the exact answer too early": "开头说明太早把正确答案说出来了",
+    "Hero summary sounds like teaser copy instead of a spoiler-safe clue introduction": "页面开头太像广告文案，不像安全提示",
+    "Draft sounds like a temporary quick-page notice instead of a normal walkthrough": "草稿像临时通知，不像正常解题文章",
+    "Solve narrative uses a generic category pivot instead of a clue-specific turning point": "解题过程太泛，没有说清是哪条线索让答案转弯",
+    "Connection FAQ sounds generic and does not explain the board specifically enough": "FAQ 太泛，没有具体解释这盘题",
+    "Turning clue FAQ uses generic narrowing phrasing instead of clue-specific evidence": "关键线索 FAQ 太泛，没有拿具体线索说明",
+    "Clue explanation repeats generic shared-connection filler instead of explaining the clue specifically": "线索解释太套话，没有具体解释这条线索",
+    "Structured publish payload is missing pageExperienceMode": "结构化内容缺少页面体验模式",
+    "Structured publish payload is missing difficultyBand": "结构化内容缺少难度档位",
+    "Structured publish payload is missing setValidationSummary": "结构化内容缺少整组校验总结",
+    "Structured publish payload is missing categoryPrecisionNote": "结构化内容缺少分类精度说明",
+    "Input contains non-English characters": "输入里有非英文字符",
+    "Disallowed non-English characters detected in mainAnswer": "主答案里有不允许的非英文字符",
+  };
+  if (map[withoutFallbackSuffix]) return map[withoutFallbackSuffix];
+
+  const exactMentionMatch = withoutFallbackSuffix.match(/^Exact answer text appears too many times \((\d+)\) across the draft$/);
+  if (exactMentionMatch) return `正确答案在草稿里出现太多次（${exactMentionMatch[1]} 次）`;
+
+  const overlapMatch = withoutFallbackSuffix.match(/^Overview and solve narrative overlap too heavily \((\d+)%\)$/);
+  if (overlapMatch) return `概览和解题过程重复太多（${overlapMatch[1]}%）`;
+
+  const sharedRunMatch = withoutFallbackSuffix.match(/^Overview and solve narrative reuse too much of the same phrasing \((\d+) words in a row\)$/);
+  if (sharedRunMatch) return `概览和解题过程连续重复同一段话（${sharedRunMatch[1]} 个词）`;
+
+  const clueDetailsMatch = withoutFallbackSuffix.match(/^Exactly (\d+) clue details are required$/);
+  if (clueDetailsMatch) return `必须正好有 ${clueDetailsMatch[1]} 条线索详情`;
+
+  const nonEnglishMatch = withoutFallbackSuffix.match(/^Disallowed non-English characters detected in (.+)$/);
+  if (nonEnglishMatch) return `字段 ${nonEnglishMatch[1]} 里有不允许的非英文字符`;
+
+  const wrongGuessCountMatch = withoutFallbackSuffix.match(/^Structured publish payload needs at least (\d+) wrongGuessCandidates for (.+) full-analysis mode$/);
+  if (wrongGuessCountMatch) return `完整分析页至少需要 ${wrongGuessCountMatch[1]} 个误判候选（当前难度：${wrongGuessCountMatch[2]}）`;
+
+  const wrongGuessItemMatch = withoutFallbackSuffix.match(/^wrongGuessCandidates\[(\d+)\] must include label and whyPlausible$/);
+  if (wrongGuessItemMatch) return `第 ${Number(wrongGuessItemMatch[1]) + 1} 个误判候选缺少标题或“为什么看起来合理”的解释`;
+
+  const lessonTitleMatch = withoutFallbackSuffix.match(/^Lesson (\d+) title is generic and repeats across puzzles instead of referencing a specific clue or answer detail$/);
+  if (lessonTitleMatch) return `第 ${lessonTitleMatch[1]} 条 lesson 标题太模板化，没有提到具体线索或答案细节`;
+
+  const faqQuestionMatch = withoutFallbackSuffix.match(/^FAQ (\d+) question is a generic template instead of referencing a specific clue or answer detail$/);
+  if (faqQuestionMatch) return `第 ${faqQuestionMatch[1]} 个 FAQ 问题太模板化，没有提到具体线索或答案细节`;
+
+  return withoutFallbackSuffix || raw;
+}
+
+function toZhDraftQualitySummary(summary: string | undefined): string {
+  const raw = String(summary || "").trim();
+  if (!raw) return "草稿质量检查没过";
+  return raw
+    .split(/\s*\|\s*/)
+    .flatMap((part) => part.split(/\s*;\s*/))
+    .map((part) => toZhDraftQualityIssue(part))
+    .filter(Boolean)
+    .join("；") || "草稿质量检查没过";
+}
+
 function toZhWebhookReason(reason: string | undefined): string {
   const raw = String(reason || "").trim();
   if (!raw) return "未提供原因";
+
+  if (raw.startsWith("publish pipeline blocked:")) {
+    const detail = raw.slice("publish pipeline blocked:".length).trim();
+    return detail ? `发布流程被拦住：${toZhWebhookReason(detail)}` : "发布流程被拦住";
+  }
+
+  if (raw.startsWith("Draft generation failed contract:")) {
+    const detail = raw.slice("Draft generation failed contract:".length).trim();
+    return detail ? `草稿没通过内容检查：${toZhDraftQualitySummary(detail)}` : "草稿没通过内容检查";
+  }
+
+  if (raw.startsWith("Draft generation blocked:")) {
+    const detail = raw.slice("Draft generation blocked:".length).trim();
+    return detail ? `草稿被内容检查拦住：${toZhDraftQualitySummary(detail)}` : "草稿被内容检查拦住";
+  }
+
+  if (raw.startsWith("Localized draft failed contract:")) {
+    const detail = raw.slice("Localized draft failed contract:".length).trim();
+    return detail ? `多语言草稿没通过内容检查：${toZhDraftQualitySummary(detail)}` : "多语言草稿没通过内容检查";
+  }
 
   if (raw.startsWith("[new-site] final publish guard failed for")) {
     const detail = raw.split(":").slice(1).join(":").trim();
@@ -4999,15 +5165,17 @@ function toZhWebhookReason(reason: string | undefined): string {
   }
 
   if (raw.startsWith("quality gate blocked after")) {
-    const detail = raw.split(":").slice(1).join(":").trim();
+    const match = raw.match(/^quality gate blocked after\s+(\d+)\s+attempt\(s\):\s*([\s\S]*?)(?:;\s*used\s+(.+))?$/i);
+    const attemptText = match?.[1] ? `跑了 ${match[1]} 次还是没过` : "没过";
+    const detail = (match?.[2] || raw.split(":").slice(1).join(":")).trim();
     if (
       raw.includes("used fallback_full") ||
       raw.includes("used short fallback") ||
       raw.includes("used template fallback")
     ) {
-      return detail ? `草稿质量未过线，已切换为保底全文页：${detail}` : "草稿质量未过线，已切换为保底全文页";
+      return detail ? `草稿质量检查${attemptText}，已切换为保底全文页：${toZhDraftQualitySummary(detail)}` : "草稿质量未过线，已切换为保底全文页";
     }
-    return detail ? `草稿质量未过线：${detail}` : "草稿质量未过线，已保留快版内容";
+    return detail ? `草稿质量检查${attemptText}：${toZhDraftQualitySummary(detail)}` : "草稿质量未过线，已保留快版内容";
   }
 
   const map: Record<string, string> = {
@@ -5037,6 +5205,9 @@ function toZhWebhookReason(reason: string | undefined): string {
     "enrich payload missing": "缺少增强内容",
     "not needed": "无需执行",
     "not enabled": "未启用",
+    "publish eligibility blocked": "发布资格检查被拦住",
+    "review payload against publish eligibility issue codes before retrying public write": "先按阻断码检查发布内容，再重试写入正式公开页面",
+    "review publish failure summary before retrying public write": "先检查发布失败摘要，再重试写入正式公开页面",
 
     "i18n already done today": "今天已完成多语言",
     "i18n already running": "多语言任务正在运行",
@@ -5849,7 +6020,7 @@ export default {
         if (notified) {
           await notifyCron(env, `✅ Worker ${getFallbackModeLabel(mode)}正常`, [
             `日期: ${probeDate}`,
-            `模式: ${mode}`,
+            `模式: ${getFallbackModeLabel(mode)}`,
             `实际来源: ${getFallbackSourceLabel(doc.source)}`,
             `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
             `答案: ${words.join(" | ") || "（空）"}`,
@@ -6616,7 +6787,7 @@ export default {
         if (shouldNotify) {
           await notifyCron(env, "⚠️ Worker 定时抓取到疑似旧数据（已跳过发布）", [
             `日期: ${date}`,
-            `来源: ${doc.source}`,
+            `来源: ${getFallbackSourceLabel(doc.source)}`,
             `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
             `答案: ${words}`,
             `对比日期: ${staleCheck.comparedDate || "未知"}`,
@@ -6642,7 +6813,7 @@ export default {
       const words = doc.answers.map((a) => a.word).slice(0, 5).join(" | ");
       const notifyLines = [
         `日期: ${date}`,
-        `来源: ${doc.source}`,
+        `来源: ${getFallbackSourceLabel(doc.source)}`,
         `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
         `答案: ${words}`,
       ];
@@ -6847,7 +7018,7 @@ export default {
                     `日期: ${date}`,
                     `谜题: #${puzzleNumber}`,
                     `详情: ${detailUrl}`,
-                    `错误: ${enrichMsg}`,
+                    `错误: ${toZhWebhookReason(enrichMsg)}`,
                     `耗时(ms): ${enrichDuration}`,
                   ]);
                 }
@@ -6900,7 +7071,7 @@ export default {
           await persistCronHeartbeat(env, heartbeat);
         } else {
           console.error("quick publish failed", publishMsg);
-          notifyLines.push(`快速发布: 失败 (${publishMsg})`);
+          notifyLines.push(`快速发布: 失败 (${toZhWebhookReason(publishMsg)})`);
           heartbeat.quickPublish = stampHeartbeatStage(heartbeat.quickPublish, "failed", publishMsg);
           heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "skipped", "quick publish failed");
           heartbeat.i18n = stampHeartbeatStage(heartbeat.i18n, "skipped", "quick publish failed");
@@ -6944,7 +7115,7 @@ export default {
       await persistCronHeartbeat(env, heartbeat);
       const lines = [
         `日期: ${date}`,
-        `错误: ${msg}`,
+        `错误: ${toZhWebhookReason(msg)}`,
         `耗时(ms): ${durationMs}`,
       ];
       if (failureContext) {
