@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { renderReviewUiInputHtml } from "./content-kitchen-review-ui-surface";
 import {
   buildReviewUiInput,
   buildReviewNotificationDraft,
@@ -29,6 +30,7 @@ export type ContentKitchenReviewDecisionRunnerResult = {
   sourceArtifactPath: string;
   sourceDecisionPath?: string;
   outputPath?: string;
+  reviewUiOutputPath?: string;
   route: ReviewRouteResult;
   decision?: ReviewDecisionV0;
   decisionValidation?: ReviewDecisionValidationResult;
@@ -42,6 +44,7 @@ type ParsedArgs = {
   artifactPath: string;
   decisionPath?: string;
   outputPath?: string;
+  uiOutputPath?: string;
   modelConfidence?: number;
   reviewUrl?: string;
   pretty: boolean;
@@ -69,6 +72,7 @@ function parseArgs(argv: string[]): ParsedArgs {
   let artifactPath = "";
   let decisionPath: string | undefined;
   let outputPath: string | undefined;
+  let uiOutputPath: string | undefined;
   let modelConfidence: number | undefined;
   let reviewUrl: string | undefined;
   let pretty = true;
@@ -89,6 +93,12 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--output") {
       outputPath = resolve(readArgValue(argv, index, "--output"));
+      index += 1;
+      continue;
+    }
+
+    if (arg === "--ui-output") {
+      uiOutputPath = resolve(readArgValue(argv, index, "--ui-output"));
       index += 1;
       continue;
     }
@@ -117,7 +127,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--help" || arg === "-h") {
       throw new Error(
-        "Usage: npm run content-kitchen:review-decision -- --artifact <path> [--decision <path>] [--output <path>] [--model-confidence <0..1>] [--review-url <url>] [--pretty|--compact]",
+        "Usage: npm run content-kitchen:review-decision -- --artifact <path> [--decision <path>] [--output <path>] [--ui-output <path>] [--model-confidence <0..1>] [--review-url <url>] [--pretty|--compact]",
       );
     }
 
@@ -133,11 +143,21 @@ function parseArgs(argv: string[]): ParsedArgs {
   if (outputPath && decisionPath === outputPath) {
     throw new Error("--output must be different from --decision");
   }
+  if (uiOutputPath === artifactPath) {
+    throw new Error("--ui-output must be different from --artifact");
+  }
+  if (uiOutputPath && decisionPath === uiOutputPath) {
+    throw new Error("--ui-output must be different from --decision");
+  }
+  if (uiOutputPath && outputPath === uiOutputPath) {
+    throw new Error("--ui-output must be different from --output");
+  }
 
   return {
     artifactPath,
     decisionPath,
     outputPath,
+    uiOutputPath,
     modelConfidence,
     reviewUrl,
     pretty,
@@ -152,12 +172,29 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
   artifactPath: string;
   decisionPath?: string;
   outputPath?: string;
+  uiOutputPath?: string;
   modelConfidence?: number;
   reviewUrl?: string;
 }): Promise<ContentKitchenReviewDecisionRunnerResult> {
   const artifactPath = resolve(input.artifactPath);
   const decisionPath = input.decisionPath ? resolve(input.decisionPath) : undefined;
   const outputPath = input.outputPath ? resolve(input.outputPath) : undefined;
+  const uiOutputPath = input.uiOutputPath ? resolve(input.uiOutputPath) : undefined;
+  if (outputPath === artifactPath) {
+    throw new Error("--output must be different from --artifact");
+  }
+  if (outputPath && decisionPath === outputPath) {
+    throw new Error("--output must be different from --decision");
+  }
+  if (uiOutputPath === artifactPath) {
+    throw new Error("--ui-output must be different from --artifact");
+  }
+  if (uiOutputPath && decisionPath === uiOutputPath) {
+    throw new Error("--ui-output must be different from --decision");
+  }
+  if (uiOutputPath && outputPath === uiOutputPath) {
+    throw new Error("--ui-output must be different from --output");
+  }
   const artifact = await readJsonFile<ReviewArtifactV0>(artifactPath);
   const decision = decisionPath ? await readJsonFile<ReviewDecisionV0>(decisionPath) : undefined;
   const routeModelConfidence =
@@ -199,6 +236,7 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
     sourceArtifactPath: artifactPath,
     ...(decisionPath ? { sourceDecisionPath: decisionPath } : {}),
     ...(outputPath ? { outputPath } : {}),
+    ...(uiOutputPath ? { reviewUiOutputPath: uiOutputPath } : {}),
     route,
     ...(decision ? { decision } : {}),
     ...(decisionValidation ? { decisionValidation } : {}),
@@ -211,6 +249,14 @@ export async function runContentKitchenReviewDecisionFromFiles(input: {
   if (outputPath) {
     await mkdir(dirname(outputPath), { recursive: true });
     await writeFile(outputPath, `${JSON.stringify(result, null, 2)}\n`, "utf8");
+  }
+
+  if (uiOutputPath) {
+    if (!reviewUiInput) {
+      throw new Error("--ui-output requires a review queue draft");
+    }
+    await mkdir(dirname(uiOutputPath), { recursive: true });
+    await writeFile(uiOutputPath, renderReviewUiInputHtml(reviewUiInput), "utf8");
   }
 
   return result;
