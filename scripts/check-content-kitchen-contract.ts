@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readdir, readFile } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -53,9 +54,11 @@ import {
 } from "../lib/puzzles/content-kitchen/issue-registry";
 import { buildReviewArtifactV0, shouldCreateReviewArtifact } from "../lib/puzzles/content-kitchen/review-artifact";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
+import { ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION } from "./content-kitchen-enrichment-file-store";
 import {
   ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
   runAnswerFirstEnrichmentWorkerJsonDryRun,
+  runAnswerFirstEnrichmentWorkerJsonDryRunToFile,
   type AnswerFirstEnrichmentWorkerDryRunInput,
 } from "./run-content-kitchen-enrichment-worker-dry-run";
 import type {
@@ -2073,7 +2076,8 @@ async function assertAnswerFirstEnrichmentJobStoreAdapter() {
 }
 
 async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
-  const raw = await readFile(resolve(EXAMPLE_DIR, "enrichment-worker-dry-run.input.json"), "utf8");
+  const examplePath = resolve(EXAMPLE_DIR, "enrichment-worker-dry-run.input.json");
+  const raw = await readFile(examplePath, "utf8");
   const input = JSON.parse(raw) as AnswerFirstEnrichmentWorkerDryRunInput;
   const result = await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
 
@@ -2146,6 +2150,56 @@ async function assertAnswerFirstEnrichmentWorkerJsonDryRun() {
     ),
     "package.json should expose the content-kitchen enrichment dry-run script",
   );
+
+  const tmpDir = await mkdtemp(resolve(tmpdir(), "content-kitchen-worker-"));
+  try {
+    const outputPath = resolve(tmpDir, "worker-output.json");
+    const fileResult = await runAnswerFirstEnrichmentWorkerJsonDryRunToFile({
+      input,
+      inputPath: examplePath,
+      outputPath,
+    });
+    const output = JSON.parse(await readFile(outputPath, "utf8")) as {
+      schemaVersion: string;
+      sourcePath: string;
+      writtenAt: string;
+      jobs: Array<{ puzzleId: string; state: string; lockedBy?: string; failureReasonCodes: string[] }>;
+    };
+
+    assert.equal(
+      fileResult.outputPath,
+      outputPath,
+      "worker dry-run file mode should report the output path",
+    );
+    assert.equal(
+      output.schemaVersion,
+      ENRICHMENT_WORKER_FILE_STORE_OUTPUT_VERSION,
+      "worker dry-run file output schema version should be stable",
+    );
+    assert.equal(output.sourcePath, examplePath, "worker dry-run file output should record the source path");
+    assert.equal(output.writtenAt, input.now, "worker dry-run file output should use the dry-run timestamp");
+    assert.deepEqual(
+      output.jobs.map((job) => [job.puzzleId, job.state, job.lockedBy, job.failureReasonCodes]),
+      [
+        ["pinpoint-916-2026-05-23", "running", "worker-dry-run", []],
+        ["pinpoint-917-2026-05-23", "queued", undefined, []],
+        [
+          "pinpoint-918-2026-05-23",
+          "review_required",
+          undefined,
+          ["ANSWER_FIRST_OVER_SLA", "ANSWER_FIRST_REVIEW_REQUIRED"],
+        ],
+      ],
+      "worker dry-run file output should persist updated job states",
+    );
+    assert.equal(
+      await readFile(examplePath, "utf8"),
+      raw,
+      "worker dry-run file mode should not mutate the input file",
+    );
+  } finally {
+    await rm(tmpDir, { recursive: true, force: true });
+  }
 }
 
 async function main() {

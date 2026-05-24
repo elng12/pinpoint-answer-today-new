@@ -6,6 +6,7 @@ import {
   runAnswerFirstEnrichmentWorkerTickFromStore,
 } from "../lib/puzzles/content-kitchen/enrichment-job-store";
 import type { AnswerFirstEnrichmentJob } from "../lib/puzzles/content-kitchen/types";
+import { createJsonFileAnswerFirstEnrichmentJobStore } from "./content-kitchen-enrichment-file-store";
 
 export const ENRICHMENT_WORKER_DRY_RUN_INPUT_VERSION = "content-kitchen-enrichment-worker-dry-run-v0";
 export const ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION = "content-kitchen-enrichment-worker-dry-run-result-v0";
@@ -45,6 +46,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
     skippedJobs: number;
     stateAdvancements: number;
   };
+  outputPath?: string;
   claimedJobs: AnswerFirstEnrichmentWorkerDryRunJobSummary[];
   skippedJobs: Array<{
     job: AnswerFirstEnrichmentWorkerDryRunJobSummary;
@@ -60,6 +62,7 @@ export type AnswerFirstEnrichmentWorkerDryRunResult = {
 
 type ParsedArgs = {
   inputPath: string;
+  outputPath?: string;
   pretty: boolean;
 };
 
@@ -146,40 +149,67 @@ export async function runAnswerFirstEnrichmentWorkerJsonDryRun(
   });
   const outputJobs = store.snapshot();
 
+  return buildDryRunResult({
+    input,
+    outputJobs,
+    claimedJobs: tick.claimedJobs,
+    skippedJobs: tick.skippedJobs,
+    stateAdvancements: tick.stateAdvancements,
+  });
+}
+
+type BuildDryRunResultInput = {
+  input: AnswerFirstEnrichmentWorkerDryRunInput;
+  outputJobs: AnswerFirstEnrichmentJob[];
+  outputPath?: string;
+  claimedJobs: Awaited<ReturnType<typeof runAnswerFirstEnrichmentWorkerTickFromStore>>["claimedJobs"];
+  skippedJobs: Awaited<ReturnType<typeof runAnswerFirstEnrichmentWorkerTickFromStore>>["skippedJobs"];
+  stateAdvancements: Awaited<ReturnType<typeof runAnswerFirstEnrichmentWorkerTickFromStore>>["stateAdvancements"];
+};
+
+function buildDryRunResult(input: BuildDryRunResultInput): AnswerFirstEnrichmentWorkerDryRunResult {
   return {
     schemaVersion: ENRICHMENT_WORKER_DRY_RUN_RESULT_VERSION,
     dryRun: true,
-    now: input.now,
-    workerId: input.workerId,
+    now: input.input.now,
+    workerId: input.input.workerId,
     summary: {
-      inputJobs: input.jobs.length,
-      outputJobs: outputJobs.length,
-      claimedJobs: tick.claimedJobs.length,
-      skippedJobs: tick.skippedJobs.length,
-      stateAdvancements: tick.stateAdvancements.filter((result) => result.transition !== "unchanged").length,
+      inputJobs: input.input.jobs.length,
+      outputJobs: input.outputJobs.length,
+      claimedJobs: input.claimedJobs.length,
+      skippedJobs: input.skippedJobs.length,
+      stateAdvancements: input.stateAdvancements.filter((result) => result.transition !== "unchanged").length,
     },
-    claimedJobs: tick.claimedJobs.map(summarizeJob),
-    skippedJobs: tick.skippedJobs.map((entry) => ({
+    outputPath: input.outputPath,
+    claimedJobs: input.claimedJobs.map(summarizeJob),
+    skippedJobs: input.skippedJobs.map((entry) => ({
       job: summarizeJob(entry.job),
       reason: entry.reason,
     })),
-    stateAdvancements: tick.stateAdvancements.map((result) => ({
+    stateAdvancements: input.stateAdvancements.map((result) => ({
       job: summarizeJob(result.job),
       transition: result.transition,
       issueCodesAdded: [...result.issueCodesAdded],
     })),
-    outputJobs,
+    outputJobs: input.outputJobs,
   };
 }
 
 function parseArgs(argv: string[]): ParsedArgs {
   let inputPath = "";
+  let outputPath: string | undefined;
   let pretty = true;
 
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === "--input") {
-      inputPath = argv[index + 1] ?? "";
+      inputPath = readArgValue(argv, index, "--input");
+      index += 1;
+      continue;
+    }
+
+    if (arg === "--output") {
+      outputPath = resolve(readArgValue(argv, index, "--output"));
       index += 1;
       continue;
     }
@@ -196,7 +226,7 @@ function parseArgs(argv: string[]): ParsedArgs {
 
     if (arg === "--help" || arg === "-h") {
       throw new Error(
-        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--pretty|--compact]",
+        "Usage: npm run content-kitchen:enrichment-dry-run -- --input <path> [--output <path>] [--pretty|--compact]",
       );
     }
 
@@ -209,16 +239,60 @@ function parseArgs(argv: string[]): ParsedArgs {
 
   return {
     inputPath: resolve(inputPath),
+    outputPath,
     pretty,
   };
+}
+
+function readArgValue(argv: string[], index: number, name: string): string {
+  const value = argv[index + 1];
+  if (!value || value.startsWith("--")) {
+    throw new Error(`${name} requires a value`);
+  }
+
+  return value;
 }
 
 export async function runCli(argv: string[] = process.argv.slice(2)): Promise<void> {
   const args = parseArgs(argv);
   const raw = await readFile(args.inputPath, "utf8");
   const input = parseDryRunInput(JSON.parse(raw));
-  const result = await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
+  const result = args.outputPath
+    ? await runAnswerFirstEnrichmentWorkerJsonDryRunToFile({
+      input,
+      inputPath: args.inputPath,
+      outputPath: args.outputPath,
+    })
+    : await runAnswerFirstEnrichmentWorkerJsonDryRun(input);
   console.log(JSON.stringify(result, null, args.pretty ? 2 : 0));
+}
+
+export async function runAnswerFirstEnrichmentWorkerJsonDryRunToFile(input: {
+  input: AnswerFirstEnrichmentWorkerDryRunInput;
+  inputPath: string;
+  outputPath: string;
+}): Promise<AnswerFirstEnrichmentWorkerDryRunResult> {
+  const store = createJsonFileAnswerFirstEnrichmentJobStore({
+    inputPath: input.inputPath,
+    outputPath: input.outputPath,
+    writtenAt: input.input.now,
+  });
+  const tick = await runAnswerFirstEnrichmentWorkerTickFromStore({
+    store,
+    now: input.input.now,
+    workerId: input.input.workerId,
+    limit: input.input.limit,
+    lockMinutes: input.input.lockMinutes,
+  });
+
+  return buildDryRunResult({
+    input: input.input,
+    outputPath: input.outputPath,
+    outputJobs: tick.updatedJobs,
+    claimedJobs: tick.claimedJobs,
+    skippedJobs: tick.skippedJobs,
+    stateAdvancements: tick.stateAdvancements,
+  });
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

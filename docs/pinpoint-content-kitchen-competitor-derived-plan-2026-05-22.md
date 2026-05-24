@@ -2140,6 +2140,13 @@ PR9 eighth implementation slice:
 - expose the runner through an npm script for local inspection
 - keep the dry run read-only; do not mutate the input file or attach it to production storage, Worker cron, or Feishu notifications yet
 
+PR9 ninth implementation slice:
+
+- add a local JSON file store for dry-run worker ticks
+- allow the dry-run runner to write updated job state to a separate output JSON file
+- keep the input file read-only and preserve non-runnable jobs in the output
+- keep this local-only; do not attach it to production storage, Worker cron, or Feishu notifications yet
+
 ### PR10 — Review Artifact And Human Review
 
 Goal: make failed content actionable.
