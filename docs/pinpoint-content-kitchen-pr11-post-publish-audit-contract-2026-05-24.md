@@ -224,3 +224,69 @@ Builder rules:
 - the builder does not send Feishu messages
 - the builder does not write review queue storage
 - the builder does not publish content
+
+## Build Output Adapter
+
+PR11.4 adds a local build output adapter.
+
+Input uses `content-kitchen-post-publish-build-output-adapter-input-v0`.
+
+Adapter result uses `content-kitchen-post-publish-build-output-adapter-result-v0`.
+
+Run it after a local build with:
+
+```bash
+npm run content-kitchen:post-publish-build-output-adapter -- \
+  --input lib/puzzles/content-kitchen/examples/post-publish-build-output-adapter.input.example.json \
+  --output /tmp/content-kitchen-post-publish-observed-facts-input.json \
+  --pretty
+```
+
+The output file is observed facts builder input. It can be passed to:
+
+```bash
+npm run content-kitchen:post-publish-observed-facts -- \
+  --input /tmp/content-kitchen-post-publish-observed-facts-input.json \
+  --output /tmp/content-kitchen-post-publish-audit-input.json \
+  --pretty
+```
+
+Then pass that file to the audit runner:
+
+```bash
+npm run content-kitchen:post-publish-audit -- \
+  --input /tmp/content-kitchen-post-publish-audit-input.json \
+  --output /tmp/content-kitchen-post-publish-audit.json \
+  --pretty
+```
+
+Example file:
+
+- `post-publish-build-output-adapter.input.example.json`
+
+The adapter reads local files only:
+
+- `buildOutput.appDir`, usually `.next/server/app`
+- `buildOutput.sitemapPath` when provided
+- otherwise it tries `sitemap.xml.body` and then `sitemap.xml` inside `buildOutput.appDir`
+
+It uses `buildOutput.siteBaseUrl` only to make sure the expected canonical URL belongs to the same site origin.
+
+It finds the detail page HTML from `expected.canonicalUrl`. For `/linkedin-pinpoint-answers/pinpoint-answer-925/`, it checks:
+
+- `.next/server/app/linkedin-pinpoint-answers/pinpoint-answer-925.html`
+- `.next/server/app/linkedin-pinpoint-answers/pinpoint-answer-925/index.html`
+
+Adapter rules:
+
+- `--input` is required
+- `--output` is optional
+- `--output` must not equal `--input`
+- `--output` must not equal the resolved HTML source
+- `--output` must not equal the resolved sitemap source
+- output must not include raw HTML
+- the adapter does not fetch public URLs
+- the adapter does not run a browser
+- the adapter does not send Feishu messages
+- the adapter does not write review queue storage
+- the adapter does not publish content
