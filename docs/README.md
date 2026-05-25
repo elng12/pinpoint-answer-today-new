@@ -13,17 +13,17 @@ Use this index as the first stop before moving or archiving documents. It groups
 
 ## Release and Deployment
 
-- [Deployment release checklist](deployment-release-checklist-2026-03-13.md)
+- [Deployment release checklist](archive/2026-03/deployment-release-checklist-2026-03-13.md)
 - [Pre-deploy SEO growth rollout checklist](pre-deploy-seo-growth-rollout-checklist-2026-03-31.md)
-- [Post-deploy smoke check](post-deploy-smoke-check-2026-03-13.md)
-- [Post-deploy SEO fix checklist](post-deploy-seo-fix-checklist-2026-03-19.md)
-- [Vercel production env checklist](vercel-production-env-checklist-2026-03-12.md)
+- [Post-deploy smoke check](archive/2026-03/post-deploy-smoke-check-2026-03-13.md)
+- [Post-deploy SEO fix checklist](archive/2026-03/post-deploy-seo-fix-checklist-2026-03-19.md)
+- [Vercel production env checklist](archive/2026-03/vercel-production-env-checklist-2026-03-12.md)
 - [Recommended commit plan](recommended-commit-plan-2026-03-31.md)
 
 ## SEO and Search
 
-- [Cutover SEO brief](cutover-seo-brief-2026-03-12.md)
-- [GSC cutover checklist](gsc-cutover-checklist-2026-03-12.md)
+- [Cutover SEO brief](archive/2026-03/cutover-seo-brief-2026-03-12.md)
+- [GSC cutover checklist](archive/2026-03/gsc-cutover-checklist-2026-03-12.md)
 - [GSC ranking recovery plan](gsc-ranking-recovery-plan-2026-05-19.md)
 - [SEO audit](seo-audit-2026-04-25.md)
 - [Phase 0 SEO integrity day 0 check](phase0-seo-integrity-day0-check-2026-05-19.md)

@@ -404,7 +404,7 @@
   - **索引引用**（非复制内容）:
     - SEO 约束详见 `docs/seo-audit-2026-04-25.md`
     - 发布流程详见 `docs/recommended-commit-plan-2026-03-31.md`
-    - 部署检查详见 `docs/deployment-release-checklist-2026-03-13.md`
+    - 部署检查详见 `docs/archive/2026-03/deployment-release-checklist-2026-03-13.md`
     - GSC 恢复方案详见 `docs/gsc-ranking-recovery-plan-2026-05-19.md`
   - PR 拆分原则：不混合变量，每 PR 独立可回滚
   - Worker 代码说明：Cloudflare Workers 环境限制导致 worker/src/ 内联了 lib/ 代码
