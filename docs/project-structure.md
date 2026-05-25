@@ -275,10 +275,12 @@ npm run release:production
 - Completed March 2026 cutover and migration docs live under `docs/archive/2026-03/`.
 - `scripts/README.md` documents routine scripts, release scripts, Worker scripts, visual/search tools, and low-frequency helpers.
 - Local assistant state should stay ignored through `.claude/`.
+- Worker fetch route matching now lives in `worker/src/routes/dispatch.ts`; route bodies still live in `worker/src/index.ts`.
+- CI GitHub actions now use `actions/checkout@v6` and `actions/setup-node@v6` while the project install still uses Node 20.
 
 ## Suggested Next Steps
 
-1. Plan a small Worker refactor that extracts only route dispatch first, without changing behavior.
+1. Split one low-risk Worker route body from `worker/src/index.ts` only after adding focused guardrails for that route.
 2. Move active documents into topic folders only after checking links from README files, scripts, issues, and PRs.
 3. Group scripts into folders only after `package.json`, runbooks, and release commands are updated together.
 4. Keep `validate:data`, SEO checks, routing checks, guardrails, Worker typecheck, and production build green before any directory move.
