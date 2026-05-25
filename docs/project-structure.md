@@ -269,10 +269,16 @@ npm run build
 npm run release:production
 ```
 
+## Current Cleanup State
+
+- `docs/README.md` now indexes the active docs.
+- Completed March 2026 cutover and migration docs live under `docs/archive/2026-03/`.
+- `scripts/README.md` documents routine scripts, release scripts, Worker scripts, visual/search tools, and low-frequency helpers.
+- Local assistant state should stay ignored through `.claude/`.
+
 ## Suggested Next Steps
 
-1. Add a `docs/README.md` index that links to the most important current docs.
-2. Move old March 2026 cutover/migration docs into `docs/archive/2026-03/`.
-3. Add a short `scripts/README.md` explaining which scripts are safe for daily use and which are low-frequency tools.
-4. Plan a small Worker refactor that extracts only route dispatch first, without changing behavior.
-5. Keep `validate:data`, SEO checks, routing checks, and guardrails green before any directory move.
+1. Plan a small Worker refactor that extracts only route dispatch first, without changing behavior.
+2. Move active documents into topic folders only after checking links from README files, scripts, issues, and PRs.
+3. Group scripts into folders only after `package.json`, runbooks, and release commands are updated together.
+4. Keep `validate:data`, SEO checks, routing checks, guardrails, Worker typecheck, and production build green before any directory move.

@@ -92,5 +92,5 @@ Use this index as the first stop before moving or archiving documents. It groups
 ## Suggested Cleanup Order
 
 1. Keep this index updated as new docs are added.
-2. Continue archiving clearly completed March 2026 cutover and migration docs under `docs/archive/2026-03/`.
-3. Move active documents into topic folders only after checking links from README files, scripts, and issue/PR references.
+2. Leave the completed March 2026 cutover and migration docs under `docs/archive/2026-03/`.
+3. Move any remaining active documents into topic folders only after checking links from README files, scripts, and issue/PR references.

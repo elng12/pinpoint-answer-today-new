@@ -29,6 +29,9 @@ Thumbs.db
 .vscode/
 .idea/
 
+# local assistant state
+.claude/
+
 # playwright / tool logs
 .playwright-mcp/
 .playwright-cli/
