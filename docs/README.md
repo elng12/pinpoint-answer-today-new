@@ -83,13 +83,13 @@ Use this index as the first stop before moving or archiving documents. It groups
 
 ## Historical Migration and Cutover
 
-- [Review reconciliation](review-reconciliation-2026-03-12.md)
-- [Legacy entry scan](legacy-entry-scan-2026-03-12.md)
-- [Final cutover gap list](final-cutover-gap-list-2026-03-13.md)
-- [Single repo migration todo](single-repo-migration-todo-2026-03-13.md)
+- [Review reconciliation](archive/2026-03/review-reconciliation-2026-03-12.md)
+- [Legacy entry scan](archive/2026-03/legacy-entry-scan-2026-03-12.md)
+- [Final cutover gap list](archive/2026-03/final-cutover-gap-list-2026-03-13.md)
+- [Single repo migration todo](archive/2026-03/single-repo-migration-todo-2026-03-13.md)
 
 ## Suggested Cleanup Order
 
 1. Keep this index updated as new docs are added.
-2. Archive clearly completed March 2026 cutover and migration docs under a future `docs/archive/2026-03/` folder.
+2. Continue archiving clearly completed March 2026 cutover and migration docs under `docs/archive/2026-03/`.
 3. Move active documents into topic folders only after checking links from README files, scripts, and issue/PR references.

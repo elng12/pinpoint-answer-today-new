@@ -405,4 +405,4 @@ npm run test:pinpoint-regression:core
 - 观察期为 `2026-03-13` 到 `2026-03-20`
 - 观察期内仍保留父仓库回滚能力，暂不视为“彻底脱钩完成”
 
-当前统一口径以 `docs/single-repo-migration-todo-2026-03-13.md` 为准。
+当前统一口径以 `docs/archive/2026-03/single-repo-migration-todo-2026-03-13.md` 为准。

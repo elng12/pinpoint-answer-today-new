@@ -18,7 +18,7 @@
 
 现状：
 
-- `docs/single-repo-migration-todo-2026-03-13.md` 写的是阶段 C 已执行，当前在 `2026-03-13` → `2026-03-20` 观察期
+- `docs/archive/2026-03/single-repo-migration-todo-2026-03-13.md` 写的是阶段 C 已执行，当前在 `2026-03-13` → `2026-03-20` 观察期
 - `worker/README.md` 已更新为”主链路已切到新仓库，当前处于观察期”
 
 完成标准：
