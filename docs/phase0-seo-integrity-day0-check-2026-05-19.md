@@ -442,3 +442,50 @@ Next action:
 
 - Keep running this daily observer.
 - Reminder: today is before 2026-05-26 UTC, so do not judge GSC recovery yet (Search Console is delayed and same-day data is noisy).
+
+## Daily Observation - 2026-05-25 Rerun (@ 2026-05-25T08:56:22Z)
+
+Result: PASS
+
+Release context (non-SEO variable only):
+
+- Candidate auto-promotion has landed on `main` at `99e9868` (`ci: auto-promote pinpoint candidates after checks`).
+- Production queue observation at `2026-05-25T08:55:14.411Z` reported GitHub combined status `success`, Vercel status `success`, and `candidateBranchCount=0`.
+- Worker health reported `puzzleDate=2026-05-25`, answer `Names of mountain ranges`, and clues `Dolomites`, `Rockies`, `Andes`, `Alps`, `Himalayas`.
+- PR11 public fetch audit for `#755` returned `published_and_audit_passed` with no issue codes.
+
+Latest public detail (registry):
+
+- `#755` (`/linkedin-pinpoint-answers/pinpoint-answer-755/`) is `status=live`, `detailState=published`, and has registry `updatedAt=2026-05-25T07:03:59.577Z`.
+- Previous `#754` is now `status=archived`, `detailState=fallback_full`, and remains public.
+
+Production summary API:
+
+- `https://pinpointanswertoday.app/api/puzzles/summary` => 200.
+- Latest summary slug is `pinpoint-answer-755`, puzzle number `755`, status `live`, and `isoPublishedAt=2026-05-25T00:00:00.000Z`.
+
+Production URLs checked under Googlebot Smartphone UA:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, canonical tag, JSON-LD present, H1 shows `#755`, latest answer present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | `https://pinpointanswertoday.app/puzzles` | `index, follow` | title, canonical tag, JSON-LD present, latest slug and answer present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | title, canonical tag, H1 present, latest slug present (no JSON-LD detected) |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-755/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, H1 present, answer and all clue markers present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-754/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, H1 present, archived detail remains reachable |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, latest `#755`, and previous `#754`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, `#755`, and `#754` matches registry `updatedAt=2026-05-25T07:03:59.577Z`.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, no sitemap omissions, no missing-core-mobile-HTML indicators observed.
+- PASS: Latest public page `#755` passed PR11 public fetch audit after production deployment.
+
+Next action:
+
+- Keep running this daily observer.
+- Wait until 2026-05-26 UTC or later before judging GSC recovery, because Search Console data is delayed and same-day data is noisy.
