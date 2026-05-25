@@ -20,6 +20,7 @@ import { validatePublishEligibility } from "../lib/puzzles/publish-eligibility.s
 import { validatePinpointEvidenceV1 } from "../lib/puzzles/pinpoint-evidence-v1.shared.mjs";
 import { validateReleaseOverrideDryRun } from "../lib/puzzles/release-override.shared.mjs";
 import { decidePinpointReleaseQueueAction } from "../lib/puzzles/release-queue-policy.shared.mjs";
+import { resolveWorkerFetchRoute } from "../worker/src/routes/dispatch";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -2663,12 +2664,60 @@ function checkReleaseQueuePolicy() {
   console.log("ok: release queue policy blocks duplicate production pushes and unsafe deployment states");
 }
 
+function checkWorkerRouteDispatchResolver() {
+  function routeFor(path: string, options: { method?: string; host?: string } = {}) {
+    const method = options.method ?? "GET";
+    const host = options.host ?? "example.workers.dev";
+    const request = new Request(`https://${host}${path}`, { method });
+    return resolveWorkerFetchRoute(request, new URL(request.url));
+  }
+
+  assert.equal(routeFor("/"), "root");
+  assert.equal(routeFor("/graphql"), "graphql");
+  assert.equal(routeFor("/api/pinpoint/today"), "pinpointToday");
+  assert.equal(routeFor("/admin/seed"), "adminSeed");
+  assert.equal(routeFor("/admin/seed", { host: "pinpointanswertoday.app" }), "notFound");
+  assert.equal(routeFor("/admin/preflight-linkedin"), "adminPreflightLinkedin");
+  assert.equal(routeFor("/admin/test-fallback"), "adminTestFallback");
+  assert.equal(routeFor("/admin/candidate-branch-dry-run", { method: "POST" }), "adminCandidateBranchDryRun");
+  assert.equal(routeFor("/admin/candidate-branch-dry-run"), "notFound");
+  assert.equal(routeFor("/admin/release-queue-dry-run", { method: "POST" }), "adminReleaseQueueDryRun");
+  assert.equal(routeFor("/admin/release-queue-dry-run"), "notFound");
+  assert.equal(routeFor("/admin/run"), "adminRun");
+  assert.equal(routeFor("/admin/put-doc", { method: "POST" }), "adminPutDoc");
+  assert.equal(routeFor("/admin/put-doc"), "notFound");
+  assert.equal(routeFor("/admin/upload-ops", { method: "POST" }), "adminUploadOps");
+  assert.equal(routeFor("/admin/upload-ops"), "notFound");
+  assert.equal(routeFor("/health"), "health");
+  assert.equal(routeFor("/monitor/cron-status"), "monitorCronStatus");
+  assert.equal(routeFor("/missing"), "notFound");
+
+  console.log("ok: worker route resolver preserves fetch route matching");
+}
+
 async function checkCandidateBranchDryRunRouteSafety() {
   const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const dispatchSource = await readFile(resolve(ROOT, "worker/src/routes/dispatch.ts"), "utf8");
 
   assert.ok(
-    workerSource.includes('url.pathname === "/admin/candidate-branch-dry-run" && req.method === "POST"'),
+    dispatchSource.includes('url.pathname === "/admin/candidate-branch-dry-run" && req.method === "POST"'),
     "candidate branch dry-run route must be POST-only",
+  );
+  assert.equal(
+    resolveWorkerFetchRoute(
+      new Request("https://example.workers.dev/admin/candidate-branch-dry-run", { method: "GET" }),
+      new URL("https://example.workers.dev/admin/candidate-branch-dry-run"),
+    ),
+    "notFound",
+    "candidate branch dry-run must not match GET requests",
+  );
+  assert.equal(
+    resolveWorkerFetchRoute(
+      new Request("https://example.workers.dev/admin/candidate-branch-dry-run", { method: "POST" }),
+      new URL("https://example.workers.dev/admin/candidate-branch-dry-run"),
+    ),
+    "adminCandidateBranchDryRun",
+    "candidate branch dry-run must match POST requests",
   );
   assert.ok(
     workerSource.includes("candidate dry-run is blocked on the primary branch"),
@@ -2689,10 +2738,31 @@ async function checkCandidateBranchDryRunRouteSafety() {
 
 async function checkReleaseQueueDryRunRouteSafety() {
   const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
-  const routeStart = workerSource.indexOf('url.pathname === "/admin/release-queue-dry-run" && req.method === "POST"');
-  const routeEnd = workerSource.indexOf('url.pathname === "/admin/run"', routeStart);
+  const dispatchSource = await readFile(resolve(ROOT, "worker/src/routes/dispatch.ts"), "utf8");
+  const routeStart = workerSource.indexOf('case "adminReleaseQueueDryRun"');
+  const routeEnd = workerSource.indexOf('case "adminRun"', routeStart);
   assert.ok(routeStart >= 0, "release queue dry-run route must exist and be POST-only");
   assert.ok(routeEnd > routeStart, "release queue dry-run route must stay before the real admin run route");
+  assert.ok(
+    dispatchSource.includes('url.pathname === "/admin/release-queue-dry-run" && req.method === "POST"'),
+    "release queue dry-run route must be POST-only in the route resolver",
+  );
+  assert.equal(
+    resolveWorkerFetchRoute(
+      new Request("https://example.workers.dev/admin/release-queue-dry-run", { method: "GET" }),
+      new URL("https://example.workers.dev/admin/release-queue-dry-run"),
+    ),
+    "notFound",
+    "release queue dry-run must not match GET requests",
+  );
+  assert.equal(
+    resolveWorkerFetchRoute(
+      new Request("https://example.workers.dev/admin/release-queue-dry-run", { method: "POST" }),
+      new URL("https://example.workers.dev/admin/release-queue-dry-run"),
+    ),
+    "adminReleaseQueueDryRun",
+    "release queue dry-run must match POST requests",
+  );
 
   const routeSource = workerSource.slice(routeStart, routeEnd);
   assert.ok(routeSource.includes("getAdminSecret(env)"), "release queue dry-run route must be admin-gated");
@@ -2929,6 +2999,7 @@ async function main() {
   checkIntermediateStateCommitDetection();
   await checkWorkerEnrichCommitsOnlyFinalPublicPayload();
   checkReleaseQueuePolicy();
+  checkWorkerRouteDispatchResolver();
   await checkCandidateBranchDryRunRouteSafety();
   await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueDryRunOpsScript();

@@ -28,6 +28,7 @@ import {
   regeneratePuzzleDraft,
   type EnrichInput,
 } from "./enrich-llm";
+import { resolveWorkerFetchRoute } from "./routes/dispatch";
 
 export interface Env {
   PP_DATA: KVNamespace;
@@ -5829,11 +5830,11 @@ export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
 
-    if (url.pathname === "/") {
-      return new Response("ok");
-    }
+    switch (resolveWorkerFetchRoute(req, url)) {
+      case "root":
+        return new Response("ok");
 
-  if (url.pathname === "/graphql") {
+      case "graphql": {
 
     const pre = preflightIfNeeded(req);
     if (pre) return pre;
@@ -5916,7 +5917,7 @@ export default {
     return resp;
   }
 
-    if (url.pathname === "/api/pinpoint/today") {
+      case "pinpointToday": {
       const date = url.searchParams.get("d") ?? getBeijingTodayDate();
       const today = getBeijingTodayDate();
       const body = await env.PP_DATA.get(keyOf(date));
@@ -5926,7 +5927,7 @@ export default {
       return new Response(body, { headers: { "content-type": "application/json" } });
     }
 
-    if (url.pathname === "/admin/seed" && url.hostname.endsWith(".workers.dev")) {
+      case "adminSeed": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -5949,7 +5950,7 @@ export default {
       return new Response("seeded");
     }
 
-    if (url.pathname === "/admin/preflight-linkedin") {
+      case "adminPreflightLinkedin": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -5995,7 +5996,7 @@ export default {
       }
     }
 
-    if (url.pathname === "/admin/test-fallback") {
+      case "adminTestFallback": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -6076,7 +6077,7 @@ export default {
       }
     }
 
-    if (url.pathname === "/admin/candidate-branch-dry-run" && req.method === "POST") {
+      case "adminCandidateBranchDryRun": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -6141,7 +6142,7 @@ export default {
       });
     }
 
-    if (url.pathname === "/admin/release-queue-dry-run" && req.method === "POST") {
+      case "adminReleaseQueueDryRun": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -6234,7 +6235,7 @@ export default {
       });
     }
 
-    if (url.pathname === "/admin/run") {
+      case "adminRun": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -6517,7 +6518,7 @@ export default {
       }
     }
 
-    if (url.pathname === "/admin/put-doc" && req.method === "POST") {
+      case "adminPutDoc": {
       const enabled = env.ADMIN_PUT_DOC_ENABLED === 'true';
       const isProd = (env.ENVIRONMENT || '').toLowerCase() === 'production';
       if (isProd || !enabled) {
@@ -6646,7 +6647,7 @@ export default {
       }
     }
 
-    if (url.pathname === "/admin/upload-ops" && req.method === "POST") {
+      case "adminUploadOps": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
       const secret = url.searchParams.get("secret");
@@ -6669,12 +6670,12 @@ export default {
       }
     }
 
-    if (url.pathname === "/health") {
+      case "health": {
       const raw = await env.PP_DATA.get("pinpoint:last");
       return new Response(raw ?? "{}", { headers: { "content-type": "application/json" } });
     }
 
-    if (url.pathname === "/monitor/cron-status") {
+      case "monitorCronStatus": {
       const date = String(url.searchParams.get("date") || "").trim();
       const limitRaw = Number.parseInt(String(url.searchParams.get("limit") || "10"), 10);
       const limit = Number.isFinite(limitRaw) ? Math.max(1, Math.min(limitRaw, cronHeartbeatRunsLimit)) : 10;
@@ -6703,7 +6704,10 @@ export default {
       });
     }
 
-    return new Response("Not Found", { status: 404 });
+      case "notFound":
+      default:
+        return new Response("Not Found", { status: 404 });
+    }
   },
 
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
