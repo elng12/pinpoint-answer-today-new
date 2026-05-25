@@ -78,7 +78,7 @@ export function PuzzleDetail({
     ? "Auto-generated quick guide from live puzzle data"
     : isLightExplainerMode
       ? "Compact explainer published from verified puzzle data"
-    : "Verified by Human Editor";
+    : "Machine-checked and AI-reviewed";
   const summary = buildDetailSummary(puzzle, isShortMode, isFallbackShortMode);
   const publishedAt = `${puzzle.isoDate}T00:00:00Z`;
   const showUpdatedAt = Boolean(puzzle.updatedAt && puzzle.updatedAt !== publishedAt);

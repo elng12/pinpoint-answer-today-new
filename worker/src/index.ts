@@ -589,7 +589,7 @@ async function notifyPinpointReleaseQueueDecision(
       ? Math.ceil(fields.remainingWindowMs / 60000)
       : undefined;
   const title = decision.action === "hold-review"
-    ? "⛔ Pinpoint 发布进入人工检查"
+    ? "⛔ Pinpoint 发布被机器检查拦截"
     : "⏳ Pinpoint 发布已写入候选分支";
   await notifyCron(env, title, [
     `日期: ${fields.logicalGameDate || "未知"}`,
@@ -679,7 +679,7 @@ function getReleaseQueueActionLabel(value: unknown): string {
   const map: Record<string, string> = {
     "push-production": "推到正式站",
     "write-candidate": "写入候选分支",
-    "hold-review": "等待人工检查",
+    "hold-review": "机器检查拦截",
   };
   return map[raw] ?? (raw || "未知");
 }
@@ -694,7 +694,7 @@ function getReleaseQueueReasonLabel(value: unknown): string {
     "production-deployment-unknown": "正式站部署状态不清楚，为了安全先不推正式站",
     "production-push-budget-exhausted": "短时间内已经推过一次正式站，为了安全先写候选分支",
     "candidate-branch-outdated": "候选分支不是最新，需要先更新",
-    "candidate-branch-awaiting-promotion": "候选分支已准备好，等待人工确认上线",
+    "candidate-branch-awaiting-promotion": "候选分支已准备好，等待机器检查通过后自动上线",
     "candidate-branch-enabled": "已开启只写候选分支",
     "production-push-allowed": "允许推到正式站",
   };

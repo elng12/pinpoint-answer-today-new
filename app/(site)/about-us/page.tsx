@@ -21,7 +21,7 @@ export default function AboutPage() {
           <h1 className="section-title">About Pinpoint Answer Today</h1>
           <p className="copy" style={{ marginTop: 12 }}>
             Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. We
-            publish verified answers, spoiler-safe hints, and archive recaps.
+            publish machine-checked answers, spoiler-safe hints, and archive recaps.
           </p>
         </section>
 
@@ -53,16 +53,16 @@ export default function AboutPage() {
           <p className="eyebrow">Editorial Process</p>
           <h2 className="section-title" style={{ marginTop: 8 }}>How we verify each Pinpoint page</h2>
           <p className="copy" style={{ marginTop: 12 }}>
-            Each Pinpoint answer page combines puzzle data, human review, and automated checks so the
+            Each Pinpoint answer page combines live puzzle data, AI review, and automated checks so the
             public page is useful, consistent, and traceable over time.
           </p>
           <ol className="copy" style={{ marginTop: 16, paddingLeft: 20, lineHeight: 2 }}>
             <li>Live puzzle data gives us the clue set, answer, and publish timing for the day.</li>
-            <li>Human editorial review checks the explanation, turning point, and clue-by-clue fit.</li>
+            <li>AI review checks the explanation, turning point, and clue-by-clue fit.</li>
             <li>Automated quality checks validate data integrity and catch thin or malformed copy before release.</li>
           </ol>
           <p className="copy" style={{ marginTop: 12 }}>
-            Pages marked <strong>Verified by Human Editor</strong> have been reviewed by our editorial workflow.
+            Pages marked <strong>Machine-checked and AI-reviewed</strong> passed the automated review workflow.
             Pages marked <strong>Auto-generated quick guide</strong> are based on live puzzle data and may offer a
             lighter explanation layer until a fuller walkthrough is available.
           </p>

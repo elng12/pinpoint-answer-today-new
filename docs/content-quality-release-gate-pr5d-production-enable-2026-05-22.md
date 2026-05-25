@@ -36,7 +36,7 @@ With the flag enabled:
 - queued/building/unknown Vercel status writes to the deterministic candidate branch
 - failed Vercel status enters review and does not write production
 - a second same-slug production push inside the 60-minute window writes candidate unless `PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH=true`
-- candidate branches are not auto-promoted
+- candidate branches are auto-promoted only after CI machine checks pass
 
 ## First-Run Observation
 

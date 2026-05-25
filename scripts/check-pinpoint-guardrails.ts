@@ -2631,24 +2631,24 @@ function checkReleaseQueuePolicy() {
   assert.equal(
     currentCandidateAwaitingPromotion.action,
     "write-candidate",
-    "current candidate should still wait for explicit promotion approval",
+    "current candidate should wait for a machine promotion path",
   );
   assert.equal(currentCandidateAwaitingPromotion.reasonCode, "candidate-branch-awaiting-promotion");
 
-  const explicitlyPromotedCandidate = decidePinpointReleaseQueueAction({
+  const machinePromotedCandidate = decidePinpointReleaseQueueAction({
     ...baseInput,
     deploymentState: "ready",
     candidateBranchExists: true,
     candidateIsCurrent: true,
     allowCandidatePromotion: true,
   });
-  assert.equal(explicitlyPromotedCandidate.action, "push-production", "explicit approval can promote a current candidate");
+  assert.equal(machinePromotedCandidate.action, "push-production", "machine promotion can publish a current candidate");
 
   const failed = decidePinpointReleaseQueueAction({
     ...baseInput,
     deploymentState: "failed",
   });
-  assert.equal(failed.action, "hold-review", "failed production deployment should go to review");
+  assert.equal(failed.action, "hold-review", "failed production deployment should be blocked by machine checks");
 
   const allowed = decidePinpointReleaseQueueAction({
     ...baseInput,
@@ -2778,6 +2778,47 @@ async function checkReleaseQueueObservationOpsScript() {
   console.log("ok: worker ops exposes production release queue observation");
 }
 
+async function checkCandidateBranchWorkflowAutoPromotes() {
+  const ciWorkflow = await readFile(resolve(ROOT, ".github/workflows/ci.yml"), "utf8");
+
+  assert.ok(
+    ciWorkflow.includes('"pinpoint/candidate/**"'),
+    "CI must run on Pinpoint candidate branch pushes",
+  );
+  assert.ok(
+    ciWorkflow.includes("promote-pinpoint-candidate") &&
+      ciWorkflow.includes("startsWith(github.ref, 'refs/heads/pinpoint/candidate/')"),
+    "CI must include a candidate auto-promotion job after machine checks pass",
+  );
+  assert.ok(
+    ciWorkflow.includes("needs: checks") &&
+      ciWorkflow.includes('git merge --ff-only "$GITHUB_SHA"') &&
+      ciWorkflow.includes("git push origin HEAD:main"),
+    "candidate auto-promotion must fast-forward main only after the checked candidate commit passes",
+  );
+
+  console.log("ok: candidate branches auto-promote through machine checks");
+}
+
+async function checkPublicVerificationCopyUsesMachineReview() {
+  const publicCopySources = [
+    await readFile(resolve(ROOT, "components/detail/PuzzleDetail.tsx"), "utf8"),
+    await readFile(resolve(ROOT, "app/(site)/about-us/page.tsx"), "utf8"),
+  ].join("\n");
+
+  assert.ok(
+    publicCopySources.includes("Machine-checked and AI-reviewed"),
+    "public detail/about copy must describe machine and AI review",
+  );
+  assert.ok(
+    !publicCopySources.includes("Verified by Human Editor") &&
+      !publicCopySources.includes("Human editorial review"),
+    "public detail/about copy must not claim human review for automated publishing",
+  );
+
+  console.log("ok: public verification copy uses machine and AI review wording");
+}
+
 async function checkProductionReleaseRunsPublicFetchAudit() {
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
@@ -2892,6 +2933,8 @@ async function main() {
   await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueDryRunOpsScript();
   await checkReleaseQueueObservationOpsScript();
+  await checkCandidateBranchWorkflowAutoPromotes();
+  await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
