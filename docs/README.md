@@ -83,6 +83,7 @@ Use this index as the first stop before moving or archiving documents. It groups
 
 ## Historical Migration and Cutover
 
+- [Archive index](archive/README.md)
 - [Review reconciliation](archive/2026-03/review-reconciliation-2026-03-12.md)
 - [Legacy entry scan](archive/2026-03/legacy-entry-scan-2026-03-12.md)
 - [Final cutover gap list](archive/2026-03/final-cutover-gap-list-2026-03-13.md)
