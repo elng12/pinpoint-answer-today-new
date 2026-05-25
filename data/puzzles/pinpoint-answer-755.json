@@ -1,0 +1,229 @@
+{
+  "puzzleNumber": 755,
+  "slug": "pinpoint-answer-755",
+  "publishDate": "2026-05-25",
+  "isoDate": "2026-05-25",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Dolomites",
+    "Rockies",
+    "Andes",
+    "Alps",
+    "Himalayas"
+  ],
+  "answer": "Names of mountain ranges",
+  "category": "Names of mountain ranges",
+  "wordHints": {
+    "Dolomites": "The Dolomites are a distinctive range in the Italian Alps.",
+    "Rockies": "The Rockies are a major range in western North America.",
+    "Andes": "The Andes run along the western coast of South America.",
+    "Alps": "The Alps are a dominant feature of the European landscape.",
+    "Himalayas": "The Himalayas are home to the world's highest peaks."
+  },
+  "spoilerHints": {
+    "Dolomites": "Dolomites should be tested as part of names of mountain ranges, not as a standalone reference.",
+    "Rockies": "Keep Rockies in mind, then see whether Himalayas supports the same answer.",
+    "Andes": "Andes works best after the board narrows toward names of mountain ranges.",
+    "Alps": "Alps should be tested as part of names of mountain ranges, not as a standalone reference.",
+    "Himalayas": "Himalayas is the clue that makes names of mountain ranges concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first glance, this puzzle felt like a collection of vacation destinations.",
+    "The clues evoked images of scenic views, hiking trails, and perhaps even skiing.",
+    "I started thinking about popular tourist spots around the world.",
+    "But that theory broke down as I considered the specific nature of each clue.",
+    "Were they cities? Landmarks?",
+    "The 'Rockies' clue was the turning point.",
+    "It made me think of mountain ranges more specifically.",
+    "That's when I realized each clue referred to a major mountain range.",
+    "The answer is: Names of mountain ranges.",
+    "The Dolomites, Rockies, Andes, Alps, and Himalayas all fit perfectly.",
+    "The initial misdirection faded away, replaced by the clean fit of mountain ranges.",
+    "The puzzle highlights the importance of considering the specific nature of each clue to find the correct category."
+  ],
+  "solutionNarrative": [
+    "Dolomites and Rockies first pulled me toward tourist attractions, so that was the first path I tested. It held together for a moment, but rockies never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating rockies as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about tourist attractions; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+  ],
+  "lessons": [
+    {
+      "title": "\"Dolomites\" and \"Rockies\" can look like they belong to different categories at first",
+      "body": "\"Dolomites\" and \"Rockies\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Rockies\" anchors a shared category board with one concrete theme",
+      "body": "rockies is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Rockies\" to re-check \"Dolomites\" under a shared category board with one concrete theme",
+      "body": "When a set feels random, look for a common feature at a specific scale."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on names",
+    "fastStrategy": "\"Dolomites\" and \"Rockies\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Dolomites",
+        "examplePhrase": "Dolomites",
+        "connectionExplained": "The Dolomites are a distinctive range in the Italian Alps."
+      },
+      {
+        "clue": "Rockies",
+        "examplePhrase": "Rockies",
+        "connectionExplained": "The Rockies are a major range in western North America."
+      },
+      {
+        "clue": "Andes",
+        "examplePhrase": "Andes",
+        "connectionExplained": "The Andes run along the western coast of South America."
+      },
+      {
+        "clue": "Alps",
+        "examplePhrase": "Alps",
+        "connectionExplained": "The Alps are a dominant feature of the European landscape."
+      },
+      {
+        "clue": "Himalayas",
+        "examplePhrase": "Himalayas",
+        "connectionExplained": "The Himalayas are home to the world's highest peaks."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Dolomites\" and \"Rockies\" in LinkedIn Pinpoint #755?",
+      "answer": "The answer is \"Names of mountain ranges\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Dolomites\" and \"Rockies\" connect in LinkedIn Pinpoint #755?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Rockies is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Rockies\" the key clue in LinkedIn Pinpoint #755?",
+      "answer": "Rockies is the turning clue because \"Rockies\" makes the shared category frame explicit. It also makes Dolomites read cleanly as \"Dolomites\". The puzzle is tricky because the clues are geographically diverse, but each is a major mountain range."
+    },
+    {
+      "question": "How does \"Dolomites\" fit the same category as \"Rockies\" in LinkedIn Pinpoint #755?",
+      "answer": "\"Dolomites\" reads as \"Dolomites\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Dolomites, Rockies, and Andes do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"travel destinations\" can feel plausible before one clue makes the answer feel concrete. Rockies is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "travel destinations",
+      "popular hiking spots"
+    ],
+    "whyFalseStartPlausible": [
+      "While mountains are attractions, this is too broad. The set demands a specific type of place.",
+      "travel destinations feels plausible early on, but it falls apart once rockies demands a more exact reading."
+    ],
+    "breakingClue": "Rockies",
+    "pivot": "The solve turned when I stopped treating rockies as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about tourist attractions; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Dolomites, Rockies, and Andes stop feeling disconnected and start looking like they belong together. Once rockies is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle is tricky because the clues are geographically diverse, but each is a major mountain range."
+  },
+  "turningPoint": {
+    "clue": "Rockies",
+    "whyDecisive": "The 'Rockies' clue quickly narrowed down the possibilities, making the category clear.",
+    "whatChangedAfterIt": "Once Rockies landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Dolomites",
+      "surfaceMisread": "tourist attractions",
+      "resolvedPhraseOrMember": "Dolomites",
+      "nonObviousWhy": "The Dolomites are a distinctive range in the Italian Alps.",
+      "searchableContext": "Dolomites"
+    },
+    {
+      "clue": "Rockies",
+      "surfaceMisread": "tourist attractions",
+      "resolvedPhraseOrMember": "Rockies",
+      "nonObviousWhy": "The Rockies are a major range in western North America.",
+      "searchableContext": "Rockies"
+    },
+    {
+      "clue": "Andes",
+      "surfaceMisread": "tourist attractions",
+      "resolvedPhraseOrMember": "Andes",
+      "nonObviousWhy": "The Andes run along the western coast of South America.",
+      "searchableContext": "Andes"
+    },
+    {
+      "clue": "Alps",
+      "surfaceMisread": "tourist attractions",
+      "resolvedPhraseOrMember": "Alps",
+      "nonObviousWhy": "The Alps are a dominant feature of the European landscape.",
+      "searchableContext": "Alps"
+    },
+    {
+      "clue": "Himalayas",
+      "surfaceMisread": "tourist attractions",
+      "resolvedPhraseOrMember": "Himalayas",
+      "nonObviousWhy": "The Himalayas are home to the world's highest peaks.",
+      "searchableContext": "Himalayas"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Dolomites\" and \"Rockies\" in LinkedIn Pinpoint #755?",
+      "answer": "The answer is \"Names of mountain ranges\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Dolomites"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Dolomites\" and \"Rockies\" connect in LinkedIn Pinpoint #755?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Rockies is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Dolomites"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Rockies\" the key clue in LinkedIn Pinpoint #755?",
+      "answer": "Rockies is the turning clue because \"Rockies\" makes the shared category frame explicit. It also makes Dolomites read cleanly as \"Dolomites\". The puzzle is tricky because the clues are geographically diverse, but each is a major mountain range.",
+      "tiedClue": "Rockies"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Dolomites\" fit the same category as \"Rockies\" in LinkedIn Pinpoint #755?",
+      "answer": "\"Dolomites\" reads as \"Dolomites\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Dolomites"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Dolomites",
+      "Rockies",
+      "Andes",
+      "Alps",
+      "Himalayas"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Dolomites\" and \"Rockies\" can look like they belong to different categories at first",
+      "\"Rockies\" anchors a shared category board with one concrete theme",
+      "Use \"Rockies\" to re-check \"Dolomites\" under a shared category board with one concrete theme",
+      "Dolomites",
+      "Rockies"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "tourist attractions",
+      "whyPlausible": "While mountains are attractions, this is too broad. The set demands a specific type of place.",
+      "whyRejected": "Once Rockies lands, the final answer explains the board more cleanly than tourist attractions."
+    },
+    {
+      "label": "travel destinations",
+      "whyPlausible": "travel destinations feels plausible early on, but it falls apart once rockies demands a more exact reading.",
+      "whyRejected": "Once Rockies lands, the final answer explains the board more cleanly than travel destinations."
+    }
+  ],
+  "setValidationSummary": "Andes, Alps, Himalayas keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Names of mountain ranges"
+}
