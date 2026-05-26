@@ -1,0 +1,227 @@
+{
+  "puzzleNumber": 756,
+  "slug": "pinpoint-answer-756",
+  "publishDate": "2026-05-26",
+  "isoDate": "2026-05-26",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Help",
+    "Check-in",
+    "News",
+    "Rolltop",
+    "Standing"
+  ],
+  "answer": "Types of desks",
+  "category": "Types of desks",
+  "wordHints": {
+    "Help": "A 'help desk' is a specific type of desk where people can go for assistance.",
+    "Check-in": "A 'check-in desk' is where you register at a hotel or office.",
+    "News": "A 'news desk' is a place in a newsroom where information is processed.",
+    "Rolltop": "A rolltop is a classic desk design with a sliding cover.",
+    "Standing": "A 'standing desk' lets you work while standing up."
+  },
+  "spoilerHints": {
+    "Help": "Treat Help as one recognizable member of types of desks, not as a broad topic on its own.",
+    "Check-in": "Check-in is the clue that makes types of desks specific enough to verify across the whole board.",
+    "News": "Try reading News as a specific type inside types of desks instead of as a loose general reference.",
+    "Rolltop": "Treat Rolltop as one recognizable member of types of desks, not as a broad topic on its own.",
+    "Standing": "Standing helps more once you ask what kind of thing it is rather than where you have seen it before."
+  },
+  "articleBlocks": [
+    "At first, this looked more like ergonomic tools than desks.",
+    "Help pushed me in that direction immediately.",
+    "Check-in kept that theory alive for a moment, but rolltop still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Rolltop made me stop thinking about ergonomic tools and start thinking about desks.",
+    "Help made sense as a help desk.",
+    "Check-in made sense as a check-in desk.",
+    "The answer was Types of desks.",
+    "Rolltop and Standing then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "Help and Check-in first pulled me toward ergonomic tools, so that was the first path I tested. It held together for a moment, but rolltop never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating rolltop as just another clue and asked what kind of desk each clue could describe. Once I made that shift, I was no longer thinking about ergonomic tools; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing desks."
+  ],
+  "lessons": [
+    {
+      "title": "\"Help\" and \"Check-in\" can look like they belong to different categories at first",
+      "body": "\"Help\" and \"Check-in\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Rolltop\" is what makes desk feel concrete instead of broad",
+      "body": "rolltop is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Every clue should name a specific kind of desk once the category sharpens",
+      "body": "Look for shared root words or phrases across the clues to narrow down the category."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on desks",
+    "fastStrategy": "\"Help\" and \"Check-in\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Help",
+        "examplePhrase": "Help desk",
+        "connectionExplained": "A 'help desk' is a specific type of desk where people can go for assistance."
+      },
+      {
+        "clue": "Check-in",
+        "examplePhrase": "Check-in desk",
+        "connectionExplained": "A 'check-in desk' is where you register at a hotel or office."
+      },
+      {
+        "clue": "News",
+        "examplePhrase": "News desk",
+        "connectionExplained": "A 'news desk' is a place in a newsroom where information is processed."
+      },
+      {
+        "clue": "Rolltop",
+        "examplePhrase": "Rolltop desk",
+        "connectionExplained": "A rolltop is a classic desk design with a sliding cover."
+      },
+      {
+        "clue": "Standing",
+        "examplePhrase": "Standing desk",
+        "connectionExplained": "A 'standing desk' lets you work while standing up."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Which type-level category connects \"Help\" and \"Check-in\" in LinkedIn Pinpoint #756?",
+      "answer": "The answer is \"Types of desks\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Help\" and \"Check-in\" connect in LinkedIn Pinpoint #756?",
+      "answer": "The connection is that all 5 clues point to recognizable types of desks. Rolltop is the clue that makes the category specific enough to verify across the full board."
+    },
+    {
+      "question": "Why is \"Rolltop\" the key clue in LinkedIn Pinpoint #756?",
+      "answer": "Rolltop is the turning clue because \"Rolltop desk\" makes the shared category frame explicit. It also makes Help read cleanly as \"Help desk\". The clues individually seem to point to office environments, but the connection between desk types is more specific."
+    },
+    {
+      "question": "How does \"Help\" fit as a desk in LinkedIn Pinpoint #756?",
+      "answer": "\"Help\" reads as \"Help desk\", which is a recognizable desk. That keeps the board specific instead of broadly themed."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Help, Check-in, and News do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"ergonomic tools\" can feel plausible before one clue makes the answer feel concrete. Rolltop is the clue that finally breaks that first read and makes desks feel concrete.",
+    "falseStarts": [
+      "ergonomic tools",
+      "workplace necessities"
+    ],
+    "whyFalseStartPlausible": [
+      "While 'Standing' might fit, the other clues don't clearly relate to ergonomics.",
+      "workplace necessities feels plausible early on, but it falls apart once rolltop demands a more exact reading."
+    ],
+    "breakingClue": "Rolltop",
+    "pivot": "The solve turned when I stopped treating rolltop as just another clue and asked what kind of desk each clue could describe. Once I made that shift, I was no longer thinking about ergonomic tools; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing desks.",
+    "fullBoardConfirmation": "From there, reading them as desks explains the board much more cleanly. Entries like Help, Check-in, and News stop feeling disconnected and start looking like they belong together. Once rolltop is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues individually seem to point to office environments, but the connection between desk types is more specific."
+  },
+  "turningPoint": {
+    "clue": "Rolltop",
+    "whyDecisive": "The 'Rolltop' clue was the one that made the answer concrete for me.",
+    "whatChangedAfterIt": "Once Rolltop landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Help",
+      "surfaceMisread": "ergonomic tools",
+      "resolvedPhraseOrMember": "Help desk",
+      "nonObviousWhy": "A 'help desk' is a specific type of desk where people can go for assistance.",
+      "searchableContext": "Help desk"
+    },
+    {
+      "clue": "Check-in",
+      "surfaceMisread": "ergonomic tools",
+      "resolvedPhraseOrMember": "Check-in desk",
+      "nonObviousWhy": "A 'check-in desk' is where you register at a hotel or office.",
+      "searchableContext": "Check-in desk"
+    },
+    {
+      "clue": "News",
+      "surfaceMisread": "ergonomic tools",
+      "resolvedPhraseOrMember": "News desk",
+      "nonObviousWhy": "A 'news desk' is a place in a newsroom where information is processed.",
+      "searchableContext": "News desk"
+    },
+    {
+      "clue": "Rolltop",
+      "surfaceMisread": "ergonomic tools",
+      "resolvedPhraseOrMember": "Rolltop desk",
+      "nonObviousWhy": "A rolltop is a classic desk design with a sliding cover.",
+      "searchableContext": "Rolltop desk"
+    },
+    {
+      "clue": "Standing",
+      "surfaceMisread": "ergonomic tools",
+      "resolvedPhraseOrMember": "Standing desk",
+      "nonObviousWhy": "A 'standing desk' lets you work while standing up.",
+      "searchableContext": "Standing desk"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Help\" and \"Check-in\" in LinkedIn Pinpoint #756?",
+      "answer": "The answer is \"Types of desks\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Help"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Help\" and \"Check-in\" connect in LinkedIn Pinpoint #756?",
+      "answer": "The connection is that all 5 clues point to recognizable types of desks. Rolltop is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Help"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Rolltop\" the key clue in LinkedIn Pinpoint #756?",
+      "answer": "Rolltop is the turning clue because \"Rolltop desk\" makes the shared category frame explicit. It also makes Help read cleanly as \"Help desk\". The clues individually seem to point to office environments, but the connection between desk types is more specific.",
+      "tiedClue": "Rolltop"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Help\" fit as a desk in LinkedIn Pinpoint #756?",
+      "answer": "\"Help\" reads as \"Help desk\", which is a recognizable desk. That keeps the board specific instead of broadly themed.",
+      "tiedClue": "Help"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on desks",
+    "relatedEntities": [
+      "Help desk",
+      "Check-in desk",
+      "News desk",
+      "Rolltop desk",
+      "Standing desk"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on desks",
+      "\"Help\" and \"Check-in\" can look like they belong to different categories at first",
+      "\"Rolltop\" is what makes desk feel concrete instead of broad",
+      "Every clue should name a specific kind of desk once the category sharpens",
+      "Help desk",
+      "Check-in desk"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "ergonomic tools",
+      "whyPlausible": "While 'Standing' might fit, the other clues don't clearly relate to ergonomics.",
+      "whyRejected": "Once Rolltop lands, the final answer explains the board more cleanly than ergonomic tools."
+    },
+    {
+      "label": "workplace necessities",
+      "whyPlausible": "workplace necessities feels plausible early on, but it falls apart once rolltop demands a more exact reading.",
+      "whyRejected": "Once Rolltop lands, the final answer explains the board more cleanly than workplace necessities."
+    }
+  ],
+  "setValidationSummary": "News, Rolltop, Standing all behave like specific members of Types of desks, so the board stays precise instead of drifting into a broader umbrella topic.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of desks"
+}
