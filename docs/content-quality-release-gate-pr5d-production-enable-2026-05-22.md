@@ -36,7 +36,8 @@ With the flag enabled:
 - queued/building/unknown Vercel status writes to the deterministic candidate branch
 - failed Vercel status enters review and does not write production
 - a second same-slug production push inside the 60-minute window writes candidate unless `PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH=true`
-- candidate branches are auto-promoted only after CI machine checks pass
+- candidate branches are auto-promoted only after CI machine checks pass, the branch only changes allowed puzzle files, and the public fetch audit passes
+- if that success path stalls, the `Pinpoint Candidate Watchdog` workflow runs after CI and every 30 minutes; it promotes/deletes branches that are already safe, retries failed candidate CI, and opens a GitHub issue when a branch cannot be closed automatically
 
 ## First-Run Observation
 
@@ -53,7 +54,13 @@ The command checks:
 - combined commit status and Vercel status
 - candidate branches matching the observation date or slug
 
-If a same-day candidate branch appears, inspect it before merging or promoting it. If no candidate branch appears and the Worker produced a single healthy production commit, the first-run observation can be marked complete.
+Also run the Worker-token status check before the next cron window:
+
+```bash
+npm run worker:release-queue-status-check -- --env prod
+```
+
+If a same-day candidate branch appears, do not manually merge it first. Let CI or the watchdog close it. A candidate is not considered closed until the public page audit passes, the candidate branch is deleted, and the candidate branch count returns to 0. If no candidate branch appears and the Worker produced a single healthy production commit, the first-run observation can be marked complete.
 
 ## Rollback
 

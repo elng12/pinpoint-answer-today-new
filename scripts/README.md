@@ -31,6 +31,7 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | --- | --- | --- |
 | `npm run release:production` | `release-production.mjs` | Orchestrates production release checks and release steps. |
 | `npm run generate:static-page-metadata` | `generate-static-page-metadata.mjs` | Regenerates static page metadata from git modification dates. |
+| `npm run pinpoint:candidate-close` | `close-pinpoint-candidate-branches.mjs` | Closes safe Pinpoint candidate branches or opens a tracked issue when one is stuck. |
 | Vercel build hook | `vercel-ignore-build.mjs` | Determines whether Vercel can skip a build for a given change set. |
 | `npm run prepare` | `install-hooks.mjs` | Installs local git hooks. |
 
@@ -41,6 +42,7 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run worker:preflight` | `worker-ops.mjs preflight --env prod` | Checks production Worker prerequisites. |
 | `npm run worker:health` | `worker-ops.mjs health --env prod` | Checks Worker health through the configured production target. |
 | `npm run worker:release-queue-dry-run` | `worker-ops.mjs release-queue-dry-run --env staging` | Runs release queue logic against staging without publishing. |
+| `npm run worker:release-queue-status-check` | `worker-ops.mjs release-queue-status-check --env prod` | Checks whether the production Worker token can read GitHub/Vercel commit status. |
 | `npm run worker:release-queue-observe` | `worker-ops.mjs release-queue-observe --env prod` | Observes production release queue state. |
 | `npm run worker:refresh-cookie` | `worker-ops.mjs refresh-cookie --targets all` | Refreshes Worker cookie secrets for configured targets. |
 

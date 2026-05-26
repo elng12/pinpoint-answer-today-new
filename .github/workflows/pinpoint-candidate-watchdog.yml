@@ -1,0 +1,51 @@
+name: Pinpoint Candidate Watchdog
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+  schedule:
+    - cron: "*/30 * * * *"
+
+concurrency:
+  group: pinpoint-candidate-watchdog
+  cancel-in-progress: false
+
+permissions:
+  actions: write
+  contents: write
+  checks: read
+  statuses: read
+  issues: write
+
+jobs:
+  close-candidates:
+    name: Close Pinpoint Candidates
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Close stuck candidate branches
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/close-pinpoint-candidate-branches.mjs \
+            --create-issue \
+            --max-pending-minutes 45

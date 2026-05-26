@@ -72,7 +72,7 @@ LLM_BASE_URL                = "https://openrouter.ai/api/v1"
 # GRAPHQL_CSRF_TOKEN           — Optional CSRF token for Voyager GraphQL
 # SITE_API_TOKEN               — Bearer token for /api/admin/generate-draft (enrichment)
 # LLM_API_KEY                  — API key for direct LLM calls from Worker (same as OPENAI_API_KEY on Vercel)
-# GITHUB_TOKEN_NEW_SITE        — Fine-grained PAT: contents:write on new repo
+# GITHUB_TOKEN_NEW_SITE        — Fine-grained PAT: Contents read/write + Commit statuses read on new repo
 # NEW_SITE_REVALIDATE_SECRET   — Must match REVALIDATE_SECRET in Vercel env
 # FEISHU_WEBHOOK_URL           — Feishu webhook URL for cron alerts
 # FALLBACK_WEBHOOK_SECRET      — HMAC signing secret for fallback webhook

@@ -7,6 +7,7 @@ export type WorkerFetchRoute =
   | "adminTestFallback"
   | "adminCandidateBranchDryRun"
   | "adminReleaseQueueDryRun"
+  | "adminReleaseQueueStatusCheck"
   | "adminRun"
   | "adminPutDoc"
   | "adminUploadOps"
@@ -27,6 +28,7 @@ export function resolveWorkerFetchRoute(req: Request, url: URL): WorkerFetchRout
   if (url.pathname === "/admin/release-queue-dry-run" && req.method === "POST") {
     return "adminReleaseQueueDryRun";
   }
+  if (url.pathname === "/admin/release-queue-status-check") return "adminReleaseQueueStatusCheck";
   if (url.pathname === "/admin/run") return "adminRun";
   if (url.pathname === "/admin/put-doc" && req.method === "POST") return "adminPutDoc";
   if (url.pathname === "/admin/upload-ops" && req.method === "POST") return "adminUploadOps";

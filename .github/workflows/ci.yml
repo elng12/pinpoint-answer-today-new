@@ -89,9 +89,10 @@ jobs:
     needs: checks
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/pinpoint/candidate/')
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 30
     permissions:
       contents: write
+      statuses: read
 
     steps:
       - name: Checkout
@@ -99,11 +100,47 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Validate candidate branch scope
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git show origin/main:scripts/check-pinpoint-candidate-branch.mjs > /tmp/check-pinpoint-candidate-branch.mjs
+          node /tmp/check-pinpoint-candidate-branch.mjs \
+            --base origin/main \
+            --head "$GITHUB_SHA" \
+            --branch "$GITHUB_REF_NAME"
+
       - name: Fast-forward main after machine checks
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin main
-          git checkout main
+          git fetch origin main:refs/remotes/origin/main
+          git checkout -B main origin/main
           git merge --ff-only "$GITHUB_SHA"
           git push origin HEAD:main
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Verify promoted candidate on production
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node scripts/verify-pinpoint-candidate-release.mjs \
+            --candidate-branch "$GITHUB_REF_NAME" \
+            --sha "$GITHUB_SHA"
+
+      - name: Delete promoted candidate branch
+        run: |
+          if git ls-remote --exit-code --heads origin "$GITHUB_REF_NAME"; then
+            git push origin --delete "$GITHUB_REF_NAME"
+          fi
+          if git ls-remote --exit-code --heads origin "$GITHUB_REF_NAME"; then
+            echo "candidate branch still exists after delete: $GITHUB_REF_NAME"
+            exit 1
+          fi
