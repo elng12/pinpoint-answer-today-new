@@ -44,6 +44,9 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run worker:release-queue-dry-run` | `worker-ops.mjs release-queue-dry-run --env staging` | Runs release queue logic against staging without publishing. |
 | `npm run worker:release-queue-status-check` | `worker-ops.mjs release-queue-status-check --env prod` | Checks whether the production Worker token can read GitHub/Vercel commit status. |
 | `npm run worker:release-queue-observe` | `worker-ops.mjs release-queue-observe --env prod` | Observes production release queue state. |
+| `npm run worker:auto-publish-pause` | `worker-ops.mjs auto-publish-pause --env prod` | Pauses scheduled auto-publish while keeping Worker fetch and KV writes. |
+| `npm run worker:auto-publish-resume` | `worker-ops.mjs auto-publish-resume --env prod` | Clears the KV-backed auto-publish pause. |
+| `npm run worker:auto-publish-pause-status` | `worker-ops.mjs auto-publish-pause-status --env prod` | Reads the active auto-publish pause status. |
 | `npm run worker:refresh-cookie` | `worker-ops.mjs refresh-cookie --targets all` | Refreshes Worker cookie secrets for configured targets. |
 
 ## Visual and Search Tools

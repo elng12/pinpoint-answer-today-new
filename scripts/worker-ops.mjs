@@ -71,6 +71,9 @@ function printUsage() {
   node scripts/worker-ops.mjs release-queue-dry-run [--env staging|shadow|prod] [--date YYYY-MM-DD] [--puzzle-number N]
   node scripts/worker-ops.mjs release-queue-status-check [--env prod|staging|shadow] [--json]
   node scripts/worker-ops.mjs release-queue-observe [--env prod|staging|shadow] [--date YYYY-MM-DD] [--puzzle-number N] [--json]
+  node scripts/worker-ops.mjs auto-publish-pause-status [--env prod|staging|shadow] [--json]
+  node scripts/worker-ops.mjs auto-publish-pause [--env prod|staging|shadow] [--reason TEXT]
+  node scripts/worker-ops.mjs auto-publish-resume [--env prod|staging|shadow]
   node scripts/worker-ops.mjs refresh-cookie [--targets prod,staging,shadow|all]
 	`);
 }
@@ -588,6 +591,43 @@ async function main() {
     if (report.releaseQueue.matchingCandidateBranches.length > 10) {
       console.log(`- ... ${report.releaseQueue.matchingCandidateBranches.length - 10} more`);
     }
+    return;
+  }
+
+  if (cmd === "auto-publish-pause-status" || cmd === "auto-publish-pause" || cmd === "auto-publish-resume") {
+    const envName = normalizeEnvName(getOption(argv, "--env") || "prod");
+    const emitJson = argv.includes("--json");
+    const secret = requireAdminSecret();
+    const baseUrl = WORKER_BASE_URLS[envName];
+    const url = new URL(`${baseUrl}/admin/auto-publish-pause`);
+    url.searchParams.set("secret", secret);
+
+    let method = "GET";
+    if (cmd === "auto-publish-pause") {
+      method = "POST";
+      url.searchParams.set("paused", "1");
+      url.searchParams.set("reason", getOption(argv, "--reason") || "manual pause from worker-ops");
+    } else if (cmd === "auto-publish-resume") {
+      method = "POST";
+      url.searchParams.set("paused", "0");
+    }
+
+    const { ok, status, json, text } = await fetchJson(url.toString(), { method });
+    if (!ok || json?.ok !== true) {
+      console.error(`[${envName}] auto-publish pause command failed: HTTP ${status}`);
+      console.error(String(text || "").slice(0, 500));
+      process.exit(1);
+    }
+
+    if (emitJson) {
+      console.log(JSON.stringify(json, null, 2));
+      return;
+    }
+
+    const pause = json.status || {};
+    console.log(
+      `[${envName}] autoPublishPaused=${pause.paused === true ? "yes" : "no"} source=${pause.source || "none"} reason=${pause.reason || ""}`,
+    );
     return;
   }
 

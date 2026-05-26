@@ -75,6 +75,7 @@ export interface Env {
   NEW_SITE_REVALIDATE_SECRET?: string;   // matches REVALIDATE_SECRET on Vercel
   NEW_SITE_LIVE_REFRESH_ENABLED?: string; // optional: set "true" to allow worker-triggered live refresh fallback
   NEW_SITE_SUMMARY_WATCHDOG_ENABLED?: string; // optional: set "false" to disable post-window site summary alerts
+  PINPOINT_AUTO_PUBLISH_PAUSED?: string;       // optional: set "true" to pause scheduled auto-publish after fetch
   PINPOINT_CANDIDATE_BRANCH_ENABLED?: string; // optional: set "true" to write public payloads to candidate branches
   PINPOINT_CANDIDATE_BRANCH_PREFIX?: string;  // default: pinpoint/candidate
   PINPOINT_RELEASE_QUEUE_ENABLED?: string;    // optional: set "true" to route unsafe public writes to candidate branches
@@ -320,6 +321,7 @@ const cronHeartbeatLatestKey = "monitor:cron:last";
 const cronHeartbeatDayKeyOf = (d: string) => `monitor:cron:${d}`;
 const cronHeartbeatDayRunsKeyOf = (d: string) => `monitor:cron:${d}:runs`;
 const cronHeartbeatRunKeyOf = (runId: string) => `monitor:cron:run:${runId}`;
+const autoPublishPauseKey = "pinpoint:auto-publish:paused";
 const siteSummaryWatchdogNotifiedKeyOf = (d: string) => `notify:site-summary-watchdog:${d}`;
 const cronHeartbeatRunsLimit = 20;
 const staleAlertDedupeTtlSec = 60 * 60 * 2;
@@ -450,6 +452,21 @@ type BuildCronHeartbeatOptions = {
   forcePublish?: boolean;
   requestId?: string;
 };
+
+type AutoPublishPauseStatus = {
+  paused: boolean;
+  source: "env" | "kv" | "none";
+  reason?: string;
+  updatedAt?: string;
+};
+
+type DailyPublishStatus =
+  | "published"
+  | "downgraded"
+  | "candidate"
+  | "blocked"
+  | "paused"
+  | "needs_review";
 
 type CronHeartbeat = {
   version: 1;
@@ -823,6 +840,62 @@ function getSourceConfidenceLabel(value: unknown): string {
 
 function getYesNoLabel(value: boolean): string {
   return value ? "是" : "否";
+}
+
+async function getAutoPublishPauseStatus(env: Env): Promise<AutoPublishPauseStatus> {
+  if (envFlag(env.PINPOINT_AUTO_PUBLISH_PAUSED, false)) {
+    return {
+      paused: true,
+      source: "env",
+      reason: "PINPOINT_AUTO_PUBLISH_PAUSED=true",
+    };
+  }
+
+  const raw = await env.PP_DATA.get(autoPublishPauseKey).catch(() => null);
+  if (!raw) return { paused: false, source: "none" };
+
+  try {
+    const parsed = asRecord(JSON.parse(raw));
+    if (parsed?.paused === true) {
+      return {
+        paused: true,
+        source: "kv",
+        reason: asNonEmptyString(parsed.reason),
+        updatedAt: asNonEmptyString(parsed.updatedAt),
+      };
+    }
+  } catch {
+    return {
+      paused: true,
+      source: "kv",
+      reason: raw.slice(0, 160) || "manual pause",
+    };
+  }
+
+  return { paused: false, source: "none" };
+}
+
+async function setAutoPublishPauseStatus(
+  env: Env,
+  paused: boolean,
+  reason: string,
+): Promise<AutoPublishPauseStatus> {
+  if (paused) {
+    await env.PP_DATA.put(autoPublishPauseKey, JSON.stringify({
+      paused: true,
+      reason: reason.trim() || "manual pause",
+      updatedAt: new Date().toISOString(),
+    }));
+  } else {
+    await env.PP_DATA.delete(autoPublishPauseKey);
+  }
+
+  return getAutoPublishPauseStatus(env);
+}
+
+function formatAutoPublishPauseReason(status: AutoPublishPauseStatus): string {
+  const detail = status.reason ? `: ${status.reason}` : "";
+  return `auto publish paused${detail}`;
 }
 
 function getPublicSiteBaseUrl(env: Env): string {
@@ -2117,6 +2190,153 @@ async function waitForPublicPage(url: string): Promise<boolean> {
 
   console.warn(`[new-site] page did not become ready within ${timeoutMs}ms: ${url}`);
   return false;
+}
+
+type PublicFetchTextResult = {
+  ok: boolean;
+  status?: number;
+  text: string;
+  error?: string;
+};
+
+type NewSitePublicPublishAuditResult = {
+  ok: boolean;
+  issues: string[];
+};
+
+async function fetchPublicText(url: string, timeoutMs = 15_000): Promise<PublicFetchTextResult> {
+  try {
+    const res = await fetchWithTimeout(
+      url,
+      {
+        method: "GET",
+        headers: {
+          "cache-control": "no-cache",
+          pragma: "no-cache",
+        },
+        redirect: "follow",
+      },
+      timeoutMs,
+    );
+    const text = await res.text();
+    return {
+      ok: res.ok,
+      status: res.status,
+      text,
+      ...(!res.ok ? { error: text.slice(0, 240) || `HTTP ${res.status}` } : {}),
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      text: "",
+      error: error instanceof Error ? error.message : String(error || "unknown fetch error"),
+    };
+  }
+}
+
+function normalizePublicAuditText(value: string): string {
+  return value.replace(/\s+/g, " ").toLowerCase();
+}
+
+function publicTextIncludes(text: string, value: string): boolean {
+  const needle = normalizePublicAuditText(value);
+  return Boolean(needle && normalizePublicAuditText(text).includes(needle));
+}
+
+function hasNoindexRobotsMeta(html: string): boolean {
+  return /<meta\b[^>]*(?:name=["']robots["'][^>]*content=["'][^"']*noindex|content=["'][^"']*noindex[^>]*name=["']robots["'])/i.test(html);
+}
+
+function includesDetailRoute(text: string, route: string): boolean {
+  return text.includes(route) || text.includes(route.replace(/\/$/, "")) || text.includes(encodeURI(route));
+}
+
+async function runNewSitePublicPublishAudit(input: {
+  baseUrl: string;
+  slug: string;
+  puzzleNumber: number;
+  answer: string;
+  clues: string[];
+  pageReady: boolean;
+}): Promise<NewSitePublicPublishAuditResult> {
+  const baseUrl = normalizeBaseUrl(input.baseUrl, "https://pinpointanswertoday.app");
+  const route = `/linkedin-pinpoint-answers/${input.slug}/`;
+  const detailUrl = `${baseUrl}${route}`;
+  const issues: string[] = [];
+
+  if (!input.pageReady) {
+    issues.push("detail page did not return 200 during readiness probe");
+  }
+
+  const detail = await fetchPublicText(`${detailUrl}?__publish_audit=${Date.now()}`);
+  if (!detail.ok) {
+    issues.push(`detail page fetch failed: ${detail.status ?? "network"} ${detail.error || ""}`.trim());
+  } else {
+    if (hasNoindexRobotsMeta(detail.text)) {
+      issues.push("detail page has noindex robots meta");
+    }
+    if (!publicTextIncludes(detail.text, `LinkedIn Pinpoint #${input.puzzleNumber}`)) {
+      issues.push("detail page is missing the expected puzzle number text");
+    }
+    if (!publicTextIncludes(detail.text, input.answer)) {
+      issues.push("detail page is missing the answer text");
+    }
+    for (const clue of input.clues.slice(0, 5)) {
+      if (!publicTextIncludes(detail.text, clue)) {
+        issues.push(`detail page is missing clue: ${clue}`);
+      }
+    }
+    if (!includesDetailRoute(detail.text, "/puzzles")) {
+      issues.push("detail page does not link back to /puzzles");
+    }
+  }
+
+  const sitemap = await fetchPublicText(`${baseUrl}/sitemap.xml?__publish_audit=${Date.now()}`);
+  if (!sitemap.ok) {
+    issues.push(`sitemap fetch failed: ${sitemap.status ?? "network"} ${sitemap.error || ""}`.trim());
+  } else if (!includesDetailRoute(sitemap.text, route) && !sitemap.text.includes(detailUrl)) {
+    issues.push("sitemap does not include the new detail URL");
+  }
+
+  const home = await fetchPublicText(`${baseUrl}/?__publish_audit=${Date.now()}`);
+  if (!home.ok) {
+    issues.push(`home page fetch failed: ${home.status ?? "network"} ${home.error || ""}`.trim());
+  } else if (!includesDetailRoute(home.text, route)) {
+    issues.push("home page does not link to the new detail URL");
+  }
+
+  const archive = await fetchPublicText(`${baseUrl}/puzzles?__publish_audit=${Date.now()}`);
+  if (!archive.ok) {
+    issues.push(`archive page fetch failed: ${archive.status ?? "network"} ${archive.error || ""}`.trim());
+  } else if (!includesDetailRoute(archive.text, route)) {
+    issues.push("archive page does not link to the new detail URL");
+  }
+
+  const summary = await fetchPublicText(`${baseUrl}/api/puzzles/summary?__publish_audit=${Date.now()}`);
+  if (!summary.ok) {
+    issues.push(`summary API fetch failed: ${summary.status ?? "network"} ${summary.error || ""}`.trim());
+  } else {
+    try {
+      const parsed = asRecord(JSON.parse(summary.text));
+      const latest = asRecord(parsed?.latest);
+      const latestSlug = asNonEmptyString(latest?.slug);
+      const latestNumber = Number(latest?.puzzleNumber);
+      if (latestSlug !== input.slug || latestNumber !== input.puzzleNumber) {
+        issues.push(`summary API latest mismatch: #${latestNumber || "unknown"} ${latestSlug || "(missing slug)"}`);
+      }
+    } catch {
+      issues.push("summary API returned non-json response");
+    }
+  }
+
+  return {
+    ok: issues.length === 0,
+    issues,
+  };
+}
+
+function formatNewSitePublicPublishAuditIssues(result: NewSitePublicPublishAuditResult): string {
+  return result.issues.slice(0, 8).join("; ");
 }
 
 async function postSiteJson(
@@ -3594,6 +3814,24 @@ async function publishToNewSiteGitHub(
   const detailState = resolvePublishDetailState(enrichedPayload.detailState);
   const isPublicState = isPublicPublishDetailState(detailState);
   const candidateBranch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
+  const runPrimaryPublicAudit = async (pageReady: boolean): Promise<NewSitePublicPublishAuditResult | null> => {
+    if (!isPublicState || !isPrimaryBranch || !newSiteUrl) return null;
+    const result = await runNewSitePublicPublishAudit({
+      baseUrl: newSiteUrl,
+      slug,
+      puzzleNumber,
+      answer,
+      clues: words,
+      pageReady,
+    });
+    if (!result.ok) {
+      throw new Error(
+        `[new-site] post-publish public audit failed for ${slug}: ${formatNewSitePublicPublishAuditIssues(result)}`,
+      );
+    }
+    console.log(`[new-site] post-publish public audit passed for ${slug}`);
+    return result;
+  };
   const forceCandidateBranch = envFlag(env.PINPOINT_CANDIDATE_BRANCH_ENABLED, false) && isPublicState;
   const releaseQueueEnabled =
     envFlag(env.PINPOINT_RELEASE_QUEUE_ENABLED, false) &&
@@ -3657,6 +3895,16 @@ async function publishToNewSiteGitHub(
         `[new-site] release queue held #${puzzleNumber}: ${releaseQueueDecision.reasonCode} (${deploymentState})`,
       );
       await notifyPinpointReleaseQueueDecision(env, releaseQueueDecision);
+      await notifyDailyPublishStatusReport(env, {
+        date: puzzleDate,
+        status: "needs_review",
+        puzzleNumber,
+        slug,
+        answer,
+        clues: words,
+        reason: releaseQueueDecision.reasonCode,
+        nextAction: "检查 release queue 状态，确认正式站部署或候选分支是否需要处理。",
+      });
       return;
     }
 
@@ -3863,6 +4111,21 @@ async function publishToNewSiteGitHub(
   const hasContentChanges = slugChanged || registryChanged;
   if (!hasContentChanges) {
     console.log(`[new-site] GitHub publish skipped for #${puzzleNumber} (${detailState}, ${branch}, no content changes)`);
+    if (isPublicState && isPrimaryBranch && newSiteUrl) {
+      const pageUrl = `${newSiteUrl}/linkedin-pinpoint-answers/${slug}/`;
+      const pageReady = await waitForPublicPage(pageUrl);
+      await runPrimaryPublicAudit(pageReady);
+      await notifyDailyPublishStatusReport(env, {
+        date: puzzleDate,
+        status: detailState === "fallback_full" ? "downgraded" : "published",
+        puzzleNumber,
+        slug,
+        answer,
+        clues: words,
+        detailUrl: pageUrl,
+        reason: "no content changes; public audit passed",
+      });
+    }
     return;
   }
 
@@ -3884,6 +4147,16 @@ async function publishToNewSiteGitHub(
   }
   if (isCandidateBranch && releaseQueueDecision) {
     await notifyPinpointReleaseQueueDecision(env, releaseQueueDecision);
+    await notifyDailyPublishStatusReport(env, {
+      date: puzzleDate,
+      status: "candidate",
+      puzzleNumber,
+      slug,
+      answer,
+      clues: words,
+      reason: releaseQueueDecision.reasonCode,
+      nextAction: "等待候选分支机器检查通过后自动上线；如果卡住，再看 candidate watchdog。",
+    });
   }
 
   // ── 3. Trigger ISR revalidation on the new site ──
@@ -3901,6 +4174,24 @@ async function publishToNewSiteGitHub(
 
   const pageUrl = isPrimaryBranch && newSiteUrl ? `${newSiteUrl}/linkedin-pinpoint-answers/${slug}/` : "";
   const pageReady = isPublicState && pageUrl ? await waitForPublicPage(pageUrl) : false;
+  const publicAudit = await runPrimaryPublicAudit(pageReady);
+  if (isPublicState && isPrimaryBranch) {
+    await notifyDailyPublishStatusReport(env, {
+      date: puzzleDate,
+      status: detailState === "fallback_full" ? "downgraded" : "published",
+      puzzleNumber,
+      slug,
+      answer,
+      clues: words,
+      detailUrl: pageUrl,
+      reason: detailState === "fallback_full"
+        ? detailExperienceNotice.reason || "fallback_full"
+        : publicAudit?.ok
+          ? "public audit passed"
+          : "published",
+      nextAction: detailState === "fallback_full" ? "后续可补强解释内容，再恢复完整分析页。" : undefined,
+    });
+  }
 
   // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
@@ -3966,6 +4257,13 @@ async function publishToNewSiteGitHub(
             text: {
               tag: "lark_md",
               content: `**结构化发布说明**\n${toZhWebhookReason(detailExperienceNotice.reason)}`,
+            },
+          }] : []),
+          ...(publicAudit?.ok ? [{
+            tag: "div",
+            text: {
+              tag: "lark_md",
+              content: "**线上检查**\n通过：详情页、首页、归档页、sitemap、summary API",
             },
           }] : []),
           ...(!pageReady && pageUrl ? [{
@@ -4999,6 +5297,60 @@ const publishEligibilityBlockedNotifyKeyOf = (
     .slice(0, 180);
   return `notify:publish-eligibility-blocked:${logicalGameDate}:${slug}:${issueSignature}`;
 };
+const dailyPublishStatusReportNotifyKeyOf = (
+  logicalGameDate: string,
+  status: DailyPublishStatus,
+  puzzleNumber?: number,
+) => `notify:daily-publish-status:${logicalGameDate}:${status}:${puzzleNumber ?? "unknown"}`;
+
+function getDailyPublishStatusLabel(status: DailyPublishStatus): string {
+  const map: Record<DailyPublishStatus, string> = {
+    published: "已发布",
+    downgraded: "已降级发布",
+    candidate: "已写入候选分支",
+    blocked: "已被规则拦住",
+    paused: "自动发布暂停",
+    needs_review: "需要人工处理",
+  };
+  return map[status];
+}
+
+async function notifyDailyPublishStatusReport(
+  env: Env,
+  input: {
+    date: string;
+    status: DailyPublishStatus;
+    puzzleNumber?: number;
+    slug?: string;
+    answer?: string;
+    clues?: string[];
+    detailUrl?: string;
+    reason?: string;
+    nextAction?: string;
+  },
+): Promise<void> {
+  const notifyKey = dailyPublishStatusReportNotifyKeyOf(input.date, input.status, input.puzzleNumber);
+  const alreadyNotified = await env.PP_DATA.get(notifyKey).then((value) => value !== null).catch(() => false);
+  if (alreadyNotified) return;
+
+  await env.PP_DATA.put(notifyKey, "1", { expirationTtl: 60 * 60 * 48 }).catch(() => undefined);
+  const statusLabel = getDailyPublishStatusLabel(input.status);
+  const clueLine = Array.isArray(input.clues) && input.clues.length > 0
+    ? input.clues.slice(0, 5).join(" | ")
+    : "";
+
+  await notifyCron(env, `📌 Pinpoint 每日状态：${statusLabel}`, [
+    `日期: ${input.date}`,
+    ...(input.puzzleNumber ? [`谜题: #${input.puzzleNumber}`] : []),
+    ...(input.slug ? [`页面: ${input.slug}`] : []),
+    `结果: ${statusLabel}`,
+    ...(input.answer ? [`答案: ${input.answer}`] : []),
+    ...(clueLine ? [`线索: ${clueLine}`] : []),
+    ...(input.detailUrl ? [`详情: ${input.detailUrl}`] : []),
+    ...(input.reason ? [`原因: ${toZhWebhookReason(input.reason)}`] : []),
+    ...(input.nextAction ? [`下一步: ${input.nextAction}`] : []),
+  ]);
+}
 
 async function persistLightweightPublishFailureSummary(
   env: Env,
@@ -5086,6 +5438,15 @@ async function recordPublishEligibilityBlocked(
       `下一步: ${toZhWebhookReason(summary.nextAction)}`,
     ]);
   }
+
+  await notifyDailyPublishStatusReport(env, {
+    date: summary.logicalGameDate,
+    status: "blocked",
+    puzzleNumber: summary.puzzleNumber ?? puzzleNumber,
+    slug: summary.slug,
+    reason: blockingIssueCodes.join(", ") || error.message,
+    nextAction: toZhWebhookReason(summary.nextAction),
+  });
 
   return summary;
 }
@@ -5264,6 +5625,11 @@ function toZhWebhookReason(reason: string | undefined): string {
     return detail ? `旧发布链路不可用，已改走新站实时刷新：${toZhWebhookReason(detail)}` : "旧发布链路不可用，已改走新站实时刷新";
   }
 
+  if (raw.startsWith("auto publish paused")) {
+    const detail = raw.split(":").slice(1).join(":").trim();
+    return detail ? `自动发布暂停：${detail}` : "自动发布暂停";
+  }
+
   if (raw.startsWith("quality gate blocked after")) {
     const match = raw.match(/^quality gate blocked after\s+(\d+)\s+attempt\(s\):\s*([\s\S]*?)(?:;\s*used\s+(.+))?$/i);
     const attemptText = match?.[1] ? `跑了 ${match[1]} 次还是没过` : "没过";
@@ -5293,6 +5659,7 @@ function toZhWebhookReason(reason: string | undefined): string {
 
     "AUTO_PUBLISH_ENABLED=false": "已关闭自动快速发布（AUTO_PUBLISH_ENABLED=false）",
     "AUTO_ENRICH_ENABLED=false": "已关闭自动增强（AUTO_ENRICH_ENABLED=false）",
+    "PINPOINT_AUTO_PUBLISH_PAUSED=true": "自动发布已通过配置暂停（PINPOINT_AUTO_PUBLISH_PAUSED=true）",
     "AUTO_I18N_ENABLED=false": "已关闭自动多语言（AUTO_I18N_ENABLED=false）",
     "AUTO_I18N_LOCALES empty": "未配置多语言列表（AUTO_I18N_LOCALES 为空）",
     "auto i18n disabled for this run": "本次运行按英文站策略跳过自动多语言",
@@ -6353,6 +6720,45 @@ export default {
       });
     }
 
+      case "adminAutoPublishPause": {
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
+      const secret = url.searchParams.get("secret");
+      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
+
+      if (req.method === "GET") {
+        const status = await getAutoPublishPauseStatus(env);
+        return new Response(JSON.stringify({
+          ok: true,
+          readOnly: true,
+          status,
+        }), {
+          headers: { "content-type": "application/json; charset=utf-8" },
+        });
+      }
+
+      if (req.method !== "POST") {
+        return new Response("method not allowed", { status: 405 });
+      }
+
+      const rawPaused = String(url.searchParams.get("paused") ?? url.searchParams.get("pause") ?? "").trim().toLowerCase();
+      if (!["1", "true", "yes", "on", "0", "false", "no", "off"].includes(rawPaused)) {
+        return new Response("paused must be true or false", { status: 400 });
+      }
+
+      const paused = ["1", "true", "yes", "on"].includes(rawPaused);
+      const reason = String(url.searchParams.get("reason") || "").trim();
+      const status = await setAutoPublishPauseStatus(env, paused, reason);
+      return new Response(JSON.stringify({
+        ok: true,
+        readOnly: false,
+        requestedPaused: paused,
+        status,
+      }), {
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+
       case "adminRun": {
       const adminSecret = getAdminSecret(env);
       if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
@@ -6445,7 +6851,25 @@ export default {
         await env.PP_DATA.put("pinpoint:last", s);
         result.stored = true;
 
-        if (publishEnabled) {
+        const autoPublishPause = publishEnabled && !forcePublish
+          ? await getAutoPublishPauseStatus(env)
+          : { paused: false, source: "none" as const };
+
+        if (publishEnabled && autoPublishPause.paused) {
+          const pauseReason = formatAutoPublishPauseReason(autoPublishPause);
+          result.autoPublishPause = autoPublishPause;
+          result.quick = { status: "skipped", reason: pauseReason };
+          result.enrich = { status: "skipped", reason: pauseReason };
+          result.i18n = {
+            status: "skipped",
+            reason: pauseReason,
+            results: [],
+          };
+          manualHeartbeat.quickPublish = stampHeartbeatStage(manualHeartbeat.quickPublish, "skipped", pauseReason);
+          manualHeartbeat.enrich = stampHeartbeatStage(manualHeartbeat.enrich, "skipped", pauseReason);
+          manualHeartbeat.i18n = stampHeartbeatStage(manualHeartbeat.i18n, "skipped", pauseReason);
+          await persistCronHeartbeat(env, manualHeartbeat);
+        } else if (publishEnabled) {
           const legacySiteBaseUrl = getLegacySiteBaseUrl(env);
           const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, date);
           let quickResult = await quickPublishToSite(env, date, doc);
@@ -6940,6 +7364,40 @@ export default {
         `答案: ${words}`,
       ];
       let publishBlockingIssue = "";
+      const autoPublishPause = await getAutoPublishPauseStatus(env);
+
+      if (autoPublishPause.paused) {
+        const pauseReason = formatAutoPublishPauseReason(autoPublishPause);
+        heartbeat.quickPublish = stampHeartbeatStage(heartbeat.quickPublish, "skipped", pauseReason);
+        heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "skipped", pauseReason);
+        heartbeat.i18n = stampHeartbeatStage(heartbeat.i18n, "skipped", pauseReason);
+        heartbeat.outcome = "succeeded";
+        heartbeat.durationMs = durationMs;
+        heartbeat.endedAt = new Date().toISOString();
+        await persistCronHeartbeat(env, heartbeat);
+
+        notifyLines.push(`自动发布: 已暂停 (${toZhWebhookReason(pauseReason)})`);
+        notifyLines.push(`健康检查: ${publicSiteBaseUrl}/api/health`);
+        notifyLines.push(`今日接口: ${publicSiteBaseUrl}/api/pinpoint/today`);
+        notifyLines.push(`耗时(ms): ${durationMs}`);
+
+        await notifyDailyPublishStatusReport(env, {
+          date,
+          status: "paused",
+          answer: doc.mainAnswer || doc.theme || "",
+          clues: doc.answers.map((answerItem) => answerItem.word).slice(0, 5),
+          reason: pauseReason,
+          nextAction: "恢复自动发布前，先确认当天题目和线上页面没有异常。",
+        });
+
+        const alreadyNotified = await checkAndMarkCronSuccessNotified(env, date);
+        if (!alreadyNotified) {
+          await notifyCron(env, "✅ Worker 定时抓取成功（自动发布暂停）", [
+            ...notifyLines,
+          ]);
+        }
+        return;
+      }
 
       try {
         const quickStarted = Date.now();
@@ -7136,6 +7594,17 @@ export default {
                   heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "failed", enrichMsg);
                   heartbeat.i18n = stampHeartbeatStage(heartbeat.i18n, "skipped", "enrich failed");
                   await persistCronHeartbeat(env, heartbeat);
+                  await notifyDailyPublishStatusReport(env, {
+                    date,
+                    status: "needs_review",
+                    puzzleNumber,
+                    slug: `pinpoint-answer-${puzzleNumber}`,
+                    answer: doc.mainAnswer || doc.theme || "",
+                    clues: doc.answers.map((answerItem) => answerItem.word).slice(0, 5),
+                    detailUrl,
+                    reason: enrichMsg,
+                    nextAction: "检查 Worker 异步增强错误，修好后再手动补发或等待下一次运行。",
+                  });
                   await notifyCron(env, "❌ Worker 异步增强失败", [
                     `日期: ${date}`,
                     `谜题: #${puzzleNumber}`,
@@ -7207,6 +7676,16 @@ export default {
       notifyLines.push(`耗时(ms): ${durationMs}`);
       if (publishBlockingIssue) {
         notifyLines.push(`发布阻塞: ${toZhWebhookReason(publishBlockingIssue)}`);
+        await notifyDailyPublishStatusReport(env, {
+          date,
+          status: "blocked",
+          puzzleNumber: inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, date),
+          slug: `pinpoint-answer-${inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, date)}`,
+          answer: doc.mainAnswer || doc.theme || "",
+          clues: doc.answers.map((answerItem) => answerItem.word).slice(0, 5),
+          reason: publishBlockingIssue,
+          nextAction: "先看发布阻塞原因，再决定修规则、补配置或人工补发。",
+        });
         failureContext = notifyLines.join(" | ");
         heartbeat.outcome = "failed";
         heartbeat.error = `publish pipeline blocked: ${publishBlockingIssue}`;

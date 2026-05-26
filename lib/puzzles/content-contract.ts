@@ -282,6 +282,30 @@ export function validateContentContract(input: ContentContractInput): ContentCon
     }
   }
 
+  const faqs = input.faqs ?? null;
+  if (!Array.isArray(faqs) || faqs.length < CONTENT_CONTRACT.faqsMin) {
+    issues.push({
+      level: "error",
+      code: "faqs.count",
+      message: `At least ${CONTENT_CONTRACT.faqsMin} FAQ items are required`,
+      field: "faqs",
+    });
+  } else {
+    const missingAny = faqs.some((faq) => {
+      const question = normalizeText(faq?.question);
+      const answer = normalizeText(faq?.answer);
+      return !question || !answer;
+    });
+    if (missingAny) {
+      issues.push({
+        level: "error",
+        code: "faqs.missingFields",
+        message: "Each FAQ item must include question and answer",
+        field: "faqs",
+      });
+    }
+  }
+
   if (input.llmTemplateVersion && !ACCEPTED_TEMPLATE_VERSIONS.has(input.llmTemplateVersion)) {
     issues.push({
       level: "warning",

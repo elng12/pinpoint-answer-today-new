@@ -270,12 +270,12 @@ function validateFaq(input: FullAnalysisStructureInput): ValidationIssue | null 
   const candidateRevisionId = normalizeIdentityText(input.candidate.revisionId);
 
   if (Array.isArray(faqItems) && faqItems.length > 0) {
-    if (faqItems.length < 2 || faqItems.length > 4) {
+    if (faqItems.length < 3 || faqItems.length > 4) {
       return makeIssue(
         "INVALID_FAQ_STRUCTURE",
         "candidate.faqItems",
-        "Full-analysis FAQ items must be 2 to 4 when present.",
-        "Keep 2 to 4 specific FAQ items or omit FAQ items.",
+        "Full-analysis FAQ items must be 3 to 4 when present.",
+        "Keep 3 to 4 specific FAQ items or omit FAQ items.",
         { severity: "P1", candidateRevisionId },
       );
     }

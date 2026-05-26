@@ -563,7 +563,7 @@ Target shape:
 - 500 to 900 words by default; longer only when the puzzle needs it
 - required semantic sections instead of a fixed heading count
 - 5 clue rows
-- 2 to 4 FAQ items, default 3 when useful
+- 3 to 4 FAQ items, default 3
 - 3 to 8 internal links
 - answer visible in rendered HTML
 
@@ -1282,7 +1282,7 @@ Inputs:
 
 Output:
 
-- 2 to 4 FAQ items for `full-analysis`, default 3 when useful
+- 3 to 4 FAQ items for `full-analysis`, default 3
 - at least one FAQ about a clue ambiguity when the puzzle has one
 - at least one FAQ about the topic/category
 - at most one generic Pinpoint gameplay FAQ
@@ -1512,7 +1512,7 @@ PR6B checks:
 12. `cumulative_confirmation` must include at least two L1 clue ids.
 13. Reasoning text cannot be generic filler.
 14. FAQ schema requires visible FAQ in rendered HTML.
-15. FAQ items must be 2 to 4 when present for `full-analysis`.
+15. FAQ items must be 3 to 4 when present for `full-analysis`.
 16. Internal links must be route-shaped and must match `existingRoutes` when provided.
 
 PR6B should not:
@@ -1958,7 +1958,7 @@ PR8 first implementation slice:
 - require a supported reasoning slot before deterministic assembly can happen
 - require `falseStart.status = "omitted"` when no supported false start exists
 - allow `falseStart.status = "included"` only when rejectedTheory and whyRejected are both present
-- require two to four FAQ slots before a full-analysis slot plan can be assembled
+- require three to four FAQ slots before a full-analysis slot plan can be assembled
 - leave puzzle type classifier, slot generators, deterministic assembler, and repair loop for later PR8 slices
 
 PR8 second implementation slice:
@@ -2000,7 +2000,7 @@ PR8 fifth implementation slice:
 PR8 sixth implementation slice:
 
 - add a local FAQ generator for `category_membership`
-- generate two to four FAQ items only after complete 5/5 clue-fit coverage exists
+- generate three to four FAQ items only after complete 5/5 clue-fit coverage exists
 - carry evidence refs from clue-fit rows into the FAQ items
 - fail when puzzle type is unsupported, answer category is missing, clue-fit coverage is incomplete, or evidence refs are missing
 - keep FAQ output structural only; rendered FAQ/schema checks still belong to validator and later public-page audits

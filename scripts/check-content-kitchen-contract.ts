@@ -1111,6 +1111,11 @@ function makeValidSlotPlan(): FullAnalysisSlotPlanV0 {
         answer: "Electric is another type of guitar in the same category.",
         evidenceRefs: ["ev-clue-3"],
       },
+      {
+        question: "What confirms the guitar category?",
+        answer: "Bass, Classical, and Electric all confirm that the answer is Types of guitar.",
+        evidenceRefs: ["ev-clue-1", "ev-clue-2", "ev-clue-3"],
+      },
     ],
   };
 }

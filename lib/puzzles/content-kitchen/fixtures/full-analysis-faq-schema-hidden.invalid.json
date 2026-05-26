@@ -51,7 +51,8 @@
       },
       "faqItems": [
         { "question": "Why does Bass fit?", "answer": "Bass is a guitar type in this board." },
-        { "question": "Why does Electric matter?", "answer": "Electric confirms the guitar-type answer." }
+        { "question": "Why does Electric matter?", "answer": "Electric confirms the guitar-type answer." },
+        { "question": "What confirms the guitar category?", "answer": "Classical, Acoustic, and Steel confirm the same guitar-type answer." }
       ],
       "schemaTypes": ["FAQPage"]
     }

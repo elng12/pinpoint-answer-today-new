@@ -56,6 +56,7 @@ Use this index as the first stop before moving or archiving documents. It groups
 ## Content Kitchen
 
 - [Competitor-derived plan](pinpoint-content-kitchen-competitor-derived-plan-2026-05-22.md)
+- [Auto publish rules](pinpoint-auto-publish-rules-2026-05-26.md)
 - [PR6a MVP](pinpoint-content-kitchen-pr6a-mvp-2026-05-23.md)
 - [Rollout playbook](pinpoint-content-kitchen-rollout-playbook-2026-05-23.md)
 - [PR9 enrichment dry-run usage](pinpoint-content-kitchen-pr9-enrichment-dry-run-usage-2026-05-24.md)

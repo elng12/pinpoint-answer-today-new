@@ -295,12 +295,12 @@ function validateFalseStart(slotPlan: Partial<FullAnalysisSlotPlanV0>, issues: F
 function validateFaq(slotPlan: Partial<FullAnalysisSlotPlanV0>, issues: FullAnalysisSlotIssue[]) {
   const faqItems = slotPlan.faqItems;
 
-  if (!Array.isArray(faqItems) || faqItems.length < 2 || faqItems.length > 4) {
+  if (!Array.isArray(faqItems) || faqItems.length < 3 || faqItems.length > 4) {
     issues.push(
       makeIssue(
         "MISSING_SLOT_FAQ",
         "slotPlan.faqItems",
-        "Full-analysis slot plan needs two to four FAQ items.",
+        "Full-analysis slot plan needs three to four FAQ items.",
         "Generate specific FAQ items or keep the plan out of assembly.",
       ),
     );

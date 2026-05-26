@@ -312,6 +312,7 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 | staging Cron | 已显式关闭：`[env.staging.triggers].crons = []` |
 | 目标仓库 | `elng12/pinpoint-answer-today-new`，分支 `main` |
 | revalidate 地址 | `https://pinpointanswertoday.app/api/revalidate` |
+| 自动发布暂停 | 默认关闭：`PINPOINT_AUTO_PUBLISH_PAUSED=false`；也可用 `worker:auto-publish-pause` 写 KV 立即暂停 |
 
 ---
 
@@ -326,6 +327,8 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 | `publish:{date}:enrich_running` | enrich 运行锁（防并发） |
 | `publish:{date}:i18n:{locale}:done` | i18n 某语言已完成标记 |
 | `publish:{date}:i18n:{locale}:running` | i18n 某语言运行锁 |
+| `pinpoint:auto-publish:paused` | 自动发布暂停开关；存在且 `paused=true` 时，Cron 只抓取和记录，不写 GitHub |
+| `notify:daily-publish-status:{date}:{status}:{puzzleNumber}` | 每日状态报告去重键，避免同一天同状态重复推送 |
 | `monitor:cron:last` | 最近一次 cron 心跳 |
 | `monitor:cron:{date}` | 某日 cron 心跳 |
 | `monitor:cron:{date}:runs` | 某日 cron 运行次数 |
@@ -341,6 +344,16 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 | Health 检查 | `GET https://<worker-domain>/health` |
 | Vercel 部署 | Vercel Dashboard → `pinpoint-answer-today-new` → Deployments |
 | revalidate 手动触发 | 见新站 `docs/` 下 runbook |
+
+### 紧急暂停自动发布
+
+暂停后，Worker 仍会抓当天题目、写 KV、发“自动发布暂停”通知，但不会排队增强，也不会写 GitHub。
+
+```bash
+npm run worker:auto-publish-pause -- --reason "manual incident stop"
+npm run worker:auto-publish-pause-status
+npm run worker:auto-publish-resume
+```
 
 ---
 

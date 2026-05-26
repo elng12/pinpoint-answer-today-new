@@ -10,6 +10,7 @@ import {
   validateDraftLanguage,
   validateDraftStructure,
 } from "../lib/puzzles/draft-validator";
+import { validateContentContract } from "../lib/puzzles/content-contract";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
 import { collectSemanticLintIssues } from "../lib/puzzles/semantic-lint";
 import {
@@ -1771,6 +1772,57 @@ async function checkEvidenceContractGuardsMeaningfulV2Fields() {
   console.log("ok: v2 evidence contract blocks thin turningPoint/clueRows/faqItems payloads");
 }
 
+function checkContentContractRequiresThreeCompleteFaqs() {
+  const rawWords = ["Alpha", "Beta", "Gamma", "Delta", "Epsilon"];
+  const baseInput = {
+    puzzleNumber: 901,
+    bodyMode: "standard" as const,
+    locale: "en",
+    rawWords,
+    mainAnswer: "Greek letters",
+    summary: "Alpha, Beta, Gamma, Delta, and Epsilon point to Greek letters.",
+    seoTitle: "LinkedIn Pinpoint #901 Answer: Alpha, Beta, Gamma, Delta, Epsilon",
+    seoDescription:
+      "LinkedIn Pinpoint #901 answer for Alpha, Beta, Gamma, Delta, and Epsilon, with the full clue-by-clue explanation and the shared Greek letters connection.",
+    overview:
+      "Alpha and Beta make the board look like a sequence at first, but Gamma, Delta, and Epsilon keep the same naming pattern in view. The answer works because every clue is a common member of one familiar ordered set, so the board can be checked without forcing a loose category.",
+    solutionEmergence:
+      "I first read Alpha and Beta as a simple opening pair, then Gamma, Delta, and Epsilon made the shared set harder to miss. I checked the clues together and the cleanest answer stayed Greek letters because every clue names one of those letters directly, without needing a second meaning or a stretched phrase.",
+    clueDetails: rawWords.map((clue) => ({
+      clue,
+      phrase: `${clue} is a Greek letter`,
+      explanation: `${clue} fits because it is one of the Greek letters in the shared set.`,
+    })),
+  };
+
+  const tooFewFaqIssues = validateContentContract({
+    ...baseInput,
+    faqs: [
+      { question: "What is the answer?", answer: "The answer is Greek letters." },
+      { question: "Why does Alpha fit?", answer: "Alpha is a Greek letter." },
+    ],
+  });
+  assert.ok(
+    tooFewFaqIssues.some((issue) => issue.level === "error" && issue.code === "faqs.count"),
+    "content contract must block drafts with fewer than three FAQ items",
+  );
+
+  const incompleteFaqIssues = validateContentContract({
+    ...baseInput,
+    faqs: [
+      { question: "What is the answer?", answer: "The answer is Greek letters." },
+      { question: "Why does Alpha fit?", answer: "Alpha is a Greek letter." },
+      { question: "Why does Beta fit?", answer: "" },
+    ],
+  });
+  assert.ok(
+    incompleteFaqIssues.some((issue) => issue.level === "error" && issue.code === "faqs.missingFields"),
+    "content contract must block incomplete FAQ rows",
+  );
+
+  console.log("ok: content contract requires three complete FAQ items");
+}
+
 async function checkTypedCategoryGenerationKeepsGrammarNatural() {
   const generationModulePath = "../lib/puzzle-generation.ts";
   const workerModulePath = "../worker/src/index.ts";
@@ -2684,6 +2736,8 @@ function checkWorkerRouteDispatchResolver() {
   assert.equal(routeFor("/admin/release-queue-dry-run", { method: "POST" }), "adminReleaseQueueDryRun");
   assert.equal(routeFor("/admin/release-queue-dry-run"), "notFound");
   assert.equal(routeFor("/admin/release-queue-status-check"), "adminReleaseQueueStatusCheck");
+  assert.equal(routeFor("/admin/auto-publish-pause"), "adminAutoPublishPause");
+  assert.equal(routeFor("/admin/auto-publish-pause", { method: "POST" }), "adminAutoPublishPause");
   assert.equal(routeFor("/admin/run"), "adminRun");
   assert.equal(routeFor("/admin/put-doc", { method: "POST" }), "adminPutDoc");
   assert.equal(routeFor("/admin/put-doc"), "notFound");
@@ -2841,7 +2895,12 @@ async function checkReleaseQueueObservationOpsScript() {
     !opsSource.includes('cmd === "release-queue-observe"') ||
       !opsSource.slice(
         opsSource.indexOf('cmd === "release-queue-observe"'),
-        opsSource.indexOf('cmd === "refresh-cookie"'),
+        Math.min(
+          ...[
+            opsSource.indexOf('cmd === "auto-publish-pause-status"', opsSource.indexOf('cmd === "release-queue-observe"')),
+            opsSource.indexOf('cmd === "refresh-cookie"', opsSource.indexOf('cmd === "release-queue-observe"')),
+          ].filter((index) => index > 0),
+        ),
       ).includes("requireAdminSecret()"),
     "release queue observation must not require admin secrets",
   );
@@ -3023,6 +3082,107 @@ async function checkProductionReleaseRunsPublicFetchAudit() {
   console.log("ok: production release runs PR11 public fetch audit before declaring success");
 }
 
+async function checkWorkerRunsPostPublishPublicAudit() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+
+  assert.ok(
+    workerSource.includes("runNewSitePublicPublishAudit") &&
+      workerSource.includes("post-publish public audit failed") &&
+      workerSource.includes("sitemap does not include the new detail URL") &&
+      workerSource.includes("home page does not link to the new detail URL") &&
+      workerSource.includes("archive page does not link to the new detail URL") &&
+      workerSource.includes("summary API latest mismatch"),
+    "Worker publish path must verify detail, sitemap, home, archive, and summary after public publish",
+  );
+  assert.ok(
+    workerSource.includes("const publicAudit = await runPrimaryPublicAudit(pageReady)") &&
+      workerSource.includes("await runPrimaryPublicAudit(pageReady);"),
+    "Worker publish path must run the public audit both after new commits and no-change retry publishes",
+  );
+
+  console.log("ok: worker runs post-publish public audit for daily auto-publish");
+}
+
+async function checkAutoPublishPauseSwitch() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const dispatchSource = await readFile(resolve(ROOT, "worker/src/routes/dispatch.ts"), "utf8");
+  const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
+  const opsSource = await readFile(resolve(ROOT, "scripts/worker-ops.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    dispatchSource.includes('url.pathname === "/admin/auto-publish-pause"'),
+    "auto-publish pause route must be exposed through the route resolver",
+  );
+  assert.ok(
+    workerSource.includes('case "adminAutoPublishPause"') &&
+      workerSource.includes("getAdminSecret(env)") &&
+      workerSource.includes("setAutoPublishPauseStatus(env, paused, reason)") &&
+      workerSource.includes("readOnly: true") &&
+      workerSource.includes("readOnly: false"),
+    "auto-publish pause route must be admin-gated and support read/update modes",
+  );
+  assert.ok(
+    workerSource.includes('const autoPublishPause = await getAutoPublishPauseStatus(env);') &&
+      workerSource.includes("Worker 定时抓取成功（自动发布暂停）") &&
+      workerSource.includes('publishEnabled && !forcePublish'),
+    "scheduled runs must skip publish when paused while manual force runs can still bypass it",
+  );
+  assert.ok(
+    wranglerSource.includes('PINPOINT_AUTO_PUBLISH_PAUSED      = "false"') ||
+      wranglerSource.includes('PINPOINT_AUTO_PUBLISH_PAUSED = "false"'),
+    "wrangler config must expose the auto-publish pause flag with a safe default",
+  );
+  assert.ok(
+    packageJson.scripts?.["worker:auto-publish-pause"]?.includes("auto-publish-pause") &&
+      packageJson.scripts?.["worker:auto-publish-resume"]?.includes("auto-publish-resume") &&
+      packageJson.scripts?.["worker:auto-publish-pause-status"]?.includes("auto-publish-pause-status"),
+    "package.json must expose pause, resume, and pause-status commands",
+  );
+  assert.ok(
+    opsSource.includes('cmd === "auto-publish-pause"') &&
+      opsSource.includes('cmd === "auto-publish-resume"') &&
+      opsSource.includes("/admin/auto-publish-pause") &&
+      opsSource.includes('url.searchParams.set("paused", "1")') &&
+      opsSource.includes('url.searchParams.set("paused", "0")'),
+    "worker ops script must call the auto-publish pause endpoint",
+  );
+
+  console.log("ok: auto-publish pause switch preserves fetch while stopping publish");
+}
+
+async function checkDailyPublishStatusReport() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const rulesDoc = await readFile(resolve(ROOT, "docs/pinpoint-auto-publish-rules-2026-05-26.md"), "utf8");
+
+  assert.ok(
+    workerSource.includes("type DailyPublishStatus") &&
+      workerSource.includes("dailyPublishStatusReportNotifyKeyOf") &&
+      workerSource.includes("notifyDailyPublishStatusReport") &&
+      workerSource.includes("Pinpoint 每日状态"),
+    "Worker must define a deduped daily publish status report",
+  );
+  for (const expectedStatus of [
+    "published",
+    "downgraded",
+    "candidate",
+    "blocked",
+    "paused",
+    "needs_review",
+  ]) {
+    assert.ok(workerSource.includes(expectedStatus), `daily status report must cover ${expectedStatus}`);
+  }
+  assert.ok(
+    rulesDoc.includes("daily status report") &&
+      rulesDoc.includes("published, downgraded, candidate, blocked, paused, or needs review"),
+    "auto-publish rules doc must record the daily status report coverage",
+  );
+
+  console.log("ok: daily publish status report covers terminal outcomes");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -3093,6 +3253,7 @@ async function main() {
   await checkWorkerDetailShape();
   await checkPhraseFallbackDirection();
   await checkEvidenceContractGuardsMeaningfulV2Fields();
+  checkContentContractRequiresThreeCompleteFaqs();
   await checkTypedCategoryGenerationKeepsGrammarNatural();
   checkWorkerLlmSlotsOnlyDraftNormalizesBeforeValidation();
   await checkValidateDraftDoesNotNormalizeEmptySlots();
@@ -3115,6 +3276,9 @@ async function main() {
   await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
+  await checkWorkerRunsPostPublishPublicAudit();
+  await checkAutoPublishPauseSwitch();
+  await checkDailyPublishStatusReport();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }
