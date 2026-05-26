@@ -43,7 +43,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 | `GRAPHQL_TOKEN` | GraphQL endpoint 可选 Bearer token | 可选 | 可选 |
 | `GRAPHQL_CSRF_TOKEN` | Voyager GraphQL 可选 CSRF token | 可选 | 可选 |
 | `SITE_API_TOKEN` | 调 `/api/admin/generate-draft` 的 Bearer token（enrichment/i18n 用） | ❌ | ✅ |
-| `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，`contents:write` on `elng12/pinpoint-answer-today-new` | ❌ | ✅ |
+| `GITHUB_TOKEN_NEW_SITE` | GitHub fine-grained PAT，仅授权 `elng12/pinpoint-answer-today-new`；需要 `Contents: Read and write` 和 `Commit statuses: Read-only` | ❌ | ✅ |
 | `NEW_SITE_REVALIDATE_SECRET` | 必须与 Vercel `REVALIDATE_SECRET` 值完全一致；仅正式 `main` 分支需要 | ❌ | staging 可选 / 生产必需 |
 | `NEW_SITE_SUMMARY_WATCHDOG_ENABLED` | 可选；默认开启。主抓取窗口后校验正式站 summary，未更新时提前飞书告警 | ❌ | 可选 |
 | `FEISHU_WEBHOOK_URL` | 飞书告警 webhook URL | ❌ | ✅ |
@@ -77,7 +77,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 从仓库根目录运行（不要在 `worker/` 子目录里跑）：
 
 ```bash
-cd /Users/elng/web/pinpointanswertoday/new-pinpoint-site
+cd /Users/elng/web/pinpoint-answer-today-new
 
 # 14:55 左右：预检（只测抓取，不发布）
 npm run worker:preflight
@@ -103,6 +103,18 @@ npm run worker:refresh-cookie
 - `:25` 这次会检查正式站 `/api/puzzles/summary` 是否已经显示当天题
 - 如果 Worker 已抓到当天答案，但正式站 summary 仍停在旧日期，会先尝试 revalidate；仍失败则立即飞书告警
 - 告警通过 KV 的 `notify:site-summary-watchdog:<date>` 去重，避免同一天重复推送
+
+### 发布队列状态自检
+
+`release-queue-observe` 使用的是本机 `gh` 登录，只能说明本机能读 GitHub 状态。要确认线上 Worker 自己的 `GITHUB_TOKEN_NEW_SITE` 能读到 Vercel commit status，使用：
+
+```bash
+npm run worker:release-queue-status-check -- --env prod
+```
+
+这个命令调用 Worker 只读接口 `/admin/release-queue-status-check`，会返回 `main` commit、GitHub combined status HTTP 状态、Vercel 状态和 Worker 实际算出的 `deploymentState`。如果这里还是 `unknown`，优先检查 `GITHUB_TOKEN_NEW_SITE` 是否包含 `Commit statuses: Read-only`。
+
+命令退出码也是门槛：只要线上 Worker 自己读不到 `ready`，命令就会失败。若返回 `401`，先核对本机 `.env.local` / `.env.override.local` 里的 `ADMIN_SECRET` 或 `ADMIN_PASSPHRASE` 是否和线上 Worker 一致；这不是 GitHub token 问题。
 
 ### `graphql 401` 优先修复顺序
 
@@ -142,7 +154,7 @@ for c in jar:
 print('; '.join(parts), end='')
 PY
 
-cd /Users/elng/web/pinpointanswertoday/new-pinpoint-site/worker
+cd /Users/elng/web/pinpoint-answer-today-new/worker
 npx wrangler secret put GRAPHQL_COOKIE --env staging < /tmp/linkedin_edge_cookie.txt
 npx wrangler secret put GRAPHQL_COOKIE --env shadow < /tmp/linkedin_edge_cookie.txt
 rm -f /tmp/linkedin_edge_cookie.txt
@@ -162,8 +174,8 @@ curl "https://pinpoint-worker-shadow.2296744453m.workers.dev/admin/preflight-lin
 - 目的：避免只有 Cloudflare / Vercel 控制台里有值，后续排查时还要重新翻历史记录
 - 本机副本只保留在非 Git 文件里，不替代线上 secret 管理
 - 推荐位置：
-  - 父仓库脚本 / AI 工具：`/Users/elng/web/pinpointanswertoday/.env.override.local`
-  - 新站本地运行：`/Users/elng/web/pinpointanswertoday/new-pinpoint-site/.env.local`
+  - 父仓库脚本 / AI 工具：`/Users/elng/web/pinpoint-answer-today-new/.env.override.local`
+  - 新站本地运行：`/Users/elng/web/pinpoint-answer-today-new/.env.local`
 - 当前建议保留本机副本的关键值：
   - `OPENROUTER_API_KEY`
   - `OPENAI_API_KEY`
@@ -339,7 +351,7 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 推荐顺序：
 
 ```bash
-cd /Users/elng/web/pinpointanswertoday/new-pinpoint-site
+cd /Users/elng/web/pinpoint-answer-today-new
 npm run test:pinpoint-regression
 npm run test:pinpoint-regression:core
 ```

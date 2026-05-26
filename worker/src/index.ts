@@ -573,6 +573,110 @@ export function resolvePinpointReleaseDeploymentStateFromGithubStatus(statusJson
   return "unknown";
 }
 
+async function fetchGitHubJsonRecord(
+  url: string,
+  headers: Record<string, string>,
+): Promise<{ ok: boolean; status: number; json: JsonRecord; textPreview: string }> {
+  const res = await fetch(url, { headers });
+  const text = await res.text();
+  let json: JsonRecord = {};
+  try {
+    json = (asRecord(JSON.parse(text)) ?? {}) as JsonRecord;
+  } catch {
+    json = {};
+  }
+  return {
+    ok: res.ok,
+    status: res.status,
+    json,
+    textPreview: text.slice(0, 300),
+  };
+}
+
+async function inspectNewSiteBaseDeploymentStatus(env: Env): Promise<JsonRecord> {
+  const token = String(env.GITHUB_TOKEN_NEW_SITE || "").trim();
+  const repo = String(env.GITHUB_REPO_NEW_SITE || "elng12/pinpoint-answer-today-new").trim();
+  const baseBranch = normalizeGitHubBranchName(env.GITHUB_BRANCH_NEW_SITE, "main");
+  const checkedAt = new Date().toISOString();
+
+  if (!token) {
+    return {
+      ok: false,
+      checkedAt,
+      repo,
+      baseBranch,
+      deploymentState: "unknown",
+      error: "missing GITHUB_TOKEN_NEW_SITE",
+    };
+  }
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+    "Content-Type": "application/json",
+    "User-Agent": "pinpoint-worker/1.0",
+  };
+
+  const refUrl = `https://api.github.com/repos/${repo}/git/ref/heads/${encodeGitHubBranchRef(baseBranch)}`;
+  const refResult = await fetchGitHubJsonRecord(refUrl, headers);
+  const baseCommitSha = String(asRecord(refResult.json.object)?.sha || "").trim();
+
+  if (!refResult.ok || !baseCommitSha) {
+    return {
+      ok: false,
+      checkedAt,
+      repo,
+      baseBranch,
+      baseCommitSha: baseCommitSha || null,
+      deploymentState: "unknown",
+      github: {
+        refStatus: refResult.status,
+        statusStatus: null,
+      },
+      error: !refResult.ok ? `GitHub ref read failed: HTTP ${refResult.status}` : "GitHub base ref missing commit sha",
+    };
+  }
+
+  const statusUrl = `https://api.github.com/repos/${repo}/commits/${baseCommitSha}/status`;
+  const statusResult = await fetchGitHubJsonRecord(statusUrl, headers);
+  const vercelStatus = Array.isArray(statusResult.json.statuses)
+    ? statusResult.json.statuses
+      .map((item) => asRecord(item))
+      .filter((item): item is JsonRecord => Boolean(item))
+      .find((item) => String(item.context || "").trim().toLowerCase() === "vercel")
+    : null;
+  const deploymentState = statusResult.ok
+    ? resolvePinpointReleaseDeploymentStateFromGithubStatus(statusResult.json)
+    : "unknown";
+
+  return {
+    ok: refResult.ok && statusResult.ok && deploymentState === "ready",
+    checkedAt,
+    repo,
+    baseBranch,
+    baseCommitSha,
+    deploymentState,
+    github: {
+      refStatus: refResult.status,
+      statusStatus: statusResult.status,
+      combinedState: String(statusResult.json.state || "unknown"),
+      statusCount: Array.isArray(statusResult.json.statuses) ? statusResult.json.statuses.length : 0,
+    },
+    vercel: vercelStatus
+      ? {
+        found: true,
+        state: String(vercelStatus.state || ""),
+        description: String(vercelStatus.description || ""),
+        targetUrl: String(vercelStatus.target_url || ""),
+      }
+      : { found: false },
+    ...(!statusResult.ok
+      ? { error: `GitHub combined status read failed: HTTP ${statusResult.status}` }
+      : {}),
+  };
+}
+
 async function notifyPinpointReleaseQueueDecision(
   env: Env,
   decision: ReleaseQueuePolicyDecision,
@@ -3364,20 +3468,6 @@ async function publishToNewSiteGitHub(
     return (asRecord(await res.json()) ?? {}) as JsonRecord;
   };
 
-  const getCombinedCommitStatus = async (sha: string): Promise<JsonRecord> => {
-    const res = await fetch(`https://api.github.com/repos/${repo}/commits/${sha}/status`, { headers });
-    if (!res.ok) throw new Error(`GitHub GET combined status ${sha}: ${res.status} ${await res.text()}`);
-    return (asRecord(await res.json()) ?? {}) as JsonRecord;
-  };
-
-  const getBaseBranchDeploymentState = async (): Promise<DeploymentState> => {
-    const baseRef = await getBranchRef(baseBranch);
-    const baseCommitSha = String(asRecord(baseRef?.object)?.sha || "").trim();
-    if (!baseCommitSha) return "unknown";
-    const statusJson = await getCombinedCommitStatus(baseCommitSha);
-    return resolvePinpointReleaseDeploymentStateFromGithubStatus(statusJson);
-  };
-
   const isCandidateBranchCurrentWithBase = async (targetBranch: string): Promise<boolean> => {
     const encodedBase = encodeURIComponent(baseBranch);
     const encodedHead = encodeURIComponent(targetBranch);
@@ -3521,10 +3611,19 @@ async function publishToNewSiteGitHub(
     }
   } else if (releaseQueueEnabled) {
     let deploymentState: DeploymentState = "unknown";
+    let deploymentStatusCheck: JsonRecord | null = null;
     try {
-      deploymentState = await getBaseBranchDeploymentState();
+      deploymentStatusCheck = await inspectNewSiteBaseDeploymentStatus(env);
+      deploymentState = parseDeploymentStateParam(String(deploymentStatusCheck.deploymentState || ""));
     } catch (error) {
       console.warn("[new-site] release queue could not read deployment state; defaulting to unknown", error);
+    }
+    if (deploymentState === "unknown") {
+      console.warn("[new-site] release queue deployment status unresolved", {
+        repo,
+        baseBranch,
+        statusCheck: deploymentStatusCheck,
+      });
     }
 
     const lastProductionPushAt = await env.PP_DATA.get(releaseQueueLastProductionPushKeyOf(slug)).catch(() => null);
@@ -6231,6 +6330,25 @@ export default {
         },
         decision,
       }), {
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
+
+      case "adminReleaseQueueStatusCheck": {
+      const adminSecret = getAdminSecret(env);
+      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
+      const secret = url.searchParams.get("secret");
+      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
+
+      const statusCheck = await inspectNewSiteBaseDeploymentStatus(env);
+      const healthy = statusCheck.ok === true;
+      return new Response(JSON.stringify({
+        ok: healthy,
+        mode: "release-queue-status-check",
+        readOnly: true,
+        statusCheck,
+      }), {
+        status: healthy ? 200 : 424,
         headers: { "content-type": "application/json; charset=utf-8" },
       });
     }

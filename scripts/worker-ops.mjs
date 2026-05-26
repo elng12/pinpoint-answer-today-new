@@ -69,9 +69,10 @@ function printUsage() {
   node scripts/worker-ops.mjs preflight [--env prod|staging|shadow] [--date YYYY-MM-DD]
   node scripts/worker-ops.mjs health    [--env prod|staging|shadow]
   node scripts/worker-ops.mjs release-queue-dry-run [--env staging|shadow|prod] [--date YYYY-MM-DD] [--puzzle-number N]
+  node scripts/worker-ops.mjs release-queue-status-check [--env prod|staging|shadow] [--json]
   node scripts/worker-ops.mjs release-queue-observe [--env prod|staging|shadow] [--date YYYY-MM-DD] [--puzzle-number N] [--json]
   node scripts/worker-ops.mjs refresh-cookie [--targets prod,staging,shadow|all]
-`);
+	`);
 }
 
 function requireAdminSecret() {
@@ -451,6 +452,48 @@ async function main() {
     }
 
     console.log(`[${envName}] release queue dry-run matrix passed (${scenarios.length} scenarios)`);
+    return;
+  }
+
+  if (cmd === "release-queue-status-check") {
+    const envName = normalizeEnvName(getOption(argv, "--env") || "prod");
+    const emitJson = argv.includes("--json");
+    const secret = requireAdminSecret();
+    const baseUrl = WORKER_BASE_URLS[envName];
+    const url = new URL(`${baseUrl}/admin/release-queue-status-check`);
+    url.searchParams.set("secret", secret);
+
+    const { ok, status, json } = await fetchJson(url.toString());
+    const check = json?.statusCheck || {};
+    const printStatusCheck = () => {
+      console.log(`[${envName}] release queue status check`);
+      console.log(`repo: ${check.repo || ""}`);
+      console.log(`base: ${check.baseBranch || ""} ${formatShortSha(check.baseCommitSha || "")}`);
+      console.log(`deploymentState: ${check.deploymentState || "unknown"}`);
+      console.log(
+        `github: ref=${check.github?.refStatus ?? ""} status=${check.github?.statusStatus ?? ""} combined=${check.github?.combinedState ?? ""}`,
+      );
+      console.log(
+        `vercel: found=${check.vercel?.found === true ? "yes" : "no"} state=${check.vercel?.state || ""} ${check.vercel?.description || ""}`,
+      );
+      if (check.error) {
+        console.log(`error: ${check.error}`);
+      }
+    };
+
+    if (emitJson) {
+      console.log(JSON.stringify(json, null, 2));
+      if (!ok || json?.ok !== true || check.ok !== true) process.exit(1);
+      return;
+    }
+
+    if (!ok || json?.ok !== true || check.ok !== true) {
+      printStatusCheck();
+      console.error(`[${envName}] release queue status check unhealthy: HTTP ${status}`);
+      process.exit(1);
+    }
+
+    printStatusCheck();
     return;
   }
 

@@ -51,7 +51,7 @@ Actions:
 | `write-candidate` | Create/update the deterministic candidate branch; do not revalidate production; send a queue notification. |
 | `hold-review` | Do not write a public payload; send a review notification. |
 
-If a candidate branch already exists, the Worker does not auto-promote it. Even a current candidate stays in `write-candidate` with `candidate-branch-awaiting-promotion` unless a future maintainer-controlled promotion path explicitly passes `allowCandidatePromotion`.
+If a candidate branch already exists, the Worker does not auto-promote it. Even a current candidate stays in `write-candidate` with `candidate-branch-awaiting-promotion`; CI and the Pinpoint Candidate Watchdog own promotion and branch deletion.
 
 ## Read-Only Staging Simulation
 
@@ -92,11 +92,15 @@ Useful scenarios:
 | Same-slug push budget exhausted | `deploymentState=ready&lastProductionPushAt=<ISO time within 60 min>` | `write-candidate` |
 | Explicit second-push override | `deploymentState=ready&lastProductionPushAt=<ISO time within 60 min>&overrideSecondProductionPush=1` | `push-production` |
 
-## What This Does Not Do
+## Candidate Closure
 
-This PR does not add automatic promotion.
+The original PR5C queue only wrote deterministic candidate branches. Current production behavior now adds an automatic closure layer:
 
-Candidate branches still require maintainer review and a separate merge/promote decision. The queue integration only decides where the Worker writes the generated payload.
+- candidate branch CI validates that only the expected puzzle JSON and `registry.json` changed
+- CI promotes the candidate to `main` only after machine checks pass
+- production public fetch audit is the final success proof
+- the candidate branch is deleted only after the public audit passes
+- the `Pinpoint Candidate Watchdog` workflow runs after CI and every 30 minutes, so a stalled candidate is retried, closed, or escalated as a GitHub issue
 
 This PR also does not introduce Vercel API credentials. It uses GitHub commit status for the Vercel deployment signal, matching the existing GitHub integration path.
 
@@ -116,7 +120,7 @@ Expected:
 - Vercel pending status maps to `building`
 - failed Vercel status maps to `failed`
 - same-slug push budget is persisted only after a production public commit
-- existing candidate branches do not auto-promote
+- existing candidate branches auto-promote only through CI/watchdog closure
 - candidate writes do not trigger ISR revalidation
 - hold-review writes no public payload
 

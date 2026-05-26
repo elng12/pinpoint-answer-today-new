@@ -1,7 +1,7 @@
 # Content Quality Release Gate - PR5 Candidate Branch and Queue Plan
 
 Date: 2026-05-22
-Status: PR5A and PR5B merged to `main`; PR5C implemented behind a disabled-by-default Worker flag and ready for review
+Status: PR5A-PR5D implemented; production closure now uses CI auto-promotion plus the Pinpoint Candidate Watchdog
 
 ## Status Update
 
@@ -20,7 +20,7 @@ PR5B has also been implemented locally as a disabled-by-default Worker candidate
 - Candidate writes do not trigger ISR revalidation or consume the Feishu publish notification de-dupe key.
 - A staging-only dry-run endpoint is available for acceptance: `POST /admin/candidate-branch-dry-run`.
 
-PR5B does not add automatic promotion, queue-state API integration, Vercel CLI promotion, or automatic draft PR creation.
+PR5B by itself only adds the candidate writer; promotion is handled later by the CI/watchdog closure flow described below.
 
 PR5C now connects the queue policy to the Worker publish path behind `PINPOINT_RELEASE_QUEUE_ENABLED=false`:
 
@@ -28,9 +28,14 @@ PR5C now connects the queue policy to the Worker publish path behind `PINPOINT_R
 - records same-slug production push timestamps in KV
 - routes unsafe public writes to deterministic candidate branches
 - holds review on failed deployment state
-- keeps existing candidate branches waiting for explicit promotion instead of auto-promoting
+- keeps Worker itself from promoting candidate branches
 - sends queue notifications for candidate/hold decisions
-- still does not auto-promote or auto-merge candidate branches
+
+Candidate branch closure is now handled outside the Worker:
+
+- CI auto-promotes a valid candidate only after machine checks pass.
+- The public fetch audit is the final proof before deleting the branch.
+- The Pinpoint Candidate Watchdog runs after CI and every 30 minutes; safe branches are closed, stuck branches create or update a GitHub issue.
 
 Remote staging dry-run result:
 
@@ -56,13 +61,15 @@ The remediation plan already requires that same-slug enrichment should not creat
 
 ## Selected PR5 Direction
 
-PR5 should introduce a candidate-first promotion boundary, but it should not immediately enable automatic promotion.
+PR5 introduces a candidate-first promotion boundary. The Worker never promotes a candidate directly; GitHub Actions owns the checked closure path.
 
-The first implementation should be dry-run or maintainer-triggered:
+The current production flow is:
 
-- Worker still must not auto-promote candidate branches to production.
+- Worker writes unsafe public payloads to candidate branches.
+- Candidate branch CI checks the exact allowed file scope and runs machine checks.
+- CI or the watchdog promotes only safe branches to `main`.
+- The branch is deleted only after public fetch audit passes.
 - Main branch remains the only production branch.
-- Candidate branches are used to validate final payloads with PR4 rendered gates before merge.
 - Deployment queue state is recorded and reported, but unknown queue state must default to "do not push another production commit".
 
 ## Proposed Candidate Branch Contract
@@ -83,7 +90,6 @@ Candidate branch content:
 
 - `data/puzzles/<slug>.json`
 - `data/puzzles/registry.json`
-- optional pre-publish artifact under `output/publish-artifacts/<logicalGameDate>/<slug>.prepublish.json`
 
 Candidate branch must not contain:
 
@@ -101,7 +107,7 @@ PR5 should make the release decision explicit:
 | `none` | yes, if local gates pass | push production or create candidate based on publish mode |
 | `queued` | no | update/create candidate branch |
 | `building` | no | update/create candidate branch |
-| `ready` | yes, if candidate is still current | maintainer can merge/promote |
+| `ready` | yes, if candidate is still current | CI/watchdog can promote after checks |
 | `failed` | no automatic push | create review artifact and notify |
 | `unknown` | no | candidate branch only |
 
@@ -188,23 +194,20 @@ Dry-run acceptance runbook:
 
 - `docs/content-quality-release-gate-pr5b-dry-run-acceptance-2026-05-22.md`
 
-### PR5C - Maintainer Promotion Flow
+### PR5C/PR5D - Candidate Closure Flow
 
-Do not auto-merge in PR5.
+The Worker does not merge candidate branches. GitHub Actions closes them.
 
-2026-05-22 implementation note: PR5C currently implements the Worker queue decision and candidate/hold routing only. Maintainer promotion remains manual.
-
-First acceptable flow:
+Current flow:
 
 1. Candidate branch receives payload.
-2. CI runs `npm run build` and `npm run test:pinpoint-rendered`.
-3. Maintainer reviews rendered gate result.
-4. Maintainer merges candidate branch into `main`.
-5. Production release script verifies Vercel success and live detail content.
+2. CI validates only `data/puzzles/<slug>.json` and `data/puzzles/registry.json` changed.
+3. CI runs the normal machine checks.
+4. CI fast-forwards `main` to the candidate SHA.
+5. Public fetch audit confirms the live page.
+6. CI deletes the candidate branch.
 
-Later optional flow:
-
-- auto-promote only after three successful manual cycles and explicit approval.
+If the success path stalls, the Pinpoint Candidate Watchdog retries the same closure path after CI and every 30 minutes. If it still cannot close the branch, it creates or updates a GitHub issue.
 
 ## Notification Requirements
 
@@ -228,7 +231,7 @@ PR5 should not include:
 - automatic SLA cron
 - production-effective override
 - KV/runtime emergency override
-- auto-merge to `main`
+- broad auto-merge to `main` outside the checked Pinpoint candidate closure path
 - Vercel CLI `promote` in production
 - new model routing
 - search grounding or multi-model consensus
@@ -242,10 +245,10 @@ If candidate branch logic causes confusion:
 3. Keep queue decision logs for diagnosis.
 4. Do not remove PR1-PR4 gates.
 
-## Remaining Open Decisions Before PR5C
+## Closed Candidate Decisions
 
-1. Who is the release maintainer allowed to merge candidate branches?
-2. Should candidate branches be deleted after merge?
-3. Should failed candidate CI notify Feishu only, or also create a GitHub issue?
-4. Should candidate branch names include puzzle number only, or logical date plus slug?
-5. Should Vercel queue state come from GitHub commit statuses first, Vercel API first, or both?
+1. Candidate branches are promoted by GitHub Actions after machine checks pass.
+2. Candidate branches are deleted after production public fetch audit passes.
+3. Stalled candidate closure creates or updates a GitHub issue through the watchdog workflow.
+4. Candidate branch names use logical date plus slug: `pinpoint/candidate/<YYYY-MM-DD>-<slug>`.
+5. Worker queue state still reads GitHub commit statuses for the Vercel signal, but public fetch audit is the final proof for closing a candidate branch.

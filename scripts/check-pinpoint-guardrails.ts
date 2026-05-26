@@ -2683,6 +2683,7 @@ function checkWorkerRouteDispatchResolver() {
   assert.equal(routeFor("/admin/candidate-branch-dry-run"), "notFound");
   assert.equal(routeFor("/admin/release-queue-dry-run", { method: "POST" }), "adminReleaseQueueDryRun");
   assert.equal(routeFor("/admin/release-queue-dry-run"), "notFound");
+  assert.equal(routeFor("/admin/release-queue-status-check"), "adminReleaseQueueStatusCheck");
   assert.equal(routeFor("/admin/run"), "adminRun");
   assert.equal(routeFor("/admin/put-doc", { method: "POST" }), "adminPutDoc");
   assert.equal(routeFor("/admin/put-doc"), "notFound");
@@ -2848,8 +2849,62 @@ async function checkReleaseQueueObservationOpsScript() {
   console.log("ok: worker ops exposes production release queue observation");
 }
 
+async function checkReleaseQueueStatusCheckRouteAndOps() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const dispatchSource = await readFile(resolve(ROOT, "worker/src/routes/dispatch.ts"), "utf8");
+  const opsSource = await readFile(resolve(ROOT, "scripts/worker-ops.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    dispatchSource.includes('url.pathname === "/admin/release-queue-status-check"'),
+    "release queue status check route must be exposed through the route resolver",
+  );
+  assert.equal(
+    resolveWorkerFetchRoute(
+      new Request("https://example.workers.dev/admin/release-queue-status-check"),
+      new URL("https://example.workers.dev/admin/release-queue-status-check"),
+    ),
+    "adminReleaseQueueStatusCheck",
+    "release queue status check route must resolve",
+  );
+  const routeStart = workerSource.indexOf('case "adminReleaseQueueStatusCheck"');
+  const routeEnd = workerSource.indexOf('case "adminRun"', routeStart);
+  assert.ok(routeStart >= 0 && routeEnd > routeStart, "release queue status check route must be before adminRun");
+  const routeSource = workerSource.slice(routeStart, routeEnd);
+  assert.ok(routeSource.includes("getAdminSecret(env)"), "release queue status check must be admin-gated");
+  assert.ok(routeSource.includes("readOnly: true"), "release queue status check must identify as read-only");
+  assert.ok(
+    routeSource.includes("ok: healthy") &&
+      routeSource.includes("status: healthy ? 200 : 424"),
+    "release queue status check must fail hard when Worker token status is unhealthy",
+  );
+  assert.ok(
+    routeSource.includes("inspectNewSiteBaseDeploymentStatus(env)") &&
+      !routeSource.includes("publishToNewSiteGitHub(") &&
+      !routeSource.includes("notifyPinpointReleaseQueueDecision("),
+    "release queue status check must inspect Worker token status without publishing or notifying",
+  );
+  assert.ok(
+    packageJson.scripts?.["worker:release-queue-status-check"]?.includes("release-queue-status-check"),
+    "package.json must expose the Worker-token release queue status check",
+  );
+  assert.ok(
+    opsSource.includes('cmd === "release-queue-status-check"') &&
+      opsSource.includes("/admin/release-queue-status-check") &&
+      opsSource.includes("requireAdminSecret()") &&
+      opsSource.includes("status check unhealthy") &&
+      opsSource.includes("process.exit(1)"),
+    "worker ops must call the Worker-token status check endpoint with admin auth and fail when unhealthy",
+  );
+
+  console.log("ok: worker ops exposes Worker-token release queue status check");
+}
+
 async function checkCandidateBranchWorkflowAutoPromotes() {
   const ciWorkflow = await readFile(resolve(ROOT, ".github/workflows/ci.yml"), "utf8");
+  const candidateVerifySource = await readFile(resolve(ROOT, "scripts/verify-pinpoint-candidate-release.mjs"), "utf8");
 
   assert.ok(
     ciWorkflow.includes('"pinpoint/candidate/**"'),
@@ -2861,13 +2916,64 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
     "CI must include a candidate auto-promotion job after machine checks pass",
   );
   assert.ok(
-    ciWorkflow.includes("needs: checks") &&
+      ciWorkflow.includes("needs: checks") &&
+      ciWorkflow.includes("Validate candidate branch scope") &&
+      ciWorkflow.includes("check-pinpoint-candidate-branch.mjs") &&
+      ciWorkflow.includes("git show origin/main:scripts/check-pinpoint-candidate-branch.mjs > /tmp/check-pinpoint-candidate-branch.mjs") &&
+      ciWorkflow.includes("git fetch origin main:refs/remotes/origin/main") &&
+      ciWorkflow.includes("git checkout -B main origin/main") &&
       ciWorkflow.includes('git merge --ff-only "$GITHUB_SHA"') &&
       ciWorkflow.includes("git push origin HEAD:main"),
     "candidate auto-promotion must fast-forward main only after the checked candidate commit passes",
   );
+  assert.ok(
+    ciWorkflow.includes("verify-pinpoint-candidate-release.mjs") &&
+      ciWorkflow.includes("Delete promoted candidate branch") &&
+      ciWorkflow.includes('git push origin --delete "$GITHUB_REF_NAME"') &&
+      ciWorkflow.includes("candidate branch still exists after delete") &&
+      candidateVerifySource.includes("const PUBLIC_AUDIT_TIMEOUT_MS = 10 * 60 * 1000") &&
+      candidateVerifySource.includes("public fetch audit remains the final gate"),
+    "candidate auto-promotion must verify public production and delete the branch only after verification",
+  );
 
-  console.log("ok: candidate branches auto-promote through machine checks");
+  console.log("ok: candidate branches auto-promote through machine checks and production verification");
+}
+
+async function checkCandidateBranchWatchdogClosesStuckBranches() {
+  const workflowSource = await readFile(resolve(ROOT, ".github/workflows/pinpoint-candidate-watchdog.yml"), "utf8");
+  const watchdogSource = await readFile(resolve(ROOT, "scripts/close-pinpoint-candidate-branches.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["pinpoint:candidate-close"]?.includes("close-pinpoint-candidate-branches.mjs"),
+    "package.json must expose the candidate branch closure watchdog",
+  );
+  assert.ok(
+    workflowSource.includes("workflow_run:") &&
+      workflowSource.includes("schedule:") &&
+      workflowSource.includes("*/30 * * * *") &&
+      workflowSource.includes("actions: write") &&
+      workflowSource.includes("contents: write") &&
+      workflowSource.includes("checks: read") &&
+      workflowSource.includes("issues: write") &&
+      workflowSource.includes("close-pinpoint-candidate-branches.mjs") &&
+      workflowSource.includes("--create-issue"),
+    "candidate watchdog workflow must run after CI and on a schedule with permissions to close branches and open issues",
+  );
+  assert.ok(
+    watchdogSource.includes("listCandidateBranches") &&
+      watchdogSource.includes("rerunWorkflowRun") &&
+      watchdogSource.includes("verify-pinpoint-candidate-release.mjs") &&
+      watchdogSource.includes('git(["push", "origin", "HEAD:main"]') &&
+      watchdogSource.includes('git(["push", "origin", "--delete", branch]') &&
+      watchdogSource.includes("Pinpoint candidate stuck:") &&
+      watchdogSource.includes("candidate branch count returns to 0"),
+    "candidate watchdog must promote verified branches, delete closed branches, and create a tracked issue when it cannot close one",
+  );
+
+  console.log("ok: candidate branch watchdog closes or escalates stuck candidates");
 }
 
 async function checkPublicVerificationCopyUsesMachineReview() {
@@ -2962,8 +3068,8 @@ async function checkReleaseQueueWorkerIntegration() {
     "worker publish path must pass deployment state, production push budget, and candidate freshness to the queue policy",
   );
   assert.ok(
-    workerSource.includes("getCombinedCommitStatus") &&
-      workerSource.includes("/commits/${sha}/status"),
+    workerSource.includes("inspectNewSiteBaseDeploymentStatus") &&
+      workerSource.includes("/commits/${baseCommitSha}/status"),
     "worker publish path must read GitHub/Vercel commit status before queue decisions",
   );
   assert.ok(
@@ -3004,7 +3110,9 @@ async function main() {
   await checkReleaseQueueDryRunRouteSafety();
   await checkReleaseQueueDryRunOpsScript();
   await checkReleaseQueueObservationOpsScript();
+  await checkReleaseQueueStatusCheckRouteAndOps();
   await checkCandidateBranchWorkflowAutoPromotes();
+  await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkReleaseQueueWorkerIntegration();
