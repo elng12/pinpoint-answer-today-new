@@ -175,7 +175,7 @@ export function AnswerReveal({
         <p className="reveal-answer-copy">
           {revealed
             ? ""
-            : "Use the button below if you want todays Pinpoint answer. Pinpoint today answer logic stays below if you keep scrolling for the full explanation."}
+            : "Use the button below if you want today's Pinpoint answer. Pinpoint today answer logic stays below if you keep scrolling for the full explanation."}
         </p>
         <div className="button-row reveal-answer-actions">
           <button className="button-primary reveal-primary-button" type="button" onClick={handleRevealToggle}>

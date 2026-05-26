@@ -111,6 +111,28 @@
   text-transform: uppercase;
 }
 
+.home-hero-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.home-hero-status-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in oklch, white 20%, var(--primary) 80%);
+  border-radius: 999px;
+  background: color-mix(in oklch, white 9%, transparent);
+  color: color-mix(in oklch, white 90%, var(--primary) 10%);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .home-hero-kicker {
   margin: 0;
   font-size: 12px;
@@ -137,6 +159,24 @@
   line-height: 1.45;
   color: color-mix(in oklch, white 92%, var(--primary) 8%);
   font-weight: 600;
+}
+
+.home-hero-clue-summary {
+  width: min(100%, 760px);
+  margin: 4px auto 0;
+  padding: 10px 16px;
+  border: 1px solid color-mix(in oklch, white 18%, var(--primary) 82%);
+  border-radius: 999px;
+  background: color-mix(in oklch, white 9%, transparent);
+  color: color-mix(in oklch, white 88%, var(--primary) 12%);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.home-hero-clue-summary span {
+  color: white;
+  font-weight: 800;
 }
 
 .home-hero-actions {
@@ -177,14 +217,6 @@
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 4px;
-}
-
-.home-hero-detail {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 15px;
-  line-height: 1.6;
-  color: color-mix(in oklch, white 82%, var(--primary) 18%);
 }
 
 .home-bookmark-strip {
@@ -373,6 +405,7 @@
 }
 
 .reveal-answer-panel {
+  scroll-margin-top: 96px;
   padding: 20px 22px 22px;
   border: 1px solid var(--line);
   border-radius: 24px;

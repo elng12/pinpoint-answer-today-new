@@ -2,9 +2,13 @@ import Link from "next/link";
 import type { PuzzleDetail } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
 
-function buildCluePreview(clues: string[]) {
-  const preview = clues.slice(0, 3).join(", ");
-  return clues.length > 3 ? `${preview}, ...` : preview;
+function formatHeroDate(input: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${input}T00:00:00Z`));
 }
 
 export function HomeHero({
@@ -12,36 +16,38 @@ export function HomeHero({
 }: {
   puzzle: PuzzleDetail;
 }) {
-  const cluePreview = buildCluePreview(puzzle.clues);
+  const heroDate = formatHeroDate(puzzle.isoDate);
+  const clueList = puzzle.clues.join(", ");
 
   return (
     <section className="home-hero">
       <div className="home-hero-inner">
         <span className="home-status-badge">Live now</span>
+        <div className="home-hero-status-row" aria-label={`Puzzle ${puzzle.number} for ${heroDate}`}>
+          <span className="home-hero-status-item">Puzzle #{puzzle.number}</span>
+          <span className="home-hero-status-item">{heroDate}</span>
+          <span className="home-hero-status-item">{puzzle.clues.length} clues</span>
+          <span className="home-hero-status-item">Verified answer</span>
+        </div>
         <p className="home-hero-kicker">Today&apos;s puzzle answer with spoiler-safe hints</p>
         <h1 className="home-hero-title">{`Today's LinkedIn Pinpoint #${puzzle.number} Answer`}</h1>
         <p className="home-hero-subtitle">
-          {`Need today's LinkedIn Pinpoint answer? Start with spoiler-safe hints for Puzzle #${puzzle.number}, then open the verified solution when you're ready.`}
+          {`Need today's LinkedIn Pinpoint answer? Start with the Puzzle #${puzzle.number} clues below, then reveal the verified answer on this page when you're ready.`}
+        </p>
+        <p className="home-hero-clue-summary">
+          <span>Today&apos;s clues:</span> {clueList}
         </p>
         <div className="button-row home-hero-actions">
-          <Link className="button-primary home-hero-primary" href={routes.detail(puzzle.slug)} prefetch={false}>
-            Open today&apos;s answer
+          <a className="button-primary home-hero-primary" href="#answer-reveal">
+            Jump to today&apos;s answer
+          </a>
+          <Link className="button-secondary home-hero-secondary" href={routes.detail(puzzle.slug)} prefetch={false}>
+            Full breakdown
           </Link>
-          <a
-            className="button-secondary home-hero-secondary"
-            href="https://www.linkedin.com/games/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+          <a className="button-secondary home-hero-tertiary" href="https://www.linkedin.com/games/" rel="noopener noreferrer" target="_blank">
             Play on LinkedIn
           </a>
-          <Link className="button-secondary home-hero-tertiary" href={routes.archive} prefetch={false}>
-            Browse past puzzles
-          </Link>
         </div>
-        <p className="home-hero-detail">
-          Today&apos;s clue preview for Puzzle #{puzzle.number}: {cluePreview}. Open today&apos;s answer whenever you&apos;re ready.
-        </p>
       </div>
     </section>
   );

@@ -98,39 +98,66 @@
   }
 
   .home-hero-inner {
-    padding: 24px 20px 28px;
+    gap: 10px;
+    padding: 20px 16px 22px;
   }
 
   .home-status-badge {
-    font-size: 14px;
-    letter-spacing: 0.12em;
+    padding: 6px 12px;
+    font-size: 13px;
+    letter-spacing: 0.1em;
   }
 
   .home-hero-title,
-  .home-hero-subtitle,
-  .home-hero-detail {
+  .home-hero-subtitle {
     max-width: 100%;
   }
 
   .home-hero-title {
-    font-size: clamp(28px, 8vw, 38px);
+    font-size: clamp(26px, 7vw, 34px);
     line-height: 1.12;
     overflow-wrap: anywhere;
   }
 
   .home-hero-subtitle {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .home-hero-status-row {
+    justify-content: stretch;
+    gap: 6px;
+  }
+
+  .home-hero-status-item {
+    flex: 1 1 128px;
+    min-height: 28px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .home-hero-clue-summary {
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.45;
   }
 
   .home-hero-actions {
-    flex-direction: column;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 4px;
   }
 
   .home-hero-actions .button-primary,
   .home-hero-actions .button-secondary {
     width: 100%;
+    min-width: 0;
+    padding-inline: 12px;
+  }
+
+  .home-hero-actions .home-hero-primary {
+    grid-column: 1 / -1;
   }
 
   .home-reveal-title {
