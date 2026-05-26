@@ -489,3 +489,59 @@ Next action:
 
 - Keep running this daily observer.
 - Wait until 2026-05-26 UTC or later before judging GSC recovery, because Search Console data is delayed and same-day data is noisy.
+
+## 2026-05-26 observation (read-only)
+
+Run context:
+
+- `2026-05-26T03:32Z`: initial Googlebot Smartphone spot check still saw `#755` as the latest public detail.
+- Later on 2026-05-26, production moved to `#756`.
+- Homepage intent update commit `603f3f9` was pushed and deployed after rebasing onto latest `origin/main`.
+- GitHub Actions `CI` and `Pinpoint Candidate Watchdog` both passed after that push.
+
+Latest public detail after deploy:
+
+- `#756` (`/linkedin-pinpoint-answers/pinpoint-answer-756/`) is `status=live`, `detailState=published`, with registry `updatedAt=2026-05-26T07:04:00.591Z`.
+- `#755` is now `status=archived`, `detailState=published`, and remains public.
+
+Production homepage markers after deploy:
+
+- H1 shows `Today's LinkedIn Pinpoint #756 Answer`.
+- Hero status row includes `Puzzle #756`, `May 26, 2026`, `5 clues`, and `Verified answer`.
+- Hero clue summary includes `Today's clues: Help, Check-in, News, Rolltop, Standing`.
+- Primary hero CTA is `Jump to today's answer` and points to `#answer-reveal`.
+- The old duplicate `home-hero-detail` clue sentence is no longer present in production HTML.
+- The answer reveal copy uses `today's Pinpoint answer`, not the old `todays` typo.
+
+Production URLs checked:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app` | `index, follow` | title, canonical tag, JSON-LD present, H1 shows `#756`, latest clues and answer CTA present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, latest slug present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | self | `index, follow` | title, canonical tag, H1 present, latest slug present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, H1 present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, H1 present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, H1 present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-756/` | 200 | self | `index, follow` | title, canonical tag, JSON-LD present, H1 present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, and latest `#756`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, `#756`, and `#755` now follows `2026-05-26T07:04:00.591Z`; `#735/#736/#737` remain in the older restored May 6-7 range.
+
+Release context only:
+
+- Security-only PR `#41` deployed at `2026-05-20T03:05:06Z`; keep treating it as a non-SEO variable.
+- Homepage intent update `603f3f9` is an SEO/content-surface variable and should be marked in later GSC comparisons.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, no sitemap omissions, and mobile/production HTML core markers present.
+- PASS: Homepage now exposes current puzzle number, date, clues, verified-answer language, and direct answer-section CTA in initial HTML.
+
+Next action:
+
+- Do not judge same-day GSC data for 2026-05-26.
+- Pull the next complete GSC window after data settles, then compare homepage core queries, homepage mobile impressions, `/puzzles`, and recent detail pages.
