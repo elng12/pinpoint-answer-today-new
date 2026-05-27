@@ -1,0 +1,227 @@
+{
+  "puzzleNumber": 757,
+  "slug": "pinpoint-answer-757",
+  "publishDate": "2026-05-27",
+  "isoDate": "2026-05-27",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Car",
+    "Dating",
+    "Jury",
+    "Gene",
+    "Swimming"
+  ],
+  "answer": "Types of pools",
+  "category": "Types of pools",
+  "wordHints": {
+    "Car": "A car pool is a system for shared transportation.",
+    "Dating": "The dating pool represents all the available singles.",
+    "Jury": "The jury pool is the group of people who might be selected for a jury.",
+    "Gene": "The gene pool is the total genetic diversity within a population.",
+    "Swimming": "A swimming pool is a structure designed for swimming."
+  },
+  "spoilerHints": {
+    "Car": "Treat Car as one recognizable member of types of pools, not as a broad topic on its own.",
+    "Dating": "Dating helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Jury": "Try reading Jury as a specific type inside types of pools instead of as a loose general reference.",
+    "Gene": "Treat Gene as one recognizable member of types of pools, not as a broad topic on its own.",
+    "Swimming": "Swimming is the clue that makes types of pools specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like magazines than pools.",
+    "Car pushed me in that direction immediately.",
+    "Dating kept that theory alive for a moment, but swimming still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Swimming made me stop thinking about magazines and start thinking about pools.",
+    "Car made sense as a car pool.",
+    "Dating made sense as a dating pool.",
+    "The answer was Types of pools.",
+    "Gene and Swimming then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "Car and Dating first pulled me toward Magazines, so that was the first path I tested. It held together for a moment, but swimming never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating swimming as just another clue and asked what kind of pool each clue could describe. Once I made that shift, I was no longer thinking about Magazines; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing pools."
+  ],
+  "lessons": [
+    {
+      "title": "\"Car\" and \"Dating\" can look like they belong to different categories at first",
+      "body": "\"Car\" and \"Dating\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Swimming\" is what makes pool feel concrete instead of broad",
+      "body": "swimming is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Every clue should name a specific kind of pool once the category sharpens",
+      "body": "The best solutions often require you to consider multiple meanings of a word."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on pools",
+    "fastStrategy": "\"Car\" and \"Dating\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Car",
+        "examplePhrase": "Car pool",
+        "connectionExplained": "A car pool is a system for shared transportation."
+      },
+      {
+        "clue": "Dating",
+        "examplePhrase": "Dating pool",
+        "connectionExplained": "The dating pool represents all the available singles."
+      },
+      {
+        "clue": "Jury",
+        "examplePhrase": "Jury pool",
+        "connectionExplained": "The jury pool is the group of people who might be selected for a jury."
+      },
+      {
+        "clue": "Gene",
+        "examplePhrase": "Gene pool",
+        "connectionExplained": "The gene pool is the total genetic diversity within a population."
+      },
+      {
+        "clue": "Swimming",
+        "examplePhrase": "Swimming pool",
+        "connectionExplained": "A swimming pool is a structure designed for swimming."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Which type-level category connects \"Car\" and \"Dating\" in LinkedIn Pinpoint #757?",
+      "answer": "The answer is \"Types of pools\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Car\" and \"Dating\" connect in LinkedIn Pinpoint #757?",
+      "answer": "The connection is that all 5 clues point to recognizable types of pools. Swimming is the clue that makes the category specific enough to verify across the full board."
+    },
+    {
+      "question": "Why is \"Swimming\" the key clue in LinkedIn Pinpoint #757?",
+      "answer": "Swimming is the turning clue because \"Swimming pool\" makes the shared category frame explicit. It also makes Car read cleanly as \"Car pool\". The clues are diverse and don't immediately suggest a common theme. The answer isn't a common phrase, so you have to think laterally."
+    },
+    {
+      "question": "How does \"Car\" fit as a pool in LinkedIn Pinpoint #757?",
+      "answer": "\"Car\" reads as \"Car pool\", which is a recognizable pool. That keeps the board specific instead of broadly themed."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Car, Dating, and Jury do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"Magazines\" can feel plausible before one clue makes the answer feel concrete. Swimming is the clue that finally breaks that first read and makes pools feel concrete.",
+    "falseStarts": [
+      "Magazines",
+      "Collections"
+    ],
+    "whyFalseStartPlausible": [
+      "The clues felt like sections, but the fit was weak. The 'Swimming' clue didn't fit at all.",
+      "Collections feels plausible early on, but it falls apart once swimming demands a more exact reading."
+    ],
+    "breakingClue": "Swimming",
+    "pivot": "The solve turned when I stopped treating swimming as just another clue and asked what kind of pool each clue could describe. Once I made that shift, I was no longer thinking about Magazines; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing pools.",
+    "fullBoardConfirmation": "From there, reading them as pools explains the board much more cleanly. Entries like Car, Dating, and Jury stop feeling disconnected and start looking like they belong together. Once swimming is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are diverse and don't immediately suggest a common theme. The answer isn't a common phrase, so you have to think laterally."
+  },
+  "turningPoint": {
+    "clue": "Swimming",
+    "whyDecisive": "The 'Swimming' clue made the category of pools click into place.",
+    "whatChangedAfterIt": "Once Swimming landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Car",
+      "surfaceMisread": "Magazines",
+      "resolvedPhraseOrMember": "Car pool",
+      "nonObviousWhy": "A car pool is a system for shared transportation.",
+      "searchableContext": "Car pool"
+    },
+    {
+      "clue": "Dating",
+      "surfaceMisread": "Magazines",
+      "resolvedPhraseOrMember": "Dating pool",
+      "nonObviousWhy": "The dating pool represents all the available singles.",
+      "searchableContext": "Dating pool"
+    },
+    {
+      "clue": "Jury",
+      "surfaceMisread": "Magazines",
+      "resolvedPhraseOrMember": "Jury pool",
+      "nonObviousWhy": "The jury pool is the group of people who might be selected for a jury.",
+      "searchableContext": "Jury pool"
+    },
+    {
+      "clue": "Gene",
+      "surfaceMisread": "Magazines",
+      "resolvedPhraseOrMember": "Gene pool",
+      "nonObviousWhy": "The gene pool is the total genetic diversity within a population.",
+      "searchableContext": "Gene pool"
+    },
+    {
+      "clue": "Swimming",
+      "surfaceMisread": "Magazines",
+      "resolvedPhraseOrMember": "Swimming pool",
+      "nonObviousWhy": "A swimming pool is a structure designed for swimming.",
+      "searchableContext": "Swimming pool"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Car\" and \"Dating\" in LinkedIn Pinpoint #757?",
+      "answer": "The answer is \"Types of pools\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Car"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Car\" and \"Dating\" connect in LinkedIn Pinpoint #757?",
+      "answer": "The connection is that all 5 clues point to recognizable types of pools. Swimming is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Car"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Swimming\" the key clue in LinkedIn Pinpoint #757?",
+      "answer": "Swimming is the turning clue because \"Swimming pool\" makes the shared category frame explicit. It also makes Car read cleanly as \"Car pool\". The clues are diverse and don't immediately suggest a common theme. The answer isn't a common phrase, so you have to think laterally.",
+      "tiedClue": "Swimming"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Car\" fit as a pool in LinkedIn Pinpoint #757?",
+      "answer": "\"Car\" reads as \"Car pool\", which is a recognizable pool. That keeps the board specific instead of broadly themed.",
+      "tiedClue": "Car"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on pools",
+    "relatedEntities": [
+      "Car pool",
+      "Dating pool",
+      "Jury pool",
+      "Gene pool",
+      "Swimming pool"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on pools",
+      "\"Car\" and \"Dating\" can look like they belong to different categories at first",
+      "\"Swimming\" is what makes pool feel concrete instead of broad",
+      "Every clue should name a specific kind of pool once the category sharpens",
+      "Car pool",
+      "Dating pool"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Magazines",
+      "whyPlausible": "The clues felt like sections, but the fit was weak. The 'Swimming' clue didn't fit at all.",
+      "whyRejected": "Once Swimming lands, the final answer explains the board more cleanly than Magazines."
+    },
+    {
+      "label": "Collections",
+      "whyPlausible": "Collections feels plausible early on, but it falls apart once swimming demands a more exact reading.",
+      "whyRejected": "Once Swimming lands, the final answer explains the board more cleanly than Collections."
+    }
+  ],
+  "setValidationSummary": "Jury, Gene, Swimming all behave like specific members of Types of pools, so the board stays precise instead of drifting into a broader umbrella topic.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of pools"
+}

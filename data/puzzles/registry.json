@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 757,
+    "slug": "pinpoint-answer-757",
+    "publishDate": "2026-05-27",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Car",
+      "Dating",
+      "Jury",
+      "Gene",
+      "Swimming"
+    ],
+    "mainAnswer": "Types of pools",
+    "category": "Types of pools",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Car, Dating, Jury do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-05-27T07:04:02.315Z"
+  },
+  {
     "puzzleNumber": 756,
     "slug": "pinpoint-answer-756",
     "publishDate": "2026-05-26",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Help",
@@ -16,7 +35,7 @@
     "category": "Types of desks",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Help, Check-in, News do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-26T07:04:00.591Z"
+    "updatedAt": "2026-05-27T07:04:02.315Z"
   },
   {
     "puzzleNumber": 755,
