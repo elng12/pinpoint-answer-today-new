@@ -12,11 +12,12 @@
       "Gene",
       "Swimming"
     ],
-    "mainAnswer": "Types of pools",
-    "category": "Types of pools",
+    "mainAnswer": "Types of pool",
+    "category": "Types of pool",
     "difficultyLevel": "Moderate",
-    "shortSummary": "At first glance, Car, Dating, Jury do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-05-27T07:04:02.315Z"
+    "shortSummary": "Car and Swimming look easy at first, but Dating, Jury, and Gene only settle when every clue is tested as a phrase before one hidden noun.",
+    "updatedAt": "2026-05-27T08:10:52.000Z",
+    "publishMode": "full-analysis"
   },
   {
     "puzzleNumber": 756,
