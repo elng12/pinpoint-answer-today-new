@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 758,
+    "slug": "pinpoint-answer-758",
+    "publishDate": "2026-05-28",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Way",
+      "Mat",
+      "Bell",
+      "Jamb",
+      "Knob"
+    ],
+    "mainAnswer": "Words that come after “door”",
+    "category": "Words that come after “door”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Way, Mat, Bell, Jamb, Knob - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-05-28T07:10:38.845Z"
+  },
+  {
     "puzzleNumber": 757,
     "slug": "pinpoint-answer-757",
     "publishDate": "2026-05-27",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Car",
@@ -16,7 +35,7 @@
     "category": "Types of pool",
     "difficultyLevel": "Moderate",
     "shortSummary": "Car and Swimming look easy at first, but Dating, Jury, and Gene only settle when every clue is tested as a phrase before one hidden noun.",
-    "updatedAt": "2026-05-27T08:33:30.000Z",
+    "updatedAt": "2026-05-28T07:10:38.845Z",
     "publishMode": "full-analysis"
   },
   {
