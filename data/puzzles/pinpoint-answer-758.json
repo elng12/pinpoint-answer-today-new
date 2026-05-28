@@ -18,11 +18,11 @@
   "answer": "Words that come after “door”",
   "category": "Words that come after “door”",
   "wordHints": {
-    "Way": "\"door Way\" is a familiar phrase, so it helps reveal the shared word quickly.",
-    "Mat": "\"door Mat\" is common enough to confirm the same missing word without stretching the phrasing.",
-    "Bell": "Once the shared word is in place, \"door Bell\" reads like ordinary language instead of a forced compound.",
-    "Jamb": "\"door Jamb\" is a familiar phrase, so it helps reveal the shared word quickly.",
-    "Knob": "\"door Knob\" is common enough to confirm the same missing word without stretching the phrasing."
+    "Way": "Doorway is a familiar word, so Way helps reveal the shared opening word quickly.",
+    "Mat": "Doormat is common enough to confirm the same missing word without stretching the phrasing.",
+    "Bell": "Once the shared word is in place, doorbell reads like ordinary language instead of a forced compound.",
+    "Jamb": "Doorjamb is a familiar word, so Jamb helps reveal the shared word quickly.",
+    "Knob": "Doorknob is common enough to confirm the same missing word without stretching the phrasing."
   },
   "spoilerHints": {
     "Way": "Try reading Way as part of a familiar phrase in words that come after “door” instead of as a standalone word.",
@@ -35,15 +35,15 @@
     "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
     "A nearby read was \"a loose topic list\". Way, Mat do not immediately advertise one shared phrase slot before Knob shows where the repeated word belongs. Knob behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
     "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Knob locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"door Way\" and \"door Mat\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
-    "door Bell, door Jamb, door Knob show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come after “door”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “door”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "Once that phrase appears, examples like doorway and doormat stop feeling guessed and start reading like ordinary language under familiar words built with one shared opening word.",
+    "Doorbell, doorjamb, and doorknob show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was the pattern Words that come after “door”. More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why the door-before-each-clue reading fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
   ],
   "solutionNarrative": [
     "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Knob\" feel exact enough.",
     "Once \"Knob\" clicked, the phrase pattern was finally clear. The same word fit before the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
     "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
-    "The answer was \"Words that come after “door”\"."
+    "The answer was the pattern Words that come after “door”."
   ],
   "lessons": [
     {
@@ -55,7 +55,7 @@
       "body": "Once \"Knob\" lands, place the same word before the other clues and make sure they read naturally right away."
     },
     {
-      "title": "Every clue should read as an everyday phrase once the answer is in place",
+      "title": "Doorway, doormat, and doorknob keep the pattern honest",
       "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
     }
   ],
@@ -65,35 +65,35 @@
     "clueTableRows": [
       {
         "clue": "Way",
-        "examplePhrase": "door Way",
-        "connectionExplained": "\"door Way\" is a familiar phrase, so it helps reveal the shared word quickly."
+        "examplePhrase": "doorway",
+        "connectionExplained": "Doorway is a familiar word, so it helps reveal the shared word quickly."
       },
       {
         "clue": "Mat",
-        "examplePhrase": "door Mat",
-        "connectionExplained": "\"door Mat\" is common enough to confirm the same missing word without stretching the phrasing."
+        "examplePhrase": "doormat",
+        "connectionExplained": "Doormat is common enough to confirm the same missing word without stretching the phrasing."
       },
       {
         "clue": "Bell",
-        "examplePhrase": "door Bell",
-        "connectionExplained": "Once the shared word is in place, \"door Bell\" reads like ordinary language instead of a forced compound."
+        "examplePhrase": "doorbell",
+        "connectionExplained": "Once the shared word is in place, doorbell reads like ordinary language instead of a forced compound."
       },
       {
         "clue": "Jamb",
-        "examplePhrase": "door Jamb",
-        "connectionExplained": "\"door Jamb\" is a familiar phrase, so it helps reveal the shared word quickly."
+        "examplePhrase": "doorjamb",
+        "connectionExplained": "Doorjamb is a familiar word, so it helps reveal the shared word quickly."
       },
       {
         "clue": "Knob",
-        "examplePhrase": "door Knob",
-        "connectionExplained": "\"door Knob\" is common enough to confirm the same missing word without stretching the phrasing."
+        "examplePhrase": "doorknob",
+        "connectionExplained": "Doorknob is common enough to confirm the same missing word without stretching the phrasing."
       }
     ]
   },
   "faqs": [
     {
       "question": "What shared word links \"Way\" and \"Mat\" in LinkedIn Pinpoint #758?",
-      "answer": "The answer is \"Words that come after “door”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+      "answer": "The answer is Words that come after “door”. That reading is the first one that turns all five clues into familiar words or common terms."
     },
     {
       "question": "How do \"Way\" and \"Mat\" connect in LinkedIn Pinpoint #758?",
@@ -101,7 +101,7 @@
     },
     {
       "question": "Why is \"Knob\" the key clue in LinkedIn Pinpoint #758?",
-      "answer": "\"Knob\" is the strongest clue because \"door Knob\" points to one exact phrase much faster than the earlier clues do."
+      "answer": "\"Knob\" is the strongest clue because doorknob points to one exact word pattern much faster than the earlier clues do."
     }
   ],
   "solvePath": {
@@ -115,7 +115,7 @@
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
     "breakingClue": "Knob",
-    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Knob\" feel exact enough.\n\nOnce \"Knob\" clicked, the phrase pattern was finally clear. The same word fit before the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was \"Words that come after “door”\".",
+    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Knob\" feel exact enough.\n\nOnce \"Knob\" clicked, the phrase pattern was finally clear. The same word fit before the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was the pattern Words that come after “door”.",
     "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Knob locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
@@ -127,44 +127,44 @@
     {
       "clue": "Way",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "door Way",
-      "nonObviousWhy": "\"door Way\" is a familiar phrase, so it helps reveal the shared word quickly.",
-      "searchableContext": "door Way"
+      "resolvedPhraseOrMember": "doorway",
+      "nonObviousWhy": "Doorway is a familiar word, so Way helps reveal the shared opening word quickly.",
+      "searchableContext": "doorway"
     },
     {
       "clue": "Mat",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "door Mat",
-      "nonObviousWhy": "\"door Mat\" is common enough to confirm the same missing word without stretching the phrasing.",
-      "searchableContext": "door Mat"
+      "resolvedPhraseOrMember": "doormat",
+      "nonObviousWhy": "Doormat is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "doormat"
     },
     {
       "clue": "Bell",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "door Bell",
-      "nonObviousWhy": "Once the shared word is in place, \"door Bell\" reads like ordinary language instead of a forced compound.",
-      "searchableContext": "door Bell"
+      "resolvedPhraseOrMember": "doorbell",
+      "nonObviousWhy": "Once the shared word is in place, doorbell reads like ordinary language instead of a forced compound.",
+      "searchableContext": "doorbell"
     },
     {
       "clue": "Jamb",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "door Jamb",
-      "nonObviousWhy": "\"door Jamb\" is a familiar phrase, so it helps reveal the shared word quickly.",
-      "searchableContext": "door Jamb"
+      "resolvedPhraseOrMember": "doorjamb",
+      "nonObviousWhy": "Doorjamb is a familiar word, so Jamb helps reveal the shared word quickly.",
+      "searchableContext": "doorjamb"
     },
     {
       "clue": "Knob",
       "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "door Knob",
-      "nonObviousWhy": "\"door Knob\" is common enough to confirm the same missing word without stretching the phrasing.",
-      "searchableContext": "door Knob"
+      "resolvedPhraseOrMember": "doorknob",
+      "nonObviousWhy": "Doorknob is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "doorknob"
     }
   ],
   "faqItems": [
     {
       "intentType": "solve_strategy",
       "question": "What shared word links \"Way\" and \"Mat\" in LinkedIn Pinpoint #758?",
-      "answer": "The answer is \"Words that come after “door”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "answer": "The answer is Words that come after “door”. That reading is the first one that turns all five clues into familiar words or common terms.",
       "tiedClue": "Way"
     },
     {
@@ -176,25 +176,25 @@
     {
       "intentType": "clue_background",
       "question": "Why is \"Knob\" the key clue in LinkedIn Pinpoint #758?",
-      "answer": "\"Knob\" is the strongest clue because \"door Knob\" points to one exact phrase much faster than the earlier clues do.",
+      "answer": "\"Knob\" is the strongest clue because doorknob points to one exact word pattern much faster than the earlier clues do.",
       "tiedClue": "Knob"
     }
   ],
   "uniquenessSignals": {
     "angle": "familiar phrases and everyday terms built with one shared opening word",
     "relatedEntities": [
-      "door Way",
-      "door Mat",
-      "door Bell",
-      "door Jamb",
-      "door Knob"
+      "doorway",
+      "doormat",
+      "doorbell",
+      "doorjamb",
+      "doorknob"
     ],
     "doNotRepeatPatterns": [
       "familiar phrases and everyday terms built with one shared opening word",
-      "door Way",
-      "door Mat",
-      "door Bell",
-      "door Jamb"
+      "doorway",
+      "doormat",
+      "doorbell",
+      "doorjamb"
     ]
   },
   "wrongGuessCandidates": [
@@ -209,6 +209,6 @@
       "whyRejected": "Once Knob locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
-  "setValidationSummary": "door Bell, door Jamb, door Knob show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "setValidationSummary": "Doorbell, doorjamb, and doorknob show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
   "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
 }
