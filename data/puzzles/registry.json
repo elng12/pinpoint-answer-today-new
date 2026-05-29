@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 759,
+    "slug": "pinpoint-answer-759",
+    "publishDate": "2026-05-29",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Apples",
+      "Chestnuts",
+      "Moss",
+      "Bark",
+      "Pine needles"
+    ],
+    "mainAnswer": "Things that grow on trees",
+    "category": "Things that grow on trees",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Apples, Chestnuts, Moss, Bark, Pine needles - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-05-29T07:07:34.888Z"
+  },
+  {
     "puzzleNumber": 758,
     "slug": "pinpoint-answer-758",
     "publishDate": "2026-05-28",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Way",
@@ -16,7 +35,7 @@
     "category": "Words that come after “door”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Way, Mat, Bell, Jamb, Knob - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-28T07:10:38.845Z"
+    "updatedAt": "2026-05-29T07:07:34.888Z"
   },
   {
     "puzzleNumber": 757,
