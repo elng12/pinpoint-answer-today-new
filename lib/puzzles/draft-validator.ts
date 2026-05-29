@@ -152,6 +152,9 @@ function toEvidenceContractInput(puzzleData: PuzzleDataForAI, ai: unknown) {
             resolvedPhraseOrMember: asString(row?.resolvedPhraseOrMember),
             nonObviousWhy: asString(row?.nonObviousWhy),
             searchableContext: asString(row?.searchableContext),
+            phraseExample: asString(row?.phraseExample),
+            evidenceRef: asString(row?.evidenceRef),
+            fitConfidence: asString(row?.fitConfidence),
           };
         })
       : null,

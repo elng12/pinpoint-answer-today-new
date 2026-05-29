@@ -18,11 +18,11 @@
   "answer": "Things that grow on trees",
   "category": "Things that grow on trees",
   "wordHints": {
-    "Apples": "\"Apples\" fits more cleanly once the board is tested under the same answer as the other clues.",
-    "Chestnuts": "\"Chestnuts\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
-    "Moss": "\"Moss\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
-    "Bark": "\"Bark\" fits more cleanly once the board is tested under the same answer as the other clues.",
-    "Pine needles": "\"Pine needles\" is the clue that makes the shared answer concrete enough to test across the full board."
+    "Apples": "Apples are fruit produced by apple trees, so they fit a tree-grown answer.",
+    "Chestnuts": "Chestnuts come from chestnut trees, which keeps the answer on trees instead of just fruit.",
+    "Moss": "Moss can grow on tree trunks and bark, so it connects through where it grows.",
+    "Bark": "Bark is the outer layer of a tree, making the tree connection direct.",
+    "Pine needles": "Pine needles are leaves on pine trees, making the tree answer hard to miss."
   },
   "spoilerHints": {
     "Apples": "Apples should be tested as part of things that grow on trees, not as a standalone reference.",
@@ -64,28 +64,28 @@
     "clueTableRows": [
       {
         "clue": "Apples",
-        "examplePhrase": "Apples",
-        "connectionExplained": "\"Apples\" fits more cleanly once the board is tested under the same answer as the other clues."
+        "examplePhrase": "Apple tree",
+        "connectionExplained": "Apples are fruit produced by apple trees, so they fit a tree-grown answer."
       },
       {
         "clue": "Chestnuts",
-        "examplePhrase": "Chestnuts",
-        "connectionExplained": "\"Chestnuts\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+        "examplePhrase": "Chestnut tree",
+        "connectionExplained": "Chestnuts come from chestnut trees, which keeps the answer on trees instead of just fruit."
       },
       {
         "clue": "Moss",
-        "examplePhrase": "Moss",
-        "connectionExplained": "\"Moss\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+        "examplePhrase": "Moss on tree bark",
+        "connectionExplained": "Moss can grow on tree trunks and bark, so it connects through where it grows."
       },
       {
         "clue": "Bark",
-        "examplePhrase": "Bark",
-        "connectionExplained": "\"Bark\" fits more cleanly once the board is tested under the same answer as the other clues."
+        "examplePhrase": "Tree bark",
+        "connectionExplained": "Bark is the outer layer of a tree, making the tree connection direct."
       },
       {
         "clue": "Pine needles",
-        "examplePhrase": "Pine needles",
-        "connectionExplained": "\"Pine needles\" is the clue that makes the shared answer concrete enough to test across the full board."
+        "examplePhrase": "Pine tree needles",
+        "connectionExplained": "Pine needles are leaves on pine trees, making the tree answer hard to miss."
       }
     ]
   },
@@ -126,37 +126,42 @@
     {
       "clue": "Apples",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Apples",
-      "nonObviousWhy": "\"Apples\" fits more cleanly once the board is tested under the same answer as the other clues.",
-      "searchableContext": "Apples"
+      "resolvedPhraseOrMember": "Apple tree",
+      "nonObviousWhy": "Apples are fruit produced by apple trees, so they fit a tree-grown answer.",
+      "searchableContext": "apple tree",
+      "phraseExample": "Apple tree"
     },
     {
       "clue": "Chestnuts",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Chestnuts",
-      "nonObviousWhy": "\"Chestnuts\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
-      "searchableContext": "Chestnuts"
+      "resolvedPhraseOrMember": "Chestnut tree",
+      "nonObviousWhy": "Chestnuts come from chestnut trees, which keeps the answer on trees instead of just fruit.",
+      "searchableContext": "chestnut tree",
+      "phraseExample": "Chestnut tree"
     },
     {
       "clue": "Moss",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Moss",
-      "nonObviousWhy": "\"Moss\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
-      "searchableContext": "Moss"
+      "resolvedPhraseOrMember": "Moss on tree bark",
+      "nonObviousWhy": "Moss can grow on tree trunks and bark, so it connects through where it grows.",
+      "searchableContext": "moss on tree bark",
+      "phraseExample": "Moss on tree bark"
     },
     {
       "clue": "Bark",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Bark",
-      "nonObviousWhy": "\"Bark\" fits more cleanly once the board is tested under the same answer as the other clues.",
-      "searchableContext": "Bark"
+      "resolvedPhraseOrMember": "Tree bark",
+      "nonObviousWhy": "Bark is the outer layer of a tree, making the tree connection direct.",
+      "searchableContext": "tree bark",
+      "phraseExample": "Tree bark"
     },
     {
       "clue": "Pine needles",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "Pine needles",
-      "nonObviousWhy": "\"Pine needles\" is the clue that makes the shared answer concrete enough to test across the full board.",
-      "searchableContext": "Pine needles"
+      "resolvedPhraseOrMember": "Pine tree needles",
+      "nonObviousWhy": "Pine needles are leaves on pine trees, making the tree answer hard to miss.",
+      "searchableContext": "pine tree needles",
+      "phraseExample": "Pine tree needles"
     }
   ],
   "faqItems": [

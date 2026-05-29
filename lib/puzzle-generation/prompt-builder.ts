@@ -33,10 +33,11 @@ Pattern-specific rules:
 - connectorSummary should be a short spoiler-safe category bridge, not a vague slogan.
 - connectorSummary must stay plain and natural. Do NOT use slashes, parentheses, stacked qualifiers, or over-explained labels.
 - connectorSummary must sound like a plain UI label, not a joke, twist, contrast line, or conversational aside.
-- clueDetails.phrase should usually be a natural member label inside the category.
+- clueDetails.phrase should usually be a short "Phrase / Example" style entry that proves the clue belongs, like "apple tree", "chestnut tree", or "moss on a tree trunk".
+- Do not repeat the clue as clueDetails.phrase unless the clue is already a title, brand, named entity, or exact member name with no better example.
 - If the answer is "Types of X", clueDetails.phrase should usually end with the category noun when natural.
 - If a clue is already a recognizable title, brand, publication, or named entity, keep clueDetails.phrase close to that clue instead of swapping in a generic subtype label.
-- whyItWorks should explain why each clue belongs in the category.
+- whyItWorks should read like a compact dictionary-style explanation of why each clue belongs in the category.
 - falseStarts must be broad, realistic category guesses like newspapers, media brands, travel publications, or nature media. Do NOT use city names, one-off titles, or long awkward labels.
 - falseStarts must not sound like retail taxonomy, ecommerce filters, or audience segments. Avoid phrases like gifts for adults, products for..., items for..., or categories for...
 - If three or more clues already point toward the same everyday category, keep the solve narrative calm and straightforward instead of forcing extra drama.
@@ -93,7 +94,7 @@ Also include these v2 evidence fields at the root when you can fill them cleanly
 - "difficultyBand"
 - "solvePath"
 - "turningPoint"
-- "clueRows"
+- "clueRows" with one row per clue. Each row should include clue, resolvedPhraseOrMember, nonObviousWhy, and phraseExample when a short example phrase is useful.
 - "faqItems"
 - "uniquenessSignals"
 
@@ -163,8 +164,8 @@ Slot guidance:
 - falseStarts: broad but believable wrong reads a person would really try first.
 - rejectedGuess.explanation: explain why that guess breaks once the turning clue appears.
 - clueDetails.surfaceRead: describe the distracting first impression of the clue in plain language.
-- clueDetails.phrase: give the clean resolved phrase or category reading.
-- clueDetails.whyItWorks: explain the fit specifically and concretely.
+- clueDetails.phrase: give the clean resolved phrase or example phrase that can appear in a table.
+- clueDetails.whyItWorks: explain the fit specifically and concretely in one sentence.
 - sections.articleBlocks: write the actual article body in short paragraphs. Keep the voice human and specific.
 
 ${patternSpecificRules}

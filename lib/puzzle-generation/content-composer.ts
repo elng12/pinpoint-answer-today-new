@@ -1627,6 +1627,7 @@ function buildGeneratedClueRows(
     ...(shouldShowBroadMisread ? { surfaceMisread: broadMisread } : {}),
     resolvedPhraseOrMember: detail.phrase,
     nonObviousWhy: ensureSentence(detail.whyItWorks),
+    phraseExample: detail.etymology || detail.phrase,
     ...(detail.etymology || detail.phrase
       ? { searchableContext: detail.etymology || detail.phrase }
       : {}),

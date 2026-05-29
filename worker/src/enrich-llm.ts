@@ -147,7 +147,7 @@ Pattern-specific rules:
 - connectorSummary should be a short spoiler-safe category bridge, not a vague slogan.
 - connectorSummary must stay plain and natural. Do NOT use slashes, parentheses, stacked qualifiers, or over-explained labels.
 - connectorSummary must sound like a plain UI label, not a joke, twist, contrast line, or conversational aside.
-- clueDetails.phrase should usually be a natural member label inside the category.
+- clueDetails.phrase should usually be a short Phrase / Example label inside the category, not just the clue repeated.
 - If the answer is "Types of X", clueDetails.phrase should usually end with the category noun when natural.
 - If a clue is already a recognizable title, brand, publication, or named entity, keep clueDetails.phrase close to that clue instead of swapping in a generic subtype label.
 - whyItWorks should explain why each clue belongs in the category.
@@ -211,6 +211,8 @@ Also include these v2 evidence fields at the root when you can fill them cleanly
 - "faqItems"
 - "uniquenessSignals"
 
+For each clueRows item, include clue, surfaceMisread, resolvedPhraseOrMember, phraseExample, nonObviousWhy, and searchableContext. phraseExample should be a short phrase or example the table can show, such as "apple tree", "chestnut tree", or "moss on tree bark"; do not simply repeat the clue.
+
 Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
 2. heroIntroSpoilerSafe must be ${SLOT_CONTRACT.heroIntroMinWords} to ${SLOT_CONTRACT.heroIntroMaxWords} words and must NOT include the exact answer text: ${input.mainAnswer}
@@ -220,7 +222,7 @@ Hard requirements:
 6. rejectedGuess.explanation must explain why that guess falls short.
 7. Include exactly ${SLOT_CONTRACT.clueDetailsRequired} clueDetails items, one for each original clue in this exact set: ${originalClues}
 8. Each clueDetails.clue must match one original clue exactly as written.
-9. Each clueDetails.phrase must be a natural phrase or category reading that is different from the clue.
+9. Each clueDetails.phrase must be a natural short phrase/example or category reading that is different from the clue when possible.
 10. Each clueDetails.whyItWorks must explain specific logic, not just restate the final answer.
 11. difficultyReason must explain why the board feels tricky without directly repeating the exact answer.
 12. portableTakeaway must be one short practical lesson the solver can reuse tomorrow.
@@ -555,8 +557,9 @@ Hard rules:
 14. If difficultyBand is "obvious", include at least 1 wrongGuessCandidates item. If difficultyBand is "medium" or "hard", include at least 2. Every item needs label and whyPlausible, and whyRejected when it helps.
 15. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
 16. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
-17. Keep the prose natural and article-like, not robotic or overly analytical.
-18. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+17. Each clueRows item should include phraseExample, and phraseExample should be a short table-friendly phrase/example rather than the clue repeated.
+18. Keep the prose natural and article-like, not robotic or overly analytical.
+19. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}

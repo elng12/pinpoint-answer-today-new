@@ -113,6 +113,9 @@ const ParsedClueRowSchema = z.object({
   resolvedPhraseOrMember: z.string().trim().min(1),
   nonObviousWhy: z.string().trim().min(1),
   searchableContext: z.string().trim().min(1).optional(),
+  phraseExample: z.string().trim().min(1).optional(),
+  evidenceRef: z.string().trim().min(1).optional(),
+  fitConfidence: z.enum(["confirmed", "manual", "weak"]).optional(),
 });
 
 const ParsedWrongGuessCandidateSchema = z.object({

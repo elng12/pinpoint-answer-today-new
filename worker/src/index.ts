@@ -369,6 +369,10 @@ type WorkerClueRow = {
   resolvedPhraseOrMember: string;
   nonObviousWhy: string;
   searchableContext: string;
+  phraseExample?: string;
+  evidenceRef?: string;
+  evidenceRefs?: string[];
+  fitConfidence?: "confirmed" | "manual" | "weak";
 };
 type WorkerFaqItem = {
   intentType: "definition" | "clue_background" | "comparison" | "solve_strategy" | "category_context";
@@ -2732,11 +2736,29 @@ function normalizeWorkerClueRows(value: unknown): WorkerClueRow[] | undefined {
   const normalized = rows
     .map((row) => {
       const clue = asNonEmptyString(row.clue);
-      const surfaceMisread = asNonEmptyString(row.surfaceMisread);
-      const resolvedPhraseOrMember = asNonEmptyString(row.resolvedPhraseOrMember);
+      const phraseExample =
+        asNonEmptyString(row.phraseExample) ||
+        asNonEmptyString(row.examplePhrase) ||
+        asNonEmptyString(row.phrase);
+      const surfaceMisread =
+        asNonEmptyString(row.surfaceMisread) ||
+        asNonEmptyString(row.surfaceRead) ||
+        "an early broad guess";
+      const resolvedPhraseOrMember =
+        asNonEmptyString(row.resolvedPhraseOrMember) ||
+        phraseExample;
       const nonObviousWhy = asNonEmptyString(row.nonObviousWhy);
-      const searchableContext = asNonEmptyString(row.searchableContext);
-      if (!clue || !surfaceMisread || !resolvedPhraseOrMember || !nonObviousWhy || !searchableContext) {
+      const searchableContext =
+        asNonEmptyString(row.searchableContext) ||
+        phraseExample ||
+        resolvedPhraseOrMember ||
+        clue;
+      const evidenceRef = asNonEmptyString(row.evidenceRef);
+      const evidenceRefs = Array.isArray(row.evidenceRefs)
+        ? row.evidenceRefs.map((item) => String(item || "").trim()).filter(Boolean)
+        : [];
+      const fitConfidence = normalizeWorkerFitConfidence(row.fitConfidence);
+      if (!clue || !resolvedPhraseOrMember || !nonObviousWhy) {
         return null;
       }
       return {
@@ -2745,10 +2767,22 @@ function normalizeWorkerClueRows(value: unknown): WorkerClueRow[] | undefined {
         resolvedPhraseOrMember,
         nonObviousWhy,
         searchableContext,
+        ...(phraseExample ? { phraseExample } : {}),
+        ...(evidenceRef ? { evidenceRef } : {}),
+        ...(evidenceRefs.length > 0 ? { evidenceRefs } : {}),
+        ...(fitConfidence ? { fitConfidence } : {}),
       };
     })
     .filter((row): row is WorkerClueRow => Boolean(row));
   return normalized.length > 0 ? normalized : undefined;
+}
+
+function normalizeWorkerFitConfidence(value: unknown): WorkerClueRow["fitConfidence"] | undefined {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (normalized === "confirmed" || normalized === "manual" || normalized === "weak") {
+    return normalized;
+  }
+  return undefined;
 }
 
 function normalizeWorkerFaqItems(value: unknown): WorkerFaqItem[] | undefined {
@@ -3066,14 +3100,17 @@ function inferWorkerClueRows(
 ) {
   return words.map((word, index) => {
     const detail = clueDetails[index] ?? {};
+    const phrase = asNonEmptyString(detail.phrase) || word;
+    const phraseExample = asNonEmptyString(detail.etymology) || phrase;
     return {
       clue: word,
       surfaceMisread: wrongGuessLabel,
-      resolvedPhraseOrMember: asNonEmptyString(detail.phrase) || word,
+      resolvedPhraseOrMember: phrase,
       nonObviousWhy:
         asNonEmptyString(detail.explanation) ||
         `${word} supports the same answer once the shared frame becomes clear.`,
-      searchableContext: asNonEmptyString(detail.etymology) || asNonEmptyString(detail.phrase) || word,
+      searchableContext: phraseExample,
+      phraseExample,
     };
   });
 }
@@ -3388,14 +3425,84 @@ function getFullAnalysisStructureReadiness(record: PublishedPuzzleDetailRecord):
   if (!String(record.categoryPrecisionNote || "").trim()) {
     return { ok: false, reason: "categoryPrecisionNote is missing" };
   }
-  if (record.clueRows.length < 3) {
-    return { ok: false, reason: `clueRows has ${record.clueRows.length}; expected at least 3` };
+  const clueRowsReadiness = getFullAnalysisClueRowsReadiness(record);
+  if (!clueRowsReadiness.ok) {
+    return clueRowsReadiness;
   }
   if (record.faqItems.length < 2) {
     return { ok: false, reason: `faqItems has ${record.faqItems.length}; expected at least 2` };
   }
   if (!record.uniquenessSignals?.angle?.trim()) {
     return { ok: false, reason: "uniquenessSignals.angle is missing" };
+  }
+
+  return { ok: true, reason: "" };
+}
+
+function getWorkerClueRowPhrase(row: WorkerClueRow): string {
+  return (
+    asNonEmptyString(row.phraseExample) ||
+    asNonEmptyString(row.searchableContext) ||
+    asNonEmptyString(row.resolvedPhraseOrMember) ||
+    ""
+  );
+}
+
+function hasWorkerEvidenceRef(row: WorkerClueRow): boolean {
+  return Boolean(
+    asNonEmptyString(row.evidenceRef) ||
+    (Array.isArray(row.evidenceRefs) && row.evidenceRefs.some((item) => String(item || "").trim())),
+  );
+}
+
+function getFullAnalysisClueRowsReadiness(record: PublishedPuzzleDetailRecord): PublishGuardReadiness {
+  const clues = Array.isArray(record.clues) ? record.clues : [];
+  const clueRows = Array.isArray(record.clueRows) ? record.clueRows : [];
+  const expectedCount = clues.length || 5;
+
+  if (clueRows.length !== expectedCount) {
+    return { ok: false, reason: `clueRows has ${clueRows.length}; expected ${expectedCount}` };
+  }
+
+  for (let index = 0; index < expectedCount; index += 1) {
+    const expectedClue = clues[index] || "";
+    const row = clueRows[index];
+    if (!row) {
+      return { ok: false, reason: `clueRows[${index}] is missing` };
+    }
+    if (expectedClue && normalizeWorkerLooseText(row.clue) !== normalizeWorkerLooseText(expectedClue)) {
+      return {
+        ok: false,
+        reason: `clueRows[${index}].clue is ${row.clue}; expected ${expectedClue}`,
+      };
+    }
+  }
+
+  if (clueRows.every(hasWorkerEvidenceRef)) {
+    return { ok: true, reason: "" };
+  }
+
+  for (let index = 0; index < clueRows.length; index += 1) {
+    const row = clueRows[index];
+    const phrase = getWorkerClueRowPhrase(row);
+    if (!phrase) {
+      return {
+        ok: false,
+        reason: `clueRows[${index}] needs phraseExample, searchableContext, or resolvedPhraseOrMember`,
+      };
+    }
+    if (normalizeWorkerLooseText(phrase) === normalizeWorkerLooseText(row.clue)) {
+      return {
+        ok: false,
+        reason: `clueRows[${index}] phrase repeats the clue; add a real phrase/example`,
+      };
+    }
+    if (String(row.nonObviousWhy || "").trim().length < 45) {
+      return {
+        ok: false,
+        reason: `clueRows[${index}].nonObviousWhy is too short for fast generated explanation mode`,
+      };
+    }
   }
 
   return { ok: true, reason: "" };

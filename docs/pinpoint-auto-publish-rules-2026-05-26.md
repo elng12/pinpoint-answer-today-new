@@ -235,19 +235,19 @@ Production settings already match the automatic publish direction:
 | public answer and clues visible after publish | exists | `lib/puzzles/content-kitchen/post-publish-audit.ts` |
 | public canonical/robots/sitemap audit | exists | `lib/puzzles/content-kitchen/post-publish-audit.ts` |
 | production release public fetch audit | wired into release script | `scripts/release-production.mjs` |
+| one-command pre-publish gate | exists and is called by `release:production` | `scripts/check-pinpoint-prepublish-gate.ts`, `package.json`, `scripts/release-production.mjs` |
+| fast clue explanations | allowed when all 5 generated clue rows are complete and specific; dictionary evidence remains the stronger later path | `scripts/check-pinpoint-prepublish-gate.ts`, `lib/puzzle-generation/prompt-builder.ts` |
 | daily Worker post-publish public audit | exists, checks detail page, sitemap, homepage, archive, and summary API | `worker/src/index.ts` |
 | emergency pause switch | exists, keeps fetch/KV but stops scheduled publish | `worker/src/index.ts`, `scripts/worker-ops.mjs` |
 | daily status report | exists, reports published, downgraded, candidate, blocked, paused, or needs review | `worker/src/index.ts` |
 
 ## Gaps To Close
 
-These are the missing or weak parts before real unattended auto-publish.
+These are the remaining weak parts before broader unattended auto-publish.
 
-1. Add one clear pre-publish command that answers: `can this new page auto-publish, yes or no?`
-2. Make the daily publish path call that command before publishing.
-3. Add a check that title and H1 include the right search wording.
-4. Add a check that recent answers includes the new page.
-5. Make the daily status report easier to read from the ops CLI.
+1. Make the daily Worker status report easier to read from the ops CLI.
+2. Keep watching whether the Worker in-process publish guard and the local pre-publish gate drift apart.
+3. If they drift, move the shared checks into one reusable library used by both paths.
 
 ## First Auto-Publish Standard
 

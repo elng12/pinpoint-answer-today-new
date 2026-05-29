@@ -342,30 +342,28 @@ function renderClueTable(puzzle: PuzzleDetailRecord) {
       <div className="legacy-clue-table-shell">
         <div className="legacy-table-kicker-row">
           <Table className="legacy-section-icon" aria-hidden />
-          <h3 className="legacy-table-kicker">Clue-by-clue evidence</h3>
+          <h3 className="legacy-table-kicker">Words &amp; How They Fit</h3>
         </div>
         <div className="legacy-clue-table-scroll">
           <table
-            className="legacy-clue-table legacy-clue-table-evidence"
-            aria-label="Clue-by-clue evidence showing the early misread, resolved reading, and why each clue fits"
+            className="legacy-clue-table"
+            aria-label="Detailed breakdown of each clue word, example read, and explanation"
           >
             <caption className="sr-only">
-              Clue-by-clue evidence showing the early misread, resolved reading, and why each clue fits
+              Detailed breakdown of each clue word, example read, and explanation
             </caption>
             <thead>
               <tr>
-                <th scope="col">Clue</th>
-                <th scope="col">Early read</th>
-                <th scope="col">Resolved read</th>
-                <th scope="col">Why it works</th>
+                <th scope="col">Clue Word</th>
+                <th scope="col">Phrase / Example</th>
+                <th scope="col">Meaning &amp; Usage</th>
               </tr>
             </thead>
             <tbody>
               {puzzle.clueRows.map((row) => (
                 <tr key={row.clue}>
                   <th scope="row">{row.clue}</th>
-                  <td>{row.surfaceMisread || "Same first broad read as the rest of the board"}</td>
-                  <td>{`"${row.resolvedPhraseOrMember}"`}</td>
+                  <td>{row.phraseExample || row.searchableContext || row.resolvedPhraseOrMember}</td>
                   <td>{row.nonObviousWhy}</td>
                 </tr>
               ))}
