@@ -50,11 +50,11 @@ export function Footer({
 
           {showRecentEntries ? (
             <div className="footer-block">
-              <p className="eyebrow">{isDetailPage ? "Recent Pinpoint answer pages" : "Recent answers"}</p>
+              <p className="eyebrow">Recent 10 Pinpoint Answers</p>
               <ul className="footer-link-list footer-link-list-compact">
                 {recentEntries.map((entry) => (
                   <li key={entry.slug}>
-                    <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint #${entry.number}`}</Link>
+                    <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint ${entry.number}`}</Link>
                   </li>
                 ))}
               </ul>
