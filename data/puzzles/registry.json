@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 760,
+    "slug": "pinpoint-answer-760",
+    "publishDate": "2026-05-30",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Paper",
+      "Cut",
+      "Feed",
+      "Flash",
+      "Hump (🐋)"
+    ],
+    "mainAnswer": "Words that come before “back”",
+    "category": "Words that come before “back”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Paper, Cut, Feed, Flash, Hump (🐋) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-05-30T07:04:26.122Z"
+  },
+  {
     "puzzleNumber": 759,
     "slug": "pinpoint-answer-759",
     "publishDate": "2026-05-29",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Apples",
@@ -16,7 +35,7 @@
     "category": "Things that grow on trees",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Apples, Chestnuts, Moss, Bark, Pine needles - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-29T07:07:34.888Z"
+    "updatedAt": "2026-05-30T07:04:26.122Z"
   },
   {
     "puzzleNumber": 758,

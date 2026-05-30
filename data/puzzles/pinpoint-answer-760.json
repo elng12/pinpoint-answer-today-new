@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 760,
+  "slug": "pinpoint-answer-760",
+  "publishDate": "2026-05-30",
+  "isoDate": "2026-05-30",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Paper",
+    "Cut",
+    "Feed",
+    "Flash",
+    "Hump (🐋)"
+  ],
+  "answer": "Words that come before “back”",
+  "category": "Words that come before “back”",
+  "wordHints": {
+    "Paper": "\"Paper back\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Cut": "\"Cut back\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Feed": "Once the shared word is in place, \"Feed back\" reads like ordinary language instead of a forced compound.",
+    "Flash": "\"Flash back\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Hump (🐋)": "The familiar expression \"Hump back\" makes the missing word \"back\" obvious in plain language."
+  },
+  "spoilerHints": {
+    "Paper": "Try reading Paper as part of a familiar phrase in words that come before “back” instead of as a standalone word.",
+    "Cut": "Cut works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Feed": "Look for a natural expression that absorbs Feed cleanly before locking the board.",
+    "Flash": "Try reading Flash as part of a familiar phrase in words that come before “back” instead of as a standalone word.",
+    "Hump (🐋)": "Hump (🐋) is the clue that makes the phrase pattern in words that come before “back” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Paper, Cut do not immediately advertise one shared phrase slot before Hump (🐋) shows where the repeated word belongs. Hump (🐋) behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Hump (🐋) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Paper back\" and \"Cut back\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Feed back, Flash back, Hump back show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “back”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “back”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Hump (🐋)\" feel exact enough.",
+    "Once \"Hump (🐋)\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
+    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
+    "The answer was \"Words that come before “back”\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Paper\" and \"Cut\" do not immediately line up around one missing word",
+      "body": "\"Paper\" and \"Cut\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Hump (🐋)\" is what finally makes the missing word visible",
+      "body": "Once \"Hump (🐋)\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "Every clue should read as an everyday phrase once the answer is in place",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Paper\" and \"Cut\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Paper",
+        "examplePhrase": "Paper back",
+        "connectionExplained": "\"Paper back\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Cut",
+        "examplePhrase": "Cut back",
+        "connectionExplained": "\"Cut back\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Feed",
+        "examplePhrase": "Feed back",
+        "connectionExplained": "Once the shared word is in place, \"Feed back\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Flash",
+        "examplePhrase": "Flash back",
+        "connectionExplained": "\"Flash back\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Hump (🐋)",
+        "examplePhrase": "Hump back",
+        "connectionExplained": "The familiar expression \"Hump back\" makes the missing word \"back\" obvious in plain language."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Paper\" and \"Cut\" in LinkedIn Pinpoint #760?",
+      "answer": "The answer is \"Words that come before “back”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Paper\" and \"Cut\" connect in LinkedIn Pinpoint #760?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Hump (🐋)\" the key clue in LinkedIn Pinpoint #760?",
+      "answer": "\"Hump (🐋)\" is the strongest clue because \"Hump back\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Paper, Cut do not immediately advertise one shared phrase slot before Hump (🐋) shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Hump (🐋)",
+    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Hump (🐋)\" feel exact enough.\n\nOnce \"Hump (🐋)\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was \"Words that come before “back”\".",
+    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Hump (🐋) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Hump (🐋)",
+    "whyDecisive": "Hump (🐋) is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Hump (🐋) lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Paper",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Paper back",
+      "nonObviousWhy": "\"Paper back\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Paper back"
+    },
+    {
+      "clue": "Cut",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Cut back",
+      "nonObviousWhy": "\"Cut back\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Cut back"
+    },
+    {
+      "clue": "Feed",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Feed back",
+      "nonObviousWhy": "Once the shared word is in place, \"Feed back\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Feed back"
+    },
+    {
+      "clue": "Flash",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Flash back",
+      "nonObviousWhy": "\"Flash back\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Flash back"
+    },
+    {
+      "clue": "Hump (🐋)",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Hump back",
+      "nonObviousWhy": "The familiar expression \"Hump back\" makes the missing word \"back\" obvious in plain language.",
+      "searchableContext": "Hump back"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Paper\" and \"Cut\" in LinkedIn Pinpoint #760?",
+      "answer": "The answer is \"Words that come before “back”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Paper"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Paper\" and \"Cut\" connect in LinkedIn Pinpoint #760?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Paper"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Hump (🐋)\" the key clue in LinkedIn Pinpoint #760?",
+      "answer": "\"Hump (🐋)\" is the strongest clue because \"Hump back\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Hump (🐋)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Paper back",
+      "Cut back",
+      "Feed back",
+      "Flash back",
+      "Hump back"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Paper back",
+      "Cut back",
+      "Feed back",
+      "Flash back"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Paper, Cut do not immediately advertise one shared phrase slot before Hump (🐋) shows where the repeated word belongs.",
+      "whyRejected": "Hump (🐋) behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Hump (🐋) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Feed back, Flash back, Hump back show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
