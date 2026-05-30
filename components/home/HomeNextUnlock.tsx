@@ -22,7 +22,7 @@ export function HomeNextUnlock({ preview }: { preview: NextPreview | null }) {
         <div className="home-next-unlock-heading">
           <h2 className="home-next-unlock-title">{headline}</h2>
           <p className="home-next-unlock-copy">
-            {`Next unlock at ${preview.expectedDate} ${shanghaiTime} (Asia/Shanghai). Pinpoint today timing follows LinkedIn's Los Angeles reset, so the Shanghai time will auto-shift with daylight saving. Times shown in your local time zone below.`}
+            {`Next unlock at ${preview.expectedDate} ${shanghaiTime} (Asia/Shanghai). Pinpoint today timing follows LinkedIn's Los Angeles reset, and Today's Pinpoint clock plus Today's Pinpoint schedule will auto-shift with daylight saving. Times shown in your local time zone below.`}
           </p>
         </div>
         <Countdown targetIso={targetIso} targetLabel={targetLabel} />

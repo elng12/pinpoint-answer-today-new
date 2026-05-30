@@ -11,7 +11,7 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
         <SectionHeading
           eyebrow="Recent answers"
           title="Recent Pinpoint Today pages"
-          description="Open each Pinpoint today recap, scan Pinpoint today archive cards, compare LinkedIn Pinpoint answer pages, and jump into the full archive without digging through clutter."
+          description="Open each Pinpoint today recap, scan Pinpoint today archive cards, use Pinpoint today notes, compare LinkedIn Pinpoint answer pages, and keep Today's Pinpoint list close without digging through clutter."
         />
       </div>
       <div className="recent-answer-grid recent-answer-grid-compact">
@@ -24,7 +24,7 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
               key={entry.slug}
               entry={entry}
               isLatest={index === 0}
-              title={`LinkedIn Pinpoint ${entry.number}: ${previewClues}${titleSuffix} - Pinpoint Today Puzzle ${entry.number}`}
+              title={`Pinpoint Today #${entry.number}: ${previewClues}${titleSuffix}`}
             />
           );
         })}

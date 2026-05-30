@@ -35,7 +35,7 @@ const benefits = [
     icon: "spark",
     title: "Smart solving tips",
     description:
-      "Pinpoint answer, LinkedIn clue logic, and the final category stay together.",
+      "Pinpoint answer LinkedIn clue logic and the final category stay together.",
   },
 ];
 
@@ -84,15 +84,15 @@ export function getFaqItems(puzzle: PuzzleDetail) {
     },
     {
       question: "Can I browse historical Pinpoint boards here?",
-      answer: "Yes. The archive keeps Pinpoint LinkedIn boards together, with Today's Pinpoint answer notes for recent puzzles.",
+      answer: "Yes. The archive keeps LinkedIn Pinpoint boards together, with Today's Pinpoint guide notes for recent puzzles.",
     },
     {
       question: "What happens if I miss a day’s puzzle?",
-      answer: "Open the archive, compare Today's Pinpoint answer with older boards, and then return to the Pinpoint today recap.",
+      answer: "Open the archive, compare Today's Pinpoint guide with older boards, and then return to the Pinpoint today recap.",
     },
     {
       question: "Is this an official LinkedIn resource?",
-      answer: "No. This is an independent guide. LinkedIn Pinpoint is named only so players know which puzzle the answer covers.",
+      answer: "No. This is an independent guide. LinkedIn Pinpoint game wording is used only so players know which puzzle the answer covers.",
     },
     {
       question: "How do the clue explanations work?",
@@ -116,7 +116,7 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
           <h2 className="section-title benefit-guide-title">Why Use Our Pinpoint Guide?</h2>
           <p className="copy benefits-intro">
             Use this Pinpoint LinkedIn guide for LinkedIn Pinpoint answer today, Pinpoint LinkedIn answer today notes,
-            and a short Pinpoint today checklist.
+            Pinpoint answer LinkedIn checks, Today&apos;s Pinpoint checklist, and a short Pinpoint today checklist.
           </p>
         </div>
         <div className="benefit-guide-grid">
@@ -139,7 +139,7 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
           <h2 className="section-title faq-guide-title">Frequently Asked Questions</h2>
           <p className="copy faq-intro">
             Short answers for LinkedIn players checking Pinpoint today answer, Pinpoint answer LinkedIn help,
-            and Today&apos;s Pinpoint answer.
+            Pinpoint today notes, Today&apos;s Pinpoint guide, and Today&apos;s Pinpoint answer.
           </p>
         </div>
         <div className="faq-guide-grid">

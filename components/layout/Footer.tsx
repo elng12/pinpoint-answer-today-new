@@ -63,7 +63,7 @@ export function Footer({
                       prefetch={false}
                       aria-label={`Open LinkedIn Pinpoint ${entry.number}`}
                     >
-                      {`LinkedIn Pinpoint Puzzle ${entry.number}`}
+                      {`#${entry.number}`}
                     </Link>
                   </li>
                 ))}

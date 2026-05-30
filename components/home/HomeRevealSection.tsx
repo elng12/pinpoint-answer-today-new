@@ -17,20 +17,20 @@ export function HomeRevealSection({
       ? {
           badge: "Previous",
           label: `Yesterday's answer (Puzzle ${previousEntry.number})`,
-          description: "Open yesterday's full answer and breakdown.",
+          description: "Open yesterday's full answer and Today's Pinpoint review.",
           href: routes.detail(previousEntry.slug),
         }
       : null,
     {
       badge: "Today",
       label: `LinkedIn Pinpoint answer today (Puzzle ${puzzle.number})`,
-      description: "Open today's Pinpoint clues, Pinpoint today hints, and full breakdown together.",
+      description: "Open Pinpoint today clues, Pinpoint today hints, and the full breakdown together.",
       href: routes.detail(puzzle.slug),
     },
     {
       badge: "Archive",
       label: "Browse older answers",
-      description: "Jump into the full archive of recent and past answers.",
+      description: "Jump into the full archive of recent LinkedIn Pinpoint boards and past answers.",
       href: routes.archive,
     },
     {
@@ -39,8 +39,8 @@ export function HomeRevealSection({
         ? `Pro Tips & next puzzle (Puzzle ${preview.number})`
         : "Open Pro Tips and next puzzle guidance",
       description: preview
-        ? `Review spoiler-safe solving patterns before Puzzle ${preview.number} unlocks.`
-        : "Review spoiler-safe solving patterns, clue types, and preview guidance.",
+        ? `Review Today's Pinpoint practice before Puzzle ${preview.number} unlocks.`
+        : "Review Today's Pinpoint practice, clue types, and preview guidance.",
       href: routes.preview,
     },
   ].filter(Boolean) as Array<{
@@ -58,7 +58,7 @@ export function HomeRevealSection({
           {`Today's Pinpoint Clues & Answer (${puzzle.isoDate})`}
         </h2>
         <p className="copy home-reveal-description">
-          {`Pinpoint ${puzzle.number} Clues:`}
+          {`Pinpoint Today #${puzzle.number} clues:`}
         </p>
       </div>
       <div className="reveal-section-body">

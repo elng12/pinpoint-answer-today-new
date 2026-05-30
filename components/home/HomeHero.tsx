@@ -32,7 +32,7 @@ export function HomeHero({
         <p className="home-hero-kicker">LinkedIn Pinpoint answer today with spoiler-safe hints</p>
         <h1 className="home-hero-title">{`LinkedIn Pinpoint Answer Today #${puzzle.number}`}</h1>
         <p className="home-hero-subtitle">
-          {`Need help with Pinpoint ${puzzle.number}?`}
+          {`Need help with Pinpoint Today #${puzzle.number}?`}
         </p>
         <p className="home-hero-clue-summary">
           <span>Today&apos;s Pinpoint clues:</span> {clueList}
@@ -45,7 +45,7 @@ export function HomeHero({
             Full breakdown
           </Link>
           <a className="button-secondary home-hero-tertiary" href="https://www.linkedin.com/games/" rel="noopener noreferrer" target="_blank">
-            Play on LinkedIn
+            Play LinkedIn Pinpoint
           </a>
         </div>
       </div>

@@ -7,7 +7,8 @@ export function HomeBookmarkStrip() {
       <div className="home-bookmark-copy">
         <p className="home-bookmark-title">Bookmark LinkedIn Pinpoint today</p>
         <p className="copy" style={{ margin: 0 }}>
-          Keep Today&apos;s Pinpoint answer close, plus Pinpoint today notes and the next preview.
+          Keep Today&apos;s Pinpoint answer close, plus Pinpoint today notes, Today&apos;s Pinpoint guide, Today&apos;s Pinpoint clue log, Pinpoint today basics,
+          and the next preview.
           The full archive stays one click away.
         </p>
       </div>
