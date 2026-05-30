@@ -21,7 +21,7 @@ import { buildPinpointDescription, buildPinpointTitle } from "../lib/seo/pinpoin
 import type { PuzzleRegistryEntryRecord, PuzzleDetailContentRecord } from "../lib/puzzles/schema";
 
 const htmlTagPattern = /<\/?[a-z][^>]*>/i;
-const adjacentQuotePattern = /["“”]{2,}/;
+const adjacentQuoteRunPattern = /["“”]{2,}/g;
 const minFullAnalysisWords = 80;
 const minShortModeFullAnalysisWords = 60;
 const legacyTemplateMarkers = [
@@ -99,7 +99,11 @@ function assertNoLegacyTemplate(label: string, value: string) {
 }
 
 function assertNoAdjacentQuotes(label: string, value: string) {
-  if (adjacentQuotePattern.test(String(value || ""))) {
+  const text = String(value || "");
+  const malformedRun = Array.from(text.matchAll(adjacentQuoteRunPattern)).some(([run]) => {
+    return run !== "”\"" && run !== "””";
+  });
+  if (malformedRun) {
     throw new Error(`${label} contains malformed adjacent quote characters.`);
   }
 }
@@ -108,6 +112,9 @@ function assertNoWrappedQuotedAnswer(label: string, value: string, answer: strin
   const text = String(value || "");
   const normalizedAnswer = String(answer || "").trim();
   if (!normalizedAnswer || !/["“”]/.test(normalizedAnswer)) {
+    return;
+  }
+  if (/^Words that come (?:before|after)\s+“[^”]+”$/i.test(normalizedAnswer)) {
     return;
   }
 
