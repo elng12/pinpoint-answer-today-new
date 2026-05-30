@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ArchiveEntry, NextPreview, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
+import type { ArchiveEntry, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
 import { PuzzleAnswerReveal } from "@/components/detail/PuzzleAnswerReveal";
 import { PuzzleCheckin } from "@/components/detail/PuzzleCheckin";
 import { PuzzleFullAnalysis } from "@/components/detail/PuzzleFullAnalysis";
@@ -17,14 +17,8 @@ function formatLegacyDate(isoDate: string): string {
   }).format(new Date(`${isoDate}T00:00:00Z`));
 }
 
-function formatClueList(clues: string[]): string {
-  if (clues.length <= 1) {
-    return clues.join("");
-  }
-  if (clues.length === 2) {
-    return `${clues[0]} and ${clues[1]}`;
-  }
-  return `${clues.slice(0, -1).join(", ")}, and ${clues[clues.length - 1]}`;
+function formatCluePath(clues: string[]): string {
+  return clues.join(", ");
 }
 
 function buildDetailSummary(puzzle: PuzzleDetailRecord, isShortMode: boolean, isFallbackShortMode: boolean): string {
@@ -34,38 +28,36 @@ function buildDetailSummary(puzzle: PuzzleDetailRecord, isShortMode: boolean, is
 
   if (afterMatch) {
     return isShortMode
-      ? `This quick guide shows which familiar phrases appear when one shared word comes before ${formatClueList(puzzle.clues)}. Use the spoiler-safe hints, clue table, and compact FAQ to see why the same word solves the set.`
-      : `This Pinpoint answer guide asks which shared word turns ${formatClueList(puzzle.clues)} into familiar phrases and common terms. Follow the spoiler-safe hints, then see why the same word makes each clue land cleanly.`;
+      ? "This quick guide shows which familiar phrases appear when one shared word comes before the clue set. Reveal the answer, then read the short reasoning and FAQ below."
+      : "This Pinpoint answer guide asks which shared word turns the clue set into familiar phrases and common terms. Check the clue order, reveal the answer, then read why the same word makes each clue land cleanly.";
   }
 
   if (beforeMatch) {
     return isShortMode
-      ? `This quick guide shows which familiar phrases appear when one shared word follows ${formatClueList(puzzle.clues)}. Use the spoiler-safe hints, clue table, and compact FAQ to see why the same word solves the set.`
-      : `This Pinpoint answer guide asks which shared word fits before ${formatClueList(puzzle.clues)} to create familiar phrases. Follow the spoiler-safe hints, then see why the same word completes each clue cleanly.`;
+      ? "This quick guide shows which familiar phrases appear when one shared word follows the clue set. Reveal the answer, then read the short reasoning and FAQ below."
+      : "This Pinpoint answer guide asks which shared word fits after the clue set to create familiar phrases. Check the clue order, reveal the answer, then read why the same word completes each clue cleanly.";
   }
 
   if (isFallbackShortMode) {
-    return `This quick guide keeps the spoiler-safe hints, answer reveal, and compact clue table focused on the fastest path from ${formatClueList(puzzle.clues)} to the final connection.`;
+    return "This quick guide keeps the clue order, answer reveal, reasoning, and FAQ focused on the fastest path to the final connection.";
   }
 
   if (isShortMode) {
-    return `This quick guide keeps the spoiler-safe hints, answer reveal, and compact clue table focused on the fastest path from ${formatClueList(puzzle.clues)} to the final connection.`;
+    return "This quick guide keeps the clue order, answer reveal, reasoning, and FAQ focused on the fastest path to the final connection.";
   }
 
-  return `This Pinpoint answer guide asks what shared idea links ${formatClueList(puzzle.clues)}. Follow the spoiler-safe hints one by one, then see how each clue clicks into the final answer.`;
+  return "This Pinpoint answer guide asks what shared idea links the clue set. Check the clues first, reveal the answer, then see how the board clicks into place.";
 }
 
 export function PuzzleDetail({
   puzzle,
   recentPuzzles,
-  nextPreview,
   adjacentPrev,
   adjacentNext,
   latestPuzzle,
 }: {
   puzzle: PuzzleDetailRecord;
   recentPuzzles: ArchiveEntry[];
-  nextPreview: NextPreview | null;
   adjacentPrev: ArchiveEntry | null;
   adjacentNext: ArchiveEntry | null;
   latestPuzzle: LatestAnswerCtaPuzzle | null;
@@ -80,6 +72,7 @@ export function PuzzleDetail({
       ? "Compact explainer published from verified puzzle data"
     : "Machine-checked and AI-reviewed";
   const summary = buildDetailSummary(puzzle, isShortMode, isFallbackShortMode);
+  const cluePath = formatCluePath(puzzle.clues);
   const publishedAt = `${puzzle.isoDate}T00:00:00Z`;
   const showUpdatedAt = Boolean(puzzle.updatedAt && puzzle.updatedAt !== publishedAt);
   return (
@@ -106,11 +99,15 @@ export function PuzzleDetail({
             How we verify
           </Link>
         </div>
+        <p className="legacy-detail-clue-path">
+          <span>Clue path for LinkedIn Pinpoint:</span>
+          <strong>{cluePath}</strong>
+        </p>
         <p className="copy legacy-detail-summary">{summary}</p>
 
         <div className="legacy-detail-actions">
           <a className="button-primary" href="#analysis">
-            {isShortMode ? "Jump to quick Pinpoint guide" : "Jump to full Pinpoint analysis"}
+            Jump to answer reasoning
           </a>
           <Link className="button-secondary" href={routes.archive}>
             Browse all Pinpoint answer pages
@@ -126,8 +123,6 @@ export function PuzzleDetail({
         puzzleNumber={puzzle.number}
         clues={puzzle.clues}
         answer={puzzle.answer}
-        category={puzzle.category}
-        hintMap={puzzle.wordHints}
         detailMode={puzzle.detailMode}
         trackFaqSectionView
       />
@@ -137,10 +132,8 @@ export function PuzzleDetail({
       <PuzzleFullAnalysis
         puzzle={puzzle}
         recentPuzzles={recentPuzzles}
-        nextPreview={nextPreview}
         adjacentPrev={adjacentPrev}
         adjacentNext={adjacentNext}
-        latestPuzzle={latestPuzzle}
       />
 
       <LatestAnswerStickyBanner

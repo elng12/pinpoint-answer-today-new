@@ -549,8 +549,21 @@ function checkRenderedDetail(issues: GateIssue[], input: {
   if (countClass(bodyMarkup, "legacy-reveal-clue-card") !== 5) {
     addIssue(issues, "hard", "detail:clue-cards", "Rendered clue reveal grid does not contain exactly five clue cards.");
   }
-  if (!bodyMarkup.includes("legacy-clue-table")) {
-    addIssue(issues, "hard", "detail:clue-table", "Rendered page is missing the clue table.");
+  if (!pageText.includes("Answer Reasoning")) {
+    addIssue(issues, "hard", "detail:answer-reasoning", "Rendered page is missing the Answer Reasoning section.");
+  }
+  for (const legacyLabel of [
+    "Words & How They Fit",
+    "Words &amp; How They Fit",
+    "Lessons Learned from Pinpoint",
+    "Nearby Reads We Ruled Out",
+    "Why This Answer Fits Tighter",
+    "Compact FAQ",
+    "Quick Take",
+  ]) {
+    if (bodyMarkup.includes(legacyLabel) || pageText.includes(legacyLabel)) {
+      addIssue(issues, "hard", "detail:old-template", `Rendered page still exposes old template label: ${legacyLabel}.`);
+    }
   }
   if (countClass(bodyMarkup, "legacy-faq-card") < 3) {
     addIssue(issues, "hard", "detail:faq", "Rendered page has fewer than three FAQ cards.");
@@ -561,10 +574,10 @@ function checkRenderedDetail(issues: GateIssue[], input: {
 
   const recentDetailLinkCount = allEntries
     .filter((candidate) => candidate.slug !== entry.slug)
-    .slice(0, 10)
+    .slice(0, 3)
     .filter((candidate) => hrefs.has(detailRoute(candidate.slug))).length;
-  if (recentDetailLinkCount < Math.min(5, allEntries.length - 1)) {
-    addIssue(issues, "hard", "detail:recent-links", "Rendered detail page has fewer than five recent detail links.");
+  if (recentDetailLinkCount < Math.min(3, allEntries.length - 1)) {
+    addIssue(issues, "hard", "detail:recent-links", "Rendered detail page has fewer than three recent detail links.");
   }
 
   for (const schemaType of ["Article", "Game", "ItemList", "BreadcrumbList"]) {

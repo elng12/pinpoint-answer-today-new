@@ -326,14 +326,13 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
     bodyMarkup.matchAll(/<span class="legacy-reveal-clue-word">([\s\S]*?)<\/span>/g),
     (match) => stripTags(match[1] ?? ""),
   );
-  const clueTableRows = bodyMarkup.match(/<tbody>[\s\S]*?<\/tbody>/i)?.[0]?.match(/<tr\b/gi)?.length ?? 0;
   const faqCardCount = countClass(bodyMarkup, "legacy-faq-card");
   const pageMode = detail.pageExperienceMode ?? (detail.bodyMode === "short" ? "light-explainer" : "full-analysis");
   const requiredFaqCount = pageMode === "full-analysis" ? 3 : 2;
   const hrefs = new Set(extractHrefValues(bodyMarkup));
   const recentDetailLinkCount = allEntries
     .filter((candidate) => candidate.slug !== entry.slug)
-    .slice(0, 10)
+    .slice(0, 3)
     .filter((candidate) => hrefs.has(detailRoute(candidate.slug))).length;
   const structuredDataItems = parseJsonLd(html);
   const article = findStructuredData(structuredDataItems, "Article");
@@ -358,11 +357,21 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
   if (!pageText.includes(entry.mainAnswer ?? "")) {
     addIssue(entry.slug, "Rendered page text does not include the registry answer.");
   }
-  if (!bodyMarkup.includes("legacy-clue-table")) {
-    addIssue(entry.slug, "Rendered page is missing the clue table.");
+  if (!pageText.includes("Answer Reasoning")) {
+    addIssue(entry.slug, "Rendered page is missing the Answer Reasoning section.");
   }
-  if (clueTableRows < 5) {
-    addIssue(entry.slug, `Rendered clue table has ${clueTableRows} rows; expected at least 5.`);
+  for (const legacyLabel of [
+    "Words & How They Fit",
+    "Words &amp; How They Fit",
+    "Lessons Learned from Pinpoint",
+    "Nearby Reads We Ruled Out",
+    "Why This Answer Fits Tighter",
+    "Compact FAQ",
+    "Quick Take",
+  ]) {
+    if (bodyMarkup.includes(legacyLabel) || pageText.includes(legacyLabel)) {
+      addIssue(entry.slug, `Rendered page still exposes old template label: ${legacyLabel}.`);
+    }
   }
   if (faqCardCount < requiredFaqCount) {
     addIssue(entry.slug, `Rendered FAQ count ${faqCardCount} is below required ${requiredFaqCount} for ${pageMode}.`);
@@ -370,8 +379,8 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
   if (!hrefs.has("/puzzles")) {
     addIssue(entry.slug, "Rendered detail page does not link back to /puzzles.");
   }
-  if (recentDetailLinkCount < Math.min(5, allEntries.length - 1)) {
-    addIssue(entry.slug, "Rendered detail page has fewer than five recent detail links.");
+  if (recentDetailLinkCount < Math.min(3, allEntries.length - 1)) {
+    addIssue(entry.slug, "Rendered detail page has fewer than three recent detail links.");
   }
   if (!article) {
     addIssue(entry.slug, "Missing Article JSON-LD.");

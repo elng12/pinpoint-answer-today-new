@@ -17,16 +17,14 @@ const DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
 const DESCRIPTION_MIN_LENGTH = CONTENT_CONTRACT.metaDescriptionMinChars;
 const SITE_LOCALE = "en_US";
 const DESCRIPTION_EXTENSIONS = [
-  " Use spoiler-safe hints, clue logic, and the verified answer to confirm the solve.",
-  " Use spoiler-safe hints and clue logic to confirm the solve.",
-  " Review spoiler-safe hints and clue logic.",
-  " Review clue logic and confirm the solve.",
-  " Confirm the solve with clue logic.",
-  " Spoiler-safe hints included.",
+  " Use the clue order, answer reasoning, FAQ, and verified answer to confirm the solve.",
+  " Use the clue order, reasoning, and FAQ to confirm the solve.",
+  " Review answer reasoning and FAQ.",
+  " Review clue logic and FAQ.",
+  " Confirm the solve with answer reasoning.",
+  " Reasoning included.",
+  " FAQ included.",
   " More help inside.",
-  " Hints included.",
-  " Extra hints.",
-  " Hints.",
 ];
 
 export function getSiteUrl(): string {
@@ -135,23 +133,23 @@ export function buildPuzzleSeoDescription(
   const descriptionTemplates = [
     {
       prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `,
-      suffix: "Get spoiler-safe hints, clue logic, a full walkthrough, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
     },
     {
       prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `,
-      suffix: "Get spoiler-safe hints, a full walkthrough, and the verified answer fast.",
+      suffix: "Get the clue order, answer reveal, reasoning, and FAQ fast.",
     },
     {
       prefix: `Solve LinkedIn Pinpoint ${puzzleNumber} using `,
-      suffix: "Get spoiler-safe hints, clue logic, a full walkthrough, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
     },
     {
       prefix: `Find LinkedIn Pinpoint ${puzzleNumber} from `,
-      suffix: "Get spoiler-safe hints, clue logic, a full walkthrough, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
     },
     {
       prefix: `LinkedIn Pinpoint ${puzzleNumber} uses `,
-      suffix: "Get spoiler-safe hints, clue logic, a full walkthrough, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
     },
   ];
 
@@ -168,7 +166,7 @@ export function buildPuzzleSeoDescription(
 
   const baseDescription = pickDescriptionCandidate(
     candidates,
-    `LinkedIn Pinpoint ${puzzleNumber} answer guide with spoiler-safe hints, clue logic, a full walkthrough, and the verified solution for the current puzzle, updated daily.`,
+    `LinkedIn Pinpoint ${puzzleNumber} answer guide with clue order, answer reasoning, FAQ, and the verified solution for the current puzzle, updated daily.`,
   );
   return appendAnswerWhenItFits(baseDescription, answer);
 }

@@ -211,7 +211,7 @@ Also include these v2 evidence fields at the root when you can fill them cleanly
 - "faqItems"
 - "uniquenessSignals"
 
-For each clueRows item, include clue, surfaceMisread, resolvedPhraseOrMember, phraseExample, nonObviousWhy, and searchableContext. phraseExample should be a short phrase or example the table can show, such as "apple tree", "chestnut tree", or "moss on tree bark"; do not simply repeat the clue.
+For each clueRows item, include clue, surfaceMisread, resolvedPhraseOrMember, phraseExample, nonObviousWhy, and searchableContext. phraseExample should be a short phrase or example that proves the clue fit, such as "apple tree", "chestnut tree", or "moss on tree bark"; do not simply repeat the clue.
 
 Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
@@ -557,7 +557,7 @@ Hard rules:
 14. If difficultyBand is "obvious", include at least 1 wrongGuessCandidates item. If difficultyBand is "medium" or "hard", include at least 2. Every item needs label and whyPlausible, and whyRejected when it helps.
 15. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
 16. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
-17. Each clueRows item should include phraseExample, and phraseExample should be a short table-friendly phrase/example rather than the clue repeated.
+17. Each clueRows item should include phraseExample, and phraseExample should be a short fit-check phrase/example rather than the clue repeated.
 18. Keep the prose natural and article-like, not robotic or overly analytical.
 19. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 

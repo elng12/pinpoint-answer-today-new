@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   getScrollDepthPercent,
   trackClientEvent,
@@ -11,8 +11,6 @@ type PuzzleAnswerRevealProps = {
   puzzleNumber: number;
   clues: string[];
   answer: string;
-  category: string;
-  hintMap?: Record<string, string>;
   detailMode?: "full" | "short";
   defaultRevealed?: boolean;
   panelTitle?: string;
@@ -20,27 +18,10 @@ type PuzzleAnswerRevealProps = {
   trackFaqSectionView?: boolean;
 };
 
-function normalizeKey(value: string): string {
-  return value.trim().toLowerCase();
-}
-
-function buildHintMap(hintMap?: Record<string, string>) {
-  return Object.entries(hintMap ?? {}).reduce<Record<string, string>>((accumulator, [key, value]) => {
-    const cleanKey = normalizeKey(key);
-    const cleanValue = value.trim();
-    if (cleanKey && cleanValue) {
-      accumulator[cleanKey] = cleanValue;
-    }
-    return accumulator;
-  }, {});
-}
-
 export function PuzzleAnswerReveal({
   puzzleNumber,
   clues,
   answer,
-  category,
-  hintMap,
   detailMode = "full",
   defaultRevealed = false,
   panelTitle,
@@ -49,20 +30,7 @@ export function PuzzleAnswerReveal({
 }: PuzzleAnswerRevealProps) {
   const [revealed, setRevealed] = useState(defaultRevealed);
   const [copied, setCopied] = useState(false);
-  const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
-  const hintTimerRef = useRef<number | null>(null);
   const hasTrackedFaqSectionRef = useRef(false);
-  const revealTipId = useId();
-
-  const normalizedHints = useMemo(() => buildHintMap(hintMap), [hintMap]);
-
-  useEffect(() => {
-    return () => {
-      if (hintTimerRef.current !== null) {
-        window.clearTimeout(hintTimerRef.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (!trackFaqSectionView || hasTrackedFaqSectionRef.current) {
@@ -160,96 +128,29 @@ export function PuzzleAnswerReveal({
     }
   };
 
-  const clearHint = () => {
-    if (hintTimerRef.current !== null) {
-      window.clearTimeout(hintTimerRef.current);
-      hintTimerRef.current = null;
-    }
-    setActiveHint(null);
-  };
-
-  const getHintText = (clue: string) => {
-    const normalizedClue = normalizeKey(clue);
-    const directHint = normalizedHints[normalizedClue];
-    const fallbackHint = `${clue} points back to ${category}.`;
-    return directHint || fallbackHint;
-  };
-
-  const showHint = (
-    clue: string,
-    options?: {
-      persist?: boolean;
-      track?: boolean;
-    },
-  ) => {
-    const hint = getHintText(clue);
-
-    if (options?.track) {
-      trackClientEvent("clue_hint_click", {
-        event_category: "engagement",
-        event_label: `${clue} · Puzzle ${puzzleNumber}`,
-        value: puzzleNumber,
-      });
-    }
-
-    if (hintTimerRef.current !== null) {
-      window.clearTimeout(hintTimerRef.current);
-      hintTimerRef.current = null;
-    }
-
-    setActiveHint({
-      clue,
-      text: revealed ? `${hint} Shared connection: ${category}.` : hint,
-    });
-
-    if (options?.persist) {
-      hintTimerRef.current = window.setTimeout(() => {
-        setActiveHint(null);
-        hintTimerRef.current = null;
-      }, 4000);
-    }
-  };
-
   const fallbackDetailNote =
     detailMode === "short"
-      ? "Short guide continues just below - keep scrolling for the compact breakdown"
-      : "Detailed Pinpoint answer breakdown continues just below - keep scrolling";
-  const answerPanelTitle = panelTitle ?? `Pinpoint Answer for LinkedIn Pinpoint ${puzzleNumber}`;
+      ? "Short answer reasoning continues just below."
+      : "Answer reasoning continues just below.";
+  const answerPanelTitle = panelTitle ?? "Today's Pinpoint Answer";
   const answerPanelNote = detailNote ?? fallbackDetailNote;
 
   return (
-    <section className="legacy-reveal-shell" aria-labelledby="pinpoint-answer-title">
-      <p className="legacy-reveal-tip" id={revealTipId}>
-        Hover (desktop) or tap (mobile) each clue before you reveal the Pinpoint answer
-      </p>
-
-      <div className="legacy-reveal-clue-grid">
+    <section className="legacy-reveal-shell" aria-labelledby="pinpoint-clues-title">
+      <h2 className="legacy-clues-title" id="pinpoint-clues-title">
+        {`Pinpoint ${puzzleNumber} Clues`}
+      </h2>
+      <ol className="legacy-reveal-clue-grid" aria-label={`Pinpoint ${puzzleNumber} clue order`}>
         {clues.map((clue, index) => (
-          <button
+          <li
             key={`${clue}-${index}`}
-            type="button"
             className="legacy-reveal-clue-card"
-            onClick={() => showHint(clue, { persist: true, track: true })}
-            onMouseEnter={() => showHint(clue)}
-            onMouseLeave={clearHint}
-            onFocus={() => showHint(clue)}
-            onBlur={clearHint}
-            aria-describedby={revealTipId}
           >
             <span className="legacy-reveal-clue-index">#{index + 1}</span>
             <span className="legacy-reveal-clue-word">{clue}</span>
-          </button>
+          </li>
         ))}
-      </div>
-
-      <div role="status" aria-live="polite" aria-atomic="true">
-        {activeHint ? (
-          <div className="legacy-reveal-hint-card">
-            <p className="legacy-reveal-hint-kicker">Hint for {activeHint.clue}</p>
-            <p className="legacy-reveal-hint-copy">{activeHint.text}</p>
-          </div>
-        ) : null}
-      </div>
+      </ol>
 
       <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">

@@ -3598,8 +3598,8 @@ function buildLightExplainerParagraphs(record: PublishedPuzzleDetailRecord): str
     `Fast read: ${fastStrategy} ${record.display.connectorSummary}. ${turningWhy}`,
     `Once ${turningClue} clicks, ${confirmation}`,
     clueTail
-      ? `The answer is ${record.answer}. Use the clue table for ${clueTail} and the compact FAQ below to confirm each fit without waiting for a longer walkthrough.`
-      : `The answer is ${record.answer}. Use the clue table and the compact FAQ below to confirm each fit without waiting for a longer walkthrough.`,
+      ? `The answer is ${record.answer}. Use the reasoning for ${clueTail} and the FAQ below to confirm each fit without waiting for a longer walkthrough.`
+      : `The answer is ${record.answer}. Use the reasoning and FAQ below to confirm each fit without waiting for a longer walkthrough.`,
   ];
 }
 

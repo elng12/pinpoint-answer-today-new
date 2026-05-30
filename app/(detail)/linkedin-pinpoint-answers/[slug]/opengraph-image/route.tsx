@@ -31,15 +31,15 @@ export async function GET(
     res = createSocialImageResponse({
       eyebrow: `LinkedIn Pinpoint #${puzzle.puzzleNumber}`,
       title: clueText ? `${titlePrefix}${clueText}` : `Pinpoint #${puzzle.puzzleNumber} answer guide`,
-      subtitle: "Spoiler-safe clue help, solve logic, and full answer walkthrough.",
+      subtitle: "Clue order, answer reveal, reasoning, FAQ, and verified answer.",
     });
   } else {
     res = createSocialImageResponse({
       eyebrow: puzzleNumber ? `Puzzle #${puzzleNumber}` : "LinkedIn Pinpoint archive",
       title: "Pinpoint Answer Today",
       subtitle: puzzleNumber
-        ? `Spoiler-safe hints, full walkthrough, and archive recap for Puzzle ${puzzleNumber}.`
-        : "Open the latest verified answer, spoiler-safe hints, and puzzle archive recap.",
+        ? `Clue order, answer reasoning, FAQ, and archive recap for Puzzle ${puzzleNumber}.`
+        : "Open the latest verified answer, clue order, reasoning, and archive recap.",
     });
   }
 

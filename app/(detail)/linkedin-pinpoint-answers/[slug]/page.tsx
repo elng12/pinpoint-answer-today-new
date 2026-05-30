@@ -6,7 +6,6 @@ import {
   getAllDetailSlugs,
   getArchiveEntries,
   getCurrentPuzzle,
-  getNextPreview,
   getPuzzleBySlug,
 } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
@@ -67,10 +66,9 @@ export default async function DetailPage({
 }) {
   const detailArchiveOptions = { allowLiveWorkerFallback: false } as const;
   const { slug } = await params;
-  const [puzzle, entries, nextPreview, currentPuzzle] = await Promise.all([
+  const [puzzle, entries, currentPuzzle] = await Promise.all([
     getPuzzleBySlug(slug, detailArchiveOptions),
     getArchiveEntries(detailArchiveOptions),
-    getNextPreview(),
     getCurrentPuzzle(detailArchiveOptions),
   ]);
 
@@ -93,7 +91,6 @@ export default async function DetailPage({
       <PuzzleDetail
         puzzle={puzzle}
         recentPuzzles={recentPuzzles}
-        nextPreview={nextPreview}
         adjacentPrev={adjacent.prev}
         adjacentNext={adjacent.next}
         latestPuzzle={{ number: currentPuzzle.number, slug: currentPuzzle.slug }}
