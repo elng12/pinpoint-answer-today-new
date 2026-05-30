@@ -455,6 +455,32 @@
   color: var(--muted);
 }
 
+.footer-recent-block {
+  gap: 18px;
+}
+
+.footer-recent-heading {
+  margin: 0;
+  color: var(--text);
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-family: var(--font-sans);
+}
+
+.footer-recent-list {
+  gap: 10px;
+}
+
+.footer-recent-list a {
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
 .footer-badge-wall {
   margin-top: 32px;
   border-top: 1px solid var(--line);

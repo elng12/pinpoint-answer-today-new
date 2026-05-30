@@ -135,7 +135,7 @@ export function AnswerReveal({
   return (
     <div className="reveal-shell">
       <p className="reveal-tip" id={revealTipId}>
-        Hover (desktop) or tap (mobile) each clue to see how it connects to the Pinpoint solution
+        Hover (desktop) or tap (mobile) each clue to see how it connects to the answer
       </p>
 
       <div className="reveal-clue-grid">
@@ -171,15 +171,15 @@ export function AnswerReveal({
             : `LinkedIn Pinpoint ${puzzleNumber} solution is hidden until you press the reveal button.`}
         </p>
         <p className="eyebrow">Pinpoint solution</p>
-        <h3 className="reveal-answer-title">{revealed ? answer : `Pinpoint Answer for Puzzle ${puzzleNumber}`}</h3>
+        <h3 className="reveal-answer-title">{revealed ? answer : `Answer for Puzzle ${puzzleNumber}`}</h3>
         <p className="reveal-answer-copy">
           {revealed
             ? ""
-            : "Use the button below if you want today's Pinpoint answer. Pinpoint today answer logic stays below if you keep scrolling for the full explanation."}
+            : "Use the button below when you want the answer. Pinpoint today logic stays below if you keep scrolling for the full explanation."}
         </p>
         <div className="button-row reveal-answer-actions">
           <button className="button-primary reveal-primary-button" type="button" onClick={handleRevealToggle}>
-            {revealed ? "Hide the answer" : "Reveal Pinpoint answer"}
+            {revealed ? "Hide the answer" : "Reveal answer"}
           </button>
           {showDetailLink && detailHref ? (
             <Link

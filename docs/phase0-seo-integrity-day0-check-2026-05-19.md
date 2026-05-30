@@ -545,3 +545,52 @@ Next action:
 
 - Do not judge same-day GSC data for 2026-05-26.
 - Pull the next complete GSC window after data settles, then compare homepage core queries, homepage mobile impressions, `/puzzles`, and recent detail pages.
+
+## 2026-05-30 observation (read-only)
+
+Latest public detail (local registry):
+
+- `#759` (`/linkedin-pinpoint-answers/pinpoint-answer-759/`) is `status=live`, `detailState=fallback_full`.
+
+Production URLs checked (Googlebot Smartphone UA):
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | 200 | `https://pinpointanswertoday.app/` | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+| `https://pinpointanswertoday.app/puzzles` | 200 | self | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | 200 | self | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | 200 | self | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | 200 | self | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | 200 | self | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-759/` | 200 | self | `index, follow` | title + canonical tag + `<main>` + `<h1>` present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, and latest `#759`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, and `#759` is `2026-05-29T07:07:34.888Z`.
+- `#735/#736/#737 lastmod` remain stable at `2026-05-06..2026-05-07` (expected).
+
+GSC (complete window only; avoid same-day):
+
+- Range pulled: `2026-05-23 -> 2026-05-29`.
+- Homepage `/`: `clicks=1 impressions=156 position=41.02` (sample is tiny; don’t over-read).
+- `/puzzles`: `impressions=3`.
+- `/next-pinpoint-preview`: `impressions=5`.
+- Detail `#759`: `impressions=4`.
+
+Release context only:
+
+- Phase 0 SEO integrity fixes deployed via PR `#40` at `2026-05-19T11:17:58Z`.
+- Security-only PR `#41` deployed at `2026-05-20T03:05:06Z` (keep treating as non-SEO variable).
+- GitHub has newer merged PRs after that (e.g. `#118` on `2026-05-26`), but this observer did not confirm whether they are deployed to production.
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, and sitemap includes the required URLs.
+- PASS: Googlebot Smartphone HTML includes core markers (`<title>`, canonical, `<main>`, `<h1>`) on all checked pages.
+
+Next action:
+
+- Keep running this daily observer.
+- Keep using complete-day GSC windows (avoid same-day) until impressions are big enough to judge trend.

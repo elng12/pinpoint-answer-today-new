@@ -1,0 +1,2085 @@
+{
+  "schemaVersion": 1,
+  "timestamp": "2026-05-29T13:48:34.011Z",
+  "profileName": "pinpoint-homepage-2026-05-29",
+  "page": "/",
+  "source": "http://localhost:3004/",
+  "sourceMode": "server-html",
+  "configPath": "config/homepage-keyword-density-targets.json",
+  "toolOfRecord": "AITDK / TDK browser plugin",
+  "densityDenominatorWords": 1019,
+  "oneWordCandidateWords": 616,
+  "stopWords": {
+    "source": "remote",
+    "count": 11006,
+    "hash": "sha256-6de48f1fb09c8eaf3729416ec3630664bba2d1edf78b77bc47600a75bd918143",
+    "loadedAt": "2026-05-29T13:48:33.025Z"
+  },
+  "warnings": [],
+  "groupSummary": [
+    {
+      "words": 1,
+      "enabled": true,
+      "status": "warning",
+      "targetCount": 3,
+      "pass": 1,
+      "warning": 2,
+      "missing": 0
+    },
+    {
+      "words": 2,
+      "enabled": true,
+      "status": "warning",
+      "targetCount": 5,
+      "pass": 0,
+      "warning": 5,
+      "missing": 0
+    },
+    {
+      "words": 3,
+      "enabled": true,
+      "status": "missing",
+      "targetCount": 11,
+      "pass": 0,
+      "warning": 4,
+      "missing": 7
+    },
+    {
+      "words": 4,
+      "enabled": true,
+      "status": "missing",
+      "targetCount": 3,
+      "pass": 0,
+      "warning": 1,
+      "missing": 2
+    },
+    {
+      "words": 5,
+      "enabled": false,
+      "status": "disabled",
+      "targetCount": 0,
+      "pass": 0,
+      "warning": 0,
+      "missing": 0
+    }
+  ],
+  "targetStatus": [
+    {
+      "phrase": "pinpoint",
+      "normalizedPhrase": "pinpoint",
+      "words": 1,
+      "targetRank": 1,
+      "actualRank": 1,
+      "count": 65,
+      "density": 0.06378802747791953,
+      "status": "pass",
+      "issues": []
+    },
+    {
+      "phrase": "linkedin",
+      "normalizedPhrase": "linkedin",
+      "words": 1,
+      "targetRank": 2,
+      "actualRank": 3,
+      "count": 32,
+      "density": 0.03140333660451423,
+      "status": "warning",
+      "issues": [
+        "low"
+      ]
+    },
+    {
+      "phrase": "answer",
+      "normalizedPhrase": "answer",
+      "words": 1,
+      "targetRank": 3,
+      "actualRank": 2,
+      "count": 34,
+      "density": 0.033366045142296366,
+      "status": "warning",
+      "issues": [
+        "low"
+      ]
+    },
+    {
+      "phrase": "pinpoint today",
+      "normalizedPhrase": "pinpoint today",
+      "words": 2,
+      "targetRank": 1,
+      "actualRank": 214,
+      "count": 1,
+      "density": 0.0009813542688910696,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "pinpoint answer",
+      "normalizedPhrase": "pinpoint answer",
+      "words": 2,
+      "targetRank": 2,
+      "actualRank": 2,
+      "count": 14,
+      "density": 0.013738959764474975,
+      "status": "warning",
+      "issues": [
+        "low"
+      ]
+    },
+    {
+      "phrase": "linkedin pinpoint",
+      "normalizedPhrase": "linkedin pinpoint",
+      "words": 2,
+      "targetRank": 3,
+      "actualRank": 1,
+      "count": 30,
+      "density": 0.029440628066732092,
+      "status": "warning",
+      "issues": [
+        "low"
+      ]
+    },
+    {
+      "phrase": "todays pinpoint",
+      "normalizedPhrase": "todays pinpoint",
+      "words": 2,
+      "targetRank": 4,
+      "actualRank": 212,
+      "count": 1,
+      "density": 0.0009813542688910696,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "pinpoint linkedin",
+      "normalizedPhrase": "pinpoint linkedin",
+      "words": 2,
+      "targetRank": 5,
+      "actualRank": 3,
+      "count": 10,
+      "density": 0.009813542688910697,
+      "status": "warning",
+      "issues": [
+        "low"
+      ]
+    },
+    {
+      "phrase": "pinpoint answer today",
+      "normalizedPhrase": "pinpoint answer today",
+      "words": 3,
+      "targetRank": 1,
+      "actualRank": 3,
+      "count": 6,
+      "density": 0.005888125613346418,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "linkedin pinpoint answer",
+      "normalizedPhrase": "linkedin pinpoint answer",
+      "words": 3,
+      "targetRank": 2,
+      "actualRank": 4,
+      "count": 6,
+      "density": 0.005888125613346418,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "todays pinpoint answer",
+      "normalizedPhrase": "todays pinpoint answer",
+      "words": 3,
+      "targetRank": 3,
+      "actualRank": 197,
+      "count": 1,
+      "density": 0.0009813542688910696,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "pinpoint answer linkedin",
+      "normalizedPhrase": "pinpoint answer linkedin",
+      "words": 3,
+      "targetRank": 4,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "today pinpoint answer",
+      "normalizedPhrase": "today pinpoint answer",
+      "words": 3,
+      "targetRank": 5,
+      "actualRank": 827,
+      "count": 1,
+      "density": 0.0009813542688910696,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "pinpoint linkedin answer",
+      "normalizedPhrase": "pinpoint linkedin answer",
+      "words": 3,
+      "targetRank": 6,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "linkedin pinpoint today",
+      "normalizedPhrase": "linkedin pinpoint today",
+      "words": 3,
+      "targetRank": 7,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "pinpoint linkedin today",
+      "normalizedPhrase": "pinpoint linkedin today",
+      "words": 3,
+      "targetRank": 8,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "pinpoint today linkedin",
+      "normalizedPhrase": "pinpoint today linkedin",
+      "words": 3,
+      "targetRank": 9,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "pinpoint answers today",
+      "normalizedPhrase": "pinpoint answers today",
+      "words": 3,
+      "targetRank": 10,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "pinpoint today answers",
+      "normalizedPhrase": "pinpoint today answers",
+      "words": 3,
+      "targetRank": 11,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "linkedin pinpoint answer today",
+      "normalizedPhrase": "linkedin pinpoint answer today",
+      "words": 4,
+      "targetRank": 1,
+      "actualRank": 10,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "status": "warning",
+      "issues": [
+        "low",
+        "rank-warning"
+      ]
+    },
+    {
+      "phrase": "pinpoint linkedin answer today",
+      "normalizedPhrase": "pinpoint linkedin answer today",
+      "words": 4,
+      "targetRank": 2,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    },
+    {
+      "phrase": "pinpoint answer today linkedin",
+      "normalizedPhrase": "pinpoint answer today linkedin",
+      "words": 4,
+      "targetRank": 3,
+      "actualRank": null,
+      "count": 0,
+      "density": 0,
+      "status": "missing",
+      "issues": [
+        "missing"
+      ]
+    }
+  ],
+  "strangePhrases": [
+    {
+      "phrase": "archive",
+      "words": 1,
+      "rank": 4,
+      "count": 18,
+      "density": 0.017664376840039256,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "todays",
+      "words": 1,
+      "rank": 5,
+      "count": 17,
+      "density": 0.016683022571148183,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "full",
+      "words": 1,
+      "rank": 6,
+      "count": 12,
+      "density": 0.011776251226692836,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "today",
+      "words": 1,
+      "rank": 7,
+      "count": 11,
+      "density": 0.010794896957801767,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "puzzle",
+      "words": 1,
+      "rank": 8,
+      "count": 11,
+      "density": 0.010794896957801767,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "open",
+      "words": 1,
+      "rank": 9,
+      "count": 10,
+      "density": 0.009813542688910697,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "clues",
+      "words": 1,
+      "rank": 10,
+      "count": 9,
+      "density": 0.008832188420019628,
+      "reasons": [
+        "top-10-non-target"
+      ]
+    },
+    {
+      "phrase": "todays answer",
+      "words": 2,
+      "rank": 4,
+      "count": 8,
+      "density": 0.007850834151128557,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "answer today",
+      "words": 2,
+      "rank": 5,
+      "count": 6,
+      "density": 0.005888125613346418,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pro tips",
+      "words": 2,
+      "rank": 6,
+      "count": 6,
+      "density": 0.005888125613346418,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "full archive",
+      "words": 2,
+      "rank": 7,
+      "count": 6,
+      "density": 0.005888125613346418,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "the full",
+      "words": 2,
+      "rank": 8,
+      "count": 5,
+      "density": 0.004906771344455349,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "the pinpoint",
+      "words": 2,
+      "rank": 9,
+      "count": 5,
+      "density": 0.004906771344455349,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "spoilersafe hints",
+      "words": 2,
+      "rank": 10,
+      "count": 4,
+      "density": 0.003925417075564278,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "todays linkedin",
+      "words": 2,
+      "rank": 11,
+      "count": 4,
+      "density": 0.003925417075564278,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pinpoint solution",
+      "words": 2,
+      "rank": 12,
+      "count": 4,
+      "density": 0.003925417075564278,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "five clues",
+      "words": 2,
+      "rank": 13,
+      "count": 4,
+      "density": 0.003925417075564278,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "verified answer",
+      "words": 2,
+      "rank": 14,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "start with",
+      "words": 2,
+      "rank": 15,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "apples chestnuts",
+      "words": 2,
+      "rank": 16,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "chestnuts moss",
+      "words": 2,
+      "rank": 17,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "moss bark",
+      "words": 2,
+      "rank": 18,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "bark pine",
+      "words": 2,
+      "rank": 19,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pine needles",
+      "words": 2,
+      "rank": 20,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "full breakdown",
+      "words": 2,
+      "rank": 21,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "and the",
+      "words": 2,
+      "rank": 22,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "hints and",
+      "words": 2,
+      "rank": 23,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "then open",
+      "words": 2,
+      "rank": 24,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "into the",
+      "words": 2,
+      "rank": 25,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "want todays",
+      "words": 2,
+      "rank": 26,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "answer pages",
+      "words": 2,
+      "rank": 27,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "hidden connection",
+      "words": 2,
+      "rank": 28,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pinpoint guide",
+      "words": 2,
+      "rank": 29,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "one place",
+      "words": 2,
+      "rank": 30,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "linkedin pinpoint linkedin",
+      "words": 3,
+      "rank": 1,
+      "count": 10,
+      "density": 0.009813542688910697,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pinpoint linkedin pinpoint",
+      "words": 3,
+      "rank": 2,
+      "count": 10,
+      "density": 0.009813542688910697,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "todays linkedin pinpoint",
+      "words": 3,
+      "rank": 5,
+      "count": 4,
+      "density": 0.003925417075564278,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "apples chestnuts moss",
+      "words": 3,
+      "rank": 6,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "chestnuts moss bark",
+      "words": 3,
+      "rank": 7,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "moss bark pine",
+      "words": 3,
+      "rank": 8,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "bark pine needles",
+      "words": 3,
+      "rank": 9,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "the full archive",
+      "words": 3,
+      "rank": 10,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "today pro tips",
+      "words": 3,
+      "rank": 11,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pro tips archive",
+      "words": 3,
+      "rank": 12,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "tips archive patches",
+      "words": 3,
+      "rank": 13,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target",
+        "blocked-phrase"
+      ]
+    },
+    {
+      "phrase": "archive patches answers",
+      "words": 3,
+      "rank": 14,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "with spoilersafe hints",
+      "words": 3,
+      "rank": 15,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "the daily pinpoint",
+      "words": 3,
+      "rank": 16,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "connects to the",
+      "words": 3,
+      "rank": 17,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pine needles linkedin",
+      "words": 3,
+      "rank": 18,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "needles linkedin pinpoint",
+      "words": 3,
+      "rank": 19,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "below if you",
+      "words": 3,
+      "rank": 20,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "answer puzzle open",
+      "words": 3,
+      "rank": 21,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "jump into the",
+      "words": 3,
+      "rank": 22,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "into the full",
+      "words": 3,
+      "rank": 23,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pro tips open",
+      "words": 3,
+      "rank": 24,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "and preview guidance",
+      "words": 3,
+      "rank": 25,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "recent linkedin pinpoint",
+      "words": 3,
+      "rank": 26,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pinpoint answer pages",
+      "words": 3,
+      "rank": 27,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "open full archive",
+      "words": 3,
+      "rank": 28,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "one hidden connection",
+      "words": 3,
+      "rank": 29,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "check the answer",
+      "words": 3,
+      "rank": 30,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "linkedin pinpoint linkedin pinpoint",
+      "words": 4,
+      "rank": 1,
+      "count": 10,
+      "density": 0.009813542688910697,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pinpoint linkedin pinpoint linkedin",
+      "words": 4,
+      "rank": 2,
+      "count": 8,
+      "density": 0.007850834151128557,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "todays linkedin pinpoint answer",
+      "words": 4,
+      "rank": 3,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "apples chestnuts moss bark",
+      "words": 4,
+      "rank": 4,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "chestnuts moss bark pine",
+      "words": 4,
+      "rank": 5,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "moss bark pine needles",
+      "words": 4,
+      "rank": 6,
+      "count": 3,
+      "density": 0.002944062806673209,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "today pro tips archive",
+      "words": 4,
+      "rank": 7,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pro tips archive patches",
+      "words": 4,
+      "rank": 8,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "tips archive patches answers",
+      "words": 4,
+      "rank": 9,
+      "count": 2,
+      "density": 0.001962708537782139,
+      "reasons": [
+        "top-10-non-target",
+        "above-target"
+      ]
+    },
+    {
+      "phrase": "pinpoint answer today today",
+      "words": 4,
+      "rank": 15,
+      "count": 1,
+      "density": 0.0009813542688910696,
+      "reasons": [
+        "blocked-phrase"
+      ]
+    }
+  ],
+  "topRows": {
+    "1": [
+      {
+        "phrase": "pinpoint",
+        "count": 65,
+        "density": 0.06378802747791953,
+        "firstOccurrenceIndex": 0,
+        "rank": 1,
+        "words": 1
+      },
+      {
+        "phrase": "answer",
+        "count": 34,
+        "density": 0.033366045142296366,
+        "firstOccurrenceIndex": 1,
+        "rank": 2,
+        "words": 1
+      },
+      {
+        "phrase": "linkedin",
+        "count": 32,
+        "density": 0.03140333660451423,
+        "firstOccurrenceIndex": 30,
+        "rank": 3,
+        "words": 1
+      },
+      {
+        "phrase": "archive",
+        "count": 18,
+        "density": 0.017664376840039256,
+        "firstOccurrenceIndex": 6,
+        "rank": 4,
+        "words": 1
+      },
+      {
+        "phrase": "todays",
+        "count": 17,
+        "density": 0.016683022571148183,
+        "firstOccurrenceIndex": 23,
+        "rank": 5,
+        "words": 1
+      },
+      {
+        "phrase": "full",
+        "count": 12,
+        "density": 0.011776251226692836,
+        "firstOccurrenceIndex": 67,
+        "rank": 6,
+        "words": 1
+      },
+      {
+        "phrase": "today",
+        "count": 11,
+        "density": 0.010794896957801767,
+        "firstOccurrenceIndex": 2,
+        "rank": 7,
+        "words": 1
+      },
+      {
+        "phrase": "puzzle",
+        "count": 11,
+        "density": 0.010794896957801767,
+        "firstOccurrenceIndex": 18,
+        "rank": 8,
+        "words": 1
+      },
+      {
+        "phrase": "open",
+        "count": 10,
+        "density": 0.009813542688910697,
+        "firstOccurrenceIndex": 121,
+        "rank": 9,
+        "words": 1
+      },
+      {
+        "phrase": "clues",
+        "count": 9,
+        "density": 0.008832188420019628,
+        "firstOccurrenceIndex": 20,
+        "rank": 10,
+        "words": 1
+      },
+      {
+        "phrase": "answers",
+        "count": 8,
+        "density": 0.007850834151128557,
+        "firstOccurrenceIndex": 8,
+        "rank": 11,
+        "words": 1
+      },
+      {
+        "phrase": "clue",
+        "count": 8,
+        "density": 0.007850834151128557,
+        "firstOccurrenceIndex": 151,
+        "rank": 12,
+        "words": 1
+      },
+      {
+        "phrase": "tips",
+        "count": 7,
+        "density": 0.0068694798822374874,
+        "firstOccurrenceIndex": 5,
+        "rank": 13,
+        "words": 1
+      },
+      {
+        "phrase": "reveal",
+        "count": 7,
+        "density": 0.0068694798822374874,
+        "firstOccurrenceIndex": 45,
+        "rank": 14,
+        "words": 1
+      },
+      {
+        "phrase": "spoilersafe",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 27,
+        "rank": 15,
+        "words": 1
+      },
+      {
+        "phrase": "hints",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 28,
+        "rank": 16,
+        "words": 1
+      },
+      {
+        "phrase": "start",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 38,
+        "rank": 17,
+        "words": 1
+      },
+      {
+        "phrase": "daily",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 78,
+        "rank": 18,
+        "words": 1
+      },
+      {
+        "phrase": "solution",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 160,
+        "rank": 19,
+        "words": 1
+      },
+      {
+        "phrase": "review",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 261,
+        "rank": 20,
+        "words": 1
+      },
+      {
+        "phrase": "page",
+        "count": 5,
+        "density": 0.004906771344455349,
+        "firstOccurrenceIndex": 51,
+        "rank": 21,
+        "words": 1
+      },
+      {
+        "phrase": "breakdown",
+        "count": 5,
+        "density": 0.004906771344455349,
+        "firstOccurrenceIndex": 68,
+        "rank": 22,
+        "words": 1
+      },
+      {
+        "phrase": "boards",
+        "count": 5,
+        "density": 0.004906771344455349,
+        "firstOccurrenceIndex": 556,
+        "rank": 23,
+        "words": 1
+      },
+      {
+        "phrase": "verified",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 21,
+        "rank": 24,
+        "words": 1
+      },
+      {
+        "phrase": "players",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 126,
+        "rank": 25,
+        "words": 1
+      },
+      {
+        "phrase": "hidden",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 171,
+        "rank": 26,
+        "words": 1
+      },
+      {
+        "phrase": "browse",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 239,
+        "rank": 27,
+        "words": 1
+      },
+      {
+        "phrase": "older",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 240,
+        "rank": 28,
+        "words": 1
+      },
+      {
+        "phrase": "patterns",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 264,
+        "rank": 29,
+        "words": 1
+      },
+      {
+        "phrase": "pages",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 281,
+        "rank": 30,
+        "words": 1
+      }
+    ],
+    "2": [
+      {
+        "phrase": "linkedin pinpoint",
+        "count": 30,
+        "density": 0.029440628066732092,
+        "firstOccurrenceIndex": 30,
+        "rank": 1,
+        "words": 2
+      },
+      {
+        "phrase": "pinpoint answer",
+        "count": 14,
+        "density": 0.013738959764474975,
+        "firstOccurrenceIndex": 0,
+        "rank": 2,
+        "words": 2
+      },
+      {
+        "phrase": "pinpoint linkedin",
+        "count": 10,
+        "density": 0.009813542688910697,
+        "firstOccurrenceIndex": 373,
+        "rank": 3,
+        "words": 2
+      },
+      {
+        "phrase": "todays answer",
+        "count": 8,
+        "density": 0.007850834151128557,
+        "firstOccurrenceIndex": 65,
+        "rank": 4,
+        "words": 2
+      },
+      {
+        "phrase": "answer today",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 1,
+        "rank": 5,
+        "words": 2
+      },
+      {
+        "phrase": "pro tips",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 4,
+        "rank": 6,
+        "words": 2
+      },
+      {
+        "phrase": "full archive",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 92,
+        "rank": 7,
+        "words": 2
+      },
+      {
+        "phrase": "the full",
+        "count": 5,
+        "density": 0.004906771344455349,
+        "firstOccurrenceIndex": 91,
+        "rank": 8,
+        "words": 2
+      },
+      {
+        "phrase": "the pinpoint",
+        "count": 5,
+        "density": 0.004906771344455349,
+        "firstOccurrenceIndex": 158,
+        "rank": 9,
+        "words": 2
+      },
+      {
+        "phrase": "spoilersafe hints",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 27,
+        "rank": 10,
+        "words": 2
+      },
+      {
+        "phrase": "todays linkedin",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 29,
+        "rank": 11,
+        "words": 2
+      },
+      {
+        "phrase": "pinpoint solution",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 159,
+        "rank": 12,
+        "words": 2
+      },
+      {
+        "phrase": "five clues",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 382,
+        "rank": 13,
+        "words": 2
+      },
+      {
+        "phrase": "verified answer",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 21,
+        "rank": 14,
+        "words": 2
+      },
+      {
+        "phrase": "start with",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 38,
+        "rank": 15,
+        "words": 2
+      },
+      {
+        "phrase": "apples chestnuts",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 57,
+        "rank": 16,
+        "words": 2
+      },
+      {
+        "phrase": "chestnuts moss",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 58,
+        "rank": 17,
+        "words": 2
+      },
+      {
+        "phrase": "moss bark",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 59,
+        "rank": 18,
+        "words": 2
+      },
+      {
+        "phrase": "bark pine",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 60,
+        "rank": 19,
+        "words": 2
+      },
+      {
+        "phrase": "pine needles",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 61,
+        "rank": 20,
+        "words": 2
+      },
+      {
+        "phrase": "full breakdown",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 67,
+        "rank": 21,
+        "words": 2
+      },
+      {
+        "phrase": "and the",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 90,
+        "rank": 22,
+        "words": 2
+      },
+      {
+        "phrase": "hints and",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 113,
+        "rank": 23,
+        "words": 2
+      },
+      {
+        "phrase": "then open",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 120,
+        "rank": 24,
+        "words": 2
+      },
+      {
+        "phrase": "into the",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 137,
+        "rank": 25,
+        "words": 2
+      },
+      {
+        "phrase": "want todays",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 190,
+        "rank": 26,
+        "words": 2
+      },
+      {
+        "phrase": "answer pages",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 280,
+        "rank": 27,
+        "words": 2
+      },
+      {
+        "phrase": "hidden connection",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 388,
+        "rank": 28,
+        "words": 2
+      },
+      {
+        "phrase": "pinpoint guide",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 458,
+        "rank": 29,
+        "words": 2
+      },
+      {
+        "phrase": "one place",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 477,
+        "rank": 30,
+        "words": 2
+      }
+    ],
+    "3": [
+      {
+        "phrase": "linkedin pinpoint linkedin",
+        "count": 10,
+        "density": 0.009813542688910697,
+        "firstOccurrenceIndex": 372,
+        "rank": 1,
+        "words": 3
+      },
+      {
+        "phrase": "pinpoint linkedin pinpoint",
+        "count": 10,
+        "density": 0.009813542688910697,
+        "firstOccurrenceIndex": 373,
+        "rank": 2,
+        "words": 3
+      },
+      {
+        "phrase": "pinpoint answer today",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 0,
+        "rank": 3,
+        "words": 3
+      },
+      {
+        "phrase": "linkedin pinpoint answer",
+        "count": 6,
+        "density": 0.005888125613346418,
+        "firstOccurrenceIndex": 30,
+        "rank": 4,
+        "words": 3
+      },
+      {
+        "phrase": "todays linkedin pinpoint",
+        "count": 4,
+        "density": 0.003925417075564278,
+        "firstOccurrenceIndex": 29,
+        "rank": 5,
+        "words": 3
+      },
+      {
+        "phrase": "apples chestnuts moss",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 57,
+        "rank": 6,
+        "words": 3
+      },
+      {
+        "phrase": "chestnuts moss bark",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 58,
+        "rank": 7,
+        "words": 3
+      },
+      {
+        "phrase": "moss bark pine",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 59,
+        "rank": 8,
+        "words": 3
+      },
+      {
+        "phrase": "bark pine needles",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 60,
+        "rank": 9,
+        "words": 3
+      },
+      {
+        "phrase": "the full archive",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 91,
+        "rank": 10,
+        "words": 3
+      },
+      {
+        "phrase": "today pro tips",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 3,
+        "rank": 11,
+        "words": 3
+      },
+      {
+        "phrase": "pro tips archive",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 4,
+        "rank": 12,
+        "words": 3
+      },
+      {
+        "phrase": "tips archive patches",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 5,
+        "rank": 13,
+        "words": 3
+      },
+      {
+        "phrase": "archive patches answers",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 6,
+        "rank": 14,
+        "words": 3
+      },
+      {
+        "phrase": "with spoilersafe hints",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 26,
+        "rank": 15,
+        "words": 3
+      },
+      {
+        "phrase": "the daily pinpoint",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 77,
+        "rank": 16,
+        "words": 3
+      },
+      {
+        "phrase": "connects to the",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 156,
+        "rank": 17,
+        "words": 3
+      },
+      {
+        "phrase": "pine needles linkedin",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 165,
+        "rank": 18,
+        "words": 3
+      },
+      {
+        "phrase": "needles linkedin pinpoint",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 166,
+        "rank": 19,
+        "words": 3
+      },
+      {
+        "phrase": "below if you",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 187,
+        "rank": 20,
+        "words": 3
+      },
+      {
+        "phrase": "answer puzzle open",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 216,
+        "rank": 21,
+        "words": 3
+      },
+      {
+        "phrase": "jump into the",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 242,
+        "rank": 22,
+        "words": 3
+      },
+      {
+        "phrase": "into the full",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 243,
+        "rank": 23,
+        "words": 3
+      },
+      {
+        "phrase": "pro tips open",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 252,
+        "rank": 24,
+        "words": 3
+      },
+      {
+        "phrase": "and preview guidance",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 267,
+        "rank": 25,
+        "words": 3
+      },
+      {
+        "phrase": "recent linkedin pinpoint",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 272,
+        "rank": 26,
+        "words": 3
+      },
+      {
+        "phrase": "pinpoint answer pages",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 279,
+        "rank": 27,
+        "words": 3
+      },
+      {
+        "phrase": "open full archive",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 364,
+        "rank": 28,
+        "words": 3
+      },
+      {
+        "phrase": "one hidden connection",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 387,
+        "rank": 29,
+        "words": 3
+      },
+      {
+        "phrase": "check the answer",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 403,
+        "rank": 30,
+        "words": 3
+      }
+    ],
+    "4": [
+      {
+        "phrase": "linkedin pinpoint linkedin pinpoint",
+        "count": 10,
+        "density": 0.009813542688910697,
+        "firstOccurrenceIndex": 372,
+        "rank": 1,
+        "words": 4
+      },
+      {
+        "phrase": "pinpoint linkedin pinpoint linkedin",
+        "count": 8,
+        "density": 0.007850834151128557,
+        "firstOccurrenceIndex": 898,
+        "rank": 2,
+        "words": 4
+      },
+      {
+        "phrase": "todays linkedin pinpoint answer",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 29,
+        "rank": 3,
+        "words": 4
+      },
+      {
+        "phrase": "apples chestnuts moss bark",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 57,
+        "rank": 4,
+        "words": 4
+      },
+      {
+        "phrase": "chestnuts moss bark pine",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 58,
+        "rank": 5,
+        "words": 4
+      },
+      {
+        "phrase": "moss bark pine needles",
+        "count": 3,
+        "density": 0.002944062806673209,
+        "firstOccurrenceIndex": 59,
+        "rank": 6,
+        "words": 4
+      },
+      {
+        "phrase": "today pro tips archive",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 3,
+        "rank": 7,
+        "words": 4
+      },
+      {
+        "phrase": "pro tips archive patches",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 4,
+        "rank": 8,
+        "words": 4
+      },
+      {
+        "phrase": "tips archive patches answers",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 5,
+        "rank": 9,
+        "words": 4
+      },
+      {
+        "phrase": "linkedin pinpoint answer today",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 129,
+        "rank": 10,
+        "words": 4
+      },
+      {
+        "phrase": "bark pine needles linkedin",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 164,
+        "rank": 11,
+        "words": 4
+      },
+      {
+        "phrase": "pine needles linkedin pinpoint",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 165,
+        "rank": 12,
+        "words": 4
+      },
+      {
+        "phrase": "jump into the full",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 242,
+        "rank": 13,
+        "words": 4
+      },
+      {
+        "phrase": "into the full archive",
+        "count": 2,
+        "density": 0.001962708537782139,
+        "firstOccurrenceIndex": 243,
+        "rank": 14,
+        "words": 4
+      },
+      {
+        "phrase": "pinpoint answer today today",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 0,
+        "rank": 15,
+        "words": 4
+      },
+      {
+        "phrase": "answer today today pro",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 1,
+        "rank": 16,
+        "words": 4
+      },
+      {
+        "phrase": "today today pro tips",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 2,
+        "rank": 17,
+        "words": 4
+      },
+      {
+        "phrase": "archive patches answers menu",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 6,
+        "rank": 18,
+        "words": 4
+      },
+      {
+        "phrase": "patches answers menu today",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 7,
+        "rank": 19,
+        "words": 4
+      },
+      {
+        "phrase": "answers menu today pro",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 8,
+        "rank": 20,
+        "words": 4
+      },
+      {
+        "phrase": "menu today pro tips",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 9,
+        "rank": 21,
+        "words": 4
+      },
+      {
+        "phrase": "archive patches answers live",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 13,
+        "rank": 22,
+        "words": 4
+      },
+      {
+        "phrase": "patches answers live now",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 14,
+        "rank": 23,
+        "words": 4
+      },
+      {
+        "phrase": "answers live now puzzle",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 15,
+        "rank": 24,
+        "words": 4
+      },
+      {
+        "phrase": "live now puzzle may",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 16,
+        "rank": 25,
+        "words": 4
+      },
+      {
+        "phrase": "now puzzle may clues",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 17,
+        "rank": 26,
+        "words": 4
+      },
+      {
+        "phrase": "puzzle may clues verified",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 18,
+        "rank": 27,
+        "words": 4
+      },
+      {
+        "phrase": "may clues verified answer",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 19,
+        "rank": 28,
+        "words": 4
+      },
+      {
+        "phrase": "clues verified answer todays",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 20,
+        "rank": 29,
+        "words": 4
+      },
+      {
+        "phrase": "verified answer todays puzzle",
+        "count": 1,
+        "density": 0.0009813542688910696,
+        "firstOccurrenceIndex": 21,
+        "rank": 30,
+        "words": 4
+      }
+    ]
+  },
+  "suggestedEditAreas": [
+    "components/home/HomeRecentAnswers.tsx",
+    "components/home/HomeWhatIs.tsx",
+    "components/home/HomeBenefitsFaq.tsx",
+    "components/home/HomeCtaFooter.tsx",
+    "homepage search path / title map module",
+    "homepage title / description / schema",
+    "homepage styles and layout files"
+  ]
+}

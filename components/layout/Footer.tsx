@@ -43,18 +43,28 @@ export function Footer({
             <p className="eyebrow">Pinpoint Answer Today</p>
             <p className="footer-copy">
               {isDetailPage
-                ? "Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. Each daily Pinpoint answer comes with rapid verification, thoughtful analysis, and strategy notes, and every Pinpoint answer page is built independently from any organization."
-                : "Pinpoint Answer Today is built for people who want today's answer, clearer explanations, and a cleaner archive path without wading through old clutter."}
+                ? "A fan-built companion for the daily LinkedIn puzzle. Each daily Pinpoint answer comes with rapid verification, thoughtful analysis, and strategy notes, and every Pinpoint answer page is built independently from any organization."
+                : "Built for people who want LinkedIn Pinpoint answer today, Pinpoint today archive notes, Pinpoint today clue checks, and clearer explanations without wading through old clutter."}
             </p>
           </div>
 
           {showRecentEntries ? (
-            <div className="footer-block">
-              <p className="eyebrow">Recent 10 Pinpoint Answers</p>
-              <ul className="footer-link-list footer-link-list-compact">
+            <div className="footer-block footer-recent-block">
+              <p className="footer-recent-heading">
+                Recent 10{" "}
+                <br />
+                Pinpoint Answers
+              </p>
+              <ul className="footer-link-list footer-recent-list">
                 {recentEntries.map((entry) => (
                   <li key={entry.slug}>
-                    <Link href={routes.detail(entry.slug)} prefetch={false}>{`LinkedIn Pinpoint ${entry.number}`}</Link>
+                    <Link
+                      href={routes.detail(entry.slug)}
+                      prefetch={false}
+                      aria-label={`Open LinkedIn Pinpoint ${entry.number}`}
+                    >
+                      {`LinkedIn Pinpoint Puzzle ${entry.number}`}
+                    </Link>
                   </li>
                 ))}
               </ul>

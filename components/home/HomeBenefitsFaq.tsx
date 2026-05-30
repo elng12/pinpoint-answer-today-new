@@ -5,37 +5,37 @@ const benefits = [
     icon: "bolt",
     title: "Instant Answers",
     description:
-      "Start with spoiler-safe hints, then open the detail page when you want the full reasoning behind today's answer.",
+      "LinkedIn Pinpoint answer today stays hidden until you choose reveal.",
   },
   {
     icon: "brain",
     title: "Detailed Clues",
     description:
-      "Review how each Pinpoint clue connects to the solution instead of stopping at the final category name.",
+      "Today's Pinpoint answer notes show the clue path without spoiling first.",
   },
   {
     icon: "calendar",
     title: "Daily updates",
     description:
-      "Fresh Pinpoint answer pages, next-puzzle timing, and archive updates all stay inside one English-only structure.",
+      "Pinpoint LinkedIn answer today keeps daily boards easy to review.",
   },
   {
     icon: "bookmark",
     title: "Save Your Streak",
     description:
-      "Use spoiler-safe Pinpoint reveals and cleaner recap pages to stay accurate without wasting guesses.",
+      "Pinpoint LinkedIn answer today notes keep archive checks clear.",
   },
   {
     icon: "layers",
     title: "Pattern training",
     description:
-      "Recent Pinpoint boards and preview guidance help you recognise shared rules faster over time.",
+      "Pinpoint answer today LinkedIn recap keeps the verified solve close.",
   },
   {
     icon: "spark",
     title: "Smart solving tips",
     description:
-      "Learn the Pinpoint habits that narrow the hidden connection before you chase the wrong theme.",
+      "Pinpoint answer, LinkedIn clue logic, and the final category stay together.",
   },
 ];
 
@@ -79,28 +79,28 @@ function BenefitIcon({ icon }: { icon: string }) {
 export function getFaqItems(puzzle: PuzzleDetail) {
   return [
     {
-      question: "When does the daily Pinpoint solution become available?",
-      answer: `LinkedIn Pinpoint usually unlocks on a daily cycle. We update the live Pinpoint page for Puzzle ${puzzle.number} as soon as the latest verified board is ready.`,
+      question: "When does today's Pinpoint answer become available?",
+      answer: `LinkedIn Pinpoint answer today is updated after verification, and Today's Pinpoint answer for Puzzle ${puzzle.number} stays easy to check.`,
     },
     {
       question: "Can I browse historical Pinpoint boards here?",
-      answer: "Yes. The Pinpoint archive keeps recent and older boards in one place so you can review old connections, clue sets, and answer patterns without hunting around.",
+      answer: "Yes. The archive keeps Pinpoint LinkedIn boards together, with Today's Pinpoint answer notes for recent puzzles.",
     },
     {
       question: "What happens if I miss a day’s puzzle?",
-      answer: "Missing a Pinpoint board does not stop you from learning the pattern. You can open the Pinpoint archive later, review the recap, and keep building your solving habits from there.",
+      answer: "Open the archive, compare Today's Pinpoint answer with older boards, and then return to the Pinpoint today recap.",
     },
     {
       question: "Is this an official LinkedIn resource?",
-      answer: "No. This is an independent Pinpoint guide built to help players check the answer, review clue logic, and browse older boards more easily.",
+      answer: "No. This is an independent guide. LinkedIn Pinpoint is named only so players know which puzzle the answer covers.",
     },
     {
       question: "How do the clue explanations work?",
-      answer: `Each Pinpoint walkthrough explains how all five clues fit the shared rule. For today’s board, the current connection is ${puzzle.category}, and the detail page shows how each clue supports it.`,
+      answer: `Each Pinpoint answer, LinkedIn clue, and final category should fit the same connection in the Pinpoint today explanation for ${puzzle.category}.`,
     },
     {
-      question: "Why are some Pinpoint connections hard to spot?",
-      answer: "Many Pinpoint boards rely on wordplay, cultural references, or a very specific shared phrase. The goal is not just to know the solution, but to learn how the pattern became visible.",
+      question: "Why do people search Pinpoint answer today LinkedIn?",
+      answer: "Pinpoint answer today LinkedIn is just another way to ask for the same daily guide. A quick Pinpoint LinkedIn answer today check helps when the answer is not obvious, especially after tricky LinkedIn clues.",
     },
   ];
 }
@@ -115,8 +115,8 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
           <p className="eyebrow">Why Pinpoint players use us</p>
           <h2 className="section-title benefit-guide-title">Why Use Our Pinpoint Guide?</h2>
           <p className="copy benefits-intro">
-            Players use this guide when they want today&apos;s answer, spoiler-safe hints, and a
-            clean archive path in one place.
+            Use this Pinpoint LinkedIn guide for LinkedIn Pinpoint answer today, Pinpoint LinkedIn answer today notes,
+            and a short Pinpoint today checklist.
           </p>
         </div>
         <div className="benefit-guide-grid">
@@ -138,7 +138,8 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
         <div className="home-search-heading faq-section-heading">
           <h2 className="section-title faq-guide-title">Frequently Asked Questions</h2>
           <p className="copy faq-intro">
-            Everything you need to know about this Pinpoint guide.
+            Short answers for LinkedIn players checking Pinpoint today answer, Pinpoint answer LinkedIn help,
+            and Today&apos;s Pinpoint answer.
           </p>
         </div>
         <div className="faq-guide-grid">

@@ -27,19 +27,19 @@ export function HomeHero({
           <span className="home-hero-status-item">Puzzle #{puzzle.number}</span>
           <span className="home-hero-status-item">{heroDate}</span>
           <span className="home-hero-status-item">{puzzle.clues.length} clues</span>
-          <span className="home-hero-status-item">Verified answer</span>
+          <span className="home-hero-status-item">Verified solution</span>
         </div>
-        <p className="home-hero-kicker">Today&apos;s puzzle answer with spoiler-safe hints</p>
-        <h1 className="home-hero-title">{`Today's LinkedIn Pinpoint #${puzzle.number} Answer`}</h1>
+        <p className="home-hero-kicker">LinkedIn Pinpoint answer today with spoiler-safe hints</p>
+        <h1 className="home-hero-title">{`LinkedIn Pinpoint Answer Today #${puzzle.number}`}</h1>
         <p className="home-hero-subtitle">
-          {`Need today's LinkedIn Pinpoint answer? Start with the Puzzle #${puzzle.number} clues below, then reveal the verified answer on this page when you're ready.`}
+          {`Need help with Pinpoint ${puzzle.number}?`}
         </p>
         <p className="home-hero-clue-summary">
-          <span>Today&apos;s clues:</span> {clueList}
+          <span>Today&apos;s Pinpoint clues:</span> {clueList}
         </p>
         <div className="button-row home-hero-actions">
           <a className="button-primary home-hero-primary" href="#answer-reveal">
-            Jump to today&apos;s answer
+            Jump to LinkedIn Pinpoint answer today
           </a>
           <Link className="button-secondary home-hero-secondary" href={routes.detail(puzzle.slug)} prefetch={false}>
             Full breakdown

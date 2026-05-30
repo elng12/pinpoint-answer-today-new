@@ -11,10 +11,12 @@ export function RecentAnswerCard({
   entry,
   isLatest = false,
   answerText,
+  title,
 }: {
   entry: ArchiveEntry;
   isLatest?: boolean;
   answerText?: string;
+  title?: string;
 }) {
   const shortDate = formatShortDate(entry.isoDate);
   const cluePreview = buildCluePreview(entry.clues);
@@ -32,7 +34,9 @@ export function RecentAnswerCard({
         </div>
         {isLatest ? <span className="recent-answer-badge">Latest</span> : null}
       </div>
-      <h3 className="recent-answer-title">{`LinkedIn Pinpoint ${entry.number}: ${cluePreview}`}</h3>
+      <h3 className="recent-answer-title">
+        {title ?? `LinkedIn Pinpoint ${entry.number}: ${cluePreview}`}
+      </h3>
       {answerText ? (
         <p className="recent-answer-answer">Solution: {answerText}</p>
       ) : null}

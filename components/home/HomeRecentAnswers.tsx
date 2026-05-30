@@ -10,14 +10,24 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
       <div className="home-search-heading recent-answers-heading">
         <SectionHeading
           eyebrow="Recent answers"
-          title="Recent LinkedIn Pinpoint Answers"
-          description="Open recent LinkedIn Pinpoint answer pages, compare clue patterns, and jump into the full archive without digging through clutter."
+          title="Recent Pinpoint Today pages"
+          description="Open each Pinpoint today recap, scan Pinpoint today archive cards, compare LinkedIn Pinpoint answer pages, and jump into the full archive without digging through clutter."
         />
       </div>
       <div className="recent-answer-grid recent-answer-grid-compact">
-        {entries.map((entry, index) => (
-          <RecentAnswerCard key={entry.slug} entry={entry} isLatest={index === 0} />
-        ))}
+        {entries.map((entry, index) => {
+          const previewClues = entry.clues.slice(0, 3).join(", ");
+          const titleSuffix = entry.clues.length > 3 ? "..." : "";
+
+          return (
+            <RecentAnswerCard
+              key={entry.slug}
+              entry={entry}
+              isLatest={index === 0}
+              title={`LinkedIn Pinpoint ${entry.number}: ${previewClues}${titleSuffix} - Pinpoint Today Puzzle ${entry.number}`}
+            />
+          );
+        })}
       </div>
       <div className="button-row recent-answer-actions recent-answer-actions-bottom">
         <Link href={routes.archive} className="button-secondary" prefetch={false}>
