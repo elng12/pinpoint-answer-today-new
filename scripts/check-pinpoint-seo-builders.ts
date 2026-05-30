@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import buildSitemap from "@/app/sitemap";
+import { generateMetadata as generateHomeMetadata } from "@/app/(site)/(home)/page";
 import { generateMetadata as generateAboutMetadata } from "@/app/(site)/about-us/page";
 import { generateMetadata as generateContactMetadata } from "@/app/(site)/contact-us/page";
 import type { ArchiveEntry } from "@/lib/puzzles/data";
@@ -10,6 +11,8 @@ import { buildHomeStructuredData } from "@/lib/seo/home-structured-data";
 import {
   buildPuzzleSeoDescription,
   buildPuzzleSeoTitle,
+  HOME_SEO_DESCRIPTION,
+  HOME_SEO_TITLE,
 } from "@/lib/seo/metadata";
 import { buildPuzzleDetailStructuredData } from "@/lib/seo/puzzle-detail-structured-data";
 import {
@@ -352,6 +355,22 @@ function checkTrustPageMetadataIsIndexable() {
   assertTrustPageMetadataIsIndexable("contact", generateContactMetadata());
 }
 
+function checkHomepageSeoCopyIsLocked() {
+  const metadata = generateHomeMetadata();
+
+  assert.equal(metadata.title, HOME_SEO_TITLE, "home metadata title should use the locked homepage SEO title");
+  assert.equal(
+    metadata.description,
+    HOME_SEO_DESCRIPTION,
+    "home metadata description should use the locked homepage SEO description",
+  );
+  assert.equal(
+    /Puzzle\s*#?\d+/i.test(`${metadata.title ?? ""} ${metadata.description ?? ""}`),
+    false,
+    "home SEO title and description should not include the daily puzzle number",
+  );
+}
+
 async function checkSitemapExcludesNoindexLegalPages() {
   const sitemap = await buildSitemap();
   const sitemapPaths = new Set(sitemap.map((entry) => new URL(entry.url).pathname));
@@ -394,6 +413,9 @@ async function main() {
 
   checkTrustPageMetadataIsIndexable();
   console.log("ok: trust page metadata stays indexable");
+
+  checkHomepageSeoCopyIsLocked();
+  console.log("ok: homepage SEO copy stays locked and number-free");
 
   await checkSitemapExcludesNoindexLegalPages();
   console.log("ok: sitemap excludes noindex legal pages");

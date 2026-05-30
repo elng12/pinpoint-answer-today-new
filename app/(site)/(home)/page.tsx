@@ -14,18 +14,17 @@ import { routes } from "@/lib/paths/routes";
 import { footerBadges } from "@/lib/site/badges";
 import {
   buildPageMetadata,
+  HOME_SEO_DESCRIPTION,
   HOME_SEO_TITLE,
 } from "@/lib/seo/metadata";
 import { buildHomeStructuredData } from "@/lib/seo/home-structured-data";
 
 export const revalidate = 86400;
 
-export async function generateMetadata(): Promise<Metadata> {
-  const current = await getCurrentPuzzle();
-  const description = `Today's LinkedIn Pinpoint answer is Puzzle #${current.number}. Get spoiler-safe hints, clue help, and the verified solution for the current puzzle.`;
+export function generateMetadata(): Metadata {
   return buildPageMetadata({
     title: HOME_SEO_TITLE,
-    description,
+    description: HOME_SEO_DESCRIPTION,
     path: routes.home,
   });
 }

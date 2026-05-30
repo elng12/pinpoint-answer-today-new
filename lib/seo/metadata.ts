@@ -4,9 +4,10 @@ import { defaultSocialImagePath, siteName, twitterHandle } from "@/lib/site/conf
 import { fitPinpointClues } from "@/lib/seo/pinpoint-text";
 import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
 
-export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today | Hints & Solution";
+// Locked homepage SERP copy. Do not add puzzle numbers unless the homepage SEO contract is explicitly changed.
+export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today - Daily Answers & Solutions";
 export const HOME_SEO_DESCRIPTION =
-  "Get today's LinkedIn Pinpoint answer for the current puzzle with spoiler-safe hints, clue help, and a fast path to the final solution.";
+  "Find the Pinpoint answer today for LinkedIn Pinpoint, with spoiler-safe hints, clue explanations, today's solution, and recent Pinpoint answers in one place.";
 export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive | Past Answers by Puzzle Number";
 export const ARCHIVE_SEO_DESCRIPTION =
   "Browse past LinkedIn Pinpoint answers in one archive. Search by puzzle number or clue, then open the matching answer page fast.";
