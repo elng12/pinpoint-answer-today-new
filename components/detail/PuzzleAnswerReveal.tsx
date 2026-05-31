@@ -135,6 +135,10 @@ export function PuzzleAnswerReveal({
   const answerPanelTitle = panelTitle ?? `Pinpoint ${puzzleNumber} Answer`;
   const answerPanelNote = detailNote ?? fallbackDetailNote;
   const cluePath = clues.join(" ");
+  const hasMultiWordClue = clues.some((clue) => clue.trim().split(/\s+/).length > 1);
+  const cluePathNote = hasMultiWordClue
+    ? `LinkedIn Pinpoint clue order: ${cluePath}. Read the full order before the reveal.`
+    : `LinkedIn Pinpoint clue order: ${cluePath}. Read ${cluePath} before the reveal.`;
 
   return (
     <section className="legacy-reveal-shell" aria-labelledby="pinpoint-clues-title">
@@ -152,7 +156,7 @@ export function PuzzleAnswerReveal({
           </li>
         ))}
       </ol>
-      <p className="legacy-clue-path-note">{`LinkedIn Pinpoint clue order: ${cluePath}. Read the full order before the reveal.`}</p>
+      <p className="legacy-clue-path-note">{cluePathNote}</p>
 
       <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">
