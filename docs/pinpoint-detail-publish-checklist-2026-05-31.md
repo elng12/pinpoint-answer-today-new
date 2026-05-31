@@ -91,6 +91,16 @@ npx vercel ls pinpoint-answer-today-new --scope team_funPiYWRgqIN2bAClbNEdWJ8
 
 `detail:publish-check` is the main command. The other commands are kept here for manual debugging when that command fails.
 
+`release:production` runs `detail:publish-check` automatically after deploy. If it fails, the release script sends a Feishu/Slack alert when a webhook is configured. P0 failures also try to pause the next auto-publish run.
+
+The Cloudflare Worker cannot run this Node command directly, so it has a lightweight post-publish public audit with the same P0/P1 action rule. Worker P0 failures send Feishu/Slack and pause the next auto-publish run.
+
+Failure levels:
+
+- P0: wrong page, wrong answer, missing clues, runtime error, wrong summary API, or Vercel not ready. Action: alert, pause auto-publish, consider rollback.
+- P1: SEO or page-shape issue, such as title/H1, keyword order, teaching items, recent links, or JSON-LD. Action: alert and fix without automatic rollback.
+- P2: record-only note. Action: do not block publish.
+
 Also verify:
 
 - detail URL returns `200`

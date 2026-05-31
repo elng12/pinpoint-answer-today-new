@@ -19,6 +19,13 @@ const STATUS_TIMEOUT_MS = 10 * 60 * 1000;
 const STATUS_POLL_MS = 5000;
 const DETAIL_VERIFY_TIMEOUT_MS = 2 * 60 * 1000;
 const DETAIL_VERIFY_POLL_MS = 5000;
+const DETAIL_PUBLISH_CHECK_RETRIES = Number.parseInt(process.env.PINPOINT_DETAIL_PUBLISH_CHECK_RETRIES || "2", 10);
+const DETAIL_PUBLISH_CHECK_RETRY_DELAY_MS = Number.parseInt(
+  process.env.PINPOINT_DETAIL_PUBLISH_CHECK_RETRY_DELAY_MS || "5000",
+  10,
+);
+
+let releaseFailureNotificationSent = false;
 
 function parseArgs(argv) {
   return {
@@ -97,6 +104,123 @@ function run(command, args, options = {}) {
 async function capture(command, args, options = {}) {
   const result = await run(command, args, { ...options, capture: true });
   return result.stdout.trim();
+}
+
+function runForStatus(command, args, options = {}) {
+  const {
+    cwd = ROOT,
+    env,
+    timeoutMs = 120000,
+  } = options;
+
+  return new Promise((resolvePromise, rejectPromise) => {
+    const child = spawn(command, args, {
+      cwd,
+      env: { ...process.env, ...env },
+      stdio: ["ignore", "pipe", "pipe"],
+      shell: false,
+    });
+
+    let stdout = "";
+    let stderr = "";
+    const timer = setTimeout(() => {
+      child.kill("SIGTERM");
+      rejectPromise(new Error(`Timed out: ${command} ${args.join(" ")}`));
+    }, timeoutMs);
+
+    child.stdout.on("data", (chunk) => {
+      stdout += String(chunk);
+    });
+    child.stderr.on("data", (chunk) => {
+      stderr += String(chunk);
+    });
+    child.on("error", (error) => {
+      clearTimeout(timer);
+      rejectPromise(error);
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      resolvePromise({
+        code: code ?? 1,
+        stderr,
+        stdout,
+      });
+    });
+  });
+}
+
+function parseJsonObjectFromOutput(output) {
+  const trimmed = String(output || "").trim();
+  if (!trimmed) return null;
+  try {
+    return JSON.parse(trimmed);
+  } catch {
+    const start = trimmed.indexOf("{");
+    const end = trimmed.lastIndexOf("}");
+    if (start >= 0 && end > start) {
+      try {
+        return JSON.parse(trimmed.slice(start, end + 1));
+      } catch {
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+function normalizeIssueList(result) {
+  return Array.isArray(result?.issues) ? result.issues : [];
+}
+
+function formatDetailPublishIssueLines(result, limit = 8) {
+  const issues = normalizeIssueList(result);
+  if (issues.length === 0) return ["问题: 未拿到详细错误，先看 release 日志"];
+  return issues.slice(0, limit).map((issue) => {
+    const severity = String(issue?.severity || result?.maxSeverity || "unknown");
+    const scope = String(issue?.scope || "unknown");
+    const message = String(issue?.message || "").slice(0, 260);
+    return `- [${severity}] ${scope}: ${message}`;
+  });
+}
+
+function notifyWebhookTargets() {
+  return {
+    feishu: String(process.env.FEISHU_WEBHOOK_URL || process.env.ALERT_WEBHOOK_URL || "").trim(),
+    slack: String(process.env.SLACK_WEBHOOK_URL || "").trim(),
+  };
+}
+
+async function notifyWebhook(title, lines) {
+  const text = [title, ...lines].join("\n");
+  const targets = notifyWebhookTargets();
+  const tasks = [];
+
+  if (targets.feishu) {
+    tasks.push(fetch(targets.feishu, {
+      method: "POST",
+      headers: { "content-type": "application/json; charset=utf-8" },
+      body: JSON.stringify({ msg_type: "text", content: { text } }),
+      signal: AbortSignal.timeout(10000),
+    }).catch(() => undefined));
+  }
+
+  if (targets.slack) {
+    tasks.push(fetch(targets.slack, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ text }),
+      signal: AbortSignal.timeout(10000),
+    }).catch(() => undefined));
+  }
+
+  if (tasks.length > 0) {
+    await Promise.all(tasks);
+  }
+}
+
+async function notifyProductionReleaseFailure(title, lines) {
+  releaseFailureNotificationSent = true;
+  await notifyWebhook(title, lines);
 }
 
 function extractGitHubRepo(remoteUrl) {
@@ -485,6 +609,109 @@ async function runPostPublishPublicFetchAudit({ siteUrl, sha, registry, registry
   };
 }
 
+async function runDetailPublishCheckOnce(slug) {
+  const result = await runForStatus(
+    "npm",
+    ["--silent", "run", "detail:publish-check", "--", "--slug", slug, "--json"],
+    { timeoutMs: 180000 },
+  );
+  const output = `${result.stdout}${result.stderr}`.trim();
+  const parsed = parseJsonObjectFromOutput(output);
+
+  if (parsed && typeof parsed === "object") {
+    return {
+      ...parsed,
+      exitCode: result.code,
+      rawOutput: output,
+    };
+  }
+
+  return {
+    checks: [],
+    detailUrl: `${DEFAULT_SITE_URL.replace(/\/$/, "")}/linkedin-pinpoint-answers/${slug}/`,
+    exitCode: result.code,
+    issues: [{
+      severity: "P0",
+      scope: "detail:publish-check",
+      message: output || `detail:publish-check exited with code ${result.code}`,
+    }],
+    maxSeverity: "P0",
+    recommendedAction: "pause_auto_publish_and_consider_rollback",
+    slug,
+    status: "blocked",
+    rawOutput: output,
+  };
+}
+
+async function runDetailPublishCheckWithRetries(slug) {
+  const retryCount = Number.isFinite(DETAIL_PUBLISH_CHECK_RETRIES)
+    ? Math.max(0, DETAIL_PUBLISH_CHECK_RETRIES)
+    : 2;
+  const attempts = retryCount + 1;
+  let latestResult = null;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    latestResult = await runDetailPublishCheckOnce(slug);
+    if (latestResult.status === "passed") {
+      if (attempt > 1) {
+        console.log(`Detail publish check passed after retry ${attempt}/${attempts}.`);
+      }
+      return latestResult;
+    }
+
+    const severity = latestResult.maxSeverity || "unknown";
+    console.log(`Detail publish check failed attempt ${attempt}/${attempts}: ${severity}`);
+    if (attempt < attempts) {
+      await sleep(
+        Number.isFinite(DETAIL_PUBLISH_CHECK_RETRY_DELAY_MS)
+          ? Math.max(1000, DETAIL_PUBLISH_CHECK_RETRY_DELAY_MS)
+          : 5000,
+      );
+    }
+  }
+
+  return latestResult;
+}
+
+async function tryPauseAutoPublishAfterP0(result) {
+  if (result?.maxSeverity !== "P0") {
+    return { status: "skipped", reason: "not P0" };
+  }
+
+  try {
+    const reason = `detail publish check P0 for ${result.slug || "unknown slug"}`;
+    const pauseResult = await runForStatus(
+      "npm",
+      ["run", "worker:auto-publish-pause", "--", "--reason", reason],
+      { timeoutMs: 60000 },
+    );
+    const output = `${pauseResult.stdout}${pauseResult.stderr}`.trim();
+    if (pauseResult.code === 0) {
+      return { status: "paused", detail: output.slice(0, 300) };
+    }
+    return { status: "failed", detail: output.slice(0, 300) || `exit ${pauseResult.code}` };
+  } catch (error) {
+    return { status: "failed", detail: error instanceof Error ? error.message : String(error) };
+  }
+}
+
+async function handleDetailPublishCheckFailure(result) {
+  const pauseResult = await tryPauseAutoPublishAfterP0(result);
+  const severity = String(result?.maxSeverity || "unknown");
+  const recommendedAction = String(result?.recommendedAction || "inspect_release_logs");
+  const slug = String(result?.slug || "unknown");
+  const detailUrl = String(result?.detailUrl || "");
+
+  await notifyProductionReleaseFailure("❌ Pinpoint 详情页发布后检查失败", [
+    `页面: ${slug}`,
+    ...(detailUrl ? [`URL: ${detailUrl}`] : []),
+    `级别: ${severity}`,
+    `建议动作: ${recommendedAction}`,
+    `自动暂停: ${pauseResult.status}${pauseResult.detail ? ` (${pauseResult.detail})` : pauseResult.reason ? ` (${pauseResult.reason})` : ""}`,
+    ...formatDetailPublishIssueLines(result),
+  ]);
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -521,6 +748,7 @@ async function main() {
     console.log("Would wait for the matching Vercel deployment to succeed");
     console.log("Would deploy the production Cloudflare Worker");
     console.log(`Would verify ${DEFAULT_SITE_URL}/, ${DEFAULT_SITE_URL}/api/puzzles/summary, ${DEFAULT_WORKER_HEALTH_URL}, and PR11 public fetch audit`);
+    console.log(`Would run npm run detail:publish-check -- --slug ${localLiveEntry.slug}`);
     return;
   }
 
@@ -555,6 +783,15 @@ async function main() {
     puzzle: publishedPuzzle,
   });
 
+  logStep("Running detail publish checklist");
+  const detailPublishCheck = await runDetailPublishCheckWithRetries(summary.latest.slug);
+  if (detailPublishCheck?.status !== "passed") {
+    await handleDetailPublishCheckFailure(detailPublishCheck);
+    throw new Error(
+      `Detail publish check failed for ${summary.latest.slug}: ${detailPublishCheck?.maxSeverity || "unknown"}`,
+    );
+  }
+
   logStep("Production release finished");
   console.log(`Commit: ${sha}`);
   console.log(`Vercel: ${vercel.targetUrl || "success"}`);
@@ -563,9 +800,16 @@ async function main() {
   console.log(`Worker puzzleDate: ${workerHealth.puzzleDate}`);
   console.log(`Verified detail page: ${detail.detailUrl}`);
   console.log(`Post-publish audit: ${postPublishAudit.auditOutcome} (${postPublishAudit.outputPath})`);
+  console.log(`Detail publish check: ${detailPublishCheck.status}`);
 }
 
-main().catch((error) => {
+main().catch(async (error) => {
+  if (!releaseFailureNotificationSent) {
+    await notifyProductionReleaseFailure("❌ Pinpoint 生产发布失败", [
+      `错误: ${error instanceof Error ? error.message : String(error)}`.slice(0, 500),
+      "处理: 查看 release:production 日志；如果是 P0 页面事故，暂停自动发布并考虑回滚。",
+    ]);
+  }
   console.error(error instanceof Error ? error.message : String(error));
   process.exitCode = 1;
 });

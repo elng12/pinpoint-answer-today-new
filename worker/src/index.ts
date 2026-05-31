@@ -2255,6 +2255,21 @@ function includesDetailRoute(text: string, route: string): boolean {
   return text.includes(route) || text.includes(route.replace(/\/$/, "")) || text.includes(encodeURI(route));
 }
 
+function classifyNewSitePublicPublishAuditSeverity(issues: string[]): "P0" | "P1" {
+  const p0Patterns = [
+    "detail page did not return 200",
+    "detail page fetch failed",
+    "detail page is missing the answer text",
+    "detail page is missing clue",
+    "detail page is missing current issue-number wording",
+    "detail page contains runtime error text",
+    "summary API fetch failed",
+    "summary API latest mismatch",
+    "summary API returned non-json response",
+  ];
+  return issues.some((issue) => p0Patterns.some((pattern) => issue.includes(pattern))) ? "P0" : "P1";
+}
+
 async function runNewSitePublicPublishAudit(input: {
   baseUrl: string;
   slug: string;
@@ -2279,8 +2294,14 @@ async function runNewSitePublicPublishAudit(input: {
     if (hasNoindexRobotsMeta(detail.text)) {
       issues.push("detail page has noindex robots meta");
     }
-    if (!publicTextIncludes(detail.text, `LinkedIn Pinpoint #${input.puzzleNumber}`)) {
-      issues.push("detail page is missing the expected puzzle number text");
+    if (!publicTextIncludes(detail.text, `Pinpoint ${input.puzzleNumber} Answer & LinkedIn Analysis`)) {
+      issues.push("detail page is missing the expected H1 text");
+    }
+    if (!publicTextIncludes(detail.text, `LinkedIn Pinpoint ${input.puzzleNumber} Answer Reasoning`)) {
+      issues.push("detail page is missing the expected reasoning heading");
+    }
+    if (!publicTextIncludes(detail.text, `LinkedIn Pinpoint ${input.puzzleNumber} Answer`)) {
+      issues.push("detail page is missing current issue-number wording");
     }
     if (!publicTextIncludes(detail.text, input.answer)) {
       issues.push("detail page is missing the answer text");
@@ -2292,6 +2313,16 @@ async function runNewSitePublicPublishAudit(input: {
     }
     if (!includesDetailRoute(detail.text, "/puzzles")) {
       issues.push("detail page does not link back to /puzzles");
+    }
+    for (const staleLabel of ["Clue Connections", "Words & How They Fit", "Lessons Learned", "Compact FAQ"]) {
+      if (publicTextIncludes(detail.text, staleLabel)) {
+        issues.push(`detail page still exposes old module label: ${staleLabel}`);
+      }
+    }
+    for (const runtimeText of ["Application error", "Unhandled Runtime Error", "Hydration failed", "client-side exception"]) {
+      if (publicTextIncludes(detail.text, runtimeText)) {
+        issues.push(`detail page contains runtime error text: ${runtimeText}`);
+      }
     }
   }
 
@@ -3932,8 +3963,31 @@ async function publishToNewSiteGitHub(
       pageReady,
     });
     if (!result.ok) {
+      const severity = classifyNewSitePublicPublishAuditSeverity(result.issues);
+      const issueSummary = formatNewSitePublicPublishAuditIssues(result);
+      let pauseStatus = "";
+      if (severity === "P0") {
+        const pause = await setAutoPublishPauseStatus(
+          env,
+          true,
+          `post-publish public audit P0 for ${slug}`,
+        ).catch((error) => {
+          console.warn(`[new-site] failed to pause auto-publish after P0 public audit for ${slug}`, error);
+          return null;
+        });
+        pauseStatus = pause?.paused ? "已暂停下一次自动发布" : "暂停自动发布失败或不可用";
+      }
+      await notifyCron(env, `❌ 新站详情页发布后检查失败（${severity}）`, [
+        `日期: ${puzzleDate}`,
+        `谜题: #${puzzleNumber}`,
+        `页面: ${slug}`,
+        `详情: ${newSiteUrl}/linkedin-pinpoint-answers/${slug}/`,
+        `处理: ${severity === "P0" ? "先暂停自动发布，检查是否需要回滚" : "修页面/SEO问题，不自动回滚"}`,
+        ...(pauseStatus ? [`自动暂停: ${pauseStatus}`] : []),
+        `问题: ${issueSummary}`,
+      ]);
       throw new Error(
-        `[new-site] post-publish public audit failed for ${slug}: ${formatNewSitePublicPublishAuditIssues(result)}`,
+        `[new-site] post-publish public audit failed for ${slug}: ${issueSummary}`,
       );
     }
     console.log(`[new-site] post-publish public audit passed for ${slug}`);

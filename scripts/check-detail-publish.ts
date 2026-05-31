@@ -8,6 +8,7 @@ const DETAIL_PREFIX = "/linkedin-pinpoint-answers/";
 
 type Args = {
   help: boolean;
+  json: boolean;
   siteUrl: string;
   skipKeywordAudit: boolean;
   skipVercel: boolean;
@@ -19,8 +20,11 @@ type Args = {
 
 type Issue = {
   message: string;
+  severity: IssueSeverity;
   scope: string;
 };
+
+type IssueSeverity = "P0" | "P1" | "P2";
 
 type CheckResult = {
   label: string;
@@ -30,6 +34,7 @@ type CheckResult = {
 function parseArgs(argv: string[]): Args {
   const args: Args = {
     help: false,
+    json: false,
     siteUrl: DEFAULT_SITE_URL,
     skipKeywordAudit: false,
     skipVercel: false,
@@ -43,6 +48,8 @@ function parseArgs(argv: string[]): Args {
     const arg = argv[index];
     if (arg === "--help" || arg === "-h") {
       args.help = true;
+    } else if (arg === "--json") {
+      args.json = true;
     } else if (arg === "--site") {
       args.siteUrl = readArgValue(argv, index, arg);
       index += 1;
@@ -95,6 +102,7 @@ function printHelp() {
 Usage:
   npm run detail:publish-check
   npm run detail:publish-check -- --slug pinpoint-answer-761
+  npm --silent run detail:publish-check -- --slug pinpoint-answer-761 --json
   npm run detail:publish-check -- --url https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-761/
 
 What it checks:
@@ -136,12 +144,50 @@ function slugFromUrl(url: string): string | null {
   return match?.[1] ?? null;
 }
 
+function severityForScope(scope: string): IssueSeverity {
+  const p0Scopes = new Set([
+    "answer",
+    "clue-cards",
+    "clue-order",
+    "detail-url",
+    "issue-number",
+    "runtime-error",
+    "summary-api",
+    "vercel",
+  ]);
+
+  if (p0Scopes.has(scope)) return "P0";
+  return "P1";
+}
+
 function addIssue(issues: Issue[], scope: string, message: string) {
-  issues.push({ scope, message });
+  issues.push({ scope, message, severity: severityForScope(scope) });
 }
 
 function addOk(results: CheckResult[], label: string) {
   results.push({ label, ok: true });
+}
+
+function severityWeight(severity: IssueSeverity): number {
+  if (severity === "P0") return 3;
+  if (severity === "P1") return 2;
+  return 1;
+}
+
+function maxSeverity(issues: Issue[]): IssueSeverity | null {
+  return issues.reduce<IssueSeverity | null>((current, issue) => {
+    if (!current || severityWeight(issue.severity) > severityWeight(current)) {
+      return issue.severity;
+    }
+    return current;
+  }, null);
+}
+
+function recommendedActionForSeverity(severity: IssueSeverity | null): string {
+  if (severity === "P0") return "pause_auto_publish_and_consider_rollback";
+  if (severity === "P1") return "notify_and_fix_without_auto_rollback";
+  if (severity === "P2") return "record_only";
+  return "none";
 }
 
 function decodeHtmlEntities(value: string): string {
@@ -531,8 +577,10 @@ async function main() {
   const puzzle = await resolvePuzzle(args);
   const detailUrl = args.url ?? buildDetailUrl(args.siteUrl, puzzle.slug);
 
-  console.log(`Detail publish check: ${puzzle.slug}`);
-  console.log(`URL: ${detailUrl}`);
+  if (!args.json) {
+    console.log(`Detail publish check: ${puzzle.slug}`);
+    console.log(`URL: ${detailUrl}`);
+  }
 
   try {
     const fetched = await fetchText(detailUrl);
@@ -560,19 +608,40 @@ async function main() {
     await checkVercel(issues, results, args.vercelScope);
   }
 
-  for (const result of results) {
-    console.log(`ok: ${result.label}`);
+  const highestSeverity = maxSeverity(issues);
+  const summary = {
+    checks: results,
+    detailUrl,
+    issues,
+    maxSeverity: highestSeverity,
+    number: puzzle.number,
+    recommendedAction: recommendedActionForSeverity(highestSeverity),
+    slug: puzzle.slug,
+    status: highestSeverity === null || highestSeverity === "P2" ? "passed" : "blocked",
+  };
+
+  if (args.json) {
+    console.log(JSON.stringify(summary, null, 2));
+  } else {
+    for (const result of results) {
+      console.log(`ok: ${result.label}`);
+    }
   }
 
-  if (issues.length > 0) {
-    console.error("\nDETAIL_PUBLISH_CHECK_BLOCKED");
-    for (const issue of issues) {
-      console.error(`- ${issue.scope}: ${issue.message}`);
+  if (highestSeverity === "P0" || highestSeverity === "P1") {
+    if (!args.json) {
+      console.error(`\nDETAIL_PUBLISH_CHECK_BLOCKED (${highestSeverity})`);
+      console.error(`Recommended action: ${summary.recommendedAction}`);
+      for (const issue of issues) {
+        console.error(`- [${issue.severity}] ${issue.scope}: ${issue.message}`);
+      }
     }
     process.exit(1);
   }
 
-  console.log("\nDETAIL_PUBLISH_CHECK_PASSED");
+  if (!args.json) {
+    console.log("\nDETAIL_PUBLISH_CHECK_PASSED");
+  }
 }
 
 main().catch((error) => {

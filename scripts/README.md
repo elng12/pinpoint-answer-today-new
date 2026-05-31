@@ -69,12 +69,15 @@ Use this after deploy for one production detail page:
 
 ```bash
 npm run detail:publish-check -- --slug pinpoint-answer-761
+npm --silent run detail:publish-check -- --slug pinpoint-answer-761 --json
 npm run detail:publish-check -- --url https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-761/
 ```
 
 If no slug is passed, it checks the latest local public puzzle against the production site.
 
 This command is the executable version of `docs/pinpoint-detail-publish-checklist-2026-05-31.md`.
+
+`release:production` runs this command after deploy. If it fails, the release script sends a Feishu/Slack alert when `FEISHU_WEBHOOK_URL`, `ALERT_WEBHOOK_URL`, or `SLACK_WEBHOOK_URL` is configured. P0 failures also trigger a best-effort `worker:auto-publish-pause`.
 
 ### Detail Keyword Audit
 

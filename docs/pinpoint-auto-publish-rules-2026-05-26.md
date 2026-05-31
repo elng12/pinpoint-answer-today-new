@@ -247,9 +247,10 @@ Production settings already match the automatic publish direction:
 | public canonical/robots/sitemap audit | exists | `lib/puzzles/content-kitchen/post-publish-audit.ts` |
 | production release public fetch audit | wired into release script | `scripts/release-production.mjs` |
 | one-command pre-publish gate | exists and is called by `release:production` | `scripts/check-pinpoint-prepublish-gate.ts`, `package.json`, `scripts/release-production.mjs` |
+| post-deploy detail publish check | exists and is called by `release:production`; failures are classified as P0/P1/P2 and send webhook alerts when configured | `scripts/check-detail-publish.ts`, `scripts/release-production.mjs` |
 | fast clue explanations | allowed when all 5 generated clue explanations are complete and specific; `MISSING_EVIDENCE_REF` is info only and does not create a follow-up task under the current policy | `scripts/check-pinpoint-prepublish-gate.ts`, `lib/puzzle-generation/prompt-builder.ts`, `docs/pinpoint-evidence-ref-policy-2026-05-31.md` |
 | detail publish checklist | exists as the operator-facing final checklist for local and production verification | `docs/pinpoint-detail-publish-checklist-2026-05-31.md` |
-| daily Worker post-publish public audit | exists, checks detail page, sitemap, homepage, archive, and summary API | `worker/src/index.ts` |
+| daily Worker post-publish public audit | exists, checks detail page, sitemap, homepage, archive, and summary API; P0 failures send webhook alerts and pause the next auto-publish run | `worker/src/index.ts` |
 | emergency pause switch | exists, keeps fetch/KV but stops scheduled publish | `worker/src/index.ts`, `scripts/worker-ops.mjs` |
 | daily status report | exists, reports published, downgraded, candidate, blocked, paused, or needs review | `worker/src/index.ts` |
 
@@ -304,5 +305,6 @@ Next work is maintenance:
 - keep the local gate, Worker gate, and `docs/pinpoint-detail-publish-checklist-2026-05-31.md` in sync
 - make the daily Worker status report easier to read from the ops CLI
 - keep the detail keyword audit aligned with the browser Traffic.cv / AITDK panel
+- keep Feishu/Slack webhook env vars present in the release environment so post-deploy failures are visible immediately
 
 This gives us the same daily machine rhythm as the competitor, but with harder safety rules.
