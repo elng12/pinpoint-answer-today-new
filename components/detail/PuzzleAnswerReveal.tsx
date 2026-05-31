@@ -135,7 +135,16 @@ export function PuzzleAnswerReveal({
   const answerPanelTitle = panelTitle ?? `Pinpoint ${puzzleNumber} Answer`;
   const answerPanelNote = detailNote ?? fallbackDetailNote;
   const cluePath = clues.join(" ");
-  const hasMultiWordClue = clues.some((clue) => clue.trim().split(/\s+/).length > 1);
+  const hasMultiWordClue = clues.some((clue) => {
+    const clueTokens = clue
+      .normalize("NFKD")
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    return clueTokens.length > 1;
+  });
   const cluePathNote = hasMultiWordClue
     ? `LinkedIn Pinpoint clue order: ${cluePath}. Read the full order before the reveal.`
     : `LinkedIn Pinpoint clue order: ${cluePath}. Read ${cluePath} before the reveal.`;
