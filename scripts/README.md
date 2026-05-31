@@ -61,6 +61,7 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run check:aitdk-density` | `/Users/elng/web/关键词密度脚本/check-aitdk-density.ts` | Prints a fast 1-5 word density table using the same core tokenizer as the keyword audit tool. |
 | `npm run detail:keyword-audit` | `audit-detail-keywords.ts` | Checks detail page keyword order using an AITDK-like ranking pass, plus raw current-issue-number coverage. |
 | `npm run detail:publish-check` | `check-detail-publish.ts` | Runs the production detail-page publish checklist for one slug: live HTTP 200, H1/title, five clues, answer, reasoning, teaching items, old-module absence, summary API, keyword audit, and Vercel Ready status. |
+| `npm run detail:recent-backfill-audit` | `audit-recent-detail-backfill.ts` | Audits the newest N production detail pages before deciding which recent pages need a rewrite. |
 | `npm run homepage:keyword-audit` | `/Users/elng/web/关键词密度脚本/audit-homepage-keywords.ts` | Checks target keyword order first, then homepage keyword density from the standalone keyword-density tool folder. Local result is only a fast estimate; AITDK / TDK stays final. |
 
 ### Detail Publish Check
@@ -78,6 +79,20 @@ If no slug is passed, it checks the latest local public puzzle against the produ
 This command is the executable version of `docs/pinpoint-detail-publish-checklist-2026-05-31.md`.
 
 `release:production` runs this command after deploy. If it fails, the release script sends a Feishu/Slack alert when `FEISHU_WEBHOOK_URL`, `ALERT_WEBHOOK_URL`, or `SLACK_WEBHOOK_URL` is configured. P0 failures also trigger a best-effort `worker:auto-publish-pause`.
+
+### Recent Detail Backfill Audit
+
+Use this before rewriting recent older pages:
+
+```bash
+npm run detail:recent-backfill-audit -- --limit 10
+npm --silent run detail:recent-backfill-audit -- --limit 10 --json
+npm run detail:recent-backfill-audit -- --limit 10 --skip-fetch
+```
+
+The command checks data shape, production HTML, current detail headings, removed old modules, reasoning article shape, and the detail keyword audit for each recent page.
+
+Default behavior is report-only. `REWRITE` means the page is a good rewrite candidate. `BLOCKED` means the live page or data has a serious problem. Use `--fail-on-blockers` only when a CI job should fail on serious live-page problems.
 
 ### Detail Keyword Audit
 

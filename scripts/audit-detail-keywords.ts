@@ -575,7 +575,7 @@ async function main() {
   const hardIssues = issues.filter((issue) => issue.severity === "hard");
   const warnings = issues.filter((issue) => issue.severity === "warn");
   if (hardIssues.length > 0 || (options.failOnWarnings && warnings.length > 0)) {
-    process.exit(1);
+    process.exitCode = 1;
   }
 }
 

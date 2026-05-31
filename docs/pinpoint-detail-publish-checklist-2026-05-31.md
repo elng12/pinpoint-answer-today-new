@@ -95,6 +95,25 @@ npx vercel ls pinpoint-answer-today-new --scope team_funPiYWRgqIN2bAClbNEdWJ8
 
 The Cloudflare Worker cannot run this Node command directly, so it has a lightweight post-publish public audit with the same P0/P1 action rule. Worker P0 failures send Feishu/Slack and pause the next auto-publish run.
 
+## Recent Backfill Audit
+
+Use this when deciding whether to rewrite recent older detail pages:
+
+```bash
+npm run detail:recent-backfill-audit -- --limit 10
+```
+
+This is a report-only command. It does not rewrite JSON content.
+
+Statuses:
+
+- OK: no obvious rewrite signal.
+- WATCH: soft note only.
+- REWRITE: good candidate for rewriting with the current detail template, keyword order, and reasoning structure.
+- BLOCKED: live page or local data has a serious problem, such as missing answer, missing clues, non-200 page, or runtime-error text.
+
+If this command marks a page `REWRITE`, rewrite that page deliberately. Do not batch-overwrite old pages without reviewing the report.
+
 Failure levels:
 
 - P0: wrong page, wrong answer, missing clues, runtime error, wrong summary API, or Vercel not ready. Action: alert, pause auto-publish, consider rollback.

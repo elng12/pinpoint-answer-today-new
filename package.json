@@ -28,6 +28,7 @@
     "check:aitdk-density": "tsx /Users/elng/web/关键词密度脚本/check-aitdk-density.ts",
     "detail:keyword-audit": "tsx scripts/audit-detail-keywords.ts",
     "detail:publish-check": "tsx scripts/check-detail-publish.ts",
+    "detail:recent-backfill-audit": "tsx scripts/audit-recent-detail-backfill.ts",
     "homepage:keyword-audit": "tsx /Users/elng/web/关键词密度脚本/audit-homepage-keywords.ts",
     "gsc:pinpoint": "node scripts/gsc-pinpoint.mjs",
     "content-kitchen:enrichment-dry-run": "tsx scripts/run-content-kitchen-enrichment-worker-dry-run.ts",
