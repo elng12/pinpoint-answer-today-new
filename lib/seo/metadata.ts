@@ -37,11 +37,16 @@ export function absoluteUrl(path: string): string {
 
 export function buildPuzzleSeoTitle(puzzleNumber: number, clues: string[]): string {
   const fullClues = fitPinpointClues(clues, TITLE_ABSOLUTE_MAX);
+  const answerCluesTitle = `LinkedIn Pinpoint ${puzzleNumber} Answer: ${fullClues}`;
   const allCluesTitle = `LinkedIn Pinpoint ${puzzleNumber}: ${fullClues}`;
 
-  // Prefer all 5 clues in title for maximum keyword coverage (Google indexes the
-  // full title tag even when SERP truncates the display).  Cap at ABSOLUTE_MAX
-  // to avoid absurdly long titles on pathological clue text.
+  if (answerCluesTitle.length <= TITLE_ABSOLUTE_MAX && answerCluesTitle.length >= TITLE_MIN_LENGTH) {
+    return answerCluesTitle;
+  }
+
+  // Keep "Answer" in detail-page titles when it fits, then preserve all 5 clues
+  // for maximum keyword coverage. Google can index the full title tag even when
+  // SERP display truncates it.
   if (allCluesTitle.length <= TITLE_ABSOLUTE_MAX && allCluesTitle.length >= TITLE_MIN_LENGTH) {
     return allCluesTitle;
   }

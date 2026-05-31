@@ -3,7 +3,8 @@
   "slug": "pinpoint-answer-760",
   "publishDate": "2026-05-30",
   "isoDate": "2026-05-30",
-  "detailState": "fallback_full",
+  "detailState": "published",
+  "publishMode": "full-analysis",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
@@ -32,18 +33,20 @@
     "Hump (🐋)": "Hump (🐋) is the clue that makes the phrase pattern in words that come before “back” concrete enough to test."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Paper, Cut do not immediately advertise one shared phrase slot before Hump (🐋) shows where the repeated word belongs. Hump (🐋) behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Hump (🐋) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like \"Paper back\" and \"Cut back\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
-    "Feed back, Flash back, Hump back show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “back”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “back”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "Today's puzzle looked simple because Paper and Cut both open a lot of familiar phrases.",
+    "My first read drifted toward a loose topic list, but that was too broad for LinkedIn Pinpoint 760.",
+    "Paper, Cut, Feed, and Flash only become useful when they are tested in the same phrase slot.",
+    "Hump (🐋) is the clue that makes the slot visible, because Hump back is much harder to ignore.",
+    "Once Hump back lands, the earlier clues stop acting like separate words and start acting like one phrase chain.",
+    "Paper back, Cut back, Feed back, Flash back, and Hump back all use the same ending word.",
+    "That full-board check is stronger than a loose theme because every clue turns into ordinary language.",
+    "The answer was \"Words that come before “back”\"."
   ],
   "solutionNarrative": [
-    "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Hump (🐋)\" feel exact enough.",
-    "Once \"Hump (🐋)\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
-    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
-    "The answer was \"Words that come before “back”\"."
+    "Paper and Cut first made the board feel like a loose phrase puzzle, so I waited instead of locking in a theme too early. Those two clues could point toward several everyday expressions, and none of those early reads proved one exact slot.",
+    "Hump (🐋) changed the solve. Once I tested Hump back, the missing slot became much clearer, and I could re-check the earlier clues without forcing them into a broad topic.",
+    "Paper back, Cut back, Feed back, and Flash back then all checked cleanly. That gave me a stronger answer than a loose phrase family, because every clue used the same ending word in the same place.",
+    "The answer was \"Words that come before “back”\" because the same ending word fits every clue in one consistent phrase pattern."
   ],
   "lessons": [
     {
@@ -105,23 +108,23 @@
     }
   ],
   "solvePath": {
-    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "firstRead": "Paper and Cut make it clear this is probably a shared-word phrase puzzle, but they do not prove which word should follow every clue.",
     "falseStarts": [
       "a loose topic list",
       "standalone clue meanings"
     ],
     "whyFalseStartPlausible": [
-      "Paper, Cut do not immediately advertise one shared phrase slot before Hump (🐋) shows where the repeated word belongs.",
+      "Paper and Cut both fit too many everyday phrase frames before Hump (🐋) shows where the repeated word belongs.",
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
     "breakingClue": "Hump (🐋)",
-    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Hump (🐋)\" feel exact enough.\n\nOnce \"Hump (🐋)\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was \"Words that come before “back”\".",
-    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Hump (🐋) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    "pivot": "Paper and Cut first made the board feel like a loose phrase puzzle, so I waited instead of locking in a theme too early.\n\nHump (🐋) changed the solve. Hump back made the missing slot clear, then Paper back, Cut back, Feed back, and Flash back all checked cleanly.\n\nThe answer was \"Words that come before “back”\" because the same ending word fits every clue in the same place.",
+    "fullBoardConfirmation": "Paper back, Cut back, Feed back, Flash back, and Hump back all use the same slot, so the board resolves as one phrase pattern instead of five separate clue meanings."
   },
   "turningPoint": {
     "clue": "Hump (🐋)",
-    "whyDecisive": "Hump (🐋) is the clue that makes the shared answer concrete enough to test across the full board.",
-    "whatChangedAfterIt": "Once Hump (🐋) lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "whyDecisive": "Hump (🐋) is the clue that makes the missing slot concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Hump (🐋) lands, the earlier clues stop feeling broad and start pointing to the repeated word."
   },
   "clueRows": [
     {

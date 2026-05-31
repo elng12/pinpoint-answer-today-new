@@ -23,7 +23,8 @@
     "slug": "pinpoint-answer-760",
     "publishDate": "2026-05-30",
     "status": "archived",
-    "detailState": "fallback_full",
+    "detailState": "published",
+    "publishMode": "full-analysis",
     "clues": [
       "Paper",
       "Cut",
@@ -34,8 +35,8 @@
     "mainAnswer": "Words that come before “back”",
     "category": "Words that come before “back”",
     "difficultyLevel": "Moderate",
-    "shortSummary": "Pinpoint Answer Today asks: what links Paper, Cut, Feed, Flash, Hump (🐋) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-31T07:11:22.880Z"
+    "shortSummary": "Paper, Cut, Feed, Flash, and Hump (🐋) look like loose phrase clues until Hump back locks one ending word for LinkedIn Pinpoint 760.",
+    "updatedAt": "2026-05-31T15:42:30.000Z"
   },
   {
     "puzzleNumber": 759,
