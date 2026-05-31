@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 761,
+    "slug": "pinpoint-answer-761",
+    "publishDate": "2026-05-31",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Assembly diagrams",
+      "Compass roses",
+      "Archery classes",
+      "One-way street signs",
+      "Bottom right of your keyboard"
+    ],
+    "mainAnswer": "Places to find arrows",
+    "category": "Places to find arrows",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Assembly diagrams, Compass roses, and Archery classes don't immediately form a clear set. The solve tightens with a later clue.",
+    "updatedAt": "2026-05-31T07:11:22.880Z"
+  },
+  {
     "puzzleNumber": 760,
     "slug": "pinpoint-answer-760",
     "publishDate": "2026-05-30",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Paper",
@@ -16,7 +35,7 @@
     "category": "Words that come before “back”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Paper, Cut, Feed, Flash, Hump (🐋) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-30T07:04:26.122Z"
+    "updatedAt": "2026-05-31T07:11:22.880Z"
   },
   {
     "puzzleNumber": 759,
