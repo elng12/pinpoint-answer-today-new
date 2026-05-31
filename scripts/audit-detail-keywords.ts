@@ -235,12 +235,25 @@ function getRank(lookups: Record<number, Map<string, PhraseStat>>, size: number,
   return getStat(lookups, size, phrase)?.rank ?? null;
 }
 
+function topPhraseAt(lookups: Record<number, Map<string, PhraseStat>>, size: number, rank: number): string | null {
+  for (const stat of lookups[size]?.values() ?? []) {
+    if (stat.rank === rank) {
+      return stat.phrase;
+    }
+  }
+  return null;
+}
+
 function formatRank(rank: number | null): string {
   return rank === null ? "missing" : `#${rank}`;
 }
 
 function cluePathTokens(puzzle: PuzzleDetail): string[] {
   return tokenizeForPhraseRanking(puzzle.clues.join(" "));
+}
+
+function hasMultiWordClues(puzzle: PuzzleDetail): boolean {
+  return puzzle.clues.some((clue) => tokenizeForPhraseRanking(clue).length > 1);
 }
 
 function clueNgrams(puzzle: PuzzleDetail, size: number): string[] {
@@ -328,6 +341,7 @@ function checkPuzzleSpecificTerms(
   lookups: Record<number, Map<string, PhraseStat>>,
   puzzle: PuzzleDetail,
 ) {
+  const flexibleClueOrder = hasMultiWordClues(puzzle);
   const clueTwoPhrases = clueNgrams(puzzle, 2);
   const clueThreePhrases = clueNgrams(puzzle, 3);
   const clueFourPhrases = clueNgrams(puzzle, 4);
@@ -336,13 +350,33 @@ function checkPuzzleSpecificTerms(
   checkExactRank(issues, lookups, 2, "pinpoint answer", 1);
   checkExactRank(issues, lookups, 2, "linkedin pinpoint", 2);
 
-  clueTwoPhrases.slice(0, 4).forEach((phrase, index) => {
-    checkExactRank(issues, lookups, 2, phrase, index + 3);
-  });
+  if (flexibleClueOrder) {
+    const thirdRankPhrase = topPhraseAt(lookups, 2, 3);
+    if (thirdRankPhrase && !clueTwoPhrases.includes(thirdRankPhrase)) {
+      addIssue(issues, "hard", `2 words #3 should be a clue phrase, but it is \`${thirdRankPhrase}\`.`);
+    }
+    clueTwoPhrases.slice(0, 8).forEach((phrase) => {
+      checkMaxRank(issues, lookups, 2, phrase, 14, "hard");
+    });
+  } else {
+    clueTwoPhrases.slice(0, 4).forEach((phrase, index) => {
+      checkExactRank(issues, lookups, 2, phrase, index + 3);
+    });
+  }
 
-  clueThreePhrases.slice(0, 3).forEach((phrase, index) => {
-    checkExactRank(issues, lookups, 3, phrase, index + 1);
-  });
+  if (flexibleClueOrder) {
+    const topThreePhrase = topPhraseAt(lookups, 3, 1);
+    if (topThreePhrase && !clueThreePhrases.includes(topThreePhrase)) {
+      addIssue(issues, "hard", `3 words #1 should be a clue phrase, but it is \`${topThreePhrase}\`.`);
+    }
+    clueThreePhrases.slice(0, 5).forEach((phrase) => {
+      checkMaxRank(issues, lookups, 3, phrase, 8, "hard");
+    });
+  } else {
+    clueThreePhrases.slice(0, 3).forEach((phrase, index) => {
+      checkExactRank(issues, lookups, 3, phrase, index + 1);
+    });
+  }
   checkMaxRank(issues, lookups, 3, "linkedin pinpoint answer", 6);
 
   clueFourPhrases.slice(0, 2).forEach((phrase, index) => {

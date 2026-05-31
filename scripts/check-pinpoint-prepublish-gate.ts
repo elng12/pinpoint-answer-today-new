@@ -584,8 +584,8 @@ function checkRenderedDetail(issues: GateIssue[], input: {
       addIssue(issues, "hard", "detail:old-template", `Rendered page still exposes old template label: ${legacyLabel}.`);
     }
   }
-  if (countClass(bodyMarkup, "legacy-faq-card") < 3) {
-    addIssue(issues, "hard", "detail:faq", "Rendered page has fewer than three FAQ cards.");
+  if (countClass(bodyMarkup, "legacy-teaches-item") < 3) {
+    addIssue(issues, "hard", "detail:teaches", "Rendered page has fewer than three teaching items.");
   }
   if (!hrefs.has("/puzzles")) {
     addIssue(issues, "hard", "detail:archive-link", "Rendered detail page does not link back to /puzzles.");

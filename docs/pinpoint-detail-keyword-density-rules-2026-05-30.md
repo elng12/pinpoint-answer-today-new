@@ -113,6 +113,7 @@ npm run detail:keyword-audit -- --url http://localhost:3004/linkedin-pinpoint-an
 - 插件口径下，`pinpoint answer` 必须第 1。
 - `linkedin pinpoint` 必须第 2。
 - 线索双词要紧跟在后面。
+- 如果当天线索本身是多词，比如 `Assembly diagrams`、`Compass roses`，不要硬卡“第一个线索 2 词必须第 3”。这种页面只要求第 3 名开始是当天线索组合，不要让页脚、导航、无关短语插进来。
 - `{number}` 必须在页面原文里跟当前题号同步更新，不能写死 `760`。
 - `pinpoint today` 是首页词，详情页不要让它排第 1。
 - 页面上不要直接写一堆生硬的 `Pinpoint LinkedIn`。需要这个 2 words 时，优先用 `Pinpoint (LinkedIn)` 或正常句子边界，让人读起来像“LinkedIn 上的 Pinpoint”。
@@ -149,6 +150,8 @@ npm run detail:keyword-audit -- --url http://localhost:3004/linkedin-pinpoint-an
 - `feed flash hump`
 
 第一个 3 线索组合要尽量靠前。最好出现在 clue 区域附近，或者 `Answer Reasoning` 第一段附近。
+
+如果当天线索是多词，3 words 的内部顺序允许灵活一点。核心要求是：3 words 第 1 必须是当天线索组合，前排必须被线索组合占住，`linkedin pinpoint answer` 靠前即可。
 
 ### 4 Words
 

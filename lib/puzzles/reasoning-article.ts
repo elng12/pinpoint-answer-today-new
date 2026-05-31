@@ -202,6 +202,26 @@ function formatAnswerTitle(answer: string): string {
   return answer.length > 58 ? "Answer" : `Answer: ${answer}`;
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function isMultiWordText(value: string): boolean {
+  return wordCount(value) > 1;
+}
+
+function softenRepeatedClueMention(value: string, clue: string, replacement: string): string {
+  if (!isMultiWordText(clue)) {
+    return value;
+  }
+
+  return cleanReasoningText(value)
+    .replace(new RegExp(`"(${escapeRegExp(clue)})"`, "gi"), replacement)
+    .replace(new RegExp(`\\b${escapeRegExp(clue)}\\b`, "gi"), replacement)
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function buildBoardCheckFitText(puzzle: PuzzleDetail): string {
   if (puzzle.questionType === "phrase") {
     return "all use the repeated word after each clue";
@@ -416,20 +436,27 @@ export function buildReasoningArticleDraft(puzzle: PuzzleDetail): ReasoningArtic
   }
 
   if (puzzle.turningPoint?.clue) {
+    const hasMultiWordTurningClue = isMultiWordText(puzzle.turningPoint.clue);
     const turnBody = [
       safeFirstSentences(puzzle.turningPoint.whyDecisive, puzzle.answer, 1),
       safeFirstSentences(puzzle.turningPoint.whatChangedAfterIt, puzzle.answer, 1),
-    ].filter(Boolean);
+    ]
+      .filter(Boolean)
+      .map((paragraph) =>
+        hasMultiWordTurningClue
+          ? softenRepeatedClueMention(paragraph, puzzle.turningPoint!.clue, "That clue")
+          : paragraph,
+      );
 
     blocks.push({
       body: [
-        `Next up: ${puzzle.turningPoint.clue}.`,
+        hasMultiWordTurningClue ? "Next up, the turning clue changed the solve." : `Next up: ${puzzle.turningPoint.clue}.`,
         ...(turnBody.length > 0
           ? turnBody
           : [`${puzzle.turningPoint.clue} made the earlier ideas easier to test against the full board.`]),
       ],
       key: "turning-clue",
-      title: `${puzzle.turningPoint.clue} Changes Everything`,
+      title: hasMultiWordTurningClue ? "The Turning Clue Changes Everything" : `${puzzle.turningPoint.clue} Changes Everything`,
     });
   } else if (puzzle.solvePath?.breakingClue) {
     blocks.push({

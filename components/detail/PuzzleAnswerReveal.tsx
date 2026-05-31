@@ -152,7 +152,7 @@ export function PuzzleAnswerReveal({
           </li>
         ))}
       </ol>
-      <p className="legacy-clue-path-note">{`LinkedIn Pinpoint clue order: ${cluePath}. Read ${cluePath} before the reveal.`}</p>
+      <p className="legacy-clue-path-note">{`LinkedIn Pinpoint clue order: ${cluePath}. Read the full order before the reveal.`}</p>
 
       <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">

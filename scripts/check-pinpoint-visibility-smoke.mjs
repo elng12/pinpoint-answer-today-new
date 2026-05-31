@@ -17,7 +17,6 @@ const SELECTOR_PROBES = [
   ["answer-button", ".legacy-answer-button"],
   ["analysis", ".legacy-analysis-shell"],
   ["teaches-item", "#faq .legacy-teaches-item"],
-  ["faq-card", "#faq .legacy-faq-card"],
   ["recent-link", ".legacy-next-list a"],
 ];
 

@@ -48,12 +48,38 @@ function getTeachingLessonTitle(lesson: PuzzleDetailRecord["lessons"][number], i
   return typeof lesson === "string" ? getFallbackTeachingTitle(lesson, index) : lesson.title;
 }
 
+function replaceQuotedCluePairs(value: string): string {
+  return value
+    .replace(/"([^"]+)"\s+and\s+"([^"]+)"/g, "Both clues")
+    .replace(/“([^”]+)”\s+and\s+“([^”]+)”/g, "Both clues");
+}
+
+function cleanTeachingBody(body: string, puzzle: PuzzleDetailRecord): string {
+  let cleaned = replaceQuotedCluePairs(cleanReasoningText(body));
+
+  for (const clue of puzzle.clues) {
+    if (clue.trim().split(/\s+/).length <= 1) {
+      continue;
+    }
+
+    const escaped = clue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    cleaned = cleaned
+      .replace(new RegExp(`"(${escaped})"`, "gi"), "that clue")
+      .replace(new RegExp(`\\b${escaped}\\b`, "gi"), "that clue");
+  }
+
+  return cleaned
+    .replace(/\bthat clue\s+and\s+that clue\b/gi, "both clues")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function buildTeachingCards(
   puzzle: PuzzleDetailRecord,
   faqEntries: VisibleDetailFaqEntry[],
 ): TeachingCard[] {
   const lessonCards = puzzle.lessons.map((lesson, index) => ({
-    body: cleanReasoningText(getLessonBody(lesson)),
+    body: cleanTeachingBody(getLessonBody(lesson), puzzle),
     key: `lesson-${index}-${getLessonKey(lesson, index)}`,
     kind: "lesson" as const,
     title: getTeachingLessonTitle(lesson, index),
@@ -66,7 +92,8 @@ function buildTeachingCards(
     title: faq.question,
   }));
 
-  return [...lessonCards, ...questionCards].filter((card) => card.title && card.body);
+  const cards = lessonCards.length >= 3 ? lessonCards.slice(0, 3) : [...lessonCards, ...questionCards].slice(0, 3);
+  return cards.filter((card) => card.title && card.body);
 }
 
 function renderWhatThisPinpointTeaches(puzzle: PuzzleDetailRecord, faqEntries: VisibleDetailFaqEntry[]) {
@@ -84,7 +111,7 @@ function renderWhatThisPinpointTeaches(puzzle: PuzzleDetailRecord, faqEntries: V
       <div className="legacy-teaches-list">
         {teachingCards.map((card) => (
           <article
-            className={`legacy-teaches-item${card.kind === "question" ? " legacy-faq-card" : ""}`}
+            className="legacy-teaches-item"
             key={card.key}
           >
             <h4 className="legacy-teaches-title">{card.title}</h4>
