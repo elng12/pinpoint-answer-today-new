@@ -14,6 +14,7 @@ Use this index as the first stop before moving or archiving documents. It groups
 ## Release and Deployment
 
 - [Deployment release checklist](archive/2026-03/deployment-release-checklist-2026-03-13.md)
+- [Pinpoint detail publish checklist](pinpoint-detail-publish-checklist-2026-05-31.md)
 - [Pre-deploy SEO growth rollout checklist](pre-deploy-seo-growth-rollout-checklist-2026-03-31.md)
 - [Post-deploy smoke check](archive/2026-03/post-deploy-smoke-check-2026-03-13.md)
 - [Post-deploy SEO fix checklist](archive/2026-03/post-deploy-seo-fix-checklist-2026-03-19.md)
@@ -23,6 +24,7 @@ Use this index as the first stop before moving or archiving documents. It groups
 ## SEO and Search
 
 - [Cutover SEO brief](archive/2026-03/cutover-seo-brief-2026-03-12.md)
+- [Pinpoint detail keyword density rules](pinpoint-detail-keyword-density-rules-2026-05-30.md)
 - [GSC cutover checklist](archive/2026-03/gsc-cutover-checklist-2026-03-12.md)
 - [GSC ranking recovery plan](gsc-ranking-recovery-plan-2026-05-19.md)
 - [SEO audit](seo-audit-2026-04-25.md)
@@ -57,6 +59,7 @@ Use this index as the first stop before moving or archiving documents. It groups
 
 - [Competitor-derived plan](pinpoint-content-kitchen-competitor-derived-plan-2026-05-22.md)
 - [Auto publish rules](pinpoint-auto-publish-rules-2026-05-26.md)
+- [Evidence ref current policy](pinpoint-evidence-ref-policy-2026-05-31.md)
 - [PR6a MVP](pinpoint-content-kitchen-pr6a-mvp-2026-05-23.md)
 - [Rollout playbook](pinpoint-content-kitchen-rollout-playbook-2026-05-23.md)
 - [PR9 enrichment dry-run usage](pinpoint-content-kitchen-pr9-enrichment-dry-run-usage-2026-05-24.md)

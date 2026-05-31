@@ -66,19 +66,23 @@ Every published detail page must have:
 
 - fixed URL: `/linkedin-pinpoint-answers/pinpoint-answer-{number}/`
 - title containing `LinkedIn Pinpoint` and the puzzle number
-- H1 containing `LinkedIn Pinpoint #{number} Answer`
+- H1: `Pinpoint {number} Answer & LinkedIn Analysis`
 - date
 - puzzle number
 - exactly 5 clues
-- answer text
-- clue explanation table with 5 rows
-- FAQ, at least 3 items
+- answer text visible in rendered HTML
+- five complete and specific clue explanations
+- `LinkedIn Pinpoint {number} Answer Reasoning`
+- `What This Pinpoint Teaches` teaching items
 - recent answer links
 - archive link path
+- keyword order that follows `docs/pinpoint-detail-keyword-density-rules-2026-05-30.md`
 
 The answer must be present in rendered HTML.
 
 It is okay to use a reveal button for users, but Google must still be able to see the answer in the HTML.
+
+For the daily operator checklist, use `docs/pinpoint-detail-publish-checklist-2026-05-31.md`.
 
 ### SEO Rules
 
@@ -92,11 +96,18 @@ A public full answer page must have:
 - structured data where our site supports it
 - no accidental `noindex`
 
-Target search wording:
+Target search wording is split by page type.
+
+Homepage wording:
 
 - `LinkedIn Pinpoint answer today`
-- `LinkedIn Pinpoint #{number} answer`
 - `Pinpoint answer today`
+
+Detail page wording:
+
+- `LinkedIn Pinpoint {number} answer`
+- `Pinpoint {number} answer`
+- current clue path
 
 ### Archive And Link Rules
 
@@ -117,8 +128,8 @@ The competitor has weak spots we should avoid:
 - do not index weak legal or utility pages just because they exist
 - do not use `website` as the only page type everywhere
 - do not skip structured data on detail pages when our system can add it
-- do not publish old-style pages with no clue table
-- do not publish old-style pages with no FAQ
+- do not restore old table-only explanation modules just because the competitor uses them
+- do not split `What This Pinpoint Teaches` back into separate FAQ and lessons modules
 - do not hide the answer so completely that Google cannot see it
 
 ## Hard Block Rules
@@ -147,9 +158,10 @@ If any of these happen, stop the publish.
 - title is missing
 - H1 is missing
 - answer section is missing
-- clue explanation table is missing
-- clue explanation table does not have 5 clue rows
-- FAQ is missing or has fewer than 3 items
+- rendered page does not have exactly 5 clue cards
+- five complete and specific clue explanations are missing
+- `Answer Reasoning` is missing
+- `What This Pinpoint Teaches` has too few teaching items
 - recent answer links are missing
 - answer and explanation disagree
 - one part of the page says answer A, another part says answer B
@@ -183,10 +195,9 @@ Use `answer-first noindex` when:
 
 - answer and clues are correct
 - full explanation is not strong enough yet
-- evidence for every clue is not strong enough yet
 - explanation is too generic
 - internal links need cleanup
-- FAQ is weak but the answer page shell exists
+- teaching items are weak but the answer page shell exists
 
 In this mode:
 
@@ -199,7 +210,7 @@ In this mode:
 These should not block the first version of auto-publish:
 
 - article is not beautifully written
-- FAQ could be richer
+- teaching items could be richer
 - intro could be better
 - page could use better internal links
 - wording feels a little template-like
@@ -226,9 +237,9 @@ Production settings already match the automatic publish direction:
 | source answer and 5 clues match candidate | exists in content-kitchen candidate check | `lib/puzzles/content-kitchen/validate-candidate.ts` |
 | slug and canonical match source puzzle | exists | `lib/puzzles/content-kitchen/validate-candidate.ts` |
 | answer and clues visible in rendered HTML | exists as a candidate rule | `lib/puzzles/content-kitchen/validate-candidate.ts` |
-| full-analysis clue rows | exists, requires exactly 5 rows | `lib/puzzles/content-kitchen/full-analysis.ts` |
+| full-analysis clue explanations | exists, requires five complete and specific clue explanations | `lib/puzzles/content-kitchen/full-analysis.ts` |
 | full-analysis reasoning | exists, blocks generic reasoning | `lib/puzzles/content-kitchen/full-analysis.ts` |
-| FAQ shape | exists in the main draft gate and content-kitchen full-analysis gate; requires at least 3 complete FAQ items | `lib/puzzles/content-contract.ts`, `lib/puzzles/content-kitchen/full-analysis.ts`, `lib/puzzles/content-kitchen/full-analysis-slots.ts` |
+| teaching item shape | exists in rendered detail checks through `What This Pinpoint Teaches`; old separate FAQ UI should not return | `scripts/check-pinpoint-rendered-content.ts`, `components/detail/PuzzleFullAnalysis.tsx` |
 | internal link shape | exists | `lib/puzzles/content-kitchen/full-analysis.ts` |
 | index/noindex policy | exists | `lib/puzzles/content-kitchen/policies.ts` |
 | public page fetch after publish | exists | `lib/puzzles/content-kitchen/post-publish-audit.ts` |
@@ -236,7 +247,8 @@ Production settings already match the automatic publish direction:
 | public canonical/robots/sitemap audit | exists | `lib/puzzles/content-kitchen/post-publish-audit.ts` |
 | production release public fetch audit | wired into release script | `scripts/release-production.mjs` |
 | one-command pre-publish gate | exists and is called by `release:production` | `scripts/check-pinpoint-prepublish-gate.ts`, `package.json`, `scripts/release-production.mjs` |
-| fast clue explanations | allowed when all 5 generated clue rows are complete and specific; `MISSING_EVIDENCE_REF` is info only and does not create a follow-up task under the current policy | `scripts/check-pinpoint-prepublish-gate.ts`, `lib/puzzle-generation/prompt-builder.ts`, `docs/pinpoint-evidence-ref-policy-2026-05-31.md` |
+| fast clue explanations | allowed when all 5 generated clue explanations are complete and specific; `MISSING_EVIDENCE_REF` is info only and does not create a follow-up task under the current policy | `scripts/check-pinpoint-prepublish-gate.ts`, `lib/puzzle-generation/prompt-builder.ts`, `docs/pinpoint-evidence-ref-policy-2026-05-31.md` |
+| detail publish checklist | exists as the operator-facing final checklist for local and production verification | `docs/pinpoint-detail-publish-checklist-2026-05-31.md` |
 | daily Worker post-publish public audit | exists, checks detail page, sitemap, homepage, archive, and summary API | `worker/src/index.ts` |
 | emergency pause switch | exists, keeps fetch/KV but stops scheduled publish | `worker/src/index.ts`, `scripts/worker-ops.mjs` |
 | daily status report | exists, reports published, downgraded, candidate, blocked, paused, or needs review | `worker/src/index.ts` |
@@ -261,8 +273,9 @@ Auto-publish only when:
 - game date is correct
 - answer is correct and non-empty
 - exactly 5 clues are present
-- detail page has answer, 5 clue rows, FAQ, and recent links
+- detail page has answer, 5 clue cards, `Answer Reasoning`, `What This Pinpoint Teaches`, and recent links
 - title and H1 target Pinpoint answer searches
+- detail keyword order passes the fixed detail-page rule
 - page is indexable
 - sitemap includes the page
 - homepage and archive link to the page
@@ -277,19 +290,7 @@ If only explanation strength fails, downgrade to `answer-first noindex` and keep
 
 ## Suggested Next Work
 
-Next implementation step:
-
-Create a single pre-publish gate for the latest puzzle.
-
-It should combine:
-
-- `validate:data`
-- content-kitchen candidate validation
-- rendered HTML checks
-- SEO title/H1 checks
-- homepage/archive/sitemap link checks
-
-The output should be simple:
+The single pre-publish gate now exists. Keep its output simple:
 
 ```text
 AUTO_PUBLISH_ALLOWED
@@ -297,5 +298,11 @@ BLOCK_PUBLISH
 DOWNGRADE_TO_ANSWER_FIRST_NOINDEX
 REVIEW_REQUIRED
 ```
+
+Next work is maintenance:
+
+- keep the local gate, Worker gate, and `docs/pinpoint-detail-publish-checklist-2026-05-31.md` in sync
+- make the daily Worker status report easier to read from the ops CLI
+- keep the detail keyword audit aligned with the browser Traffic.cv / AITDK panel
 
 This gives us the same daily machine rhythm as the competitor, but with harder safety rules.

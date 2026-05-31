@@ -73,6 +73,8 @@ npm run detail:keyword-audit -- --html ./.next/server/app/linkedin-pinpoint-answ
 
 `npm run pinpoint:prepublish-gate` runs this audit automatically against the rendered detail HTML for the target public puzzle. Run the standalone command only when tuning a page or debugging a failed gate.
 
+For the full daily detail-page release checklist, use `docs/pinpoint-detail-publish-checklist-2026-05-31.md`.
+
 This script is not a replacement for AITDK. It is a guardrail for page intent.
 
 It follows the browser plugin's practical ranking behavior:

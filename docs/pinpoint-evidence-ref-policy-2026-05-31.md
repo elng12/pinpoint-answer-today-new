@@ -4,6 +4,8 @@ Date: 2026-05-31
 
 This is the current operating rule for detail pages and auto-publish.
 
+The daily detail-page checklist is `docs/pinpoint-detail-publish-checklist-2026-05-31.md`.
+
 ## Decision
 
 `evidenceRefs` are optional for the current Pinpoint detail-page publish path.

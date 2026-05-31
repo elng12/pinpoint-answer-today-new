@@ -4,6 +4,8 @@
 
 先把规则定好，再去改 `Answer Reasoning` 推理模块。
 
+发布详情页时，按 `docs/pinpoint-detail-publish-checklist-2026-05-31.md` 跑完整清单。
+
 ## 目标
 
 详情页要同时照顾两类词：
