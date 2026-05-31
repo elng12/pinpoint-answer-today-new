@@ -792,7 +792,7 @@ async function runGate(args: Args) {
               : "review",
           `content-kitchen:${issue.fieldPath}`,
           fastGeneratedExplanationMode
-            ? `${issue.issueCode}: ${issue.message} Fast clue explanations are present; dictionary evidence can be added later.`
+            ? `${issue.issueCode}: ${issue.message} Fast clue explanations are present; this is info only under the current policy.`
             : `${issue.issueCode}: ${issue.message}`,
         );
       }

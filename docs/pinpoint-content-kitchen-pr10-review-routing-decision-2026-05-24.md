@@ -37,12 +37,13 @@ Examples:
 - invalid candidate metadata
 - canonical URL mismatch
 - missing or duplicate clue rows
-- missing evidence refs
 - unsupported reasoning shape
 - noindex requirement mismatch
 - FAQ schema without visible FAQ
 
 These route to `auto_reject` in v0.
+
+Current production note, 2026-05-31: `MISSING_EVIDENCE_REF` is not a hard routing failure for the accepted fast clue-explanation path. Treat it as info only when five clue rows are complete, specific, and in order. See `docs/pinpoint-evidence-ref-policy-2026-05-31.md`.
 
 ## Model Review
 

@@ -138,7 +138,9 @@ Strong evidence coverage v0:
 - every retrieved evidence record has `retrievedAt`
 - every clue row evidence ref points to the exact clue row it supports
 
-If a candidate misses any v0 strong evidence rule, it cannot auto-publish as `full-analysis`.
+If a candidate misses any v0 strong evidence rule, it cannot use the strong-evidence path.
+
+Current production note, 2026-05-31: the accepted fast clue-explanation path does not require `evidenceRefs`. When all five clue rows are complete, specific, and in order, `MISSING_EVIDENCE_REF` is info only and does not block publish. See `docs/pinpoint-evidence-ref-policy-2026-05-31.md`.
 
 ### Stage 4 — Canary
 
