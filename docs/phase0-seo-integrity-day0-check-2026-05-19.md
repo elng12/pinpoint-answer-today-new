@@ -594,3 +594,45 @@ Next action:
 
 - Keep running this daily observer.
 - Keep using complete-day GSC windows (avoid same-day) until impressions are big enough to judge trend.
+
+## Observation - 2026-05-31
+
+Checked with Googlebot Smartphone UA (read-only).
+
+Snapshot note: this run was taken before the `#761` publish landed, so the latest detail observed here is still `#760`.
+
+URL checks:
+
+- `/` => 200, canonical `https://pinpointanswertoday.app`, robots `index, follow`, indexable: YES, core HTML markers present.
+- `/puzzles` => 200, canonical `https://pinpointanswertoday.app/puzzles`, robots `index, follow`, indexable: YES, core HTML markers present.
+- `/next-pinpoint-preview` => 200, canonical `https://pinpointanswertoday.app/next-pinpoint-preview`, robots `index, follow`, indexable: YES, core HTML markers present.
+- `#735` => 200, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/`, robots `index, follow`, indexable: YES, core HTML markers present.
+- `#736` => 200, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/`, robots `index, follow`, indexable: YES, core HTML markers present.
+- `#737` => 200, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/`, robots `index, follow`, indexable: YES, core HTML markers present.
+- Latest registry detail observed in this run `#760` => 200, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-760/`, robots `index, follow`, indexable: YES, core HTML markers present.
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, and latest `#760`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, and `#760` is `2026-05-30T07:04:26.122Z`.
+- `#735/#736/#737 lastmod` remain stable at `2026-05-06..2026-05-07` (expected).
+
+GSC (complete window only; avoid same-day):
+
+- Not pulled in this run (no service-account credentials path provided to `npm run gsc:pinpoint`).
+- Suggested window to pull next: `2026-05-26 -> 2026-05-30` (complete days after the initial post-fix checkpoint).
+
+Release context only:
+
+- Local repo HEAD is `8bc02ff` (does not confirm production deploy state).
+
+Pass/Fail:
+
+- PASS: No 404, no `noindex`, no canonical mismatch, and sitemap includes the required URLs.
+- PASS: Googlebot Smartphone HTML includes core markers (`<title>`, canonical, `<main>`) on all checked pages.
+
+Next action:
+
+- Keep running this daily observer.
+- Pull GSC for complete days only (recommended: `2026-05-26 -> 2026-05-30`) and keep samples labeled as tiny if impressions are low.
