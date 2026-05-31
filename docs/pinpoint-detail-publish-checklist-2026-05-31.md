@@ -83,10 +83,13 @@ If the template changed, also check the previous public detail page so the new t
 After deploy, check the real URL:
 
 ```bash
+npm run detail:publish-check -- --slug pinpoint-answer-{number}
 npm run detail:keyword-audit -- --url https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-{number}/ --top 12
 curl -I -L https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-{number}/
 npx vercel ls pinpoint-answer-today-new --scope team_funPiYWRgqIN2bAClbNEdWJ8
 ```
+
+`detail:publish-check` is the main command. The other commands are kept here for manual debugging when that command fails.
 
 Also verify:
 

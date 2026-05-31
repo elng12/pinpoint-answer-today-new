@@ -60,7 +60,21 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run gsc:pinpoint` | `gsc-pinpoint.mjs` | Queries Google Search Console for Pinpoint URLs. |
 | `npm run check:aitdk-density` | `/Users/elng/web/关键词密度脚本/check-aitdk-density.ts` | Prints a fast 1-5 word density table using the same core tokenizer as the keyword audit tool. |
 | `npm run detail:keyword-audit` | `audit-detail-keywords.ts` | Checks detail page keyword order using an AITDK-like ranking pass, plus raw current-issue-number coverage. |
+| `npm run detail:publish-check` | `check-detail-publish.ts` | Runs the production detail-page publish checklist for one slug: live HTTP 200, H1/title, five clues, answer, reasoning, teaching items, old-module absence, summary API, keyword audit, and Vercel Ready status. |
 | `npm run homepage:keyword-audit` | `/Users/elng/web/关键词密度脚本/audit-homepage-keywords.ts` | Checks target keyword order first, then homepage keyword density from the standalone keyword-density tool folder. Local result is only a fast estimate; AITDK / TDK stays final. |
+
+### Detail Publish Check
+
+Use this after deploy for one production detail page:
+
+```bash
+npm run detail:publish-check -- --slug pinpoint-answer-761
+npm run detail:publish-check -- --url https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-761/
+```
+
+If no slug is passed, it checks the latest local public puzzle against the production site.
+
+This command is the executable version of `docs/pinpoint-detail-publish-checklist-2026-05-31.md`.
 
 ### Detail Keyword Audit
 
