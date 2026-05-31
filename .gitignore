@@ -31,6 +31,7 @@ Thumbs.db
 
 # local assistant state
 .claude/
+.gstack/
 
 # playwright / tool logs
 .playwright-mcp/
