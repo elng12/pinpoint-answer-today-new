@@ -80,6 +80,7 @@ export function PuzzleDetail({
         clues={puzzle.clues}
         answer={puzzle.answer}
         detailMode={puzzle.detailMode}
+        hintMap={puzzle.wordHints}
         trackFaqSectionView
       />
 

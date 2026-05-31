@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   getScrollDepthPercent,
   trackClientEvent,
@@ -15,8 +15,26 @@ type PuzzleAnswerRevealProps = {
   defaultRevealed?: boolean;
   panelTitle?: string;
   detailNote?: string;
+  hintMap?: Record<string, string>;
   trackFaqSectionView?: boolean;
 };
+
+function normalizeHintKey(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function buildHintMap(hintMap?: Record<string, string>) {
+  return Object.entries(hintMap ?? {}).reduce<Record<string, string>>((accumulator, [key, value]) => {
+    const cleanKey = normalizeHintKey(key);
+    const cleanValue = value.trim();
+
+    if (cleanKey && cleanValue) {
+      accumulator[cleanKey] = cleanValue;
+    }
+
+    return accumulator;
+  }, {});
+}
 
 export function PuzzleAnswerReveal({
   puzzleNumber,
@@ -26,11 +44,24 @@ export function PuzzleAnswerReveal({
   defaultRevealed = false,
   panelTitle,
   detailNote,
+  hintMap,
   trackFaqSectionView = false,
 }: PuzzleAnswerRevealProps) {
   const [revealed, setRevealed] = useState(defaultRevealed);
   const [copied, setCopied] = useState(false);
+  const [activeHint, setActiveHint] = useState<{ clue: string; text: string } | null>(null);
+  const clueTipId = useId();
+  const hintTimerRef = useRef<number | null>(null);
   const hasTrackedFaqSectionRef = useRef(false);
+  const normalizedHints = useMemo(() => buildHintMap(hintMap), [hintMap]);
+
+  useEffect(() => {
+    return () => {
+      if (hintTimerRef.current !== null) {
+        window.clearTimeout(hintTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!trackFaqSectionView || hasTrackedFaqSectionRef.current) {
@@ -85,6 +116,52 @@ export function PuzzleAnswerReveal({
       observer?.disconnect();
     };
   }, [detailMode, puzzleNumber, trackFaqSectionView]);
+
+  const clearHint = () => {
+    if (hintTimerRef.current !== null) {
+      window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+    }
+    setActiveHint(null);
+  };
+
+  const getHintText = (clue: string) => {
+    const directHint = normalizedHints[normalizeHintKey(clue)];
+    return directHint || `${clue} points toward the same answer.`;
+  };
+
+  const showHint = (
+    clue: string,
+    options?: {
+      persist?: boolean;
+      track?: boolean;
+    },
+  ) => {
+    if (options?.track) {
+      trackClientEvent("clue_hint_click", {
+        event_category: "engagement",
+        event_label: `${clue} · Puzzle ${puzzleNumber}`,
+        value: puzzleNumber,
+      });
+    }
+
+    if (hintTimerRef.current !== null) {
+      window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = null;
+    }
+
+    setActiveHint({
+      clue,
+      text: getHintText(clue),
+    });
+
+    if (options?.persist) {
+      hintTimerRef.current = window.setTimeout(() => {
+        setActiveHint(null);
+        hintTimerRef.current = null;
+      }, 4000);
+    }
+  };
 
   const handleRevealToggle = () => {
     setRevealed((current) => {
@@ -160,12 +237,33 @@ export function PuzzleAnswerReveal({
             key={`${clue}-${index}`}
             className="legacy-reveal-clue-card"
           >
-            <span className="legacy-reveal-clue-index">#{index + 1}</span>
-            <span className="legacy-reveal-clue-word">{clue}</span>
+            <button
+              type="button"
+              className="legacy-reveal-clue-button"
+              onClick={() => showHint(clue, { persist: true, track: true })}
+              onMouseEnter={() => showHint(clue)}
+              onMouseLeave={clearHint}
+              onFocus={() => showHint(clue)}
+              onBlur={clearHint}
+              aria-describedby={clueTipId}
+              aria-label={`View connection for clue: ${clue}`}
+            >
+              <span className="legacy-reveal-clue-index">#{index + 1}</span>
+              <span className="legacy-reveal-clue-word">{clue}</span>
+            </button>
           </li>
         ))}
       </ol>
       <p className="legacy-clue-path-note">{cluePathNote}</p>
+      <p className="sr-only" id={clueTipId}>
+        Activate a clue to view its connection to the answer.
+      </p>
+      {activeHint ? (
+        <div className="legacy-reveal-hint-card">
+          <p className="legacy-reveal-hint-kicker">Connection to answer</p>
+          <p className="legacy-reveal-hint-copy">{activeHint.text}</p>
+        </div>
+      ) : null}
 
       <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">

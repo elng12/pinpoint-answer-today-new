@@ -417,13 +417,36 @@
   border-radius: 12px;
   background: color-mix(in oklch, var(--brand) 92%, black 8%);
   color: #fff;
-  padding: 16px 10px 16px;
   min-height: 88px;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.legacy-reveal-clue-button {
+  width: 100%;
+  min-height: 88px;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 16px 10px;
   display: grid;
   gap: 4px;
   align-content: center;
   justify-items: center;
-  box-shadow: none;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.legacy-reveal-clue-button:hover,
+.legacy-reveal-clue-button:focus-visible {
+  background: color-mix(in oklch, var(--brand) 84%, white 16%);
+}
+
+.legacy-reveal-clue-button:focus-visible {
+  outline: 3px solid color-mix(in oklch, var(--brand) 38%, white 62%);
+  outline-offset: -3px;
 }
 
 .legacy-reveal-clue-index {

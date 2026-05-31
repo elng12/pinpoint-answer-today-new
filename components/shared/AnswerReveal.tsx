@@ -94,7 +94,7 @@ export function AnswerReveal({
 
     setActiveHint({
       clue,
-      text: revealed ? `${hint} Shared connection: ${category}.` : hint,
+      text: hint,
     });
 
     if (options?.persist) {
@@ -159,7 +159,7 @@ export function AnswerReveal({
 
       {activeHint ? (
         <div className="reveal-hint-card">
-          <p className="reveal-hint-kicker">Hint for {activeHint.clue}</p>
+          <p className="reveal-hint-kicker">Connection to answer</p>
           <p className="reveal-hint-copy">{activeHint.text}</p>
         </div>
       ) : null}

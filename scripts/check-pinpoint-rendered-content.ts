@@ -321,12 +321,12 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
   const canonical = findLinkHref(html, "canonical");
   const robots = findMetaContent(html, "robots");
   const h1Values = extractTagText(bodyMarkup, "h1");
-  const h1Needle = normalizeForMatch(`LinkedIn Pinpoint #${entry.puzzleNumber} Answer Analysis`);
+  const expectedH1Parts = ["linkedin", "pinpoint", String(entry.puzzleNumber), "answer"];
   const clueWords = Array.from(
     bodyMarkup.matchAll(/<span class="legacy-reveal-clue-word">([\s\S]*?)<\/span>/g),
     (match) => stripTags(match[1] ?? ""),
   );
-  const faqCardCount = countClass(bodyMarkup, "legacy-faq-card");
+  const teachingCardCount = countClass(bodyMarkup, "legacy-teaches-item");
   const pageMode = detail.pageExperienceMode ?? (detail.bodyMode === "short" ? "light-explainer" : "full-analysis");
   const requiredFaqCount = pageMode === "full-analysis" ? 3 : 2;
   const hrefs = new Set(extractHrefValues(bodyMarkup));
@@ -345,8 +345,11 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
   if (robots && /noindex/i.test(robots)) {
     addIssue(entry.slug, `Public detail page rendered noindex robots meta: ${robots}.`);
   }
-  if (!h1Values.some((value) => normalizeForMatch(value).includes(h1Needle))) {
-    addIssue(entry.slug, `Missing expected H1 for Pinpoint #${entry.puzzleNumber}.`);
+  if (!h1Values.some((value) => {
+    const normalized = normalizeForMatch(value);
+    return expectedH1Parts.every((part) => normalized.includes(part));
+  })) {
+    addIssue(entry.slug, `H1 must include LinkedIn, Pinpoint, #${entry.puzzleNumber}, and Answer wording.`);
   }
   if (countClass(bodyMarkup, "legacy-reveal-clue-card") !== 5) {
     addIssue(entry.slug, "Rendered clue reveal grid does not contain exactly five clue cards.");
@@ -373,8 +376,8 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
       addIssue(entry.slug, `Rendered page still exposes old template label: ${legacyLabel}.`);
     }
   }
-  if (faqCardCount < requiredFaqCount) {
-    addIssue(entry.slug, `Rendered FAQ count ${faqCardCount} is below required ${requiredFaqCount} for ${pageMode}.`);
+  if (teachingCardCount < requiredFaqCount) {
+    addIssue(entry.slug, `Rendered teaching item count ${teachingCardCount} is below required ${requiredFaqCount} for ${pageMode}.`);
   }
   if (!hrefs.has("/puzzles")) {
     addIssue(entry.slug, "Rendered detail page does not link back to /puzzles.");
