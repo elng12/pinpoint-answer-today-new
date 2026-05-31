@@ -32,7 +32,7 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | --- | --- | --- |
 | `npm run release:production` | `release-production.mjs` | Orchestrates production release checks and release steps. |
 | `npm run generate:static-page-metadata` | `generate-static-page-metadata.mjs` | Regenerates static page metadata from git modification dates. |
-| `npm run pinpoint:prepublish-gate` | `check-pinpoint-prepublish-gate.ts` | Runs the one-command Pinpoint pre-publish gate and returns `AUTO_PUBLISH_ALLOWED`, `BLOCK_PUBLISH`, `DOWNGRADE_TO_ANSWER_FIRST_NOINDEX`, or `REVIEW_REQUIRED`. Complete generated clue explanations can pass now; dictionary evidence is still the stronger hardening path. |
+| `npm run pinpoint:prepublish-gate` | `check-pinpoint-prepublish-gate.ts` | Runs the one-command Pinpoint pre-publish gate and returns `AUTO_PUBLISH_ALLOWED`, `BLOCK_PUBLISH`, `DOWNGRADE_TO_ANSWER_FIRST_NOINDEX`, or `REVIEW_REQUIRED`. It now also runs the detail keyword audit against rendered detail HTML. Complete generated clue explanations can pass now; dictionary evidence is still the stronger hardening path. |
 | `npm run pinpoint:candidate-close` | `close-pinpoint-candidate-branches.mjs` | Closes safe Pinpoint candidate branches or opens a tracked issue when one is stuck. |
 | Vercel build hook | `vercel-ignore-build.mjs` | Determines whether Vercel can skip a build for a given change set. |
 | `npm run prepare` | `install-hooks.mjs` | Installs local git hooks. |
@@ -59,7 +59,46 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run visual:pinpoint-smoke` | `check-pinpoint-visibility-smoke.mjs` | Runs a visual smoke check for Pinpoint page visibility. |
 | `npm run gsc:pinpoint` | `gsc-pinpoint.mjs` | Queries Google Search Console for Pinpoint URLs. |
 | `npm run check:aitdk-density` | `/Users/elng/web/关键词密度脚本/check-aitdk-density.ts` | Prints a fast 1-5 word density table using the same core tokenizer as the keyword audit tool. |
+| `npm run detail:keyword-audit` | `audit-detail-keywords.ts` | Checks detail page keyword order using an AITDK-like ranking pass, plus raw current-issue-number coverage. |
 | `npm run homepage:keyword-audit` | `/Users/elng/web/关键词密度脚本/audit-homepage-keywords.ts` | Checks target keyword order first, then homepage keyword density from the standalone keyword-density tool folder. Local result is only a fast estimate; AITDK / TDK stays final. |
+
+### Detail Keyword Audit
+
+Use this for detail page keyword separation checks:
+
+```bash
+npm run detail:keyword-audit -- --url http://localhost:3004/linkedin-pinpoint-answers/pinpoint-answer-760/ --top 15
+npm run detail:keyword-audit -- --html ./.next/server/app/linkedin-pinpoint-answers/pinpoint-answer-760.html --slug pinpoint-answer-760
+```
+
+`npm run pinpoint:prepublish-gate` runs this audit automatically against the rendered detail HTML for the target public puzzle. Run the standalone command only when tuning a page or debugging a failed gate.
+
+This script is not a replacement for AITDK. It is a guardrail for page intent.
+
+It follows the browser plugin's practical ranking behavior:
+
+- numeric issue numbers are filtered before ranking, so `pinpoint 760 answer` ranks as `pinpoint answer`;
+- 1-word ranking filters common filler words;
+- 2-5 word ranking keeps common filler words but filters numbers;
+- raw page text still has to include the current issue number.
+
+It checks that:
+
+- homepage keeps `pinpoint today`, `pinpoint answer today`, and `linkedin pinpoint answer today`;
+- detail pages keep raw issue-number phrases such as `pinpoint 760`, `pinpoint 760 answer`, and `linkedin pinpoint 760 answer`;
+- the issue number is dynamic, so #761 must use `761`, #762 must use `762`, and so on;
+- detail pages also keep clue-sequence phrases in the 3-5 word top ranks;
+- if a homepage phrase beats the detail clue phrases on a detail page, the script fails.
+
+Strict detail order:
+
+| Group | #1 | #2 | #3 |
+| --- | --- | --- | --- |
+| 1 word | `pinpoint` | `answer` | `linkedin` |
+| 2 words | `pinpoint answer` | `linkedin pinpoint` | first 2-word clue sequence |
+| 3 words | first 3-word clue sequence | second 3-word clue sequence | third 3-word clue sequence |
+| 4 words | first 4-word clue sequence | second 4-word clue sequence | no forced filler |
+| 5 words | full clue sequence | answer phrase if it naturally has 5 words | no forced filler |
 
 ### Homepage Keyword Audit
 

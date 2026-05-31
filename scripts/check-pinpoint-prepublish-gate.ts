@@ -114,6 +114,7 @@ What it checks:
   - current data validates through npm run build
   - latest registry/detail data is public and internally consistent
   - rendered detail HTML has answer, clues, FAQ, recent links, canonical, robots, JSON-LD, title, description, and H1
+  - rendered detail HTML passes the AITDK-style detail keyword order audit
   - rendered homepage, archive, and sitemap point to the latest detail page
   - Content Kitchen candidate rules return a final publish decision
 `.trim());
@@ -161,6 +162,23 @@ function readJson(path: string): unknown {
 
 function addIssue(issues: GateIssue[], level: GateIssue["level"], scope: string, message: string) {
   issues.push({ level, scope, message });
+}
+
+async function checkDetailKeywordAudit(issues: GateIssue[], htmlPath: string, slug: string) {
+  try {
+    await run(
+      "npm",
+      ["run", "detail:keyword-audit", "--", "--html", htmlPath, "--slug", slug, "--top", "16"],
+      { quiet: true },
+    );
+  } catch (error) {
+    addIssue(
+      issues,
+      "hard",
+      "detail:keyword-audit",
+      error instanceof Error ? error.message : "Detail keyword audit failed.",
+    );
+  }
 }
 
 function detailRoute(slug: string): string {
@@ -532,11 +550,12 @@ function checkRenderedDetail(issues: GateIssue[], input: {
   }
   if (!h1Values.some((value) => {
     const normalized = normalizeForMatch(value);
-    return normalized.includes("linkedin pinpoint") &&
+    return normalized.includes("linkedin") &&
+      normalized.includes("pinpoint") &&
       normalized.includes(String(entry.puzzleNumber)) &&
       normalized.includes("answer");
   })) {
-    addIssue(issues, "hard", "detail:h1", `H1 must include LinkedIn Pinpoint #${entry.puzzleNumber} Answer wording.`);
+    addIssue(issues, "hard", "detail:h1", `H1 must include LinkedIn, Pinpoint, #${entry.puzzleNumber}, and Answer wording.`);
   }
   if (!pageText.includes(answer)) {
     addIssue(issues, "hard", "detail:answer", "Rendered page text does not include the answer.");
@@ -732,6 +751,7 @@ async function runGate(args: Args) {
     } else {
       const detailHtml = readText(detailHtmlPath);
       checkRenderedDetail(issues, { html: detailHtml, entry, detail, allEntries: publicEntries });
+      await checkDetailKeywordAudit(issues, detailHtmlPath, entry.slug);
 
       const l1Input = makeL1Input(entry);
       const candidate = buildCandidate(entry, detail, l1Input, siteUrl);

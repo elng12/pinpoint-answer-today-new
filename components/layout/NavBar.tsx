@@ -30,6 +30,7 @@ function NavItem({ link, mobile = false }: { link: NavLink; mobile?: boolean }) 
 }
 
 export function NavBar({ isDetailPage = false }: NavBarProps) {
+  const brandLabel = isDetailPage ? "Pinpoint Answer" : "Pinpoint Answer Today";
   const patchesAnswersLink: NavLink = {
     label: "Patches Answers",
     href: "https://patchesanswertoday.com/",
@@ -63,7 +64,7 @@ export function NavBar({ isDetailPage = false }: NavBarProps) {
             height={22}
             decoding="async"
           />
-          Pinpoint Answer Today
+          {brandLabel}
         </Link>
 
         <nav className="nav-links nav-links-desktop" aria-label="Primary navigation">

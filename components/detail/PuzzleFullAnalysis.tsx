@@ -4,148 +4,96 @@ import {
   getVisibleDetailFaqEntries,
   type VisibleDetailFaqEntry,
 } from "@/lib/puzzles/detail-view";
+import { buildReasoningArticleDraft, cleanReasoningText } from "@/lib/puzzles/reasoning-article";
 import { routes } from "@/lib/paths/routes";
 
-function buildRecentLinkTitle(entry: ArchiveEntry) {
-  return `LinkedIn Pinpoint ${entry.number}: ${entry.clues.join(", ")}`;
+function buildRecentLinkTitle(entry: ArchiveEntry, includeLinkedIn = false) {
+  return `${includeLinkedIn ? "LinkedIn " : ""}Pinpoint ${entry.number}: ${entry.clues.join(", ")}`;
 }
 
-function normalizeParagraphKey(paragraph: string): string {
-  return paragraph.toLowerCase().replace(/\s+/g, " ").trim();
+function formatAnalysisDate(isoDate: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${isoDate}T00:00:00Z`));
 }
 
-function formatCluePath(clues: string[]): string {
-  return clues.join(", ");
+function getLessonKey(lesson: PuzzleDetailRecord["lessons"][number], index: number): string {
+  return typeof lesson === "string" ? `lesson-${index}` : lesson.title;
 }
 
-function normalizePhraseTokens(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[\u2018\u2019\u02bc\u2032'"]/g, "")
-    .replace(/[‐‑‒–—-]/g, "")
-    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+function getLessonBody(lesson: PuzzleDetailRecord["lessons"][number]): string {
+  return typeof lesson === "string" ? lesson : lesson.body;
 }
 
-function cleanTemplateLeftovers(paragraph: string): string {
-  return paragraph
-    .replace(/\s*Use the clue table[^.]*\./gi, "")
-    .replace(/\s*Use the table below[^.]*\./gi, "")
-    .replace(/\s*then skim the compact FAQ[^.]*\./gi, "")
-    .replace(/\s*and the compact FAQ below[^.]*\./gi, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
+type TeachingCard = {
+  body: string;
+  key: string;
+  kind: "lesson" | "question";
+  title: string;
+};
 
-function dedupeParagraphs(paragraphs: string[]): string[] {
-  const seen = new Set<string>();
-  const unique: string[] = [];
-
-  for (const paragraph of paragraphs.map(cleanTemplateLeftovers).filter(Boolean)) {
-    const key = normalizeParagraphKey(paragraph);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    unique.push(paragraph);
+function getFallbackTeachingTitle(body: string, index: number): string {
+  const firstSentence = cleanReasoningText(body).split(/[.!?]/)[0]?.trim();
+  if (firstSentence && firstSentence.length <= 82) {
+    return firstSentence;
   }
 
-  return unique;
+  return `Solving takeaway ${index + 1}`;
 }
 
-function paragraphMentionsAnswer(paragraph: string, answer: string): boolean {
-  const normalizedParagraph = normalizeParagraphKey(paragraph);
-  const normalizedAnswer = normalizeParagraphKey(answer);
+function getTeachingLessonTitle(lesson: PuzzleDetailRecord["lessons"][number], index: number): string {
+  return typeof lesson === "string" ? getFallbackTeachingTitle(lesson, index) : lesson.title;
+}
+
+function buildTeachingCards(
+  puzzle: PuzzleDetailRecord,
+  faqEntries: VisibleDetailFaqEntry[],
+): TeachingCard[] {
+  const lessonCards = puzzle.lessons.map((lesson, index) => ({
+    body: cleanReasoningText(getLessonBody(lesson)),
+    key: `lesson-${index}-${getLessonKey(lesson, index)}`,
+    kind: "lesson" as const,
+    title: getTeachingLessonTitle(lesson, index),
+  }));
+
+  const questionCards = faqEntries.slice(0, 3).map((faq) => ({
+    body: faq.answer,
+    key: `question-${faq.question}`,
+    kind: "question" as const,
+    title: faq.question,
+  }));
+
+  return [...lessonCards, ...questionCards].filter((card) => card.title && card.body);
+}
+
+function renderWhatThisPinpointTeaches(puzzle: PuzzleDetailRecord, faqEntries: VisibleDetailFaqEntry[]) {
+  const teachingCards = buildTeachingCards(puzzle, faqEntries);
+
+  if (teachingCards.length === 0) {
+    return null;
+  }
+
   return (
-    (normalizedAnswer.length > 0 && normalizedParagraph.includes(normalizedAnswer)) ||
-    /\bthe answer (?:is|was)\b/i.test(paragraph)
+    <section className="legacy-analysis-section" id="faq" aria-labelledby="pinpoint-teaches-title">
+      <h3 className="legacy-section-title" id="pinpoint-teaches-title">
+        What This Pinpoint Teaches
+      </h3>
+      <div className="legacy-teaches-list">
+        {teachingCards.map((card) => (
+          <article
+            className={`legacy-teaches-item${card.kind === "question" ? " legacy-faq-card" : ""}`}
+            key={card.key}
+          >
+            <h4 className="legacy-teaches-title">{card.title}</h4>
+            <p className="legacy-teaches-copy">{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
   );
-}
-
-function keepAnswerNearEnd(paragraphs: string[], answer: string): string[] {
-  if (paragraphs.length <= 1) {
-    return paragraphs;
-  }
-
-  const answerParagraphs = paragraphs.filter((paragraph) => paragraphMentionsAnswer(paragraph, answer));
-  const setupParagraphs = paragraphs.filter((paragraph) => !paragraphMentionsAnswer(paragraph, answer));
-
-  if (setupParagraphs.length === 0 || answerParagraphs.length === 0) {
-    return paragraphs;
-  }
-
-  return [...setupParagraphs, ...answerParagraphs];
-}
-
-function buildCluePathLead(puzzle: PuzzleDetailRecord): string {
-  return `${formatCluePath(puzzle.clues)} point to one shared pattern; the notes below follow the clue order before explaining why the final connection holds.`;
-}
-
-function shouldPrependCluePath(paragraphs: string[], clues: string[]): boolean {
-  if (clues.length < 3) {
-    return false;
-  }
-
-  const cluePath = normalizePhraseTokens(formatCluePath(clues));
-  return !paragraphs.some((paragraph) => normalizePhraseTokens(paragraph).includes(cluePath));
-}
-
-function buildSolvePathParagraphs(puzzle: PuzzleDetailRecord): string[] {
-  const paragraphs: string[] = [];
-
-  if (puzzle.solvePath?.firstRead) {
-    paragraphs.push(puzzle.solvePath.firstRead);
-  }
-
-  puzzle.solvePath?.falseStarts.forEach((guess, index) => {
-    const why = puzzle.solvePath?.whyFalseStartPlausible[index];
-    paragraphs.push(why ? `A first guess was "${guess}". ${why}` : `A first guess was "${guess}".`);
-  });
-
-  if (puzzle.turningPoint?.clue) {
-    paragraphs.push(`${puzzle.turningPoint.clue} was the turning clue. ${puzzle.turningPoint.whyDecisive}`);
-  } else if (puzzle.solvePath?.breakingClue) {
-    paragraphs.push(`${puzzle.solvePath.breakingClue} was the clue that narrowed the board.`);
-  }
-
-  if (puzzle.turningPoint?.whatChangedAfterIt) {
-    paragraphs.push(puzzle.turningPoint.whatChangedAfterIt);
-  }
-
-  if (puzzle.solvePath?.fullBoardConfirmation) {
-    paragraphs.push(puzzle.solvePath.fullBoardConfirmation);
-  }
-
-  return paragraphs;
-}
-
-function buildReasoningParagraphs(puzzle: PuzzleDetailRecord): string[] {
-  const sourceParagraphs =
-    puzzle.solutionNarrative.length > 0
-      ? puzzle.solutionNarrative
-      : buildSolvePathParagraphs(puzzle).length > 0
-        ? buildSolvePathParagraphs(puzzle)
-        : puzzle.articleBlocks.length > 0
-          ? puzzle.articleBlocks
-          : [puzzle.shortSummary];
-
-  const orderedParagraphs = keepAnswerNearEnd(dedupeParagraphs(sourceParagraphs), puzzle.answer);
-  const paragraphs = shouldPrependCluePath(orderedParagraphs, puzzle.clues)
-    ? [buildCluePathLead(puzzle), ...orderedParagraphs]
-    : orderedParagraphs;
-  const hasAnswer = paragraphs.some((paragraph) => paragraphMentionsAnswer(paragraph, puzzle.answer));
-  return hasAnswer ? paragraphs : [...paragraphs, `The answer was ${puzzle.answer}.`];
-}
-
-function renderFaqCards(faqEntries: VisibleDetailFaqEntry[]) {
-  return faqEntries.map((faq) => (
-    <article className="legacy-faq-card" key={faq.question}>
-      <h4 className="legacy-faq-question">{faq.question}</h4>
-      {faq.intentType === "clue_background" && faq.tiedClue ? (
-        <p className="legacy-faq-meta">{`Tied clue: ${faq.tiedClue}`}</p>
-      ) : null}
-      <p className="copy">{faq.answer}</p>
-    </article>
-  ));
 }
 
 export function PuzzleFullAnalysis({
@@ -159,50 +107,78 @@ export function PuzzleFullAnalysis({
   adjacentPrev: ArchiveEntry | null;
   adjacentNext: ArchiveEntry | null;
 }) {
-  const reasoningParagraphs = buildReasoningParagraphs(puzzle);
+  const reasoningStory = buildReasoningArticleDraft(puzzle).blocks;
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
-  const recentLinks = recentPuzzles.filter((entry) => entry.slug !== puzzle.slug).slice(0, 3);
+  const recentLinks = recentPuzzles.filter((entry) => entry.slug !== puzzle.slug).slice(0, 10);
 
   return (
     <>
       <div className="legacy-analysis-flow">
         <section className="legacy-analysis-shell" id="analysis" aria-labelledby="answer-reasoning-title">
           <header className="legacy-analysis-header">
-            <h2 className="legacy-analysis-title" id="answer-reasoning-title">
-              Answer Reasoning
-            </h2>
+            <div className="legacy-analysis-byline" aria-label="Article metadata">
+              <p>By Pinpoint Answer</p>
+              <p>{`Published on ${formatAnalysisDate(puzzle.isoDate)}`}</p>
+            </div>
+            <div className="legacy-analysis-title-row">
+              <span className="legacy-analysis-title-icon" aria-hidden="true">
+                🧩
+              </span>
+              <h2 className="legacy-analysis-title" id="answer-reasoning-title">
+                {`LinkedIn Pinpoint ${puzzle.number} Answer Reasoning`}
+              </h2>
+            </div>
           </header>
 
           <section className="legacy-analysis-section legacy-analysis-section-first">
-            <div className="legacy-prose-stack">
-              {reasoningParagraphs.map((paragraph, index) => (
-                <p key={`${puzzle.slug}-reasoning-${index}`}>{paragraph}</p>
+            <div className="legacy-reasoning-story">
+              {reasoningStory.map((block) => (
+                <article
+                  className={`legacy-reasoning-block${
+                    block.variant === "answer" ? " legacy-reasoning-block-answer" : ""
+                  }${block.title ? "" : " legacy-reasoning-block-lead"}`}
+                  key={`${puzzle.slug}-reasoning-${block.key}`}
+                >
+                  {block.title ? <h3 className="legacy-reasoning-title">{block.title}</h3> : null}
+                  <div className="legacy-reasoning-copy-stack">
+                    {block.body.map((paragraph, index) => (
+                      <p className="legacy-reasoning-copy" key={`${block.key}-paragraph-${index}`}>
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                  {block.bullets && block.bullets.length > 0 ? (
+                    <ul className="legacy-reasoning-list">
+                      {block.bullets.map((item) => (
+                        <li key={`${block.key}-bullet-${item}`}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </article>
               ))}
             </div>
           </section>
 
-          <section className="legacy-analysis-section" id="faq" aria-labelledby="pinpoint-faq-title">
-            <h3 className="legacy-section-title" id="pinpoint-faq-title">
-              FAQ
-            </h3>
-            <div className="legacy-faq-stack">{renderFaqCards(visibleFaqEntries)}</div>
-          </section>
+          {renderWhatThisPinpointTeaches(puzzle, visibleFaqEntries)}
         </section>
 
         <aside className="legacy-next-shell" aria-label="Recent Pinpoint answer pages">
           <h2 className="legacy-next-title">Recent Pinpoint answer pages</h2>
           <ul className="legacy-next-list">
-            {recentLinks.map((entry) => (
+            {recentLinks.map((entry, index) => {
+              const linkTitle = buildRecentLinkTitle(entry, index < 4);
+              return (
               <li key={entry.slug}>
                 <Link
                   className="legacy-next-link"
                   href={routes.detail(entry.slug)}
-                  aria-label={`Open ${buildRecentLinkTitle(entry)}`}
+                  aria-label={`Open ${linkTitle}`}
                 >
-                  <h3 className="legacy-next-link-title">{buildRecentLinkTitle(entry)}</h3>
+                  <h3 className="legacy-next-link-title">{linkTitle}</h3>
                 </Link>
               </li>
-            ))}
+              );
+            })}
           </ul>
           <div className="legacy-next-actions">
             <Link className="button-secondary" href={routes.archive}>

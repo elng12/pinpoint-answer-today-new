@@ -16,8 +16,8 @@ const SELECTOR_PROBES = [
   ["fifth-clue-card", ".legacy-reveal-clue-grid .legacy-reveal-clue-card:nth-of-type(5)"],
   ["answer-button", ".legacy-answer-button"],
   ["analysis", ".legacy-analysis-shell"],
-  ["fifth-clue-row", ".legacy-clue-table tbody tr:nth-child(5)"],
-  ["second-faq-card", "#faq .legacy-faq-card:nth-of-type(2)"],
+  ["teaches-item", "#faq .legacy-teaches-item"],
+  ["faq-card", "#faq .legacy-faq-card"],
   ["recent-link", ".legacy-next-list a"],
 ];
 

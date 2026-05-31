@@ -3,16 +3,13 @@ import Link from "next/link";
 import { Footer } from "@/components/layout/Footer";
 import { NavBar } from "@/components/layout/NavBar";
 import { routes } from "@/lib/paths/routes";
-import { getRecentEntries } from "@/lib/puzzles/data";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
   robots: { index: false, follow: false },
 };
 
-export default async function NotFound() {
-  const recentEntries = await getRecentEntries(5);
-
+export default function NotFound() {
   return (
     <>
       <NavBar />
@@ -35,7 +32,7 @@ export default async function NotFound() {
           </div>
         </section>
       </main>
-      <Footer recentEntries={recentEntries} />
+      <Footer />
     </>
   );
 }

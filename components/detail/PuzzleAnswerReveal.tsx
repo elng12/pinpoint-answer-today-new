@@ -130,15 +130,16 @@ export function PuzzleAnswerReveal({
 
   const fallbackDetailNote =
     detailMode === "short"
-      ? "Short answer reasoning continues just below."
-      : "Answer reasoning continues just below.";
-  const answerPanelTitle = panelTitle ?? "Today's Pinpoint Answer";
+      ? `Short Pinpoint ${puzzleNumber} answer reasoning continues just below with LinkedIn context.`
+      : `Pinpoint ${puzzleNumber} answer reasoning continues just below with LinkedIn context.`;
+  const answerPanelTitle = panelTitle ?? `Pinpoint ${puzzleNumber} Answer`;
   const answerPanelNote = detailNote ?? fallbackDetailNote;
+  const cluePath = clues.join(" ");
 
   return (
     <section className="legacy-reveal-shell" aria-labelledby="pinpoint-clues-title">
       <h2 className="legacy-clues-title" id="pinpoint-clues-title">
-        {`Pinpoint ${puzzleNumber} Clues`}
+        {`LinkedIn Pinpoint ${puzzleNumber} Answer Clues`}
       </h2>
       <ol className="legacy-reveal-clue-grid" aria-label={`Pinpoint ${puzzleNumber} clue order`}>
         {clues.map((clue, index) => (
@@ -151,6 +152,7 @@ export function PuzzleAnswerReveal({
           </li>
         ))}
       </ol>
+      <p className="legacy-clue-path-note">{`LinkedIn Pinpoint clue order: ${cluePath}. Read ${cluePath} before the reveal.`}</p>
 
       <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
         <h2 className="legacy-answer-label" id="pinpoint-answer-title">
@@ -165,11 +167,11 @@ export function PuzzleAnswerReveal({
         </p>
         <div className="legacy-answer-actions">
           <button className="button-primary legacy-answer-button" type="button" onClick={handleRevealToggle}>
-            {revealed ? "Hide Pinpoint Answer" : "Reveal Pinpoint Answer"}
+            {revealed ? "Hide Pinpoint answer" : "Reveal Pinpoint answer"}
           </button>
           {revealed ? (
             <button className="button-secondary legacy-answer-button" type="button" onClick={handleCopy}>
-              {copied ? "Copied" : "Copy Pinpoint Answer"}
+              {copied ? "Copied" : "Copy Pinpoint answer"}
             </button>
           ) : null}
         </div>
