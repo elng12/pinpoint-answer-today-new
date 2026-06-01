@@ -636,3 +636,58 @@ Next action:
 
 - Keep running this daily observer.
 - Pull GSC for complete days only (recommended: `2026-05-26 -> 2026-05-30`) and keep samples labeled as tiny if impressions are low.
+
+## Observation - 2026-06-01
+
+Checked with Googlebot Smartphone UA (read-only).
+
+Latest public detail:
+
+- `#762` (`/linkedin-pinpoint-answers/pinpoint-answer-762/`) is the current production detail.
+
+URL checks:
+
+- `/` => 200, latest detail link for `#762` present, H1 is `LinkedIn Pinpoint Answer Today #762`.
+- Latest detail `#762` => 200, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-762/`, robots `index, follow`, answer and all five clues present.
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => 200, `content-type: application/xml`.
+- Required latest entry present: `#762`.
+- `lastmod` for `/` is `2026-06-01T07:16:29.053Z`.
+- `lastmod` for `#762` is `2026-06-01T07:10:48.834Z`.
+
+GSC (complete window only; avoid same-day):
+
+- Range pulled: `2026-05-26 -> 2026-05-31` (complete days only; excludes `2026-06-01`).
+- Recent latest 30 detail pages aggregate: `clicks=6 impressions=1972`; pages with any clicks: `3/30`.
+- Best recent detail page: `#761` => `clicks=4 impressions=1191 ctr=0.3% position=6.44`.
+- Homepage `/` => `clicks=1 impressions=170 ctr=0.6% position=37.62`.
+- Homepage mobile: `clicks=1 impressions=22 ctr=4.5% position=21.95`.
+- Restored pages: `#735` has `1` impression, `#736` has `0`, and `#737` has `1`.
+
+PageSpeed:
+
+- PageSpeed API is still blocked by quota: `429 RESOURCE_EXHAUSTED`, `defaultPerDayPerProject` value `0`.
+- Manual PageSpeed web report created at `2026-06-01 16:32:01`:
+  - Mobile: Performance `98`, Accessibility `100`, Best Practices `100`, SEO `100`.
+  - Desktop: Performance `99`, Accessibility `100`, Best Practices `100`, SEO `100`.
+- API quota is a tooling block for automation only; the manual PageSpeed result passes.
+
+Release context only:
+
+- Phase 0 SEO integrity fixes deployed via PR `#40` at `2026-05-19T11:17:58Z`.
+- Security-only PR `#41` deployed at `2026-05-20T03:05:06Z` (keep treating as non-SEO variable).
+
+Pass/Fail:
+
+- PASS: Latest production detail `#762` is reachable, indexable, canonical-correct, and present in sitemap.
+- PASS: Complete-window GSC was pulled successfully with service account credentials.
+- PASS: Manual PageSpeed web check passes on mobile and desktop.
+- OPEN: Automated PageSpeed API check remains unavailable because the Google API quota is exhausted.
+
+Next action:
+
+- Keep running this daily observer.
+- Re-run GSC after `#762` has at least one complete Search Console data window.
+- Re-run automated PageSpeed later with a working API quota/key if we need scriptable checks.
