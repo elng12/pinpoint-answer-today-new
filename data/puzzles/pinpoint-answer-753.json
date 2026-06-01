@@ -26,17 +26,17 @@
   },
   "spoilerHints": {
     "Titan": "Titan should be tested as part of moons in our solar system, not as a standalone reference.",
-    "Triton": "Keep Triton in mind, then see whether Ganymede (seen by Galileo) supports the same answer.",
+    "Triton": "Keep Triton in mind, then see whether Ganymede supports the same answer.",
     "Phobos": "Phobos works best after the board narrows toward moons in our solar system.",
     "Io": "Io should be tested as part of moons in our solar system, not as a standalone reference.",
-    "Ganymede (seen by Galileo)": "Ganymede (seen by Galileo) is the clue that makes moons in our solar system concrete enough to test across the full board."
+    "Ganymede (seen by Galileo)": "Ganymede is the clue that makes moons in our solar system concrete enough to test across the full board."
   },
   "articleBlocks": [
     "The initial clues felt scattered. 'Titan' and 'Triton' immediately made me think of mythology.",
     "I considered 'Greek gods' as a possibility, but that theory broke when I saw 'Phobos'.",
     "The reference to Galileo in the final clue was the turning point.",
     "It shifted my focus toward astronomy and celestial bodies.",
-    "That clue, 'Ganymede (seen by Galileo)', made me think of Jupiter's moons.",
+    "The final Galileo clue made me think of Jupiter's moons.",
     "Then I realized that all the clues were celestial objects orbiting planets in our solar system.",
     "The answer is: Moons in our solar system.",
     "In hindsight, the connection is clear: each clue represents a moon orbiting a planet in our solar system.",
@@ -46,8 +46,8 @@
     "Sometimes the most obvious answer is the one that takes the longest to see."
   ],
   "solutionNarrative": [
-    "Titan and Triton first pulled me toward greek gods, so that was the first path I tested. It held together for a moment, but ganymede (seen by Galileo) never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating ganymede (seen by Galileo) as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about greek gods; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "Titan and Triton first pulled me toward greek gods, so that was the first path I tested. It held together for a moment, but Ganymede never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating Ganymede as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about greek gods; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
   ],
   "lessons": [
     {
@@ -55,12 +55,12 @@
       "body": "\"Titan\" and \"Triton\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "\"Ganymede (seen by Galileo)\" anchors these celestial objects all share a common trait in our solar system",
-      "body": "ganymede (seen by Galileo) is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "\"Ganymede\" anchors these celestial objects all share a common trait in our solar system",
+      "body": "Ganymede is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
     },
     {
-      "title": "Use \"Ganymede (seen by Galileo)\" to re-check \"Titan\" under these celestial objects all share a common trait in our solar system",
-      "body": "When a set of clues seems unrelated, look for a unifying characteristic that connects them all."
+      "title": "Use \"Ganymede\" to re-check \"Titan\" under these celestial objects all share a common trait in our solar system",
+      "body": "The sequence Triton Phobos Io Ganymede becomes easier to trust once the moon reading is in place."
     }
   ],
   "display": {
@@ -101,35 +101,35 @@
     },
     {
       "question": "How do \"Titan\" and \"Triton\" connect in LinkedIn Pinpoint #753?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Ganymede (seen by Galileo) is what keeps the category reading precise instead of broad."
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Ganymede is what keeps the category reading precise instead of broad."
     },
     {
-      "question": "Why is \"Ganymede (seen by Galileo)\" the key clue in LinkedIn Pinpoint #753?",
-      "answer": "Ganymede (seen by Galileo) is the turning clue because \"Jupiter's moon\" makes the shared category frame explicit. It also makes Titan read cleanly as \"Titan\". The clues are diverse, drawing from both mythology and astronomy, making it difficult to immediately see the common thread."
+      "question": "Why is \"Ganymede\" the key clue in LinkedIn Pinpoint #753?",
+      "answer": "Ganymede is the turning clue because \"Jupiter's moon\" makes the shared category frame explicit. It also makes Titan read cleanly as \"Titan\". The clues are diverse, drawing from both mythology and astronomy, making it difficult to immediately see the common thread."
     },
     {
-      "question": "How does \"Titan\" fit the same category as \"Ganymede (seen by Galileo)\" in LinkedIn Pinpoint #753?",
+      "question": "How does \"Titan\" fit the same category as \"Ganymede\" in LinkedIn Pinpoint #753?",
       "answer": "\"Titan\" reads as \"Titan\" under the same answer, so it supports the category instead of pulling toward a broader guess."
     }
   ],
   "solvePath": {
-    "firstRead": "Titan, Triton, and Phobos do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"greek gods\" can feel plausible before one clue makes the answer feel concrete. Ganymede (seen by Galileo) is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "firstRead": "Titan, Triton, and Phobos do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"greek gods\" can feel plausible before one clue makes the answer feel concrete. Ganymede is the clue that finally breaks that first read and makes the real category feel concrete.",
     "falseStarts": [
       "greek gods",
       "space exploration"
     ],
     "whyFalseStartPlausible": [
       "While Titan and Triton are figures from Greek mythology, Io and Phobos do not clearly fit, and the Galileo reference feels out of place.",
-      "space exploration feels plausible early on, but it falls apart once ganymede (seen by Galileo) demands a more exact reading."
+      "space exploration feels plausible early on, but it falls apart once Ganymede demands a more exact reading."
     ],
     "breakingClue": "Ganymede (seen by Galileo)",
-    "pivot": "The solve turned when I stopped treating ganymede (seen by Galileo) as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about greek gods; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
-    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Titan, Triton, and Phobos stop feeling disconnected and start looking like they belong together. Once ganymede (seen by Galileo) is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are diverse, drawing from both mythology and astronomy, making it difficult to immediately see the common thread."
+    "pivot": "The solve turned when I stopped treating Ganymede as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about greek gods; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Titan, Triton, and Phobos stop feeling disconnected and start looking like they belong together. Once Ganymede is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are diverse, drawing from both mythology and astronomy, making it difficult to immediately see the common thread."
   },
   "turningPoint": {
     "clue": "Ganymede (seen by Galileo)",
-    "whyDecisive": "The final clue, 'Ganymede (seen by Galileo),' made me think of the broader category of moons.",
-    "whatChangedAfterIt": "Once Ganymede (seen by Galileo) landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+    "whyDecisive": "The final Galileo clue made me think of the broader category of moons.",
+    "whatChangedAfterIt": "Once Ganymede landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
   },
   "clueRows": [
     {
@@ -178,18 +178,18 @@
     {
       "intentType": "solve_strategy",
       "question": "How do \"Titan\" and \"Triton\" connect in LinkedIn Pinpoint #753?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Ganymede (seen by Galileo) is what keeps the category reading precise instead of broad.",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Ganymede is what keeps the category reading precise instead of broad.",
       "tiedClue": "Titan"
     },
     {
       "intentType": "clue_background",
-      "question": "Why is \"Ganymede (seen by Galileo)\" the key clue in LinkedIn Pinpoint #753?",
-      "answer": "Ganymede (seen by Galileo) is the turning clue because \"Jupiter's moon\" makes the shared category frame explicit. It also makes Titan read cleanly as \"Titan\". The clues are diverse, drawing from both mythology and astronomy, making it difficult to immediately see the common thread.",
+      "question": "Why is \"Ganymede\" the key clue in LinkedIn Pinpoint #753?",
+      "answer": "Ganymede is the turning clue because \"Jupiter's moon\" makes the shared category frame explicit. It also makes Titan read cleanly as \"Titan\". The clues are diverse, drawing from both mythology and astronomy, making it difficult to immediately see the common thread.",
       "tiedClue": "Ganymede (seen by Galileo)"
     },
     {
       "intentType": "solve_strategy",
-      "question": "How does \"Titan\" fit the same category as \"Ganymede (seen by Galileo)\" in LinkedIn Pinpoint #753?",
+      "question": "How does \"Titan\" fit the same category as \"Ganymede\" in LinkedIn Pinpoint #753?",
       "answer": "\"Titan\" reads as \"Titan\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
       "tiedClue": "Titan"
     }
@@ -206,8 +206,8 @@
     "doNotRepeatPatterns": [
       "These celestial objects all share a common trait in our solar system",
       "\"Titan\" and \"Triton\" can look like they belong to different categories at first",
-      "\"Ganymede (seen by Galileo)\" anchors these celestial objects all share a common trait in our solar system",
-      "Use \"Ganymede (seen by Galileo)\" to re-check \"Titan\" under these celestial objects all share a common trait in our solar system",
+      "\"Ganymede\" anchors these celestial objects all share a common trait in our solar system",
+      "Use \"Ganymede\" to re-check \"Titan\" under these celestial objects all share a common trait in our solar system",
       "Named after the Titans of Greek mythology.",
       "Named after the Greek sea god Triton."
     ]
@@ -216,14 +216,14 @@
     {
       "label": "greek gods",
       "whyPlausible": "While Titan and Triton are figures from Greek mythology, Io and Phobos do not clearly fit, and the Galileo reference feels out of place.",
-      "whyRejected": "Once Ganymede (seen by Galileo) lands, the final answer explains the board more cleanly than greek gods."
+      "whyRejected": "Once Ganymede lands, the final answer explains the board more cleanly than greek gods."
     },
     {
       "label": "space exploration",
-      "whyPlausible": "space exploration feels plausible early on, but it falls apart once ganymede (seen by Galileo) demands a more exact reading.",
-      "whyRejected": "Once Ganymede (seen by Galileo) lands, the final answer explains the board more cleanly than space exploration."
+      "whyPlausible": "space exploration feels plausible early on, but it falls apart once Ganymede demands a more exact reading.",
+      "whyRejected": "Once Ganymede lands, the final answer explains the board more cleanly than space exploration."
     }
   ],
-  "setValidationSummary": "Phobos, Io, Ganymede (seen by Galileo) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "setValidationSummary": "Phobos, Io, and Ganymede keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
   "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Moons in our solar system"
 }
