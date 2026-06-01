@@ -111,13 +111,13 @@
     }
   ],
   "solvePath": {
-    "firstRead": "Help, Check-in, and News do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"ergonomic tools\" can feel plausible before one clue makes the answer feel concrete. Rolltop is the clue that finally breaks that first read and makes desks feel concrete.",
+    "firstRead": "The full Help Check-in News Rolltop Standing path does not immediately look like one clean set, so the first read can wander in the wrong direction. That is why a first read like \"ergonomic tools\" can feel plausible before one clue makes the answer feel concrete. Rolltop is the clue that finally breaks that first read and makes desks feel concrete.",
     "falseStarts": [
       "ergonomic tools",
       "workplace necessities"
     ],
     "whyFalseStartPlausible": [
-      "While 'Standing' might fit, the other clues don't clearly relate to ergonomics.",
+      "Help Check-in News Rolltop Standing can look like a work setup at first, but the clues do not clearly relate to ergonomics.",
       "workplace necessities feels plausible early on, but it falls apart once rolltop demands a more exact reading."
     ],
     "breakingClue": "Rolltop",
@@ -213,7 +213,7 @@
   "wrongGuessCandidates": [
     {
       "label": "ergonomic tools",
-      "whyPlausible": "While 'Standing' might fit, the other clues don't clearly relate to ergonomics.",
+      "whyPlausible": "Help Check-in News Rolltop Standing can look like a work setup at first, but the clues do not clearly relate to ergonomics.",
       "whyRejected": "Once Rolltop lands, the final answer explains the board more cleanly than ergonomic tools."
     },
     {
