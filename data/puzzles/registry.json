@@ -4,7 +4,8 @@
     "slug": "pinpoint-answer-762",
     "publishDate": "2026-06-01",
     "status": "live",
-    "detailState": "fallback_full",
+    "detailState": "published",
+    "publishMode": "full-analysis",
     "clues": [
       "Fly",
       "Cricket",
@@ -15,8 +16,8 @@
     "mainAnswer": "Names of insects",
     "category": "Names of insects",
     "difficultyLevel": "Moderate",
-    "shortSummary": "Pinpoint Answer Today asks: what links Fly, Cricket, June beetle, Praying mantis, Lightning bug - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-01T07:16:29.053Z"
+    "shortSummary": "Fly, Cricket, June beetle, Praying mantis, and Lightning bug look like mixed creatures until the board settles on one shared naming pattern.",
+    "updatedAt": "2026-06-01T07:10:48.834Z"
   },
   {
     "puzzleNumber": 761,
