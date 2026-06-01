@@ -3,7 +3,7 @@
   "slug": "pinpoint-answer-754",
   "publishDate": "2026-05-24",
   "isoDate": "2026-05-24",
-  "detailState": "fallback_full",
+  "detailState": "published",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "category",
@@ -22,26 +22,26 @@
     "Coins": "\"Coins\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
     "Frisbees": "\"Frisbees\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
     "Manhole covers": "\"Manhole covers\" fits more cleanly once the board is tested under the same answer as the other clues.",
-    "CDs and DVDs (it's the last D)": "\"CDs and DVDs (it's the last D)\" is the clue that makes the shared answer concrete enough to test across the full board."
+    "CDs and DVDs (it's the last D)": "The final clue points to the disc shape that makes the shared answer concrete enough to test across the full board."
   },
   "spoilerHints": {
     "Plates": "Plates should be tested as part of things shaped like discs, not as a standalone reference.",
-    "Coins": "Keep Coins in mind, then see whether CDs and DVDs (it's the last D) supports the same answer.",
+    "Coins": "Keep Coins in mind, then see whether the final disc clue supports the same answer.",
     "Frisbees": "Frisbees works best after the board narrows toward things shaped like discs.",
     "Manhole covers": "Manhole covers should be tested as part of things shaped like discs, not as a standalone reference.",
-    "CDs and DVDs (it's the last D)": "CDs and DVDs (it's the last D) is the clue that makes things shaped like discs concrete enough to test across the full board."
+    "CDs and DVDs (it's the last D)": "The final disc clue makes things shaped like discs concrete enough to test across the full board."
   },
   "articleBlocks": [
     "At first, Plates and Coins pointed in a few different directions, so the board still felt wider than one exact category.",
-    "One tempting read was \"a broader umbrella topic\". Plates, Coins can point toward several nearby themes before one clue makes the exact category level visible. CDs and DVDs (it's the last D) is the clue that narrows the board into one category with clearer boundaries.",
+    "One tempting read was \"a broader umbrella topic\". Plates, Coins can point toward several nearby themes before one clue makes the exact category level visible. The final disc clue narrows the board into one category with clearer boundaries.",
     "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
-    "Once I read the set through a category board focused on things, examples like \"Plates\" and \"Coins\" stopped feeling loose and started landing cleanly.",
-    "Frisbees, Manhole covers, CDs and DVDs (it's the last D) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "Once I read the set through a category board focused on disc-shaped things, examples like \"Plates\" and \"Coins\" stopped feeling loose and started landing cleanly.",
+    "Frisbees, Manhole covers, CDs, and other disc-shaped objects keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
     "The answer was \"Things shaped like discs\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things shaped like discs, which is why \"Things shaped like discs\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
   ],
   "solutionNarrative": [
     "I did not have a clean answer from the first clue. Plates and Coins first made me think about everyday objects, money, or table settings, but none of those reads gave the whole board one clean rule.",
-    "The turn came when I let \"CDs and DVDs (it's the last D)\" lead the solve. A disc is the physical shape shared by that clue, and once I tested that shape against the rest of the board, Frisbees and Manhole covers stopped feeling loose and started fitting the same category.",
+    "The turn came when I let the final disc clue lead the solve. A disc is the physical shape shared by that clue, and once I tested that shape against the rest of the board, Frisbees and Manhole covers stopped feeling loose and started fitting the same category.",
     "That left Plates and Coins as confirmation clues rather than separate themes. Each one is a flat round object, so the full board points to \"Things shaped like discs\" instead of a broader idea about objects, games, or household items."
   ],
   "lessons": [
@@ -50,16 +50,16 @@
       "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
     },
     {
-      "title": "\"CDs and DVDs (it's the last D)\" is what makes the answer feel concrete instead of broad",
-      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+      "title": "The final disc clue is what makes the answer feel concrete instead of broad",
+      "body": "A strong LinkedIn Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
     },
     {
-      "title": "Re-check the early clues once \"CDs and DVDs (it's the last D)\" sharpens the answer",
-      "body": "Once \"CDs and DVDs (it's the last D)\" lands, go back and test the earlier clues under that same answer before locking it in."
+      "title": "Re-check the early clues once the final disc clue sharpens the answer",
+      "body": "Once the final disc clue lands, go back and test the earlier clues under that same answer before locking it in."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on things",
+    "connectorSummary": "a category board focused on disc-shaped things",
     "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
     "clueTableRows": [
       {
@@ -84,8 +84,8 @@
       },
       {
         "clue": "CDs and DVDs (it's the last D)",
-        "examplePhrase": "CDs and DVDs (it's the last D)",
-        "connectionExplained": "\"CDs and DVDs (it's the last D)\" is the clue that makes the shared answer concrete enough to test across the full board."
+        "examplePhrase": "CDs and disc media",
+        "connectionExplained": "The final clue points to the disc shape that makes the shared answer concrete enough to test across the full board."
       }
     ]
   },
@@ -96,11 +96,11 @@
     },
     {
       "question": "How do \"Plates\" and \"Coins\" connect in LinkedIn Pinpoint #754?",
-      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+      "answer": "The connection is a category board focused on disc-shaped things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
     },
     {
-      "question": "Why is \"CDs and DVDs (it's the last D)\" the key clue in LinkedIn Pinpoint #754?",
-      "answer": "\"CDs and DVDs (it's the last D)\" is the turning point because it makes the answer concrete enough to test across all five clues."
+      "question": "Why is the final disc clue key in LinkedIn Pinpoint #754?",
+      "answer": "The final disc clue is the turning point because it makes the answer concrete enough to test across all five clues."
     }
   ],
   "solvePath": {
@@ -114,13 +114,13 @@
       "Early clues often tempt you to overfit the board around one obvious surface similarity."
     ],
     "breakingClue": "CDs and DVDs (it's the last D)",
-    "pivot": "I did not have a clean answer from the first clue. Plates and Coins first made me think about everyday objects, money, or table settings, but none of those reads gave the whole board one clean rule.\n\nThe turn came when I let \"CDs and DVDs (it's the last D)\" lead the solve. A disc is the physical shape shared by that clue, and once I tested that shape against the rest of the board, Frisbees and Manhole covers stopped feeling loose and started fitting the same category.\n\nThat left Plates and Coins as confirmation clues rather than separate themes. Each one is a flat round object, so the full board points to \"Things shaped like discs\" instead of a broader idea about objects, games, or household items.",
-    "fullBoardConfirmation": "Once I read the set through a category board focused on things, examples like \"Plates\" and \"Coins\" stopped feeling loose and started landing cleanly."
+    "pivot": "I did not have a clean answer from the first clue. Plates and Coins first made me think about everyday objects, money, or table settings, but none of those reads gave the whole board one clean rule.\n\nThe turn came when I let the final disc clue lead the solve. A disc is the physical shape shared by that clue, and once I tested that shape against the rest of the board, Frisbees and Manhole covers stopped feeling loose and started fitting the same category.\n\nThat left Plates and Coins as confirmation clues rather than separate themes. Each one is a flat round object, so the full board points to \"Things shaped like discs\" instead of a broader idea about objects, games, or household items.",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on disc-shaped things, examples like \"Plates\" and \"Coins\" stopped feeling loose and started landing cleanly."
   },
   "turningPoint": {
     "clue": "CDs and DVDs (it's the last D)",
-    "whyDecisive": "CDs and DVDs (it's the last D) is the clue that makes the shared answer concrete enough to test across the full board.",
-    "whatChangedAfterIt": "Once CDs and DVDs (it's the last D) lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "whyDecisive": "The final disc clue makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once the final disc clue lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
@@ -154,9 +154,9 @@
     {
       "clue": "CDs and DVDs (it's the last D)",
       "surfaceMisread": "a broader umbrella topic",
-      "resolvedPhraseOrMember": "CDs and DVDs (it's the last D)",
-      "nonObviousWhy": "\"CDs and DVDs (it's the last D)\" is the clue that makes the shared answer concrete enough to test across the full board.",
-      "searchableContext": "CDs and DVDs (it's the last D)"
+      "resolvedPhraseOrMember": "disc media",
+      "nonObviousWhy": "The final clue points to the disc shape that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "compact discs"
     }
   ],
   "faqItems": [
@@ -174,22 +174,22 @@
     },
     {
       "intentType": "clue_background",
-      "question": "Why is \"CDs and DVDs (it's the last D)\" the key clue in LinkedIn Pinpoint #754?",
-      "answer": "\"CDs and DVDs (it's the last D)\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "question": "Why is the final disc clue key in LinkedIn Pinpoint #754?",
+      "answer": "The final disc clue is the turning point because it makes the answer concrete enough to test across all five clues.",
       "tiedClue": "CDs and DVDs (it's the last D)"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a category board focused on things",
+    "angle": "a category board focused on disc-shaped things",
     "relatedEntities": [
       "Plates",
       "Coins",
       "Frisbees",
       "Manhole covers",
-      "CDs and DVDs (it's the last D)"
+      "disc media"
     ],
     "doNotRepeatPatterns": [
-      "a category board focused on things",
+      "a category board focused on disc-shaped things",
       "Plates",
       "Coins",
       "Frisbees",
@@ -200,7 +200,7 @@
     {
       "label": "a broader umbrella topic",
       "whyPlausible": "Plates, Coins can point toward several nearby themes before one clue makes the exact category level visible.",
-      "whyRejected": "CDs and DVDs (it's the last D) is the clue that narrows the board into one category with clearer boundaries."
+      "whyRejected": "The final disc clue narrows the board into one category with clearer boundaries."
     },
     {
       "label": "a one-clue surface theme",
@@ -208,6 +208,6 @@
       "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
     }
   ],
-  "setValidationSummary": "Frisbees, Manhole covers, CDs and DVDs (it's the last D) keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "setValidationSummary": "Frisbees, Manhole covers, and the final disc clue keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
   "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things shaped like discs"
 }
