@@ -1,5 +1,6 @@
 import type { ArchiveEntry, PuzzleDetail } from "@/lib/puzzles/data";
 import { routes } from "@/lib/paths/routes";
+import { defaultSocialImagePath } from "@/lib/site/config";
 import {
   absoluteUrl,
   buildPuzzleSeoDescription,
@@ -27,7 +28,6 @@ export function buildPuzzleDetailStructuredData({
   const seoHeadline = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
   const detailPath = withTrailingSlash(routes.detail(puzzle.slug));
   const detailUrl = absoluteUrl(detailPath);
-  const detailOpenGraphImagePath = `${detailPath}opengraph-image`;
   const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
 
   return [
@@ -36,7 +36,7 @@ export function buildPuzzleDetailStructuredData({
       "@type": "Article",
       headline: seoHeadline,
       description: seoDescription,
-      image: absoluteUrl(detailOpenGraphImagePath),
+      image: absoluteUrl(defaultSocialImagePath),
       dateModified: puzzle.updatedAt,
       datePublished: `${puzzle.isoDate}T00:00:00Z`,
       mainEntityOfPage: detailUrl,

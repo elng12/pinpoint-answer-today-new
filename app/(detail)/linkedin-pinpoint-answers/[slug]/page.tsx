@@ -54,8 +54,6 @@ export async function generateMetadata({
     description: seoDescription,
     path: puzzleDetailPath,
     type: "article",
-    socialImagePath: `${puzzleDetailPath}opengraph-image`,
-    socialImageAlt: `LinkedIn Pinpoint #${puzzle.number}: ${puzzle.clues.join(", ")}`,
   });
 }
 

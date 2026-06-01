@@ -61,6 +61,20 @@ function assertNoRedirectRule(rules: RedirectRule[], source: string) {
   assert.equal(rule, undefined, `${source} should not be handled by next.config.ts redirects`);
 }
 
+function assertHeaderRule(
+  rules: HeaderRule[],
+  source: string,
+  key: string,
+  value: string,
+) {
+  const rule = rules.find((entry) => entry.source === source);
+  assert.ok(rule, `missing header rule for ${source}`);
+
+  const header = rule.headers.find((entry) => entry.key.toLowerCase() === key.toLowerCase());
+  assert.ok(header, `${source} should publish ${key}`);
+  assert.equal(header.value, value, `${source} should keep its ${key} policy`);
+}
+
 function assertMiddlewareRedirect(inputUrl: string, expectedLocation: string) {
   const response = middleware(new NextRequest(inputUrl));
   assert.equal(response.status, 308, `${inputUrl} should issue a 308 redirect`);
@@ -87,18 +101,11 @@ async function checkRedirectConfig() {
   );
 
   assertRedirectRule(rules, "/en", "/");
-  assertRedirectRule(
-    rules,
-    "/pt-BR/linkedin-pinpoint-answers/:slug",
-    "/linkedin-pinpoint-answers/:slug/",
-  );
-  assertRedirectRule(
-    rules,
-    "/de/linkedin-pinpoint-answers/:slug/opengraph-image",
-    "/linkedin-pinpoint-answers/:slug/opengraph-image",
-  );
-  assertRedirectRule(rules, "/fr/puzzles/:number(\\d+)", "/puzzles/:number");
-  assertRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})", "/pinpoint/:date");
+  assertNoRedirectRule(rules, "/pt-BR/linkedin-pinpoint-answers/:slug");
+  assertNoRedirectRule(rules, "/de/linkedin-pinpoint-answers/:slug/opengraph-image");
+  assertNoRedirectRule(rules, "/en/puzzles");
+  assertNoRedirectRule(rules, "/fr/puzzles/:number(\\d+)");
+  assertNoRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})");
   assertRedirectRule(rules, "/en/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/de/linkedin-pinpoint-answer", "/puzzles");
   assertRedirectRule(rules, "/puzzles/connectors", "/puzzles");
@@ -106,29 +113,16 @@ async function checkRedirectConfig() {
   assertRedirectRule(rules, "/feedback", "/contact-us");
   assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
   assertRedirectRule(rules, "/linkedin-pinpoint-answer", "/puzzles");
-  assertRedirectRule(rules, "/pinpoint-answer-:number(\\d+)", "/puzzles/:number");
-  assertRedirectRule(rules, "/linkedin-pinpoint/:number(\\d+)", "/puzzles/:number");
-  assertRedirectRule(
-    rules,
-    "/linkedin-pinpoint-answer/pinpoint-:number(\\d+)",
-    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
-  );
-  assertRedirectRule(
-    rules,
-    "/puzzles/pinpoint-answer-:number(\\d+)",
-    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
-  );
-  assertRedirectRule(
-    rules,
-    "/fr/puzzles/pinpoint-answer-:number(\\d+)",
-    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
-  );
-  assertRedirectRule(
-    rules,
-    "/fr/linkedin-pinpoint-answer/pinpoint-:number(\\d+)",
-    "/linkedin-pinpoint-answers/pinpoint-answer-:number/",
-  );
-  assertRedirectRule(rules, "/fr/pinpoint/:number(\\d+)-analysis", "/pinpoint/:number-analysis");
+  assertNoRedirectRule(rules, "/opengraph-image");
+  assertNoRedirectRule(rules, "/linkedin-pinpoint-answers/:slug/opengraph-image");
+  assertNoRedirectRule(rules, "/pinpoint-answer-:number(\\d+)");
+  assertNoRedirectRule(rules, "/linkedin-pinpoint/:number(\\d+)");
+  assertNoRedirectRule(rules, "/linkedin-pinpoint-answer/pinpoint-:number(\\d+)");
+  assertNoRedirectRule(rules, "/puzzles/pinpoint-answer-:number(\\d+)");
+  assertNoRedirectRule(rules, "/fr/puzzles/pinpoint-answer-:number(\\d+)");
+  assertNoRedirectRule(rules, "/fr/linkedin-pinpoint-answer/pinpoint-:number(\\d+)");
+  assertNoRedirectRule(rules, "/fr/pinpoint/:number(\\d+)-analysis");
+  assertNoRedirectRule(rules, "/fr/pinpoint-answer-:number(\\d+)");
   assertNoRedirectRule(rules, "/pinpoint-answer-725");
   assertNoRedirectRule(rules, "/linkedin-pinpoint/725");
   assertNoRedirectRule(rules, "/puzzles/pinpoint-answer-725");
@@ -143,15 +137,47 @@ async function checkRedirectConfig() {
 
 async function checkHeaderConfig() {
   const rules = await getHeaderRules();
-  const apiRule = rules.find((entry) => entry.source === "/api/:path*");
-  assert.ok(apiRule, "missing header rule for /api/:path*");
-
-  const apiRobotsHeader = apiRule.headers.find((entry) => entry.key.toLowerCase() === "x-robots-tag");
-  assert.ok(apiRobotsHeader, "/api/:path* should publish an X-Robots-Tag header");
-  assert.equal(
-    apiRobotsHeader.value,
+  assertHeaderRule(
+    rules,
+    "/api/:path*",
+    "X-Robots-Tag",
     "noindex, nofollow, noarchive",
-    "/api/:path* should keep its noindex X-Robots-Tag policy",
+  );
+  assertHeaderRule(
+    rules,
+    "/_next/static/:path*",
+    "X-Robots-Tag",
+    "noindex, noarchive",
+  );
+  assertHeaderRule(
+    rules,
+    "/:locale(en|pt-BR|fr|de)/:path*",
+    "X-Robots-Tag",
+    "noindex, follow, noarchive",
+  );
+  assertHeaderRule(
+    rules,
+    "/:locale(en|pt-BR|fr|de)",
+    "X-Robots-Tag",
+    "noindex, follow, noarchive",
+  );
+  assertHeaderRule(
+    rules,
+    "/pinpoint/:value",
+    "X-Robots-Tag",
+    "noindex, follow, noarchive",
+  );
+  assertHeaderRule(
+    rules,
+    "/og-image.png",
+    "X-Robots-Tag",
+    "noindex, follow, noarchive",
+  );
+  assertHeaderRule(
+    rules,
+    "/linkedin-pinpoint-answers/:slug/opengraph-image",
+    "X-Robots-Tag",
+    "noindex, follow, noarchive",
   );
 
   const previewRule = rules.find((entry) => entry.source === "/next-pinpoint-preview");
@@ -168,7 +194,7 @@ function checkMiddlewareCanonicalization() {
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/");
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/");
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/favicon/favicon.ico");
-  assertMiddlewarePassThrough("https://pinpointanswertoday.app/puzzles/themes/definitely-not-a-real-legacy-slug");
+  assertMiddlewarePassThrough("https://pinpointanswertoday.app/puzzles?q=boots");
 
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536",
@@ -182,6 +208,62 @@ function checkMiddlewareCanonicalization() {
   assertMiddlewareRedirect(
     "https://www.pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536",
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/fr/linkedin-pinpoint-answers/pinpoint-answer-536",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/de/pinpoint-answer-583",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-583/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/fr/puzzles/583",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-583/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/fr/puzzles/pinpoint-answer-583",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-583/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/en/puzzles/linkedin-pinpoint-answer-552",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-552/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/en/puzzles/linkedin-pinpoint-answer-232",
+    "https://pinpointanswertoday.app/puzzles",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answer/pinpoint-583",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-583/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/linkedin-pinpoint/583",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-583/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/fr/pinpoint/2025-12-04",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-583/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/pinpoint/2025-11-01",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-550/",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/puzzles?theme=words%20with%20double%20vowels%20in%20the%20center",
+    "https://pinpointanswertoday.app/puzzles",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/puzzles?q=boots&theme=old",
+    "https://pinpointanswertoday.app/puzzles?q=boots",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/en/puzzles?difficulty=3",
+    "https://pinpointanswertoday.app/puzzles",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/pt-BR/puzzles?q=boots&difficulty=3",
+    "https://pinpointanswertoday.app/puzzles?q=boots",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/puzzles/themes/types-of-dances",
@@ -205,7 +287,15 @@ function checkMiddlewareCanonicalization() {
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/fr/puzzles/themes/definitely-not-a-real-legacy-slug",
-    "https://pinpointanswertoday.app/puzzles/themes/definitely-not-a-real-legacy-slug",
+    "https://pinpointanswertoday.app/puzzles",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-712/opengraph-image",
+    "https://pinpointanswertoday.app/og-image.png",
+  );
+  assertMiddlewareRedirect(
+    "https://pinpointanswertoday.app/opengraph-image",
+    "https://pinpointanswertoday.app/og-image.png",
   );
   assertMiddlewareRedirect(
     "https://www.pinpointanswertoday.app/fr/puzzles/connectors/coat",
