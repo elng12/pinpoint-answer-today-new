@@ -46,7 +46,7 @@
   "lessons": [
     {
       "title": "Jury keeps the solve from being just Car or Swimming",
-      "body": "Car and Swimming are tempting anchors, but Jury forces a more exact phrase check because jury pool is a formal term."
+      "body": "LinkedIn solvers should not stop at Car pool or swimming pool, because Jury forces a more exact phrase check with jury pool."
     },
     {
       "title": "Gene makes the hidden noun work outside everyday places",
@@ -54,11 +54,11 @@
     },
     {
       "title": "Dating bridges the social clue with the phrase pattern",
-      "body": "Dating can feel separate at first, but dating pool becomes clear once the shared hidden word has been tested against Jury and Gene."
+      "body": "For LinkedIn solvers, Dating can feel separate at first, but dating pool becomes clear once the shared hidden word has been tested against Jury and Gene."
     }
   ],
   "display": {
-    "connectorSummary": "a compound-phrase board built around pool",
+    "connectorSummary": "a LinkedIn compound-phrase board built around pool",
     "fastStrategy": "Use Swimming as the easy entry, then verify the harder middle clues before locking the answer.",
     "clueTableRows": [
       {
@@ -113,7 +113,7 @@
       "people groups"
     ],
     "whyFalseStartPlausible": [
-      "Car and Swimming can both point toward movement, so that first read is easy to try.",
+      "For LinkedIn solvers, Car and Swimming can both point toward movement, so that first read is easy to try.",
       "Dating and Jury both involve groups of people, but Gene makes that reading too narrow."
     ],
     "breakingClue": "Jury",
@@ -122,7 +122,7 @@
   },
   "turningPoint": {
     "clue": "Jury",
-    "whyDecisive": "Jury is decisive because jury pool is precise, formal, and not just an everyday visual clue.",
+    "whyDecisive": "For LinkedIn solvers, Jury is decisive because jury pool is precise, formal, and not just an everyday visual clue.",
     "whatChangedAfterIt": "After Jury worked, the puzzle became a compound-phrase check instead of a loose topic search."
   },
   "clueRows": [
