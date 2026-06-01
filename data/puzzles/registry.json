@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 762,
+    "slug": "pinpoint-answer-762",
+    "publishDate": "2026-06-01",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Fly",
+      "Cricket",
+      "June beetle",
+      "Praying mantis",
+      "Lightning bug"
+    ],
+    "mainAnswer": "Names of insects",
+    "category": "Names of insects",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Fly, Cricket, June beetle, Praying mantis, Lightning bug - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-01T07:16:29.053Z"
+  },
+  {
     "puzzleNumber": 761,
     "slug": "pinpoint-answer-761",
     "publishDate": "2026-05-31",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Assembly diagrams",
@@ -16,7 +35,7 @@
     "category": "Places to find arrows",
     "difficultyLevel": "Moderate",
     "shortSummary": "Assembly diagrams, Compass roses, and Archery classes don't immediately form a clear set. The solve tightens with a later clue.",
-    "updatedAt": "2026-05-31T07:11:22.880Z"
+    "updatedAt": "2026-06-01T07:16:29.053Z"
   },
   {
     "puzzleNumber": 760,
