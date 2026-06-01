@@ -173,9 +173,15 @@ function polishConnectorSummary(value: string): string {
   return cleanReasoningText(value).replace(/^a category board focused on\s+/i, "");
 }
 
+function isTooGenericConnectorSummary(value: string): boolean {
+  const normalized = normalizePhraseTokens(value);
+  return ["thing", "things", "word", "words", "item", "items", "clue", "clues"].includes(normalized);
+}
+
 function getSafeConnectorSummary(puzzle: PuzzleDetail): string {
   const candidates = [puzzle.display.connectorSummary, puzzle.categoryPrecisionNote]
     .map((candidate) => polishConnectorSummary(candidate ?? ""))
+    .filter((candidate) => !isTooGenericConnectorSummary(candidate))
     .filter(Boolean);
 
   const safeCandidate = candidates.find((candidate) => !paragraphMentionsAnswer(candidate, puzzle.answer));
@@ -202,24 +208,27 @@ function formatAnswerTitle(answer: string): string {
   return answer.length > 58 ? "Answer" : `Answer: ${answer}`;
 }
 
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 function isMultiWordText(value: string): boolean {
   return wordCount(value) > 1;
 }
 
-function softenRepeatedClueMention(value: string, clue: string, replacement: string): string {
+function softenRepeatedClueMention(value: string, clue: string): string {
   if (!isMultiWordText(clue)) {
     return value;
   }
 
   return cleanReasoningText(value)
-    .replace(new RegExp(`"(${escapeRegExp(clue)})"`, "gi"), replacement)
-    .replace(new RegExp(`\\b${escapeRegExp(clue)}\\b`, "gi"), replacement)
+    .replace(new RegExp(`"(${escapeRegExp(clue)})"`, "gi"), "this clue")
+    .replace(new RegExp(`\\b${escapeRegExp(clue)}\\b`, "gi"), "this clue")
+    .replace(/(^|[.!?]\s+)this clue\b/g, "$1This clue")
+    .replace(/\bThis clue is the clue that\b/g, "This clue")
+    .replace(/\bthis clue is the clue that\b/g, "this clue")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function buildBoardCheckFitText(puzzle: PuzzleDetail): string {
@@ -443,14 +452,12 @@ export function buildReasoningArticleDraft(puzzle: PuzzleDetail): ReasoningArtic
     ]
       .filter(Boolean)
       .map((paragraph) =>
-        hasMultiWordTurningClue
-          ? softenRepeatedClueMention(paragraph, puzzle.turningPoint!.clue, "That clue")
-          : paragraph,
+        hasMultiWordTurningClue ? softenRepeatedClueMention(paragraph, puzzle.turningPoint!.clue) : paragraph,
       );
 
     blocks.push({
       body: [
-        hasMultiWordTurningClue ? "Next up, the turning clue changed the solve." : `Next up: ${puzzle.turningPoint.clue}.`,
+        `Next up: ${puzzle.turningPoint.clue}.`,
         ...(turnBody.length > 0
           ? turnBody
           : [`${puzzle.turningPoint.clue} made the earlier ideas easier to test against the full board.`]),

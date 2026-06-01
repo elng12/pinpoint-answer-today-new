@@ -43,7 +43,8 @@
     "slug": "pinpoint-answer-759",
     "publishDate": "2026-05-29",
     "status": "archived",
-    "detailState": "fallback_full",
+    "detailState": "published",
+    "publishMode": "full-analysis",
     "clues": [
       "Apples",
       "Chestnuts",
@@ -54,8 +55,8 @@
     "mainAnswer": "Things that grow on trees",
     "category": "Things that grow on trees",
     "difficultyLevel": "Moderate",
-    "shortSummary": "Pinpoint Answer Today asks: what links Apples, Chestnuts, Moss, Bark, Pine needles - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-30T07:04:26.122Z"
+    "shortSummary": "Apples, Chestnuts, Moss, Bark, and Pine needles look like loose nature clues until Pine needles points LinkedIn Pinpoint 759 back to trees.",
+    "updatedAt": "2026-05-31T16:38:12.000Z"
   },
   {
     "puzzleNumber": 758,
