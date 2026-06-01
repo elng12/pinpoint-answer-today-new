@@ -63,7 +63,8 @@
     "slug": "pinpoint-answer-758",
     "publishDate": "2026-05-28",
     "status": "archived",
-    "detailState": "fallback_full",
+    "detailState": "published",
+    "publishMode": "full-analysis",
     "clues": [
       "Way",
       "Mat",
@@ -74,8 +75,8 @@
     "mainAnswer": "Words that come after “door”",
     "category": "Words that come after “door”",
     "difficultyLevel": "Moderate",
-    "shortSummary": "Pinpoint Answer Today asks: what links Way, Mat, Bell, Jamb, Knob - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-05-29T07:07:34.888Z"
+    "shortSummary": "Way, Mat, Bell, Jamb, and Knob look broad until Knob points LinkedIn Pinpoint 758 back to door words: doorway, doormat, doorbell, doorjamb, and doorknob.",
+    "updatedAt": "2026-06-01T00:00:00.000Z"
   },
   {
     "puzzleNumber": 757,

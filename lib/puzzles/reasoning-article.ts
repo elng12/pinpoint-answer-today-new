@@ -233,7 +233,7 @@ function escapeRegExp(value: string): string {
 
 function buildBoardCheckFitText(puzzle: PuzzleDetail): string {
   if (puzzle.questionType === "phrase") {
-    return "all use the repeated word after each clue";
+    return "all use the same shared word in one fixed slot";
   }
 
   if (puzzle.questionType === "category") {

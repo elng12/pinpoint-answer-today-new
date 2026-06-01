@@ -3,7 +3,8 @@
   "slug": "pinpoint-answer-758",
   "publishDate": "2026-05-28",
   "isoDate": "2026-05-28",
-  "detailState": "fallback_full",
+  "detailState": "published",
+  "publishMode": "full-analysis",
   "bodyMode": "standard",
   "pageExperienceMode": "full-analysis",
   "questionType": "phrase",
@@ -32,18 +33,19 @@
     "Knob": "Knob is the clue that makes the phrase pattern in words that come after “door” concrete enough to test."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Way, Mat do not immediately advertise one shared phrase slot before Knob shows where the repeated word belongs. Knob behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Knob locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
-    "Once that phrase appears, examples like doorway and doormat stop feeling guessed and start reading like ordinary language under familiar words built with one shared opening word.",
-    "Doorbell, doorjamb, and doorknob show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was the pattern Words that come after “door”. More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why the door-before-each-clue reading fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "Today's puzzle looked like a simple word list at first because Way and Mat can point in several directions.",
+    "The full clue path was Way Mat Bell Jamb Knob, and that order mattered for LinkedIn Pinpoint 758.",
+    "My first read was a loose home or object theme. That felt possible, but it did not explain why every clue needed the same missing word.",
+    "Way Mat Bell became easier to read once door was tested, because doorway, doormat, and doorbell are all clean everyday words.",
+    "Jamb and Knob sealed it. Doorjamb and doorknob both force the same opening word, so Way Mat Bell Jamb Knob can be checked as one phrase pattern.",
+    "That full-board check turns Way into doorway and Mat into doormat instead of leaving them as loose standalone meanings.",
+    "The answer was \"Words that come after “door”\"."
   ],
   "solutionNarrative": [
-    "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Knob\" feel exact enough.",
-    "Once \"Knob\" clicked, the phrase pattern was finally clear. The same word fit before the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
-    "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
-    "The answer was the pattern Words that come after “door”."
+    "I first treated Way and Mat as broad clues, because they can sit in many normal phrases. That was too loose; it did not give me one fixed word to test against the whole board.",
+    "The Way Mat Bell stretch was the first useful turn. Doorbell is common, so I tried door before the earlier clues and got doorway and doormat.",
+    "Jamb and Knob made the solve feel locked. Doorjamb and doorknob are exact enough that the answer no longer depends on a vague home theme.",
+    "Once I checked all five items that way, the board resolved as one shared opening word. The answer was \"Words that come after “door”\"."
   ],
   "lessons": [
     {
@@ -105,23 +107,23 @@
     }
   ],
   "solvePath": {
-    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "firstRead": "Way and Mat first pointed toward a loose home or object read, so the board still needed one exact shared word.",
     "falseStarts": [
-      "a loose topic list",
+      "a loose home theme",
       "standalone clue meanings"
     ],
     "whyFalseStartPlausible": [
-      "Way, Mat do not immediately advertise one shared phrase slot before Knob shows where the repeated word belongs.",
+      "the first three clues, Way Mat Bell, looked home-adjacent; that Way Mat Bell run still did not prove door until Jamb and Knob narrowed the missing word.",
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
     "breakingClue": "Knob",
-    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Knob\" feel exact enough.\n\nOnce \"Knob\" clicked, the phrase pattern was finally clear. The same word fit before the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.\n\nThe answer was the pattern Words that come after “door”.",
-    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Knob locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    "pivot": "I first tried a loose home theme, because the opening clues were broad enough to support a few phrase reads. But that guess did not make Jamb or Knob feel exact enough.\n\nOnce Knob clicked as doorknob, the phrase pattern was clear. The same word fit before the earlier clues without forcing any of them.\n\nAfter that, I could go back through the board and watch Way, Mat, Bell, Jamb, and Knob turn into ordinary words.\n\nThe answer was \"Words that come after “door”\".",
+    "fullBoardConfirmation": "Doorway, doormat, doorbell, doorjamb, and doorknob all use door before the clue, so the answer behaves like one complete phrase family instead of a few lucky matches."
   },
   "turningPoint": {
     "clue": "Knob",
-    "whyDecisive": "Knob is the clue that makes the shared answer concrete enough to test across the full board.",
-    "whatChangedAfterIt": "Once Knob lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "whyDecisive": "Knob made the door pattern concrete because doorknob is exact and familiar.",
+    "whatChangedAfterIt": "Once Knob lands, the earlier clues stop feeling broad and start reading as doorway, doormat, and doorbell."
   },
   "clueRows": [
     {
@@ -199,16 +201,16 @@
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "Way, Mat do not immediately advertise one shared phrase slot before Knob shows where the repeated word belongs.",
-      "whyRejected": "Knob behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "a loose home theme",
+      "whyPlausible": "The first three clues, Way Mat Bell, look home-adjacent; that Way Mat Bell run still does not prove door until Jamb and Knob narrow the missing word.",
+      "whyRejected": "Knob behaves like a proof clue for one fixed door pattern, not just a broad topic match."
     },
     {
       "label": "standalone clue meanings",
       "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once Knob locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "whyRejected": "Once Knob locks the phrase position, the full board resolves under door instead of five separate definitions."
     }
   ],
-  "setValidationSummary": "Doorbell, doorjamb, and doorknob show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+  "setValidationSummary": "Doorway, doormat, doorbell, doorjamb, and doorknob all use door before the clue, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose home theme"
 }
