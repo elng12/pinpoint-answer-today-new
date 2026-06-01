@@ -6,6 +6,8 @@
   "detailState": "published",
   "bodyMode": "short",
   "pageExperienceMode": "light-explainer",
+  "questionType": "phrase",
+  "difficultyBand": "medium",
   "clues": [
     "Motor",
     "Damage",
@@ -55,6 +57,77 @@
     {
       "question": "What solving move helps with phrase-pattern Pinpoint boards like #752?",
       "answer": "Test one connector against every clue before choosing a category. Here, control works after all five clues, which is stronger than grouping them by topic."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Motor Damage Quality Remote Air traffic can look like five unrelated topics at first, so the first read can drift toward a loose list instead of one phrase pattern.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Motor Damage Quality Remote Air traffic looks like a loose topic list before Air traffic forces one shared slot.",
+      "Remote can point toward devices, so it is easy to stop too early instead of checking the full board."
+    ],
+    "breakingClue": "Air traffic",
+    "pivot": "Air traffic is the clue that makes the missing connector easier to test, because air traffic control is a fixed phrase and not just a loose subject.",
+    "fullBoardConfirmation": "After that turn, the full Motor Damage Quality Remote Air traffic path checks cleanly: Motor control, Damage control, Quality control, Remote control, and Air traffic control all use the same slot."
+  },
+  "turningPoint": {
+    "clue": "Air traffic",
+    "whyDecisive": "Air traffic is decisive because air traffic control is a fixed phrase that makes the missing connector easy to test.",
+    "whatChangedAfterIt": "Once Air traffic lands, the earlier clues stop feeling broad and start reading as phrases with the same connector."
+  },
+  "clueRows": [
+    {
+      "clue": "Motor",
+      "surfaceMisread": "machines",
+      "resolvedPhraseOrMember": "Motor control",
+      "nonObviousWhy": "Motor fits because motor control is a normal phrase about regulating movement or machinery."
+    },
+    {
+      "clue": "Damage",
+      "surfaceMisread": "repairs",
+      "resolvedPhraseOrMember": "Damage control",
+      "nonObviousWhy": "Damage fits because damage control is a common phrase about limiting harm after a problem."
+    },
+    {
+      "clue": "Quality",
+      "surfaceMisread": "standards",
+      "resolvedPhraseOrMember": "Quality control",
+      "nonObviousWhy": "Quality fits because quality control is the process of checking standards and preventing mistakes."
+    },
+    {
+      "clue": "Remote",
+      "surfaceMisread": "devices",
+      "resolvedPhraseOrMember": "Remote control",
+      "nonObviousWhy": "Remote fits because remote control is a familiar phrase for operating something from a distance."
+    },
+    {
+      "clue": "Air traffic",
+      "surfaceMisread": "aviation",
+      "resolvedPhraseOrMember": "Air traffic control",
+      "nonObviousWhy": "Air traffic fits because it creates the most specific phrase and confirms the connector."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What is the answer for LinkedIn Pinpoint #752?",
+      "answer": "The answer is Words that come before \"control\" because every clue forms a familiar phrase with the same connector.",
+      "tiedClue": "Motor"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Motor and Damage connect in LinkedIn Pinpoint #752?",
+      "answer": "Motor and Damage both work before the same connector, and the rest of the board confirms that phrase pattern.",
+      "tiedClue": "Damage"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Air traffic the key clue in LinkedIn Pinpoint #752?",
+      "answer": "Air traffic is the key clue because it gives a very specific phrase with the connector and makes the earlier clues easier to trust.",
+      "tiedClue": "Air traffic"
     }
   ]
 }
