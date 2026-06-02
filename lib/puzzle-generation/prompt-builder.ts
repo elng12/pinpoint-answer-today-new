@@ -119,9 +119,11 @@ Hard requirements:
    - if difficultyBand is "obvious", include at least 1 candidate
    - if difficultyBand is "medium" or "hard", include at least 2 candidates
    - each candidate needs label and whyPlausible, and whyRejected when it helps
-18. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
-19. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
-20. Output raw JSON only, no markdown.
+18. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
+19. If you include root turningPoint, turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
+20. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
+21. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
+22. Output raw JSON only, no markdown.
 
 Primary writing goal:
 - Build the source material for a short archive article, not a report.

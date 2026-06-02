@@ -1305,6 +1305,8 @@ function buildWorkerSpecialPhrase(clue: string, answer: string): string {
 
 function buildWorkerFallbackPhrase(clue: string, answer: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
+  const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+  const normalizedBase = baseClue || clue;
   if (pattern.kind === "before") {
     return buildWorkerSpecialPhrase(clue, answer) || `${clue} ${pattern.token}`.trim();
   }
@@ -1312,14 +1314,35 @@ function buildWorkerFallbackPhrase(clue: string, answer: string): string {
     return buildWorkerSpecialPhrase(clue, answer) || `${pattern.token} ${clue}`.trim();
   }
   if (pattern.kind === "typed-category") {
-    const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
-    const normalizedBase = baseClue || clue;
     const baseLoose = normalizeLooseWorkerText(normalizedBase);
     const nounLoose = normalizeLooseWorkerText(pattern.singularNoun);
     if (nounLoose && baseLoose.includes(nounLoose)) return normalizedBase;
     return `${normalizedBase} ${pattern.singularNoun}`.trim();
   }
-  return clue.trim();
+  if (pattern.kind === "category") {
+    const thingsThatAre = pattern.label.match(/^Things that are\s+(.+)$/i);
+    const descriptor = thingsThatAre?.[1]?.trim();
+    if (descriptor) {
+      const baseLoose = normalizeLooseWorkerText(normalizedBase);
+      const descriptorLoose = normalizeLooseWorkerText(descriptor);
+      return descriptorLoose && !baseLoose.includes(descriptorLoose)
+        ? `${descriptor.toLowerCase()} ${normalizedBase.toLowerCase()}`.trim()
+        : normalizedBase;
+    }
+
+    const namesOf = pattern.label.match(/^Names of\s+(.+)$/i);
+    if (namesOf?.[1]) {
+      const singularLabel = singularizeTrailingWord(namesOf[1].trim()).toLowerCase();
+      const article = /^[aeiou]/i.test(singularLabel) ? "an" : "a";
+      return `${normalizedBase} as ${article} ${singularLabel}`.trim();
+    }
+
+    const label = pattern.label.toLowerCase();
+    if (label && normalizeLooseWorkerText(normalizedBase) !== normalizeLooseWorkerText(label)) {
+      return `${normalizedBase} in ${label}`.trim();
+    }
+  }
+  return normalizedBase;
 }
 
 function buildWorkerClueExplanation(clue: string, phrase: string, answer: string, index: number, turningPoint: string): string {
@@ -2009,6 +2032,7 @@ function buildEnrichedSections(
 ): JsonRecord {
   if (!draftSections) return fallbackSections ?? {};
   return {
+    ...(Array.isArray(draftSections.articleBlocks) ? { articleBlocks: draftSections.articleBlocks } : {}),
     ...(typeof draftSections.overview === "string" ? { overview: draftSections.overview } : {}),
     ...(typeof draftSections.solutionEmergence === "string"
       ? { solutionEmergence: draftSections.solutionEmergence }
@@ -3715,6 +3739,77 @@ export function resolvePublicDetailExperienceDecision({
   };
 }
 
+function getPublicFullAnalysisPayloadBlockReason({
+  puzzleDate,
+  doc,
+  enrichedPayload,
+  puzzleNumber,
+}: {
+  puzzleDate: string;
+  doc: Doc;
+  enrichedPayload: JsonRecord;
+  puzzleNumber: number;
+}): string | null {
+  const detailState = resolvePublishDetailState(enrichedPayload.detailState);
+  if (!isPublicPublishDetailState(detailState)) return null;
+
+  const words = Array.isArray(enrichedPayload.rawWords)
+    ? (enrichedPayload.rawWords as string[])
+    : extractWordsFromDoc(doc);
+  const answer = sanitizePublishedAnswerLabel(enrichedPayload.mainAnswer || doc.mainAnswer || doc.theme || "");
+  const slug = `pinpoint-answer-${puzzleNumber}`;
+  const sections = asRecord(enrichedPayload.sections) ?? {};
+  const analysis = asRecord(enrichedPayload.analysis) ?? {};
+  const slots = asRecord(enrichedPayload.slots);
+  const providedEvidence = extractProvidedEvidenceFields(enrichedPayload);
+  const detailRecordCandidate = buildPublishedPuzzleDetailRecord({
+    puzzleNumber,
+    slug,
+    puzzleDate,
+    answer,
+    words,
+    sections,
+    analysis,
+    slots,
+    summary: enrichedPayload.summary,
+    detailState,
+    ...providedEvidence,
+  });
+  const incomingSummary = summarizePublishedPuzzleDetail(detailRecordCandidate);
+  if (!incomingSummary) {
+    return "full-analysis payload could not be summarized";
+  }
+  if (!isDetailSnapshotAtOrAboveFloor(incomingSummary)) {
+    return `full-analysis content floor missed (${describeDetailSnapshot(incomingSummary)})`;
+  }
+
+  const fullAnalysisReadiness = getFullAnalysisStructureReadiness(detailRecordCandidate);
+  if (!fullAnalysisReadiness.ok) {
+    return `full-analysis structure guard missed (${fullAnalysisReadiness.reason})`;
+  }
+
+  const eligibility = validatePublishEligibility({
+    slug,
+    detail: detailRecordCandidate as Record<string, unknown>,
+    registryEntry: {
+      puzzleNumber,
+      slug,
+      publishDate: puzzleDate,
+      status: "live",
+      detailState,
+      clues: words,
+      mainAnswer: answer,
+    },
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+  });
+  if (!eligibility.ok) {
+    return `publish eligibility failed (${formatPublishGateIssues(eligibility.issues)})`;
+  }
+
+  return null;
+}
+
 function resolvePublishDetailState(value: unknown): PublishDetailState {
   const normalized = String(value || "").trim().toLowerCase();
   if (
@@ -4714,7 +4809,7 @@ async function enrichPublishToSite(
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
   const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
   const timeoutMs = parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000);
-  const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "google/gemini-2.0-flash-001");
+  const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "meta-llama/llama-3.3-70b-instruct");
   const retryModel = selectModel(env.AUTO_ENRICH_RETRY_MODEL, enrichModel);
   const draftAttempts = parseAttemptCount(env.AUTO_ENRICH_DRAFT_ATTEMPTS, 2, 3);
 
@@ -4946,7 +5041,27 @@ async function enrichPublishToSite(
       await options.onDetailStateChange?.("validated");
     }
 
-    await publishToNewSiteGitHub(env, puzzleDate, doc, enrichedPayload, puzzleNumber);
+    let publishedPayload = enrichedPayload;
+    const publishBlockReason = getPublicFullAnalysisPayloadBlockReason({
+      puzzleDate,
+      doc,
+      enrichedPayload,
+      puzzleNumber,
+    });
+    if (publishBlockReason) {
+      publishDetailState = "fallback_full";
+      publishedPayload = {
+        ...buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words),
+        detailState: publishDetailState,
+      };
+      console.warn("[enrich] switched to fallback_full before GitHub publish", {
+        puzzleDate,
+        puzzleNumber,
+        reason: publishBlockReason,
+      });
+    }
+
+    await publishToNewSiteGitHub(env, puzzleDate, doc, publishedPayload, puzzleNumber);
     await options.onDetailStateChange?.(publishDetailState);
 
     await env.PP_DATA.put(doneKey, new Date().toISOString(), {
@@ -4955,7 +5070,7 @@ async function enrichPublishToSite(
     return {
       status: publishDetailState === "fallback_full" ? "fallback_full" : "enriched",
       puzzleNumber,
-      payload: enrichedPayload,
+      payload: publishedPayload,
       detailState: publishDetailState,
     };
   } catch (error) {
@@ -5011,7 +5126,7 @@ async function localizePublishOne(
   }
   const doneKey = i18nPublishDoneKeyOf(puzzleDate, locale);
   const runningKey = i18nPublishRunningKeyOf(puzzleDate, locale);
-  const i18nModel = selectModel(env.AUTO_I18N_MODEL, "google/gemini-2.0-flash-001");
+  const i18nModel = selectModel(env.AUTO_I18N_MODEL, "meta-llama/llama-3.3-70b-instruct");
 
   if (await env.PP_DATA.get(doneKey)) {
     return {

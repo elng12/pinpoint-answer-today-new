@@ -66,7 +66,7 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 - 如果用 OpenRouter，推荐统一口径为：
   - `OPENAI_API_KEY=<OpenRouter key>`
   - `OPENAI_BASE_URL=https://openrouter.ai/api/v1`
-  - `AI_MODEL=google/gemini-2.0-flash-001` 或你实际在用的模型
+  - `AI_MODEL=meta-llama/llama-3.3-70b-instruct` 或你实际在用的模型
 
 ---
 

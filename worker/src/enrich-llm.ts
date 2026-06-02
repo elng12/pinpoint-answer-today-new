@@ -234,9 +234,11 @@ Hard requirements:
    - if difficultyBand is "obvious", include at least 1 candidate
    - if difficultyBand is "medium" or "hard", include at least 2 candidates
    - each candidate needs label and whyPlausible, and whyRejected when it helps
-18. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
-19. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
-20. Output raw JSON only, no markdown.
+18. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
+19. If you include root turningPoint, turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
+20. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
+21. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
+22. Output raw JSON only, no markdown.
 
 Primary writing goal:
 - Build the source material for a short archive article, not a report.
@@ -298,8 +300,9 @@ Input data:
 // ---------------------------------------------------------------------------
 
 const AI_MAX_RETRIES = 3;
+const AI_EMPTY_CONTENT_MAX_ATTEMPTS = 2;
 const AI_RETRY_BASE_DELAY_MS = 800;
-const AI_REQUEST_TIMEOUT_MS = 30_000;
+const AI_REQUEST_TIMEOUT_MS = 45_000;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -401,45 +404,59 @@ export async function callLLM(
     model,
   };
 
-  // OpenAI and most compatible endpoints support response_format
-  if (model.includes("gpt-") || model.includes("glm-") || model.includes("gemini")) {
+  // OpenAI-compatible models that we use in production support JSON object mode.
+  if (
+    model.includes("gpt-") ||
+    model.includes("glm-") ||
+    model.includes("gemini") ||
+    model.includes("deepseek/") ||
+    model.includes("llama")
+  ) {
     requestBody.response_format = { type: "json_object" };
   }
 
-  debugLog?.(
-    `[enrich-llm] Calling AI API: ${apiUrl} model=${model}`,
-  );
-
-  const responseText = await fetchTextWithRetry(
-    apiUrl,
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify(requestBody),
-    },
-    debugLog,
-  );
-
-  let data: { choices?: Array<{ message?: { content?: string } }> };
-  try {
-    data = JSON.parse(responseText) as { choices?: Array<{ message?: { content?: string } }> };
-  } catch (error) {
-    throw new Error(
-      `Failed to parse AI API response as JSON: ${
-        (error as Error)?.message ?? "unknown"
-      }. First 500 chars: ${responseText.slice(0, 500)}`,
+  for (let contentAttempt = 1; contentAttempt <= AI_EMPTY_CONTENT_MAX_ATTEMPTS; contentAttempt += 1) {
+    debugLog?.(
+      `[enrich-llm] Calling AI API: ${apiUrl} model=${model}`,
     );
+
+    const responseText = await fetchTextWithRetry(
+      apiUrl,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(requestBody),
+      },
+      debugLog,
+    );
+
+    let data: { choices?: Array<{ message?: { content?: string } }> };
+    try {
+      data = JSON.parse(responseText) as { choices?: Array<{ message?: { content?: string } }> };
+    } catch (error) {
+      throw new Error(
+        `Failed to parse AI API response as JSON: ${
+          (error as Error)?.message ?? "unknown"
+        }. First 500 chars: ${responseText.slice(0, 500)}`,
+      );
+    }
+
+    const content = data.choices?.[0]?.message?.content;
+    if (content && content.trim()) {
+      return content;
+    }
+
+    if (contentAttempt < AI_EMPTY_CONTENT_MAX_ATTEMPTS) {
+      debugLog?.(`[enrich-llm] Empty AI content returned; retrying (${contentAttempt}/${AI_EMPTY_CONTENT_MAX_ATTEMPTS})`);
+      await sleep(AI_RETRY_BASE_DELAY_MS * contentAttempt);
+      continue;
+    }
   }
 
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) {
-    throw new Error("No content returned from AI");
-  }
-
-  return content;
+  throw new Error("No content returned from AI");
 }
 
 // ---------------------------------------------------------------------------
@@ -558,8 +575,10 @@ Hard rules:
 15. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
 16. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
 17. Each clueRows item should include phraseExample, and phraseExample should be a short fit-check phrase/example rather than the clue repeated.
-18. Keep the prose natural and article-like, not robotic or overly analytical.
-19. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+18. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
+19. turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
+20. Keep the prose natural and article-like, not robotic or overly analytical.
+21. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}

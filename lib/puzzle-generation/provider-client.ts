@@ -16,7 +16,7 @@ type RequestAIResponseArgs = {
 
 const AI_MAX_RETRIES = 3;
 const AI_RETRY_BASE_DELAY_MS = 800;
-const AI_REQUEST_TIMEOUT_MS = 30_000;
+const AI_REQUEST_TIMEOUT_MS = 45_000;
 
 function normalizeProviderText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
@@ -137,7 +137,7 @@ export function resolveDefaultModel(provider: PuzzleProvider, endpoint?: string)
   if (provider === "azure") {
     return "gpt-4.1-mini";
   }
-  return endpoint ? "google/gemini-2.0-flash-001" : "gpt-4.1-mini";
+  return endpoint ? "meta-llama/llama-3.3-70b-instruct" : "gpt-4.1-mini";
 }
 
 export function ensureProviderModelCompatibility(
@@ -217,7 +217,10 @@ async function requestOpenAICompatibleContent({
   if (provider !== "azure") {
     requestBody.model = model;
   }
-  if ((provider === "openai" || provider === "zhipu") && (model.includes("gpt-") || model.includes("glm-"))) {
+  if (
+    (provider === "openai" || provider === "zhipu") &&
+    (model.includes("gpt-") || model.includes("glm-") || model.includes("llama"))
+  ) {
     requestBody.response_format = { type: "json_object" };
   }
 

@@ -57,7 +57,7 @@ function resolveDefaultModel(
   if (provider === "azure") {
     return process.env.AI_MODEL || "gpt-4.1-mini";
   }
-  return process.env.OPENAI_BASE_URL ? "google/gemini-2.0-flash-001" : "gpt-4.1-mini";
+  return process.env.OPENAI_BASE_URL ? "meta-llama/llama-3.3-70b-instruct" : "gpt-4.1-mini";
 }
 
 function asRecord(value: unknown): DraftRecord | null {
@@ -603,8 +603,10 @@ ${articleBlockRule}
 14. If difficultyBand is "obvious", include at least 1 wrongGuessCandidates item. If difficultyBand is "medium" or "hard", include at least 2. Every item needs label and whyPlausible, and whyRejected when it helps.
 15. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
 16. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
-17. Keep the prose natural and article-like, not robotic or overly analytical.
-18. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+17. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
+18. turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
+19. Keep the prose natural and article-like, not robotic or overly analytical.
+20. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}
