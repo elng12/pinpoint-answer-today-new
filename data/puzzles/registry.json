@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 763,
+    "slug": "pinpoint-answer-763",
+    "publishDate": "2026-06-02",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Crows",
+      "Ebony",
+      "Ripe olives",
+      "Charcoal",
+      "Asphalt"
+    ],
+    "mainAnswer": "Things that are black",
+    "category": "Things that are black",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Crows, Ebony, Ripe olives, Charcoal, Asphalt - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-02T08:06:01.802Z"
+  },
+  {
     "puzzleNumber": 762,
     "slug": "pinpoint-answer-762",
     "publishDate": "2026-06-01",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "publishMode": "full-analysis",
     "clues": [
@@ -17,7 +36,7 @@
     "category": "Names of insects",
     "difficultyLevel": "Moderate",
     "shortSummary": "Fly, Cricket, June beetle, Praying mantis, and Lightning bug look like mixed creatures until the board settles on one shared naming pattern.",
-    "updatedAt": "2026-06-01T07:10:48.834Z"
+    "updatedAt": "2026-06-02T08:06:01.802Z"
   },
   {
     "puzzleNumber": 761,
