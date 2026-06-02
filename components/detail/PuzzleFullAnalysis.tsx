@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import type { ArchiveEntry, PuzzleDetail as PuzzleDetailRecord } from "@/lib/puzzles/data";
 import {
@@ -135,8 +136,36 @@ export function PuzzleFullAnalysis({
   adjacentNext: ArchiveEntry | null;
 }) {
   const reasoningStory = buildReasoningArticleDraft(puzzle).blocks;
+  const reasoningPreview = reasoningStory.slice(0, 1);
+  const reasoningFullText = reasoningStory.slice(1);
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
+  const teachingSection = renderWhatThisPinpointTeaches(puzzle, visibleFaqEntries);
   const recentLinks = recentPuzzles.filter((entry) => entry.slug !== puzzle.slug).slice(0, 10);
+  const renderReasoningBlocks = (blocks: typeof reasoningStory) =>
+    blocks.map((block) => (
+      <article
+        className={`legacy-reasoning-block${
+          block.variant === "answer" ? " legacy-reasoning-block-answer" : ""
+        }${block.title ? "" : " legacy-reasoning-block-lead"}`}
+        key={`${puzzle.slug}-reasoning-${block.key}`}
+      >
+        {block.title ? <h3 className="legacy-reasoning-title">{block.title}</h3> : null}
+        <div className="legacy-reasoning-copy-stack">
+          {block.body.map((paragraph, index) => (
+            <p className="legacy-reasoning-copy" key={`${block.key}-paragraph-${index}`}>
+              {paragraph}
+            </p>
+          ))}
+        </div>
+        {block.bullets && block.bullets.length > 0 ? (
+          <ul className="legacy-reasoning-list">
+            {block.bullets.map((item) => (
+              <li key={`${block.key}-bullet-${item}`}>{item}</li>
+            ))}
+          </ul>
+        ) : null}
+      </article>
+    ));
 
   return (
     <>
@@ -158,35 +187,23 @@ export function PuzzleFullAnalysis({
           </header>
 
           <section className="legacy-analysis-section legacy-analysis-section-first">
-            <div className="legacy-reasoning-story">
-              {reasoningStory.map((block) => (
-                <article
-                  className={`legacy-reasoning-block${
-                    block.variant === "answer" ? " legacy-reasoning-block-answer" : ""
-                  }${block.title ? "" : " legacy-reasoning-block-lead"}`}
-                  key={`${puzzle.slug}-reasoning-${block.key}`}
-                >
-                  {block.title ? <h3 className="legacy-reasoning-title">{block.title}</h3> : null}
-                  <div className="legacy-reasoning-copy-stack">
-                    {block.body.map((paragraph, index) => (
-                      <p className="legacy-reasoning-copy" key={`${block.key}-paragraph-${index}`}>
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                  {block.bullets && block.bullets.length > 0 ? (
-                    <ul className="legacy-reasoning-list">
-                      {block.bullets.map((item) => (
-                        <li key={`${block.key}-bullet-${item}`}>{item}</li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </article>
-              ))}
+            <div className="legacy-reasoning-story legacy-reasoning-story-preview">
+              {renderReasoningBlocks(reasoningPreview)}
             </div>
+            {reasoningFullText.length > 0 ? (
+              <details className="legacy-reasoning-details">
+                <summary className="legacy-reasoning-read-more">
+                  <ChevronRight className="legacy-reasoning-read-more-icon" aria-hidden="true" />
+                  <span className="legacy-reasoning-more-text">Read More</span>
+                  <span className="legacy-reasoning-less-text">Show Less</span>
+                </summary>
+                <div className="legacy-reasoning-story legacy-reasoning-story-full">
+                  {renderReasoningBlocks(reasoningFullText)}
+                </div>
+                {teachingSection}
+              </details>
+            ) : null}
           </section>
-
-          {renderWhatThisPinpointTeaches(puzzle, visibleFaqEntries)}
         </section>
 
         <aside className="legacy-next-shell" aria-label="Recent Pinpoint answer pages">
