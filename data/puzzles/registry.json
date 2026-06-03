@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 764,
+    "slug": "pinpoint-answer-764",
+    "publishDate": "2026-06-03",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Trifle",
+      "Parfait",
+      "Tiramisu",
+      "Baklava",
+      "Seven-layer cake"
+    ],
+    "mainAnswer": "Desserts (all with many layers)",
+    "category": "Desserts (all with many layers)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Trifle, Parfait, Tiramisu, Baklava, Seven-layer cake - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-03T07:26:27.761Z"
+  },
+  {
     "puzzleNumber": 763,
     "slug": "pinpoint-answer-763",
     "publishDate": "2026-06-02",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Crows",
@@ -16,7 +35,7 @@
     "category": "Things that are black",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Crows, Ebony, Ripe olives, Charcoal, Asphalt - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-02T08:06:01.802Z"
+    "updatedAt": "2026-06-03T07:26:27.761Z"
   },
   {
     "puzzleNumber": 762,
