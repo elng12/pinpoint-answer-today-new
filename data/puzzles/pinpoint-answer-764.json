@@ -40,9 +40,9 @@
     "The answer was \"Desserts (all with many layers)\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Desserts (all with many layers), which is why \"Desserts (all with many layers)\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "I did not have a clean answer from the first clue. I initially drifted toward a broader umbrella topic, but that line of thinking never explained \"Seven-layer cake\" cleanly enough.",
-    "The turn came when I let \"Seven-layer cake\" lead the solve. After that, Trifle and Parfait had to earn their place under the same answer instead of just sharing a loose surface feel.",
-    "The answer was \"Desserts (all with many layers)\"."
+    "At the start, I treated the opening pair as a food hint, but I did not trust that read yet. Two dessert names alone could lead to sweet dishes, chilled cups, party treats, or restaurant menu items. I waited for a clue that would explain the texture of the whole list, not just the food aisle.",
+    "Seven-layer cake changed the solve. The phrase does more than say dessert; it points to visible stacked layers. With that in mind, tiramisu has soaked layers, baklava has pastry layers, and parfait and trifle are often built in layered cups or bowls.",
+    "That made the final check much cleaner. I was no longer choosing a loose sweets label. I was checking whether every item could be understood as a many-layered dessert, and all five examples passed that test."
   ],
   "lessons": [
     {
@@ -110,7 +110,7 @@
       "a one-clue surface theme"
     ],
     "whyFalseStartPlausible": [
-      "Trifle, Parfait can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Trifle, Parfait, Tiramisu, Baklava, Seven-layer cake can point toward several nearby themes before one clue makes the exact category level visible.",
       "Early clues often tempt you to overfit the board around one obvious surface similarity."
     ],
     "breakingClue": "Seven-layer cake",
