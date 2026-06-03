@@ -515,17 +515,23 @@ export function buildSharedFallbackSolutionNarrative(input: {
   clues?: string[];
 }): string[] {
   const { kind, wrongGuess, turningPoint, clues = [] } = input;
-  const earlyCheckText = clues
-    .map(stripFallbackQuotes)
-    .filter((clue) => clue && clue !== stripFallbackQuotes(turningPoint))
+  const cleanClues = clues.map(stripFallbackQuotes).filter(Boolean);
+  const cleanTurningPoint = stripFallbackQuotes(turningPoint);
+  const earlyCheckText = cleanClues
+    .filter((clue) => clue !== cleanTurningPoint)
     .slice(0, 2)
     .join(" and ");
+  const laterCheckText = cleanClues
+    .filter((clue) => clue !== cleanTurningPoint)
+    .slice(2, 4)
+    .join(" and ");
+  const fullCheckText = cleanClues.length >= 5 ? cleanClues.join(", ") : "all five clues";
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
     return [
       `I first tried ${wrongGuess}, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made "${turningPoint}" feel exact enough.`,
       `Once "${turningPoint}" clicked, the phrase pattern was finally clear. The same word fit ${positionText} the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.`,
-      "After that, I could go back through the board and watch the early clues turn into ordinary language instead of near misses.",
+      `After that, I checked ${fullCheckText} one by one. The strong solve was not just that two clues worked; it was that every clue could use the same word in the same slot and still sound like ordinary language.`,
     ];
   }
 
@@ -533,7 +539,7 @@ export function buildSharedFallbackSolutionNarrative(input: {
     return [
       `I first drifted toward ${wrongGuess}, because the early clues were broad enough to sit inside a bigger umbrella topic. That read still felt too loose once "${turningPoint}" showed up.`,
       `The solve improved once I stopped asking what the clues vaguely had in common and started asking what type of thing each clue could specifically be. "${turningPoint}" was the clue that made that shift feel worth testing.`,
-      "After that, the board stopped behaving like a loose topic list and started reading like one exact typed category with members you could actually name.",
+      `After that, I checked ${fullCheckText} as named members of that tighter type. The answer held because each clue could be placed in the same member family without changing the rule halfway through.`,
     ];
   }
 
@@ -541,7 +547,7 @@ export function buildSharedFallbackSolutionNarrative(input: {
     return [
       `I first leaned toward ${wrongGuess}, but that still treated the board like a literal category and never gave "${turningPoint}" enough weight as an anchor clue.`,
       `The turn came when I let "${turningPoint}" define the context. Once the board had one stable subject behind it, the earlier clues stopped feeling scattered and started behaving like references from the same world.`,
-      "That was the point where the solve stopped depending on loose overlap and started feeling like one coherent picture.",
+      `For the final pass, I checked ${fullCheckText} against that subject instead of against a simple object class. That made the connection feel earned, because the clues pointed to one shared context rather than one surface label.`,
     ];
   }
 
@@ -549,14 +555,17 @@ export function buildSharedFallbackSolutionNarrative(input: {
     return [
       `I first drifted toward ${wrongGuess}, because symbol-heavy boards can look like a loose mood or reaction set before the real category appears. That read never made "${turningPoint}" feel specific enough.`,
       `The turn came when I treated "${turningPoint}" as part of one visual family instead of one isolated icon. That made it much easier to re-check the earlier clues as members of the same set.`,
-      "Once the board looked like one visual sequence instead of a random emoji pile, the answer stopped feeling speculative and started feeling testable.",
+      `Then I checked ${fullCheckText} as visual evidence, not as separate reactions. The answer became testable only after the icons worked together as one recognizable visual sequence.`,
     ];
   }
 
   return [
-    `I did not have a clean answer from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningPoint}" cleanly enough.`,
     earlyCheckText
-      ? `The turn came when I let "${turningPoint}" lead the solve. After that, ${earlyCheckText} had to earn their place under the same answer instead of just sharing a loose surface feel.`
+      ? `I started by testing ${earlyCheckText}, but that only gave me a loose direction. I initially drifted toward ${wrongGuess}, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.`
+      : `I did not have a clean answer from the first clue. I initially drifted toward ${wrongGuess}, but that line of thinking never explained "${turningPoint}" cleanly enough.`,
+    laterCheckText
+      ? `The turn came when I let "${turningPoint}" lead the solve. After that, ${laterCheckText} became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.`
       : `The turn came when I let "${turningPoint}" lead the solve. That clue gave me a concrete check on the rest of the board instead of a loose theme.`,
+    `For the final pass, I checked ${fullCheckText} one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.`,
   ];
 }

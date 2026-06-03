@@ -1594,6 +1594,10 @@ async function checkPhraseFallbackDirection() {
     /\bPlates and Coins\b/i,
     "category fallback narrative should name early clues when it explains the pivot",
   );
+  assert.ok(
+    countWords(genericCategoryNarrative.join(" ")) >= 90,
+    "category fallback narrative should be long enough for the public solutionEmergence gate",
+  );
 
   const genericFallbackIssueCodes = collectSemanticLintIssues({
     mainAnswer: "Things shaped like discs",
@@ -3088,6 +3092,8 @@ async function checkWorkerRunsPostPublishPublicAudit() {
   assert.ok(
     workerSource.includes("runNewSitePublicPublishAudit") &&
       workerSource.includes("post-publish public audit failed") &&
+      workerSource.includes("post-publish public audit deferred") &&
+      workerSource.includes("too many subrequests") &&
       workerSource.includes("sitemap does not include the new detail URL") &&
       workerSource.includes("home page does not link to the new detail URL") &&
       workerSource.includes("archive page does not link to the new detail URL") &&

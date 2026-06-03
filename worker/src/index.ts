@@ -2228,6 +2228,7 @@ type PublicFetchTextResult = {
 };
 
 type NewSitePublicPublishAuditResult = {
+  deferred?: boolean;
   ok: boolean;
   issues: string[];
 };
@@ -2279,6 +2280,18 @@ function includesDetailRoute(text: string, route: string): boolean {
   return text.includes(route) || text.includes(route.replace(/\/$/, "")) || text.includes(encodeURI(route));
 }
 
+function isCloudflareSubrequestLimitError(value: string | undefined): boolean {
+  return /too many subrequests/i.test(String(value || ""));
+}
+
+function deferredPublicAuditResult(scope: string, error: string | undefined): NewSitePublicPublishAuditResult {
+  return {
+    deferred: true,
+    ok: true,
+    issues: [`public audit deferred: Cloudflare subrequest limit while checking ${scope}${error ? `: ${error}` : ""}`],
+  };
+}
+
 function classifyNewSitePublicPublishAuditSeverity(issues: string[]): "P0" | "P1" {
   const p0Patterns = [
     "detail page did not return 200",
@@ -2308,11 +2321,17 @@ async function runNewSitePublicPublishAudit(input: {
   const issues: string[] = [];
 
   if (!input.pageReady) {
-    issues.push("detail page did not return 200 during readiness probe");
+    return {
+      ok: false,
+      issues: ["detail page did not return 200 during readiness probe"],
+    };
   }
 
   const detail = await fetchPublicText(`${detailUrl}?__publish_audit=${Date.now()}`);
   if (!detail.ok) {
+    if (isCloudflareSubrequestLimitError(detail.error)) {
+      return deferredPublicAuditResult("detail page", detail.error);
+    }
     issues.push(`detail page fetch failed: ${detail.status ?? "network"} ${detail.error || ""}`.trim());
   } else {
     if (hasNoindexRobotsMeta(detail.text)) {
@@ -2352,6 +2371,9 @@ async function runNewSitePublicPublishAudit(input: {
 
   const sitemap = await fetchPublicText(`${baseUrl}/sitemap.xml?__publish_audit=${Date.now()}`);
   if (!sitemap.ok) {
+    if (isCloudflareSubrequestLimitError(sitemap.error)) {
+      return deferredPublicAuditResult("sitemap", sitemap.error);
+    }
     issues.push(`sitemap fetch failed: ${sitemap.status ?? "network"} ${sitemap.error || ""}`.trim());
   } else if (!includesDetailRoute(sitemap.text, route) && !sitemap.text.includes(detailUrl)) {
     issues.push("sitemap does not include the new detail URL");
@@ -2359,6 +2381,9 @@ async function runNewSitePublicPublishAudit(input: {
 
   const home = await fetchPublicText(`${baseUrl}/?__publish_audit=${Date.now()}`);
   if (!home.ok) {
+    if (isCloudflareSubrequestLimitError(home.error)) {
+      return deferredPublicAuditResult("home page", home.error);
+    }
     issues.push(`home page fetch failed: ${home.status ?? "network"} ${home.error || ""}`.trim());
   } else if (!includesDetailRoute(home.text, route)) {
     issues.push("home page does not link to the new detail URL");
@@ -2366,6 +2391,9 @@ async function runNewSitePublicPublishAudit(input: {
 
   const archive = await fetchPublicText(`${baseUrl}/puzzles?__publish_audit=${Date.now()}`);
   if (!archive.ok) {
+    if (isCloudflareSubrequestLimitError(archive.error)) {
+      return deferredPublicAuditResult("archive page", archive.error);
+    }
     issues.push(`archive page fetch failed: ${archive.status ?? "network"} ${archive.error || ""}`.trim());
   } else if (!includesDetailRoute(archive.text, route)) {
     issues.push("archive page does not link to the new detail URL");
@@ -2373,6 +2401,9 @@ async function runNewSitePublicPublishAudit(input: {
 
   const summary = await fetchPublicText(`${baseUrl}/api/puzzles/summary?__publish_audit=${Date.now()}`);
   if (!summary.ok) {
+    if (isCloudflareSubrequestLimitError(summary.error)) {
+      return deferredPublicAuditResult("summary API", summary.error);
+    }
     issues.push(`summary API fetch failed: ${summary.status ?? "network"} ${summary.error || ""}`.trim());
   } else {
     try {
@@ -4057,6 +4088,19 @@ async function publishToNewSiteGitHub(
       clues: words,
       pageReady,
     });
+    if (result.deferred) {
+      const issueSummary = formatNewSitePublicPublishAuditIssues(result);
+      console.warn(`[new-site] post-publish public audit deferred for ${slug}: ${issueSummary}`);
+      await notifyCron(env, "⚠️ 新站详情页发布后检查延后", [
+        `日期: ${puzzleDate}`,
+        `谜题: #${puzzleNumber}`,
+        `页面: ${slug}`,
+        `详情: ${newSiteUrl}/linkedin-pinpoint-answers/${slug}/`,
+        "处理: Worker 本次请求次数已到上限，不暂停自动发布；请用本机发布检查复核。",
+        `原因: ${issueSummary}`,
+      ]);
+      return result;
+    }
     if (!result.ok) {
       const severity = classifyNewSitePublicPublishAuditSeverity(result.issues);
       const issueSummary = formatNewSitePublicPublishAuditIssues(result);
@@ -4442,6 +4486,8 @@ async function publishToNewSiteGitHub(
       detailUrl: pageUrl,
       reason: detailState === "fallback_full"
         ? detailExperienceNotice.reason || "fallback_full"
+        : publicAudit?.deferred
+          ? "public audit deferred"
         : publicAudit?.ok
           ? "public audit passed"
           : "published",
