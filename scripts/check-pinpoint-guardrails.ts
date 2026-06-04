@@ -3098,6 +3098,21 @@ async function checkProductionReleaseWorkerHealthFallback() {
   console.log("ok: production release retries Worker health with curl after Node fetch failure");
 }
 
+async function checkProductionReleaseDetailVerificationUsesRenderedText() {
+  const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+
+  assert.ok(
+    releaseSource.includes("function buildDetailVerificationStrings(puzzle)") &&
+      releaseSource.includes('const cluePath = clues.join(" ");') &&
+      releaseSource.includes("LinkedIn Pinpoint ${puzzleNumber} Answer Reasoning") &&
+      !releaseSource.includes("const bodyBlocks = Array.isArray(puzzle?.articleBlocks)") &&
+      !releaseSource.includes("const faqSnippet = Array.isArray(puzzle?.faqs)"),
+    "release:production detail refresh wait must check rendered detail text, not raw articleBlocks or FAQ JSON strings",
+  );
+
+  console.log("ok: production release waits for rendered detail text instead of raw JSON snippets");
+}
+
 async function checkPrepublishGateRunsContentAutoRepairSafely() {
   const prepublishSource = await readFile(resolve(ROOT, "scripts/check-pinpoint-prepublish-gate.ts"), "utf8");
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
@@ -3322,6 +3337,7 @@ async function main() {
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkProductionReleaseWorkerHealthFallback();
+  await checkProductionReleaseDetailVerificationUsesRenderedText();
   await checkPrepublishGateRunsContentAutoRepairSafely();
   await checkWorkerRunsPostPublishPublicAudit();
   await checkAutoPublishPauseSwitch();

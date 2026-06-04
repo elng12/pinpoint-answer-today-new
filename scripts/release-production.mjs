@@ -457,15 +457,16 @@ function assertReleaseEligibleDetail(slug, puzzle, contextLabel, registryEntry =
 
 function buildDetailVerificationStrings(puzzle) {
   const clues = Array.isArray(puzzle?.clues) ? puzzle.clues.filter(Boolean) : [];
-  const bodyBlocks = Array.isArray(puzzle?.articleBlocks) && puzzle.articleBlocks.length
-    ? puzzle.articleBlocks
-    : [];
-  const bodySnippet = bodyBlocks.find((entry) => String(entry || "").trim());
-  const faqSnippet = Array.isArray(puzzle?.faqs)
-    ? puzzle.faqs.find((item) => String(item?.answer || "").trim())?.answer
-    : "";
+  const cluePath = clues.join(" ");
+  const puzzleNumber = puzzle?.puzzleNumber ?? puzzle?.number;
 
-  return [puzzle?.answer, clues[0], clues.at(-1), bodySnippet, faqSnippet]
+  return [
+    puzzle?.answer,
+    ...clues,
+    cluePath,
+    puzzleNumber ? `Pinpoint ${puzzleNumber} Answer` : "",
+    puzzleNumber ? `LinkedIn Pinpoint ${puzzleNumber} Answer Reasoning` : "",
+  ]
     .map((entry) => String(entry || "").trim())
     .filter(Boolean);
 }
