@@ -326,7 +326,10 @@ const cronHeartbeatDayKeyOf = (d: string) => `monitor:cron:${d}`;
 const cronHeartbeatDayRunsKeyOf = (d: string) => `monitor:cron:${d}:runs`;
 const cronHeartbeatRunKeyOf = (runId: string) => `monitor:cron:run:${runId}`;
 const autoPublishPauseKey = "pinpoint:auto-publish:paused";
-const siteSummaryWatchdogNotifiedKeyOf = (d: string) => `notify:site-summary-watchdog:${d}`;
+const sourceReadinessWatchdogNotifiedKeyOf = (d: string, checkpoint: string) =>
+  `notify:source-readiness-watchdog:${d}:${checkpoint}`;
+const siteSummaryWatchdogNotifiedKeyOf = (d: string, checkpoint: string) =>
+  `notify:site-summary-watchdog:${d}:${checkpoint}`;
 const cronHeartbeatRunsLimit = 20;
 const staleAlertDedupeTtlSec = 60 * 60 * 2;
 const nonPublicDetailStateAlertThresholdMs = 15 * 60 * 1000;
@@ -4770,9 +4773,74 @@ async function fetchSiteSummaryStatus(env: Env, date: string): Promise<SiteSumma
   }
 }
 
-async function checkAndMarkSiteSummaryWatchdogNotified(env: Env, date: string): Promise<boolean> {
+function getScheduledCheckpointMinute(scheduledAt: Date): number {
+  return scheduledAt.getUTCMinutes();
+}
+
+function getScheduledCheckpointLabel(scheduledAt: Date): string {
+  return formatBeijingTime(scheduledAt);
+}
+
+async function checkAndMarkSourceReadinessWatchdogNotified(
+  env: Env,
+  date: string,
+  checkpoint: string,
+): Promise<boolean> {
   try {
-    const key = siteSummaryWatchdogNotifiedKeyOf(date);
+    const key = sourceReadinessWatchdogNotifiedKeyOf(date, checkpoint);
+    const existing = await env.PP_DATA.get(key);
+    if (existing !== null) return true;
+    await env.PP_DATA.put(key, new Date().toISOString(), { expirationTtl: 172800 });
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+async function maybeNotifySourceReadinessWatchdog(
+  env: Env,
+  input: {
+    date: string;
+    scheduledAt: Date;
+    cron?: string;
+    graphqlError?: string;
+    fallbackReason: string;
+    durationMs: number;
+  },
+): Promise<void> {
+  if (!hasNotifyWebhook(env)) return;
+  const minute = getScheduledCheckpointMinute(input.scheduledAt);
+  if (![5, 15, 20].includes(minute)) return;
+
+  const checkpoint = String(minute).padStart(2, "0");
+  const alreadyNotified = await checkAndMarkSourceReadinessWatchdogNotified(env, input.date, checkpoint);
+  if (alreadyNotified) return;
+
+  const title = minute >= 20
+    ? "❌ Worker 已运行，但仍没拿到当天新题"
+    : "⚠️ Worker 已运行，但 LinkedIn 还没返回当天新题";
+
+  await notifyCron(env, title, [
+    `日期: ${input.date}`,
+    `检查时间: ${getScheduledCheckpointLabel(input.scheduledAt)} 北京时间`,
+    `触发: Cloudflare Worker ${input.cron || "scheduled"}`,
+    `当前卡点: 抓取`,
+    ...(input.graphqlError ? [`官方抓取: ${toZhWebhookReason(input.graphqlError)}`] : []),
+    `备用抓取: ${toZhWebhookReason(input.fallbackReason)}`,
+    `耗时(ms): ${input.durationMs}`,
+    minute < 20
+      ? "下一步: Worker 会继续在后面的窗口自动重试。"
+      : "下一步: 已超过 15:20，今天更新可能晚点，需要开始看抓取源或备用抓取服务。",
+  ]);
+}
+
+async function checkAndMarkSiteSummaryWatchdogNotified(
+  env: Env,
+  date: string,
+  checkpoint: string,
+): Promise<boolean> {
+  try {
+    const key = siteSummaryWatchdogNotifiedKeyOf(date, checkpoint);
     const existing = await env.PP_DATA.get(key);
     if (existing !== null) return true;
     await env.PP_DATA.put(key, new Date().toISOString(), { expirationTtl: 172800 });
@@ -4788,10 +4856,12 @@ async function maybeNotifySiteSummaryWatchdog(
   doc: Doc,
   heartbeat: CronHeartbeat,
   cron: string | undefined,
+  scheduledAt: Date,
 ): Promise<void> {
   if (!envFlag(env.NEW_SITE_SUMMARY_WATCHDOG_ENABLED, true)) return;
   if (!hasNotifyWebhook(env)) return;
-  if (!String(cron || "").includes(":25 ")) return;
+  const minute = getScheduledCheckpointMinute(scheduledAt);
+  if (![20, 25].includes(minute)) return;
   if (heartbeat.triggerKind !== "scheduled" || heartbeat.outcome === "failed") return;
 
   const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
@@ -4806,14 +4876,18 @@ async function maybeNotifySiteSummaryWatchdog(
     if (summary.ok) return;
   }
 
-  const alreadyNotified = await checkAndMarkSiteSummaryWatchdogNotified(env, date);
+  const checkpoint = String(minute).padStart(2, "0");
+  const alreadyNotified = await checkAndMarkSiteSummaryWatchdogNotified(env, date, checkpoint);
   if (alreadyNotified) return;
 
   const words = doc.answers.map((a) => a.word).slice(0, 5).join(" | ");
-  await notifyCron(env, "❌ Worker 已抓到答案，但正式站仍未更新", [
+  await notifyCron(env, minute >= 25
+    ? "❌ Worker 已抓到答案，但正式站仍未更新"
+    : "⚠️ Worker 已抓到答案，但正式站还没确认更新", [
     `日期: ${date}`,
-    `检查时间: ${formatBeijingTime()} 北京时间`,
+    `检查时间: ${getScheduledCheckpointLabel(scheduledAt)} 北京时间`,
     `触发: Cloudflare Worker ${cron || "scheduled"} 主窗口后校验`,
+    `当前卡点: ${heartbeat.enrich.status === "queued" ? "内容增强/发布检查仍在跑" : "正式站 summary 未变成今天"}`,
     `抓取来源: ${getFallbackSourceLabel(doc.source)}`,
     `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
     `答案: ${words}`,
@@ -4822,7 +4896,9 @@ async function maybeNotifySiteSummaryWatchdog(
     `原因: ${summary.error || "summary 日期不是今天"}`,
     `健康检查: ${publicSiteBaseUrl}/api/health`,
     `今日接口: ${publicSiteBaseUrl}/api/pinpoint/today`,
-    `说明: 这是 15:25 左右的早期发布校验，不再等 GitHub Actions 备份任务延迟触发。`,
+    minute >= 25
+      ? "说明: 这是 15:25 左右的最终窗口校验，不再静默等待。"
+      : "说明: 这是 15:20 左右的早期提醒，后面 15:25 还会再确认一次。",
   ]);
 }
 
@@ -7660,6 +7736,14 @@ export default {
               heartbeat.durationMs = durationMs;
               heartbeat.endedAt = new Date().toISOString();
               await persistCronHeartbeat(env, heartbeat);
+              await maybeNotifySourceReadinessWatchdog(env, {
+                date,
+                scheduledAt,
+                cron: controller.cron,
+                graphqlError: msg,
+                fallbackReason: reason,
+                durationMs,
+              });
               console.warn("fallback not ready; skipping cron run", { date, retryAfterSec: fe.retryAfterSec });
               return;
             }
@@ -8054,7 +8138,7 @@ export default {
       heartbeat.durationMs = durationMs;
       heartbeat.endedAt = new Date().toISOString();
       await persistCronHeartbeat(env, heartbeat);
-      await maybeNotifySiteSummaryWatchdog(env, date, doc, heartbeat, controller.cron);
+      await maybeNotifySiteSummaryWatchdog(env, date, doc, heartbeat, controller.cron, scheduledAt);
       const alreadyNotified = await checkAndMarkCronSuccessNotified(env, date);
       if (!alreadyNotified) {
         await notifyCron(env, "✅ Worker 定时抓取成功", [

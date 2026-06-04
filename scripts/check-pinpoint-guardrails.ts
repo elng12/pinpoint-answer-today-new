@@ -3363,6 +3363,46 @@ async function checkDailyPublishStatusReport() {
   console.log("ok: daily publish status report covers terminal outcomes");
 }
 
+async function checkScheduledPublishWindowAlerts() {
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
+  const workerReadme = await readFile(resolve(ROOT, "worker/README.md"), "utf8");
+  const rulesDoc = await readFile(resolve(ROOT, "docs/pinpoint-auto-publish-rules-2026-05-26.md"), "utf8");
+
+  assert.ok(
+    wranglerSource.includes('crons = ["1,3,5,7,10,15,20,25 7,8 * * *"]'),
+    "production cron must include the 15:05 Beijing checkpoint in the active reset window",
+  );
+  assert.ok(
+    workerSource.includes("maybeNotifySourceReadinessWatchdog") &&
+      workerSource.includes("[5, 15, 20].includes(minute)") &&
+      workerSource.includes("Worker 已运行，但 LinkedIn 还没返回当天新题") &&
+      workerSource.includes("Worker 已运行，但仍没拿到当天新题"),
+    "Worker must alert when the source is still not ready at 15:05/15:15/15:20 Beijing time",
+  );
+  assert.ok(
+    workerSource.includes("getScheduledCheckpointMinute(scheduledAt)") &&
+      workerSource.includes("[20, 25].includes(minute)") &&
+      workerSource.includes("正式站还没确认更新") &&
+      workerSource.includes("maybeNotifySiteSummaryWatchdog(env, date, doc, heartbeat, controller.cron, scheduledAt)"),
+    "Worker must check production-site freshness from actual scheduled time at 15:20/15:25 Beijing time",
+  );
+  assert.ok(
+    workerReadme.includes("15:01 / 15:03 / 15:05 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25") &&
+      workerReadme.includes("15:05 / 15:15 / 15:20") &&
+      workerReadme.includes("15:20 / 15:25"),
+    "Worker README must document the publish window and checkpoint alerts",
+  );
+  assert.ok(
+    rulesDoc.includes("reset-window checkpoint alerts") &&
+      rulesDoc.includes("15:05/15:15/15:20") &&
+      rulesDoc.includes("15:20/15:25"),
+    "auto-publish rules doc must record reset-window checkpoint alert coverage",
+  );
+
+  console.log("ok: scheduled publish window alerts cover source and production freshness checkpoints");
+}
+
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
@@ -3463,6 +3503,7 @@ async function main() {
   await checkWorkerRunsPostPublishPublicAudit();
   await checkAutoPublishPauseSwitch();
   await checkDailyPublishStatusReport();
+  await checkScheduledPublishWindowAlerts();
   await checkReleaseQueueWorkerIntegration();
   console.log("Pinpoint guardrail regression passed.");
 }

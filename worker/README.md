@@ -99,10 +99,11 @@ npm run worker:refresh-cookie
 
 生产 Worker 还会在主抓取窗口后增加一次自动校验：
 
-- 当前 production cron 覆盖北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`
-- `:25` 这次会检查正式站 `/api/puzzles/summary` 是否已经显示当天题
+- 当前 production cron 覆盖北京时间夏令时 `15:01 / 15:03 / 15:05 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`
+- `15:05 / 15:15 / 15:20` 如果还没拿到当天新题，会主动告警
+- `15:20 / 15:25` 会检查正式站 `/api/puzzles/summary` 是否已经显示当天题
 - 如果 Worker 已抓到当天答案，但正式站 summary 仍停在旧日期，会先尝试 revalidate；仍失败则立即飞书告警
-- 告警通过 KV 的 `notify:site-summary-watchdog:<date>` 去重，避免同一天重复推送
+- 告警通过 KV 的 `notify:source-readiness-watchdog:<date>:<checkpoint>` 和 `notify:site-summary-watchdog:<date>:<checkpoint>` 去重，避免同一检查点重复推送
 
 ### 发布队列状态自检
 
@@ -308,7 +309,7 @@ curl "https://pinpoint-worker.2296744453m.workers.dev/admin/test-fallback?secret
 | 配置项 | 值 |
 |---|---|
 | KV namespace | `PP_DATA`，namespace ID `2689a48e886548a3acbe8fa9ede4e3f6` |
-| Cron | `1,3,7,10,15,20,25 7,8 * * *`（UTC；覆盖夏令时/冬令时，Worker 会自动跳过无效窗口），即北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20 / 16:25` |
+| Cron | `1,3,5,7,10,15,20,25 7,8 * * *`（UTC；覆盖夏令时/冬令时，Worker 会自动跳过无效窗口），即北京时间夏令时 `15:01 / 15:03 / 15:05 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`，冬令时 `16:01 / 16:03 / 16:05 / 16:07 / 16:10 / 16:15 / 16:20 / 16:25` |
 | staging Cron | 已显式关闭：`[env.staging.triggers].crons = []` |
 | 目标仓库 | `elng12/pinpoint-answer-today-new`，分支 `main` |
 | revalidate 地址 | `https://pinpointanswertoday.app/api/revalidate` |
@@ -393,7 +394,7 @@ npm run test:pinpoint-regression:core
    - 如果同一题在几分钟内反复出现 `add answer data` / `mark live` 对应部署，说明仍有重复写入
 
 2. Worker Cron 触发
-   - 当前生产窗口：北京时间夏令时 `15:01 / 15:03 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`，冬令时 `16:01 / 16:03 / 16:07 / 16:10 / 16:15 / 16:20 / 16:25`
+   - 当前生产窗口：北京时间夏令时 `15:01 / 15:03 / 15:05 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25`，冬令时 `16:01 / 16:03 / 16:05 / 16:07 / 16:10 / 16:15 / 16:20 / 16:25`
    - 正常预期：cron 可以重复触发，但不会因为同样内容反复提交 GitHub
 
 3. Worker 日志关键词

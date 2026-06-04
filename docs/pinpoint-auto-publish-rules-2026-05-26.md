@@ -253,6 +253,7 @@ Production settings already match the automatic publish direction:
 | daily Worker post-publish public audit | exists, checks detail page, sitemap, homepage, archive, and summary API; P0 failures send webhook alerts and pause the next auto-publish run | `worker/src/index.ts` |
 | emergency pause switch | exists, keeps fetch/KV but stops scheduled publish | `worker/src/index.ts`, `scripts/worker-ops.mjs` |
 | daily status report | exists, reports published, downgraded, candidate, blocked, paused, or needs review, plus the production-site state | `worker/src/index.ts` |
+| reset-window checkpoint alerts | exists, warns when source data is still missing at 15:05/15:15/15:20 Beijing time and when production summary is still stale at 15:20/15:25 | `worker/src/index.ts`, `worker/wrangler.toml` |
 
 ## Gaps To Close
 
