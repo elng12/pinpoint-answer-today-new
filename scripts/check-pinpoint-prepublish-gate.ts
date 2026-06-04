@@ -23,6 +23,7 @@ import type {
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
 const BUILD_APP_DIR = resolve(ROOT, ".next", "server", "app");
+const NEXT_BIN = resolve(ROOT, "node_modules", ".bin", "next");
 const PUBLIC_DETAIL_STATES = new Set(["published", "fallback_full"]);
 
 type GateStatus =
@@ -111,7 +112,8 @@ Usage:
   npm --silent run pinpoint:prepublish-gate -- --json
 
 What it checks:
-  - current data validates through npm run build
+  - current data validates through npm run validate:data:auto-repair
+  - current site builds through next build
   - latest registry/detail data is public and internally consistent
   - rendered detail HTML has answer, clues, FAQ, recent links, canonical, robots, JSON-LD, title, description, and H1
   - rendered detail HTML passes the AITDK-style detail keyword order audit
@@ -697,9 +699,10 @@ function decideStatus(issues: GateIssue[], candidateOutcome?: ValidationOutcome)
 async function runGate(args: Args) {
   const issues: GateIssue[] = [];
   if (args.build) {
-    await run("npm", ["run", "build"], { quiet: args.json });
+    await run("npm", ["run", "validate:data:auto-repair"], { quiet: args.json });
+    await run(NEXT_BIN, ["build"], { quiet: args.json });
   } else {
-    await run("npm", ["run", "validate:data"], { quiet: args.json });
+    await run("npm", ["run", "validate:data:auto-repair"], { quiet: args.json });
   }
 
   const siteUrl = getSiteUrl();

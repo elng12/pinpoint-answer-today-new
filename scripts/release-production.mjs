@@ -737,6 +737,7 @@ async function main() {
   await run("npm", ["run", "typecheck"]);
   await run("npm", ["run", "pinpoint:prepublish-gate"]);
   await run("npm", ["run", "typecheck"], { cwd: WORKER_DIR });
+  await ensureCleanWorktree();
 
   const sha = await capture("git", ["rev-parse", "HEAD"]);
   const remoteUrl = await capture("git", ["remote", "get-url", "origin"]);

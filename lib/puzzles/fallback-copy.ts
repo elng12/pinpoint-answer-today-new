@@ -526,20 +526,21 @@ export function buildSharedFallbackSolutionNarrative(input: {
     .slice(2, 4)
     .join(" and ");
   const fullCheckText = cleanClues.length >= 5 ? cleanClues.join(", ") : "all five clues";
+  const firstClue = cleanClues.find((clue) => clue !== cleanTurningPoint) || "the first clue";
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
     return [
-      `I first tried ${wrongGuess}, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made "${turningPoint}" feel exact enough.`,
-      `Once "${turningPoint}" clicked, the phrase pattern was finally clear. The same word fit ${positionText} the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.`,
-      `After that, I checked ${fullCheckText} one by one. The strong solve was not just that two clues worked; it was that every clue could use the same word in the same slot and still sound like ordinary language.`,
+      `I started with ${firstClue} and first tried ${wrongGuess}. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made "${turningPoint}" feel exact.`,
+      `Once "${turningPoint}" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit ${positionText} the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.`,
+      `Then I used ${laterCheckText || fullCheckText} as the confirmation round. The strong solve was not just that two clues worked; it was that ${fullCheckText} could all use the same slot and still sound like ordinary language.`,
     ];
   }
 
   if (kind === "typed-category") {
     return [
-      `I first drifted toward ${wrongGuess}, because the early clues were broad enough to sit inside a bigger umbrella topic. That read still felt too loose once "${turningPoint}" showed up.`,
-      `The solve improved once I stopped asking what the clues vaguely had in common and started asking what type of thing each clue could specifically be. "${turningPoint}" was the clue that made that shift feel worth testing.`,
-      `After that, I checked ${fullCheckText} as named members of that tighter type. The answer held because each clue could be placed in the same member family without changing the rule halfway through.`,
+      `I started with ${earlyCheckText || firstClue} and first drifted toward ${wrongGuess}. That read was plausible because the early clues could sit inside a bigger umbrella topic, but it still felt too loose once "${turningPoint}" showed up.`,
+      `The solve improved when I stopped asking what the clues vaguely shared and started asking what type of thing each clue specifically named. "${turningPoint}" was the clue that made that tighter test worth trying.`,
+      `Then I used ${laterCheckText || fullCheckText} as the confirmation round. The answer held because ${fullCheckText} could all stay inside one member family without changing the rule halfway through.`,
     ];
   }
 

@@ -32,7 +32,7 @@
     "Capture the": "Capture the is the clue that makes the phrase pattern in words that come before “flag” concrete enough to test."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. Read in order, White, Pirate, National, Checkered, Capture the points to one phrase slot rather than five separate definitions.",
     "A nearby read was \"a loose topic list\". White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs. Capture the behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
     "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"White flag\" and \"Pirate flag\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
@@ -111,7 +111,7 @@
       "standalone clue meanings"
     ],
     "whyFalseStartPlausible": [
-      "White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs.",
+      "White, Pirate, National, Checkered, Capture the can look like a loose topic list before Capture the shows where the repeated word belongs.",
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
     "breakingClue": "Capture the",

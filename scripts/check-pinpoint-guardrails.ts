@@ -3086,6 +3086,33 @@ async function checkProductionReleaseRunsPublicFetchAudit() {
   console.log("ok: production release runs PR11 public fetch audit before declaring success");
 }
 
+async function checkPrepublishGateRunsContentAutoRepairSafely() {
+  const prepublishSource = await readFile(resolve(ROOT, "scripts/check-pinpoint-prepublish-gate.ts"), "utf8");
+  const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["validate:data:auto-repair"]?.includes("validate-data-with-repair.ts") &&
+      packageJson.scripts?.["pinpoint:repair-solution-narrative"]?.includes("repair-pinpoint-solution-narrative.ts"),
+    "package.json must expose the data auto-repair wrapper and solution narrative repair command",
+  );
+  assert.ok(
+    prepublishSource.includes("validate:data:auto-repair") &&
+      prepublishSource.includes("NEXT_BIN") &&
+      !prepublishSource.includes('await run("npm", ["run", "build"]'),
+    "prepublish gate must run auto-repair validation before the local Next build",
+  );
+  assert.ok(
+    releaseSource.includes('await run("npm", ["run", "pinpoint:prepublish-gate"]);') &&
+      releaseSource.includes('await run("npm", ["run", "typecheck"], { cwd: WORKER_DIR });\n  await ensureCleanWorktree();\n\n  const sha ='),
+    "release:production must stop before pushing if prepublish auto-repair changed local files",
+  );
+
+  console.log("ok: prepublish gate can auto-repair content and release stops before pushing dirty files");
+}
+
 async function checkWorkerRunsPostPublishPublicAudit() {
   const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
 
@@ -3282,6 +3309,7 @@ async function main() {
   await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
+  await checkPrepublishGateRunsContentAutoRepairSafely();
   await checkWorkerRunsPostPublishPublicAudit();
   await checkAutoPublishPauseSwitch();
   await checkDailyPublishStatusReport();

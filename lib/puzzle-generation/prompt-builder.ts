@@ -3,7 +3,7 @@ import { detectAnswerPattern } from "@/lib/puzzle-generation/answer-pattern";
 import { normalizeClueForAI } from "@/lib/puzzles/clue-normalizer";
 import { SLOT_CONTRACT } from "@/lib/puzzles/slot-contract";
 
-export const LLM_TEMPLATE_VERSION = "pinpoint-v9";
+export const LLM_TEMPLATE_VERSION = "pinpoint-v10";
 
 export const LLM_SYSTEM_PROMPT = [
   'You write archive content for "Pinpoint Answer Today".',
@@ -79,6 +79,8 @@ Minimum required shape:
     "portableTakeaway": "..."
   },
   "sections": {
+    "overview": "...",
+    "solutionEmergence": "...",
     "articleBlocks": ["...", "..."]
   }
 }
@@ -111,23 +113,27 @@ Hard requirements:
 10. Each clueDetails.whyItWorks must explain specific logic, not just restate the final answer.
 11. difficultyReason must explain why the board feels tricky without directly repeating the exact answer.
 12. portableTakeaway must be one short practical lesson the solver can reuse tomorrow.
-13. sections.articleBlocks must contain 8 to 14 short paragraphs.
-14. Most articleBlocks paragraphs should be one sentence. Some can be two sentences. Avoid long blocks.
-15. articleBlocks must include one believable wrong read, one clean turning clue, one explicit answer reveal, and a resolved closing line.
-16. pageExperienceMode should be "full-analysis" for this long-form draft.
-17. wrongGuessCandidates must describe believable nearby reads:
+13. sections.overview must explain the whole board shape and why the final read beats nearby guesses.
+14. sections.solutionEmergence must replay one solve path in first person, with a false start, a turning clue, and confirmation clues.
+15. sections.solutionEmergence must use different wording and sentence structure from sections.overview.
+16. sections.articleBlocks must contain 8 to 14 short paragraphs.
+17. Most articleBlocks paragraphs should be one sentence. Some can be two sentences. Avoid long blocks.
+18. articleBlocks must include one believable wrong read, one clean turning clue, one explicit answer reveal, and a resolved closing line.
+19. pageExperienceMode should be "full-analysis" for this long-form draft.
+20. wrongGuessCandidates must describe believable nearby reads:
    - if difficultyBand is "obvious", include at least 1 candidate
    - if difficultyBand is "medium" or "hard", include at least 2 candidates
    - each candidate needs label and whyPlausible, and whyRejected when it helps
-18. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
-19. If you include root turningPoint, turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
-20. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
-21. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
-22. Output raw JSON only, no markdown.
+21. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
+22. If you include root turningPoint, turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
+23. setValidationSummary must explain why the full clue set confirms one answer more cleanly than the nearby wrong reads.
+24. categoryPrecisionNote must explain the exact level of precision, not just repeat the answer.
+25. Output raw JSON only, no markdown.
 
 Primary writing goal:
 - Build the source material for a short archive article, not a report.
 - Think in this order: first impression -> wrong direction -> contradiction -> turning clue -> answer -> hindsight clarity.
+- Use this solve-story rhythm: false start with the opening clue, one clue changes everything, then the rest of the board confirms it.
 
 Writing rules:
 - Separate page reveal from explanation. The reveal card owns the first clear answer reveal on-page.
@@ -138,6 +144,7 @@ Writing rules:
 - overview and solutionEmergence must feel different:
   - overview explains why the puzzle shape is misleading and why the final read is cleaner than nearby alternatives
   - solutionEmergence replays one believable solve path in first person
+- solutionEmergence should read like: "I first thought..." -> "Then X changed the solve" -> "Then I checked Y, Z, and W" -> "The answer was..."
 - The solve path should feel like a human replay:
   - one plausible early read
   - one moment where a later clue weakens that read
