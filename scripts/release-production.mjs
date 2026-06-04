@@ -312,15 +312,34 @@ async function checkSummaryApi(url) {
 }
 
 async function checkWorkerHealth(url) {
-  const response = await fetch(url, {
-    signal: AbortSignal.timeout(15000),
-  });
+  let payload;
 
-  if (!response.ok) {
-    throw new Error(`Worker health check failed with HTTP ${response.status}: ${url}`);
+  try {
+    const response = await fetch(url, {
+      signal: AbortSignal.timeout(15000),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Worker health check failed with HTTP ${response.status}: ${url}`);
+    }
+
+    payload = await response.json();
+  } catch (error) {
+    console.warn(
+      `Worker health fetch failed through Node fetch; retrying with curl: ${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+    const fallback = await runForStatus("curl", ["-L", "--fail", "--max-time", "20", "-sS", url], {
+      timeoutMs: 25000,
+    });
+    if (fallback.code !== 0) {
+      const output = `${fallback.stdout}${fallback.stderr}`.trim();
+      throw new Error(`Worker health check failed through Node fetch and curl: ${output || `exit ${fallback.code}`}`);
+    }
+    payload = JSON.parse(fallback.stdout);
   }
 
-  const payload = await response.json();
   const answers = Array.isArray(payload?.answers) ? payload.answers : [];
   if (!payload?.puzzleDate || answers.length !== 5) {
     throw new Error(`Worker health payload is incomplete: ${JSON.stringify(payload)}`);

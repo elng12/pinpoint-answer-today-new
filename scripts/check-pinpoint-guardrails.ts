@@ -3086,6 +3086,18 @@ async function checkProductionReleaseRunsPublicFetchAudit() {
   console.log("ok: production release runs PR11 public fetch audit before declaring success");
 }
 
+async function checkProductionReleaseWorkerHealthFallback() {
+  const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+
+  assert.ok(
+    releaseSource.includes("Worker health fetch failed through Node fetch; retrying with curl") &&
+      releaseSource.includes('runForStatus("curl", ["-L", "--fail", "--max-time", "20", "-sS", url]'),
+    "release:production must retry Worker health with curl when Node fetch cannot reach the Worker",
+  );
+
+  console.log("ok: production release retries Worker health with curl after Node fetch failure");
+}
+
 async function checkPrepublishGateRunsContentAutoRepairSafely() {
   const prepublishSource = await readFile(resolve(ROOT, "scripts/check-pinpoint-prepublish-gate.ts"), "utf8");
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
@@ -3309,6 +3321,7 @@ async function main() {
   await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
+  await checkProductionReleaseWorkerHealthFallback();
   await checkPrepublishGateRunsContentAutoRepairSafely();
   await checkWorkerRunsPostPublishPublicAudit();
   await checkAutoPublishPauseSwitch();
