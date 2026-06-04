@@ -33,11 +33,11 @@
   },
   "articleBlocks": [
     "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. Read in order, White, Pirate, National, Checkered, Capture the points to one phrase slot rather than five separate definitions.",
-    "A nearby read was \"a loose topic list\". White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs. Capture the behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "A nearby read was \"color or surrender words\". White can point to color or surrender, and Pirate can point to ships before Capture the shows where the repeated word belongs. Capture the behaves like a proof clue for one fixed phrase pattern, not just a color-or-ship read.",
+    "Another easy trap was \"isolated clue definitions\". National and Checkered both have obvious surface meanings before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"White flag\" and \"Pirate flag\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
     "National flag, Checkered flag, Capture the flag show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “flag”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “flag”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "The answer was \"Words that come before “flag”\". More precisely, the board resolves as one shared ending word placed after each clue, not a color theme or isolated definitions, which is why \"Words that come before “flag”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
     "White first sent me toward color ideas, and I also considered whether the clue might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.",
@@ -107,16 +107,16 @@
   "solvePath": {
     "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "color or surrender words",
+      "isolated clue definitions"
     ],
     "whyFalseStartPlausible": [
-      "White, Pirate, National, Checkered, Capture the can look like a loose topic list before Capture the shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "White can point toward color or surrender, and Pirate can point toward ships before Capture the shows where the repeated word belongs.",
+      "National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears."
     ],
     "breakingClue": "Capture the",
     "pivot": "White first sent me toward color ideas, and I also considered whether the clue might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.\n\nPirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.\n\nThen I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.\n\nThe answer was \"Words that come before “flag”\".",
-    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    "fullBoardConfirmation": "Another easy trap was \"isolated clue definitions\". National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
     "clue": "Capture the",
@@ -126,7 +126,7 @@
   "clueRows": [
     {
       "clue": "White",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "color or surrender cue",
       "resolvedPhraseOrMember": "White flag",
       "nonObviousWhy": "\"White flag\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "White flag",
@@ -134,7 +134,7 @@
     },
     {
       "clue": "Pirate",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "ships or raiders",
       "resolvedPhraseOrMember": "Pirate flag",
       "nonObviousWhy": "\"Pirate flag\" is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "Pirate flag",
@@ -142,7 +142,7 @@
     },
     {
       "clue": "National",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "country label",
       "resolvedPhraseOrMember": "National flag",
       "nonObviousWhy": "Once the shared word is in place, \"National flag\" reads like ordinary language instead of a forced compound.",
       "searchableContext": "National flag",
@@ -150,7 +150,7 @@
     },
     {
       "clue": "Checkered",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "racing pattern",
       "resolvedPhraseOrMember": "Checkered flag",
       "nonObviousWhy": "\"Checkered flag\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "Checkered flag",
@@ -158,7 +158,7 @@
     },
     {
       "clue": "Capture the",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "game instruction",
       "resolvedPhraseOrMember": "Capture the flag",
       "nonObviousWhy": "\"Capture the flag\" is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "Capture the flag",
@@ -204,13 +204,13 @@
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs.",
-      "whyRejected": "Capture the behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "color or surrender words",
+      "whyPlausible": "White can point toward color or surrender, and Pirate can point toward ships before Capture the shows where the repeated word belongs.",
+      "whyRejected": "Capture the behaves like a proof clue for one fixed phrase pattern, not just a color-or-ship read."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "label": "isolated clue definitions",
+      "whyPlausible": "National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears.",
       "whyRejected": "Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],

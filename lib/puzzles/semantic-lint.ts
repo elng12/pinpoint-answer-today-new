@@ -15,11 +15,19 @@ export type SemanticContentInput = {
   overview?: string | null;
   solutionEmergence?: string | null;
   articleBlocks?: string[] | null;
-  wrongGuesses?: Array<{ guess?: string | null; explanation?: string | null }> | null;
+  wrongGuesses?: Array<{
+    guess?: string | null;
+    explanation?: string | null;
+    label?: string | null;
+    whyPlausible?: string | null;
+    whyRejected?: string | null;
+  }> | null;
   faqs?: Array<{ question?: string | null; answer?: string | null }> | null;
   clueDetails?: Array<{ clue?: string | null; phrase?: string | null; explanation?: string | null }> | null;
   lessons?: Array<{ title?: string | null; body?: string | null }> | null;
 };
+
+type SemanticWrongGuess = NonNullable<SemanticContentInput["wrongGuesses"]>[number];
 
 const LOCALE_MARKER_PATTERN = /\[(?:fr|de|pt-BR)\]/i;
 const BROKEN_ENTITY_PATTERN = /&#92;|&#x5c;|&#x5C;/i;
@@ -46,6 +54,29 @@ const GENERIC_FALSE_START_PATTERNS = [
   /\bwarning words?\b/i,
   /\bmixed signals?\b/i,
   /\bgeneral clues?\b/i,
+];
+const GENERIC_SOFT_FALSE_START_PATTERNS = [
+  /^(?:a\s+)?loose topic list$/i,
+  /^(?:a\s+)?loose topic grouping$/i,
+  /^(?:a\s+)?loose category match$/i,
+  /^(?:a\s+)?loose theme match$/i,
+  /^standalone clue meanings$/i,
+  /^standalone meanings$/i,
+  /^broad topic match$/i,
+  /^shared category$/i,
+  /^common theme$/i,
+  /^they all fit$/i,
+  /^all clues point to the same$/i,
+];
+const GENERIC_REASONING_FILLER_PATTERNS = [
+  /\ba loose topic list\b/i,
+  /\bstandalone clue meanings\b/i,
+  /\bbroad topic match\b/i,
+  /\bthe answer becomes clear\b/i,
+  /\ball clues point to the same\b/i,
+  /\bshared category\b/i,
+  /\bcommon theme\b/i,
+  /\bthey all fit\b/i,
 ];
 const GENERIC_CATEGORY_PIVOT_PATTERNS = [
   /\bwhat kind of source or title it was\b/i,
@@ -300,6 +331,22 @@ function looksLikeMachineGuess(value: string | null | undefined): boolean {
   return GENERIC_FALSE_START_PATTERNS.some((pattern) => pattern.test(text));
 }
 
+function looksLikeGenericSoftFalseStart(value: string | null | undefined): boolean {
+  const text = normalizeText(value);
+  if (!text) return false;
+  return GENERIC_SOFT_FALSE_START_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function containsGenericReasoningFiller(value: string | null | undefined): boolean {
+  const text = normalizeText(value);
+  if (!text) return false;
+  return GENERIC_REASONING_FILLER_PATTERNS.some((pattern) => pattern.test(text));
+}
+
+function getWrongGuessLabel(item: SemanticWrongGuess | null | undefined): string | null | undefined {
+  return item?.guess ?? item?.label;
+}
+
 function sampleText(value: string | null | undefined): string | undefined {
   const normalized = normalizeText(value);
   return normalized ? normalized.slice(0, 160) : undefined;
@@ -361,18 +408,38 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
   scanTextEntry(issues, "solutionEmergence", input.solutionEmergence, input.locale);
   input.articleBlocks?.forEach((item, index) => {
     scanTextEntry(issues, `articleBlocks[${index}]`, item, input.locale);
+    if (containsGenericReasoningFiller(item)) {
+      pushIssue(
+        issues,
+        "copy.genericReasoningFiller",
+        "Article copy uses generic filler instead of a clue-specific solving path",
+        `articleBlocks[${index}]`,
+        item,
+      );
+    }
   });
 
   input.wrongGuesses?.forEach((item, index) => {
-    scanTextEntry(issues, `wrongGuesses[${index}].guess`, item?.guess, input.locale);
-    scanTextEntry(issues, `wrongGuesses[${index}].explanation`, item?.explanation, input.locale);
-    if (looksLikeMachineGuess(item?.guess)) {
+    const label = getWrongGuessLabel(item);
+    const labelField = item?.guess !== undefined ? `wrongGuesses[${index}].guess` : `wrongGuesses[${index}].label`;
+    const explanation = item?.explanation ?? [item?.whyPlausible, item?.whyRejected].filter(Boolean).join(" ");
+    scanTextEntry(issues, labelField, label, input.locale);
+    scanTextEntry(issues, `wrongGuesses[${index}].explanation`, explanation, input.locale);
+    if (item?.guess !== undefined && looksLikeMachineGuess(label)) {
       pushIssue(
         issues,
         "wrongGuesses.machineyGuess",
         "Wrong-guess label sounds machine-made instead of like a believable human false start",
-        `wrongGuesses[${index}].guess`,
-        item?.guess,
+        labelField,
+        label,
+      );
+    } else if (looksLikeMachineGuess(label) || looksLikeGenericSoftFalseStart(label)) {
+      pushIssue(
+        issues,
+        "wrongGuesses.genericLabel",
+        "Wrong-guess label is too generic to explain how a human would misread the clues",
+        labelField,
+        label,
       );
     }
   });
@@ -492,6 +559,36 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
     ["faqs[1].answer", input.faqs?.[1]?.answer],
     ["faqs[2].answer", input.faqs?.[2]?.answer],
   ];
+
+  const genericReasoningFillerFields: Array<[string, string | null | undefined]> = [
+    ["overview", input.overview],
+    ["solutionEmergence", input.solutionEmergence],
+    ["summary", input.summary],
+    ...(input.faqs?.flatMap((item, index) => [
+      [`faqs[${index}].question`, item?.question] as [string, string | null | undefined],
+      [`faqs[${index}].answer`, item?.answer] as [string, string | null | undefined],
+    ]) ?? []),
+    ...(input.clueDetails?.flatMap((item, index) => [
+      [`clueDetails[${index}].phrase`, item?.phrase] as [string, string | null | undefined],
+      [`clueDetails[${index}].explanation`, item?.explanation] as [string, string | null | undefined],
+    ]) ?? []),
+    ...(input.lessons?.flatMap((item, index) => [
+      [`lessons[${index}].title`, item?.title] as [string, string | null | undefined],
+      [`lessons[${index}].body`, item?.body] as [string, string | null | undefined],
+    ]) ?? []),
+  ];
+
+  for (const [field, value] of genericReasoningFillerFields) {
+    if (containsGenericReasoningFiller(value)) {
+      pushIssue(
+        issues,
+        "copy.genericReasoningFiller",
+        "Copy uses generic filler instead of a clue-specific solving path",
+        field,
+        value,
+      );
+    }
+  }
 
   for (const [field, value] of temporaryPageFields) {
     const text = normalizeText(value);

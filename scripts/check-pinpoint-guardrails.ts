@@ -10,7 +10,10 @@ import {
   validateDraftLanguage,
   validateDraftStructure,
 } from "../lib/puzzles/draft-validator";
-import { validateContentContract } from "../lib/puzzles/content-contract";
+import {
+  promotePublishBlockingIssues,
+  validateContentContract,
+} from "../lib/puzzles/content-contract";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
 import { collectSemanticLintIssues } from "../lib/puzzles/semantic-lint";
 import {
@@ -1831,6 +1834,91 @@ function checkContentContractRequiresThreeCompleteFaqs() {
   console.log("ok: content contract requires three complete FAQ items");
 }
 
+function checkGenericFalseStartWarningsDoNotBlockPublish() {
+  const rawWords = ["White", "Pirate", "National", "Checkered", "Capture the"];
+  const semanticCodes = collectSemanticLintIssues({
+    mainAnswer: "Words that come before flag",
+    articleBlocks: ['My first read drifted toward "a loose topic list" before the later clue corrected it.'],
+    wrongGuesses: [
+      {
+        label: "a loose topic list",
+        whyPlausible: "White and Pirate can look like a broad theme before the phrase slot is tested.",
+        whyRejected: "Capture the makes one exact phrase ending testable.",
+      },
+    ],
+  }).map((issue) => issue.code);
+  assert.ok(
+    semanticCodes.includes("wrongGuesses.genericLabel"),
+    "semantic lint should warn on generic wrong-guess labels",
+  );
+  assert.ok(
+    semanticCodes.includes("copy.genericReasoningFiller"),
+    "semantic lint should warn on generic reasoning filler in article copy",
+  );
+
+  const promotedIssues = promotePublishBlockingIssues(validateContentContract({
+    puzzleNumber: 765,
+    bodyMode: "short",
+    locale: "en",
+    rawWords,
+    mainAnswer: "Words that come before flag",
+    summary: "White, Pirate, National, Checkered, and Capture the need one repeated phrase ending.",
+    seoTitle: "LinkedIn Pinpoint #765 Answer: White, Pirate, National, Checkered, Capture the",
+    seoDescription:
+      "LinkedIn Pinpoint #765 answer for White, Pirate, National, Checkered, and Capture the, with spoiler-safe clues and a complete phrase explanation.",
+    overview:
+      "White first looks like a color clue, and Pirate can point toward ships or flags before the rest of the board is checked. National and Checkered keep the phrase direction alive, while Capture the gives the cleanest way to test one repeated ending across all five clues.",
+    solutionEmergence:
+      "I first read White as color language and Pirate as a sea clue, but that pairing did not explain National and Checkered cleanly. Capture the changed the solve because Capture the flag is a fixed phrase. After that, White flag, Pirate flag, National flag, and Checkered flag all checked cleanly under the same ending. That gave the board one repeated phrase slot instead of five separate clue meanings, and every clue could be verified without stretching the language.",
+    articleBlocks: ['My first read drifted toward "a loose topic list" before Capture the corrected the path.'],
+    wrongGuesses: [
+      {
+        label: "a loose topic list",
+        whyPlausible: "White and Pirate can look like a broad theme before the phrase slot is tested.",
+        whyRejected: "Capture the makes one exact phrase ending testable.",
+      },
+    ],
+    clueDetails: rawWords.map((clue) => ({
+      clue,
+      phrase: `${clue} flag`,
+      explanation: `${clue} fits because it forms a familiar phrase with flag after it.`,
+    })),
+    faqs: [
+      {
+        question: "What is the answer to LinkedIn Pinpoint #765?",
+        answer: "The answer is Words that come before flag.",
+      },
+      {
+        question: "Why does Pirate matter in LinkedIn Pinpoint #765?",
+        answer: "Pirate matters because Pirate flag gives a clear phrase test for the shared ending.",
+      },
+      {
+        question: "Why is Capture the the key clue in LinkedIn Pinpoint #765?",
+        answer: "Capture the is decisive because Capture the flag is a fixed phrase that makes the ending easy to verify.",
+      },
+    ],
+  }));
+  assert.ok(
+    promotedIssues.some((issue) => issue.level === "warning" && issue.code === "wrongGuesses.genericLabel"),
+    "generic wrong-guess label should stay a warning after publish-blocking promotion",
+  );
+  assert.ok(
+    promotedIssues.some((issue) => issue.level === "warning" && issue.code === "copy.genericReasoningFiller"),
+    "generic reasoning filler should stay a warning after publish-blocking promotion",
+  );
+  assert.equal(
+    promotedIssues.filter(
+      (issue) =>
+        issue.level === "error" &&
+        (issue.code === "wrongGuesses.genericLabel" || issue.code === "copy.genericReasoningFiller"),
+    ).length,
+    0,
+    "generic quality notes must not block publish in the first warning-only phase",
+  );
+
+  console.log("ok: generic false-start quality notes warn without blocking publish");
+}
+
 async function checkTypedCategoryGenerationKeepsGrammarNatural() {
   const generationModulePath = "../lib/puzzle-generation.ts";
   const workerModulePath = "../worker/src/index.ts";
@@ -3474,6 +3562,7 @@ async function main() {
   await checkPhraseFallbackDirection();
   await checkEvidenceContractGuardsMeaningfulV2Fields();
   checkContentContractRequiresThreeCompleteFaqs();
+  checkGenericFalseStartWarningsDoNotBlockPublish();
   await checkTypedCategoryGenerationKeepsGrammarNatural();
   checkWorkerLlmSlotsOnlyDraftNormalizesBeforeValidation();
   await checkValidateDraftDoesNotNormalizeEmptySlots();

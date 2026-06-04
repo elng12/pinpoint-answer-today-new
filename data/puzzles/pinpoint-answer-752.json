@@ -60,13 +60,13 @@
     }
   ],
   "solvePath": {
-    "firstRead": "Motor Damage Quality Remote Air traffic can look like five unrelated topics at first, so the first read can drift toward a loose list instead of one phrase pattern.",
+    "firstRead": "Motor Damage Quality Remote Air traffic can look like five unrelated systems at first, so the first read can drift toward machines, repairs, and aviation instead of one phrase pattern.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "unrelated systems",
+      "remote-control device clue"
     ],
     "whyFalseStartPlausible": [
-      "Motor Damage Quality Remote Air traffic looks like a loose topic list before Air traffic forces one shared slot.",
+      "Motor, Damage, Quality, Remote, and Air traffic can look like machines, repairs, standards, devices, and aviation before Air traffic forces one shared slot.",
       "Remote can point toward devices, so it is easy to stop too early instead of checking the full board."
     ],
     "breakingClue": "Air traffic",
