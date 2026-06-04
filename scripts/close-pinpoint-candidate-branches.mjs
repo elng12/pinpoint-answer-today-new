@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { appendFileSync } from "node:fs";
 import process from "node:process";
 
 const DEFAULT_REPO = "elng12/pinpoint-answer-today-new";
@@ -32,6 +33,40 @@ function run(command, args, options = {}) {
 
 function git(args, options) {
   return run("git", args, options);
+}
+
+function appendStepSummary({ closed = [], pending = [], failures = [] }) {
+  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+  if (!summaryPath) return;
+
+  const lines = [
+    "## Pinpoint Candidate Watchdog",
+    "",
+    `- Closed: ${closed.length}`,
+    `- Pending: ${pending.length}`,
+    `- Stuck: ${failures.length}`,
+    closed.length > 0
+      ? "- Site status: closed candidates were promoted to main, verified on production, and deleted."
+      : "",
+    pending.length > 0
+      ? "- Site status: pending candidates have not updated production yet."
+      : "",
+    failures.length > 0
+      ? "- Site status: stuck candidates need manual action; an issue was created or updated when requested."
+      : "",
+    closed.length === 0 && pending.length === 0 && failures.length === 0
+      ? "- Site status: no candidate branches are waiting."
+      : "",
+    ...closed.map((item) => `- Closed branch: ${item.branch} (${item.action})`),
+    ...pending.map((item) => `- Pending branch: ${item.branch} - ${item.reason}`),
+    ...failures.map((item) => `- Stuck branch: ${item.branch} - ${item.reason}`),
+  ].filter(Boolean);
+
+  try {
+    appendFileSync(summaryPath, `${lines.join("\n")}\n\n`, "utf8");
+  } catch (error) {
+    console.warn(`Could not write GitHub step summary: ${error instanceof Error ? error.message : String(error)}`);
+  }
 }
 
 function parseCandidateBranch(branch) {
@@ -274,6 +309,7 @@ async function main() {
   const branches = listCandidateBranches(branchFilter);
   if (branches.length === 0) {
     console.log("ok: no Pinpoint candidate branches found");
+    appendStepSummary({});
     return;
   }
 
@@ -338,6 +374,7 @@ async function main() {
     pending,
     failures,
   }, null, 2));
+  appendStepSummary({ closed, pending, failures });
 
   if (failures.length > 0) process.exitCode = 1;
 }

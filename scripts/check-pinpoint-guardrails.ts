@@ -2999,7 +2999,9 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
       ciWorkflow.includes('git push origin --delete "$GITHUB_REF_NAME"') &&
       ciWorkflow.includes("candidate branch still exists after delete") &&
       candidateVerifySource.includes("const PUBLIC_AUDIT_TIMEOUT_MS = 10 * 60 * 1000") &&
-      candidateVerifySource.includes("public fetch audit remains the final gate"),
+      candidateVerifySource.includes("public fetch audit remains the final gate") &&
+      candidateVerifySource.includes("GITHUB_STEP_SUMMARY") &&
+      candidateVerifySource.includes("production has the candidate content and public fetch audit passed"),
     "candidate auto-promotion must verify public production and delete the branch only after verification",
   );
 
@@ -3032,7 +3034,9 @@ async function checkMainFailureContentRecoveryCreatesAutoPromotedCandidate() {
       recoverySource.includes("resolveChangedDetailPath") &&
       recoverySource.includes("Main recovery may only change one detail JSON file") &&
       recoverySource.includes("remoteBranchExists(branch)") &&
-      recoverySource.includes('git(["push", "origin", `HEAD:${branch}`]'),
+      recoverySource.includes('git(["push", "origin", `HEAD:${branch}`]') &&
+      recoverySource.includes("GITHUB_STEP_SUMMARY") &&
+      recoverySource.includes("production is not updated yet; candidate CI will promote to main after checks pass"),
     "main recovery script must only auto-repair known content data and push a candidate branch",
   );
   assert.ok(
@@ -3075,7 +3079,9 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
       watchdogSource.includes('git(["push", "origin", "HEAD:main"]') &&
       watchdogSource.includes('git(["push", "origin", "--delete", branch]') &&
       watchdogSource.includes("Pinpoint candidate stuck:") &&
-      watchdogSource.includes("candidate branch count returns to 0"),
+      watchdogSource.includes("candidate branch count returns to 0") &&
+      watchdogSource.includes("GITHUB_STEP_SUMMARY") &&
+      watchdogSource.includes("pending candidates have not updated production yet"),
     "candidate watchdog must promote verified branches, delete closed branches, and create a tracked issue when it cannot close one",
   );
 
@@ -3330,6 +3336,9 @@ async function checkDailyPublishStatusReport() {
   assert.ok(
     workerSource.includes("type DailyPublishStatus") &&
       workerSource.includes("dailyPublishStatusReportNotifyKeyOf") &&
+      workerSource.includes("getDailyPublishSiteState") &&
+      workerSource.includes("正式站暂未更新；候选分支通过后会自动提升到 main") &&
+      workerSource.includes("候选分支只是安全检查，不是人工排队") &&
       workerSource.includes("notifyDailyPublishStatusReport") &&
       workerSource.includes("Pinpoint 每日状态"),
     "Worker must define a deduped daily publish status report",
@@ -3346,7 +3355,8 @@ async function checkDailyPublishStatusReport() {
   }
   assert.ok(
     rulesDoc.includes("daily status report") &&
-      rulesDoc.includes("published, downgraded, candidate, blocked, paused, or needs review"),
+      rulesDoc.includes("published, downgraded, candidate, blocked, paused, or needs review") &&
+      rulesDoc.includes("production-site state"),
     "auto-publish rules doc must record the daily status report coverage",
   );
 

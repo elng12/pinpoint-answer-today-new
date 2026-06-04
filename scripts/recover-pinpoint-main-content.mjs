@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { appendFileSync, readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import process from "node:process";
 
@@ -66,7 +66,41 @@ function fetchOriginMain() {
   git(["fetch", "origin", "+main:refs/remotes/origin/main"]);
 }
 
+function appendStepSummary(payload) {
+  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+  if (!summaryPath) return;
+
+  const status = String(payload.status || "unknown");
+  const lines = [
+    "## Pinpoint Main Recovery",
+    "",
+    `- Status: ${status}`,
+    payload.slug ? `- Puzzle: ${payload.slug}` : "",
+    payload.branch ? `- Candidate branch: ${payload.branch}` : "",
+    payload.reason ? `- Reason: ${payload.reason}` : "",
+    Array.isArray(payload.changedFiles) && payload.changedFiles.length > 0
+      ? `- Changed files: ${payload.changedFiles.join(", ")}`
+      : "",
+    status === "candidate_pushed"
+      ? "- Site status: production is not updated yet; candidate CI will promote to main after checks pass."
+      : "",
+    status === "dry_run"
+      ? "- Site status: dry run only; production was not changed."
+      : "",
+    status === "skipped"
+      ? "- Site status: no recovery branch was pushed."
+      : "",
+  ].filter(Boolean);
+
+  try {
+    appendFileSync(summaryPath, `${lines.join("\n")}\n\n`, "utf8");
+  } catch (error) {
+    console.warn(`Could not write GitHub step summary: ${error instanceof Error ? error.message : String(error)}`);
+  }
+}
+
 function exitOk(payload) {
+  appendStepSummary(payload);
   console.log(JSON.stringify({ ok: true, ...payload }, null, 2));
 }
 

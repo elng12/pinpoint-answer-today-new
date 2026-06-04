@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { appendFile, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -202,6 +202,29 @@ async function waitForPublicFetchAudit(input) {
   throw new Error(`Public fetch audit did not pass in time: ${lastError || "unknown error"}`);
 }
 
+async function appendStepSummary({ status, slug = "", sha = "", vercel = null, audit = null, reason = "" }) {
+  const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+  if (!summaryPath) return;
+
+  const lines = [
+    "## Pinpoint Candidate Release",
+    "",
+    `- Status: ${status}`,
+    slug ? `- Puzzle: ${slug}` : "",
+    sha ? `- SHA: ${sha}` : "",
+    vercel?.target_url ? `- Vercel: ${vercel.target_url}` : "",
+    audit?.auditOutcome ? `- Public audit: ${audit.auditOutcome}` : "",
+    status === "passed"
+      ? "- Site status: production has the candidate content and public fetch audit passed."
+      : "",
+    reason ? `- Reason: ${reason}` : "",
+  ].filter(Boolean);
+
+  await appendFile(summaryPath, `${lines.join("\n")}\n\n`, "utf8").catch((error) => {
+    console.warn(`Could not write GitHub step summary: ${error instanceof Error ? error.message : String(error)}`);
+  });
+}
+
 async function main() {
   const branch = readArg("--candidate-branch", process.env.GITHUB_REF_NAME || "");
   const sha = readArg("--sha", process.env.GITHUB_SHA || "");
@@ -226,6 +249,8 @@ async function main() {
   const summary = await fetchSummarySnapshot(siteUrl);
   const audit = await waitForPublicFetchAudit(buildAuditInput({ siteUrl, sha, registry, registryEntry, puzzle }));
 
+  await appendStepSummary({ status: "passed", slug, sha, vercel, audit });
+
   console.log(JSON.stringify({
     ok: true,
     slug,
@@ -236,7 +261,9 @@ async function main() {
   }, null, 2));
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
+main().catch(async (error) => {
+  const message = error instanceof Error ? error.message : String(error);
+  await appendStepSummary({ status: "failed", reason: message });
+  console.error(message);
   process.exitCode = 1;
 });

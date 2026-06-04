@@ -4463,7 +4463,7 @@ async function publishToNewSiteGitHub(
       answer,
       clues: words,
       reason: releaseQueueDecision.reasonCode,
-      nextAction: "等待候选分支机器检查通过后自动上线；如果卡住，再看 candidate watchdog。",
+      nextAction: "等候选分支机器检查；通过后自动提升到 main，正式站才会更新。超过 45 分钟 watchdog 会处理。",
     });
   }
 
@@ -5645,6 +5645,30 @@ function getDailyPublishStatusLabel(status: DailyPublishStatus): string {
   return map[status];
 }
 
+function getDailyPublishSiteState(status: DailyPublishStatus): string {
+  const map: Record<DailyPublishStatus, string> = {
+    published: "正式站已更新",
+    downgraded: "正式站已更新，但内容先用保底版本",
+    candidate: "正式站暂未更新；候选分支通过后会自动提升到 main",
+    blocked: "正式站未更新；规则先拦住了",
+    paused: "正式站未更新；自动发布开关是暂停",
+    needs_review: "正式站未确认更新；需要先处理异常",
+  };
+  return map[status];
+}
+
+function getDailyPublishAutomationState(status: DailyPublishStatus): string {
+  const map: Record<DailyPublishStatus, string> = {
+    published: "已推 main，并通过公开页面检查",
+    downgraded: "已推 main，并通过公开页面检查；后面可补强内容",
+    candidate: "候选分支只是安全检查，不是人工排队",
+    blocked: "自动修复没有安全通过，不能硬推 main",
+    paused: "Worker 仍可抓取，但不会写 main",
+    needs_review: "需要人工确认后再补发或恢复",
+  };
+  return map[status];
+}
+
 async function notifyDailyPublishStatusReport(
   env: Env,
   input: {
@@ -5674,6 +5698,8 @@ async function notifyDailyPublishStatusReport(
     ...(input.puzzleNumber ? [`谜题: #${input.puzzleNumber}`] : []),
     ...(input.slug ? [`页面: ${input.slug}`] : []),
     `结果: ${statusLabel}`,
+    `正式站: ${getDailyPublishSiteState(input.status)}`,
+    `自动链路: ${getDailyPublishAutomationState(input.status)}`,
     ...(input.answer ? [`答案: ${input.answer}`] : []),
     ...(clueLine ? [`线索: ${clueLine}`] : []),
     ...(input.detailUrl ? [`详情: ${input.detailUrl}`] : []),

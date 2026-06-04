@@ -252,7 +252,7 @@ Production settings already match the automatic publish direction:
 | detail publish checklist | exists as the operator-facing final checklist for local and production verification | `docs/pinpoint-detail-publish-checklist-2026-05-31.md` |
 | daily Worker post-publish public audit | exists, checks detail page, sitemap, homepage, archive, and summary API; P0 failures send webhook alerts and pause the next auto-publish run | `worker/src/index.ts` |
 | emergency pause switch | exists, keeps fetch/KV but stops scheduled publish | `worker/src/index.ts`, `scripts/worker-ops.mjs` |
-| daily status report | exists, reports published, downgraded, candidate, blocked, paused, or needs review | `worker/src/index.ts` |
+| daily status report | exists, reports published, downgraded, candidate, blocked, paused, or needs review, plus the production-site state | `worker/src/index.ts` |
 
 ## Gaps To Close
 
