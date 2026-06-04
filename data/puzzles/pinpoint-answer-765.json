@@ -40,9 +40,9 @@
     "The answer was \"Words that come before “flag”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “flag”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
   ],
   "solutionNarrative": [
-    "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Capture the\" feel exact enough.",
-    "Once \"Capture the\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
-    "After that, I checked White, Pirate, National, Checkered, Capture the one by one. The strong solve was not just that two clues worked; it was that every clue could use the same word in the same slot and still sound like ordinary language.",
+    "White first sent me toward color ideas, and I also considered whether the clue might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.",
+    "Pirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.",
+    "Then I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.",
     "The answer was \"Words that come before “flag”\"."
   ],
   "lessons": [
@@ -55,7 +55,7 @@
       "body": "Once \"Capture the\" lands, place the same word after the other clues and make sure they read naturally right away."
     },
     {
-      "title": "Every clue should read as an everyday phrase once the answer is in place",
+      "title": "The flag ending has to work beyond the first two clues",
       "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
     }
   ],
@@ -115,7 +115,7 @@
       "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
     ],
     "breakingClue": "Capture the",
-    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Capture the\" feel exact enough.\n\nOnce \"Capture the\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I checked White, Pirate, National, Checkered, Capture the one by one. The strong solve was not just that two clues worked; it was that every clue could use the same word in the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “flag”\".",
+    "pivot": "White first sent me toward color ideas, and I also considered whether the clue might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.\n\nPirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.\n\nThen I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.\n\nThe answer was \"Words that come before “flag”\".",
     "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
