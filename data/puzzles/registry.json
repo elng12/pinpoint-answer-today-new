@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 765,
+    "slug": "pinpoint-answer-765",
+    "publishDate": "2026-06-04",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "White",
+      "Pirate",
+      "National",
+      "Checkered",
+      "Capture the"
+    ],
+    "mainAnswer": "Words that come before “flag”",
+    "category": "Words that come before “flag”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links White, Pirate, National, Checkered, Capture the - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-04T07:21:12.944Z"
+  },
+  {
     "puzzleNumber": 764,
     "slug": "pinpoint-answer-764",
     "publishDate": "2026-06-03",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Trifle",
@@ -16,7 +35,7 @@
     "category": "Desserts (all with many layers)",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Trifle, Parfait, Tiramisu do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-06-03T09:13:03.598Z"
+    "updatedAt": "2026-06-04T07:21:12.944Z"
   },
   {
     "puzzleNumber": 763,

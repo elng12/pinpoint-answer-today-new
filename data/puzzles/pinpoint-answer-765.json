@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 765,
+  "slug": "pinpoint-answer-765",
+  "publishDate": "2026-06-04",
+  "isoDate": "2026-06-04",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "White",
+    "Pirate",
+    "National",
+    "Checkered",
+    "Capture the"
+  ],
+  "answer": "Words that come before “flag”",
+  "category": "Words that come before “flag”",
+  "wordHints": {
+    "White": "\"White flag\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Pirate": "\"Pirate flag\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "National": "Once the shared word is in place, \"National flag\" reads like ordinary language instead of a forced compound.",
+    "Checkered": "\"Checkered flag\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Capture the": "\"Capture the flag\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "White": "Try reading White as part of a familiar phrase in words that come before “flag” instead of as a standalone word.",
+    "Pirate": "Pirate works better once you test a fixed phrase pattern rather than a broad topic.",
+    "National": "Look for a natural expression that absorbs National cleanly before locking the board.",
+    "Checkered": "Try reading Checkered as part of a familiar phrase in words that come before “flag” instead of as a standalone word.",
+    "Capture the": "Capture the is the clue that makes the phrase pattern in words that come before “flag” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs. Capture the behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"White flag\" and \"Pirate flag\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "National flag, Checkered flag, Capture the flag show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “flag”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “flag”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Capture the\" feel exact enough.",
+    "Once \"Capture the\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.",
+    "After that, I checked White, Pirate, National, Checkered, Capture the one by one. The strong solve was not just that two clues worked; it was that every clue could use the same word in the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “flag”\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"White\" and \"Pirate\" do not immediately line up around one missing word",
+      "body": "\"White\" and \"Pirate\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Capture the\" is what finally makes the missing word visible",
+      "body": "Once \"Capture the\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "Every clue should read as an everyday phrase once the answer is in place",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"White\" and \"Pirate\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "White",
+        "examplePhrase": "White flag",
+        "connectionExplained": "\"White flag\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Pirate",
+        "examplePhrase": "Pirate flag",
+        "connectionExplained": "\"Pirate flag\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "National",
+        "examplePhrase": "National flag",
+        "connectionExplained": "Once the shared word is in place, \"National flag\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Checkered",
+        "examplePhrase": "Checkered flag",
+        "connectionExplained": "\"Checkered flag\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Capture the",
+        "examplePhrase": "Capture the flag",
+        "connectionExplained": "\"Capture the flag\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"White\" and \"Pirate\" in LinkedIn Pinpoint #765?",
+      "answer": "The answer is \"Words that come before “flag”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"White\" and \"Pirate\" connect in LinkedIn Pinpoint #765?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Capture the\" the key clue in LinkedIn Pinpoint #765?",
+      "answer": "\"Capture the\" is the strongest clue because \"Capture the flag\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Capture the",
+    "pivot": "I first tried a loose topic list, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Capture the\" feel exact enough.\n\nOnce \"Capture the\" clicked, the phrase pattern was finally clear. The same word fit after the earlier clues without forcing any of them, which was when the answer stopped feeling speculative and started feeling confirmed.\n\nAfter that, I checked White, Pirate, National, Checkered, Capture the one by one. The strong solve was not just that two clues worked; it was that every clue could use the same word in the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “flag”\".",
+    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Capture the",
+    "whyDecisive": "Capture the is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Capture the lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "White",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "White flag",
+      "nonObviousWhy": "\"White flag\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "White flag",
+      "phraseExample": "White flag"
+    },
+    {
+      "clue": "Pirate",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Pirate flag",
+      "nonObviousWhy": "\"Pirate flag\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Pirate flag",
+      "phraseExample": "Pirate flag"
+    },
+    {
+      "clue": "National",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "National flag",
+      "nonObviousWhy": "Once the shared word is in place, \"National flag\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "National flag",
+      "phraseExample": "National flag"
+    },
+    {
+      "clue": "Checkered",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Checkered flag",
+      "nonObviousWhy": "\"Checkered flag\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Checkered flag",
+      "phraseExample": "Checkered flag"
+    },
+    {
+      "clue": "Capture the",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Capture the flag",
+      "nonObviousWhy": "\"Capture the flag\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Capture the flag",
+      "phraseExample": "Capture the flag"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"White\" and \"Pirate\" in LinkedIn Pinpoint #765?",
+      "answer": "The answer is \"Words that come before “flag”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "White"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"White\" and \"Pirate\" connect in LinkedIn Pinpoint #765?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "White"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Capture the\" the key clue in LinkedIn Pinpoint #765?",
+      "answer": "\"Capture the\" is the strongest clue because \"Capture the flag\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Capture the"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "White flag",
+      "Pirate flag",
+      "National flag",
+      "Checkered flag",
+      "Capture the flag"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "White flag",
+      "Pirate flag",
+      "National flag",
+      "Checkered flag"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "White, Pirate do not immediately advertise one shared phrase slot before Capture the shows where the repeated word belongs.",
+      "whyRejected": "Capture the behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "National flag, Checkered flag, Capture the flag show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
