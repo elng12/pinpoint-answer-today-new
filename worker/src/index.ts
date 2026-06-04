@@ -9,6 +9,10 @@ import {
   buildSharedFallbackLessons,
   buildSharedFallbackSolutionNarrative,
 } from "../../lib/puzzles/fallback-copy";
+import {
+  repairSolutionNarrative,
+  shouldRepairSolutionNarrative,
+} from "../../lib/puzzles/solution-narrative-repair";
 import { getPinpointUnlockUtcHour } from "../../lib/utils/pinpoint-unlock";
 import {
   formatPublishGateIssues,
@@ -3403,7 +3407,7 @@ export function buildPublishedPuzzleDetailRecord({
       : inferWorkerFaqItems(faqs, words));
   const uniquenessSignals = providedUniquenessSignals ?? buildWorkerUniquenessSignals(answer, clueRows);
 
-  return {
+  const detailRecord = {
     puzzleNumber,
     slug,
     publishDate: puzzleDate,
@@ -3432,6 +3436,10 @@ export function buildPublishedPuzzleDetailRecord({
     setValidationSummary,
     categoryPrecisionNote,
   };
+
+  return shouldRepairSolutionNarrative(detailRecord)
+    ? repairSolutionNarrative({ detail: detailRecord }).detail
+    : detailRecord;
 }
 
 type PublishedPuzzleDetailRecord = ReturnType<typeof buildPublishedPuzzleDetailRecord>;

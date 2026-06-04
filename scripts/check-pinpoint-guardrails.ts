@@ -21,6 +21,10 @@ import { validatePublishEligibility } from "../lib/puzzles/publish-eligibility.s
 import { validatePinpointEvidenceV1 } from "../lib/puzzles/pinpoint-evidence-v1.shared.mjs";
 import { validateReleaseOverrideDryRun } from "../lib/puzzles/release-override.shared.mjs";
 import { decidePinpointReleaseQueueAction } from "../lib/puzzles/release-queue-policy.shared.mjs";
+import {
+  repairSolutionNarrative,
+  shouldRepairSolutionNarrative,
+} from "../lib/puzzles/solution-narrative-repair";
 import { resolveWorkerFetchRoute } from "../worker/src/routes/dispatch";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
@@ -3116,6 +3120,7 @@ async function checkProductionReleaseDetailVerificationUsesRenderedText() {
 async function checkPrepublishGateRunsContentAutoRepairSafely() {
   const prepublishSource = await readFile(resolve(ROOT, "scripts/check-pinpoint-prepublish-gate.ts"), "utf8");
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
     scripts?: Record<string, string>;
   };
@@ -3136,8 +3141,74 @@ async function checkPrepublishGateRunsContentAutoRepairSafely() {
       releaseSource.includes('await run("npm", ["run", "typecheck"], { cwd: WORKER_DIR });\n  await ensureCleanWorktree();\n\n  const sha ='),
     "release:production must stop before pushing if prepublish auto-repair changed local files",
   );
+  assert.ok(
+    workerSource.includes('from "../../lib/puzzles/solution-narrative-repair"') &&
+      workerSource.includes("shouldRepairSolutionNarrative(detailRecord)") &&
+      workerSource.includes("repairSolutionNarrative({ detail: detailRecord }).detail"),
+    "Worker must run the shared solution narrative repair only when public detail JSON needs it",
+  );
 
-  console.log("ok: prepublish gate can auto-repair content and release stops before pushing dirty files");
+  const repair = repairSolutionNarrative({
+    detail: {
+      slug: "pinpoint-answer-999",
+      puzzleNumber: 999,
+      answer: "Types of printers",
+      clues: ["Thermal", "Laser", "3D", "Dot matrix", "Inkjet"],
+      solutionNarrative: ["Too short."],
+      turningPoint: { clue: "Dot matrix" },
+      clueRows: [
+        {
+          clue: "Thermal",
+          resolvedPhraseOrMember: "Thermal printer",
+          nonObviousWhy: "Thermal names one printer type.",
+        },
+        {
+          clue: "Laser",
+          resolvedPhraseOrMember: "Laser printer",
+          nonObviousWhy: "Laser names one printer type.",
+        },
+        {
+          clue: "3D",
+          resolvedPhraseOrMember: "3D printer",
+          nonObviousWhy: "3D names one printer type.",
+        },
+        {
+          clue: "Dot matrix",
+          resolvedPhraseOrMember: "Dot matrix printer",
+          nonObviousWhy: "Dot matrix is the narrowing clue.",
+        },
+        {
+          clue: "Inkjet",
+          resolvedPhraseOrMember: "Inkjet printer",
+          nonObviousWhy: "Inkjet confirms the printer family.",
+        },
+      ],
+      solvePath: { pivot: "generic pivot" },
+      wrongGuessCandidates: [{ label: "office technology" }],
+    },
+  });
+  assert.equal(repair.narrative.length, 4, "shared solution narrative repair must produce four paragraphs");
+  assert.match(repair.narrative.join(" "), /I first read Thermal and Laser/, "repair narrative should use first-person solve flow");
+  assert.match(
+    String(repair.detail.solvePath?.pivot || ""),
+    /The answer was "Types of printers"/,
+    "repair must update solvePath.pivot together with solutionNarrative",
+  );
+  assert.equal(
+    shouldRepairSolutionNarrative({
+      bodyMode: "standard",
+      articleBlocks: [
+        "Thermal, Laser, and 3D can look like broad technology clues until Dot matrix narrows the board into printer territory.",
+      ],
+      solutionNarrative: [
+        "I started with Thermal and Laser because they looked like broad technology clues, then paused when 3D still allowed more than one path. Dot matrix made the direction specific enough to test as a printer family, and Inkjet gave me the last check. I went back through the list slowly instead of accepting the first broad theme, because the answer only worked if every clue named a normal printer type. That extra pass mattered: Thermal printer, Laser printer, 3D printer, Dot matrix printer, and Inkjet printer all sounded natural, so the final answer felt earned instead of guessed.",
+      ],
+    }),
+    false,
+    "shared repair gate must preserve a healthy first-person solve narrative",
+  );
+
+  console.log("ok: prepublish gate and Worker both use shared content auto-repair safely");
 }
 
 async function checkWorkerRunsPostPublishPublicAudit() {
