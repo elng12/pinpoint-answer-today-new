@@ -8,7 +8,7 @@ export default async function DetailLayout({ children }: { children: ReactNode }
     <>
       <NavBar isDetailPage />
       {children}
-      <Footer isDetailPage />
+      <Footer isDetailPage showRecentEntries={false} />
     </>
   );
 }

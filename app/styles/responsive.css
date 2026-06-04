@@ -93,6 +93,14 @@
     min-width: 144px;
   }
 
+  .footer-recent-heading {
+    font-size: 24px;
+  }
+
+  .footer-recent-list a {
+    font-size: 17px;
+  }
+
   .surface-block {
     padding: 24px;
   }
