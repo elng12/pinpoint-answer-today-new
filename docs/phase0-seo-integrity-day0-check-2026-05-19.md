@@ -691,3 +691,114 @@ Next action:
 - Keep running this daily observer.
 - Re-run GSC after `#762` has at least one complete Search Console data window.
 - Re-run automated PageSpeed later with a working API quota/key if we need scriptable checks.
+
+## Observation - 2026-06-02
+
+Checked with Googlebot Smartphone UA (read-only).
+
+Latest public detail:
+
+- `#762` (`/linkedin-pinpoint-answers/pinpoint-answer-762/`) is still the current production detail from `data/puzzles/registry.json`.
+
+URL checks:
+
+- `/` => `200`, canonical `https://pinpointanswertoday.app`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`, latest `#762` clues and answer text).
+- `/puzzles` => `200`, canonical `https://pinpointanswertoday.app/puzzles`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`, links for latest and restored detail pages).
+- `/next-pinpoint-preview` => `200`, canonical `https://pinpointanswertoday.app/next-pinpoint-preview`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`).
+- `#735` => `200`, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`, all five clues, answer text).
+- `#736` => `200`, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`, all five clues, answer text).
+- `#737` => `200`, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`, all five clues, answer text).
+- Latest detail `#762` => `200`, canonical `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-762/`, robots `index, follow`, indexable: YES, core HTML markers present (`<title>`, canonical, `<main>`, `<h1>`, all five clues, answer text).
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => `200`, `content-type: application/xml`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, and latest `#762`.
+- `lastmod` for `/`, `/puzzles`, and `/next-pinpoint-preview` is `2026-06-01T07:16:29.053Z`.
+- `lastmod` for latest detail `#762` is `2026-06-01T07:10:48.834Z`.
+- `#735/#736/#737 lastmod` stays stable at `2026-05-06..2026-05-07` (expected for older restored pages).
+
+GSC (complete window only; avoid same-day):
+
+- Range pulled: `2026-05-26 -> 2026-06-01` (complete days only; excludes `2026-06-02`).
+- Recent latest 30 detail pages aggregate: `clicks=6 impressions=2098`; pages with any clicks: `3/30`.
+- Best recent detail page: `#761` => `clicks=4 impressions=1306 ctr=0.3% position=6.50`.
+- Latest detail `#762` => `clicks=0 impressions=2 ctr=0.0% position=3.50` (sample is tiny; do not over-read).
+- Homepage `/` => `clicks=2 impressions=198 ctr=1.0% position=35.29`; mobile slice => `clicks=1 impressions=23 ctr=4.3% position=22.26`.
+- `/puzzles` => `clicks=0 impressions=6 ctr=0.0% position=20.50`.
+- `/next-pinpoint-preview` => `clicks=0 impressions=6 ctr=0.0% position=9.33`.
+- Restored pages: `#735` => `impressions=2`, `#736` => `impressions=0`, `#737` => `impressions=2`.
+
+Release context only:
+
+- Phase 0 SEO integrity fixes deployed via PR `#40` at `2026-05-19T11:17:58Z`.
+- Security-only PR `#41` deployed at `2026-05-20T03:05:06Z` (keep treating as non-SEO variable).
+- Local repo HEAD during this observation: `050b998` (local state only; not proof of production deploy state).
+
+Pass/Fail:
+
+- PASS: No `404`, no `noindex`, no canonical mismatch, and no sitemap omission across the required URL set.
+- PASS: Googlebot Smartphone HTML includes the expected core content on homepage, archive, preview, restored pages `#735-#737`, and latest detail `#762`.
+- PASS: Complete-window GSC pull succeeded for the post-fix window ending `2026-06-01`.
+- OPEN: `#762` and restored pages `#735/#737` only have tiny impression counts so far; keep treating them as observation-only, not trend proof.
+
+Next action:
+
+- Keep running this daily observer.
+- Re-check GSC on or after the next complete window so `#762` has more than a tiny sample before judging movement.
+
+## Observation - 2026-06-03
+
+Checked with Googlebot Smartphone UA (read-only).
+
+Latest public detail:
+
+- `#763` (`/linkedin-pinpoint-answers/pinpoint-answer-763/`) is the current public detail from local `data/puzzles/registry.json` (`status=live`, `updatedAt=2026-06-02T08:06:01.802Z`).
+
+URL checks:
+
+| URL | Status | Canonical | Robots | Core HTML markers |
+|---|---:|---|---|---|
+| `https://pinpointanswertoday.app/` | `200` | `https://pinpointanswertoday.app` | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>`, latest `#763` marker present |
+| `https://pinpointanswertoday.app/puzzles` | `200` | `https://pinpointanswertoday.app/puzzles` | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>`, archive links for `#735/#736/#737/#763` present |
+| `https://pinpointanswertoday.app/next-pinpoint-preview` | `200` | `https://pinpointanswertoday.app/next-pinpoint-preview` | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>` present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-735/` | `200` | self | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>`, answer text, all five clues present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-736/` | `200` | self | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>`, answer text, all five clues present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-737/` | `200` | self | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>`, answer text, all five clues present |
+| `https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-763/` | `200` | self | `index, follow` | `<title>`, canonical tag, `<main>`, `<h1>`, answer text, all five clues present |
+
+Sitemap checks:
+
+- `https://pinpointanswertoday.app/sitemap.xml` => `200`, `content-type: application/xml`, `urlCount=311`.
+- Required entries present: `/`, `/puzzles`, `/next-pinpoint-preview`, `#735`, `#736`, `#737`, and latest `#763`.
+- `lastmod` for `/`, `/puzzles`, `/next-pinpoint-preview`, and `#763` is `2026-06-02T08:06:01.802Z`.
+- Restored older details stay stable: `#735` => `2026-05-06T07:01:42.573Z`, `#736` => `2026-05-07T07:01:43.931Z`, `#737` => `2026-05-07T07:01:58.344Z`.
+
+GSC (complete window only; avoid same-day):
+
+- Range pulled: `2026-05-26 -> 2026-06-02` (complete days only; excludes `2026-06-03`).
+- Recent latest 30 detail pages aggregate: `clicks=6 impressions=2109`; pages with clicks: `3/30`.
+- Best recent detail page: `#761` => `clicks=4 impressions=1310 ctr=0.3% position=6.50`.
+- Latest detail `#763` => `clicks=0 impressions=1 ctr=0.0% position=10.00` (tiny sample; observation only).
+- Homepage `/` => `clicks=2 impressions=224 ctr=0.9% position=36.57`; mobile slice => `clicks=1 impressions=24 ctr=4.2% position=22.46`.
+- `/puzzles` => `clicks=0 impressions=7 ctr=0.0% position=20.86`.
+- `/next-pinpoint-preview` => `clicks=0 impressions=6 ctr=0.0% position=9.33`.
+- Restored pages: `#735` => `impressions=2`, `#736` => `impressions=0`, `#737` => `impressions=2`.
+
+Release context only:
+
+- Phase 0 SEO integrity fixes deployed via PR `#40` at `2026-05-19T11:17:58Z`.
+- Security-only PR `#41` deployed at `2026-05-20T03:05:06Z` and should still be treated as a non-SEO variable.
+- Local repo HEAD during this observation: `f47b78e` on `main` (local context only, not proof of current production deploy state).
+
+Pass/Fail:
+
+- PASS: No `404`, no `noindex`, no canonical mismatch, no sitemap omission, and no missing-core-mobile-HTML issue across the required URL set.
+- PASS: Googlebot Smartphone HTML shows the expected core content on homepage, archive, preview, restored pages `#735-#737`, and latest detail `#763`.
+- PASS: Complete-window GSC pull succeeded for the post-fix window ending `2026-06-02`.
+- OPEN: `#763` still has only `1` impression, and `#735/#737` are still tiny samples; do not over-read movement yet.
+
+Next action:
+
+- Keep running this daily observer.
+- Re-check GSC after `#763` has more than a tiny sample and watch whether restored pages `#735/#737` move beyond `2` impressions.
