@@ -3006,6 +3006,45 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
   console.log("ok: candidate branches auto-promote through machine checks and production verification");
 }
 
+async function checkMainFailureContentRecoveryCreatesAutoPromotedCandidate() {
+  const recoveryWorkflow = await readFile(resolve(ROOT, ".github/workflows/pinpoint-main-recovery.yml"), "utf8");
+  const recoverySource = await readFile(resolve(ROOT, "scripts/recover-pinpoint-main-content.mjs"), "utf8");
+  const candidateCheckSource = await readFile(resolve(ROOT, "scripts/check-pinpoint-candidate-branch.mjs"), "utf8");
+  const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+
+  assert.ok(
+    packageJson.scripts?.["pinpoint:main-recovery"]?.includes("recover-pinpoint-main-content.mjs"),
+    "package.json must expose the main content recovery command",
+  );
+  assert.ok(
+    recoveryWorkflow.includes("workflow_run:") &&
+      recoveryWorkflow.includes("github.event.workflow_run.conclusion == 'failure'") &&
+      recoveryWorkflow.includes("github.event.workflow_run.head_branch == 'main'") &&
+      recoveryWorkflow.includes("recover-pinpoint-main-content.mjs --require-origin-main") &&
+      recoveryWorkflow.includes("contents: write"),
+    "main recovery workflow must run only after failed main CI and have permission to push a repair candidate",
+  );
+  assert.ok(
+    recoverySource.includes('run("npm", ["run", "validate:data:auto-repair"]') &&
+      recoverySource.includes('run("npm", ["run", "validate:data"]') &&
+      recoverySource.includes("resolveChangedDetailPath") &&
+      recoverySource.includes("Main recovery may only change one detail JSON file") &&
+      recoverySource.includes("remoteBranchExists(branch)") &&
+      recoverySource.includes('git(["push", "origin", `HEAD:${branch}`]'),
+    "main recovery script must only auto-repair known content data and push a candidate branch",
+  );
+  assert.ok(
+    candidateCheckSource.includes("baseAlreadyPublishesSlug") &&
+      candidateCheckSource.includes('Candidate branch is missing required file change: data/puzzles/registry.json') &&
+      candidateCheckSource.includes("!baseAlreadyPublishesSlug"),
+    "candidate checker must allow recovery candidates to change only the detail JSON when main already has the live registry entry",
+  );
+
+  console.log("ok: failed main content gates recover through an auto-promoted candidate branch");
+}
+
 async function checkCandidateBranchWatchdogClosesStuckBranches() {
   const workflowSource = await readFile(resolve(ROOT, ".github/workflows/pinpoint-candidate-watchdog.yml"), "utf8");
   const watchdogSource = await readFile(resolve(ROOT, "scripts/close-pinpoint-candidate-branches.mjs"), "utf8");
@@ -3404,6 +3443,7 @@ async function main() {
   await checkReleaseQueueObservationOpsScript();
   await checkReleaseQueueStatusCheckRouteAndOps();
   await checkCandidateBranchWorkflowAutoPromotes();
+  await checkMainFailureContentRecoveryCreatesAutoPromotedCandidate();
   await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();

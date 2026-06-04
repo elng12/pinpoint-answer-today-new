@@ -34,6 +34,7 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run generate:static-page-metadata` | `generate-static-page-metadata.mjs` | Regenerates static page metadata from git modification dates. |
 | `npm run pinpoint:prepublish-gate` | `check-pinpoint-prepublish-gate.ts` | Runs the one-command Pinpoint pre-publish gate and returns `AUTO_PUBLISH_ALLOWED`, `BLOCK_PUBLISH`, `DOWNGRADE_TO_ANSWER_FIRST_NOINDEX`, or `REVIEW_REQUIRED`. It also runs the detail keyword audit against rendered detail HTML. Complete generated clue explanations can pass now; `MISSING_EVIDENCE_REF` is info only under the current policy. See `docs/pinpoint-evidence-ref-policy-2026-05-31.md`. |
 | `npm run pinpoint:candidate-close` | `close-pinpoint-candidate-branches.mjs` | Closes safe Pinpoint candidate branches or opens a tracked issue when one is stuck. |
+| `npm run pinpoint:main-recovery` | `recover-pinpoint-main-content.mjs` | After a failed `main` CI run, tries only known content auto-repair and pushes a safe candidate branch for automatic promotion. |
 | Vercel build hook | `vercel-ignore-build.mjs` | Determines whether Vercel can skip a build for a given change set. |
 | `npm run prepare` | `install-hooks.mjs` | Installs local git hooks. |
 

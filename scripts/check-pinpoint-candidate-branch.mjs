@@ -59,10 +59,22 @@ if (disallowed.length > 0) {
   throw new Error(`Candidate branch contains disallowed file changes: ${disallowed.join(", ")}`);
 }
 
-for (const required of allowed) {
-  if (!changedFiles.includes(required)) {
-    throw new Error(`Candidate branch is missing required file change: ${required}`);
-  }
+if (!changedFiles.includes(allowedPuzzlePath)) {
+  throw new Error(`Candidate branch is missing required file change: ${allowedPuzzlePath}`);
+}
+
+const baseRegistry = readJsonFromRef(base, "data/puzzles/registry.json");
+const baseEntry = Array.isArray(baseRegistry)
+  ? baseRegistry.find((item) => String(item?.slug || "") === slug)
+  : null;
+const baseAlreadyPublishesSlug =
+  String(baseEntry?.publishDate || "") === publishDate &&
+  String(baseEntry?.status || "") === "live" &&
+  (String(baseEntry?.detailState || "published") === "published" ||
+    String(baseEntry?.detailState || "published") === "fallback_full");
+
+if (!baseAlreadyPublishesSlug && !changedFiles.includes("data/puzzles/registry.json")) {
+  throw new Error("Candidate branch is missing required file change: data/puzzles/registry.json");
 }
 
 const puzzle = readJsonFromRef(head, allowedPuzzlePath);
