@@ -3011,6 +3011,27 @@ async function checkReleaseQueueObservationOpsScript() {
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
     scripts?: Record<string, string>;
   };
+  const observeStart = opsSource.indexOf('cmd === "release-queue-observe"');
+  const diagnoseStart = opsSource.indexOf('cmd === "publish-window-diagnose"');
+  const observeEnd = Math.min(
+    ...[
+      diagnoseStart,
+      opsSource.indexOf('cmd === "auto-publish-pause-status"', observeStart),
+      opsSource.indexOf('cmd === "refresh-cookie"', observeStart),
+    ].filter((index) => index > 0),
+  );
+  const diagnoseEnd = Math.min(
+    ...[
+      opsSource.indexOf('cmd === "auto-publish-pause-status"', diagnoseStart),
+      opsSource.indexOf('cmd === "refresh-cookie"', diagnoseStart),
+    ].filter((index) => index > 0),
+  );
+  const observeBlock = observeStart >= 0 && observeEnd > observeStart
+    ? opsSource.slice(observeStart, observeEnd)
+    : "";
+  const diagnoseBlock = diagnoseStart >= 0 && diagnoseEnd > diagnoseStart
+    ? opsSource.slice(diagnoseStart, diagnoseEnd)
+    : "";
 
   assert.ok(
     packageJson.scripts?.["worker:release-queue-observe"]?.includes("release-queue-observe"),
@@ -3024,17 +3045,26 @@ async function checkReleaseQueueObservationOpsScript() {
     "worker ops observation must check Worker health, main commit status, and candidate branches",
   );
   assert.ok(
-    !opsSource.includes('cmd === "release-queue-observe"') ||
-      !opsSource.slice(
-        opsSource.indexOf('cmd === "release-queue-observe"'),
-        Math.min(
-          ...[
-            opsSource.indexOf('cmd === "auto-publish-pause-status"', opsSource.indexOf('cmd === "release-queue-observe"')),
-            opsSource.indexOf('cmd === "refresh-cookie"', opsSource.indexOf('cmd === "release-queue-observe"')),
-          ].filter((index) => index > 0),
-        ),
-      ).includes("requireAdminSecret()"),
+    !observeBlock.includes("requireAdminSecret()"),
     "release queue observation must not require admin secrets",
+  );
+  assert.ok(
+    packageJson.scripts?.["worker:publish-window-diagnose"]?.includes("publish-window-diagnose"),
+    "package.json must expose the production publish-window diagnosis script",
+  );
+  assert.ok(
+    diagnoseBlock.includes("/health") &&
+      diagnoseBlock.includes("/monitor/cron-status") &&
+      diagnoseBlock.includes("/admin/release-queue-status-check") &&
+      diagnoseBlock.includes("/admin/auto-publish-pause") &&
+      diagnoseBlock.includes("/api/puzzles/summary"),
+    "publish-window diagnosis must aggregate health, cron, release queue, pause, and public summary state",
+  );
+  assert.ok(
+    !diagnoseBlock.includes("/admin/run") &&
+      !diagnoseBlock.includes('method: "POST"') &&
+      !diagnoseBlock.includes("refresh-cookie"),
+    "publish-window diagnosis must stay read-only and avoid publish, pause writes, or cookie refresh",
   );
 
   console.log("ok: worker ops exposes production release queue observation");

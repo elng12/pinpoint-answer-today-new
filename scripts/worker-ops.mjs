@@ -19,6 +19,7 @@ const WORKER_BASE_URLS = {
   shadow: "https://pinpoint-worker-shadow.2296744453m.workers.dev",
 };
 
+const PUBLIC_SITE_BASE_URL = "https://pinpointanswertoday.app";
 const GITHUB_REPO = "elng12/pinpoint-answer-today-new";
 const CANDIDATE_BRANCH_PREFIX = "pinpoint/candidate/";
 const USER_AGENT = "curl/8.0 (pinpoint-worker-ops)";
@@ -71,6 +72,7 @@ function printUsage() {
   node scripts/worker-ops.mjs release-queue-dry-run [--env staging|shadow|prod] [--date YYYY-MM-DD] [--puzzle-number N]
   node scripts/worker-ops.mjs release-queue-status-check [--env prod|staging|shadow] [--json]
   node scripts/worker-ops.mjs release-queue-observe [--env prod|staging|shadow] [--date YYYY-MM-DD] [--puzzle-number N] [--json]
+  node scripts/worker-ops.mjs publish-window-diagnose [--env prod|staging|shadow] [--date YYYY-MM-DD] [--puzzle-number N] [--slug SLUG] [--json]
   node scripts/worker-ops.mjs auto-publish-pause-status [--env prod|staging|shadow] [--json]
   node scripts/worker-ops.mjs auto-publish-pause [--env prod|staging|shadow] [--reason TEXT]
   node scripts/worker-ops.mjs auto-publish-resume [--env prod|staging|shadow]
@@ -228,6 +230,159 @@ function formatShortSha(sha) {
 function resolveVercelCommitStatus(statusJson) {
   const statuses = Array.isArray(statusJson?.statuses) ? statusJson.statuses : [];
   return statuses.find((item) => String(item?.context || "").trim().toLowerCase() === "vercel") || null;
+}
+
+function getBeijingTodayDate() {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+}
+
+function asText(value, fallback = "") {
+  const text = String(value ?? "").trim();
+  return text || fallback;
+}
+
+function formatStage(stage) {
+  if (!stage || typeof stage !== "object") return "unknown";
+  return [
+    asText(stage.status, "unknown"),
+    stage.detailState ? `detail=${stage.detailState}` : "",
+    stage.reason ? `reason=${stage.reason}` : "",
+  ].filter(Boolean).join(" / ");
+}
+
+function latestSummaryMatchesDate(summaryJson, date) {
+  const latest = summaryJson?.latest || {};
+  const iso = asText(latest.isoPublishedAt);
+  return Boolean(iso && iso.startsWith(`${date}T`));
+}
+
+async function readDiagnosticJson(label, url, options = {}) {
+  try {
+    const result = await fetchJson(url, options);
+    return { label, ...result, error: null };
+  } catch (error) {
+    return {
+      label,
+      ok: false,
+      status: 0,
+      json: null,
+      text: "",
+      error: error instanceof Error ? error.message : String(error || "unknown error"),
+    };
+  }
+}
+
+function buildPublishWindowDiagnosis(report) {
+  const pauseStatus = report.pauseStatus.json?.status || {};
+  if (pauseStatus.paused === true) {
+    return {
+      stage: "自动发布暂停",
+      conclusion: "卡在：自动发布暂停。",
+      nextStep: `先看暂停原因：${pauseStatus.reason || "没有写原因"}。确认后再执行 npm run worker:auto-publish-resume。`,
+    };
+  }
+
+  if (!report.workerHealth.ok) {
+    return {
+      stage: "Worker 健康接口",
+      conclusion: "卡在：Worker 健康接口读不到。",
+      nextStep: "先看 Cloudflare Worker 是否正常，再跑 npm run worker:health。",
+    };
+  }
+
+  const workerDate = asText(report.workerHealth.json?.puzzleDate);
+  if (workerDate !== report.date) {
+    return {
+      stage: "抓取",
+      conclusion: `卡在：抓取。Worker 最新题日期是 ${workerDate || "空"}，还不是 ${report.date}。`,
+      nextStep: "先跑 npm run worker:preflight；如果 LinkedIn 401，就刷新 cookie。",
+    };
+  }
+
+  const heartbeat = report.cronStatus.json?.byDate || report.cronStatus.json?.latest || null;
+  if (!heartbeat) {
+    return {
+      stage: "Worker cron",
+      conclusion: "卡在：Worker cron 没有今天的运行记录。",
+      nextStep: "先看 Cloudflare Worker Triggers 和 tail 日志。",
+    };
+  }
+
+  if (heartbeat.outcome === "failed") {
+    return {
+      stage: "Worker 运行失败",
+      conclusion: `卡在：Worker 运行失败。错误：${heartbeat.error || "没有错误详情"}`,
+      nextStep: "先看 Worker tail 日志，再看今天的 webhook 告警。",
+    };
+  }
+
+  const enrich = heartbeat.enrich || {};
+  if (enrich.detailState === "generating") {
+    return {
+      stage: "内容生成",
+      conclusion: "卡在：内容生成。",
+      nextStep: "等下一次 cron 重试；如果超过 15 分钟，查看 LLM/内容生成日志。",
+    };
+  }
+  if (enrich.detailState === "validated") {
+    return {
+      stage: "内容校验",
+      conclusion: "卡在：内容校验。",
+      nextStep: "看内容校验失败原因，优先修模板或生成结果。",
+    };
+  }
+  if (enrich.status === "queued") {
+    return {
+      stage: "发布入队",
+      conclusion: "卡在：内容发布入队。",
+      nextStep: "看候选分支和 release queue 状态。",
+    };
+  }
+  if (enrich.status === "failed") {
+    return {
+      stage: "内容发布失败",
+      conclusion: `卡在：内容发布失败。原因：${enrich.reason || "没有原因详情"}`,
+      nextStep: "先看内容发布失败摘要，再决定是否手动修复。",
+    };
+  }
+
+  const statusCheck = report.releaseQueueStatus.json?.statusCheck || {};
+  const deploymentState = asText(statusCheck.deploymentState, "unknown");
+  if (!report.releaseQueueStatus.ok || deploymentState !== "ready") {
+    return {
+      stage: "GitHub / Vercel",
+      conclusion: `卡在：GitHub / Vercel。当前部署状态是 ${deploymentState}。`,
+      nextStep: "先跑 npm run worker:release-queue-status-check，看 Vercel 部署链接。",
+    };
+  }
+
+  if (!report.siteSummary.ok) {
+    return {
+      stage: "正式站 summary / 缓存",
+      conclusion: "卡在：正式站 summary 读不到。",
+      nextStep: "先打开正式站 /api/puzzles/summary，再看 Vercel Functions 状态。",
+    };
+  }
+
+  if (!latestSummaryMatchesDate(report.siteSummary.json, report.date)) {
+    const latest = report.siteSummary.json?.latest || {};
+    return {
+      stage: "正式站 summary / 缓存",
+      conclusion: `卡在：正式站 summary / 缓存。正式站 latest 还是 #${latest.puzzleNumber || "未知"} ${latest.isoPublishedAt || "空"}。`,
+      nextStep: "先触发 revalidate；如果还不变，再看 Vercel 缓存和构建产物。",
+    };
+  }
+
+  return {
+    stage: "已发布",
+    conclusion: "已发布：Worker、GitHub、Vercel、正式站 summary 都是今天。",
+    nextStep: "不用处理。继续观察明天 15:00 窗口。",
+  };
 }
 
 function getReleaseQueueDryRunScenarios(nowIso) {
@@ -591,6 +746,148 @@ async function main() {
     if (report.releaseQueue.matchingCandidateBranches.length > 10) {
       console.log(`- ... ${report.releaseQueue.matchingCandidateBranches.length - 10} more`);
     }
+    return;
+  }
+
+  if (cmd === "publish-window-diagnose") {
+    const envName = normalizeEnvName(getOption(argv, "--env") || "prod");
+    const emitJson = argv.includes("--json");
+    const date = getOption(argv, "--date") || getBeijingTodayDate();
+    const requestedPuzzleNumber = getOption(argv, "--puzzle-number") || getOption(argv, "--puzzleNumber");
+    const requestedSlug = getOption(argv, "--slug");
+    const secret = requireAdminSecret();
+    const baseUrl = WORKER_BASE_URLS[envName];
+
+    const cronUrl = new URL(`${baseUrl}/monitor/cron-status`);
+    cronUrl.searchParams.set("date", date);
+    cronUrl.searchParams.set("limit", "10");
+
+    const releaseQueueUrl = new URL(`${baseUrl}/admin/release-queue-status-check`);
+    releaseQueueUrl.searchParams.set("secret", secret);
+
+    const pauseUrl = new URL(`${baseUrl}/admin/auto-publish-pause`);
+    pauseUrl.searchParams.set("secret", secret);
+
+    const summaryUrl = new URL(`${PUBLIC_SITE_BASE_URL}/api/puzzles/summary`);
+    summaryUrl.searchParams.set("cb", `publish-window-diagnose-${Date.now()}`);
+
+    const [
+      workerHealth,
+      cronStatus,
+      releaseQueueStatus,
+      pauseStatus,
+      siteSummary,
+    ] = await Promise.all([
+      readDiagnosticJson("worker health", `${baseUrl}/health`),
+      readDiagnosticJson("cron status", cronUrl.toString()),
+      readDiagnosticJson("release queue status", releaseQueueUrl.toString()),
+      readDiagnosticJson("auto publish pause", pauseUrl.toString()),
+      readDiagnosticJson("site summary", summaryUrl.toString()),
+    ]);
+
+    const latest = siteSummary.json?.latest || {};
+    const slug = requestedSlug || (requestedPuzzleNumber ? `pinpoint-answer-${requestedPuzzleNumber}` : asText(latest.slug));
+    let candidateBranches = {
+      ok: true,
+      total: 0,
+      matching: [],
+      error: null,
+    };
+    try {
+      const branches = listGitHubBranchNames(GITHUB_REPO)
+        .filter((name) => name.startsWith(CANDIDATE_BRANCH_PREFIX));
+      const matching = branches.filter((name) => {
+        if (slug) return name.includes(`${date}-${slug}`);
+        return name.includes(date);
+      });
+      candidateBranches = {
+        ok: true,
+        total: branches.length,
+        matching,
+        error: null,
+      };
+    } catch (error) {
+      candidateBranches = {
+        ok: false,
+        total: 0,
+        matching: [],
+        error: error instanceof Error ? error.message : String(error || "unknown gh error"),
+      };
+    }
+
+    const report = {
+      env: envName,
+      date,
+      checkedAt: new Date().toISOString(),
+      workerBaseUrl: baseUrl,
+      publicSiteBaseUrl: PUBLIC_SITE_BASE_URL,
+      requested: {
+        puzzleNumber: requestedPuzzleNumber || null,
+        slug: requestedSlug || null,
+      },
+      workerHealth,
+      cronStatus,
+      releaseQueueStatus,
+      pauseStatus,
+      siteSummary,
+      candidateBranches,
+    };
+    const diagnosis = buildPublishWindowDiagnosis(report);
+
+    if (emitJson) {
+      console.log(JSON.stringify({ ...report, diagnosis }, null, 2));
+      if (diagnosis.stage !== "已发布") process.exitCode = 1;
+      return;
+    }
+
+    const health = workerHealth.json || {};
+    const healthWords = Array.isArray(health.answers)
+      ? health.answers
+          .map((item) => String(item?.word || "").trim())
+          .filter(Boolean)
+          .slice(0, 5)
+          .join(" | ")
+      : "";
+    const heartbeat = cronStatus.json?.byDate || cronStatus.json?.latest || {};
+    const pause = pauseStatus.json?.status || {};
+    const statusCheck = releaseQueueStatus.json?.statusCheck || {};
+    const summaryLatest = siteSummary.json?.latest || {};
+
+    console.log(`[${envName}] publish window diagnose`);
+    console.log(`日期: ${date}`);
+    console.log(
+      `Worker: ${workerHealth.ok ? "可读" : "失败"} puzzleDate=${health.puzzleDate || ""} source=${health.source || ""} fetchedAt=${health.fetchedAt || ""}`,
+    );
+    if (healthWords) {
+      console.log(`答案词: ${healthWords}`);
+    }
+    if (health.mainAnswer || health.theme) {
+      console.log(`主题: ${health.mainAnswer || health.theme}`);
+    }
+    console.log(
+      `Cron: outcome=${heartbeat.outcome || "unknown"} quick=${formatStage(heartbeat.quickPublish)} enrich=${formatStage(heartbeat.enrich)}`,
+    );
+    console.log(
+      `自动发布: ${pause.paused === true ? "已暂停" : "未暂停"} source=${pause.source || "none"} reason=${pause.reason || ""}`,
+    );
+    console.log(
+      `GitHub/Vercel: deployment=${statusCheck.deploymentState || "unknown"} combined=${statusCheck.github?.combinedState || ""} vercel=${statusCheck.vercel?.state || ""} ${statusCheck.vercel?.description || ""}`,
+    );
+    console.log(
+      `正式站 summary: #${summaryLatest.puzzleNumber || "未知"} ${summaryLatest.isoPublishedAt || "空"} slug=${summaryLatest.slug || ""}`,
+    );
+    console.log(
+      `候选分支: ${candidateBranches.ok ? `total=${candidateBranches.total} matching=${candidateBranches.matching.length}` : `读取失败 ${candidateBranches.error || ""}`}`,
+    );
+    for (const branch of candidateBranches.matching.slice(0, 5)) {
+      console.log(`- ${branch}`);
+    }
+    if (candidateBranches.matching.length > 5) {
+      console.log(`- ... ${candidateBranches.matching.length - 5} more`);
+    }
+    console.log(`结论: ${diagnosis.conclusion}`);
+    console.log(`下一步: ${diagnosis.nextStep}`);
+    if (diagnosis.stage !== "已发布") process.exitCode = 1;
     return;
   }
 
