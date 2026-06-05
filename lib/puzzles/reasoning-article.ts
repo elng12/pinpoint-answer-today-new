@@ -26,6 +26,17 @@ export type ReasoningArticleQualityIssue = {
   severity: "hard" | "warn";
 };
 
+const GENERIC_REASONING_FILLER_PATTERNS = [
+  /\ba loose topic list\b/i,
+  /\bstandalone clue meanings\b/i,
+  /\bbroad topic match\b/i,
+  /\bthe answer becomes clear\b/i,
+  /\ball clues point to the same\b/i,
+  /\bshared category\b/i,
+  /\bcommon theme\b/i,
+  /\bthey all fit\b/i,
+];
+
 function normalizeParagraphKey(paragraph: string): string {
   return paragraph.toLowerCase().replace(/\s+/g, " ").trim();
 }
@@ -557,6 +568,14 @@ function pushIssue(
   issues.push({ code, message, severity });
 }
 
+function findGenericReasoningFiller(value: string): string | null {
+  for (const pattern of GENERIC_REASONING_FILLER_PATTERNS) {
+    const match = value.match(pattern);
+    if (match?.[0]) return match[0];
+  }
+  return null;
+}
+
 export function validateReasoningArticleDraft(
   draft: ReasoningArticleDraft,
   puzzle: Pick<PuzzleDetail, "answer" | "slug">,
@@ -584,6 +603,16 @@ export function validateReasoningArticleDraft(
     }
 
     for (const paragraph of block.body) {
+      const filler = findGenericReasoningFiller(paragraph);
+      if (filler) {
+        pushIssue(
+          issues,
+          "warn",
+          "generic-reasoning-filler",
+          `${block.key} uses generic filler instead of a clue-specific solving path: ${filler}`,
+        );
+      }
+
       const words = wordCount(paragraph);
       if (words > 70) {
         pushIssue(issues, "hard", "paragraph-too-long", `${block.key} paragraph has ${words} words.`);
@@ -593,6 +622,16 @@ export function validateReasoningArticleDraft(
     }
 
     for (const item of block.bullets ?? []) {
+      const filler = findGenericReasoningFiller(item);
+      if (filler) {
+        pushIssue(
+          issues,
+          "warn",
+          "generic-reasoning-filler",
+          `${block.key} bullet uses generic filler instead of a human false start: ${filler}`,
+        );
+      }
+
       const words = wordCount(item);
       if (words > 16) {
         pushIssue(issues, "warn", "bullet-long", `${block.key} bullet is long: ${item}`);

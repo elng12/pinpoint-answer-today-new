@@ -110,11 +110,11 @@
     "firstRead": "Way and Mat first pointed toward a loose home or object read, so the board still needed one exact shared word.",
     "falseStarts": [
       "a loose home theme",
-      "standalone clue meanings"
+      "separate home words"
     ],
     "whyFalseStartPlausible": [
       "the first three clues, Way Mat Bell, looked home-adjacent; that Way Mat Bell run still did not prove door until Jamb and Knob narrowed the missing word.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "Way, Mat, and Bell can each work as ordinary home words before the shared connector appears."
     ],
     "breakingClue": "Knob",
     "pivot": "I first tried a loose home theme, because the opening clues were broad enough to support a few phrase reads. But that guess did not make Jamb or Knob feel exact enough.\n\nOnce Knob clicked as doorknob, the phrase pattern was clear. The same word fit before the earlier clues without forcing any of them.\n\nAfter that, I could go back through the board and watch Way, Mat, Bell, Jamb, and Knob turn into ordinary words.\n\nThe answer was \"Words that come after “door”\".",
@@ -128,35 +128,35 @@
   "clueRows": [
     {
       "clue": "Way",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "route or direction",
       "resolvedPhraseOrMember": "doorway",
       "nonObviousWhy": "Doorway is a familiar word, so Way helps reveal the shared opening word quickly.",
       "searchableContext": "doorway"
     },
     {
       "clue": "Mat",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "floor item",
       "resolvedPhraseOrMember": "doormat",
       "nonObviousWhy": "Doormat is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "doormat"
     },
     {
       "clue": "Bell",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "sound or chime",
       "resolvedPhraseOrMember": "doorbell",
       "nonObviousWhy": "Once the shared word is in place, doorbell reads like ordinary language instead of a forced compound.",
       "searchableContext": "doorbell"
     },
     {
       "clue": "Jamb",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "frame part",
       "resolvedPhraseOrMember": "doorjamb",
       "nonObviousWhy": "Doorjamb is a familiar word, so Jamb helps reveal the shared word quickly.",
       "searchableContext": "doorjamb"
     },
     {
       "clue": "Knob",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "handle part",
       "resolvedPhraseOrMember": "doorknob",
       "nonObviousWhy": "Doorknob is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "doorknob"
@@ -203,11 +203,11 @@
     {
       "label": "a loose home theme",
       "whyPlausible": "The first three clues, Way Mat Bell, look home-adjacent; that Way Mat Bell run still does not prove door until Jamb and Knob narrow the missing word.",
-      "whyRejected": "Knob behaves like a proof clue for one fixed door pattern, not just a broad topic match."
+      "whyRejected": "Knob behaves like a proof clue for one fixed door pattern, not just a home-object read."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "label": "separate home words",
+      "whyPlausible": "Way, Mat, and Bell can each work as ordinary home words before the shared connector appears.",
       "whyRejected": "Once Knob locks the phrase position, the full board resolves under door instead of five separate definitions."
     }
   ],

@@ -38,7 +38,13 @@ export type ContentContractInput = {
   overview?: string | null;
   solutionEmergence?: string | null;
   articleBlocks?: string[] | null;
-  wrongGuesses?: Array<{ guess?: string | null; explanation?: string | null }> | null;
+  wrongGuesses?: Array<{
+    guess?: string | null;
+    explanation?: string | null;
+    label?: string | null;
+    whyPlausible?: string | null;
+    whyRejected?: string | null;
+  }> | null;
   clueDetails?: Array<{ clue?: string | null; phrase?: string | null; explanation?: string | null }> | null;
   lessons?: Array<{ title?: string | null; body?: string | null }> | null;
   faqs?: Array<{ question?: string | null; answer?: string | null }> | null;

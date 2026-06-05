@@ -34,7 +34,7 @@
   },
   "articleBlocks": [
     "Today's puzzle looked simple because Paper and Cut both open a lot of familiar phrases.",
-    "My first read drifted toward a loose topic list, but that was too broad for LinkedIn Pinpoint 760.",
+    "My first read drifted toward office materials, but that was too narrow for LinkedIn Pinpoint 760.",
     "Paper, Cut, Feed, and Flash only become useful when they are tested in the same phrase slot.",
     "Hump (🐋) is the clue that makes the slot visible, because Hump back is much harder to ignore.",
     "Once Hump back lands, the earlier clues stop acting like separate words and start acting like one phrase chain.",
@@ -110,12 +110,12 @@
   "solvePath": {
     "firstRead": "Paper and Cut make it clear this is probably a shared-word phrase puzzle, but they do not prove which word should follow every clue.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "office materials",
+      "separate word meanings"
     ],
     "whyFalseStartPlausible": [
-      "Paper and Cut both fit too many everyday phrase frames before Hump (🐋) shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "Paper and Cut can point toward stationery, printing, or office supplies before Hump (🐋) shows where the repeated word belongs.",
+      "Feed and Flash both have obvious surface meanings if you read them on their own before the shared connector appears."
     ],
     "breakingClue": "Hump (🐋)",
     "pivot": "Paper and Cut first made the board feel like a loose phrase puzzle, so I waited instead of locking in a theme too early.\n\nHump (🐋) changed the solve. Hump back made the missing slot clear, then Paper back, Cut back, Feed back, and Flash back all checked cleanly.\n\nThe answer was \"Words that come before “back”\" because the same ending word fits every clue in the same place.",
@@ -129,35 +129,35 @@
   "clueRows": [
     {
       "clue": "Paper",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "office supplies",
       "resolvedPhraseOrMember": "Paper back",
       "nonObviousWhy": "\"Paper back\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "Paper back"
     },
     {
       "clue": "Cut",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "scissors or injury",
       "resolvedPhraseOrMember": "Cut back",
       "nonObviousWhy": "\"Cut back\" is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "Cut back"
     },
     {
       "clue": "Feed",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "food or social feed",
       "resolvedPhraseOrMember": "Feed back",
       "nonObviousWhy": "Once the shared word is in place, \"Feed back\" reads like ordinary language instead of a forced compound.",
       "searchableContext": "Feed back"
     },
     {
       "clue": "Flash",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "light or camera",
       "resolvedPhraseOrMember": "Flash back",
       "nonObviousWhy": "\"Flash back\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "Flash back"
     },
     {
       "clue": "Hump (🐋)",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "whale shape",
       "resolvedPhraseOrMember": "Hump back",
       "nonObviousWhy": "The familiar expression \"Hump back\" makes the missing word \"back\" obvious in plain language.",
       "searchableContext": "Hump back"
@@ -202,13 +202,13 @@
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "Paper, Cut do not immediately advertise one shared phrase slot before Hump (🐋) shows where the repeated word belongs.",
-      "whyRejected": "Hump (🐋) behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "office materials",
+      "whyPlausible": "Paper and Cut can point toward stationery, printing, or office supplies before Hump (🐋) shows where the repeated word belongs.",
+      "whyRejected": "Hump (🐋) behaves like a proof clue for one fixed phrase pattern, not just an office-materials read."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "label": "separate word meanings",
+      "whyPlausible": "Feed and Flash both have obvious surface meanings if you read them on their own before the shared connector appears.",
       "whyRejected": "Once Hump (🐋) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
