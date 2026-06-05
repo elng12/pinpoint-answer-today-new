@@ -36,6 +36,14 @@ type TeachingCard = {
   title: string;
 };
 
+const GENERIC_TEACHING_BODY_PATTERNS = [
+  /\bWhen solving puzzles,\s*(?:consider|look for)\b/i,
+  /\bcommon thread that (?:connects|ties)\b/i,
+  /\bunique aspects of each clue\b/i,
+  /\boverall answer\b/i,
+  /\bseemingly unrelated clues\b/i,
+];
+
 function getFallbackTeachingTitle(body: string, index: number): string {
   const firstSentence = cleanReasoningText(body).split(/[.!?]/)[0]?.trim();
   if (firstSentence && firstSentence.length <= 82) {
@@ -45,8 +53,16 @@ function getFallbackTeachingTitle(body: string, index: number): string {
   return `Solving takeaway ${index + 1}`;
 }
 
+function cleanTeachingTitle(title: string): string {
+  return cleanReasoningText(title)
+    .replace(/\banchors a shared category board with one concrete theme\b/gi, "anchors the answer frame")
+    .replace(/\bunder a shared category board with one concrete theme\b/gi, "under the same answer frame")
+    .trim();
+}
+
 function getTeachingLessonTitle(lesson: PuzzleDetailRecord["lessons"][number], index: number): string {
-  return typeof lesson === "string" ? getFallbackTeachingTitle(lesson, index) : lesson.title;
+  const title = typeof lesson === "string" ? getFallbackTeachingTitle(lesson, index) : lesson.title;
+  return cleanTeachingTitle(title);
 }
 
 function replaceQuotedCluePairs(value: string): string {
@@ -55,8 +71,22 @@ function replaceQuotedCluePairs(value: string): string {
     .replace(/“([^”]+)”\s+and\s+“([^”]+)”/g, "Both clues");
 }
 
+function getTeachingAnchorClue(puzzle: PuzzleDetailRecord): string {
+  return puzzle.turningPoint?.clue || puzzle.solvePath?.breakingClue || puzzle.clues[puzzle.clues.length - 1] || "the turning clue";
+}
+
+function buildSpecificTeachingBody(puzzle: PuzzleDetailRecord): string {
+  const anchorClue = getTeachingAnchorClue(puzzle);
+  const firstClue = puzzle.clues[0] || "the first clue";
+  return `Use ${anchorClue} to re-check ${firstClue}. A strong Pinpoint answer should make the early clues and later clues fit one reading.`;
+}
+
 function cleanTeachingBody(body: string, puzzle: PuzzleDetailRecord): string {
   let cleaned = replaceQuotedCluePairs(cleanReasoningText(body));
+
+  if (GENERIC_TEACHING_BODY_PATTERNS.some((pattern) => pattern.test(cleaned))) {
+    return buildSpecificTeachingBody(puzzle);
+  }
 
   for (const clue of puzzle.clues) {
     if (clue.trim().split(/\s+/).length <= 1) {
@@ -71,6 +101,11 @@ function cleanTeachingBody(body: string, puzzle: PuzzleDetailRecord): string {
 
   return cleaned
     .replace(/\bthat clue\s+and\s+that clue\b/gi, "both clues")
+    .replace(/\bthat clue clue\b/gi, "that clue")
+    .replace(/\bBoth clues both\b/g, "Both clues")
+    .replace(/\bboth clues both\b/g, "both clues")
+    .replace(/(^|[.!?]\s+)that clue\b/gi, "$1That clue")
+    .replace(/(^|[.!?]\s+)both clues\b/gi, "$1Both clues")
     .replace(/\s+/g, " ")
     .trim();
 }

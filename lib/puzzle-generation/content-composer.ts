@@ -1297,6 +1297,18 @@ function sanitizeRejectedGuess(
   };
 }
 
+const GENERIC_PORTABLE_TAKEAWAY_PATTERNS = [
+  /\bWhen solving puzzles,\s*(?:consider|look for)\b/i,
+  /\bcommon thread that (?:connects|ties)\b/i,
+  /\bunique aspects of each clue\b/i,
+  /\boverall answer\b/i,
+  /\bseemingly unrelated clues\b/i,
+];
+
+function isGenericPortableTakeaway(value: string): boolean {
+  return GENERIC_PORTABLE_TAKEAWAY_PATTERNS.some((pattern) => pattern.test(value));
+}
+
 function buildLessons(
   turningPointLabel: string,
   connectorSummary: string,
@@ -1338,7 +1350,9 @@ function buildLessons(
       : "The narrowing clue matters more than the loudest clue";
 
   const lesson2Body = ensureSentence(
-    `${turningPointReference(turningPointLabel)} is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`,
+    turningClue !== "A later clue"
+      ? `${turningClue} organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame.`
+      : "One clue organizes this board. Once it produces a precise natural reading, re-check the earlier clues under that same frame.",
   );
 
   const lesson3Title = isPhrase
@@ -1351,12 +1365,22 @@ function buildLessons(
 
   const defaultTakeaway = isPhrase
     ? `A strong Pinpoint answer should explain every clue naturally through ${lowerFirst(connectorSummary)}`
-    : "A strong Pinpoint answer should explain why every clue belongs in the same category.";
+    : turningClue !== "A later clue" && firstClue
+      ? `Use "${turningClue}" to re-check "${firstClue}". A strong Pinpoint answer should make the early clues and later clues fit one reading.`
+      : "A strong Pinpoint answer should explain why every clue belongs in the same category.";
+  const normalizedTakeaway = normalizeText(portableTakeaway);
 
   return [
     { title: lesson1Title, body: lesson1Body },
     { title: lesson2Title, body: lesson2Body },
-    { title: lesson3Title, body: ensureSentence(portableTakeaway || defaultTakeaway) },
+    {
+      title: lesson3Title,
+      body: ensureSentence(
+        normalizedTakeaway && !isGenericPortableTakeaway(normalizedTakeaway)
+          ? normalizedTakeaway
+          : defaultTakeaway,
+      ),
+    },
   ];
 }
 

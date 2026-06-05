@@ -28,6 +28,8 @@ import {
   repairSolutionNarrative,
   shouldRepairSolutionNarrative,
 } from "../lib/puzzles/solution-narrative-repair";
+import { getPuzzleBySlug } from "../lib/puzzles/data";
+import { buildReasoningArticleDraft } from "../lib/puzzles/reasoning-article";
 import { resolveWorkerFetchRoute } from "../worker/src/routes/dispatch";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
@@ -1919,6 +1921,40 @@ function checkGenericFalseStartWarningsDoNotBlockPublish() {
   console.log("ok: generic false-start quality notes warn without blocking publish");
 }
 
+async function checkReasoningArticleAvoidsAwkwardCopyJoins() {
+  const puzzle = await getPuzzleBySlug("pinpoint-answer-766", { allowLiveWorkerFallback: false });
+  assert.ok(puzzle, "pinpoint-answer-766 fixture must exist for reasoning article copy regression");
+
+  const draft = buildReasoningArticleDraft(puzzle);
+  const copy = draft.blocks
+    .flatMap((block) => [block.title ?? "", ...block.body, ...(block.bullets ?? [])])
+    .join(" ");
+
+  const forbiddenPatterns = [
+    /\bbecause\s+(?:This|That)\b/,
+    /\b(?:This|this|that) clue clue\b/,
+    /\bBoth clues both\b/i,
+    /\bWhen solving puzzles,\s*(?:consider|look for)\b/i,
+    /\bunique aspects of each clue\b/i,
+  ];
+
+  for (const pattern of forbiddenPatterns) {
+    assert.doesNotMatch(copy, pattern, `reasoning article copy must avoid awkward generated phrase: ${pattern}`);
+  }
+  assert.match(
+    copy,
+    /My first read drifted toward "european foods"\. That guess fell short because/i,
+    "reasoning article should keep the false-start explanation as clean separate sentences",
+  );
+  assert.match(
+    copy,
+    /This clue makes the answer concrete/i,
+    "reasoning article should collapse repeated turning-clue wording",
+  );
+
+  console.log("ok: reasoning article copy avoids awkward generated joins");
+}
+
 async function checkTypedCategoryGenerationKeepsGrammarNatural() {
   const generationModulePath = "../lib/puzzle-generation.ts";
   const workerModulePath = "../worker/src/index.ts";
@@ -3569,6 +3605,7 @@ async function main() {
   await checkEvidenceContractGuardsMeaningfulV2Fields();
   checkContentContractRequiresThreeCompleteFaqs();
   checkGenericFalseStartWarningsDoNotBlockPublish();
+  await checkReasoningArticleAvoidsAwkwardCopyJoins();
   await checkTypedCategoryGenerationKeepsGrammarNatural();
   checkWorkerLlmSlotsOnlyDraftNormalizesBeforeValidation();
   await checkValidateDraftDoesNotNormalizeEmptySlots();

@@ -37,6 +37,14 @@ type SitemapEntry = {
   lastmod: string;
 };
 
+const FORBIDDEN_RENDERED_COPY_PATTERNS = [
+  /\bbecause\s+(?:This|That)\b/,
+  /\b(?:This|this|that) clue clue\b/,
+  /\bBoth clues both\b/i,
+  /\bWhen solving puzzles,\s*(?:consider|look for)\b/i,
+  /\bunique aspects of each clue\b/i,
+];
+
 const issues: Issue[] = [];
 
 function addIssue(scope: string, message: string) {
@@ -362,6 +370,11 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
   }
   if (!pageText.includes("Answer Reasoning")) {
     addIssue(entry.slug, "Rendered page is missing the Answer Reasoning section.");
+  }
+  for (const pattern of FORBIDDEN_RENDERED_COPY_PATTERNS) {
+    if (pattern.test(pageText)) {
+      addIssue(entry.slug, `Rendered page contains awkward generated copy: ${pattern}`);
+    }
   }
   for (const legacyLabel of [
     "Words & How They Fit",

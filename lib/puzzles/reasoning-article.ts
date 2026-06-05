@@ -89,6 +89,12 @@ export function cleanReasoningText(value: string): string {
     .replace(/\bthe shared answer\b/g, "one answer")
     .replace(/\bmakes one answer concrete enough to test across the full board\b/gi, "makes the missing word easier to test across the full board")
     .replace(/\bstart reading under the same answer\b/gi, "start pointing to the repeated word")
+    .replace(/\bbecause\s+(This|That)\b/g, ". $1")
+    .replace(/\bThis clue clue\b/g, "This clue")
+    .replace(/\bthis clue clue\b/g, "this clue")
+    .replace(/\bthat clue clue\b/g, "that clue")
+    .replace(/\bBoth clues both\b/g, "Both clues")
+    .replace(/\bboth clues both\b/g, "both clues")
     .replace(/\.\.+/g, ".")
     .replace(/\s+/g, " ")
     .trim();
@@ -107,6 +113,19 @@ function firstSentences(value: string | null | undefined, count = 1): string {
 function safeFirstSentences(value: string | null | undefined, answer: string, count = 1): string {
   const sentence = firstSentences(value, count);
   return sentence && !paragraphMentionsAnswer(sentence, answer) ? sentence : "";
+}
+
+function polishFalseStartReason(value: string | null | undefined): string {
+  const cleaned = cleanReasoningText(value ?? "");
+  if (!cleaned) {
+    return "";
+  }
+
+  return `${cleaned[0].toUpperCase()}${cleaned.slice(1)}`
+    .replace(/^This guess falls short because\b/i, "That guess fell short because")
+    .replace(/^This guess fails because\b/i, "That guess failed because")
+    .replace(/^This read falls short because\b/i, "That read fell short because")
+    .trim();
 }
 
 function dedupeParagraphs(paragraphs: string[]): string[] {
@@ -232,6 +251,9 @@ function softenRepeatedClueMention(value: string, clue: string): string {
     .replace(new RegExp(`"(${escapeRegExp(clue)})"`, "gi"), "this clue")
     .replace(new RegExp(`\\b${escapeRegExp(clue)}\\b`, "gi"), "this clue")
     .replace(/(^|[.!?]\s+)this clue\b/g, "$1This clue")
+    .replace(/\bThis clue clue\b/g, "This clue")
+    .replace(/\bthis clue clue\b/g, "this clue")
+    .replace(/\bthat clue clue\b/g, "that clue")
     .replace(/\bThis clue is the clue that\b/g, "This clue")
     .replace(/\bthis clue is the clue that\b/g, "this clue")
     .replace(/\s+/g, " ")
@@ -438,12 +460,13 @@ export function buildReasoningArticleDraft(puzzle: PuzzleDetail): ReasoningArtic
   if (puzzle.solvePath?.firstRead || puzzle.solvePath?.falseStarts[0]) {
     const firstRead = firstSentences(puzzle.solvePath?.firstRead, 1);
     const firstGuess = puzzle.solvePath?.falseStarts[0];
-    const firstWhy = safeFirstSentences(puzzle.solvePath?.whyFalseStartPlausible[0], puzzle.answer, 1);
+    const firstWhy = polishFalseStartReason(
+      safeFirstSentences(puzzle.solvePath?.whyFalseStartPlausible[0], puzzle.answer, 1),
+    );
     const falseStartBullets = buildFalseStartBullets(puzzle);
     const body = [
-      firstGuess
-        ? `My first read drifted toward "${firstGuess}"${firstWhy ? ` because ${firstWhy}` : "."}`
-        : firstRead,
+      firstGuess ? `My first read drifted toward "${firstGuess}".` : firstRead,
+      firstGuess ? firstWhy : "",
       "That was the trap: the early clues were readable on their own, but they did not prove one exact phrase slot yet.",
     ].filter(Boolean);
 
