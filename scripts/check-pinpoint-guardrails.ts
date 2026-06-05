@@ -3500,33 +3500,37 @@ async function checkScheduledPublishWindowAlerts() {
   const rulesDoc = await readFile(resolve(ROOT, "docs/pinpoint-auto-publish-rules-2026-05-26.md"), "utf8");
 
   assert.ok(
-    wranglerSource.includes('crons = ["1,3,5,7,10,15,20,25 7,8 * * *"]'),
-    "production cron must include the 15:05 Beijing checkpoint in the active reset window",
+    wranglerSource.includes('crons = ["1,3,5,6,7,9,10,12,15,20,25 7,8 * * *"]'),
+    "production cron must include 15:06/15:09/15:12 Beijing checkpoints in the active reset window",
   );
   assert.ok(
     workerSource.includes("maybeNotifySourceReadinessWatchdog") &&
-      workerSource.includes("[5, 15, 20].includes(minute)") &&
+      workerSource.includes("sourceReadinessWatchdogMinutes = [3, 6, 9, 12, 15, 20] as const") &&
       workerSource.includes("Worker 已运行，但 LinkedIn 还没返回当天新题") &&
       workerSource.includes("Worker 已运行，但仍没拿到当天新题"),
-    "Worker must alert when the source is still not ready at 15:05/15:15/15:20 Beijing time",
+    "Worker must alert when the source is still not ready at 15:03/15:06/15:09/15:12/15:15/15:20 Beijing time",
   );
   assert.ok(
     workerSource.includes("getScheduledCheckpointMinute(scheduledAt)") &&
-      workerSource.includes("[20, 25].includes(minute)") &&
-      workerSource.includes("正式站还没确认更新") &&
+      workerSource.includes("siteSummaryWatchdogMinutes = [6, 9, 12, 15, 20, 25] as const") &&
+      workerSource.includes("resolvePublishWindowStuckStage") &&
+      workerSource.includes("当前卡点: ${stuckStage}") &&
+      workerSource.includes("正式站未更新，当前卡点") &&
       workerSource.includes("maybeNotifySiteSummaryWatchdog(env, date, doc, heartbeat, controller.cron, scheduledAt)"),
-    "Worker must check production-site freshness from actual scheduled time at 15:20/15:25 Beijing time",
+    "Worker must check production-site freshness from actual scheduled time at 15:06/15:09/15:12/15:15/15:20/15:25 Beijing time",
   );
   assert.ok(
-    workerReadme.includes("15:01 / 15:03 / 15:05 / 15:07 / 15:10 / 15:15 / 15:20 / 15:25") &&
-      workerReadme.includes("15:05 / 15:15 / 15:20") &&
-      workerReadme.includes("15:20 / 15:25"),
+    workerReadme.includes("15:01 / 15:03 / 15:05 / 15:06 / 15:07 / 15:09 / 15:10 / 15:12 / 15:15 / 15:20 / 15:25") &&
+      workerReadme.includes("15:03 / 15:06 / 15:09 / 15:12 / 15:15 / 15:20") &&
+      workerReadme.includes("15:06 / 15:09 / 15:12 / 15:15 / 15:20 / 15:25") &&
+      workerReadme.includes("当前卡点"),
     "Worker README must document the publish window and checkpoint alerts",
   );
   assert.ok(
     rulesDoc.includes("reset-window checkpoint alerts") &&
-      rulesDoc.includes("15:05/15:15/15:20") &&
-      rulesDoc.includes("15:20/15:25"),
+      rulesDoc.includes("15:03/15:06/15:09/15:12/15:15/15:20") &&
+      rulesDoc.includes("15:06/15:09/15:12/15:15/15:20/15:25") &&
+      rulesDoc.includes("current stuck point"),
     "auto-publish rules doc must record reset-window checkpoint alert coverage",
   );
 
