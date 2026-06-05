@@ -32,7 +32,7 @@
     "Capture the": "Capture the is the clue that makes the phrase pattern in words that come before “flag” concrete enough to test."
   },
   "articleBlocks": [
-    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. Read in order, White, Pirate, National, Checkered, Capture the points to one phrase slot rather than five separate definitions.",
+    "The White, Pirate, National opening makes it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. Read in order, White, Pirate, National, Checkered, Capture the points to one phrase slot rather than five separate definitions.",
     "A nearby read was \"color or surrender words\". White can point to color or surrender, and Pirate can point to ships before Capture the shows where the repeated word belongs. Capture the behaves like a proof clue for one fixed phrase pattern, not just a color-or-ship read.",
     "Another easy trap was \"isolated clue definitions\". National and Checkered both have obvious surface meanings before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"White flag\" and \"Pirate flag\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
@@ -40,7 +40,7 @@
     "The answer was \"Words that come before “flag”\". More precisely, the board resolves as one shared ending word placed after each clue, not a color theme or isolated definitions, which is why \"Words that come before “flag”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
-    "White first sent me toward color ideas, and I also considered whether the clue might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.",
+    "The White, Pirate, National opening first sent me toward color ideas, and I also considered whether White might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.",
     "Pirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.",
     "Then I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.",
     "The answer was \"Words that come before “flag”\"."
@@ -105,7 +105,7 @@
     }
   ],
   "solvePath": {
-    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "firstRead": "The White, Pirate, National opening makes it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
     "falseStarts": [
       "color or surrender words",
       "isolated clue definitions"
@@ -115,13 +115,13 @@
       "National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears."
     ],
     "breakingClue": "Capture the",
-    "pivot": "White first sent me toward color ideas, and I also considered whether the clue might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.\n\nPirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.\n\nThen I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.\n\nThe answer was \"Words that come before “flag”\".",
+    "pivot": "The White, Pirate, National opening first sent me toward color ideas, and I also considered whether White might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.\n\nPirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.\n\nThen I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.\n\nThe answer was \"Words that come before “flag”\".",
     "fullBoardConfirmation": "Another easy trap was \"isolated clue definitions\". National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
     "clue": "Capture the",
     "whyDecisive": "Capture the is the clue that makes the shared answer concrete enough to test across the full board.",
-    "whatChangedAfterIt": "Once Capture the lands, the earlier clues stop feeling broad and start reading under the same answer."
+    "whatChangedAfterIt": "Once Capture the lands, the White, Pirate, National run stops feeling broad and starts reading under the same answer."
   },
   "clueRows": [
     {
