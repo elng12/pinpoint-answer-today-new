@@ -259,7 +259,7 @@ function buildBoardCheckFitText(puzzle: PuzzleDetail): string {
 }
 
 function buildAnswerBody(puzzle: PuzzleDetail, title: string): string[] {
-  const summary = "This is the cleanest reading because it explains the full board, not just one or two clues.";
+  const summary = `This LinkedIn Pinpoint ${puzzle.number} answer is the cleanest reading because it explains the full board, not just one or two clues.`;
 
   if (title === "Answer") {
     return [`The answer was "${puzzle.answer}".`, summary];
@@ -429,7 +429,7 @@ export function buildReasoningArticleDraft(puzzle: PuzzleDetail): ReasoningArtic
 
   blocks.push({
     body: [
-      "Today's puzzle looked simple at first.",
+      `Today's LinkedIn Pinpoint ${puzzle.number} answer looked simple at first.`,
       `The clue path was ${cluePath}, and the solve had to make every clue read under ${connectorSummary}.`,
     ],
     key: "clue-path",

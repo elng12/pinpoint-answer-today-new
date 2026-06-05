@@ -3254,6 +3254,7 @@ async function checkPrepublishGateRunsContentAutoRepairSafely() {
   const prepublishSource = await readFile(resolve(ROOT, "scripts/check-pinpoint-prepublish-gate.ts"), "utf8");
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
   const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const reasoningSource = await readFile(resolve(ROOT, "lib/puzzles/reasoning-article.ts"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
     scripts?: Record<string, string>;
   };
@@ -3279,6 +3280,11 @@ async function checkPrepublishGateRunsContentAutoRepairSafely() {
       workerSource.includes("shouldRepairSolutionNarrative(detailRecord)") &&
       workerSource.includes("repairSolutionNarrative({ detail: detailRecord }).detail"),
     "Worker must run the shared solution narrative repair only when public detail JSON needs it",
+  );
+  assert.ok(
+    reasoningSource.includes("Today's LinkedIn Pinpoint ${puzzle.number} answer") &&
+      reasoningSource.includes("This LinkedIn Pinpoint ${puzzle.number} answer"),
+    "detail reasoning article must keep two visible LinkedIn Pinpoint answer anchors for non-blocking keyword balance",
   );
 
   const repair = repairSolutionNarrative({
