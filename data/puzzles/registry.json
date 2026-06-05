@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 766,
+    "slug": "pinpoint-answer-766",
+    "publishDate": "2026-06-05",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Pretzels",
+      "The Black Forest",
+      "The Autobahn",
+      "Oktoberfest",
+      "The Berlin Wall"
+    ],
+    "mainAnswer": "Things associated with Germany 🇩🇪",
+    "category": "Things associated with Germany 🇩🇪",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Pretzels, The Black Forest, The Autobahn do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-06-05T07:07:24.375Z"
+  },
+  {
     "puzzleNumber": 765,
     "slug": "pinpoint-answer-765",
     "publishDate": "2026-06-04",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "White",
@@ -16,7 +35,7 @@
     "category": "Words that come before “flag”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links White, Pirate, National, Checkered, Capture the - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-04T07:21:12.944Z"
+    "updatedAt": "2026-06-05T07:07:24.375Z"
   },
   {
     "puzzleNumber": 764,
