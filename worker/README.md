@@ -70,9 +70,9 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 
 ---
 
-## 每日自检（建议 14:55 / 15:05 北京时间）
+## 每日自检（北京时间 15:00 实战观察）
 
-目标：在 LinkedIn 刷新前后，用 30 秒确认“抓取鉴权 + Worker 状态”都正常，避免当天首发掉回兜底。
+目标：保护当天准时更新。15:00 前确认抓取能用，15:00 后马上确认当天题、正式站和发布链路有没有卡住。
 
 从仓库根目录运行（不要在 `worker/` 子目录里跑）：
 
@@ -82,9 +82,23 @@ cd /Users/elng/web/pinpoint-answer-today-new
 # 14:55 左右：预检（只测抓取，不发布）
 npm run worker:preflight
 
-# 15:05 左右：看健康（确认已拿到今天数据）
+# 15:03 左右：看 Worker 有没有抓到今天新题
 npm run worker:health
+
+# 15:06 如果正式站还没更新：一键诊断当前卡点
+npm run worker:publish-window-diagnose
 ```
+
+15:06 之后，如果飞书告警或页面还没变，优先跑 `worker:publish-window-diagnose`。它只读状态，不会发布、不暂停、不刷新 cookie。
+
+看诊断命令最后两行：
+
+- `结论: 已发布...`：不用处理，今天链路正常。
+- `结论: 卡在：抓取`：先跑 `npm run worker:preflight`；如果是 LinkedIn 401，再刷新 cookie。
+- `结论: 卡在：自动发布暂停`：确认暂停原因后，再跑 `npm run worker:auto-publish-resume`。
+- `结论: 卡在：内容生成 / 内容校验 / 内容发布失败`：先看 Worker 告警和内容失败摘要，不要直接硬推 main。
+- `结论: 卡在：GitHub / Vercel`：先跑 `npm run worker:release-queue-status-check`，再看 Vercel 部署链接。
+- `结论: 卡在：正式站 summary / 缓存`：先触发 revalidate；如果还不变，再看 Vercel 缓存和构建产物。
 
 如果预检失败（401/500 或 `ok:false`），优先刷新 cookie（需要本机 Edge 已登录 LinkedIn）：
 
