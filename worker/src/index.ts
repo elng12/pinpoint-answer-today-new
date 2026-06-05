@@ -330,6 +330,8 @@ const sourceReadinessWatchdogNotifiedKeyOf = (d: string, checkpoint: string) =>
   `notify:source-readiness-watchdog:${d}:${checkpoint}`;
 const siteSummaryWatchdogNotifiedKeyOf = (d: string, checkpoint: string) =>
   `notify:site-summary-watchdog:${d}:${checkpoint}`;
+const sourceReadinessWatchdogMinutes = [3, 6, 9, 12, 15, 20] as const;
+const siteSummaryWatchdogMinutes = [6, 9, 12, 15, 20, 25] as const;
 const cronHeartbeatRunsLimit = 20;
 const staleAlertDedupeTtlSec = 60 * 60 * 2;
 const nonPublicDetailStateAlertThresholdMs = 15 * 60 * 1000;
@@ -4781,6 +4783,39 @@ function getScheduledCheckpointLabel(scheduledAt: Date): string {
   return formatBeijingTime(scheduledAt);
 }
 
+function includesCheckpointMinute<T extends readonly number[]>(minutes: T, minute: number): boolean {
+  return (minutes as readonly number[]).includes(minute);
+}
+
+function formatHeartbeatStage(stage: CronHeartbeatStage): string {
+  return [
+    stage.status,
+    stage.detailState ? `detail=${stage.detailState}` : "",
+    stage.reason ? toZhWebhookReason(stage.reason) : "",
+  ].filter(Boolean).join(" / ");
+}
+
+function resolvePublishWindowStuckStage(
+  heartbeat: CronHeartbeat,
+  deploymentState: DeploymentState,
+): string {
+  if (heartbeat.quickPublish.status === "failed") return "快速发布";
+  if (heartbeat.enrich.detailState === "generating") return "内容生成";
+  if (heartbeat.enrich.detailState === "validated") return "内容校验";
+  if (heartbeat.enrich.status === "queued") return "内容校验 / 发布入队";
+  if (heartbeat.enrich.status === "failed") return "内容校验";
+
+  const reason = `${heartbeat.enrich.reason || ""} ${heartbeat.quickPublish.reason || ""}`.toLowerCase();
+  if (reason.includes("candidate") || reason.includes("release queue")) return "候选分支";
+
+  if (deploymentState === "queued" || deploymentState === "building") return "Vercel";
+  if (deploymentState === "failed") return "Vercel";
+  if (deploymentState === "unknown") return "GitHub / Vercel 状态";
+  if (deploymentState === "ready") return "正式站 summary / 缓存";
+
+  return "GitHub / Vercel / 正式站";
+}
+
 async function checkAndMarkSourceReadinessWatchdogNotified(
   env: Env,
   date: string,
@@ -4810,13 +4845,13 @@ async function maybeNotifySourceReadinessWatchdog(
 ): Promise<void> {
   if (!hasNotifyWebhook(env)) return;
   const minute = getScheduledCheckpointMinute(input.scheduledAt);
-  if (![5, 15, 20].includes(minute)) return;
+  if (!includesCheckpointMinute(sourceReadinessWatchdogMinutes, minute)) return;
 
   const checkpoint = String(minute).padStart(2, "0");
   const alreadyNotified = await checkAndMarkSourceReadinessWatchdogNotified(env, input.date, checkpoint);
   if (alreadyNotified) return;
 
-  const title = minute >= 20
+  const title = minute >= 15
     ? "❌ Worker 已运行，但仍没拿到当天新题"
     : "⚠️ Worker 已运行，但 LinkedIn 还没返回当天新题";
 
@@ -4828,9 +4863,9 @@ async function maybeNotifySourceReadinessWatchdog(
     ...(input.graphqlError ? [`官方抓取: ${toZhWebhookReason(input.graphqlError)}`] : []),
     `备用抓取: ${toZhWebhookReason(input.fallbackReason)}`,
     `耗时(ms): ${input.durationMs}`,
-    minute < 20
+    minute < 15
       ? "下一步: Worker 会继续在后面的窗口自动重试。"
-      : "下一步: 已超过 15:20，今天更新可能晚点，需要开始看抓取源或备用抓取服务。",
+      : "下一步: 已进入正式更新窗口，优先检查 LinkedIn 抓取 cookie、GraphQL 和备用抓取服务。",
   ]);
 }
 
@@ -4861,7 +4896,7 @@ async function maybeNotifySiteSummaryWatchdog(
   if (!envFlag(env.NEW_SITE_SUMMARY_WATCHDOG_ENABLED, true)) return;
   if (!hasNotifyWebhook(env)) return;
   const minute = getScheduledCheckpointMinute(scheduledAt);
-  if (![20, 25].includes(minute)) return;
+  if (!includesCheckpointMinute(siteSummaryWatchdogMinutes, minute)) return;
   if (heartbeat.triggerKind !== "scheduled" || heartbeat.outcome === "failed") return;
 
   const publicSiteBaseUrl = getPublicSiteBaseUrl(env);
@@ -4869,36 +4904,52 @@ async function maybeNotifySiteSummaryWatchdog(
   let summary = await fetchSiteSummaryStatus(env, date);
   if (summary.ok) return;
 
-  if (hasNewSiteRevalidateConfig(env)) {
+  if (minute >= 12 && hasNewSiteRevalidateConfig(env)) {
     await triggerNewSiteRevalidate(env, puzzleNumber);
     await sleep(5000);
     summary = await fetchSiteSummaryStatus(env, date);
     if (summary.ok) return;
   }
 
+  let deploymentState: DeploymentState = "unknown";
+  let deploymentStatusText = "未读取到";
+  try {
+    const deploymentStatus = await inspectNewSiteBaseDeploymentStatus(env);
+    deploymentState = parseDeploymentStateParam(String(deploymentStatus.deploymentState || ""));
+    const vercel = asRecord(deploymentStatus.vercel);
+    const description = typeof vercel?.description === "string" ? vercel.description : "";
+    deploymentStatusText = `${getDeploymentStateLabel(deploymentState)}${description ? ` (${description})` : ""}`;
+  } catch (error) {
+    deploymentStatusText = `读取失败: ${error instanceof Error ? error.message : String(error)}`;
+  }
+  const stuckStage = resolvePublishWindowStuckStage(heartbeat, deploymentState);
+
   const checkpoint = String(minute).padStart(2, "0");
   const alreadyNotified = await checkAndMarkSiteSummaryWatchdogNotified(env, date, checkpoint);
   if (alreadyNotified) return;
 
   const words = doc.answers.map((a) => a.word).slice(0, 5).join(" | ");
-  await notifyCron(env, minute >= 25
-    ? "❌ Worker 已抓到答案，但正式站仍未更新"
-    : "⚠️ Worker 已抓到答案，但正式站还没确认更新", [
+  await notifyCron(env, minute >= 20
+    ? "❌ 正式站未更新，当前卡点已确认"
+    : "⚠️ 正式站未更新，当前卡点待处理", [
     `日期: ${date}`,
     `检查时间: ${getScheduledCheckpointLabel(scheduledAt)} 北京时间`,
     `触发: Cloudflare Worker ${cron || "scheduled"} 主窗口后校验`,
-    `当前卡点: ${heartbeat.enrich.status === "queued" ? "内容增强/发布检查仍在跑" : "正式站 summary 未变成今天"}`,
+    `当前卡点: ${stuckStage}`,
     `抓取来源: ${getFallbackSourceLabel(doc.source)}`,
     `主题: ${doc.mainAnswer || doc.theme || "（空）"}`,
     `答案: ${words}`,
     `预期谜题: #${puzzleNumber}`,
+    `快速发布: ${formatHeartbeatStage(heartbeat.quickPublish)}`,
+    `内容发布: ${formatHeartbeatStage(heartbeat.enrich)}`,
+    `Vercel: ${deploymentStatusText}`,
     `正式站 latest: #${summary.latestNumber ?? "未知"} ${summary.latestIso || "（空）"}`,
     `原因: ${summary.error || "summary 日期不是今天"}`,
     `健康检查: ${publicSiteBaseUrl}/api/health`,
     `今日接口: ${publicSiteBaseUrl}/api/pinpoint/today`,
-    minute >= 25
-      ? "说明: 这是 15:25 左右的最终窗口校验，不再静默等待。"
-      : "说明: 这是 15:20 左右的早期提醒，后面 15:25 还会再确认一次。",
+    minute >= 20
+      ? "说明: 已超过 15:20，不再静默等待。"
+      : "说明: 这是 15:06/15:09/15:12/15:15 的早期提醒，后面还会继续确认。",
   ]);
 }
 
