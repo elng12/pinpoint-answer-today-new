@@ -16,6 +16,7 @@
     "worker:release-queue-dry-run": "node scripts/worker-ops.mjs release-queue-dry-run --env staging",
     "worker:release-queue-status-check": "node scripts/worker-ops.mjs release-queue-status-check --env prod",
     "worker:release-queue-observe": "node scripts/worker-ops.mjs release-queue-observe --env prod",
+    "worker:publish-window-diagnose": "node scripts/worker-ops.mjs publish-window-diagnose --env prod",
     "worker:auto-publish-pause-status": "node scripts/worker-ops.mjs auto-publish-pause-status --env prod",
     "worker:auto-publish-pause": "node scripts/worker-ops.mjs auto-publish-pause --env prod",
     "worker:auto-publish-resume": "node scripts/worker-ops.mjs auto-publish-resume --env prod",
