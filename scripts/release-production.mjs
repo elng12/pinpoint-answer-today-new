@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import process from "node:process";
 import { dirname, resolve } from "node:path";
@@ -12,6 +13,12 @@ import {
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
 const WORKER_DIR = resolve(ROOT, "worker");
+const ENV_FILE_PATHS = [
+  resolve(ROOT, ".env.local"),
+  resolve(ROOT, ".env.override.local"),
+  resolve(ROOT, "..", ".env.local"),
+  resolve(ROOT, "..", ".env.override.local"),
+];
 const DEFAULT_SITE_URL = process.env.PINPOINT_SITE_URL || "https://pinpointanswertoday.app";
 const DEFAULT_WORKER_HEALTH_URL =
   process.env.PINPOINT_WORKER_HEALTH_URL || "https://pinpoint-worker.2296744453m.workers.dev/health";
@@ -47,6 +54,7 @@ What it does:
   4. Wait for the Vercel deployment tied to HEAD
   5. Deploy the production Cloudflare Worker
   6. Verify homepage, summary API, worker health, detail HTML, and PR11 public fetch audit
+  7. Submit sitemap.xml to GSC when GSC_SITEMAP_CREDENTIALS is set
 
 Options:
   --dry-run   Run all local preflight checks, then stop before push/deploy
@@ -147,6 +155,32 @@ function runForStatus(command, args, options = {}) {
       });
     });
   });
+}
+
+function readEnvFileValue(filePath, keys) {
+  try {
+    const text = readFileSync(filePath, "utf8");
+    for (const rawLine of text.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith("#")) continue;
+      const eq = line.indexOf("=");
+      if (eq < 0) continue;
+
+      const key = line.slice(0, eq).trim();
+      if (!keys.includes(key)) continue;
+
+      let value = line.slice(eq + 1).trim();
+      const hasDoubleQuotes = value.startsWith("\"") && value.endsWith("\"");
+      const hasSingleQuotes = value.startsWith("'") && value.endsWith("'");
+      if ((hasDoubleQuotes || hasSingleQuotes) && value.length >= 2) {
+        value = value.slice(1, -1);
+      }
+      if (value) return value;
+    }
+  } catch {
+    return "";
+  }
+  return "";
 }
 
 function parseJsonObjectFromOutput(output) {
@@ -693,6 +727,57 @@ async function runDetailPublishCheckWithRetries(slug) {
   return latestResult;
 }
 
+function getGscSitemapCredentialsPath() {
+  const fromProcessEnv = String(
+    process.env.GSC_SITEMAP_CREDENTIALS ||
+      process.env.GOOGLE_SEARCH_CONSOLE_CREDENTIALS ||
+      process.env.GSC_CREDENTIALS ||
+      "",
+  ).trim();
+  if (fromProcessEnv) return fromProcessEnv;
+
+  const keys = ["GSC_SITEMAP_CREDENTIALS", "GOOGLE_SEARCH_CONSOLE_CREDENTIALS", "GSC_CREDENTIALS"];
+  for (const filePath of ENV_FILE_PATHS) {
+    const value = readEnvFileValue(filePath, keys);
+    if (value) return value;
+  }
+  return "";
+}
+
+async function maybeSubmitGscSitemap(slug) {
+  const credentialsPath = getGscSitemapCredentialsPath();
+  if (!credentialsPath) {
+    console.log("GSC sitemap submit skipped: set GSC_SITEMAP_CREDENTIALS to enable it.");
+    return { status: "skipped" };
+  }
+
+  const result = await runForStatus(
+    "npm",
+    [
+      "--silent",
+      "run",
+      "gsc:submit-sitemap",
+      "--",
+      "--credentials",
+      credentialsPath,
+      "--slug",
+      slug,
+      "--site-url",
+      DEFAULT_SITE_URL,
+    ],
+    { timeoutMs: 120000 },
+  );
+  const output = `${result.stdout}${result.stderr}`.trim();
+
+  if (result.code !== 0) {
+    console.warn(`GSC sitemap submit failed, but production release will continue:\n${output || `exit ${result.code}`}`);
+    return { status: "failed", output };
+  }
+
+  console.log(output);
+  return { status: "submitted", output };
+}
+
 async function tryPauseAutoPublishAfterP0(result) {
   if (result?.maxSeverity !== "P0") {
     return { status: "skipped", reason: "not P0" };
@@ -770,6 +855,7 @@ async function main() {
     console.log("Would deploy the production Cloudflare Worker");
     console.log(`Would verify ${DEFAULT_SITE_URL}/, ${DEFAULT_SITE_URL}/api/puzzles/summary, ${DEFAULT_WORKER_HEALTH_URL}, and PR11 public fetch audit`);
     console.log(`Would run npm run detail:publish-check -- --slug ${localLiveEntry.slug}`);
+    console.log("Would submit sitemap.xml to GSC if GSC_SITEMAP_CREDENTIALS is set");
     return;
   }
 
@@ -813,6 +899,9 @@ async function main() {
     );
   }
 
+  logStep("Submitting sitemap to GSC");
+  const gscSitemapSubmit = await maybeSubmitGscSitemap(summary.latest.slug);
+
   logStep("Production release finished");
   console.log(`Commit: ${sha}`);
   console.log(`Vercel: ${vercel.targetUrl || "success"}`);
@@ -822,6 +911,7 @@ async function main() {
   console.log(`Verified detail page: ${detail.detailUrl}`);
   console.log(`Post-publish audit: ${postPublishAudit.auditOutcome} (${postPublishAudit.outputPath})`);
   console.log(`Detail publish check: ${detailPublishCheck.status}`);
+  console.log(`GSC sitemap submit: ${gscSitemapSubmit.status}`);
 }
 
 main().catch(async (error) => {

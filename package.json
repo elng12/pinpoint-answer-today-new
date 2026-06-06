@@ -35,6 +35,7 @@
     "detail:recent-backfill-audit": "tsx scripts/audit-recent-detail-backfill.ts",
     "homepage:keyword-audit": "tsx /Users/elng/web/关键词密度脚本/audit-homepage-keywords.ts",
     "gsc:pinpoint": "node scripts/gsc-pinpoint.mjs",
+    "gsc:submit-sitemap": "node scripts/gsc-submit-sitemap.mjs",
     "content-kitchen:enrichment-dry-run": "tsx scripts/run-content-kitchen-enrichment-worker-dry-run.ts",
     "content-kitchen:review-decision": "tsx scripts/run-content-kitchen-review-decision.ts",
     "content-kitchen:post-publish-audit": "tsx scripts/run-content-kitchen-post-publish-audit.ts",
