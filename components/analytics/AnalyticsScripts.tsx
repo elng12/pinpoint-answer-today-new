@@ -1,11 +1,10 @@
 import Script from "next/script";
 
 const DEFAULT_GA_MEASUREMENT_ID = "G-29HBZ29S1Y";
-const DISABLE_GA = process.env.NEXT_PUBLIC_ENABLE_GA === "false";
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID?.trim() || DEFAULT_GA_MEASUREMENT_ID;
 
 export function AnalyticsScripts() {
-  if (DISABLE_GA || !GA_MEASUREMENT_ID) {
+  if (!GA_MEASUREMENT_ID) {
     return null;
   }
 
