@@ -47,15 +47,15 @@
   ],
   "lessons": [
     {
-      "title": "Use Space Power Police TV Bus to test one missing word",
-      "body": "Read Space Power Police TV Bus as one clue path before choosing a connector; the answer should make each clue sound natural."
+      "title": "\"Space\" and \"Power\" do not immediately line up around one missing word",
+      "body": "\"Space\" and \"Power\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
     },
     {
-      "title": "The third clue is what finally makes the missing word visible",
-      "body": "Once the third clue lands, place the same word after the other clues and make sure they read naturally right away."
+      "title": "\"Police\" is what finally makes the missing word visible",
+      "body": "Once \"Police\" lands, place the same word after the other clues and make sure they read naturally right away."
     },
     {
-      "title": "Use \"Police station\" to confirm the shared ending word",
+      "title": "Every clue should read as an everyday phrase once the answer is in place",
       "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
     }
   ],
