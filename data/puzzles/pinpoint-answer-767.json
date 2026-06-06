@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 767,
+  "slug": "pinpoint-answer-767",
+  "publishDate": "2026-06-06",
+  "isoDate": "2026-06-06",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Space",
+    "Power",
+    "Police",
+    "TV",
+    "Bus"
+  ],
+  "answer": "Words that come before “station”",
+  "category": "Words that come before “station”",
+  "wordHints": {
+    "Space": "\"Space station\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Power": "\"Power station\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Police": "Once the shared word is in place, \"Police station\" reads like ordinary language instead of a forced compound.",
+    "TV": "\"TV station\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Bus": "\"Bus station\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Space": "Try reading Space as part of a familiar phrase in words that come before “station” instead of as a standalone word.",
+    "Power": "Power works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Police": "Police is the clue that makes the phrase pattern in words that come before “station” concrete enough to test.",
+    "TV": "Try reading TV as part of a familiar phrase in words that come before “station” instead of as a standalone word.",
+    "Bus": "Bus works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"a loose topic list\". Space, Power do not immediately advertise one shared phrase slot before Police shows where the repeated word belongs. Police behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
+    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Police locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Space station\" and \"Power station\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Police station, TV station, Bus station show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “station”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “station”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Space and first tried a loose topic list. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Police\" feel exact.",
+    "Once \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “station”\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Space\" and \"Power\" do not immediately line up around one missing word",
+      "body": "\"Space\" and \"Power\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Police\" is what finally makes the missing word visible",
+      "body": "Once \"Police\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "Every clue should read as an everyday phrase once the answer is in place",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Space\" and \"Power\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Space",
+        "examplePhrase": "Space station",
+        "connectionExplained": "\"Space station\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Power",
+        "examplePhrase": "Power station",
+        "connectionExplained": "\"Power station\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Police",
+        "examplePhrase": "Police station",
+        "connectionExplained": "Once the shared word is in place, \"Police station\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "TV",
+        "examplePhrase": "TV station",
+        "connectionExplained": "\"TV station\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Bus",
+        "examplePhrase": "Bus station",
+        "connectionExplained": "\"Bus station\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Space\" and \"Power\" in LinkedIn Pinpoint #767?",
+      "answer": "The answer is \"Words that come before “station”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Space\" and \"Power\" connect in LinkedIn Pinpoint #767?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Police\" the key clue in LinkedIn Pinpoint #767?",
+      "answer": "\"Police\" is the strongest clue because \"Police station\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "a loose topic list",
+      "standalone clue meanings"
+    ],
+    "whyFalseStartPlausible": [
+      "Space, Power do not immediately advertise one shared phrase slot before Police shows where the repeated word belongs.",
+      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+    ],
+    "breakingClue": "Police",
+    "pivot": "I started with Space and first tried a loose topic list. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Police\" feel exact.\n\nOnce \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “station”\".",
+    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Police locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Police",
+    "whyDecisive": "Police is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Police lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Space",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Space station",
+      "nonObviousWhy": "\"Space station\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Space station",
+      "phraseExample": "Space station"
+    },
+    {
+      "clue": "Power",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Power station",
+      "nonObviousWhy": "\"Power station\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Power station",
+      "phraseExample": "Power station"
+    },
+    {
+      "clue": "Police",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Police station",
+      "nonObviousWhy": "Once the shared word is in place, \"Police station\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Police station",
+      "phraseExample": "Police station"
+    },
+    {
+      "clue": "TV",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "TV station",
+      "nonObviousWhy": "\"TV station\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "TV station",
+      "phraseExample": "TV station"
+    },
+    {
+      "clue": "Bus",
+      "surfaceMisread": "a loose topic list",
+      "resolvedPhraseOrMember": "Bus station",
+      "nonObviousWhy": "\"Bus station\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Bus station",
+      "phraseExample": "Bus station"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Space\" and \"Power\" in LinkedIn Pinpoint #767?",
+      "answer": "The answer is \"Words that come before “station”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Space"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Space\" and \"Power\" connect in LinkedIn Pinpoint #767?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Space"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Police\" the key clue in LinkedIn Pinpoint #767?",
+      "answer": "\"Police\" is the strongest clue because \"Police station\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Police"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Space station",
+      "Power station",
+      "Police station",
+      "TV station",
+      "Bus station"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Space station",
+      "Power station",
+      "Police station",
+      "TV station"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a loose topic list",
+      "whyPlausible": "Space, Power do not immediately advertise one shared phrase slot before Police shows where the repeated word belongs.",
+      "whyRejected": "Police behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+    },
+    {
+      "label": "standalone clue meanings",
+      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+      "whyRejected": "Once Police locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Police station, TV station, Bus station show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
