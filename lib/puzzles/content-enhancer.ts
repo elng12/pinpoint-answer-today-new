@@ -64,6 +64,7 @@ export function enhancePuzzleDetail(detail: PuzzleDetail): PuzzleDetail {
   let lessons = detail.lessons;
   if (hasGenericLessonTitle(lessons)) {
     lessons = buildSharedFallbackLessons({
+      puzzleNumber: number,
       kind: pattern.kind,
       turningPoint: tp,
       clues,

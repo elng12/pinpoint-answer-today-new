@@ -243,9 +243,9 @@ export function buildLiveWordHints(clues: string[], answer: string): Record<stri
   );
 }
 
-export function buildLiveLessons(answer: string, turningPoint: string, clues: string[] = []): LessonItem[] {
+export function buildLiveLessons(answer: string, turningPoint: string, clues: string[] = [], puzzleNumber?: number): LessonItem[] {
   const pattern = detectLiveAnswerPattern(answer);
-  return buildSharedFallbackLessons({ kind: pattern.kind, turningPoint, clues, answer });
+  return buildSharedFallbackLessons({ puzzleNumber, kind: pattern.kind, turningPoint, clues, answer });
 }
 
 export function buildLiveFaqs(

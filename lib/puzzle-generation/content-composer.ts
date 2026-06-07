@@ -1310,6 +1310,7 @@ function isGenericPortableTakeaway(value: string): boolean {
 }
 
 function buildLessons(
+  puzzleNumber: number,
   turningPointLabel: string,
   connectorSummary: string,
   portableTakeaway: string,
@@ -1325,7 +1326,7 @@ function buildLessons(
   const lesson1Title =
     firstClue && secondClue
       ? isPhrase
-        ? `"${firstClue}" and "${secondClue}" do not immediately line up around one missing word`
+        ? `A false start with "${firstClue}" and "${secondClue}"`
         : `"${firstClue}" and "${secondClue}" can look like they belong to different categories at first`
       : isPhrase
         ? "The first clues rarely reveal the shared word right away"
@@ -1341,7 +1342,7 @@ function buildLessons(
   const lesson2Title =
     turningClue !== "A later clue"
       ? isPhrase
-        ? `"${turningClue}" is what finally makes the missing word visible`
+        ? `"${turningClue}" changes the ${answerPattern.token} pattern from guess to test`
         : answerPattern.kind === "typed-category"
           ? `"${turningClue}" is what makes ${answerPattern.singularNoun.toLowerCase()} feel concrete instead of broad`
           : answerPattern.kind === "category"
@@ -1356,9 +1357,9 @@ function buildLessons(
   );
 
   const lesson3Title = isPhrase
-    ? `Every clue should read as an everyday phrase once "${answerPattern.token}" is in place`
+    ? `For Pinpoint ${puzzleNumber}, the ${answerPattern.token} phrase test has to work five times`
     : answerPattern.kind === "typed-category"
-      ? `Every clue should name a specific kind of ${answerPattern.singularNoun.toLowerCase()} once the category sharpens`
+      ? `For Pinpoint ${puzzleNumber}, every clue should stay at the ${answerPattern.singularNoun.toLowerCase()} level`
       : turningClue !== "A later clue" && firstClue
         ? `Use "${turningClue}" to re-check "${firstClue}" under ${lowerFirst(connectorSummary)}`
         : `Re-check the full board under ${lowerFirst(connectorSummary)}`;
@@ -2088,7 +2089,7 @@ export function composeFromSlots(
     mainAnswer,
   );
   const wrongGuesses = buildWrongGuesses(falseStarts, rejectedGuess, turningPointLabel);
-  const lessons = buildLessons(turningPointLabel, connectorSummary, portableTakeaway, mainAnswer, clues);
+  const lessons = buildLessons(puzzleNumber, turningPointLabel, connectorSummary, portableTakeaway, mainAnswer, clues);
   const faqs = buildFaqs(
     puzzleData ?? { puzzleNumber, rawWords: clues, mainAnswer },
     connectorSummary,

@@ -100,6 +100,23 @@ function phraseAnswerSlot(kind: FallbackPatternKind): string {
   return kind === "before" ? "ending word" : "first word";
 }
 
+function fallbackPuzzleLabel(puzzleNumber: number | undefined): string {
+  return typeof puzzleNumber === "number" && Number.isFinite(puzzleNumber)
+    ? `Pinpoint ${puzzleNumber}`
+    : "this Pinpoint";
+}
+
+function extractFallbackPhraseToken(answer: string): string {
+  const cleaned = stripFallbackQuotes(answer).trim();
+  const quoted = answer.match(/["\u201c]([^"\u201d]+)["\u201d]/);
+  if (quoted?.[1]) return quoted[1].trim();
+  const beforeAfter = cleaned.match(/\b(?:before|after)\s+(.+)$/i);
+  if (beforeAfter?.[1]) {
+    return beforeAfter[1].replace(/[.!?]+$/, "").trim();
+  }
+  return cleaned.split(/\s+/).slice(-1)[0] || "answer";
+}
+
 function buildFallbackAnswerFaqQuestion(input: {
   puzzleNumber: number;
   kind: FallbackPatternKind;
@@ -303,33 +320,36 @@ export function buildSharedFallbackArticleBlocks(input: {
 }
 
 export function buildSharedFallbackLessons(input: {
+  puzzleNumber?: number;
   kind: FallbackPatternKind;
   turningPoint: string;
   clues?: string[];
   answer?: string;
 }): LessonItem[] {
-  const { kind, turningPoint, clues = [], answer = "" } = input;
+  const { puzzleNumber, kind, turningPoint, clues = [], answer = "" } = input;
   const firstClue = stripFallbackQuotes(clues[0] || "");
   const secondClue = stripFallbackQuotes(clues[1] || "");
   const answerLabel = stripFallbackQuotes(answer);
+  const puzzleLabel = fallbackPuzzleLabel(puzzleNumber);
 
   if (isPhrasePattern(kind)) {
     const positionText = phrasePositionText(kind);
+    const phraseToken = extractFallbackPhraseToken(answer);
     return [
       {
         title: firstClue && secondClue
-          ? `"${firstClue}" and "${secondClue}" do not immediately line up around one missing word`
+          ? `A false start with "${firstClue}" and "${secondClue}"`
           : "Let the clearest phrase lead",
         body: firstClue && secondClue
           ? `"${firstClue}" and "${secondClue}" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.`
           : "In shared-word puzzles, the best clue is usually the one that produces the least flexible phrase.",
       },
       {
-        title: `"${turningPoint}" is what finally makes the missing word visible`,
+        title: `"${turningPoint}" changes the ${phraseToken} pattern from guess to test`,
         body: `Once "${turningPoint}" lands, place the same word ${positionText} the other clues and make sure they read naturally right away.`,
       },
       {
-        title: `Every clue should read as an everyday phrase once the answer is in place`,
+        title: `For ${puzzleLabel}, the ${phraseToken} phrase test has to work five times`,
         body: "A good answer should create phrases people actually say, not just words that seem related from a distance.",
       },
     ];
@@ -352,7 +372,7 @@ export function buildSharedFallbackLessons(input: {
       },
       {
         title: noun
-          ? `Every clue should name a specific kind of ${noun} once the category sharpens`
+          ? `For ${puzzleLabel}, every clue should stay at the ${noun} level`
           : "Use the anchor clue to set the category level",
         body: `Once "${turningPoint}" lands, check whether the rest of the clues fit that same category at the same level of precision.`,
       },

@@ -1464,6 +1464,7 @@ async function checkPhraseFallbackDirection() {
       clues?: string[];
     }) => Array<{ question: string; answer: string }>;
     buildSharedFallbackLessons: (input: {
+      puzzleNumber?: number;
       kind: "before" | "after" | "typed-category" | "category" | "association";
       turningPoint: string;
       clues?: string[];
@@ -1491,6 +1492,13 @@ async function checkPhraseFallbackDirection() {
     turningPoint: "Weight",
     connectorSummary: "familiar phrases and everyday terms built with one shared opening word",
   });
+  const phraseLessons = fallbackModule.buildSharedFallbackLessons({
+    puzzleNumber: 768,
+    kind: "before",
+    answer: 'Words that come before "class"',
+    turningPoint: "Weight",
+    clues: ["First", "Weight", "Fitness", "Business", "World- (the very best)"],
+  });
 
   assert.match(
     beforeFaqs[1]?.answer || "",
@@ -1501,6 +1509,15 @@ async function checkPhraseFallbackDirection() {
     afterFaqs[1]?.answer || "",
     /\bbefore every clue\b/i,
     '"after" phrase fallback copy should say the shared word fits before every clue',
+  );
+  assert.deepEqual(
+    phraseLessons.map((lesson) => lesson.title),
+    [
+      'A false start with "First" and "Weight"',
+      '"Weight" changes the class pattern from guess to test',
+      "For Pinpoint 768, the class phrase test has to work five times",
+    ],
+    "phrase fallback lessons should follow the competitor-style false-start, turning-clue, confirmation shape",
   );
 
   const typedCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
@@ -1526,6 +1543,7 @@ async function checkPhraseFallbackDirection() {
     clues: ["Bass", "Electric", "Acoustic", "Classical", "Air"],
   });
   const typedCategoryLessons = fallbackModule.buildSharedFallbackLessons({
+    puzzleNumber: 725,
     kind: "typed-category",
     turningPoint: "Air",
     answer: "Types of guitars",

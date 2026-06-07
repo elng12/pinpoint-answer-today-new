@@ -105,7 +105,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const pattern = detectLiveAnswerPattern(answer);
   const turningPoint = pickLiveTurningPoint(record.clues, answer);
   const connectorSummary = buildLiveConnectorSummary(answer);
-  const lessons = buildLiveLessons(answer, turningPoint, record.clues);
+  const lessons = buildLiveLessons(answer, turningPoint, record.clues, puzzleNumber);
   const wordHints = buildLiveWordHints(record.clues, answer);
   const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint, record.clues);
   const wrongGuessCandidates = [
