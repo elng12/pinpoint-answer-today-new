@@ -17,6 +17,8 @@ export const CONTENT_CONTRACT = {
   faqsMin: 3,
 } as const;
 
+const STRUCTURED_LESSON_TITLE_BASELINE_PUZZLE = 704;
+
 export type ContentContractIssueLevel = "error" | "warning";
 
 export type ContentContractIssue = {
@@ -291,6 +293,33 @@ export function validateContentContract(input: ContentContractInput): ContentCon
         code: "clueDetails.missingFields",
         message: "Each clue detail must include clue, phrase, and explanation",
         field: "clueDetails",
+      });
+    }
+  }
+
+  const lessons = input.lessons ?? null;
+  if (!Array.isArray(lessons) || lessons.length < CONTENT_CONTRACT.lessonsMin) {
+    issues.push({
+      level: "error",
+      code: "lessons.count",
+      message: `At least ${CONTENT_CONTRACT.lessonsMin} lesson items are required`,
+      field: "lessons",
+    });
+  } else {
+    const requiresLessonTitles = puzzleNumber >= STRUCTURED_LESSON_TITLE_BASELINE_PUZZLE;
+    const missingAny = lessons.some((lesson) => {
+      const title = normalizeText(lesson?.title);
+      const body = normalizeText(lesson?.body);
+      return !body || (requiresLessonTitles && !title);
+    });
+    if (missingAny) {
+      issues.push({
+        level: "error",
+        code: "lessons.missingFields",
+        message: requiresLessonTitles
+          ? "Each lesson item must include title and body"
+          : "Each lesson item must include body",
+        field: "lessons",
       });
     }
   }

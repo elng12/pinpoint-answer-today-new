@@ -10,6 +10,10 @@ import {
   buildSharedFallbackSolutionNarrative,
 } from "../../lib/puzzles/fallback-copy";
 import {
+  buildPhrasePatternExample,
+  buildPhrasePatternExampleResult,
+} from "../../lib/puzzles/phrase-examples";
+import {
   repairSolutionNarrative,
   shouldRepairSolutionNarrative,
 } from "../../lib/puzzles/solution-narrative-repair";
@@ -1302,25 +1306,15 @@ function buildWorkerConnectorSummary(answer: string): string {
     : "a shared category board with one connector";
 }
 
-function buildWorkerSpecialPhrase(clue: string, answer: string): string {
-  const pattern = detectWorkerAnswerPattern(answer);
-  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
-
-  const symbolGroupPattern = /\(\s*[^\p{L}\p{N}]+\s*\)|[^\p{L}\p{N}\s()'"&,-]+/gu;
-  const replaced = clue.replace(symbolGroupPattern, ` ${pattern.token} `).replace(/\s+/g, " ").trim();
-  if (replaced === clue) return "";
-  return stripStraightAndCurlyQuotes(replaced.replace(/\(\s*\)/g, "").replace(/\s+/g, " ").trim());
-}
-
 function buildWorkerFallbackPhrase(clue: string, answer: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
   const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
   const normalizedBase = baseClue || clue;
   if (pattern.kind === "before") {
-    return buildWorkerSpecialPhrase(clue, answer) || `${clue} ${pattern.token}`.trim();
+    return buildPhrasePatternExample(clue, pattern.token, "before");
   }
   if (pattern.kind === "after") {
-    return buildWorkerSpecialPhrase(clue, answer) || `${pattern.token} ${clue}`.trim();
+    return buildPhrasePatternExample(clue, pattern.token, "after");
   }
   if (pattern.kind === "typed-category") {
     const baseLoose = normalizeLooseWorkerText(normalizedBase);
@@ -1352,6 +1346,15 @@ function buildWorkerFallbackPhrase(clue: string, answer: string): string {
     }
   }
   return normalizedBase;
+}
+
+function buildWorkerSpecialPhrase(clue: string, answer: string): string {
+  const pattern = detectWorkerAnswerPattern(answer);
+  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
+  const result = buildPhrasePatternExampleResult(clue, pattern.token, pattern.kind);
+  return result.reason === "hyphen-gloss" || result.reason === "symbol-replacement"
+    ? result.phrase
+    : "";
 }
 
 function buildWorkerClueExplanation(clue: string, phrase: string, answer: string, index: number, turningPoint: string): string {
@@ -1417,7 +1420,7 @@ function scoreWorkerClueSpecificity(clue: string): number {
   return score;
 }
 
-function pickWorkerTurningPoint(words: string[], answer: string): string {
+export function pickWorkerTurningPoint(words: string[], answer: string): string {
   const pattern = detectWorkerAnswerPattern(answer);
   if (pattern.kind === "before" || pattern.kind === "after") {
     const special = words.find((word) => buildWorkerSpecialPhrase(word, answer));
@@ -1586,7 +1589,7 @@ function buildTemplateFallbackPayload(
   const wrongGuessCandidates = inferWorkerWrongGuessCandidates(answer, words, {}, turningPointRecord);
   const fallbackWrongGuess = wrongGuessCandidates[0]?.label || (
     pattern.kind === "before" || pattern.kind === "after"
-      ? "loose phrase guesses"
+      ? `${words[0] || "the first clue"} and ${words[1] || "the second clue"} phrase pairing`
       : pattern.kind === "typed-category"
         ? "a broader umbrella topic"
         : pattern.kind === "association"
@@ -3006,16 +3009,18 @@ function inferWorkerWrongGuessCandidates(
 
   const pattern = detectWorkerAnswerPattern(answer);
   const cluePreview = words.slice(0, 2).join(", ");
+  const firstClue = words[0] || "the first clue";
+  const secondClue = words[1] || "the second clue";
   if (pattern.kind === "before" || pattern.kind === "after") {
     return [
       {
-        label: "a loose topic list",
-        whyPlausible: `${cluePreview} do not immediately advertise one shared phrase slot before ${turningClue} shows where the repeated word belongs.`,
-        whyRejected: `${turningClue} behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.`,
+        label: `${firstClue} and ${secondClue} phrase pairing`,
+        whyPlausible: `${cluePreview} can support more than one phrase read before ${turningClue} shows where the repeated word belongs.`,
+        whyRejected: `${turningClue} behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.`,
       },
       {
-        label: "standalone clue meanings",
-        whyPlausible: "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
+        label: `${turningClue} as an outlier clue`,
+        whyPlausible: `${turningClue} can look like the odd clue if the earlier words are read without a shared phrase slot.`,
         whyRejected: `Once ${turningClue} locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.`,
       },
     ];
@@ -3347,11 +3352,6 @@ export function buildPublishedPuzzleDetailRecord({
     wordHints[word] = hint;
   });
 
-  const lessons = Array.isArray(sections.lessons) ? sections.lessons : [
-    { title: "Look for word patterns", body: "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer." },
-    { title: "Test each clue", body: "Verify the connection holds for all 5 clues before committing." },
-    { title: "Trust your instinct", body: "If a theme fits most clues naturally, it is usually correct." },
-  ];
   const faqs = Array.isArray(sections.faqs) ? sections.faqs : [
     { question: `What is the answer to LinkedIn Pinpoint #${puzzleNumber}?`, answer: `The answer is "${answer}". The clues ${words.join(", ")} all share this connection.` },
     { question: "How difficult was this Pinpoint puzzle?", answer: "Difficulty varies, but identifying the shared word pattern across all five clues is the key strategy." },
@@ -3361,6 +3361,15 @@ export function buildPublishedPuzzleDetailRecord({
   const turningPoint =
     providedTurningPoint ??
     inferWorkerTurningPointRecord(words, sections, analysis, clueDetails as Array<Record<string, unknown>>);
+  const lessons = Array.isArray(sections.lessons) && sections.lessons.length > 0
+    ? sections.lessons
+    : buildSharedFallbackLessons({
+      puzzleNumber,
+      kind: detectWorkerAnswerPattern(answer).kind,
+      turningPoint: turningPoint?.clue || words[words.length - 1] || "the turning clue",
+      clues: words,
+      answer,
+    });
   const wrongGuessCandidates =
     (Array.isArray(providedWrongGuessCandidates) && providedWrongGuessCandidates.length > 0
       ? providedWrongGuessCandidates

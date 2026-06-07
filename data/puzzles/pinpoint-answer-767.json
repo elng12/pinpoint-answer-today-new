@@ -33,14 +33,14 @@
   },
   "articleBlocks": [
     "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". Space, Power do not immediately advertise one shared phrase slot before Police shows where the repeated word belongs. Police behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Police locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "A nearby read was \"public-service locations\". Power, Police, and Bus can all sound like civic infrastructure at first, but that read does not explain Space or TV cleanly. Police behaves like a proof clue for one fixed phrase pattern, not just a public-service topic.",
+    "Another easy trap was \"media and transit clues\". TV and Bus can push the board toward broadcast or transportation, but that line gets too narrow once Space and Power have to fit the same rule. Once Police station locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"Space station\" and \"Power station\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
     "Police station, TV station, Bus station show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “station”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “station”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "The answer was \"Words that come before “station”\". More precisely, the board resolves as one shared ending word placed after each clue, not a public-service list or a media-and-transit mix, which is why \"Words that come before “station”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
-    "I started with Space and first tried a loose topic list. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Police\" feel exact.",
+    "I started with Space and first tried public-service locations. That was plausible for a moment, because Power, Police, and Bus can all sound like civic infrastructure. But that guess did not make \"TV\" or \"Space\" feel exact.",
     "Once \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
     "Then I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.",
     "The answer was \"Words that come before “station”\"."
@@ -107,16 +107,16 @@
   "solvePath": {
     "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "public-service locations",
+      "media and transit clues"
     ],
     "whyFalseStartPlausible": [
-      "Space, Power do not immediately advertise one shared phrase slot before Police shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "Power, Police, and Bus can all sound like civic infrastructure before TV and Space force a wider phrase test.",
+      "TV and Bus can push the board toward broadcast or transportation before Space and Power prove the same ending works elsewhere."
     ],
     "breakingClue": "Police",
-    "pivot": "I started with Space and first tried a loose topic list. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Police\" feel exact.\n\nOnce \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “station”\".",
-    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once Police locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    "pivot": "I started with Space and first tried public-service locations. That was plausible for a moment, because Power, Police, and Bus can all sound like civic infrastructure. But that guess did not make \"TV\" or \"Space\" feel exact.\n\nOnce \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “station”\".",
+    "fullBoardConfirmation": "Another easy trap was \"media and transit clues\". TV and Bus can push the board toward broadcast or transportation before Space and Power prove the same ending works elsewhere. Once Police station locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
     "clue": "Police",
@@ -126,7 +126,7 @@
   "clueRows": [
     {
       "clue": "Space",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "space topic",
       "resolvedPhraseOrMember": "Space station",
       "nonObviousWhy": "\"Space station\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "Space station",
@@ -134,7 +134,7 @@
     },
     {
       "clue": "Power",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "public-service locations",
       "resolvedPhraseOrMember": "Power station",
       "nonObviousWhy": "\"Power station\" is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "Power station",
@@ -142,7 +142,7 @@
     },
     {
       "clue": "Police",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "public-service locations",
       "resolvedPhraseOrMember": "Police station",
       "nonObviousWhy": "Once the shared word is in place, \"Police station\" reads like ordinary language instead of a forced compound.",
       "searchableContext": "Police station",
@@ -150,7 +150,7 @@
     },
     {
       "clue": "TV",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "media and transit clues",
       "resolvedPhraseOrMember": "TV station",
       "nonObviousWhy": "\"TV station\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "TV station",
@@ -158,7 +158,7 @@
     },
     {
       "clue": "Bus",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "media and transit clues",
       "resolvedPhraseOrMember": "Bus station",
       "nonObviousWhy": "\"Bus station\" is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "Bus station",
@@ -204,14 +204,14 @@
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "Space, Power do not immediately advertise one shared phrase slot before Police shows where the repeated word belongs.",
-      "whyRejected": "Police behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "public-service locations",
+      "whyPlausible": "Power, Police, and Bus can all sound like civic infrastructure before TV and Space force a wider phrase test.",
+      "whyRejected": "Police behaves like a proof clue for one fixed phrase pattern, not just a public-service topic."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once Police locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "label": "media and transit clues",
+      "whyPlausible": "TV and Bus can push the board toward broadcast or transportation before Space and Power prove the same ending works elsewhere.",
+      "whyRejected": "Once Police station locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
   "setValidationSummary": "Police station, TV station, Bus station show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",

@@ -221,8 +221,8 @@ export function buildSharedFallbackArticleBlocks(input: {
     const answerSlot = phraseAnswerSlot(kind);
     const [primaryWrongGuess, secondaryWrongGuess] = getFallbackWrongGuessPair(
       wrongGuessCandidates,
-      "loose phrase guesses",
-      "standalone clue meanings",
+      `${first} and ${second} phrase pairing`,
+      `${turningPoint} as an outlier clue`,
     );
     return [
       `The first clues make it clear this is a shared-word phrase puzzle, but not which ${answerSlot} belongs ${positionText} every clue without forcing the read.`,

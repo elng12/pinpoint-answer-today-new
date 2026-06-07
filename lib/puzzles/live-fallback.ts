@@ -1,4 +1,5 @@
 import type { FaqItem, LessonItem } from "@/lib/puzzles/schema";
+import { buildPhrasePatternExample } from "@/lib/puzzles/phrase-examples";
 import {
   buildSharedFallbackArticleBlocks,
   buildSharedFallbackFaqs,
@@ -109,24 +110,13 @@ export function buildLiveConnectorSummary(answer: string): string {
   return "a shared category board with one connector";
 }
 
-function buildLiveSpecialPhrase(clue: string, answer: string): string {
-  const pattern = detectLiveAnswerPattern(answer);
-  if (pattern.kind !== "before" && pattern.kind !== "after") return "";
-
-  const symbolGroupPattern = /\(\s*[^\p{L}\p{N}]+\s*\)|[^\p{L}\p{N}\s()'"&,-]+/gu;
-  const replaced = clue.replace(symbolGroupPattern, ` ${pattern.token} `).replace(/\s+/g, " ").trim();
-  if (replaced === clue) return "";
-
-  return stripStraightAndCurlyQuotes(replaced.replace(/\(\s*\)/g, "").replace(/\s+/g, " ").trim());
-}
-
 export function buildLiveFallbackPhrase(clue: string, answer: string): string {
   const pattern = detectLiveAnswerPattern(answer);
   if (pattern.kind === "before") {
-    return buildLiveSpecialPhrase(clue, answer) || `${clue} ${pattern.token}`.trim();
+    return buildPhrasePatternExample(clue, pattern.token, "before");
   }
   if (pattern.kind === "after") {
-    return buildLiveSpecialPhrase(clue, answer) || `${pattern.token} ${clue}`.trim();
+    return buildPhrasePatternExample(clue, pattern.token, "after");
   }
   if (pattern.kind === "typed-category") {
     const baseClue = clue.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();

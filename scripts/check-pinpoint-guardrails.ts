@@ -808,6 +808,7 @@ async function checkWorkerDetailShape() {
       record?: Record<string, unknown>;
       reason?: string;
     };
+    pickWorkerTurningPoint: (words: string[], answer: string) => string;
     buildCronHeartbeatAlerts: (
       heartbeat: {
         enrich: {
@@ -822,6 +823,9 @@ async function checkWorkerDetailShape() {
       minutesStuck: number;
       message: string;
     }>;
+  };
+  const liveFallbackModule = (await import("../lib/puzzles/live-fallback")) as {
+    buildLiveFallbackPhrase: (clue: string, answer: string) => string;
   };
 
   const clues = [
@@ -911,6 +915,83 @@ async function checkWorkerDetailShape() {
     setValidationSummary?: string;
     categoryPrecisionNote?: string;
   };
+
+  const noLessonClues = ["First", "Weight", "Fitness", "Business", "World- (the very best)"];
+  const noLessonRecord = workerModule.buildPublishedPuzzleDetailRecord({
+    puzzleNumber: 768,
+    slug: "pinpoint-answer-768",
+    puzzleDate: "2026-06-07",
+    answer: 'Words that come before "class"',
+    words: noLessonClues,
+    sections: {
+      overview:
+        "First and Weight can start as broad clue reads, but World- (the very best) makes the shared phrase ending clear enough to test across the board.",
+      solutionEmergence:
+        "I first read First and Weight as broad clue words before World- (the very best) changed the solve. Once World-class appeared, the earlier clues turned into First class, Weight class, Fitness class, and Business class without forcing the answer.",
+      clueDetails: noLessonClues.map((clue) => ({
+        clue,
+        phrase: liveFallbackModule.buildLiveFallbackPhrase(clue, 'Words that come before "class"'),
+        explanation: `${clue} fits once the same class ending is tested across the board.`,
+      })),
+      faqs: [
+        {
+          question: "What shared word completes the Pinpoint #768 clue set?",
+          answer: "The shared ending is class, which turns each clue into a natural phrase.",
+        },
+        {
+          question: "Why does World- (the very best) matter in Pinpoint #768?",
+          answer: "It matters because World-class is the clue that makes the ending visible.",
+        },
+        {
+          question: "How should the full board be checked?",
+          answer: "Check First class, Weight class, Fitness class, Business class, and World-class together.",
+        },
+      ],
+    },
+    analysis: {
+      detailedBreakdown:
+        "The board starts broad, but World-class gives the exact phrase test. First class, Weight class, Fitness class, Business class, and World-class all use the same ending cleanly.",
+    },
+    summary: "Pinpoint #768 asks what links First, Weight, Fitness, Business, and World- (the very best).",
+    turningPoint: {
+      clue: "World- (the very best)",
+      whyDecisive: "World-class makes the shared class ending visible.",
+      whatChangedAfterIt: "Once World-class appears, the earlier clues can be tested under the same ending.",
+    },
+  }) as {
+    lessons?: Array<{ title?: string; body?: string }>;
+    display?: { clueTableRows?: Array<{ examplePhrase?: string }> };
+  };
+
+  assert.deepEqual(
+    noLessonRecord.lessons?.map((lesson) => lesson.title),
+    [
+      'A false start with "First" and "Weight"',
+      '"World- (the very best)" changes the class pattern from guess to test',
+      "For Pinpoint 768, the class phrase test has to work five times",
+    ],
+    "worker detail builder should use clue-specific fallback lessons when sections.lessons is missing",
+  );
+  assert.doesNotMatch(
+    noLessonRecord.lessons?.map((lesson) => lesson.title).join(" ") || "",
+    /Look for word patterns|Test each clue|Trust your instinct/i,
+    "worker detail builder must not reintroduce the old generic lesson titles",
+  );
+  assert.equal(
+    noLessonRecord.display?.clueTableRows?.[4]?.examplePhrase,
+    "World-class",
+    "worker phrase examples should turn clue glosses into natural phrases",
+  );
+  assert.equal(
+    workerModule.pickWorkerTurningPoint(noLessonClues, 'Words that come before "class"'),
+    "World- (the very best)",
+    "worker turning point picker should still use clue glosses as decisive phrase clues",
+  );
+  assert.notEqual(
+    workerModule.pickWorkerTurningPoint(["Paper", "Cut", "Feed", "Flash", "Hump"], 'Words that come before "back"'),
+    "Paper",
+    "worker turning point picker must not treat closed-compound spelling like Paperback as the decisive clue",
+  );
 
   const spoilerHintKeys = Object.keys(record.spoilerHints ?? {});
   assert.deepEqual(
@@ -1519,6 +1600,19 @@ async function checkPhraseFallbackDirection() {
     ],
     "phrase fallback lessons should follow the competitor-style false-start, turning-clue, confirmation shape",
   );
+  const liveFallbackModule = (await import("../lib/puzzles/live-fallback")) as {
+    buildLiveFallbackPhrase: (clue: string, answer: string) => string;
+  };
+  assert.equal(
+    liveFallbackModule.buildLiveFallbackPhrase("World- (the very best)", 'Words that come before "class"'),
+    "World-class",
+    "phrase example fallback should convert clue glosses into natural phrases",
+  );
+  assert.equal(
+    liveFallbackModule.buildLiveFallbackPhrase("Paper", 'Words that come before "back"'),
+    "Paperback",
+    "phrase example fallback should use common closed-compound spellings",
+  );
 
   const typedCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
     kind: "typed-category",
@@ -1637,6 +1731,18 @@ async function checkPhraseFallbackDirection() {
       },
     ],
   }).map((issue) => issue.code);
+  const oldGenericLessonCodes = collectSemanticLintIssues({
+    lessons: [
+      {
+        title: "Look for word patterns",
+        body: "Many Pinpoint puzzles use words that share a prefix, suffix, or compound with the answer.",
+      },
+      {
+        title: "Lesson 1",
+        body: "This placeholder title should never reach a public page.",
+      },
+    ],
+  }).map((issue) => issue.code);
   assert.ok(
     genericFallbackIssueCodes.includes("solutionEmergence.genericPivot"),
     "semantic lint should block the old generic one-real-set pivot",
@@ -1644,6 +1750,10 @@ async function checkPhraseFallbackDirection() {
   assert.ok(
     genericFallbackIssueCodes.includes("lessons.genericTitle"),
     "semantic lint should block the old generic set-concrete lesson title",
+  );
+  assert.ok(
+    oldGenericLessonCodes.filter((code) => code === "lessons.genericTitle").length >= 2,
+    "semantic lint should block old generic and placeholder lesson titles",
   );
 
   const structuredCategoryArticle = fallbackModule.buildSharedFallbackArticleBlocks({
@@ -1803,8 +1913,27 @@ async function checkEvidenceContractGuardsMeaningfulV2Fields() {
   console.log("ok: v2 evidence contract blocks thin turningPoint/clueRows/faqItems payloads");
 }
 
-function checkContentContractRequiresThreeCompleteFaqs() {
+function checkContentContractRequiresThreeCompleteFaqsAndLessons() {
   const rawWords = ["Alpha", "Beta", "Gamma", "Delta", "Epsilon"];
+  const completeFaqs = [
+    { question: "What is the answer?", answer: "The answer is Greek letters." },
+    { question: "Why does Alpha fit?", answer: "Alpha is a Greek letter." },
+    { question: "Why does Beta fit?", answer: "Beta is a Greek letter." },
+  ];
+  const completeLessons = [
+    {
+      title: "Alpha and Beta can look like a sequence first",
+      body: "The opening pair is useful, but the full board still needs the later clues before the answer is safe.",
+    },
+    {
+      title: "Gamma keeps the Greek-letter reading alive",
+      body: "Gamma makes the ordered-set reading more concrete because it belongs to the same named family.",
+    },
+    {
+      title: "For Pinpoint 901, every clue should name one Greek letter",
+      body: "The answer is strong only if all five clues stay at the same category level.",
+    },
+  ];
   const baseInput = {
     puzzleNumber: 901,
     bodyMode: "standard" as const,
@@ -1824,6 +1953,7 @@ function checkContentContractRequiresThreeCompleteFaqs() {
       phrase: `${clue} is a Greek letter`,
       explanation: `${clue} fits because it is one of the Greek letters in the shared set.`,
     })),
+    lessons: completeLessons,
   };
 
   const tooFewFaqIssues = validateContentContract({
@@ -1850,8 +1980,31 @@ function checkContentContractRequiresThreeCompleteFaqs() {
     incompleteFaqIssues.some((issue) => issue.level === "error" && issue.code === "faqs.missingFields"),
     "content contract must block incomplete FAQ rows",
   );
+  const tooFewLessonIssues = validateContentContract({
+    ...baseInput,
+    lessons: completeLessons.slice(0, 2),
+    faqs: completeFaqs,
+  });
+  assert.ok(
+    tooFewLessonIssues.some((issue) => issue.level === "error" && issue.code === "lessons.count"),
+    "content contract must block drafts with fewer than three lesson items",
+  );
 
-  console.log("ok: content contract requires three complete FAQ items");
+  const incompleteLessonIssues = validateContentContract({
+    ...baseInput,
+    lessons: [
+      completeLessons[0]!,
+      completeLessons[1]!,
+      { title: "Gamma keeps the Greek-letter reading alive", body: "" },
+    ],
+    faqs: completeFaqs,
+  });
+  assert.ok(
+    incompleteLessonIssues.some((issue) => issue.level === "error" && issue.code === "lessons.missingFields"),
+    "content contract must block incomplete lesson rows",
+  );
+
+  console.log("ok: content contract requires three complete FAQ and lesson items");
 }
 
 function checkGenericFalseStartWarningsDoNotBlockPublish() {
@@ -3307,6 +3460,20 @@ async function checkProductionReleaseRunsPublicFetchAudit() {
   console.log("ok: production release runs PR11 public fetch audit before declaring success");
 }
 
+async function checkProductionReleaseRunsValidateDataBeforePush() {
+  const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
+  const validateIndex = releaseSource.indexOf('await run("npm", ["run", "validate:data"])');
+  const pushIndex = releaseSource.indexOf('await run("git", ["push", "origin", "main"])');
+  assert.ok(validateIndex !== -1, "release:production must run validate:data locally");
+  assert.ok(pushIndex !== -1, "release:production must still push main explicitly");
+  assert.ok(
+    validateIndex < pushIndex,
+    "release:production must run validate:data before pushing main to origin",
+  );
+
+  console.log("ok: production release runs validate:data before pushing main");
+}
+
 async function checkProductionReleaseWorkerHealthFallback() {
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
 
@@ -3655,7 +3822,7 @@ async function main() {
   await checkWorkerDetailShape();
   await checkPhraseFallbackDirection();
   await checkEvidenceContractGuardsMeaningfulV2Fields();
-  checkContentContractRequiresThreeCompleteFaqs();
+  checkContentContractRequiresThreeCompleteFaqsAndLessons();
   checkGenericFalseStartWarningsDoNotBlockPublish();
   await checkReasoningArticleAvoidsAwkwardCopyJoins();
   await checkTypedCategoryGenerationKeepsGrammarNatural();
@@ -3681,6 +3848,7 @@ async function main() {
   await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();
   await checkProductionReleaseRunsPublicFetchAudit();
+  await checkProductionReleaseRunsValidateDataBeforePush();
   await checkProductionReleaseWorkerHealthFallback();
   await checkProductionReleaseDetailVerificationUsesRenderedText();
   await checkPrepublishGateRunsContentAutoRepairSafely();

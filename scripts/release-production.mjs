@@ -839,6 +839,7 @@ async function main() {
 
   logStep("Running local release checks");
   await run("npm", ["run", "test:pinpoint-guardrails"]);
+  await run("npm", ["run", "validate:data"]);
   await run("npm", ["run", "typecheck"]);
   await run("npm", ["run", "pinpoint:prepublish-gate"]);
   await run("npm", ["run", "typecheck"], { cwd: WORKER_DIR });

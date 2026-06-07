@@ -108,11 +108,12 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
   const lessons = buildLiveLessons(answer, turningPoint, record.clues, puzzleNumber);
   const wordHints = buildLiveWordHints(record.clues, answer);
   const faqs = buildLiveFaqs(puzzleNumber, answer, turningPoint, record.clues);
+  const earlyPhrasePairing = `${record.clues[0] || "the first clue"} and ${record.clues[1] || "the second clue"} phrase pairing`;
   const wrongGuessCandidates = [
     {
       label:
         pattern.kind === "before" || pattern.kind === "after"
-          ? "loose phrase guesses"
+          ? earlyPhrasePairing
           : pattern.kind === "association"
             ? "a literal category guess"
             : "a broader category guess",
@@ -179,7 +180,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
       articleBlocks[0] ?? `At first, ${record.clues.slice(0, 2).join(" and ")} pointed in more than one direction.`,
     falseStarts:
       pattern.kind === "before" || pattern.kind === "after"
-        ? ["loose phrase guesses"]
+        ? [earlyPhrasePairing]
         : ["a broader category guess"],
     whyFalseStartPlausible: [
       pattern.kind === "before" || pattern.kind === "after"

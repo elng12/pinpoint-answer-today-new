@@ -201,7 +201,11 @@ function assertNoRepeatedPublishedLessonTitles() {
 function normalizeLessonsForContract(lessons: PuzzleDetailContentRecord["lessons"]) {
   return (lessons || []).map((lesson) => {
     if (typeof lesson === "string") {
-      return { title: "", body: lesson };
+      const title = getRenderedLessonTitle(lesson);
+      const body = title && lesson.startsWith(`${title}. `)
+        ? lesson.slice(title.length + 2).trim()
+        : lesson;
+      return { title, body };
     }
     return {
       title: typeof lesson?.title === "string" ? lesson.title : "",
@@ -412,6 +416,7 @@ function validateDetailContent(entry: PuzzleRegistryEntryRecord, detail: PuzzleD
   }
 
   const detailAnswer = typeof detail.answer === "string" ? detail.answer : "";
+  const requiresStructuredValidation = requiresPhase1StructuredValidation(entry, detail);
   const articleBlocks = Array.isArray(detail.articleBlocks) ? detail.articleBlocks : [];
   const fullAnalysis = Array.isArray(detail.fullAnalysis) ? detail.fullAnalysis : [];
   if (fullAnalysis.length > 0 && articleBlocks.length === 0) {
@@ -487,6 +492,9 @@ function validateDetailContent(entry: PuzzleRegistryEntryRecord, detail: PuzzleD
   detail.lessons.forEach((lesson, index) => {
     recordPublishedLessonTitle(entry, lesson, index);
     if (typeof lesson === "string") {
+      if (requiresStructuredValidation) {
+        throw new Error(`${entry.slug} lessons[${index}] must use {title, body}; string lessons are no longer allowed for structured public pages.`);
+      }
       assertNoHtml(`${entry.slug} lessons[${index}]`, lesson);
       assertNoLegacyTemplate(`${entry.slug} lessons[${index}]`, lesson);
       return;
@@ -542,7 +550,7 @@ function validateDetailContent(entry: PuzzleRegistryEntryRecord, detail: PuzzleD
 
   validatePublishedContentContract(entry, detail, bodyParagraphs);
 
-  if (!requiresPhase1StructuredValidation(entry, detail)) {
+  if (!requiresStructuredValidation) {
     return;
   }
 

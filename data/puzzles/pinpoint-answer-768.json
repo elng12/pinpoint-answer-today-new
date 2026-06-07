@@ -22,27 +22,27 @@
     "Weight": "\"Weight class\" is common enough to confirm the same missing word without stretching the phrasing.",
     "Fitness": "Once the shared word is in place, \"Fitness class\" reads like ordinary language instead of a forced compound.",
     "Business": "\"Business class\" is a familiar phrase, so it helps reveal the shared word quickly.",
-    "World- (the very best)": "\"World- (the very best) class\" is common enough to confirm the same missing word without stretching the phrasing."
+    "World- (the very best)": "\"World-class\" is the direct phrase that confirms the same missing word without stretching the phrasing."
   },
   "spoilerHints": {
     "First": "Try reading First as part of a familiar phrase in words that come before “class” instead of as a standalone word.",
     "Weight": "Weight works better once you test a fixed phrase pattern rather than a broad topic.",
     "Fitness": "Look for a natural expression that absorbs Fitness cleanly before locking the board.",
     "Business": "Try reading Business as part of a familiar phrase in words that come before “class” instead of as a standalone word.",
-    "World- (the very best)": "World- (the very best) is the clue that makes the phrase pattern in words that come before “class” concrete enough to test."
+    "World- (the very best)": "World- (the very best) points to World-class, which makes the phrase pattern in words that come before “class” concrete enough to test."
   },
   "articleBlocks": [
     "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
-    "A nearby read was \"a loose topic list\". First, Weight do not immediately advertise one shared phrase slot before World- (the very best) shows where the repeated word belongs. World- (the very best) behaves like a proof clue for one fixed phrase pattern, not just a broad topic match.",
-    "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once World- (the very best) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "A nearby read was \"school-course categories\". Fitness and Business can both sound like class types at first, but that read does not explain First or Weight cleanly. World- (the very best) behaves like a proof clue for one fixed phrase pattern, not just a school topic.",
+    "Another easy trap was \"ranking tiers\". First, Weight, and World- (the very best) can all hint at levels or grades, but that line gets too narrow once Fitness and Business have to fit the same rule. Once World-class locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
     "Once that phrase appears, examples like \"First class\" and \"Weight class\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
-    "Fitness class, Business class, World- (the very best) class show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-    "The answer was \"Words that come before “class”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “class”\" fits better than \"a loose topic list\" or \"standalone clue meanings\" once the full set is checked."
+    "Fitness class, Business class, and World-class show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “class”\". More precisely, the board resolves as one shared ending word placed after each clue, not a school-course category or a ranking-tier list, which is why \"Words that come before “class”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
-    "I started with First and first tried a loose topic list. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"World- (the very best)\" feel exact.",
+    "I started with First and first tried school-course categories. That was plausible for a moment, because Fitness and Business both sound like class types. But that guess did not make \"World- (the very best)\" feel exact.",
     "Once \"World- (the very best)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
-    "Then I used Fitness and Business as the confirmation round. The strong solve was not just that two clues worked; it was that First, Weight, Fitness, Business, World- (the very best) could all use the same slot and still sound like ordinary language.",
+    "Then I used Fitness and Business as the confirmation round. The strong solve was not just that two clues worked; it was that First, Weight, Fitness, Business, and World-class could all use the same slot and still sound like ordinary language.",
     "The answer was \"Words that come before “class”\"."
   ],
   "lessons": [
@@ -85,8 +85,8 @@
       },
       {
         "clue": "World- (the very best)",
-        "examplePhrase": "World- (the very best) class",
-        "connectionExplained": "\"World- (the very best) class\" is common enough to confirm the same missing word without stretching the phrasing."
+        "examplePhrase": "World-class",
+        "connectionExplained": "\"World-class\" is the direct phrase that confirms the same missing word without stretching the phrasing."
       }
     ]
   },
@@ -101,32 +101,32 @@
     },
     {
       "question": "Why is \"World- (the very best)\" the key clue in LinkedIn Pinpoint #768?",
-      "answer": "\"World- (the very best)\" is the strongest clue because \"World- (the very best) class\" points to one exact phrase much faster than the earlier clues do."
+      "answer": "\"World- (the very best)\" is the strongest clue because \"World-class\" points to one exact phrase much faster than the earlier clues do."
     }
   ],
   "solvePath": {
     "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
     "falseStarts": [
-      "a loose topic list",
-      "standalone clue meanings"
+      "school-course categories",
+      "ranking tiers"
     ],
     "whyFalseStartPlausible": [
-      "First, Weight do not immediately advertise one shared phrase slot before World- (the very best) shows where the repeated word belongs.",
-      "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears."
+      "Fitness and Business can both sound like class types before World- (the very best) shows where the repeated word belongs.",
+      "First, Weight, and World- (the very best) can hint at levels or grades before Fitness and Business force a cleaner phrase test."
     ],
     "breakingClue": "World- (the very best)",
-    "pivot": "I started with First and first tried a loose topic list. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"World- (the very best)\" feel exact.\n\nOnce \"World- (the very best)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Fitness and Business as the confirmation round. The strong solve was not just that two clues worked; it was that First, Weight, Fitness, Business, World- (the very best) could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “class”\".",
-    "fullBoardConfirmation": "Another easy trap was \"standalone clue meanings\". Each clue has an obvious surface meaning if you read it on its own before the shared connector appears. Once World- (the very best) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    "pivot": "I started with First and first tried school-course categories. That was plausible for a moment, because Fitness and Business both sound like class types. But that guess did not make \"World- (the very best)\" feel exact.\n\nOnce \"World- (the very best)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Fitness and Business as the confirmation round. The strong solve was not just that two clues worked; it was that First, Weight, Fitness, Business, and World-class could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “class”\".",
+    "fullBoardConfirmation": "Another easy trap was \"ranking tiers\". First, Weight, and World- (the very best) can hint at levels or grades before Fitness and Business force a cleaner phrase test. Once World-class locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {
     "clue": "World- (the very best)",
-    "whyDecisive": "World- (the very best) is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whyDecisive": "World-class is the clue that makes the shared answer concrete enough to test across the full board.",
     "whatChangedAfterIt": "Once World- (the very best) lands, the earlier clues stop feeling broad and start reading under the same answer."
   },
   "clueRows": [
     {
       "clue": "First",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "ranking tiers",
       "resolvedPhraseOrMember": "First class",
       "nonObviousWhy": "\"First class\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "First class",
@@ -134,7 +134,7 @@
     },
     {
       "clue": "Weight",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "ranking tiers",
       "resolvedPhraseOrMember": "Weight class",
       "nonObviousWhy": "\"Weight class\" is common enough to confirm the same missing word without stretching the phrasing.",
       "searchableContext": "Weight class",
@@ -142,7 +142,7 @@
     },
     {
       "clue": "Fitness",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "school-course categories",
       "resolvedPhraseOrMember": "Fitness class",
       "nonObviousWhy": "Once the shared word is in place, \"Fitness class\" reads like ordinary language instead of a forced compound.",
       "searchableContext": "Fitness class",
@@ -150,7 +150,7 @@
     },
     {
       "clue": "Business",
-      "surfaceMisread": "a loose topic list",
+      "surfaceMisread": "school-course categories",
       "resolvedPhraseOrMember": "Business class",
       "nonObviousWhy": "\"Business class\" is a familiar phrase, so it helps reveal the shared word quickly.",
       "searchableContext": "Business class",
@@ -158,11 +158,11 @@
     },
     {
       "clue": "World- (the very best)",
-      "surfaceMisread": "a loose topic list",
-      "resolvedPhraseOrMember": "World- (the very best) class",
-      "nonObviousWhy": "\"World- (the very best) class\" is common enough to confirm the same missing word without stretching the phrasing.",
-      "searchableContext": "World- (the very best) class",
-      "phraseExample": "World- (the very best) class"
+      "surfaceMisread": "ranking tiers",
+      "resolvedPhraseOrMember": "World-class",
+      "nonObviousWhy": "\"World-class\" is the direct phrase that confirms the same missing word without stretching the phrasing.",
+      "searchableContext": "World-class",
+      "phraseExample": "World-class"
     }
   ],
   "faqItems": [
@@ -181,7 +181,7 @@
     {
       "intentType": "clue_background",
       "question": "Why is \"World- (the very best)\" the key clue in LinkedIn Pinpoint #768?",
-      "answer": "\"World- (the very best)\" is the strongest clue because \"World- (the very best) class\" points to one exact phrase much faster than the earlier clues do.",
+      "answer": "\"World- (the very best)\" is the strongest clue because \"World-class\" points to one exact phrase much faster than the earlier clues do.",
       "tiedClue": "World- (the very best)"
     }
   ],
@@ -192,7 +192,7 @@
       "Weight class",
       "Fitness class",
       "Business class",
-      "World- (the very best) class"
+      "World-class"
     ],
     "doNotRepeatPatterns": [
       "familiar phrases completed by one shared ending word",
@@ -204,16 +204,16 @@
   },
   "wrongGuessCandidates": [
     {
-      "label": "a loose topic list",
-      "whyPlausible": "First, Weight do not immediately advertise one shared phrase slot before World- (the very best) shows where the repeated word belongs.",
-      "whyRejected": "World- (the very best) behaves like a proof clue for one fixed phrase pattern, not just a broad topic match."
+      "label": "school-course categories",
+      "whyPlausible": "Fitness and Business can both sound like class types before World- (the very best) shows where the repeated word belongs.",
+      "whyRejected": "World-class behaves like a proof clue for one fixed phrase pattern, not just a school topic."
     },
     {
-      "label": "standalone clue meanings",
-      "whyPlausible": "Each clue has an obvious surface meaning if you read it on its own before the shared connector appears.",
-      "whyRejected": "Once World- (the very best) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+      "label": "ranking tiers",
+      "whyPlausible": "First, Weight, and World- (the very best) can hint at levels or grades before Fitness and Business force a cleaner phrase test.",
+      "whyRejected": "Once World-class locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
-  "setValidationSummary": "Fitness class, Business class, World- (the very best) class show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "setValidationSummary": "Fitness class, Business class, and World-class show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
   "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
 }

@@ -15,6 +15,7 @@ import { formatDisplayDate } from "@/lib/puzzles/data/date";
 import type { PuzzleDetail, PuzzleDetailDisplay } from "@/lib/puzzles/data/types";
 import { enhancePuzzleDetail } from "@/lib/puzzles/content-enhancer";
 import { resolveFormalDetailState } from "@/lib/puzzles/data/registry";
+import { buildPhrasePatternExample } from "@/lib/puzzles/phrase-examples";
 import {
   buildLiveConnectorSummary,
   buildLiveFallbackPhrase,
@@ -98,14 +99,11 @@ function buildArchiveExamplePhrase(clue: string, answer: string, category: strin
     extractConnectorTerm(category, ["words that follow ", "words after "]);
 
   if (afterTarget) {
-    return `${afterTarget} ${clue}`.trim();
+    return buildPhrasePatternExample(clue, afterTarget, "after");
   }
 
   if (beforeTarget) {
-    if (clue.includes("(🌹🌹🌹)")) {
-      return clue.replace("(🌹🌹🌹)", beforeTarget);
-    }
-    return `${clue} ${singularizeTrailingWord(beforeTarget)}`.trim();
+    return buildPhrasePatternExample(clue, singularizeTrailingWord(beforeTarget), "before");
   }
 
   if (answerLower.startsWith("shades of ")) {

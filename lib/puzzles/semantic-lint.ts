@@ -108,6 +108,11 @@ const GENERIC_LESSON_TITLE_PATTERNS = [
   /\bPrefer exact phrase logic over loose category logic\b/i,
   /\bPrefer precise category fit over broad topic logic\b/i,
   /\bWait for the clue that makes the set concrete\b/i,
+  /^Look for word patterns$/i,
+  /^Test each clue$/i,
+  /^Trust your instinct$/i,
+  /^Lesson \d+$/i,
+  /^Solving takeaway \d+$/i,
 ];
 const GENERIC_FAQ_QUESTION_PATTERNS = [
   /^What is the answer to LinkedIn Pinpoint #\d+\?$/i,
@@ -118,6 +123,7 @@ const GENERIC_FAQ_QUESTION_PATTERNS = [
   /^Which clue gives the strongest anchor in LinkedIn Pinpoint #\d+\?$/i,
   /^Which clue makes the visual set click in LinkedIn Pinpoint #\d+\?$/i,
 ];
+const PHRASE_EXAMPLE_WITH_GLOSS_PATTERN = /-\s*\([^)]*[A-Za-z][^)]*\)\s+[\p{L}\p{N}]/u;
 const ANSWER_NARROWING_PREPOSITIONS = [
   "from",
   "in",
@@ -658,6 +664,18 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
 
   input.clueDetails?.forEach((item, index) => {
     const explanation = normalizeText(item?.explanation);
+    const phrase = normalizeText(item?.phrase);
+    if (
+      (answerPattern.kind === "before" || answerPattern.kind === "after") &&
+      PHRASE_EXAMPLE_WITH_GLOSS_PATTERN.test(phrase)
+    ) {
+      issues.push({
+        code: "clueDetails.unnaturalPhrase",
+        message: "Phrase example looks mechanically pasted from a clue gloss instead of a natural phrase",
+        field: `clueDetails[${index}].phrase`,
+        ...(sampleText(item?.phrase) ? { sample: sampleText(item?.phrase) } : {}),
+      });
+    }
     if (!explanation) return;
     if (GENERIC_CLUE_EXPLANATION_PATTERNS.some((pattern) => pattern.test(explanation))) {
       issues.push({
@@ -717,6 +735,7 @@ export const PUBLISH_BLOCKING_SEMANTIC_CODES = new Set([
   "faqs.genericConnectionAnswer",
   "faqs.genericTurningClueAnswer",
   "clueDetails.genericExplanation",
+  "clueDetails.unnaturalPhrase",
   "lessons.genericTitle",
   "faqs.genericQuestion",
   "answer.semanticNarrowing",
