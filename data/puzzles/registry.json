@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 768,
+    "slug": "pinpoint-answer-768",
+    "publishDate": "2026-06-07",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "First",
+      "Weight",
+      "Fitness",
+      "Business",
+      "World- (the very best)"
+    ],
+    "mainAnswer": "Words that come before “class”",
+    "category": "Words that come before “class”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links First, Weight, Fitness, Business, World- (the very best) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-07T07:05:47.607Z"
+  },
+  {
     "puzzleNumber": 767,
     "slug": "pinpoint-answer-767",
     "publishDate": "2026-06-06",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Space",
@@ -16,7 +35,7 @@
     "category": "Words that come before “station”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Space, Power, Police, TV, Bus - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-06T07:05:51.937Z"
+    "updatedAt": "2026-06-07T07:05:47.607Z"
   },
   {
     "puzzleNumber": 766,
