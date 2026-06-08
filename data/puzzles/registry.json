@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 769,
+    "slug": "pinpoint-answer-769",
+    "publishDate": "2026-06-08",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Bits in a byte",
+      "Planets in our solar system",
+      "Legs on a spider",
+      "Corners of a cube",
+      "Sides of (most) stop signs"
+    ],
+    "mainAnswer": "Things that come in eights",
+    "category": "Things that come in eights",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Bits in a byte, Planets in our solar system, Legs on a spider do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-06-08T07:06:57.820Z"
+  },
+  {
     "puzzleNumber": 768,
     "slug": "pinpoint-answer-768",
     "publishDate": "2026-06-07",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "First",
@@ -16,7 +35,7 @@
     "category": "Words that come before “class”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links First, Weight, Fitness, Business, World- (the very best) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-07T07:05:47.607Z"
+    "updatedAt": "2026-06-08T07:06:57.820Z"
   },
   {
     "puzzleNumber": 767,

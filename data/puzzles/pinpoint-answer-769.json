@@ -1,0 +1,235 @@
+{
+  "puzzleNumber": 769,
+  "slug": "pinpoint-answer-769",
+  "publishDate": "2026-06-08",
+  "isoDate": "2026-06-08",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Bits in a byte",
+    "Planets in our solar system",
+    "Legs on a spider",
+    "Corners of a cube",
+    "Sides of (most) stop signs"
+  ],
+  "answer": "Things that come in eights",
+  "category": "Things that come in eights",
+  "wordHints": {
+    "Bits in a byte": "A byte is a unit of digital information that is made up of eight bits, making it a fundamental example of something that comes in eights.",
+    "Planets in our solar system": "Historically, before the reclassification of Pluto, our solar system was taught to have eight planets, fitting the pattern of eights.",
+    "Legs on a spider": "Spiders are known for having eight legs, which is a distinctive and defining feature of arachnids.",
+    "Corners of a cube": "A cube has eight corners, which is a basic geometric fact that applies universally to all cubes.",
+    "Sides of (most) stop signs": "Most stop signs are octagons, meaning they have eight sides, which is a design feature that makes them easily recognizable."
+  },
+  "spoilerHints": {
+    "Bits in a byte": "Bits in a byte should be tested as part of things that come in eights, not as a standalone reference.",
+    "Planets in our solar system": "Keep Planets in our solar system in mind, then see whether Sides of (most) stop signs supports the same answer.",
+    "Legs on a spider": "Legs on a spider works best after the board narrows toward things that come in eights.",
+    "Corners of a cube": "Corners of a cube should be tested as part of things that come in eights, not as a standalone reference.",
+    "Sides of (most) stop signs": "Sides of (most) stop signs is the clue that makes things that come in eights concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "I first thought the puzzle might be about sets of ten because some common groupings come in tens.",
+    "But then I considered the clue about bits in a byte, which clearly refers to a group of eight.",
+    "The clue about planets in our solar system also pointed towards eight, given the historical classification of our solar system.",
+    "However, it was the clue about the corners of a cube that made the pattern of eights undeniable, as a cube by definition has eight corners.",
+    "This realization made me reconsider my initial guess of sets of ten and look more closely at the pattern of eights across the clues.",
+    "Upon further reflection, the clue about legs on a spider also fits neatly into this pattern, as spiders are known for their eight legs.",
+    "Similarly, the clue about the sides of most stop signs, which are octagons, also references eight sides.",
+    "The turning point for me was recognizing how each of these clues, despite coming from different areas, all referenced the number eight.",
+    "In hindsight, the puzzle's answer, 'Things that come in eights,' is a clever play on the common thread among the clues.",
+    "This puzzle taught me to look for consistent patterns across seemingly unrelated clues.",
+    "The solution emerges clearly once you recognize the thread of eights throughout the clues.",
+    "This approach can be applied to other puzzles by being diligent in identifying common patterns or numbers that appear across different clues."
+  ],
+  "solutionNarrative": [
+    "Bits in a byte and Planets in our solar system first pulled me toward sets of ten, so that was the first path I tested. It held together for a moment, but legs on a spider never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating legs on a spider as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue sets of ten; I was checking whether Bits in a byte and Planets in our solar system could survive the same tighter read.",
+    "Then I used Legs on a spider, Corners of a cube, and Sides of (most) stop signs as the confirmation round. Legs on a spider, Corners of a cube, and Sides of (most) stop signs stayed inside the real category, so the answer felt earned instead of guessed. The answer was Things that come in eights."
+  ],
+  "lessons": [
+    {
+      "title": "\"Bits in a byte\" and \"Planets in our solar system\" can look like they belong to different categories at first",
+      "body": "\"Bits in a byte\" and \"Planets in our solar system\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Legs on a spider\" anchors a shared category board with one concrete theme",
+      "body": "Legs on a spider organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Legs on a spider\" to re-check \"Bits in a byte\" under a shared category board with one concrete theme",
+      "body": "Use \"Legs on a spider\" to re-check \"Bits in a byte\". A strong Pinpoint answer should make the early clues and later clues fit one reading."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Bits in a byte\" and \"Planets in our solar system\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Bits in a byte",
+        "examplePhrase": "Computer byte",
+        "connectionExplained": "A byte is a unit of digital information that is made up of eight bits, making it a fundamental example of something that comes in eights."
+      },
+      {
+        "clue": "Planets in our solar system",
+        "examplePhrase": "Solar system",
+        "connectionExplained": "Historically, before the reclassification of Pluto, our solar system was taught to have eight planets, fitting the pattern of eights."
+      },
+      {
+        "clue": "Legs on a spider",
+        "examplePhrase": "Spider legs",
+        "connectionExplained": "Spiders are known for having eight legs, which is a distinctive and defining feature of arachnids."
+      },
+      {
+        "clue": "Corners of a cube",
+        "examplePhrase": "Cube",
+        "connectionExplained": "A cube has eight corners, which is a basic geometric fact that applies universally to all cubes."
+      },
+      {
+        "clue": "Sides of (most) stop signs",
+        "examplePhrase": "Stop sign",
+        "connectionExplained": "Most stop signs are octagons, meaning they have eight sides, which is a design feature that makes them easily recognizable."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Bits in a byte\" and \"Planets in our solar system\" in LinkedIn Pinpoint #769?",
+      "answer": "The answer is \"Things that come in eights\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Bits in a byte\" and \"Planets in our solar system\" connect in LinkedIn Pinpoint #769?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Legs on a spider is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Legs on a spider\" the key clue in LinkedIn Pinpoint #769?",
+      "answer": "Legs on a spider is the turning clue because \"Spider legs\" makes the shared category frame explicit. It also makes Bits in a byte read cleanly as \"Computer byte\". The puzzle feels tricky because it requires recognizing a pattern that spans different domains, from computer science to geometry, and realizing that each clue points to the same specific number."
+    },
+    {
+      "question": "How does \"Bits in a byte\" fit the same category as \"Legs on a spider\" in LinkedIn Pinpoint #769?",
+      "answer": "\"Bits in a byte\" reads as \"Computer byte\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Bits in a byte, Planets in our solar system, and Legs on a spider do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"sets of five\" can feel plausible before one clue makes the answer feel concrete. Legs on a spider is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "sets of five",
+      "groups of twelve"
+    ],
+    "whyFalseStartPlausible": [
+      "Because while some things do come in tens, the clues provided don't align well with this number, lacking the consistent reference to ten that would be expected.",
+      "sets of five feels plausible early on, but it falls apart once legs on a spider demands a more exact reading."
+    ],
+    "breakingClue": "Legs on a spider",
+    "pivot": "The solve turned when I stopped treating legs on a spider as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue sets of ten; I was checking whether Bits in a byte and Planets in our solar system could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Bits in a byte, Planets in our solar system, and Legs on a spider stop feeling disconnected and start looking like they belong together. Once legs on a spider is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle feels tricky because it requires recognizing a pattern that spans different domains, from computer science to geometry, and realizing that each clue points to the same specific number."
+  },
+  "turningPoint": {
+    "clue": "Legs on a spider",
+    "whyDecisive": "The cube's corners clue made the pattern of eights undeniable.",
+    "whatChangedAfterIt": "Once Legs on a spider landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Bits in a byte",
+      "surfaceMisread": "sets of ten",
+      "resolvedPhraseOrMember": "Computer byte",
+      "nonObviousWhy": "A byte is a unit of digital information that is made up of eight bits, making it a fundamental example of something that comes in eights.",
+      "searchableContext": "From computer science, where 'byte' was coined to describe a group of eight bits.",
+      "phraseExample": "From computer science, where 'byte' was coined to describe a group of eight bits."
+    },
+    {
+      "clue": "Planets in our solar system",
+      "surfaceMisread": "sets of ten",
+      "resolvedPhraseOrMember": "Solar system",
+      "nonObviousWhy": "Historically, before the reclassification of Pluto, our solar system was taught to have eight planets, fitting the pattern of eights.",
+      "searchableContext": "From astronomy, reflecting the historical understanding of our solar system's composition.",
+      "phraseExample": "From astronomy, reflecting the historical understanding of our solar system's composition."
+    },
+    {
+      "clue": "Legs on a spider",
+      "surfaceMisread": "sets of ten",
+      "resolvedPhraseOrMember": "Spider legs",
+      "nonObviousWhy": "Spiders are known for having eight legs, which is a distinctive and defining feature of arachnids.",
+      "searchableContext": "From biology, where the anatomy of spiders is studied.",
+      "phraseExample": "From biology, where the anatomy of spiders is studied."
+    },
+    {
+      "clue": "Corners of a cube",
+      "surfaceMisread": "sets of ten",
+      "resolvedPhraseOrMember": "Cube",
+      "nonObviousWhy": "A cube has eight corners, which is a basic geometric fact that applies universally to all cubes.",
+      "searchableContext": "From geometry, where the properties of shapes are defined.",
+      "phraseExample": "From geometry, where the properties of shapes are defined."
+    },
+    {
+      "clue": "Sides of (most) stop signs",
+      "surfaceMisread": "sets of ten",
+      "resolvedPhraseOrMember": "Stop sign",
+      "nonObviousWhy": "Most stop signs are octagons, meaning they have eight sides, which is a design feature that makes them easily recognizable.",
+      "searchableContext": "From traffic and road safety standards.",
+      "phraseExample": "From traffic and road safety standards."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Bits in a byte\" and \"Planets in our solar system\" in LinkedIn Pinpoint #769?",
+      "answer": "The answer is \"Things that come in eights\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Bits in a byte"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Bits in a byte\" and \"Planets in our solar system\" connect in LinkedIn Pinpoint #769?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Legs on a spider is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Bits in a byte"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Legs on a spider\" the key clue in LinkedIn Pinpoint #769?",
+      "answer": "Legs on a spider is the turning clue because \"Spider legs\" makes the shared category frame explicit. It also makes Bits in a byte read cleanly as \"Computer byte\". The puzzle feels tricky because it requires recognizing a pattern that spans different domains, from computer science to geometry, and realizing that each clue points to the same specific number.",
+      "tiedClue": "Legs on a spider"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Bits in a byte\" fit the same category as \"Legs on a spider\" in LinkedIn Pinpoint #769?",
+      "answer": "\"Bits in a byte\" reads as \"Computer byte\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Bits in a byte"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Computer byte",
+      "Solar system",
+      "Spider legs",
+      "Cube",
+      "Stop sign"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Bits in a byte\" and \"Planets in our solar system\" can look like they belong to different categories at first",
+      "\"Legs on a spider\" anchors a shared category board with one concrete theme",
+      "Use \"Legs on a spider\" to re-check \"Bits in a byte\" under a shared category board with one concrete theme",
+      "From computer science, where 'byte' was coined to describe a group of eight bits.",
+      "From astronomy, reflecting the historical understanding of our solar system's composition."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "sets of ten",
+      "whyPlausible": "Because while some things do come in tens, the clues provided don't align well with this number, lacking the consistent reference to ten that would be expected.",
+      "whyRejected": "Once Legs on a spider lands, the final answer explains the board more cleanly than sets of ten."
+    },
+    {
+      "label": "sets of five",
+      "whyPlausible": "sets of five feels plausible early on, but it falls apart once legs on a spider demands a more exact reading.",
+      "whyRejected": "Once Legs on a spider lands, the final answer explains the board more cleanly than sets of five."
+    }
+  ],
+  "setValidationSummary": "Legs on a spider, Corners of a cube, Sides of (most) stop signs keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things that come in eights"
+}
