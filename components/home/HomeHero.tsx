@@ -29,17 +29,17 @@ export function HomeHero({
           <span className="home-hero-status-item">{puzzle.clues.length} clues</span>
           <span className="home-hero-status-item">Verified solution</span>
         </div>
-        <p className="home-hero-kicker">LinkedIn Pinpoint answer today with spoiler-safe hints</p>
+        <p className="home-hero-kicker">Today&apos;s LinkedIn Pinpoint answer, updated daily</p>
         <h1 className="home-hero-title">{`LinkedIn Pinpoint Answer Today #${puzzle.number}`}</h1>
         <p className="home-hero-subtitle">
-          {`Need help with Pinpoint Today #${puzzle.number}?`}
+          {`Get the final answer for Pinpoint #${puzzle.number}, then check how each clue proves it.`}
         </p>
         <p className="home-hero-clue-summary">
           <span>Today&apos;s Pinpoint clues:</span> {clueList}
         </p>
         <div className="button-row home-hero-actions">
           <a className="button-primary home-hero-primary" href="#answer-reveal">
-            Jump to LinkedIn Pinpoint answer today
+            Reveal today&apos;s Pinpoint answer
           </a>
           <Link className="button-secondary home-hero-secondary" href={routes.detail(puzzle.slug)} prefetch={false}>
             Full breakdown

@@ -37,8 +37,10 @@
     "The answer was \"Names of insects\"."
   ],
   "solutionNarrative": [
-    "I first tested the noisy readings because Fly and Cricket both invite them. Fly can sound like movement, and Cricket can sound like a game, so a loose summer or sports idea is tempting for a moment. June beetle made that path weaker, because it already behaves like a named bug rather than an activity or object.",
-    "The solve clicked when I used Praying mantis as the check clue. After that, I could go back through the board and read Fly as a fly, Cricket as a cricket, June beetle as a beetle, and Lightning bug as another familiar bug name. That was cleaner than any first guess, because it did not need a second meaning for the last three clues. The answer was \"Names of insects\"."
+    "I first read Fly and Cricket too literally and drifted toward summer activities. Fly could be read as \"Fly insect\", while Cricket could be read as \"Cricket insect\", so the board still felt open instead of solved.",
+    "Praying mantis changed the direction because \"Praying mantis insect\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Fly insect\", \"Cricket insect\", \"June beetle insect\", and \"Lightning bug insect\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Fly, Cricket, June beetle, Praying mantis, and Lightning bug.",
+    "That left very little room for the earlier false start. The answer was \"Names of insects\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
   ],
   "lessons": [
     {
@@ -110,7 +112,7 @@
       "The first two clues are common outside insect contexts, so they can briefly point away from biology."
     ],
     "breakingClue": "Praying mantis",
-    "pivot": "I stopped following the sport-and-motion read once Praying mantis appeared. That clue is too specific to ignore, and it made the earlier entries read as creature names instead of separate everyday meanings.",
+    "pivot": "I first read Fly and Cricket too literally and drifted toward summer activities. Fly could be read as \"Fly insect\", while Cricket could be read as \"Cricket insect\", so the board still felt open instead of solved.\n\nPraying mantis changed the direction because \"Praying mantis insect\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Fly insect\", \"Cricket insect\", \"June beetle insect\", and \"Lightning bug insect\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Fly, Cricket, June beetle, Praying mantis, and Lightning bug.\n\nThat left very little room for the earlier false start. The answer was \"Names of insects\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
     "fullBoardConfirmation": "Fly, Cricket, June beetle, Praying mantis, and Lightning bug all become natural insect labels, so the final category explains the full board without forcing any clue."
   },
   "turningPoint": {

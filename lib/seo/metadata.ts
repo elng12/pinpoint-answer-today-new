@@ -7,10 +7,10 @@ import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
 // Locked homepage SERP copy. Do not add puzzle numbers unless the homepage SEO contract is explicitly changed.
 export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today - Daily Answers & Solutions";
 export const HOME_SEO_DESCRIPTION =
-  "Find the Pinpoint answer today for LinkedIn Pinpoint, with spoiler-safe hints, clue explanations, today's solution, and recent Pinpoint answers in one place.";
-export const ARCHIVE_SEO_TITLE = "LinkedIn Pinpoint Archive | Past Answers by Puzzle Number";
+  "Get today's LinkedIn Pinpoint answer fast. Updated daily with the final solution, all five clues, clue-by-clue explanations, and past Pinpoint answers.";
+export const ARCHIVE_SEO_TITLE = "All LinkedIn Pinpoint Answers Updated Daily | Pinpoint Answer Today";
 export const ARCHIVE_SEO_DESCRIPTION =
-  "Browse past LinkedIn Pinpoint answers in one archive. Search by puzzle number or clue, then open the matching answer page fast.";
+  "Find every LinkedIn Pinpoint answer in one updated archive. Search by puzzle number, clue, or date, then open the matching answer and solution page fast.";
 const TITLE_ABSOLUTE_MAX = 110;
 const TITLE_MIN_LENGTH = 55;
 const DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;

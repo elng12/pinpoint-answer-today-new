@@ -333,7 +333,7 @@ function checkMaxRank(
 function checkCoreTerms(issues: AuditIssue[], lookups: Record<number, Map<string, PhraseStat>>) {
   checkExactRank(issues, lookups, 1, "pinpoint", 1);
   checkExactRank(issues, lookups, 1, "answer", 2);
-  checkExactRank(issues, lookups, 1, "linkedin", 3);
+  checkMaxRank(issues, lookups, 1, "linkedin", 4, "hard");
 }
 
 function checkPuzzleSpecificTerms(

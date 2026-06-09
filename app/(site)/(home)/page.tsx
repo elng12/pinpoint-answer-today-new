@@ -38,7 +38,7 @@ export default async function HomePage() {
   ]);
 
   const previousEntry = allArchiveEntries.find((entry) => entry.number < current.number) ?? null;
-  const structuredDataItems = buildHomeStructuredData();
+  const structuredDataItems = buildHomeStructuredData(current, archive);
 
   return (
     <main className="container" style={{ padding: "48px 0 72px" }}>

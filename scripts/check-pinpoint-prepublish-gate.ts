@@ -4,6 +4,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { routes } from "../lib/paths/routes";
 import { buildPuzzleSeoDescription, buildPuzzleSeoTitle, getSiteUrl } from "../lib/seo/metadata";
 import { hashInputSnapshot } from "../lib/puzzles/content-kitchen/identity";
 import { validateCandidate } from "../lib/puzzles/content-kitchen/validate-candidate";
@@ -25,6 +26,7 @@ const ROOT = resolve(SCRIPT_DIR, "..");
 const BUILD_APP_DIR = resolve(ROOT, ".next", "server", "app");
 const NEXT_BIN = resolve(ROOT, "node_modules", ".bin", "next");
 const PUBLIC_DETAIL_STATES = new Set(["published", "fallback_full"]);
+const ARCHIVE_ROUTE = routes.archive;
 
 type GateStatus =
   | "AUTO_PUBLISH_ALLOWED"
@@ -589,8 +591,8 @@ function checkRenderedDetail(issues: GateIssue[], input: {
   if (countClass(bodyMarkup, "legacy-teaches-item") < 3) {
     addIssue(issues, "hard", "detail:teaches", "Rendered page has fewer than three teaching items.");
   }
-  if (!hrefs.has("/puzzles")) {
-    addIssue(issues, "hard", "detail:archive-link", "Rendered detail page does not link back to /puzzles.");
+  if (!hrefs.has(ARCHIVE_ROUTE) && !hrefs.has(withTrailingSlash(ARCHIVE_ROUTE))) {
+    addIssue(issues, "hard", "detail:archive-link", `Rendered detail page does not link back to ${ARCHIVE_ROUTE}.`);
   }
 
   const recentDetailLinkCount = allEntries
@@ -649,7 +651,7 @@ function checkSitemap(issues: GateIssue[], entry: RegistryEntry) {
   }
   const paths = parseSitemapPaths(readText(path));
   const detailPath = detailRoute(entry.slug);
-  for (const requiredPath of ["/", "/puzzles/", detailPath]) {
+  for (const requiredPath of ["/", withTrailingSlash(ARCHIVE_ROUTE), detailPath]) {
     if (!paths.has(requiredPath)) {
       addIssue(issues, "hard", "sitemap", `Sitemap is missing ${requiredPath}.`);
     }
@@ -770,7 +772,7 @@ async function runGate(args: Args) {
         allowAnswerFirstIndex: false,
         existingRoutes: [
           "/",
-          "/puzzles",
+          ARCHIVE_ROUTE,
           ...publicEntries.map((candidateEntry) => detailRoute(candidateEntry.slug)),
         ],
       });
@@ -816,7 +818,7 @@ async function runGate(args: Args) {
       });
       checkPageLinks(issues, {
         siteUrl,
-        route: "/puzzles/",
+        route: withTrailingSlash(ARCHIVE_ROUTE),
         label: "archive",
         expectedHref: detailRoute(entry.slug),
         allowDynamicRouteFallback: true,

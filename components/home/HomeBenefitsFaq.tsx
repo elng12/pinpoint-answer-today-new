@@ -5,37 +5,37 @@ const benefits = [
     icon: "bolt",
     title: "Instant Answers",
     description:
-      "LinkedIn Pinpoint answer today stays hidden until you choose reveal.",
+      "Reveal the final answer as soon as you are ready.",
   },
   {
     icon: "brain",
     title: "Detailed Clues",
     description:
-      "Today's Pinpoint answer notes show the clue path without spoiling first.",
+      "Check why each clue fits before you open the full explanation.",
   },
   {
     icon: "calendar",
     title: "Daily updates",
     description:
-      "Pinpoint LinkedIn answer today keeps daily boards easy to review.",
+      "The latest board and answer page refresh every day.",
   },
   {
     icon: "bookmark",
     title: "Save Your Streak",
     description:
-      "Pinpoint LinkedIn answer today notes keep archive checks clear.",
+      "Use the reveal button when one stubborn clue is about to cost your run.",
   },
   {
     icon: "layers",
     title: "Pattern training",
     description:
-      "Pinpoint answer today LinkedIn recap keeps the verified solve close.",
+      "Recent boards show the phrase and category patterns that repeat.",
   },
   {
     icon: "spark",
     title: "Smart solving tips",
     description:
-      "Pinpoint answer LinkedIn clue logic and the final category stay together.",
+      "See the wrong early guesses so the real connection is easier to spot.",
   },
 ];
 
@@ -80,15 +80,15 @@ export function getFaqItems(puzzle: PuzzleDetail) {
   return [
     {
       question: "When does today's Pinpoint answer become available?",
-      answer: `LinkedIn Pinpoint answer today is updated after verification, and Today's Pinpoint answer for Puzzle ${puzzle.number} stays easy to check.`,
+      answer: `Puzzle ${puzzle.number} is updated after the board is verified, with the answer and clue explanation on the same page.`,
     },
     {
       question: "Can I browse historical Pinpoint boards here?",
-      answer: "Yes. The archive keeps LinkedIn Pinpoint boards together, with Today's Pinpoint guide notes for recent puzzles.",
+      answer: "Yes. The archive lets you search older boards by puzzle number, clue, or date.",
     },
     {
       question: "What happens if I miss a day’s puzzle?",
-      answer: "Open the archive, compare Today's Pinpoint guide with older boards, and then return to the Pinpoint today recap.",
+      answer: "Open the archive, find the missed board, and read the answer page for the clue proof.",
     },
     {
       question: "Is this an official LinkedIn resource?",
@@ -96,11 +96,11 @@ export function getFaqItems(puzzle: PuzzleDetail) {
     },
     {
       question: "How do the clue explanations work?",
-      answer: `Each Pinpoint answer, LinkedIn clue, and final category should fit the same connection in the Pinpoint today explanation for ${puzzle.category}.`,
+      answer: `Each clue has to fit the same final connection: ${puzzle.category}.`,
     },
     {
       question: "Why do people search Pinpoint answer today LinkedIn?",
-      answer: "Pinpoint answer today LinkedIn is just another way to ask for the same daily guide. A quick Pinpoint LinkedIn answer today check helps when the answer is not obvious, especially after tricky LinkedIn clues.",
+      answer: "Most players are trying to confirm the daily answer quickly, protect a streak, or understand one tricky clue.",
     },
   ];
 }
@@ -115,8 +115,7 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
           <p className="eyebrow">Why Pinpoint players use us</p>
           <h2 className="section-title benefit-guide-title">Why Use Our Pinpoint Guide?</h2>
           <p className="copy benefits-intro">
-            Use this Pinpoint LinkedIn guide for LinkedIn Pinpoint answer today, Pinpoint LinkedIn answer today notes,
-            Pinpoint answer LinkedIn checks, Today&apos;s Pinpoint checklist, and a short Pinpoint today checklist.
+            Get the final answer fast, then check the clue logic before you move on to the next board.
           </p>
         </div>
         <div className="benefit-guide-grid">
@@ -138,8 +137,7 @@ export function HomeBenefitsFaq({ puzzle }: { puzzle: PuzzleDetail }) {
         <div className="home-search-heading faq-section-heading">
           <h2 className="section-title faq-guide-title">Frequently Asked Questions</h2>
           <p className="copy faq-intro">
-            Short answers for LinkedIn players checking Pinpoint today answer, Pinpoint answer LinkedIn help,
-            Pinpoint today notes, Today&apos;s Pinpoint guide, and Today&apos;s Pinpoint answer.
+            Short answers for players who want the daily solution, the clue proof, and older boards in one place.
           </p>
         </div>
         <div className="faq-guide-grid">

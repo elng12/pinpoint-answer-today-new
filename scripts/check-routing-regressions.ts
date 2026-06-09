@@ -106,13 +106,13 @@ async function checkRedirectConfig() {
   assertNoRedirectRule(rules, "/en/puzzles");
   assertNoRedirectRule(rules, "/fr/puzzles/:number(\\d+)");
   assertNoRedirectRule(rules, "/de/pinpoint/:date(\\d{4}-\\d{2}-\\d{2})");
-  assertRedirectRule(rules, "/en/linkedin-pinpoint", "/puzzles");
-  assertRedirectRule(rules, "/de/linkedin-pinpoint-answer", "/puzzles");
-  assertRedirectRule(rules, "/puzzles/connectors", "/puzzles");
+  assertRedirectRule(rules, "/en/linkedin-pinpoint", "/linkedin-pinpoint-answers");
+  assertRedirectRule(rules, "/de/linkedin-pinpoint-answer", "/linkedin-pinpoint-answers");
+  assertRedirectRule(rules, "/puzzles/connectors", "/linkedin-pinpoint-answers");
   assertRedirectRule(rules, "/sitemaps/pt-BR.xml", "/sitemap.xml");
   assertRedirectRule(rules, "/feedback", "/contact-us");
-  assertRedirectRule(rules, "/linkedin-pinpoint", "/puzzles");
-  assertRedirectRule(rules, "/linkedin-pinpoint-answer", "/puzzles");
+  assertRedirectRule(rules, "/linkedin-pinpoint", "/linkedin-pinpoint-answers");
+  assertRedirectRule(rules, "/linkedin-pinpoint-answer", "/linkedin-pinpoint-answers");
   assertNoRedirectRule(rules, "/opengraph-image");
   assertNoRedirectRule(rules, "/linkedin-pinpoint-answers/:slug/opengraph-image");
   assertNoRedirectRule(rules, "/pinpoint-answer-:number(\\d+)");
@@ -194,16 +194,16 @@ function checkMiddlewareCanonicalization() {
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/");
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/");
   assertMiddlewarePassThrough("https://pinpointanswertoday.app/favicon/favicon.ico");
-  assertMiddlewarePassThrough("https://pinpointanswertoday.app/puzzles?q=boots");
+  assertMiddlewarePassThrough("https://pinpointanswertoday.app/linkedin-pinpoint-answers?q=boots");
 
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536",
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536/",
   );
-  assertMiddlewareRedirect("https://pinpointanswertoday.app/puzzles/", "https://pinpointanswertoday.app/puzzles");
+  assertMiddlewareRedirect("https://pinpointanswertoday.app/puzzles/", "https://pinpointanswertoday.app/linkedin-pinpoint-answers");
   assertMiddlewareRedirect(
     "https://www.pinpointanswertoday.app/puzzles/",
-    "https://pinpointanswertoday.app/puzzles",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers",
   );
   assertMiddlewareRedirect(
     "https://www.pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-536",
@@ -231,7 +231,7 @@ function checkMiddlewareCanonicalization() {
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/en/puzzles/linkedin-pinpoint-answer-232",
-    "https://pinpointanswertoday.app/puzzles",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/linkedin-pinpoint-answer/pinpoint-583",
@@ -251,19 +251,19 @@ function checkMiddlewareCanonicalization() {
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/puzzles?theme=words%20with%20double%20vowels%20in%20the%20center",
-    "https://pinpointanswertoday.app/puzzles",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/puzzles?q=boots&theme=old",
-    "https://pinpointanswertoday.app/puzzles?q=boots",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers?q=boots",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/en/puzzles?difficulty=3",
-    "https://pinpointanswertoday.app/puzzles",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/pt-BR/puzzles?q=boots&difficulty=3",
-    "https://pinpointanswertoday.app/puzzles?q=boots",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers?q=boots",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/puzzles/themes/types-of-dances",
@@ -287,7 +287,7 @@ function checkMiddlewareCanonicalization() {
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/fr/puzzles/themes/definitely-not-a-real-legacy-slug",
-    "https://pinpointanswertoday.app/puzzles",
+    "https://pinpointanswertoday.app/linkedin-pinpoint-answers",
   );
   assertMiddlewareRedirect(
     "https://pinpointanswertoday.app/linkedin-pinpoint-answers/pinpoint-answer-712/opengraph-image",

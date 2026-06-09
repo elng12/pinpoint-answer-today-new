@@ -1,5 +1,6 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { type NextRequest, NextResponse } from "next/server";
+import { routes } from "@/lib/paths/routes";
 import { getPuzzleBySlug } from "@/lib/puzzles/data";
 import { safeEqual } from "@/lib/site/admin-auth";
 
@@ -98,6 +99,7 @@ export async function POST(request: NextRequest) {
   // Always refresh shared data (registry-dependent pages)
   revalidateTag("registry");
   revalidatePath("/");
+  revalidatePath(routes.archive);
   revalidatePath("/puzzles");
   revalidatePath("/pinpoint/today");
   revalidatePath("/next-pinpoint-preview");
@@ -105,7 +107,7 @@ export async function POST(request: NextRequest) {
   revalidatePath("/api/puzzles/summary");
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://pinpointanswertoday.app";
-  const urlsToIndex: string[] = [`${siteUrl}/`, `${siteUrl}/puzzles`];
+  const urlsToIndex: string[] = [`${siteUrl}/`, `${siteUrl}${routes.archive}`];
 
   if (slug) {
     revalidateTag(`puzzle:${slug}`);

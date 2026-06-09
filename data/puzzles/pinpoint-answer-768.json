@@ -40,10 +40,10 @@
     "The answer was \"Words that come before “class”\". More precisely, the board resolves as one shared ending word placed after each clue, not a school-course category or a ranking-tier list, which is why \"Words that come before “class”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
-    "I started with First and first tried school-course categories. That was plausible for a moment, because Fitness and Business both sound like class types. But that guess did not make \"World- (the very best)\" feel exact.",
-    "Once \"World- (the very best)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
-    "Then I used Fitness and Business as the confirmation round. The strong solve was not just that two clues worked; it was that First, Weight, Fitness, Business, and World-class could all use the same slot and still sound like ordinary language.",
-    "The answer was \"Words that come before “class”\"."
+    "I first read First and Weight too literally and drifted toward school-course categories. First could be read as \"First class\", while Weight could be read as \"Weight class\", so the board still felt open instead of solved.",
+    "World- (the very best) changed the direction because \"World-class\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"First class\", \"Weight class\", \"Fitness class\", and \"Business class\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across First, Weight, Fitness, Business, and World- (the very best).",
+    "That left very little room for the earlier false start. The answer was \"Words that come before “class”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
   ],
   "lessons": [
     {
@@ -115,7 +115,7 @@
       "First, Weight, and World- (the very best) can hint at levels or grades before Fitness and Business force a cleaner phrase test."
     ],
     "breakingClue": "World- (the very best)",
-    "pivot": "I started with First and first tried school-course categories. That was plausible for a moment, because Fitness and Business both sound like class types. But that guess did not make \"World- (the very best)\" feel exact.\n\nOnce \"World- (the very best)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Fitness and Business as the confirmation round. The strong solve was not just that two clues worked; it was that First, Weight, Fitness, Business, and World-class could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “class”\".",
+    "pivot": "I first read First and Weight too literally and drifted toward school-course categories. First could be read as \"First class\", while Weight could be read as \"Weight class\", so the board still felt open instead of solved.\n\nWorld- (the very best) changed the direction because \"World-class\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"First class\", \"Weight class\", \"Fitness class\", and \"Business class\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across First, Weight, Fitness, Business, and World- (the very best).\n\nThat left very little room for the earlier false start. The answer was \"Words that come before “class”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
     "fullBoardConfirmation": "Another easy trap was \"ranking tiers\". First, Weight, and World- (the very best) can hint at levels or grades before Fitness and Business force a cleaner phrase test. Once World-class locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {

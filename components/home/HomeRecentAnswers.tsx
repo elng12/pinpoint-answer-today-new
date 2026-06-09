@@ -10,8 +10,8 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
       <div className="home-search-heading recent-answers-heading">
         <SectionHeading
           eyebrow="Recent answers"
-          title="Recent Pinpoint Today pages"
-          description="Open each Pinpoint today recap, scan Pinpoint today archive cards, use Pinpoint today notes, compare LinkedIn Pinpoint answer pages, and keep Today's Pinpoint list close without digging through clutter."
+          title="Recent LinkedIn Pinpoint answers"
+          description="Open recent answer pages, compare clue patterns by date, and jump into the full archive when you need an older puzzle."
         />
       </div>
       <div className="recent-answer-grid recent-answer-grid-compact">
@@ -31,7 +31,7 @@ export function HomeRecentAnswers({ entries }: { entries: ArchiveEntry[] }) {
       </div>
       <div className="button-row recent-answer-actions recent-answer-actions-bottom">
         <Link href={routes.archive} className="button-secondary" prefetch={false}>
-          Open Full Archive
+          Open full archive
         </Link>
       </div>
     </section>

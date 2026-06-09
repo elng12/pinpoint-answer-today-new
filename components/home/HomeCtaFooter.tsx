@@ -12,17 +12,16 @@ export function HomeCtaFooter({
         <p className="eyebrow" style={{ color: "rgba(255,255,255,0.82)" }}>
           Start your journey
         </p>
-        <p className="home-cta-title">Check the LinkedIn Pinpoint game, then save your Pinpoint today streak.</p>
+        <p className="home-cta-title">Check today&apos;s answer, then keep your Pinpoint streak moving.</p>
         <p className="home-cta-copy">
-          Use Pinpoint LinkedIn answer today notes, Pinpoint answer today LinkedIn recap,
-          Pinpoint answer LinkedIn checks, Today&apos;s Pinpoint tracker, and Today&apos;s Pinpoint guide from one place.
+          Open the full breakdown, compare recent boards, or browse older answers by puzzle number, date, and clue.
         </p>
         <div className="button-row" style={{ justifyContent: "center" }}>
           <Link href={routes.detail(currentSlug)} className="button-secondary home-cta-primary" prefetch={false}>
             Reveal Today&apos;s Pinpoint Answer
           </Link>
           <Link href={routes.archive} className="button-secondary home-cta-secondary" prefetch={false}>
-            Explore Pinpoint Today Archive
+            Explore Pinpoint Archive
           </Link>
         </div>
       </div>

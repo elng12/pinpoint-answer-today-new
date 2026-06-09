@@ -40,10 +40,10 @@
     "The answer was \"Words that come before “flag”\". More precisely, the board resolves as one shared ending word placed after each clue, not a color theme or isolated definitions, which is why \"Words that come before “flag”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
-    "The White, Pirate, National opening first sent me toward color ideas, and I also considered whether White might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.",
-    "Pirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.",
-    "Then I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.",
-    "The answer was \"Words that come before “flag”\"."
+    "I first read White and Pirate too literally and drifted toward color or surrender words. White could be read as \"White flag\", while Pirate could be read as \"Pirate flag\", so the board still felt open instead of solved.",
+    "Capture the changed the direction because \"Capture the flag\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"White flag\", \"Pirate flag\", \"National flag\", and \"Checkered flag\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across White, Pirate, National, Checkered, and Capture the.",
+    "That left very little room for the earlier false start. The answer was \"Words that come before “flag”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
   ],
   "lessons": [
     {
@@ -115,7 +115,7 @@
       "National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears."
     ],
     "breakingClue": "Capture the",
-    "pivot": "The White, Pirate, National opening first sent me toward color ideas, and I also considered whether White might point to chess. Both reads felt possible, but they did not give Pirate a natural partner.\n\nPirate changed the solve. I wrote down \"pirate flag\" and immediately checked whether White could work the same way. \"White flag\" sounded normal, so the hidden ending started to look much more likely.\n\nThen I tested the rest of the board without jumping ahead. National flag, Checkered flag, and Capture the flag all landed cleanly, which made the answer feel earned instead of guessed.\n\nThe answer was \"Words that come before “flag”\".",
+    "pivot": "I first read White and Pirate too literally and drifted toward color or surrender words. White could be read as \"White flag\", while Pirate could be read as \"Pirate flag\", so the board still felt open instead of solved.\n\nCapture the changed the direction because \"Capture the flag\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"White flag\", \"Pirate flag\", \"National flag\", and \"Checkered flag\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across White, Pirate, National, Checkered, and Capture the.\n\nThat left very little room for the earlier false start. The answer was \"Words that come before “flag”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
     "fullBoardConfirmation": "Another easy trap was \"isolated clue definitions\". National and Checkered have obvious surface meanings if you read them on their own before the shared connector appears. Once Capture the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {

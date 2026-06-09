@@ -46,8 +46,10 @@
     "The trick is not to overthink the clues and look for simple connections."
   ],
   "solutionNarrative": [
-    "Assembly diagrams and Compass roses first pulled me toward Navigation, so that was the first path I tested. It held together for a moment, but compass roses never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating compass roses as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about Navigation; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "I first treated Assembly diagrams and Compass roses as direction clues and drifted toward Navigation. That worked for some clues, but it did not explain archery classes or the keyboard clue cleanly.",
+    "Compass roses changed the direction because they contain actual arrows, not just a vague idea of direction.",
+    "I then checked the rest: assembly diagrams use arrows, archery classes use arrows, one-way street signs show arrows, and the bottom-right keyboard keys are arrow keys.",
+    "That left very little room for the earlier false start. The answer was \"Places to find arrows\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
   ],
   "lessons": [
     {
@@ -55,17 +57,17 @@
       "body": "\"Assembly diagrams\" and \"Compass roses\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "\"Compass roses\" anchors a shared category board with one concrete theme",
-      "body": "compass roses is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "\"Compass roses\" turns direction into literal arrows",
+      "body": "Compass roses are useful because they keep the solve concrete: the clue contains arrows, just like the rest of the board."
     },
     {
-      "title": "Use \"Compass roses\" to re-check \"Assembly diagrams\" under a shared category board with one concrete theme",
+      "title": "Use \"Compass roses\" to re-check \"Assembly diagrams\"",
       "body": "Look for literal, concrete connections first before jumping to abstract themes that only loosely fit."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on places",
-    "fastStrategy": "\"Assembly diagrams\" and \"Compass roses\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "connectorSummary": "literal places where arrows appear",
+    "fastStrategy": "Do not stop at direction or guidance. Check whether each clue contains a real arrow.",
     "clueTableRows": [
       {
         "clue": "Assembly diagrams",
@@ -101,7 +103,7 @@
     },
     {
       "question": "How do \"Assembly diagrams\" and \"Compass roses\" connect in LinkedIn Pinpoint #761?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Compass roses is what keeps the category reading precise instead of broad."
+      "answer": "The connection is literal arrows. Assembly diagrams, compass roses, archery classes, one-way street signs, and keyboard arrow keys are all places where arrows appear."
     },
     {
       "question": "Why is \"Compass roses\" the key clue in LinkedIn Pinpoint #761?",
@@ -123,8 +125,8 @@
       "Instructions feels plausible early on, but it falls apart once compass roses demands a more exact reading."
     ],
     "breakingClue": "Compass roses",
-    "pivot": "The solve turned when I stopped treating compass roses as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about Navigation; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
-    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Assembly diagrams, Compass roses, and Archery classes stop feeling disconnected and start looking like they belong together. Once compass roses is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues initially suggest broader concepts of guidance or direction, obscuring the more literal connection to arrows."
+    "pivot": "I first treated Assembly diagrams and Compass roses as direction clues and drifted toward Navigation. That worked for some clues, but it did not explain archery classes or the keyboard clue cleanly.\n\nCompass roses changed the direction because they contain actual arrows, not just a vague idea of direction.\n\nI then checked the rest: assembly diagrams use arrows, archery classes use arrows, one-way street signs show arrows, and the bottom-right keyboard keys are arrow keys.\n\nThat left very little room for the earlier false start. The answer was \"Places to find arrows\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading the board as literal arrow locations explains it much more cleanly. Assembly diagrams, Compass roses, Archery classes, One-way street signs, and Bottom right of your keyboard all contain or point to arrows."
   },
   "turningPoint": {
     "clue": "Compass roses",
@@ -178,7 +180,7 @@
     {
       "intentType": "solve_strategy",
       "question": "How do \"Assembly diagrams\" and \"Compass roses\" connect in LinkedIn Pinpoint #761?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Compass roses is what keeps the category reading precise instead of broad.",
+      "answer": "The connection is literal arrows. Assembly diagrams, compass roses, archery classes, one-way street signs, and keyboard arrow keys are all places where arrows appear.",
       "tiedClue": "Assembly diagrams"
     },
     {
@@ -195,7 +197,7 @@
     }
   ],
   "uniquenessSignals": {
-    "angle": "a shared category board with one concrete theme",
+    "angle": "literal places where arrows appear",
     "relatedEntities": [
       "Arrows on diagrams",
       "Arrows on compass roses",
@@ -204,10 +206,10 @@
       "Keyboard arrow keys"
     ],
     "doNotRepeatPatterns": [
-      "a shared category board with one concrete theme",
+      "literal places where arrows appear",
       "\"Assembly diagrams\" and \"Compass roses\" can look like they belong to different categories at first",
-      "\"Compass roses\" anchors a shared category board with one concrete theme",
-      "Use \"Compass roses\" to re-check \"Assembly diagrams\" under a shared category board with one concrete theme",
+      "\"Compass roses\" turns direction into literal arrows",
+      "Use \"Compass roses\" to re-check \"Assembly diagrams\"",
       "Arrows on diagrams",
       "Arrows on compass roses"
     ]
@@ -224,6 +226,6 @@
       "whyRejected": "Once Compass roses lands, the final answer explains the board more cleanly than Instructions."
     }
   ],
-  "setValidationSummary": "Archery classes, One-way street signs, Bottom right of your keyboard keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
-  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Places to find arrows"
+  "setValidationSummary": "Archery classes, one-way street signs, and keyboard arrow keys confirm the literal-arrow reading.",
+  "categoryPrecisionNote": "one concrete arrow-location pattern across all five clues"
 }

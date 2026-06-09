@@ -1,9 +1,9 @@
 const pinpointFacts = [
-  "New LinkedIn Pinpoint game released daily",
-  "Today's Pinpoint answer starts with five clues",
-  "Test one clean rule across all five clues",
-  "Review Pinpoint answer LinkedIn clues and category after reveal",
-  "Keep Pinpoint answer LinkedIn checks easy",
+  "Daily LinkedIn word puzzle",
+  "Five clues, one shared connection",
+  "Reveal the answer only when you are ready",
+  "Check why each clue fits",
+  "Browse older answers in the archive",
 ];
 
 export function HomeWhatIs() {
@@ -14,11 +14,8 @@ export function HomeWhatIs() {
         <h2 className="section-title">What is LinkedIn Pinpoint?</h2>
         <p className="copy home-what-is-copy">
           LinkedIn Pinpoint is a daily word puzzle where five clues all point to one hidden
-          connection. People checking LinkedIn Pinpoint answer today, Today&apos;s Pinpoint answer,
-          or Pinpoint today answer help usually test a few LinkedIn Pinpoint game patterns first. Today&apos;s Pinpoint board,
-          the Pinpoint today guide, Pinpoint today clues,
-          and Pinpoint today recap
-          then keep the final answer and archive close.
+          connection. This page gives today&apos;s final answer, the clue logic, and links to
+          recent and older answer pages.
         </p>
       </div>
 

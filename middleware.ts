@@ -12,7 +12,8 @@ const DETAIL_WITHOUT_SLASH = /^\/linkedin-pinpoint-answers\/[^/]+$/;
 const DETAIL_WITH_SLASH = /^\/linkedin-pinpoint-answers\/[^/]+\/$/;
 const SOCIAL_IMAGE_PATHS =
   /^\/(?:(?:en|pt-BR|fr|de)\/)?(?:linkedin-pinpoint-answers\/[^/]+\/opengraph-image|opengraph-image)\/?$/;
-const ARCHIVE_PATH = /^\/(?:(?:en|pt-BR|fr|de)\/)?puzzles\/?$/;
+const ARCHIVE_CANONICAL_PATH = "/linkedin-pinpoint-answers";
+const ARCHIVE_PATH = /^\/(?:(?:en|pt-BR|fr|de)\/)?(?:puzzles|linkedin-pinpoint-answers)\/?$/;
 const LOCALE_DETAIL_PATH = /^\/(?:en|pt-BR|fr|de)\/linkedin-pinpoint-answers\/([^/]+)\/?$/;
 const LEGACY_NUMBER_ALIAS_PATHS = [
   /^\/(?:(?:en|pt-BR|fr|de)\/)?puzzles\/(\d+)\/?$/,
@@ -86,12 +87,15 @@ function getArchiveSearchCanonicalUrl(currentUrl: URL): URL | null {
     canonicalSearchParams.set("q", query);
   }
 
-  if (currentUrl.pathname === "/puzzles" && canonicalSearchParams.toString() === currentUrl.searchParams.toString()) {
+  if (
+    currentUrl.pathname === ARCHIVE_CANONICAL_PATH
+    && canonicalSearchParams.toString() === currentUrl.searchParams.toString()
+  ) {
     return null;
   }
 
   const url = new URL(currentUrl);
-  url.pathname = "/puzzles";
+  url.pathname = ARCHIVE_CANONICAL_PATH;
   const canonicalSearch = canonicalSearchParams.toString();
   url.search = canonicalSearch ? `?${canonicalSearch}` : "";
   return url;
@@ -120,7 +124,7 @@ function resolveLegacyFamilyCanonicalPath(pathname: string): string | null {
     return `/linkedin-pinpoint-answers/${detailSlug}/`;
   }
 
-  return "/puzzles";
+  return ARCHIVE_CANONICAL_PATH;
 }
 
 function resolveLegacyAliasCanonicalPath(pathname: string): string | null {
@@ -137,7 +141,7 @@ function resolveLegacyAliasCanonicalPath(pathname: string): string | null {
     }
 
     const slug = puzzleNumberToSlug.get(puzzleNumber);
-    return slug ? `/linkedin-pinpoint-answers/${slug}/` : "/puzzles";
+    return slug ? `/linkedin-pinpoint-answers/${slug}/` : ARCHIVE_CANONICAL_PATH;
   }
 
   const dateMatch = LEGACY_DATE_ALIAS_PATH.exec(pathname);

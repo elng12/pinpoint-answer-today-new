@@ -24,13 +24,13 @@ export function HomeRevealSection({
     {
       badge: "Today",
       label: `LinkedIn Pinpoint answer today (Puzzle ${puzzle.number})`,
-      description: "Open Pinpoint today clues, Pinpoint today hints, and the full breakdown together.",
+      description: "Open today's answer, clue proof, and full breakdown together.",
       href: routes.detail(puzzle.slug),
     },
     {
       badge: "Archive",
-      label: "Browse older answers",
-      description: "Jump into the full archive of recent LinkedIn Pinpoint boards and past answers.",
+      label: "All LinkedIn Pinpoint answers",
+      description: "Search older answer pages by puzzle number, clue, or date.",
       href: routes.archive,
     },
     {
@@ -55,10 +55,10 @@ export function HomeRevealSection({
       <div className="home-reveal-heading">
         <p className="eyebrow">Reveal</p>
         <h2 className="home-reveal-title">
-          {`Today's Pinpoint Clues & Answer (${puzzle.isoDate})`}
+          {`Today's LinkedIn Pinpoint Answer (${puzzle.isoDate})`}
         </h2>
         <p className="copy home-reveal-description">
-          {`Pinpoint Today #${puzzle.number} clues:`}
+          {`Pinpoint #${puzzle.number} is ready. Reveal the final answer when you want it, or check the clues first.`}
         </p>
       </div>
       <div className="reveal-section-body">

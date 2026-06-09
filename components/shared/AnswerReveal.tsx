@@ -171,11 +171,13 @@ export function AnswerReveal({
             : `LinkedIn Pinpoint ${puzzleNumber} solution is hidden until you press the reveal button.`}
         </p>
         <p className="eyebrow">Pinpoint solution</p>
-        <h3 className="reveal-answer-title">{revealed ? answer : `Answer for Puzzle ${puzzleNumber}`}</h3>
+        <h3 className="reveal-answer-title">
+          {revealed ? `Answer: ${answer}` : `LinkedIn Pinpoint ${puzzleNumber} answer is ready`}
+        </h3>
         <p className="reveal-answer-copy">
           {revealed
-            ? ""
-            : "Use the button below when you want the answer. Pinpoint today logic stays below if you keep scrolling for the full explanation."}
+            ? `Shared connection: ${category}.`
+            : "Reveal the final answer now, or keep scrolling for clue-by-clue proof before you spoil it."}
         </p>
         <div className="button-row reveal-answer-actions">
           <button className="button-primary reveal-primary-button" type="button" onClick={handleRevealToggle}>

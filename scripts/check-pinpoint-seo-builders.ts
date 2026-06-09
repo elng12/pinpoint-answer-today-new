@@ -26,7 +26,7 @@ const PAGE_DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
 const PAGE_DESCRIPTION_INDEX_MAX = CONTENT_CONTRACT.metaDescriptionIndexMaxChars;
 const ARCHIVE_SCHEMA_FIXTURE_COUNT = 120;
 const ARCHIVE_ITEM_LIST_EXPECTED_COUNT = 100;
-const UNSUPPORTED_RICH_RESULT_TYPES = ["FAQPage", "HowTo"];
+const UNSUPPORTED_RICH_RESULT_TYPES = ["HowTo"];
 
 function normalizeText(value: string): string {
   return value.replace(/\s+/g, " ").trim();
@@ -296,13 +296,41 @@ function checkArchiveStructuredDataUsesLightweightItemList() {
 }
 
 function checkPublicStructuredDataUsesSupportedSchemaTypes() {
-  const homeStructuredData = buildHomeStructuredData();
+  const homePuzzle = {
+    number: 812,
+    slug: "pinpoint-answer-812",
+    clues: [
+      "International Space Station",
+      "Constellation Map",
+      "Gravitational Lensing",
+      "Planetary Alignment",
+      "Astrophotography",
+    ],
+    answer: "Astronomy themes",
+    updatedAt: "2026-04-20T00:00:00.000Z",
+  };
+  const homeStructuredData = buildHomeStructuredData(homePuzzle, [
+    buildArchiveEntryFixture(811),
+    buildArchiveEntryFixture(810),
+  ]);
   assert.deepEqual(
     getTopLevelSchemaTypes(homeStructuredData),
-    ["Organization", "WebSite"],
-    "home structured data should stay limited to supported site-level schema",
+    ["Organization", "WebSite", "Game", "WebPage", "FAQPage", "ItemList"],
+    "home structured data should expose site, game, answer, FAQ, and recent-answer schema",
   );
   assertUnsupportedRichResultSchemasAbsent("home", homeStructuredData);
+
+  const homeWebPage = getStructuredDataByType(homeStructuredData, "WebPage");
+  assert.equal(
+    (homeWebPage.mainEntity as Record<string, unknown> | undefined)?.["@type"],
+    "Question",
+    "home WebPage should expose the current answer as the main question",
+  );
+  assert.equal(
+    ((homeWebPage.mainEntity as Record<string, unknown>).acceptedAnswer as Record<string, unknown>).text,
+    homePuzzle.answer,
+    "home acceptedAnswer should expose today's answer",
+  );
 
   const detailStructuredData = buildPuzzleDetailStructuredData({
     puzzle: {

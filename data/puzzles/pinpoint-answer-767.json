@@ -40,10 +40,10 @@
     "The answer was \"Words that come before “station”\". More precisely, the board resolves as one shared ending word placed after each clue, not a public-service list or a media-and-transit mix, which is why \"Words that come before “station”\" fits better once the full set is checked."
   ],
   "solutionNarrative": [
-    "I started with Space and first tried public-service locations. That was plausible for a moment, because Power, Police, and Bus can all sound like civic infrastructure. But that guess did not make \"TV\" or \"Space\" feel exact.",
-    "Once \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
-    "Then I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.",
-    "The answer was \"Words that come before “station”\"."
+    "I first read Space and Power too literally and drifted toward public-service locations. Space could be read as \"Space station\", while Power could be read as \"Power station\", so the board still felt open instead of solved.",
+    "Police changed the direction because \"Police station\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Space station\", \"Power station\", \"TV station\", and \"Bus station\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Space, Power, Police, TV, and Bus.",
+    "That left very little room for the earlier false start. The answer was \"Words that come before “station”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
   ],
   "lessons": [
     {
@@ -115,7 +115,7 @@
       "TV and Bus can push the board toward broadcast or transportation before Space and Power prove the same ending works elsewhere."
     ],
     "breakingClue": "Police",
-    "pivot": "I started with Space and first tried public-service locations. That was plausible for a moment, because Power, Police, and Bus can all sound like civic infrastructure. But that guess did not make \"TV\" or \"Space\" feel exact.\n\nOnce \"Police\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used TV and Bus as the confirmation round. The strong solve was not just that two clues worked; it was that Space, Power, Police, TV, Bus could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “station”\".",
+    "pivot": "I first read Space and Power too literally and drifted toward public-service locations. Space could be read as \"Space station\", while Power could be read as \"Power station\", so the board still felt open instead of solved.\n\nPolice changed the direction because \"Police station\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Space station\", \"Power station\", \"TV station\", and \"Bus station\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Space, Power, Police, TV, and Bus.\n\nThat left very little room for the earlier false start. The answer was \"Words that come before “station”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
     "fullBoardConfirmation": "Another easy trap was \"media and transit clues\". TV and Bus can push the board toward broadcast or transportation before Space and Power prove the same ending works elsewhere. Once Police station locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
   },
   "turningPoint": {

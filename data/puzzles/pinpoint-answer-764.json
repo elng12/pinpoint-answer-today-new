@@ -46,8 +46,10 @@
     "The puzzle requires a closer look to realize the connection between the clues, but the answer is satisfyingly precise once you see it."
   ],
   "solutionNarrative": [
-    "Trifle and Parfait first pulled me toward Cakes, so that was the first path I tested. It held together for a moment, but seven-layer cake never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
-    "The solve turned when I stopped treating seven-layer cake as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about Cakes; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category."
+    "I first read Trifle and Parfait as just dessert names and drifted toward fancy cakes. That was too narrow because the full board is not only cakes.",
+    "Seven-layer cake changed the direction because it made the layer idea impossible to ignore.",
+    "I then checked the rest: trifle, parfait, tiramisu, and baklava are all desserts known for layers.",
+    "That left very little room for the earlier false start. The answer was \"Desserts (all with many layers)\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
   ],
   "lessons": [
     {
@@ -55,36 +57,36 @@
       "body": "\"Trifle\" and \"Parfait\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
     },
     {
-      "title": "\"Seven-layer cake\" anchors a shared category board with one concrete theme",
-      "body": "seven-layer cake is what organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+      "title": "\"Seven-layer cake\" makes the layer clue obvious",
+      "body": "Seven-layer cake is useful because it turns the board from general desserts into layered desserts."
     },
     {
-      "title": "Use \"Seven-layer cake\" to re-check \"Trifle\" under a shared category board with one concrete theme",
+      "title": "Use \"Seven-layer cake\" to re-check \"Trifle\"",
       "body": "When solving puzzles, look for the common thread that connects all the clues, even if it's not immediately obvious."
     }
   ],
   "display": {
-    "connectorSummary": "a category board focused on desserts",
-    "fastStrategy": "\"Trifle\" and \"Parfait\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "connectorSummary": "layered desserts",
+    "fastStrategy": "Do not stop at desserts. Check whether each dessert is known for visible layers.",
     "clueTableRows": [
       {
         "clue": "Trifle",
-        "examplePhrase": "Trifle",
+        "examplePhrase": "layered trifle",
         "connectionExplained": "Trifle is a dessert made with layers of sponge cake, fruit, and custard."
       },
       {
         "clue": "Parfait",
-        "examplePhrase": "Parfait",
+        "examplePhrase": "layered parfait",
         "connectionExplained": "Parfait is a French dessert made with layers of cream, sugar, and fruit."
       },
       {
         "clue": "Tiramisu",
-        "examplePhrase": "Tiramisu",
+        "examplePhrase": "layered tiramisu",
         "connectionExplained": "Tiramisu is an Italian dessert made with layers of ladyfingers, mascarpone cheese, and espresso."
       },
       {
         "clue": "Baklava",
-        "examplePhrase": "Baklava",
+        "examplePhrase": "layered baklava",
         "connectionExplained": "Baklava is a Middle Eastern pastry made with layers of phyllo dough, nuts, and honey."
       },
       {
@@ -101,15 +103,15 @@
     },
     {
       "question": "How do \"Trifle\" and \"Parfait\" connect in LinkedIn Pinpoint #764?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Seven-layer cake is what keeps the category reading precise instead of broad."
+      "answer": "The connection is layered desserts. Trifle, parfait, tiramisu, baklava, and seven-layer cake all use layers as part of what makes them recognizable."
     },
     {
       "question": "Why is \"Seven-layer cake\" the key clue in LinkedIn Pinpoint #764?",
-      "answer": "Seven-layer cake is the turning clue because \"Layered cake with seven layers\" makes the shared category frame explicit. It also makes Trifle read cleanly as \"Trifle\". The puzzle feels tricky because the clues are all types of desserts, but not all desserts have multiple layers, so it requires a closer look to realize the connection."
+      "answer": "Seven-layer cake is the turning clue because it makes the layer idea explicit. It forces the earlier dessert clues to be checked for layers, not just for being desserts."
     },
     {
       "question": "How does \"Trifle\" fit the same category as \"Seven-layer cake\" in LinkedIn Pinpoint #764?",
-      "answer": "\"Trifle\" reads as \"Trifle\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+      "answer": "Trifle fits because it is usually built in visible layers, just like the other desserts in the answer."
     }
   ],
   "solvePath": {
@@ -123,8 +125,8 @@
       "fancy cakes feels plausible early on, but it falls apart once seven-layer cake demands a more exact reading."
     ],
     "breakingClue": "Seven-layer cake",
-    "pivot": "The solve turned when I stopped treating seven-layer cake as just another clue and asked what kind of thing each clue could really be describing. Once I made that shift, I was no longer thinking about Cakes; I was checking whether the earlier clues all behaved like parts of the same real set. That was when the answer became clear, because the remaining clues stopped feeling like separate trivia and started reinforcing the real category.",
-    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Trifle, Parfait, and Tiramisu stop feeling disconnected and start looking like they belong together. Once seven-layer cake is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle feels tricky because the clues are all types of desserts, but not all desserts have multiple layers, so it requires a closer look to realize the connection."
+    "pivot": "I first read Trifle and Parfait as just dessert names and drifted toward fancy cakes. That was too narrow because the full board is not only cakes.\n\nSeven-layer cake changed the direction because it made the layer idea impossible to ignore.\n\nI then checked the rest: trifle, parfait, tiramisu, and baklava are all desserts known for layers.\n\nThat left very little room for the earlier false start. The answer was \"Desserts (all with many layers)\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading the board as layered desserts explains it much more cleanly. Trifle, Parfait, Tiramisu, Baklava, and Seven-layer cake all belong because the layers are part of the dessert."
   },
   "turningPoint": {
     "clue": "Seven-layer cake",
@@ -135,7 +137,7 @@
     {
       "clue": "Trifle",
       "surfaceMisread": "Cakes",
-      "resolvedPhraseOrMember": "Trifle",
+      "resolvedPhraseOrMember": "layered trifle",
       "nonObviousWhy": "Trifle is a dessert made with layers of sponge cake, fruit, and custard.",
       "searchableContext": "From the Old French word 'trufle', meaning 'of little importance', possibly because it was originally a leftover dish",
       "phraseExample": "From the Old French word 'trufle', meaning 'of little importance', possibly because it was originally a leftover dish"
@@ -143,7 +145,7 @@
     {
       "clue": "Parfait",
       "surfaceMisread": "Cakes",
-      "resolvedPhraseOrMember": "Parfait",
+      "resolvedPhraseOrMember": "layered parfait",
       "nonObviousWhy": "Parfait is a French dessert made with layers of cream, sugar, and fruit.",
       "searchableContext": "From the French word 'parfait', meaning 'perfect', possibly because it was considered a perfect dessert",
       "phraseExample": "From the French word 'parfait', meaning 'perfect', possibly because it was considered a perfect dessert"
@@ -151,7 +153,7 @@
     {
       "clue": "Tiramisu",
       "surfaceMisread": "Cakes",
-      "resolvedPhraseOrMember": "Tiramisu",
+      "resolvedPhraseOrMember": "layered tiramisu",
       "nonObviousWhy": "Tiramisu is an Italian dessert made with layers of ladyfingers, mascarpone cheese, and espresso.",
       "searchableContext": "From the Italian words 'tira' and 'mi', meaning 'pick me up', possibly because of its caffeine content",
       "phraseExample": "From the Italian words 'tira' and 'mi', meaning 'pick me up', possibly because of its caffeine content"
@@ -159,7 +161,7 @@
     {
       "clue": "Baklava",
       "surfaceMisread": "Cakes",
-      "resolvedPhraseOrMember": "Baklava",
+      "resolvedPhraseOrMember": "layered baklava",
       "nonObviousWhy": "Baklava is a Middle Eastern pastry made with layers of phyllo dough, nuts, and honey.",
       "searchableContext": "From the Ottoman Turkish word 'bakla', meaning 'to layer', possibly because of its layered structure",
       "phraseExample": "From the Ottoman Turkish word 'bakla', meaning 'to layer', possibly because of its layered structure"
@@ -183,24 +185,24 @@
     {
       "intentType": "solve_strategy",
       "question": "How do \"Trifle\" and \"Parfait\" connect in LinkedIn Pinpoint #764?",
-      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Seven-layer cake is what keeps the category reading precise instead of broad.",
+      "answer": "The connection is layered desserts. Trifle, parfait, tiramisu, baklava, and seven-layer cake all use layers as part of what makes them recognizable.",
       "tiedClue": "Trifle"
     },
     {
       "intentType": "clue_background",
       "question": "Why is \"Seven-layer cake\" the key clue in LinkedIn Pinpoint #764?",
-      "answer": "Seven-layer cake is the turning clue because \"Layered cake with seven layers\" makes the shared category frame explicit. It also makes Trifle read cleanly as \"Trifle\". The puzzle feels tricky because the clues are all types of desserts, but not all desserts have multiple layers, so it requires a closer look to realize the connection.",
+      "answer": "Seven-layer cake is the turning clue because it makes the layer idea explicit. It forces the earlier dessert clues to be checked for layers, not just for being desserts.",
       "tiedClue": "Seven-layer cake"
     },
     {
       "intentType": "solve_strategy",
       "question": "How does \"Trifle\" fit the same category as \"Seven-layer cake\" in LinkedIn Pinpoint #764?",
-      "answer": "\"Trifle\" reads as \"Trifle\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "answer": "Trifle fits because it is usually built in visible layers, just like the other desserts in the answer.",
       "tiedClue": "Trifle"
     }
   ],
   "uniquenessSignals": {
-    "angle": "a shared category board with one concrete theme",
+    "angle": "layered desserts",
     "relatedEntities": [
       "Trifle",
       "Parfait",
@@ -209,10 +211,10 @@
       "Layered cake with seven layers"
     ],
     "doNotRepeatPatterns": [
-      "a shared category board with one concrete theme",
+      "layered desserts",
       "\"Trifle\" and \"Parfait\" can look like they belong to different categories at first",
-      "\"Seven-layer cake\" anchors a shared category board with one concrete theme",
-      "Use \"Seven-layer cake\" to re-check \"Trifle\" under a shared category board with one concrete theme",
+      "\"Seven-layer cake\" makes the layer clue obvious",
+      "Use \"Seven-layer cake\" to re-check \"Trifle\"",
       "From the Old French word 'trufle', meaning 'of little importance', possibly because it was originally a leftover dish",
       "From the French word 'parfait', meaning 'perfect', possibly because it was considered a perfect dessert"
     ]
@@ -225,10 +227,10 @@
     },
     {
       "label": "fancy cakes",
-      "whyPlausible": "fancy cakes feels plausible early on, but it falls apart once seven-layer cake demands a more exact reading.",
+      "whyPlausible": "Fancy cakes feels plausible early on because seven-layer cake is literally a cake.",
       "whyRejected": "Once Seven-layer cake lands, the final answer explains the board more cleanly than fancy cakes."
     }
   ],
-  "setValidationSummary": "Tiramisu, Baklava, Seven-layer cake keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
-  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Desserts (all with many layers)"
+  "setValidationSummary": "Tiramisu, baklava, and seven-layer cake confirm the layer pattern across the whole dessert board.",
+  "categoryPrecisionNote": "one concrete layered-dessert pattern across all five clues"
 }
