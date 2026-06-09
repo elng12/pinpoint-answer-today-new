@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 770,
+  "slug": "pinpoint-answer-770",
+  "publishDate": "2026-06-09",
+  "isoDate": "2026-06-09",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Score",
+    "A secret",
+    "The peace",
+    "One's distance",
+    "An open mind"
+  ],
+  "answer": "Things you can \"keep\"",
+  "category": "Things you can \"keep\"",
+  "wordHints": {
+    "Score": "\"Score in things you can keep\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "A secret": "\"A secret in things you can keep\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "The peace": "\"The peace in things you can keep\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "One's distance": "\"One's distance in things you can keep\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "An open mind": "\"An open mind\" is the clue that makes the shared answer concrete enough to test across the full board."
+  },
+  "spoilerHints": {
+    "Score": "Score should be tested as part of things you can \"keep\", not as a standalone reference.",
+    "A secret": "Keep A secret in mind, then see whether An open mind supports the same answer.",
+    "The peace": "The peace works best after the board narrows toward things you can \"keep\".",
+    "One's distance": "One's distance should be tested as part of things you can \"keep\", not as a standalone reference.",
+    "An open mind": "An open mind is the clue that makes things you can \"keep\" concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Score and A secret pointed in a few different directions, so the board still felt wider than one exact category.",
+    "One tempting read was \"a broader umbrella topic\". Score, A secret can point toward several nearby themes before one clue makes the exact category level visible. An open mind is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"Score in things you can keep\" and \"A secret in things you can keep\" stopped feeling loose and started landing cleanly.",
+    "The peace, One's distance, An open mind keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things you can \"keep\"\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things you can \"keep\", which is why \"Things you can \"keep\"\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started by testing Score and A secret, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.",
+    "The turn came when I let \"An open mind\" lead the solve. After that, The peace and One's distance became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.",
+    "For the final pass, I checked Score, A secret, The peace, One's distance, An open mind one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.",
+    "The answer was \"Things you can \"keep\"\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Score\" and \"A secret\" can look like they belong to different categories at first",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "\"An open mind\" is what makes the answer feel concrete instead of broad",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once \"An open mind\" sharpens the answer",
+      "body": "Once \"An open mind\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "Score",
+        "examplePhrase": "Score in things you can keep",
+        "connectionExplained": "\"Score in things you can keep\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "A secret",
+        "examplePhrase": "A secret in things you can keep",
+        "connectionExplained": "\"A secret in things you can keep\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      },
+      {
+        "clue": "The peace",
+        "examplePhrase": "The peace in things you can keep",
+        "connectionExplained": "\"The peace in things you can keep\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+      },
+      {
+        "clue": "One's distance",
+        "examplePhrase": "One's distance in things you can keep",
+        "connectionExplained": "\"One's distance in things you can keep\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "An open mind",
+        "examplePhrase": "An open mind in things you can keep",
+        "connectionExplained": "\"An open mind\" is the clue that makes the shared answer concrete enough to test across the full board."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Score\" and \"A secret\" in LinkedIn Pinpoint #770?",
+      "answer": "The answer is \"Things you can \"keep\"\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "How do \"Score\" and \"A secret\" connect in LinkedIn Pinpoint #770?",
+      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Why is \"An open mind\" the key clue in LinkedIn Pinpoint #770?",
+      "answer": "\"An open mind\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Score and A secret pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Score, A secret can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "An open mind",
+    "pivot": "I started by testing Score and A secret, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.\n\nThe turn came when I let \"An open mind\" lead the solve. After that, The peace and One's distance became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.\n\nFor the final pass, I checked Score, A secret, The peace, One's distance, An open mind one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.\n\nThe answer was \"Things you can \"keep\"\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on things, examples like \"Score in things you can keep\" and \"A secret in things you can keep\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "An open mind",
+    "whyDecisive": "An open mind is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once An open mind lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Score",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Score in things you can keep",
+      "nonObviousWhy": "\"Score in things you can keep\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Score in things you can keep",
+      "phraseExample": "Score in things you can keep"
+    },
+    {
+      "clue": "A secret",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "A secret in things you can keep",
+      "nonObviousWhy": "\"A secret in things you can keep\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "A secret in things you can keep",
+      "phraseExample": "A secret in things you can keep"
+    },
+    {
+      "clue": "The peace",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "The peace in things you can keep",
+      "nonObviousWhy": "\"The peace in things you can keep\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+      "searchableContext": "The peace in things you can keep",
+      "phraseExample": "The peace in things you can keep"
+    },
+    {
+      "clue": "One's distance",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "One's distance in things you can keep",
+      "nonObviousWhy": "\"One's distance in things you can keep\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "One's distance in things you can keep",
+      "phraseExample": "One's distance in things you can keep"
+    },
+    {
+      "clue": "An open mind",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "An open mind in things you can keep",
+      "nonObviousWhy": "\"An open mind\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "An open mind in things you can keep",
+      "phraseExample": "An open mind in things you can keep"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Score\" and \"A secret\" in LinkedIn Pinpoint #770?",
+      "answer": "The answer is \"Things you can \"keep\"\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": "Score"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Score\" and \"A secret\" connect in LinkedIn Pinpoint #770?",
+      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": "Score"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"An open mind\" the key clue in LinkedIn Pinpoint #770?",
+      "answer": "\"An open mind\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "An open mind"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "Score in things you can keep",
+      "A secret in things you can keep",
+      "The peace in things you can keep",
+      "One's distance in things you can keep",
+      "An open mind in things you can keep"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "Score in things you can keep",
+      "A secret in things you can keep",
+      "The peace in things you can keep",
+      "One's distance in things you can keep"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Score, A secret can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "An open mind is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "The peace, One's distance, An open mind keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things you can \"keep\""
+}

@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 770,
+    "slug": "pinpoint-answer-770",
+    "publishDate": "2026-06-09",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Score",
+      "A secret",
+      "The peace",
+      "One's distance",
+      "An open mind"
+    ],
+    "mainAnswer": "Things you can \"keep\"",
+    "category": "Things you can \"keep\"",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Score, A secret, The peace, One's distance, An open mind - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-09T07:25:57.160Z"
+  },
+  {
     "puzzleNumber": 769,
     "slug": "pinpoint-answer-769",
     "publishDate": "2026-06-08",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Bits in a byte",
@@ -16,7 +35,7 @@
     "category": "Things that come in eights",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Bits in a byte, Planets in our solar system, Legs on a spider do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-06-08T07:06:57.820Z"
+    "updatedAt": "2026-06-09T07:25:57.160Z"
   },
   {
     "puzzleNumber": 768,
