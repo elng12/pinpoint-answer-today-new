@@ -3608,6 +3608,8 @@ async function checkWorkerRunsPostPublishPublicAudit() {
     workerSource.includes("runNewSitePublicPublishAudit") &&
       workerSource.includes("post-publish public audit failed") &&
       workerSource.includes("post-publish public audit deferred") &&
+      workerSource.includes("detail page readiness probe not ready while deployment still settling") &&
+      workerSource.includes("isDeploymentStillSettlingForPublicAudit") &&
       workerSource.includes("too many subrequests") &&
       workerSource.includes("sitemap does not include the new detail URL") &&
       workerSource.includes("home page does not link to the new detail URL") &&

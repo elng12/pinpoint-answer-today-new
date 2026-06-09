@@ -2304,6 +2304,25 @@ function deferredPublicAuditResult(scope: string, error: string | undefined): Ne
   };
 }
 
+function isDeploymentStillSettlingForPublicAudit(value: DeploymentState): boolean {
+  return value === "queued" || value === "building" || value === "unknown";
+}
+
+function deferredPageReadinessAuditResult(
+  deploymentState: DeploymentState,
+  description: string,
+): NewSitePublicPublishAuditResult {
+  const detail = [
+    `deployment ${deploymentState}`,
+    description,
+  ].filter(Boolean).join(": ");
+  return {
+    deferred: true,
+    ok: true,
+    issues: [`public audit deferred: detail page readiness probe not ready while deployment still settling${detail ? ` (${detail})` : ""}`],
+  };
+}
+
 function classifyNewSitePublicPublishAuditSeverity(issues: string[]): "P0" | "P1" {
   const p0Patterns = [
     "detail page did not return 200",
@@ -4102,14 +4121,39 @@ async function publishToNewSiteGitHub(
   const candidateBranch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
   const runPrimaryPublicAudit = async (pageReady: boolean): Promise<NewSitePublicPublishAuditResult | null> => {
     if (!isPublicState || !isPrimaryBranch || !newSiteUrl) return null;
-    const result = await runNewSitePublicPublishAudit({
-      baseUrl: newSiteUrl,
-      slug,
-      puzzleNumber,
-      answer,
-      clues: words,
-      pageReady,
-    });
+    let result: NewSitePublicPublishAuditResult;
+    if (!pageReady) {
+      let deploymentState: DeploymentState = "unknown";
+      let deploymentDescription = "";
+      try {
+        const deploymentStatus = await inspectNewSiteBaseDeploymentStatus(env);
+        deploymentState = parseDeploymentStateParam(String(deploymentStatus.deploymentState || ""));
+        const vercel = asRecord(deploymentStatus.vercel);
+        deploymentDescription = typeof vercel?.description === "string" ? vercel.description : "";
+      } catch (error) {
+        deploymentDescription = error instanceof Error ? error.message : String(error);
+      }
+
+      result = isDeploymentStillSettlingForPublicAudit(deploymentState)
+        ? deferredPageReadinessAuditResult(deploymentState, deploymentDescription)
+        : await runNewSitePublicPublishAudit({
+          baseUrl: newSiteUrl,
+          slug,
+          puzzleNumber,
+          answer,
+          clues: words,
+          pageReady,
+        });
+    } else {
+      result = await runNewSitePublicPublishAudit({
+        baseUrl: newSiteUrl,
+        slug,
+        puzzleNumber,
+        answer,
+        clues: words,
+        pageReady,
+      });
+    }
     if (result.deferred) {
       const issueSummary = formatNewSitePublicPublishAuditIssues(result);
       console.warn(`[new-site] post-publish public audit deferred for ${slug}: ${issueSummary}`);
