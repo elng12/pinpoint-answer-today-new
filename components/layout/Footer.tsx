@@ -1,20 +1,12 @@
 import Link from "next/link";
 import { routes } from "@/lib/paths/routes";
-import type { ArchiveEntry } from "@/lib/puzzles/data";
 import { supportMailto } from "@/lib/site/config";
 
 type FooterProps = {
-  recentEntries?: ArchiveEntry[];
   isDetailPage?: boolean;
-  showRecentEntries?: boolean;
 };
 
-export function Footer({
-  recentEntries = [],
-  isDetailPage = false,
-  showRecentEntries = true,
-}: FooterProps) {
-  const shouldShowRecentEntries = showRecentEntries && recentEntries.length > 0;
+export function Footer({ isDetailPage = false }: FooterProps) {
   const quickLinks = isDetailPage
     ? [
         { label: "Pro Tips", href: routes.preview },
@@ -39,7 +31,7 @@ export function Footer({
   return (
     <footer className="footer">
       <div className="container">
-        <div className={`footer-grid${shouldShowRecentEntries ? "" : " footer-grid-two-column"}`}>
+        <div className="footer-grid footer-grid-two-column">
           <div className="footer-block">
             <p className="eyebrow">{isDetailPage ? "Pinpoint Answer" : "Pinpoint Answer Today"}</p>
             <p className="footer-copy">
@@ -48,29 +40,6 @@ export function Footer({
                 : "Built for people who want LinkedIn Pinpoint answer today, Pinpoint today archive notes, Pinpoint today clue checks, and clearer explanations without wading through old clutter."}
             </p>
           </div>
-
-          {shouldShowRecentEntries ? (
-            <div className="footer-block footer-recent-block">
-              <p className="footer-recent-heading">
-                Recent 10{" "}
-                <br />
-                Pinpoint Answers
-              </p>
-              <ul className="footer-link-list footer-recent-list">
-                {recentEntries.map((entry) => (
-                  <li key={entry.slug}>
-                    <Link
-                      href={routes.detail(entry.slug)}
-                      prefetch={false}
-                      aria-label={`Open LinkedIn Pinpoint ${entry.number}`}
-                    >
-                      {`#${entry.number}`}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
 
           <div className="footer-link-grid">
             <div className="footer-block">
