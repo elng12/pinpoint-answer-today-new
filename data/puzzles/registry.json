@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 771,
+    "slug": "pinpoint-answer-771",
+    "publishDate": "2026-06-10",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Blast",
+      "Zephyr",
+      "Gale",
+      "Gust",
+      "Breeze"
+    ],
+    "mainAnswer": "Terms for wind conditions (varying duration and intensity)",
+    "category": "Terms for wind conditions (varying duration and intensity)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Blast, Zephyr, Gale do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-06-10T07:06:30.486Z"
+  },
+  {
     "puzzleNumber": 770,
     "slug": "pinpoint-answer-770",
     "publishDate": "2026-06-09",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Score",
@@ -16,7 +35,7 @@
     "category": "Things you can \"keep\"",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Score, A secret, The peace, One's distance, An open mind - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-09T07:25:57.160Z"
+    "updatedAt": "2026-06-10T07:06:30.486Z"
   },
   {
     "puzzleNumber": 769,

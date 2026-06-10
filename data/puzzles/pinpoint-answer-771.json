@@ -1,0 +1,235 @@
+{
+  "puzzleNumber": 771,
+  "slug": "pinpoint-answer-771",
+  "publishDate": "2026-06-10",
+  "isoDate": "2026-06-10",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Blast",
+    "Zephyr",
+    "Gale",
+    "Gust",
+    "Breeze"
+  ],
+  "answer": "Terms for wind conditions (varying duration and intensity)",
+  "category": "Terms for wind conditions (varying duration and intensity)",
+  "wordHints": {
+    "Blast": "The word 'blast' can also refer to a sudden, strong wind.",
+    "Zephyr": "The word 'zephyr' specifically refers to a gentle wind in mythology and literature.",
+    "Gale": "The word 'gale' specifically refers to a strong wind, often used in weather forecasting.",
+    "Gust": "The word 'gust' specifically refers to a sudden, strong wind.",
+    "Breeze": "The word 'breeze' specifically refers to a gentle, mild wind."
+  },
+  "spoilerHints": {
+    "Blast": "Blast should be tested as part of terms for wind conditions (varying duration and intensity), not as a standalone reference.",
+    "Zephyr": "Keep Zephyr in mind, then see whether Breeze supports the same answer.",
+    "Gale": "Gale works best after the board narrows toward terms for wind conditions (varying duration and intensity).",
+    "Gust": "Gust should be tested as part of terms for wind conditions (varying duration and intensity), not as a standalone reference.",
+    "Breeze": "Breeze is the clue that makes terms for wind conditions (varying duration and intensity) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "I first thought the clues might be related to weather forecasts, but they seemed too specific.",
+    "The clue Blast made me think of a strong explosion, but it could also refer to a strong wind.",
+    "The clue Zephyr was the turning point, as it made me realize that the answer was about specific terms for wind conditions.",
+    "The clue Gale confirmed this, as it specifically refers to a strong wind.",
+    "The clue Gust also fit, as it refers to a sudden, strong blast of wind.",
+    "The clue Breeze was the final piece of the puzzle, as it refers to a gentle, mild wind.",
+    "Looking back, the clues were more straightforward than I initially thought, but they required careful consideration of multiple possible interpretations.",
+    "The answer is a great example of how a common theme can be hidden in plain sight, and how careful analysis can reveal a clear and concise solution.",
+    "The puzzle was challenging, but the solution was satisfying and educational.",
+    "I learned the importance of considering multiple possible interpretations of each clue and looking for a common theme among them.",
+    "This puzzle was a great exercise in critical thinking and analytical reasoning.",
+    "The solution was a great reminder that sometimes the most obvious answer is the correct one, but it requires careful consideration and analysis to get there."
+  ],
+  "solutionNarrative": [
+    "Blast and Zephyr first pulled me toward weather forecasts, so that was the first path I tested. It held together for a moment, but zephyr never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating zephyr as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue weather forecasts; I was checking whether Blast and Zephyr could survive the same tighter read.",
+    "Then I used Gale, Gust, and Breeze as the confirmation round. Gale, Gust, and Breeze stayed inside the real category, so the answer felt earned instead of guessed. The answer was Terms for wind conditions (varying duration and intensity)."
+  ],
+  "lessons": [
+    {
+      "title": "\"Blast\" and \"Zephyr\" can look like they belong to different categories at first",
+      "body": "\"Blast\" and \"Zephyr\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Zephyr\" anchors a shared category board with one concrete theme",
+      "body": "Zephyr organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Zephyr\" to re-check \"Blast\" under a shared category board with one concrete theme",
+      "body": "When solving puzzles, it's essential to consider multiple possible interpretations of each clue and look for a common theme among them."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on terms",
+    "fastStrategy": "\"Blast\" and \"Zephyr\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Blast",
+        "examplePhrase": "Blast",
+        "connectionExplained": "The word 'blast' can also refer to a sudden, strong wind."
+      },
+      {
+        "clue": "Zephyr",
+        "examplePhrase": "Zephyr",
+        "connectionExplained": "The word 'zephyr' specifically refers to a gentle wind in mythology and literature."
+      },
+      {
+        "clue": "Gale",
+        "examplePhrase": "Gale",
+        "connectionExplained": "The word 'gale' specifically refers to a strong wind, often used in weather forecasting."
+      },
+      {
+        "clue": "Gust",
+        "examplePhrase": "Gust",
+        "connectionExplained": "The word 'gust' specifically refers to a sudden, strong wind."
+      },
+      {
+        "clue": "Breeze",
+        "examplePhrase": "Breeze",
+        "connectionExplained": "The word 'breeze' specifically refers to a gentle, mild wind."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Blast\" and \"Zephyr\" in LinkedIn Pinpoint #771?",
+      "answer": "The answer is \"Terms for wind conditions (varying duration and intensity)\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Blast\" and \"Zephyr\" connect in LinkedIn Pinpoint #771?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Zephyr is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Zephyr\" the key clue in LinkedIn Pinpoint #771?",
+      "answer": "Zephyr is the turning clue because \"Zephyr\" makes the shared category frame explicit. It also makes Blast read cleanly as \"Blast\". The clues can be misleading because they have multiple possible interpretations, but the answer is clear once the common theme of wind conditions is recognized."
+    },
+    {
+      "question": "How does \"Blast\" fit the same category as \"Zephyr\" in LinkedIn Pinpoint #771?",
+      "answer": "\"Blast\" reads as \"Blast\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Blast, Zephyr, and Gale do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"weather forecasts\" can feel plausible before one clue makes the answer feel concrete. Zephyr is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "weather forecasts",
+      "storm types"
+    ],
+    "whyFalseStartPlausible": [
+      "The clues are more specific to wind conditions than general weather forecasts.",
+      "storm types feels plausible early on, but it falls apart once zephyr demands a more exact reading."
+    ],
+    "breakingClue": "Zephyr",
+    "pivot": "The solve turned when I stopped treating zephyr as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue weather forecasts; I was checking whether Blast and Zephyr could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Blast, Zephyr, and Gale stop feeling disconnected and start looking like they belong together. Once zephyr is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues can be misleading because they have multiple possible interpretations, but the answer is clear once the common theme of wind conditions is recognized."
+  },
+  "turningPoint": {
+    "clue": "Zephyr",
+    "whyDecisive": "The clue Zephyr made me realize that the answer was about specific terms for wind conditions.",
+    "whatChangedAfterIt": "Once Zephyr landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Blast",
+      "surfaceMisread": "weather forecasts",
+      "resolvedPhraseOrMember": "Blast",
+      "nonObviousWhy": "The word 'blast' can also refer to a sudden, strong wind.",
+      "searchableContext": "From the Old English word 'blæst', meaning 'a blowing'",
+      "phraseExample": "From the Old English word 'blæst', meaning 'a blowing'"
+    },
+    {
+      "clue": "Zephyr",
+      "surfaceMisread": "weather forecasts",
+      "resolvedPhraseOrMember": "Zephyr",
+      "nonObviousWhy": "The word 'zephyr' specifically refers to a gentle wind in mythology and literature.",
+      "searchableContext": "From the Greek word 'ζέφυρος', meaning 'west wind'",
+      "phraseExample": "From the Greek word 'ζέφυρος', meaning 'west wind'"
+    },
+    {
+      "clue": "Gale",
+      "surfaceMisread": "weather forecasts",
+      "resolvedPhraseOrMember": "Gale",
+      "nonObviousWhy": "The word 'gale' specifically refers to a strong wind, often used in weather forecasting.",
+      "searchableContext": "From the Old English word 'gæl', meaning 'a strong wind'",
+      "phraseExample": "From the Old English word 'gæl', meaning 'a strong wind'"
+    },
+    {
+      "clue": "Gust",
+      "surfaceMisread": "weather forecasts",
+      "resolvedPhraseOrMember": "Gust",
+      "nonObviousWhy": "The word 'gust' specifically refers to a sudden, strong wind.",
+      "searchableContext": "From the Old English word 'gust', meaning 'a sudden blow'",
+      "phraseExample": "From the Old English word 'gust', meaning 'a sudden blow'"
+    },
+    {
+      "clue": "Breeze",
+      "surfaceMisread": "weather forecasts",
+      "resolvedPhraseOrMember": "Breeze",
+      "nonObviousWhy": "The word 'breeze' specifically refers to a gentle, mild wind.",
+      "searchableContext": "From the Old English word 'brēzan', meaning 'to blow gently'",
+      "phraseExample": "From the Old English word 'brēzan', meaning 'to blow gently'"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Blast\" and \"Zephyr\" in LinkedIn Pinpoint #771?",
+      "answer": "The answer is \"Terms for wind conditions (varying duration and intensity)\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Blast"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Blast\" and \"Zephyr\" connect in LinkedIn Pinpoint #771?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Zephyr is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Blast"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Zephyr\" the key clue in LinkedIn Pinpoint #771?",
+      "answer": "Zephyr is the turning clue because \"Zephyr\" makes the shared category frame explicit. It also makes Blast read cleanly as \"Blast\". The clues can be misleading because they have multiple possible interpretations, but the answer is clear once the common theme of wind conditions is recognized.",
+      "tiedClue": "Zephyr"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Blast\" fit the same category as \"Zephyr\" in LinkedIn Pinpoint #771?",
+      "answer": "\"Blast\" reads as \"Blast\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Blast"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Blast",
+      "Zephyr",
+      "Gale",
+      "Gust",
+      "Breeze"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Blast\" and \"Zephyr\" can look like they belong to different categories at first",
+      "\"Zephyr\" anchors a shared category board with one concrete theme",
+      "Use \"Zephyr\" to re-check \"Blast\" under a shared category board with one concrete theme",
+      "From the Old English word 'blæst', meaning 'a blowing'",
+      "From the Greek word 'ζέφυρος', meaning 'west wind'"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "weather forecasts",
+      "whyPlausible": "The clues are more specific to wind conditions than general weather forecasts.",
+      "whyRejected": "Once Zephyr lands, the final answer explains the board more cleanly than weather forecasts."
+    },
+    {
+      "label": "storm types",
+      "whyPlausible": "storm types feels plausible early on, but it falls apart once zephyr demands a more exact reading.",
+      "whyRejected": "Once Zephyr lands, the final answer explains the board more cleanly than storm types."
+    }
+  ],
+  "setValidationSummary": "Gale, Gust, Breeze keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Terms for wind conditions (varying duration and intensity)"
+}
