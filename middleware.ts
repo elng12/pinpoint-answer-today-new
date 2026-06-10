@@ -12,7 +12,7 @@ const DETAIL_WITHOUT_SLASH = /^\/linkedin-pinpoint-answers\/[^/]+$/;
 const DETAIL_WITH_SLASH = /^\/linkedin-pinpoint-answers\/[^/]+\/$/;
 const SOCIAL_IMAGE_PATHS =
   /^\/(?:(?:en|pt-BR|fr|de)\/)?(?:linkedin-pinpoint-answers\/[^/]+\/opengraph-image|opengraph-image)\/?$/;
-const ARCHIVE_CANONICAL_PATH = "/linkedin-pinpoint-answers";
+const ARCHIVE_CANONICAL_PATH = "/puzzles";
 const ARCHIVE_PATH = /^\/(?:(?:en|pt-BR|fr|de)\/)?(?:puzzles|linkedin-pinpoint-answers)\/?$/;
 const LOCALE_DETAIL_PATH = /^\/(?:en|pt-BR|fr|de)\/linkedin-pinpoint-answers\/([^/]+)\/?$/;
 const LEGACY_NUMBER_ALIAS_PATHS = [

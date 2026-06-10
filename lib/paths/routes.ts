@@ -1,7 +1,7 @@
 export const routes = {
   home: "/",
   preview: "/next-pinpoint-preview",
-  archive: "/linkedin-pinpoint-answers",
+  archive: "/puzzles",
   detail: (slug: string) => `/linkedin-pinpoint-answers/${slug}/`,
   about: "/about-us",
   contact: "/contact-us",

@@ -131,25 +131,25 @@ const nextConfig: NextConfig = {
       // Locale archive alias: /en/linkedin-pinpoint-answers → canonical archive
       {
         source: `/${locale}/linkedin-pinpoint-answers`,
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true,
       },
       // Legacy singular answer archive: /en/linkedin-pinpoint-answer → canonical archive
       {
         source: `/${locale}/linkedin-pinpoint-answer`,
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true,
       },
       // Legacy archive shortcut: /en/linkedin-pinpoint → canonical archive
       {
         source: `/${locale}/linkedin-pinpoint`,
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true,
       },
       // Legacy connectors archive root has no dedicated page in the new site
       {
         source: `/${locale}/puzzles/connectors`,
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true,
       },
       // Dynamic today alias keeps its own stable URL, then resolves to the current live detail page.
@@ -161,7 +161,7 @@ const nextConfig: NextConfig = {
       // Legacy pinpoint archive alias
       {
         source: `/${locale}/pinpoint/archive`,
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true,
       },
       // Preview page
@@ -215,25 +215,25 @@ const nextConfig: NextConfig = {
       // Legacy connectors archive root → canonical archive
       {
         source: "/puzzles/connectors",
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true as const,
       },
       // Old LinkedIn archive shortcut → canonical archive
       {
         source: "/linkedin-pinpoint",
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true as const,
       },
       // Legacy singular answer archive → canonical archive
       {
         source: "/linkedin-pinpoint-answer",
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true as const,
       },
       // Old pinpoint archive shortcut → archive
       {
         source: "/pinpoint/archive",
-        destination: "/linkedin-pinpoint-answers",
+        destination: "/puzzles",
         permanent: true as const,
       },
       // Feedback → contact-us (top-level)

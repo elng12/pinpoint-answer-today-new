@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
   revalidateTag("registry");
   revalidatePath("/");
   revalidatePath(routes.archive);
-  revalidatePath("/puzzles");
+  revalidatePath("/linkedin-pinpoint-answers");
   revalidatePath("/pinpoint/today");
   revalidatePath("/next-pinpoint-preview");
   revalidatePath("/sitemap.xml");

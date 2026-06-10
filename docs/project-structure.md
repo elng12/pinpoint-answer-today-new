@@ -46,7 +46,7 @@ flowchart LR
 | `/` | `app/(site)/(home)/page.tsx` | Homepage with current puzzle, next preview, recent answers, and home structured data. |
 | `/linkedin-pinpoint-answers/[slug]/` | `app/(detail)/linkedin-pinpoint-answers/[slug]/page.tsx` | Canonical puzzle detail page with answer reveal, analysis, metadata, and structured data. |
 | `/linkedin-pinpoint-answers/[slug]/opengraph-image` | `app/(detail)/linkedin-pinpoint-answers/[slug]/opengraph-image/route.tsx` | Dynamic social image for a puzzle detail page. |
-| `/puzzles` | `app/(site)/puzzles/page.tsx` | Archive/search page with complete server-rendered puzzle links. |
+| `/puzzles` | `app/(site)/puzzles/page.tsx` | Canonical archive/search page with complete server-rendered puzzle links. |
 | `/next-pinpoint-preview` | `app/(site)/next-pinpoint-preview/page.tsx` | Next puzzle preview, countdown, and playbook content. |
 | `/about-us` | `app/(site)/about-us/page.tsx` | Trust/about page. |
 | `/contact-us` | `app/(site)/contact-us/page.tsx` | Contact and feedback page. |
@@ -59,7 +59,7 @@ flowchart LR
 
 These routes preserve SEO value and validate old URLs before redirecting:
 
-- `app/(site)/linkedin-pinpoint-answers/page.tsx`
+- `app/(site)/linkedin-pinpoint-answers/page.tsx` - legacy archive alias redirect back to `/puzzles`
 - `app/(site)/pinpoint/[value]/page.tsx`
 - `app/(site)/pinpoint/archive/page.tsx`
 - `app/(site)/puzzles/[puzzleNumber]/page.tsx`

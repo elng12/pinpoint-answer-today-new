@@ -13,6 +13,7 @@
 - 首页 `/`
 - 预告页 `/next-pinpoint-preview`
 - 归档页 `/puzzles`
+- 旧归档别名 `/linkedin-pinpoint-answers`（会跳回 `/puzzles`）
 - 详情页 `/linkedin-pinpoint-answers/[slug]`
 - 站点 API：`/api/puzzles/summary`、`/api/health`、`/api/pinpoint/today`
 - 基础信任页
