@@ -55,7 +55,7 @@ export function HomeRevealSection({
       <div className="home-reveal-heading">
         <p className="eyebrow">Reveal</p>
         <h2 className="home-reveal-title">
-          {`Today's LinkedIn Pinpoint Answer (${puzzle.isoDate})`}
+          {`Today's LinkedIn Pinpoint answer and clue explanation (${puzzle.isoDate})`}
         </h2>
         <p className="copy home-reveal-description">
           {`Pinpoint #${puzzle.number} is ready. Reveal the final answer when you want it, or check the clues first.`}

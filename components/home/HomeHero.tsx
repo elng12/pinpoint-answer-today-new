@@ -32,7 +32,7 @@ export function HomeHero({
         <p className="home-hero-kicker">Today&apos;s LinkedIn Pinpoint answer, updated daily</p>
         <h1 className="home-hero-title">{`LinkedIn Pinpoint Answer Today #${puzzle.number}`}</h1>
         <p className="home-hero-subtitle">
-          {`Get the final answer for Pinpoint #${puzzle.number}, then check how each clue proves it.`}
+          Your daily LinkedIn Pinpoint answer hub. Check today&apos;s clues, reveal the answer, and read the full explanation.
         </p>
         <p className="home-hero-clue-summary">
           <span>Today&apos;s Pinpoint clues:</span> {clueList}
@@ -42,7 +42,7 @@ export function HomeHero({
             Reveal today&apos;s Pinpoint answer
           </a>
           <Link className="button-secondary home-hero-secondary" href={routes.detail(puzzle.slug)} prefetch={false}>
-            Full breakdown
+            Read today&apos;s full answer
           </Link>
           <a className="button-secondary home-hero-tertiary" href="https://www.linkedin.com/games/" rel="noopener noreferrer" target="_blank">
             Play LinkedIn Pinpoint
