@@ -1,0 +1,235 @@
+{
+  "puzzleNumber": 772,
+  "slug": "pinpoint-answer-772",
+  "publishDate": "2026-06-11",
+  "isoDate": "2026-06-11",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Photos",
+    "Receipts",
+    "Cash",
+    "Emergency contact info",
+    "Identification card"
+  ],
+  "answer": "Things found in a wallet or purse",
+  "category": "Things found in a wallet or purse",
+  "wordHints": {
+    "Photos": "Because people often carry photos of loved ones in their wallet.",
+    "Receipts": "Because receipts are often temporarily stored in a wallet until they can be filed or discarded.",
+    "Cash": "Because cash is commonly carried in a wallet for everyday purchases.",
+    "Emergency contact info": "Because having emergency contact information in a wallet can be crucial in case of an accident.",
+    "Identification card": "Because identification cards, like driver's licenses, are typically carried in a wallet for proof of identity."
+  },
+  "spoilerHints": {
+    "Photos": "Photos should be tested as part of things found in a wallet or purse, not as a standalone reference.",
+    "Receipts": "Keep Receipts in mind, then see whether Emergency contact info supports the same answer.",
+    "Cash": "Cash works best after the board narrows toward things found in a wallet or purse.",
+    "Emergency contact info": "Emergency contact info is the clue that makes things found in a wallet or purse concrete enough to test across the full board.",
+    "Identification card": "Keep Identification card in mind, then see whether Emergency contact info supports the same answer."
+  },
+  "articleBlocks": [
+    "I first thought these clues might be related to travel, given the variety of items listed.",
+    "However, upon closer inspection, not all of these items are exclusively used for travel.",
+    "The clue that really changed my perspective was the emergency contact info.",
+    "This made me realize that all of these items could realistically be found in a wallet or purse.",
+    "Considering each clue in turn, photos are often carried in wallets as keepsakes.",
+    "Receipts are temporarily stored in wallets until they can be filed or discarded.",
+    "Cash is commonly carried in wallets for everyday purchases.",
+    "Having emergency contact information in a wallet is crucial in case of an accident.",
+    "Identification cards, like driver's licenses, are typically carried in wallets for proof of identity.",
+    "The turning point for me was recognizing that all these items serve a practical purpose when carried together in a wallet or purse.",
+    "This realization made the puzzle's answer clear: things found in a wallet or purse.",
+    "Looking back, the difficulty of the puzzle stemmed from the clues being common items that could fit into several categories, not just the one that ultimately made sense."
+  ],
+  "solutionNarrative": [
+    "Photos and Receipts first pulled me toward travel gear, so that was the first path I tested. It held together for a moment, but emergency contact info never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating emergency contact info as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue travel gear; I was checking whether Photos and Receipts could survive the same tighter read.",
+    "Then I used Cash, Emergency contact info, and Identification card as the confirmation round. Cash, Emergency contact info, and Identification card stayed inside the real category, so the answer felt earned instead of guessed. The answer was Things found in a wallet or purse."
+  ],
+  "lessons": [
+    {
+      "title": "\"Photos\" and \"Receipts\" can look like they belong to different categories at first",
+      "body": "\"Photos\" and \"Receipts\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Emergency contact info\" anchors a shared category board with one concrete theme",
+      "body": "Emergency contact info organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Emergency contact info\" to re-check \"Photos\" under a shared category board with one concrete theme",
+      "body": "Use \"Emergency contact info\" to re-check \"Photos\". A strong Pinpoint answer should make the early clues and later clues fit one reading."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Photos\" and \"Receipts\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Photos",
+        "examplePhrase": "Personal photos",
+        "connectionExplained": "Because people often carry photos of loved ones in their wallet."
+      },
+      {
+        "clue": "Receipts",
+        "examplePhrase": "Sales receipts",
+        "connectionExplained": "Because receipts are often temporarily stored in a wallet until they can be filed or discarded."
+      },
+      {
+        "clue": "Cash",
+        "examplePhrase": "Cash",
+        "connectionExplained": "Because cash is commonly carried in a wallet for everyday purchases."
+      },
+      {
+        "clue": "Emergency contact info",
+        "examplePhrase": "Contact information",
+        "connectionExplained": "Because having emergency contact information in a wallet can be crucial in case of an accident."
+      },
+      {
+        "clue": "Identification card",
+        "examplePhrase": "ID card",
+        "connectionExplained": "Because identification cards, like driver's licenses, are typically carried in a wallet for proof of identity."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Photos\" and \"Receipts\" in LinkedIn Pinpoint #772?",
+      "answer": "The answer is \"Things found in a wallet or purse\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Photos\" and \"Receipts\" connect in LinkedIn Pinpoint #772?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Emergency contact info is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Emergency contact info\" the key clue in LinkedIn Pinpoint #772?",
+      "answer": "Emergency contact info is the turning clue because \"Contact information\" makes the shared category frame explicit. It also makes Photos read cleanly as \"Personal photos\". The puzzle feels tricky because the clues are common items that could fit into several categories, but the correct category is not immediately obvious."
+    },
+    {
+      "question": "How does \"Photos\" fit the same category as \"Emergency contact info\" in LinkedIn Pinpoint #772?",
+      "answer": "\"Photos\" reads as \"Personal photos\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Photos, Receipts, and Cash do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"travel gear\" can feel plausible before one clue makes the answer feel concrete. Emergency contact info is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "travel gear",
+      "desk accessories"
+    ],
+    "whyFalseStartPlausible": [
+      "Because while some of these items could be on a desk, they don't all fit together as office supplies.",
+      "desk accessories feels plausible early on, but it falls apart once emergency contact info demands a more exact reading."
+    ],
+    "breakingClue": "Emergency contact info",
+    "pivot": "The solve turned when I stopped treating emergency contact info as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue travel gear; I was checking whether Photos and Receipts could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Photos, Receipts, and Cash stop feeling disconnected and start looking like they belong together. Once emergency contact info is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle feels tricky because the clues are common items that could fit into several categories, but the correct category is not immediately obvious."
+  },
+  "turningPoint": {
+    "clue": "Emergency contact info",
+    "whyDecisive": "The emergency contact info clue made me realize these are all things we might carry in a wallet or purse.",
+    "whatChangedAfterIt": "Once Emergency contact info landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Photos",
+      "surfaceMisread": "travel gear",
+      "resolvedPhraseOrMember": "Personal photos",
+      "nonObviousWhy": "Because people often carry photos of loved ones in their wallet.",
+      "searchableContext": "From the Greek word for light, as in the process of photography",
+      "phraseExample": "From the Greek word for light, as in the process of photography"
+    },
+    {
+      "clue": "Receipts",
+      "surfaceMisread": "travel gear",
+      "resolvedPhraseOrMember": "Sales receipts",
+      "nonObviousWhy": "Because receipts are often temporarily stored in a wallet until they can be filed or discarded.",
+      "searchableContext": "From the Latin word for receive, as in to receive something",
+      "phraseExample": "From the Latin word for receive, as in to receive something"
+    },
+    {
+      "clue": "Cash",
+      "surfaceMisread": "travel gear",
+      "resolvedPhraseOrMember": "Cash",
+      "nonObviousWhy": "Because cash is commonly carried in a wallet for everyday purchases.",
+      "searchableContext": "From the Old French word for case, as in a box to hold money",
+      "phraseExample": "From the Old French word for case, as in a box to hold money"
+    },
+    {
+      "clue": "Emergency contact info",
+      "surfaceMisread": "travel gear",
+      "resolvedPhraseOrMember": "Contact information",
+      "nonObviousWhy": "Because having emergency contact information in a wallet can be crucial in case of an accident.",
+      "searchableContext": "From the Latin words for emerge and contact, as in to get in touch",
+      "phraseExample": "From the Latin words for emerge and contact, as in to get in touch"
+    },
+    {
+      "clue": "Identification card",
+      "surfaceMisread": "travel gear",
+      "resolvedPhraseOrMember": "ID card",
+      "nonObviousWhy": "Because identification cards, like driver's licenses, are typically carried in a wallet for proof of identity.",
+      "searchableContext": "From the Latin word for identity, as in to identify oneself",
+      "phraseExample": "From the Latin word for identity, as in to identify oneself"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Photos\" and \"Receipts\" in LinkedIn Pinpoint #772?",
+      "answer": "The answer is \"Things found in a wallet or purse\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Photos"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Photos\" and \"Receipts\" connect in LinkedIn Pinpoint #772?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Emergency contact info is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Photos"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Emergency contact info\" the key clue in LinkedIn Pinpoint #772?",
+      "answer": "Emergency contact info is the turning clue because \"Contact information\" makes the shared category frame explicit. It also makes Photos read cleanly as \"Personal photos\". The puzzle feels tricky because the clues are common items that could fit into several categories, but the correct category is not immediately obvious.",
+      "tiedClue": "Emergency contact info"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Photos\" fit the same category as \"Emergency contact info\" in LinkedIn Pinpoint #772?",
+      "answer": "\"Photos\" reads as \"Personal photos\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Photos"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Personal photos",
+      "Sales receipts",
+      "Cash",
+      "Contact information",
+      "ID card"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Photos\" and \"Receipts\" can look like they belong to different categories at first",
+      "\"Emergency contact info\" anchors a shared category board with one concrete theme",
+      "Use \"Emergency contact info\" to re-check \"Photos\" under a shared category board with one concrete theme",
+      "From the Greek word for light, as in the process of photography",
+      "From the Latin word for receive, as in to receive something"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "travel gear",
+      "whyPlausible": "Because while some of these items could be on a desk, they don't all fit together as office supplies.",
+      "whyRejected": "Once Emergency contact info lands, the final answer explains the board more cleanly than travel gear."
+    },
+    {
+      "label": "desk accessories",
+      "whyPlausible": "desk accessories feels plausible early on, but it falls apart once emergency contact info demands a more exact reading.",
+      "whyRejected": "Once Emergency contact info lands, the final answer explains the board more cleanly than desk accessories."
+    }
+  ],
+  "setValidationSummary": "Cash, Emergency contact info, Identification card keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things found in a wallet or purse"
+}

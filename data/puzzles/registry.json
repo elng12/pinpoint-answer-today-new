@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 772,
+    "slug": "pinpoint-answer-772",
+    "publishDate": "2026-06-11",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Photos",
+      "Receipts",
+      "Cash",
+      "Emergency contact info",
+      "Identification card"
+    ],
+    "mainAnswer": "Things found in a wallet or purse",
+    "category": "Things found in a wallet or purse",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Photos, Receipts, Cash do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-06-11T07:11:11.334Z"
+  },
+  {
     "puzzleNumber": 771,
     "slug": "pinpoint-answer-771",
     "publishDate": "2026-06-10",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Blast",
@@ -16,7 +35,7 @@
     "category": "Terms for wind conditions (varying duration and intensity)",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Blast, Zephyr, Gale do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-06-10T07:06:30.486Z"
+    "updatedAt": "2026-06-11T07:11:11.334Z"
   },
   {
     "puzzleNumber": 770,
