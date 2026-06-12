@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 773,
+    "slug": "pinpoint-answer-773",
+    "publishDate": "2026-06-12",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Natural",
+      "Standing",
+      "Purchase",
+      "Pecking",
+      "Out of"
+    ],
+    "mainAnswer": "Words that come before “order”",
+    "category": "Words that come before “order”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Natural, Standing, Purchase, Pecking, Out of - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-12T07:10:49.311Z"
+  },
+  {
     "puzzleNumber": 772,
     "slug": "pinpoint-answer-772",
     "publishDate": "2026-06-11",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Photos",
@@ -16,7 +35,7 @@
     "category": "Things found in a wallet or purse",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Photos, Receipts, Cash do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-06-11T07:11:11.334Z"
+    "updatedAt": "2026-06-12T07:10:49.311Z"
   },
   {
     "puzzleNumber": 771,
