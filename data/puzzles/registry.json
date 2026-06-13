@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 774,
+    "slug": "pinpoint-answer-774",
+    "publishDate": "2026-06-13",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Clouds",
+      "Parasols",
+      "Tinted glass",
+      "Dark curtains",
+      "The Moon during some eclipses"
+    ],
+    "mainAnswer": "Things that block sunlight",
+    "category": "Things that block sunlight",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Clouds, Parasols, Tinted glass, Dark curtains, The Moon during some eclipses - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-13T07:14:58.975Z"
+  },
+  {
     "puzzleNumber": 773,
     "slug": "pinpoint-answer-773",
     "publishDate": "2026-06-12",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Natural",
@@ -16,7 +35,7 @@
     "category": "Words that come before “order”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Natural, Standing, Purchase, Pecking, Out of - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-12T07:10:49.311Z"
+    "updatedAt": "2026-06-13T07:14:58.975Z"
   },
   {
     "puzzleNumber": 772,
