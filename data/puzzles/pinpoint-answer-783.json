@@ -1,0 +1,229 @@
+{
+  "puzzleNumber": 783,
+  "slug": "pinpoint-answer-783",
+  "publishDate": "2026-06-22",
+  "isoDate": "2026-06-22",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Stern",
+    "Right",
+    "Forward",
+    "Up",
+    "Northeast"
+  ],
+  "answer": "Words to indicate directions",
+  "category": "Words to indicate directions",
+  "wordHints": {
+    "Stern": "Stern can indicate the rear direction on a vessel.",
+    "Right": "Right is a basic direction or side.",
+    "Forward": "Forward indicates movement or orientation ahead.",
+    "Up": "Up is a vertical direction.",
+    "Northeast": "Northeast is a compass direction."
+  },
+  "spoilerHints": {
+    "Stern": "Stern should be tested as part of words to indicate directions, not as a standalone reference.",
+    "Right": "Keep Right in mind, then see whether Northeast supports the same answer.",
+    "Forward": "Forward works best after the board narrows toward words to indicate directions.",
+    "Up": "Up should be tested as part of words to indicate directions, not as a standalone reference.",
+    "Northeast": "Northeast is the clue that makes words to indicate directions concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like navigation terms than the real category.",
+    "Stern pushed me in that direction immediately.",
+    "Right kept that theory alive for a moment, but northeast still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Northeast made me stop thinking about navigation terms and start thinking about the real category.",
+    "Stern made sense as a toward the stern.",
+    "Right fit once I read it through the answer.",
+    "The answer was Words to indicate directions.",
+    "Up and Northeast then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Stern and Right too literally and drifted toward navigation terms. Stern could be read as \"toward the stern\", while Right could be read as \"right\", so the board still felt open instead of solved.",
+    "Northeast changed the direction because \"northeast\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"toward the stern\", \"right\", \"forward\", and \"Up\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Stern, Right, Forward, Up, and Northeast.",
+    "That left very little room for the earlier false start. The answer was \"Words to indicate directions\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Stern\" and \"Right\" can look like they belong to different categories at first",
+      "body": "\"Stern\" and \"Right\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Northeast\" anchors a shared category board with one concrete theme",
+      "body": "Northeast organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Northeast\" to re-check \"Stern\" under a shared category board with one concrete theme",
+      "body": "Check whether odd words are direction cues, not just places or objects."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on words",
+    "fastStrategy": "\"Stern\" and \"Right\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Stern",
+        "examplePhrase": "toward the stern",
+        "connectionExplained": "Stern can indicate the rear direction on a vessel."
+      },
+      {
+        "clue": "Right",
+        "examplePhrase": "right",
+        "connectionExplained": "Right is a basic direction or side."
+      },
+      {
+        "clue": "Forward",
+        "examplePhrase": "forward",
+        "connectionExplained": "Forward indicates movement or orientation ahead."
+      },
+      {
+        "clue": "Up",
+        "examplePhrase": "Up",
+        "connectionExplained": "Up is a vertical direction."
+      },
+      {
+        "clue": "Northeast",
+        "examplePhrase": "northeast",
+        "connectionExplained": "Northeast is a compass direction."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Stern\" and \"Right\" in LinkedIn Pinpoint #783?",
+      "answer": "The answer is \"Words to indicate directions\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Stern\" and \"Right\" connect in LinkedIn Pinpoint #783?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Northeast is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Northeast\" the key clue in LinkedIn Pinpoint #783?",
+      "answer": "Northeast is the turning clue because \"northeast\" makes the shared category frame explicit. It also makes Stern read cleanly as \"toward the stern\". The words vary from plain directions to domain-specific orientation, so the answer is broader than compass points."
+    },
+    {
+      "question": "How does \"Stern\" fit the same category as \"Northeast\" in LinkedIn Pinpoint #783?",
+      "answer": "\"Stern\" reads as \"toward the stern\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Stern, Right, and Forward do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"navigation terms\" can feel plausible before one clue makes the answer feel concrete. Northeast is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "navigation terms",
+      "position words"
+    ],
+    "whyFalseStartPlausible": [
+      "Stern and Northeast sound nautical or map-like, but Right, Forward, and Up make the wider direction-word category clearer.",
+      "position words feels plausible early on, but it falls apart once northeast demands a more exact reading."
+    ],
+    "breakingClue": "Northeast",
+    "pivot": "I first read Stern and Right too literally and drifted toward navigation terms. Stern could be read as \"toward the stern\", while Right could be read as \"right\", so the board still felt open instead of solved.\n\nNortheast changed the direction because \"northeast\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"toward the stern\", \"right\", \"forward\", and \"Up\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Stern, Right, Forward, Up, and Northeast.\n\nThat left very little room for the earlier false start. The answer was \"Words to indicate directions\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Stern, Right, and Forward stop feeling disconnected and start looking like they belong together. Once northeast is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The words vary from plain directions to domain-specific orientation, so the answer is broader than compass points."
+  },
+  "turningPoint": {
+    "clue": "Northeast",
+    "whyDecisive": "Northeast confirms the direction-word frame instead of a location-only guess.",
+    "whatChangedAfterIt": "Once Northeast landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Stern",
+      "resolvedPhraseOrMember": "toward the stern",
+      "nonObviousWhy": "Stern can indicate the rear direction on a vessel.",
+      "phraseExample": "toward the stern",
+      "searchableContext": "toward the stern"
+    },
+    {
+      "clue": "Right",
+      "resolvedPhraseOrMember": "right",
+    "nonObviousWhy": "Right is a basic direction or side, so it fits the orientation reading once the board is treated as direction words instead of unrelated positions.",
+      "phraseExample": "right",
+      "searchableContext": "right"
+    },
+    {
+      "clue": "Forward",
+      "resolvedPhraseOrMember": "forward",
+    "nonObviousWhy": "Forward indicates movement or orientation ahead, which keeps it in the same direction-word family as Right, Up, and Northeast.",
+      "phraseExample": "forward",
+      "searchableContext": "forward"
+    },
+    {
+      "clue": "Up",
+      "resolvedPhraseOrMember": "Up",
+    "nonObviousWhy": "Up is the vertical direction clue, and it helps show that the answer is broader than only compass directions or navigation terms.",
+      "phraseExample": "Up",
+      "searchableContext": "Up"
+    },
+    {
+      "clue": "Northeast",
+      "resolvedPhraseOrMember": "northeast",
+    "nonObviousWhy": "Northeast is a direct compass direction, so it confirms the direction-word frame after the shorter clues could still feel too general.",
+      "phraseExample": "northeast",
+      "searchableContext": "northeast"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Stern\" and \"Right\" in LinkedIn Pinpoint #783?",
+      "answer": "The answer is \"Words to indicate directions\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Stern"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Stern\" and \"Right\" connect in LinkedIn Pinpoint #783?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Northeast is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Stern"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Northeast\" the key clue in LinkedIn Pinpoint #783?",
+      "answer": "Northeast is the turning clue because \"northeast\" makes the shared category frame explicit. It also makes Stern read cleanly as \"toward the stern\". The words vary from plain directions to domain-specific orientation, so the answer is broader than compass points.",
+      "tiedClue": "Northeast"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Stern\" fit the same category as \"Northeast\" in LinkedIn Pinpoint #783?",
+      "answer": "\"Stern\" reads as \"toward the stern\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Stern"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "toward the stern",
+      "right",
+      "forward",
+      "Up",
+      "northeast"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Stern\" and \"Right\" can look like they belong to different categories at first",
+      "\"Northeast\" anchors a shared category board with one concrete theme",
+      "Use \"Northeast\" to re-check \"Stern\" under a shared category board with one concrete theme",
+      "toward the stern",
+      "right"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "navigation terms",
+      "whyPlausible": "Stern and Northeast sound nautical or map-like, but Right, Forward, and Up make the wider direction-word category clearer.",
+      "whyRejected": "Once Northeast lands, the final answer explains the board more cleanly than navigation terms."
+    },
+    {
+      "label": "position words",
+      "whyPlausible": "position words feels plausible early on, but it falls apart once northeast demands a more exact reading.",
+      "whyRejected": "Once Northeast lands, the final answer explains the board more cleanly than position words."
+    }
+  ],
+  "setValidationSummary": "Forward, Up, Northeast keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Words to indicate directions"
+}

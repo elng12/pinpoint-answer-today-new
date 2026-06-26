@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 777,
+  "slug": "pinpoint-answer-777",
+  "publishDate": "2026-06-16",
+  "isoDate": "2026-06-16",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Wall",
+    "Volley",
+    "Offside",
+    "Yellow card",
+    "Bicycle kick"
+  ],
+  "answer": "Terms associated with football",
+  "category": "Terms associated with football",
+  "wordHints": {
+    "Wall": "A wall is formed by defenders during some football free kicks.",
+    "Volley": "A volley is a football shot or pass hit before the ball touches the ground.",
+    "Offside": "Offside is one of football's best-known positioning rules.",
+    "Yellow card": "A yellow card is a caution shown by a football referee.",
+    "Bicycle kick": "A bicycle kick is an acrobatic football move."
+  },
+  "spoilerHints": {
+    "Wall": "Wall should be tested as part of terms associated with football, not as a standalone reference.",
+    "Volley": "Keep Volley in mind, then see whether Bicycle kick supports the same answer.",
+    "Offside": "Offside works best after the board narrows toward terms associated with football.",
+    "Yellow card": "Yellow card should be tested as part of terms associated with football, not as a standalone reference.",
+    "Bicycle kick": "Bicycle kick is the clue that makes terms associated with football concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like general sports words than the real category.",
+    "Wall pushed me in that direction immediately.",
+    "Volley kept that theory alive for a moment, but yellow card still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Yellow card made me stop thinking about general sports words and start thinking about the real category.",
+    "Wall made sense as a defensive wall.",
+    "Volley fit once I read it through the answer.",
+    "The answer was Terms associated with football.",
+    "Yellow card and Bicycle kick then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Wall and Volley too literally and drifted toward general sports words. Wall could be read as \"defensive wall\", while Volley could be read as \"volley\", so the board still felt open instead of solved.",
+    "Yellow card changed the direction because \"yellow card\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"defensive wall\", \"volley\", \"offside\", and \"bicycle kick\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Wall, Volley, Offside, Yellow card, and Bicycle kick.",
+    "That left very little room for the earlier false start. The answer was \"Terms associated with football\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Wall\" and \"Volley\" can look like they belong to different categories at first",
+      "body": "\"Wall\" and \"Volley\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Yellow card\" anchors football vocabulary used in match play and rules",
+      "body": "Yellow card organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Yellow card\" to re-check \"Wall\" under football vocabulary used in match play and rules",
+      "body": "Use rule-specific clues to separate one sport from a broad sports guess."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on terms",
+    "fastStrategy": "\"Wall\" and \"Volley\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Wall",
+        "examplePhrase": "defensive wall",
+        "connectionExplained": "A wall is formed by defenders during some football free kicks."
+      },
+      {
+        "clue": "Volley",
+        "examplePhrase": "volley",
+        "connectionExplained": "A volley is a football shot or pass hit before the ball touches the ground."
+      },
+      {
+        "clue": "Offside",
+        "examplePhrase": "offside",
+        "connectionExplained": "Offside is one of football's best-known positioning rules."
+      },
+      {
+        "clue": "Yellow card",
+        "examplePhrase": "yellow card",
+        "connectionExplained": "A yellow card is a caution shown by a football referee."
+      },
+      {
+        "clue": "Bicycle kick",
+        "examplePhrase": "bicycle kick",
+        "connectionExplained": "A bicycle kick is an acrobatic football move."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Wall\" and \"Volley\" in LinkedIn Pinpoint #777?",
+      "answer": "The answer is \"Terms associated with football\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Wall\" and \"Volley\" connect in LinkedIn Pinpoint #777?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Yellow card is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Yellow card\" the key clue in LinkedIn Pinpoint #777?",
+      "answer": "Yellow card is the turning clue because \"yellow card\" makes the shared category frame explicit. It also makes Wall read cleanly as \"defensive wall\". The puzzle stays moderate because two clues are broad, then the rule and card clues lock the sport."
+    },
+    {
+      "question": "How does \"Wall\" fit the same category as \"Yellow card\" in LinkedIn Pinpoint #777?",
+      "answer": "\"Wall\" reads as \"defensive wall\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Wall, Volley, and Offside do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"general sports words\" can feel plausible before one clue makes the answer feel concrete. Yellow card is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "general sports words",
+      "things involving kicking"
+    ],
+    "whyFalseStartPlausible": [
+      "Volley and wall can appear in other sports, but Offside, Yellow card, and Bicycle kick narrow the board to football.",
+      "things involving kicking feels plausible early on, but it falls apart once yellow card demands a more exact reading."
+    ],
+    "breakingClue": "Yellow card",
+    "pivot": "I first read Wall and Volley too literally and drifted toward general sports words. Wall could be read as \"defensive wall\", while Volley could be read as \"volley\", so the board still felt open instead of solved.\n\nYellow card changed the direction because \"yellow card\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"defensive wall\", \"volley\", \"offside\", and \"bicycle kick\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Wall, Volley, Offside, Yellow card, and Bicycle kick.\n\nThat left very little room for the earlier false start. The answer was \"Terms associated with football\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Wall, Volley, and Offside stop feeling disconnected and start looking like they belong together. Once yellow card is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle stays moderate because two clues are broad, then the rule and card clues lock the sport."
+  },
+  "turningPoint": {
+    "clue": "Yellow card",
+    "whyDecisive": "Yellow card makes the football rules frame much clearer.",
+    "whatChangedAfterIt": "Once Yellow card landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Wall",
+      "surfaceMisread": "general sports words",
+      "resolvedPhraseOrMember": "defensive wall",
+      "nonObviousWhy": "A wall is formed by defenders during some football free kicks.",
+      "phraseExample": "defensive wall",
+      "searchableContext": "defensive wall"
+    },
+    {
+      "clue": "Volley",
+      "surfaceMisread": "general sports words",
+      "resolvedPhraseOrMember": "volley",
+      "nonObviousWhy": "A volley is a football shot or pass hit before the ball touches the ground.",
+      "phraseExample": "volley",
+      "searchableContext": "volley"
+    },
+    {
+      "clue": "Offside",
+      "surfaceMisread": "general sports words",
+      "resolvedPhraseOrMember": "offside",
+      "nonObviousWhy": "Offside is one of football's best-known positioning rules.",
+      "phraseExample": "offside",
+      "searchableContext": "offside"
+    },
+    {
+      "clue": "Yellow card",
+      "surfaceMisread": "general sports words",
+      "resolvedPhraseOrMember": "yellow card",
+      "nonObviousWhy": "A yellow card is a caution shown by a football referee.",
+      "phraseExample": "yellow card",
+      "searchableContext": "yellow card"
+    },
+    {
+      "clue": "Bicycle kick",
+      "surfaceMisread": "general sports words",
+      "resolvedPhraseOrMember": "bicycle kick",
+      "nonObviousWhy": "A bicycle kick is an acrobatic football move.",
+      "phraseExample": "bicycle kick",
+      "searchableContext": "bicycle kick"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Wall\" and \"Volley\" in LinkedIn Pinpoint #777?",
+      "answer": "The answer is \"Terms associated with football\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Wall"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Wall\" and \"Volley\" connect in LinkedIn Pinpoint #777?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Yellow card is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Wall"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Yellow card\" the key clue in LinkedIn Pinpoint #777?",
+      "answer": "Yellow card is the turning clue because \"yellow card\" makes the shared category frame explicit. It also makes Wall read cleanly as \"defensive wall\". The puzzle stays moderate because two clues are broad, then the rule and card clues lock the sport.",
+      "tiedClue": "Yellow card"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Wall\" fit the same category as \"Yellow card\" in LinkedIn Pinpoint #777?",
+      "answer": "\"Wall\" reads as \"defensive wall\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Wall"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "football vocabulary used in match play and rules",
+    "relatedEntities": [
+      "defensive wall",
+      "volley",
+      "offside",
+      "yellow card",
+      "bicycle kick"
+    ],
+    "doNotRepeatPatterns": [
+      "football vocabulary used in match play and rules",
+      "\"Wall\" and \"Volley\" can look like they belong to different categories at first",
+      "\"Yellow card\" anchors football vocabulary used in match play and rules",
+      "Use \"Yellow card\" to re-check \"Wall\" under football vocabulary used in match play and rules",
+      "defensive wall",
+      "volley"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "general sports words",
+      "whyPlausible": "Volley and wall can appear in other sports, but Offside, Yellow card, and Bicycle kick narrow the board to football.",
+      "whyRejected": "Once Yellow card lands, the final answer explains the board more cleanly than general sports words."
+    },
+    {
+      "label": "things involving kicking",
+      "whyPlausible": "things involving kicking feels plausible early on, but it falls apart once yellow card demands a more exact reading.",
+      "whyRejected": "Once Yellow card lands, the final answer explains the board more cleanly than things involving kicking."
+    }
+  ],
+  "setValidationSummary": "Offside, Yellow card, Bicycle kick keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Terms associated with football"
+}

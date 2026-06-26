@@ -53,7 +53,7 @@ const publishedContractBacklogLimits = new Map(
     "overview.tooShort": 75,
     "solutionEmergence.genericPivot": 8,
     "lessons.genericTitle": 1,
-    "answer.overused": 50,
+    "answer.overused": 49,
     "solutionEmergence.tooShort": 41,
     "summary.answerSpoiler": 38,
     "sections.sharedPhrasing": 24,
@@ -76,20 +76,7 @@ const genericSpoilerHintPatterns = [
 const publicDetailStates = new Set(["published", "fallback_full"]);
 const publicRegistryStatuses = new Set(["live", "archived"]);
 const recentContinuityWindow = 30;
-const allowedRecentContinuityGaps = new Map([
-  [775, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [776, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [777, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [778, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [779, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [780, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [781, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [782, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [783, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [784, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [785, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-  [786, "2026-06-26 emergency continuity override while restoring post-774 publish chain"],
-]);
+const allowedRecentContinuityGaps = new Map<number, string>([]);
 
 function countWords(value: string) {
   return value.trim().split(/\s+/).filter(Boolean).length;

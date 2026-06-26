@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 781,
+  "slug": "pinpoint-answer-781",
+  "publishDate": "2026-06-20",
+  "isoDate": "2026-06-20",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Stairs",
+    "Trees",
+    "Mountains",
+    "The career ladder",
+    "Indoor rock walls"
+  ],
+  "answer": "Things people can climb",
+  "category": "Things people can climb",
+  "wordHints": {
+    "Stairs": "People climb stairs to go upward between levels.",
+    "Trees": "Climbing trees is a direct physical example.",
+    "Mountains": "Mountains are classic things people climb.",
+    "The career ladder": "The career ladder is a figurative thing people climb by advancing at work.",
+    "Indoor rock walls": "Indoor rock walls are built specifically for climbing practice."
+  },
+  "spoilerHints": {
+    "Stairs": "Stairs should be tested as part of things people can climb, not as a standalone reference.",
+    "Trees": "Keep Trees in mind, then see whether The career ladder supports the same answer.",
+    "Mountains": "Mountains works best after the board narrows toward things people can climb.",
+    "The career ladder": "The career ladder is the clue that makes things people can climb concrete enough to test across the full board.",
+    "Indoor rock walls": "Keep Indoor rock walls in mind, then see whether The career ladder supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, this looked more like outdoor activities than the real category.",
+    "Stairs pushed me in that direction immediately.",
+    "Trees kept that theory alive for a moment, but the career ladder still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then The career ladder made me stop thinking about outdoor activities and start thinking about the real category.",
+    "Stairs made sense as a climb stairs.",
+    "Trees made sense as a climb trees.",
+    "The answer was Things people can climb.",
+    "The career ladder and Indoor rock walls then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Stairs and Trees too literally and drifted toward outdoor activities. Stairs could be read as \"climb stairs\", while Trees could be read as \"climb trees\", so the board still felt open instead of solved.",
+    "The career ladder changed the direction because \"climb the career ladder\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"climb stairs\", \"climb trees\", \"climb mountains\", and \"climb indoor rock walls\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Stairs, Trees, Mountains, The career ladder, and Indoor rock walls.",
+    "That left very little room for the earlier false start. The answer was \"Things people can climb\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Stairs\" and \"Trees\" can look like they belong to different categories at first",
+      "body": "\"Stairs\" and \"Trees\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"The career ladder\" anchors a shared category board with one concrete theme",
+      "body": "The career ladder organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"The career ladder\" to re-check \"Stairs\" under a shared category board with one concrete theme",
+      "body": "Do not ignore metaphorical clues when the literal examples already share an action."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Stairs\" and \"Trees\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Stairs",
+        "examplePhrase": "climb stairs",
+        "connectionExplained": "People climb stairs to go upward between levels."
+      },
+      {
+        "clue": "Trees",
+        "examplePhrase": "climb trees",
+        "connectionExplained": "Climbing trees is a direct physical example."
+      },
+      {
+        "clue": "Mountains",
+        "examplePhrase": "climb mountains",
+        "connectionExplained": "Mountains are classic things people climb."
+      },
+      {
+        "clue": "The career ladder",
+        "examplePhrase": "climb the career ladder",
+        "connectionExplained": "The career ladder is a figurative thing people climb by advancing at work."
+      },
+      {
+        "clue": "Indoor rock walls",
+        "examplePhrase": "climb indoor rock walls",
+        "connectionExplained": "Indoor rock walls are built specifically for climbing practice."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Stairs\" and \"Trees\" in LinkedIn Pinpoint #781?",
+      "answer": "The answer is \"Things people can climb\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Stairs\" and \"Trees\" connect in LinkedIn Pinpoint #781?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. The career ladder is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"The career ladder\" the key clue in LinkedIn Pinpoint #781?",
+      "answer": "The career ladder is the turning clue because \"climb the career ladder\" makes the shared category frame explicit. It also makes Stairs read cleanly as \"climb stairs\". The mix of literal and figurative examples makes the category broader than a pure outdoor clue set."
+    },
+    {
+      "question": "How does \"Stairs\" fit the same category as \"The career ladder\" in LinkedIn Pinpoint #781?",
+      "answer": "\"Stairs\" reads as \"climb stairs\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Stairs, Trees, and Mountains do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"outdoor activities\" can feel plausible before one clue makes the answer feel concrete. The career ladder is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "outdoor activities",
+      "physical structures"
+    ],
+    "whyFalseStartPlausible": [
+      "Trees and Mountains point outdoors, but Stairs, indoor rock walls, and the career ladder widen the clue to climbable things.",
+      "physical structures feels plausible early on, but it falls apart once the career ladder demands a more exact reading."
+    ],
+    "breakingClue": "The career ladder",
+    "pivot": "I first read Stairs and Trees too literally and drifted toward outdoor activities. Stairs could be read as \"climb stairs\", while Trees could be read as \"climb trees\", so the board still felt open instead of solved.\n\nThe career ladder changed the direction because \"climb the career ladder\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"climb stairs\", \"climb trees\", \"climb mountains\", and \"climb indoor rock walls\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Stairs, Trees, Mountains, The career ladder, and Indoor rock walls.\n\nThat left very little room for the earlier false start. The answer was \"Things people can climb\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Stairs, Trees, and Mountains stop feeling disconnected and start looking like they belong together. Once the career ladder is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The mix of literal and figurative examples makes the category broader than a pure outdoor clue set."
+  },
+  "turningPoint": {
+    "clue": "The career ladder",
+    "whyDecisive": "The career ladder shows the board includes figurative climbing too.",
+    "whatChangedAfterIt": "Once The career ladder landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Stairs",
+      "surfaceMisread": "outdoor activities",
+      "resolvedPhraseOrMember": "climb stairs",
+      "nonObviousWhy": "People climb stairs to go upward between levels.",
+      "phraseExample": "climb stairs",
+      "searchableContext": "climb stairs"
+    },
+    {
+      "clue": "Trees",
+      "surfaceMisread": "outdoor activities",
+      "resolvedPhraseOrMember": "climb trees",
+    "nonObviousWhy": "Trees are a direct physical example because people can climb them, which keeps the board anchored before the figurative career-ladder clue appears.",
+      "phraseExample": "climb trees",
+      "searchableContext": "climb trees"
+    },
+    {
+      "clue": "Mountains",
+      "surfaceMisread": "outdoor activities",
+      "resolvedPhraseOrMember": "climb mountains",
+    "nonObviousWhy": "Mountains are classic climbable natural features, so they connect with stairs and trees through the same human action rather than a single location.",
+      "phraseExample": "climb mountains",
+      "searchableContext": "climb mountains"
+    },
+    {
+      "clue": "The career ladder",
+      "surfaceMisread": "outdoor activities",
+      "resolvedPhraseOrMember": "climb the career ladder",
+      "nonObviousWhy": "The career ladder is a figurative thing people climb by advancing at work.",
+      "phraseExample": "climb the career ladder",
+      "searchableContext": "climb the career ladder"
+    },
+    {
+      "clue": "Indoor rock walls",
+      "surfaceMisread": "outdoor activities",
+      "resolvedPhraseOrMember": "climb indoor rock walls",
+      "nonObviousWhy": "Indoor rock walls are built specifically for climbing practice.",
+      "phraseExample": "climb indoor rock walls",
+      "searchableContext": "climb indoor rock walls"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Stairs\" and \"Trees\" in LinkedIn Pinpoint #781?",
+      "answer": "The answer is \"Things people can climb\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Stairs"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Stairs\" and \"Trees\" connect in LinkedIn Pinpoint #781?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. The career ladder is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Stairs"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"The career ladder\" the key clue in LinkedIn Pinpoint #781?",
+      "answer": "The career ladder is the turning clue because \"climb the career ladder\" makes the shared category frame explicit. It also makes Stairs read cleanly as \"climb stairs\". The mix of literal and figurative examples makes the category broader than a pure outdoor clue set.",
+      "tiedClue": "The career ladder"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Stairs\" fit the same category as \"The career ladder\" in LinkedIn Pinpoint #781?",
+      "answer": "\"Stairs\" reads as \"climb stairs\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Stairs"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "climb stairs",
+      "climb trees",
+      "climb mountains",
+      "climb the career ladder",
+      "climb indoor rock walls"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Stairs\" and \"Trees\" can look like they belong to different categories at first",
+      "\"The career ladder\" anchors a shared category board with one concrete theme",
+      "Use \"The career ladder\" to re-check \"Stairs\" under a shared category board with one concrete theme",
+      "climb stairs",
+      "climb trees"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "outdoor activities",
+      "whyPlausible": "Trees and Mountains point outdoors, but Stairs, indoor rock walls, and the career ladder widen the clue to climbable things.",
+      "whyRejected": "Once The career ladder lands, the final answer explains the board more cleanly than outdoor activities."
+    },
+    {
+      "label": "physical structures",
+      "whyPlausible": "physical structures feels plausible early on, but it falls apart once the career ladder demands a more exact reading.",
+      "whyRejected": "Once The career ladder lands, the final answer explains the board more cleanly than physical structures."
+    }
+  ],
+  "setValidationSummary": "Mountains, The career ladder, Indoor rock walls keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things people can climb"
+}

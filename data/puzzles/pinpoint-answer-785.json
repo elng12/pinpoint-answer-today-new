@@ -1,0 +1,230 @@
+{
+  "puzzleNumber": 785,
+  "slug": "pinpoint-answer-785",
+  "publishDate": "2026-06-24",
+  "isoDate": "2026-06-24",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Tea",
+    "Salad",
+    "Revolution",
+    "Light",
+    "With envy"
+  ],
+  "answer": "Words that come after green",
+  "category": "Words that come after green",
+  "wordHints": {
+    "Tea": "Green tea is a familiar phrase.",
+    "Salad": "Green salad fits the same starting-word pattern.",
+    "Revolution": "Green Revolution is a standard historical and agricultural phrase.",
+    "Light": "Green light is a familiar phrase meaning permission or a traffic signal.",
+    "With envy": "Green with envy is the idiom that confirms the shared starting word."
+  },
+  "spoilerHints": {
+    "Tea": "Try reading Tea as part of a familiar phrase in words that come after green instead of as a standalone word.",
+    "Salad": "Salad works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Revolution": "Look for a natural expression that absorbs Revolution cleanly before locking the board.",
+    "Light": "Try reading Light as part of a familiar phrase in words that come after green instead of as a standalone word.",
+    "With envy": "With envy is the clue that makes the phrase pattern in words that come after green concrete enough to test."
+  },
+  "articleBlocks": [
+    "At first, this looked more like food and color phrases than one repeated-word pattern.",
+    "Tea pushed me in that direction immediately.",
+    "Salad kept that read alive for a moment, but with envy still did not sound right.",
+    "That was the moment the first idea stopped working.",
+    "Then With envy made the missing word much harder to miss.",
+    "Readings like Green tea and Green salad finally sounded exact instead of approximate.",
+    "The answer was Words that come after green.",
+    "Light and With envy then felt like confirmations, not extra mysteries.",
+    "Looking back, the whole pattern feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "Tea and Salad first pulled me toward food and color phrases, so that was the first path I tested. It held together for a moment, but with envy never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let with envy lead instead of treating it like an outlier. I tested Green tea and Green salad in my head, and those readings sounded like ordinary language. That moved me from guessing a topic to checking one repeatable word slot.",
+    "Then I used Revolution, Light, and With envy as the confirmation round. Green revolution, Green light, and Green with envy all sounded like phrases people would actually say, so I was no longer relying on the first pair of clues. The answer was Words that come after green."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Tea\" and \"Salad\"",
+      "body": "\"Tea\" and \"Salad\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"With envy\" changes the green pattern from guess to test",
+      "body": "With envy organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "For Pinpoint 785, the green phrase test has to work five times",
+      "body": "For phrase boards, test both before and after slots before choosing a category."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Tea\" and \"Salad\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Tea",
+        "examplePhrase": "Green tea",
+        "connectionExplained": "Green tea is a familiar phrase."
+      },
+      {
+        "clue": "Salad",
+        "examplePhrase": "Green salad",
+        "connectionExplained": "Green salad fits the same starting-word pattern."
+      },
+      {
+        "clue": "Revolution",
+        "examplePhrase": "Green revolution",
+        "connectionExplained": "Green Revolution is a standard historical and agricultural phrase."
+      },
+      {
+        "clue": "Light",
+        "examplePhrase": "Green light",
+        "connectionExplained": "Green light is a familiar phrase meaning permission or a traffic signal."
+      },
+      {
+        "clue": "With envy",
+        "examplePhrase": "Green with envy",
+        "connectionExplained": "Green with envy is the idiom that confirms the shared starting word."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Tea\" and \"Salad\" in LinkedIn Pinpoint #785?",
+      "answer": "The answer is \"Words that come after green\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Tea\" and \"Salad\" connect in LinkedIn Pinpoint #785?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
+    },
+    {
+      "question": "Why is \"With envy\" the key clue in LinkedIn Pinpoint #785?",
+      "answer": "With envy is the turning clue because \"Green with envy\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Green tea and Green salad. The clue set jumps from food to history to idioms, so the repeated starting word is the clean path."
+    },
+    {
+      "question": "Why does \"Tea\" also work in LinkedIn Pinpoint #785?",
+      "answer": "\"Tea\" fits because \"Green tea\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"With envy\" opened."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Tea, Salad, and Revolution do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"environmental topics\" can feel plausible before the missing word finally shows itself. With envy is the clue that finally makes the missing word visible.",
+    "falseStarts": [
+      "environmental topics"
+    ],
+    "whyFalseStartPlausible": [
+      "Tea and Salad can sound food-related, but Revolution, Light, and With envy show one shared starting word."
+    ],
+    "breakingClue": "With envy",
+    "pivot": "The solve turned when I let with envy lead instead of treating it like an outlier. I tested Green tea and Green salad in my head, and those readings sounded like ordinary language. That moved me from guessing a topic to checking one repeatable word slot.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Green tea, Green salad, and Green revolution stop feeling loose and start sounding exact. Once with envy makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The clue set jumps from food to history to idioms, so the repeated starting word is the clean path."
+  },
+  "turningPoint": {
+    "clue": "With envy",
+    "whyDecisive": "With envy makes the green phrase slot hard to miss.",
+    "whatChangedAfterIt": "Once With envy made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
+  },
+  "clueRows": [
+    {
+      "clue": "Tea",
+      "surfaceMisread": "food and color phrases",
+      "resolvedPhraseOrMember": "Green tea",
+    "nonObviousWhy": "Tea could start as a simple food-and-drink clue, but green tea is a standard phrase, so it confirms the shared starting-word pattern.",
+      "phraseExample": "Green tea",
+      "searchableContext": "Green tea"
+    },
+    {
+      "clue": "Salad",
+      "surfaceMisread": "food and color phrases",
+      "resolvedPhraseOrMember": "Green salad",
+    "nonObviousWhy": "Salad stays in the food lane at first, but green salad uses the same starting word as the other clues, so it is not just a broad food match.",
+      "phraseExample": "Green salad",
+      "searchableContext": "Green salad"
+    },
+    {
+      "clue": "Revolution",
+      "surfaceMisread": "food and color phrases",
+      "resolvedPhraseOrMember": "Green revolution",
+      "nonObviousWhy": "Green Revolution is a standard historical and agricultural phrase.",
+      "phraseExample": "Green revolution",
+      "searchableContext": "Green revolution"
+    },
+    {
+      "clue": "Light",
+      "surfaceMisread": "food and color phrases",
+      "resolvedPhraseOrMember": "Green light",
+      "nonObviousWhy": "Green light is a familiar phrase meaning permission or a traffic signal.",
+      "phraseExample": "Green light",
+      "searchableContext": "Green light"
+    },
+    {
+      "clue": "With envy",
+      "surfaceMisread": "food and color phrases",
+      "resolvedPhraseOrMember": "Green with envy",
+      "nonObviousWhy": "Green with envy is the idiom that confirms the shared starting word.",
+      "phraseExample": "Green with envy",
+      "searchableContext": "Green with envy"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Tea\" and \"Salad\" in LinkedIn Pinpoint #785?",
+      "answer": "The answer is \"Words that come after green\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Tea"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Tea\" and \"Salad\" connect in LinkedIn Pinpoint #785?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
+      "tiedClue": "Tea"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"With envy\" the key clue in LinkedIn Pinpoint #785?",
+      "answer": "With envy is the turning clue because \"Green with envy\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Green tea and Green salad. The clue set jumps from food to history to idioms, so the repeated starting word is the clean path.",
+      "tiedClue": "With envy"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "Why does \"Tea\" also work in LinkedIn Pinpoint #785?",
+      "answer": "\"Tea\" fits because \"Green tea\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"With envy\" opened.",
+      "tiedClue": "Tea"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a repeated-word phrase pattern with one missing term",
+    "relatedEntities": [
+      "Green tea",
+      "Green salad",
+      "Green revolution",
+      "Green light",
+      "Green with envy"
+    ],
+    "doNotRepeatPatterns": [
+      "a repeated-word phrase pattern with one missing term",
+      "A false start with \"Tea\" and \"Salad\"",
+      "\"With envy\" changes the green pattern from guess to test",
+      "For Pinpoint 785, the green phrase test has to work five times",
+      "Green tea",
+      "Green salad"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "food and color phrases",
+      "whyPlausible": "Tea and Salad can sound food-related, but Revolution, Light, and With envy show one shared starting word.",
+      "whyRejected": "Once With envy lands, the final answer explains the board more cleanly than food and color phrases."
+    },
+    {
+      "label": "environmental topics",
+      "whyPlausible": "environmental topics feels plausible early on, but it falls apart once with envy demands a more exact reading.",
+      "whyRejected": "Once With envy lands, the final answer explains the board more cleanly than environmental topics."
+    }
+  ],
+  "setValidationSummary": "Revolution, Light, With envy keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}

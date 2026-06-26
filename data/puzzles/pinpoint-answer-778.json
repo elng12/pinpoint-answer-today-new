@@ -1,0 +1,229 @@
+{
+  "puzzleNumber": 778,
+  "slug": "pinpoint-answer-778",
+  "publishDate": "2026-06-17",
+  "isoDate": "2026-06-17",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Gouda",
+    "Frankfurters",
+    "Peking Duck",
+    "Brussels sprouts",
+    "New York Cheesecake"
+  ],
+  "answer": "Foods named for cities",
+  "category": "Foods named for cities",
+  "wordHints": {
+    "Gouda": "Gouda is named after the Dutch city associated with the cheese market.",
+    "Frankfurters": "Frankfurters take their name from Frankfurt.",
+    "Peking Duck": "Peking Duck uses the older English name for Beijing.",
+    "Brussels sprouts": "Brussels sprouts include the city name Brussels.",
+    "New York Cheesecake": "New York Cheesecake is a food name tied directly to New York."
+  },
+  "spoilerHints": {
+    "Gouda": "Gouda should be tested as part of foods named for cities, not as a standalone reference.",
+    "Frankfurters": "Keep Frankfurters in mind, then see whether New York Cheesecake supports the same answer.",
+    "Peking Duck": "Peking Duck works best after the board narrows toward foods named for cities.",
+    "Brussels sprouts": "Brussels sprouts should be tested as part of foods named for cities, not as a standalone reference.",
+    "New York Cheesecake": "New York Cheesecake is the clue that makes foods named for cities concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like european food names than the real category.",
+    "Gouda pushed me in that direction immediately.",
+    "Frankfurters kept that theory alive for a moment, but new York Cheesecake still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then New York Cheesecake made me stop thinking about european food names and start thinking about the real category.",
+    "Gouda fit once I read it through the answer.",
+    "Frankfurters fit once I read it through the answer.",
+    "The answer was Foods named for cities.",
+    "Brussels sprouts and New York Cheesecake then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Gouda and Frankfurters too literally and drifted toward european food names. Gouda could be read as \"Gouda\", while Frankfurters could be read as \"Frankfurters\", so the board still felt open instead of solved.",
+    "New York Cheesecake changed the direction because \"New York Cheesecake\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Gouda\", \"Frankfurters\", \"Peking Duck\", and \"Brussels sprouts\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Gouda, Frankfurters, Peking Duck, Brussels sprouts, and New York Cheesecake.",
+    "That left very little room for the earlier false start. The answer was \"Foods named for cities\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Gouda\" and \"Frankfurters\" can look like they belong to different categories at first",
+      "body": "\"Gouda\" and \"Frankfurters\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"New York Cheesecake\" anchors food names tied to city or place names",
+      "body": "New York Cheesecake organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"New York Cheesecake\" to re-check \"Gouda\" under food names tied to city or place names",
+      "body": "For food boards, check whether names hide cities or older place names."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on foods",
+    "fastStrategy": "\"Gouda\" and \"Frankfurters\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Gouda",
+        "examplePhrase": "Gouda",
+        "connectionExplained": "Gouda is named after the Dutch city associated with the cheese market."
+      },
+      {
+        "clue": "Frankfurters",
+        "examplePhrase": "Frankfurters",
+        "connectionExplained": "Frankfurters take their name from Frankfurt."
+      },
+      {
+        "clue": "Peking Duck",
+        "examplePhrase": "Peking Duck",
+        "connectionExplained": "Peking Duck uses the older English name for Beijing."
+      },
+      {
+        "clue": "Brussels sprouts",
+        "examplePhrase": "Brussels sprouts",
+        "connectionExplained": "Brussels sprouts include the city name Brussels."
+      },
+      {
+        "clue": "New York Cheesecake",
+        "examplePhrase": "New York Cheesecake",
+        "connectionExplained": "New York Cheesecake is a food name tied directly to New York."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Gouda\" and \"Frankfurters\" in LinkedIn Pinpoint #778?",
+      "answer": "The answer is \"Foods named for cities\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Gouda\" and \"Frankfurters\" connect in LinkedIn Pinpoint #778?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. New York Cheesecake is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"New York Cheesecake\" the key clue in LinkedIn Pinpoint #778?",
+      "answer": "New York Cheesecake is the turning clue because \"New York Cheesecake\" makes the shared category frame explicit. It also makes Gouda read cleanly as \"Gouda\". The board looks like regional food trivia until the city-name pattern connects all five examples."
+    },
+    {
+      "question": "How does \"Gouda\" fit the same category as \"New York Cheesecake\" in LinkedIn Pinpoint #778?",
+      "answer": "\"Gouda\" reads as \"Gouda\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Gouda, Frankfurters, and Peking Duck do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"regional foods\" can feel plausible before one clue makes the answer feel concrete. New York Cheesecake is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "regional foods",
+      "european food names"
+    ],
+    "whyFalseStartPlausible": [
+      "Gouda, Frankfurters, and Brussels sprouts point toward Europe, but Peking Duck and New York Cheesecake broaden it to foods named for cities.",
+      "regional foods feels plausible early on, but it falls apart once new York Cheesecake demands a more exact reading."
+    ],
+    "breakingClue": "New York Cheesecake",
+    "pivot": "I first read Gouda and Frankfurters too literally and drifted toward european food names. Gouda could be read as \"Gouda\", while Frankfurters could be read as \"Frankfurters\", so the board still felt open instead of solved.\n\nNew York Cheesecake changed the direction because \"New York Cheesecake\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Gouda\", \"Frankfurters\", \"Peking Duck\", and \"Brussels sprouts\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Gouda, Frankfurters, Peking Duck, Brussels sprouts, and New York Cheesecake.\n\nThat left very little room for the earlier false start. The answer was \"Foods named for cities\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Gouda, Frankfurters, and Peking Duck stop feeling disconnected and start looking like they belong together. Once new York Cheesecake is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board looks like regional food trivia until the city-name pattern connects all five examples."
+  },
+  "turningPoint": {
+    "clue": "New York Cheesecake",
+    "whyDecisive": "New York Cheesecake makes the named-place food pattern obvious.",
+    "whatChangedAfterIt": "Once New York Cheesecake landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Gouda",
+      "resolvedPhraseOrMember": "Gouda",
+      "nonObviousWhy": "Gouda is named after the Dutch city associated with the cheese market.",
+      "phraseExample": "Gouda",
+      "searchableContext": "Gouda"
+    },
+    {
+      "clue": "Frankfurters",
+      "resolvedPhraseOrMember": "Frankfurters",
+    "nonObviousWhy": "Frankfurters take their name from Frankfurt, so the clue fits the city-name food pattern rather than just being a generic sausage clue.",
+      "phraseExample": "Frankfurters",
+      "searchableContext": "Frankfurters"
+    },
+    {
+      "clue": "Peking Duck",
+      "resolvedPhraseOrMember": "Peking Duck",
+      "nonObviousWhy": "Peking Duck uses the older English name for Beijing.",
+      "phraseExample": "Peking Duck",
+      "searchableContext": "Peking Duck"
+    },
+    {
+      "clue": "Brussels sprouts",
+      "resolvedPhraseOrMember": "Brussels sprouts",
+    "nonObviousWhy": "Brussels sprouts include the city name Brussels, which keeps the vegetable clue inside the same named-place food pattern.",
+      "phraseExample": "Brussels sprouts",
+      "searchableContext": "Brussels sprouts"
+    },
+    {
+      "clue": "New York Cheesecake",
+      "resolvedPhraseOrMember": "New York Cheesecake",
+      "nonObviousWhy": "New York Cheesecake is a food name tied directly to New York.",
+      "phraseExample": "New York Cheesecake",
+      "searchableContext": "New York Cheesecake"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Gouda\" and \"Frankfurters\" in LinkedIn Pinpoint #778?",
+      "answer": "The answer is \"Foods named for cities\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Gouda"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Gouda\" and \"Frankfurters\" connect in LinkedIn Pinpoint #778?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. New York Cheesecake is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Gouda"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"New York Cheesecake\" the key clue in LinkedIn Pinpoint #778?",
+      "answer": "New York Cheesecake is the turning clue because \"New York Cheesecake\" makes the shared category frame explicit. It also makes Gouda read cleanly as \"Gouda\". The board looks like regional food trivia until the city-name pattern connects all five examples.",
+      "tiedClue": "New York Cheesecake"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Gouda\" fit the same category as \"New York Cheesecake\" in LinkedIn Pinpoint #778?",
+      "answer": "\"Gouda\" reads as \"Gouda\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Gouda"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "food names tied to city or place names",
+    "relatedEntities": [
+      "Gouda",
+      "Frankfurters",
+      "Peking Duck",
+      "Brussels sprouts",
+      "New York Cheesecake"
+    ],
+    "doNotRepeatPatterns": [
+      "food names tied to city or place names",
+      "\"Gouda\" and \"Frankfurters\" can look like they belong to different categories at first",
+      "\"New York Cheesecake\" anchors food names tied to city or place names",
+      "Use \"New York Cheesecake\" to re-check \"Gouda\" under food names tied to city or place names",
+      "Gouda",
+      "Frankfurters"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "european food names",
+      "whyPlausible": "Gouda, Frankfurters, and Brussels sprouts point toward Europe, but Peking Duck and New York Cheesecake broaden it to foods named for cities.",
+      "whyRejected": "Once New York Cheesecake lands, the final answer explains the board more cleanly than european food names."
+    },
+    {
+      "label": "regional foods",
+      "whyPlausible": "regional foods feels plausible early on, but it falls apart once new York Cheesecake demands a more exact reading.",
+      "whyRejected": "Once New York Cheesecake lands, the final answer explains the board more cleanly than regional foods."
+    }
+  ],
+  "setValidationSummary": "Peking Duck, Brussels sprouts, New York Cheesecake keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Foods named for cities"
+}

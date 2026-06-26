@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 784,
+  "slug": "pinpoint-answer-784",
+  "publishDate": "2026-06-23",
+  "isoDate": "2026-06-23",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Point",
+    "Tangent",
+    "Plane",
+    "Perimeter",
+    "Polygon"
+  ],
+  "answer": "Geometry terms",
+  "category": "Geometry terms",
+  "wordHints": {
+    "Point": "A point is a basic object in geometry.",
+    "Tangent": "A tangent is a geometry term for a line or curve touching at a point.",
+    "Plane": "A plane is a flat two-dimensional surface in geometry.",
+    "Perimeter": "Perimeter is the distance around a geometric figure.",
+    "Polygon": "A polygon is a closed shape made of straight sides."
+  },
+  "spoilerHints": {
+    "Point": "Point should be tested as part of geometry terms, not as a standalone reference.",
+    "Tangent": "Keep Tangent in mind, then see whether Perimeter supports the same answer.",
+    "Plane": "Plane works best after the board narrows toward geometry terms.",
+    "Perimeter": "Perimeter is the clue that makes geometry terms concrete enough to test across the full board.",
+    "Polygon": "Keep Polygon in mind, then see whether Perimeter supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, this looked more like shape-related words than the real category.",
+    "Point pushed me in that direction immediately.",
+    "Tangent kept that theory alive for a moment, but polygon still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Polygon made me stop thinking about shape-related words and start thinking about the real category.",
+    "Point fit once I read it through the answer.",
+    "Tangent fit once I read it through the answer.",
+    "The answer was Geometry terms.",
+    "Perimeter and Polygon then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Point and Tangent too literally and drifted toward shape-related words. Point could be read as \"point\", while Tangent could be read as \"tangent\", so the board still felt open instead of solved.",
+    "Polygon changed the direction because \"polygon\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"point\", \"tangent\", \"plane\", and \"perimeter\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Point, Tangent, Plane, Perimeter, and Polygon.",
+    "That left very little room for the earlier false start. The answer was \"Geometry terms\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Point\" and \"Tangent\" can look like they belong to different categories at first",
+      "body": "\"Point\" and \"Tangent\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Polygon\" anchors standard vocabulary from geometry and spatial math",
+      "body": "Polygon organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Polygon\" to re-check \"Point\" under standard vocabulary from geometry and spatial math",
+      "body": "When math-looking words vary, test the most precise math branch that fits all five."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on geometry",
+    "fastStrategy": "\"Point\" and \"Tangent\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Point",
+        "examplePhrase": "point",
+        "connectionExplained": "A point is a basic object in geometry."
+      },
+      {
+        "clue": "Tangent",
+        "examplePhrase": "tangent",
+        "connectionExplained": "A tangent is a geometry term for a line or curve touching at a point."
+      },
+      {
+        "clue": "Plane",
+        "examplePhrase": "plane",
+        "connectionExplained": "A plane is a flat two-dimensional surface in geometry."
+      },
+      {
+        "clue": "Perimeter",
+        "examplePhrase": "perimeter",
+        "connectionExplained": "Perimeter is the distance around a geometric figure."
+      },
+      {
+        "clue": "Polygon",
+        "examplePhrase": "polygon",
+        "connectionExplained": "A polygon is a closed shape made of straight sides."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Point\" and \"Tangent\" in LinkedIn Pinpoint #784?",
+      "answer": "The answer is \"Geometry terms\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Point\" and \"Tangent\" connect in LinkedIn Pinpoint #784?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Polygon is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Polygon\" the key clue in LinkedIn Pinpoint #784?",
+      "answer": "Polygon is the turning clue because \"polygon\" makes the shared category frame explicit. It also makes Point read cleanly as \"point\". The category is straightforward once Polygon appears, but Plane and Tangent can pull attention elsewhere first."
+    },
+    {
+      "question": "How does \"Point\" fit the same category as \"Polygon\" in LinkedIn Pinpoint #784?",
+      "answer": "\"Point\" reads as \"point\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Point, Tangent, and Plane do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"math words\" can feel plausible before one clue makes the answer feel concrete. Polygon is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "math words",
+      "shape-related words"
+    ],
+    "whyFalseStartPlausible": [
+      "Point and Polygon suggest shapes, but Tangent, Plane, and Perimeter make the full set geometry vocabulary.",
+      "math words feels plausible early on, but it falls apart once polygon demands a more exact reading."
+    ],
+    "breakingClue": "Polygon",
+    "pivot": "I first read Point and Tangent too literally and drifted toward shape-related words. Point could be read as \"point\", while Tangent could be read as \"tangent\", so the board still felt open instead of solved.\n\nPolygon changed the direction because \"polygon\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"point\", \"tangent\", \"plane\", and \"perimeter\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Point, Tangent, Plane, Perimeter, and Polygon.\n\nThat left very little room for the earlier false start. The answer was \"Geometry terms\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Point, Tangent, and Plane stop feeling disconnected and start looking like they belong together. Once polygon is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The category is straightforward once Polygon appears, but Plane and Tangent can pull attention elsewhere first."
+  },
+  "turningPoint": {
+    "clue": "Polygon",
+    "whyDecisive": "Polygon makes the geometry category concrete because it is a precise shape term, which pulls Point, Tangent, Plane, and Perimeter into the same math frame.",
+    "whatChangedAfterIt": "Once Polygon landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Point",
+      "surfaceMisread": "shape-related words",
+      "resolvedPhraseOrMember": "point",
+      "nonObviousWhy": "A point is a basic object in geometry.",
+      "phraseExample": "point",
+      "searchableContext": "point"
+    },
+    {
+      "clue": "Tangent",
+      "surfaceMisread": "shape-related words",
+      "resolvedPhraseOrMember": "tangent",
+      "nonObviousWhy": "A tangent is a geometry term for a line or curve touching at a point.",
+      "phraseExample": "tangent",
+      "searchableContext": "tangent"
+    },
+    {
+      "clue": "Plane",
+      "surfaceMisread": "shape-related words",
+      "resolvedPhraseOrMember": "plane",
+      "nonObviousWhy": "A plane is a flat two-dimensional surface in geometry.",
+      "phraseExample": "plane",
+      "searchableContext": "plane"
+    },
+    {
+      "clue": "Perimeter",
+      "surfaceMisread": "shape-related words",
+      "resolvedPhraseOrMember": "perimeter",
+      "nonObviousWhy": "Perimeter is the distance around a geometric figure.",
+      "phraseExample": "perimeter",
+      "searchableContext": "perimeter"
+    },
+    {
+      "clue": "Polygon",
+      "surfaceMisread": "shape-related words",
+      "resolvedPhraseOrMember": "polygon",
+      "nonObviousWhy": "A polygon is a closed shape made of straight sides.",
+      "phraseExample": "polygon",
+      "searchableContext": "polygon"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Point\" and \"Tangent\" in LinkedIn Pinpoint #784?",
+      "answer": "The answer is \"Geometry terms\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Point"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Point\" and \"Tangent\" connect in LinkedIn Pinpoint #784?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Polygon is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Point"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Polygon\" the key clue in LinkedIn Pinpoint #784?",
+      "answer": "Polygon is the turning clue because \"polygon\" makes the shared category frame explicit. It also makes Point read cleanly as \"point\". The category is straightforward once Polygon appears, but Plane and Tangent can pull attention elsewhere first.",
+      "tiedClue": "Polygon"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Point\" fit the same category as \"Polygon\" in LinkedIn Pinpoint #784?",
+      "answer": "\"Point\" reads as \"point\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Point"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "standard vocabulary from geometry and spatial math",
+    "relatedEntities": [
+      "point",
+      "tangent",
+      "plane",
+      "perimeter",
+      "polygon"
+    ],
+    "doNotRepeatPatterns": [
+      "standard vocabulary from geometry and spatial math",
+      "\"Point\" and \"Tangent\" can look like they belong to different categories at first",
+      "\"Polygon\" anchors standard vocabulary from geometry and spatial math",
+      "Use \"Polygon\" to re-check \"Point\" under standard vocabulary from geometry and spatial math",
+      "point",
+      "tangent"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "shape-related words",
+      "whyPlausible": "Point and Polygon suggest shapes, but Tangent, Plane, and Perimeter make the full set geometry vocabulary.",
+      "whyRejected": "Once Polygon lands, the final answer explains the board more cleanly than shape-related words."
+    },
+    {
+      "label": "math words",
+      "whyPlausible": "math words feels plausible early on, but it falls apart once polygon demands a more exact reading.",
+      "whyRejected": "Once Polygon lands, the final answer explains the board more cleanly than math words."
+    }
+  ],
+  "setValidationSummary": "Plane, Perimeter, Polygon keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Geometry terms"
+}

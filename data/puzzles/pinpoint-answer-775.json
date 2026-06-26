@@ -1,0 +1,229 @@
+{
+  "puzzleNumber": 775,
+  "slug": "pinpoint-answer-775",
+  "publishDate": "2026-06-14",
+  "isoDate": "2026-06-14",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Streak",
+    "Operate",
+    "Campaign (for office)",
+    "Scoring unit (cricket+baseball)",
+    "Move swiftly on foot"
+  ],
+  "answer": "Different meanings of run",
+  "category": "Different meanings of run",
+  "wordHints": {
+    "Streak": "A streak can be called a run, as in a run of wins or lucky outcomes.",
+    "Operate": "To run something can mean to operate it, manage it, or keep it working.",
+    "Campaign (for office)": "A political campaign is commonly described as a run for office.",
+    "Scoring unit (cricket+baseball)": "A run is a scoring unit in both cricket and baseball.",
+    "Move swiftly on foot": "To run is also the plain verb for moving quickly on foot."
+  },
+  "spoilerHints": {
+    "Streak": "Streak should be tested as part of different meanings of run, not as a standalone reference.",
+    "Operate": "Keep Operate in mind, then see whether Scoring unit (cricket+baseball) supports the same answer.",
+    "Campaign (for office)": "Campaign (for office) works best after the board narrows toward different meanings of run.",
+    "Scoring unit (cricket+baseball)": "Scoring unit (cricket+baseball) is the clue that makes different meanings of run concrete enough to test across the full board.",
+    "Move swiftly on foot": "Keep Move swiftly on foot in mind, then see whether Scoring unit (cricket+baseball) supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, this looked more like sports-only terms than the real category.",
+    "Streak pushed me in that direction immediately.",
+    "Operate kept that theory alive for a moment, but campaign (for office) still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Campaign (for office) made me stop thinking about sports-only terms and start thinking about the real category.",
+    "Streak fit once I read it through the answer.",
+    "Operate fit once I read it through the answer.",
+    "The answer was Different meanings of run.",
+    "Scoring unit (cricket+baseball) and Move swiftly on foot then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Streak and Operate too literally and drifted toward sports-only terms. Streak could be read as \"Streak\", while Operate could be read as \"Operate\", so the board still felt open instead of solved.",
+    "Campaign (for office) changed the direction because \"run for office\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Streak\", \"Operate\", \"a run in cricket or baseball\", and \"run on foot\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Streak, Operate, Campaign (for office), Scoring unit (cricket+baseball), and Move swiftly on foot.",
+    "That left very little room for the earlier false start. The answer was \"Different meanings of run\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Streak\" and \"Operate\" can look like they belong to different categories at first",
+      "body": "\"Streak\" and \"Operate\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Campaign (for office)\" anchors a shared category board with one concrete theme",
+      "body": "Campaign (for office) organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Campaign (for office)\" to re-check \"Streak\" under a shared category board with one concrete theme",
+      "body": "When clues point in different directions, test whether one word has several meanings."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on different",
+    "fastStrategy": "\"Streak\" and \"Operate\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Streak",
+        "examplePhrase": "Streak",
+        "connectionExplained": "A streak can be called a run, as in a run of wins or lucky outcomes."
+      },
+      {
+        "clue": "Operate",
+        "examplePhrase": "Operate",
+        "connectionExplained": "To run something can mean to operate it, manage it, or keep it working."
+      },
+      {
+        "clue": "Campaign (for office)",
+        "examplePhrase": "run for office",
+        "connectionExplained": "A political campaign is commonly described as a run for office."
+      },
+      {
+        "clue": "Scoring unit (cricket+baseball)",
+        "examplePhrase": "a run in cricket or baseball",
+        "connectionExplained": "A run is a scoring unit in both cricket and baseball."
+      },
+      {
+        "clue": "Move swiftly on foot",
+        "examplePhrase": "run on foot",
+        "connectionExplained": "To run is also the plain verb for moving quickly on foot."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Streak\" and \"Operate\" in LinkedIn Pinpoint #775?",
+      "answer": "The answer is \"Different meanings of run\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Streak\" and \"Operate\" connect in LinkedIn Pinpoint #775?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Campaign (for office) is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Campaign (for office)\" the key clue in LinkedIn Pinpoint #775?",
+      "answer": "Campaign (for office) is the turning clue because \"run for office\" makes the shared category frame explicit. It also makes Streak read cleanly as \"Streak\". This board is tricky because it asks for one word with several meanings, not one narrow topic."
+    },
+    {
+      "question": "How does \"Streak\" fit the same category as \"Campaign (for office)\" in LinkedIn Pinpoint #775?",
+      "answer": "\"Streak\" reads as \"Streak\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Streak, Operate, and Campaign (for office) do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"sports-only terms\" can feel plausible before one clue makes the answer feel concrete. Campaign (for office) is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "sports-only terms",
+      "movement verbs"
+    ],
+    "whyFalseStartPlausible": [
+      "Scoring unit and move swiftly on foot can both sound athletic, but Operate and Campaign point to a broader word with multiple meanings.",
+      "movement verbs feels plausible early on, but it falls apart once campaign (for office) demands a more exact reading."
+    ],
+    "breakingClue": "Campaign (for office)",
+    "pivot": "I first read Streak and Operate too literally and drifted toward sports-only terms. Streak could be read as \"Streak\", while Operate could be read as \"Operate\", so the board still felt open instead of solved.\n\nCampaign (for office) changed the direction because \"run for office\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Streak\", \"Operate\", \"a run in cricket or baseball\", and \"run on foot\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Streak, Operate, Campaign (for office), Scoring unit (cricket+baseball), and Move swiftly on foot.\n\nThat left very little room for the earlier false start. The answer was \"Different meanings of run\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Streak, Operate, and Campaign (for office) stop feeling disconnected and start looking like they belong together. Once campaign (for office) is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. This board is tricky because it asks for one word with several meanings, not one narrow topic."
+  },
+  "turningPoint": {
+    "clue": "Campaign (for office)",
+    "whyDecisive": "Campaign (for office) makes the shared word clear because people run for office.",
+    "whatChangedAfterIt": "Once Campaign (for office) landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Streak",
+      "resolvedPhraseOrMember": "Streak",
+      "nonObviousWhy": "A streak can be called a run, as in a run of wins or lucky outcomes.",
+      "phraseExample": "Streak",
+      "searchableContext": "Streak"
+    },
+    {
+      "clue": "Operate",
+      "resolvedPhraseOrMember": "Operate",
+      "nonObviousWhy": "To run something can mean to operate it, manage it, or keep it working.",
+      "phraseExample": "Operate",
+      "searchableContext": "Operate"
+    },
+    {
+      "clue": "Campaign (for office)",
+      "resolvedPhraseOrMember": "run for office",
+      "nonObviousWhy": "A political campaign is commonly described as a run for office.",
+      "phraseExample": "run for office",
+      "searchableContext": "run for office"
+    },
+    {
+      "clue": "Scoring unit (cricket+baseball)",
+      "resolvedPhraseOrMember": "a run in cricket or baseball",
+      "nonObviousWhy": "A run is a scoring unit in both cricket and baseball.",
+      "phraseExample": "a run in cricket or baseball",
+      "searchableContext": "a run in cricket or baseball"
+    },
+    {
+      "clue": "Move swiftly on foot",
+      "resolvedPhraseOrMember": "run on foot",
+      "nonObviousWhy": "To run is also the plain verb for moving quickly on foot.",
+      "phraseExample": "run on foot",
+      "searchableContext": "run on foot"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Streak\" and \"Operate\" in LinkedIn Pinpoint #775?",
+      "answer": "The answer is \"Different meanings of run\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Streak"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Streak\" and \"Operate\" connect in LinkedIn Pinpoint #775?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Campaign (for office) is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Streak"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Campaign (for office)\" the key clue in LinkedIn Pinpoint #775?",
+      "answer": "Campaign (for office) is the turning clue because \"run for office\" makes the shared category frame explicit. It also makes Streak read cleanly as \"Streak\". This board is tricky because it asks for one word with several meanings, not one narrow topic.",
+      "tiedClue": "Campaign (for office)"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Streak\" fit the same category as \"Campaign (for office)\" in LinkedIn Pinpoint #775?",
+      "answer": "\"Streak\" reads as \"Streak\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Streak"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Streak",
+      "Operate",
+      "run for office",
+      "a run in cricket or baseball",
+      "run on foot"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Streak\" and \"Operate\" can look like they belong to different categories at first",
+      "\"Campaign (for office)\" anchors a shared category board with one concrete theme",
+      "Use \"Campaign (for office)\" to re-check \"Streak\" under a shared category board with one concrete theme",
+      "Streak",
+      "Operate"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "sports-only terms",
+      "whyPlausible": "Scoring unit and move swiftly on foot can both sound athletic, but Operate and Campaign point to a broader word with multiple meanings.",
+      "whyRejected": "Once Campaign (for office) lands, the final answer explains the board more cleanly than sports-only terms."
+    },
+    {
+      "label": "movement verbs",
+      "whyPlausible": "movement verbs feels plausible early on, but it falls apart once campaign (for office) demands a more exact reading.",
+      "whyRejected": "Once Campaign (for office) lands, the final answer explains the board more cleanly than movement verbs."
+    }
+  ],
+  "setValidationSummary": "Campaign (for office), Scoring unit (cricket+baseball), Move swiftly on foot keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Different meanings of run"
+}

@@ -1,0 +1,230 @@
+{
+  "puzzleNumber": 780,
+  "slug": "pinpoint-answer-780",
+  "publishDate": "2026-06-19",
+  "isoDate": "2026-06-19",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Bright",
+    "Blind",
+    "Sweet",
+    "Hits the",
+    "X marks the"
+  ],
+  "answer": "Words that come before spot",
+  "category": "Words that come before spot",
+  "wordHints": {
+    "Bright": "A bright spot is a notable good part of a situation.",
+    "Blind": "A blind spot is an area you cannot see or a weakness in awareness.",
+    "Sweet": "A sweet spot is the ideal or most effective point.",
+    "Hits the": "Something that hits the spot is exactly satisfying.",
+    "X marks the": "X marks the spot is the phrase that reveals the shared ending cleanly."
+  },
+  "spoilerHints": {
+    "Bright": "Try reading Bright as part of a familiar phrase in words that come before spot instead of as a standalone word.",
+    "Blind": "Blind works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Sweet": "Look for a natural expression that absorbs Sweet cleanly before locking the board.",
+    "Hits the": "Try reading Hits the as part of a familiar phrase in words that come before spot instead of as a standalone word.",
+    "X marks the": "X marks the is the clue that makes the phrase pattern in words that come before spot concrete enough to test."
+  },
+  "articleBlocks": [
+    "At first, this looked more like positive and negative adjectives than one repeated-word pattern.",
+    "Bright pushed me in that direction immediately.",
+    "Blind kept that read alive for a moment, but x marks the still did not sound right.",
+    "That was the moment the first idea stopped working.",
+    "Then X marks the made the missing word much harder to miss.",
+    "Readings like Bright spot and Blind spot finally sounded exact instead of approximate.",
+    "The answer was Words that come before spot.",
+    "Hits the and X marks the then felt like confirmations, not extra mysteries.",
+    "Looking back, the whole pattern feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "Bright and Blind first pulled me toward positive and negative adjectives, so that was the first path I tested. It held together for a moment, but x marks the never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let x marks the lead instead of treating it like an outlier. I tested Bright spot and Blind spot in my head, and those readings sounded like ordinary language. That moved me from guessing a topic to checking one repeatable word slot.",
+    "Then I used Sweet, Hits the, and X marks the as the confirmation round. Sweet spot, Hits the spot, and X marks the spot all sounded like phrases people would actually say, so I was no longer relying on the first pair of clues. The answer was Words that come before spot."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Bright\" and \"Blind\"",
+      "body": "\"Bright\" and \"Blind\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"X marks the\" changes the spot pattern from guess to test",
+      "body": "X marks the organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "For Pinpoint 780, the spot phrase test has to work five times",
+      "body": "When two clues are phrase fragments, test one shared word at the same slot."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Bright\" and \"Blind\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Bright",
+        "examplePhrase": "Bright spot",
+        "connectionExplained": "A bright spot is a notable good part of a situation."
+      },
+      {
+        "clue": "Blind",
+        "examplePhrase": "Blind spot",
+        "connectionExplained": "A blind spot is an area you cannot see or a weakness in awareness."
+      },
+      {
+        "clue": "Sweet",
+        "examplePhrase": "Sweet spot",
+        "connectionExplained": "A sweet spot is the ideal or most effective point."
+      },
+      {
+        "clue": "Hits the",
+        "examplePhrase": "Hits the spot",
+        "connectionExplained": "Something that hits the spot is exactly satisfying."
+      },
+      {
+        "clue": "X marks the",
+        "examplePhrase": "X marks the spot",
+        "connectionExplained": "X marks the spot is the phrase that reveals the shared ending cleanly."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Bright\" and \"Blind\" in LinkedIn Pinpoint #780?",
+      "answer": "The answer is \"Words that come before spot\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Bright\" and \"Blind\" connect in LinkedIn Pinpoint #780?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
+    },
+    {
+      "question": "Why is \"X marks the\" the key clue in LinkedIn Pinpoint #780?",
+      "answer": "X marks the is the turning clue because \"X marks the spot\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Bright spot and Blind spot. The short clue fragments make the answer harder until the two idiom starters reveal the phrase slot."
+    },
+    {
+      "question": "Why does \"Bright\" also work in LinkedIn Pinpoint #780?",
+      "answer": "\"Bright\" fits because \"Bright spot\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"X marks the\" opened."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Bright, Blind, and Sweet do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"place-related phrases\" can feel plausible before the missing word finally shows itself. X marks the is the clue that finally makes the missing word visible.",
+    "falseStarts": [
+      "place-related phrases"
+    ],
+    "whyFalseStartPlausible": [
+      "Bright, Blind, and Sweet can look like mixed descriptors, but Hits the and X marks the prove a shared phrase ending."
+    ],
+    "breakingClue": "X marks the",
+    "pivot": "The solve turned when I let x marks the lead instead of treating it like an outlier. I tested Bright spot and Blind spot in my head, and those readings sounded like ordinary language. That moved me from guessing a topic to checking one repeatable word slot.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Bright spot, Blind spot, and Sweet spot stop feeling loose and start sounding exact. Once x marks the makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The short clue fragments make the answer harder until the two idiom starters reveal the phrase slot."
+  },
+  "turningPoint": {
+    "clue": "X marks the",
+    "whyDecisive": "X marks the makes the missing ending word very direct.",
+    "whatChangedAfterIt": "Once X marks the made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
+  },
+  "clueRows": [
+    {
+      "clue": "Bright",
+      "surfaceMisread": "positive and negative adjectives",
+      "resolvedPhraseOrMember": "Bright spot",
+      "nonObviousWhy": "A bright spot is a notable good part of a situation.",
+      "phraseExample": "Bright spot",
+      "searchableContext": "Bright spot"
+    },
+    {
+      "clue": "Blind",
+      "surfaceMisread": "positive and negative adjectives",
+      "resolvedPhraseOrMember": "Blind spot",
+      "nonObviousWhy": "A blind spot is an area you cannot see or a weakness in awareness.",
+      "phraseExample": "Blind spot",
+      "searchableContext": "Blind spot"
+    },
+    {
+      "clue": "Sweet",
+      "surfaceMisread": "positive and negative adjectives",
+      "resolvedPhraseOrMember": "Sweet spot",
+      "nonObviousWhy": "A sweet spot is the ideal or most effective point.",
+      "phraseExample": "Sweet spot",
+      "searchableContext": "Sweet spot"
+    },
+    {
+      "clue": "Hits the",
+      "surfaceMisread": "positive and negative adjectives",
+      "resolvedPhraseOrMember": "Hits the spot",
+      "nonObviousWhy": "Something that hits the spot is exactly satisfying.",
+      "phraseExample": "Hits the spot",
+      "searchableContext": "Hits the spot"
+    },
+    {
+      "clue": "X marks the",
+      "surfaceMisread": "positive and negative adjectives",
+      "resolvedPhraseOrMember": "X marks the spot",
+      "nonObviousWhy": "X marks the spot is the phrase that reveals the shared ending cleanly.",
+      "phraseExample": "X marks the spot",
+      "searchableContext": "X marks the spot"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Bright\" and \"Blind\" in LinkedIn Pinpoint #780?",
+      "answer": "The answer is \"Words that come before spot\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Bright"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Bright\" and \"Blind\" connect in LinkedIn Pinpoint #780?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
+      "tiedClue": "Bright"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"X marks the\" the key clue in LinkedIn Pinpoint #780?",
+      "answer": "X marks the is the turning clue because \"X marks the spot\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Bright spot and Blind spot. The short clue fragments make the answer harder until the two idiom starters reveal the phrase slot.",
+      "tiedClue": "X marks the"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "Why does \"Bright\" also work in LinkedIn Pinpoint #780?",
+      "answer": "\"Bright\" fits because \"Bright spot\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"X marks the\" opened.",
+      "tiedClue": "Bright"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a repeated-word phrase pattern with one missing term",
+    "relatedEntities": [
+      "Bright spot",
+      "Blind spot",
+      "Sweet spot",
+      "Hits the spot",
+      "X marks the spot"
+    ],
+    "doNotRepeatPatterns": [
+      "a repeated-word phrase pattern with one missing term",
+      "A false start with \"Bright\" and \"Blind\"",
+      "\"X marks the\" changes the spot pattern from guess to test",
+      "For Pinpoint 780, the spot phrase test has to work five times",
+      "Bright spot",
+      "Blind spot"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "positive and negative adjectives",
+      "whyPlausible": "Bright, Blind, and Sweet can look like mixed descriptors, but Hits the and X marks the prove a shared phrase ending.",
+      "whyRejected": "Once X marks the lands, the final answer explains the board more cleanly than positive and negative adjectives."
+    },
+    {
+      "label": "place-related phrases",
+      "whyPlausible": "place-related phrases feels plausible early on, but it falls apart once x marks the demands a more exact reading.",
+      "whyRejected": "Once X marks the lands, the final answer explains the board more cleanly than place-related phrases."
+    }
+  ],
+  "setValidationSummary": "Sweet, Hits the, X marks the keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}

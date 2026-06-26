@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 779,
+  "slug": "pinpoint-answer-779",
+  "publishDate": "2026-06-18",
+  "isoDate": "2026-06-18",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Angel Falls (in Venezuela)",
+    "Hyperion (redwood tree in US)",
+    "Giraffe (among all land animals)",
+    "Mauna Kea (base to peak)",
+    "Burj Khalifa (Dubai skyscraper)"
+  ],
+  "answer": "Things that are the tallest of their kind",
+  "category": "Things that are the tallest of their kind",
+  "wordHints": {
+    "Angel Falls (in Venezuela)": "Angel Falls is widely known as the world's tallest uninterrupted waterfall.",
+    "Hyperion (redwood tree in US)": "Hyperion is a coast redwood famous for being the tallest known living tree.",
+    "Giraffe (among all land animals)": "The giraffe is the tallest living land animal.",
+    "Mauna Kea (base to peak)": "Measured from base to peak, Mauna Kea is often described as the tallest mountain.",
+    "Burj Khalifa (Dubai skyscraper)": "Burj Khalifa is known as the world's tallest building."
+  },
+  "spoilerHints": {
+    "Angel Falls (in Venezuela)": "Angel Falls (in Venezuela) should be tested as part of things that are the tallest of their kind, not as a standalone reference.",
+    "Hyperion (redwood tree in US)": "Keep Hyperion (redwood tree in US) in mind, then see whether Giraffe (among all land animals) supports the same answer.",
+    "Giraffe (among all land animals)": "Giraffe (among all land animals) is the clue that makes things that are the tallest of their kind concrete enough to test across the full board.",
+    "Mauna Kea (base to peak)": "Mauna Kea (base to peak) should be tested as part of things that are the tallest of their kind, not as a standalone reference.",
+    "Burj Khalifa (Dubai skyscraper)": "Keep Burj Khalifa (Dubai skyscraper) in mind, then see whether Giraffe (among all land animals) supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, this looked more like famous landmarks than the real category.",
+    "Angel Falls (in Venezuela) pushed me in that direction immediately.",
+    "Hyperion (redwood tree in US) kept that theory alive for a moment, but a later clue still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then A later clue made me stop thinking about famous landmarks and start thinking about the real category.",
+    "Angel Falls (in Venezuela) fit once I read it through the answer.",
+    "Hyperion (redwood tree in US) made sense as a tallest tree.",
+    "The answer was Things that are the tallest of their kind.",
+    "Mauna Kea (base to peak) and Burj Khalifa (Dubai skyscraper) then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Angel Falls (in Venezuela) and Hyperion (redwood tree in US) too literally and drifted toward famous landmarks. Angel Falls (in Venezuela) could be read as \"Angel Falls (in Venezuela)\", while Hyperion (redwood tree in US) could be read as \"tallest tree\", so the board still felt open instead of solved.",
+    "Angel Falls (in Venezuela) changed the direction because \"Angel Falls (in Venezuela)\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"tallest tree\", \"tallest land animal\", \"tallest mountain by base-to-peak height\", and \"tallest building\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Angel Falls (in Venezuela), Hyperion (redwood tree in US), Giraffe (among all land animals), Mauna Kea (base to peak), and Burj Khalifa (Dubai skyscraper).",
+    "That left very little room for the earlier false start. The answer was \"Things that are the tallest of their kind\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" can look like they belong to different categories at first",
+      "body": "\"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+    "title": "\"Burj Khalifa\" turns the board into a tallest-in-class test",
+    "body": "Burj Khalifa organizes this board because it points clearly to a tallest-record reading, then lets the earlier clues be re-checked under that same frame."
+    },
+    {
+      "title": "Re-check the full board under record-setting examples known for being tallest in their class",
+      "body": "When clues are famous examples, test whether they share the same record or superlative."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Angel Falls (in Venezuela)",
+        "examplePhrase": "Angel Falls (in Venezuela)",
+        "connectionExplained": "Angel Falls is widely known as the world's tallest uninterrupted waterfall."
+      },
+      {
+        "clue": "Hyperion (redwood tree in US)",
+        "examplePhrase": "tallest tree",
+        "connectionExplained": "Hyperion is a coast redwood famous for being the tallest known living tree."
+      },
+      {
+        "clue": "Giraffe (among all land animals)",
+        "examplePhrase": "tallest land animal",
+        "connectionExplained": "The giraffe is the tallest living land animal."
+      },
+      {
+        "clue": "Mauna Kea (base to peak)",
+        "examplePhrase": "tallest mountain by base-to-peak height",
+        "connectionExplained": "Measured from base to peak, Mauna Kea is often described as the tallest mountain."
+      },
+      {
+        "clue": "Burj Khalifa (Dubai skyscraper)",
+        "examplePhrase": "tallest building",
+        "connectionExplained": "Burj Khalifa is known as the world's tallest building."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" in LinkedIn Pinpoint #779?",
+      "answer": "The answer is \"Things that are the tallest of their kind\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" connect in LinkedIn Pinpoint #779?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. A later clue is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Which clue really unlocks LinkedIn Pinpoint #779?",
+      "answer": "A later clue is the turning clue because it is the first clue that makes the answer feel concrete enough to test across the full board. The examples come from different domains, so the shared record type matters more than the surface topic."
+    },
+    {
+      "question": "How does \"Angel Falls (in Venezuela)\" fit the same category as \"A later clue\" in LinkedIn Pinpoint #779?",
+      "answer": "\"Angel Falls (in Venezuela)\" reads as \"Angel Falls (in Venezuela)\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Angel Falls (in Venezuela), Hyperion (redwood tree in US), and Giraffe (among all land animals) do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"famous landmarks\" can feel plausible before one clue makes the answer feel concrete. A later clue is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "famous landmarks",
+      "geography facts"
+    ],
+    "whyFalseStartPlausible": [
+      "Angel Falls, Mauna Kea, and Burj Khalifa are places, but Hyperion and Giraffe show the real link is tallest-in-class status.",
+      "geography facts feels plausible early on, but it falls apart once a later clue demands a more exact reading."
+    ],
+    "breakingClue": "Burj Khalifa (Dubai skyscraper)",
+    "pivot": "I first read Angel Falls (in Venezuela) and Hyperion (redwood tree in US) too literally and drifted toward famous landmarks. Angel Falls (in Venezuela) could be read as \"Angel Falls (in Venezuela)\", while Hyperion (redwood tree in US) could be read as \"tallest tree\", so the board still felt open instead of solved.\n\nAngel Falls (in Venezuela) changed the direction because \"Angel Falls (in Venezuela)\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"tallest tree\", \"tallest land animal\", \"tallest mountain by base-to-peak height\", and \"tallest building\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Angel Falls (in Venezuela), Hyperion (redwood tree in US), Giraffe (among all land animals), Mauna Kea (base to peak), and Burj Khalifa (Dubai skyscraper).\n\nThat left very little room for the earlier false start. The answer was \"Things that are the tallest of their kind\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Angel Falls (in Venezuela), Hyperion (redwood tree in US), and Giraffe (among all land animals) stop feeling disconnected and start looking like they belong together. Once a later clue is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The examples come from different domains, so the shared record type matters more than the surface topic."
+  },
+  "turningPoint": {
+    "clue": "Burj Khalifa (Dubai skyscraper)",
+    "whyDecisive": "Burj Khalifa makes the tallest-record pattern much easier to trust because it is widely known as the tallest building, which gives the board a clear superlative test.",
+    "whatChangedAfterIt": "Once Burj Khalifa landed, the earlier clues stopped looking like disconnected trivia and started reading as tallest-in-class examples."
+  },
+  "clueRows": [
+    {
+      "clue": "Angel Falls (in Venezuela)",
+      "surfaceMisread": "famous landmarks",
+      "resolvedPhraseOrMember": "Angel Falls (in Venezuela)",
+      "nonObviousWhy": "Angel Falls is widely known as the world's tallest uninterrupted waterfall.",
+      "phraseExample": "Angel Falls (in Venezuela)",
+      "searchableContext": "Angel Falls (in Venezuela)"
+    },
+    {
+      "clue": "Hyperion (redwood tree in US)",
+      "surfaceMisread": "famous landmarks",
+      "resolvedPhraseOrMember": "tallest tree",
+      "nonObviousWhy": "Hyperion is a coast redwood famous for being the tallest known living tree.",
+      "phraseExample": "tallest tree",
+      "searchableContext": "tallest tree"
+    },
+    {
+      "clue": "Giraffe (among all land animals)",
+      "surfaceMisread": "famous landmarks",
+      "resolvedPhraseOrMember": "tallest land animal",
+      "nonObviousWhy": "The giraffe is the tallest living land animal.",
+      "phraseExample": "tallest land animal",
+      "searchableContext": "tallest land animal"
+    },
+    {
+      "clue": "Mauna Kea (base to peak)",
+      "surfaceMisread": "famous landmarks",
+      "resolvedPhraseOrMember": "tallest mountain by base-to-peak height",
+      "nonObviousWhy": "Measured from base to peak, Mauna Kea is often described as the tallest mountain.",
+      "phraseExample": "tallest mountain by base-to-peak height",
+      "searchableContext": "tallest mountain by base-to-peak height"
+    },
+    {
+      "clue": "Burj Khalifa (Dubai skyscraper)",
+      "surfaceMisread": "famous landmarks",
+      "resolvedPhraseOrMember": "tallest building",
+      "nonObviousWhy": "Burj Khalifa is known as the world's tallest building.",
+      "phraseExample": "tallest building",
+      "searchableContext": "tallest building"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" in LinkedIn Pinpoint #779?",
+      "answer": "The answer is \"Things that are the tallest of their kind\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Angel Falls (in Venezuela)"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" connect in LinkedIn Pinpoint #779?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. A later clue is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Angel Falls (in Venezuela)"
+    },
+    {
+      "intentType": "clue_background",
+    "question": "Why does \"Burj Khalifa (Dubai skyscraper)\" unlock LinkedIn Pinpoint #779?",
+    "answer": "Burj Khalifa (Dubai skyscraper) is the turning clue because it makes the tallest-record idea concrete enough to test across the full board. The examples come from different domains, so the shared record type matters more than the surface topic.",
+    "tiedClue": "Burj Khalifa (Dubai skyscraper)"
+    },
+    {
+      "intentType": "solve_strategy",
+    "question": "How does \"Angel Falls (in Venezuela)\" fit the same category as \"Burj Khalifa (Dubai skyscraper)\" in LinkedIn Pinpoint #779?",
+      "answer": "\"Angel Falls (in Venezuela)\" reads as \"Angel Falls (in Venezuela)\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Angel Falls (in Venezuela)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "record-setting examples known for being tallest in their class",
+    "relatedEntities": [
+      "Angel Falls (in Venezuela)",
+      "tallest tree",
+      "tallest land animal",
+      "tallest mountain by base-to-peak height",
+      "tallest building"
+    ],
+    "doNotRepeatPatterns": [
+      "record-setting examples known for being tallest in their class",
+      "\"Angel Falls (in Venezuela)\" and \"Hyperion (redwood tree in US)\" can look like they belong to different categories at first",
+      "The narrowing clue matters more than the loudest clue",
+      "Re-check the full board under record-setting examples known for being tallest in their class",
+      "Angel Falls (in Venezuela)",
+      "tallest tree"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "famous landmarks",
+      "whyPlausible": "Angel Falls, Mauna Kea, and Burj Khalifa are places, but Hyperion and Giraffe show the real link is tallest-in-class status.",
+      "whyRejected": "Once Angel Falls (in Venezuela) lands, the final answer explains the board more cleanly than famous landmarks."
+    },
+    {
+      "label": "geography facts",
+      "whyPlausible": "geography facts feels plausible early on, but it falls apart once a later clue demands a more exact reading.",
+      "whyRejected": "Once Angel Falls (in Venezuela) lands, the final answer explains the board more cleanly than geography facts."
+    }
+  ],
+  "setValidationSummary": "Giraffe (among all land animals), Mauna Kea (base to peak), Burj Khalifa (Dubai skyscraper) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things that are the tallest of their kind"
+}

@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 786,
+  "slug": "pinpoint-answer-786",
+  "publishDate": "2026-06-25",
+  "isoDate": "2026-06-25",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Tanganyika",
+    "Baikal",
+    "Michigan",
+    "Geneva",
+    "Titicaca"
+  ],
+  "answer": "Names of lakes",
+  "category": "Names of lakes",
+  "wordHints": {
+    "Tanganyika": "Tanganyika is a major African lake.",
+    "Baikal": "Baikal is a famous Siberian lake.",
+    "Michigan": "Michigan is one of the Great Lakes.",
+    "Geneva": "Geneva is also the name used for a large Alpine lake.",
+    "Titicaca": "Titicaca is a well-known lake in the Andes region."
+  },
+  "spoilerHints": {
+    "Tanganyika": "Tanganyika should be tested as part of names of lakes, not as a standalone reference.",
+    "Baikal": "Keep Baikal in mind, then see whether Titicaca supports the same answer.",
+    "Michigan": "Michigan works best after the board narrows toward names of lakes.",
+    "Geneva": "Geneva should be tested as part of names of lakes, not as a standalone reference.",
+    "Titicaca": "Titicaca is the clue that makes names of lakes concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like world places than the real category.",
+    "Tanganyika pushed me in that direction immediately.",
+    "Baikal kept that theory alive for a moment, but titicaca still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Titicaca made me stop thinking about world places and start thinking about the real category.",
+    "Tanganyika made sense as Lake Tanganyika.",
+    "Baikal made sense as Lake Baikal.",
+    "The answer was Names of lakes.",
+    "Geneva and Titicaca then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Tanganyika and Baikal too literally and drifted toward world places. Tanganyika could be read as \"Lake Tanganyika\", while Baikal could be read as \"Lake Baikal\", so the board still felt open instead of solved.",
+    "Titicaca changed the direction because \"Lake Titicaca\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Lake Tanganyika\", \"Lake Baikal\", \"Lake Michigan\", and \"Lake Geneva\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Tanganyika, Baikal, Michigan, Geneva, and Titicaca.",
+    "That left very little room for the earlier false start. The answer was \"Names of lakes\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Tanganyika\" and \"Baikal\" can look like they belong to different categories at first",
+      "body": "\"Tanganyika\" and \"Baikal\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Titicaca\" anchors proper names of major lakes around the world",
+      "body": "Titicaca organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Titicaca\" to re-check \"Tanganyika\" under proper names of major lakes around the world",
+      "body": "If every clue is a place name, test whether the same geographic feature word fits all five."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on names",
+    "fastStrategy": "\"Tanganyika\" and \"Baikal\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Tanganyika",
+        "examplePhrase": "Lake Tanganyika",
+        "connectionExplained": "Tanganyika is a major African lake."
+      },
+      {
+        "clue": "Baikal",
+        "examplePhrase": "Lake Baikal",
+        "connectionExplained": "Baikal is a famous Siberian lake."
+      },
+      {
+        "clue": "Michigan",
+        "examplePhrase": "Lake Michigan",
+        "connectionExplained": "Michigan is one of the Great Lakes."
+      },
+      {
+        "clue": "Geneva",
+        "examplePhrase": "Lake Geneva",
+        "connectionExplained": "Geneva is also the name used for a large Alpine lake."
+      },
+      {
+        "clue": "Titicaca",
+        "examplePhrase": "Lake Titicaca",
+        "connectionExplained": "Titicaca is a well-known lake in the Andes region."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Tanganyika\" and \"Baikal\" in LinkedIn Pinpoint #786?",
+      "answer": "The answer is \"Names of lakes\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Tanganyika\" and \"Baikal\" connect in LinkedIn Pinpoint #786?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Titicaca is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Titicaca\" the key clue in LinkedIn Pinpoint #786?",
+      "answer": "Titicaca is the turning clue because \"Lake Titicaca\" makes the shared category frame explicit. It also makes Tanganyika read cleanly as \"Lake Tanganyika\". Several clues are also place names, so the lake reading matters more than geography in general."
+    },
+    {
+      "question": "How does \"Tanganyika\" fit the same category as \"Titicaca\" in LinkedIn Pinpoint #786?",
+      "answer": "\"Tanganyika\" reads as \"Lake Tanganyika\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Tanganyika, Baikal, and Michigan do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"world places\" can feel plausible before one clue makes the answer feel concrete. Titicaca is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "world places",
+      "geography names"
+    ],
+    "whyFalseStartPlausible": [
+      "All five are geographic names, but Tanganyika, Baikal, Michigan, Geneva, and Titicaca specifically work as lake names.",
+      "geography names feels plausible early on, but it falls apart once titicaca demands a more exact reading."
+    ],
+    "breakingClue": "Titicaca",
+    "pivot": "I first read Tanganyika and Baikal too literally and drifted toward world places. Tanganyika could be read as \"Lake Tanganyika\", while Baikal could be read as \"Lake Baikal\", so the board still felt open instead of solved.\n\nTiticaca changed the direction because \"Lake Titicaca\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Lake Tanganyika\", \"Lake Baikal\", \"Lake Michigan\", and \"Lake Geneva\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Tanganyika, Baikal, Michigan, Geneva, and Titicaca.\n\nThat left very little room for the earlier false start. The answer was \"Names of lakes\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Tanganyika, Baikal, and Michigan stop feeling disconnected and start looking like they belong together. Once titicaca is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. Several clues are also place names, so the lake reading matters more than geography in general."
+  },
+  "turningPoint": {
+    "clue": "Titicaca",
+    "whyDecisive": "Titicaca makes the lake-name category easy to confirm.",
+    "whatChangedAfterIt": "Once Titicaca landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Tanganyika",
+      "surfaceMisread": "world places",
+      "resolvedPhraseOrMember": "Lake Tanganyika",
+    "nonObviousWhy": "Tanganyika might read like a broad place name at first, but Lake Tanganyika is a major African lake, so it fits the lake-name set directly.",
+      "phraseExample": "Lake Tanganyika",
+      "searchableContext": "Lake Tanganyika"
+    },
+    {
+      "clue": "Baikal",
+      "surfaceMisread": "world places",
+      "resolvedPhraseOrMember": "Lake Baikal",
+    "nonObviousWhy": "Baikal could look like a regional geography clue, but Lake Baikal is a famous Siberian lake, so the exact lake-name reading works cleanly.",
+      "phraseExample": "Lake Baikal",
+      "searchableContext": "Lake Baikal"
+    },
+    {
+      "clue": "Michigan",
+      "surfaceMisread": "world places",
+      "resolvedPhraseOrMember": "Lake Michigan",
+    "nonObviousWhy": "Michigan can point to the US state on the surface, but Lake Michigan is one of the Great Lakes, which keeps it inside the same lake-name pattern.",
+      "phraseExample": "Lake Michigan",
+      "searchableContext": "Lake Michigan"
+    },
+    {
+      "clue": "Geneva",
+      "surfaceMisread": "world places",
+      "resolvedPhraseOrMember": "Lake Geneva",
+      "nonObviousWhy": "Geneva is also the name used for a large Alpine lake.",
+      "phraseExample": "Lake Geneva",
+      "searchableContext": "Lake Geneva"
+    },
+    {
+      "clue": "Titicaca",
+      "surfaceMisread": "world places",
+      "resolvedPhraseOrMember": "Lake Titicaca",
+      "nonObviousWhy": "Titicaca is a well-known lake in the Andes region.",
+      "phraseExample": "Lake Titicaca",
+      "searchableContext": "Lake Titicaca"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Tanganyika\" and \"Baikal\" in LinkedIn Pinpoint #786?",
+      "answer": "The answer is \"Names of lakes\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Tanganyika"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Tanganyika\" and \"Baikal\" connect in LinkedIn Pinpoint #786?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Titicaca is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Tanganyika"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Titicaca\" the key clue in LinkedIn Pinpoint #786?",
+      "answer": "Titicaca is the turning clue because \"Lake Titicaca\" makes the shared category frame explicit. It also makes Tanganyika read cleanly as \"Lake Tanganyika\". Several clues are also place names, so the lake reading matters more than geography in general.",
+      "tiedClue": "Titicaca"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Tanganyika\" fit the same category as \"Titicaca\" in LinkedIn Pinpoint #786?",
+      "answer": "\"Tanganyika\" reads as \"Lake Tanganyika\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Tanganyika"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "proper names of major lakes around the world",
+    "relatedEntities": [
+      "Lake Tanganyika",
+      "Lake Baikal",
+      "Lake Michigan",
+      "Lake Geneva",
+      "Lake Titicaca"
+    ],
+    "doNotRepeatPatterns": [
+      "proper names of major lakes around the world",
+      "\"Tanganyika\" and \"Baikal\" can look like they belong to different categories at first",
+      "\"Titicaca\" anchors proper names of major lakes around the world",
+      "Use \"Titicaca\" to re-check \"Tanganyika\" under proper names of major lakes around the world",
+      "Lake Tanganyika",
+      "Lake Baikal"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "world places",
+      "whyPlausible": "All five are geographic names, but Tanganyika, Baikal, Michigan, Geneva, and Titicaca specifically work as lake names.",
+      "whyRejected": "Once Titicaca lands, the final answer explains the board more cleanly than world places."
+    },
+    {
+      "label": "geography names",
+      "whyPlausible": "geography names feels plausible early on, but it falls apart once titicaca demands a more exact reading.",
+      "whyRejected": "Once Titicaca lands, the final answer explains the board more cleanly than geography names."
+    }
+  ],
+  "setValidationSummary": "Michigan, Geneva, Titicaca keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Names of lakes"
+}

@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 776,
+  "slug": "pinpoint-answer-776",
+  "publishDate": "2026-06-15",
+  "isoDate": "2026-06-15",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Lead",
+    "Iron",
+    "Silicon",
+    "Carbon",
+    "Oxygen"
+  ],
+  "answer": "Names of chemical elements",
+  "category": "Names of chemical elements",
+  "wordHints": {
+    "Lead": "Lead is a chemical element with the symbol Pb.",
+    "Iron": "Iron is a chemical element with the symbol Fe.",
+    "Silicon": "Silicon is a chemical element often associated with semiconductors.",
+    "Carbon": "Carbon is a chemical element central to organic chemistry.",
+    "Oxygen": "Oxygen is a chemical element with the symbol O."
+  },
+  "spoilerHints": {
+    "Lead": "Lead should be tested as part of names of chemical elements, not as a standalone reference.",
+    "Iron": "Keep Iron in mind, then see whether Oxygen supports the same answer.",
+    "Silicon": "Silicon works best after the board narrows toward names of chemical elements.",
+    "Carbon": "Carbon should be tested as part of names of chemical elements, not as a standalone reference.",
+    "Oxygen": "Oxygen is the clue that makes names of chemical elements concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like materials and substances than the real category.",
+    "Lead pushed me in that direction immediately.",
+    "Iron kept that theory alive for a moment, but oxygen still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Oxygen made me stop thinking about materials and substances and start thinking about the real category.",
+    "Lead fit once I read it through the answer.",
+    "Iron fit once I read it through the answer.",
+    "The answer was Names of chemical elements.",
+    "Carbon and Oxygen then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Lead and Iron too literally and drifted toward materials and substances. Lead could be read as \"lead\", while Iron could be read as \"iron\", so the board still felt open instead of solved.",
+    "Oxygen changed the direction because \"oxygen\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"lead\", \"iron\", \"silicon\", and \"carbon\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Lead, Iron, Silicon, Carbon, and Oxygen.",
+    "That left very little room for the earlier false start. The answer was \"Names of chemical elements\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Lead\" and \"Iron\" can look like they belong to different categories at first",
+      "body": "\"Lead\" and \"Iron\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Oxygen\" anchors a direct category of standard chemical element names",
+      "body": "Oxygen organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Oxygen\" to re-check \"Lead\" under a direct category of standard chemical element names",
+      "body": "When several clues are substances, check whether every item is an element name."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on names",
+    "fastStrategy": "\"Lead\" and \"Iron\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Lead",
+        "examplePhrase": "lead",
+        "connectionExplained": "Lead is a chemical element with the symbol Pb."
+      },
+      {
+        "clue": "Iron",
+        "examplePhrase": "iron",
+        "connectionExplained": "Iron is a chemical element with the symbol Fe."
+      },
+      {
+        "clue": "Silicon",
+        "examplePhrase": "silicon",
+        "connectionExplained": "Silicon is a chemical element often associated with semiconductors."
+      },
+      {
+        "clue": "Carbon",
+        "examplePhrase": "carbon",
+        "connectionExplained": "Carbon is a chemical element central to organic chemistry."
+      },
+      {
+        "clue": "Oxygen",
+        "examplePhrase": "oxygen",
+        "connectionExplained": "Oxygen is a chemical element with the symbol O."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Lead\" and \"Iron\" in LinkedIn Pinpoint #776?",
+      "answer": "The answer is \"Names of chemical elements\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Lead\" and \"Iron\" connect in LinkedIn Pinpoint #776?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Oxygen is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Oxygen\" the key clue in LinkedIn Pinpoint #776?",
+      "answer": "Oxygen is the turning clue because \"oxygen\" makes the shared category frame explicit. It also makes Lead read cleanly as \"lead\". The early clues could read as materials, but the full set lands cleanly on element names."
+    },
+    {
+      "question": "How does \"Lead\" fit the same category as \"Oxygen\" in LinkedIn Pinpoint #776?",
+      "answer": "\"Lead\" reads as \"lead\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Lead, Iron, and Silicon do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"materials and substances\" can feel plausible before one clue makes the answer feel concrete. Oxygen is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "materials and substances",
+      "things in industry"
+    ],
+    "whyFalseStartPlausible": [
+      "Lead and Iron can sound like everyday materials, but Oxygen and Carbon make the set a periodic-table category.",
+      "things in industry feels plausible early on, but it falls apart once oxygen demands a more exact reading."
+    ],
+    "breakingClue": "Oxygen",
+    "pivot": "I first read Lead and Iron too literally and drifted toward materials and substances. Lead could be read as \"lead\", while Iron could be read as \"iron\", so the board still felt open instead of solved.\n\nOxygen changed the direction because \"oxygen\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"lead\", \"iron\", \"silicon\", and \"carbon\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Lead, Iron, Silicon, Carbon, and Oxygen.\n\nThat left very little room for the earlier false start. The answer was \"Names of chemical elements\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Lead, Iron, and Silicon stop feeling disconnected and start looking like they belong together. Once oxygen is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The early clues could read as materials, but the full set lands cleanly on element names."
+  },
+  "turningPoint": {
+    "clue": "Oxygen",
+    "whyDecisive": "Oxygen makes the chemistry category impossible to miss.",
+    "whatChangedAfterIt": "Once Oxygen landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Lead",
+      "surfaceMisread": "materials and substances",
+      "resolvedPhraseOrMember": "lead",
+      "nonObviousWhy": "Lead is a chemical element with the symbol Pb.",
+      "phraseExample": "lead",
+      "searchableContext": "lead"
+    },
+    {
+      "clue": "Iron",
+      "surfaceMisread": "materials and substances",
+      "resolvedPhraseOrMember": "iron",
+      "nonObviousWhy": "Iron is a chemical element with the symbol Fe.",
+      "phraseExample": "iron",
+      "searchableContext": "iron"
+    },
+    {
+      "clue": "Silicon",
+      "surfaceMisread": "materials and substances",
+      "resolvedPhraseOrMember": "silicon",
+      "nonObviousWhy": "Silicon is a chemical element often associated with semiconductors.",
+      "phraseExample": "silicon",
+      "searchableContext": "silicon"
+    },
+    {
+      "clue": "Carbon",
+      "surfaceMisread": "materials and substances",
+      "resolvedPhraseOrMember": "carbon",
+      "nonObviousWhy": "Carbon is a chemical element central to organic chemistry.",
+      "phraseExample": "carbon",
+      "searchableContext": "carbon"
+    },
+    {
+      "clue": "Oxygen",
+      "surfaceMisread": "materials and substances",
+      "resolvedPhraseOrMember": "oxygen",
+      "nonObviousWhy": "Oxygen is a chemical element with the symbol O.",
+      "phraseExample": "oxygen",
+      "searchableContext": "oxygen"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Lead\" and \"Iron\" in LinkedIn Pinpoint #776?",
+      "answer": "The answer is \"Names of chemical elements\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Lead"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Lead\" and \"Iron\" connect in LinkedIn Pinpoint #776?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Oxygen is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Lead"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Oxygen\" the key clue in LinkedIn Pinpoint #776?",
+      "answer": "Oxygen is the turning clue because \"oxygen\" makes the shared category frame explicit. It also makes Lead read cleanly as \"lead\". The early clues could read as materials, but the full set lands cleanly on element names.",
+      "tiedClue": "Oxygen"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Lead\" fit the same category as \"Oxygen\" in LinkedIn Pinpoint #776?",
+      "answer": "\"Lead\" reads as \"lead\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Lead"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a direct category of standard chemical element names",
+    "relatedEntities": [
+      "lead",
+      "iron",
+      "silicon",
+      "carbon",
+      "oxygen"
+    ],
+    "doNotRepeatPatterns": [
+      "a direct category of standard chemical element names",
+      "\"Lead\" and \"Iron\" can look like they belong to different categories at first",
+      "\"Oxygen\" anchors a direct category of standard chemical element names",
+      "Use \"Oxygen\" to re-check \"Lead\" under a direct category of standard chemical element names",
+      "lead",
+      "iron"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "materials and substances",
+      "whyPlausible": "Lead and Iron can sound like everyday materials, but Oxygen and Carbon make the set a periodic-table category.",
+      "whyRejected": "Once Oxygen lands, the final answer explains the board more cleanly than materials and substances."
+    },
+    {
+      "label": "things in industry",
+      "whyPlausible": "things in industry feels plausible early on, but it falls apart once oxygen demands a more exact reading.",
+      "whyRejected": "Once Oxygen lands, the final answer explains the board more cleanly than things in industry."
+    }
+  ],
+  "setValidationSummary": "Silicon, Carbon, Oxygen keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Names of chemical elements"
+}
