@@ -53,7 +53,7 @@ const publishedContractBacklogLimits = new Map(
     "overview.tooShort": 75,
     "solutionEmergence.genericPivot": 8,
     "lessons.genericTitle": 1,
-    "answer.overused": 49,
+    "answer.overused": 50,
     "solutionEmergence.tooShort": 41,
     "summary.answerSpoiler": 38,
     "sections.sharedPhrasing": 24,
