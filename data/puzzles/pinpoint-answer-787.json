@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 787,
+  "slug": "pinpoint-answer-787",
+  "publishDate": "2026-06-26",
+  "isoDate": "2026-06-26",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Wheat",
+    "Force",
+    "Magnetic",
+    "Track and",
+    "Level playing"
+  ],
+  "answer": "Words that come before “field”",
+  "category": "Words that come before “field”",
+  "wordHints": {
+    "Wheat": "\"Wheat field\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Force": "\"Force field\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Magnetic": "Once the shared word is in place, \"Magnetic field\" reads like ordinary language instead of a forced compound.",
+    "Track and": "\"Track and field\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Level playing": "\"Level playing field\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Wheat": "Try reading Wheat as part of a familiar phrase in words that come before “field” instead of as a standalone word.",
+    "Force": "Force works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Magnetic": "Look for a natural expression that absorbs Magnetic cleanly before locking the board.",
+    "Track and": "Try reading Track and as part of a familiar phrase in words that come before “field” instead of as a standalone word.",
+    "Level playing": "Level playing is the clue that makes the phrase pattern in words that come before “field” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "A nearby read was \"Wheat and Force phrase pairing\". Wheat, Force can support more than one phrase read before Level playing shows where the repeated word belongs. Level playing behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Level playing as an outlier clue\". Level playing can look like the odd clue if the earlier words are read without a shared phrase slot. Once Level playing locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Wheat field\" and \"Force field\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Magnetic field, Track and field, Level playing field show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “field”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “field”\" fits better than \"Wheat and Force phrase pairing\" or \"Level playing as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Wheat and first tried Wheat and Force phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Level playing\" feel exact.",
+    "Once \"Level playing\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Magnetic and Track and as the confirmation round. The strong solve was not just that two clues worked; it was that Wheat, Force, Magnetic, Track and, Level playing could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “field”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Wheat\" and \"Force\"",
+      "body": "\"Wheat\" and \"Force\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Level playing\" changes the field pattern from guess to test",
+      "body": "Once \"Level playing\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 787, the field phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Wheat\" and \"Force\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Wheat",
+        "examplePhrase": "Wheat field",
+        "connectionExplained": "\"Wheat field\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Force",
+        "examplePhrase": "Force field",
+        "connectionExplained": "\"Force field\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Magnetic",
+        "examplePhrase": "Magnetic field",
+        "connectionExplained": "Once the shared word is in place, \"Magnetic field\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Track and",
+        "examplePhrase": "Track and field",
+        "connectionExplained": "\"Track and field\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Level playing",
+        "examplePhrase": "Level playing field",
+        "connectionExplained": "\"Level playing field\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Wheat\" and \"Force\" in LinkedIn Pinpoint #787?",
+      "answer": "The answer is \"Words that come before “field”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Wheat\" and \"Force\" connect in LinkedIn Pinpoint #787?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Level playing\" the key clue in LinkedIn Pinpoint #787?",
+      "answer": "\"Level playing\" is the strongest clue because \"Level playing field\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Wheat and Force phrase pairing",
+      "Level playing as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Wheat, Force can support more than one phrase read before Level playing shows where the repeated word belongs.",
+      "Level playing can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Level playing",
+    "pivot": "I started with Wheat and first tried Wheat and Force phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Level playing\" feel exact.\n\nOnce \"Level playing\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Magnetic and Track and as the confirmation round. The strong solve was not just that two clues worked; it was that Wheat, Force, Magnetic, Track and, Level playing could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “field”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Level playing as an outlier clue\". Level playing can look like the odd clue if the earlier words are read without a shared phrase slot. Once Level playing locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Level playing",
+    "whyDecisive": "Level playing is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Level playing lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Wheat",
+      "surfaceMisread": "Wheat and Force phrase pairing",
+      "resolvedPhraseOrMember": "Wheat field",
+      "nonObviousWhy": "\"Wheat field\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Wheat field",
+      "phraseExample": "Wheat field"
+    },
+    {
+      "clue": "Force",
+      "surfaceMisread": "Wheat and Force phrase pairing",
+      "resolvedPhraseOrMember": "Force field",
+      "nonObviousWhy": "\"Force field\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Force field",
+      "phraseExample": "Force field"
+    },
+    {
+      "clue": "Magnetic",
+      "surfaceMisread": "Wheat and Force phrase pairing",
+      "resolvedPhraseOrMember": "Magnetic field",
+      "nonObviousWhy": "Once the shared word is in place, \"Magnetic field\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Magnetic field",
+      "phraseExample": "Magnetic field"
+    },
+    {
+      "clue": "Track and",
+      "surfaceMisread": "Wheat and Force phrase pairing",
+      "resolvedPhraseOrMember": "Track and field",
+      "nonObviousWhy": "\"Track and field\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Track and field",
+      "phraseExample": "Track and field"
+    },
+    {
+      "clue": "Level playing",
+      "surfaceMisread": "Wheat and Force phrase pairing",
+      "resolvedPhraseOrMember": "Level playing field",
+      "nonObviousWhy": "\"Level playing field\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Level playing field",
+      "phraseExample": "Level playing field"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Wheat\" and \"Force\" in LinkedIn Pinpoint #787?",
+      "answer": "The answer is \"Words that come before “field”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Wheat"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Wheat\" and \"Force\" connect in LinkedIn Pinpoint #787?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Wheat"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Level playing\" the key clue in LinkedIn Pinpoint #787?",
+      "answer": "\"Level playing\" is the strongest clue because \"Level playing field\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Level playing"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Wheat field",
+      "Force field",
+      "Magnetic field",
+      "Track and field",
+      "Level playing field"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Wheat field",
+      "Force field",
+      "Magnetic field",
+      "Track and field"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Wheat and Force phrase pairing",
+      "whyPlausible": "Wheat, Force can support more than one phrase read before Level playing shows where the repeated word belongs.",
+      "whyRejected": "Level playing behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Level playing as an outlier clue",
+      "whyPlausible": "Level playing can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Level playing locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Magnetic field, Track and field, Level playing field show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}

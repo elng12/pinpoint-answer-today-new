@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 787,
+    "slug": "pinpoint-answer-787",
+    "publishDate": "2026-06-26",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Wheat",
+      "Force",
+      "Magnetic",
+      "Track and",
+      "Level playing"
+    ],
+    "mainAnswer": "Words that come before “field”",
+    "category": "Words that come before “field”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Wheat, Force, Magnetic, Track and, Level playing - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-06-26T07:29:10.458Z"
+  },
+  {
     "puzzleNumber": 774,
     "slug": "pinpoint-answer-774",
     "publishDate": "2026-06-13",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Clouds",
@@ -16,7 +35,7 @@
     "category": "Things that block sunlight",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Clouds, Parasols, Tinted glass, Dark curtains, The Moon during some eclipses - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-06-13T07:14:58.975Z"
+    "updatedAt": "2026-06-26T07:29:10.458Z"
   },
   {
     "puzzleNumber": 773,
