@@ -168,3 +168,14 @@
 未做：未补强这些 fallback_full 页面到完整 AI 深度稿；未处理 GSC 恢复判断。  
 复查日期：下一次 Phase 0 observer。  
 下一步：明天只读 observer 重点确认 sitemap 和 #787 最新页稳定，不再把 `#775-#786` 当缺口。
+
+## 2026-07-11 合作站点页脚链接上线记录
+
+问题：需要从全站页脚添加指向 ObbyList 和 Patches Answers Today 的 dofollow 链接。
+证据：页脚原来没有这两个入口；Patches Answers Today 只在顶部导航出现。
+本轮边界：只改全站页脚链接、守卫检查和本记录，不改首页 SEO 标题/描述、正文、题库、Worker 和发布规则。
+修改：在页脚 `Quick Links` 增加 `Roblox Codes on ObbyList` 和 `Patches Answers Today`；外链 `rel` 只使用 `noopener noreferrer`，不含 `nofollow` 或 `sponsored`。
+验证：守卫检查、类型检查、lint、完整构建及真实页面检查。
+未做：未把原工作区内其他未提交改动混入本次发布。
+复查日期：本次 Vercel 生产部署完成后立即复查线上 HTML。
+下一步：确认生产域名两个页脚链接都可见，且 `rel` 不含 `nofollow`。
