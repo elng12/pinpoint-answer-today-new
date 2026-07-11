@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 801,
+  "slug": "pinpoint-answer-801",
+  "publishDate": "2026-07-10",
+  "isoDate": "2026-07-10",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Header",
+    "Gutter",
+    "Bleed",
+    "Column",
+    "Margin"
+  ],
+  "answer": "Terms used in graphic design for page layout",
+  "category": "Terms used in graphic design for page layout",
+  "wordHints": {
+    "Header": "A header is the repeated or prominent area placed at the top of a page or section.",
+    "Gutter": "A gutter is the space between columns or the inner space near a bound page’s fold.",
+    "Bleed": "Bleed is artwork extended beyond the trim edge so printing reaches the finished edge cleanly.",
+    "Column": "A column is a vertical block used to organize text or other page content.",
+    "Margin": "A margin is the planned blank space between page content and the outer edge."
+  },
+  "spoilerHints": {
+    "Header": "Header should be tested as part of terms used in graphic design for page layout, not as a standalone reference.",
+    "Gutter": "Keep Gutter in mind, then see whether Margin supports the same answer.",
+    "Bleed": "Bleed works best after the board narrows toward terms used in graphic design for page layout.",
+    "Column": "Column should be tested as part of terms used in graphic design for page layout, not as a standalone reference.",
+    "Margin": "Margin is the clue that makes terms used in graphic design for page layout concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The opening pair, Header and Gutter, leaves more than one reasonable route. Read without the rest of the board, they can suggest parts of a document instead of the exact connection. At that stage, none of those first impressions explains Bleed, Column, and Margin with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "parts of a document is tempting because Every clue can describe a document, but bleed and gutter point specifically to how the page is designed and laid out. That idea remains incomplete once Bleed is added and the clues need one repeatable explanation.",
+    "A second possibility is printing and publishing vocabulary. The terms are common in publishing, yet their shared job is arranging page space rather than covering the whole production process. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Bleed is the turning clue. Its clean reading as print bleed makes layout vocabulary controlling the structure and printable area of a designed page concrete enough to test against the earlier entries.",
+    "page header, layout gutter, print bleed, text column, page margin all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Terms used in graphic design for page layout. More precisely, the puzzle resolves as graphic-design page-layout terms rather than document parts or publishing terms broadly, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Header and Gutter and tested parts of a document. It was a fair first read because every clue can describe a document, but bleed and gutter point specifically to how the page is designed and laid out. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Bleed appeared, I also considered printing and publishing vocabulary. That alternative described part of the surface, but it still did not provide one exact rule for Column and Margin.",
+    "The decisive step came from Bleed. Reading it as print bleed gave me a precise test, so I went back through page header, layout gutter, print bleed, text column and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Terms used in graphic design for page layout, with the important distinction that this is graphic-design page-layout terms rather than document parts or publishing terms broadly."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Header too early",
+      "body": "Header can support parts of a document, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Bleed supplies the strongest test",
+      "body": "Once Bleed reads as print bleed, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 801 needs five clean confirmations",
+      "body": "The solution is secure only when print bleed, text column, page margin fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on terms",
+    "fastStrategy": "Header can support parts of a document, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Header",
+        "examplePhrase": "page header",
+        "connectionExplained": "A header is the repeated or prominent area placed at the top of a page or section."
+      },
+      {
+        "clue": "Gutter",
+        "examplePhrase": "layout gutter",
+        "connectionExplained": "A gutter is the space between columns or the inner space near a bound page’s fold."
+      },
+      {
+        "clue": "Bleed",
+        "examplePhrase": "print bleed",
+        "connectionExplained": "Bleed is artwork extended beyond the trim edge so printing reaches the finished edge cleanly."
+      },
+      {
+        "clue": "Column",
+        "examplePhrase": "text column",
+        "connectionExplained": "A column is a vertical block used to organize text or other page content."
+      },
+      {
+        "clue": "Margin",
+        "examplePhrase": "page margin",
+        "connectionExplained": "A margin is the planned blank space between page content and the outer edge."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Header” reveal the final category in LinkedIn Pinpoint #801?",
+      "answer": "The exact answer is Terms used in graphic design for page layout. A header is the repeated or prominent area placed at the top of a page or section. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Header and Gutter connect in Pinpoint #801?",
+      "answer": "Header resolves as page header, while Gutter resolves as layout gutter. Both support the same final answer."
+    },
+    {
+      "question": "Why is Bleed important in Pinpoint #801?",
+      "answer": "Bleed is decisive because Bleed is artwork extended beyond the trim edge so printing reaches the finished edge cleanly. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Header and Gutter, leaves more than one reasonable route. Read without the rest of the board, they can suggest parts of a document instead of the exact connection. At that stage, none of those first impressions explains Bleed, Column, and Margin with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "parts of a document",
+      "printing and publishing vocabulary"
+    ],
+    "whyFalseStartPlausible": [
+      "Every clue can describe a document, but bleed and gutter point specifically to how the page is designed and laid out.",
+      "The terms are common in publishing, yet their shared job is arranging page space rather than covering the whole production process."
+    ],
+    "breakingClue": "Bleed",
+    "pivot": "The decisive step came from Bleed. Reading it as print bleed gave me a precise test, so I went back through page header, layout gutter, print bleed, text column and checked the same relationship each time.",
+    "fullBoardConfirmation": "page header, layout gutter, print bleed, text column, page margin all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Bleed",
+    "whyDecisive": "Bleed resolves cleanly as print bleed, making layout vocabulary controlling the structure and printable area of a designed page specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Bleed, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Header",
+      "surfaceMisread": "parts of a document",
+      "resolvedPhraseOrMember": "page header",
+      "nonObviousWhy": "A header is the repeated or prominent area placed at the top of a page or section.",
+      "searchableContext": "page header"
+    },
+    {
+      "clue": "Gutter",
+      "surfaceMisread": "printing and publishing vocabulary",
+      "resolvedPhraseOrMember": "layout gutter",
+      "nonObviousWhy": "A gutter is the space between columns or the inner space near a bound page’s fold.",
+      "searchableContext": "layout gutter"
+    },
+    {
+      "clue": "Bleed",
+      "surfaceMisread": "parts of a document",
+      "resolvedPhraseOrMember": "print bleed",
+      "nonObviousWhy": "Bleed is artwork extended beyond the trim edge so printing reaches the finished edge cleanly.",
+      "searchableContext": "print bleed"
+    },
+    {
+      "clue": "Column",
+      "surfaceMisread": "printing and publishing vocabulary",
+      "resolvedPhraseOrMember": "text column",
+      "nonObviousWhy": "A column is a vertical block used to organize text or other page content.",
+      "searchableContext": "text column"
+    },
+    {
+      "clue": "Margin",
+      "surfaceMisread": "parts of a document",
+      "resolvedPhraseOrMember": "page margin",
+      "nonObviousWhy": "A margin is the planned blank space between page content and the outer edge.",
+      "searchableContext": "page margin"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Header” reveal the final category in LinkedIn Pinpoint #801?",
+      "answer": "The exact answer is Terms used in graphic design for page layout. A header is the repeated or prominent area placed at the top of a page or section. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Header"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Header and Gutter connect in Pinpoint #801?",
+      "answer": "Header resolves as page header, while Gutter resolves as layout gutter. Both support the same final answer.",
+      "tiedClue": "Header"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Bleed important in Pinpoint #801?",
+      "answer": "Bleed is decisive because Bleed is artwork extended beyond the trim edge so printing reaches the finished edge cleanly. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Bleed"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "layout vocabulary controlling the structure and printable area of a designed page",
+    "relatedEntities": [
+      "page header",
+      "layout gutter",
+      "print bleed",
+      "text column",
+      "page margin"
+    ],
+    "doNotRepeatPatterns": [
+      "layout vocabulary controlling the structure and printable area of a designed page",
+      "page header",
+      "layout gutter",
+      "print bleed",
+      "text column"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "parts of a document",
+      "whyPlausible": "Every clue can describe a document, but bleed and gutter point specifically to how the page is designed and laid out.",
+      "whyRejected": "Bleed and the full five-clue check point more precisely to Terms used in graphic design for page layout."
+    },
+    {
+      "label": "printing and publishing vocabulary",
+      "whyPlausible": "The terms are common in publishing, yet their shared job is arranging page space rather than covering the whole production process.",
+      "whyRejected": "Bleed and the full five-clue check point more precisely to Terms used in graphic design for page layout."
+    }
+  ],
+  "setValidationSummary": "page header; layout gutter; print bleed; text column; page margin all support layout vocabulary controlling the structure and printable area of a designed page, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "graphic-design page-layout terms rather than document parts or publishing terms broadly"
+}

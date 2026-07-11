@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 791,
+  "slug": "pinpoint-answer-791",
+  "publishDate": "2026-06-30",
+  "isoDate": "2026-06-30",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Lantern",
+    "Sleeping bag",
+    "Portable stove",
+    "Water filter",
+    "Tent"
+  ],
+  "answer": "Things brought on a camping trip",
+  "category": "Things brought on a camping trip",
+  "wordHints": {
+    "Lantern": "A lantern provides portable light around a campsite after daylight fades.",
+    "Sleeping bag": "A sleeping bag supplies insulated bedding that can be packed and carried outdoors.",
+    "Portable stove": "A portable stove lets campers heat food or water without relying on a full kitchen.",
+    "Water filter": "A water filter helps make collected outdoor water safer to drink during a trip.",
+    "Tent": "A tent provides the portable shelter that defines a conventional camping setup."
+  },
+  "spoilerHints": {
+    "Lantern": "Lantern should be tested as part of things brought on a camping trip, not as a standalone reference.",
+    "Sleeping bag": "Keep Sleeping bag in mind, then see whether Portable stove supports the same answer.",
+    "Portable stove": "Portable stove is the clue that makes things brought on a camping trip concrete enough to test across the full board.",
+    "Water filter": "Water filter should be tested as part of things brought on a camping trip, not as a standalone reference.",
+    "Tent": "Keep Tent in mind, then see whether Portable stove supports the same answer."
+  },
+  "articleBlocks": [
+    "The opening pair, Lantern and Sleeping bag, leaves more than one reasonable route. Read without the rest of the board, they can suggest emergency preparedness supplies instead of the exact connection. At that stage, none of those first impressions explains Portable stove, Water filter, and Tent with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "emergency preparedness supplies is tempting because Several clues belong in an emergency kit, but a tent and sleeping bag point more directly to an overnight camping trip. That idea remains incomplete once Portable stove is added and the clues need one repeatable explanation.",
+    "A second possibility is outdoor survival equipment. Water filters and stoves can support a survival theme, yet the full set is ordinary camping gear rather than specialist rescue equipment. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Tent is the turning clue. Its clean reading as camping tent makes portable gear commonly packed for an overnight camping trip concrete enough to test against the earlier entries.",
+    "camp lantern, camping sleeping bag, portable camp stove, camping water filter, camping tent all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Things brought on a camping trip. More precisely, the puzzle resolves as items deliberately brought camping, not outdoor equipment in any setting, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Lantern and Sleeping bag and tested emergency preparedness supplies. It was a fair first read because several clues belong in an emergency kit, but a tent and sleeping bag point more directly to an overnight camping trip. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Portable stove appeared, I also considered outdoor survival equipment. That alternative described part of the surface, but it still did not provide one exact rule for Water filter and Tent.",
+    "The decisive step came from Tent. Reading it as camping tent gave me a precise test, so I went back through camp lantern, camping sleeping bag, portable camp stove, camping water filter and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Things brought on a camping trip, with the important distinction that this is items deliberately brought camping, not outdoor equipment in any setting."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Lantern too early",
+      "body": "Lantern can support emergency preparedness supplies, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Tent supplies the strongest test",
+      "body": "Once Tent reads as camping tent, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 791 needs five clean confirmations",
+      "body": "The solution is secure only when portable camp stove, camping water filter, camping tent fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Lantern can support emergency preparedness supplies, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Lantern",
+        "examplePhrase": "camp lantern",
+        "connectionExplained": "A lantern provides portable light around a campsite after daylight fades."
+      },
+      {
+        "clue": "Sleeping bag",
+        "examplePhrase": "camping sleeping bag",
+        "connectionExplained": "A sleeping bag supplies insulated bedding that can be packed and carried outdoors."
+      },
+      {
+        "clue": "Portable stove",
+        "examplePhrase": "portable camp stove",
+        "connectionExplained": "A portable stove lets campers heat food or water without relying on a full kitchen."
+      },
+      {
+        "clue": "Water filter",
+        "examplePhrase": "camping water filter",
+        "connectionExplained": "A water filter helps make collected outdoor water safer to drink during a trip."
+      },
+      {
+        "clue": "Tent",
+        "examplePhrase": "camping tent",
+        "connectionExplained": "A tent provides the portable shelter that defines a conventional camping setup."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Lantern” reveal the final category in LinkedIn Pinpoint #791?",
+      "answer": "The exact answer is Things brought on a camping trip. A lantern provides portable light around a campsite after daylight fades. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Lantern and Sleeping bag connect in Pinpoint #791?",
+      "answer": "Lantern resolves as camp lantern, while Sleeping bag resolves as camping sleeping bag. Both support the same final answer."
+    },
+    {
+      "question": "Why is Tent important in Pinpoint #791?",
+      "answer": "Tent is decisive because A tent provides the portable shelter that defines a conventional camping setup. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Lantern and Sleeping bag, leaves more than one reasonable route. Read without the rest of the board, they can suggest emergency preparedness supplies instead of the exact connection. At that stage, none of those first impressions explains Portable stove, Water filter, and Tent with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "emergency preparedness supplies",
+      "outdoor survival equipment"
+    ],
+    "whyFalseStartPlausible": [
+      "Several clues belong in an emergency kit, but a tent and sleeping bag point more directly to an overnight camping trip.",
+      "Water filters and stoves can support a survival theme, yet the full set is ordinary camping gear rather than specialist rescue equipment."
+    ],
+    "breakingClue": "Tent",
+    "pivot": "The decisive step came from Tent. Reading it as camping tent gave me a precise test, so I went back through camp lantern, camping sleeping bag, portable camp stove, camping water filter and checked the same relationship each time.",
+    "fullBoardConfirmation": "camp lantern, camping sleeping bag, portable camp stove, camping water filter, camping tent all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Tent",
+    "whyDecisive": "Tent resolves cleanly as camping tent, making portable gear commonly packed for an overnight camping trip specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Tent, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Lantern",
+      "surfaceMisread": "emergency preparedness supplies",
+      "resolvedPhraseOrMember": "camp lantern",
+      "nonObviousWhy": "A lantern provides portable light around a campsite after daylight fades.",
+      "searchableContext": "camp lantern"
+    },
+    {
+      "clue": "Sleeping bag",
+      "surfaceMisread": "outdoor survival equipment",
+      "resolvedPhraseOrMember": "camping sleeping bag",
+      "nonObviousWhy": "A sleeping bag supplies insulated bedding that can be packed and carried outdoors.",
+      "searchableContext": "camping sleeping bag"
+    },
+    {
+      "clue": "Portable stove",
+      "surfaceMisread": "emergency preparedness supplies",
+      "resolvedPhraseOrMember": "portable camp stove",
+      "nonObviousWhy": "A portable stove lets campers heat food or water without relying on a full kitchen.",
+      "searchableContext": "portable camp stove"
+    },
+    {
+      "clue": "Water filter",
+      "surfaceMisread": "outdoor survival equipment",
+      "resolvedPhraseOrMember": "camping water filter",
+      "nonObviousWhy": "A water filter helps make collected outdoor water safer to drink during a trip.",
+      "searchableContext": "camping water filter"
+    },
+    {
+      "clue": "Tent",
+      "surfaceMisread": "emergency preparedness supplies",
+      "resolvedPhraseOrMember": "camping tent",
+      "nonObviousWhy": "A tent provides the portable shelter that defines a conventional camping setup.",
+      "searchableContext": "camping tent"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Lantern” reveal the final category in LinkedIn Pinpoint #791?",
+      "answer": "The exact answer is Things brought on a camping trip. A lantern provides portable light around a campsite after daylight fades. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Lantern"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Lantern and Sleeping bag connect in Pinpoint #791?",
+      "answer": "Lantern resolves as camp lantern, while Sleeping bag resolves as camping sleeping bag. Both support the same final answer.",
+      "tiedClue": "Lantern"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Tent important in Pinpoint #791?",
+      "answer": "Tent is decisive because A tent provides the portable shelter that defines a conventional camping setup. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Tent"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "portable gear commonly packed for an overnight camping trip",
+    "relatedEntities": [
+      "camp lantern",
+      "camping sleeping bag",
+      "portable camp stove",
+      "camping water filter",
+      "camping tent"
+    ],
+    "doNotRepeatPatterns": [
+      "portable gear commonly packed for an overnight camping trip",
+      "camp lantern",
+      "camping sleeping bag",
+      "portable camp stove",
+      "camping water filter"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "emergency preparedness supplies",
+      "whyPlausible": "Several clues belong in an emergency kit, but a tent and sleeping bag point more directly to an overnight camping trip.",
+      "whyRejected": "Tent and the full five-clue check point more precisely to Things brought on a camping trip."
+    },
+    {
+      "label": "outdoor survival equipment",
+      "whyPlausible": "Water filters and stoves can support a survival theme, yet the full set is ordinary camping gear rather than specialist rescue equipment.",
+      "whyRejected": "Tent and the full five-clue check point more precisely to Things brought on a camping trip."
+    }
+  ],
+  "setValidationSummary": "camp lantern; camping sleeping bag; portable camp stove; camping water filter; camping tent all support portable gear commonly packed for an overnight camping trip, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "items deliberately brought camping, not outdoor equipment in any setting"
+}

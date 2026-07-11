@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 792,
+  "slug": "pinpoint-answer-792",
+  "publishDate": "2026-07-01",
+  "isoDate": "2026-07-01",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Pronunciation",
+    "Etymology",
+    "Part of speech",
+    "Example sentence",
+    "Definition"
+  ],
+  "answer": "Parts of a dictionary entry",
+  "category": "Parts of a dictionary entry",
+  "wordHints": {
+    "Pronunciation": "A pronunciation guide shows readers how the headword is spoken, often with phonetic symbols.",
+    "Etymology": "Etymology explains the history and linguistic origin of the word listed in the entry.",
+    "Part of speech": "The part-of-speech label identifies whether the headword functions as a noun, verb, adjective, or another class.",
+    "Example sentence": "An example sentence demonstrates how the word is used naturally in context.",
+    "Definition": "The definition states the meaning of the headword and is the central part of the entry."
+  },
+  "spoilerHints": {
+    "Pronunciation": "Pronunciation should be tested as part of parts of a dictionary entry, not as a standalone reference.",
+    "Etymology": "Keep Etymology in mind, then see whether Part of speech supports the same answer.",
+    "Part of speech": "Part of speech is the clue that makes parts of a dictionary entry concrete enough to test across the full board.",
+    "Example sentence": "Example sentence should be tested as part of parts of a dictionary entry, not as a standalone reference.",
+    "Definition": "Keep Definition in mind, then see whether Part of speech supports the same answer."
+  },
+  "articleBlocks": [
+    "The opening pair, Pronunciation and Etymology, leaves more than one reasonable route. Read without the rest of the board, they can suggest parts of a language lesson instead of the exact connection. At that stage, none of those first impressions explains Part of speech, Example sentence, and Definition with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "parts of a language lesson is tempting because All five can appear in language teaching, but their standard packaged form is specifically a dictionary entry. That idea remains incomplete once Part of speech is added and the clues need one repeatable explanation.",
+    "A second possibility is information about a word. The clues are kinds of word information, yet “part of speech” and “definition” point to the structured entry format. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Part of speech is the turning clue. Its clean reading as part-of-speech label makes standard fields presented together for one headword in a dictionary concrete enough to test against the earlier entries.",
+    "pronunciation guide, word etymology, part-of-speech label, usage example sentence, word definition all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Parts of a dictionary entry. More precisely, the puzzle resolves as named fields inside a dictionary entry rather than language information generally, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Pronunciation and Etymology and tested parts of a language lesson. It was a fair first read because all five can appear in language teaching, but their standard packaged form is specifically a dictionary entry. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Part of speech appeared, I also considered information about a word. That alternative described part of the surface, but it still did not provide one exact rule for Example sentence and Definition.",
+    "The decisive step came from Part of speech. Reading it as part-of-speech label gave me a precise test, so I went back through pronunciation guide, word etymology, part-of-speech label, usage example sentence and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Parts of a dictionary entry, with the important distinction that this is named fields inside a dictionary entry rather than language information generally."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Pronunciation too early",
+      "body": "Pronunciation can support parts of a language lesson, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Part of speech supplies the strongest test",
+      "body": "Once Part of speech reads as part-of-speech label, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 792 needs five clean confirmations",
+      "body": "The solution is secure only when part-of-speech label, usage example sentence, word definition fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on parts",
+    "fastStrategy": "Pronunciation can support parts of a language lesson, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Pronunciation",
+        "examplePhrase": "pronunciation guide",
+        "connectionExplained": "A pronunciation guide shows readers how the headword is spoken, often with phonetic symbols."
+      },
+      {
+        "clue": "Etymology",
+        "examplePhrase": "word etymology",
+        "connectionExplained": "Etymology explains the history and linguistic origin of the word listed in the entry."
+      },
+      {
+        "clue": "Part of speech",
+        "examplePhrase": "part-of-speech label",
+        "connectionExplained": "The part-of-speech label identifies whether the headword functions as a noun, verb, adjective, or another class."
+      },
+      {
+        "clue": "Example sentence",
+        "examplePhrase": "usage example sentence",
+        "connectionExplained": "An example sentence demonstrates how the word is used naturally in context."
+      },
+      {
+        "clue": "Definition",
+        "examplePhrase": "word definition",
+        "connectionExplained": "The definition states the meaning of the headword and is the central part of the entry."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Pronunciation” reveal the final category in LinkedIn Pinpoint #792?",
+      "answer": "The exact answer is Parts of a dictionary entry. A pronunciation guide shows readers how the headword is spoken, often with phonetic symbols. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Pronunciation and Etymology connect in Pinpoint #792?",
+      "answer": "Pronunciation resolves as pronunciation guide, while Etymology resolves as word etymology. Both support the same final answer."
+    },
+    {
+      "question": "Why is Part of speech important in Pinpoint #792?",
+      "answer": "Part of speech is decisive because The part-of-speech label identifies whether the headword functions as a noun, verb, adjective, or another class. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Pronunciation and Etymology, leaves more than one reasonable route. Read without the rest of the board, they can suggest parts of a language lesson instead of the exact connection. At that stage, none of those first impressions explains Part of speech, Example sentence, and Definition with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "parts of a language lesson",
+      "information about a word"
+    ],
+    "whyFalseStartPlausible": [
+      "All five can appear in language teaching, but their standard packaged form is specifically a dictionary entry.",
+      "The clues are kinds of word information, yet “part of speech” and “definition” point to the structured entry format."
+    ],
+    "breakingClue": "Part of speech",
+    "pivot": "The decisive step came from Part of speech. Reading it as part-of-speech label gave me a precise test, so I went back through pronunciation guide, word etymology, part-of-speech label, usage example sentence and checked the same relationship each time.",
+    "fullBoardConfirmation": "pronunciation guide, word etymology, part-of-speech label, usage example sentence, word definition all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Part of speech",
+    "whyDecisive": "Part of speech resolves cleanly as part-of-speech label, making standard fields presented together for one headword in a dictionary specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Part of speech, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Pronunciation",
+      "surfaceMisread": "parts of a language lesson",
+      "resolvedPhraseOrMember": "pronunciation guide",
+      "nonObviousWhy": "A pronunciation guide shows readers how the headword is spoken, often with phonetic symbols.",
+      "searchableContext": "pronunciation guide"
+    },
+    {
+      "clue": "Etymology",
+      "surfaceMisread": "information about a word",
+      "resolvedPhraseOrMember": "word etymology",
+      "nonObviousWhy": "Etymology explains the history and linguistic origin of the word listed in the entry.",
+      "searchableContext": "word etymology"
+    },
+    {
+      "clue": "Part of speech",
+      "surfaceMisread": "parts of a language lesson",
+      "resolvedPhraseOrMember": "part-of-speech label",
+      "nonObviousWhy": "The part-of-speech label identifies whether the headword functions as a noun, verb, adjective, or another class.",
+      "searchableContext": "part-of-speech label"
+    },
+    {
+      "clue": "Example sentence",
+      "surfaceMisread": "information about a word",
+      "resolvedPhraseOrMember": "usage example sentence",
+      "nonObviousWhy": "An example sentence demonstrates how the word is used naturally in context.",
+      "searchableContext": "usage example sentence"
+    },
+    {
+      "clue": "Definition",
+      "surfaceMisread": "parts of a language lesson",
+      "resolvedPhraseOrMember": "word definition",
+      "nonObviousWhy": "The definition states the meaning of the headword and is the central part of the entry.",
+      "searchableContext": "word definition"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Pronunciation” reveal the final category in LinkedIn Pinpoint #792?",
+      "answer": "The exact answer is Parts of a dictionary entry. A pronunciation guide shows readers how the headword is spoken, often with phonetic symbols. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Pronunciation"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Pronunciation and Etymology connect in Pinpoint #792?",
+      "answer": "Pronunciation resolves as pronunciation guide, while Etymology resolves as word etymology. Both support the same final answer.",
+      "tiedClue": "Pronunciation"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Part of speech important in Pinpoint #792?",
+      "answer": "Part of speech is decisive because The part-of-speech label identifies whether the headword functions as a noun, verb, adjective, or another class. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Part of speech"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "standard fields presented together for one headword in a dictionary",
+    "relatedEntities": [
+      "pronunciation guide",
+      "word etymology",
+      "part-of-speech label",
+      "usage example sentence",
+      "word definition"
+    ],
+    "doNotRepeatPatterns": [
+      "standard fields presented together for one headword in a dictionary",
+      "pronunciation guide",
+      "word etymology",
+      "part-of-speech label",
+      "usage example sentence"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "parts of a language lesson",
+      "whyPlausible": "All five can appear in language teaching, but their standard packaged form is specifically a dictionary entry.",
+      "whyRejected": "Part of speech and the full five-clue check point more precisely to Parts of a dictionary entry."
+    },
+    {
+      "label": "information about a word",
+      "whyPlausible": "The clues are kinds of word information, yet “part of speech” and “definition” point to the structured entry format.",
+      "whyRejected": "Part of speech and the full five-clue check point more precisely to Parts of a dictionary entry."
+    }
+  ],
+  "setValidationSummary": "pronunciation guide; word etymology; part-of-speech label; usage example sentence; word definition all support standard fields presented together for one headword in a dictionary, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "named fields inside a dictionary entry rather than language information generally"
+}

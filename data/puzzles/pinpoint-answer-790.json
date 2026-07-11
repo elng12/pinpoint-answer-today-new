@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 790,
+  "slug": "pinpoint-answer-790",
+  "publishDate": "2026-06-29",
+  "isoDate": "2026-06-29",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Sink",
+    "Pan",
+    "Whisk",
+    "Fridge",
+    "Oven"
+  ],
+  "answer": "Things found in a kitchen",
+  "category": "Things found in a kitchen",
+  "wordHints": {
+    "Sink": "A sink is a fixed kitchen fixture used for water, rinsing ingredients, and washing dishes.",
+    "Pan": "A pan is standard cookware used on a stovetop for frying, sautéing, or heating food.",
+    "Whisk": "A whisk is a handheld kitchen tool for mixing ingredients and adding air to a mixture.",
+    "Fridge": "A fridge keeps food and drinks cold and is one of the main appliances in a kitchen.",
+    "Oven": "An oven is the enclosed kitchen appliance used for baking, roasting, and heating food."
+  },
+  "spoilerHints": {
+    "Sink": "Sink should be tested as part of things found in a kitchen, not as a standalone reference.",
+    "Pan": "Keep Pan in mind, then see whether Fridge supports the same answer.",
+    "Whisk": "Whisk works best after the board narrows toward things found in a kitchen.",
+    "Fridge": "Fridge is the clue that makes things found in a kitchen concrete enough to test across the full board.",
+    "Oven": "Keep Oven in mind, then see whether Fridge supports the same answer."
+  },
+  "articleBlocks": [
+    "The opening pair, Sink and Pan, leaves more than one reasonable route. Read without the rest of the board, they can suggest things used while cooking instead of the exact connection. At that stage, none of those first impressions explains Whisk, Fridge, and Oven with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "things used while cooking is tempting because Pan, whisk, and oven support a cooking-only guess, but a sink and fridge broaden the set beyond active cooking tools. That idea remains incomplete once Whisk is added and the clues need one repeatable explanation.",
+    "A second possibility is common household equipment. Every clue can appear somewhere in a home, but the kitchen is the one room that naturally contains all five together. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Fridge is the turning clue. Its clean reading as refrigerator makes fixtures, cookware, tools, and appliances found together in a kitchen concrete enough to test against the earlier entries.",
+    "kitchen sink, cooking pan, kitchen whisk, refrigerator, kitchen oven all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Things found in a kitchen. More precisely, the puzzle resolves as objects normally located in a kitchen rather than household equipment in general, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Sink and Pan and tested things used while cooking. It was a fair first read because pan, whisk, and oven support a cooking-only guess, but a sink and fridge broaden the set beyond active cooking tools. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Whisk appeared, I also considered common household equipment. That alternative described part of the surface, but it still did not provide one exact rule for Fridge and Oven.",
+    "The decisive step came from Fridge. Reading it as refrigerator gave me a precise test, so I went back through kitchen sink, cooking pan, kitchen whisk, refrigerator and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Things found in a kitchen, with the important distinction that this is objects normally located in a kitchen rather than household equipment in general."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Sink too early",
+      "body": "Sink can support things used while cooking, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Fridge supplies the strongest test",
+      "body": "Once Fridge reads as refrigerator, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 790 needs five clean confirmations",
+      "body": "The solution is secure only when kitchen whisk, refrigerator, kitchen oven fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "Sink can support things used while cooking, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Sink",
+        "examplePhrase": "kitchen sink",
+        "connectionExplained": "A sink is a fixed kitchen fixture used for water, rinsing ingredients, and washing dishes."
+      },
+      {
+        "clue": "Pan",
+        "examplePhrase": "cooking pan",
+        "connectionExplained": "A pan is standard cookware used on a stovetop for frying, sautéing, or heating food."
+      },
+      {
+        "clue": "Whisk",
+        "examplePhrase": "kitchen whisk",
+        "connectionExplained": "A whisk is a handheld kitchen tool for mixing ingredients and adding air to a mixture."
+      },
+      {
+        "clue": "Fridge",
+        "examplePhrase": "refrigerator",
+        "connectionExplained": "A fridge keeps food and drinks cold and is one of the main appliances in a kitchen."
+      },
+      {
+        "clue": "Oven",
+        "examplePhrase": "kitchen oven",
+        "connectionExplained": "An oven is the enclosed kitchen appliance used for baking, roasting, and heating food."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Sink” reveal the final category in LinkedIn Pinpoint #790?",
+      "answer": "The exact answer is Things found in a kitchen. A sink is a fixed kitchen fixture used for water, rinsing ingredients, and washing dishes. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Sink and Pan connect in Pinpoint #790?",
+      "answer": "Sink resolves as kitchen sink, while Pan resolves as cooking pan. Both support the same final answer."
+    },
+    {
+      "question": "Why is Fridge important in Pinpoint #790?",
+      "answer": "Fridge is decisive because A fridge keeps food and drinks cold and is one of the main appliances in a kitchen. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Sink and Pan, leaves more than one reasonable route. Read without the rest of the board, they can suggest things used while cooking instead of the exact connection. At that stage, none of those first impressions explains Whisk, Fridge, and Oven with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "things used while cooking",
+      "common household equipment"
+    ],
+    "whyFalseStartPlausible": [
+      "Pan, whisk, and oven support a cooking-only guess, but a sink and fridge broaden the set beyond active cooking tools.",
+      "Every clue can appear somewhere in a home, but the kitchen is the one room that naturally contains all five together."
+    ],
+    "breakingClue": "Fridge",
+    "pivot": "The decisive step came from Fridge. Reading it as refrigerator gave me a precise test, so I went back through kitchen sink, cooking pan, kitchen whisk, refrigerator and checked the same relationship each time.",
+    "fullBoardConfirmation": "kitchen sink, cooking pan, kitchen whisk, refrigerator, kitchen oven all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Fridge",
+    "whyDecisive": "Fridge resolves cleanly as refrigerator, making fixtures, cookware, tools, and appliances found together in a kitchen specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Fridge, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Sink",
+      "surfaceMisread": "things used while cooking",
+      "resolvedPhraseOrMember": "kitchen sink",
+      "nonObviousWhy": "A sink is a fixed kitchen fixture used for water, rinsing ingredients, and washing dishes.",
+      "searchableContext": "kitchen sink"
+    },
+    {
+      "clue": "Pan",
+      "surfaceMisread": "common household equipment",
+      "resolvedPhraseOrMember": "cooking pan",
+      "nonObviousWhy": "A pan is standard cookware used on a stovetop for frying, sautéing, or heating food.",
+      "searchableContext": "cooking pan"
+    },
+    {
+      "clue": "Whisk",
+      "surfaceMisread": "things used while cooking",
+      "resolvedPhraseOrMember": "kitchen whisk",
+      "nonObviousWhy": "A whisk is a handheld kitchen tool for mixing ingredients and adding air to a mixture.",
+      "searchableContext": "kitchen whisk"
+    },
+    {
+      "clue": "Fridge",
+      "surfaceMisread": "common household equipment",
+      "resolvedPhraseOrMember": "refrigerator",
+      "nonObviousWhy": "A fridge keeps food and drinks cold and is one of the main appliances in a kitchen.",
+      "searchableContext": "refrigerator"
+    },
+    {
+      "clue": "Oven",
+      "surfaceMisread": "things used while cooking",
+      "resolvedPhraseOrMember": "kitchen oven",
+      "nonObviousWhy": "An oven is the enclosed kitchen appliance used for baking, roasting, and heating food.",
+      "searchableContext": "kitchen oven"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Sink” reveal the final category in LinkedIn Pinpoint #790?",
+      "answer": "The exact answer is Things found in a kitchen. A sink is a fixed kitchen fixture used for water, rinsing ingredients, and washing dishes. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Sink"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Sink and Pan connect in Pinpoint #790?",
+      "answer": "Sink resolves as kitchen sink, while Pan resolves as cooking pan. Both support the same final answer.",
+      "tiedClue": "Sink"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Fridge important in Pinpoint #790?",
+      "answer": "Fridge is decisive because A fridge keeps food and drinks cold and is one of the main appliances in a kitchen. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Fridge"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "fixtures, cookware, tools, and appliances found together in a kitchen",
+    "relatedEntities": [
+      "kitchen sink",
+      "cooking pan",
+      "kitchen whisk",
+      "refrigerator",
+      "kitchen oven"
+    ],
+    "doNotRepeatPatterns": [
+      "fixtures, cookware, tools, and appliances found together in a kitchen",
+      "kitchen sink",
+      "cooking pan",
+      "kitchen whisk",
+      "refrigerator"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "things used while cooking",
+      "whyPlausible": "Pan, whisk, and oven support a cooking-only guess, but a sink and fridge broaden the set beyond active cooking tools.",
+      "whyRejected": "Fridge and the full five-clue check point more precisely to Things found in a kitchen."
+    },
+    {
+      "label": "common household equipment",
+      "whyPlausible": "Every clue can appear somewhere in a home, but the kitchen is the one room that naturally contains all five together.",
+      "whyRejected": "Fridge and the full five-clue check point more precisely to Things found in a kitchen."
+    }
+  ],
+  "setValidationSummary": "kitchen sink; cooking pan; kitchen whisk; refrigerator; kitchen oven all support fixtures, cookware, tools, and appliances found together in a kitchen, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "objects normally located in a kitchen rather than household equipment in general"
+}

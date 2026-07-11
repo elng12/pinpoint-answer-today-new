@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 793,
+  "slug": "pinpoint-answer-793",
+  "publishDate": "2026-07-02",
+  "isoDate": "2026-07-02",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Supreme",
+    "Food",
+    "Tennis",
+    "Contempt of",
+    "The ball is in your"
+  ],
+  "answer": "Words that come before “court”",
+  "category": "Words that come before “court”",
+  "wordHints": {
+    "Supreme": "“Supreme Court” is the familiar name for the highest court in a judicial system.",
+    "Food": "A “food court” is a shared dining area containing several food vendors.",
+    "Tennis": "A “tennis court” is the marked playing surface used for a tennis match.",
+    "Contempt of": "“Contempt of court” is the established legal phrase for conduct that disobeys or disrespects a court.",
+    "The ball is in your": "“The ball is in your court” is the idiom meaning that the next decision or action belongs to you."
+  },
+  "spoilerHints": {
+    "Supreme": "Try reading Supreme as part of a familiar phrase in words that come before “court” instead of as a standalone word.",
+    "Food": "Food works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Tennis": "Look for a natural expression that absorbs Tennis cleanly before locking the board.",
+    "Contempt of": "Try reading Contempt of as part of a familiar phrase in words that come before “court” instead of as a standalone word.",
+    "The ball is in your": "The ball is in your is the clue that makes the phrase pattern in words that come before “court” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The opening pair, Supreme and Food, leaves more than one reasonable route. Read without the rest of the board, they can suggest legal institutions instead of the exact connection. At that stage, none of those first impressions explains Tennis, Contempt of, and The ball is in your with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "legal institutions is tempting because Supreme and contempt of both suggest law, but food and tennis do not belong to a legal-only category. That idea remains incomplete once Tennis is added and the clues need one repeatable explanation.",
+    "A second possibility is places used for games. Tennis and the ball suggest sport, yet the exact shared feature is the same ending word across phrases from different settings. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Contempt of is the turning clue. Its clean reading as contempt of court makes familiar names, compounds, and sayings completed by the word court concrete enough to test against the earlier entries.",
+    "Supreme Court, food court, tennis court, contempt of court, the ball is in your court all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Words that come before “court”. More precisely, the puzzle resolves as one shared ending word after each clue, not a mixed category about law or sports, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Supreme and Food and tested legal institutions. It was a fair first read because supreme and contempt of both suggest law, but food and tennis do not belong to a legal-only category. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Tennis appeared, I also considered places used for games. That alternative described part of the surface, but it still did not provide one exact rule for Contempt of and The ball is in your.",
+    "The decisive step came from Contempt of. Reading it as contempt of court gave me a precise test, so I went back through Supreme Court, food court, tennis court, contempt of court and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Words that come before “court”, with the important distinction that this is one shared ending word after each clue, not a mixed category about law or sports."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Supreme too early",
+      "body": "Supreme can support legal institutions, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Contempt of supplies the strongest test",
+      "body": "Once Contempt of reads as contempt of court, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 793 needs five clean confirmations",
+      "body": "The solution is secure only when tennis court, contempt of court, the ball is in your court fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Supreme can support legal institutions, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Supreme",
+        "examplePhrase": "Supreme Court",
+        "connectionExplained": "“Supreme Court” is the familiar name for the highest court in a judicial system."
+      },
+      {
+        "clue": "Food",
+        "examplePhrase": "food court",
+        "connectionExplained": "A “food court” is a shared dining area containing several food vendors."
+      },
+      {
+        "clue": "Tennis",
+        "examplePhrase": "tennis court",
+        "connectionExplained": "A “tennis court” is the marked playing surface used for a tennis match."
+      },
+      {
+        "clue": "Contempt of",
+        "examplePhrase": "contempt of court",
+        "connectionExplained": "“Contempt of court” is the established legal phrase for conduct that disobeys or disrespects a court."
+      },
+      {
+        "clue": "The ball is in your",
+        "examplePhrase": "the ball is in your court",
+        "connectionExplained": "“The ball is in your court” is the idiom meaning that the next decision or action belongs to you."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Supreme” reveal the final category in LinkedIn Pinpoint #793?",
+      "answer": "The exact answer is Words that come before “court”. “Supreme Court” is the familiar name for the highest court in a judicial system. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Supreme and Food connect in Pinpoint #793?",
+      "answer": "Supreme resolves as Supreme Court, while Food resolves as food court. Both support the same final answer."
+    },
+    {
+      "question": "Why is Contempt of important in Pinpoint #793?",
+      "answer": "Contempt of is decisive because “Contempt of court” is the established legal phrase for conduct that disobeys or disrespects a court. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Supreme and Food, leaves more than one reasonable route. Read without the rest of the board, they can suggest legal institutions instead of the exact connection. At that stage, none of those first impressions explains Tennis, Contempt of, and The ball is in your with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "legal institutions",
+      "places used for games"
+    ],
+    "whyFalseStartPlausible": [
+      "Supreme and contempt of both suggest law, but food and tennis do not belong to a legal-only category.",
+      "Tennis and the ball suggest sport, yet the exact shared feature is the same ending word across phrases from different settings."
+    ],
+    "breakingClue": "Contempt of",
+    "pivot": "The decisive step came from Contempt of. Reading it as contempt of court gave me a precise test, so I went back through Supreme Court, food court, tennis court, contempt of court and checked the same relationship each time.",
+    "fullBoardConfirmation": "Supreme Court, food court, tennis court, contempt of court, the ball is in your court all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Contempt of",
+    "whyDecisive": "Contempt of resolves cleanly as contempt of court, making familiar names, compounds, and sayings completed by the word court specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Contempt of, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Supreme",
+      "surfaceMisread": "legal institutions",
+      "resolvedPhraseOrMember": "Supreme Court",
+      "nonObviousWhy": "“Supreme Court” is the familiar name for the highest court in a judicial system.",
+      "searchableContext": "Supreme Court",
+      "phraseExample": "Supreme Court"
+    },
+    {
+      "clue": "Food",
+      "surfaceMisread": "places used for games",
+      "resolvedPhraseOrMember": "food court",
+      "nonObviousWhy": "A “food court” is a shared dining area containing several food vendors.",
+      "searchableContext": "food court",
+      "phraseExample": "food court"
+    },
+    {
+      "clue": "Tennis",
+      "surfaceMisread": "legal institutions",
+      "resolvedPhraseOrMember": "tennis court",
+      "nonObviousWhy": "A “tennis court” is the marked playing surface used for a tennis match.",
+      "searchableContext": "tennis court",
+      "phraseExample": "tennis court"
+    },
+    {
+      "clue": "Contempt of",
+      "surfaceMisread": "places used for games",
+      "resolvedPhraseOrMember": "contempt of court",
+      "nonObviousWhy": "“Contempt of court” is the established legal phrase for conduct that disobeys or disrespects a court.",
+      "searchableContext": "contempt of court",
+      "phraseExample": "contempt of court"
+    },
+    {
+      "clue": "The ball is in your",
+      "surfaceMisread": "legal institutions",
+      "resolvedPhraseOrMember": "the ball is in your court",
+      "nonObviousWhy": "“The ball is in your court” is the idiom meaning that the next decision or action belongs to you.",
+      "searchableContext": "the ball is in your court",
+      "phraseExample": "the ball is in your court"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Supreme” reveal the final category in LinkedIn Pinpoint #793?",
+      "answer": "The exact answer is Words that come before “court”. “Supreme Court” is the familiar name for the highest court in a judicial system. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Supreme"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Supreme and Food connect in Pinpoint #793?",
+      "answer": "Supreme resolves as Supreme Court, while Food resolves as food court. Both support the same final answer.",
+      "tiedClue": "Supreme"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Contempt of important in Pinpoint #793?",
+      "answer": "Contempt of is decisive because “Contempt of court” is the established legal phrase for conduct that disobeys or disrespects a court. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Contempt of"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar names, compounds, and sayings completed by the word court",
+    "relatedEntities": [
+      "Supreme Court",
+      "food court",
+      "tennis court",
+      "contempt of court",
+      "the ball is in your court"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar names, compounds, and sayings completed by the word court",
+      "Supreme Court",
+      "food court",
+      "tennis court",
+      "contempt of court"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "legal institutions",
+      "whyPlausible": "Supreme and contempt of both suggest law, but food and tennis do not belong to a legal-only category.",
+      "whyRejected": "Contempt of and the full five-clue check point more precisely to Words that come before “court”."
+    },
+    {
+      "label": "places used for games",
+      "whyPlausible": "Tennis and the ball suggest sport, yet the exact shared feature is the same ending word across phrases from different settings.",
+      "whyRejected": "Contempt of and the full five-clue check point more precisely to Words that come before “court”."
+    }
+  ],
+  "setValidationSummary": "Supreme Court; food court; tennis court; contempt of court; the ball is in your court all support familiar names, compounds, and sayings completed by the word court, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "one shared ending word after each clue, not a mixed category about law or sports"
+}

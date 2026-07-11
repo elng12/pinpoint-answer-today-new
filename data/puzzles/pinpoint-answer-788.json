@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 788,
+  "slug": "pinpoint-answer-788",
+  "publishDate": "2026-06-27",
+  "isoDate": "2026-06-27",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Go (🇯🇵)",
+    "Lima (🇵🇭)",
+    "Fünf (🇩🇪)",
+    "Cinq (🇫🇷)",
+    "Cinco (this one's Spanish: 🇪🇸)"
+  ],
+  "answer": "The number “five” in different languages (Japanese, Tagalog, German, French, Spanish)",
+  "category": "The number “five” in different languages (Japanese, Tagalog, German, French, Spanish)",
+  "wordHints": {
+    "Go (🇯🇵)": "The Japanese flag narrows “Go” to the Japanese reading for the number five rather than the English command.",
+    "Lima (🇵🇭)": "“Lima” is the Tagalog word for five, and the Philippines flag identifies the intended language instead of the city.",
+    "Fünf (🇩🇪)": "“Fünf” directly names the number five in German, giving the board a clear translation pattern.",
+    "Cinq (🇫🇷)": "“Cinq” is the standard French word for five, confirming that each clue is the same number in another language.",
+    "Cinco (this one's Spanish: 🇪🇸)": "“Cinco” means five in Spanish, and the clue supplies the final language marker needed to close the set."
+  },
+  "spoilerHints": {
+    "Go (🇯🇵)": "Go (🇯🇵) should be tested as part of the number “five” in different languages (japanese, tagalog, german, french, spanish), not as a standalone reference.",
+    "Lima (🇵🇭)": "Keep Lima (🇵🇭) in mind, then see whether Cinco (this one's Spanish: 🇪🇸) supports the same answer.",
+    "Fünf (🇩🇪)": "Fünf (🇩🇪) works best after the board narrows toward the number “five” in different languages (japanese, tagalog, german, french, spanish).",
+    "Cinq (🇫🇷)": "Cinq (🇫🇷) should be tested as part of the number “five” in different languages (japanese, tagalog, german, french, spanish), not as a standalone reference.",
+    "Cinco (this one's Spanish: 🇪🇸)": "Cinco (this one's Spanish: 🇪🇸) is the clue that makes the number “five” in different languages (japanese, tagalog, german, french, spanish) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The opening pair, Go (🇯🇵) and Lima (🇵🇭), leaves more than one reasonable route. Read without the rest of the board, they can suggest international place names instead of the exact connection. At that stage, none of those first impressions explains Fünf (🇩🇪), Cinq (🇫🇷), and Cinco (this one's Spanish: 🇪🇸) with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "international place names is tempting because Go and Lima can look like place or travel references before the flags are treated as language labels. That idea remains incomplete once Fünf (🇩🇪) is added and the clues need one repeatable explanation.",
+    "A second possibility is short foreign words. The clues are all foreign-language terms, but that description is too broad because every term translates to the same number. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Fünf (🇩🇪) is the turning clue. Its clean reading as German: fünf means five makes five expressed in five different languages concrete enough to test against the earlier entries.",
+    "Japanese: go means five, Tagalog: lima means five, German: fünf means five, French: cinq means five, Spanish: cinco means five all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is The number “five” in different languages (Japanese, Tagalog, German, French, Spanish). More precisely, the puzzle resolves as the same number translated into five named languages, not foreign words in general, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Go (🇯🇵) and Lima (🇵🇭) and tested international place names. It was a fair first read because go and Lima can look like place or travel references before the flags are treated as language labels. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Fünf (🇩🇪) appeared, I also considered short foreign words. That alternative described part of the surface, but it still did not provide one exact rule for Cinq (🇫🇷) and Cinco (this one's Spanish: 🇪🇸).",
+    "The decisive step came from Fünf (🇩🇪). Reading it as German: fünf means five gave me a precise test, so I went back through Japanese: go means five, Tagalog: lima means five, German: fünf means five, French: cinq means five and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was The number “five” in different languages (Japanese, Tagalog, German, French, Spanish), with the important distinction that this is the same number translated into five named languages, not foreign words in general."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Go (🇯🇵) too early",
+      "body": "Go (🇯🇵) can support international place names, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Fünf (🇩🇪) supplies the strongest test",
+      "body": "Once Fünf (🇩🇪) reads as German: fünf means five, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 788 needs five clean confirmations",
+      "body": "The solution is secure only when German: fünf means five, French: cinq means five, Spanish: cinco means five fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on the",
+    "fastStrategy": "Go (🇯🇵) can support international place names, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Go (🇯🇵)",
+        "examplePhrase": "Japanese: go means five",
+        "connectionExplained": "The Japanese flag narrows “Go” to the Japanese reading for the number five rather than the English command."
+      },
+      {
+        "clue": "Lima (🇵🇭)",
+        "examplePhrase": "Tagalog: lima means five",
+        "connectionExplained": "“Lima” is the Tagalog word for five, and the Philippines flag identifies the intended language instead of the city."
+      },
+      {
+        "clue": "Fünf (🇩🇪)",
+        "examplePhrase": "German: fünf means five",
+        "connectionExplained": "“Fünf” directly names the number five in German, giving the board a clear translation pattern."
+      },
+      {
+        "clue": "Cinq (🇫🇷)",
+        "examplePhrase": "French: cinq means five",
+        "connectionExplained": "“Cinq” is the standard French word for five, confirming that each clue is the same number in another language."
+      },
+      {
+        "clue": "Cinco (this one's Spanish: 🇪🇸)",
+        "examplePhrase": "Spanish: cinco means five",
+        "connectionExplained": "“Cinco” means five in Spanish, and the clue supplies the final language marker needed to close the set."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Go (🇯🇵)” reveal the final category in LinkedIn Pinpoint #788?",
+      "answer": "The exact answer is The number “five” in different languages (Japanese, Tagalog, German, French, Spanish). The Japanese flag narrows “Go” to the Japanese reading for the number five rather than the English command. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Go (🇯🇵) and Lima (🇵🇭) connect in Pinpoint #788?",
+      "answer": "Go (🇯🇵) resolves as Japanese: go means five, while Lima (🇵🇭) resolves as Tagalog: lima means five. Both support the same final answer."
+    },
+    {
+      "question": "Why is Fünf (🇩🇪) important in Pinpoint #788?",
+      "answer": "Fünf (🇩🇪) is decisive because “Fünf” directly names the number five in German, giving the board a clear translation pattern. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Go (🇯🇵) and Lima (🇵🇭), leaves more than one reasonable route. Read without the rest of the board, they can suggest international place names instead of the exact connection. At that stage, none of those first impressions explains Fünf (🇩🇪), Cinq (🇫🇷), and Cinco (this one's Spanish: 🇪🇸) with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "international place names",
+      "short foreign words"
+    ],
+    "whyFalseStartPlausible": [
+      "Go and Lima can look like place or travel references before the flags are treated as language labels.",
+      "The clues are all foreign-language terms, but that description is too broad because every term translates to the same number."
+    ],
+    "breakingClue": "Fünf (🇩🇪)",
+    "pivot": "The decisive step came from Fünf (🇩🇪). Reading it as German: fünf means five gave me a precise test, so I went back through Japanese: go means five, Tagalog: lima means five, German: fünf means five, French: cinq means five and checked the same relationship each time.",
+    "fullBoardConfirmation": "Japanese: go means five, Tagalog: lima means five, German: fünf means five, French: cinq means five, Spanish: cinco means five all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Fünf (🇩🇪)",
+    "whyDecisive": "Fünf (🇩🇪) resolves cleanly as German: fünf means five, making five expressed in five different languages specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Fünf (🇩🇪), the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Go (🇯🇵)",
+      "surfaceMisread": "international place names",
+      "resolvedPhraseOrMember": "Japanese: go means five",
+      "nonObviousWhy": "The Japanese flag narrows “Go” to the Japanese reading for the number five rather than the English command.",
+      "searchableContext": "Japanese: go means five"
+    },
+    {
+      "clue": "Lima (🇵🇭)",
+      "surfaceMisread": "short foreign words",
+      "resolvedPhraseOrMember": "Tagalog: lima means five",
+      "nonObviousWhy": "“Lima” is the Tagalog word for five, and the Philippines flag identifies the intended language instead of the city.",
+      "searchableContext": "Tagalog: lima means five"
+    },
+    {
+      "clue": "Fünf (🇩🇪)",
+      "surfaceMisread": "international place names",
+      "resolvedPhraseOrMember": "German: fünf means five",
+      "nonObviousWhy": "“Fünf” directly names the number five in German, giving the board a clear translation pattern.",
+      "searchableContext": "German: fünf means five"
+    },
+    {
+      "clue": "Cinq (🇫🇷)",
+      "surfaceMisread": "short foreign words",
+      "resolvedPhraseOrMember": "French: cinq means five",
+      "nonObviousWhy": "“Cinq” is the standard French word for five, confirming that each clue is the same number in another language.",
+      "searchableContext": "French: cinq means five"
+    },
+    {
+      "clue": "Cinco (this one's Spanish: 🇪🇸)",
+      "surfaceMisread": "international place names",
+      "resolvedPhraseOrMember": "Spanish: cinco means five",
+      "nonObviousWhy": "“Cinco” means five in Spanish, and the clue supplies the final language marker needed to close the set.",
+      "searchableContext": "Spanish: cinco means five"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Go (🇯🇵)” reveal the final category in LinkedIn Pinpoint #788?",
+      "answer": "The exact answer is The number “five” in different languages (Japanese, Tagalog, German, French, Spanish). The Japanese flag narrows “Go” to the Japanese reading for the number five rather than the English command. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Go (🇯🇵)"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Go (🇯🇵) and Lima (🇵🇭) connect in Pinpoint #788?",
+      "answer": "Go (🇯🇵) resolves as Japanese: go means five, while Lima (🇵🇭) resolves as Tagalog: lima means five. Both support the same final answer.",
+      "tiedClue": "Go (🇯🇵)"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Fünf (🇩🇪) important in Pinpoint #788?",
+      "answer": "Fünf (🇩🇪) is decisive because “Fünf” directly names the number five in German, giving the board a clear translation pattern. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Fünf (🇩🇪)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "five expressed in five different languages",
+    "relatedEntities": [
+      "Japanese: go means five",
+      "Tagalog: lima means five",
+      "German: fünf means five",
+      "French: cinq means five",
+      "Spanish: cinco means five"
+    ],
+    "doNotRepeatPatterns": [
+      "five expressed in five different languages",
+      "Japanese: go means five",
+      "Tagalog: lima means five",
+      "German: fünf means five",
+      "French: cinq means five"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "international place names",
+      "whyPlausible": "Go and Lima can look like place or travel references before the flags are treated as language labels.",
+      "whyRejected": "Fünf (🇩🇪) and the full five-clue check point more precisely to The number “five” in different languages (Japanese, Tagalog, German, French, Spanish)."
+    },
+    {
+      "label": "short foreign words",
+      "whyPlausible": "The clues are all foreign-language terms, but that description is too broad because every term translates to the same number.",
+      "whyRejected": "Fünf (🇩🇪) and the full five-clue check point more precisely to The number “five” in different languages (Japanese, Tagalog, German, French, Spanish)."
+    }
+  ],
+  "setValidationSummary": "Japanese: go means five; Tagalog: lima means five; German: fünf means five; French: cinq means five; Spanish: cinco means five all support five expressed in five different languages, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "the same number translated into five named languages, not foreign words in general"
+}
