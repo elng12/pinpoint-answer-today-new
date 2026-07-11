@@ -6,17 +6,39 @@ type FooterProps = {
   isDetailPage?: boolean;
 };
 
+type FooterLink = {
+  label: string;
+  href: string;
+  external?: boolean;
+};
+
+const obbyListLink: FooterLink = {
+  label: "Roblox Codes on ObbyList",
+  href: "https://obbylist.com/",
+  external: true,
+};
+
+const patchesAnswersLink: FooterLink = {
+  label: "Patches Answers Today",
+  href: "https://patchesanswertoday.com/",
+  external: true,
+};
+
 export function Footer({ isDetailPage = false }: FooterProps) {
-  const quickLinks = isDetailPage
+  const quickLinks: FooterLink[] = isDetailPage
     ? [
         { label: "Pro Tips", href: routes.preview },
         { label: "Archive", href: routes.archive },
         { label: "How it works", href: "/#faq" },
         { label: "About", href: routes.about },
+        obbyListLink,
+        patchesAnswersLink,
       ]
     : [
         { label: "Pro Tips", href: routes.preview },
         { label: "Open Full Archive", href: routes.archive },
+        obbyListLink,
+        patchesAnswersLink,
       ];
   const supportLinks = [
     { label: "Email Support", href: supportMailto },
@@ -47,7 +69,11 @@ export function Footer({ isDetailPage = false }: FooterProps) {
               <ul className="footer-link-list footer-link-list-compact">
                 {quickLinks.map((link) => (
                   <li key={`${link.label}-${link.href}`}>
-                    <Link href={link.href} prefetch={false}>{link.label}</Link>
+                    {link.external ? (
+                      <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                    ) : (
+                      <Link href={link.href} prefetch={false}>{link.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>

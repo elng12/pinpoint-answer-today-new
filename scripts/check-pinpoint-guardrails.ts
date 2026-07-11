@@ -126,6 +126,31 @@ async function checkOfficialDomainGuardrail() {
   console.log("ok: official domain guardrail keeps runtime defaults on pinpointanswertoday.app");
 }
 
+async function checkPartnerFooterLinksAreDofollow() {
+  const footerSource = await readProjectFile("components/layout/Footer.tsx");
+
+  assert.match(
+    footerSource,
+    /label:\s*"Roblox Codes on ObbyList"[\s\S]*?href:\s*"https:\/\/obbylist\.com\/"[\s\S]*?external:\s*true/,
+    "footer must include the ObbyList link",
+  );
+  assert.match(
+    footerSource,
+    /label:\s*"Patches Answers Today"[\s\S]*?href:\s*"https:\/\/patchesanswertoday\.com\/"[\s\S]*?external:\s*true/,
+    "footer must include the Patches Answers Today link",
+  );
+  assert.ok(
+    footerSource.includes('rel="noopener noreferrer"'),
+    "external footer links must keep safe new-tab rel values",
+  );
+  assert.ok(
+    !footerSource.includes("nofollow"),
+    "partner footer links must remain dofollow",
+  );
+
+  console.log("ok: partner footer links remain dofollow");
+}
+
 async function withMockWorkerHealth<T>(
   payload: unknown,
   callback: (url: string) => Promise<T>,
@@ -3814,6 +3839,7 @@ async function checkReleaseQueueWorkerIntegration() {
 
 async function main() {
   await checkOfficialDomainGuardrail();
+  await checkPartnerFooterLinksAreDofollow();
   await checkProductionDetailUsesRemoteFirst();
   await checkCurrentPuzzleSkipsNonPublicLiveEntry();
   await checkPublishedSummaryRoute();
