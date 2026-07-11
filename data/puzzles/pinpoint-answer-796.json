@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 796,
+  "slug": "pinpoint-answer-796",
+  "publishDate": "2026-07-05",
+  "isoDate": "2026-07-05",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "hybrid",
+  "difficultyBand": "hard",
+  "clues": [
+    "A rapid pace",
+    "Hit at an angle",
+    "Small metal fastener for paper",
+    "Cut with scissors",
+    "Short segment of a film"
+  ],
+  "answer": "Different meanings of “clip”",
+  "category": "Different meanings of “clip”",
+  "wordHints": {
+    "A rapid pace": "Moving “at a fast clip” uses clip to mean a rapid rate or pace.",
+    "Hit at an angle": "To clip something can mean striking it lightly or at an angle rather than hitting it squarely.",
+    "Small metal fastener for paper": "A paper clip is the small bent-metal fastener used to hold sheets of paper together.",
+    "Cut with scissors": "To clip with scissors means trimming or cutting a small amount from something.",
+    "Short segment of a film": "A film clip is a short extracted segment from a longer movie or recording."
+  },
+  "spoilerHints": {
+    "A rapid pace": "A rapid pace should be tested as part of different meanings of “clip”, not as a standalone reference.",
+    "Hit at an angle": "Keep Hit at an angle in mind, then see whether Small metal fastener for paper supports the same answer.",
+    "Small metal fastener for paper": "Small metal fastener for paper is the clue that makes different meanings of “clip” concrete enough to test across the full board.",
+    "Cut with scissors": "Cut with scissors should be tested as part of different meanings of “clip”, not as a standalone reference.",
+    "Short segment of a film": "Keep Short segment of a film in mind, then see whether Small metal fastener for paper supports the same answer."
+  },
+  "articleBlocks": [
+    "The opening pair, A rapid pace and Hit at an angle, leaves more than one reasonable route. Read without the rest of the board, they can suggest editing and cutting tools instead of the exact connection. At that stage, none of those first impressions explains Small metal fastener for paper, Cut with scissors, and Short segment of a film with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "editing and cutting tools is tempting because Scissors and a film segment suggest editing, but the pace and impact clues require other dictionary senses. That idea remains incomplete once Small metal fastener for paper is added and the clues need one repeatable explanation.",
+    "A second possibility is quick movements and impacts. A rapid pace and a glancing hit sound active, yet the paper fastener shows that the shared word also functions as a noun. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Small metal fastener for paper is the turning clue. Its clean reading as paper clip makes five distinct noun and verb senses of the word clip concrete enough to test against the earlier entries.",
+    "move at a fast clip, clip something with a glancing hit, paper clip, clip with scissors, film clip all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Different meanings of “clip”. More precisely, the puzzle resolves as separate established meanings of one word rather than items connected only by cutting, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with A rapid pace and Hit at an angle and tested editing and cutting tools. It was a fair first read because scissors and a film segment suggest editing, but the pace and impact clues require other dictionary senses. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Small metal fastener for paper appeared, I also considered quick movements and impacts. That alternative described part of the surface, but it still did not provide one exact rule for Cut with scissors and Short segment of a film.",
+    "The decisive step came from Small metal fastener for paper. Reading it as paper clip gave me a precise test, so I went back through move at a fast clip, clip something with a glancing hit, paper clip, clip with scissors and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Different meanings of “clip”, with the important distinction that this is separate established meanings of one word rather than items connected only by cutting."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto A rapid pace too early",
+      "body": "A rapid pace can support editing and cutting tools, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Small metal fastener for paper supplies the strongest test",
+      "body": "Once Small metal fastener for paper reads as paper clip, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 796 needs five clean confirmations",
+      "body": "The solution is secure only when paper clip, clip with scissors, film clip fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on different",
+    "fastStrategy": "A rapid pace can support editing and cutting tools, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "A rapid pace",
+        "examplePhrase": "move at a fast clip",
+        "connectionExplained": "Moving “at a fast clip” uses clip to mean a rapid rate or pace."
+      },
+      {
+        "clue": "Hit at an angle",
+        "examplePhrase": "clip something with a glancing hit",
+        "connectionExplained": "To clip something can mean striking it lightly or at an angle rather than hitting it squarely."
+      },
+      {
+        "clue": "Small metal fastener for paper",
+        "examplePhrase": "paper clip",
+        "connectionExplained": "A paper clip is the small bent-metal fastener used to hold sheets of paper together."
+      },
+      {
+        "clue": "Cut with scissors",
+        "examplePhrase": "clip with scissors",
+        "connectionExplained": "To clip with scissors means trimming or cutting a small amount from something."
+      },
+      {
+        "clue": "Short segment of a film",
+        "examplePhrase": "film clip",
+        "connectionExplained": "A film clip is a short extracted segment from a longer movie or recording."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “A rapid pace” reveal the final category in LinkedIn Pinpoint #796?",
+      "answer": "The exact answer is Different meanings of “clip”. Moving “at a fast clip” uses clip to mean a rapid rate or pace. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do A rapid pace and Hit at an angle connect in Pinpoint #796?",
+      "answer": "A rapid pace resolves as move at a fast clip, while Hit at an angle resolves as clip something with a glancing hit. Both support the same final answer."
+    },
+    {
+      "question": "Why is Small metal fastener for paper important in Pinpoint #796?",
+      "answer": "Small metal fastener for paper is decisive because A paper clip is the small bent-metal fastener used to hold sheets of paper together. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, A rapid pace and Hit at an angle, leaves more than one reasonable route. Read without the rest of the board, they can suggest editing and cutting tools instead of the exact connection. At that stage, none of those first impressions explains Small metal fastener for paper, Cut with scissors, and Short segment of a film with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "editing and cutting tools",
+      "quick movements and impacts"
+    ],
+    "whyFalseStartPlausible": [
+      "Scissors and a film segment suggest editing, but the pace and impact clues require other dictionary senses.",
+      "A rapid pace and a glancing hit sound active, yet the paper fastener shows that the shared word also functions as a noun."
+    ],
+    "breakingClue": "Small metal fastener for paper",
+    "pivot": "The decisive step came from Small metal fastener for paper. Reading it as paper clip gave me a precise test, so I went back through move at a fast clip, clip something with a glancing hit, paper clip, clip with scissors and checked the same relationship each time.",
+    "fullBoardConfirmation": "move at a fast clip, clip something with a glancing hit, paper clip, clip with scissors, film clip all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Small metal fastener for paper",
+    "whyDecisive": "Small metal fastener for paper resolves cleanly as paper clip, making five distinct noun and verb senses of the word clip specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Small metal fastener for paper, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "A rapid pace",
+      "surfaceMisread": "editing and cutting tools",
+      "resolvedPhraseOrMember": "move at a fast clip",
+      "nonObviousWhy": "Moving “at a fast clip” uses clip to mean a rapid rate or pace.",
+      "searchableContext": "move at a fast clip"
+    },
+    {
+      "clue": "Hit at an angle",
+      "surfaceMisread": "quick movements and impacts",
+      "resolvedPhraseOrMember": "clip something with a glancing hit",
+      "nonObviousWhy": "To clip something can mean striking it lightly or at an angle rather than hitting it squarely.",
+      "searchableContext": "clip something with a glancing hit"
+    },
+    {
+      "clue": "Small metal fastener for paper",
+      "surfaceMisread": "editing and cutting tools",
+      "resolvedPhraseOrMember": "paper clip",
+      "nonObviousWhy": "A paper clip is the small bent-metal fastener used to hold sheets of paper together.",
+      "searchableContext": "paper clip"
+    },
+    {
+      "clue": "Cut with scissors",
+      "surfaceMisread": "quick movements and impacts",
+      "resolvedPhraseOrMember": "clip with scissors",
+      "nonObviousWhy": "To clip with scissors means trimming or cutting a small amount from something.",
+      "searchableContext": "clip with scissors"
+    },
+    {
+      "clue": "Short segment of a film",
+      "surfaceMisread": "editing and cutting tools",
+      "resolvedPhraseOrMember": "film clip",
+      "nonObviousWhy": "A film clip is a short extracted segment from a longer movie or recording.",
+      "searchableContext": "film clip"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “A rapid pace” reveal the final category in LinkedIn Pinpoint #796?",
+      "answer": "The exact answer is Different meanings of “clip”. Moving “at a fast clip” uses clip to mean a rapid rate or pace. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "A rapid pace"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do A rapid pace and Hit at an angle connect in Pinpoint #796?",
+      "answer": "A rapid pace resolves as move at a fast clip, while Hit at an angle resolves as clip something with a glancing hit. Both support the same final answer.",
+      "tiedClue": "A rapid pace"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Small metal fastener for paper important in Pinpoint #796?",
+      "answer": "Small metal fastener for paper is decisive because A paper clip is the small bent-metal fastener used to hold sheets of paper together. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Small metal fastener for paper"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "five distinct noun and verb senses of the word clip",
+    "relatedEntities": [
+      "move at a fast clip",
+      "clip something with a glancing hit",
+      "paper clip",
+      "clip with scissors",
+      "film clip"
+    ],
+    "doNotRepeatPatterns": [
+      "five distinct noun and verb senses of the word clip",
+      "move at a fast clip",
+      "clip something with a glancing hit",
+      "paper clip",
+      "clip with scissors"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "editing and cutting tools",
+      "whyPlausible": "Scissors and a film segment suggest editing, but the pace and impact clues require other dictionary senses.",
+      "whyRejected": "Small metal fastener for paper and the full five-clue check point more precisely to Different meanings of “clip”."
+    },
+    {
+      "label": "quick movements and impacts",
+      "whyPlausible": "A rapid pace and a glancing hit sound active, yet the paper fastener shows that the shared word also functions as a noun.",
+      "whyRejected": "Small metal fastener for paper and the full five-clue check point more precisely to Different meanings of “clip”."
+    }
+  ],
+  "setValidationSummary": "move at a fast clip; clip something with a glancing hit; paper clip; clip with scissors; film clip all support five distinct noun and verb senses of the word clip, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "separate established meanings of one word rather than items connected only by cutting"
+}

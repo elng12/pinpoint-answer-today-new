@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 789,
+  "slug": "pinpoint-answer-789",
+  "publishDate": "2026-06-28",
+  "isoDate": "2026-06-28",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Face",
+    "Your breath",
+    "The day",
+    "Someone's skin",
+    "For a rainy day"
+  ],
+  "answer": "Words that come after “save”",
+  "category": "Words that come after “save”",
+  "wordHints": {
+    "Face": "“Save face” is the familiar expression about avoiding embarrassment or protecting dignity.",
+    "Your breath": "“Save your breath” is a common saying used when speaking would not change the outcome.",
+    "The day": "“Save the day” means rescuing a situation at the moment help is needed most.",
+    "Someone's skin": "“Save someone’s skin” is an idiom for rescuing that person from danger or serious trouble.",
+    "For a rainy day": "“Save for a rainy day” means setting resources aside for a future period of need."
+  },
+  "spoilerHints": {
+    "Face": "Try reading Face as part of a familiar phrase in words that come after “save” (in common sayings) instead of as a standalone word.",
+    "Your breath": "Your breath works better once you test a fixed phrase pattern rather than a broad topic.",
+    "The day": "Look for a natural expression that absorbs The day cleanly before locking the board.",
+    "Someone's skin": "Try reading Someone's skin as part of a familiar phrase in words that come after “save” (in common sayings) instead of as a standalone word.",
+    "For a rainy day": "For a rainy day is the clue that makes the phrase pattern in words that come after “save” (in common sayings) concrete enough to test."
+  },
+  "articleBlocks": [
+    "The opening pair, Face and Your breath, leaves more than one reasonable route. Read without the rest of the board, they can suggest things people protect instead of the exact connection. At that stage, none of those first impressions explains The day, Someone's skin, and For a rainy day with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "things people protect is tempting because Face, breath, and skin can sound like things to protect, but that does not explain the exact wording of the longer clues. That idea remains incomplete once The day is added and the clues need one repeatable explanation.",
+    "A second possibility is advice about planning ahead. The final clue suggests saving money for later, but the whole board is built from sayings that begin with the same verb. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "The day is the turning clue. Its clean reading as save the day makes familiar sayings that begin with the verb save concrete enough to test against the earlier entries.",
+    "save face, save your breath, save the day, save someone's skin, save for a rainy day all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Words that come after “save”. More precisely, the puzzle resolves as one shared opening word placed before every clue to form a recognized saying, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Face and Your breath and tested things people protect. It was a fair first read because face, breath, and skin can sound like things to protect, but that does not explain the exact wording of the longer clues. I kept it provisional rather than forcing the remaining clues into it.",
+    "When The day appeared, I also considered advice about planning ahead. That alternative described part of the surface, but it still did not provide one exact rule for Someone's skin and For a rainy day.",
+    "The decisive step came from The day. Reading it as save the day gave me a precise test, so I went back through save face, save your breath, save the day, save someone's skin and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Words that come after “save”, with the important distinction that this is one shared opening word placed before every clue to form a recognized saying."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Face too early",
+      "body": "Face can support things people protect, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "The day supplies the strongest test",
+      "body": "Once The day reads as save the day, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 789 needs five clean confirmations",
+      "body": "The solution is secure only when save the day, save someone's skin, save for a rainy day fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Face can support things people protect, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Face",
+        "examplePhrase": "save face",
+        "connectionExplained": "“Save face” is the familiar expression about avoiding embarrassment or protecting dignity."
+      },
+      {
+        "clue": "Your breath",
+        "examplePhrase": "save your breath",
+        "connectionExplained": "“Save your breath” is a common saying used when speaking would not change the outcome."
+      },
+      {
+        "clue": "The day",
+        "examplePhrase": "save the day",
+        "connectionExplained": "“Save the day” means rescuing a situation at the moment help is needed most."
+      },
+      {
+        "clue": "Someone's skin",
+        "examplePhrase": "save someone's skin",
+        "connectionExplained": "“Save someone’s skin” is an idiom for rescuing that person from danger or serious trouble."
+      },
+      {
+        "clue": "For a rainy day",
+        "examplePhrase": "save for a rainy day",
+        "connectionExplained": "“Save for a rainy day” means setting resources aside for a future period of need."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Face” reveal the final category in LinkedIn Pinpoint #789?",
+      "answer": "The exact answer is Words that come after “save”. “Save face” is the familiar expression about avoiding embarrassment or protecting dignity. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Face and Your breath connect in Pinpoint #789?",
+      "answer": "Face resolves as save face, while Your breath resolves as save your breath. Both support the same final answer."
+    },
+    {
+      "question": "Why is The day important in Pinpoint #789?",
+      "answer": "The day is decisive because “Save the day” means rescuing a situation at the moment help is needed most. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Face and Your breath, leaves more than one reasonable route. Read without the rest of the board, they can suggest things people protect instead of the exact connection. At that stage, none of those first impressions explains The day, Someone's skin, and For a rainy day with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "things people protect",
+      "advice about planning ahead"
+    ],
+    "whyFalseStartPlausible": [
+      "Face, breath, and skin can sound like things to protect, but that does not explain the exact wording of the longer clues.",
+      "The final clue suggests saving money for later, but the whole board is built from sayings that begin with the same verb."
+    ],
+    "breakingClue": "The day",
+    "pivot": "The decisive step came from The day. Reading it as save the day gave me a precise test, so I went back through save face, save your breath, save the day, save someone's skin and checked the same relationship each time.",
+    "fullBoardConfirmation": "save face, save your breath, save the day, save someone's skin, save for a rainy day all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "The day",
+    "whyDecisive": "The day resolves cleanly as save the day, making familiar sayings that begin with the verb save specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After The day, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Face",
+      "surfaceMisread": "things people protect",
+      "resolvedPhraseOrMember": "save face",
+      "nonObviousWhy": "“Save face” is the familiar expression about avoiding embarrassment or protecting dignity.",
+      "searchableContext": "save face",
+      "phraseExample": "save face"
+    },
+    {
+      "clue": "Your breath",
+      "surfaceMisread": "advice about planning ahead",
+      "resolvedPhraseOrMember": "save your breath",
+      "nonObviousWhy": "“Save your breath” is a common saying used when speaking would not change the outcome.",
+      "searchableContext": "save your breath",
+      "phraseExample": "save your breath"
+    },
+    {
+      "clue": "The day",
+      "surfaceMisread": "things people protect",
+      "resolvedPhraseOrMember": "save the day",
+      "nonObviousWhy": "“Save the day” means rescuing a situation at the moment help is needed most.",
+      "searchableContext": "save the day",
+      "phraseExample": "save the day"
+    },
+    {
+      "clue": "Someone's skin",
+      "surfaceMisread": "advice about planning ahead",
+      "resolvedPhraseOrMember": "save someone's skin",
+      "nonObviousWhy": "“Save someone’s skin” is an idiom for rescuing that person from danger or serious trouble.",
+      "searchableContext": "save someone's skin",
+      "phraseExample": "save someone's skin"
+    },
+    {
+      "clue": "For a rainy day",
+      "surfaceMisread": "things people protect",
+      "resolvedPhraseOrMember": "save for a rainy day",
+      "nonObviousWhy": "“Save for a rainy day” means setting resources aside for a future period of need.",
+      "searchableContext": "save for a rainy day",
+      "phraseExample": "save for a rainy day"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Face” reveal the final category in LinkedIn Pinpoint #789?",
+      "answer": "The exact answer is Words that come after “save”. “Save face” is the familiar expression about avoiding embarrassment or protecting dignity. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Face"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Face and Your breath connect in Pinpoint #789?",
+      "answer": "Face resolves as save face, while Your breath resolves as save your breath. Both support the same final answer.",
+      "tiedClue": "Face"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is The day important in Pinpoint #789?",
+      "answer": "The day is decisive because “Save the day” means rescuing a situation at the moment help is needed most. That reading gives a precise check for the other four clues.",
+      "tiedClue": "The day"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar sayings that begin with the verb save",
+    "relatedEntities": [
+      "save face",
+      "save your breath",
+      "save the day",
+      "save someone's skin",
+      "save for a rainy day"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar sayings that begin with the verb save",
+      "save face",
+      "save your breath",
+      "save the day",
+      "save someone's skin"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "things people protect",
+      "whyPlausible": "Face, breath, and skin can sound like things to protect, but that does not explain the exact wording of the longer clues.",
+      "whyRejected": "The day and the full five-clue check point more precisely to Words that come after “save”."
+    },
+    {
+      "label": "advice about planning ahead",
+      "whyPlausible": "The final clue suggests saving money for later, but the whole board is built from sayings that begin with the same verb.",
+      "whyRejected": "The day and the full five-clue check point more precisely to Words that come after “save”."
+    }
+  ],
+  "setValidationSummary": "save face; save your breath; save the day; save someone's skin; save for a rainy day all support familiar sayings that begin with the verb save, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "one shared opening word placed before every clue to form a recognized saying"
+}

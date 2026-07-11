@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 800,
+  "slug": "pinpoint-answer-800",
+  "publishDate": "2026-07-09",
+  "isoDate": "2026-07-09",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Spray",
+    "Style",
+    "Dryer",
+    "Raising",
+    "Follicle"
+  ],
+  "answer": "Words that come after “hair”",
+  "category": "Words that come after “hair”",
+  "wordHints": {
+    "Spray": "“Hair spray” is the styling product used to help a hairstyle hold its shape.",
+    "Style": "“Hairstyle” is the standard compound for the way a person’s hair is arranged.",
+    "Dryer": "A “hair dryer” is the electric appliance used to dry and shape hair with blown air.",
+    "Raising": "“Hair-raising” is the familiar adjective for something frightening or thrilling.",
+    "Follicle": "A “hair follicle” is the small skin structure from which a hair grows."
+  },
+  "spoilerHints": {
+    "Spray": "Try reading Spray as part of a familiar phrase in words that come after “hair” instead of as a standalone word.",
+    "Style": "Style works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Dryer": "Look for a natural expression that absorbs Dryer cleanly before locking the board.",
+    "Raising": "Try reading Raising as part of a familiar phrase in words that come after “hair” instead of as a standalone word.",
+    "Follicle": "Follicle is the clue that makes the phrase pattern in words that come after “hair” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The opening pair, Spray and Style, leaves more than one reasonable route. Read without the rest of the board, they can suggest salon products and tools instead of the exact connection. At that stage, none of those first impressions explains Dryer, Raising, and Follicle with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "salon products and tools is tempting because Spray, style, and dryer fit a salon, but raising is an adjective and follicle is anatomy rather than grooming equipment. That idea remains incomplete once Dryer is added and the clues need one repeatable explanation.",
+    "A second possibility is parts of personal grooming. Most clues touch hair care, yet the exact construction places hair before every clue to make a known word or phrase. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Raising is the turning clue. Its clean reading as hair-raising makes compounds and an adjective formed by putting hair before each clue concrete enough to test against the earlier entries.",
+    "hair spray, hairstyle, hair dryer, hair-raising, hair follicle all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Words that come after “hair”. More precisely, the puzzle resolves as one shared opening word before all five clues, not a list of salon items, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Spray and Style and tested salon products and tools. It was a fair first read because spray, style, and dryer fit a salon, but raising is an adjective and follicle is anatomy rather than grooming equipment. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Dryer appeared, I also considered parts of personal grooming. That alternative described part of the surface, but it still did not provide one exact rule for Raising and Follicle.",
+    "The decisive step came from Raising. Reading it as hair-raising gave me a precise test, so I went back through hair spray, hairstyle, hair dryer, hair-raising and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Words that come after “hair”, with the important distinction that this is one shared opening word before all five clues, not a list of salon items."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Spray too early",
+      "body": "Spray can support salon products and tools, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Raising supplies the strongest test",
+      "body": "Once Raising reads as hair-raising, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 800 needs five clean confirmations",
+      "body": "The solution is secure only when hair dryer, hair-raising, hair follicle fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Spray can support salon products and tools, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Spray",
+        "examplePhrase": "hair spray",
+        "connectionExplained": "“Hair spray” is the styling product used to help a hairstyle hold its shape."
+      },
+      {
+        "clue": "Style",
+        "examplePhrase": "hairstyle",
+        "connectionExplained": "“Hairstyle” is the standard compound for the way a person’s hair is arranged."
+      },
+      {
+        "clue": "Dryer",
+        "examplePhrase": "hair dryer",
+        "connectionExplained": "A “hair dryer” is the electric appliance used to dry and shape hair with blown air."
+      },
+      {
+        "clue": "Raising",
+        "examplePhrase": "hair-raising",
+        "connectionExplained": "“Hair-raising” is the familiar adjective for something frightening or thrilling."
+      },
+      {
+        "clue": "Follicle",
+        "examplePhrase": "hair follicle",
+        "connectionExplained": "A “hair follicle” is the small skin structure from which a hair grows."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Spray” reveal the final category in LinkedIn Pinpoint #800?",
+      "answer": "The exact answer is Words that come after “hair”. “Hair spray” is the styling product used to help a hairstyle hold its shape. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Spray and Style connect in Pinpoint #800?",
+      "answer": "Spray resolves as hair spray, while Style resolves as hairstyle. Both support the same final answer."
+    },
+    {
+      "question": "Why is Raising important in Pinpoint #800?",
+      "answer": "Raising is decisive because “Hair-raising” is the familiar adjective for something frightening or thrilling. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Spray and Style, leaves more than one reasonable route. Read without the rest of the board, they can suggest salon products and tools instead of the exact connection. At that stage, none of those first impressions explains Dryer, Raising, and Follicle with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "salon products and tools",
+      "parts of personal grooming"
+    ],
+    "whyFalseStartPlausible": [
+      "Spray, style, and dryer fit a salon, but raising is an adjective and follicle is anatomy rather than grooming equipment.",
+      "Most clues touch hair care, yet the exact construction places hair before every clue to make a known word or phrase."
+    ],
+    "breakingClue": "Raising",
+    "pivot": "The decisive step came from Raising. Reading it as hair-raising gave me a precise test, so I went back through hair spray, hairstyle, hair dryer, hair-raising and checked the same relationship each time.",
+    "fullBoardConfirmation": "hair spray, hairstyle, hair dryer, hair-raising, hair follicle all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Raising",
+    "whyDecisive": "Raising resolves cleanly as hair-raising, making compounds and an adjective formed by putting hair before each clue specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Raising, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Spray",
+      "surfaceMisread": "salon products and tools",
+      "resolvedPhraseOrMember": "hair spray",
+      "nonObviousWhy": "“Hair spray” is the styling product used to help a hairstyle hold its shape.",
+      "searchableContext": "hair spray",
+      "phraseExample": "hair spray"
+    },
+    {
+      "clue": "Style",
+      "surfaceMisread": "parts of personal grooming",
+      "resolvedPhraseOrMember": "hairstyle",
+      "nonObviousWhy": "“Hairstyle” is the standard compound for the way a person’s hair is arranged.",
+      "searchableContext": "hairstyle",
+      "phraseExample": "hairstyle"
+    },
+    {
+      "clue": "Dryer",
+      "surfaceMisread": "salon products and tools",
+      "resolvedPhraseOrMember": "hair dryer",
+      "nonObviousWhy": "A “hair dryer” is the electric appliance used to dry and shape hair with blown air.",
+      "searchableContext": "hair dryer",
+      "phraseExample": "hair dryer"
+    },
+    {
+      "clue": "Raising",
+      "surfaceMisread": "parts of personal grooming",
+      "resolvedPhraseOrMember": "hair-raising",
+      "nonObviousWhy": "“Hair-raising” is the familiar adjective for something frightening or thrilling.",
+      "searchableContext": "hair-raising",
+      "phraseExample": "hair-raising"
+    },
+    {
+      "clue": "Follicle",
+      "surfaceMisread": "salon products and tools",
+      "resolvedPhraseOrMember": "hair follicle",
+      "nonObviousWhy": "A “hair follicle” is the small skin structure from which a hair grows.",
+      "searchableContext": "hair follicle",
+      "phraseExample": "hair follicle"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Spray” reveal the final category in LinkedIn Pinpoint #800?",
+      "answer": "The exact answer is Words that come after “hair”. “Hair spray” is the styling product used to help a hairstyle hold its shape. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Spray"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Spray and Style connect in Pinpoint #800?",
+      "answer": "Spray resolves as hair spray, while Style resolves as hairstyle. Both support the same final answer.",
+      "tiedClue": "Spray"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Raising important in Pinpoint #800?",
+      "answer": "Raising is decisive because “Hair-raising” is the familiar adjective for something frightening or thrilling. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Raising"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "compounds and an adjective formed by putting hair before each clue",
+    "relatedEntities": [
+      "hair spray",
+      "hairstyle",
+      "hair dryer",
+      "hair-raising",
+      "hair follicle"
+    ],
+    "doNotRepeatPatterns": [
+      "compounds and an adjective formed by putting hair before each clue",
+      "hair spray",
+      "hairstyle",
+      "hair dryer",
+      "hair-raising"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "salon products and tools",
+      "whyPlausible": "Spray, style, and dryer fit a salon, but raising is an adjective and follicle is anatomy rather than grooming equipment.",
+      "whyRejected": "Raising and the full five-clue check point more precisely to Words that come after “hair”."
+    },
+    {
+      "label": "parts of personal grooming",
+      "whyPlausible": "Most clues touch hair care, yet the exact construction places hair before every clue to make a known word or phrase.",
+      "whyRejected": "Raising and the full five-clue check point more precisely to Words that come after “hair”."
+    }
+  ],
+  "setValidationSummary": "hair spray; hairstyle; hair dryer; hair-raising; hair follicle all support compounds and an adjective formed by putting hair before each clue, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "one shared opening word before all five clues, not a list of salon items"
+}

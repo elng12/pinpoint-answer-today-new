@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 799,
+  "slug": "pinpoint-answer-799",
+  "publishDate": "2026-07-08",
+  "isoDate": "2026-07-08",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Ice",
+    "Cold",
+    "Whipped",
+    "Shaving",
+    "Cookies and"
+  ],
+  "answer": "Words that come before “cream”",
+  "category": "Words that come before “cream”",
+  "wordHints": {
+    "Ice": "“Ice cream” is the frozen dessert made from a sweetened dairy or dairy-like mixture.",
+    "Cold": "“Cold cream” is the traditional moisturizing and cleansing cosmetic preparation.",
+    "Whipped": "“Whipped cream” is cream beaten until it becomes light and holds air.",
+    "Shaving": "“Shaving cream” is the product applied to skin before shaving.",
+    "Cookies and": "“Cookies and cream” is the familiar flavor combining cream with pieces of chocolate sandwich cookies."
+  },
+  "spoilerHints": {
+    "Ice": "Try reading Ice as part of a familiar phrase in words that come before “cream” instead of as a standalone word.",
+    "Cold": "Cold works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Whipped": "Look for a natural expression that absorbs Whipped cleanly before locking the board.",
+    "Shaving": "Try reading Shaving as part of a familiar phrase in words that come before “cream” instead of as a standalone word.",
+    "Cookies and": "Cookies and is the clue that makes the phrase pattern in words that come before “cream” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The opening pair, Ice and Cold, leaves more than one reasonable route. Read without the rest of the board, they can suggest cold desserts and toppings instead of the exact connection. At that stage, none of those first impressions explains Whipped, Shaving, and Cookies and with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "cold desserts and toppings is tempting because Ice, whipped, and cookies and point toward dessert, but cold and shaving introduce non-food compounds. That idea remains incomplete once Whipped is added and the clues need one repeatable explanation.",
+    "A second possibility is soft white products. Several answers can look pale or soft, yet the exact repeated feature is the shared ending word in five standard phrases. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Shaving is the turning clue. Its clean reading as shaving cream makes familiar compounds and a flavor name completed by the word cream concrete enough to test against the earlier entries.",
+    "ice cream, cold cream, whipped cream, shaving cream, cookies and cream all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Words that come before “cream”. More precisely, the puzzle resolves as one shared ending word after each clue, not a category limited to food or cosmetics, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Ice and Cold and tested cold desserts and toppings. It was a fair first read because ice, whipped, and cookies and point toward dessert, but cold and shaving introduce non-food compounds. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Whipped appeared, I also considered soft white products. That alternative described part of the surface, but it still did not provide one exact rule for Shaving and Cookies and.",
+    "The decisive step came from Shaving. Reading it as shaving cream gave me a precise test, so I went back through ice cream, cold cream, whipped cream, shaving cream and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Words that come before “cream”, with the important distinction that this is one shared ending word after each clue, not a category limited to food or cosmetics."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Ice too early",
+      "body": "Ice can support cold desserts and toppings, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Shaving supplies the strongest test",
+      "body": "Once Shaving reads as shaving cream, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 799 needs five clean confirmations",
+      "body": "The solution is secure only when whipped cream, shaving cream, cookies and cream fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "Ice can support cold desserts and toppings, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Ice",
+        "examplePhrase": "ice cream",
+        "connectionExplained": "“Ice cream” is the frozen dessert made from a sweetened dairy or dairy-like mixture."
+      },
+      {
+        "clue": "Cold",
+        "examplePhrase": "cold cream",
+        "connectionExplained": "“Cold cream” is the traditional moisturizing and cleansing cosmetic preparation."
+      },
+      {
+        "clue": "Whipped",
+        "examplePhrase": "whipped cream",
+        "connectionExplained": "“Whipped cream” is cream beaten until it becomes light and holds air."
+      },
+      {
+        "clue": "Shaving",
+        "examplePhrase": "shaving cream",
+        "connectionExplained": "“Shaving cream” is the product applied to skin before shaving."
+      },
+      {
+        "clue": "Cookies and",
+        "examplePhrase": "cookies and cream",
+        "connectionExplained": "“Cookies and cream” is the familiar flavor combining cream with pieces of chocolate sandwich cookies."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Ice” reveal the final category in LinkedIn Pinpoint #799?",
+      "answer": "The exact answer is Words that come before “cream”. “Ice cream” is the frozen dessert made from a sweetened dairy or dairy-like mixture. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Ice and Cold connect in Pinpoint #799?",
+      "answer": "Ice resolves as ice cream, while Cold resolves as cold cream. Both support the same final answer."
+    },
+    {
+      "question": "Why is Shaving important in Pinpoint #799?",
+      "answer": "Shaving is decisive because “Shaving cream” is the product applied to skin before shaving. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Ice and Cold, leaves more than one reasonable route. Read without the rest of the board, they can suggest cold desserts and toppings instead of the exact connection. At that stage, none of those first impressions explains Whipped, Shaving, and Cookies and with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "cold desserts and toppings",
+      "soft white products"
+    ],
+    "whyFalseStartPlausible": [
+      "Ice, whipped, and cookies and point toward dessert, but cold and shaving introduce non-food compounds.",
+      "Several answers can look pale or soft, yet the exact repeated feature is the shared ending word in five standard phrases."
+    ],
+    "breakingClue": "Shaving",
+    "pivot": "The decisive step came from Shaving. Reading it as shaving cream gave me a precise test, so I went back through ice cream, cold cream, whipped cream, shaving cream and checked the same relationship each time.",
+    "fullBoardConfirmation": "ice cream, cold cream, whipped cream, shaving cream, cookies and cream all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Shaving",
+    "whyDecisive": "Shaving resolves cleanly as shaving cream, making familiar compounds and a flavor name completed by the word cream specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Shaving, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Ice",
+      "surfaceMisread": "cold desserts and toppings",
+      "resolvedPhraseOrMember": "ice cream",
+      "nonObviousWhy": "“Ice cream” is the frozen dessert made from a sweetened dairy or dairy-like mixture.",
+      "searchableContext": "ice cream",
+      "phraseExample": "ice cream"
+    },
+    {
+      "clue": "Cold",
+      "surfaceMisread": "soft white products",
+      "resolvedPhraseOrMember": "cold cream",
+      "nonObviousWhy": "“Cold cream” is the traditional moisturizing and cleansing cosmetic preparation.",
+      "searchableContext": "cold cream",
+      "phraseExample": "cold cream"
+    },
+    {
+      "clue": "Whipped",
+      "surfaceMisread": "cold desserts and toppings",
+      "resolvedPhraseOrMember": "whipped cream",
+      "nonObviousWhy": "“Whipped cream” is cream beaten until it becomes light and holds air.",
+      "searchableContext": "whipped cream",
+      "phraseExample": "whipped cream"
+    },
+    {
+      "clue": "Shaving",
+      "surfaceMisread": "soft white products",
+      "resolvedPhraseOrMember": "shaving cream",
+      "nonObviousWhy": "“Shaving cream” is the product applied to skin before shaving.",
+      "searchableContext": "shaving cream",
+      "phraseExample": "shaving cream"
+    },
+    {
+      "clue": "Cookies and",
+      "surfaceMisread": "cold desserts and toppings",
+      "resolvedPhraseOrMember": "cookies and cream",
+      "nonObviousWhy": "“Cookies and cream” is the familiar flavor combining cream with pieces of chocolate sandwich cookies.",
+      "searchableContext": "cookies and cream",
+      "phraseExample": "cookies and cream"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Ice” reveal the final category in LinkedIn Pinpoint #799?",
+      "answer": "The exact answer is Words that come before “cream”. “Ice cream” is the frozen dessert made from a sweetened dairy or dairy-like mixture. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Ice"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Ice and Cold connect in Pinpoint #799?",
+      "answer": "Ice resolves as ice cream, while Cold resolves as cold cream. Both support the same final answer.",
+      "tiedClue": "Ice"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Shaving important in Pinpoint #799?",
+      "answer": "Shaving is decisive because “Shaving cream” is the product applied to skin before shaving. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Shaving"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar compounds and a flavor name completed by the word cream",
+    "relatedEntities": [
+      "ice cream",
+      "cold cream",
+      "whipped cream",
+      "shaving cream",
+      "cookies and cream"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar compounds and a flavor name completed by the word cream",
+      "ice cream",
+      "cold cream",
+      "whipped cream",
+      "shaving cream"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "cold desserts and toppings",
+      "whyPlausible": "Ice, whipped, and cookies and point toward dessert, but cold and shaving introduce non-food compounds.",
+      "whyRejected": "Shaving and the full five-clue check point more precisely to Words that come before “cream”."
+    },
+    {
+      "label": "soft white products",
+      "whyPlausible": "Several answers can look pale or soft, yet the exact repeated feature is the shared ending word in five standard phrases.",
+      "whyRejected": "Shaving and the full five-clue check point more precisely to Words that come before “cream”."
+    }
+  ],
+  "setValidationSummary": "ice cream; cold cream; whipped cream; shaving cream; cookies and cream all support familiar compounds and a flavor name completed by the word cream, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "one shared ending word after each clue, not a category limited to food or cosmetics"
+}

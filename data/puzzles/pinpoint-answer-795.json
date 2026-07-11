@@ -1,0 +1,219 @@
+{
+  "puzzleNumber": 795,
+  "slug": "pinpoint-answer-795",
+  "publishDate": "2026-07-04",
+  "isoDate": "2026-07-04",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Front",
+    "Kingdom",
+    "Nations",
+    "States (🎆 Happy 250th! 🎇)",
+    "We stand, divided we fall"
+  ],
+  "answer": "Words that come after “united”",
+  "category": "Words that come after “united”",
+  "wordHints": {
+    "Front": "“United Front” describes a group presenting a shared position or acting together.",
+    "Kingdom": "“United Kingdom” is the country name formed by placing United before Kingdom.",
+    "Nations": "“United Nations” is the international organization whose official name uses the same opening word.",
+    "States (🎆 Happy 250th! 🎇)": "“United States” completes the country name highlighted by the 250th-anniversary note in the clue.",
+    "We stand, divided we fall": "“United we stand, divided we fall” is the well-known saying completed by the final clue text."
+  },
+  "spoilerHints": {
+    "Front": "Try reading Front as part of a familiar phrase in words that come after “united” instead of as a standalone word.",
+    "Kingdom": "Kingdom works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Nations": "Look for a natural expression that absorbs Nations cleanly before locking the board.",
+    "States (🎆 Happy 250th! 🎇)": "States (🎆 Happy 250th! 🎇) is the clue that makes the phrase pattern in words that come after “united” concrete enough to test.",
+    "We stand, divided we fall": "We stand, divided we fall works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The opening pair, Front and Kingdom, leaves more than one reasonable route. Read without the rest of the board, they can suggest names of countries and organizations instead of the exact connection. At that stage, none of those first impressions explains Nations, States (🎆 Happy 250th! 🎇), and We stand, divided we fall with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "names of countries and organizations is tempting because Kingdom, Nations, and States suggest political names, but Front and the closing saying show a wider phrase family. That idea remains incomplete once Nations is added and the clues need one repeatable explanation.",
+    "A second possibility is things connected with national unity. The board invokes unity, yet the precise mechanism is that the same opening word precedes every clue. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "We stand, divided we fall is the turning clue. Its clean reading as United we stand, divided we fall makes proper names and a saying that all begin with the word united concrete enough to test against the earlier entries.",
+    "United Front, United Kingdom, United Nations, United States, United we stand, divided we fall all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Words that come after “united”. More precisely, the puzzle resolves as one shared opening word before each clue, not a broad theme of patriotism or cooperation, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Front and Kingdom and tested names of countries and organizations. It was a fair first read because kingdom, Nations, and States suggest political names, but Front and the closing saying show a wider phrase family. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Nations appeared, I also considered things connected with national unity. That alternative described part of the surface, but it still did not provide one exact rule for States (🎆 Happy 250th! 🎇) and We stand, divided we fall.",
+    "The decisive step came from We stand, divided we fall. Reading it as United we stand, divided we fall gave me a precise test, so I went back through United Front, United Kingdom, United Nations, United States and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Words that come after “united”, with the important distinction that this is one shared opening word before each clue, not a broad theme of patriotism or cooperation."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Front too early",
+      "body": "Front can support names of countries and organizations, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "We stand, divided we fall supplies the strongest test",
+      "body": "Once We stand, divided we fall reads as United we stand, divided we fall, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 795 needs five clean confirmations",
+      "body": "The solution is secure only when United Nations, United States, United we stand, divided we fall fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "Front can support names of countries and organizations, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Front",
+        "examplePhrase": "United Front",
+        "connectionExplained": "“United Front” describes a group presenting a shared position or acting together."
+      },
+      {
+        "clue": "Kingdom",
+        "examplePhrase": "United Kingdom",
+        "connectionExplained": "“United Kingdom” is the country name formed by placing United before Kingdom."
+      },
+      {
+        "clue": "Nations",
+        "examplePhrase": "United Nations",
+        "connectionExplained": "“United Nations” is the international organization whose official name uses the same opening word."
+      },
+      {
+        "clue": "States (🎆 Happy 250th! 🎇)",
+        "examplePhrase": "United States",
+        "connectionExplained": "“United States” completes the country name highlighted by the 250th-anniversary note in the clue."
+      },
+      {
+        "clue": "We stand, divided we fall",
+        "examplePhrase": "United we stand, divided we fall",
+        "connectionExplained": "“United we stand, divided we fall” is the well-known saying completed by the final clue text."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Front” reveal the final category in LinkedIn Pinpoint #795?",
+      "answer": "The exact answer is Words that come after “united”. “United Front” describes a group presenting a shared position or acting together. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Front and Kingdom connect in Pinpoint #795?",
+      "answer": "Front resolves as United Front, while Kingdom resolves as United Kingdom. Both support the same final answer."
+    },
+    {
+      "question": "Why is We stand, divided we fall important in Pinpoint #795?",
+      "answer": "We stand, divided we fall is decisive because “United we stand, divided we fall” is the well-known saying completed by the final clue text. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Front and Kingdom, leaves more than one reasonable route. Read without the rest of the board, they can suggest names of countries and organizations instead of the exact connection. At that stage, none of those first impressions explains Nations, States (🎆 Happy 250th! 🎇), and We stand, divided we fall with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "names of countries and organizations",
+      "things connected with national unity"
+    ],
+    "whyFalseStartPlausible": [
+      "Kingdom, Nations, and States suggest political names, but Front and the closing saying show a wider phrase family.",
+      "The board invokes unity, yet the precise mechanism is that the same opening word precedes every clue."
+    ],
+    "breakingClue": "We stand, divided we fall",
+    "pivot": "The decisive step came from We stand, divided we fall. Reading it as United we stand, divided we fall gave me a precise test, so I went back through United Front, United Kingdom, United Nations, United States and checked the same relationship each time.",
+    "fullBoardConfirmation": "United Front, United Kingdom, United Nations, United States, United we stand, divided we fall all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "We stand, divided we fall",
+    "whyDecisive": "We stand, divided we fall resolves cleanly as United we stand, divided we fall, making proper names and a saying that all begin with the word united specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After We stand, divided we fall, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Front",
+      "surfaceMisread": "names of countries and organizations",
+      "resolvedPhraseOrMember": "United Front",
+      "nonObviousWhy": "“United Front” describes a group presenting a shared position or acting together.",
+      "searchableContext": "United Front",
+      "phraseExample": "United Front"
+    },
+    {
+      "clue": "Kingdom",
+      "surfaceMisread": "things connected with national unity",
+      "resolvedPhraseOrMember": "United Kingdom",
+      "nonObviousWhy": "“United Kingdom” is the country name formed by placing United before Kingdom.",
+      "searchableContext": "United Kingdom",
+      "phraseExample": "United Kingdom"
+    },
+    {
+      "clue": "Nations",
+      "surfaceMisread": "names of countries and organizations",
+      "resolvedPhraseOrMember": "United Nations",
+      "nonObviousWhy": "“United Nations” is the international organization whose official name uses the same opening word.",
+      "searchableContext": "United Nations",
+      "phraseExample": "United Nations"
+    },
+    {
+      "clue": "States (🎆 Happy 250th! 🎇)",
+      "surfaceMisread": "things connected with national unity",
+      "resolvedPhraseOrMember": "United States",
+      "nonObviousWhy": "“United States” completes the country name highlighted by the 250th-anniversary note in the clue.",
+      "searchableContext": "United States",
+      "phraseExample": "United States"
+    },
+    {
+      "clue": "We stand, divided we fall",
+      "surfaceMisread": "names of countries and organizations",
+      "resolvedPhraseOrMember": "United we stand, divided we fall",
+      "nonObviousWhy": "“United we stand, divided we fall” is the well-known saying completed by the final clue text.",
+      "searchableContext": "United we stand, divided we fall",
+      "phraseExample": "United we stand, divided we fall"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Front” reveal the final category in LinkedIn Pinpoint #795?",
+      "answer": "The exact answer is Words that come after “united”. “United Front” describes a group presenting a shared position or acting together. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Front"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Front and Kingdom connect in Pinpoint #795?",
+      "answer": "Front resolves as United Front, while Kingdom resolves as United Kingdom. Both support the same final answer.",
+      "tiedClue": "Front"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is We stand, divided we fall important in Pinpoint #795?",
+      "answer": "We stand, divided we fall is decisive because “United we stand, divided we fall” is the well-known saying completed by the final clue text. That reading gives a precise check for the other four clues.",
+      "tiedClue": "We stand, divided we fall"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "proper names and a saying that all begin with the word united",
+    "relatedEntities": [
+      "United Front",
+      "United Kingdom",
+      "United Nations",
+      "United States",
+      "United we stand, divided we fall"
+    ],
+    "doNotRepeatPatterns": [
+      "proper names and a saying that all begin with the word united",
+      "United Front",
+      "United Kingdom",
+      "United Nations",
+      "United States"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "names of countries and organizations",
+      "whyPlausible": "Kingdom, Nations, and States suggest political names, but Front and the closing saying show a wider phrase family.",
+      "whyRejected": "We stand, divided we fall and the full five-clue check point more precisely to Words that come after “united”."
+    },
+    {
+      "label": "things connected with national unity",
+      "whyPlausible": "The board invokes unity, yet the precise mechanism is that the same opening word precedes every clue.",
+      "whyRejected": "We stand, divided we fall and the full five-clue check point more precisely to Words that come after “united”."
+    }
+  ],
+  "setValidationSummary": "United Front; United Kingdom; United Nations; United States; United we stand, divided we fall all support proper names and a saying that all begin with the word united, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "one shared opening word before each clue, not a broad theme of patriotism or cooperation"
+}

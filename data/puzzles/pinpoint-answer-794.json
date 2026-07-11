@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 794,
+  "slug": "pinpoint-answer-794",
+  "publishDate": "2026-07-03",
+  "isoDate": "2026-07-03",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "AA",
+    "AAA",
+    "9V",
+    "Alkaline",
+    "Lithium-ion (rechargeable)"
+  ],
+  "answer": "Terms used to describe batteries",
+  "category": "Terms used to describe batteries",
+  "wordHints": {
+    "AA": "AA is a common cylindrical battery size used in many portable household devices.",
+    "AAA": "AAA is a smaller cylindrical battery size often used in remotes and compact electronics.",
+    "9V": "9V names the familiar rectangular battery by its nominal voltage.",
+    "Alkaline": "Alkaline identifies a widely used battery chemistry found in disposable household cells.",
+    "Lithium-ion (rechargeable)": "Lithium-ion identifies a rechargeable battery chemistry used in phones, laptops, and many other devices."
+  },
+  "spoilerHints": {
+    "AA": "AA should be tested as part of terms used to describe batteries, not as a standalone reference.",
+    "AAA": "Keep AAA in mind, then see whether Lithium-ion (rechargeable) supports the same answer.",
+    "9V": "9V works best after the board narrows toward terms used to describe batteries.",
+    "Alkaline": "Alkaline should be tested as part of terms used to describe batteries, not as a standalone reference.",
+    "Lithium-ion (rechargeable)": "Lithium-ion (rechargeable) is the clue that makes terms used to describe batteries concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The opening pair, AA and AAA, leaves more than one reasonable route. Read without the rest of the board, they can suggest electrical measurements instead of the exact connection. At that stage, none of those first impressions explains 9V, Alkaline, and Lithium-ion (rechargeable) with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "electrical measurements is tempting because 9V looks like an electrical measurement, but AA and AAA are sizes rather than voltages. That idea remains incomplete once 9V is added and the clues need one repeatable explanation.",
+    "A second possibility is labels printed on electronics. All five can appear on product packaging, but each one specifically describes a battery by size, voltage, or chemistry. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Alkaline is the turning clue. Its clean reading as alkaline battery makes battery descriptions covering size, voltage, and chemical type concrete enough to test against the earlier entries.",
+    "AA battery, AAA battery, 9V battery, alkaline battery, rechargeable lithium-ion battery all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Terms used to describe batteries. More precisely, the puzzle resolves as recognized battery size, voltage, or chemistry terms rather than electrical labels broadly, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with AA and AAA and tested electrical measurements. It was a fair first read because 9V looks like an electrical measurement, but AA and AAA are sizes rather than voltages. I kept it provisional rather than forcing the remaining clues into it.",
+    "When 9V appeared, I also considered labels printed on electronics. That alternative described part of the surface, but it still did not provide one exact rule for Alkaline and Lithium-ion (rechargeable).",
+    "The decisive step came from Alkaline. Reading it as alkaline battery gave me a precise test, so I went back through AA battery, AAA battery, 9V battery, alkaline battery and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Terms used to describe batteries, with the important distinction that this is recognized battery size, voltage, or chemistry terms rather than electrical labels broadly."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto AA too early",
+      "body": "AA can support electrical measurements, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Alkaline supplies the strongest test",
+      "body": "Once Alkaline reads as alkaline battery, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 794 needs five clean confirmations",
+      "body": "The solution is secure only when 9V battery, alkaline battery, rechargeable lithium-ion battery fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on terms",
+    "fastStrategy": "AA can support electrical measurements, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "AA",
+        "examplePhrase": "AA battery",
+        "connectionExplained": "AA is a common cylindrical battery size used in many portable household devices."
+      },
+      {
+        "clue": "AAA",
+        "examplePhrase": "AAA battery",
+        "connectionExplained": "AAA is a smaller cylindrical battery size often used in remotes and compact electronics."
+      },
+      {
+        "clue": "9V",
+        "examplePhrase": "9V battery",
+        "connectionExplained": "9V names the familiar rectangular battery by its nominal voltage."
+      },
+      {
+        "clue": "Alkaline",
+        "examplePhrase": "alkaline battery",
+        "connectionExplained": "Alkaline identifies a widely used battery chemistry found in disposable household cells."
+      },
+      {
+        "clue": "Lithium-ion (rechargeable)",
+        "examplePhrase": "rechargeable lithium-ion battery",
+        "connectionExplained": "Lithium-ion identifies a rechargeable battery chemistry used in phones, laptops, and many other devices."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “AA” reveal the final category in LinkedIn Pinpoint #794?",
+      "answer": "The exact answer is Terms used to describe batteries. AA is a common cylindrical battery size used in many portable household devices. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do AA and AAA connect in Pinpoint #794?",
+      "answer": "AA resolves as AA battery, while AAA resolves as AAA battery. Both support the same final answer."
+    },
+    {
+      "question": "Why is Alkaline important in Pinpoint #794?",
+      "answer": "Alkaline is decisive because Alkaline identifies a widely used battery chemistry found in disposable household cells. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, AA and AAA, leaves more than one reasonable route. Read without the rest of the board, they can suggest electrical measurements instead of the exact connection. At that stage, none of those first impressions explains 9V, Alkaline, and Lithium-ion (rechargeable) with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "electrical measurements",
+      "labels printed on electronics"
+    ],
+    "whyFalseStartPlausible": [
+      "9V looks like an electrical measurement, but AA and AAA are sizes rather than voltages.",
+      "All five can appear on product packaging, but each one specifically describes a battery by size, voltage, or chemistry."
+    ],
+    "breakingClue": "Alkaline",
+    "pivot": "The decisive step came from Alkaline. Reading it as alkaline battery gave me a precise test, so I went back through AA battery, AAA battery, 9V battery, alkaline battery and checked the same relationship each time.",
+    "fullBoardConfirmation": "AA battery, AAA battery, 9V battery, alkaline battery, rechargeable lithium-ion battery all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Alkaline",
+    "whyDecisive": "Alkaline resolves cleanly as alkaline battery, making battery descriptions covering size, voltage, and chemical type specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Alkaline, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "AA",
+      "surfaceMisread": "electrical measurements",
+      "resolvedPhraseOrMember": "AA battery",
+      "nonObviousWhy": "AA is a common cylindrical battery size used in many portable household devices.",
+      "searchableContext": "AA battery"
+    },
+    {
+      "clue": "AAA",
+      "surfaceMisread": "labels printed on electronics",
+      "resolvedPhraseOrMember": "AAA battery",
+      "nonObviousWhy": "AAA is a smaller cylindrical battery size often used in remotes and compact electronics.",
+      "searchableContext": "AAA battery"
+    },
+    {
+      "clue": "9V",
+      "surfaceMisread": "electrical measurements",
+      "resolvedPhraseOrMember": "9V battery",
+      "nonObviousWhy": "9V names the familiar rectangular battery by its nominal voltage.",
+      "searchableContext": "9V battery"
+    },
+    {
+      "clue": "Alkaline",
+      "surfaceMisread": "labels printed on electronics",
+      "resolvedPhraseOrMember": "alkaline battery",
+      "nonObviousWhy": "Alkaline identifies a widely used battery chemistry found in disposable household cells.",
+      "searchableContext": "alkaline battery"
+    },
+    {
+      "clue": "Lithium-ion (rechargeable)",
+      "surfaceMisread": "electrical measurements",
+      "resolvedPhraseOrMember": "rechargeable lithium-ion battery",
+      "nonObviousWhy": "Lithium-ion identifies a rechargeable battery chemistry used in phones, laptops, and many other devices.",
+      "searchableContext": "rechargeable lithium-ion battery"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “AA” reveal the final category in LinkedIn Pinpoint #794?",
+      "answer": "The exact answer is Terms used to describe batteries. AA is a common cylindrical battery size used in many portable household devices. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "AA"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do AA and AAA connect in Pinpoint #794?",
+      "answer": "AA resolves as AA battery, while AAA resolves as AAA battery. Both support the same final answer.",
+      "tiedClue": "AA"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Alkaline important in Pinpoint #794?",
+      "answer": "Alkaline is decisive because Alkaline identifies a widely used battery chemistry found in disposable household cells. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Alkaline"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "battery descriptions covering size, voltage, and chemical type",
+    "relatedEntities": [
+      "AA battery",
+      "AAA battery",
+      "9V battery",
+      "alkaline battery",
+      "rechargeable lithium-ion battery"
+    ],
+    "doNotRepeatPatterns": [
+      "battery descriptions covering size, voltage, and chemical type",
+      "AA battery",
+      "AAA battery",
+      "9V battery",
+      "alkaline battery"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "electrical measurements",
+      "whyPlausible": "9V looks like an electrical measurement, but AA and AAA are sizes rather than voltages.",
+      "whyRejected": "Alkaline and the full five-clue check point more precisely to Terms used to describe batteries."
+    },
+    {
+      "label": "labels printed on electronics",
+      "whyPlausible": "All five can appear on product packaging, but each one specifically describes a battery by size, voltage, or chemistry.",
+      "whyRejected": "Alkaline and the full five-clue check point more precisely to Terms used to describe batteries."
+    }
+  ],
+  "setValidationSummary": "AA battery; AAA battery; 9V battery; alkaline battery; rechargeable lithium-ion battery all support battery descriptions covering size, voltage, and chemical type, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "recognized battery size, voltage, or chemistry terms rather than electrical labels broadly"
+}

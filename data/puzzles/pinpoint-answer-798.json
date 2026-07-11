@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 798,
+  "slug": "pinpoint-answer-798",
+  "publishDate": "2026-07-07",
+  "isoDate": "2026-07-07",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Library",
+    "Auditorium",
+    "Playground",
+    "Science lab",
+    "Classroom"
+  ],
+  "answer": "Places at a school",
+  "category": "Places at a school",
+  "wordHints": {
+    "Library": "A school library provides books, study space, and research materials for students.",
+    "Auditorium": "A school auditorium is used for assemblies, performances, presentations, and large group events.",
+    "Playground": "A playground is the outdoor area where younger students can play during breaks.",
+    "Science lab": "A science lab is the specialist room where students conduct experiments and practical lessons.",
+    "Classroom": "A classroom is the standard room where teachers and students meet for lessons."
+  },
+  "spoilerHints": {
+    "Library": "Library should be tested as part of places at a school, not as a standalone reference.",
+    "Auditorium": "Keep Auditorium in mind, then see whether Science lab supports the same answer.",
+    "Playground": "Playground works best after the board narrows toward places at a school.",
+    "Science lab": "Science lab is the clue that makes places at a school concrete enough to test across the full board.",
+    "Classroom": "Keep Classroom in mind, then see whether Science lab supports the same answer."
+  },
+  "articleBlocks": [
+    "The opening pair, Library and Auditorium, leaves more than one reasonable route. Read without the rest of the board, they can suggest rooms in a public building instead of the exact connection. At that stage, none of those first impressions explains Playground, Science lab, and Classroom with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "rooms in a public building is tempting because Libraries and auditoriums appear in many public buildings, but playground and classroom narrow the setting to a school. That idea remains incomplete once Playground is added and the clues need one repeatable explanation.",
+    "A second possibility is places used by children. Children use several of these places, yet science labs and auditoriums are defined here by their role inside a school campus. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Science lab is the turning clue. Its clean reading as school science laboratory makes indoor and outdoor spaces normally found on a school campus concrete enough to test against the earlier entries.",
+    "school library, school auditorium, school playground, school science laboratory, school classroom all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Places at a school. More precisely, the puzzle resolves as specific school locations rather than public rooms or places for children generally, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Library and Auditorium and tested rooms in a public building. It was a fair first read because libraries and auditoriums appear in many public buildings, but playground and classroom narrow the setting to a school. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Playground appeared, I also considered places used by children. That alternative described part of the surface, but it still did not provide one exact rule for Science lab and Classroom.",
+    "The decisive step came from Science lab. Reading it as school science laboratory gave me a precise test, so I went back through school library, school auditorium, school playground, school science laboratory and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Places at a school, with the important distinction that this is specific school locations rather than public rooms or places for children generally."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Library too early",
+      "body": "Library can support rooms in a public building, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Science lab supplies the strongest test",
+      "body": "Once Science lab reads as school science laboratory, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 798 needs five clean confirmations",
+      "body": "The solution is secure only when school playground, school science laboratory, school classroom fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on places",
+    "fastStrategy": "Library can support rooms in a public building, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Library",
+        "examplePhrase": "school library",
+        "connectionExplained": "A school library provides books, study space, and research materials for students."
+      },
+      {
+        "clue": "Auditorium",
+        "examplePhrase": "school auditorium",
+        "connectionExplained": "A school auditorium is used for assemblies, performances, presentations, and large group events."
+      },
+      {
+        "clue": "Playground",
+        "examplePhrase": "school playground",
+        "connectionExplained": "A playground is the outdoor area where younger students can play during breaks."
+      },
+      {
+        "clue": "Science lab",
+        "examplePhrase": "school science laboratory",
+        "connectionExplained": "A science lab is the specialist room where students conduct experiments and practical lessons."
+      },
+      {
+        "clue": "Classroom",
+        "examplePhrase": "school classroom",
+        "connectionExplained": "A classroom is the standard room where teachers and students meet for lessons."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Library” reveal the final category in LinkedIn Pinpoint #798?",
+      "answer": "The exact answer is Places at a school. A school library provides books, study space, and research materials for students. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Library and Auditorium connect in Pinpoint #798?",
+      "answer": "Library resolves as school library, while Auditorium resolves as school auditorium. Both support the same final answer."
+    },
+    {
+      "question": "Why is Science lab important in Pinpoint #798?",
+      "answer": "Science lab is decisive because A science lab is the specialist room where students conduct experiments and practical lessons. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Library and Auditorium, leaves more than one reasonable route. Read without the rest of the board, they can suggest rooms in a public building instead of the exact connection. At that stage, none of those first impressions explains Playground, Science lab, and Classroom with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "rooms in a public building",
+      "places used by children"
+    ],
+    "whyFalseStartPlausible": [
+      "Libraries and auditoriums appear in many public buildings, but playground and classroom narrow the setting to a school.",
+      "Children use several of these places, yet science labs and auditoriums are defined here by their role inside a school campus."
+    ],
+    "breakingClue": "Science lab",
+    "pivot": "The decisive step came from Science lab. Reading it as school science laboratory gave me a precise test, so I went back through school library, school auditorium, school playground, school science laboratory and checked the same relationship each time.",
+    "fullBoardConfirmation": "school library, school auditorium, school playground, school science laboratory, school classroom all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Science lab",
+    "whyDecisive": "Science lab resolves cleanly as school science laboratory, making indoor and outdoor spaces normally found on a school campus specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Science lab, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Library",
+      "surfaceMisread": "rooms in a public building",
+      "resolvedPhraseOrMember": "school library",
+      "nonObviousWhy": "A school library provides books, study space, and research materials for students.",
+      "searchableContext": "school library"
+    },
+    {
+      "clue": "Auditorium",
+      "surfaceMisread": "places used by children",
+      "resolvedPhraseOrMember": "school auditorium",
+      "nonObviousWhy": "A school auditorium is used for assemblies, performances, presentations, and large group events.",
+      "searchableContext": "school auditorium"
+    },
+    {
+      "clue": "Playground",
+      "surfaceMisread": "rooms in a public building",
+      "resolvedPhraseOrMember": "school playground",
+      "nonObviousWhy": "A playground is the outdoor area where younger students can play during breaks.",
+      "searchableContext": "school playground"
+    },
+    {
+      "clue": "Science lab",
+      "surfaceMisread": "places used by children",
+      "resolvedPhraseOrMember": "school science laboratory",
+      "nonObviousWhy": "A science lab is the specialist room where students conduct experiments and practical lessons.",
+      "searchableContext": "school science laboratory"
+    },
+    {
+      "clue": "Classroom",
+      "surfaceMisread": "rooms in a public building",
+      "resolvedPhraseOrMember": "school classroom",
+      "nonObviousWhy": "A classroom is the standard room where teachers and students meet for lessons.",
+      "searchableContext": "school classroom"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Library” reveal the final category in LinkedIn Pinpoint #798?",
+      "answer": "The exact answer is Places at a school. A school library provides books, study space, and research materials for students. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Library"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Library and Auditorium connect in Pinpoint #798?",
+      "answer": "Library resolves as school library, while Auditorium resolves as school auditorium. Both support the same final answer.",
+      "tiedClue": "Library"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Science lab important in Pinpoint #798?",
+      "answer": "Science lab is decisive because A science lab is the specialist room where students conduct experiments and practical lessons. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Science lab"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "indoor and outdoor spaces normally found on a school campus",
+    "relatedEntities": [
+      "school library",
+      "school auditorium",
+      "school playground",
+      "school science laboratory",
+      "school classroom"
+    ],
+    "doNotRepeatPatterns": [
+      "indoor and outdoor spaces normally found on a school campus",
+      "school library",
+      "school auditorium",
+      "school playground",
+      "school science laboratory"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "rooms in a public building",
+      "whyPlausible": "Libraries and auditoriums appear in many public buildings, but playground and classroom narrow the setting to a school.",
+      "whyRejected": "Science lab and the full five-clue check point more precisely to Places at a school."
+    },
+    {
+      "label": "places used by children",
+      "whyPlausible": "Children use several of these places, yet science labs and auditoriums are defined here by their role inside a school campus.",
+      "whyRejected": "Science lab and the full five-clue check point more precisely to Places at a school."
+    }
+  ],
+  "setValidationSummary": "school library; school auditorium; school playground; school science laboratory; school classroom all support indoor and outdoor spaces normally found on a school campus, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "specific school locations rather than public rooms or places for children generally"
+}

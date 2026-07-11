@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 797,
+  "slug": "pinpoint-answer-797",
+  "publishDate": "2026-07-06",
+  "isoDate": "2026-07-06",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Avianca",
+    "El Al",
+    "Qantas",
+    "Lufthansa",
+    "Aeroméxico"
+  ],
+  "answer": "National airlines (flag carriers)",
+  "category": "National airlines (flag carriers)",
+  "wordHints": {
+    "Avianca": "Avianca is the flag carrier associated with Colombia.",
+    "El Al": "El Al is the national flag carrier airline of Israel.",
+    "Qantas": "Qantas is Australia’s flag carrier and its best-known international airline brand.",
+    "Lufthansa": "Lufthansa is the flag carrier airline associated with Germany.",
+    "Aeroméxico": "Aeroméxico is the flag carrier airline associated with Mexico."
+  },
+  "spoilerHints": {
+    "Avianca": "Avianca should be tested as part of national airlines (flag carriers), not as a standalone reference.",
+    "El Al": "Keep El Al in mind, then see whether Aeroméxico supports the same answer.",
+    "Qantas": "Qantas works best after the board narrows toward national airlines (flag carriers).",
+    "Lufthansa": "Lufthansa should be tested as part of national airlines (flag carriers), not as a standalone reference.",
+    "Aeroméxico": "Aeroméxico is the clue that makes national airlines (flag carriers) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The opening pair, Avianca and El Al, leaves more than one reasonable route. Read without the rest of the board, they can suggest large international airlines instead of the exact connection. At that stage, none of those first impressions explains Qantas, Lufthansa, and Aeroméxico with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "large international airlines is tempting because All five operate international routes, but many international airlines are not national flag carriers. That idea remains incomplete once Qantas is added and the clues need one repeatable explanation.",
+    "A second possibility is companies seen at major airports. Airport visibility explains where the names appear, not the more exact role each airline holds for its country. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Qantas is the turning clue. Its clean reading as Qantas of Australia makes airlines recognized as flag carriers for their respective countries concrete enough to test against the earlier entries.",
+    "Avianca of Colombia, El Al of Israel, Qantas of Australia, Lufthansa of Germany, Aeroméxico of Mexico all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is National airlines (flag carriers). More precisely, the puzzle resolves as national flag carrier airlines rather than international airlines of any kind, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Avianca and El Al and tested large international airlines. It was a fair first read because all five operate international routes, but many international airlines are not national flag carriers. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Qantas appeared, I also considered companies seen at major airports. That alternative described part of the surface, but it still did not provide one exact rule for Lufthansa and Aeroméxico.",
+    "The decisive step came from Qantas. Reading it as Qantas of Australia gave me a precise test, so I went back through Avianca of Colombia, El Al of Israel, Qantas of Australia, Lufthansa of Germany and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was National airlines (flag carriers), with the important distinction that this is national flag carrier airlines rather than international airlines of any kind."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Avianca too early",
+      "body": "Avianca can support large international airlines, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Qantas supplies the strongest test",
+      "body": "Once Qantas reads as Qantas of Australia, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 797 needs five clean confirmations",
+      "body": "The solution is secure only when Qantas of Australia, Lufthansa of Germany, Aeroméxico of Mexico fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on national",
+    "fastStrategy": "Avianca can support large international airlines, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Avianca",
+        "examplePhrase": "Avianca of Colombia",
+        "connectionExplained": "Avianca is the flag carrier associated with Colombia."
+      },
+      {
+        "clue": "El Al",
+        "examplePhrase": "El Al of Israel",
+        "connectionExplained": "El Al is the national flag carrier airline of Israel."
+      },
+      {
+        "clue": "Qantas",
+        "examplePhrase": "Qantas of Australia",
+        "connectionExplained": "Qantas is Australia’s flag carrier and its best-known international airline brand."
+      },
+      {
+        "clue": "Lufthansa",
+        "examplePhrase": "Lufthansa of Germany",
+        "connectionExplained": "Lufthansa is the flag carrier airline associated with Germany."
+      },
+      {
+        "clue": "Aeroméxico",
+        "examplePhrase": "Aeroméxico of Mexico",
+        "connectionExplained": "Aeroméxico is the flag carrier airline associated with Mexico."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Avianca” reveal the final category in LinkedIn Pinpoint #797?",
+      "answer": "The exact answer is National airlines (flag carriers). Avianca is the flag carrier associated with Colombia. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Avianca and El Al connect in Pinpoint #797?",
+      "answer": "Avianca resolves as Avianca of Colombia, while El Al resolves as El Al of Israel. Both support the same final answer."
+    },
+    {
+      "question": "Why is Qantas important in Pinpoint #797?",
+      "answer": "Qantas is decisive because Qantas is Australia’s flag carrier and its best-known international airline brand. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Avianca and El Al, leaves more than one reasonable route. Read without the rest of the board, they can suggest large international airlines instead of the exact connection. At that stage, none of those first impressions explains Qantas, Lufthansa, and Aeroméxico with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "large international airlines",
+      "companies seen at major airports"
+    ],
+    "whyFalseStartPlausible": [
+      "All five operate international routes, but many international airlines are not national flag carriers.",
+      "Airport visibility explains where the names appear, not the more exact role each airline holds for its country."
+    ],
+    "breakingClue": "Qantas",
+    "pivot": "The decisive step came from Qantas. Reading it as Qantas of Australia gave me a precise test, so I went back through Avianca of Colombia, El Al of Israel, Qantas of Australia, Lufthansa of Germany and checked the same relationship each time.",
+    "fullBoardConfirmation": "Avianca of Colombia, El Al of Israel, Qantas of Australia, Lufthansa of Germany, Aeroméxico of Mexico all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Qantas",
+    "whyDecisive": "Qantas resolves cleanly as Qantas of Australia, making airlines recognized as flag carriers for their respective countries specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Qantas, the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Avianca",
+      "surfaceMisread": "large international airlines",
+      "resolvedPhraseOrMember": "Avianca of Colombia",
+      "nonObviousWhy": "Avianca is the flag carrier associated with Colombia.",
+      "searchableContext": "Avianca of Colombia"
+    },
+    {
+      "clue": "El Al",
+      "surfaceMisread": "companies seen at major airports",
+      "resolvedPhraseOrMember": "El Al of Israel",
+      "nonObviousWhy": "El Al is the national flag carrier airline of Israel.",
+      "searchableContext": "El Al of Israel"
+    },
+    {
+      "clue": "Qantas",
+      "surfaceMisread": "large international airlines",
+      "resolvedPhraseOrMember": "Qantas of Australia",
+      "nonObviousWhy": "Qantas is Australia’s flag carrier and its best-known international airline brand.",
+      "searchableContext": "Qantas of Australia"
+    },
+    {
+      "clue": "Lufthansa",
+      "surfaceMisread": "companies seen at major airports",
+      "resolvedPhraseOrMember": "Lufthansa of Germany",
+      "nonObviousWhy": "Lufthansa is the flag carrier airline associated with Germany.",
+      "searchableContext": "Lufthansa of Germany"
+    },
+    {
+      "clue": "Aeroméxico",
+      "surfaceMisread": "large international airlines",
+      "resolvedPhraseOrMember": "Aeroméxico of Mexico",
+      "nonObviousWhy": "Aeroméxico is the flag carrier airline associated with Mexico.",
+      "searchableContext": "Aeroméxico of Mexico"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Avianca” reveal the final category in LinkedIn Pinpoint #797?",
+      "answer": "The exact answer is National airlines (flag carriers). Avianca is the flag carrier associated with Colombia. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Avianca"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Avianca and El Al connect in Pinpoint #797?",
+      "answer": "Avianca resolves as Avianca of Colombia, while El Al resolves as El Al of Israel. Both support the same final answer.",
+      "tiedClue": "Avianca"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Qantas important in Pinpoint #797?",
+      "answer": "Qantas is decisive because Qantas is Australia’s flag carrier and its best-known international airline brand. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Qantas"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "airlines recognized as flag carriers for their respective countries",
+    "relatedEntities": [
+      "Avianca of Colombia",
+      "El Al of Israel",
+      "Qantas of Australia",
+      "Lufthansa of Germany",
+      "Aeroméxico of Mexico"
+    ],
+    "doNotRepeatPatterns": [
+      "airlines recognized as flag carriers for their respective countries",
+      "Avianca of Colombia",
+      "El Al of Israel",
+      "Qantas of Australia",
+      "Lufthansa of Germany"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "large international airlines",
+      "whyPlausible": "All five operate international routes, but many international airlines are not national flag carriers.",
+      "whyRejected": "Qantas and the full five-clue check point more precisely to National airlines (flag carriers)."
+    },
+    {
+      "label": "companies seen at major airports",
+      "whyPlausible": "Airport visibility explains where the names appear, not the more exact role each airline holds for its country.",
+      "whyRejected": "Qantas and the full five-clue check point more precisely to National airlines (flag carriers)."
+    }
+  ],
+  "setValidationSummary": "Avianca of Colombia; El Al of Israel; Qantas of Australia; Lufthansa of Germany; Aeroméxico of Mexico all support airlines recognized as flag carriers for their respective countries, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "national flag carrier airlines rather than international airlines of any kind"
+}

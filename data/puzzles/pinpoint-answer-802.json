@@ -1,0 +1,214 @@
+{
+  "puzzleNumber": 802,
+  "slug": "pinpoint-answer-802",
+  "publishDate": "2026-07-11",
+  "isoDate": "2026-07-11",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Grave",
+    "Presto",
+    "Adagio",
+    "Andante",
+    "Allegro (120+ beats per minute)"
+  ],
+  "answer": "Musical tempos",
+  "category": "Musical tempos",
+  "wordHints": {
+    "Grave": "Grave is a musical tempo marking for a very slow and solemn manner.",
+    "Presto": "Presto is a tempo marking directing music to be played very fast.",
+    "Adagio": "Adagio indicates a slow tempo and a relaxed, measured pace.",
+    "Andante": "Andante indicates a moderate walking pace in musical performance.",
+    "Allegro (120+ beats per minute)": "Allegro is a fast, lively tempo, and the clue’s beat-rate note makes the speed meaning explicit."
+  },
+  "spoilerHints": {
+    "Grave": "Grave should be tested as part of musical tempos, not as a standalone reference.",
+    "Presto": "Keep Presto in mind, then see whether Allegro (120+ beats per minute) supports the same answer.",
+    "Adagio": "Adagio works best after the board narrows toward musical tempos.",
+    "Andante": "Andante should be tested as part of musical tempos, not as a standalone reference.",
+    "Allegro (120+ beats per minute)": "Allegro (120+ beats per minute) is the clue that makes musical tempos concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The opening pair, Grave and Presto, leaves more than one reasonable route. Read without the rest of the board, they can suggest Italian words used in music instead of the exact connection. At that stage, none of those first impressions explains Adagio, Andante, and Allegro (120+ beats per minute) with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "Italian words used in music is tempting because The terms are Italian and appear in music, but the exact relationship is that each one specifies performance speed. That idea remains incomplete once Adagio is added and the clues need one repeatable explanation.",
+    "A second possibility is labels for different performance moods. Some markings also suggest character or mood, yet all five are standard tempo names arranged by pace. The board therefore needs a narrower rule that can account for every clue without changing direction halfway through.",
+    "Allegro (120+ beats per minute) is the turning clue. Its clean reading as allegro tempo makes standard music markings telling performers how fast a passage should be played concrete enough to test against the earlier entries.",
+    "grave tempo, presto tempo, adagio tempo, andante tempo, allegro tempo all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity.",
+    "The answer is Musical tempos. More precisely, the puzzle resolves as named musical tempo markings rather than Italian music vocabulary generally, which explains why every reveal belongs in the final set."
+  ],
+  "solutionNarrative": [
+    "I began with Grave and Presto and tested Italian words used in music. It was a fair first read because the terms are Italian and appear in music, but the exact relationship is that each one specifies performance speed. I kept it provisional rather than forcing the remaining clues into it.",
+    "When Adagio appeared, I also considered labels for different performance moods. That alternative described part of the surface, but it still did not provide one exact rule for Andante and Allegro (120+ beats per minute).",
+    "The decisive step came from Allegro (120+ beats per minute). Reading it as allegro tempo gave me a precise test, so I went back through grave tempo, presto tempo, adagio tempo, andante tempo and checked the same relationship each time.",
+    "After all five checks held, I could reject both early guesses. The answer was Musical tempos, with the important distinction that this is named musical tempo markings rather than Italian music vocabulary generally."
+  ],
+  "lessons": [
+    {
+      "title": "Do not lock onto Grave too early",
+      "body": "Grave can support Italian words used in music, so wait until another clue supplies a rule that repeats across the entire board."
+    },
+    {
+      "title": "Allegro (120+ beats per minute) supplies the strongest test",
+      "body": "Once Allegro (120+ beats per minute) reads as allegro tempo, apply that exact relationship to the earlier clues instead of relying on a broad topic match."
+    },
+    {
+      "title": "Pinpoint 802 needs five clean confirmations",
+      "body": "The solution is secure only when adagio tempo, andante tempo, allegro tempo fit the same rule naturally and do not require separate exceptions."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on musical",
+    "fastStrategy": "Grave can support Italian words used in music, so wait until another clue supplies a rule that repeats across the entire board.",
+    "clueTableRows": [
+      {
+        "clue": "Grave",
+        "examplePhrase": "grave tempo",
+        "connectionExplained": "Grave is a musical tempo marking for a very slow and solemn manner."
+      },
+      {
+        "clue": "Presto",
+        "examplePhrase": "presto tempo",
+        "connectionExplained": "Presto is a tempo marking directing music to be played very fast."
+      },
+      {
+        "clue": "Adagio",
+        "examplePhrase": "adagio tempo",
+        "connectionExplained": "Adagio indicates a slow tempo and a relaxed, measured pace."
+      },
+      {
+        "clue": "Andante",
+        "examplePhrase": "andante tempo",
+        "connectionExplained": "Andante indicates a moderate walking pace in musical performance."
+      },
+      {
+        "clue": "Allegro (120+ beats per minute)",
+        "examplePhrase": "allegro tempo",
+        "connectionExplained": "Allegro is a fast, lively tempo, and the clue’s beat-rate note makes the speed meaning explicit."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "How does “Grave” reveal the final category in LinkedIn Pinpoint #802?",
+      "answer": "The exact answer is Musical tempos. Grave is a musical tempo marking for a very slow and solemn manner. This reading also matches the connection used by the other four clues."
+    },
+    {
+      "question": "How do Grave and Presto connect in Pinpoint #802?",
+      "answer": "Grave resolves as grave tempo, while Presto resolves as presto tempo. Both support the same final answer."
+    },
+    {
+      "question": "Why is Allegro (120+ beats per minute) important in Pinpoint #802?",
+      "answer": "Allegro (120+ beats per minute) is decisive because Allegro is a fast, lively tempo, and the clue’s beat-rate note makes the speed meaning explicit. That reading gives a precise check for the other four clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The opening pair, Grave and Presto, leaves more than one reasonable route. Read without the rest of the board, they can suggest Italian words used in music instead of the exact connection. At that stage, none of those first impressions explains Adagio, Andante, and Allegro (120+ beats per minute) with the same precision. The useful move is to keep several readings open, wait for the clue that supplies a repeatable test, and then check every earlier clue against that same narrow rule.",
+    "falseStarts": [
+      "Italian words used in music",
+      "labels for different performance moods"
+    ],
+    "whyFalseStartPlausible": [
+      "The terms are Italian and appear in music, but the exact relationship is that each one specifies performance speed.",
+      "Some markings also suggest character or mood, yet all five are standard tempo names arranged by pace."
+    ],
+    "breakingClue": "Allegro (120+ beats per minute)",
+    "pivot": "The decisive step came from Allegro (120+ beats per minute). Reading it as allegro tempo gave me a precise test, so I went back through grave tempo, presto tempo, adagio tempo, andante tempo and checked the same relationship each time.",
+    "fullBoardConfirmation": "grave tempo, presto tempo, adagio tempo, andante tempo, allegro tempo all survive the same check. That full-board agreement rules out the broader first impressions and keeps the solution at one level of specificity."
+  },
+  "turningPoint": {
+    "clue": "Allegro (120+ beats per minute)",
+    "whyDecisive": "Allegro (120+ beats per minute) resolves cleanly as allegro tempo, making standard music markings telling performers how fast a passage should be played specific enough to test across all five clues.",
+    "whatChangedAfterIt": "After Allegro (120+ beats per minute), the earlier clues could be checked through the same precise relationship instead of two broad surface guesses."
+  },
+  "clueRows": [
+    {
+      "clue": "Grave",
+      "surfaceMisread": "Italian words used in music",
+      "resolvedPhraseOrMember": "grave tempo",
+      "nonObviousWhy": "Grave is a musical tempo marking for a very slow and solemn manner.",
+      "searchableContext": "grave tempo"
+    },
+    {
+      "clue": "Presto",
+      "surfaceMisread": "labels for different performance moods",
+      "resolvedPhraseOrMember": "presto tempo",
+      "nonObviousWhy": "Presto is a tempo marking directing music to be played very fast.",
+      "searchableContext": "presto tempo"
+    },
+    {
+      "clue": "Adagio",
+      "surfaceMisread": "Italian words used in music",
+      "resolvedPhraseOrMember": "adagio tempo",
+      "nonObviousWhy": "Adagio indicates a slow tempo and a relaxed, measured pace.",
+      "searchableContext": "adagio tempo"
+    },
+    {
+      "clue": "Andante",
+      "surfaceMisread": "labels for different performance moods",
+      "resolvedPhraseOrMember": "andante tempo",
+      "nonObviousWhy": "Andante indicates a moderate walking pace in musical performance.",
+      "searchableContext": "andante tempo"
+    },
+    {
+      "clue": "Allegro (120+ beats per minute)",
+      "surfaceMisread": "Italian words used in music",
+      "resolvedPhraseOrMember": "allegro tempo",
+      "nonObviousWhy": "Allegro is a fast, lively tempo, and the clue’s beat-rate note makes the speed meaning explicit.",
+      "searchableContext": "allegro tempo"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "How does “Grave” reveal the final category in LinkedIn Pinpoint #802?",
+      "answer": "The exact answer is Musical tempos. Grave is a musical tempo marking for a very slow and solemn manner. This reading also matches the connection used by the other four clues.",
+      "tiedClue": "Grave"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do Grave and Presto connect in Pinpoint #802?",
+      "answer": "Grave resolves as grave tempo, while Presto resolves as presto tempo. Both support the same final answer.",
+      "tiedClue": "Grave"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is Allegro (120+ beats per minute) important in Pinpoint #802?",
+      "answer": "Allegro (120+ beats per minute) is decisive because Allegro is a fast, lively tempo, and the clue’s beat-rate note makes the speed meaning explicit. That reading gives a precise check for the other four clues.",
+      "tiedClue": "Allegro (120+ beats per minute)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "standard music markings telling performers how fast a passage should be played",
+    "relatedEntities": [
+      "grave tempo",
+      "presto tempo",
+      "adagio tempo",
+      "andante tempo",
+      "allegro tempo"
+    ],
+    "doNotRepeatPatterns": [
+      "standard music markings telling performers how fast a passage should be played",
+      "grave tempo",
+      "presto tempo",
+      "adagio tempo",
+      "andante tempo"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Italian words used in music",
+      "whyPlausible": "The terms are Italian and appear in music, but the exact relationship is that each one specifies performance speed.",
+      "whyRejected": "Allegro (120+ beats per minute) and the full five-clue check point more precisely to Musical tempos."
+    },
+    {
+      "label": "labels for different performance moods",
+      "whyPlausible": "Some markings also suggest character or mood, yet all five are standard tempo names arranged by pace.",
+      "whyRejected": "Allegro (120+ beats per minute) and the full five-clue check point more precisely to Musical tempos."
+    }
+  ],
+  "setValidationSummary": "grave tempo; presto tempo; adagio tempo; andante tempo; allegro tempo all support standard music markings telling performers how fast a passage should be played, so the answer holds across every clue rather than only the opening pair.",
+  "categoryPrecisionNote": "named musical tempo markings rather than Italian music vocabulary generally"
+}
