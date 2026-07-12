@@ -4,7 +4,7 @@
     "slug": "pinpoint-answer-803",
     "publishDate": "2026-07-12",
     "status": "live",
-    "detailState": "published",
+    "detailState": "fallback_full",
     "clues": [
       "Class",
       "Order",
@@ -15,8 +15,8 @@
     "mainAnswer": "Biological taxonomy (ways to classify living things)",
     "category": "Biological taxonomy (ways to classify living things)",
     "difficultyLevel": "Moderate",
-    "shortSummary": "At first glance, Class, Order, Family do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-07-12T07:02:38.619Z"
+    "shortSummary": "Pinpoint Answer Today asks: what links Class, Order, Family, Genus, Species - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-07-12T07:11:05.415Z"
   },
   {
     "puzzleNumber": 802,
