@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 803,
+  "slug": "pinpoint-answer-803",
+  "publishDate": "2026-07-12",
+  "isoDate": "2026-07-12",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Class",
+    "Order",
+    "Family",
+    "Genus",
+    "Species"
+  ],
+  "answer": "Biological taxonomy (ways to classify living things)",
+  "category": "Biological taxonomy (ways to classify living things)",
+  "wordHints": {
+    "Class": "It is a specific rank in the system, used to group similar orders together.",
+    "Order": "It is a specific rank in the system, used to group similar families together.",
+    "Family": "It is a specific rank in the system, used to group similar genera together.",
+    "Genus": "It is a specific rank in the system, used to group similar species together.",
+    "Species": "It is a specific rank in the system, used to group individual organisms together."
+  },
+  "spoilerHints": {
+    "Class": "Class should be tested as part of biological taxonomy (ways to classify living things), not as a standalone reference.",
+    "Order": "Keep Order in mind, then see whether Species supports the same answer.",
+    "Family": "Family works best after the board narrows toward biological taxonomy (ways to classify living things).",
+    "Genus": "Genus should be tested as part of biological taxonomy (ways to classify living things), not as a standalone reference.",
+    "Species": "Species is the clue that makes biological taxonomy (ways to classify living things) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, this looked more like scientific Categories than the real category.",
+    "Class pushed me in that direction immediately.",
+    "Order kept that theory alive for a moment, but genus still did not quite fit.",
+    "That was the moment the first idea stopped working.",
+    "Then Genus made me stop thinking about scientific Categories and start thinking about the real category.",
+    "Class fit once I read it through the answer.",
+    "Order fit once I read it through the answer.",
+    "The answer was Biological taxonomy (ways to classify living things).",
+    "Genus and Species then felt less surprising and more like the last pieces falling into place.",
+    "Looking back, the answer feels obvious in the best way."
+  ],
+  "solutionNarrative": [
+    "I first read Class and Order too literally and drifted toward Scientific Categories. Class could be read as \"Class\", while Order could be read as \"Order\", so the board still felt open instead of solved.",
+    "Genus changed the direction because \"Genus\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Class\", \"Order\", \"Family\", and \"Species\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Class, Order, Family, Genus, and Species.",
+    "That left very little room for the earlier false start. The answer was \"Biological taxonomy (ways to classify living things)\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Class\" and \"Order\" can look like they belong to different categories at first",
+      "body": "\"Class\" and \"Order\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Genus\" anchors a shared category board with one concrete theme",
+      "body": "Genus organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Genus\" to re-check \"Class\" under a shared category board with one concrete theme",
+      "body": "When classifying living things, it's essential to understand the specific ranks in the biological taxonomy system."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on biological",
+    "fastStrategy": "\"Class\" and \"Order\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Class",
+        "examplePhrase": "Class",
+        "connectionExplained": "It is a specific rank in the system, used to group similar orders together."
+      },
+      {
+        "clue": "Order",
+        "examplePhrase": "Order",
+        "connectionExplained": "It is a specific rank in the system, used to group similar families together."
+      },
+      {
+        "clue": "Family",
+        "examplePhrase": "Family",
+        "connectionExplained": "It is a specific rank in the system, used to group similar genera together."
+      },
+      {
+        "clue": "Genus",
+        "examplePhrase": "Genus",
+        "connectionExplained": "It is a specific rank in the system, used to group similar species together."
+      },
+      {
+        "clue": "Species",
+        "examplePhrase": "Species",
+        "connectionExplained": "It is a specific rank in the system, used to group individual organisms together."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Class\" and \"Order\" in LinkedIn Pinpoint #803?",
+      "answer": "The answer is \"Biological taxonomy (ways to classify living things)\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Class\" and \"Order\" connect in LinkedIn Pinpoint #803?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Genus is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Genus\" the key clue in LinkedIn Pinpoint #803?",
+      "answer": "Genus is the turning clue because \"Genus\" makes the shared category frame explicit. It also makes Class read cleanly as \"Class\". The board feels tricky because the clues are words with multiple meanings, making it hard to pinpoint the correct system of classification."
+    },
+    {
+      "question": "How does \"Class\" fit the same category as \"Genus\" in LinkedIn Pinpoint #803?",
+      "answer": "\"Class\" reads as \"Class\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Class, Order, and Family do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"general science categories\" can feel plausible before one clue makes the answer feel concrete. Genus is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "general science categories",
+      "random biology terms"
+    ],
+    "whyFalseStartPlausible": [
+      "The clues are more specific than just general scientific categories, pointing to a specific system of classification used in biology.",
+      "general science categories feels plausible early on, but it falls apart once genus demands a more exact reading."
+    ],
+    "breakingClue": "Genus",
+    "pivot": "I first read Class and Order too literally and drifted toward Scientific Categories. Class could be read as \"Class\", while Order could be read as \"Order\", so the board still felt open instead of solved.\n\nGenus changed the direction because \"Genus\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Class\", \"Order\", \"Family\", and \"Species\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Class, Order, Family, Genus, and Species.\n\nThat left very little room for the earlier false start. The answer was \"Biological taxonomy (ways to classify living things)\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Class, Order, and Family stop feeling disconnected and start looking like they belong together. Once genus is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board feels tricky because the clues are words with multiple meanings, making it hard to pinpoint the correct system of classification."
+  },
+  "turningPoint": {
+    "clue": "Genus",
+    "whyDecisive": "The clue 'Genus' forces the mental pivot because it is a specific rank in the biological taxonomy system.",
+    "whatChangedAfterIt": "Once Genus landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Class",
+      "surfaceMisread": "Scientific Categories",
+      "resolvedPhraseOrMember": "Class",
+      "nonObviousWhy": "It is a specific rank in the system, used to group similar orders together.",
+      "searchableContext": "From the Latin 'classis', meaning a division or group",
+      "phraseExample": "From the Latin 'classis', meaning a division or group"
+    },
+    {
+      "clue": "Order",
+      "surfaceMisread": "Scientific Categories",
+      "resolvedPhraseOrMember": "Order",
+      "nonObviousWhy": "It is a specific rank in the system, used to group similar families together.",
+      "searchableContext": "From the Latin 'ordo', meaning a row or series",
+      "phraseExample": "From the Latin 'ordo', meaning a row or series"
+    },
+    {
+      "clue": "Family",
+      "surfaceMisread": "Scientific Categories",
+      "resolvedPhraseOrMember": "Family",
+      "nonObviousWhy": "It is a specific rank in the system, used to group similar genera together.",
+      "searchableContext": "From the Latin 'familia', meaning a household or group",
+      "phraseExample": "From the Latin 'familia', meaning a household or group"
+    },
+    {
+      "clue": "Genus",
+      "surfaceMisread": "Scientific Categories",
+      "resolvedPhraseOrMember": "Genus",
+      "nonObviousWhy": "It is a specific rank in the system, used to group similar species together.",
+      "searchableContext": "From the Latin 'genus', meaning a kind or type",
+      "phraseExample": "From the Latin 'genus', meaning a kind or type"
+    },
+    {
+      "clue": "Species",
+      "surfaceMisread": "Scientific Categories",
+      "resolvedPhraseOrMember": "Species",
+      "nonObviousWhy": "It is a specific rank in the system, used to group individual organisms together.",
+      "searchableContext": "From the Latin 'species', meaning a kind or sort",
+      "phraseExample": "From the Latin 'species', meaning a kind or sort"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Class\" and \"Order\" in LinkedIn Pinpoint #803?",
+      "answer": "The answer is \"Biological taxonomy (ways to classify living things)\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Class"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Class\" and \"Order\" connect in LinkedIn Pinpoint #803?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Genus is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Class"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Genus\" the key clue in LinkedIn Pinpoint #803?",
+      "answer": "Genus is the turning clue because \"Genus\" makes the shared category frame explicit. It also makes Class read cleanly as \"Class\". The board feels tricky because the clues are words with multiple meanings, making it hard to pinpoint the correct system of classification.",
+      "tiedClue": "Genus"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Class\" fit the same category as \"Genus\" in LinkedIn Pinpoint #803?",
+      "answer": "\"Class\" reads as \"Class\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Class"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Class",
+      "Order",
+      "Family",
+      "Genus",
+      "Species"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Class\" and \"Order\" can look like they belong to different categories at first",
+      "\"Genus\" anchors a shared category board with one concrete theme",
+      "Use \"Genus\" to re-check \"Class\" under a shared category board with one concrete theme",
+      "From the Latin 'classis', meaning a division or group",
+      "From the Latin 'ordo', meaning a row or series"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Scientific Categories",
+      "whyPlausible": "The clues are more specific than just general scientific categories, pointing to a specific system of classification used in biology.",
+      "whyRejected": "Once Genus lands, the final answer explains the board more cleanly than Scientific Categories."
+    },
+    {
+      "label": "general science categories",
+      "whyPlausible": "general science categories feels plausible early on, but it falls apart once genus demands a more exact reading.",
+      "whyRejected": "Once Genus lands, the final answer explains the board more cleanly than general science categories."
+    }
+  ],
+  "setValidationSummary": "Family, Genus, Species keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Biological taxonomy (ways to classify living things)"
+}

@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 803,
+    "slug": "pinpoint-answer-803",
+    "publishDate": "2026-07-12",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Class",
+      "Order",
+      "Family",
+      "Genus",
+      "Species"
+    ],
+    "mainAnswer": "Biological taxonomy (ways to classify living things)",
+    "category": "Biological taxonomy (ways to classify living things)",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Class, Order, Family do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-07-12T07:02:38.619Z"
+  },
+  {
     "puzzleNumber": 802,
     "slug": "pinpoint-answer-802",
     "publishDate": "2026-07-11",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Grave",
@@ -16,7 +35,7 @@
     "category": "Musical tempos",
     "difficultyLevel": "Moderate",
     "shortSummary": "LinkedIn Pinpoint #802: Grave, Presto, Adagio, Andante, Allegro (120+ beats per minute). Spoiler-safe hints and the full walkthrough are inside.",
-    "updatedAt": "2026-07-11T08:56:55.561Z"
+    "updatedAt": "2026-07-12T07:02:38.619Z"
   },
   {
     "puzzleNumber": 801,
