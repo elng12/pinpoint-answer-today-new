@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 804,
+    "slug": "pinpoint-answer-804",
+    "publishDate": "2026-07-13",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Apple",
+      "Dell",
+      "Acer",
+      "HP",
+      "Lenovo"
+    ],
+    "mainAnswer": "Manufacturers of personal computers",
+    "category": "Manufacturers of personal computers",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links Apple, Dell, Acer, HP, Lenovo - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-07-13T07:03:45.625Z"
+  },
+  {
     "puzzleNumber": 803,
     "slug": "pinpoint-answer-803",
     "publishDate": "2026-07-12",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Class",
@@ -16,7 +35,7 @@
     "category": "Biological taxonomy (ways to classify living things)",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Class, Order, Family, Genus, Species - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-07-12T07:11:05.415Z"
+    "updatedAt": "2026-07-13T07:03:45.625Z"
   },
   {
     "puzzleNumber": 802,
