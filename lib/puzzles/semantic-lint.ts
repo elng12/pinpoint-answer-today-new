@@ -1,4 +1,5 @@
 import { defaultLocale } from "@/i18n.config";
+import { getExactAnswerUsageIssue } from "@/lib/puzzles/answer-usage.shared.mjs";
 
 export type SemanticLintIssue = {
   code: string;
@@ -164,13 +165,6 @@ function extractLeadSentence(value: string | null | undefined): string {
   if (!text) return "";
   const match = text.match(/^(.+?[.!?])(?:\s|$)/);
   return (match?.[1] ?? text).trim();
-}
-
-function countOccurrences(haystack: string, needle: string): number {
-  if (!haystack || !needle) return 0;
-  const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const matches = haystack.match(new RegExp(`\\b${escaped}\\b`, "g"));
-  return matches?.length ?? 0;
 }
 
 function tokenizeForOverlap(value: string | null | undefined): string[] {
@@ -524,22 +518,11 @@ export function collectSemanticLintIssues(input: SemanticContentInput): Semantic
       });
     }
 
-    const answerMentions = [
-      input.summary,
-      input.overview,
-      input.solutionEmergence,
-      ...(input.wrongGuesses?.flatMap((item) => [item?.guess, item?.explanation]) ?? []),
-      ...(input.clueDetails?.flatMap((item) => [item?.phrase, item?.explanation]) ?? []),
-      ...(input.lessons?.flatMap((item) => [item?.title, item?.body]) ?? []),
-      ...(input.faqs?.flatMap((item) => [item?.question, item?.answer]) ?? []),
-    ]
-      .map((value) => countOccurrences(normalizeForMatch(value), normalizedAnswer))
-      .reduce((total, count) => total + count, 0);
-
-    if (answerMentions > 3) {
+    const answerUsageIssue = getExactAnswerUsageIssue(input);
+    if (answerUsageIssue) {
       issues.push({
-        code: "answer.overused",
-        message: `Exact answer text appears too many times (${answerMentions}) across the draft`,
+        code: answerUsageIssue.code,
+        message: answerUsageIssue.message,
         field: "mainAnswer",
         ...(sampleText(input.mainAnswer) ? { sample: sampleText(input.mainAnswer) } : {}),
       });

@@ -435,18 +435,51 @@ function getReleaseQueueDryRunScenarios(nowIso) {
   ];
 }
 
-function extractEdgeCookie() {
+function extractLinkedInCookie() {
   const py = `
 import browser_cookie3
-jar = browser_cookie3.edge(domain_name='linkedin.com')
-seen = set()
-parts = []
-for c in jar:
-  if c.name in seen:
+
+providers = [
+  ("edge", getattr(browser_cookie3, "edge", None)),
+  ("chrome", getattr(browser_cookie3, "chrome", None)),
+  ("chromium", getattr(browser_cookie3, "chromium", None)),
+  ("brave", getattr(browser_cookie3, "brave", None)),
+  ("opera", getattr(browser_cookie3, "opera", None)),
+  ("vivaldi", getattr(browser_cookie3, "vivaldi", None)),
+  ("firefox", getattr(browser_cookie3, "firefox", None)),
+  ("safari", getattr(browser_cookie3, "safari", None)),
+]
+
+errors = []
+
+for name, fn in providers:
+  if not fn:
+    errors.append(f"{name}: unsupported")
     continue
-  seen.add(c.name)
-  parts.append(f"{c.name}={c.value}")
-print('; '.join(parts), end='')
+  try:
+    jar = fn(domain_name='linkedin.com')
+  except Exception as exc:
+    errors.append(f"{name}: {type(exc).__name__}")
+    continue
+
+  seen = set()
+  parts = []
+  for c in jar:
+    if c.name in seen:
+      continue
+    seen.add(c.name)
+    parts.append(f"{c.name}={c.value}")
+
+  cookie = '; '.join(parts).strip()
+  has_li_at = 'li_at=' in cookie
+  has_jsession = 'JSESSIONID=' in cookie
+  if has_li_at and has_jsession:
+    print(f"OK::{name}::{cookie}", end='')
+    raise SystemExit(0)
+
+  errors.append(f"{name}: li_at={'yes' if has_li_at else 'no'}, JSESSIONID={'yes' if has_jsession else 'no'}")
+
+print("ERR::" + " | ".join(errors), end='')
 `.trim();
 
   const result = spawnSync("python3", ["-c", py], {
@@ -455,14 +488,19 @@ print('; '.join(parts), end='')
   });
 
   if (result.status !== 0) {
-    throw new Error("Failed to extract LinkedIn cookies from Edge. Is python3 + browser_cookie3 installed?");
+    throw new Error("Failed to extract LinkedIn cookies. Is python3 + browser_cookie3 installed?");
   }
 
-  const cookie = String(result.stdout || "").trim();
-  if (!cookie.includes("li_at=") || !cookie.includes("JSESSIONID=")) {
+  const raw = String(result.stdout || "").trim();
+  if (!raw.startsWith("OK::")) {
     throw new Error(
-      'Edge LinkedIn cookies missing li_at/JSESSIONID. Please log into LinkedIn in Microsoft Edge, then retry.',
+      `LinkedIn cookies missing li_at/JSESSIONID across supported browsers. ${raw.replace(/^ERR::/, "")}. Please log into LinkedIn in a supported local browser, then retry.`,
     );
+  }
+
+  const [, browserName = "unknown", cookie = ""] = raw.split("::");
+  if (!cookie.includes("li_at=") || !cookie.includes("JSESSIONID=")) {
+    throw new Error(`LinkedIn cookie extraction returned an incomplete cookie from ${browserName}.`);
   }
 
   return cookie;
@@ -939,7 +977,7 @@ async function main() {
             .filter(Boolean)
             .map(normalizeEnvName);
 
-    const cookie = extractEdgeCookie();
+    const cookie = extractLinkedInCookie();
     for (const envName of targets) {
       putWranglerSecret({ envName, value: cookie });
       console.log(`[${envName}] GRAPHQL_COOKIE updated`);

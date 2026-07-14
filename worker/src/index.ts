@@ -22,6 +22,7 @@ import {
   formatPublishGateIssues,
   validatePublishEligibility,
 } from "../../lib/puzzles/publish-eligibility.shared.mjs";
+import { getExactAnswerUsageIssue } from "../../lib/puzzles/answer-usage.shared.mjs";
 import {
   buildLightweightPublishFailureSummary,
   updateLightweightPublishFailureStreak,
@@ -120,6 +121,89 @@ type PublishGateResultRecord = {
   publishMode?: "answer-first" | "full-analysis" | "failed";
   issues: PublishGateIssueRecord[];
 };
+
+type WorkerPublishEligibilityInput = {
+  slug: string;
+  detail: Record<string, unknown>;
+  registryEntry: Record<string, unknown>;
+  expectedMode: "full-analysis";
+  answerFirstPublicEnabled: boolean;
+};
+
+function toWorkerAnswerUsageInput(
+  detail: Record<string, unknown>,
+  registryEntry: Record<string, unknown>,
+) {
+  const articleBlocks = Array.isArray(detail.articleBlocks) ? detail.articleBlocks : [];
+  const solutionNarrative = Array.isArray(detail.solutionNarrative) ? detail.solutionNarrative : [];
+  const clueRows = Array.isArray(detail.clueRows) ? detail.clueRows : [];
+  const faqItems = Array.isArray(detail.faqItems) && detail.faqItems.length > 0
+    ? detail.faqItems
+    : Array.isArray(detail.faqs)
+      ? detail.faqs
+      : [];
+  const lessons = Array.isArray(detail.lessons) ? detail.lessons : [];
+  const wrongGuesses = Array.isArray(detail.wrongGuessCandidates) ? detail.wrongGuessCandidates : [];
+
+  return {
+    mainAnswer: String(detail.answer || detail.mainAnswer || registryEntry.mainAnswer || ""),
+    summary: String(detail.summary || registryEntry.shortSummary || ""),
+    overview: String(articleBlocks[0] || detail.overview || ""),
+    solutionEmergence: solutionNarrative.map((item) => String(item || "")).join(" "),
+    wrongGuesses: wrongGuesses.map((item) => {
+      const row = asRecord(item) ?? {};
+      return {
+        guess: String(row.guess || ""),
+        explanation: String(row.explanation || ""),
+      };
+    }),
+    clueDetails: clueRows.map((item) => {
+      const row = asRecord(item) ?? {};
+      return {
+        phrase: String(row.resolvedPhraseOrMember || row.phrase || ""),
+        explanation: String(row.nonObviousWhy || row.explanation || ""),
+      };
+    }),
+    lessons: lessons.map((item) => {
+      const row = asRecord(item);
+      return typeof item === "string"
+        ? { title: "", body: item }
+        : { title: String(row?.title || ""), body: String(row?.body || "") };
+    }),
+    faqs: faqItems.map((item) => {
+      const row = asRecord(item) ?? {};
+      return {
+        question: String(row.question || ""),
+        answer: String(row.answer || ""),
+      };
+    }),
+  };
+}
+
+export function validateWorkerPublishEligibility(
+  input: WorkerPublishEligibilityInput,
+): PublishGateResultRecord {
+  const baseResult = validatePublishEligibility(input) as PublishGateResultRecord;
+  const answerUsageIssue = getExactAnswerUsageIssue(
+    toWorkerAnswerUsageInput(input.detail, input.registryEntry),
+  );
+  if (!answerUsageIssue) return baseResult;
+
+  const issues: PublishGateIssueRecord[] = [
+    ...baseResult.issues,
+    {
+      code: answerUsageIssue.code,
+      level: "blocking",
+      message: answerUsageIssue.message,
+      field: "mainAnswer",
+    },
+  ];
+  return {
+    ...baseResult,
+    ok: false,
+    issues,
+  };
+}
 
 type LightweightPublishFailureSummaryRecord = {
   version: 1;
@@ -1340,10 +1424,7 @@ function buildWorkerFallbackPhrase(clue: string, answer: string): string {
       return `${normalizedBase} as ${article} ${singularLabel}`.trim();
     }
 
-    const label = pattern.label.toLowerCase();
-    if (label && normalizeLooseWorkerText(normalizedBase) !== normalizeLooseWorkerText(label)) {
-      return `${normalizedBase} in ${label}`.trim();
-    }
+    return normalizedBase;
   }
   return normalizedBase;
 }
@@ -3860,7 +3941,7 @@ function getPublicFullAnalysisPayloadBlockReason({
     return `full-analysis structure guard missed (${fullAnalysisReadiness.reason})`;
   }
 
-  const eligibility = validatePublishEligibility({
+  const eligibility = validateWorkerPublishEligibility({
     slug,
     detail: detailRecordCandidate as Record<string, unknown>,
     registryEntry: {
@@ -4353,7 +4434,7 @@ async function publishToNewSiteGitHub(
       throw new Error(`[new-site] final publish guard failed for ${slugPath}: ${finalReadiness.reason}`);
     }
 
-    const eligibility = validatePublishEligibility({
+    const eligibility = validateWorkerPublishEligibility({
       slug,
       detail: detailRecord as Record<string, unknown>,
       registryEntry: {
@@ -6481,19 +6562,31 @@ async function fetchPinpointFromLinkedInHtml(date: string, rawCookie: string, us
   const cookie = (rawCookie || "").trim();
   if (!cookie) return null;
 
-  const res = await fetch("https://www.linkedin.com/games/pinpoint/", {
-    method: "GET",
-    headers: {
-      cookie,
-      "user-agent": userAgent,
-      accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-      "accept-language": "en-US,en;q=0.9",
-      referer: "https://www.linkedin.com/",
-    },
-  });
-  if (!res.ok) return null;
+  let html = "";
+  for (const pageUrl of ["https://www.linkedin.com/games/pinpoint/", "https://www.linkedin.com/games/pinpoint"]) {
+    const res = await fetch(pageUrl, {
+      method: "GET",
+      headers: {
+        cookie,
+        "user-agent": userAgent,
+        accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "accept-language": "en-US,en;q=0.9",
+        "cache-control": "no-cache",
+        pragma: "no-cache",
+        referer: "https://www.linkedin.com/",
+        "sec-fetch-dest": "document",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-user": "?1",
+        "upgrade-insecure-requests": "1",
+      },
+    });
+    if (!res.ok) continue;
+    html = await res.text();
+    if (html.trim()) break;
+  }
+  if (!html.trim()) return null;
 
-  const html = await res.text();
   const decoded = decodeHtmlish(html);
 
   const cluesMatch = decoded.match(/"clues"\s*:\s*\[(.*?)\]/s);
@@ -6516,7 +6609,7 @@ async function fetchPinpointFromLinkedInHtml(date: string, rawCookie: string, us
     version: 1,
     puzzleDate: date,
     answers,
-    source: "graphql",
+    source: "fallback-local",
     fetchedAt,
     checksum,
     theme,
@@ -6700,11 +6793,17 @@ async function fetchGraphQLFor(env: Env, date: string): Promise<Doc> {
   } catch (e) {
     const htmlDoc = await tryHtmlFallback();
     if (htmlDoc) return htmlDoc;
+    try {
+      return await callPlaywrightFallback(env, date, "auto");
+    } catch {}
     throw e;
   }
   if (!res.ok) {
     const htmlDoc = await tryHtmlFallback();
     if (htmlDoc) return htmlDoc;
+    try {
+      return await callPlaywrightFallback(env, date, "auto");
+    } catch {}
     throw new Error(`graphql ${res.status}`);
   }
 
@@ -6767,6 +6866,9 @@ async function fetchGraphQLFor(env: Env, date: string): Promise<Doc> {
   if (!answers.length) {
     const htmlDoc = await tryHtmlFallback();
     if (htmlDoc) return htmlDoc;
+    try {
+      return await callPlaywrightFallback(env, date, "auto");
+    } catch {}
     throw new Error("graphql: no answers");
   }
 

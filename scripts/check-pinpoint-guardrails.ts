@@ -17,6 +17,10 @@ import {
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract";
 import { collectSemanticLintIssues } from "../lib/puzzles/semantic-lint";
 import {
+  countExactAnswerMentions,
+  getExactAnswerUsageIssue,
+} from "../lib/puzzles/answer-usage.shared.mjs";
+import {
   buildLightweightPublishFailureSummary,
   updateLightweightPublishFailureStreak,
 } from "../lib/puzzles/publish-failure-summary.shared.mjs";
@@ -3322,6 +3326,7 @@ async function checkReleaseQueueStatusCheckRouteAndOps() {
 async function checkCandidateBranchWorkflowAutoPromotes() {
   const ciWorkflow = await readFile(resolve(ROOT, ".github/workflows/ci.yml"), "utf8");
   const candidateVerifySource = await readFile(resolve(ROOT, "scripts/verify-pinpoint-candidate-release.mjs"), "utf8");
+  const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
 
   assert.ok(
     ciWorkflow.includes('"pinpoint/candidate/**"'),
@@ -3354,8 +3359,129 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
       candidateVerifySource.includes("production has the candidate content and public fetch audit passed"),
     "candidate auto-promotion must verify public production and delete the branch only after verification",
   );
+  assert.ok(
+    wranglerSource.includes('PINPOINT_CANDIDATE_BRANCH_ENABLED = "true"') &&
+      wranglerSource.includes('AUTO_ENRICH_DRAFT_ATTEMPTS  = "2"'),
+    "production Worker must retry a rejected draft and send daily content through the checked candidate branch before main",
+  );
 
   console.log("ok: candidate branches auto-promote through machine checks and production verification");
+}
+
+async function checkWorkerBlocksOverusedAnswersBeforeGithubWrite() {
+  const answer = "Manufacturers of personal computers";
+  const clues = ["Apple", "Dell", "Acer", "HP", "Lenovo"];
+  const unsafeClueRows = clues.map((clue, index) => ({
+    clue,
+    resolvedPhraseOrMember: `${clue} in ${answer.toLowerCase()}`,
+    nonObviousWhy: index < 4
+      ? `${clue} in ${answer.toLowerCase()} confirms the category.`
+      : `${clue} confirms the category without repeating it.`,
+  }));
+  const answerUsageInput = {
+    mainAnswer: answer,
+    summary: "A spoiler-safe summary.",
+    overview: "The opening clues allow more than one first guess.",
+    solutionEmergence: `The answer was "${answer}".`,
+    clueDetails: unsafeClueRows.map((row) => ({
+      phrase: row.resolvedPhraseOrMember,
+      explanation: row.nonObviousWhy,
+    })),
+    faqs: [
+      {
+        question: "What is the final category?",
+        answer: `The answer is "${answer}".`,
+      },
+    ],
+  };
+
+  assert.equal(
+    countExactAnswerMentions(answerUsageInput),
+    11,
+    "the shared answer counter must reproduce the #804 failure shape",
+  );
+  assert.equal(
+    getExactAnswerUsageIssue(answerUsageInput)?.code,
+    "answer.overused",
+    "the shared answer counter must block the #804 failure shape",
+  );
+
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    validateWorkerPublishEligibility: (input: {
+      slug: string;
+      detail: Record<string, unknown>;
+      registryEntry: Record<string, unknown>;
+      expectedMode: "full-analysis";
+      answerFirstPublicEnabled: boolean;
+    }) => { ok: boolean; issues: Array<{ code: string; level: string }> };
+  };
+  const baseDetail = {
+    puzzleNumber: 804,
+    slug: "pinpoint-answer-804",
+    publishDate: "2026-07-13",
+    detailState: "fallback_full",
+    bodyMode: "standard",
+    pageExperienceMode: "full-analysis",
+    clues,
+    answer,
+    articleBlocks: ["The opening clues allow more than one first guess."],
+    solutionNarrative: [`The answer was "${answer}".`],
+    clueRows: unsafeClueRows,
+    faqItems: [
+      {
+        question: "What is the final category?",
+        answer: `The answer is "${answer}".`,
+      },
+    ],
+  };
+  const registryEntry = {
+    puzzleNumber: 804,
+    slug: "pinpoint-answer-804",
+    publishDate: "2026-07-13",
+    status: "live",
+    detailState: "fallback_full",
+    clues,
+    mainAnswer: answer,
+  };
+  const unsafeResult = workerModule.validateWorkerPublishEligibility({
+    slug: "pinpoint-answer-804",
+    detail: baseDetail,
+    registryEntry,
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+  });
+  assert.equal(unsafeResult.ok, false, "Worker must block repeated answers before writing GitHub");
+  assert.ok(
+    unsafeResult.issues.some((issue) => issue.code === "answer.overused" && issue.level === "blocking"),
+    "Worker must expose answer.overused as a blocking publish issue",
+  );
+
+  const safeResult = workerModule.validateWorkerPublishEligibility({
+    slug: "pinpoint-answer-804",
+    detail: {
+      ...baseDetail,
+      clueRows: clues.map((clue) => ({
+        clue,
+        resolvedPhraseOrMember: clue,
+        nonObviousWhy: `${clue} confirms the same category without restating the full answer.`,
+      })),
+    },
+    registryEntry,
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+  });
+  assert.equal(safeResult.ok, true, "Worker must allow the same page after repeated answer text is removed");
+
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const guardIndex = workerSource.indexOf("validateWorkerPublishEligibility({");
+  const commitIndex = workerSource.indexOf("await commitStagedFiles(commitMessage)");
+  assert.ok(
+    guardIndex >= 0 && commitIndex > guardIndex,
+    "Worker must run the shared answer usage guard before committing content to GitHub",
+  );
+
+  console.log("ok: Worker blocks overused answer text before GitHub write");
 }
 
 async function checkMainFailureContentRecoveryCreatesAutoPromotedCandidate() {
@@ -3872,6 +3998,7 @@ async function main() {
   await checkReleaseQueueObservationOpsScript();
   await checkReleaseQueueStatusCheckRouteAndOps();
   await checkCandidateBranchWorkflowAutoPromotes();
+  await checkWorkerBlocksOverusedAnswersBeforeGithubWrite();
   await checkMainFailureContentRecoveryCreatesAutoPromotedCandidate();
   await checkCandidateBranchWatchdogClosesStuckBranches();
   await checkPublicVerificationCopyUsesMachineReview();

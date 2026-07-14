@@ -179,3 +179,20 @@
 未做：未把原工作区内其他未提交改动混入本次发布。
 复查日期：本次 Vercel 生产部署完成后立即复查线上 HTML。
 下一步：确认生产域名两个页脚链接都可见，且 `rel` 不含 `nofollow`。
+
+## 2026-07-14 每日发布重复失败根治记录
+
+问题：`#804` 已由 Worker 写入 `main`，但 Vercel 构建被 `answer.overused` 拦住，正式站停在 `#803`；自动发布随后因线上审计失败暂停，`2026-07-14` 新题也没有继续发布。
+证据：失败部署 `dpl_5xPSrZ1Q7R58ECKGnzPU2nee39wD` 报告 `answer.overused` 从允许的 `49` 增加到 `50`；`#804` 草稿把完整答案写了 `11` 次，线上详情页返回 `404`，sitemap 也没有该页；Worker 状态显示 `post-publish public audit P0 for pinpoint-answer-804`。
+本轮边界：只修每日内容生成、写入前检查、候选分支开关、`#804` 文案和发布运维兜底；不改首页 SEO 标题/描述、页面结构、URL、canonical 和 sitemap 规则。
+修改：
+- 新增网页校验和 Worker 共用的完整答案重复计数器，限制仍为最多 `3` 次。
+- 修改普通分类答案的兜底写法，不再把完整答案机械塞进每条线索短语。
+- Worker 在写 GitHub 前先拦住 `answer.overused`，并增加自动测试，复现 `#804` 的 `11` 次重复。
+- 生产 Worker 开启候选分支发布，完整检查通过后才允许进入 `main`；自动补稿尝试恢复为 `2` 次。
+- 重写 `#804` 的重复文案，不改官方线索和正式答案。
+- 合并此前已部署但没有进入仓库的 LinkedIn HTML/Playwright 抓取兜底，以及多浏览器 cookie 提取，避免本次重发 Worker 后功能倒退。
+验证：`validate:data`、Pinpoint 守卫、根目录和 Worker 类型检查、lint、完整构建、347 个真实渲染页检查全部通过；Worker dry-run 打包通过。
+未做：未修改首页 SEO 标题/描述，未放宽旧债上限，未改 URL、canonical、sitemap 规则。
+复查日期：本次 GitHub、Vercel 和 Worker 生产发布后立即复查。
+下一步：先确认 `#804` 正式上线，再恢复自动发布并补发 `2026-07-14` 新题，最后检查首页、详情页和 sitemap。
