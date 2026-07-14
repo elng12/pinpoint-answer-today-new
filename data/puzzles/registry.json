@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 805,
+    "slug": "pinpoint-answer-805",
+    "publishDate": "2026-07-14",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Wine",
+      "Croissants",
+      "Impressionism",
+      "Berets",
+      "Liberté, Égalité, Fraternité"
+    ],
+    "mainAnswer": "Things associated with France",
+    "category": "Things associated with France",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "At first glance, Wine, Croissants, Impressionism do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-07-14T13:23:38.323Z"
+  },
+  {
     "puzzleNumber": 804,
     "slug": "pinpoint-answer-804",
     "publishDate": "2026-07-13",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Apple",
@@ -16,7 +35,7 @@
     "category": "Manufacturers of personal computers",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links Apple, Dell, Acer, HP, Lenovo - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-07-13T07:03:45.625Z"
+    "updatedAt": "2026-07-14T13:23:38.323Z"
   },
   {
     "puzzleNumber": 803,
