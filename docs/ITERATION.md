@@ -196,3 +196,14 @@
 未做：未修改首页 SEO 标题/描述，未放宽旧债上限，未改 URL、canonical、sitemap 规则。
 复查日期：本次 GitHub、Vercel 和 Worker 生产发布后立即复查。
 下一步：先确认 `#804` 正式上线，再恢复自动发布并补发 `2026-07-14` 新题，最后检查首页、详情页和 sitemap。
+
+## 2026-07-15 Vercel Production 闭环修复记录
+
+问题：`#806` 已在 15:10 写入候选分支并在 15:12 进入 `main`，但 Vercel 只创建 Preview，没有创建 Production；旧脚本只看同一提交上的 `Vercel=success`，把 Preview 成功误当成正式部署成功。
+证据：截至 15:54，正式站 summary 仍是 `#805`，`#806` 返回 `404` 且不在 sitemap；GitHub deployment 只有 `environment=Preview`，最新 Vercel Production 仍是 7 月 14 日。
+本轮边界：只修候选分支到 Production 的最后闭环和 Worker 部署状态判断，不改首页 SEO、题目内容、Cookie、AI 模型和 URL 规则。
+修改：候选提升改为生成唯一的 `main` 提交；部署验证改查 exact SHA 的 GitHub Deployment，并要求 `environment=Production`；Preview 成功不再算正式部署；Production 三分钟内完全没出现时，只允许提交一次构建触发标记；正式页审计通过后才删除候选分支；Worker 和只读诊断命令同步改用 Production deployment 判断。
+验证：`validate:data`（349 条）、Pinpoint 守卫、根目录和 Worker 类型检查、lint、完整构建已通过；GitHub Actions、Vercel Production 和线上首页/详情页/sitemap 待本次合并后复查。
+未做：未处理 AI 在 15:01、15:05 的超时；未恢复不依赖 AI 的快速发布路径。
+复查日期：本次合并部署后立即复查，下一次 15:00 发布窗口再复查一次。
+下一步：先证明 `#806` 对应的 Production 部署和线上页面真实恢复，再单独处理 AI 超时造成的前九分钟延迟。

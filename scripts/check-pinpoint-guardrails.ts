@@ -29,6 +29,12 @@ import { validatePinpointEvidenceV1 } from "../lib/puzzles/pinpoint-evidence-v1.
 import { validateReleaseOverrideDryRun } from "../lib/puzzles/release-override.shared.mjs";
 import { decidePinpointReleaseQueueAction } from "../lib/puzzles/release-queue-policy.shared.mjs";
 import {
+  buildVercelProductionRetryMarker,
+  canClosePinpointCandidateRelease,
+  hasUsedVercelProductionRetry,
+  resolveVercelProductionDeploymentSnapshot,
+} from "../lib/puzzles/vercel-production.shared.mjs";
+import {
   repairSolutionNarrative,
   shouldRepairSolutionNarrative,
 } from "../lib/puzzles/solution-narrative-repair";
@@ -3241,8 +3247,16 @@ async function checkReleaseQueueObservationOpsScript() {
     opsSource.includes('cmd === "release-queue-observe"') &&
       opsSource.includes("/health") &&
       opsSource.includes("commits/main") &&
+      opsSource.includes("deployments?sha=${encodeURIComponent(mainSha)}") &&
+      opsSource.includes("selectVercelProductionDeployment") &&
+      opsSource.includes("productionSnapshot.state") &&
       opsSource.includes(CANDIDATE_BRANCH_PREFIX),
-    "worker ops observation must check Worker health, main commit status, and candidate branches",
+    "worker ops observation must check Worker health, exact Production deployment, and candidate branches",
+  );
+  assert.ok(
+    !observeBlock.includes("commits/${mainSha}/status") &&
+      !observeBlock.includes("resolveVercelCommitStatus"),
+    "release queue observation must not treat the generic Vercel commit status as Production",
   );
   assert.ok(
     !observeBlock.includes("requireAdminSecret()"),
@@ -3326,6 +3340,7 @@ async function checkReleaseQueueStatusCheckRouteAndOps() {
 async function checkCandidateBranchWorkflowAutoPromotes() {
   const ciWorkflow = await readFile(resolve(ROOT, ".github/workflows/ci.yml"), "utf8");
   const candidateVerifySource = await readFile(resolve(ROOT, "scripts/verify-pinpoint-candidate-release.mjs"), "utf8");
+  const productionSharedSource = await readFile(resolve(ROOT, "lib/puzzles/vercel-production.shared.mjs"), "utf8");
   const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
 
   assert.ok(
@@ -3344,20 +3359,28 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
       ciWorkflow.includes("git show origin/main:scripts/check-pinpoint-candidate-branch.mjs > /tmp/check-pinpoint-candidate-branch.mjs") &&
       ciWorkflow.includes("git fetch origin main:refs/remotes/origin/main") &&
       ciWorkflow.includes("git checkout -B main origin/main") &&
-      ciWorkflow.includes('git merge --ff-only "$GITHUB_SHA"') &&
+      ciWorkflow.includes('git merge --no-ff --no-edit "$GITHUB_SHA"') &&
+      ciWorkflow.includes("production_sha=$(git rev-parse HEAD)") &&
       ciWorkflow.includes("git push origin HEAD:main"),
-    "candidate auto-promotion must fast-forward main only after the checked candidate commit passes",
+    "candidate auto-promotion must create a unique main commit after the checked candidate passes",
   );
   assert.ok(
     ciWorkflow.includes("verify-pinpoint-candidate-release.mjs") &&
+      ciWorkflow.includes("deployments: read") &&
+      ciWorkflow.includes("--production-sha") &&
+      ciWorkflow.includes("--repair-missing-production") &&
       ciWorkflow.includes("Delete promoted candidate branch") &&
       ciWorkflow.includes('git push origin --delete "$GITHUB_REF_NAME"') &&
       ciWorkflow.includes("candidate branch still exists after delete") &&
       candidateVerifySource.includes("const PUBLIC_AUDIT_TIMEOUT_MS = 10 * 60 * 1000") &&
-      candidateVerifySource.includes("public fetch audit remains the final gate") &&
+      candidateVerifySource.includes("deployments?sha=${encodeURIComponent(sha)}") &&
+      candidateVerifySource.includes("Preview success is not sufficient") &&
+      candidateVerifySource.includes("createSingleProductionRetry") &&
+      candidateVerifySource.includes("refusing a second retry commit") &&
+      productionSharedSource.includes('normalizeEnvironment(deployment.environment) === "production"') &&
       candidateVerifySource.includes("GITHUB_STEP_SUMMARY") &&
       candidateVerifySource.includes("production has the candidate content and public fetch audit passed"),
-    "candidate auto-promotion must verify public production and delete the branch only after verification",
+    "candidate auto-promotion must require a real Production deployment, repair once, and delete only after public verification",
   );
   assert.ok(
     wranglerSource.includes('PINPOINT_CANDIDATE_BRANCH_ENABLED = "true"') &&
@@ -3366,6 +3389,75 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
   );
 
   console.log("ok: candidate branches auto-promote through machine checks and production verification");
+}
+
+async function checkVercelProductionClosureRejectsPreviewSuccess() {
+  const sha = "d6b50de395e163ce41ec823126389aef3d65347d";
+  const previewDeployment = {
+    id: 1,
+    sha,
+    environment: "Preview",
+    created_at: "2026-07-15T07:10:00.000Z",
+  };
+  const productionDeployment = {
+    id: 2,
+    sha,
+    environment: "Production",
+    created_at: "2026-07-15T07:12:00.000Z",
+  };
+  const successStatus = {
+    id: 3,
+    state: "success",
+    environment: "Production",
+    created_at: "2026-07-15T07:13:00.000Z",
+  };
+
+  assert.equal(
+    resolveVercelProductionDeploymentSnapshot({
+      deployments: [previewDeployment],
+      statuses: [{ ...successStatus, environment: "Preview" }],
+      expectedSha: sha,
+    }).state,
+    "missing",
+    "Preview success must never count as a Production deployment",
+  );
+  assert.equal(
+    resolveVercelProductionDeploymentSnapshot({
+      deployments: [previewDeployment, productionDeployment],
+      statuses: [successStatus],
+      expectedSha: sha,
+    }).state,
+    "ready",
+    "an exact-SHA Production deployment with a successful status should be ready",
+  );
+  assert.equal(
+    canClosePinpointCandidateRelease({ productionState: "ready", publicAuditOutcome: "publish_failed" }),
+    false,
+    "a 404 or other public audit failure must keep the candidate branch open",
+  );
+  assert.equal(
+    canClosePinpointCandidateRelease({
+      productionState: "ready",
+      publicAuditOutcome: "published_and_audit_passed",
+    }),
+    true,
+    "candidate closure requires both Production readiness and a passing public audit",
+  );
+
+  const marker = buildVercelProductionRetryMarker({
+    candidateBranch: "pinpoint/candidate/2026-07-15-pinpoint-answer-806",
+    candidateSha: sha,
+    previousProductionSha: sha,
+    requestedAt: "2026-07-15T07:20:00.000Z",
+  });
+  assert.equal(hasUsedVercelProductionRetry(marker, sha), true, "the same candidate may retry Production only once");
+  assert.equal(
+    hasUsedVercelProductionRetry(marker, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"),
+    false,
+    "a later candidate may use its own single Production retry",
+  );
+
+  console.log("ok: Vercel Production closure rejects Preview success and limits recovery to one retry");
 }
 
 async function checkWorkerBlocksOverusedAnswersBeforeGithubWrite() {
@@ -3543,6 +3635,7 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
       workflowSource.includes("actions: write") &&
       workflowSource.includes("contents: write") &&
       workflowSource.includes("checks: read") &&
+      workflowSource.includes("deployments: read") &&
       workflowSource.includes("issues: write") &&
       workflowSource.includes("close-pinpoint-candidate-branches.mjs") &&
       workflowSource.includes("--create-issue"),
@@ -3552,6 +3645,9 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
     watchdogSource.includes("listCandidateBranches") &&
       watchdogSource.includes("rerunWorkflowRun") &&
       watchdogSource.includes("verify-pinpoint-candidate-release.mjs") &&
+      watchdogSource.includes("--production-sha") &&
+      watchdogSource.includes("--repair-missing-production") &&
+      watchdogSource.includes('git(["merge", "--no-ff", "--no-edit", branchRef]') &&
       watchdogSource.includes('git(["push", "origin", "HEAD:main"]') &&
       watchdogSource.includes('git(["push", "origin", "--delete", branch]') &&
       watchdogSource.includes("Pinpoint candidate stuck:") &&
@@ -3908,34 +4004,55 @@ async function checkScheduledPublishWindowAlerts() {
 async function checkReleaseQueueWorkerIntegration() {
   const workerModulePath = "../worker/src/index.ts";
   const workerModule = (await import(workerModulePath)) as {
-    resolvePinpointReleaseDeploymentStateFromGithubStatus: (statusJson: unknown) => string;
+    resolvePinpointReleaseDeploymentStateFromGithubDeployments: (
+      deployments: unknown,
+      statuses: unknown,
+      expectedSha: string,
+    ) => string;
   };
+  const sha = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+  const productionDeployment = [{
+    id: 1,
+    sha,
+    environment: "Production",
+    created_at: "2026-07-15T07:00:00.000Z",
+  }];
 
   assert.equal(
-    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({
-      statuses: [{ context: "Vercel", state: "pending" }],
-    }),
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubDeployments(
+      productionDeployment,
+      [{ state: "pending", environment: "Production" }],
+      sha,
+    ),
     "building",
-    "pending Vercel commit status should block a second production push",
+    "pending Vercel Production deployment should block a second production push",
   );
   assert.equal(
-    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({
-      statuses: [{ context: "Vercel", state: "success" }],
-    }),
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubDeployments(
+      productionDeployment,
+      [{ state: "success", environment: "Production" }],
+      sha,
+    ),
     "ready",
-    "successful Vercel commit status should be eligible for a production push if budget allows",
+    "successful Vercel Production deployment should be eligible for a production push if budget allows",
   );
   assert.equal(
-    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({
-      statuses: [{ context: "Vercel", state: "failure" }],
-    }),
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubDeployments(
+      productionDeployment,
+      [{ state: "failure", environment: "Production" }],
+      sha,
+    ),
     "failed",
-    "failed Vercel commit status should hold review instead of pushing production",
+    "failed Vercel Production deployment should hold review instead of pushing production",
   );
   assert.equal(
-    workerModule.resolvePinpointReleaseDeploymentStateFromGithubStatus({ statuses: [] }),
+    workerModule.resolvePinpointReleaseDeploymentStateFromGithubDeployments(
+      [{ id: 2, sha, environment: "Preview" }],
+      [{ state: "success", environment: "Preview" }],
+      sha,
+    ),
     "unknown",
-    "missing Vercel status should not allow an automatic production push",
+    "Preview success must not allow an automatic production push",
   );
 
   const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
@@ -3951,8 +4068,9 @@ async function checkReleaseQueueWorkerIntegration() {
   );
   assert.ok(
     workerSource.includes("inspectNewSiteBaseDeploymentStatus") &&
-      workerSource.includes("/commits/${baseCommitSha}/status"),
-    "worker publish path must read GitHub/Vercel commit status before queue decisions",
+      workerSource.includes("/deployments?sha=${encodeURIComponent(baseCommitSha)}") &&
+      workerSource.includes("No Vercel Production deployment found for main"),
+    "worker publish path must read the exact main SHA Production deployment before queue decisions",
   );
   assert.ok(
     workerSource.includes("releaseQueueLastProductionPushKeyOf") &&
@@ -3998,6 +4116,7 @@ async function main() {
   await checkReleaseQueueObservationOpsScript();
   await checkReleaseQueueStatusCheckRouteAndOps();
   await checkCandidateBranchWorkflowAutoPromotes();
+  await checkVercelProductionClosureRejectsPreviewSuccess();
   await checkWorkerBlocksOverusedAnswersBeforeGithubWrite();
   await checkMainFailureContentRecoveryCreatesAutoPromotedCandidate();
   await checkCandidateBranchWatchdogClosesStuckBranches();
