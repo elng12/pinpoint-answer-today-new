@@ -214,26 +214,33 @@ function deleteRemoteBranch(branch, dryRun) {
 }
 
 function promoteCandidate({ branchRef, dryRun }) {
+  const candidateSha = git(["rev-parse", branchRef]);
   if (dryRun) {
-    console.log(`[dry-run] would fast-forward main to ${branchRef}`);
-    return;
+    console.log(`[dry-run] would create a unique main commit containing ${branchRef}`);
+    return candidateSha;
   }
   git(["checkout", "-B", "main", "origin/main"]);
-  git(["merge", "--ff-only", branchRef]);
+  if (!isAncestor(candidateSha, "HEAD")) {
+    git(["merge", "--no-ff", "--no-edit", branchRef]);
+  }
   git(["push", "origin", "HEAD:main"], { inherit: true });
+  return git(["rev-parse", "HEAD"]);
 }
 
-function verifyCandidateRelease({ branch, sha, dryRun }) {
+function verifyCandidateRelease({ branch, candidateSha, productionSha, dryRun }) {
   if (dryRun) {
-    console.log(`[dry-run] would verify public release for ${branch} ${sha}`);
+    console.log(`[dry-run] would verify Production release for ${branch} ${productionSha}`);
     return;
   }
   run("node", [
     "scripts/verify-pinpoint-candidate-release.mjs",
     "--candidate-branch",
     branch,
-    "--sha",
-    sha,
+    "--candidate-sha",
+    candidateSha,
+    "--production-sha",
+    productionSha,
+    "--repair-missing-production",
   ], { inherit: true });
 }
 
@@ -248,9 +255,10 @@ async function closeCandidateBranch({ branch, repo, token, maxPendingMinutes, dr
   const mainContainsCandidate = isAncestor(candidateSha, "origin/main");
 
   if (mainContainsCandidate) {
-    verifyCandidateRelease({ branch, sha: candidateSha, dryRun });
+    const productionSha = git(["rev-parse", "origin/main"]);
+    verifyCandidateRelease({ branch, candidateSha, productionSha, dryRun });
     deleteRemoteBranch(branch, dryRun);
-    return { branch, sha: candidateSha, closed: true, action: "verified-and-deleted" };
+    return { branch, sha: candidateSha, productionSha, closed: true, action: "verified-and-deleted" };
   }
 
   const baseIsAncestor = isAncestor("origin/main", candidateRef);
@@ -291,10 +299,10 @@ async function closeCandidateBranch({ branch, repo, token, maxPendingMinutes, dr
     };
   }
 
-  promoteCandidate({ branchRef: candidateRef, dryRun });
-  verifyCandidateRelease({ branch, sha: candidateSha, dryRun });
+  const productionSha = promoteCandidate({ branchRef: candidateRef, dryRun });
+  verifyCandidateRelease({ branch, candidateSha, productionSha, dryRun });
   deleteRemoteBranch(branch, dryRun);
-  return { branch, sha: candidateSha, closed: true, action: "promoted-verified-and-deleted" };
+  return { branch, sha: candidateSha, productionSha, closed: true, action: "promoted-verified-and-deleted" };
 }
 
 async function main() {

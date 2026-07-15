@@ -2,6 +2,10 @@ import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import {
+  resolveVercelProductionDeploymentSnapshot,
+  selectVercelProductionDeployment,
+} from "../lib/puzzles/vercel-production.shared.mjs";
 
 const ROOT = process.cwd();
 const WORKER_DIR = path.join(ROOT, "worker");
@@ -225,11 +229,6 @@ function listGitHubBranchNames(repo) {
 
 function formatShortSha(sha) {
   return String(sha || "").slice(0, 7);
-}
-
-function resolveVercelCommitStatus(statusJson) {
-  const statuses = Array.isArray(statusJson?.statuses) ? statusJson.statuses : [];
-  return statuses.find((item) => String(item?.context || "").trim().toLowerCase() === "vercel") || null;
 }
 
 function getBeijingTodayDate() {
@@ -667,10 +666,10 @@ async function main() {
       console.log(`base: ${check.baseBranch || ""} ${formatShortSha(check.baseCommitSha || "")}`);
       console.log(`deploymentState: ${check.deploymentState || "unknown"}`);
       console.log(
-        `github: ref=${check.github?.refStatus ?? ""} status=${check.github?.statusStatus ?? ""} combined=${check.github?.combinedState ?? ""}`,
+        `github: ref=${check.github?.refStatus ?? ""} deployments=${check.github?.deploymentsStatus ?? ""} statuses=${check.github?.deploymentStatusesStatus ?? ""} production=${check.github?.productionDeploymentFound === true ? "yes" : "no"}`,
       );
       console.log(
-        `vercel: found=${check.vercel?.found === true ? "yes" : "no"} state=${check.vercel?.state || ""} ${check.vercel?.description || ""}`,
+        `vercel: found=${check.vercel?.found === true ? "yes" : "no"} environment=${check.vercel?.environment || ""} state=${check.vercel?.state || ""} ${check.vercel?.description || ""}`,
       );
       if (check.error) {
         console.log(`error: ${check.error}`);
@@ -713,8 +712,16 @@ async function main() {
     const slug = requestedSlug || (requestedPuzzleNumber ? `pinpoint-answer-${requestedPuzzleNumber}` : "");
     const mainCommit = ghJson(`repos/${GITHUB_REPO}/commits/main`);
     const mainSha = String(mainCommit?.sha || "");
-    const statusJson = ghJson(`repos/${GITHUB_REPO}/commits/${mainSha}/status`);
-    const vercelStatus = resolveVercelCommitStatus(statusJson);
+    const deployments = ghJson(`repos/${GITHUB_REPO}/deployments?sha=${encodeURIComponent(mainSha)}&per_page=100`);
+    const productionDeployment = selectVercelProductionDeployment(deployments, mainSha);
+    const deploymentStatuses = productionDeployment?.id
+      ? ghJson(`repos/${GITHUB_REPO}/deployments/${productionDeployment.id}/statuses?per_page=100`)
+      : [];
+    const productionSnapshot = resolveVercelProductionDeploymentSnapshot({
+      deployments,
+      statuses: deploymentStatuses,
+      expectedSha: mainSha,
+    });
     const candidateBranches = listGitHubBranchNames(GITHUB_REPO)
       .filter((name) => name.startsWith(CANDIDATE_BRANCH_PREFIX));
     const matchingCandidates = candidateBranches.filter((name) => {
@@ -747,10 +754,15 @@ async function main() {
         mainCommitTitle: String(mainCommit?.commit?.message || "").split(/\r?\n/)[0] || null,
       },
       deploymentStatus: {
-        combinedState: statusJson?.state || "unknown",
-        vercelState: vercelStatus?.state || "missing",
-        vercelDescription: vercelStatus?.description || "",
-        vercelTargetUrl: vercelStatus?.target_url || "",
+        productionState: productionSnapshot.state,
+        environment: productionDeployment?.environment || null,
+        deploymentId: productionDeployment?.id || null,
+        vercelState: productionSnapshot.status?.state || "missing",
+        vercelDescription: productionSnapshot.status?.description || "",
+        vercelTargetUrl:
+          productionSnapshot.status?.environment_url ||
+          productionSnapshot.status?.target_url ||
+          "",
       },
       releaseQueue: {
         observationDate,
@@ -770,7 +782,7 @@ async function main() {
       `worker health: puzzleDate=${report.worker.puzzleDate ?? ""} source=${report.worker.source ?? ""} mainAnswer=${report.worker.mainAnswer ?? ""}`,
     );
     console.log(
-      `main: ${report.github.mainShortSha} status=${report.deploymentStatus.combinedState} vercel=${report.deploymentStatus.vercelState} title=${report.github.mainCommitTitle ?? ""}`,
+      `main: ${report.github.mainShortSha} production=${report.deploymentStatus.productionState} vercel=${report.deploymentStatus.vercelState} title=${report.github.mainCommitTitle ?? ""}`,
     );
     if (report.deploymentStatus.vercelDescription) {
       console.log(`vercel: ${report.deploymentStatus.vercelDescription}`);
@@ -909,7 +921,7 @@ async function main() {
       `自动发布: ${pause.paused === true ? "已暂停" : "未暂停"} source=${pause.source || "none"} reason=${pause.reason || ""}`,
     );
     console.log(
-      `GitHub/Vercel: deployment=${statusCheck.deploymentState || "unknown"} combined=${statusCheck.github?.combinedState || ""} vercel=${statusCheck.vercel?.state || ""} ${statusCheck.vercel?.description || ""}`,
+      `GitHub/Vercel: deployment=${statusCheck.deploymentState || "unknown"} production=${statusCheck.github?.productionDeploymentFound === true ? "yes" : "no"} environment=${statusCheck.vercel?.environment || ""} vercel=${statusCheck.vercel?.state || ""} ${statusCheck.vercel?.description || ""}`,
     );
     console.log(
       `正式站 summary: #${summaryLatest.puzzleNumber || "未知"} ${summaryLatest.isoPublishedAt || "空"} slug=${summaryLatest.slug || ""}`,

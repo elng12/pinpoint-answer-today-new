@@ -33,6 +33,10 @@ import {
   type ReleaseQueuePolicyDecision,
 } from "../../lib/puzzles/release-queue-policy.shared.mjs";
 import {
+  resolveVercelProductionDeploymentSnapshot,
+  selectVercelProductionDeployment,
+} from "../../lib/puzzles/vercel-production.shared.mjs";
+import {
   generatePuzzleDraft,
   regeneratePuzzleDraft,
   type EnrichInput,
@@ -672,23 +676,13 @@ function releaseQueueNotifyKeyOf(decision: ReleaseQueuePolicyDecision): string {
   ].map((segment) => encodeURIComponent(segment)).join(":");
 }
 
-export function resolvePinpointReleaseDeploymentStateFromGithubStatus(statusJson: unknown): DeploymentState {
-  const status = asRecord(statusJson);
-  const rawStatuses = Array.isArray(status?.statuses) ? status.statuses : [];
-  const vercelStatus = rawStatuses
-    .map((item) => asRecord(item))
-    .filter((item): item is JsonRecord => Boolean(item))
-    .find((item) => String(item.context || "").trim().toLowerCase() === "vercel");
-
-  if (!vercelStatus) {
-    return "unknown";
-  }
-
-  const state = String(vercelStatus.state || status?.state || "").trim().toLowerCase();
-  if (state === "pending") return "building";
-  if (state === "success") return "ready";
-  if (state === "failure" || state === "error") return "failed";
-  return "unknown";
+export function resolvePinpointReleaseDeploymentStateFromGithubDeployments(
+  deployments: unknown,
+  statuses: unknown,
+  expectedSha: string,
+): DeploymentState {
+  const snapshot = resolveVercelProductionDeploymentSnapshot({ deployments, statuses, expectedSha });
+  return snapshot.state === "missing" ? "unknown" : snapshot.state;
 }
 
 async function fetchGitHubJsonRecord(
@@ -702,6 +696,27 @@ async function fetchGitHubJsonRecord(
     json = (asRecord(JSON.parse(text)) ?? {}) as JsonRecord;
   } catch {
     json = {};
+  }
+  return {
+    ok: res.ok,
+    status: res.status,
+    json,
+    textPreview: text.slice(0, 300),
+  };
+}
+
+async function fetchGitHubJsonArray(
+  url: string,
+  headers: Record<string, string>,
+): Promise<{ ok: boolean; status: number; json: unknown[]; textPreview: string }> {
+  const res = await fetch(url, { headers });
+  const text = await res.text();
+  let json: unknown[] = [];
+  try {
+    const parsed = JSON.parse(text);
+    json = Array.isArray(parsed) ? parsed : [];
+  } catch {
+    json = [];
   }
   return {
     ok: res.ok,
@@ -750,26 +765,38 @@ async function inspectNewSiteBaseDeploymentStatus(env: Env): Promise<JsonRecord>
       deploymentState: "unknown",
       github: {
         refStatus: refResult.status,
-        statusStatus: null,
+        deploymentsStatus: null,
+        deploymentStatusesStatus: null,
+        deploymentCount: 0,
+        productionDeploymentFound: false,
       },
       error: !refResult.ok ? `GitHub ref read failed: HTTP ${refResult.status}` : "GitHub base ref missing commit sha",
     };
   }
 
-  const statusUrl = `https://api.github.com/repos/${repo}/commits/${baseCommitSha}/status`;
-  const statusResult = await fetchGitHubJsonRecord(statusUrl, headers);
-  const vercelStatus = Array.isArray(statusResult.json.statuses)
-    ? statusResult.json.statuses
-      .map((item) => asRecord(item))
-      .filter((item): item is JsonRecord => Boolean(item))
-      .find((item) => String(item.context || "").trim().toLowerCase() === "vercel")
-    : null;
-  const deploymentState = statusResult.ok
-    ? resolvePinpointReleaseDeploymentStateFromGithubStatus(statusResult.json)
+  const deploymentsUrl = `https://api.github.com/repos/${repo}/deployments?sha=${encodeURIComponent(baseCommitSha)}&per_page=100`;
+  const deploymentsResult = await fetchGitHubJsonArray(deploymentsUrl, headers);
+  const productionDeployment = selectVercelProductionDeployment(deploymentsResult.json, baseCommitSha);
+  const deploymentStatusesUrl = String(productionDeployment?.statuses_url || "").trim();
+  const deploymentStatusesResult = deploymentStatusesUrl
+    ? await fetchGitHubJsonArray(`${deploymentStatusesUrl}?per_page=100`, headers)
+    : { ok: true, status: 200, json: [], textPreview: "" };
+  const snapshot = resolveVercelProductionDeploymentSnapshot({
+    deployments: deploymentsResult.json,
+    statuses: deploymentStatusesResult.json,
+    expectedSha: baseCommitSha,
+  });
+  const deploymentState = deploymentsResult.ok && deploymentStatusesResult.ok
+    ? resolvePinpointReleaseDeploymentStateFromGithubDeployments(
+      deploymentsResult.json,
+      deploymentStatusesResult.json,
+      baseCommitSha,
+    )
     : "unknown";
+  const vercelStatus = snapshot.status;
 
   return {
-    ok: refResult.ok && statusResult.ok && deploymentState === "ready",
+    ok: refResult.ok && deploymentsResult.ok && deploymentStatusesResult.ok && deploymentState === "ready",
     checkedAt,
     repo,
     baseBranch,
@@ -777,21 +804,28 @@ async function inspectNewSiteBaseDeploymentStatus(env: Env): Promise<JsonRecord>
     deploymentState,
     github: {
       refStatus: refResult.status,
-      statusStatus: statusResult.status,
-      combinedState: String(statusResult.json.state || "unknown"),
-      statusCount: Array.isArray(statusResult.json.statuses) ? statusResult.json.statuses.length : 0,
+      deploymentsStatus: deploymentsResult.status,
+      deploymentStatusesStatus: deploymentStatusesResult.status,
+      deploymentCount: deploymentsResult.json.length,
+      productionDeploymentFound: Boolean(productionDeployment),
     },
-    vercel: vercelStatus
+    vercel: productionDeployment
       ? {
         found: true,
-        state: String(vercelStatus.state || ""),
-        description: String(vercelStatus.description || ""),
-        targetUrl: String(vercelStatus.target_url || ""),
+        environment: String(productionDeployment.environment || ""),
+        deploymentId: productionDeployment.id || null,
+        state: String(vercelStatus?.state || ""),
+        description: String(vercelStatus?.description || ""),
+        targetUrl: String(vercelStatus?.environment_url || vercelStatus?.target_url || ""),
       }
       : { found: false },
-    ...(!statusResult.ok
-      ? { error: `GitHub combined status read failed: HTTP ${statusResult.status}` }
-      : {}),
+    ...(!deploymentsResult.ok
+      ? { error: `GitHub deployments read failed: HTTP ${deploymentsResult.status}` }
+      : !deploymentStatusesResult.ok
+        ? { error: `GitHub deployment statuses read failed: HTTP ${deploymentStatusesResult.status}` }
+        : !productionDeployment
+          ? { error: `No Vercel Production deployment found for main ${baseCommitSha}` }
+          : {}),
   };
 }
 

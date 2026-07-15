@@ -92,7 +92,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: write
-      statuses: read
+      deployments: read
 
     steps:
       - name: Checkout
@@ -109,14 +109,20 @@ jobs:
             --head "$GITHUB_SHA" \
             --branch "$GITHUB_REF_NAME"
 
-      - name: Fast-forward main after machine checks
+      - name: Create unique main commit after machine checks
+        id: promote
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin main:refs/remotes/origin/main
           git checkout -B main origin/main
-          git merge --ff-only "$GITHUB_SHA"
+          if git merge-base --is-ancestor "$GITHUB_SHA" HEAD; then
+            echo "candidate is already contained in main"
+          else
+            git merge --no-ff --no-edit "$GITHUB_SHA"
+          fi
           git push origin HEAD:main
+          echo "production_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -133,7 +139,9 @@ jobs:
         run: |
           node scripts/verify-pinpoint-candidate-release.mjs \
             --candidate-branch "$GITHUB_REF_NAME" \
-            --sha "$GITHUB_SHA"
+            --candidate-sha "$GITHUB_SHA" \
+            --production-sha "${{ steps.promote.outputs.production_sha }}" \
+            --repair-missing-production
 
       - name: Delete promoted candidate branch
         run: |
