@@ -3217,6 +3217,11 @@ async function checkReleaseQueueObservationOpsScript() {
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
     scripts?: Record<string, string>;
   };
+  const diagnosisStart = opsSource.indexOf("function buildPublishWindowDiagnosis");
+  const diagnosisEnd = opsSource.indexOf("function getReleaseQueueDryRunScenarios", diagnosisStart);
+  const diagnosisSource = diagnosisStart >= 0 && diagnosisEnd > diagnosisStart
+    ? opsSource.slice(diagnosisStart, diagnosisEnd)
+    : "";
   const observeStart = opsSource.indexOf('cmd === "release-queue-observe"');
   const diagnoseStart = opsSource.indexOf('cmd === "publish-window-diagnose"');
   const observeEnd = Math.min(
@@ -3279,6 +3284,12 @@ async function checkReleaseQueueObservationOpsScript() {
       !diagnoseBlock.includes('method: "POST"') &&
       !diagnoseBlock.includes("refresh-cookie"),
     "publish-window diagnosis must stay read-only and avoid publish, pause writes, or cookie refresh",
+  );
+  assert.ok(
+    diagnosisSource.indexOf("report.siteSummary.ok && latestSummaryMatchesDate") >= 0 &&
+      diagnosisSource.indexOf("report.siteSummary.ok && latestSummaryMatchesDate") <
+        diagnosisSource.indexOf("const heartbeat = report.cronStatus"),
+    "publish-window diagnosis must trust a current public summary before reporting an auxiliary cron read failure",
   );
 
   console.log("ok: worker ops exposes production release queue observation");

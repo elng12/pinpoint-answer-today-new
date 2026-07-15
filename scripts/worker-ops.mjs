@@ -277,6 +277,15 @@ async function readDiagnosticJson(label, url, options = {}) {
 }
 
 function buildPublishWindowDiagnosis(report) {
+  if (report.siteSummary.ok && latestSummaryMatchesDate(report.siteSummary.json, report.date)) {
+    const latest = report.siteSummary.json?.latest || {};
+    return {
+      stage: "已发布",
+      conclusion: `已发布：正式站 summary 已是 #${latest.puzzleNumber || "未知"}，日期是 ${report.date}。`,
+      nextStep: "不用处理发布。其他诊断接口即使临时读不到，也不能把已上线误报成未发布。",
+    };
+  }
+
   const pauseStatus = report.pauseStatus.json?.status || {};
   if (pauseStatus.paused === true) {
     return {
@@ -377,11 +386,7 @@ function buildPublishWindowDiagnosis(report) {
     };
   }
 
-  return {
-    stage: "已发布",
-    conclusion: "已发布：Worker、GitHub、Vercel、正式站 summary 都是今天。",
-    nextStep: "不用处理。继续观察明天 15:00 窗口。",
-  };
+  throw new Error("Publish window diagnosis reached an unexpected state.");
 }
 
 function getReleaseQueueDryRunScenarios(nowIso) {
