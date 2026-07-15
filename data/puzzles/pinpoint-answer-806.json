@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 806,
+  "slug": "pinpoint-answer-806",
+  "publishDate": "2026-07-15",
+  "isoDate": "2026-07-15",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Gloom",
+    "Ditto",
+    "Squirtle",
+    "Charizard",
+    "Pikachu"
+  ],
+  "answer": "First generation Pokémon",
+  "category": "First generation Pokémon",
+  "wordHints": {
+    "Gloom": "Gloom is a Pokémon species from the first generation.",
+    "Ditto": "Ditto is a Pokémon species from the first generation.",
+    "Squirtle": "Squirtle is a Pokémon species from the first generation.",
+    "Charizard": "Charizard is a Pokémon species from the first generation.",
+    "Pikachu": "Pikachu is a well-known Pokémon species from the first generation."
+  },
+  "spoilerHints": {
+    "Gloom": "Gloom should be tested as part of first generation pokémon, not as a standalone reference.",
+    "Ditto": "Keep Ditto in mind, then see whether Charizard supports the same answer.",
+    "Squirtle": "Squirtle works best after the board narrows toward first generation pokémon.",
+    "Charizard": "Charizard is the clue that makes first generation pokémon concrete enough to test across the full board.",
+    "Pikachu": "Keep Pikachu in mind, then see whether Charizard supports the same answer."
+  },
+  "articleBlocks": [
+    "I first thought the clues might be pointing to fantasy creatures.",
+    "But then I saw the clue 'Pikachu' and thought of Pokémon.",
+    "The clue 'Gloom' seemed like it could be a type of flower, but it's actually a Pokémon species.",
+    "The clue 'Ditto' seemed like it could be a type of copy or imitation, but it's actually a Pokémon species.",
+    "The clue 'Squirtle' seemed like it could be a type of turtle, but it's actually a Pokémon species.",
+    "The clue 'Charizard' seemed like it could be a type of lizard, but it's actually a Pokémon species.",
+    "The answer is a specific group of Pokémon from the first generation.",
+    "In hindsight, the clues all point to this specific group of Pokémon.",
+    "The difficulty of the puzzle comes from the unfamiliarity of the Pokémon names.",
+    "But once you see the connection, it's clear that the answer is a specific group of Pokémon from the first generation.",
+    "The takeaway from this puzzle is to look for common threads among seemingly unrelated names."
+  ],
+  "solutionNarrative": [
+    "Gloom and Ditto first pulled me toward fantasy creatures, so that was the first path I tested. It held together for a moment, but pikachu never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating pikachu as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue fantasy creatures; I was checking whether Gloom and Ditto could survive the same tighter read.",
+    "Then I used Squirtle, Charizard, and Pikachu as the confirmation round. Squirtle, Charizard, and Pikachu stayed inside the real category, so the answer felt earned instead of guessed. The answer was First generation Pokémon."
+  ],
+  "lessons": [
+    {
+      "title": "\"Gloom\" and \"Ditto\" can look like they belong to different categories at first",
+      "body": "\"Gloom\" and \"Ditto\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Pikachu\" anchors a shared category board with one concrete theme",
+      "body": "Pikachu organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Pikachu\" to re-check \"Gloom\" under a shared category board with one concrete theme",
+      "body": "Look for common threads among seemingly unrelated names."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on first",
+    "fastStrategy": "\"Gloom\" and \"Ditto\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Gloom",
+        "examplePhrase": "Gloom the Pokémon",
+        "connectionExplained": "Gloom is a Pokémon species from the first generation."
+      },
+      {
+        "clue": "Ditto",
+        "examplePhrase": "Ditto the Pokémon",
+        "connectionExplained": "Ditto is a Pokémon species from the first generation."
+      },
+      {
+        "clue": "Squirtle",
+        "examplePhrase": "Squirtle the Pokémon",
+        "connectionExplained": "Squirtle is a Pokémon species from the first generation."
+      },
+      {
+        "clue": "Charizard",
+        "examplePhrase": "Charizard the Pokémon",
+        "connectionExplained": "Charizard is a Pokémon species from the first generation."
+      },
+      {
+        "clue": "Pikachu",
+        "examplePhrase": "Pikachu the Pokémon",
+        "connectionExplained": "Pikachu is a well-known Pokémon species from the first generation."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Gloom\" and \"Ditto\" in LinkedIn Pinpoint #806?",
+      "answer": "The answer is \"First generation Pokémon\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Gloom\" and \"Ditto\" connect in LinkedIn Pinpoint #806?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Pikachu is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Pikachu\" the key clue in LinkedIn Pinpoint #806?",
+      "answer": "Pikachu is the turning clue because \"Pikachu the Pokémon\" makes the shared category frame explicit. It also makes Gloom read cleanly as \"Gloom the Pokémon\". The clues are names of Pokémon that might be unfamiliar to non-Pokémon fans."
+    },
+    {
+      "question": "How does \"Gloom\" fit the same category as \"Pikachu\" in LinkedIn Pinpoint #806?",
+      "answer": "\"Gloom\" reads as \"Gloom the Pokémon\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Gloom, Ditto, and Squirtle do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"fantasy creatures\" can feel plausible before one clue makes the answer feel concrete. Pikachu is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "fantasy creatures",
+      "cartoon characters"
+    ],
+    "whyFalseStartPlausible": [
+      "Too broad and doesn't explain the specific names.",
+      "cartoon characters feels plausible early on, but it falls apart once pikachu demands a more exact reading."
+    ],
+    "breakingClue": "Pikachu",
+    "pivot": "The solve turned when I stopped treating pikachu as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue fantasy creatures; I was checking whether Gloom and Ditto could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Gloom, Ditto, and Squirtle stop feeling disconnected and start looking like they belong together. Once pikachu is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are names of Pokémon that might be unfamiliar to non-Pokémon fans."
+  },
+  "turningPoint": {
+    "clue": "Pikachu",
+    "whyDecisive": "The clue 'Pikachu' made me think of Pokémon.",
+    "whatChangedAfterIt": "Once Pikachu landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Gloom",
+      "surfaceMisread": "fantasy creatures",
+      "resolvedPhraseOrMember": "Gloom the Pokémon",
+      "nonObviousWhy": "Gloom is a Pokémon species from the first generation.",
+      "searchableContext": "Named after the word 'gloom' meaning a state of partial darkness",
+      "phraseExample": "Named after the word 'gloom' meaning a state of partial darkness"
+    },
+    {
+      "clue": "Ditto",
+      "surfaceMisread": "fantasy creatures",
+      "resolvedPhraseOrMember": "Ditto the Pokémon",
+      "nonObviousWhy": "Ditto is a Pokémon species from the first generation.",
+      "searchableContext": "Named after the word 'ditto' meaning a duplicate or copy",
+      "phraseExample": "Named after the word 'ditto' meaning a duplicate or copy"
+    },
+    {
+      "clue": "Squirtle",
+      "surfaceMisread": "fantasy creatures",
+      "resolvedPhraseOrMember": "Squirtle the Pokémon",
+      "nonObviousWhy": "Squirtle is a Pokémon species from the first generation.",
+      "searchableContext": "Named after the word 'squirt' meaning a small amount of liquid",
+      "phraseExample": "Named after the word 'squirt' meaning a small amount of liquid"
+    },
+    {
+      "clue": "Charizard",
+      "surfaceMisread": "fantasy creatures",
+      "resolvedPhraseOrMember": "Charizard the Pokémon",
+      "nonObviousWhy": "Charizard is a Pokémon species from the first generation.",
+      "searchableContext": "Named after the word 'char' meaning to burn or scorch",
+      "phraseExample": "Named after the word 'char' meaning to burn or scorch"
+    },
+    {
+      "clue": "Pikachu",
+      "surfaceMisread": "fantasy creatures",
+      "resolvedPhraseOrMember": "Pikachu the Pokémon",
+      "nonObviousWhy": "Pikachu is a well-known Pokémon species from the first generation.",
+      "searchableContext": "Named after the words 'pika' meaning a mouse-like sound and 'chu' meaning a mouse-like sound",
+      "phraseExample": "Named after the words 'pika' meaning a mouse-like sound and 'chu' meaning a mouse-like sound"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Gloom\" and \"Ditto\" in LinkedIn Pinpoint #806?",
+      "answer": "The answer is \"First generation Pokémon\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Gloom"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Gloom\" and \"Ditto\" connect in LinkedIn Pinpoint #806?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Pikachu is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Gloom"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Pikachu\" the key clue in LinkedIn Pinpoint #806?",
+      "answer": "Pikachu is the turning clue because \"Pikachu the Pokémon\" makes the shared category frame explicit. It also makes Gloom read cleanly as \"Gloom the Pokémon\". The clues are names of Pokémon that might be unfamiliar to non-Pokémon fans.",
+      "tiedClue": "Pikachu"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Gloom\" fit the same category as \"Pikachu\" in LinkedIn Pinpoint #806?",
+      "answer": "\"Gloom\" reads as \"Gloom the Pokémon\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Gloom"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Gloom the Pokémon",
+      "Ditto the Pokémon",
+      "Squirtle the Pokémon",
+      "Charizard the Pokémon",
+      "Pikachu the Pokémon"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Gloom\" and \"Ditto\" can look like they belong to different categories at first",
+      "\"Pikachu\" anchors a shared category board with one concrete theme",
+      "Use \"Pikachu\" to re-check \"Gloom\" under a shared category board with one concrete theme",
+      "Named after the word 'gloom' meaning a state of partial darkness",
+      "Named after the word 'ditto' meaning a duplicate or copy"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "fantasy creatures",
+      "whyPlausible": "Too broad and doesn't explain the specific names.",
+      "whyRejected": "Once Pikachu lands, the final answer explains the board more cleanly than fantasy creatures."
+    },
+    {
+      "label": "cartoon characters",
+      "whyPlausible": "cartoon characters feels plausible early on, but it falls apart once pikachu demands a more exact reading.",
+      "whyRejected": "Once Pikachu lands, the final answer explains the board more cleanly than cartoon characters."
+    }
+  ],
+  "setValidationSummary": "Squirtle, Charizard, Pikachu keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as First generation Pokémon"
+}
