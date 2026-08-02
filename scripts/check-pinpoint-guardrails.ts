@@ -3631,8 +3631,26 @@ async function checkMainFailureContentRecoveryCreatesAutoPromotedCandidate() {
 async function checkCandidateBranchWatchdogClosesStuckBranches() {
   const workflowSource = await readFile(resolve(ROOT, ".github/workflows/pinpoint-candidate-watchdog.yml"), "utf8");
   const watchdogSource = await readFile(resolve(ROOT, "scripts/close-pinpoint-candidate-branches.mjs"), "utf8");
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const workerOpsSource = await readFile(resolve(ROOT, "scripts/worker-ops.mjs"), "utf8");
+  const recoverySource = await readFile(resolve(ROOT, "scripts/recover-pinpoint-worker-detail.mjs"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
     scripts?: Record<string, string>;
+  };
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    shouldUseTemplateFallbackAfterRetryableDraftFailure: (
+      error: unknown,
+      attempt: number,
+      draftAttempts: number,
+    ) => boolean;
+    buildTemplateFallbackDetailRecord: (
+      siteBaseUrl: string,
+      puzzleDate: string,
+      doc: Record<string, unknown>,
+      puzzleNumber: number,
+      words: string[],
+    ) => { articleBlocks: string[]; detailState: string };
   };
 
   assert.ok(
@@ -3640,10 +3658,10 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
     "package.json must expose the candidate branch closure watchdog",
   );
   assert.ok(
-    workflowSource.includes("workflow_run:") &&
+      workflowSource.includes("workflow_run:") &&
       workflowSource.includes("schedule:") &&
       workflowSource.includes("*/30 * * * *") &&
-      workflowSource.includes("actions: write") &&
+      workflowSource.includes("actions: read") &&
       workflowSource.includes("contents: write") &&
       workflowSource.includes("checks: read") &&
       workflowSource.includes("deployments: read") &&
@@ -3654,7 +3672,8 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
   );
   assert.ok(
     watchdogSource.includes("listCandidateBranches") &&
-      watchdogSource.includes("rerunWorkflowRun") &&
+      !watchdogSource.includes("rerunWorkflowRun") &&
+      watchdogSource.includes("automatic rerun is disabled") &&
       watchdogSource.includes("verify-pinpoint-candidate-release.mjs") &&
       watchdogSource.includes("--production-sha") &&
       watchdogSource.includes("--repair-missing-production") &&
@@ -3666,6 +3685,78 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
       watchdogSource.includes("GITHUB_STEP_SUMMARY") &&
       watchdogSource.includes("pending candidates have not updated production yet"),
     "candidate watchdog must promote verified branches, delete closed branches, and create a tracked issue when it cannot close one",
+  );
+  assert.ok(
+    workerSource.includes("retryable LLM/validation errors exhausted; switched to fallback_full") &&
+      workerSource.includes("retryable draft request failed") &&
+      workerSource.includes("mergeWorkerOverviewArticleBlocks") &&
+      !workerSource.includes("await ensureBranchRef(branch, true)"),
+    "Worker must use a full real-data fallback after retryable draft failures and must not create empty candidate branches before validation",
+  );
+  assert.ok(
+    workerOpsSource.includes('stage: "候选分支"') &&
+      workerOpsSource.includes('stage: isToday ? "抓取" : "历史运行记录"'),
+    "publish window diagnosis must report candidate and historical states before blaming cache or current fetch",
+  );
+  assert.ok(
+    recoverySource.includes("Worker history is missing its source checksum") &&
+      recoverySource.includes("Worker history must contain exactly 5 real clues") &&
+      recoverySource.includes("refusing to overwrite it without --force"),
+    "Worker history recovery must fail closed instead of inventing puzzle data",
+  );
+  assert.equal(
+    workerModule.shouldUseTemplateFallbackAfterRetryableDraftFailure(
+      new Error("AI request timed out after 45000ms"),
+      2,
+      2,
+    ),
+    true,
+    "the last retryable AI timeout must switch to the real-data fallback",
+  );
+  assert.equal(
+    workerModule.shouldUseTemplateFallbackAfterRetryableDraftFailure(
+      new Error("AI request timed out after 45000ms"),
+      1,
+      2,
+    ),
+    false,
+    "a retryable timeout must still get its configured retry before fallback",
+  );
+  assert.equal(
+    workerModule.shouldUseTemplateFallbackAfterRetryableDraftFailure(
+      new Error("invalid credentials"),
+      2,
+      2,
+    ),
+    false,
+    "a non-retryable configuration error must not be hidden by fallback",
+  );
+  const fallbackDetail = workerModule.buildTemplateFallbackDetailRecord(
+    "https://pinpoint-worker.2296744453m.workers.dev",
+    "2026-07-16",
+    {
+      version: 1,
+      puzzleDate: "2026-07-16",
+      answers: [
+        { rank: 1, word: "Cardboard boxes" },
+        { rank: 2, word: "Cinnamon sticks" },
+        { rank: 3, word: "Toasted bread" },
+        { rank: 4, word: "Roasted coffee beans" },
+        { rank: 5, word: "Chocolate Labradors" },
+      ],
+      source: "fallback-local",
+      fetchedAt: "2026-07-16T08:22:43.520Z",
+      checksum: "sha256:a028dee0aa6f082505c3529466e8f34292785055130f05cde1f498b2055b9819",
+      theme: "Things that are brown",
+      mainAnswer: "Things that are brown",
+    },
+    807,
+    ["Cardboard boxes", "Cinnamon sticks", "Toasted bread", "Roasted coffee beans", "Chocolate Labradors"],
+  );
+  assert.equal(fallbackDetail.detailState, "fallback_full");
+  assert.ok(
+    fallbackDetail.articleBlocks[0].split(/\s+/).filter(Boolean).length >= 65,
+    "fallback overview must satisfy the production content floor",
   );
 
   console.log("ok: candidate branch watchdog closes or escalates stuck candidates");

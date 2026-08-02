@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 815,
+  "slug": "pinpoint-answer-815",
+  "publishDate": "2026-07-24",
+  "isoDate": "2026-07-24",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Runner",
+    "Line",
+    "Desk",
+    "Teeth",
+    "Row seat"
+  ],
+  "answer": "Words that come after “front”",
+  "category": "Words that come after “front”",
+  "wordHints": {
+    "Runner": "\"front Runner\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Line": "\"front Line\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Desk": "Once the shared word is in place, \"front Desk\" reads like ordinary language instead of a forced compound.",
+    "Teeth": "\"front Teeth\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Row seat": "\"front Row seat\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Runner": "Try reading Runner as part of a familiar phrase in words that come after “front” instead of as a standalone word.",
+    "Line": "Line works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Desk": "Look for a natural expression that absorbs Desk cleanly before locking the board.",
+    "Teeth": "Try reading Teeth as part of a familiar phrase in words that come after “front” instead of as a standalone word.",
+    "Row seat": "Row seat is the clue that makes the phrase pattern in words that come after “front” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. A nearby read was \"Runner and Line phrase pairing\". Runner, Line can support more than one phrase read before Row seat shows where the repeated word belongs. Row seat behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Row seat as an outlier clue\". Row seat can look like the odd clue if the earlier words are read without a shared phrase slot. Once Row seat locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"front Runner\" and \"front Line\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "front Desk, front Teeth, front Row seat show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “front”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “front”\" fits better than \"Runner and Line phrase pairing\" or \"Row seat as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Runner and first tried Runner and Line phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Row seat\" feel exact.",
+    "Once \"Row seat\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Desk and Teeth as the confirmation round. The strong solve was not just that two clues worked; it was that Runner, Line, Desk, Teeth, Row seat could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come after “front”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Runner\" and \"Line\"",
+      "body": "\"Runner\" and \"Line\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Row seat\" changes the front pattern from guess to test",
+      "body": "Once \"Row seat\" lands, place the same word before the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 815, the front phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Runner\" and \"Line\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Runner",
+        "examplePhrase": "front Runner",
+        "connectionExplained": "\"front Runner\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Line",
+        "examplePhrase": "front Line",
+        "connectionExplained": "\"front Line\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Desk",
+        "examplePhrase": "front Desk",
+        "connectionExplained": "Once the shared word is in place, \"front Desk\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Teeth",
+        "examplePhrase": "front Teeth",
+        "connectionExplained": "\"front Teeth\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Row seat",
+        "examplePhrase": "front Row seat",
+        "connectionExplained": "\"front Row seat\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Runner\" and \"Line\" in LinkedIn Pinpoint #815?",
+      "answer": "The answer is \"Words that come after “front”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Runner\" and \"Line\" connect in LinkedIn Pinpoint #815?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Row seat\" the key clue in LinkedIn Pinpoint #815?",
+      "answer": "\"Row seat\" is the strongest clue because \"front Row seat\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "falseStarts": [
+      "Runner and Line phrase pairing",
+      "Row seat as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Runner, Line can support more than one phrase read before Row seat shows where the repeated word belongs.",
+      "Row seat can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Row seat",
+    "pivot": "I started with Runner and first tried Runner and Line phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Row seat\" feel exact.\n\nOnce \"Row seat\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Desk and Teeth as the confirmation round. The strong solve was not just that two clues worked; it was that Runner, Line, Desk, Teeth, Row seat could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come after “front”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Row seat as an outlier clue\". Row seat can look like the odd clue if the earlier words are read without a shared phrase slot. Once Row seat locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Row seat",
+    "whyDecisive": "Row seat is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Row seat lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Runner",
+      "surfaceMisread": "Runner and Line phrase pairing",
+      "resolvedPhraseOrMember": "front Runner",
+      "nonObviousWhy": "\"front Runner\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "front Runner",
+      "phraseExample": "front Runner"
+    },
+    {
+      "clue": "Line",
+      "surfaceMisread": "Runner and Line phrase pairing",
+      "resolvedPhraseOrMember": "front Line",
+      "nonObviousWhy": "\"front Line\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "front Line",
+      "phraseExample": "front Line"
+    },
+    {
+      "clue": "Desk",
+      "surfaceMisread": "Runner and Line phrase pairing",
+      "resolvedPhraseOrMember": "front Desk",
+      "nonObviousWhy": "Once the shared word is in place, \"front Desk\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "front Desk",
+      "phraseExample": "front Desk"
+    },
+    {
+      "clue": "Teeth",
+      "surfaceMisread": "Runner and Line phrase pairing",
+      "resolvedPhraseOrMember": "front Teeth",
+      "nonObviousWhy": "\"front Teeth\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "front Teeth",
+      "phraseExample": "front Teeth"
+    },
+    {
+      "clue": "Row seat",
+      "surfaceMisread": "Runner and Line phrase pairing",
+      "resolvedPhraseOrMember": "front Row seat",
+      "nonObviousWhy": "\"front Row seat\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "front Row seat",
+      "phraseExample": "front Row seat"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Runner\" and \"Line\" in LinkedIn Pinpoint #815?",
+      "answer": "The answer is \"Words that come after “front”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Runner"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Runner\" and \"Line\" connect in LinkedIn Pinpoint #815?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Runner"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Row seat\" the key clue in LinkedIn Pinpoint #815?",
+      "answer": "\"Row seat\" is the strongest clue because \"front Row seat\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Row seat"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "front Runner",
+      "front Line",
+      "front Desk",
+      "front Teeth",
+      "front Row seat"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "front Runner",
+      "front Line",
+      "front Desk",
+      "front Teeth"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Runner and Line phrase pairing",
+      "whyPlausible": "Runner, Line can support more than one phrase read before Row seat shows where the repeated word belongs.",
+      "whyRejected": "Row seat behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Row seat as an outlier clue",
+      "whyPlausible": "Row seat can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Row seat locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "front Desk, front Teeth, front Row seat show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}

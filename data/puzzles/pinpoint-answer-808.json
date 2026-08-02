@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 808,
+  "slug": "pinpoint-answer-808",
+  "publishDate": "2026-07-17",
+  "isoDate": "2026-07-17",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Life",
+    "Show",
+    "Row",
+    "Tug",
+    "Whatever floats your"
+  ],
+  "answer": "Words that come before “boat”",
+  "category": "Words that come before “boat”",
+  "wordHints": {
+    "Life": "\"Life boat\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Show": "\"Show boat\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Row": "Once the shared word is in place, \"Row boat\" reads like ordinary language instead of a forced compound.",
+    "Tug": "\"Tug boat\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Whatever floats your": "\"Whatever floats your boat\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Life": "Try reading Life as part of a familiar phrase in words that come before “boat” instead of as a standalone word.",
+    "Show": "Show works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Row": "Look for a natural expression that absorbs Row cleanly before locking the board.",
+    "Tug": "Try reading Tug as part of a familiar phrase in words that come before “boat” instead of as a standalone word.",
+    "Whatever floats your": "Whatever floats your is the clue that makes the phrase pattern in words that come before “boat” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. A nearby read was \"Life and Show phrase pairing\". Life, Show can support more than one phrase read before Whatever floats your shows where the repeated word belongs. Whatever floats your behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Whatever floats your as an outlier clue\". Whatever floats your can look like the odd clue if the earlier words are read without a shared phrase slot. Once Whatever floats your locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Life boat\" and \"Show boat\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Row boat, Tug boat, Whatever floats your boat show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “boat”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “boat”\" fits better than \"Life and Show phrase pairing\" or \"Whatever floats your as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Life and first tried Life and Show phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Whatever floats your\" feel exact.",
+    "Once \"Whatever floats your\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Row and Tug as the confirmation round. The strong solve was not just that two clues worked; it was that Life, Show, Row, Tug, Whatever floats your could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “boat”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Life\" and \"Show\"",
+      "body": "\"Life\" and \"Show\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Whatever floats your\" changes the boat pattern from guess to test",
+      "body": "Once \"Whatever floats your\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 808, the boat phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Life\" and \"Show\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Life",
+        "examplePhrase": "Life boat",
+        "connectionExplained": "\"Life boat\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Show",
+        "examplePhrase": "Show boat",
+        "connectionExplained": "\"Show boat\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Row",
+        "examplePhrase": "Row boat",
+        "connectionExplained": "Once the shared word is in place, \"Row boat\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Tug",
+        "examplePhrase": "Tug boat",
+        "connectionExplained": "\"Tug boat\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Whatever floats your",
+        "examplePhrase": "Whatever floats your boat",
+        "connectionExplained": "\"Whatever floats your boat\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Life\" and \"Show\" in LinkedIn Pinpoint #808?",
+      "answer": "The answer is \"Words that come before “boat”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Life\" and \"Show\" connect in LinkedIn Pinpoint #808?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Whatever floats your\" the key clue in LinkedIn Pinpoint #808?",
+      "answer": "\"Whatever floats your\" is the strongest clue because \"Whatever floats your boat\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Life and Show phrase pairing",
+      "Whatever floats your as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Life, Show can support more than one phrase read before Whatever floats your shows where the repeated word belongs.",
+      "Whatever floats your can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Whatever floats your",
+    "pivot": "I started with Life and first tried Life and Show phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Whatever floats your\" feel exact.\n\nOnce \"Whatever floats your\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Row and Tug as the confirmation round. The strong solve was not just that two clues worked; it was that Life, Show, Row, Tug, Whatever floats your could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “boat”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Whatever floats your as an outlier clue\". Whatever floats your can look like the odd clue if the earlier words are read without a shared phrase slot. Once Whatever floats your locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Whatever floats your",
+    "whyDecisive": "Whatever floats your is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Whatever floats your lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Life",
+      "surfaceMisread": "Life and Show phrase pairing",
+      "resolvedPhraseOrMember": "Life boat",
+      "nonObviousWhy": "\"Life boat\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Life boat",
+      "phraseExample": "Life boat"
+    },
+    {
+      "clue": "Show",
+      "surfaceMisread": "Life and Show phrase pairing",
+      "resolvedPhraseOrMember": "Show boat",
+      "nonObviousWhy": "\"Show boat\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Show boat",
+      "phraseExample": "Show boat"
+    },
+    {
+      "clue": "Row",
+      "surfaceMisread": "Life and Show phrase pairing",
+      "resolvedPhraseOrMember": "Row boat",
+      "nonObviousWhy": "Once the shared word is in place, \"Row boat\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Row boat",
+      "phraseExample": "Row boat"
+    },
+    {
+      "clue": "Tug",
+      "surfaceMisread": "Life and Show phrase pairing",
+      "resolvedPhraseOrMember": "Tug boat",
+      "nonObviousWhy": "\"Tug boat\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Tug boat",
+      "phraseExample": "Tug boat"
+    },
+    {
+      "clue": "Whatever floats your",
+      "surfaceMisread": "Life and Show phrase pairing",
+      "resolvedPhraseOrMember": "Whatever floats your boat",
+      "nonObviousWhy": "\"Whatever floats your boat\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Whatever floats your boat",
+      "phraseExample": "Whatever floats your boat"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Life\" and \"Show\" in LinkedIn Pinpoint #808?",
+      "answer": "The answer is \"Words that come before “boat”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Life"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Life\" and \"Show\" connect in LinkedIn Pinpoint #808?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Life"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Whatever floats your\" the key clue in LinkedIn Pinpoint #808?",
+      "answer": "\"Whatever floats your\" is the strongest clue because \"Whatever floats your boat\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Whatever floats your"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Life boat",
+      "Show boat",
+      "Row boat",
+      "Tug boat",
+      "Whatever floats your boat"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Life boat",
+      "Show boat",
+      "Row boat",
+      "Tug boat"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Life and Show phrase pairing",
+      "whyPlausible": "Life, Show can support more than one phrase read before Whatever floats your shows where the repeated word belongs.",
+      "whyRejected": "Whatever floats your behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Whatever floats your as an outlier clue",
+      "whyPlausible": "Whatever floats your can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Whatever floats your locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Row boat, Tug boat, Whatever floats your boat show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}

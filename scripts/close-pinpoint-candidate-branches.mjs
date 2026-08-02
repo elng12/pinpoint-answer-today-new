@@ -165,15 +165,6 @@ async function getCandidateCheckState({ repo, sha, token }) {
   return { state: "failed", detail: `${REQUIRED_CHECK_NAME} concluded ${latest.conclusion || "unknown"}`, runId };
 }
 
-async function rerunWorkflowRun({ repo, token, runId }) {
-  if (!runId) return false;
-  await githubJson(`repos/${repo}/actions/runs/${runId}/rerun`, {
-    method: "POST",
-    token,
-  });
-  return true;
-}
-
 async function createOrCommentIssue({ repo, token, branch, body }) {
   const title = `Pinpoint candidate stuck: ${branch}`;
   const query = encodeURIComponent(`repo:${repo} is:issue is:open in:title "${title}"`);
@@ -284,18 +275,12 @@ async function closeCandidateBranch({ branch, repo, token, maxPendingMinutes, dr
 
   const checkState = await getCandidateCheckState({ repo, sha: candidateSha, token });
   if (checkState.state !== "success") {
-    const reran = checkState.state === "failed"
-      ? await rerunWorkflowRun({ repo, token, runId: checkState.runId }).catch((error) => {
-        console.error(`could not rerun failed candidate CI for ${branch}: ${error instanceof Error ? error.message : String(error)}`);
-        return false;
-      })
-      : false;
     return {
       branch,
       sha: candidateSha,
       closed: false,
       severity: ageMinutes >= maxPendingMinutes ? "failure" : "pending",
-      reason: `${checkState.detail}${reran ? "; rerun requested" : ""}; age=${ageMinutes}m`,
+      reason: `${checkState.detail}; automatic rerun is disabled because deterministic failures need a code or data fix; age=${ageMinutes}m`,
     };
   }
 

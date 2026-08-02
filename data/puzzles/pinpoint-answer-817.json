@@ -1,0 +1,231 @@
+{
+  "puzzleNumber": 817,
+  "slug": "pinpoint-answer-817",
+  "publishDate": "2026-07-26",
+  "isoDate": "2026-07-26",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Bell",
+    "Valves",
+    "Tuning slide",
+    "Mouthpiece",
+    "Metal tubing (muted gold/yellow)"
+  ],
+  "answer": "Parts of a brass instrument (like a trumpet)",
+  "category": "Parts of a brass instrument (like a trumpet)",
+  "wordHints": {
+    "Bell": "The bell shape is characteristic of brass instruments, directing sound forward.",
+    "Valves": "Valves are used to alter the length of the instrument's tubing, changing the pitch.",
+    "Tuning slide": "The tuning slide allows for adjustments to the instrument's length, thereby tuning it.",
+    "Mouthpiece": "The mouthpiece is designed to direct air into the instrument, producing sound.",
+    "Metal tubing (muted gold/yellow)": "The description matches the typical material and finish of brass instruments."
+  },
+  "spoilerHints": {
+    "Bell": "Bell should be tested as part of parts of a brass instrument (like a trumpet), not as a standalone reference.",
+    "Valves": "Keep Valves in mind, then see whether Metal tubing (muted gold/yellow) supports the same answer.",
+    "Tuning slide": "Tuning slide works best after the board narrows toward parts of a brass instrument (like a trumpet).",
+    "Mouthpiece": "Mouthpiece should be tested as part of parts of a brass instrument (like a trumpet), not as a standalone reference.",
+    "Metal tubing (muted gold/yellow)": "Metal tubing (muted gold/yellow) is the clue that makes parts of a brass instrument (like a trumpet) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "My first thought was that these clues could point to any musical instrument. However, as I considered each clue, the presence of 'Valves' stood out as particularly telling. The 'Bell' clue initially seemed too generic, applicable to many types of instruments. But when combined with 'Valves' and 'Tuning slide', it became clear that these were parts of a brass instrument. The 'Mouthpiece' clue further supported this, as brass instruments require a specific type of mouthpiece.",
+    "The description of 'Metal tubing (muted gold/yellow)' matched the material and finish of brass instruments, solidifying the answer.",
+    "What initially seemed like a broad set of clues turned out to be quite specific once the right category was identified.",
+    "The turning point was realizing that 'Valves' are a distinctive feature of brass instruments, which led to a clearer understanding of the other clues.",
+    "In hindsight, the answer seems straightforward, but it required carefully considering each clue and how they worked together.",
+    "This puzzle taught me to look for the clues that distinguish one category from another, even when there are shared characteristics.",
+    "By focusing on the unique features of brass instruments, I was able to narrow down the possibilities and arrive at the correct answer.",
+    "The answer was Parts of a brass instrument (like a trumpet)."
+  ],
+  "solutionNarrative": [
+    "Bell and Valves first pulled me toward woodwind parts, so that was the first path I tested. It held together for a moment, but valves never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating valves as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue woodwind parts; I was checking whether Bell and Valves could survive the same tighter read.",
+    "Then I used Tuning slide, Mouthpiece, and Metal tubing (muted gold/yellow) as the confirmation round. Tuning slide, Mouthpiece, and Metal tubing (muted gold/yellow) stayed inside the real category, so the answer felt earned instead of guessed. The answer was Parts of a brass instrument (like a trumpet)."
+  ],
+  "lessons": [
+    {
+      "title": "\"Bell\" and \"Valves\" can look like they belong to different categories at first",
+      "body": "\"Bell\" and \"Valves\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Valves\" anchors a shared category board with one concrete theme",
+      "body": "Valves organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Valves\" to re-check \"Bell\" under a shared category board with one concrete theme",
+      "body": "When identifying parts of an instrument, consider the specific mechanisms and materials that distinguish one type from another."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on parts",
+    "fastStrategy": "\"Bell\" and \"Valves\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Bell",
+        "examplePhrase": "Brass instrument bell",
+        "connectionExplained": "The bell shape is characteristic of brass instruments, directing sound forward."
+      },
+      {
+        "clue": "Valves",
+        "examplePhrase": "Brass instrument valves",
+        "connectionExplained": "Valves are used to alter the length of the instrument's tubing, changing the pitch."
+      },
+      {
+        "clue": "Tuning slide",
+        "examplePhrase": "Brass instrument tuning slide",
+        "connectionExplained": "The tuning slide allows for adjustments to the instrument's length, thereby tuning it."
+      },
+      {
+        "clue": "Mouthpiece",
+        "examplePhrase": "Brass instrument mouthpiece",
+        "connectionExplained": "The mouthpiece is designed to direct air into the instrument, producing sound."
+      },
+      {
+        "clue": "Metal tubing (muted gold/yellow)",
+        "examplePhrase": "Brass instrument tubing",
+        "connectionExplained": "The description matches the typical material and finish of brass instruments."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Bell\" and \"Valves\" in LinkedIn Pinpoint #817?",
+      "answer": "The answer is \"Parts of a brass instrument (like a trumpet)\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Bell\" and \"Valves\" connect in LinkedIn Pinpoint #817?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Valves is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Valves\" the key clue in LinkedIn Pinpoint #817?",
+      "answer": "Valves is the turning clue because \"Brass instrument valves\" makes the shared category frame explicit. It also makes Bell read cleanly as \"Brass instrument bell\". The puzzle requires distinguishing between components of different types of instruments, which can share similar parts but have distinct features."
+    },
+    {
+      "question": "How does \"Bell\" fit the same category as \"Valves\" in LinkedIn Pinpoint #817?",
+      "answer": "\"Bell\" reads as \"Brass instrument bell\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Bell, Valves, and Tuning slide do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"woodwind parts\" can feel plausible before one clue makes the answer feel concrete. Valves is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "woodwind parts",
+      "percussion components"
+    ],
+    "whyFalseStartPlausible": [
+      "The presence of valves and the specific description of the metal tubing do not match woodwind instruments.",
+      "percussion components feels plausible early on, but it falls apart once valves demands a more exact reading."
+    ],
+    "breakingClue": "Valves",
+    "pivot": "The solve turned when I stopped treating valves as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue woodwind parts; I was checking whether Bell and Valves could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Bell, Valves, and Tuning slide stop feeling disconnected and start looking like they belong together. Once valves is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle requires distinguishing between components of different types of instruments, which can share similar parts but have distinct features."
+  },
+  "turningPoint": {
+    "clue": "Valves",
+    "whyDecisive": "The valves clue was decisive because it specifically pointed to brass instruments.",
+    "whatChangedAfterIt": "Once Valves landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Bell",
+      "surfaceMisread": "woodwind parts",
+      "resolvedPhraseOrMember": "Brass instrument bell",
+      "nonObviousWhy": "The bell shape is characteristic of brass instruments, directing sound forward.",
+      "searchableContext": "From the bell-like shape of the instrument's flared end",
+      "phraseExample": "From the bell-like shape of the instrument's flared end"
+    },
+    {
+      "clue": "Valves",
+      "surfaceMisread": "woodwind parts",
+      "resolvedPhraseOrMember": "Brass instrument valves",
+      "nonObviousWhy": "Valves are used to alter the length of the instrument's tubing, changing the pitch.",
+      "searchableContext": "From the mechanical valves used to control air flow",
+      "phraseExample": "From the mechanical valves used to control air flow"
+    },
+    {
+      "clue": "Tuning slide",
+      "surfaceMisread": "woodwind parts",
+      "resolvedPhraseOrMember": "Brass instrument tuning slide",
+      "nonObviousWhy": "The tuning slide allows for adjustments to the instrument's length, thereby tuning it.",
+      "searchableContext": "From the action of sliding the tubing to adjust pitch",
+      "phraseExample": "From the action of sliding the tubing to adjust pitch"
+    },
+    {
+      "clue": "Mouthpiece",
+      "surfaceMisread": "woodwind parts",
+      "resolvedPhraseOrMember": "Brass instrument mouthpiece",
+      "nonObviousWhy": "The mouthpiece is designed to direct air into the instrument, producing sound.",
+      "searchableContext": "From its function as the piece placed against the mouth",
+      "phraseExample": "From its function as the piece placed against the mouth"
+    },
+    {
+      "clue": "Metal tubing (muted gold/yellow)",
+      "surfaceMisread": "woodwind parts",
+      "resolvedPhraseOrMember": "Brass instrument tubing",
+      "nonObviousWhy": "The description matches the typical material and finish of brass instruments.",
+      "searchableContext": "From the metal alloy used and its characteristic color",
+      "phraseExample": "From the metal alloy used and its characteristic color"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Bell\" and \"Valves\" in LinkedIn Pinpoint #817?",
+      "answer": "The answer is \"Parts of a brass instrument (like a trumpet)\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Bell"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Bell\" and \"Valves\" connect in LinkedIn Pinpoint #817?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Valves is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Bell"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Valves\" the key clue in LinkedIn Pinpoint #817?",
+      "answer": "Valves is the turning clue because \"Brass instrument valves\" makes the shared category frame explicit. It also makes Bell read cleanly as \"Brass instrument bell\". The puzzle requires distinguishing between components of different types of instruments, which can share similar parts but have distinct features.",
+      "tiedClue": "Valves"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Bell\" fit the same category as \"Valves\" in LinkedIn Pinpoint #817?",
+      "answer": "\"Bell\" reads as \"Brass instrument bell\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Bell"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Brass instrument bell",
+      "Brass instrument valves",
+      "Brass instrument tuning slide",
+      "Brass instrument mouthpiece",
+      "Brass instrument tubing"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Bell\" and \"Valves\" can look like they belong to different categories at first",
+      "\"Valves\" anchors a shared category board with one concrete theme",
+      "Use \"Valves\" to re-check \"Bell\" under a shared category board with one concrete theme",
+      "From the bell-like shape of the instrument's flared end",
+      "From the mechanical valves used to control air flow"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "woodwind parts",
+      "whyPlausible": "The presence of valves and the specific description of the metal tubing do not match woodwind instruments.",
+      "whyRejected": "Once Valves lands, the final answer explains the board more cleanly than woodwind parts."
+    },
+    {
+      "label": "percussion components",
+      "whyPlausible": "percussion components feels plausible early on, but it falls apart once valves demands a more exact reading.",
+      "whyRejected": "Once Valves lands, the final answer explains the board more cleanly than percussion components."
+    }
+  ],
+  "setValidationSummary": "Tuning slide, Mouthpiece, Metal tubing (muted gold/yellow) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Parts of a brass instrument (like a trumpet)"
+}
