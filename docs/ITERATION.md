@@ -269,3 +269,14 @@
 未做：尚未提交、合并、部署；没有启用任何 canary slug；没有用当天或不完整 GSC 数据判断效果。
 复查日期：合并后立即核对准确 Production SHA、#824 HTML、结构化数据、sitemap 和 Worker 配置。
 下一步：先以 `off` 状态上线，确认旧页只有删除 `verified` 这一项预期差异；阶段 3 样本足够后，再提前登记未来实验页。
+
+## 2026-08-02 详情页描述纠正与关闭状态上线记录
+
+问题：详情页描述纠正和实验开关已在本地通过，但必须确认准确的 Production 版本、线上 HTML 和生产 Worker 配置，不能把 Preview 当成完成。
+证据：PR `#156` 合并为 `c5a1fe8ad09fb39b7c752b048f011f9eb49d9a56`；该 SHA 的 GitHub Deployment 明确为 `Production` 且 Vercel 状态成功。
+本轮边界：只验收详情页描述纠正和关闭状态开关，不启用 canary，不修改首页固定 SEO 文案、题库、正文、URL、canonical 或 sitemap。
+修改：生产 #824 和 #823 的描述把 `verified` 改为可由页面内容证明的 `complete`；生产 Worker 部署版本 `3ec7b311-ee49-4735-85f6-bb67498c9970`，`PINPOINT_SEO_TEMPLATE_MODE=off`，canary slug 列表为空。
+验证：release queue 为 `ready`；首页、#824、#823、sitemap 和 summary 均返回 HTTP 200；#824/#823 的 meta、Open Graph、Twitter 和 Article 描述一致，不再包含 `verified`，且仍保留原答案；#824 除 `verified` 改为 `complete` 外其余描述逐字不变；首页标题和描述不变；sitemap 包含 #824；summary 为 #824 live；Worker health 和发布窗口诊断正常，候选分支为 0。
+未做：没有启用任何 `serp-v2` 页面；没有用当天 GSC 数据判断流量效果；阶段 4.5、4.6 和阶段 5 尚未开始。
+复查日期：阶段 3 获得完整日期样本后，再决定未来 canary slug。
+下一步：继续阶段 3 的 14 天发布与 GSC 基线；数据够之前不启动去答案实验。
