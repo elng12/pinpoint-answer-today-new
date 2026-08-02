@@ -1,9 +1,28 @@
 [
   {
+    "puzzleNumber": 824,
+    "slug": "pinpoint-answer-824",
+    "publishDate": "2026-08-02",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "First",
+      "Pin",
+      "Net",
+      "Valve",
+      "In numbers"
+    ],
+    "mainAnswer": "Words that come after “safety”",
+    "category": "Words that come after “safety”",
+    "difficultyLevel": "Moderate",
+    "shortSummary": "Pinpoint Answer Today asks: what links First, Pin, Net, Valve, In numbers - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-02T07:08:22.504Z"
+  },
+  {
     "puzzleNumber": 823,
     "slug": "pinpoint-answer-823",
     "publishDate": "2026-08-01",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Wheel",
@@ -16,7 +35,7 @@
     "category": "Things used when making pottery",
     "difficultyLevel": "Moderate",
     "shortSummary": "LinkedIn Pinpoint #823 starts with Wheel, Ribs, and Glaze. Use the remaining clues to test one exact connection before revealing today's answer.",
-    "updatedAt": "2026-08-02T02:44:30.440Z"
+    "updatedAt": "2026-08-02T07:08:22.504Z"
   },
   {
     "puzzleNumber": 822,
