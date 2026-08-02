@@ -1,0 +1,230 @@
+{
+  "puzzleNumber": 820,
+  "slug": "pinpoint-answer-820",
+  "publishDate": "2026-07-29",
+  "isoDate": "2026-07-29",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Merry",
+    "Sam",
+    "Boromir",
+    "Frodo",
+    "Gandalf the Grey"
+  ],
+  "answer": "Members of the Fellowship of the Ring (J.R.R. Tolkien)",
+  "category": "Members of the Fellowship of the Ring (J.R.R. Tolkien)",
+  "wordHints": {
+    "Merry": "Merry is a hobbit and a member of the Fellowship.",
+    "Sam": "Sam is Frodo's loyal friend and a member of the Fellowship.",
+    "Boromir": "Boromir is a human warrior and a member of the Fellowship.",
+    "Frodo": "Frodo is the ring bearer and a member of the Fellowship.",
+    "Gandalf the Grey": "Gandalf is a guide and mentor to the Fellowship."
+  },
+  "spoilerHints": {
+    "Merry": "Merry should be tested as part of members of the fellowship of the ring (j.r.r. tolkien), not as a standalone reference.",
+    "Sam": "Keep Sam in mind, then see whether Gandalf the Grey supports the same answer.",
+    "Boromir": "Boromir works best after the board narrows toward members of the fellowship of the ring (j.r.r. tolkien).",
+    "Frodo": "Frodo should be tested as part of members of the fellowship of the ring (j.r.r. tolkien), not as a standalone reference.",
+    "Gandalf the Grey": "Gandalf the Grey is the clue that makes members of the fellowship of the ring (j.r.r. tolkien) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "I initially thought the names might be related to fantasy characters in general. But as I looked closer, I realized the names were too specific and came from a particular story. The clue 'Gandalf the Grey' made me realize the connection to the Fellowship of the Ring. I considered the possibility that the names might be related to fantasy book characters or mythical creatures. However, the names were too specific and came from a particular story, not just any fantasy characters.",
+    "The full clue set confirmed the answer as Members of the Fellowship of the Ring because all the names match characters from the book.",
+    "I learned that when solving puzzles, it's essential to consider the specific context and connections between clues.",
+    "The answer requires a deeper understanding of the story and its characters.",
+    "In hindsight, the clues were cleverly designed to lead to the correct answer.",
+    "The puzzle required a combination of general knowledge and specific understanding of the Lord of the Rings story.",
+    "The answer was Members of the Fellowship of the Ring R."
+  ],
+  "solutionNarrative": [
+    "Merry and Sam first pulled me toward Fantasy Characters, so that was the first path I tested. It held together for a moment, but gandalf the Grey never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating gandalf the Grey as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue Fantasy Characters; I was checking whether Merry and Sam could survive the same tighter read.",
+    "Then I used Boromir, Frodo, and Gandalf the Grey as the confirmation round. Boromir, Frodo, and Gandalf the Grey stayed inside the real category, so the answer felt earned instead of guessed. The answer was Members of the Fellowship of the Ring (J.R.R. Tolkien)."
+  ],
+  "lessons": [
+    {
+      "title": "\"Merry\" and \"Sam\" can look like they belong to different categories at first",
+      "body": "\"Merry\" and \"Sam\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Gandalf the Grey\" anchors a shared category board with one concrete theme",
+      "body": "Gandalf the Grey organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Gandalf the Grey\" to re-check \"Merry\" under a shared category board with one concrete theme",
+      "body": "When solving puzzles, it's essential to consider the specific context and connections between clues, rather than just relying on general knowledge."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on members",
+    "fastStrategy": "\"Merry\" and \"Sam\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Merry",
+        "examplePhrase": "Merry",
+        "connectionExplained": "Merry is a hobbit and a member of the Fellowship."
+      },
+      {
+        "clue": "Sam",
+        "examplePhrase": "Sam",
+        "connectionExplained": "Sam is Frodo's loyal friend and a member of the Fellowship."
+      },
+      {
+        "clue": "Boromir",
+        "examplePhrase": "Boromir",
+        "connectionExplained": "Boromir is a human warrior and a member of the Fellowship."
+      },
+      {
+        "clue": "Frodo",
+        "examplePhrase": "Frodo",
+        "connectionExplained": "Frodo is the ring bearer and a member of the Fellowship."
+      },
+      {
+        "clue": "Gandalf the Grey",
+        "examplePhrase": "a guide and mentor",
+        "connectionExplained": "Gandalf is a guide and mentor to the Fellowship."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Merry\" and \"Sam\" in LinkedIn Pinpoint #820?",
+      "answer": "The answer is \"Members of the Fellowship of the Ring (J.R.R. Tolkien)\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Merry\" and \"Sam\" connect in LinkedIn Pinpoint #820?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Gandalf the Grey is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Gandalf the Grey\" the key clue in LinkedIn Pinpoint #820?",
+      "answer": "Gandalf the Grey is the turning clue because \"a guide and mentor\" makes the shared category frame explicit. It also makes Merry read cleanly as \"Merry\". The difficulty comes from the fact that the names could fit into a broader category of fantasy characters, but the specific connection to the Fellowship of the Ring requires a deeper understanding of the story."
+    },
+    {
+      "question": "How does \"Merry\" fit the same category as \"Gandalf the Grey\" in LinkedIn Pinpoint #820?",
+      "answer": "\"Merry\" reads as \"Merry\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Merry, Sam, and Boromir do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"fantasy book characters\" can feel plausible before one clue makes the answer feel concrete. Gandalf the Grey is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "fantasy book characters",
+      "mythical creatures"
+    ],
+    "whyFalseStartPlausible": [
+      "The names are too specific and come from a particular story, not just any fantasy characters.",
+      "fantasy book characters feels plausible early on, but it falls apart once gandalf the Grey demands a more exact reading."
+    ],
+    "breakingClue": "Gandalf the Grey",
+    "pivot": "The solve turned when I stopped treating gandalf the Grey as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue Fantasy Characters; I was checking whether Merry and Sam could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Merry, Sam, and Boromir stop feeling disconnected and start looking like they belong together. Once gandalf the Grey is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The difficulty comes from the fact that the names could fit into a broader category of fantasy characters, but the specific connection to the Fellowship of the Ring requires a deeper understanding of the story."
+  },
+  "turningPoint": {
+    "clue": "Gandalf the Grey",
+    "whyDecisive": "The clue 'Gandalf the Grey' made me realize the connection to the Fellowship of the Ring.",
+    "whatChangedAfterIt": "Once Gandalf the Grey landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Merry",
+      "surfaceMisread": "Fantasy Characters",
+      "resolvedPhraseOrMember": "Merry",
+      "nonObviousWhy": "Merry is a hobbit and a member of the Fellowship.",
+      "searchableContext": "Meriadoc Brandybuck is the full name of the character",
+      "phraseExample": "Meriadoc Brandybuck is the full name of the character"
+    },
+    {
+      "clue": "Sam",
+      "surfaceMisread": "Fantasy Characters",
+      "resolvedPhraseOrMember": "Sam",
+      "nonObviousWhy": "Sam is Frodo's loyal friend and a member of the Fellowship.",
+      "searchableContext": "Samwise Gamgee is the full name of the character",
+      "phraseExample": "Samwise Gamgee is the full name of the character"
+    },
+    {
+      "clue": "Boromir",
+      "surfaceMisread": "Fantasy Characters",
+      "resolvedPhraseOrMember": "Boromir",
+      "nonObviousWhy": "Boromir is a human warrior and a member of the Fellowship.",
+      "searchableContext": "Boromir of Gondor is the full name of the character",
+      "phraseExample": "Boromir of Gondor is the full name of the character"
+    },
+    {
+      "clue": "Frodo",
+      "surfaceMisread": "Fantasy Characters",
+      "resolvedPhraseOrMember": "Frodo",
+      "nonObviousWhy": "Frodo is the ring bearer and a member of the Fellowship.",
+      "searchableContext": "Frodo Baggins is the full name of the character",
+      "phraseExample": "Frodo Baggins is the full name of the character"
+    },
+    {
+      "clue": "Gandalf the Grey",
+      "surfaceMisread": "Fantasy Characters",
+      "resolvedPhraseOrMember": "a guide and mentor",
+      "nonObviousWhy": "Gandalf is a guide and mentor to the Fellowship.",
+      "searchableContext": "Gandalf is a powerful wizard in the Lord of the Rings",
+      "phraseExample": "Gandalf is a powerful wizard in the Lord of the Rings"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Merry\" and \"Sam\" in LinkedIn Pinpoint #820?",
+      "answer": "The answer is \"Members of the Fellowship of the Ring (J.R.R. Tolkien)\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Merry"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Merry\" and \"Sam\" connect in LinkedIn Pinpoint #820?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Gandalf the Grey is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Merry"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Gandalf the Grey\" the key clue in LinkedIn Pinpoint #820?",
+      "answer": "Gandalf the Grey is the turning clue because \"a guide and mentor\" makes the shared category frame explicit. It also makes Merry read cleanly as \"Merry\". The difficulty comes from the fact that the names could fit into a broader category of fantasy characters, but the specific connection to the Fellowship of the Ring requires a deeper understanding of the story.",
+      "tiedClue": "Gandalf the Grey"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Merry\" fit the same category as \"Gandalf the Grey\" in LinkedIn Pinpoint #820?",
+      "answer": "\"Merry\" reads as \"Merry\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Merry"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Merry",
+      "Sam",
+      "Boromir",
+      "Frodo",
+      "a guide and mentor"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Merry\" and \"Sam\" can look like they belong to different categories at first",
+      "\"Gandalf the Grey\" anchors a shared category board with one concrete theme",
+      "Use \"Gandalf the Grey\" to re-check \"Merry\" under a shared category board with one concrete theme",
+      "Meriadoc Brandybuck is the full name of the character",
+      "Samwise Gamgee is the full name of the character"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Fantasy Characters",
+      "whyPlausible": "The names are too specific and come from a particular story, not just any fantasy characters.",
+      "whyRejected": "Once Gandalf the Grey lands, the final answer explains the board more cleanly than Fantasy Characters."
+    },
+    {
+      "label": "fantasy book characters",
+      "whyPlausible": "fantasy book characters feels plausible early on, but it falls apart once gandalf the Grey demands a more exact reading.",
+      "whyRejected": "Once Gandalf the Grey lands, the final answer explains the board more cleanly than fantasy book characters."
+    }
+  ],
+  "setValidationSummary": "Boromir, Frodo, Gandalf the Grey keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Members of the Fellowship of the Ring (J.R.R. Tolkien)"
+}

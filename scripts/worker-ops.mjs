@@ -295,6 +295,14 @@ function buildPublishWindowDiagnosis(report) {
     };
   }
 
+  if (report.candidateBranches.ok && report.candidateBranches.matching.length > 0) {
+    return {
+      stage: "候选分支",
+      conclusion: `卡在：候选分支还没有进入 main。匹配到 ${report.candidateBranches.matching.length} 个分支。`,
+      nextStep: "先查候选分支 CI 的具体失败原因；不要把它当成 Vercel 缓存问题，也不要重复重跑同一个确定性失败。",
+    };
+  }
+
   if (!report.workerHealth.ok) {
     return {
       stage: "Worker 健康接口",
@@ -303,16 +311,21 @@ function buildPublishWindowDiagnosis(report) {
     };
   }
 
+  const heartbeat = report.cronStatus.json?.byDate || report.cronStatus.json?.latest || null;
   const workerDate = asText(report.workerHealth.json?.puzzleDate);
-  if (workerDate !== report.date) {
+  if (workerDate !== report.date && !heartbeat) {
+    const isToday = report.date === getBeijingTodayDate();
     return {
-      stage: "抓取",
-      conclusion: `卡在：抓取。Worker 最新题日期是 ${workerDate || "空"}，还不是 ${report.date}。`,
-      nextStep: "先跑 npm run worker:preflight；如果 LinkedIn 401，就刷新 cookie。",
+      stage: isToday ? "抓取" : "历史运行记录",
+      conclusion: isToday
+        ? `卡在：抓取。Worker 最新题日期是 ${workerDate || "空"}，还不是 ${report.date}。`
+        : `没有找到 ${report.date} 的 Worker 运行记录；当前健康接口显示的是 ${workerDate || "空"}，不能据此说历史抓取失败。`,
+      nextStep: isToday
+        ? "先跑 npm run worker:preflight；如果 LinkedIn 401，就刷新 cookie。"
+        : "改查该日期的 Worker 历史接口、候选分支和 GitHub CI。",
     };
   }
 
-  const heartbeat = report.cronStatus.json?.byDate || report.cronStatus.json?.latest || null;
   if (!heartbeat) {
     return {
       stage: "Worker cron",

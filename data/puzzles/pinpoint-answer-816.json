@@ -1,0 +1,232 @@
+{
+  "puzzleNumber": 816,
+  "slug": "pinpoint-answer-816",
+  "publishDate": "2026-07-25",
+  "isoDate": "2026-07-25",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Cold",
+    "Annoy",
+    "Listening device",
+    "Software glitch",
+    "Insect"
+  ],
+  "answer": "Different meanings of “bug”",
+  "category": "Different meanings of “bug”",
+  "wordHints": {
+    "Cold": "The word 'bug' is used to describe a type of illness, like the flu bug.",
+    "Annoy": "The word 'bug' can mean to annoy or pester someone, as in 'bug someone'.",
+    "Listening device": "A 'bug' can refer to a hidden microphone for surveillance.",
+    "Software glitch": "In computing, a 'bug' refers to an error or flaw in the system.",
+    "Insect": "The word 'bug' is commonly used to refer to any small insect."
+  },
+  "spoilerHints": {
+    "Cold": "Cold should be tested as part of different meanings of “bug”, not as a standalone reference.",
+    "Annoy": "Keep Annoy in mind, then see whether Listening device supports the same answer.",
+    "Listening device": "Listening device is the clue that makes different meanings of “bug” concrete enough to test across the full board.",
+    "Software glitch": "Software glitch should be tested as part of different meanings of “bug”, not as a standalone reference.",
+    "Insect": "Keep Insect in mind, then see whether Listening device supports the same answer."
+  },
+  "articleBlocks": [
+    "I first thought the puzzle was about computer terms because of the clue 'Software glitch'. But then I saw 'Cold' and 'Insect', which didn't fit that theme. The clue 'Annoy' made me think about how 'bug' can mean to bother someone. The turning point was the 'Listening device' clue, which introduced the idea of a spying device. I realized that 'bug' has many different meanings, including an illness, a type of insect, and a spying device.",
+    "The answer is 'Different meanings of bug' because each clue represents a distinct meaning of the word.",
+    "In hindsight, the clues were cleverly chosen to represent different aspects of the word 'bug'.",
+    "The puzzle required a mental shift to understand that 'bug' is not just one thing, but many.",
+    "The solution is satisfying because it ties together seemingly unrelated clues.",
+    "This puzzle teaches us to be aware of word meanings that can change depending on context.",
+    "By recognizing the different meanings of 'bug', we can better understand language and its nuances.",
+    "The puzzle's complexity comes from its ability to challenge our initial assumptions and make us think more deeply about the clues."
+  ],
+  "solutionNarrative": [
+    "I first read Cold and Annoy too literally and drifted toward computer terms. Cold could be read as \"Cold\", while Annoy could be read as \"Annoy\", so the board still felt open instead of solved.",
+    "Listening device changed the direction because \"Spying device\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Cold\", \"Annoy\", \"Error\", and \"Type of insect\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Cold, Annoy, Listening device, Software glitch, and Insect.",
+    "That left very little room for the earlier false start. The answer was \"Different meanings of “bug”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Cold\" and \"Annoy\" can look like they belong to different categories at first",
+      "body": "\"Cold\" and \"Annoy\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Listening device\" anchors a shared category board with one concrete theme",
+      "body": "Listening device organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Listening device\" to re-check \"Cold\" under a shared category board with one concrete theme",
+      "body": "Be aware of word meanings that can change depending on context."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on different",
+    "fastStrategy": "\"Cold\" and \"Annoy\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Cold",
+        "examplePhrase": "Cold",
+        "connectionExplained": "The word 'bug' is used to describe a type of illness, like the flu bug."
+      },
+      {
+        "clue": "Annoy",
+        "examplePhrase": "Annoy",
+        "connectionExplained": "The word 'bug' can mean to annoy or pester someone, as in 'bug someone'."
+      },
+      {
+        "clue": "Listening device",
+        "examplePhrase": "Spying device",
+        "connectionExplained": "A 'bug' can refer to a hidden microphone for surveillance."
+      },
+      {
+        "clue": "Software glitch",
+        "examplePhrase": "Error",
+        "connectionExplained": "In computing, a 'bug' refers to an error or flaw in the system."
+      },
+      {
+        "clue": "Insect",
+        "examplePhrase": "Type of insect",
+        "connectionExplained": "The word 'bug' is commonly used to refer to any small insect."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Cold\" and \"Annoy\" in LinkedIn Pinpoint #816?",
+      "answer": "The answer is \"Different meanings of bug\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Cold\" and \"Annoy\" connect in LinkedIn Pinpoint #816?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Listening device is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Listening device\" the key clue in LinkedIn Pinpoint #816?",
+      "answer": "Listening device is the turning clue because \"Spying device\" makes the shared category frame explicit. It also makes Cold read cleanly as \"Cold\". The puzzle is tricky because it requires realizing that 'bug' has multiple, unrelated meanings."
+    },
+    {
+      "question": "How does \"Cold\" fit the same category as \"Listening device\" in LinkedIn Pinpoint #816?",
+      "answer": "\"Cold\" reads as \"Cold\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Cold, Annoy, and Listening device do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"computer errors\" can feel plausible before one clue makes the answer feel concrete. Listening device is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "computer errors",
+      "gardening issues"
+    ],
+    "whyFalseStartPlausible": [
+      "Because not all clues fit a computer theme.",
+      "computer errors feels plausible early on, but it falls apart once listening device demands a more exact reading."
+    ],
+    "breakingClue": "Listening device",
+    "pivot": "I first read Cold and Annoy too literally and drifted toward computer terms. Cold could be read as \"Cold\", while Annoy could be read as \"Annoy\", so the board still felt open instead of solved.\n\nListening device changed the direction because \"Spying device\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Cold\", \"Annoy\", \"Error\", and \"Type of insect\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Cold, Annoy, Listening device, Software glitch, and Insect.\n\nThat left very little room for the earlier false start. The answer was \"Different meanings of “bug”\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Cold, Annoy, and Listening device stop feeling disconnected and start looking like they belong together. Once listening device is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle is tricky because it requires realizing that 'bug' has multiple, unrelated meanings."
+  },
+  "turningPoint": {
+    "clue": "Listening device",
+    "whyDecisive": "The clue 'Listening device' made me realize 'bug' has many meanings.",
+    "whatChangedAfterIt": "Once Listening device landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Cold",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Cold",
+      "nonObviousWhy": "The word 'bug' is used to describe a type of illness, like the flu bug.",
+      "searchableContext": "From the idea that an illness can 'bug' someone",
+      "phraseExample": "From the idea that an illness can 'bug' someone"
+    },
+    {
+      "clue": "Annoy",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Annoy",
+      "nonObviousWhy": "The word 'bug' can mean to annoy or pester someone, as in 'bug someone'.",
+      "searchableContext": "Informal language use",
+      "phraseExample": "Informal language use"
+    },
+    {
+      "clue": "Listening device",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Spying device",
+      "nonObviousWhy": "A 'bug' can refer to a hidden microphone for surveillance.",
+      "searchableContext": "From the idea of secretly listening in",
+      "phraseExample": "From the idea of secretly listening in"
+    },
+    {
+      "clue": "Software glitch",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Error",
+      "nonObviousWhy": "In computing, a 'bug' refers to an error or flaw in the system.",
+      "searchableContext": "From the idea of finding and fixing errors",
+      "phraseExample": "From the idea of finding and fixing errors"
+    },
+    {
+      "clue": "Insect",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Type of insect",
+      "nonObviousWhy": "The word 'bug' is commonly used to refer to any small insect.",
+      "searchableContext": "From the general term for small insects",
+      "phraseExample": "From the general term for small insects"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Cold\" and \"Annoy\" in LinkedIn Pinpoint #816?",
+      "answer": "The answer is \"Different meanings of bug\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Cold"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Cold\" and \"Annoy\" connect in LinkedIn Pinpoint #816?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Listening device is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Cold"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Listening device\" the key clue in LinkedIn Pinpoint #816?",
+      "answer": "Listening device is the turning clue because \"Spying device\" makes the shared category frame explicit. It also makes Cold read cleanly as \"Cold\". The puzzle is tricky because it requires realizing that 'bug' has multiple, unrelated meanings.",
+      "tiedClue": "Listening device"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Cold\" fit the same category as \"Listening device\" in LinkedIn Pinpoint #816?",
+      "answer": "\"Cold\" reads as \"Cold\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Cold"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Cold",
+      "Annoy",
+      "Spying device",
+      "Error",
+      "Type of insect"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Cold\" and \"Annoy\" can look like they belong to different categories at first",
+      "\"Listening device\" anchors a shared category board with one concrete theme",
+      "Use \"Listening device\" to re-check \"Cold\" under a shared category board with one concrete theme",
+      "From the idea that an illness can 'bug' someone",
+      "Informal language use"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "computer terms",
+      "whyPlausible": "Because not all clues fit a computer theme.",
+      "whyRejected": "Once Listening device lands, the final answer explains the board more cleanly than computer terms."
+    },
+    {
+      "label": "computer errors",
+      "whyPlausible": "computer errors feels plausible early on, but it falls apart once listening device demands a more exact reading.",
+      "whyRejected": "Once Listening device lands, the final answer explains the board more cleanly than computer errors."
+    }
+  ],
+  "setValidationSummary": "Listening device, Software glitch, Insect keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Different meanings of bug"
+}

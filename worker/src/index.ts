@@ -1675,7 +1675,19 @@ function buildWorkerDisplay(
   };
 }
 
-function buildTemplateFallbackPayload(
+function mergeWorkerOverviewArticleBlocks(articleBlocks: string[]): string[] {
+  if (articleBlocks.length < 2) return articleBlocks;
+
+  const remaining = [...articleBlocks];
+  let overview = remaining.shift() || "";
+  const countWords = (value: string) => value.trim().split(/\s+/).filter(Boolean).length;
+  while (countWords(overview) < 65 && remaining.length > 0) {
+    overview = `${overview} ${remaining.shift()}`.trim();
+  }
+  return [overview, ...remaining];
+}
+
+export function buildTemplateFallbackPayload(
   siteBaseUrl: string,
   puzzleDate: string,
   doc: Doc,
@@ -1764,10 +1776,12 @@ function buildTemplateFallbackPayload(
     clues: words,
   });
 
-  const articleBlocks = detailedBreakdown
-    .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
+  const articleBlocks = mergeWorkerOverviewArticleBlocks(
+    detailedBreakdown
+      .split(/\n\s*\n/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean),
+  );
   const sections = {
     articleBlocks,
     overview: detailedBreakdown,
@@ -2244,6 +2258,7 @@ function isRetryableNetworkMessage(message: string): boolean {
   const normalized = message.toLowerCase();
   return (
     normalized.includes("timeout") ||
+    normalized.includes("timed out") ||
     normalized.includes("fetch failed") ||
     normalized.includes("network") ||
     normalized.includes("econnreset") ||
@@ -2260,6 +2275,14 @@ function isRetryableSitePostError(error: unknown): boolean {
     return isRetryableNetworkMessage(error.message);
   }
   return false;
+}
+
+export function shouldUseTemplateFallbackAfterRetryableDraftFailure(
+  error: unknown,
+  attempt: number,
+  draftAttempts: number,
+): boolean {
+  return attempt >= draftAttempts && isRetryableSitePostError(error);
 }
 
 function isDraftQualityGateError(error: unknown): boolean {
@@ -3590,6 +3613,31 @@ export function buildPublishedPuzzleDetailRecord({
     : detailRecord;
 }
 
+export function buildTemplateFallbackDetailRecord(
+  siteBaseUrl: string,
+  puzzleDate: string,
+  doc: Doc,
+  puzzleNumber: number,
+  words: string[],
+) {
+  const payload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+  const sections = asRecord(payload.sections) ?? {};
+  const analysis = asRecord(payload.analysis) ?? {};
+
+  return buildPublishedPuzzleDetailRecord({
+    puzzleNumber,
+    slug: `pinpoint-answer-${puzzleNumber}`,
+    puzzleDate,
+    answer: sanitizePublishedAnswerLabel(payload.mainAnswer || doc.mainAnswer || doc.theme || "Pinpoint connector"),
+    words,
+    sections,
+    analysis,
+    summary: payload.summary,
+    detailState: "fallback_full",
+    ...extractProvidedEvidenceFields(payload),
+  });
+}
+
 type PublishedPuzzleDetailRecord = ReturnType<typeof buildPublishedPuzzleDetailRecord>;
 
 type PublicDetailExperienceDecision =
@@ -4325,8 +4373,7 @@ async function publishToNewSiteGitHub(
     isCandidateBranch = branch !== baseBranch;
     isPrimaryBranch = isPrimaryNewSiteBranch(branch);
     if (isCandidateBranch) {
-      await ensureBranchRef(branch, true);
-      console.log(`[new-site] candidate branch write enabled for #${puzzleNumber}: ${branch}`);
+      console.log(`[new-site] candidate branch selected for #${puzzleNumber}: ${branch}`);
     }
   } else if (releaseQueueEnabled) {
     let deploymentState: DeploymentState = "unknown";
@@ -4394,7 +4441,6 @@ async function publishToNewSiteGitHub(
       isCandidateBranch = branch !== baseBranch;
       isPrimaryBranch = isPrimaryNewSiteBranch(branch);
       if (isCandidateBranch) {
-        await ensureBranchRef(branch, true);
         console.log(
           `[new-site] release queue routed #${puzzleNumber} to candidate ${branch}: ${releaseQueueDecision.reasonCode}`,
         );
@@ -5269,6 +5315,28 @@ async function enrichPublishToSite(
         } catch (error) {
           lastDraftError = error;
           if (isRetryableSitePostError(error)) {
+            if (shouldUseTemplateFallbackAfterRetryableDraftFailure(error, attempt, draftAttempts)) {
+              publishDetailState = "fallback_full";
+              const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+              await notifyCron(env, "⚠️ Worker 草稿请求超时，已切换为保底全文页", [
+                `日期: ${puzzleDate}`,
+                `谜题: #${puzzleNumber}`,
+                `答案: ${answer}`,
+                `尝试次数: ${draftAttempts}`,
+                "结果: AI 草稿请求连续失败，已用当天真实题目生成保底全文页",
+                `原因: ${error instanceof Error ? error.message : String(error)}`,
+              ]);
+              draftResp = { success: true, data: fallbackPayload };
+              lastDraftError = null;
+              console.warn("[enrich] retryable LLM/validation errors exhausted; switched to fallback_full", {
+                puzzleDate,
+                puzzleNumber,
+                attempt,
+                draftAttempts,
+                error: error instanceof Error ? error.message : String(error),
+              });
+              break;
+            }
             console.warn("[enrich] retryable LLM/validation error; retrying", {
               puzzleDate,
               puzzleNumber,
@@ -5301,21 +5369,31 @@ async function enrichPublishToSite(
           break;
         } catch (error) {
           lastDraftError = error;
-          if (!isDraftQualityGateError(error)) {
+          const qualityGateError = isDraftQualityGateError(error);
+          const retryableError = isRetryableSitePostError(error);
+          if (!qualityGateError && !retryableError) {
             throw error;
           }
-          qualityGateSummary = extractDraftFailureSummary(error);
+          qualityGateSummary = qualityGateError
+            ? extractDraftFailureSummary(error)
+            : error instanceof Error ? error.message : String(error);
           if (attempt >= draftAttempts) {
             publishDetailState = "fallback_full";
             const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-            const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
-            await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为保底全文页", [
+            const reason = `${qualityGateError ? "quality gate blocked" : "retryable draft request failed"} after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
+            await notifyCron(env, qualityGateError
+              ? "⚠️ Worker 草稿质量未过线，已切换为保底全文页"
+              : "⚠️ Worker 草稿请求超时，已切换为保底全文页", [
               `日期: ${puzzleDate}`,
               `谜题: #${puzzleNumber}`,
               `答案: ${answer}`,
               `尝试次数: ${draftAttempts}`,
-              `结果: AI 长文未过线，已切换为保底全文页`,
-              `原因: ${toZhDraftQualitySummary(qualityGateSummary || "draft quality gate blocked")}`,
+              qualityGateError
+                ? "结果: AI 长文未过线，已切换为保底全文页"
+                : "结果: AI 草稿请求连续失败，已用当天真实题目生成保底全文页",
+              `原因: ${qualityGateError
+                ? toZhDraftQualitySummary(qualityGateSummary || "draft quality gate blocked")
+                : qualityGateSummary}`,
             ]);
             draftResp = { success: true, data: fallbackPayload };
             lastDraftError = null;

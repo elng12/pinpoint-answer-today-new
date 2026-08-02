@@ -1,0 +1,231 @@
+{
+  "puzzleNumber": 811,
+  "slug": "pinpoint-answer-811",
+  "publishDate": "2026-07-20",
+  "isoDate": "2026-07-20",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Puma",
+    "New Balance",
+    "Asics",
+    "Adidas",
+    "Nike"
+  ],
+  "answer": "Athletic shoe brands",
+  "category": "Athletic shoe brands",
+  "wordHints": {
+    "Puma": "Puma is a well-known brand for athletic shoes, especially soccer cleats.",
+    "New Balance": "New Balance is a popular brand for running shoes and other athletic footwear.",
+    "Asics": "Asics is a well-known brand for high-performance athletic shoes, especially running shoes.",
+    "Adidas": "Adidas is a popular brand for athletic shoes, especially basketball and soccer shoes.",
+    "Nike": "Nike is a well-known brand for athletic shoes, especially basketball and running shoes."
+  },
+  "spoilerHints": {
+    "Puma": "Puma should be tested as part of athletic shoe brands, not as a standalone reference.",
+    "New Balance": "New Balance is the clue that makes athletic shoe brands concrete enough to test across the full board.",
+    "Asics": "Asics works best after the board narrows toward athletic shoe brands.",
+    "Adidas": "Adidas should be tested as part of athletic shoe brands, not as a standalone reference.",
+    "Nike": "Keep Nike in mind, then see whether New Balance supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, I thought the clues might be related to sports equipment brands. However, as I looked closer at the clues, I realized that they were all the same footwear category. The clue 'Asics' was the turning point for me, as it made me realize that all the clues were the same footwear category. I initially considered the possibility that the clues might be related to fashion designers, but that theory broke when I saw the clue 'New Balance'.",
+    "The clue 'Puma' also seemed to fit the category of the same footwear category, especially with their popular soccer cleats.",
+    "The clue 'Adidas' was another key piece of evidence, as they are a well-known brand for athletic shoes, especially basketball and soccer shoes.",
+    "The clue 'Nike' was also a strong indication of the category, as they are a popular brand for athletic shoes, especially basketball and running shoes.",
+    "In hindsight, it's clear that the clues were all pointing to the same category: the same footwear category.",
+    "The puzzle required careful analysis of the clues and consideration of the specific context and category.",
+    "The solution to the puzzle was satisfying, as it required a combination of critical thinking and attention to detail.",
+    "The experience of solving the puzzle was enjoyable, as it challenged me to think creatively and consider different possibilities."
+  ],
+  "solutionNarrative": [
+    "Puma and New Balance first pulled me toward sports brands, so that was the first path I tested. It held together for a moment, but asics never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating asics as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue sports brands; I was checking whether Puma and New Balance could survive the same tighter read.",
+    "Then I used Asics, Adidas, and Nike as the confirmation round. Asics, Adidas, and Nike stayed inside the real category, so the answer felt earned instead of guessed. The answer was Athletic shoe brands."
+  ],
+  "lessons": [
+    {
+      "title": "\"Puma\" and \"New Balance\" can look like they belong to different categories at first",
+      "body": "\"Puma\" and \"New Balance\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Asics\" anchors a shared category board with one concrete theme",
+      "body": "Asics organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Asics\" to re-check \"Puma\" under a shared category board with one concrete theme",
+      "body": "When solving puzzles, it's essential to consider the specific context and category of the clues."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on athletic",
+    "fastStrategy": "\"Puma\" and \"New Balance\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Puma",
+        "examplePhrase": "Puma athletic shoes",
+        "connectionExplained": "Puma is a well-known brand for athletic shoes, especially soccer cleats."
+      },
+      {
+        "clue": "New Balance",
+        "examplePhrase": "New Balance athletic shoes",
+        "connectionExplained": "New Balance is a popular brand for running shoes and other athletic footwear."
+      },
+      {
+        "clue": "Asics",
+        "examplePhrase": "Asics athletic shoes",
+        "connectionExplained": "Asics is a well-known brand for high-performance athletic shoes, especially running shoes."
+      },
+      {
+        "clue": "Adidas",
+        "examplePhrase": "Adidas athletic shoes",
+        "connectionExplained": "Adidas is a popular brand for athletic shoes, especially basketball and soccer shoes."
+      },
+      {
+        "clue": "Nike",
+        "examplePhrase": "Nike athletic shoes",
+        "connectionExplained": "Nike is a well-known brand for athletic shoes, especially basketball and running shoes."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Puma\" and \"New Balance\" in LinkedIn Pinpoint #811?",
+      "answer": "This reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Puma\" and \"New Balance\" connect in LinkedIn Pinpoint #811?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Asics is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Asics\" the key clue in LinkedIn Pinpoint #811?",
+      "answer": "Asics is the turning clue because \"Asics athletic shoes\" makes the shared category frame explicit. It also makes Puma read cleanly as \"Puma athletic shoes\". The difficulty of the puzzle comes from the fact that the clues are all well-known brands, but not all of them are primarily shoe brands."
+    },
+    {
+      "question": "How does \"Puma\" fit the same category as \"Asics\" in LinkedIn Pinpoint #811?",
+      "answer": "\"Puma\" reads as \"Puma athletic shoes\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Puma, New Balance, and Asics do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"sports equipment brands\" can feel plausible before one clue makes the answer feel concrete. Asics is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "sports equipment brands",
+      "fashion designers"
+    ],
+    "whyFalseStartPlausible": [
+      "While the clues are sports brands, not all of them are primarily shoe brands.",
+      "sports equipment brands feels plausible early on, but it falls apart once asics demands a more exact reading."
+    ],
+    "breakingClue": "Asics",
+    "pivot": "The solve turned when I stopped treating asics as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue sports brands; I was checking whether Puma and New Balance could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Puma, New Balance, and Asics stop feeling disconnected and start looking like they belong together. Once asics is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The difficulty of the puzzle comes from the fact that the clues are all well-known brands, but not all of them are primarily shoe brands."
+  },
+  "turningPoint": {
+    "clue": "Asics",
+    "whyDecisive": "The clue 'Asics' made me realize that all the clues were athletic shoe brands.",
+    "whatChangedAfterIt": "Once Asics landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Puma",
+      "surfaceMisread": "sports brands",
+      "resolvedPhraseOrMember": "Puma athletic shoes",
+      "nonObviousWhy": "Puma is a well-known brand for athletic shoes, especially soccer cleats.",
+      "searchableContext": "named after the puma animal",
+      "phraseExample": "named after the puma animal"
+    },
+    {
+      "clue": "New Balance",
+      "surfaceMisread": "sports brands",
+      "resolvedPhraseOrMember": "New Balance athletic shoes",
+      "nonObviousWhy": "New Balance is a popular brand for running shoes and other athletic footwear.",
+      "searchableContext": "named after the idea of balance in athletic performance",
+      "phraseExample": "named after the idea of balance in athletic performance"
+    },
+    {
+      "clue": "Asics",
+      "surfaceMisread": "sports brands",
+      "resolvedPhraseOrMember": "Asics athletic shoes",
+      "nonObviousWhy": "Asics is a well-known brand for high-performance athletic shoes, especially running shoes.",
+      "searchableContext": "named after the Latin phrase 'anima sana in corpore sano', meaning 'a healthy soul in a healthy body'",
+      "phraseExample": "named after the Latin phrase 'anima sana in corpore sano', meaning 'a healthy soul in a healthy body'"
+    },
+    {
+      "clue": "Adidas",
+      "surfaceMisread": "sports brands",
+      "resolvedPhraseOrMember": "Adidas athletic shoes",
+      "nonObviousWhy": "Adidas is a popular brand for athletic shoes, especially basketball and soccer shoes.",
+      "searchableContext": "named after the founder, Adolf Dassler",
+      "phraseExample": "named after the founder, Adolf Dassler"
+    },
+    {
+      "clue": "Nike",
+      "surfaceMisread": "sports brands",
+      "resolvedPhraseOrMember": "Nike athletic shoes",
+      "nonObviousWhy": "Nike is a well-known brand for athletic shoes, especially basketball and running shoes.",
+      "searchableContext": "named after the Greek goddess of victory",
+      "phraseExample": "named after the Greek goddess of victory"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Puma\" and \"New Balance\" in LinkedIn Pinpoint #811?",
+      "answer": "The answer is \"Athletic shoe brands\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Puma"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Puma\" and \"New Balance\" connect in LinkedIn Pinpoint #811?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Asics is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Puma"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Asics\" the key clue in LinkedIn Pinpoint #811?",
+      "answer": "Asics is the turning clue because \"Asics athletic shoes\" makes the shared category frame explicit. It also makes Puma read cleanly as \"Puma athletic shoes\". The difficulty of the puzzle comes from the fact that the clues are all well-known brands, but not all of them are primarily shoe brands.",
+      "tiedClue": "Asics"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Puma\" fit the same category as \"Asics\" in LinkedIn Pinpoint #811?",
+      "answer": "\"Puma\" reads as \"Puma athletic shoes\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Puma"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Puma athletic shoes",
+      "New Balance athletic shoes",
+      "Asics athletic shoes",
+      "Adidas athletic shoes",
+      "Nike athletic shoes"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Puma\" and \"New Balance\" can look like they belong to different categories at first",
+      "\"Asics\" anchors a shared category board with one concrete theme",
+      "Use \"Asics\" to re-check \"Puma\" under a shared category board with one concrete theme",
+      "named after the puma animal",
+      "named after the idea of balance in athletic performance"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "sports brands",
+      "whyPlausible": "While the clues are sports brands, not all of them are primarily shoe brands.",
+      "whyRejected": "Once Asics lands, the final answer explains the board more cleanly than sports brands."
+    },
+    {
+      "label": "sports equipment brands",
+      "whyPlausible": "sports equipment brands feels plausible early on, but it falls apart once asics demands a more exact reading.",
+      "whyRejected": "Once Asics lands, the final answer explains the board more cleanly than sports equipment brands."
+    }
+  ],
+  "setValidationSummary": "Asics, Adidas, Nike keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category of footwear makers, not a loose umbrella of sports companies"
+}

@@ -1,0 +1,229 @@
+{
+  "puzzleNumber": 823,
+  "slug": "pinpoint-answer-823",
+  "publishDate": "2026-08-01",
+  "isoDate": "2026-08-01",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Wheel",
+    "Ribs",
+    "Glaze",
+    "Clay",
+    "Kiln"
+  ],
+  "answer": "Things used when making pottery",
+  "category": "Things used when making pottery",
+  "wordHints": {
+    "Wheel": "The wheel is a crucial tool in shaping pottery.",
+    "Ribs": "Ribs are used to shape and smooth out pottery.",
+    "Glaze": "Glaze is applied to pottery to create a decorative and protective layer.",
+    "Clay": "Clay is the primary material used to create pottery.",
+    "Kiln": "A kiln is used to fire and set the shape of pottery."
+  },
+  "spoilerHints": {
+    "Wheel": "Wheel should be tested as part of things used when making pottery, not as a standalone reference.",
+    "Ribs": "Keep Ribs in mind, then see whether Kiln supports the same answer.",
+    "Glaze": "Glaze works best after the board narrows toward things used when making pottery.",
+    "Clay": "Clay should be tested as part of things used when making pottery, not as a standalone reference.",
+    "Kiln": "Kiln is the clue that makes things used when making pottery concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "I first thought the clues might be related to woodworking or sculpting. The presence of Glaze and Kiln made me realize that the answer was more specific. The clue Wheel seemed like it could be related to pottery, but I wasn't sure. The clue Ribs made me think of shaping tools, which is consistent with pottery. The clue Glaze is a clear indicator of pottery, as it's a common technique used in the craft.",
+    "The clue Clay is a primary material used in pottery, which further supported my theory.",
+    "The clue Kiln was the turning point, as it's a specific type of oven used in pottery.",
+    "In hindsight, the clues were more obvious than I initially thought, but the multiple meanings made it tricky.",
+    "The key takeaway is to pay attention to the specific context of each clue to avoid misinterpretation.",
+    "By doing so, you can increase your chances of arriving at the correct answer."
+  ],
+  "solutionNarrative": [
+    "Wheel and Ribs first pulled me toward woodworking tools, so that was the first path I tested. It held together for a moment, but kiln never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating kiln as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue woodworking tools; I was checking whether Wheel and Ribs could survive the same tighter read.",
+    "Then I used Glaze, Clay, and Kiln as the confirmation round. Glaze, Clay, and Kiln stayed inside the real category, so the answer felt earned instead of guessed. The answer was Things used when making pottery."
+  ],
+  "lessons": [
+    {
+      "title": "\"Wheel\" and \"Ribs\" can look like they belong to different categories at first",
+      "body": "\"Wheel\" and \"Ribs\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Kiln\" anchors a shared category board with one concrete theme",
+      "body": "Kiln organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Kiln\" to re-check \"Wheel\" under a shared category board with one concrete theme",
+      "body": "Pay attention to the specific context of each clue to avoid misinterpretation."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Wheel\" and \"Ribs\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Wheel",
+        "examplePhrase": "Pottery wheel",
+        "connectionExplained": "The wheel is a crucial tool in shaping pottery."
+      },
+      {
+        "clue": "Ribs",
+        "examplePhrase": "Pottery ribs",
+        "connectionExplained": "Ribs are used to shape and smooth out pottery."
+      },
+      {
+        "clue": "Glaze",
+        "examplePhrase": "Ceramic glaze",
+        "connectionExplained": "Glaze is applied to pottery to create a decorative and protective layer."
+      },
+      {
+        "clue": "Clay",
+        "examplePhrase": "Pottery clay",
+        "connectionExplained": "Clay is the primary material used to create pottery."
+      },
+      {
+        "clue": "Kiln",
+        "examplePhrase": "Pottery kiln",
+        "connectionExplained": "A kiln is used to fire and set the shape of pottery."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Wheel\" and \"Ribs\" in LinkedIn Pinpoint #823?",
+      "answer": "The answer is \"Things used when making pottery\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Wheel\" and \"Ribs\" connect in LinkedIn Pinpoint #823?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Kiln is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Kiln\" the key clue in LinkedIn Pinpoint #823?",
+      "answer": "Kiln is the turning clue because \"Pottery kiln\" makes the shared category frame explicit. It also makes Wheel read cleanly as \"Pottery wheel\". The clues have multiple meanings, making it tricky to pinpoint the correct answer."
+    },
+    {
+      "question": "How does \"Wheel\" fit the same category as \"Kiln\" in LinkedIn Pinpoint #823?",
+      "answer": "\"Wheel\" reads as \"Pottery wheel\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Wheel, Ribs, and Glaze do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"woodworking tools\" can feel plausible before one clue makes the answer feel concrete. Kiln is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "woodworking tools",
+      "sculpting materials"
+    ],
+    "whyFalseStartPlausible": [
+      "The presence of Glaze and Kiln makes it less likely.",
+      "sculpting materials feels plausible early on, but it falls apart once kiln demands a more exact reading."
+    ],
+    "breakingClue": "Kiln",
+    "pivot": "The solve turned when I stopped treating kiln as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue woodworking tools; I was checking whether Wheel and Ribs could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Wheel, Ribs, and Glaze stop feeling disconnected and start looking like they belong together. Once kiln is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues have multiple meanings, making it tricky to pinpoint the correct answer."
+  },
+  "turningPoint": {
+    "clue": "Kiln",
+    "whyDecisive": "The clue Kiln made me realize the connection to pottery.",
+    "whatChangedAfterIt": "Once Kiln landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Wheel",
+      "surfaceMisread": "woodworking tools",
+      "resolvedPhraseOrMember": "Pottery wheel",
+      "nonObviousWhy": "The wheel is a crucial tool in shaping pottery.",
+      "searchableContext": "From the Old English word 'hwēol'",
+      "phraseExample": "From the Old English word 'hwēol'"
+    },
+    {
+      "clue": "Ribs",
+      "surfaceMisread": "woodworking tools",
+      "resolvedPhraseOrMember": "Pottery ribs",
+      "nonObviousWhy": "Ribs are used to shape and smooth out pottery.",
+      "searchableContext": "From the Old English word 'ribb'",
+      "phraseExample": "From the Old English word 'ribb'"
+    },
+    {
+      "clue": "Glaze",
+      "surfaceMisread": "woodworking tools",
+      "resolvedPhraseOrMember": "Ceramic glaze",
+      "nonObviousWhy": "Glaze is applied to pottery to create a decorative and protective layer.",
+      "searchableContext": "From the Old English word 'glæs'",
+      "phraseExample": "From the Old English word 'glæs'"
+    },
+    {
+      "clue": "Clay",
+      "surfaceMisread": "woodworking tools",
+      "resolvedPhraseOrMember": "Pottery clay",
+      "nonObviousWhy": "Clay is the primary material used to create pottery.",
+      "searchableContext": "From the Old English word 'clæg'",
+      "phraseExample": "From the Old English word 'clæg'"
+    },
+    {
+      "clue": "Kiln",
+      "surfaceMisread": "woodworking tools",
+      "resolvedPhraseOrMember": "Pottery kiln",
+      "nonObviousWhy": "A kiln is used to fire and set the shape of pottery.",
+      "searchableContext": "From the Old English word 'cyln'",
+      "phraseExample": "From the Old English word 'cyln'"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Wheel\" and \"Ribs\" in LinkedIn Pinpoint #823?",
+      "answer": "The answer is \"Things used when making pottery\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Wheel"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Wheel\" and \"Ribs\" connect in LinkedIn Pinpoint #823?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Kiln is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Wheel"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Kiln\" the key clue in LinkedIn Pinpoint #823?",
+      "answer": "Kiln is the turning clue because \"Pottery kiln\" makes the shared category frame explicit. It also makes Wheel read cleanly as \"Pottery wheel\". The clues have multiple meanings, making it tricky to pinpoint the correct answer.",
+      "tiedClue": "Kiln"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Wheel\" fit the same category as \"Kiln\" in LinkedIn Pinpoint #823?",
+      "answer": "\"Wheel\" reads as \"Pottery wheel\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Wheel"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Pottery wheel",
+      "Pottery ribs",
+      "Ceramic glaze",
+      "Pottery clay",
+      "Pottery kiln"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Wheel\" and \"Ribs\" can look like they belong to different categories at first",
+      "\"Kiln\" anchors a shared category board with one concrete theme",
+      "Use \"Kiln\" to re-check \"Wheel\" under a shared category board with one concrete theme",
+      "From the Old English word 'hwēol'",
+      "From the Old English word 'ribb'"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "woodworking tools",
+      "whyPlausible": "The presence of Glaze and Kiln makes it less likely.",
+      "whyRejected": "Once Kiln lands, the final answer explains the board more cleanly than woodworking tools."
+    },
+    {
+      "label": "sculpting materials",
+      "whyPlausible": "sculpting materials feels plausible early on, but it falls apart once kiln demands a more exact reading.",
+      "whyRejected": "Once Kiln lands, the final answer explains the board more cleanly than sculpting materials."
+    }
+  ],
+  "setValidationSummary": "Glaze, Clay, Kiln keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things used when making pottery"
+}

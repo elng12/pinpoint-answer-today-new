@@ -1,0 +1,228 @@
+{
+  "puzzleNumber": 821,
+  "slug": "pinpoint-answer-821",
+  "publishDate": "2026-07-30",
+  "isoDate": "2026-07-30",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Iron",
+    "Wood",
+    "Wedge",
+    "Driver",
+    "Putter"
+  ],
+  "answer": "Types of golf club",
+  "category": "Types of golf club",
+  "wordHints": {
+    "Iron": "\"Iron golf club\" is a recognizable golf club, so it gives the board a clean category fit.",
+    "Wood": "Once the board is read as golf club, \"Wood golf club\" stops feeling broad and becomes an exact fit.",
+    "Wedge": "\"Wedge golf club\" belongs in the same golf club frame, which keeps the category specific instead of loose.",
+    "Driver": "\"Driver golf club\" is a recognizable golf club, so it gives the board a clean category fit.",
+    "Putter": "Once the board is read as golf club, \"Putter golf club\" stops feeling broad and becomes an exact fit."
+  },
+  "spoilerHints": {
+    "Iron": "Treat Iron as one recognizable member of types of golf club, not as a broad topic on its own.",
+    "Wood": "Wood helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Wedge": "Try reading Wedge as a specific type inside types of golf club instead of as a loose general reference.",
+    "Driver": "Treat Driver as one recognizable member of types of golf club, not as a broad topic on its own.",
+    "Putter": "Putter is the clue that makes types of golf club specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, Iron and Wood can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start. One tempting read was \"a broader umbrella topic\". Iron, Wood can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Putter pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of golf club each clue could be, a category board focused on golf club stopped sounding generic and started behaving like a real category test. Examples like \"Iron golf club\" and \"Wood golf club\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Wedge golf club, Driver golf club, Putter golf club read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of golf club\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of golf club, which is why \"Types of golf club\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Iron and Wood and first drifted toward a broader umbrella topic. That read was plausible because the early clues could sit inside a bigger umbrella topic, but it still felt too loose once \"Putter\" showed up.",
+    "The solve improved when I stopped asking what the clues vaguely shared and started asking what type of thing each clue specifically named. \"Putter\" was the clue that made that tighter test worth trying.",
+    "Then I used Wedge and Driver as the confirmation round. The answer held because Iron, Wood, Wedge, Driver, Putter could all stay inside one member family without changing the rule halfway through.",
+    "The answer was \"Types of golf club\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Iron\" and \"Wood\" can look like they belong to different categories at first",
+      "body": "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names."
+    },
+    {
+      "title": "\"Putter\" is what makes the category feel concrete instead of broad",
+      "body": "A good category answer does more than group the clues loosely. It should make each clue sound like a recognizable member of the same family."
+    },
+    {
+      "title": "For Pinpoint 821, every clue should stay at the golf club level",
+      "body": "Once \"Putter\" lands, check whether the rest of the clues fit that same category at the same level of precision."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on golf club",
+    "fastStrategy": "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names.",
+    "clueTableRows": [
+      {
+        "clue": "Iron",
+        "examplePhrase": "Iron golf club",
+        "connectionExplained": "\"Iron golf club\" is a recognizable golf club, so it gives the board a clean category fit."
+      },
+      {
+        "clue": "Wood",
+        "examplePhrase": "Wood golf club",
+        "connectionExplained": "Once the board is read as golf club, \"Wood golf club\" stops feeling broad and becomes an exact fit."
+      },
+      {
+        "clue": "Wedge",
+        "examplePhrase": "Wedge golf club",
+        "connectionExplained": "\"Wedge golf club\" belongs in the same golf club frame, which keeps the category specific instead of loose."
+      },
+      {
+        "clue": "Driver",
+        "examplePhrase": "Driver golf club",
+        "connectionExplained": "\"Driver golf club\" is a recognizable golf club, so it gives the board a clean category fit."
+      },
+      {
+        "clue": "Putter",
+        "examplePhrase": "Putter golf club",
+        "connectionExplained": "Once the board is read as golf club, \"Putter golf club\" stops feeling broad and becomes an exact fit."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Which type-level category connects \"Iron\" and \"Wood\" in LinkedIn Pinpoint #821?",
+      "answer": "The answer is \"Types of golf club\". That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket."
+    },
+    {
+      "question": "How do \"Iron\" and \"Wood\" connect in LinkedIn Pinpoint #821?",
+      "answer": "The connection is a category board focused on golf club. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of."
+    },
+    {
+      "question": "Why is \"Putter\" the key clue in LinkedIn Pinpoint #821?",
+      "answer": "\"Putter\" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun."
+    },
+    {
+      "question": "How does \"Iron\" fit as a golf club in LinkedIn Pinpoint #821?",
+      "answer": "\"Iron\" is a recognizable golf club, which keeps the board specific instead of broadly themed."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Iron and Wood can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Iron, Wood can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Putter",
+    "pivot": "I started with Iron and Wood and first drifted toward a broader umbrella topic. That read was plausible because the early clues could sit inside a bigger umbrella topic, but it still felt too loose once \"Putter\" showed up.\n\nThe solve improved when I stopped asking what the clues vaguely shared and started asking what type of thing each clue specifically named. \"Putter\" was the clue that made that tighter test worth trying.\n\nThen I used Wedge and Driver as the confirmation round. The answer held because Iron, Wood, Wedge, Driver, Putter could all stay inside one member family without changing the rule halfway through.\n\nThe answer was \"Types of golf club\".",
+    "fullBoardConfirmation": "Once the board turned into a question about what kind of golf club each clue could be, a category board focused on golf club stopped sounding generic and started behaving like a real category test. Examples like \"Iron golf club\" and \"Wood golf club\" then read like recognizable members of the same set rather than isolated references that merely share the same mood."
+  },
+  "turningPoint": {
+    "clue": "Putter",
+    "whyDecisive": "Putter is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Putter lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Iron",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Iron golf club",
+      "nonObviousWhy": "\"Iron golf club\" is a recognizable golf club, so it gives the board a clean category fit.",
+      "searchableContext": "Iron golf club",
+      "phraseExample": "Iron golf club"
+    },
+    {
+      "clue": "Wood",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Wood golf club",
+      "nonObviousWhy": "Once the board is read as golf club, \"Wood golf club\" stops feeling broad and becomes an exact fit.",
+      "searchableContext": "Wood golf club",
+      "phraseExample": "Wood golf club"
+    },
+    {
+      "clue": "Wedge",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Wedge golf club",
+      "nonObviousWhy": "\"Wedge golf club\" belongs in the same golf club frame, which keeps the category specific instead of loose.",
+      "searchableContext": "Wedge golf club",
+      "phraseExample": "Wedge golf club"
+    },
+    {
+      "clue": "Driver",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Driver golf club",
+      "nonObviousWhy": "\"Driver golf club\" is a recognizable golf club, so it gives the board a clean category fit.",
+      "searchableContext": "Driver golf club",
+      "phraseExample": "Driver golf club"
+    },
+    {
+      "clue": "Putter",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Putter golf club",
+      "nonObviousWhy": "Once the board is read as golf club, \"Putter golf club\" stops feeling broad and becomes an exact fit.",
+      "searchableContext": "Putter golf club",
+      "phraseExample": "Putter golf club"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Iron\" and \"Wood\" in LinkedIn Pinpoint #821?",
+      "answer": "The answer is \"Types of golf club\". That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket.",
+      "tiedClue": "Iron"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Iron\" and \"Wood\" connect in LinkedIn Pinpoint #821?",
+      "answer": "The connection is a category board focused on golf club. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of.",
+      "tiedClue": "Iron"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Putter\" the key clue in LinkedIn Pinpoint #821?",
+      "answer": "\"Putter\" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun.",
+      "tiedClue": "Putter"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Iron\" fit as a golf club in LinkedIn Pinpoint #821?",
+      "answer": "\"Iron\" is a recognizable golf club, which keeps the board specific instead of broadly themed.",
+      "tiedClue": "Iron"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on golf club",
+    "relatedEntities": [
+      "Iron golf club",
+      "Wood golf club",
+      "Wedge golf club",
+      "Driver golf club",
+      "Putter golf club"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on golf club",
+      "Iron golf club",
+      "Wood golf club",
+      "Wedge golf club",
+      "Driver golf club"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Iron, Wood can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Putter pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Wedge golf club, Driver golf club, Putter golf club read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of golf club"
+}

@@ -25,6 +25,7 @@
     "pinpoint:candidate-close": "node scripts/close-pinpoint-candidate-branches.mjs",
     "pinpoint:candidate-verify": "node scripts/verify-pinpoint-candidate-release.mjs",
     "pinpoint:main-recovery": "node scripts/recover-pinpoint-main-content.mjs",
+    "pinpoint:worker-detail-recovery": "tsx scripts/recover-pinpoint-worker-detail.mjs",
     "pinpoint:prepublish-gate": "tsx scripts/check-pinpoint-prepublish-gate.ts",
     "pinpoint:repair-solution-narrative": "tsx scripts/repair-pinpoint-solution-narrative.ts",
     "visual:detail": "node scripts/capture-detail-screenshots.mjs",
