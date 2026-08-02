@@ -40,29 +40,30 @@ function asRecord(value: unknown): Record<string, unknown> | null {
 }
 
 function getPinpointWorkerHealthUrl(): string {
-  const raw = (process.env.PINPOINT_WORKER_HEALTH_URL ?? DEFAULT_PINPOINT_WORKER_HEALTH_URL).trim();
-  try {
-    return parseAndValidateUrl(
-      raw,
-      {
-        allowedSchemes: ["https:"],
-        allowedHosts: ["pinpoint-worker.2296744453m.workers.dev"],
-        allowedHostSuffixes: [".workers.dev"],
-        allowLocalhost: process.env.NODE_ENV !== "production",
-      },
-      "PINPOINT_WORKER_HEALTH_URL",
-    ).toString();
-  } catch {
-    return DEFAULT_PINPOINT_WORKER_HEALTH_URL;
-  }
+  const configured = process.env.PINPOINT_WORKER_HEALTH_URL?.trim();
+  const raw = configured || DEFAULT_PINPOINT_WORKER_HEALTH_URL;
+  return parseAndValidateUrl(
+    raw,
+    {
+      allowedSchemes: ["https:"],
+      allowedHosts: ["pinpoint-worker.2296744453m.workers.dev"],
+      allowedHostSuffixes: [".workers.dev"],
+      allowLocalhost: process.env.NODE_ENV !== "production",
+    },
+    "PINPOINT_WORKER_HEALTH_URL",
+  ).toString();
 }
 
-function parseLiveWorkerPuzzleRecord(raw: unknown): LiveWorkerPuzzleRecord | null {
+export function parseLiveWorkerPuzzleRecord(raw: unknown): LiveWorkerPuzzleRecord {
   const json = asRecord(raw);
-  if (!json) return null;
+  if (!json) {
+    throw new Error("worker live payload must be an object");
+  }
 
   const puzzleDate = typeof json.puzzleDate === "string" ? json.puzzleDate.trim() : "";
-  if (!isIsoDate(puzzleDate)) return null;
+  if (!isIsoDate(puzzleDate)) {
+    throw new Error("worker live payload puzzleDate is missing or invalid");
+  }
 
   const answers = Array.isArray(json.answers)
     ? json.answers
@@ -81,14 +82,21 @@ function parseLiveWorkerPuzzleRecord(raw: unknown): LiveWorkerPuzzleRecord | nul
       ? json.theme.trim()
       : "";
 
-  if (answers.length !== 5 || !answer) return null;
+  if (answers.length !== 5) {
+    throw new Error(`worker live payload must contain exactly 5 clues; received ${answers.length}`);
+  }
+  if (!answer) {
+    throw new Error("worker live payload answer is missing");
+  }
 
   const fetchedAtRaw = typeof json.fetchedAt === "string" ? json.fetchedAt.trim() : "";
-  const fetchedAt = fetchedAtRaw || `${puzzleDate}T00:00:00.000Z`;
+  if (!fetchedAtRaw || Number.isNaN(Date.parse(fetchedAtRaw))) {
+    throw new Error("worker live payload fetchedAt is missing or invalid");
+  }
 
   return {
     puzzleDate,
-    fetchedAt,
+    fetchedAt: fetchedAtRaw,
     clues: answers,
     answer,
   };
@@ -239,7 +247,6 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
 
 const fetchLiveWorkerPuzzle = cache(async (): Promise<PuzzleDetail | null> => {
   const workerHealthUrl = getPinpointWorkerHealthUrl();
-  if (!workerHealthUrl) return null;
 
   try {
     const res = await fetch(workerHealthUrl, {
@@ -251,9 +258,6 @@ const fetchLiveWorkerPuzzle = cache(async (): Promise<PuzzleDetail | null> => {
 
     const json = await res.json();
     const liveRecord = parseLiveWorkerPuzzleRecord(json);
-    if (!liveRecord) {
-      throw new Error("worker live payload was incomplete");
-    }
 
     return toLivePuzzleDetail(liveRecord);
   } catch (error) {

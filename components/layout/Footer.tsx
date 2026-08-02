@@ -58,8 +58,8 @@ export function Footer({ isDetailPage = false }: FooterProps) {
             <p className="eyebrow">{isDetailPage ? "Pinpoint Answer" : "Pinpoint Answer Today"}</p>
             <p className="footer-copy">
               {isDetailPage
-                ? "A fan-built companion for the daily LinkedIn puzzle. Each answer page includes quick verification, clue notes, and a plain-English breakdown."
-                : "Daily LinkedIn Pinpoint answers with clue notes, quick verification, and a searchable archive."}
+                ? "A fan-built companion for the daily LinkedIn puzzle. Each answer page includes clue notes, release checks, and a plain-English breakdown."
+                : "Daily LinkedIn Pinpoint answers with clue notes, release checks, and a searchable archive."}
             </p>
           </div>
 

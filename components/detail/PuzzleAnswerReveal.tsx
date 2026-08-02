@@ -1,5 +1,6 @@
 "use client";
 
+import { Info } from "lucide-react";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   getScrollDepthPercent,
@@ -15,6 +16,7 @@ type PuzzleAnswerRevealProps = {
   defaultRevealed?: boolean;
   panelTitle?: string;
   detailNote?: string;
+  introSummary?: string;
   hintMap?: Record<string, string>;
   trackFaqSectionView?: boolean;
 };
@@ -44,6 +46,7 @@ export function PuzzleAnswerReveal({
   defaultRevealed = false,
   panelTitle,
   detailNote,
+  introSummary,
   hintMap,
   trackFaqSectionView = false,
 }: PuzzleAnswerRevealProps) {
@@ -227,7 +230,36 @@ export function PuzzleAnswerReveal({
     : `LinkedIn Pinpoint clue order: ${cluePath}. Read ${cluePath} before the reveal.`;
 
   return (
-    <section className="legacy-reveal-shell" aria-labelledby="pinpoint-clues-title">
+    <section className="legacy-reveal-shell" aria-labelledby="pinpoint-answer-title">
+      <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
+        <h2 className="legacy-answer-label" id="pinpoint-answer-title">
+          {answerPanelTitle}
+        </h2>
+        <p
+          className={`legacy-answer-title${revealed ? " legacy-answer-title--visible" : " legacy-answer-title--hidden"}`}
+          aria-live="polite"
+          aria-hidden={!revealed}
+        >
+          {answer}
+        </p>
+        <div className="legacy-answer-actions">
+          <button className="button-primary legacy-answer-button" type="button" onClick={handleRevealToggle}>
+            {revealed ? "Hide Pinpoint answer" : "Reveal Pinpoint answer"}
+          </button>
+          {revealed ? (
+            <button className="button-secondary legacy-answer-button" type="button" onClick={handleCopy}>
+              {copied ? "Copied" : "Copy Pinpoint answer"}
+            </button>
+          ) : null}
+        </div>
+        <p className="legacy-answer-note">
+          <Info aria-hidden="true" />
+          <span>{answerPanelNote}</span>
+        </p>
+      </div>
+
+      {introSummary ? <p className="copy legacy-detail-summary legacy-reveal-summary">{introSummary}</p> : null}
+
       <h2 className="legacy-clues-title" id="pinpoint-clues-title">
         {`LinkedIn Pinpoint ${puzzleNumber} Answer Clues`}
       </h2>
@@ -264,33 +296,6 @@ export function PuzzleAnswerReveal({
           <p className="legacy-reveal-hint-copy">{activeHint.text}</p>
         </div>
       ) : null}
-
-      <div className="legacy-answer-panel" id="answer-reveal" aria-labelledby="pinpoint-answer-title">
-        <h2 className="legacy-answer-label" id="pinpoint-answer-title">
-          {answerPanelTitle}
-        </h2>
-        <p
-          className={`legacy-answer-title${revealed ? " legacy-answer-title--visible" : " legacy-answer-title--hidden"}`}
-          aria-live="polite"
-          aria-hidden={!revealed}
-        >
-          {answer}
-        </p>
-        <div className="legacy-answer-actions">
-          <button className="button-primary legacy-answer-button" type="button" onClick={handleRevealToggle}>
-            {revealed ? "Hide Pinpoint answer" : "Reveal Pinpoint answer"}
-          </button>
-          {revealed ? (
-            <button className="button-secondary legacy-answer-button" type="button" onClick={handleCopy}>
-              {copied ? "Copied" : "Copy Pinpoint answer"}
-            </button>
-          ) : null}
-        </div>
-        <p className="legacy-answer-note">
-          <span aria-hidden="true">ℹ️</span>
-          <span>{answerPanelNote}</span>
-        </p>
-      </div>
     </section>
   );
 }

@@ -35,7 +35,7 @@ export function PreviewHero({ preview, latestEntry }: Props) {
           ? `LinkedIn Pinpoint #${latestEntry.number} is now live. Meanwhile, get ready for #${preview.number} with our spoiler-safe solving tips and Common Answer Patterns below.`
           : preview
             ? preview.shortSummary
-            : "Use this page to track the next unlock, review spoiler-safe solving tips, and jump back to the latest verified answer while you wait."}
+            : "Use this page to track the next unlock, review spoiler-safe solving tips, and jump back to the latest published answer while you wait."}
       </p>
 
       <div className="chip-row" style={{ marginTop: 16, justifyContent: "center" }}>

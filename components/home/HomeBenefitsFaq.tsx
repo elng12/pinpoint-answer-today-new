@@ -80,7 +80,7 @@ export function getFaqItems(puzzle: PuzzleDetail) {
   return [
     {
       question: "When does today's Pinpoint answer become available?",
-      answer: `Puzzle ${puzzle.number} is updated after the board is verified, with the answer and clue explanation on the same page.`,
+      answer: `Puzzle ${puzzle.number} is updated after the board unlocks and the answer data passes the release checks.`,
     },
     {
       question: "Can I browse historical Pinpoint boards here?",
