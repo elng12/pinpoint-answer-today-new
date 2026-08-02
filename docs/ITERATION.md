@@ -247,3 +247,14 @@
 未做：未修改题目数据、首页 SEO、URL、canonical、sitemap、Worker 或生产环境；未提交、未部署。
 复查日期：阶段 2 单独发布后立即检查最新详情页和任一旧详情页。
 下一步：随阶段 2 一起提交和部署，再确认 Production 页面不再出现该表格。
+
+## 2026-08-02 流量恢复阶段 2 生产收口记录
+
+问题：阶段 2 本地修改已经通过，但还缺少合并、准确 Production SHA、生产 Worker 和线上页面的完整验收。
+证据：PR `#153` 的 GitHub CI 与 Vercel Preview 通过后合并；`main` 生成合并 SHA `ae9e6355dba28d3fa246a963354b3ff6479d7d99`。
+本轮边界：只发布并验收阶段 2，不开始阶段 3 GSC 观察，不修改首页固定 SEO 文案、题目数据、URL、canonical 或 sitemap 规则。
+修改：合并 PR `#153`；等待准确 SHA 的 Vercel Production 成功；部署生产 Worker 版本 `4c27accf-3d3d-41c6-9f1a-5c4addcc7a4d`。
+验证：release queue 为 `ready` 且 `environment=Production`；首页、#824、sitemap、summary 均为 HTTP 200；summary 为 #824 live，sitemap 包含 #824；生产 HTML 已删除线索证明表格；`320×568` 答案按钮在首屏、无横向溢出、一次点击显示答案、控制台无错误；Worker health 读取 2026-08-02 的真实 #824 数据；发布窗口诊断显示 Cron 成功、自动发布未暂停、候选分支为 0。
+未做：没有启动标题、描述或正文 SEO 实验，没有用 Preview 代替 Production，也没有改旧页面数据。
+复查日期：从 2026-08-03 起进入至少 14 天发布与 GSC 基线记录。
+下一步：执行阶段 3，只记录完整日期和正常发布页；回补页、迟到页不进入 SEO 实验样本。
