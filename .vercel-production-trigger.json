@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "candidateBranch": "codex/pinpoint-traffic-recovery-stage2-closeout",
+  "candidateSha": "aaa54bef5c3d276e7a88ab26fffdf092fec53f6a",
+  "previousProductionSha": "ae9e6355dba28d3fa246a963354b3ff6479d7d99",
+  "requestedAt": "2026-08-02T08:56:17Z"
+}
