@@ -9,7 +9,7 @@ function getRequiredClues(words?: Array<string | null | undefined>): string[] {
 }
 
 const DESCRIPTION_EXTENSIONS = [
-  " Use spoiler-safe hints, clue logic, and the verified answer to confirm the solve.",
+  " Use spoiler-safe hints, clue logic, and the complete answer to confirm the solve.",
   " Use spoiler-safe hints and clue logic to confirm the solve.",
   " Review spoiler-safe hints and clue logic.",
   " Review clue logic and confirm the solve.",

@@ -3,6 +3,7 @@ import { defaultLocale } from "@/i18n.config";
 import { defaultSocialImagePath, siteName, twitterHandle } from "@/lib/site/config";
 import { fitPinpointClues } from "@/lib/seo/pinpoint-text";
 import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
+import type { PuzzleSeoTemplateVersion } from "@/lib/puzzles/schema";
 
 // Locked homepage SERP copy. Do not add puzzle numbers unless the homepage SEO contract is explicitly changed.
 export const HOME_SEO_TITLE = "LinkedIn Pinpoint Answer Today - Daily Answers & Solutions";
@@ -17,7 +18,7 @@ const DESCRIPTION_MAX_LENGTH = CONTENT_CONTRACT.metaDescriptionMaxChars;
 const DESCRIPTION_MIN_LENGTH = CONTENT_CONTRACT.metaDescriptionMinChars;
 const SITE_LOCALE = "en_US";
 const DESCRIPTION_EXTENSIONS = [
-  " Use the clue order, answer reasoning, FAQ, and verified answer to confirm the solve.",
+  " Use the clue order, answer reasoning, FAQ, and complete answer to confirm the solve.",
   " Use the clue order, reasoning, and FAQ to confirm the solve.",
   " Review answer reasoning and FAQ.",
   " Review clue logic and FAQ.",
@@ -132,13 +133,18 @@ export function buildPuzzleSeoDescription(
   puzzleNumber: number,
   clues: string[],
   answer?: string,
+  seoTemplateVersion: PuzzleSeoTemplateVersion = "serp-v1",
 ): string {
+  if (seoTemplateVersion !== "serp-v1" && seoTemplateVersion !== "serp-v2") {
+    throw new Error(`Unsupported Pinpoint SEO template version: ${String(seoTemplateVersion)}`);
+  }
+
   const candidates: string[] = [];
 
   const descriptionTemplates = [
     {
       prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `,
-      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the complete answer fast.",
     },
     {
       prefix: `Explore LinkedIn Pinpoint ${puzzleNumber} with `,
@@ -146,15 +152,15 @@ export function buildPuzzleSeoDescription(
     },
     {
       prefix: `Solve LinkedIn Pinpoint ${puzzleNumber} using `,
-      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the complete answer fast.",
     },
     {
       prefix: `Find LinkedIn Pinpoint ${puzzleNumber} from `,
-      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the complete answer fast.",
     },
     {
       prefix: `LinkedIn Pinpoint ${puzzleNumber} uses `,
-      suffix: "Get the clue order, answer reasoning, FAQ, and the verified answer fast.",
+      suffix: "Get the clue order, answer reasoning, FAQ, and the complete answer fast.",
     },
   ];
 
@@ -171,9 +177,11 @@ export function buildPuzzleSeoDescription(
 
   const baseDescription = pickDescriptionCandidate(
     candidates,
-    `LinkedIn Pinpoint ${puzzleNumber} answer guide with clue order, answer reasoning, FAQ, and the verified solution for the current puzzle, updated daily.`,
+    `LinkedIn Pinpoint ${puzzleNumber} answer guide with clue order, answer reasoning, FAQ, and the complete solution for the current puzzle, updated daily.`,
   );
-  return appendAnswerWhenItFits(baseDescription, answer);
+  return seoTemplateVersion === "serp-v2"
+    ? baseDescription
+    : appendAnswerWhenItFits(baseDescription, answer);
 }
 
 function buildSocialImage(imagePath: string, alt: string) {

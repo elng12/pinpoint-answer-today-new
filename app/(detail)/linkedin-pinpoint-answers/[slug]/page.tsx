@@ -46,7 +46,12 @@ export async function generateMetadata({
   }
 
   const seoTitle = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
-  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const seoDescription = buildPuzzleSeoDescription(
+    puzzle.number,
+    puzzle.clues,
+    puzzle.answer,
+    puzzle.seoTemplateVersion,
+  );
   const puzzleDetailPath = withTrailingSlash(routes.detail(puzzle.slug));
 
   return buildPageMetadata({

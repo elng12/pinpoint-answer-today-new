@@ -439,6 +439,7 @@ export async function toPuzzleDetail(
     detailMode: detailContent.bodyMode === "short" ? "short" : "full",
     detailSource: "formal",
     pageExperienceMode,
+    seoTemplateVersion: entry.seoTemplateVersion ?? "serp-v1",
   };
 
   return enhancePuzzleDetail(raw);

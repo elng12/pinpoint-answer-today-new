@@ -131,22 +131,48 @@ function checkPageSeoBuildersStaySnippetSized() {
   );
 }
 
-function checkPageSeoDescriptionCanExposeAnswer() {
-  const description = buildPuzzleSeoDescription(
+function checkPageSeoDescriptionVersioning() {
+  const defaultDescription = buildPuzzleSeoDescription(
     688,
     ["Comet", "Orbit", "Telescope", "Meteor", "Galaxy"],
     "Space terms",
   );
+  const legacyDescription = buildPuzzleSeoDescription(
+    688,
+    ["Comet", "Orbit", "Telescope", "Meteor", "Galaxy"],
+    "Space terms",
+    "serp-v1",
+  );
 
   assert.ok(
-    description.includes("Answer: Space terms."),
-    "page SEO description should include the answer after the SERP-visible portion",
+    legacyDescription.includes("Answer: Space terms."),
+    "serp-v1 should preserve the answer-aware control description",
   );
-  // The answer text must appear beyond the 160-char SERP snippet boundary
-  const answerPos = description.indexOf("Answer: ");
+  assert.equal(
+    defaultDescription,
+    legacyDescription,
+    "pages without a stored SEO version must keep the serp-v1 control description",
+  );
+  assert.equal(/\bverified\b/i.test(legacyDescription), false, "detail descriptions must not claim verification");
+  const answerPos = legacyDescription.indexOf("Answer: ");
   assert.ok(
     answerPos > 110,
-    `answer should appear after the SERP-visible portion (at char ${answerPos})`,
+    `serp-v1 answer should appear after the SERP-visible portion (at char ${answerPos})`,
+  );
+
+  const canaryDescription = buildPuzzleSeoDescription(
+    688,
+    ["Comet", "Orbit", "Telescope", "Meteor", "Galaxy"],
+    "Space terms",
+    "serp-v2",
+  );
+  assert.equal(canaryDescription.includes("Answer: "), false, "serp-v2 must not append the answer");
+  assert.equal(canaryDescription.includes("Space terms"), false, "serp-v2 must not expose the answer text");
+  assert.equal(/\bverified\b/i.test(canaryDescription), false, "serp-v2 must not claim verification");
+  assert.throws(
+    () => buildPuzzleSeoDescription(688, ["A", "B", "C", "D", "E"], "X", "serp-v3" as never),
+    /Unsupported Pinpoint SEO template version/,
+    "unknown SEO template versions must fail closed",
   );
 }
 
@@ -345,6 +371,7 @@ function checkPublicStructuredDataUsesSupportedSchemaTypes() {
       ],
       answer: "Astronomy themes",
       isoDate: "2026-04-20",
+      seoTemplateVersion: "serp-v1",
       updatedAt: "2026-04-20T00:00:00.000Z",
     },
     recentPuzzles: [
@@ -427,8 +454,8 @@ async function main() {
   checkPageSeoBuildersStaySnippetSized();
   console.log("ok: page SEO builders respect title and description caps");
 
-  checkPageSeoDescriptionCanExposeAnswer();
-  console.log("ok: page SEO description can expose answer when it fits");
+  checkPageSeoDescriptionVersioning();
+  console.log("ok: page SEO description versions separate control and no-answer canary copy");
 
   checkPageSeoDescriptionFallbackStaysInRange();
   console.log("ok: page SEO description fallback stays in range");

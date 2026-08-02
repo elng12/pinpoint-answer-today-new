@@ -9,7 +9,7 @@ import {
 
 type PuzzleStructuredDataInput = Pick<
   PuzzleDetail,
-  "answer" | "clues" | "isoDate" | "number" | "slug" | "updatedAt"
+  "answer" | "clues" | "isoDate" | "number" | "seoTemplateVersion" | "slug" | "updatedAt"
 >;
 
 type RecentPuzzleStructuredDataInput = Pick<ArchiveEntry, "number" | "slug">;
@@ -28,7 +28,12 @@ export function buildPuzzleDetailStructuredData({
   const seoHeadline = buildPuzzleSeoTitle(puzzle.number, puzzle.clues);
   const detailPath = withTrailingSlash(routes.detail(puzzle.slug));
   const detailUrl = absoluteUrl(detailPath);
-  const seoDescription = buildPuzzleSeoDescription(puzzle.number, puzzle.clues, puzzle.answer);
+  const seoDescription = buildPuzzleSeoDescription(
+    puzzle.number,
+    puzzle.clues,
+    puzzle.answer,
+    puzzle.seoTemplateVersion,
+  );
 
   return [
     {

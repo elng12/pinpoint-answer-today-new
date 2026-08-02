@@ -258,3 +258,14 @@
 未做：没有启动标题、描述或正文 SEO 实验，没有用 Preview 代替 Production，也没有改旧页面数据。
 复查日期：从 2026-08-03 起进入至少 14 天发布与 GSC 基线记录。
 下一步：执行阶段 3，只记录完整日期和正常发布页；回补页、迟到页不进入 SEO 实验样本。
+
+## 2026-08-02 详情页描述纠正与实验开关本地记录
+
+问题：详情页搜索描述仍写着没有审核记录支持的 `verified answer`，并且答案直接出现在描述尾部；如果直接全站删除答案，无法分清点击变化到底来自文案还是其他因素。
+证据：生产 #824 的详情页描述同时包含 `verified` 和完整答案；当前 registry 没有永久记录搜索描述版本，Worker 也没有关闭优先的实验开关。
+本轮边界：删除详情页搜索描述中没有证据的 `verified`；增加默认关闭、只认明确未来 slug 的 `serp-v1/serp-v2` 描述开关；不修改首页固定 SEO 标题和描述，不启用实验，不修改题库、正文、URL、canonical 或 sitemap。
+修改：旧页和未标版本页固定使用 `serp-v1`；`serp-v2` 不把完整答案追加到 meta、Open Graph、Twitter 或 Article 描述；Worker 仅在 `canary` 且 slug 已明确列出时写入 `serp-v2`，非法模式、空名单、错误 slug 和未知版本都会直接失败；生产、shadow、staging 配置均保持 `off`。
+验证：367 条真实 registry 数据校验、根目录和 Worker 类型检查、lint、SEO builder、Pinpoint 守卫、Worker dry-run 及 392 页完整构建通过；测试确认未标版本等于 `serp-v1`、`serp-v2` 不出现答案、未知版本和非法开关失败。
+未做：尚未提交、合并、部署；没有启用任何 canary slug；没有用当天或不完整 GSC 数据判断效果。
+复查日期：合并后立即核对准确 Production SHA、#824 HTML、结构化数据、sitemap 和 Worker 配置。
+下一步：先以 `off` 状态上线，确认旧页只有删除 `verified` 这一项预期差异；阶段 3 样本足够后，再提前登记未来实验页。

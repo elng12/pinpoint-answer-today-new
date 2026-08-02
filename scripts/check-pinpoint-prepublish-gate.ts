@@ -43,6 +43,7 @@ type RegistryEntry = {
   clues: string[];
   mainAnswer?: string;
   category?: string;
+  seoTemplateVersion?: "serp-v1" | "serp-v2";
   shortSummary?: string;
   updatedAt?: string;
 };
@@ -538,7 +539,12 @@ function checkRenderedDetail(issues: GateIssue[], input: {
   const structuredData = parseJsonLd(html);
   const answer = normalizeText(detail.answer ?? detail.mainAnswer ?? entry.mainAnswer);
   const expectedTitle = buildPuzzleSeoTitle(entry.puzzleNumber, entry.clues);
-  const expectedDescription = buildPuzzleSeoDescription(entry.puzzleNumber, entry.clues, answer);
+  const expectedDescription = buildPuzzleSeoDescription(
+    entry.puzzleNumber,
+    entry.clues,
+    answer,
+    entry.seoTemplateVersion ?? "serp-v1",
+  );
 
   if (title !== expectedTitle) {
     addIssue(issues, "hard", "detail:title", `Title does not match the fixed builder output. Expected "${expectedTitle}", got "${title || "(missing)"}".`);
