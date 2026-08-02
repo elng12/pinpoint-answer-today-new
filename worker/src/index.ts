@@ -93,6 +93,8 @@ export interface Env {
   PINPOINT_RELEASE_QUEUE_ENABLED?: string;    // optional: set "true" to route unsafe public writes to candidate branches
   PINPOINT_RELEASE_QUEUE_SLA_WINDOW_MINUTES?: string; // default: 60
   PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH?: string; // optional: set "true" to allow a second same-slug production push
+  PINPOINT_SEO_TEMPLATE_MODE?: string;        // off | canary
+  PINPOINT_SEO_CANARY_SLUGS?: string;         // explicit comma-separated future slugs assigned to serp-v2
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
@@ -597,6 +599,32 @@ function envFlag(value: string | undefined, fallback = false): boolean {
   if (value == null || value.trim().length === 0) return fallback;
   const normalized = value.trim().toLowerCase();
   return normalized === "1" || normalized === "true" || normalized === "yes" || normalized === "on";
+}
+
+export function resolvePinpointSeoTemplateVersion(
+  modeValue: string | undefined,
+  canarySlugsValue: string | undefined,
+  slug: string,
+): "serp-v1" | "serp-v2" {
+  const mode = String(modeValue || "off").trim().toLowerCase();
+  if (mode !== "off" && mode !== "canary") {
+    throw new Error(`PINPOINT_SEO_TEMPLATE_MODE must be off or canary; received ${mode || "empty"}`);
+  }
+  if (mode === "off") return "serp-v1";
+
+  const canarySlugs = String(canarySlugsValue || "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (canarySlugs.length === 0) {
+    throw new Error("PINPOINT_SEO_CANARY_SLUGS must list explicit slugs when canary mode is enabled");
+  }
+  const invalidSlug = canarySlugs.find((value) => !/^pinpoint-answer-\d+$/.test(value));
+  if (invalidSlug) {
+    throw new Error(`PINPOINT_SEO_CANARY_SLUGS contains an invalid slug: ${invalidSlug}`);
+  }
+
+  return canarySlugs.includes(slug) ? "serp-v2" : "serp-v1";
 }
 
 function normalizeGitHubBranchName(input: string | undefined, fallback: string): string {
@@ -4131,6 +4159,11 @@ async function publishToNewSiteGitHub(
   const newSiteUrl = String(env.NEW_SITE_URL || "").trim();
   const revalidateSecret = String(env.NEW_SITE_REVALIDATE_SECRET || "").trim();
   const slug = `pinpoint-answer-${puzzleNumber}`;
+  const seoTemplateVersion = resolvePinpointSeoTemplateVersion(
+    env.PINPOINT_SEO_TEMPLATE_MODE,
+    env.PINPOINT_SEO_CANARY_SLUGS,
+    slug,
+  );
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -4557,6 +4590,7 @@ async function publishToNewSiteGitHub(
         detailState,
         clues: words,
         mainAnswer: answer,
+        seoTemplateVersion,
       },
       expectedMode: "full-analysis",
       answerFirstPublicEnabled: false,
@@ -4621,6 +4655,7 @@ async function publishToNewSiteGitHub(
         mainAnswer: answer,
         category: answer,
         difficultyLevel: "Moderate",
+        seoTemplateVersion,
         shortSummary,
         updatedAt,
       });
@@ -4643,6 +4678,7 @@ async function publishToNewSiteGitHub(
         String(existingEntry.mainAnswer ?? "") !== answer ||
         String(existingEntry.category ?? "") !== answer ||
         String(existingEntry.difficultyLevel ?? "Moderate") !== "Moderate" ||
+        String(existingEntry.seoTemplateVersion ?? "serp-v1") !== seoTemplateVersion ||
         String(existingEntry.shortSummary ?? "") !== shortSummary;
 
       if (needsEntryUpdate) {
@@ -4655,6 +4691,7 @@ async function publishToNewSiteGitHub(
         existingEntry.mainAnswer = answer;
         existingEntry.category = answer;
         existingEntry.difficultyLevel = "Moderate";
+        existingEntry.seoTemplateVersion = seoTemplateVersion;
         existingEntry.shortSummary = shortSummary;
         existingEntry.updatedAt = updatedAt;
       }

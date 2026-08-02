@@ -7,6 +7,7 @@ import type {
   PuzzleDetailState,
   PuzzlePageExperienceMode,
   PuzzleQuestionType,
+  PuzzleSeoTemplateVersion,
   PuzzleSolvePathRecord,
   PuzzleTurningPointRecord,
   PuzzleUniquenessSignalsRecord,
@@ -58,6 +59,7 @@ export type PuzzleDetail = {
   detailMode: "full" | "short";
   detailSource: "formal" | "fallback";
   pageExperienceMode: PuzzlePageExperienceMode;
+  seoTemplateVersion: PuzzleSeoTemplateVersion;
 };
 
 export type ArchiveEntry = {

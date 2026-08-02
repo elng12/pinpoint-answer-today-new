@@ -16,6 +16,7 @@ export declare const puzzleDifficultyBandSchema: z.ZodEnum<["obvious", "medium",
 export declare const puzzleDetailBodyModeSchema: z.ZodEnum<["short", "standard", "deep"]>;
 export declare const puzzlePageExperienceModeSchema: z.ZodEnum<["full-analysis", "light-explainer"]>;
 export declare const puzzlePublishModeSchema: z.ZodEnum<["answer-first", "full-analysis", "failed"]>;
+export declare const puzzleSeoTemplateVersionSchema: z.ZodEnum<["serp-v1", "serp-v2"]>;
 
 export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   puzzleNumber: z.ZodNumber;
@@ -28,6 +29,7 @@ export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   difficultyLevel: z.ZodOptional<typeof difficultyLevelSchema>;
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
   publishMode: z.ZodOptional<typeof puzzlePublishModeSchema>;
+  seoTemplateVersion: z.ZodOptional<typeof puzzleSeoTemplateVersionSchema>;
   shortSummary: z.ZodString;
   updatedAt: z.ZodString;
 }>;

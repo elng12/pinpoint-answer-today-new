@@ -3890,6 +3890,58 @@ async function checkClueEvidenceTableStaysHidden() {
   console.log("ok: detail pages keep the removed clue evidence table hidden");
 }
 
+async function checkSeoDescriptionCanaryAssignment() {
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    resolvePinpointSeoTemplateVersion: (
+      mode: string | undefined,
+      canarySlugs: string | undefined,
+      slug: string,
+    ) => "serp-v1" | "serp-v2";
+  };
+
+  assert.equal(
+    workerModule.resolvePinpointSeoTemplateVersion("off", "", "pinpoint-answer-825"),
+    "serp-v1",
+    "off mode must keep future pages on the control description",
+  );
+  assert.equal(
+    workerModule.resolvePinpointSeoTemplateVersion(
+      "canary",
+      "pinpoint-answer-825,pinpoint-answer-827",
+      "pinpoint-answer-825",
+    ),
+    "serp-v2",
+    "an explicitly listed canary slug must receive serp-v2",
+  );
+  assert.equal(
+    workerModule.resolvePinpointSeoTemplateVersion(
+      "canary",
+      "pinpoint-answer-825,pinpoint-answer-827",
+      "pinpoint-answer-826",
+    ),
+    "serp-v1",
+    "an unlisted slug must remain in the control group",
+  );
+  assert.throws(
+    () => workerModule.resolvePinpointSeoTemplateVersion("invalid", "pinpoint-answer-825", "pinpoint-answer-825"),
+    /must be off or canary/,
+    "invalid experiment modes must fail closed",
+  );
+  assert.throws(
+    () => workerModule.resolvePinpointSeoTemplateVersion("canary", "", "pinpoint-answer-825"),
+    /must list explicit slugs/,
+    "canary mode without a predeclared slug list must fail closed",
+  );
+  assert.throws(
+    () => workerModule.resolvePinpointSeoTemplateVersion("canary", "pinpoint-825", "pinpoint-answer-825"),
+    /contains an invalid slug/,
+    "malformed canary slugs must fail closed",
+  );
+
+  console.log("ok: SEO description canary assignment is explicit and fail-closed");
+}
+
 async function checkProductionReleaseRunsPublicFetchAudit() {
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
@@ -4334,6 +4386,7 @@ async function main() {
   await checkPublicVerificationCopyMatchesRecordedProcess();
   await checkLiveWorkerCoreDataFailsClosed();
   await checkClueEvidenceTableStaysHidden();
+  await checkSeoDescriptionCanaryAssignment();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkProductionReleaseRunsValidateDataBeforePush();
   await checkProductionReleaseWorkerHealthFallback();

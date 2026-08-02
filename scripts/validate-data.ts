@@ -233,7 +233,12 @@ function toContractFaqs(detail: PuzzleDetailContentRecord) {
 }
 
 function validatePageSeoDescription(entry: PuzzleRegistryEntryRecord) {
-  const pageSeoDescription = buildPuzzleSeoDescription(entry.puzzleNumber, entry.clues, entry.mainAnswer);
+  const pageSeoDescription = buildPuzzleSeoDescription(
+    entry.puzzleNumber,
+    entry.clues,
+    entry.mainAnswer,
+    entry.seoTemplateVersion ?? "serp-v1",
+  );
   const len = pageSeoDescription.length;
   if (pageSeoDescription.includes("Answer: ")) {
     const serpVisibleLen = pageSeoDescription.indexOf("Answer: ");
