@@ -24,6 +24,7 @@ Use this index as the first stop before moving or archiving documents. It groups
 ## SEO and Search
 
 - [Cutover SEO brief](archive/2026-03/cutover-seo-brief-2026-03-12.md)
+- [Traffic recovery task list](traffic-recovery-task-list-2026-08-02.md)
 - [Pinpoint detail keyword density rules](pinpoint-detail-keyword-density-rules-2026-05-30.md)
 - [GSC cutover checklist](archive/2026-03/gsc-cutover-checklist-2026-03-12.md)
 - [GSC ranking recovery plan](gsc-ranking-recovery-plan-2026-05-19.md)

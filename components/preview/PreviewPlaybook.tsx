@@ -38,7 +38,7 @@ const cards = [
       { bold: "Avoid mixed specificity:", rest: " do not pair \"a continent\" with \"a city\" unless the theme explicitly says so." },
       { bold: "Check spelling variants:", rest: " some puzzles rely on US/UK spelling, hyphenation, or common abbreviations." },
       { bold: "Double-check overlaps:", rest: " if one word seems to belong to two groups, the board likely wants the less obvious assignment." },
-      { bold: "Use the latest answer page:", rest: " after unlock, compare your final grouping against the verified walkthrough." },
+      { bold: "Use the latest answer page:", rest: " after unlock, compare your final grouping against the published clue walkthrough." },
     ],
   },
 ];

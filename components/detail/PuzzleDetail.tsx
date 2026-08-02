@@ -5,6 +5,7 @@ import { PuzzleFullAnalysis } from "@/components/detail/PuzzleFullAnalysis";
 import { routes } from "@/lib/paths/routes";
 import type { LatestAnswerCtaPuzzle } from "@/components/detail/LatestAnswerCta";
 import { LatestAnswerStickyBanner } from "@/components/detail/LatestAnswerStickyBanner";
+import { CircleCheck, Database } from "lucide-react";
 
 function formatLegacyDate(isoDate: string): string {
   return new Intl.DateTimeFormat("en-US", {
@@ -39,11 +40,11 @@ export function PuzzleDetail({
 }) {
   const isLightExplainerMode = puzzle.pageExperienceMode === "light-explainer";
   const isFallbackDetail = puzzle.detailSource === "fallback";
-  const verificationLabel = isFallbackDetail
-    ? "Quick guide from live puzzle data"
+  const processLabel = isFallbackDetail
+    ? "Guide built from captured puzzle data"
     : isLightExplainerMode
-      ? "Compact explainer from verified puzzle data"
-    : "LinkedIn puzzle verified";
+      ? "Compact guide from captured puzzle data"
+      : "Automated page checks passed";
   const summary = buildDetailSummary(puzzle);
   const publishedAt = `${puzzle.isoDate}T00:00:00Z`;
   const updatedDate = puzzle.updatedAt?.slice(0, 10);
@@ -66,13 +67,12 @@ export function PuzzleDetail({
           <p className="legacy-detail-updated">{`Updated ${formatLegacyDate(updatedDate ?? puzzle.isoDate)}`}</p>
         ) : null}
         <div className={`legacy-detail-verified${isFallbackDetail ? " legacy-detail-verified-fallback" : ""}`}>
-          <span aria-hidden="true">{isFallbackDetail ? "i" : "✓"}</span>
-          <span>{verificationLabel}</span>
+          {isFallbackDetail ? <Database aria-hidden="true" /> : <CircleCheck aria-hidden="true" />}
+          <span>{processLabel}</span>
           <Link href="/about-us#editorial-process" className="legacy-detail-verify-link">
-            How we verify
+            See the checks
           </Link>
         </div>
-        <p className="copy legacy-detail-summary">{summary}</p>
       </section>
 
       <PuzzleAnswerReveal
@@ -80,6 +80,7 @@ export function PuzzleDetail({
         clues={puzzle.clues}
         answer={puzzle.answer}
         detailMode={puzzle.detailMode}
+        introSummary={summary}
         hintMap={puzzle.wordHints}
         trackFaqSectionView
       />

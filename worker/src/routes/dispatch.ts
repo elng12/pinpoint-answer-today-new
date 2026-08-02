@@ -2,7 +2,6 @@ export type WorkerFetchRoute =
   | "root"
   | "graphql"
   | "pinpointToday"
-  | "adminSeed"
   | "adminPreflightLinkedin"
   | "adminTestFallback"
   | "adminCandidateBranchDryRun"
@@ -20,7 +19,6 @@ export function resolveWorkerFetchRoute(req: Request, url: URL): WorkerFetchRout
   if (url.pathname === "/") return "root";
   if (url.pathname === "/graphql") return "graphql";
   if (url.pathname === "/api/pinpoint/today") return "pinpointToday";
-  if (url.pathname === "/admin/seed" && url.hostname.endsWith(".workers.dev")) return "adminSeed";
   if (url.pathname === "/admin/preflight-linkedin") return "adminPreflightLinkedin";
   if (url.pathname === "/admin/test-fallback") return "adminTestFallback";
   if (url.pathname === "/admin/candidate-branch-dry-run" && req.method === "POST") {

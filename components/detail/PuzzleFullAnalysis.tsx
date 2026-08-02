@@ -159,58 +159,6 @@ function renderWhatThisPinpointTeaches(puzzle: PuzzleDetailRecord, faqEntries: V
   );
 }
 
-function renderClueEvidenceTable(puzzle: PuzzleDetailRecord) {
-  const rows = puzzle.clueRows.length > 0
-    ? puzzle.clueRows.map((row, index) => ({
-        clue: row.clue || puzzle.clues[index] || "",
-        connection: row.resolvedPhraseOrMember || row.phraseExample || row.searchableContext || "",
-        explanation: row.nonObviousWhy || puzzle.wordHints[row.clue] || "",
-      }))
-    : puzzle.display.clueTableRows.map((row) => ({
-        clue: row.clue,
-        connection: row.examplePhrase,
-        explanation: row.connectionExplained,
-      }));
-
-  const usefulRows = rows.filter((row) => row.clue && (row.connection || row.explanation));
-  if (usefulRows.length === 0) {
-    return null;
-  }
-
-  return (
-    <section className="legacy-analysis-section legacy-clue-proof-section" aria-labelledby="clue-proof-title">
-      <h3 className="legacy-section-title" id="clue-proof-title">
-        Clue-by-clue answer check
-      </h3>
-      <div className="legacy-clue-table-shell">
-        <div className="legacy-table-kicker-row">
-          <p className="legacy-table-kicker">{`LinkedIn Pinpoint ${puzzle.number} answer proof`}</p>
-        </div>
-        <div className="legacy-clue-table-scroll">
-          <table className="legacy-clue-table legacy-clue-table-evidence">
-            <thead>
-              <tr>
-                <th scope="col">Clue</th>
-                <th scope="col">Answer fit</th>
-                <th scope="col">Why it works</th>
-              </tr>
-            </thead>
-            <tbody>
-              {usefulRows.map((row, index) => (
-                <tr key={`${row.clue}-${index}`}>
-                  <th scope="row">{row.clue}</th>
-                  <td>{row.connection || "Same answer pattern"}</td>
-                  <td>{row.explanation || `${row.clue} fits ${puzzle.category}.`}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function PuzzleFullAnalysis({
   puzzle,
   recentPuzzles,
@@ -227,7 +175,6 @@ export function PuzzleFullAnalysis({
   const reasoningFullText = reasoningStory.slice(1);
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
   const teachingSection = renderWhatThisPinpointTeaches(puzzle, visibleFaqEntries);
-  const clueEvidenceTable = renderClueEvidenceTable(puzzle);
   const recentLinks = recentPuzzles.filter((entry) => entry.slug !== puzzle.slug).slice(0, 10);
   const renderReasoningBlocks = (blocks: typeof reasoningStory) =>
     blocks.map((block) => (
@@ -278,7 +225,6 @@ export function PuzzleFullAnalysis({
             <div className="legacy-reasoning-story legacy-reasoning-story-preview">
               {renderReasoningBlocks(reasoningPreview)}
             </div>
-            {clueEvidenceTable}
             {reasoningFullText.length > 0 ? (
               <details className="legacy-reasoning-details">
                 <summary className="legacy-reasoning-read-more">

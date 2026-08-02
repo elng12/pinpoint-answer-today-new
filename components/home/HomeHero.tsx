@@ -27,7 +27,7 @@ export function HomeHero({
           <span className="home-hero-status-item">Puzzle #{puzzle.number}</span>
           <span className="home-hero-status-item">{heroDate}</span>
           <span className="home-hero-status-item">{puzzle.clues.length} clues</span>
-          <span className="home-hero-status-item">Verified solution</span>
+          <span className="home-hero-status-item">Answer data published</span>
         </div>
         <p className="home-hero-kicker">Today&apos;s LinkedIn Pinpoint answer, updated daily</p>
         <h1 className="home-hero-title">{`LinkedIn Pinpoint Answer Today #${puzzle.number}`}</h1>

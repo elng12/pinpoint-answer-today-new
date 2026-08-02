@@ -39,7 +39,7 @@ export function PreviewGlossary() {
       <SectionHeading
         eyebrow="Reference"
         title="Mini glossary"
-        description="A few simple terms can make your solving process more consistent when comparing your approach against the verified walkthrough."
+        description="A few simple terms can make your solving process more consistent when comparing your approach against the published clue walkthrough."
         center
       />
       <div className="grid grid-2" style={{ marginTop: 24 }}>

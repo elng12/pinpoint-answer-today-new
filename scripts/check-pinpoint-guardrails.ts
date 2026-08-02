@@ -3065,7 +3065,7 @@ function checkWorkerRouteDispatchResolver() {
   assert.equal(routeFor("/"), "root");
   assert.equal(routeFor("/graphql"), "graphql");
   assert.equal(routeFor("/api/pinpoint/today"), "pinpointToday");
-  assert.equal(routeFor("/admin/seed"), "adminSeed");
+  assert.equal(routeFor("/admin/seed"), "notFound");
   assert.equal(routeFor("/admin/seed", { host: "pinpointanswertoday.app" }), "notFound");
   assert.equal(routeFor("/admin/preflight-linkedin"), "adminPreflightLinkedin");
   assert.equal(routeFor("/admin/test-fallback"), "adminTestFallback");
@@ -3651,6 +3651,10 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
       puzzleNumber: number,
       words: string[],
     ) => { articleBlocks: string[]; detailState: string };
+    requirePublishedAnswer: (
+      doc: { mainAnswer?: unknown; theme?: unknown },
+      context?: string,
+    ) => string;
   };
 
   assert.ok(
@@ -3758,27 +3762,132 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
     fallbackDetail.articleBlocks[0].split(/\s+/).filter(Boolean).length >= 65,
     "fallback overview must satisfy the production content floor",
   );
+  assert.throws(
+    () => workerModule.requirePublishedAnswer({}, "guardrail fixture"),
+    /core puzzle answer is missing/,
+    "missing core answers must fail instead of using a default answer",
+  );
+  assert.throws(
+    () => workerModule.buildTemplateFallbackDetailRecord(
+      "https://pinpoint-worker.2296744453m.workers.dev",
+      "2026-07-16",
+      {
+        version: 1,
+        puzzleDate: "2026-07-16",
+        answers: [
+          { rank: 1, word: "One" },
+          { rank: 2, word: "Two" },
+          { rank: 3, word: "Three" },
+          { rank: 4, word: "Four" },
+          { rank: 5, word: "Five" },
+        ],
+        source: "fallback-local",
+        fetchedAt: "2026-07-16T08:22:43.520Z",
+        checksum: "sha256:missing-answer-fixture",
+      },
+      807,
+      ["One", "Two", "Three", "Four", "Five"],
+    ),
+    /core puzzle answer is missing/,
+    "fallback detail generation must not invent an answer when the source answer is missing",
+  );
 
   console.log("ok: candidate branch watchdog closes or escalates stuck candidates");
 }
 
-async function checkPublicVerificationCopyUsesMachineReview() {
-  const publicCopySources = [
-    await readFile(resolve(ROOT, "components/detail/PuzzleDetail.tsx"), "utf8"),
-    await readFile(resolve(ROOT, "app/(site)/about-us/page.tsx"), "utf8"),
-  ].join("\n");
+async function checkPublicVerificationCopyMatchesRecordedProcess() {
+  const publicCopyFiles = [
+    "components/detail/PuzzleDetail.tsx",
+    "app/(site)/about-us/page.tsx",
+    "components/home/HomeHero.tsx",
+    "components/home/HomeBenefitsFaq.tsx",
+    "components/layout/Footer.tsx",
+    "components/preview/PreviewQuickLinks.tsx",
+    "components/preview/PreviewHero.tsx",
+    "components/preview/PreviewPlaybook.tsx",
+    "components/preview/PreviewGlossary.tsx",
+  ];
+  const publicCopySources = (
+    await Promise.all(publicCopyFiles.map((file) => readFile(resolve(ROOT, file), "utf8")))
+  ).join("\n");
 
   assert.ok(
-    publicCopySources.includes("Machine-checked and AI-reviewed"),
-    "public detail/about copy must describe machine and AI review",
+    publicCopySources.includes("Automated page checks passed") &&
+      publicCopySources.includes("reviewer and review time are stored"),
+    "public detail/about copy must describe the recorded automated process and the human-review evidence rule",
   );
   assert.ok(
-    !publicCopySources.includes("Verified by Human Editor") &&
-      !publicCopySources.includes("Human editorial review"),
-    "public detail/about copy must not claim human review for automated publishing",
+    !/Verified solution|latest verified answer|verified walkthrough|Verified entries|Machine-checked and AI-reviewed/i.test(
+      publicCopySources,
+    ),
+    "public copy must not present automated publishing as verified or human-reviewed",
   );
 
-  console.log("ok: public verification copy uses machine and AI review wording");
+  console.log("ok: public process wording matches the recorded automated checks");
+}
+
+async function checkLiveWorkerCoreDataFailsClosed() {
+  const liveWorkerModulePath = "../lib/puzzles/data/live-worker.ts";
+  const liveWorkerModule = (await import(liveWorkerModulePath)) as {
+    parseLiveWorkerPuzzleRecord: (raw: unknown) => {
+      answer: string;
+      clues: string[];
+      fetchedAt: string;
+      puzzleDate: string;
+    };
+  };
+  const validPayload = {
+    puzzleDate: "2026-08-02",
+    fetchedAt: "2026-08-02T07:25:34.616Z",
+    answers: ["First", "Pin", "Net", "Valve", "In numbers"].map((word, index) => ({
+      rank: index + 1,
+      word,
+    })),
+    mainAnswer: "Words that come after safety",
+  };
+
+  const parsed = liveWorkerModule.parseLiveWorkerPuzzleRecord(validPayload);
+  assert.equal(parsed.clues.length, 5, "valid Worker payload must retain all five clues");
+  assert.equal(parsed.answer, validPayload.mainAnswer, "valid Worker payload must retain the real answer");
+  assert.throws(
+    () => liveWorkerModule.parseLiveWorkerPuzzleRecord({ ...validPayload, answers: validPayload.answers.slice(0, 4) }),
+    /exactly 5 clues/,
+    "Worker payloads with fewer than five clues must fail",
+  );
+  assert.throws(
+    () => liveWorkerModule.parseLiveWorkerPuzzleRecord({ ...validPayload, mainAnswer: "" }),
+    /answer is missing/,
+    "Worker payloads without an answer must fail",
+  );
+  assert.throws(
+    () => liveWorkerModule.parseLiveWorkerPuzzleRecord({ ...validPayload, fetchedAt: "" }),
+    /fetchedAt is missing or invalid/,
+    "Worker payloads without a real fetch time must fail",
+  );
+
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
+  assert.ok(
+    !workerSource.includes("buildMockDoc") &&
+      !workerSource.includes('word: "MOCK"') &&
+      !wranglerSource.includes("ALLOW_SELF_GRAPHQL"),
+    "Worker production code must not contain a mock-data escape hatch",
+  );
+
+  console.log("ok: live Worker core data fails closed without mock or default answers");
+}
+
+async function checkClueEvidenceTableStaysHidden() {
+  const detailSource = await readFile(resolve(ROOT, "components/detail/PuzzleFullAnalysis.tsx"), "utf8");
+
+  assert.ok(
+    !detailSource.includes("renderClueEvidenceTable") &&
+      !detailSource.includes("Clue-by-clue answer check") &&
+      !detailSource.includes("answer proof"),
+    "detail pages must keep clueRows as validation data without restoring the removed evidence table",
+  );
+
+  console.log("ok: detail pages keep the removed clue evidence table hidden");
 }
 
 async function checkProductionReleaseRunsPublicFetchAudit() {
@@ -4222,7 +4331,9 @@ async function main() {
   await checkWorkerBlocksOverusedAnswersBeforeGithubWrite();
   await checkMainFailureContentRecoveryCreatesAutoPromotedCandidate();
   await checkCandidateBranchWatchdogClosesStuckBranches();
-  await checkPublicVerificationCopyUsesMachineReview();
+  await checkPublicVerificationCopyMatchesRecordedProcess();
+  await checkLiveWorkerCoreDataFailsClosed();
+  await checkClueEvidenceTableStaysHidden();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkProductionReleaseRunsValidateDataBeforePush();
   await checkProductionReleaseWorkerHealthFallback();

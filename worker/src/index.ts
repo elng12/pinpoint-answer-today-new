@@ -56,7 +56,6 @@ export interface Env {
   ADMIN_PUT_DOC_ENABLED?: string; // 'true' 才启用
   ADMIN_PUT_DOC_SECRET?: string;  // 单独密钥，未设置则回退到 ADMIN_SECRET
   ENVIRONMENT?: string;           // 'production' 时强制关闭
-  ALLOW_SELF_GRAPHQL?: string;    // 'true' 明确允许 self://graphql mock
 
   PUT_DOC_RATE_PER_MIN?: string;  // 每分钟次数上限
   PUT_DOC_RATE_PER_DAY?: string;  // 每日次数上限
@@ -1090,10 +1089,32 @@ function parseStoredDoc(raw: string, fallbackDate: string): Doc {
     throw new Error(`stored doc answers length invalid (expected 5, got ${answers.length})`);
   }
 
-  const puzzleDate = String(parsed.puzzleDate || fallbackDate).trim() || fallbackDate;
-  const fetchedAt = String(parsed.fetchedAt || new Date().toISOString()).trim() || new Date().toISOString();
-  const source = normalizeFallbackSource(parsed.source ?? "graphql");
+  const puzzleDate = typeof parsed.puzzleDate === "string" ? parsed.puzzleDate.trim() : "";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(puzzleDate) || puzzleDate !== fallbackDate) {
+    throw new Error(`stored doc puzzleDate invalid (expected ${fallbackDate}, got ${puzzleDate || "missing"})`);
+  }
+
+  const fetchedAt = typeof parsed.fetchedAt === "string" ? parsed.fetchedAt.trim() : "";
+  if (!fetchedAt || Number.isNaN(Date.parse(fetchedAt))) {
+    throw new Error("stored doc fetchedAt missing or invalid");
+  }
+
+  const sourceRaw = typeof parsed.source === "string" ? parsed.source.trim() : "";
+  if (
+    sourceRaw !== "graphql" &&
+    sourceRaw !== "fallback-webhook" &&
+    sourceRaw !== "fallback-local" &&
+    sourceRaw !== "fallback-competitor"
+  ) {
+    throw new Error(`stored doc source invalid: ${sourceRaw || "missing"}`);
+  }
+  const source = sourceRaw as DocSource;
   const checksum = String(parsed.checksum || "").trim();
+  if (!checksum) {
+    throw new Error("stored doc checksum missing");
+  }
+
+  requirePublishedAnswer(parsed, "stored doc");
 
   return {
     version: 1,
@@ -1101,7 +1122,7 @@ function parseStoredDoc(raw: string, fallbackDate: string): Doc {
     answers,
     source,
     fetchedAt,
-    checksum: checksum || `sha256:stored:${puzzleDate}`,
+    checksum,
     ...(typeof parsed.theme === "string" && parsed.theme.trim() ? { theme: parsed.theme.trim() } : {}),
     ...(typeof parsed.mainAnswer === "string" && parsed.mainAnswer.trim() ? { mainAnswer: parsed.mainAnswer.trim() } : {}),
   };
@@ -1177,7 +1198,7 @@ function buildPublishedAtIso(puzzleDate: string, fetchedAt: string | undefined):
   if (!Number.isNaN(fromFetchedAt.getTime())) {
     return fromFetchedAt.toISOString();
   }
-  return new Date().toISOString();
+  throw new Error(`publish timestamp invalid (puzzleDate=${puzzleDate || "missing"}, fetchedAt=${fetchedAt || "missing"})`);
 }
 
 function extractWordsFromDoc(doc: Doc): string[] {
@@ -1311,6 +1332,17 @@ export function sanitizePublishedAnswerLabel(raw: unknown): string {
   }
 
   return text;
+}
+
+export function requirePublishedAnswer(
+  doc: { mainAnswer?: unknown; theme?: unknown },
+  context = "publish",
+): string {
+  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme);
+  if (!answer) {
+    throw new Error(`${context}: core puzzle answer is missing`);
+  }
+  return answer;
 }
 
 type WorkerAnswerPattern =
@@ -1694,7 +1726,7 @@ export function buildTemplateFallbackPayload(
   puzzleNumber: number,
   words: string[],
 ): JsonRecord {
-  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
+  const answer = requirePublishedAnswer(doc, "template fallback");
   const clueLabel = words.join(", ");
   const pattern = detectWorkerAnswerPattern(answer);
   const connectorSummary = buildWorkerConnectorSummary(answer);
@@ -1902,24 +1934,21 @@ async function markStaleCandidateAlert(env: Env, date: string, doc: Doc, reason:
 
 function createQuickOverview(puzzleNumber: number, words: string[]): string {
   return [
-    `LinkedIn Pinpoint #${puzzleNumber} just unlocked, and this is the fastest verified update.`,
-    `The board clues are ${words.join(", ")}, and the set looks broader than it really is at first.`,
-    `This rapid post gives you a spoiler-safe starting point while the full clue-by-clue write-up is prepared.`,
-    `A deeper clue-by-clue walkthrough will be added shortly.`,
+    `LinkedIn Pinpoint #${puzzleNumber} is available, and this quick page uses the captured puzzle data.`,
+    `The recorded board clues are ${words.join(", ")}.`,
+    `This page shows the answer and clue order while the optional longer explanation is prepared.`,
   ].join(" ");
 }
 
 function createQuickSolution(puzzleNumber: number, words: string[]): string {
   return [
-    `I tested each clue against the same connector and checked whether the phrase stayed natural.`,
-    `For #${puzzleNumber}, ${words.join(", ")} only start to make sense once one shared reading locks the set together.`,
-    `That shared fit across all five clues is why the final connector holds up cleanly.`,
-    `I will expand this with richer clue context in the full version.`,
+    `For #${puzzleNumber}, compare the published answer with each recorded clue: ${words.join(", ")}.`,
+    `The optional longer explanation can be added later without changing the captured clue set or answer.`,
   ].join(" ");
 }
 
 function createQuickPayload(siteBaseUrl: string, puzzleDate: string, doc: Doc, puzzleNumber: number, words: string[]) {
-  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
+  const answer = requirePublishedAnswer(doc, "quick publish");
   const clueLabel = words.join(", ");
   const overview = createQuickOverview(puzzleNumber, words);
   const solution = createQuickSolution(puzzleNumber, words);
@@ -3628,7 +3657,10 @@ export function buildTemplateFallbackDetailRecord(
     puzzleNumber,
     slug: `pinpoint-answer-${puzzleNumber}`,
     puzzleDate,
-    answer: sanitizePublishedAnswerLabel(payload.mainAnswer || doc.mainAnswer || doc.theme || "Pinpoint connector"),
+    answer: requirePublishedAnswer(
+      { mainAnswer: payload.mainAnswer, theme: doc.mainAnswer || doc.theme },
+      "template fallback detail",
+    ),
     words,
     sections,
     analysis,
@@ -5202,7 +5234,7 @@ async function enrichPublishToSite(
 
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
-  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
+  const answer = requirePublishedAnswer(doc, "enrich publish");
   const timeoutMs = parseTimeoutMs(env.AUTO_ENRICH_TIMEOUT_MS, 55_000);
   const enrichModel = selectModel(env.AUTO_ENRICH_MODEL, "meta-llama/llama-3.3-70b-instruct");
   const retryModel = selectModel(env.AUTO_ENRICH_RETRY_MODEL, enrichModel);
@@ -5831,7 +5863,7 @@ async function localizePublishToSite(
 
   const words = extractWordsFromDoc(doc);
   const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
-  const answer = sanitizePublishedAnswerLabel(doc.mainAnswer || doc.theme || "Pinpoint connector") || "Pinpoint connector";
+  const answer = requirePublishedAnswer(doc, "localized publish");
   const checksumSeed = doc.checksum.slice(0, 24);
 
   let results: I18nPublishItemResult[] = [];
@@ -5941,16 +5973,6 @@ async function sha256Hex(s: string) {
   const b = new TextEncoder().encode(s);
   const h = await crypto.subtle.digest("SHA-256", b);
   return Array.from(new Uint8Array(h)).map(x => x.toString(16).padStart(2, "0")).join("");
-}
-
-async function buildMockDoc(date: string): Promise<Doc> {
-  const answers: Answer[] = [
-    { rank: 1, word: "MOCK", confidence: undefined },
-    { rank: 2, word: "DATA", confidence: undefined },
-  ];
-  const fetchedAt = new Date().toISOString();
-  const checksum = `sha256:${await sha256Hex(JSON.stringify(answers))}`;
-  return { version: 1, puzzleDate: date, answers, source: "graphql", fetchedAt, checksum };
 }
 
 async function notifyCron(env: Env, title: string, lines: string[]): Promise<void> {
@@ -6793,17 +6815,13 @@ async function fetchGraphQLFor(env: Env, date: string): Promise<Doc> {
   const endpoint = (env.VOYAGER_GRAPHQL_ENDPOINT || env.GRAPHQL_ENDPOINT || "").trim();
   if (!endpoint) throw new Error("VOYAGER_GRAPHQL_ENDPOINT/GRAPHQL_ENDPOINT not set");
 
-  const allowSelfGraphQL = (env.ALLOW_SELF_GRAPHQL || "").toLowerCase() === "true";
   const isSelfEndpoint =
     endpoint.startsWith("self://") ||
     /pinpoint-worker/i.test(endpoint) ||
     endpoint.includes(".workers.dev");
 
   if (isSelfEndpoint) {
-    if (!allowSelfGraphQL) {
-      throw new Error("GRAPHQL_ENDPOINT 指向 Worker 自身，且未显式允许。请设置 ALLOW_SELF_GRAPHQL=true 或提供真实上游。");
-    }
-    return await buildMockDoc(date);
+    throw new Error("GRAPHQL_ENDPOINT points to the Worker itself; refusing to use a fake or recursive source");
   }
 
   let body: JsonRecord | undefined;
@@ -6975,13 +6993,15 @@ async function fetchGraphQLFor(env: Env, date: string): Promise<Doc> {
     }
   } catch {}
 
-  if (!answers.length) {
+  if (answers.length !== 5 || (!mainAnswer && !theme)) {
     const htmlDoc = await tryHtmlFallback();
     if (htmlDoc) return htmlDoc;
     try {
       return await callPlaywrightFallback(env, date, "auto");
     } catch {}
-    throw new Error("graphql: no answers");
+    throw new Error(
+      `graphql: core puzzle data incomplete (clues=${answers.length}/5, answer=${mainAnswer || theme ? "present" : "missing"})`,
+    );
   }
 
   const fetchedAt = new Date().toISOString();
@@ -7141,29 +7161,6 @@ export default {
         return new Response("not ready", { status: date === today ? 503 : 404 });
       }
       return new Response(body, { headers: { "content-type": "application/json" } });
-    }
-
-      case "adminSeed": {
-      const adminSecret = getAdminSecret(env);
-      if (!adminSecret) return new Response("admin secret not configured", { status: 503 });
-      const secret = url.searchParams.get("secret");
-      if (secret !== adminSecret) return new Response("unauthorized", { status: 401 });
-
-      const date = url.searchParams.get("date") ?? getBeijingTodayDate();
-      const doc: Doc = {
-        version: 1,
-        puzzleDate: date,
-        answers: [{ rank: 1, word: "MOCK" }, { rank: 2, word: "DATA" }],
-        source: "graphql",
-        fetchedAt: new Date().toISOString(),
-        checksum: "sha256:demo",
-        theme: "Demo Theme",
-        mainAnswer: "Demo Theme",
-      };
-      const s = JSON.stringify(doc);
-      await env.PP_DATA.put(keyOf(date), s, { expirationTtl: 60 * 60 * 24 * 400 });
-      await env.PP_DATA.put("pinpoint:last", s, { expirationTtl: 60 * 60 * 24 * 400 });
-      return new Response("seeded");
     }
 
       case "adminPreflightLinkedin": {

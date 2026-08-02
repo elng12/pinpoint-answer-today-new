@@ -16,7 +16,7 @@ export function PreviewQuickLinks({ latestEntries }: { latestEntries: ArchiveEnt
         </Link>
         {latest ? (
           <Link className="button-secondary" href={routes.detail(latest.slug)}>
-            Open latest verified answer
+            Open latest published answer
           </Link>
         ) : null}
         <Link className="button-secondary" href={routes.contact}>
@@ -28,7 +28,7 @@ export function PreviewQuickLinks({ latestEntries }: { latestEntries: ArchiveEnt
         <div style={{ marginTop: 28 }}>
           <p className="eyebrow" style={{ textAlign: "center" }}>Recent Published Answers</p>
           <p className="copy" style={{ marginTop: 4, marginBottom: 16, textAlign: "center" }}>
-            Verified entries from the archive. Spoiler-safe: clue words are shown, answers are not.
+            Published entries from the archive. Spoiler-safe: clue words are shown, answers are not.
           </p>
           <div className="grid grid-2">
             {recent.map((entry) => (

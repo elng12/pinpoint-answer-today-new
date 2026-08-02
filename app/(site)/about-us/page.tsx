@@ -21,7 +21,7 @@ export default function AboutPage() {
           <h1 className="section-title">About Pinpoint Answer Today</h1>
           <p className="copy" style={{ marginTop: 12 }}>
             Pinpoint Answer Today is a fan-built companion for the daily LinkedIn puzzle. We
-            publish machine-checked answers, spoiler-safe hints, and archive recaps.
+            publish captured puzzle answers, spoiler-safe hints, and archive recaps.
           </p>
         </section>
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
           <section className="surface" style={{ padding: 28 }}>
             <p className="eyebrow">Editorial Policy</p>
             <ul className="copy" style={{ marginTop: 12, paddingLeft: 20, lineHeight: 2 }}>
-              <li>We publish after the puzzle unlocks and the solve is verified.</li>
+              <li>We publish after the puzzle unlocks and the answer data passes automated checks.</li>
               <li>Hints are designed to be spoiler-safe; full reveals are opt-in.</li>
               <li>Archive pages are updated when better explanations become available.</li>
             </ul>
@@ -51,20 +51,20 @@ export default function AboutPage() {
 
         <section id="editorial-process" className="surface" style={{ padding: 28, scrollMarginTop: 100 }}>
           <p className="eyebrow">Editorial Process</p>
-          <h2 className="section-title" style={{ marginTop: 8 }}>How we verify each Pinpoint page</h2>
+          <h2 className="section-title" style={{ marginTop: 8 }}>How each Pinpoint page is checked</h2>
           <p className="copy" style={{ marginTop: 12 }}>
-            Each Pinpoint answer page combines live puzzle data, AI review, and automated checks so the
-            public page is useful, consistent, and traceable over time.
+            Each Pinpoint answer page starts with captured puzzle data. Automated checks block pages
+            with missing clues, a missing answer, or malformed content before release.
           </p>
           <ol className="copy" style={{ marginTop: 16, paddingLeft: 20, lineHeight: 2 }}>
-            <li>Live puzzle data gives us the clue set, answer, and publish timing for the day.</li>
-            <li>AI review checks the explanation, turning point, and clue-by-clue fit.</li>
-            <li>Automated quality checks validate data integrity and catch thin or malformed copy before release.</li>
+            <li>Captured puzzle data provides the clue set, answer, source label, and fetch time.</li>
+            <li>Some full walkthroughs use AI-generated explanations; quick guides may omit that extra layer.</li>
+            <li>Automated checks validate core data and catch malformed copy before release.</li>
           </ol>
           <p className="copy" style={{ marginTop: 12 }}>
-            Pages marked <strong>Machine-checked and AI-reviewed</strong> passed the automated review workflow.
-            Pages marked <strong>Auto-generated quick guide</strong> are based on live puzzle data and may offer a
-            lighter explanation layer until a fuller walkthrough is available.
+            A page says <strong>Automated page checks passed</strong> only when the release checks succeeded.
+            A <strong>guide built from captured puzzle data</strong> uses the recorded clues and answer with a
+            lighter explanation. We do not call a page human-reviewed unless a reviewer and review time are stored.
           </p>
         </section>
 
