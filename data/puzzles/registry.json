@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 825,
+    "slug": "pinpoint-answer-825",
+    "publishDate": "2026-08-03",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Date",
+      "Lychee",
+      "Apricot",
+      "Peach",
+      "Cherry"
+    ],
+    "mainAnswer": "Names of stone fruits (drupes)",
+    "category": "Names of stone fruits (drupes)",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Date, Lychee, Apricot, Peach, Cherry - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-03T07:05:47.715Z"
+  },
+  {
     "puzzleNumber": 824,
     "slug": "pinpoint-answer-824",
     "publishDate": "2026-08-02",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "First",
@@ -16,7 +36,7 @@
     "category": "Words that come after “safety”",
     "difficultyLevel": "Moderate",
     "shortSummary": "Pinpoint Answer Today asks: what links First, Pin, Net, Valve, In numbers - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-08-02T07:08:22.504Z"
+    "updatedAt": "2026-08-03T07:05:47.715Z"
   },
   {
     "puzzleNumber": 823,
