@@ -291,3 +291,15 @@
 未做：尚未提交、推送、部署 Worker，也未手动补发 #826；没有碰原工作区的未提交改动。
 复查日期：代码部署并补发 #826 后立即复查。
 下一步：获得生产授权后提交并推送修复、部署 Worker，再从真实 Worker 历史补发 #826，并验证 candidate、CI、Production、summary、详情页和 sitemap。
+
+## 2026-08-04 #826 Worker 部署与补发收口记录
+
+问题：#826 修复已在本地通过，但还缺少代码留痕、生产 Worker 部署、真实题目补发和正式站验收。
+证据：修复提交为 `1524773`，生产 Worker 版本为 `43782a4a-5c9e-4118-b769-49e5694799fd`；补发内容来自生产 Worker 历史接口，抓取时间为 `2026-08-04T08:47:28.877Z`，校验哈希为 `sha256:3663d727768190843c98d463f104ae8a2df966491fa60eadd4bc4a17af7a76b7`。
+本轮边界：只部署已验证的 Worker 修复并补发 #826；不改首页固定 SEO 文案、URL、canonical、sitemap 规则或原工作区的未提交内容。
+修改：修复分支已推送到 `origin/codex/pinpoint-publish-retry`；生产 Worker 已部署；#826 候选提交 `cca69cc` 经 GitHub Actions 自动提升到 `main` 提交 `f7d4c4d2157f345dca681abd5d94af3d25ea1304`；两次断开的手动长请求留下的同日过期运行标记已按精确键删除，没有伪造完成状态。
+验证：GitHub Actions `30893893971` 的数据、lint、类型、守卫、构建、提升和 Production 核验全部通过；准确 main SHA 的 Vercel Production 状态为 `ready`；正式站 summary 为 #826，详情页返回 HTTP 200，sitemap 包含 #826，候选分支数为 0；发布窗口诊断结论为“已发布”。
+剩余问题：详情页结构和发布状态检查通过，但关键词审计仍把标题没有完整短语 `LinkedIn Pinpoint 826 Answer` 以及数个线索组合词排名不足标为 P1。本轮没有为了通过词频检查改正文，也没有自动回滚已经正常上线的页面。
+未做：没有把修复分支合并进 `main`；后续重新部署 Worker 前，仍需先合并该修复，避免生产代码被旧版覆盖。
+复查日期：本次部署和补发后已立即复查；下一次 Worker 发布前复查修复是否已进入 `main`。
+下一步：单独审阅并合并 `codex/pinpoint-publish-retry`；关键词审计问题另开一轮判断规则是否合理，不和本次发布恢复混改。
