@@ -1518,7 +1518,12 @@ function buildWorkerFallbackPhrase(clue: string, answer: string): string {
       return `${normalizedBase} as ${article} ${singularLabel}`.trim();
     }
 
-    return normalizedBase;
+    const groupedThings = pattern.label.match(/^Things that come in groups of\s+(.+)$/i);
+    if (groupedThings?.[1]) {
+      return `${groupedThings[1].trim().toLowerCase()}-member set: ${normalizedBase}`;
+    }
+
+    return `Category example: ${normalizedBase}`;
   }
   return normalizedBase;
 }
@@ -4140,6 +4145,80 @@ function isSuccessfulEnrichResult(
   );
 }
 
+function buildEnrichedPayloadFromDraft({
+  siteBaseUrl,
+  puzzleDate,
+  doc,
+  puzzleNumber,
+  words,
+  draftData,
+  detailState,
+}: {
+  siteBaseUrl: string;
+  puzzleDate: string;
+  doc: Doc;
+  puzzleNumber: number;
+  words: string[];
+  draftData: JsonRecord;
+  detailState: PublicDetailState;
+}): JsonRecord {
+  const draftSections = asRecord(draftData.sections);
+  const draftAnalysis = asRecord(draftData.analysis);
+  const draftSlots = asRecord(draftData.slots);
+  const draftMetadata = asRecord(draftData.metadata);
+  const draftEvidence = extractProvidedEvidenceFields(draftData);
+  const fallbackPayload = createQuickPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+
+  return {
+    ...fallbackPayload,
+    analysis: {
+      ...fallbackPayload.analysis,
+      detailedBreakdown: String(draftAnalysis?.detailedBreakdown || fallbackPayload.analysis.detailedBreakdown),
+      dailyDebrief: String(draftAnalysis?.dailyDebrief || fallbackPayload.analysis.dailyDebrief),
+    },
+    summary: String(draftAnalysis?.heroSummary || draftData.summary || fallbackPayload.summary),
+    detailState,
+    ...draftEvidence,
+    seoDescription: typeof draftAnalysis?.seoDescription === "string" ? draftAnalysis.seoDescription : undefined,
+    seo: typeof draftAnalysis?.seoTitle === "string" ? { title: draftAnalysis.seoTitle } : undefined,
+    sections: buildEnrichedSections(draftSections, asRecord(fallbackPayload.sections)),
+    ...(draftSlots ? { slots: draftSlots } : {}),
+    metadata: {
+      publishedAtSource:
+        typeof draftMetadata?.publishedAtSource === "string"
+          ? String(draftMetadata.publishedAtSource)
+          : `${siteBaseUrl}/api/admin/generate-draft`,
+      publishedAtConfidence:
+        typeof draftMetadata?.publishedAtConfidence === "number"
+          ? Number(draftMetadata.publishedAtConfidence)
+          : 1,
+    },
+  };
+}
+
+export function buildValidatedTemplateFallbackPayload(
+  siteBaseUrl: string,
+  puzzleDate: string,
+  doc: Doc,
+  puzzleNumber: number,
+  words: string[],
+): JsonRecord {
+  const payload: JsonRecord = {
+    ...buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words),
+    detailState: "fallback_full",
+  };
+  const blockReason = getPublicFullAnalysisPayloadBlockReason({
+    puzzleDate,
+    doc,
+    enrichedPayload: payload,
+    puzzleNumber,
+  });
+  if (blockReason) {
+    throw new Error(`[new-site] template fallback failed final full-analysis guard: ${blockReason}`);
+  }
+  return payload;
+}
+
 async function publishToNewSiteGitHub(
   env: Env,
   puzzleDate: string,
@@ -5333,24 +5412,49 @@ async function enrichPublishToSite(
           }
 
           if (validateResp.valid) {
-            draftResp = { success: true, data: candidateData };
-            break;
+            const candidatePayload = buildEnrichedPayloadFromDraft({
+              siteBaseUrl,
+              puzzleDate,
+              doc,
+              puzzleNumber,
+              words,
+              draftData: asRecord(candidateData) ?? {},
+              detailState: "published",
+            });
+            const finalGuardReason = getPublicFullAnalysisPayloadBlockReason({
+              puzzleDate,
+              doc,
+              enrichedPayload: candidatePayload,
+              puzzleNumber,
+            });
+            if (!finalGuardReason) {
+              draftResp = { success: true, data: candidateData };
+              break;
+            }
+            qualityGateSummary = `final full-analysis guard: ${finalGuardReason}`;
+            lastValidationIssues = [{ message: qualityGateSummary }];
+          } else {
+            const issues = Array.isArray(validateResp.issues) ? validateResp.issues : [];
+            const errorIssues = issues.filter(
+              (i: Record<string, unknown>) => i?.level === "error",
+            );
+            lastValidationIssues = errorIssues
+              .map((i: Record<string, unknown>) => ({ message: String(i?.message || "") }))
+              .filter((issue) => issue.message);
+            qualityGateSummary = errorIssues
+              .map((i: Record<string, unknown>) => String(i?.message || ""))
+              .join(" | ");
           }
-
-          const issues = Array.isArray(validateResp.issues) ? validateResp.issues : [];
-          const errorIssues = issues.filter(
-            (i: Record<string, unknown>) => i?.level === "error",
-          );
-          lastValidationIssues = errorIssues
-            .map((i: Record<string, unknown>) => ({ message: String(i?.message || "") }))
-            .filter((issue) => issue.message);
-          qualityGateSummary = errorIssues
-            .map((i: Record<string, unknown>) => String(i?.message || ""))
-            .join(" | ");
 
           if (attempt >= draftAttempts) {
             publishDetailState = "fallback_full";
-            const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+            const fallbackPayload = buildValidatedTemplateFallbackPayload(
+              siteBaseUrl,
+              puzzleDate,
+              doc,
+              puzzleNumber,
+              words,
+            );
             const reason = `quality gate blocked after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
             await notifyCron(env, "⚠️ Worker 草稿质量未过线，已切换为保底全文页", [
               `日期: ${puzzleDate}`,
@@ -5372,7 +5476,7 @@ async function enrichPublishToSite(
             break;
           }
 
-          console.warn("[enrich] draft blocked by quality gates; regenerating (Worker LLM)", {
+          console.warn("[enrich] draft blocked by quality gates or final full-analysis guard; regenerating (Worker LLM)", {
             puzzleDate,
             puzzleNumber,
             attempt,
@@ -5386,7 +5490,13 @@ async function enrichPublishToSite(
           if (isRetryableSitePostError(error)) {
             if (shouldUseTemplateFallbackAfterRetryableDraftFailure(error, attempt, draftAttempts)) {
               publishDetailState = "fallback_full";
-              const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+              const fallbackPayload = buildValidatedTemplateFallbackPayload(
+                siteBaseUrl,
+                puzzleDate,
+                doc,
+                puzzleNumber,
+                words,
+              );
               await notifyCron(env, "⚠️ Worker 草稿请求超时，已切换为保底全文页", [
                 `日期: ${puzzleDate}`,
                 `谜题: #${puzzleNumber}`,
@@ -5423,7 +5533,7 @@ async function enrichPublishToSite(
       for (let attempt = 1; attempt <= draftAttempts; attempt += 1) {
         const draftModel = attempt === 1 ? enrichModel : retryModel;
         try {
-          draftResp = await postSiteJson(
+          const candidateResp = await postSiteJson(
             `${siteBaseUrl}/api/admin/generate-draft`,
             token,
             {
@@ -5435,7 +5545,66 @@ async function enrichPublishToSite(
             },
             timeoutMs,
           );
-          break;
+          const candidateData = asRecord(candidateResp.data);
+          if (!candidateResp.success || !candidateData) {
+            throw new Error(
+              typeof candidateResp.message === "string"
+                ? candidateResp.message
+                : "draft generation failed",
+            );
+          }
+          const candidatePayload = buildEnrichedPayloadFromDraft({
+            siteBaseUrl,
+            puzzleDate,
+            doc,
+            puzzleNumber,
+            words,
+            draftData: candidateData,
+            detailState: "published",
+          });
+          const finalGuardReason = getPublicFullAnalysisPayloadBlockReason({
+            puzzleDate,
+            doc,
+            enrichedPayload: candidatePayload,
+            puzzleNumber,
+          });
+          if (!finalGuardReason) {
+            draftResp = candidateResp;
+            break;
+          }
+
+          qualityGateSummary = `final full-analysis guard: ${finalGuardReason}`;
+          if (attempt >= draftAttempts) {
+            publishDetailState = "fallback_full";
+            const fallbackPayload = buildValidatedTemplateFallbackPayload(
+              siteBaseUrl,
+              puzzleDate,
+              doc,
+              puzzleNumber,
+              words,
+            );
+            draftResp = { success: true, data: fallbackPayload };
+            lastDraftError = null;
+            console.warn("[enrich] final full-analysis guard exhausted; switched to fallback_full", {
+              puzzleDate,
+              puzzleNumber,
+              attempt,
+              draftAttempts,
+              reason: qualityGateSummary,
+            });
+            break;
+          }
+
+          console.warn("[enrich] final full-analysis guard blocked; regenerating (Vercel)", {
+            puzzleDate,
+            puzzleNumber,
+            attempt,
+            draftAttempts,
+            model: draftModel,
+            nextModel: retryModel,
+            reason: qualityGateSummary,
+          });
+          await sleep(800 * attempt);
         } catch (error) {
           lastDraftError = error;
           const qualityGateError = isDraftQualityGateError(error);
@@ -5448,7 +5617,13 @@ async function enrichPublishToSite(
             : error instanceof Error ? error.message : String(error);
           if (attempt >= draftAttempts) {
             publishDetailState = "fallback_full";
-            const fallbackPayload = buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
+            const fallbackPayload = buildValidatedTemplateFallbackPayload(
+              siteBaseUrl,
+              puzzleDate,
+              doc,
+              puzzleNumber,
+              words,
+            );
             const reason = `${qualityGateError ? "quality gate blocked" : "retryable draft request failed"} after ${draftAttempts} attempt(s): ${qualityGateSummary}; used fallback_full`;
             await notifyCron(env, qualityGateError
               ? "⚠️ Worker 草稿质量未过线，已切换为保底全文页"
@@ -5500,38 +5675,18 @@ async function enrichPublishToSite(
     }
 
     const draftData = asRecord(draftResp.data);
-    const draftSections = asRecord(draftData?.sections);
-    const draftAnalysis = asRecord(draftData?.analysis);
-    const draftSlots = asRecord(draftData?.slots);
-    const draftMetadata = asRecord(draftData?.metadata);
-    const draftEvidence = extractProvidedEvidenceFields(draftData ?? {});
-
-    const fallbackPayload = createQuickPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words);
-    const enrichedPayload: JsonRecord = {
-      ...fallbackPayload,
-      analysis: {
-        ...fallbackPayload.analysis,
-        detailedBreakdown: String(draftAnalysis?.detailedBreakdown || fallbackPayload.analysis.detailedBreakdown),
-        dailyDebrief: String(draftAnalysis?.dailyDebrief || fallbackPayload.analysis.dailyDebrief),
-      },
-      summary: String(draftAnalysis?.heroSummary || draftData?.summary || fallbackPayload.summary),
+    if (!draftData) {
+      throw new Error("draft generation returned invalid data");
+    }
+    const enrichedPayload = buildEnrichedPayloadFromDraft({
+      siteBaseUrl,
+      puzzleDate,
+      doc,
+      puzzleNumber,
+      words,
+      draftData,
       detailState: publishDetailState,
-      ...draftEvidence,
-      seoDescription: typeof draftAnalysis?.seoDescription === "string" ? draftAnalysis.seoDescription : undefined,
-      seo: typeof draftAnalysis?.seoTitle === "string" ? { title: draftAnalysis.seoTitle } : undefined,
-      sections: buildEnrichedSections(draftSections, asRecord(fallbackPayload.sections)),
-      ...(draftSlots ? { slots: draftSlots } : {}),
-      metadata: {
-        publishedAtSource:
-          typeof draftMetadata?.publishedAtSource === "string"
-            ? String(draftMetadata.publishedAtSource)
-            : `${siteBaseUrl}/api/admin/generate-draft`,
-        publishedAtConfidence:
-          typeof draftMetadata?.publishedAtConfidence === "number"
-            ? Number(draftMetadata.publishedAtConfidence)
-            : 1,
-      },
-    };
+    });
 
     if (publishDetailState === "published") {
       await options.onDetailStateChange?.("validated");
@@ -5546,10 +5701,13 @@ async function enrichPublishToSite(
     });
     if (publishBlockReason) {
       publishDetailState = "fallback_full";
-      publishedPayload = {
-        ...buildTemplateFallbackPayload(siteBaseUrl, puzzleDate, doc, puzzleNumber, words),
-        detailState: publishDetailState,
-      };
+      publishedPayload = buildValidatedTemplateFallbackPayload(
+        siteBaseUrl,
+        puzzleDate,
+        doc,
+        puzzleNumber,
+        words,
+      );
       console.warn("[enrich] switched to fallback_full before GitHub publish", {
         puzzleDate,
         puzzleNumber,
@@ -7367,10 +7525,13 @@ export default {
         theme: answer,
         mainAnswer: answer,
       };
-      const payload = {
-        ...buildTemplateFallbackPayload(getPublicSiteBaseUrl(env), puzzleDate, doc, puzzleNumber, rawWords),
-        detailState: "fallback_full",
-      };
+      const payload = buildValidatedTemplateFallbackPayload(
+        getPublicSiteBaseUrl(env),
+        puzzleDate,
+        doc,
+        puzzleNumber,
+        rawWords,
+      );
       const candidateBranch = buildPinpointCandidateBranchName(env, puzzleDate, slug);
 
       await publishToNewSiteGitHub(env, puzzleDate, doc, payload, puzzleNumber);
