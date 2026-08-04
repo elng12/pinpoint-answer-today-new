@@ -3795,6 +3795,139 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
   console.log("ok: candidate branch watchdog closes or escalates stuck candidates");
 }
 
+async function checkWorkerFinalGuardRegeneratesAndUsesValidatedFallback() {
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    buildTemplateFallbackDetailRecord: (
+      siteBaseUrl: string,
+      puzzleDate: string,
+      doc: Record<string, unknown>,
+      puzzleNumber: number,
+      words: string[],
+    ) => {
+      bodyMode: string;
+      pageExperienceMode: string;
+      clueRows: Array<{ clue: string; phraseExample?: string }>;
+    };
+    buildValidatedTemplateFallbackPayload: (
+      siteBaseUrl: string,
+      puzzleDate: string,
+      doc: Record<string, unknown>,
+      puzzleNumber: number,
+      words: string[],
+    ) => Record<string, unknown>;
+    resolvePublicDetailExperienceDecision: (input: {
+      incoming: Record<string, unknown>;
+      existingBranchSummary: null;
+      primaryBranchSummary: null;
+    }) => { action: string; record?: Record<string, unknown>; reason?: string };
+    validateWorkerPublishEligibility: (input: {
+      slug: string;
+      detail: Record<string, unknown>;
+      registryEntry: Record<string, unknown>;
+      expectedMode: "full-analysis";
+      answerFirstPublicEnabled: boolean;
+    }) => { ok: boolean; issues: Array<{ code: string; level: string }> };
+  };
+
+  const words = [
+    "Ghosts in Pac-Man",
+    "Grand Slams in tennis",
+    "Bases in DNA",
+    "Nations in the United Kingdom",
+    "Train spaces in Monopoly (1/side)",
+  ];
+  const doc = {
+    version: 1,
+    puzzleDate: "2026-08-04",
+    answers: words.map((word, index) => ({ rank: index + 1, word })),
+    source: "fallback-local",
+    fetchedAt: "2026-08-04T07:25:33.210Z",
+    checksum: "sha256:worker-backed-826-regression-fixture",
+    theme: "Things that come in groups of four",
+    mainAnswer: "Things that come in groups of four",
+  };
+  const detail = workerModule.buildTemplateFallbackDetailRecord(
+    "https://pinpointanswertoday.app",
+    "2026-08-04",
+    doc,
+    826,
+    words,
+  );
+  const decision = workerModule.resolvePublicDetailExperienceDecision({
+    incoming: detail,
+    existingBranchSummary: null,
+    primaryBranchSummary: null,
+  });
+
+  assert.equal(
+    decision.action,
+    "use-full-analysis",
+    "#826 fallback must stay full-analysis instead of being downgraded to a blocked light explainer",
+  );
+  assert.equal(detail.bodyMode, "standard", "#826 fallback must keep a non-short body mode");
+  assert.equal(
+    detail.pageExperienceMode,
+    "full-analysis",
+    "#826 fallback must keep the full-analysis page experience",
+  );
+  assert.ok(
+    detail.clueRows.every((row) => {
+      const clue = row.clue.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+      const phrase = String(row.phraseExample || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+      return phrase && phrase !== clue;
+    }),
+    "#826 fallback clue rows must add a real category example instead of repeating each clue",
+  );
+
+  const payload = workerModule.buildValidatedTemplateFallbackPayload(
+    "https://pinpointanswertoday.app",
+    "2026-08-04",
+    doc,
+    826,
+    words,
+  );
+  assert.equal(payload.detailState, "fallback_full", "validated fallback must stay explicitly fallback_full");
+  const eligibility = workerModule.validateWorkerPublishEligibility({
+    slug: "pinpoint-answer-826",
+    detail: decision.record ?? detail,
+    registryEntry: {
+      puzzleNumber: 826,
+      slug: "pinpoint-answer-826",
+      publishDate: "2026-08-04",
+      status: "live",
+      detailState: "fallback_full",
+      clues: words,
+      mainAnswer: doc.mainAnswer,
+    },
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+  });
+  assert.equal(eligibility.ok, true, "#826 validated fallback must pass the final shared publish gate");
+
+  assert.throws(
+    () => workerModule.buildValidatedTemplateFallbackPayload(
+      "https://pinpointanswertoday.app",
+      "2026-08-04",
+      doc,
+      826,
+      words.slice(0, 4),
+    ),
+    /template fallback failed final full-analysis guard/,
+    "an invalid fallback must fail closed instead of reaching GitHub",
+  );
+
+  const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
+  assert.ok(
+    workerSource.includes("final full-analysis guard blocked; regenerating (Vercel)") &&
+      workerSource.includes("final full-analysis guard; regenerating (Worker LLM)") &&
+      workerSource.includes("buildValidatedTemplateFallbackPayload"),
+    "both draft paths must retry final-guard failures and only use a fallback that passes the same final guard",
+  );
+
+  console.log("ok: Worker retries final publish guards and validates #826 fallback before GitHub");
+}
+
 async function checkPublicVerificationCopyMatchesRecordedProcess() {
   const publicCopyFiles = [
     "components/detail/PuzzleDetail.tsx",
@@ -4383,6 +4516,7 @@ async function main() {
   await checkWorkerBlocksOverusedAnswersBeforeGithubWrite();
   await checkMainFailureContentRecoveryCreatesAutoPromotedCandidate();
   await checkCandidateBranchWatchdogClosesStuckBranches();
+  await checkWorkerFinalGuardRegeneratesAndUsesValidatedFallback();
   await checkPublicVerificationCopyMatchesRecordedProcess();
   await checkLiveWorkerCoreDataFailsClosed();
   await checkClueEvidenceTableStaysHidden();
