@@ -2,6 +2,9 @@
   "name": "pinpoint-worker",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
@@ -10,11 +13,11 @@
     "tail": "wrangler tail"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250310.0",
+    "@cloudflare/workers-types": "5.20260811.1",
     "typescript": "^5.7.3",
-    "wrangler": "4.86.0"
+    "wrangler": "4.120.1"
   },
   "overrides": {
-    "ws": "8.20.1"
+    "ws": "8.21.0"
   }
 }
