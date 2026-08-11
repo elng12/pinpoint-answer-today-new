@@ -4131,6 +4131,16 @@ function isPrimaryNewSiteBranch(branch: string): boolean {
   return branch.trim() === "main";
 }
 
+export function resolvePinpointRegistryReadRefs(
+  branch: string,
+  baseBranch: string,
+  isCandidateBranch: boolean,
+): string[] {
+  const target = branch.trim();
+  const base = baseBranch.trim();
+  return isCandidateBranch && base && base !== target ? [target, base] : [target];
+}
+
 function isSuccessfulEnrichResult(
   result: EnrichPublishResult,
 ): result is EnrichPublishResult & {
@@ -4706,10 +4716,18 @@ async function publishToNewSiteGitHub(
   }
 
   // ── 2. Update registry.json ──
-  const registryFile = await getFile("data/puzzles/registry.json");
+  const registryPath = "data/puzzles/registry.json";
+  const registryReadRefs = resolvePinpointRegistryReadRefs(branch, baseBranch, isCandidateBranch);
+  let registryFile: { content: string; sha: string } | null = null;
+  for (const ref of registryReadRefs) {
+    registryFile = await getFile(registryPath, ref);
+    if (registryFile) break;
+  }
   let registryChanged = false;
   if (!registryFile) {
-    console.warn("[new-site] registry.json not found, skipping registry update");
+    throw new Error(
+      `[new-site] registry.json not found on ${registryReadRefs.join(", ")}; refusing GitHub publish`,
+    );
   } else {
     const registryRaw = decodeGitHubFileContent(registryFile.content);
     const registry = JSON.parse(registryRaw) as Array<Record<string, unknown>>;
@@ -4777,7 +4795,7 @@ async function publishToNewSiteGitHub(
     }
 
     registryChanged = stageFile(
-      "data/puzzles/registry.json",
+      registryPath,
       JSON.stringify(nextRegistry, null, 2),
       registryFile,
     );
