@@ -1,0 +1,217 @@
+{
+  "puzzleNumber": 832,
+  "slug": "pinpoint-answer-832",
+  "publishDate": "2026-08-10",
+  "isoDate": "2026-08-10",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Brick",
+    "Maroon",
+    "Tomato",
+    "Scarlet",
+    "Cherry"
+  ],
+  "answer": "Shades of red",
+  "category": "Shades of red",
+  "wordHints": {
+    "Brick": "\"Category example: Brick\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Maroon": "\"Category example: Maroon\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "Tomato": "\"Category example: Tomato\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "Scarlet": "\"Scarlet\" is the clue that makes the shared answer concrete enough to test across the full board.",
+    "Cherry": "\"Category example: Cherry\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+  },
+  "spoilerHints": {
+    "Brick": "Brick should be tested as part of shades of red, not as a standalone reference.",
+    "Maroon": "Keep Maroon in mind, then see whether Scarlet supports the same answer.",
+    "Tomato": "Tomato works best after the board narrows toward shades of red.",
+    "Scarlet": "Scarlet is the clue that makes shades of red concrete enough to test across the full board.",
+    "Cherry": "Keep Cherry in mind, then see whether Scarlet supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, Brick and Maroon pointed in a few different directions, so the board still felt wider than one exact category. One tempting read was \"a broader umbrella topic\". Brick, Maroon can point toward several nearby themes before one clue makes the exact category level visible. Scarlet is the clue that narrows the board into one category with clearer boundaries. Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on shades, examples like \"Category example: Brick\" and \"Category example: Maroon\" stopped feeling loose and started landing cleanly.",
+    "Tomato, Scarlet, Cherry keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Shades of red\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Shades of red, which is why \"Shades of red\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started by testing Brick and Maroon, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.",
+    "The turn came when I let \"Scarlet\" lead the solve. After that, Tomato and Cherry became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.",
+    "For the final pass, I checked Brick, Maroon, Tomato, Scarlet, Cherry one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.",
+    "The answer was \"Shades of red\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Brick\" and \"Maroon\" can look like they belong to different categories at first",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "\"Scarlet\" is what makes the answer feel concrete instead of broad",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once \"Scarlet\" sharpens the answer",
+      "body": "Once \"Scarlet\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on shades",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "Brick",
+        "examplePhrase": "Category example: Brick",
+        "connectionExplained": "\"Category example: Brick\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Maroon",
+        "examplePhrase": "Category example: Maroon",
+        "connectionExplained": "\"Category example: Maroon\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      },
+      {
+        "clue": "Tomato",
+        "examplePhrase": "Category example: Tomato",
+        "connectionExplained": "\"Category example: Tomato\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+      },
+      {
+        "clue": "Scarlet",
+        "examplePhrase": "Category example: Scarlet",
+        "connectionExplained": "\"Scarlet\" is the clue that makes the shared answer concrete enough to test across the full board."
+      },
+      {
+        "clue": "Cherry",
+        "examplePhrase": "Category example: Cherry",
+        "connectionExplained": "\"Category example: Cherry\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Brick\" and \"Maroon\" in LinkedIn Pinpoint #832?",
+      "answer": "The answer is \"Shades of red\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "How do \"Brick\" and \"Maroon\" connect in LinkedIn Pinpoint #832?",
+      "answer": "The connection is a category board focused on shades. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Why is \"Scarlet\" the key clue in LinkedIn Pinpoint #832?",
+      "answer": "\"Scarlet\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Brick and Maroon pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Brick, Maroon can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Scarlet",
+    "pivot": "I started by testing Brick and Maroon, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.\n\nThe turn came when I let \"Scarlet\" lead the solve. After that, Tomato and Cherry became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.\n\nFor the final pass, I checked Brick, Maroon, Tomato, Scarlet, Cherry one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.\n\nThe answer was \"Shades of red\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on shades, examples like \"Category example: Brick\" and \"Category example: Maroon\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "Scarlet",
+    "whyDecisive": "Scarlet is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Scarlet lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Brick",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Brick",
+      "nonObviousWhy": "\"Category example: Brick\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Category example: Brick",
+      "phraseExample": "Category example: Brick"
+    },
+    {
+      "clue": "Maroon",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Maroon",
+      "nonObviousWhy": "\"Category example: Maroon\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Maroon",
+      "phraseExample": "Category example: Maroon"
+    },
+    {
+      "clue": "Tomato",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Tomato",
+      "nonObviousWhy": "\"Category example: Tomato\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+      "searchableContext": "Category example: Tomato",
+      "phraseExample": "Category example: Tomato"
+    },
+    {
+      "clue": "Scarlet",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Scarlet",
+      "nonObviousWhy": "\"Scarlet\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "Category example: Scarlet",
+      "phraseExample": "Category example: Scarlet"
+    },
+    {
+      "clue": "Cherry",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Cherry",
+      "nonObviousWhy": "\"Category example: Cherry\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Cherry",
+      "phraseExample": "Category example: Cherry"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Brick\" and \"Maroon\" in LinkedIn Pinpoint #832?",
+      "answer": "The answer is \"Shades of red\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": "Brick"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Brick\" and \"Maroon\" connect in LinkedIn Pinpoint #832?",
+      "answer": "The connection is a category board focused on shades. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": "Brick"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Scarlet\" the key clue in LinkedIn Pinpoint #832?",
+      "answer": "\"Scarlet\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "Scarlet"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on shades",
+    "relatedEntities": [
+      "Category example: Brick",
+      "Category example: Maroon",
+      "Category example: Tomato",
+      "Category example: Scarlet",
+      "Category example: Cherry"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on shades",
+      "Category example: Brick",
+      "Category example: Maroon",
+      "Category example: Tomato",
+      "Category example: Scarlet"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Brick, Maroon can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Scarlet is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Tomato, Scarlet, Cherry keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Shades of red"
+}

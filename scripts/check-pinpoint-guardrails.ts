@@ -3402,6 +3402,42 @@ async function checkCandidateBranchWorkflowAutoPromotes() {
   console.log("ok: candidate branches auto-promote through machine checks and production verification");
 }
 
+async function checkFreshCandidateRegistryFallsBackToMain() {
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    resolvePinpointRegistryReadRefs: (
+      branch: string,
+      baseBranch: string,
+      isCandidateBranch: boolean,
+    ) => string[];
+  };
+
+  assert.deepEqual(
+    workerModule.resolvePinpointRegistryReadRefs(
+      "pinpoint/candidate/2026-08-10-pinpoint-answer-832",
+      "main",
+      true,
+    ),
+    ["pinpoint/candidate/2026-08-10-pinpoint-answer-832", "main"],
+    "a fresh candidate must fall back to main when reading registry.json",
+  );
+  assert.deepEqual(
+    workerModule.resolvePinpointRegistryReadRefs("main", "main", false),
+    ["main"],
+    "a primary publish must only read registry.json from main",
+  );
+
+  const workerSource = await readProjectFile("worker/src/index.ts");
+  assert.ok(
+    workerSource.includes("for (const ref of registryReadRefs)") &&
+      workerSource.includes("registry.json not found on ${registryReadRefs.join") &&
+      workerSource.includes("refusing GitHub publish"),
+    "a missing registry on both candidate and main must fail before committing a public detail file",
+  );
+
+  console.log("ok: fresh candidates read registry from main and fail closed when it is unavailable");
+}
+
 async function checkVercelProductionClosureRejectsPreviewSuccess() {
   const sha = "d6b50de395e163ce41ec823126389aef3d65347d";
   const previewDeployment = {
@@ -4511,6 +4547,7 @@ async function main() {
   await checkReleaseQueueDryRunOpsScript();
   await checkReleaseQueueObservationOpsScript();
   await checkReleaseQueueStatusCheckRouteAndOps();
+  await checkFreshCandidateRegistryFallsBackToMain();
   await checkCandidateBranchWorkflowAutoPromotes();
   await checkVercelProductionClosureRejectsPreviewSuccess();
   await checkWorkerBlocksOverusedAnswersBeforeGithubWrite();

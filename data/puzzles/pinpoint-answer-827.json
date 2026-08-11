@@ -1,0 +1,233 @@
+{
+  "puzzleNumber": 827,
+  "slug": "pinpoint-answer-827",
+  "publishDate": "2026-08-05",
+  "isoDate": "2026-08-05",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Drill",
+    "Marmoset",
+    "Capuchin",
+    "Macaque",
+    "Baboon"
+  ],
+  "answer": "Types of monkeys",
+  "category": "Types of monkeys",
+  "wordHints": {
+    "Drill": "the name 'Drill' is shared with a tool, but also refers to a type of monkey.",
+    "Marmoset": "Marmoset is a type of small monkey, not a tool or a broad category.",
+    "Capuchin": "Capuchin is a type of monkey, fitting the category.",
+    "Macaque": "Macaque is a type of monkey, fitting the category.",
+    "Baboon": "Baboon is a type of monkey, fitting the category."
+  },
+  "spoilerHints": {
+    "Drill": "Treat Drill as one recognizable member of types of monkeys, not as a broad topic on its own.",
+    "Marmoset": "Marmoset helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Capuchin": "Capuchin is the clue that makes types of monkeys specific enough to verify across the whole board.",
+    "Macaque": "Treat Macaque as one recognizable member of types of monkeys, not as a broad topic on its own.",
+    "Baboon": "Baboon helps more once you ask what kind of thing it is rather than where you have seen it before."
+  },
+  "articleBlocks": [
+    "I first thought the answer might be related to tools, given the clue 'Drill'.",
+    "However, the other clues didn't seem to fit this category.",
+    "The clue 'Marmoset' made me realize the connection to monkey types.",
+    "I then looked into the other clues and found that they all referred to types of monkeys.",
+    "The clue 'Drill' actually refers to a type of monkey, the Drill monkey.",
+    "The other clues, 'Marmoset', 'Capuchin', 'Macaque', and 'Baboon', all fit this category as well.",
+    "The answer is a specific category of primates, which are types of monkeys.",
+    "In hindsight, the clues were not as misleading as they seemed at first.",
+    "The key was to consider alternative categories and not get stuck on the first clue.",
+    "This puzzle taught me to be more careful and open-minded when solving."
+  ],
+  "solutionNarrative": [
+    "Drill and Marmoset first pulled me toward tool types, so that was the first path I tested. It held together for a moment, but marmoset never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating marmoset as just another clue and asked what kind of monkey each clue could describe. I was no longer trying to rescue tool types; I was checking whether Drill and Marmoset could survive the same tighter read.",
+    "Then I used Capuchin, Macaque, and Baboon as the confirmation round. Capuchin, Macaque, and Baboon stayed inside monkeys, so the answer felt earned instead of guessed. The answer was Types of monkeys."
+  ],
+  "lessons": [
+    {
+      "title": "\"Drill\" and \"Marmoset\" can look like they belong to different categories at first",
+      "body": "\"Drill\" and \"Marmoset\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Marmoset\" is what makes monkey feel concrete instead of broad",
+      "body": "Marmoset organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "For Pinpoint 827, every clue should stay at the monkey level",
+      "body": "Be careful of misleading clues and consider alternative categories."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on monkeys",
+    "fastStrategy": "\"Drill\" and \"Marmoset\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Drill",
+        "examplePhrase": "Drill monkey",
+        "connectionExplained": "the name 'Drill' is shared with a tool, but also refers to a type of monkey."
+      },
+      {
+        "clue": "Marmoset",
+        "examplePhrase": "small monkey species",
+        "connectionExplained": "Marmoset is a type of small monkey, not a tool or a broad category."
+      },
+      {
+        "clue": "Capuchin",
+        "examplePhrase": "medium-sized monkey species",
+        "connectionExplained": "Capuchin is a type of monkey, fitting the category."
+      },
+      {
+        "clue": "Macaque",
+        "examplePhrase": "medium-sized monkey species",
+        "connectionExplained": "Macaque is a type of monkey, fitting the category."
+      },
+      {
+        "clue": "Baboon",
+        "examplePhrase": "large monkey species",
+        "connectionExplained": "Baboon is a type of monkey, fitting the category."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Which type-level category connects \"Drill\" and \"Marmoset\" in LinkedIn Pinpoint #827?",
+      "answer": "The answer is \"Types of monkeys\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Drill\" and \"Marmoset\" connect in LinkedIn Pinpoint #827?",
+      "answer": "The connection is that all 5 clues point to recognizable types of monkeys. Marmoset is the clue that makes the category specific enough to verify across the full board."
+    },
+    {
+      "question": "Why is \"Marmoset\" the key clue in LinkedIn Pinpoint #827?",
+      "answer": "Marmoset is the turning clue because \"small monkey species\" makes the shared category frame explicit. It also makes Drill read cleanly as \"Drill monkey\". The puzzle feels tricky because the first clue 'Drill' can mislead the solver into thinking about tools instead of monkey types."
+    },
+    {
+      "question": "How does \"Drill\" fit as a monkey in LinkedIn Pinpoint #827?",
+      "answer": "\"Drill\" reads as \"Drill monkey\", which is a recognizable monkey. That keeps the board specific instead of broadly themed."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Drill, Marmoset, and Capuchin do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"tool categories\" can feel plausible before one clue makes the answer feel concrete. Marmoset is the clue that finally breaks that first read and makes monkeys feel concrete.",
+    "falseStarts": [
+      "tool categories",
+      "broad primate groups"
+    ],
+    "whyFalseStartPlausible": [
+      "The other clues don't fit tool categories, and the connection to monkey types becomes clear with 'Marmoset'.",
+      "tool categories feels plausible early on, but it falls apart once marmoset demands a more exact reading."
+    ],
+    "breakingClue": "Marmoset",
+    "pivot": "The solve turned when I stopped treating marmoset as just another clue and asked what kind of monkey each clue could describe. I was no longer trying to rescue tool types; I was checking whether Drill and Marmoset could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them as monkeys explains the board much more cleanly. Entries like Drill, Marmoset, and Capuchin stop feeling disconnected and start looking like they belong together. Once marmoset is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle feels tricky because the first clue 'Drill' can mislead the solver into thinking about tools instead of monkey types."
+  },
+  "turningPoint": {
+    "clue": "Marmoset",
+    "whyDecisive": "The clue 'Marmoset' made me realize the connection to monkey types.",
+    "whatChangedAfterIt": "Once Marmoset landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Drill",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "Drill monkey",
+      "nonObviousWhy": "the name 'Drill' is shared with a tool, but also refers to a type of monkey.",
+      "searchableContext": "unknown",
+      "phraseExample": "unknown"
+    },
+    {
+      "clue": "Marmoset",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "small monkey species",
+      "nonObviousWhy": "Marmoset is a type of small monkey, not a tool or a broad category.",
+      "searchableContext": "from the French 'marmouset', meaning 'little monk'",
+      "phraseExample": "from the French 'marmouset', meaning 'little monk'"
+    },
+    {
+      "clue": "Capuchin",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "medium-sized monkey species",
+      "nonObviousWhy": "Capuchin is a type of monkey, fitting the category.",
+      "searchableContext": "from the French 'capucin', referring to the hood-like hair on their heads",
+      "phraseExample": "from the French 'capucin', referring to the hood-like hair on their heads"
+    },
+    {
+      "clue": "Macaque",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "medium-sized monkey species",
+      "nonObviousWhy": "Macaque is a type of monkey, fitting the category.",
+      "searchableContext": "from the Portuguese 'macaco', meaning 'monkey'",
+      "phraseExample": "from the Portuguese 'macaco', meaning 'monkey'"
+    },
+    {
+      "clue": "Baboon",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "large monkey species",
+      "nonObviousWhy": "Baboon is a type of monkey, fitting the category.",
+      "searchableContext": "from the Arabic 'baban', meaning 'dog' or 'baboon'",
+      "phraseExample": "from the Arabic 'baban', meaning 'dog' or 'baboon'"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Drill\" and \"Marmoset\" in LinkedIn Pinpoint #827?",
+      "answer": "The answer is \"Types of monkeys\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Drill"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Drill\" and \"Marmoset\" connect in LinkedIn Pinpoint #827?",
+      "answer": "The connection is that all 5 clues point to recognizable types of monkeys. Marmoset is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Drill"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Marmoset\" the key clue in LinkedIn Pinpoint #827?",
+      "answer": "Marmoset is the turning clue because \"small monkey species\" makes the shared category frame explicit. It also makes Drill read cleanly as \"Drill monkey\". The puzzle feels tricky because the first clue 'Drill' can mislead the solver into thinking about tools instead of monkey types.",
+      "tiedClue": "Marmoset"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Drill\" fit as a monkey in LinkedIn Pinpoint #827?",
+      "answer": "\"Drill\" reads as \"Drill monkey\", which is a recognizable monkey. That keeps the board specific instead of broadly themed.",
+      "tiedClue": "Drill"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on monkeys",
+    "relatedEntities": [
+      "Drill monkey",
+      "small monkey species",
+      "medium-sized monkey species",
+      "medium-sized monkey species",
+      "large monkey species"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on monkeys",
+      "\"Drill\" and \"Marmoset\" can look like they belong to different categories at first",
+      "\"Marmoset\" is what makes monkey feel concrete instead of broad",
+      "For Pinpoint 827, every clue should stay at the monkey level",
+      "unknown",
+      "from the French 'marmouset', meaning 'little monk'"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "tool types",
+      "whyPlausible": "The other clues don't fit tool categories, and the connection to monkey types becomes clear with 'Marmoset'.",
+      "whyRejected": "Once Marmoset lands, the final answer explains the board more cleanly than tool types."
+    },
+    {
+      "label": "tool categories",
+      "whyPlausible": "tool categories feels plausible early on, but it falls apart once marmoset demands a more exact reading.",
+      "whyRejected": "Once Marmoset lands, the final answer explains the board more cleanly than tool categories."
+    }
+  ],
+  "setValidationSummary": "Capuchin, Macaque, Baboon all behave like specific members of Types of monkeys, so the board stays precise instead of drifting into a broader umbrella topic.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of monkeys"
+}

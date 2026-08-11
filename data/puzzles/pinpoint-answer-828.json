@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 828,
+  "slug": "pinpoint-answer-828",
+  "publishDate": "2026-08-06",
+  "isoDate": "2026-08-06",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Balance",
+    "Limits",
+    "The wall",
+    "The record",
+    "The cuff"
+  ],
+  "answer": "Words that come after “off”",
+  "category": "Words that come after “off”",
+  "wordHints": {
+    "Balance": "\"off Balance\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Limits": "\"off Limits\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "The wall": "Once the shared word is in place, \"off The wall\" reads like ordinary language instead of a forced compound.",
+    "The record": "\"off The record\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "The cuff": "\"off The cuff\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Balance": "Try reading Balance as part of a familiar phrase in words that come after “off” instead of as a standalone word.",
+    "Limits": "Limits works better once you test a fixed phrase pattern rather than a broad topic.",
+    "The wall": "Look for a natural expression that absorbs The wall cleanly before locking the board.",
+    "The record": "The record is the clue that makes the phrase pattern in words that come after “off” concrete enough to test.",
+    "The cuff": "The cuff works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. A nearby read was \"Balance and Limits phrase pairing\". Balance, Limits can support more than one phrase read before The record shows where the repeated word belongs. The record behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"The record as an outlier clue\". The record can look like the odd clue if the earlier words are read without a shared phrase slot. Once The record locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"off Balance\" and \"off Limits\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "off The wall, off The record, off The cuff show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “off”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “off”\" fits better than \"Balance and Limits phrase pairing\" or \"The record as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Balance and first tried Balance and Limits phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"The record\" feel exact.",
+    "Once \"The record\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used The wall and The cuff as the confirmation round. The strong solve was not just that two clues worked; it was that Balance, Limits, The wall, The record, The cuff could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come after “off”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Balance\" and \"Limits\"",
+      "body": "\"Balance\" and \"Limits\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"The record\" changes the off pattern from guess to test",
+      "body": "Once \"The record\" lands, place the same word before the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 828, the off phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Balance\" and \"Limits\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Balance",
+        "examplePhrase": "off Balance",
+        "connectionExplained": "\"off Balance\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Limits",
+        "examplePhrase": "off Limits",
+        "connectionExplained": "\"off Limits\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "The wall",
+        "examplePhrase": "off The wall",
+        "connectionExplained": "Once the shared word is in place, \"off The wall\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "The record",
+        "examplePhrase": "off The record",
+        "connectionExplained": "\"off The record\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "The cuff",
+        "examplePhrase": "off The cuff",
+        "connectionExplained": "\"off The cuff\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Balance\" and \"Limits\" in LinkedIn Pinpoint #828?",
+      "answer": "The answer is \"Words that come after “off”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Balance\" and \"Limits\" connect in LinkedIn Pinpoint #828?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"The record\" the key clue in LinkedIn Pinpoint #828?",
+      "answer": "\"The record\" is the strongest clue because \"off The record\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "falseStarts": [
+      "Balance and Limits phrase pairing",
+      "The record as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Balance, Limits can support more than one phrase read before The record shows where the repeated word belongs.",
+      "The record can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "The record",
+    "pivot": "I started with Balance and first tried Balance and Limits phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"The record\" feel exact.\n\nOnce \"The record\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used The wall and The cuff as the confirmation round. The strong solve was not just that two clues worked; it was that Balance, Limits, The wall, The record, The cuff could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come after “off”\".",
+    "fullBoardConfirmation": "Another easy trap was \"The record as an outlier clue\". The record can look like the odd clue if the earlier words are read without a shared phrase slot. Once The record locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "The record",
+    "whyDecisive": "The record is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once The record lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Balance",
+      "surfaceMisread": "Balance and Limits phrase pairing",
+      "resolvedPhraseOrMember": "off Balance",
+      "nonObviousWhy": "\"off Balance\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "off Balance",
+      "phraseExample": "off Balance"
+    },
+    {
+      "clue": "Limits",
+      "surfaceMisread": "Balance and Limits phrase pairing",
+      "resolvedPhraseOrMember": "off Limits",
+      "nonObviousWhy": "\"off Limits\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "off Limits",
+      "phraseExample": "off Limits"
+    },
+    {
+      "clue": "The wall",
+      "surfaceMisread": "Balance and Limits phrase pairing",
+      "resolvedPhraseOrMember": "off The wall",
+      "nonObviousWhy": "Once the shared word is in place, \"off The wall\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "off The wall",
+      "phraseExample": "off The wall"
+    },
+    {
+      "clue": "The record",
+      "surfaceMisread": "Balance and Limits phrase pairing",
+      "resolvedPhraseOrMember": "off The record",
+      "nonObviousWhy": "\"off The record\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "off The record",
+      "phraseExample": "off The record"
+    },
+    {
+      "clue": "The cuff",
+      "surfaceMisread": "Balance and Limits phrase pairing",
+      "resolvedPhraseOrMember": "off The cuff",
+      "nonObviousWhy": "\"off The cuff\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "off The cuff",
+      "phraseExample": "off The cuff"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Balance\" and \"Limits\" in LinkedIn Pinpoint #828?",
+      "answer": "The answer is \"Words that come after “off”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Balance"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Balance\" and \"Limits\" connect in LinkedIn Pinpoint #828?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Balance"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"The record\" the key clue in LinkedIn Pinpoint #828?",
+      "answer": "\"The record\" is the strongest clue because \"off The record\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "The record"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "off Balance",
+      "off Limits",
+      "off The wall",
+      "off The record",
+      "off The cuff"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "off Balance",
+      "off Limits",
+      "off The wall",
+      "off The record"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Balance and Limits phrase pairing",
+      "whyPlausible": "Balance, Limits can support more than one phrase read before The record shows where the repeated word belongs.",
+      "whyRejected": "The record behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "The record as an outlier clue",
+      "whyPlausible": "The record can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once The record locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "off The wall, off The record, off The cuff show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}
