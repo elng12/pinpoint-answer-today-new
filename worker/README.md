@@ -12,6 +12,8 @@ Cloudflare Worker — 负责定时抓取 LinkedIn Pinpoint 数据、发布到新
 
 ## 本地开发
 
+需要 Node.js 22 或更高版本；新版 Wrangler 不再支持 Node.js 20。
+
 ```bash
 cd worker
 npm install

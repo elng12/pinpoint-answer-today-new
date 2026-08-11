@@ -315,3 +315,14 @@
 未做：尚未推送、开 PR、合并、部署生产 Worker、更新正式站或清理 #827-#832 旧候选分支；本地验证不能代替 Production 验收。
 复查日期：PR 检查通过后立即复查；合并和生产 Worker 部署后再次检查准确 SHA、首页、summary、#827-#832 详情、sitemap 和候选分支数。
 下一步：提交独立修复分支并开 PR；获得合并和生产授权后发布，再完成线上收口。
+
+## 2026-08-11 Worker 发布工具依赖安全升级记录
+
+问题：`worker/` 使用的 Wrangler 4.86.0 及其间接依赖被 `npm audit` 报告 6 个漏洞，其中 5 个高危、1 个低危；这些依赖只在本地开发和发布时运行，生产运行依赖审计为 0，但发布工具仍应升级。
+证据：升级前完整审计命中 `esbuild`、`miniflare`、`sharp`、`undici`、`wrangler` 和 `ws`；`npm audit --omit=dev` 为 0。Wrangler 4.120.1 要求 Node.js 22 和配套的 Cloudflare Workers 类型包。
+本轮边界：只升级 Worker 开发/发布依赖并记录 Node.js 版本要求；不改 Worker 业务代码、题目数据、首页 SEO、URL、canonical、sitemap 或原工作区未提交内容。
+修改：Wrangler 从 4.86.0 升到 4.120.1；`@cloudflare/workers-types` 升到 5.20260811.1；`ws` 安全覆盖版本从 8.20.1 升到 8.21.0；Worker 明确要求 Node.js 22 或更高版本。
+验证：Node.js 22 下干净安装、完整 `npm audit`、Worker 类型检查和 Wrangler dry-run 通过，漏洞数为 0；Node.js 20 会明确拒绝运行新版 Wrangler，没有静默使用不支持的环境。
+未做：本记录写入时尚未提交、开 PR、合并或部署生产 Worker；本地 dry-run 不能代替生产部署和健康检查。
+复查日期：合并并部署生产 Worker 后立即复查 Worker 版本、健康状态、发布队列和线上 summary。
+下一步：提交独立分支并开 PR，等待 CI 和 Vercel Preview；合并后用 Node.js 22 部署生产 Worker 并完成线上验收。
