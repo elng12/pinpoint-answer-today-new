@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 833,
+    "slug": "pinpoint-answer-833",
+    "publishDate": "2026-08-11",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Wedge",
+      "Lever",
+      "Pulley",
+      "Inclined plane",
+      "Wheel and axle"
+    ],
+    "mainAnswer": "Types of simple machine",
+    "category": "Types of simple machine",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Wedge, Lever, Pulley do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-08-11T07:05:04.428Z"
+  },
+  {
     "puzzleNumber": 832,
     "slug": "pinpoint-answer-832",
     "publishDate": "2026-08-10",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Brick",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint #832: Brick, Maroon, Tomato, Scarlet, Cherry. Spoiler-safe hints and the full walkthrough are inside.",
-    "updatedAt": "2026-08-10T07:04:30.000Z"
+    "updatedAt": "2026-08-11T07:05:04.428Z"
   },
   {
     "puzzleNumber": 831,

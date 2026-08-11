@@ -1,0 +1,233 @@
+{
+  "puzzleNumber": 833,
+  "slug": "pinpoint-answer-833",
+  "publishDate": "2026-08-11",
+  "isoDate": "2026-08-11",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Wedge",
+    "Lever",
+    "Pulley",
+    "Inclined plane",
+    "Wheel and axle"
+  ],
+  "answer": "Types of simple machine",
+  "category": "Types of simple machine",
+  "wordHints": {
+    "Wedge": "it's a basic machine type that uses a sloping surface to change the direction of force.",
+    "Lever": "it's a basic machine type that uses a rigid bar to change the direction of force.",
+    "Pulley": "it's a basic machine type that uses a wheel with a grooved rim to change the direction of force.",
+    "Inclined plane": "it's a basic machine type that uses a sloping surface to change the direction of force.",
+    "Wheel and axle": "it's a basic machine type that uses a wheel and axle to change the direction of force."
+  },
+  "spoilerHints": {
+    "Wedge": "Treat Wedge as one recognizable member of types of simple machine, not as a broad topic on its own.",
+    "Lever": "Lever helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Pulley": "Try reading Pulley as a specific type inside types of simple machine instead of as a loose general reference.",
+    "Inclined plane": "Treat Inclined plane as one recognizable member of types of simple machine, not as a broad topic on its own.",
+    "Wheel and axle": "Wheel and axle is the clue that makes types of simple machine specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "I first thought the answer was 'Tool types' because some clues sounded like common tools.",
+    "But then I realized that not all clues fit common tool uses.",
+    "The clue 'Inclined plane' made me realize the answer was about simple machines.",
+    "I was surprised to find that all the clues were types of simple machines.",
+    "A simple machine is a basic device that uses a simple mechanism to change the direction of force.",
+    "There are several types of simple machines, including wedges, levers, pulleys, inclined planes, and wheel and axle systems.",
+    "Each type of simple machine has its own unique characteristics and uses.",
+    "The answer to the puzzle is 'Types of simple machine'.",
+    "In hindsight, the clues all make sense as types of simple machines.",
+    "The puzzle was tricky because the clues were not all obvious, but the answer is clear once you understand the category."
+  ],
+  "solutionNarrative": [
+    "Wedge and Lever first pulled me toward tool types, so that was the first path I tested. It held together for a moment, but inclined plane never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating inclined plane as just another clue and asked what kind of simple machine each clue could describe. I was no longer trying to rescue tool types; I was checking whether Wedge and Lever could survive the same tighter read.",
+    "Then I used Pulley, Inclined plane, and Wheel and axle as the confirmation round. Pulley, Inclined plane, and Wheel and axle stayed inside simple machines, so the answer felt earned instead of guessed. The answer was Types of simple machines."
+  ],
+  "lessons": [
+    {
+      "title": "\"Wedge\" and \"Lever\" can look like they belong to different categories at first",
+      "body": "\"Wedge\" and \"Lever\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Inclined plane\" is what makes simple machine feel concrete instead of broad",
+      "body": "Inclined plane organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "For Pinpoint 833, every clue should stay at the simple machine level",
+      "body": "Simple machines are basic devices that use simple mechanisms to change the direction of force."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on simple machine",
+    "fastStrategy": "\"Wedge\" and \"Lever\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Wedge",
+        "examplePhrase": "simple machine type",
+        "connectionExplained": "it's a basic machine type that uses a sloping surface to change the direction of force."
+      },
+      {
+        "clue": "Lever",
+        "examplePhrase": "simple machine type",
+        "connectionExplained": "it's a basic machine type that uses a rigid bar to change the direction of force."
+      },
+      {
+        "clue": "Pulley",
+        "examplePhrase": "simple machine type",
+        "connectionExplained": "it's a basic machine type that uses a wheel with a grooved rim to change the direction of force."
+      },
+      {
+        "clue": "Inclined plane",
+        "examplePhrase": "simple machine type",
+        "connectionExplained": "it's a basic machine type that uses a sloping surface to change the direction of force."
+      },
+      {
+        "clue": "Wheel and axle",
+        "examplePhrase": "simple machine type",
+        "connectionExplained": "it's a basic machine type that uses a wheel and axle to change the direction of force."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Which type-level category connects \"Wedge\" and \"Lever\" in LinkedIn Pinpoint #833?",
+      "answer": "The answer is \"Types of simple machines\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Wedge\" and \"Lever\" connect in LinkedIn Pinpoint #833?",
+      "answer": "The connection is that all 5 clues point to recognizable types of simple machines. Inclined plane is the clue that makes the category specific enough to verify across the full board."
+    },
+    {
+      "question": "Why is \"Inclined plane\" the key clue in LinkedIn Pinpoint #833?",
+      "answer": "Inclined plane is the turning clue because \"simple machine type\" makes the shared category frame explicit. It also makes Wedge read cleanly as \"simple machine type\". The clues are all simple machine types, but they are not all obvious, making the puzzle tricky."
+    },
+    {
+      "question": "How does \"Wedge\" fit as a simple machine in LinkedIn Pinpoint #833?",
+      "answer": "\"Wedge\" reads as \"simple machine type\", which is a recognizable simple machine. That keeps the board specific instead of broadly themed."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Wedge, Lever, and Pulley do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"tool types\" can feel plausible before one clue makes the answer feel concrete. Inclined plane is the clue that finally breaks that first read and makes simple machines feel concrete.",
+    "falseStarts": [
+      "tool types",
+      "machine parts"
+    ],
+    "whyFalseStartPlausible": [
+      "Not all clues fit common tool uses, and the category is more specific.",
+      "machine parts feels plausible early on, but it falls apart once inclined plane demands a more exact reading."
+    ],
+    "breakingClue": "Inclined plane",
+    "pivot": "The solve turned when I stopped treating inclined plane as just another clue and asked what kind of simple machine each clue could describe. I was no longer trying to rescue tool types; I was checking whether Wedge and Lever could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them as simple machines explains the board much more cleanly. Entries like Wedge, Lever, and Pulley stop feeling disconnected and start looking like they belong together. Once inclined plane is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues are all simple machine types, but they are not all obvious, making the puzzle tricky."
+  },
+  "turningPoint": {
+    "clue": "Inclined plane",
+    "whyDecisive": "The clue 'Inclined plane' made me realize the answer was about simple machines.",
+    "whatChangedAfterIt": "Once Inclined plane landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Wedge",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "simple machine type",
+      "nonObviousWhy": "it's a basic machine type that uses a sloping surface to change the direction of force.",
+      "searchableContext": "from the word 'wedge', meaning a piece of wood or metal used to split or separate things",
+      "phraseExample": "from the word 'wedge', meaning a piece of wood or metal used to split or separate things"
+    },
+    {
+      "clue": "Lever",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "simple machine type",
+      "nonObviousWhy": "it's a basic machine type that uses a rigid bar to change the direction of force.",
+      "searchableContext": "from the word 'lever', meaning a bar used to pry or lift things",
+      "phraseExample": "from the word 'lever', meaning a bar used to pry or lift things"
+    },
+    {
+      "clue": "Pulley",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "simple machine type",
+      "nonObviousWhy": "it's a basic machine type that uses a wheel with a grooved rim to change the direction of force.",
+      "searchableContext": "from the word 'pulley', meaning a wheel with a grooved rim used to lift or move things",
+      "phraseExample": "from the word 'pulley', meaning a wheel with a grooved rim used to lift or move things"
+    },
+    {
+      "clue": "Inclined plane",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "simple machine type",
+      "nonObviousWhy": "it's a basic machine type that uses a sloping surface to change the direction of force.",
+      "searchableContext": "from the word 'inclined plane', meaning a surface that is tilted at an angle",
+      "phraseExample": "from the word 'inclined plane', meaning a surface that is tilted at an angle"
+    },
+    {
+      "clue": "Wheel and axle",
+      "surfaceMisread": "tool types",
+      "resolvedPhraseOrMember": "simple machine type",
+      "nonObviousWhy": "it's a basic machine type that uses a wheel and axle to change the direction of force.",
+      "searchableContext": "from the words 'wheel' and 'axle', meaning a circular object that rotates around a central axis",
+      "phraseExample": "from the words 'wheel' and 'axle', meaning a circular object that rotates around a central axis"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Wedge\" and \"Lever\" in LinkedIn Pinpoint #833?",
+      "answer": "The answer is \"Types of simple machines\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Wedge"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Wedge\" and \"Lever\" connect in LinkedIn Pinpoint #833?",
+      "answer": "The connection is that all 5 clues point to recognizable types of simple machines. Inclined plane is the clue that makes the category specific enough to verify across the full board.",
+      "tiedClue": "Wedge"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Inclined plane\" the key clue in LinkedIn Pinpoint #833?",
+      "answer": "Inclined plane is the turning clue because \"simple machine type\" makes the shared category frame explicit. It also makes Wedge read cleanly as \"simple machine type\". The clues are all simple machine types, but they are not all obvious, making the puzzle tricky.",
+      "tiedClue": "Inclined plane"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Wedge\" fit as a simple machine in LinkedIn Pinpoint #833?",
+      "answer": "\"Wedge\" reads as \"simple machine type\", which is a recognizable simple machine. That keeps the board specific instead of broadly themed.",
+      "tiedClue": "Wedge"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on simple machines",
+    "relatedEntities": [
+      "simple machine type",
+      "simple machine type",
+      "simple machine type",
+      "simple machine type",
+      "simple machine type"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on simple machines",
+      "\"Wedge\" and \"Lever\" can look like they belong to different categories at first",
+      "\"Inclined plane\" is what makes simple machine feel concrete instead of broad",
+      "For Pinpoint 833, every clue should stay at the simple machine level",
+      "from the word 'wedge', meaning a piece of wood or metal used to split or separate things",
+      "from the word 'lever', meaning a bar used to pry or lift things"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "tool types",
+      "whyPlausible": "Not all clues fit common tool uses, and the category is more specific.",
+      "whyRejected": "Once Inclined plane lands, the final answer explains the board more cleanly than tool types."
+    },
+    {
+      "label": "machine parts",
+      "whyPlausible": "machine parts feels plausible early on, but it falls apart once inclined plane demands a more exact reading.",
+      "whyRejected": "Once Inclined plane lands, the final answer explains the board more cleanly than machine parts."
+    }
+  ],
+  "setValidationSummary": "Pulley, Inclined plane, Wheel and axle all behave like specific members of Types of simple machines, so the board stays precise instead of drifting into a broader umbrella topic.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of simple machines"
+}
