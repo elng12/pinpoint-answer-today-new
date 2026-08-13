@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 835,
+    "slug": "pinpoint-answer-835",
+    "publishDate": "2026-08-13",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "The Sun",
+      "Dominoes",
+      "Leopards",
+      "Dalmations",
+      "Ladybirds / ladybugs (🐞)"
+    ],
+    "mainAnswer": "Things that have spots",
+    "category": "Things that have spots",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links The Sun, Dominoes, Leopards, Dalmations, Ladybirds / ladybugs (🐞) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-13T07:05:22.525Z"
+  },
+  {
     "puzzleNumber": 834,
     "slug": "pinpoint-answer-834",
     "publishDate": "2026-08-12",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Electric current",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Electric current, Personal pronoun, Square root of -1, Iodine, Roman numeral for 1 - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-08-12T07:09:36.886Z"
+    "updatedAt": "2026-08-13T07:05:22.525Z"
   },
   {
     "puzzleNumber": 833,
