@@ -405,6 +405,33 @@ function buildPublishWindowDiagnosis(report) {
 function getReleaseQueueDryRunScenarios(nowIso) {
   return [
     {
+      name: "candidate-inventory-unavailable",
+      params: { deploymentState: "ready", candidateInventoryAvailable: "0" },
+      expectedAction: "hold-review",
+      expectedReasonCode: "candidate-inventory-unavailable",
+    },
+    {
+      name: "earlier-candidate-pending",
+      params: {
+        deploymentState: "ready",
+        candidateInventoryAvailable: "1",
+        otherCandidateBranches: "pinpoint/candidate/2026-05-21-pinpoint-answer-751",
+      },
+      expectedAction: "hold-review",
+      expectedReasonCode: "another-candidate-pending",
+    },
+    {
+      name: "candidate-branch-outdated",
+      params: {
+        deploymentState: "ready",
+        candidateInventoryAvailable: "1",
+        candidateBranchExists: "1",
+        candidateIsCurrent: "0",
+      },
+      expectedAction: "hold-review",
+      expectedReasonCode: "candidate-branch-outdated",
+    },
+    {
       name: "queued",
       params: { deploymentState: "queued" },
       expectedAction: "write-candidate",
