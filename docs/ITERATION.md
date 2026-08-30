@@ -326,3 +326,14 @@
 未做：本记录写入时尚未提交、开 PR、合并或部署生产 Worker；本地 dry-run 不能代替生产部署和健康检查。
 复查日期：合并并部署生产 Worker 后立即复查 Worker 版本、健康状态、发布队列和线上 summary。
 下一步：提交独立分支并开 PR，等待 CI 和 Vercel Preview；合并后用 Node.js 22 部署生产 Worker 并完成线上验收。
+
+## 2026-08-30 #836-#852 发布断档恢复记录
+
+问题：正式站从 `#835` 后停止更新。最早的 `#836` 候选因为纯数字线索 `64` 在 JavaScript 对象中会自动排到其他键前面，被 `wordHints` 顺序校验误拦；后续候选每天都从仍停在 `#835` 的 `main` 创建，连续性缺口扩大到 `#836-#851`。
+证据：`#836` CI 报 `expected "Odyssey", received "64"`；`#837` 开始报缺少前序题号；`#852` 候选 CI 报缺少 `#836-#851`。生产 Worker 逐日历史接口和 17 个候选分支的日期、五条线索、`fetchedAt`、`sha256:` 来源校验均通过，详情文件保持候选原文。
+本轮边界：只恢复 `#836-#852`、修纯数字线索的顺序判定和本次恢复暴露的正式答案误报；不改首页固定 SEO 标题/描述、URL、canonical、sitemap 规则或原工作区未提交内容。
+修改：登记表连续补齐 `#836-#852`，只有 `#852` 为 live；页面始终使用 registry 数组保存的线索顺序，`wordHints` 只校验键集合，不再把对象键顺序当成线索顺序；语义检查会先移除正文中的准确正式答案，再查缩短版答案，避免把 `Food items that are dehydrated` 内部的 `Items that are dehydrated` 误判成另一答案，同时仍会拦住真正单独出现的缩短写法。
+验证：`validate:data` 通过 395 条 registry；lint、类型检查、Pinpoint 守卫和完整构建通过；395 个真实详情页渲染检查与 sitemap 覆盖检查通过；构建产物中的 `#836` 线索顺序为 `Odyssey / Galaxy / Kart / 64 / Bros. 3`；17 个恢复详情文件与原候选提交逐字一致。
+未做：本记录写入时尚未合并到 `main`，尚未完成 Vercel Production、线上 summary、详情页、sitemap 和候选分支清理验收。
+复查日期：本次合并和 Production 部署后立即复查。
+下一步：提交独立修复分支并开 PR；CI 通过后合并，等待准确 SHA 的 Production，再验证首页、summary、`#836/#851/#852`、sitemap 和候选分支数量。

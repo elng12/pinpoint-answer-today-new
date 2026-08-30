@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 840,
+  "slug": "pinpoint-answer-840",
+  "publishDate": "2026-08-18",
+  "isoDate": "2026-08-18",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "The Muppets",
+    "Star Wars",
+    "Marvel",
+    "Pixar",
+    "Mickey Mouse"
+  ],
+  "answer": "Properties of The Walt Disney Company",
+  "category": "Properties of The Walt Disney Company",
+  "wordHints": {
+    "The Muppets": "\"The Muppets\" is the clue that makes the shared answer concrete enough to test across the full board.",
+    "Star Wars": "\"Category example: Star Wars\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "Marvel": "\"Category example: Marvel\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "Pixar": "\"Category example: Pixar\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Mickey Mouse": "\"Category example: Mickey Mouse\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+  },
+  "spoilerHints": {
+    "The Muppets": "The Muppets is the clue that makes properties of the walt disney company concrete enough to test across the full board.",
+    "Star Wars": "Keep Star Wars in mind, then see whether The Muppets supports the same answer.",
+    "Marvel": "Marvel works best after the board narrows toward properties of the walt disney company.",
+    "Pixar": "Pixar should be tested as part of properties of the walt disney company, not as a standalone reference.",
+    "Mickey Mouse": "Keep Mickey Mouse in mind, then see whether The Muppets supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, The Muppets and Star Wars pointed in a few different directions, so the board still felt wider than one exact category. One tempting read was \"a broader umbrella topic\". The Muppets, Star Wars can point toward several nearby themes before one clue makes the exact category level visible. The Muppets is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on properties, examples like \"Category example: The Muppets\" and \"Category example: Star Wars\" stopped feeling loose and started landing cleanly.",
+    "Marvel, Pixar, Mickey Mouse keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Properties of The Walt Disney Company\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Properties of The Walt Disney Company, which is why \"Properties of The Walt Disney Company\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started by testing Star Wars and Marvel, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.",
+    "The turn came when I let \"The Muppets\" lead the solve. After that, Pixar and Mickey Mouse became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.",
+    "For the final pass, I checked The Muppets, Star Wars, Marvel, Pixar, Mickey Mouse one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.",
+    "The answer was \"Properties of The Walt Disney Company\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"The Muppets\" and \"Star Wars\" can look like they belong to different categories at first",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "\"The Muppets\" is what makes the answer feel concrete instead of broad",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once \"The Muppets\" sharpens the answer",
+      "body": "Once \"The Muppets\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on properties",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "The Muppets",
+        "examplePhrase": "Category example: The Muppets",
+        "connectionExplained": "\"The Muppets\" is the clue that makes the shared answer concrete enough to test across the full board."
+      },
+      {
+        "clue": "Star Wars",
+        "examplePhrase": "Category example: Star Wars",
+        "connectionExplained": "\"Category example: Star Wars\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      },
+      {
+        "clue": "Marvel",
+        "examplePhrase": "Category example: Marvel",
+        "connectionExplained": "\"Category example: Marvel\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+      },
+      {
+        "clue": "Pixar",
+        "examplePhrase": "Category example: Pixar",
+        "connectionExplained": "\"Category example: Pixar\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Mickey Mouse",
+        "examplePhrase": "Category example: Mickey Mouse",
+        "connectionExplained": "\"Category example: Mickey Mouse\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"The Muppets\" and \"Star Wars\" in LinkedIn Pinpoint #840?",
+      "answer": "The answer is \"Properties of The Walt Disney Company\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "How do \"The Muppets\" and \"Star Wars\" connect in LinkedIn Pinpoint #840?",
+      "answer": "The connection is a category board focused on properties. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Why is \"The Muppets\" the key clue in LinkedIn Pinpoint #840?",
+      "answer": "\"The Muppets\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, The Muppets and Star Wars pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "The Muppets, Star Wars can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "The Muppets",
+    "pivot": "I started by testing Star Wars and Marvel, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.\n\nThe turn came when I let \"The Muppets\" lead the solve. After that, Pixar and Mickey Mouse became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.\n\nFor the final pass, I checked The Muppets, Star Wars, Marvel, Pixar, Mickey Mouse one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.\n\nThe answer was \"Properties of The Walt Disney Company\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on properties, examples like \"Category example: The Muppets\" and \"Category example: Star Wars\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "The Muppets",
+    "whyDecisive": "The Muppets is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once The Muppets lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "The Muppets",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: The Muppets",
+      "nonObviousWhy": "\"The Muppets\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "Category example: The Muppets",
+      "phraseExample": "Category example: The Muppets"
+    },
+    {
+      "clue": "Star Wars",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Star Wars",
+      "nonObviousWhy": "\"Category example: Star Wars\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Star Wars",
+      "phraseExample": "Category example: Star Wars"
+    },
+    {
+      "clue": "Marvel",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Marvel",
+      "nonObviousWhy": "\"Category example: Marvel\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+      "searchableContext": "Category example: Marvel",
+      "phraseExample": "Category example: Marvel"
+    },
+    {
+      "clue": "Pixar",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Pixar",
+      "nonObviousWhy": "\"Category example: Pixar\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Category example: Pixar",
+      "phraseExample": "Category example: Pixar"
+    },
+    {
+      "clue": "Mickey Mouse",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Mickey Mouse",
+      "nonObviousWhy": "\"Category example: Mickey Mouse\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Mickey Mouse",
+      "phraseExample": "Category example: Mickey Mouse"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"The Muppets\" and \"Star Wars\" in LinkedIn Pinpoint #840?",
+      "answer": "The answer is \"Properties of The Walt Disney Company\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": "The Muppets"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"The Muppets\" and \"Star Wars\" connect in LinkedIn Pinpoint #840?",
+      "answer": "The connection is a category board focused on properties. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": "The Muppets"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"The Muppets\" the key clue in LinkedIn Pinpoint #840?",
+      "answer": "\"The Muppets\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "The Muppets"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on properties",
+    "relatedEntities": [
+      "Category example: The Muppets",
+      "Category example: Star Wars",
+      "Category example: Marvel",
+      "Category example: Pixar",
+      "Category example: Mickey Mouse"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on properties",
+      "Category example: The Muppets",
+      "Category example: Star Wars",
+      "Category example: Marvel",
+      "Category example: Pixar"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "The Muppets, Star Wars can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "The Muppets is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Marvel, Pixar, Mickey Mouse keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Properties of The Walt Disney Company"
+}

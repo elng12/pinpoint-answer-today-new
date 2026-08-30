@@ -1,0 +1,217 @@
+{
+  "puzzleNumber": 842,
+  "slug": "pinpoint-answer-842",
+  "publishDate": "2026-08-20",
+  "isoDate": "2026-08-20",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Nori",
+    "Jerky",
+    "Instant coffee",
+    "Prunes",
+    "Raisins"
+  ],
+  "answer": "Food items that are dehydrated",
+  "category": "Food items that are dehydrated",
+  "wordHints": {
+    "Nori": "\"Category example: Nori\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Jerky": "\"Category example: Jerky\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "Instant coffee": "\"Instant coffee\" is the clue that makes the shared answer concrete enough to test across the full board.",
+    "Prunes": "\"Category example: Prunes\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Raisins": "\"Category example: Raisins\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+  },
+  "spoilerHints": {
+    "Nori": "Nori should be tested as part of food items that are dehydrated, not as a standalone reference.",
+    "Jerky": "Keep Jerky in mind, then see whether Instant coffee supports the same answer.",
+    "Instant coffee": "Instant coffee is the clue that makes food items that are dehydrated concrete enough to test across the full board.",
+    "Prunes": "Prunes should be tested as part of food items that are dehydrated, not as a standalone reference.",
+    "Raisins": "Keep Raisins in mind, then see whether Instant coffee supports the same answer."
+  },
+  "articleBlocks": [
+    "At first, Nori and Jerky pointed in a few different directions, so the board still felt wider than one exact category. One tempting read was \"a broader umbrella topic\". Nori, Jerky can point toward several nearby themes before one clue makes the exact category level visible. Instant coffee is the clue that narrows the board into one category with clearer boundaries. Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on food, examples like \"Category example: Nori\" and \"Category example: Jerky\" stopped feeling loose and started landing cleanly.",
+    "Instant coffee, Prunes, Raisins keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Food items that are dehydrated\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Food items that are dehydrated, which is why \"Food items that are dehydrated\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started by testing Nori and Jerky, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.",
+    "The turn came when I let \"Instant coffee\" lead the solve. After that, Prunes and Raisins became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.",
+    "For the final pass, I checked Nori, Jerky, Instant coffee, Prunes, Raisins one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.",
+    "The answer was \"Food items that are dehydrated\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Nori\" and \"Jerky\" can look like they belong to different categories at first",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "\"Instant coffee\" is what makes the answer feel concrete instead of broad",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once \"Instant coffee\" sharpens the answer",
+      "body": "Once \"Instant coffee\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on food",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "Nori",
+        "examplePhrase": "Category example: Nori",
+        "connectionExplained": "\"Category example: Nori\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Jerky",
+        "examplePhrase": "Category example: Jerky",
+        "connectionExplained": "\"Category example: Jerky\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      },
+      {
+        "clue": "Instant coffee",
+        "examplePhrase": "Category example: Instant coffee",
+        "connectionExplained": "\"Instant coffee\" is the clue that makes the shared answer concrete enough to test across the full board."
+      },
+      {
+        "clue": "Prunes",
+        "examplePhrase": "Category example: Prunes",
+        "connectionExplained": "\"Category example: Prunes\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Raisins",
+        "examplePhrase": "Category example: Raisins",
+        "connectionExplained": "\"Category example: Raisins\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Nori\" and \"Jerky\" in LinkedIn Pinpoint #842?",
+      "answer": "The answer is \"Food items that are dehydrated\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "How do \"Nori\" and \"Jerky\" connect in LinkedIn Pinpoint #842?",
+      "answer": "The connection is a category board focused on food. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Why is \"Instant coffee\" the key clue in LinkedIn Pinpoint #842?",
+      "answer": "\"Instant coffee\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Nori and Jerky pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Nori, Jerky can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Instant coffee",
+    "pivot": "I started by testing Nori and Jerky, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.\n\nThe turn came when I let \"Instant coffee\" lead the solve. After that, Prunes and Raisins became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.\n\nFor the final pass, I checked Nori, Jerky, Instant coffee, Prunes, Raisins one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.\n\nThe answer was \"Food items that are dehydrated\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on food, examples like \"Category example: Nori\" and \"Category example: Jerky\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "Instant coffee",
+    "whyDecisive": "Instant coffee is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Instant coffee lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Nori",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Nori",
+      "nonObviousWhy": "\"Category example: Nori\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Category example: Nori",
+      "phraseExample": "Category example: Nori"
+    },
+    {
+      "clue": "Jerky",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Jerky",
+      "nonObviousWhy": "\"Category example: Jerky\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Jerky",
+      "phraseExample": "Category example: Jerky"
+    },
+    {
+      "clue": "Instant coffee",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Instant coffee",
+      "nonObviousWhy": "\"Instant coffee\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "Category example: Instant coffee",
+      "phraseExample": "Category example: Instant coffee"
+    },
+    {
+      "clue": "Prunes",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Prunes",
+      "nonObviousWhy": "\"Category example: Prunes\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Category example: Prunes",
+      "phraseExample": "Category example: Prunes"
+    },
+    {
+      "clue": "Raisins",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Raisins",
+      "nonObviousWhy": "\"Category example: Raisins\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Raisins",
+      "phraseExample": "Category example: Raisins"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Nori\" and \"Jerky\" in LinkedIn Pinpoint #842?",
+      "answer": "The answer is \"Food items that are dehydrated\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": "Nori"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Nori\" and \"Jerky\" connect in LinkedIn Pinpoint #842?",
+      "answer": "The connection is a category board focused on food. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": "Nori"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Instant coffee\" the key clue in LinkedIn Pinpoint #842?",
+      "answer": "\"Instant coffee\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "Instant coffee"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on food",
+    "relatedEntities": [
+      "Category example: Nori",
+      "Category example: Jerky",
+      "Category example: Instant coffee",
+      "Category example: Prunes",
+      "Category example: Raisins"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on food",
+      "Category example: Nori",
+      "Category example: Jerky",
+      "Category example: Instant coffee",
+      "Category example: Prunes"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Nori, Jerky can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Instant coffee is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Instant coffee, Prunes, Raisins keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Food items that are dehydrated"
+}

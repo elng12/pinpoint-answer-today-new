@@ -1,0 +1,233 @@
+{
+  "puzzleNumber": 836,
+  "slug": "pinpoint-answer-836",
+  "publishDate": "2026-08-14",
+  "isoDate": "2026-08-14",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Odyssey",
+    "Galaxy",
+    "Kart",
+    "64",
+    "Bros. 3"
+  ],
+  "answer": "Terms that come after “Super Mario” in video game titles",
+  "category": "Terms that come after “Super Mario” in video game titles",
+  "wordHints": {
+    "64": "It fits because '64' follows 'Super Mario' in the title of a classic 3D platformer.",
+    "Odyssey": "It fits because 'Odyssey' is a title that follows 'Super Mario' in a well-known video game.",
+    "Galaxy": "It fits because 'Galaxy' is another title that follows 'Super Mario', indicating a pattern.",
+    "Kart": "It fits because 'Kart' follows 'Super Mario' in a series of racing games.",
+    "Bros. 3": "It fits because 'Bros. 3' follows 'Super Mario' in the title of a popular platformer game."
+  },
+  "spoilerHints": {
+    "64": "64 should be tested as part of terms that come after “super mario” in video game titles, not as a standalone reference.",
+    "Odyssey": "Odyssey should be tested as part of terms that come after “super mario” in video game titles, not as a standalone reference.",
+    "Galaxy": "Keep Galaxy in mind, then see whether Bros. 3 supports the same answer.",
+    "Kart": "Kart works best after the board narrows toward terms that come after “super mario” in video game titles.",
+    "Bros. 3": "Bros. 3 is the clue that makes terms that come after “super mario” in video game titles concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The puzzle started with 'Odyssey', which seemed like it could be about epic journeys.",
+    "But then 'Galaxy' appeared, and it seemed like maybe it was about space or types of environments.",
+    "The introduction of 'Kart' made me think about types of vehicles or sports.",
+    "However, when '64' was added, it made me reconsider because it's clearly a reference to a specific game console.",
+    "The clue 'Bros. 3' further clarified that we're dealing with parts of game titles, specifically those following 'Super Mario'.",
+    "At first, I thought it might be about game genres or console names, but these didn't fit consistently across all clues.",
+    "The turning point was realizing that 'Odyssey' wasn't just a type of journey, but a specific game title that follows 'Super Mario'.",
+    "This made me look at all the clues as parts of 'Super Mario' game titles, leading to the conclusion that the answer is terms that come after 'Super Mario' in video game titles.",
+    "In hindsight, the clues were always pointing to a specific pattern in how 'Super Mario' games are titled, making the solution clearer than it initially seemed.",
+    "The key takeaway is to pay attention to the structure of titles and how parts of them can form patterns or categories."
+  ],
+  "solutionNarrative": [
+    "Odyssey and Galaxy first pulled me toward game genres, so that was the first path I tested. It held together for a moment, but odyssey never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating odyssey as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue game genres; I was checking whether Odyssey and Galaxy could survive the same tighter read.",
+    "Then I used Kart, 64, and Bros. 3 as the confirmation round. Kart, 64, and Bros. 3 stayed inside the real category, so the answer felt earned instead of guessed. The answer was Terms that come after Super Mario in video game titles."
+  ],
+  "lessons": [
+    {
+      "title": "\"Odyssey\" and \"Galaxy\" can look like they belong to different categories at first",
+      "body": "\"Odyssey\" and \"Galaxy\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Odyssey\" anchors a shared category board with one concrete theme",
+      "body": "Odyssey organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Odyssey\" to re-check \"Odyssey\" under a shared category board with one concrete theme",
+      "body": "Look for patterns in how titles are structured, not just the words themselves."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on terms",
+    "fastStrategy": "\"Odyssey\" and \"Galaxy\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Odyssey",
+        "examplePhrase": "Super Mario Odyssey",
+        "connectionExplained": "It fits because 'Odyssey' is a title that follows 'Super Mario' in a well-known video game."
+      },
+      {
+        "clue": "Galaxy",
+        "examplePhrase": "Super Mario Galaxy",
+        "connectionExplained": "It fits because 'Galaxy' is another title that follows 'Super Mario', indicating a pattern."
+      },
+      {
+        "clue": "Kart",
+        "examplePhrase": "Super Mario Kart",
+        "connectionExplained": "It fits because 'Kart' follows 'Super Mario' in a series of racing games."
+      },
+      {
+        "clue": "64",
+        "examplePhrase": "Super Mario 64",
+        "connectionExplained": "It fits because '64' follows 'Super Mario' in the title of a classic 3D platformer."
+      },
+      {
+        "clue": "Bros. 3",
+        "examplePhrase": "Super Mario Bros. 3",
+        "connectionExplained": "It fits because 'Bros. 3' follows 'Super Mario' in the title of a popular platformer game."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Odyssey\" and \"Galaxy\" in LinkedIn Pinpoint #836?",
+      "answer": "The answer is \"Terms that come after Super Mario in video game titles\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Odyssey\" and \"Galaxy\" connect in LinkedIn Pinpoint #836?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Odyssey is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Odyssey\" the key clue in LinkedIn Pinpoint #836?",
+      "answer": "Odyssey is the turning clue because \"Super Mario Odyssey\" makes the shared category frame explicit. It also makes Galaxy read cleanly as \"Super Mario Galaxy\". The puzzle feels tricky because the clues are all recognizable game titles, but the connection is not about the games themselves, but about how they're titled."
+    },
+    {
+      "question": "How does \"Galaxy\" fit the same category as \"Odyssey\" in LinkedIn Pinpoint #836?",
+      "answer": "\"Galaxy\" reads as \"Super Mario Galaxy\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Odyssey, Galaxy, and Kart do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"game series\" can feel plausible before one clue makes the answer feel concrete. Odyssey is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "game series",
+      "platform names"
+    ],
+    "whyFalseStartPlausible": [
+      "The guess breaks because the clues don't align with distinct game genres but rather with parts of specific game titles.",
+      "game series feels plausible early on, but it falls apart once odyssey demands a more exact reading."
+    ],
+    "breakingClue": "Odyssey",
+    "pivot": "The solve turned when I stopped treating odyssey as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue game genres; I was checking whether Odyssey and Galaxy could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Odyssey, Galaxy, and Kart stop feeling disconnected and start looking like they belong together. Once odyssey is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle feels tricky because the clues are all recognizable game titles, but the connection is not about the games themselves, but about how they're titled."
+  },
+  "turningPoint": {
+    "clue": "Odyssey",
+    "whyDecisive": "The clue 'Odyssey' forced a reevaluation of the category because it is a well-known game title that follows the pattern.",
+    "whatChangedAfterIt": "Once Odyssey landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Odyssey",
+      "surfaceMisread": "game genres",
+      "resolvedPhraseOrMember": "Super Mario Odyssey",
+      "nonObviousWhy": "It fits because 'Odyssey' is a title that follows 'Super Mario' in a well-known video game.",
+      "searchableContext": "From the idea of an epic journey, now used in a game title.",
+      "phraseExample": "From the idea of an epic journey, now used in a game title."
+    },
+    {
+      "clue": "Galaxy",
+      "surfaceMisread": "game genres",
+      "resolvedPhraseOrMember": "Super Mario Galaxy",
+      "nonObviousWhy": "It fits because 'Galaxy' is another title that follows 'Super Mario', indicating a pattern.",
+      "searchableContext": "From the astronomical term, now used in a game title.",
+      "phraseExample": "From the astronomical term, now used in a game title."
+    },
+    {
+      "clue": "Kart",
+      "surfaceMisread": "game genres",
+      "resolvedPhraseOrMember": "Super Mario Kart",
+      "nonObviousWhy": "It fits because 'Kart' follows 'Super Mario' in a series of racing games.",
+      "searchableContext": "From the word for a small vehicle, now part of a game title.",
+      "phraseExample": "From the word for a small vehicle, now part of a game title."
+    },
+    {
+      "clue": "64",
+      "surfaceMisread": "game genres",
+      "resolvedPhraseOrMember": "Super Mario 64",
+      "nonObviousWhy": "It fits because '64' follows 'Super Mario' in the title of a classic 3D platformer.",
+      "searchableContext": "Referring to the 64-bit console it was released on.",
+      "phraseExample": "Referring to the 64-bit console it was released on."
+    },
+    {
+      "clue": "Bros. 3",
+      "surfaceMisread": "game genres",
+      "resolvedPhraseOrMember": "Super Mario Bros. 3",
+      "nonObviousWhy": "It fits because 'Bros. 3' follows 'Super Mario' in the title of a popular platformer game.",
+      "searchableContext": "From the idea of brotherly characters, with '3' indicating the third game in the series.",
+      "phraseExample": "From the idea of brotherly characters, with '3' indicating the third game in the series."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Odyssey\" and \"Galaxy\" in LinkedIn Pinpoint #836?",
+      "answer": "The answer is \"Terms that come after Super Mario in video game titles\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Odyssey"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Odyssey\" and \"Galaxy\" connect in LinkedIn Pinpoint #836?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Odyssey is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Odyssey"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Odyssey\" the key clue in LinkedIn Pinpoint #836?",
+      "answer": "Odyssey is the turning clue because \"Super Mario Odyssey\" makes the shared category frame explicit. It also makes Galaxy read cleanly as \"Super Mario Galaxy\". The puzzle feels tricky because the clues are all recognizable game titles, but the connection is not about the games themselves, but about how they're titled.",
+      "tiedClue": "Odyssey"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Galaxy\" fit the same category as \"Odyssey\" in LinkedIn Pinpoint #836?",
+      "answer": "\"Galaxy\" reads as \"Super Mario Galaxy\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Galaxy"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Super Mario Odyssey",
+      "Super Mario Galaxy",
+      "Super Mario Kart",
+      "Super Mario 64",
+      "Super Mario Bros. 3"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Odyssey\" and \"Galaxy\" can look like they belong to different categories at first",
+      "\"Odyssey\" anchors a shared category board with one concrete theme",
+      "Use \"Odyssey\" to re-check \"Odyssey\" under a shared category board with one concrete theme",
+      "From the idea of an epic journey, now used in a game title.",
+      "From the astronomical term, now used in a game title."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "game genres",
+      "whyPlausible": "The guess breaks because the clues don't align with distinct game genres but rather with parts of specific game titles.",
+      "whyRejected": "Once Odyssey lands, the final answer explains the board more cleanly than game genres."
+    },
+    {
+      "label": "game series",
+      "whyPlausible": "game series feels plausible early on, but it falls apart once odyssey demands a more exact reading.",
+      "whyRejected": "Once Odyssey lands, the final answer explains the board more cleanly than game series."
+    }
+  ],
+  "setValidationSummary": "Kart, 64, Bros. 3 keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Terms that come after Super Mario in video game titles"
+}

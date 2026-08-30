@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 845,
+  "slug": "pinpoint-answer-845",
+  "publishDate": "2026-08-23",
+  "isoDate": "2026-08-23",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Tank",
+    "Piece",
+    "Twice",
+    "Out loud",
+    "Outside the box"
+  ],
+  "answer": "Words that come after “think”",
+  "category": "Words that come after “think”",
+  "wordHints": {
+    "Tank": "\"think Tank\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Piece": "\"think Piece\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Twice": "Once the shared word is in place, \"think Twice\" reads like ordinary language instead of a forced compound.",
+    "Out loud": "\"think Out loud\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Outside the box": "\"think Outside the box\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Tank": "Try reading Tank as part of a familiar phrase in words that come after “think” instead of as a standalone word.",
+    "Piece": "Piece works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Twice": "Look for a natural expression that absorbs Twice cleanly before locking the board.",
+    "Out loud": "Try reading Out loud as part of a familiar phrase in words that come after “think” instead of as a standalone word.",
+    "Outside the box": "Outside the box is the clue that makes the phrase pattern in words that come after “think” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. A nearby read was \"Tank and Piece phrase pairing\". Tank, Piece can support more than one phrase read before Outside the box shows where the repeated word belongs. Outside the box behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Outside the box as an outlier clue\". Outside the box can look like the odd clue if the earlier words are read without a shared phrase slot. Once Outside the box locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"think Tank\" and \"think Piece\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "think Twice, think Out loud, think Outside the box show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “think”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “think”\" fits better than \"Tank and Piece phrase pairing\" or \"Outside the box as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Tank and first tried Tank and Piece phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Outside the box\" feel exact.",
+    "Once \"Outside the box\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Twice and Out loud as the confirmation round. The strong solve was not just that two clues worked; it was that Tank, Piece, Twice, Out loud, Outside the box could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come after “think”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Tank\" and \"Piece\"",
+      "body": "\"Tank\" and \"Piece\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Outside the box\" changes the think pattern from guess to test",
+      "body": "Once \"Outside the box\" lands, place the same word before the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 845, the think phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Tank\" and \"Piece\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Tank",
+        "examplePhrase": "think Tank",
+        "connectionExplained": "\"think Tank\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Piece",
+        "examplePhrase": "think Piece",
+        "connectionExplained": "\"think Piece\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Twice",
+        "examplePhrase": "think Twice",
+        "connectionExplained": "Once the shared word is in place, \"think Twice\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Out loud",
+        "examplePhrase": "think Out loud",
+        "connectionExplained": "\"think Out loud\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Outside the box",
+        "examplePhrase": "think Outside the box",
+        "connectionExplained": "\"think Outside the box\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Tank\" and \"Piece\" in LinkedIn Pinpoint #845?",
+      "answer": "The answer is \"Words that come after “think”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Tank\" and \"Piece\" connect in LinkedIn Pinpoint #845?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Outside the box\" the key clue in LinkedIn Pinpoint #845?",
+      "answer": "\"Outside the box\" is the strongest clue because \"think Outside the box\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "falseStarts": [
+      "Tank and Piece phrase pairing",
+      "Outside the box as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Tank, Piece can support more than one phrase read before Outside the box shows where the repeated word belongs.",
+      "Outside the box can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Outside the box",
+    "pivot": "I started with Tank and first tried Tank and Piece phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Outside the box\" feel exact.\n\nOnce \"Outside the box\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Twice and Out loud as the confirmation round. The strong solve was not just that two clues worked; it was that Tank, Piece, Twice, Out loud, Outside the box could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come after “think”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Outside the box as an outlier clue\". Outside the box can look like the odd clue if the earlier words are read without a shared phrase slot. Once Outside the box locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Outside the box",
+    "whyDecisive": "Outside the box is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Outside the box lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Tank",
+      "surfaceMisread": "Tank and Piece phrase pairing",
+      "resolvedPhraseOrMember": "think Tank",
+      "nonObviousWhy": "\"think Tank\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "think Tank",
+      "phraseExample": "think Tank"
+    },
+    {
+      "clue": "Piece",
+      "surfaceMisread": "Tank and Piece phrase pairing",
+      "resolvedPhraseOrMember": "think Piece",
+      "nonObviousWhy": "\"think Piece\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "think Piece",
+      "phraseExample": "think Piece"
+    },
+    {
+      "clue": "Twice",
+      "surfaceMisread": "Tank and Piece phrase pairing",
+      "resolvedPhraseOrMember": "think Twice",
+      "nonObviousWhy": "Once the shared word is in place, \"think Twice\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "think Twice",
+      "phraseExample": "think Twice"
+    },
+    {
+      "clue": "Out loud",
+      "surfaceMisread": "Tank and Piece phrase pairing",
+      "resolvedPhraseOrMember": "think Out loud",
+      "nonObviousWhy": "\"think Out loud\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "think Out loud",
+      "phraseExample": "think Out loud"
+    },
+    {
+      "clue": "Outside the box",
+      "surfaceMisread": "Tank and Piece phrase pairing",
+      "resolvedPhraseOrMember": "think Outside the box",
+      "nonObviousWhy": "\"think Outside the box\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "think Outside the box",
+      "phraseExample": "think Outside the box"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Tank\" and \"Piece\" in LinkedIn Pinpoint #845?",
+      "answer": "The answer is \"Words that come after “think”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Tank"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Tank\" and \"Piece\" connect in LinkedIn Pinpoint #845?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Tank"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Outside the box\" the key clue in LinkedIn Pinpoint #845?",
+      "answer": "\"Outside the box\" is the strongest clue because \"think Outside the box\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Outside the box"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "think Tank",
+      "think Piece",
+      "think Twice",
+      "think Out loud",
+      "think Outside the box"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "think Tank",
+      "think Piece",
+      "think Twice",
+      "think Out loud"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Tank and Piece phrase pairing",
+      "whyPlausible": "Tank, Piece can support more than one phrase read before Outside the box shows where the repeated word belongs.",
+      "whyRejected": "Outside the box behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Outside the box as an outlier clue",
+      "whyPlausible": "Outside the box can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Outside the box locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "think Twice, think Out loud, think Outside the box show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}

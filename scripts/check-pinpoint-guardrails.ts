@@ -2043,6 +2043,23 @@ function checkContentContractRequiresThreeCompleteFaqsAndLessons() {
 }
 
 function checkGenericFalseStartWarningsDoNotBlockPublish() {
+  const exactAnswerCodes = collectSemanticLintIssues({
+    mainAnswer: "Food items that are dehydrated",
+    solutionEmergence: 'The answer was "Food items that are dehydrated".',
+  }).map((issue) => issue.code);
+  const alternateAnswerCodes = collectSemanticLintIssues({
+    mainAnswer: "Food items that are dehydrated",
+    solutionEmergence: 'The answer was "Items that are dehydrated".',
+  }).map((issue) => issue.code);
+  assert.ok(
+    !exactAnswerCodes.includes("answer.alternateRestatement"),
+    "semantic lint must not treat a substring inside the exact official answer as an alternate answer",
+  );
+  assert.ok(
+    alternateAnswerCodes.includes("answer.alternateRestatement"),
+    "semantic lint must still block a genuinely shortened alternate answer",
+  );
+
   const rawWords = ["White", "Pirate", "National", "Checkered", "Capture the"];
   const semanticCodes = collectSemanticLintIssues({
     mainAnswer: "Words that come before flag",

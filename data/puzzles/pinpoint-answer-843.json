@@ -1,0 +1,235 @@
+{
+  "puzzleNumber": 843,
+  "slug": "pinpoint-answer-843",
+  "publishDate": "2026-08-21",
+  "isoDate": "2026-08-21",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "A video",
+    "A glance",
+    "The messenger",
+    "Fish in a barrel",
+    "Oneself in the foot"
+  ],
+  "answer": "Things you might “shoot”",
+  "category": "Things you might “shoot”",
+  "wordHints": {
+    "A video": "The word 'shoot' can refer to the act of recording or filming something.",
+    "A glance": "The word 'shoot' can refer to the act of looking or glancing at something, especially in the context of targeting or aiming.",
+    "The messenger": "The phrase 'shoot the messenger' is a common idiom that means to blame or attack the person who brings bad news.",
+    "Fish in a barrel": "The phrase 'fish in a barrel' is a common idiom that refers to an easy or helpless target, and the act of shooting fish in a barrel is a literal example of this.",
+    "Oneself in the foot": "The phrase 'shoot oneself in the foot' is a common idiom that means to accidentally harm or hinder oneself, often through one's own actions or words."
+  },
+  "spoilerHints": {
+    "A video": "A video should be tested as part of things you might “shoot”, not as a standalone reference.",
+    "A glance": "Keep A glance in mind, then see whether Oneself in the foot supports the same answer.",
+    "The messenger": "The messenger works best after the board narrows toward things you might “shoot”.",
+    "Fish in a barrel": "Fish in a barrel should be tested as part of things you might “shoot”, not as a standalone reference.",
+    "Oneself in the foot": "Oneself in the foot is the clue that makes things you might “shoot” concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "I first thought that the clues might be related to film or photography, but then I realized that the answer was more general.",
+    "The clue 'fish in a barrel' was the turning point, as it made me realize that the answer was not just related to film or photography, but to the idea of 'shooting' something in a more general sense.",
+    "I considered the clues and realized that each one could be related to the idea of 'shooting' something, whether it's a video, a glance, a message, or even oneself in the foot.",
+    "The answer is a specific category of things that can be 'shot', which is more precise than a broader category like 'actions' or 'verbs'.",
+    "The puzzle is tricky because the clues can be misleading at first, and it takes some thought to realize that each one can be related to the idea of 'shooting' something.",
+    "The phrase 'shoot the messenger' is a common idiom that means to blame or attack the person who brings bad news.",
+    "The phrase 'fish in a barrel' is a common idiom that refers to an easy or helpless target, and the act of shooting fish in a barrel is a literal example of this.",
+    "The phrase 'shoot oneself in the foot' is a common idiom that means to accidentally harm or hinder oneself, often through one's own actions or words.",
+    "Be careful not to jump to conclusions based on the surface meaning of the clues, and consider how each one might fit into a larger category or theme.",
+    "The answer to the puzzle is 'Things you might 'shoot''.",
+    "I arrived at the answer by considering the clues and realizing that each one could be related to the idea of 'shooting' something.",
+    "The uniqueness of the answer lies in its specificity and precision, as it is a specific category of things that can be 'shot', rather than a broader category like 'actions' or 'verbs'."
+  ],
+  "solutionNarrative": [
+    "A video and A glance first pulled me toward movie terms, so that was the first path I tested. It held together for a moment, but fish in a barrel never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating fish in a barrel as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue movie terms; I was checking whether A video and A glance could survive the same tighter read.",
+    "Then I used The messenger, Fish in a barrel, and Oneself in the foot as the confirmation round. The messenger, Fish in a barrel, and Oneself in the foot stayed inside the real category, so the answer felt earned instead of guessed. The answer was Things you might shoot."
+  ],
+  "lessons": [
+    {
+      "title": "\"A video\" and \"A glance\" can look like they belong to different categories at first",
+      "body": "\"A video\" and \"A glance\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Fish in a barrel\" anchors a shared category board with one concrete theme",
+      "body": "Fish in a barrel organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Fish in a barrel\" to re-check \"A video\" under a shared category board with one concrete theme",
+      "body": "Be careful not to jump to conclusions based on the surface meaning of the clues, and consider how each one might fit into a larger category or theme."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"A video\" and \"A glance\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "A video",
+        "examplePhrase": "A type of thing you might shoot",
+        "connectionExplained": "The word 'shoot' can refer to the act of recording or filming something."
+      },
+      {
+        "clue": "A glance",
+        "examplePhrase": "A type of thing you might shoot",
+        "connectionExplained": "The word 'shoot' can refer to the act of looking or glancing at something, especially in the context of targeting or aiming."
+      },
+      {
+        "clue": "The messenger",
+        "examplePhrase": "The messenger",
+        "connectionExplained": "The phrase 'shoot the messenger' is a common idiom that means to blame or attack the person who brings bad news."
+      },
+      {
+        "clue": "Fish in a barrel",
+        "examplePhrase": "A type of thing you might shoot",
+        "connectionExplained": "The phrase 'fish in a barrel' is a common idiom that refers to an easy or helpless target, and the act of shooting fish in a barrel is a literal example of this."
+      },
+      {
+        "clue": "Oneself in the foot",
+        "examplePhrase": "A type of thing you might shoot",
+        "connectionExplained": "The phrase 'shoot oneself in the foot' is a common idiom that means to accidentally harm or hinder oneself, often through one's own actions or words."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"A video\" and \"A glance\" in LinkedIn Pinpoint #843?",
+      "answer": "The answer is \"Things you might shoot\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"A video\" and \"A glance\" connect in LinkedIn Pinpoint #843?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Fish in a barrel is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Fish in a barrel\" the key clue in LinkedIn Pinpoint #843?",
+      "answer": "Fish in a barrel is the turning clue because \"A type of thing you might shoot\" makes the shared category frame explicit. It also makes A video read cleanly as \"A type of thing you might shoot\". The puzzle is tricky because the clues can be misleading at first, and it takes some thought to realize that each one can be related to the idea of 'shooting' something."
+    },
+    {
+      "question": "How does \"A video\" fit the same category as \"Fish in a barrel\" in LinkedIn Pinpoint #843?",
+      "answer": "\"A video\" reads as \"A type of thing you might shoot\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "A video, A glance, and The messenger do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"movie terms\" can feel plausible before one clue makes the answer feel concrete. Fish in a barrel is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "movie terms",
+      "idiomatic phrases"
+    ],
+    "whyFalseStartPlausible": [
+      "While some of the clues are related to film or photography, not all of them fit this category, and the answer is more specific than just any movie term.",
+      "idiomatic phrases feels plausible early on, but it falls apart once fish in a barrel demands a more exact reading."
+    ],
+    "breakingClue": "Fish in a barrel",
+    "pivot": "The solve turned when I stopped treating fish in a barrel as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue movie terms; I was checking whether A video and A glance could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like A video, A glance, and The messenger stop feeling disconnected and start looking like they belong together. Once fish in a barrel is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The puzzle is tricky because the clues can be misleading at first, and it takes some thought to realize that each one can be related to the idea of 'shooting' something."
+  },
+  "turningPoint": {
+    "clue": "Fish in a barrel",
+    "whyDecisive": "The clue 'fish in a barrel' made me realize that the answer was more general than just film or photography.",
+    "whatChangedAfterIt": "Once Fish in a barrel landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "A video",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "A type of thing you might shoot",
+      "nonObviousWhy": "The word 'shoot' can refer to the act of recording or filming something.",
+      "searchableContext": "The word 'shoot' comes from the Old English word 'scēotan', which means 'to shoot or throw'",
+      "phraseExample": "The word 'shoot' comes from the Old English word 'scēotan', which means 'to shoot or throw'"
+    },
+    {
+      "clue": "A glance",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "A type of thing you might shoot",
+      "nonObviousWhy": "The word 'shoot' can refer to the act of looking or glancing at something, especially in the context of targeting or aiming.",
+      "searchableContext": "The word 'glance' comes from the Old French word 'glacer', which means 'to look or gaze'",
+      "phraseExample": "The word 'glance' comes from the Old French word 'glacer', which means 'to look or gaze'"
+    },
+    {
+      "clue": "The messenger",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "The messenger",
+      "nonObviousWhy": "The phrase 'shoot the messenger' is a common idiom that means to blame or attack the person who brings bad news.",
+      "searchableContext": "The phrase 'shoot the messenger' comes from the ancient Greek practice of killing the messenger who brought bad news",
+      "phraseExample": "The phrase 'shoot the messenger' comes from the ancient Greek practice of killing the messenger who brought bad news"
+    },
+    {
+      "clue": "Fish in a barrel",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "A type of thing you might shoot",
+      "nonObviousWhy": "The phrase 'fish in a barrel' is a common idiom that refers to an easy or helpless target, and the act of shooting fish in a barrel is a literal example of this.",
+      "searchableContext": "The phrase 'fish in a barrel' comes from the idea of shooting fish in a barrel, which is a relatively easy task",
+      "phraseExample": "The phrase 'fish in a barrel' comes from the idea of shooting fish in a barrel, which is a relatively easy task"
+    },
+    {
+      "clue": "Oneself in the foot",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "A type of thing you might shoot",
+      "nonObviousWhy": "The phrase 'shoot oneself in the foot' is a common idiom that means to accidentally harm or hinder oneself, often through one's own actions or words.",
+      "searchableContext": "The phrase 'shoot oneself in the foot' comes from the idea of accidentally shooting oneself in the foot, which is a self-inflicted injury",
+      "phraseExample": "The phrase 'shoot oneself in the foot' comes from the idea of accidentally shooting oneself in the foot, which is a self-inflicted injury"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"A video\" and \"A glance\" in LinkedIn Pinpoint #843?",
+      "answer": "The answer is \"Things you might shoot\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "A video"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"A video\" and \"A glance\" connect in LinkedIn Pinpoint #843?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Fish in a barrel is what keeps the category reading precise instead of broad.",
+      "tiedClue": "A video"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Fish in a barrel\" the key clue in LinkedIn Pinpoint #843?",
+      "answer": "Fish in a barrel is the turning clue because \"A type of thing you might shoot\" makes the shared category frame explicit. It also makes A video read cleanly as \"A type of thing you might shoot\". The puzzle is tricky because the clues can be misleading at first, and it takes some thought to realize that each one can be related to the idea of 'shooting' something.",
+      "tiedClue": "Fish in a barrel"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"A video\" fit the same category as \"Fish in a barrel\" in LinkedIn Pinpoint #843?",
+      "answer": "\"A video\" reads as \"A type of thing you might shoot\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "A video"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "A type of thing you might shoot",
+      "A type of thing you might shoot",
+      "The messenger",
+      "A type of thing you might shoot",
+      "A type of thing you might shoot"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"A video\" and \"A glance\" can look like they belong to different categories at first",
+      "\"Fish in a barrel\" anchors a shared category board with one concrete theme",
+      "Use \"Fish in a barrel\" to re-check \"A video\" under a shared category board with one concrete theme",
+      "The word 'shoot' comes from the Old English word 'scēotan', which means 'to shoot or throw'",
+      "The word 'glance' comes from the Old French word 'glacer', which means 'to look or gaze'"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "movie terms",
+      "whyPlausible": "While some of the clues are related to film or photography, not all of them fit this category, and the answer is more specific than just any movie term.",
+      "whyRejected": "Once Fish in a barrel lands, the final answer explains the board more cleanly than movie terms."
+    },
+    {
+      "label": "idiomatic phrases",
+      "whyPlausible": "idiomatic phrases feels plausible early on, but it falls apart once fish in a barrel demands a more exact reading.",
+      "whyRejected": "Once Fish in a barrel lands, the final answer explains the board more cleanly than idiomatic phrases."
+    }
+  ],
+  "setValidationSummary": "The messenger, Fish in a barrel, Oneself in the foot keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things you might shoot"
+}
