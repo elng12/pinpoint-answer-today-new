@@ -346,22 +346,6 @@ function resolveEvidenceUniquenessSignals(
   };
 }
 
-function resolveDetailClues(
-  registryClues: string[],
-  detailContent: PuzzleDetailContentRecord,
-): string[] {
-  const detailClues = Object.keys(detailContent.wordHints);
-
-  if (
-    detailClues.length === registryClues.length &&
-    detailClues.every((clue) => registryClues.includes(clue))
-  ) {
-    return detailClues;
-  }
-
-  return registryClues;
-}
-
 export async function toPuzzleDetail(
   entry: PuzzleRegistryEntryRecord & {
     mainAnswer: string;
@@ -370,7 +354,8 @@ export async function toPuzzleDetail(
   },
 ): Promise<PuzzleDetail> {
   const detailContent = await fetchPuzzleContent(entry.slug);
-  const detailClues = resolveDetailClues(entry.clues, detailContent);
+  // Integer-like object keys are enumerated first, so the registry array owns clue order.
+  const detailClues = entry.clues;
   const detailState = resolveFormalDetailState(entry, detailContent);
   const display = buildPuzzleDisplay(
     detailClues,

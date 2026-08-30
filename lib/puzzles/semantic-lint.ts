@@ -312,7 +312,12 @@ function pushAnswerLogicIssues(
     );
   }
 
-  for (const candidate of extractAnswerLikeCandidates(text)) {
+  const answerScanText = text.replace(/["“”'`]/g, "");
+  const textWithoutOfficialAnswer = answerScanText.replace(
+    new RegExp(escapeForRegex(mainAnswer), "gi"),
+    " ",
+  );
+  for (const candidate of extractAnswerLikeCandidates(textWithoutOfficialAnswer)) {
     if (!looksLikeSameAnswerFamily(candidate, mainAnswer)) continue;
     pushIssue(
       issues,

@@ -1,9 +1,349 @@
 [
   {
+    "puzzleNumber": 852,
+    "slug": "pinpoint-answer-852",
+    "publishDate": "2026-08-30",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Everything",
+      "Anchor",
+      "A hint",
+      "A line",
+      "The ball"
+    ],
+    "mainAnswer": "Words that follow “drop” in common sayings",
+    "category": "Words that follow “drop” in common sayings",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Everything, Anchor, A hint, A line, The ball - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-30T07:05:14.466Z"
+  },
+  {
+    "puzzleNumber": 851,
+    "slug": "pinpoint-answer-851",
+    "publishDate": "2026-08-29",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Tents",
+      "Skiers",
+      "Barber shops",
+      "Olympic vaulters",
+      "Flags (as attached here: 🏁)"
+    ],
+    "mainAnswer": "All associated with poles",
+    "category": "All associated with poles",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Tents, Skiers, Barber shops, Olympic vaulters, Flags (as attached here: 🏁) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-30T07:05:14.466Z"
+  },
+  {
+    "puzzleNumber": 850,
+    "slug": "pinpoint-answer-850",
+    "publishDate": "2026-08-28",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Will",
+      "Trade",
+      "Rein",
+      "Speech",
+      "As a bird"
+    ],
+    "mainAnswer": "Words that come after “free”",
+    "category": "Words that come after “free”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Will, Trade, Rein, Speech, As a bird - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-29T07:06:40.126Z"
+  },
+  {
+    "puzzleNumber": 849,
+    "slug": "pinpoint-answer-849",
+    "publishDate": "2026-08-27",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Octopuses",
+      "Arctic hares (twice a year)",
+      "Mood rings",
+      "Leaves (in autumn)",
+      "Chameleons"
+    ],
+    "mainAnswer": "Things that change colors",
+    "category": "Things that change colors",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Octopuses, Arctic hares (twice a year), Mood rings, Leaves (in autumn), Chameleons - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-28T07:04:17.989Z"
+  },
+  {
+    "puzzleNumber": 848,
+    "slug": "pinpoint-answer-848",
+    "publishDate": "2026-08-26",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Twist",
+      "Floss",
+      "Robot",
+      "Moonwalk",
+      "Macarena"
+    ],
+    "mainAnswer": "Names of dance crazes",
+    "category": "Names of dance crazes",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Twist, Floss, Robot, Moonwalk, Macarena - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-27T07:02:27.247Z"
+  },
+  {
+    "puzzleNumber": 847,
+    "slug": "pinpoint-answer-847",
+    "publishDate": "2026-08-25",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Impact",
+      "Courier",
+      "Wingdings",
+      "Lucida Handwriting",
+      "Calibri or Aptos (in MS Office)"
+    ],
+    "mainAnswer": "Names of fonts",
+    "category": "Names of fonts",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Impact, Courier, Wingdings, Lucida Handwriting, Calibri or Aptos (in MS Office) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-26T07:02:49.183Z"
+  },
+  {
+    "puzzleNumber": 846,
+    "slug": "pinpoint-answer-846",
+    "publishDate": "2026-08-24",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Krait",
+      "Copperhead",
+      "Python",
+      "Viper",
+      "Boa constrictor"
+    ],
+    "mainAnswer": "Types of snakes",
+    "category": "Types of snakes",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Krait, Copperhead, Python, Viper, Boa constrictor - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-25T07:03:05.714Z"
+  },
+  {
+    "puzzleNumber": 845,
+    "slug": "pinpoint-answer-845",
+    "publishDate": "2026-08-23",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Tank",
+      "Piece",
+      "Twice",
+      "Out loud",
+      "Outside the box"
+    ],
+    "mainAnswer": "Words that come after “think”",
+    "category": "Words that come after “think”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Tank, Piece, Twice, Out loud, Outside the box - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-24T07:04:36.934Z"
+  },
+  {
+    "puzzleNumber": 844,
+    "slug": "pinpoint-answer-844",
+    "publishDate": "2026-08-22",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Crushing ice",
+      "Removing nails",
+      "Tenderizing meat",
+      "Shaping metal (over an anvil)",
+      "Chiseling stone (hit with this)"
+    ],
+    "mainAnswer": "Different ways to use a hammer (besides the most common one)",
+    "category": "Different ways to use a hammer (besides the most common one)",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Crushing ice, Removing nails, Tenderizing meat, Shaping metal (over an anvil), Chiseling stone (hit with this) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-23T07:07:34.383Z"
+  },
+  {
+    "puzzleNumber": 843,
+    "slug": "pinpoint-answer-843",
+    "publishDate": "2026-08-21",
+    "status": "archived",
+    "detailState": "published",
+    "clues": [
+      "A video",
+      "A glance",
+      "The messenger",
+      "Fish in a barrel",
+      "Oneself in the foot"
+    ],
+    "mainAnswer": "Things you might “shoot”",
+    "category": "Things you might “shoot”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, A video, A glance, The messenger do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-08-22T07:05:40.897Z"
+  },
+  {
+    "puzzleNumber": 842,
+    "slug": "pinpoint-answer-842",
+    "publishDate": "2026-08-20",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Nori",
+      "Jerky",
+      "Instant coffee",
+      "Prunes",
+      "Raisins"
+    ],
+    "mainAnswer": "Food items that are dehydrated",
+    "category": "Food items that are dehydrated",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Nori, Jerky, Instant coffee, Prunes, Raisins - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-21T07:01:57.435Z"
+  },
+  {
+    "puzzleNumber": 841,
+    "slug": "pinpoint-answer-841",
+    "publishDate": "2026-08-19",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "William and Caroline Herschel",
+      "Tycho Brahe",
+      "Carl Sagan",
+      "Nicolaus Copernicus",
+      "Galileo Galilei"
+    ],
+    "mainAnswer": "Famous astronomers",
+    "category": "Famous astronomers",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links William and Caroline Herschel, Tycho Brahe, Carl Sagan, Nicolaus Copernicus, Galileo Galilei - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-20T07:03:50.680Z"
+  },
+  {
+    "puzzleNumber": 840,
+    "slug": "pinpoint-answer-840",
+    "publishDate": "2026-08-18",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "The Muppets",
+      "Star Wars",
+      "Marvel",
+      "Pixar",
+      "Mickey Mouse"
+    ],
+    "mainAnswer": "Properties of The Walt Disney Company",
+    "category": "Properties of The Walt Disney Company",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links The Muppets, Star Wars, Marvel, Pixar, Mickey Mouse - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-19T07:01:55.796Z"
+  },
+  {
+    "puzzleNumber": 839,
+    "slug": "pinpoint-answer-839",
+    "publishDate": "2026-08-17",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Dram",
+      "Krone",
+      "Rupee",
+      "Peso",
+      "Euro (€)"
+    ],
+    "mainAnswer": "Names of world currencies",
+    "category": "Names of world currencies",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Dram, Krone, Rupee, Peso, Euro (€) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-18T07:04:24.402Z"
+  },
+  {
+    "puzzleNumber": 838,
+    "slug": "pinpoint-answer-838",
+    "publishDate": "2026-08-16",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Freeze",
+      "Time",
+      "Bed",
+      "Door",
+      "Picture (🖼️)"
+    ],
+    "mainAnswer": "Words that come before “frame”",
+    "category": "Words that come before “frame”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Freeze, Time, Bed, Door, Picture (🖼️) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-17T07:06:07.817Z"
+  },
+  {
+    "puzzleNumber": 837,
+    "slug": "pinpoint-answer-837",
+    "publishDate": "2026-08-15",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "A speech",
+      "The daily newspaper",
+      "The mail",
+      "A knockout blow",
+      "Restaurant food brought to you"
+    ],
+    "mainAnswer": "Things that are delivered",
+    "category": "Things that are delivered",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links A speech, The daily newspaper, The mail, A knockout blow, Restaurant food brought to you - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-16T07:05:08.033Z"
+  },
+  {
+    "puzzleNumber": 836,
+    "slug": "pinpoint-answer-836",
+    "publishDate": "2026-08-14",
+    "status": "archived",
+    "detailState": "published",
+    "clues": [
+      "Odyssey",
+      "Galaxy",
+      "Kart",
+      "64",
+      "Bros. 3"
+    ],
+    "mainAnswer": "Terms that come after “Super Mario” in video game titles",
+    "category": "Terms that come after “Super Mario” in video game titles",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Odyssey, Galaxy, Kart do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-08-15T07:02:55.385Z"
+  },
+  {
     "puzzleNumber": 835,
     "slug": "pinpoint-answer-835",
     "publishDate": "2026-08-13",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "The Sun",
@@ -17,7 +357,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links The Sun, Dominoes, Leopards, Dalmations, Ladybirds / ladybugs (🐞) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-08-13T07:05:22.525Z"
+    "updatedAt": "2026-08-15T07:02:55.385Z"
   },
   {
     "puzzleNumber": 834,

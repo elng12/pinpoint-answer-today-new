@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 850,
+  "slug": "pinpoint-answer-850",
+  "publishDate": "2026-08-28",
+  "isoDate": "2026-08-28",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Will",
+    "Trade",
+    "Rein",
+    "Speech",
+    "As a bird"
+  ],
+  "answer": "Words that come after “free”",
+  "category": "Words that come after “free”",
+  "wordHints": {
+    "Will": "\"free Will\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Trade": "\"free Trade\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Rein": "Once the shared word is in place, \"free Rein\" reads like ordinary language instead of a forced compound.",
+    "Speech": "\"free Speech\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "As a bird": "\"free As a bird\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Will": "Try reading Will as part of a familiar phrase in words that come after “free” instead of as a standalone word.",
+    "Trade": "Trade works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Rein": "Look for a natural expression that absorbs Rein cleanly before locking the board.",
+    "Speech": "Try reading Speech as part of a familiar phrase in words that come after “free” instead of as a standalone word.",
+    "As a bird": "As a bird is the clue that makes the phrase pattern in words that come after “free” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. A nearby read was \"Will and Trade phrase pairing\". Will, Trade can support more than one phrase read before As a bird shows where the repeated word belongs. As a bird behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"As a bird as an outlier clue\". As a bird can look like the odd clue if the earlier words are read without a shared phrase slot. Once As a bird locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"free Will\" and \"free Trade\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "free Rein, free Speech, free As a bird show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “free”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “free”\" fits better than \"Will and Trade phrase pairing\" or \"As a bird as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Will and first tried Will and Trade phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"As a bird\" feel exact.",
+    "Once \"As a bird\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Rein and Speech as the confirmation round. The strong solve was not just that two clues worked; it was that Will, Trade, Rein, Speech, As a bird could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come after “free”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Will\" and \"Trade\"",
+      "body": "\"Will\" and \"Trade\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"As a bird\" changes the free pattern from guess to test",
+      "body": "Once \"As a bird\" lands, place the same word before the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 850, the free phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Will\" and \"Trade\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Will",
+        "examplePhrase": "free Will",
+        "connectionExplained": "\"free Will\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Trade",
+        "examplePhrase": "free Trade",
+        "connectionExplained": "\"free Trade\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Rein",
+        "examplePhrase": "free Rein",
+        "connectionExplained": "Once the shared word is in place, \"free Rein\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Speech",
+        "examplePhrase": "free Speech",
+        "connectionExplained": "\"free Speech\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "As a bird",
+        "examplePhrase": "free As a bird",
+        "connectionExplained": "\"free As a bird\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Will\" and \"Trade\" in LinkedIn Pinpoint #850?",
+      "answer": "The answer is \"Words that come after “free”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Will\" and \"Trade\" connect in LinkedIn Pinpoint #850?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"As a bird\" the key clue in LinkedIn Pinpoint #850?",
+      "answer": "\"As a bird\" is the strongest clue because \"free As a bird\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "falseStarts": [
+      "Will and Trade phrase pairing",
+      "As a bird as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Will, Trade can support more than one phrase read before As a bird shows where the repeated word belongs.",
+      "As a bird can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "As a bird",
+    "pivot": "I started with Will and first tried Will and Trade phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"As a bird\" feel exact.\n\nOnce \"As a bird\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Rein and Speech as the confirmation round. The strong solve was not just that two clues worked; it was that Will, Trade, Rein, Speech, As a bird could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come after “free”\".",
+    "fullBoardConfirmation": "Another easy trap was \"As a bird as an outlier clue\". As a bird can look like the odd clue if the earlier words are read without a shared phrase slot. Once As a bird locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "As a bird",
+    "whyDecisive": "As a bird is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once As a bird lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Will",
+      "surfaceMisread": "Will and Trade phrase pairing",
+      "resolvedPhraseOrMember": "free Will",
+      "nonObviousWhy": "\"free Will\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "free Will",
+      "phraseExample": "free Will"
+    },
+    {
+      "clue": "Trade",
+      "surfaceMisread": "Will and Trade phrase pairing",
+      "resolvedPhraseOrMember": "free Trade",
+      "nonObviousWhy": "\"free Trade\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "free Trade",
+      "phraseExample": "free Trade"
+    },
+    {
+      "clue": "Rein",
+      "surfaceMisread": "Will and Trade phrase pairing",
+      "resolvedPhraseOrMember": "free Rein",
+      "nonObviousWhy": "Once the shared word is in place, \"free Rein\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "free Rein",
+      "phraseExample": "free Rein"
+    },
+    {
+      "clue": "Speech",
+      "surfaceMisread": "Will and Trade phrase pairing",
+      "resolvedPhraseOrMember": "free Speech",
+      "nonObviousWhy": "\"free Speech\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "free Speech",
+      "phraseExample": "free Speech"
+    },
+    {
+      "clue": "As a bird",
+      "surfaceMisread": "Will and Trade phrase pairing",
+      "resolvedPhraseOrMember": "free As a bird",
+      "nonObviousWhy": "\"free As a bird\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "free As a bird",
+      "phraseExample": "free As a bird"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Will\" and \"Trade\" in LinkedIn Pinpoint #850?",
+      "answer": "The answer is \"Words that come after “free”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Will"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Will\" and \"Trade\" connect in LinkedIn Pinpoint #850?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Will"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"As a bird\" the key clue in LinkedIn Pinpoint #850?",
+      "answer": "\"As a bird\" is the strongest clue because \"free As a bird\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "As a bird"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "free Will",
+      "free Trade",
+      "free Rein",
+      "free Speech",
+      "free As a bird"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "free Will",
+      "free Trade",
+      "free Rein",
+      "free Speech"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Will and Trade phrase pairing",
+      "whyPlausible": "Will, Trade can support more than one phrase read before As a bird shows where the repeated word belongs.",
+      "whyRejected": "As a bird behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "As a bird as an outlier clue",
+      "whyPlausible": "As a bird can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once As a bird locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "free Rein, free Speech, free As a bird show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}

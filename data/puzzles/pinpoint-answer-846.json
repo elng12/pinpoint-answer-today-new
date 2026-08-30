@@ -1,0 +1,228 @@
+{
+  "puzzleNumber": 846,
+  "slug": "pinpoint-answer-846",
+  "publishDate": "2026-08-24",
+  "isoDate": "2026-08-24",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Krait",
+    "Copperhead",
+    "Python",
+    "Viper",
+    "Boa constrictor"
+  ],
+  "answer": "Types of snakes",
+  "category": "Types of snakes",
+  "wordHints": {
+    "Krait": "\"Krait snake\" is a recognizable snake, so it gives the board a clean category fit.",
+    "Copperhead": "Once the board is read as snakes, \"Copperhead snake\" stops feeling broad and becomes an exact fit.",
+    "Python": "\"Python snake\" belongs in the same snake frame, which keeps the category specific instead of loose.",
+    "Viper": "\"Viper snake\" is a recognizable snake, so it gives the board a clean category fit.",
+    "Boa constrictor": "Once the board is read as snakes, \"Boa constrictor snake\" stops feeling broad and becomes an exact fit."
+  },
+  "spoilerHints": {
+    "Krait": "Treat Krait as one recognizable member of types of snakes, not as a broad topic on its own.",
+    "Copperhead": "Copperhead helps more once you ask what kind of thing it is rather than where you have seen it before.",
+    "Python": "Try reading Python as a specific type inside types of snakes instead of as a loose general reference.",
+    "Viper": "Treat Viper as one recognizable member of types of snakes, not as a broad topic on its own.",
+    "Boa constrictor": "Boa constrictor is the clue that makes types of snakes specific enough to verify across the whole board."
+  },
+  "articleBlocks": [
+    "At first, Krait and Copperhead can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start. One tempting read was \"a broader umbrella topic\". Krait, Copperhead can sound like they belong to the same general area before the board tells you what type of thing each clue actually names. Boa constrictor pushes the solve down to one exact type-level category instead of a vague umbrella topic.",
+    "Another nearby bucket was \"a loose mascot or named-entity cluster\". Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level. The solved board works because every clue becomes a member of the same typed family, not because they simply feel related.",
+    "Once the board turned into a question about what kind of snake each clue could be, a category board focused on snakes stopped sounding generic and started behaving like a real category test. Examples like \"Krait snake\" and \"Copperhead snake\" then read like recognizable members of the same set rather than isolated references that merely share the same mood.",
+    "Python snake, Viper snake, Boa constrictor snake read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+    "The answer was \"Types of snakes\". More precisely, the board resolves as a typed category where each clue names a specific member of the same family around Types of snakes, which is why \"Types of snakes\" fits better than \"a broader umbrella topic\" or \"a loose mascot or named-entity cluster\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Krait and Copperhead and first drifted toward a broader umbrella topic. That read was plausible because the early clues could sit inside a bigger umbrella topic, but it still felt too loose once \"Boa constrictor\" showed up.",
+    "The solve improved when I stopped asking what the clues vaguely shared and started asking what type of thing each clue specifically named. \"Boa constrictor\" was the clue that made that tighter test worth trying.",
+    "Then I used Python and Viper as the confirmation round. The answer held because Krait, Copperhead, Python, Viper, Boa constrictor could all stay inside one member family without changing the rule halfway through.",
+    "The answer was \"Types of snakes\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Krait\" and \"Copperhead\" can look like they belong to different categories at first",
+      "body": "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names."
+    },
+    {
+      "title": "\"Boa constrictor\" is what makes the category feel concrete instead of broad",
+      "body": "A good category answer does more than group the clues loosely. It should make each clue sound like a recognizable member of the same family."
+    },
+    {
+      "title": "For Pinpoint 846, every clue should stay at the snake level",
+      "body": "Once \"Boa constrictor\" lands, check whether the rest of the clues fit that same category at the same level of precision."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on snakes",
+    "fastStrategy": "Typed-category boards become easier once you stop sorting by vibe and start asking what kind of thing each clue specifically names.",
+    "clueTableRows": [
+      {
+        "clue": "Krait",
+        "examplePhrase": "Krait snake",
+        "connectionExplained": "\"Krait snake\" is a recognizable snake, so it gives the board a clean category fit."
+      },
+      {
+        "clue": "Copperhead",
+        "examplePhrase": "Copperhead snake",
+        "connectionExplained": "Once the board is read as snakes, \"Copperhead snake\" stops feeling broad and becomes an exact fit."
+      },
+      {
+        "clue": "Python",
+        "examplePhrase": "Python snake",
+        "connectionExplained": "\"Python snake\" belongs in the same snake frame, which keeps the category specific instead of loose."
+      },
+      {
+        "clue": "Viper",
+        "examplePhrase": "Viper snake",
+        "connectionExplained": "\"Viper snake\" is a recognizable snake, so it gives the board a clean category fit."
+      },
+      {
+        "clue": "Boa constrictor",
+        "examplePhrase": "Boa constrictor snake",
+        "connectionExplained": "Once the board is read as snakes, \"Boa constrictor snake\" stops feeling broad and becomes an exact fit."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Which type-level category connects \"Krait\" and \"Copperhead\" in LinkedIn Pinpoint #846?",
+      "answer": "The answer is \"Types of snakes\". That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket."
+    },
+    {
+      "question": "How do \"Krait\" and \"Copperhead\" connect in LinkedIn Pinpoint #846?",
+      "answer": "The connection is a category board focused on snakes. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of."
+    },
+    {
+      "question": "Why is \"Boa constrictor\" the key clue in LinkedIn Pinpoint #846?",
+      "answer": "\"Boa constrictor\" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun."
+    },
+    {
+      "question": "How does \"Krait\" fit as a snake in LinkedIn Pinpoint #846?",
+      "answer": "\"Krait\" is a recognizable snake, which keeps the board specific instead of broadly themed."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Krait and Copperhead can feel like they belong to a broad topic instead of one exact family, which is why typed-category boards often look looser than they really are at the start.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a loose mascot or named-entity cluster"
+    ],
+    "whyFalseStartPlausible": [
+      "Krait, Copperhead can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level."
+    ],
+    "breakingClue": "Boa constrictor",
+    "pivot": "I started with Krait and Copperhead and first drifted toward a broader umbrella topic. That read was plausible because the early clues could sit inside a bigger umbrella topic, but it still felt too loose once \"Boa constrictor\" showed up.\n\nThe solve improved when I stopped asking what the clues vaguely shared and started asking what type of thing each clue specifically named. \"Boa constrictor\" was the clue that made that tighter test worth trying.\n\nThen I used Python and Viper as the confirmation round. The answer held because Krait, Copperhead, Python, Viper, Boa constrictor could all stay inside one member family without changing the rule halfway through.\n\nThe answer was \"Types of snakes\".",
+    "fullBoardConfirmation": "Once the board turned into a question about what kind of snake each clue could be, a category board focused on snakes stopped sounding generic and started behaving like a real category test. Examples like \"Krait snake\" and \"Copperhead snake\" then read like recognizable members of the same set rather than isolated references that merely share the same mood."
+  },
+  "turningPoint": {
+    "clue": "Boa constrictor",
+    "whyDecisive": "Boa constrictor is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Boa constrictor lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Krait",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Krait snake",
+      "nonObviousWhy": "\"Krait snake\" is a recognizable snake, so it gives the board a clean category fit.",
+      "searchableContext": "Krait snake",
+      "phraseExample": "Krait snake"
+    },
+    {
+      "clue": "Copperhead",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Copperhead snake",
+      "nonObviousWhy": "Once the board is read as snakes, \"Copperhead snake\" stops feeling broad and becomes an exact fit.",
+      "searchableContext": "Copperhead snake",
+      "phraseExample": "Copperhead snake"
+    },
+    {
+      "clue": "Python",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Python snake",
+      "nonObviousWhy": "\"Python snake\" belongs in the same snake frame, which keeps the category specific instead of loose.",
+      "searchableContext": "Python snake",
+      "phraseExample": "Python snake"
+    },
+    {
+      "clue": "Viper",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Viper snake",
+      "nonObviousWhy": "\"Viper snake\" is a recognizable snake, so it gives the board a clean category fit.",
+      "searchableContext": "Viper snake",
+      "phraseExample": "Viper snake"
+    },
+    {
+      "clue": "Boa constrictor",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Boa constrictor snake",
+      "nonObviousWhy": "Once the board is read as snakes, \"Boa constrictor snake\" stops feeling broad and becomes an exact fit.",
+      "searchableContext": "Boa constrictor snake",
+      "phraseExample": "Boa constrictor snake"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "Which type-level category connects \"Krait\" and \"Copperhead\" in LinkedIn Pinpoint #846?",
+      "answer": "The answer is \"Types of snakes\". That reading is the first one that turns the clues into recognizable members of the same typed category instead of one loose topic bucket.",
+      "tiedClue": "Krait"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Krait\" and \"Copperhead\" connect in LinkedIn Pinpoint #846?",
+      "answer": "The connection is a category board focused on snakes. The board gets easier once you ask what kind of thing each clue could specifically be, not just what they vaguely remind you of.",
+      "tiedClue": "Krait"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Boa constrictor\" the key clue in LinkedIn Pinpoint #846?",
+      "answer": "\"Boa constrictor\" is the anchor clue because it sharpens the board into one exact type-level answer and makes the earlier clues easier to re-check under the same category noun.",
+      "tiedClue": "Boa constrictor"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Krait\" fit as a snake in LinkedIn Pinpoint #846?",
+      "answer": "\"Krait\" is a recognizable snake, which keeps the board specific instead of broadly themed.",
+      "tiedClue": "Krait"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on snakes",
+    "relatedEntities": [
+      "Krait snake",
+      "Copperhead snake",
+      "Python snake",
+      "Viper snake",
+      "Boa constrictor snake"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on snakes",
+      "Krait snake",
+      "Copperhead snake",
+      "Python snake",
+      "Viper snake"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Krait, Copperhead can sound like they belong to the same general area before the board tells you what type of thing each clue actually names.",
+      "whyRejected": "Boa constrictor pushes the solve down to one exact type-level category instead of a vague umbrella topic."
+    },
+    {
+      "label": "a loose mascot or named-entity cluster",
+      "whyPlausible": "Capitalized or specific-looking clues can tempt you to group them by surface familiarity instead of by category level.",
+      "whyRejected": "The solved board works because every clue becomes a member of the same typed family, not because they simply feel related."
+    }
+  ],
+  "setValidationSummary": "Python snake, Viper snake, Boa constrictor snake read like named members of the same typed category, which keeps the board precise all the way through instead of letting it drift back into a broad topic bucket.",
+  "categoryPrecisionNote": "a typed category where each clue names a specific member of the same family around Types of snakes"
+}

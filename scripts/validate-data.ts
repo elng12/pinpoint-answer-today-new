@@ -446,12 +446,7 @@ function validateDetailContent(entry: PuzzleRegistryEntryRecord, detail: PuzzleD
     throw new Error(`wordHints clue mismatch for ${entry.slug}: ${parts.join("; ")}`);
   }
 
-  const orderMismatchIndex = entry.clues.findIndex((clue, index) => clue !== hintKeys[index]);
-  if (orderMismatchIndex !== -1) {
-    throw new Error(
-      `wordHints clue order mismatch for ${entry.slug}: expected "${entry.clues[orderMismatchIndex]}", received "${hintKeys[orderMismatchIndex]}" at position ${orderMismatchIndex + 1}`,
-    );
-  }
+  // wordHints is a record; numeric clues cannot preserve insertion order in JavaScript objects.
 
   const bodyWordCount = countWords(bodyParagraphs.join(" "));
   const minRequiredFullAnalysisWords =

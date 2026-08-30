@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 838,
+  "slug": "pinpoint-answer-838",
+  "publishDate": "2026-08-16",
+  "isoDate": "2026-08-16",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Freeze",
+    "Time",
+    "Bed",
+    "Door",
+    "Picture (🖼️)"
+  ],
+  "answer": "Words that come before “frame”",
+  "category": "Words that come before “frame”",
+  "wordHints": {
+    "Freeze": "\"Freeze frame\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Time": "\"Time frame\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Bed": "Once the shared word is in place, \"Bed frame\" reads like ordinary language instead of a forced compound.",
+    "Door": "\"Door frame\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Picture (🖼️)": "The familiar expression \"Picture frame\" makes the missing word \"frame\" obvious in plain language."
+  },
+  "spoilerHints": {
+    "Freeze": "Try reading Freeze as part of a familiar phrase in words that come before “frame” instead of as a standalone word.",
+    "Time": "Time works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Bed": "Look for a natural expression that absorbs Bed cleanly before locking the board.",
+    "Door": "Try reading Door as part of a familiar phrase in words that come before “frame” instead of as a standalone word.",
+    "Picture (🖼️)": "Picture (🖼️) is the clue that makes the phrase pattern in words that come before “frame” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. A nearby read was \"Freeze and Time phrase pairing\". Freeze, Time can support more than one phrase read before Picture (🖼️) shows where the repeated word belongs. Picture (🖼️) behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Picture (🖼️) as an outlier clue\". Picture (🖼️) can look like the odd clue if the earlier words are read without a shared phrase slot. Once Picture (🖼️) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Freeze frame\" and \"Time frame\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Bed frame, Door frame, Picture frame show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “frame”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “frame”\" fits better than \"Freeze and Time phrase pairing\" or \"Picture (🖼️) as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Freeze and first tried Freeze and Time phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Picture (🖼️)\" feel exact.",
+    "Once \"Picture (🖼️)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Bed and Door as the confirmation round. The strong solve was not just that two clues worked; it was that Freeze, Time, Bed, Door, Picture (🖼️) could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “frame”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Freeze\" and \"Time\"",
+      "body": "\"Freeze\" and \"Time\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Picture (🖼️)\" changes the frame pattern from guess to test",
+      "body": "Once \"Picture (🖼️)\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 838, the frame phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Freeze\" and \"Time\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Freeze",
+        "examplePhrase": "Freeze frame",
+        "connectionExplained": "\"Freeze frame\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Time",
+        "examplePhrase": "Time frame",
+        "connectionExplained": "\"Time frame\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Bed",
+        "examplePhrase": "Bed frame",
+        "connectionExplained": "Once the shared word is in place, \"Bed frame\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Door",
+        "examplePhrase": "Door frame",
+        "connectionExplained": "\"Door frame\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Picture (🖼️)",
+        "examplePhrase": "Picture frame",
+        "connectionExplained": "The familiar expression \"Picture frame\" makes the missing word \"frame\" obvious in plain language."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Freeze\" and \"Time\" in LinkedIn Pinpoint #838?",
+      "answer": "The answer is \"Words that come before “frame”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Freeze\" and \"Time\" connect in LinkedIn Pinpoint #838?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Picture (🖼️)\" the key clue in LinkedIn Pinpoint #838?",
+      "answer": "\"Picture (🖼️)\" is the strongest clue because \"Picture frame\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Freeze and Time phrase pairing",
+      "Picture (🖼️) as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Freeze, Time can support more than one phrase read before Picture (🖼️) shows where the repeated word belongs.",
+      "Picture (🖼️) can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Picture (🖼️)",
+    "pivot": "I started with Freeze and first tried Freeze and Time phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Picture (🖼️)\" feel exact.\n\nOnce \"Picture (🖼️)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Bed and Door as the confirmation round. The strong solve was not just that two clues worked; it was that Freeze, Time, Bed, Door, Picture (🖼️) could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “frame”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Picture (🖼️) as an outlier clue\". Picture (🖼️) can look like the odd clue if the earlier words are read without a shared phrase slot. Once Picture (🖼️) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Picture (🖼️)",
+    "whyDecisive": "Picture (🖼️) is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Picture (🖼️) lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Freeze",
+      "surfaceMisread": "Freeze and Time phrase pairing",
+      "resolvedPhraseOrMember": "Freeze frame",
+      "nonObviousWhy": "\"Freeze frame\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Freeze frame",
+      "phraseExample": "Freeze frame"
+    },
+    {
+      "clue": "Time",
+      "surfaceMisread": "Freeze and Time phrase pairing",
+      "resolvedPhraseOrMember": "Time frame",
+      "nonObviousWhy": "\"Time frame\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Time frame",
+      "phraseExample": "Time frame"
+    },
+    {
+      "clue": "Bed",
+      "surfaceMisread": "Freeze and Time phrase pairing",
+      "resolvedPhraseOrMember": "Bed frame",
+      "nonObviousWhy": "Once the shared word is in place, \"Bed frame\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Bed frame",
+      "phraseExample": "Bed frame"
+    },
+    {
+      "clue": "Door",
+      "surfaceMisread": "Freeze and Time phrase pairing",
+      "resolvedPhraseOrMember": "Door frame",
+      "nonObviousWhy": "\"Door frame\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Door frame",
+      "phraseExample": "Door frame"
+    },
+    {
+      "clue": "Picture (🖼️)",
+      "surfaceMisread": "Freeze and Time phrase pairing",
+      "resolvedPhraseOrMember": "Picture frame",
+      "nonObviousWhy": "The familiar expression \"Picture frame\" makes the missing word \"frame\" obvious in plain language.",
+      "searchableContext": "Picture frame",
+      "phraseExample": "Picture frame"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Freeze\" and \"Time\" in LinkedIn Pinpoint #838?",
+      "answer": "The answer is \"Words that come before “frame”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Freeze"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Freeze\" and \"Time\" connect in LinkedIn Pinpoint #838?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Freeze"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Picture (🖼️)\" the key clue in LinkedIn Pinpoint #838?",
+      "answer": "\"Picture (🖼️)\" is the strongest clue because \"Picture frame\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Picture (🖼️)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Freeze frame",
+      "Time frame",
+      "Bed frame",
+      "Door frame",
+      "Picture frame"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Freeze frame",
+      "Time frame",
+      "Bed frame",
+      "Door frame"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Freeze and Time phrase pairing",
+      "whyPlausible": "Freeze, Time can support more than one phrase read before Picture (🖼️) shows where the repeated word belongs.",
+      "whyRejected": "Picture (🖼️) behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Picture (🖼️) as an outlier clue",
+      "whyPlausible": "Picture (🖼️) can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Picture (🖼️) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Bed frame, Door frame, Picture frame show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
