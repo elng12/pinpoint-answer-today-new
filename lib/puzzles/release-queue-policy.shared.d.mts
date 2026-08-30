@@ -12,6 +12,8 @@ export type ReleaseQueuePolicyInput = {
   candidateBranch?: string;
   candidateBranchExists?: boolean;
   candidateIsCurrent?: boolean;
+  candidateInventoryAvailable?: boolean;
+  otherCandidateBranches?: string[];
   allowCandidatePromotion?: boolean;
   overrideSecondProductionPush?: boolean;
   localGatesPassed?: boolean;
@@ -30,6 +32,8 @@ export type ReleaseQueuePolicyDecision = {
     reasonCode: string;
     candidateBranch: string;
     remainingWindowMs?: number;
+    blockingCandidateBranch?: string;
+    candidateBranchCount?: number;
   };
 };
 

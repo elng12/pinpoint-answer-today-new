@@ -20,6 +20,7 @@ import {
   countExactAnswerMentions,
   getExactAnswerUsageIssue,
 } from "../lib/puzzles/answer-usage.shared.mjs";
+import { assessCandidatePayloadOnMain } from "../lib/puzzles/candidate-payload-equivalence.shared.mjs";
 import {
   buildLightweightPublishFailureSummary,
   updateLightweightPublishFailureStreak,
@@ -2979,6 +2980,27 @@ function checkReleaseQueuePolicy() {
     nowMs: Date.parse("2026-05-22T08:30:00.000Z"),
   };
 
+  const unavailableInventory = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    candidateInventoryAvailable: false,
+  });
+  assert.equal(unavailableInventory.action, "hold-review", "unknown candidate inventory must fail closed");
+  assert.equal(unavailableInventory.reasonCode, "candidate-inventory-unavailable");
+
+  const earlierCandidate = "pinpoint/candidate/2026-05-21-pinpoint-answer-751";
+  const blockedByEarlierCandidate = decidePinpointReleaseQueueAction({
+    ...baseInput,
+    deploymentState: "ready",
+    candidateBranchExists: true,
+    candidateInventoryAvailable: true,
+    otherCandidateBranches: [earlierCandidate, earlierCandidate],
+  });
+  assert.equal(blockedByEarlierCandidate.action, "hold-review", "an earlier candidate must block a new candidate");
+  assert.equal(blockedByEarlierCandidate.reasonCode, "another-candidate-pending");
+  assert.equal(blockedByEarlierCandidate.notificationFields.blockingCandidateBranch, earlierCandidate);
+  assert.equal(blockedByEarlierCandidate.notificationFields.candidateBranchCount, 2);
+
   const queued = decidePinpointReleaseQueueAction({
     ...baseInput,
     deploymentState: "queued",
@@ -3023,12 +3045,16 @@ function checkReleaseQueuePolicy() {
 
   const staleCandidate = decidePinpointReleaseQueueAction({
     ...baseInput,
-    deploymentState: "ready",
+    deploymentState: "queued",
     candidateBranchExists: true,
     candidateIsCurrent: false,
   });
-  assert.equal(staleCandidate.action, "write-candidate", "stale candidate should be updated before production push");
+  assert.equal(staleCandidate.action, "hold-review", "stale candidate must stop instead of receiving another bad commit");
   assert.equal(staleCandidate.reasonCode, "candidate-branch-outdated");
+  assert.equal(
+    staleCandidate.notificationFields.blockingCandidateBranch,
+    "pinpoint/candidate/2026-05-22-pinpoint-answer-752",
+  );
 
   const currentCandidateAwaitingPromotion = decidePinpointReleaseQueueAction({
     ...baseInput,
@@ -3069,6 +3095,59 @@ function checkReleaseQueuePolicy() {
   );
 
   console.log("ok: release queue policy blocks duplicate production pushes and unsafe deployment states");
+}
+
+function checkRecoveredCandidatePayloadEquivalence() {
+  const slug = "pinpoint-answer-836";
+  const publishDate = "2026-08-14";
+  const detail = {
+    wordHints: { "64": "A title clue", Odyssey: "A title clue" },
+    articleBlocks: ["Verified recovery content."],
+  };
+  const registryContent = {
+    puzzleNumber: 836,
+    slug,
+    publishDate,
+    detailState: "published",
+    clues: ["Odyssey", "64"],
+    mainAnswer: "Terms that come after Super Mario",
+  };
+  const candidateRegistry = [{ ...registryContent, status: "live", updatedAt: "2026-08-14T07:00:00.000Z" }];
+  const mainRegistry = [{ ...registryContent, status: "archived", updatedAt: "2026-08-15T07:00:00.000Z" }];
+
+  const equivalent = assessCandidatePayloadOnMain({
+    slug,
+    publishDate,
+    candidateDetail: detail,
+    mainDetail: JSON.parse(JSON.stringify(detail)),
+    candidateRegistry,
+    mainRegistry,
+  });
+  assert.equal(equivalent.equivalent, true, "lifecycle-only registry differences should be safe to close");
+
+  const changedDetail = assessCandidatePayloadOnMain({
+    slug,
+    publishDate,
+    candidateDetail: detail,
+    mainDetail: { ...detail, articleBlocks: ["Different content."] },
+    candidateRegistry,
+    mainRegistry,
+  });
+  assert.equal(changedDetail.equivalent, false, "different detail content must keep the candidate branch");
+  assert.match(changedDetail.reason, /detail JSON differs/);
+
+  const changedRegistry = assessCandidatePayloadOnMain({
+    slug,
+    publishDate,
+    candidateDetail: detail,
+    mainDetail: detail,
+    candidateRegistry,
+    mainRegistry: [{ ...mainRegistry[0], mainAnswer: "Different answer" }],
+  });
+  assert.equal(changedRegistry.equivalent, false, "different registry content must keep the candidate branch");
+  assert.match(changedRegistry.reason, /registry content differs/);
+
+  console.log("ok: recovered candidate cleanup compares structured payloads and ignores lifecycle-only fields");
 }
 
 function checkWorkerRouteDispatchResolver() {
@@ -3213,6 +3292,9 @@ async function checkReleaseQueueDryRunOpsScript() {
     "worker ops script must simulate the primary queue path without changing Worker config",
   );
   for (const expectedReason of [
+    "candidate-inventory-unavailable",
+    "another-candidate-pending",
+    "candidate-branch-outdated",
     "production-deployment-queued",
     "production-deployment-building",
     "production-deployment-unknown",
@@ -3734,6 +3816,9 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
       watchdogSource.includes("verify-pinpoint-candidate-release.mjs") &&
       watchdogSource.includes("--production-sha") &&
       watchdogSource.includes("--repair-missing-production") &&
+      watchdogSource.includes("assessRecoveredCandidatePayload") &&
+      watchdogSource.includes("content-equivalent-verified-and-deleted") &&
+      watchdogSource.includes("repairMissingProduction: false") &&
       watchdogSource.includes('git(["merge", "--no-ff", "--no-edit", branchRef]') &&
       watchdogSource.includes('git(["push", "origin", "HEAD:main"]') &&
       watchdogSource.includes('git(["push", "origin", "--delete", branch]') &&
@@ -3741,7 +3826,7 @@ async function checkCandidateBranchWatchdogClosesStuckBranches() {
       watchdogSource.includes("candidate branch count returns to 0") &&
       watchdogSource.includes("GITHUB_STEP_SUMMARY") &&
       watchdogSource.includes("pending candidates have not updated production yet"),
-    "candidate watchdog must promote verified branches, delete closed branches, and create a tracked issue when it cannot close one",
+    "candidate watchdog must promote verified branches, close content-equivalent recovered branches, and track anything unsafe",
   );
   assert.ok(
     workerSource.includes("retryable LLM/validation errors exhausted; switched to fallback_full") &&
@@ -4512,8 +4597,14 @@ async function checkReleaseQueueWorkerIntegration() {
   assert.ok(
     workerSource.includes("decidePinpointReleaseQueueAction({") &&
       workerSource.includes("lastProductionPushAt") &&
-      workerSource.includes("candidateIsCurrent"),
-    "worker publish path must pass deployment state, production push budget, and candidate freshness to the queue policy",
+      workerSource.includes("candidateIsCurrent") &&
+      workerSource.includes("listCandidateBranchNames") &&
+      workerSource.includes("if (forceCandidateBranch || releaseQueueEnabled)") &&
+      workerSource.includes("candidate queue held") &&
+      workerSource.includes("throw new CandidateQueueBlockedError") &&
+      workerSource.includes("candidateInventoryAvailable") &&
+      workerSource.includes("otherCandidateBranches"),
+    "worker publish path must pass deployment state, production push budget, and the complete candidate inventory to the queue policy",
   );
   assert.ok(
     workerSource.includes("inspectNewSiteBaseDeploymentStatus") &&
@@ -4558,6 +4649,7 @@ async function main() {
   checkIntermediateStateCommitDetection();
   await checkWorkerEnrichCommitsOnlyFinalPublicPayload();
   checkReleaseQueuePolicy();
+  checkRecoveredCandidatePayloadEquivalence();
   checkWorkerRouteDispatchResolver();
   await checkCandidateBranchDryRunRouteSafety();
   await checkReleaseQueueDryRunRouteSafety();

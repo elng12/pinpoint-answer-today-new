@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { appendFileSync } from "node:fs";
 import process from "node:process";
+import { assessCandidatePayloadOnMain } from "../lib/puzzles/candidate-payload-equivalence.shared.mjs";
 
 const DEFAULT_REPO = "elng12/pinpoint-answer-today-new";
 const CANDIDATE_PREFIX = "pinpoint/candidate/";
@@ -107,6 +108,28 @@ function commitAgeMinutes(ref) {
   const timestamp = Date.parse(committedAt);
   if (!Number.isFinite(timestamp)) return Number.POSITIVE_INFINITY;
   return Math.max(0, Math.floor((Date.now() - timestamp) / 60000));
+}
+
+function readGitJson(ref, path) {
+  return JSON.parse(git(["show", `${ref}:${path}`]));
+}
+
+function assessRecoveredCandidatePayload({ candidateRef, slug, publishDate }) {
+  try {
+    return assessCandidatePayloadOnMain({
+      slug,
+      publishDate,
+      candidateDetail: readGitJson(candidateRef, `data/puzzles/${slug}.json`),
+      mainDetail: readGitJson("origin/main", `data/puzzles/${slug}.json`),
+      candidateRegistry: readGitJson(candidateRef, "data/puzzles/registry.json"),
+      mainRegistry: readGitJson("origin/main", "data/puzzles/registry.json"),
+    });
+  } catch (error) {
+    return {
+      equivalent: false,
+      reason: error instanceof Error ? error.message : String(error),
+    };
+  }
 }
 
 function parseActionsRunId(run) {
@@ -218,12 +241,12 @@ function promoteCandidate({ branchRef, dryRun }) {
   return git(["rev-parse", "HEAD"]);
 }
 
-function verifyCandidateRelease({ branch, candidateSha, productionSha, dryRun }) {
+function verifyCandidateRelease({ branch, candidateSha, productionSha, dryRun, repairMissingProduction = true }) {
   if (dryRun) {
     console.log(`[dry-run] would verify Production release for ${branch} ${productionSha}`);
     return;
   }
-  run("node", [
+  const args = [
     "scripts/verify-pinpoint-candidate-release.mjs",
     "--candidate-branch",
     branch,
@@ -231,12 +254,13 @@ function verifyCandidateRelease({ branch, candidateSha, productionSha, dryRun })
     candidateSha,
     "--production-sha",
     productionSha,
-    "--repair-missing-production",
-  ], { inherit: true });
+    ...(repairMissingProduction ? ["--repair-missing-production"] : []),
+  ];
+  run("node", args, { inherit: true });
 }
 
 async function closeCandidateBranch({ branch, repo, token, maxPendingMinutes, dryRun }) {
-  parseCandidateBranch(branch);
+  const { publishDate, slug } = parseCandidateBranch(branch);
   fetchMain();
   fetchBranch(branch);
 
@@ -254,12 +278,31 @@ async function closeCandidateBranch({ branch, repo, token, maxPendingMinutes, dr
 
   const baseIsAncestor = isAncestor("origin/main", candidateRef);
   if (!baseIsAncestor) {
+    const recoveredPayload = assessRecoveredCandidatePayload({ candidateRef, slug, publishDate });
+    if (recoveredPayload.equivalent) {
+      const productionSha = git(["rev-parse", "origin/main"]);
+      verifyCandidateRelease({
+        branch,
+        candidateSha,
+        productionSha,
+        dryRun,
+        repairMissingProduction: false,
+      });
+      deleteRemoteBranch(branch, dryRun);
+      return {
+        branch,
+        sha: candidateSha,
+        productionSha,
+        closed: true,
+        action: "content-equivalent-verified-and-deleted",
+      };
+    }
     return {
       branch,
       sha: candidateSha,
       closed: false,
       severity: ageMinutes >= maxPendingMinutes ? "failure" : "pending",
-      reason: `candidate is not based on current main; age=${ageMinutes}m`,
+      reason: `candidate is not based on current main; ${recoveredPayload.reason}; age=${ageMinutes}m`,
     };
   }
 

@@ -236,6 +236,8 @@ class PublishEligibilityBlockedError extends Error {
   }
 }
 
+class CandidateQueueBlockedError extends Error {}
+
 type GraphQLOperation = {
   isPrimary?: boolean;
   operationName?: string;
@@ -646,14 +648,18 @@ function sanitizeGitBranchSegment(input: string, fallback: string): string {
   return safe || fallback;
 }
 
-function buildPinpointCandidateBranchName(env: Env, puzzleDate: string, slug: string): string {
+function getPinpointCandidateBranchPrefix(env: Env): string {
   const rawPrefix = String(env.PINPOINT_CANDIDATE_BRANCH_PREFIX || "pinpoint/candidate").trim();
-  const prefix = rawPrefix
+  return rawPrefix
     .replace(/^refs\/heads\//, "")
     .split("/")
     .map((segment) => sanitizeGitBranchSegment(segment, "candidate"))
     .filter(Boolean)
     .join("/") || "pinpoint/candidate";
+}
+
+function buildPinpointCandidateBranchName(env: Env, puzzleDate: string, slug: string): string {
+  const prefix = getPinpointCandidateBranchPrefix(env);
   const dateSegment = sanitizeGitBranchSegment(puzzleDate, "unknown-date");
   const slugSegment = sanitizeGitBranchSegment(slug, "pinpoint-answer");
   return `${prefix}/${dateSegment}-${slugSegment}`;
@@ -883,6 +889,8 @@ async function notifyPinpointReleaseQueueDecision(
     `动作: ${getReleaseQueueActionLabel(fields.action)}`,
     `原因: ${getReleaseQueueReasonLabel(fields.reasonCode)}`,
     `候选分支: ${fields.candidateBranch || "无"}`,
+    ...(fields.blockingCandidateBranch ? [`最早待处理分支: ${fields.blockingCandidateBranch}`] : []),
+    ...(typeof fields.candidateBranchCount === "number" ? [`候选分支总数: ${fields.candidateBranchCount}`] : []),
     `跳过正式站推送: ${getYesNoLabel(decision.productionPushSkipped)}`,
     ...(remainingMinutes !== undefined ? [`上线保护窗口剩余分钟: ${remainingMinutes}`] : []),
   ]);
@@ -972,12 +980,14 @@ function getReleaseQueueReasonLabel(value: unknown): string {
   const raw = String(value || "").trim();
   const map: Record<string, string> = {
     "local-gates-failed": "本地检查没通过",
+    "candidate-inventory-unavailable": "候选分支列表读取失败，为了避免重复排队先停止发布",
+    "another-candidate-pending": "已有更早的候选分支未处理，今天不再创建新候选",
     "production-deployment-failed": "正式站部署失败",
     "production-deployment-queued": "正式站还有部署在排队",
     "production-deployment-building": "正式站正在部署中",
     "production-deployment-unknown": "正式站部署状态不清楚，为了安全先不推正式站",
     "production-push-budget-exhausted": "短时间内已经推过一次正式站，为了安全先写候选分支",
-    "candidate-branch-outdated": "候选分支不是最新，需要先更新",
+    "candidate-branch-outdated": "候选分支落后于 main，必须先清理或重建，不能继续追加提交",
     "candidate-branch-awaiting-promotion": "候选分支已准备好，等待机器检查通过后自动上线",
     "candidate-branch-enabled": "已开启只写候选分支",
     "production-push-allowed": "允许推到正式站",
@@ -4310,6 +4320,25 @@ async function publishToNewSiteGitHub(
     return (asRecord(await res.json()) ?? {}) as JsonRecord;
   };
 
+  const listCandidateBranchNames = async (): Promise<string[]> => {
+    const candidatePrefix = getPinpointCandidateBranchPrefix(env);
+    const res = await fetch(
+      `https://api.github.com/repos/${repo}/git/matching-refs/heads/${encodeGitHubBranchRef(candidatePrefix)}`,
+      { headers },
+    );
+    if (!res.ok) {
+      throw new Error(`GitHub GET candidate refs ${candidatePrefix}: ${res.status} ${await res.text()}`);
+    }
+    const rows = await res.json();
+    if (!Array.isArray(rows)) {
+      throw new Error(`GitHub candidate refs ${candidatePrefix} returned a non-array response`);
+    }
+    return rows
+      .map((item) => String(asRecord(item)?.ref || "").replace(/^refs\/heads\//, "").trim())
+      .filter((name) => name.startsWith(`${candidatePrefix}/`))
+      .sort();
+  };
+
   const isCandidateBranchCurrentWithBase = async (targetBranch: string): Promise<boolean> => {
     const encodedBase = encodeURIComponent(baseBranch);
     const encodedHead = encodeURIComponent(targetBranch);
@@ -4521,8 +4550,63 @@ async function publishToNewSiteGitHub(
     isPublicState &&
     isPrimaryBranch &&
     !forceCandidateBranch;
+  let candidateInventoryAvailable = true;
+  let candidateBranchNames: string[] = [];
+  if (forceCandidateBranch || releaseQueueEnabled) {
+    try {
+      candidateBranchNames = await listCandidateBranchNames();
+    } catch (error) {
+      candidateInventoryAvailable = false;
+      console.warn("[new-site] candidate queue could not list branches; holding publish", error);
+    }
+  }
+  const candidateBranchExistsInInventory = candidateBranchNames.includes(candidateBranch);
+  const otherCandidateBranches = candidateBranchNames.filter((name) => name !== candidateBranch);
+  let candidateBranchIsCurrent = false;
+  if (candidateInventoryAvailable && candidateBranchExistsInInventory) {
+    try {
+      candidateBranchIsCurrent = await isCandidateBranchCurrentWithBase(candidateBranch);
+    } catch (error) {
+      candidateInventoryAvailable = false;
+      console.warn(`[new-site] candidate queue could not compare ${candidateBranch}; holding publish`, error);
+    }
+  }
 
   if (forceCandidateBranch) {
+    if (
+      !candidateInventoryAvailable ||
+      otherCandidateBranches.length > 0 ||
+      (candidateBranchExistsInInventory && !candidateBranchIsCurrent)
+    ) {
+      releaseQueueDecision = decidePinpointReleaseQueueAction({
+        slug,
+        logicalGameDate: puzzleDate,
+        publishMode: "full-analysis",
+        deploymentState: "unknown",
+        candidateBranch,
+        candidateBranchExists: candidateBranchExistsInInventory,
+        candidateIsCurrent: candidateBranchIsCurrent,
+        candidateInventoryAvailable,
+        otherCandidateBranches,
+      });
+      console.warn(
+        `[new-site] candidate queue held #${puzzleNumber}: ${releaseQueueDecision.reasonCode}`,
+      );
+      await notifyPinpointReleaseQueueDecision(env, releaseQueueDecision);
+      await notifyDailyPublishStatusReport(env, {
+        date: puzzleDate,
+        status: "needs_review",
+        puzzleNumber,
+        slug,
+        answer,
+        clues: words,
+        reason: releaseQueueDecision.reasonCode,
+        nextAction: "先处理最早的候选分支，清零后再发布今天内容。",
+      });
+      throw new CandidateQueueBlockedError(
+        `[new-site] candidate queue blocked ${slug}: ${releaseQueueDecision.reasonCode}`,
+      );
+    }
     branch = candidateBranch;
     isCandidateBranch = branch !== baseBranch;
     isPrimaryBranch = isPrimaryNewSiteBranch(branch);
@@ -4547,17 +4631,8 @@ async function publishToNewSiteGitHub(
     }
 
     const lastProductionPushAt = await env.PP_DATA.get(releaseQueueLastProductionPushKeyOf(slug)).catch(() => null);
-    const candidateRef = await getBranchRef(candidateBranch).catch((error) => {
-      console.warn(`[new-site] release queue could not read candidate branch ${candidateBranch}`, error);
-      return null;
-    });
-    const candidateBranchExists = Boolean(candidateRef);
-    const candidateIsCurrent = candidateBranchExists
-      ? await isCandidateBranchCurrentWithBase(candidateBranch).catch((error) => {
-        console.warn(`[new-site] release queue could not compare candidate branch ${candidateBranch}`, error);
-        return false;
-      })
-      : false;
+    const candidateBranchExists = candidateBranchExistsInInventory;
+    const candidateIsCurrent = candidateBranchIsCurrent;
 
     releaseQueueDecision = decidePinpointReleaseQueueAction({
       slug,
@@ -4569,6 +4644,8 @@ async function publishToNewSiteGitHub(
       candidateBranch,
       candidateBranchExists,
       candidateIsCurrent,
+      candidateInventoryAvailable,
+      otherCandidateBranches,
       overrideSecondProductionPush: envFlag(env.PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH, false),
     });
 
@@ -4587,7 +4664,9 @@ async function publishToNewSiteGitHub(
         reason: releaseQueueDecision.reasonCode,
         nextAction: "检查 release queue 状态，确认正式站部署或候选分支是否需要处理。",
       });
-      return;
+      throw new CandidateQueueBlockedError(
+        `[new-site] release queue blocked ${slug}: ${releaseQueueDecision.reasonCode}`,
+      );
     }
 
     if (releaseQueueDecision.action === "write-candidate") {
@@ -7608,6 +7687,11 @@ export default {
       const allowCandidatePromotion = parseOptionalBooleanParam(params, "allowCandidatePromotion");
       const candidateBranchExists = parseOptionalBooleanParam(params, "candidateBranchExists");
       const candidateIsCurrent = parseOptionalBooleanParam(params, "candidateIsCurrent");
+      const candidateInventoryAvailable = parseOptionalBooleanParam(params, "candidateInventoryAvailable");
+      const otherCandidateBranches = String(params.get("otherCandidateBranches") || "")
+        .split(",")
+        .map((value) => value.trim())
+        .filter(Boolean);
       const lastProductionPushAt = String(params.get("lastProductionPushAt") || "").trim() || undefined;
       const nowMs = String(params.get("now") || "").trim() || undefined;
       const publishMode = String(params.get("publishMode") || "full-analysis").trim() || "full-analysis";
@@ -7622,6 +7706,8 @@ export default {
         candidateBranch,
         candidateBranchExists,
         candidateIsCurrent,
+        candidateInventoryAvailable,
+        otherCandidateBranches,
         overrideSecondProductionPush,
         allowCandidatePromotion,
         localGatesPassed,
@@ -7655,6 +7741,8 @@ export default {
           allowCandidatePromotion,
           candidateBranchExists,
           candidateIsCurrent,
+          candidateInventoryAvailable,
+          otherCandidateBranches,
           localGatesPassed,
           nowMs,
         },

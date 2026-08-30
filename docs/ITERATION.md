@@ -337,3 +337,14 @@
 未做：本记录写入时尚未合并到 `main`，尚未完成 Vercel Production、线上 summary、详情页、sitemap 和候选分支清理验收。
 复查日期：本次合并和 Production 部署后立即复查。
 下一步：提交独立修复分支并开 PR；CI 通过后合并，等待准确 SHA 的 Production，再验证首页、summary、`#836/#851/#852`、sitemap 和候选分支数量。
+
+## 2026-08-31 候选分支积压防复发记录
+
+问题：`#836` 首个候选失败后，生产 Worker 仍每天创建一个新候选，最终积压 17 个分支。候选清理工具又只认“候选提交是否被 main 包含”，不能识别“内容已经通过恢复提交进入 main、但提交关系不同”的安全清理场景。
+证据：生产配置开启 `PINPOINT_CANDIDATE_BRANCH_ENABLED=true`，原发布路径只检查当天候选，不读取全部候选分支；原清理工具遇到候选不是当前 main 的后代时直接报 stuck，不比较目标题目的详情 JSON 和 registry 内容。
+本轮边界：只修改候选队列、候选清理、只读 dry-run 和守卫测试；不改首页固定 SEO 标题/描述、题目内容、URL、canonical 或 sitemap 规则。
+修改：Worker 在候选发布和 release queue 两条路径开始前读取完整候选列表；列表读不到、存在其他候选，或当天候选已经落后于 main 时都会停止，只报告最早待处理分支，不再创建第二个候选或继续给失效分支追加提交；停止会抛出明确错误，不写当天完成标记，后续运行仍可重试。清理工具对分叉候选使用结构化 JSON 比较，只忽略 registry 的 `status` 和 `updatedAt`；详情和其余 registry 内容完全一致、准确 main SHA 的 Production 验证与公开页面检查通过后，才删除旧候选。Production 缺失时禁止为分叉候选自动制造重试提交。
+验证：发布队列策略覆盖候选列表读取失败、较早候选拦截、重复分支去重和候选总数；结构化比较覆盖仅生命周期字段变化、详情正文变化和 registry 内容变化；Pinpoint 守卫、根目录类型检查和 Worker 类型检查通过。
+未做：本记录写入时尚未提交、合并或部署生产 Worker；本地检查不能代替真实候选、Worker 和 Production 验收。
+复查日期：合并并部署生产 Worker 后立即复查；下一次每日发布窗口再次确认候选分支不超过 1 个。
+下一步：提交独立 PR，CI 通过后合并并部署生产 Worker，再运行 release queue dry-run、Worker health 和 Production 状态检查。
