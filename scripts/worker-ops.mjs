@@ -652,6 +652,7 @@ async function main() {
       const url = new URL(`${baseUrl}/admin/release-queue-dry-run`);
       url.searchParams.set("secret", secret);
       url.searchParams.set("simulatePrimary", "1");
+      url.searchParams.set("candidateBranchEnabled", "0");
       url.searchParams.set("releaseQueueEnabled", "1");
       url.searchParams.set("date", date);
       if (puzzleNumber) url.searchParams.set("puzzleNumber", puzzleNumber);
