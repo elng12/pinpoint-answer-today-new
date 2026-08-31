@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 853,
+    "slug": "pinpoint-answer-853",
+    "publishDate": "2026-08-31",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Risk",
+      "Taboo",
+      "Boggle",
+      "Cluedo (Clue in N. America)",
+      "Jenga"
+    ],
+    "mainAnswer": "Games published by Hasbro",
+    "category": "Games published by Hasbro",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Risk, Taboo, Boggle, Cluedo (Clue in N. America), Jenga - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-08-31T07:06:11.917Z"
+  },
+  {
     "puzzleNumber": 852,
     "slug": "pinpoint-answer-852",
     "publishDate": "2026-08-30",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Everything",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Everything, Anchor, A hint, A line, The ball - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-08-30T07:05:14.466Z"
+    "updatedAt": "2026-08-31T07:06:11.917Z"
   },
   {
     "puzzleNumber": 851,
