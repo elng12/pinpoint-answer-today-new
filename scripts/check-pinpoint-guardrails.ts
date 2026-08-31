@@ -3287,9 +3287,10 @@ async function checkReleaseQueueDryRunOpsScript() {
   );
   assert.ok(
     opsSource.includes("simulatePrimary") &&
+      opsSource.includes('url.searchParams.set("candidateBranchEnabled", "0")') &&
       opsSource.includes("releaseQueueEnabled") &&
       opsSource.includes("queueEligible"),
-    "worker ops script must simulate the primary queue path without changing Worker config",
+    "worker ops script must simulate the primary queue path even when production forces candidate branches",
   );
   for (const expectedReason of [
     "candidate-inventory-unavailable",
