@@ -348,3 +348,16 @@
 未做：本记录写入时尚未提交、合并或部署生产 Worker；本地检查不能代替真实候选、Worker 和 Production 验收。
 复查日期：合并并部署生产 Worker 后立即复查；下一次每日发布窗口再次确认候选分支不超过 1 个。
 下一步：提交独立 PR，CI 通过后合并并部署生产 Worker，再运行 release queue dry-run、Worker health 和 Production 状态检查。
+
+## 2026-09-02 DeepSeek 官方接口切换与 #854 恢复记录
+
+问题：`#854` 的真实题目已经被生产 Worker 抓到，但 OpenRouter 返回 `402`；失败请求曾按最多 `115619` 个输出 token 估算费用，导致当天内容没有生成，正式站停在 `#853`。
+证据：生产 Worker 保存的 `2026-09-01` 题目包含五条真实线索，抓取时间为 `2026-09-01T12:42:18.041Z`，来源校验哈希为 `sha256:bbbbd9857c245d3e52a6362305e1969f77a394b4dd03404bffb91f48c70c0154`。
+本轮边界：只把 Worker 和站点草稿生成切到 DeepSeek 官方 API、补充截断保护并恢复 `#854`；不改首页固定 SEO 标题/描述、URL、canonical、sitemap 规则，也不碰原工作区的无关未提交修改。
+修改：Worker 和 Vercel 站点统一使用 `https://api.deepseek.com` 与 `deepseek-v4-flash`；请求固定 `max_tokens=8192`、非流式 JSON 输出并关闭思考模式；响应因 token 上限截断时明确失败，不再解析半截 JSON。Cloudflare 的 `LLM_API_KEY` 和 Vercel Production 的 `OPENAI_API_KEY`、`OPENAI_BASE_URL`、`AI_MODEL` 已更新为 DeepSeek 配置。
+发布：staging Worker 版本 `a2a9d0a0-0954-4716-bbc0-c94f19653bc0` 用生产真实题目生成 `#854`，结果为 `enriched / published`；生产 Worker 版本 `1be52018-ede8-48ca-932a-c1639e6db21f` 已部署。PR `#188` 合并为 `9d55611ff8663831653f818f1d752e9e8cd8f4f9`，GitHub Actions `33579524705` 通过，Vercel Production deployment `6213626555` 状态为 `success`。
+恢复：生产历史重跑接口按既有安全规则拒绝 `main` 直接使用缓存，因此没有放宽规则；改用 staging 对同一份真实数据生成并校验的 `#854` 内容，经提交 `6fc1de3` 进入 PR 后发布。一次被 `409` 拒绝的历史重跑留下了错误的 `running` 心跳，已只删除该次精确 run id，并恢复上一条真实完成记录，没有伪造成功状态。
+验证：`test:deepseek-api`、根目录和 Worker 类型检查、lint、Pinpoint 守卫、Worker dry-run、397 条 registry 数据校验和 CI 完整构建全部通过；正式首页、`#854` 详情页、summary 和 sitemap 均为 HTTP 200，summary 为 `#854 live`，sitemap 包含 `#854`，候选分支数为 0，Production release queue 为 `ready`。
+剩余提示：详情页结构与发布检查通过，但关键词审计仍把三词第一名是 `linkedin pinpoint answer` 而不是线索短语标为 P1；本轮没有为词频提示改正文，也没有触发自动回滚。
+复查日期：`2026-09-02` 的正常发布窗口再次复查 DeepSeek 生产生成链路。
+下一步：观察 `2026-09-02` 15:00 发布窗口，确认新题能由生产 Worker 直接通过 DeepSeek 生成并正常进入 Production。
