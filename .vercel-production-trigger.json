@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "candidateBranch": "codex/pinpoint-meta-description-closeout",
-  "candidateSha": "296697f405e072d3601cf674f9b7b96acfd141172",
-  "previousProductionSha": "c5a1fe8ad09fb39b7c752b048f011f9eb49d9a56",
-  "requestedAt": "2026-08-02T09:22:32Z"
+  "candidateBranch": "codex/deepseek-api",
+  "candidateSha": "cc4226047d4b1d974ea5fd390e16d729f538c3d4",
+  "previousProductionSha": "9d55611ff8663831653f818f1d752e9e8cd8f4f9",
+  "requestedAt": "2026-09-02T01:38:30Z"
 }
