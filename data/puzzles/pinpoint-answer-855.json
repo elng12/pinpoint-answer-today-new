@@ -1,0 +1,217 @@
+{
+  "puzzleNumber": 855,
+  "slug": "pinpoint-answer-855",
+  "publishDate": "2026-09-02",
+  "isoDate": "2026-09-02",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Towels",
+    "Napkins",
+    "Large road maps",
+    "Paper cranes",
+    "Bad poker hands"
+  ],
+  "answer": "Things that are folded",
+  "category": "Things that are folded",
+  "wordHints": {
+    "Towels": "\"folded towels\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Napkins": "\"folded napkins\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "Large road maps": "\"folded large road maps\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "Paper cranes": "\"folded paper cranes\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Bad poker hands": "\"Bad poker hands\" is the clue that makes the shared answer concrete enough to test across the full board."
+  },
+  "spoilerHints": {
+    "Towels": "Towels should be tested as part of things that are folded, not as a standalone reference.",
+    "Napkins": "Keep Napkins in mind, then see whether Bad poker hands supports the same answer.",
+    "Large road maps": "Large road maps works best after the board narrows toward things that are folded.",
+    "Paper cranes": "Paper cranes should be tested as part of things that are folded, not as a standalone reference.",
+    "Bad poker hands": "Bad poker hands is the clue that makes things that are folded concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Towels and Napkins pointed in a few different directions, so the board still felt wider than one exact category. One tempting read was \"a broader umbrella topic\". Towels, Napkins can point toward several nearby themes before one clue makes the exact category level visible. Bad poker hands is the clue that narrows the board into one category with clearer boundaries. Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on things, examples like \"folded towels\" and \"folded napkins\" stopped feeling loose and started landing cleanly.",
+    "Large road maps, Paper cranes, Bad poker hands keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Things that are folded\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Things that are folded, which is why \"Things that are folded\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started by testing Towels and Napkins, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.",
+    "The turn came when I let \"Bad poker hands\" lead the solve. After that, Large road maps and Paper cranes became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.",
+    "For the final pass, I checked Towels, Napkins, Large road maps, Paper cranes, Bad poker hands one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.",
+    "The answer was \"Things that are folded\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Towels\" and \"Napkins\" can look like they belong to different categories at first",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "\"Bad poker hands\" is what makes the answer feel concrete instead of broad",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once \"Bad poker hands\" sharpens the answer",
+      "body": "Once \"Bad poker hands\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "Towels",
+        "examplePhrase": "folded towels",
+        "connectionExplained": "\"folded towels\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Napkins",
+        "examplePhrase": "folded napkins",
+        "connectionExplained": "\"folded napkins\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      },
+      {
+        "clue": "Large road maps",
+        "examplePhrase": "folded large road maps",
+        "connectionExplained": "\"folded large road maps\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+      },
+      {
+        "clue": "Paper cranes",
+        "examplePhrase": "folded paper cranes",
+        "connectionExplained": "\"folded paper cranes\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Bad poker hands",
+        "examplePhrase": "folded bad poker hands",
+        "connectionExplained": "\"Bad poker hands\" is the clue that makes the shared answer concrete enough to test across the full board."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Towels\" and \"Napkins\" in LinkedIn Pinpoint #855?",
+      "answer": "The answer is \"Things that are folded\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "How do \"Towels\" and \"Napkins\" connect in LinkedIn Pinpoint #855?",
+      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Why is \"Bad poker hands\" the key clue in LinkedIn Pinpoint #855?",
+      "answer": "\"Bad poker hands\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Towels and Napkins pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Towels, Napkins can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Bad poker hands",
+    "pivot": "I started by testing Towels and Napkins, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.\n\nThe turn came when I let \"Bad poker hands\" lead the solve. After that, Large road maps and Paper cranes became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.\n\nFor the final pass, I checked Towels, Napkins, Large road maps, Paper cranes, Bad poker hands one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.\n\nThe answer was \"Things that are folded\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on things, examples like \"folded towels\" and \"folded napkins\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "Bad poker hands",
+    "whyDecisive": "Bad poker hands is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Bad poker hands lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Towels",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "folded towels",
+      "nonObviousWhy": "\"folded towels\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "folded towels",
+      "phraseExample": "folded towels"
+    },
+    {
+      "clue": "Napkins",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "folded napkins",
+      "nonObviousWhy": "\"folded napkins\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "folded napkins",
+      "phraseExample": "folded napkins"
+    },
+    {
+      "clue": "Large road maps",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "folded large road maps",
+      "nonObviousWhy": "\"folded large road maps\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+      "searchableContext": "folded large road maps",
+      "phraseExample": "folded large road maps"
+    },
+    {
+      "clue": "Paper cranes",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "folded paper cranes",
+      "nonObviousWhy": "\"folded paper cranes\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "folded paper cranes",
+      "phraseExample": "folded paper cranes"
+    },
+    {
+      "clue": "Bad poker hands",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "folded bad poker hands",
+      "nonObviousWhy": "\"Bad poker hands\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "folded bad poker hands",
+      "phraseExample": "folded bad poker hands"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Towels\" and \"Napkins\" in LinkedIn Pinpoint #855?",
+      "answer": "The answer is \"Things that are folded\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": "Towels"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Towels\" and \"Napkins\" connect in LinkedIn Pinpoint #855?",
+      "answer": "The connection is a category board focused on things. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": "Towels"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Bad poker hands\" the key clue in LinkedIn Pinpoint #855?",
+      "answer": "\"Bad poker hands\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "Bad poker hands"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on things",
+    "relatedEntities": [
+      "folded towels",
+      "folded napkins",
+      "folded large road maps",
+      "folded paper cranes",
+      "folded bad poker hands"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on things",
+      "folded towels",
+      "folded napkins",
+      "folded large road maps",
+      "folded paper cranes"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Towels, Napkins can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Bad poker hands is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Large road maps, Paper cranes, Bad poker hands keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things that are folded"
+}
