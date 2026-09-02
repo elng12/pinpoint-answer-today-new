@@ -25,6 +25,8 @@ export interface LLMOptions {
   baseUrl?: string;
 }
 
+export const LLM_MAX_OUTPUT_TOKENS = 8_192;
+
 // ---------------------------------------------------------------------------
 // Inlined from lib/puzzle-generation/answer-pattern.ts
 // ---------------------------------------------------------------------------
@@ -395,25 +397,7 @@ export async function callLLM(
     apiUrl = "https://api.openai.com/v1/chat/completions";
   }
 
-  const requestBody: Record<string, unknown> = {
-    messages: [
-      { role: "system", content: LLM_SYSTEM_PROMPT },
-      { role: "user", content: prompt },
-    ],
-    temperature: 0.7,
-    model,
-  };
-
-  // OpenAI-compatible models that we use in production support JSON object mode.
-  if (
-    model.includes("gpt-") ||
-    model.includes("glm-") ||
-    model.includes("gemini") ||
-    model.includes("deepseek/") ||
-    model.includes("llama")
-  ) {
-    requestBody.response_format = { type: "json_object" };
-  }
+  const requestBody = buildLLMRequestBody(prompt, model);
 
   for (let contentAttempt = 1; contentAttempt <= AI_EMPTY_CONTENT_MAX_ATTEMPTS; contentAttempt += 1) {
     debugLog?.(
@@ -433,9 +417,14 @@ export async function callLLM(
       debugLog,
     );
 
-    let data: { choices?: Array<{ message?: { content?: string } }> };
+    let data: {
+      choices?: Array<{
+        finish_reason?: string | null;
+        message?: { content?: string };
+      }>;
+    };
     try {
-      data = JSON.parse(responseText) as { choices?: Array<{ message?: { content?: string } }> };
+      data = JSON.parse(responseText) as typeof data;
     } catch (error) {
       throw new Error(
         `Failed to parse AI API response as JSON: ${
@@ -444,7 +433,14 @@ export async function callLLM(
       );
     }
 
-    const content = data.choices?.[0]?.message?.content;
+    const choice = data.choices?.[0];
+    if (choice?.finish_reason === "length") {
+      throw new Error(
+        `AI response was truncated at max_tokens=${LLM_MAX_OUTPUT_TOKENS}`,
+      );
+    }
+
+    const content = choice?.message?.content;
     if (content && content.trim()) {
       return content;
     }
@@ -457,6 +453,44 @@ export async function callLLM(
   }
 
   throw new Error("No content returned from AI");
+}
+
+function isDeepSeekV4Model(model: string): boolean {
+  return /^deepseek-v4-(?:flash|pro)(?:$|-)/i.test(model.trim());
+}
+
+export function buildLLMRequestBody(
+  prompt: string,
+  model: string,
+): Record<string, unknown> {
+  const requestBody: Record<string, unknown> = {
+    messages: [
+      { role: "system", content: LLM_SYSTEM_PROMPT },
+      { role: "user", content: prompt },
+    ],
+    max_tokens: LLM_MAX_OUTPUT_TOKENS,
+    temperature: 0.7,
+    model,
+    stream: false,
+  };
+
+  // OpenAI-compatible models that we use in production support JSON object mode.
+  if (
+    model.includes("gpt-") ||
+    model.includes("glm-") ||
+    model.includes("gemini") ||
+    model.includes("deepseek/") ||
+    isDeepSeekV4Model(model) ||
+    model.includes("llama")
+  ) {
+    requestBody.response_format = { type: "json_object" };
+  }
+
+  if (isDeepSeekV4Model(model)) {
+    requestBody.thinking = { type: "disabled" };
+  }
+
+  return requestBody;
 }
 
 // ---------------------------------------------------------------------------

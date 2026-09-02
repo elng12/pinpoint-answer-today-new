@@ -17,6 +17,7 @@ type RequestAIResponseArgs = {
 const AI_MAX_RETRIES = 3;
 const AI_RETRY_BASE_DELAY_MS = 800;
 const AI_REQUEST_TIMEOUT_MS = 45_000;
+export const AI_MAX_OUTPUT_TOKENS = 8_192;
 
 function normalizeProviderText(value: string | null | undefined): string {
   return (value ?? "").replace(/\s+/g, " ").trim();
@@ -137,7 +138,23 @@ export function resolveDefaultModel(provider: PuzzleProvider, endpoint?: string)
   if (provider === "azure") {
     return "gpt-4.1-mini";
   }
+  if (isDeepSeekEndpoint(endpoint)) {
+    return "deepseek-v4-flash";
+  }
   return endpoint ? "meta-llama/llama-3.3-70b-instruct" : "gpt-4.1-mini";
+}
+
+function isDeepSeekEndpoint(endpoint?: string): boolean {
+  if (!endpoint) return false;
+  try {
+    return new URL(endpoint).hostname.toLowerCase() === "api.deepseek.com";
+  } catch {
+    return false;
+  }
+}
+
+function isDeepSeekV4Model(model: string): boolean {
+  return /^deepseek-v4-(?:flash|pro)(?:$|-)/i.test(model.trim());
 }
 
 export function ensureProviderModelCompatibility(
@@ -200,29 +217,12 @@ async function requestOpenAICompatibleContent({
     }
   }
 
-  const requestBody: Record<string, unknown> = {
-    messages: [
-      {
-        role: "system",
-        content: systemPrompt,
-      },
-      {
-        role: "user",
-        content: prompt,
-      },
-    ],
-    temperature: 0.7,
-  };
-
-  if (provider !== "azure") {
-    requestBody.model = model;
-  }
-  if (
-    (provider === "openai" || provider === "zhipu") &&
-    (model.includes("gpt-") || model.includes("glm-") || model.includes("llama"))
-  ) {
-    requestBody.response_format = { type: "json_object" };
-  }
+  const requestBody = buildOpenAICompatibleRequestBody({
+    prompt,
+    provider,
+    model,
+    systemPrompt,
+  });
 
   debugInfo?.("AI API request", { provider, model, apiUrl });
   const responseText = await fetchTextWithRetry(
@@ -237,21 +237,75 @@ async function requestOpenAICompatibleContent({
     debugError,
   );
 
-  let data: { choices?: Array<{ message?: { content?: string } }> };
+  let data: {
+    choices?: Array<{
+      finish_reason?: string | null;
+      message?: { content?: string };
+    }>;
+  };
   try {
-    data = JSON.parse(responseText) as { choices?: Array<{ message?: { content?: string } }> };
+    data = JSON.parse(responseText) as typeof data;
   } catch (error) {
     throw new Error(
       `Failed to parse AI API response as JSON: ${(error as Error)?.message ?? "unknown"}. First 500 chars: ${responseText.slice(0, 500)}`,
     );
   }
 
-  const content = data.choices?.[0]?.message?.content;
+  const choice = data.choices?.[0];
+  if (choice?.finish_reason === "length") {
+    throw new Error(
+      `AI response was truncated at max_tokens=${AI_MAX_OUTPUT_TOKENS}`,
+    );
+  }
+
+  const content = choice?.message?.content;
   if (!content) {
     throw new Error("No content returned from AI");
   }
 
   return content;
+}
+
+export function buildOpenAICompatibleRequestBody({
+  prompt,
+  provider,
+  model,
+  systemPrompt,
+}: Pick<RequestAIResponseArgs, "prompt" | "provider" | "model" | "systemPrompt">): Record<string, unknown> {
+  const requestBody: Record<string, unknown> = {
+    messages: [
+      {
+        role: "system",
+        content: systemPrompt,
+      },
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+    max_tokens: AI_MAX_OUTPUT_TOKENS,
+    temperature: 0.7,
+    stream: false,
+  };
+
+  if (provider !== "azure") {
+    requestBody.model = model;
+  }
+  if (
+    (provider === "openai" || provider === "zhipu") &&
+    (model.includes("gpt-") ||
+      model.includes("glm-") ||
+      model.includes("llama") ||
+      isDeepSeekV4Model(model))
+  ) {
+    requestBody.response_format = { type: "json_object" };
+  }
+
+  if (provider === "openai" && isDeepSeekV4Model(model)) {
+    requestBody.thinking = { type: "disabled" };
+  }
+
+  return requestBody;
 }
 
 async function requestAnthropicContent({

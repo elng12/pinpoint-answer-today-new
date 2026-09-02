@@ -57,14 +57,14 @@ AUTO_ENRICH_DRAFT_ATTEMPTS  = "2"
 AUTO_I18N_TIMEOUT_MS        = "90000"
 
 # Models
-AUTO_ENRICH_MODEL           = "meta-llama/llama-3.3-70b-instruct"
-AUTO_I18N_MODEL             = "meta-llama/llama-3.3-70b-instruct"
+AUTO_ENRICH_MODEL           = "deepseek-v4-flash"
+AUTO_I18N_MODEL             = "deepseek-v4-flash"
 
 # Legacy publish base — leave empty; old publish API no longer exists
 SITE_BASE_URL               = ""
 
 # Worker-side LLM (avoids Vercel Fluid CPU for enrichment)
-LLM_BASE_URL                = "https://openrouter.ai/api/v1"
+LLM_BASE_URL                = "https://api.deepseek.com"
 
 # ---------------------------------------------------------------------------
 # Secrets — set via Cloudflare Dashboard or `wrangler secret put <NAME>`
@@ -128,10 +128,10 @@ AUTO_PUBLISH_TIMEOUT_MS     = "15000"
 AUTO_ENRICH_TIMEOUT_MS      = "55000"
 AUTO_ENRICH_DRAFT_ATTEMPTS  = "1"
 AUTO_I18N_TIMEOUT_MS        = "90000"
-AUTO_ENRICH_MODEL           = "meta-llama/llama-3.3-70b-instruct"
-AUTO_I18N_MODEL             = "meta-llama/llama-3.3-70b-instruct"
+AUTO_ENRICH_MODEL           = "deepseek-v4-flash"
+AUTO_I18N_MODEL             = "deepseek-v4-flash"
 SITE_BASE_URL               = ""
-LLM_BASE_URL                = "https://openrouter.ai/api/v1"
+LLM_BASE_URL                = "https://api.deepseek.com"
 
 [[env.shadow.kv_namespaces]]
 binding = "PP_DATA"
@@ -174,10 +174,10 @@ AUTO_PUBLISH_TIMEOUT_MS     = "15000"
 AUTO_ENRICH_TIMEOUT_MS      = "55000"
 AUTO_ENRICH_DRAFT_ATTEMPTS  = "1"
 AUTO_I18N_TIMEOUT_MS        = "90000"
-AUTO_ENRICH_MODEL           = "meta-llama/llama-3.3-70b-instruct"
-AUTO_I18N_MODEL             = "meta-llama/llama-3.3-70b-instruct"
+AUTO_ENRICH_MODEL           = "deepseek-v4-flash"
+AUTO_I18N_MODEL             = "deepseek-v4-flash"
 SITE_BASE_URL               = ""
-LLM_BASE_URL                = "https://openrouter.ai/api/v1"
+LLM_BASE_URL                = "https://api.deepseek.com"
 
 [[env.staging.kv_namespaces]]
 binding = "PP_DATA"
