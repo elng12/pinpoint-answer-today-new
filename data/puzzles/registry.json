@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 855,
+    "slug": "pinpoint-answer-855",
+    "publishDate": "2026-09-02",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Towels",
+      "Napkins",
+      "Large road maps",
+      "Paper cranes",
+      "Bad poker hands"
+    ],
+    "mainAnswer": "Things that are folded",
+    "category": "Things that are folded",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Towels, Napkins, Large road maps, Paper cranes, Bad poker hands - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-02T07:04:22.130Z"
+  },
+  {
     "puzzleNumber": 854,
     "slug": "pinpoint-answer-854",
     "publishDate": "2026-09-01",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Espresso",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "At first glance, Espresso, Renaissance art, Vespa scooters do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-09-02T01:07:50.996Z"
+    "updatedAt": "2026-09-02T07:04:22.130Z"
   },
   {
     "puzzleNumber": 853,
