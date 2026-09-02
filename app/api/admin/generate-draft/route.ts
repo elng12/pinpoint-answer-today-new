@@ -23,6 +23,7 @@ import {
 } from "@/lib/puzzles/slot-contract";
 import { authenticateAdmin } from "@/lib/site/admin-auth";
 import { enforceAdminRateLimit } from "@/lib/site/admin-rate-limit";
+import { resolveDefaultModel as resolveProviderDefaultModel } from "@/lib/puzzle-generation/provider-client";
 
 const DISALLOWED_LANGUAGE_PATTERN = /[\u3400-\u9FFF\uF900-\uFAFF\u3040-\u30FF\uAC00-\uD7AF]/;
 const LOCALIZE_LABELS: Record<string, string> = {
@@ -57,7 +58,7 @@ function resolveDefaultModel(
   if (provider === "azure") {
     return process.env.AI_MODEL || "gpt-4.1-mini";
   }
-  return process.env.OPENAI_BASE_URL ? "meta-llama/llama-3.3-70b-instruct" : "gpt-4.1-mini";
+  return resolveProviderDefaultModel(provider, process.env.OPENAI_BASE_URL);
 }
 
 function asRecord(value: unknown): DraftRecord | null {

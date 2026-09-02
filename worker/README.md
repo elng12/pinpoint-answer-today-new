@@ -65,10 +65,11 @@ wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（�
 - `GITHUB_TOKEN_NEW_SITE` 长期应使用 fine-grained PAT，并限制到 `elng12/pinpoint-answer-today-new` 的 `contents:write`；临时复用本机 `gh auth token` 只适合一次性演练，不适合长期保留
 - 站点 enrichment 走的是站点自己的 `/api/admin/generate-draft`，所以除了 Cloudflare Worker secret 以外，Vercel 站点侧也要有可用的 `API_SECRET_TOKEN` / `ADMIN_PASSPHRASE` / `OPENAI_API_KEY` / `OPENAI_BASE_URL` / `AI_MODEL`
 - `shadow` 默认写演练分支 `worker-shadow`，`staging` 默认写演练分支 `worker-staging`；非 `main` 分支不会触发正式站 `revalidate`、页面探活或发布通知
-- 如果用 OpenRouter，推荐统一口径为：
-  - `OPENAI_API_KEY=<OpenRouter key>`
-  - `OPENAI_BASE_URL=https://openrouter.ai/api/v1`
-  - `AI_MODEL=meta-llama/llama-3.3-70b-instruct` 或你实际在用的模型
+- 当前生产推荐统一使用 DeepSeek 官方接口：
+  - `OPENAI_API_KEY=<DeepSeek API key>`
+  - `OPENAI_BASE_URL=https://api.deepseek.com`
+  - `AI_MODEL=deepseek-v4-flash`
+  - Worker secret `LLM_API_KEY` 也必须使用独立的 DeepSeek Key，不要与其他项目共用
 
 ---
 
