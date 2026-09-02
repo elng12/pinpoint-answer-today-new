@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 854,
+    "slug": "pinpoint-answer-854",
+    "publishDate": "2026-09-01",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Espresso",
+      "Renaissance art",
+      "Vespa scooters",
+      "Fashion houses (Gucci, Prada, …)",
+      "Pizza and pasta"
+    ],
+    "mainAnswer": "Things associated with Italy (🇮🇹)",
+    "category": "Things associated with Italy (🇮🇹)",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Espresso, Renaissance art, Vespa scooters do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-09-02T01:07:50.996Z"
+  },
+  {
     "puzzleNumber": 712,
     "slug": "pinpoint-answer-712",
     "publishDate": "2026-04-12",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Boy",
@@ -16,7 +36,7 @@
     "category": "Words that come before “wonder”",
     "difficultyLevel": "Moderate",
     "shortSummary": "At first glance, Boy, Small, Eighth do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
-    "updatedAt": "2026-04-12T07:33:30.680Z"
+    "updatedAt": "2026-09-02T01:07:50.996Z"
   },
   {
     "puzzleNumber": 700,
