@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 856,
+    "slug": "pinpoint-answer-856",
+    "publishDate": "2026-09-03",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Make",
+      "Wrong",
+      "Right of",
+      "Milky",
+      "Look the other"
+    ],
+    "mainAnswer": "Words that come before “way”",
+    "category": "Words that come before “way”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Make, Wrong, Right of, Milky, Look the other - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-03T07:01:58.833Z"
+  },
+  {
     "puzzleNumber": 855,
     "slug": "pinpoint-answer-855",
     "publishDate": "2026-09-02",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Towels",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Towels, Napkins, Large road maps, Paper cranes, Bad poker hands - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-02T07:04:22.130Z"
+    "updatedAt": "2026-09-03T07:01:58.833Z"
   },
   {
     "puzzleNumber": 854,
