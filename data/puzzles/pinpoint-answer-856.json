@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 856,
+  "slug": "pinpoint-answer-856",
+  "publishDate": "2026-09-03",
+  "isoDate": "2026-09-03",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Make",
+    "Wrong",
+    "Right of",
+    "Milky",
+    "Look the other"
+  ],
+  "answer": "Words that come before “way”",
+  "category": "Words that come before “way”",
+  "wordHints": {
+    "Make": "\"Make way\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Wrong": "\"Wrong way\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Right of": "Once the shared word is in place, \"Right of way\" reads like ordinary language instead of a forced compound.",
+    "Milky": "\"Milky way\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Look the other": "\"Look the other way\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Make": "Try reading Make as part of a familiar phrase in words that come before “way” instead of as a standalone word.",
+    "Wrong": "Wrong works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Right of": "Look for a natural expression that absorbs Right of cleanly before locking the board.",
+    "Milky": "Try reading Milky as part of a familiar phrase in words that come before “way” instead of as a standalone word.",
+    "Look the other": "Look the other is the clue that makes the phrase pattern in words that come before “way” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. A nearby read was \"Make and Wrong phrase pairing\". Make, Wrong can support more than one phrase read before Look the other shows where the repeated word belongs. Look the other behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Look the other as an outlier clue\". Look the other can look like the odd clue if the earlier words are read without a shared phrase slot. Once Look the other locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Make way\" and \"Wrong way\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Right of way, Milky way, Look the other way show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “way”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “way”\" fits better than \"Make and Wrong phrase pairing\" or \"Look the other as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Make and first tried Make and Wrong phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Look the other\" feel exact.",
+    "Once \"Look the other\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Right of and Milky as the confirmation round. The strong solve was not just that two clues worked; it was that Make, Wrong, Right of, Milky, Look the other could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “way”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Make\" and \"Wrong\"",
+      "body": "\"Make\" and \"Wrong\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Look the other\" changes the way pattern from guess to test",
+      "body": "Once \"Look the other\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 856, the way phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Make\" and \"Wrong\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Make",
+        "examplePhrase": "Make way",
+        "connectionExplained": "\"Make way\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Wrong",
+        "examplePhrase": "Wrong way",
+        "connectionExplained": "\"Wrong way\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Right of",
+        "examplePhrase": "Right of way",
+        "connectionExplained": "Once the shared word is in place, \"Right of way\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Milky",
+        "examplePhrase": "Milky way",
+        "connectionExplained": "\"Milky way\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Look the other",
+        "examplePhrase": "Look the other way",
+        "connectionExplained": "\"Look the other way\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Make\" and \"Wrong\" in LinkedIn Pinpoint #856?",
+      "answer": "The answer is \"Words that come before “way”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Make\" and \"Wrong\" connect in LinkedIn Pinpoint #856?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Look the other\" the key clue in LinkedIn Pinpoint #856?",
+      "answer": "\"Look the other\" is the strongest clue because \"Look the other way\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Make and Wrong phrase pairing",
+      "Look the other as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Make, Wrong can support more than one phrase read before Look the other shows where the repeated word belongs.",
+      "Look the other can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Look the other",
+    "pivot": "I started with Make and first tried Make and Wrong phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Look the other\" feel exact.\n\nOnce \"Look the other\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Right of and Milky as the confirmation round. The strong solve was not just that two clues worked; it was that Make, Wrong, Right of, Milky, Look the other could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “way”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Look the other as an outlier clue\". Look the other can look like the odd clue if the earlier words are read without a shared phrase slot. Once Look the other locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Look the other",
+    "whyDecisive": "Look the other is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Look the other lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Make",
+      "surfaceMisread": "Make and Wrong phrase pairing",
+      "resolvedPhraseOrMember": "Make way",
+      "nonObviousWhy": "\"Make way\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Make way",
+      "phraseExample": "Make way"
+    },
+    {
+      "clue": "Wrong",
+      "surfaceMisread": "Make and Wrong phrase pairing",
+      "resolvedPhraseOrMember": "Wrong way",
+      "nonObviousWhy": "\"Wrong way\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Wrong way",
+      "phraseExample": "Wrong way"
+    },
+    {
+      "clue": "Right of",
+      "surfaceMisread": "Make and Wrong phrase pairing",
+      "resolvedPhraseOrMember": "Right of way",
+      "nonObviousWhy": "Once the shared word is in place, \"Right of way\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Right of way",
+      "phraseExample": "Right of way"
+    },
+    {
+      "clue": "Milky",
+      "surfaceMisread": "Make and Wrong phrase pairing",
+      "resolvedPhraseOrMember": "Milky way",
+      "nonObviousWhy": "\"Milky way\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Milky way",
+      "phraseExample": "Milky way"
+    },
+    {
+      "clue": "Look the other",
+      "surfaceMisread": "Make and Wrong phrase pairing",
+      "resolvedPhraseOrMember": "Look the other way",
+      "nonObviousWhy": "\"Look the other way\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Look the other way",
+      "phraseExample": "Look the other way"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Make\" and \"Wrong\" in LinkedIn Pinpoint #856?",
+      "answer": "The answer is \"Words that come before “way”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Make"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Make\" and \"Wrong\" connect in LinkedIn Pinpoint #856?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Make"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Look the other\" the key clue in LinkedIn Pinpoint #856?",
+      "answer": "\"Look the other\" is the strongest clue because \"Look the other way\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Look the other"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Make way",
+      "Wrong way",
+      "Right of way",
+      "Milky way",
+      "Look the other way"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Make way",
+      "Wrong way",
+      "Right of way",
+      "Milky way"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Make and Wrong phrase pairing",
+      "whyPlausible": "Make, Wrong can support more than one phrase read before Look the other shows where the repeated word belongs.",
+      "whyRejected": "Look the other behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Look the other as an outlier clue",
+      "whyPlausible": "Look the other can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Look the other locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Right of way, Milky way, Look the other way show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
