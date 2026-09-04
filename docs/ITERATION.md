@@ -393,3 +393,10 @@
 未做：本记录写入时尚未提交、合并或部署；`#858-#860` 尚未生成，不能宣称页面已上线或已收录。GSC 结果必须等页面真实发布后按完整日期复查。
 复查日期：每页发布后第 3、7、14 天做 URL Inspection；第 14 天只比较该三页的抓取/收录状态，不把当天不完整 Search Analytics 数据当结论。
 停止条件：`#860` 之后自动回到旧正文；没有新的明确实验名单，不扩大到后续页面或回写旧页。
+
+## 2026-09-04 #858-#860 索引正文小样生产收口
+
+发布：PR `#193` 合并为 `78575c8fb910a1929e8cdac7b2af5229a56ee2f4`；该 SHA 的 GitHub Deployment 明确为 `Production` 且状态成功。生产 Worker 已部署版本 `22cf570c-d006-477f-8a91-a0fc2144b7dc`。
+生产配置：`PINPOINT_CONTENT_TEMPLATE_MODE=canary`，名单准确为 `pinpoint-answer-858,pinpoint-answer-859,pinpoint-answer-860`；搜索描述实验仍为 `off`。生产 Worker 保持自动发布开启、未暂停、候选分支和 release queue 保护开启。
+线上验证：release queue 读取准确 `main=78575c8`、Production 状态为 `ready`；Worker health 仍返回 `#857` 的真实题目；正式 summary 仍为 `pinpoint-answer-857 live`，`#857` 详情 HTTP 200 且继续显示旧正文，sitemap 仍包含 `#857`。这证明代码和开关已上线，但没有回写旧页。
+尚未发生：`#858-#860` 都是未来页面，当前尚未生成，不能提前宣称正文页面或 GSC 收录结果成功。下一次正常发布先核对 `#858` 的详情 JSON、页面正文、candidate、Production 和 sitemap，再从发布日起按第 3、7、14 天检查 URL Inspection。
