@@ -1510,6 +1510,9 @@ function buildWorkerFallbackPhrase(clue: string, answer: string): string {
     if (nounLoose && baseLoose.includes(nounLoose)) return normalizedBase;
     return `${normalizedBase} ${pattern.singularNoun}`.trim();
   }
+  if (pattern.kind === "association") {
+    return `${normalizedBase} connected to ${pattern.subject}`.trim();
+  }
   if (pattern.kind === "category") {
     const thingsThatAre = pattern.label.match(/^Things that are\s+(.+)$/i);
     const descriptor = thingsThatAre?.[1]?.trim();
