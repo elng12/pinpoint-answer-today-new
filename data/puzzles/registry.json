@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 857,
+    "slug": "pinpoint-answer-857",
+    "publishDate": "2026-09-04",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Trains",
+      "Music albums",
+      "Adjustable ceiling lights",
+      "Olympic stadiums for running",
+      "Mud after animals walk in it"
+    ],
+    "mainAnswer": "Things associated with tracks",
+    "category": "Things associated with tracks",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Trains, Music albums, Adjustable ceiling lights, Olympic stadiums for running, Mud after animals walk in it - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-04T13:37:35.137Z"
+  },
+  {
     "puzzleNumber": 856,
     "slug": "pinpoint-answer-856",
     "publishDate": "2026-09-03",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Make",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Make, Wrong, Right of, Milky, Look the other - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-03T07:01:58.833Z"
+    "updatedAt": "2026-09-04T13:37:35.137Z"
   },
   {
     "puzzleNumber": 855,
