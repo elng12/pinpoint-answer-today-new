@@ -4044,6 +4044,78 @@ async function checkWorkerFinalGuardRegeneratesAndUsesValidatedFallback() {
   });
   assert.equal(eligibility.ok, true, "#826 validated fallback must pass the final shared publish gate");
 
+  const associationWords = [
+    "Trains",
+    "Music albums",
+    "Adjustable ceiling lights",
+    "Olympic stadiums for running",
+    "Mud after animals walk in it",
+  ];
+  const associationDoc = {
+    version: 1,
+    puzzleDate: "2026-09-04",
+    answers: associationWords.map((word, index) => ({ rank: index + 1, word })),
+    source: "fallback-local",
+    fetchedAt: "2026-09-04T12:13:59.530Z",
+    checksum: "sha256:76e7bb03370a8c7fd7a3261519dcd5bb3aef8ed37345635fb600e71a5658981b",
+    theme: "Things associated with tracks",
+    mainAnswer: "Things associated with tracks",
+  };
+  const associationDetail = workerModule.buildTemplateFallbackDetailRecord(
+    "https://pinpointanswertoday.app",
+    "2026-09-04",
+    associationDoc,
+    857,
+    associationWords,
+  );
+  const associationDecision = workerModule.resolvePublicDetailExperienceDecision({
+    incoming: associationDetail,
+    existingBranchSummary: null,
+    primaryBranchSummary: null,
+  });
+  assert.equal(
+    associationDecision.action,
+    "use-full-analysis",
+    "association fallback must stay full-analysis instead of repeating bare clues",
+  );
+  assert.deepEqual(
+    associationDetail.clueRows.map((row) => row.phraseExample),
+    associationWords.map((clue) => `${clue} connected to tracks`),
+    "association fallback clue rows must state the clue-to-theme relationship",
+  );
+  const associationPayload = workerModule.buildValidatedTemplateFallbackPayload(
+    "https://pinpointanswertoday.app",
+    "2026-09-04",
+    associationDoc,
+    857,
+    associationWords,
+  );
+  assert.equal(
+    associationPayload.detailState,
+    "fallback_full",
+    "validated association fallback must remain publishable full content",
+  );
+  const associationEligibility = workerModule.validateWorkerPublishEligibility({
+    slug: "pinpoint-answer-857",
+    detail: associationDecision.record ?? associationDetail,
+    registryEntry: {
+      puzzleNumber: 857,
+      slug: "pinpoint-answer-857",
+      publishDate: "2026-09-04",
+      status: "live",
+      detailState: "fallback_full",
+      clues: associationWords,
+      mainAnswer: associationDoc.mainAnswer,
+    },
+    expectedMode: "full-analysis",
+    answerFirstPublicEnabled: false,
+  });
+  assert.equal(
+    associationEligibility.ok,
+    true,
+    "association fallback must pass the final shared publish gate",
+  );
+
   assert.throws(
     () => workerModule.buildValidatedTemplateFallbackPayload(
       "https://pinpointanswertoday.app",

@@ -361,3 +361,14 @@
 剩余提示：详情页结构与发布检查通过，但关键词审计仍把三词第一名是 `linkedin pinpoint answer` 而不是线索短语标为 P1；本轮没有为词频提示改正文，也没有触发自动回滚。
 复查日期：`2026-09-02` 的正常发布窗口再次复查 DeepSeek 生产生成链路。
 下一步：观察 `2026-09-02` 15:00 发布窗口，确认新题能由生产 Worker 直接通过 DeepSeek 生成并正常进入 Production。
+
+## 2026-09-04 #857 关联类保底内容发布修复记录
+
+问题：生产 Worker 已抓到 #857 的五条真实线索和答案 `Things associated with tracks`，但 `Things associated with ...` 题型的保底生成会把每条线索原样写回 `phraseExample`。最终全文门槛因此报 `clueRows[0] phrase repeats the clue`，候选分支没有创建，正式站停在 #856。
+证据：生产 Worker 记录的抓取时间为 `2026-09-04T12:13:59.530Z`，来源校验哈希为 `sha256:76e7bb03370a8c7fd7a3261519dcd5bb3aef8ed37345635fb600e71a5658981b`；15:05 后的计划任务和 20:13 的手动重试都命中同一门槛。
+本轮边界：只修 Worker 的关联类保底短语、增加 #857 真实样本回归并准备补发；不改首页固定 SEO 标题/描述、URL、canonical、sitemap 规则、页面组件或原工作区未提交内容。
+修改：关联类保底短语现在明确写出线索与主题的连接，不再把裸线索冒充短语；原有最终全文门槛保持开启。回归覆盖 #857 五条真实线索、`fallback_full` 状态和最终公开发布资格。
+验证：#857 真实样本从原来的确定性失败变为通过；399 条 registry 数据校验、根目录与 Worker 类型检查、lint、Pinpoint 守卫、424 个静态页面完整构建和 Worker dry-run 全部通过。
+未做：本记录写入时尚未推送、合并、部署生产 Worker 或补发 #857；本地通过不能代替 Production 验收。
+复查日期：修复合并、Worker 部署和 #857 补发后立即复查。
+下一步：推送独立修复分支，经 CI 合并到 `main`，再部署生产 Worker 并用今天保存的真实来源补发 #857；最后核对 candidate、准确 Production SHA、summary、详情页、sitemap 和候选分支数量。
