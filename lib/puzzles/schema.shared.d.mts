@@ -17,6 +17,7 @@ export declare const puzzleDetailBodyModeSchema: z.ZodEnum<["short", "standard",
 export declare const puzzlePageExperienceModeSchema: z.ZodEnum<["full-analysis", "light-explainer"]>;
 export declare const puzzlePublishModeSchema: z.ZodEnum<["answer-first", "full-analysis", "failed"]>;
 export declare const puzzleSeoTemplateVersionSchema: z.ZodEnum<["serp-v1", "serp-v2"]>;
+export declare const puzzleContentTemplateVersionSchema: z.ZodEnum<["evidence-v1"]>;
 
 export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   puzzleNumber: z.ZodNumber;
@@ -30,6 +31,7 @@ export declare const puzzleRegistryEntrySchema: z.ZodObject<{
   detailState: z.ZodOptional<typeof puzzleDetailStateSchema>;
   publishMode: z.ZodOptional<typeof puzzlePublishModeSchema>;
   seoTemplateVersion: z.ZodOptional<typeof puzzleSeoTemplateVersionSchema>;
+  contentTemplateVersion: z.ZodOptional<typeof puzzleContentTemplateVersionSchema>;
   shortSummary: z.ZodString;
   updatedAt: z.ZodString;
 }>;
@@ -113,6 +115,7 @@ export declare const puzzleDetailContentSchema: z.ZodObject<{
   difficultyBand: z.ZodOptional<typeof puzzleDifficultyBandSchema>;
   bodyMode: z.ZodOptional<typeof puzzleDetailBodyModeSchema>;
   pageExperienceMode: z.ZodOptional<typeof puzzlePageExperienceModeSchema>;
+  contentTemplateVersion: z.ZodOptional<typeof puzzleContentTemplateVersionSchema>;
   articleBlocks: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   fullAnalysis: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
   solutionNarrative: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;

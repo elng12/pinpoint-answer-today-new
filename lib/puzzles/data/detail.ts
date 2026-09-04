@@ -425,6 +425,8 @@ export async function toPuzzleDetail(
     detailSource: "formal",
     pageExperienceMode,
     seoTemplateVersion: entry.seoTemplateVersion ?? "serp-v1",
+    contentTemplateVersion:
+      detailContent.contentTemplateVersion ?? entry.contentTemplateVersion ?? null,
   };
 
   return enhancePuzzleDetail(raw);

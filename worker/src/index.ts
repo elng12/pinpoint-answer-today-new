@@ -95,6 +95,8 @@ export interface Env {
   PINPOINT_RELEASE_QUEUE_OVERRIDE_SECOND_PUSH?: string; // optional: set "true" to allow a second same-slug production push
   PINPOINT_SEO_TEMPLATE_MODE?: string;        // off | canary
   PINPOINT_SEO_CANARY_SLUGS?: string;         // explicit comma-separated future slugs assigned to serp-v2
+  PINPOINT_CONTENT_TEMPLATE_MODE?: string;    // off | canary
+  PINPOINT_CONTENT_CANARY_SLUGS?: string;     // explicit comma-separated future slugs assigned to evidence-v1
 }
 
 type Answer = { rank: number; word: string; confidence?: number };
@@ -627,6 +629,32 @@ export function resolvePinpointSeoTemplateVersion(
   }
 
   return canarySlugs.includes(slug) ? "serp-v2" : "serp-v1";
+}
+
+export function resolvePinpointContentTemplateVersion(
+  modeValue: string | undefined,
+  canarySlugsValue: string | undefined,
+  slug: string,
+): "evidence-v1" | null {
+  const mode = String(modeValue || "off").trim().toLowerCase();
+  if (mode !== "off" && mode !== "canary") {
+    throw new Error(`PINPOINT_CONTENT_TEMPLATE_MODE must be off or canary; received ${mode || "empty"}`);
+  }
+  if (mode === "off") return null;
+
+  const canarySlugs = String(canarySlugsValue || "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+  if (canarySlugs.length === 0) {
+    throw new Error("PINPOINT_CONTENT_CANARY_SLUGS must list explicit slugs when canary mode is enabled");
+  }
+  const invalidSlug = canarySlugs.find((value) => !/^pinpoint-answer-\d+$/.test(value));
+  if (invalidSlug) {
+    throw new Error(`PINPOINT_CONTENT_CANARY_SLUGS contains an invalid slug: ${invalidSlug}`);
+  }
+
+  return canarySlugs.includes(slug) ? "evidence-v1" : null;
 }
 
 function normalizeGitHubBranchName(input: string | undefined, fallback: string): string {
@@ -2838,6 +2866,7 @@ type PublishedPuzzleDetailInput = {
   wrongGuessCandidates?: WorkerWrongGuessCandidate[];
   setValidationSummary?: string;
   categoryPrecisionNote?: string;
+  contentTemplateVersion?: "evidence-v1";
 };
 
 const MIN_DETAIL_FULL_ANALYSIS_WORDS = 80;
@@ -3572,6 +3601,7 @@ export function buildPublishedPuzzleDetailRecord({
   wrongGuessCandidates: providedWrongGuessCandidates,
   setValidationSummary: providedSetValidationSummary,
   categoryPrecisionNote: providedCategoryPrecisionNote,
+  contentTemplateVersion,
 }: PublishedPuzzleDetailInput) {
   const clueDetails = Array.isArray(sections.clueDetails) ? sections.clueDetails : [];
 
@@ -3681,6 +3711,7 @@ export function buildPublishedPuzzleDetailRecord({
     wrongGuessCandidates,
     setValidationSummary,
     categoryPrecisionNote,
+    ...(contentTemplateVersion ? { contentTemplateVersion } : {}),
   };
 
   return shouldRepairSolutionNarrative(detailRecord)
@@ -4266,6 +4297,11 @@ async function publishToNewSiteGitHub(
     env.PINPOINT_SEO_CANARY_SLUGS,
     slug,
   );
+  const contentTemplateVersion = resolvePinpointContentTemplateVersion(
+    env.PINPOINT_CONTENT_TEMPLATE_MODE,
+    env.PINPOINT_CONTENT_CANARY_SLUGS,
+    slug,
+  );
 
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -4702,6 +4738,7 @@ async function publishToNewSiteGitHub(
     slots,
     summary: enrichedPayload.summary,
     detailState,
+    ...(contentTemplateVersion ? { contentTemplateVersion } : {}),
     ...providedEvidence,
   });
   const shortSummary = String(
@@ -4762,6 +4799,7 @@ async function publishToNewSiteGitHub(
         clues: words,
         mainAnswer: answer,
         seoTemplateVersion,
+        ...(contentTemplateVersion ? { contentTemplateVersion } : {}),
       },
       expectedMode: "full-analysis",
       answerFirstPublicEnabled: false,
@@ -4835,6 +4873,7 @@ async function publishToNewSiteGitHub(
         category: answer,
         difficultyLevel: "Moderate",
         seoTemplateVersion,
+        ...(contentTemplateVersion ? { contentTemplateVersion } : {}),
         shortSummary,
         updatedAt,
       });
@@ -4858,6 +4897,7 @@ async function publishToNewSiteGitHub(
         String(existingEntry.category ?? "") !== answer ||
         String(existingEntry.difficultyLevel ?? "Moderate") !== "Moderate" ||
         String(existingEntry.seoTemplateVersion ?? "serp-v1") !== seoTemplateVersion ||
+        String(existingEntry.contentTemplateVersion ?? "") !== (contentTemplateVersion ?? "") ||
         String(existingEntry.shortSummary ?? "") !== shortSummary;
 
       if (needsEntryUpdate) {
@@ -4871,6 +4911,11 @@ async function publishToNewSiteGitHub(
         existingEntry.category = answer;
         existingEntry.difficultyLevel = "Moderate";
         existingEntry.seoTemplateVersion = seoTemplateVersion;
+        if (contentTemplateVersion) {
+          existingEntry.contentTemplateVersion = contentTemplateVersion;
+        } else {
+          delete existingEntry.contentTemplateVersion;
+        }
         existingEntry.shortSummary = shortSummary;
         existingEntry.updatedAt = updatedAt;
       }

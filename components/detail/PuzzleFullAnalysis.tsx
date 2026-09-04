@@ -174,7 +174,10 @@ export function PuzzleFullAnalysis({
   const reasoningPreview = reasoningStory.slice(0, 1);
   const reasoningFullText = reasoningStory.slice(1);
   const visibleFaqEntries = getVisibleDetailFaqEntries(puzzle.faqItems, puzzle.faqs, puzzle.detailMode);
-  const teachingSection = renderWhatThisPinpointTeaches(puzzle, visibleFaqEntries);
+  const teachingSection =
+    puzzle.contentTemplateVersion === "evidence-v1"
+      ? null
+      : renderWhatThisPinpointTeaches(puzzle, visibleFaqEntries);
   const recentLinks = recentPuzzles.filter((entry) => entry.slug !== puzzle.slug).slice(0, 10);
   const renderReasoningBlocks = (blocks: typeof reasoningStory) =>
     blocks.map((block) => (

@@ -491,7 +491,7 @@ function assertReleaseEligibleDetail(slug, puzzle, contextLabel, registryEntry =
 
 function buildDetailVerificationStrings(puzzle) {
   const clues = Array.isArray(puzzle?.clues) ? puzzle.clues.filter(Boolean) : [];
-  const cluePath = clues.join(" ");
+  const cluePath = puzzle?.contentTemplateVersion === "evidence-v1" ? "" : clues.join(" ");
   const puzzleNumber = puzzle?.puzzleNumber ?? puzzle?.number;
 
   return [

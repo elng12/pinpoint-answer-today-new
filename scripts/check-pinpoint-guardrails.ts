@@ -4286,6 +4286,95 @@ async function checkSeoDescriptionCanaryAssignment() {
   console.log("ok: SEO description canary assignment is explicit and fail-closed");
 }
 
+async function checkEvidenceContentCanaryAssignment() {
+  const workerModulePath = "../worker/src/index.ts";
+  const workerModule = (await import(workerModulePath)) as {
+    resolvePinpointContentTemplateVersion: (
+      mode: string | undefined,
+      canarySlugs: string | undefined,
+      slug: string,
+    ) => "evidence-v1" | null;
+  };
+
+  assert.equal(
+    workerModule.resolvePinpointContentTemplateVersion("off", "", "pinpoint-answer-858"),
+    null,
+    "off mode must keep pages on the existing content template",
+  );
+  assert.equal(
+    workerModule.resolvePinpointContentTemplateVersion(
+      "canary",
+      "pinpoint-answer-858,pinpoint-answer-859,pinpoint-answer-860",
+      "pinpoint-answer-858",
+    ),
+    "evidence-v1",
+    "an explicitly listed content canary slug must receive evidence-v1",
+  );
+  assert.equal(
+    workerModule.resolvePinpointContentTemplateVersion(
+      "canary",
+      "pinpoint-answer-858,pinpoint-answer-859,pinpoint-answer-860",
+      "pinpoint-answer-861",
+    ),
+    null,
+    "an unlisted slug must keep the existing content template",
+  );
+  assert.throws(
+    () => workerModule.resolvePinpointContentTemplateVersion("invalid", "pinpoint-answer-858", "pinpoint-answer-858"),
+    /must be off or canary/,
+    "invalid content experiment modes must fail closed",
+  );
+  assert.throws(
+    () => workerModule.resolvePinpointContentTemplateVersion("canary", "", "pinpoint-answer-858"),
+    /must list explicit slugs/,
+    "content canary mode without a predeclared slug list must fail closed",
+  );
+  assert.throws(
+    () => workerModule.resolvePinpointContentTemplateVersion("canary", "pinpoint-858", "pinpoint-answer-858"),
+    /contains an invalid slug/,
+    "malformed content canary slugs must fail closed",
+  );
+
+  const puzzle = await getPuzzleBySlug("pinpoint-answer-766", { allowLiveWorkerFallback: false });
+  assert.ok(puzzle, "pinpoint-answer-766 fixture must exist for evidence-only content regression");
+  const draft = buildReasoningArticleDraft({
+    ...puzzle,
+    contentTemplateVersion: "evidence-v1",
+  });
+  const copy = draft.blocks
+    .flatMap((block) => [block.title ?? "", ...block.body, ...(block.bullets ?? [])])
+    .join(" ");
+
+  assert.doesNotMatch(
+    copy,
+    /\b(?:My first|I first|first guess|the trap)\b/i,
+    "evidence-v1 must not render a fabricated first-person solve or false-start section",
+  );
+  for (const row of puzzle.clueRows) {
+    assert.match(copy, new RegExp(row.clue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+    assert.match(copy, new RegExp(row.resolvedPhraseOrMember.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+  }
+  assert.equal(
+    draft.blocks.at(-1)?.variant,
+    "answer",
+    "evidence-v1 must keep the answer confirmation as the final block",
+  );
+
+  const detailSource = await readFile(resolve(ROOT, "components/detail/PuzzleFullAnalysis.tsx"), "utf8");
+  const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
+  assert.ok(
+    detailSource.includes('puzzle.contentTemplateVersion === "evidence-v1"'),
+    "evidence-v1 pages must hide the repeated three-card teaching section",
+  );
+  assert.match(
+    wranglerSource,
+    /PINPOINT_CONTENT_TEMPLATE_MODE\s*=\s*"canary"[\s\S]*PINPOINT_CONTENT_CANARY_SLUGS\s*=\s*"pinpoint-answer-858,pinpoint-answer-859,pinpoint-answer-860"/,
+    "production content canary must stay limited to Pinpoint 858 through 860",
+  );
+
+  console.log("ok: evidence-only content canary is explicit, bounded, and avoids fabricated solve copy");
+}
+
 async function checkProductionReleaseRunsPublicFetchAudit() {
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
@@ -4345,7 +4434,7 @@ async function checkProductionReleaseDetailVerificationUsesRenderedText() {
 
   assert.ok(
     releaseSource.includes("function buildDetailVerificationStrings(puzzle)") &&
-      releaseSource.includes('const cluePath = clues.join(" ");') &&
+      releaseSource.includes('puzzle?.contentTemplateVersion === "evidence-v1" ? "" : clues.join(" ")') &&
       releaseSource.includes("LinkedIn Pinpoint ${puzzleNumber} Answer Reasoning") &&
       !releaseSource.includes("const bodyBlocks = Array.isArray(puzzle?.articleBlocks)") &&
       !releaseSource.includes("const faqSnippet = Array.isArray(puzzle?.faqs)"),
@@ -4740,6 +4829,7 @@ async function main() {
   await checkLiveWorkerCoreDataFailsClosed();
   await checkClueEvidenceTableStaysHidden();
   await checkSeoDescriptionCanaryAssignment();
+  await checkEvidenceContentCanaryAssignment();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkProductionReleaseRunsValidateDataBeforePush();
   await checkProductionReleaseWorkerHealthFallback();

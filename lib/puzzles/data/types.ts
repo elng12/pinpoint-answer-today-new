@@ -2,6 +2,7 @@ import type {
   FaqItem,
   LessonItem,
   PuzzleClueRowRecord,
+  PuzzleContentTemplateVersion,
   PuzzleDifficultyBand,
   PuzzleEvidenceFaqItemRecord,
   PuzzleDetailState,
@@ -60,6 +61,7 @@ export type PuzzleDetail = {
   detailSource: "formal" | "fallback";
   pageExperienceMode: PuzzlePageExperienceMode;
   seoTemplateVersion: PuzzleSeoTemplateVersion;
+  contentTemplateVersion: PuzzleContentTemplateVersion | null;
 };
 
 export type ArchiveEntry = {

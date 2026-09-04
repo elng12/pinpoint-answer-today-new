@@ -444,7 +444,75 @@ function buildPhraseEvidenceBullets(puzzle: PuzzleDetail): string[] {
     .filter(Boolean);
 }
 
+function buildEvidenceOnlyBullet(puzzle: PuzzleDetail, row: PuzzleDetail["clueRows"][number]): string {
+  const phrase = cleanReasoningText(row.resolvedPhraseOrMember).replace(/[.!?]+$/, "");
+  const explanation = cleanReasoningText(row.nonObviousWhy);
+  const phraseAlreadyPresent =
+    phrase.length > 0 && normalizePhraseTokens(explanation).includes(normalizePhraseTokens(phrase));
+
+  if (phraseAlreadyPresent) {
+    return `${row.clue}: ${explanation}`;
+  }
+
+  return `${row.clue}: ${phrase}. ${explanation}`;
+}
+
+function buildEvidenceOnlyReasoningArticleDraft(puzzle: PuzzleDetail): ReasoningArticleDraft {
+  const cluePath = formatSeries(puzzle.clues);
+  const evidenceBullets = puzzle.clueRows
+    .filter((row) => row.clue && row.resolvedPhraseOrMember && row.nonObviousWhy)
+    .map((row) => buildEvidenceOnlyBullet(puzzle, row));
+  const validationParagraphs = [puzzle.setValidationSummary, puzzle.categoryPrecisionNote]
+    .map((value) => cleanReasoningText(value ?? ""))
+    .map((value) => value ? `${value[0].toUpperCase()}${value.slice(1).replace(/[.!?]+$/, "")}.` : "")
+    .filter(Boolean);
+
+  const blocks: ReasoningArticleBlock[] = [
+    {
+      body: [
+        `Pinpoint #${puzzle.number} uses the clues ${cluePath}.`,
+        "The useful check is whether one precise answer gives every clue a direct, ordinary reading.",
+      ],
+      key: "clue-path",
+    },
+    {
+      body: ["Here is the clue evidence used to verify the connection."],
+      bullets: evidenceBullets,
+      key: "clue-evidence",
+      title: "How Each Clue Fits",
+    },
+    ...(validationParagraphs.length > 0
+      ? [
+          {
+            body: validationParagraphs,
+            key: "board-check",
+            title: "Why the Full Set Holds",
+          } satisfies ReasoningArticleBlock,
+        ]
+      : []),
+    {
+      body: [
+        `The answer is "${puzzle.answer}".`,
+        "The clue-by-clue matches above confirm the connection across the full set.",
+      ],
+      key: "answer",
+      title: formatAnswerTitle(puzzle.answer),
+      variant: "answer",
+    },
+  ];
+
+  return reasoningArticleDraftSchema.parse({
+    blocks: blocks.map(compactBlock),
+    slug: puzzle.slug,
+    version: REASONING_ARTICLE_DRAFT_VERSION,
+  });
+}
+
 export function buildReasoningArticleDraft(puzzle: PuzzleDetail): ReasoningArticleDraft {
+  if (puzzle.contentTemplateVersion === "evidence-v1") {
+    return buildEvidenceOnlyReasoningArticleDraft(puzzle);
+  }
+
   const blocks: ReasoningArticleBlock[] = [];
   const cluePath = formatPlainCluePath(puzzle.clues);
   const connectorSummary = getSafeConnectorSummary(puzzle);
