@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "candidateBranch": "codex/deepseek-api",
-  "candidateSha": "cc4226047d4b1d974ea5fd390e16d729f538c3d4",
-  "previousProductionSha": "9d55611ff8663831653f818f1d752e9e8cd8f4f9",
-  "requestedAt": "2026-09-02T01:38:30Z"
+  "candidateBranch": "codex/pinpoint-indexing-content-canary",
+  "candidateSha": "0e651678bc5b04fc36a1588301e81d70723313df",
+  "previousProductionSha": "78575c8fb910a1929e8cdac7b2af5229a56ee2f4",
+  "requestedAt": "2026-09-04T14:22:05Z"
 }
