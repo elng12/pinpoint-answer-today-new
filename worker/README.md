@@ -33,6 +33,10 @@ wrangler deploy --env shadow --name pinpoint-worker-shadow    # 影子运行（�
 wrangler deploy --env staging --name pinpoint-worker-staging  # 受控演练（阶段 B）
 ```
 
+正文试验由两个非密钥变量控制：`PINPOINT_CONTENT_TEMPLATE_MODE` 只接受 `off` 或
+`canary`；开启 `canary` 时，`PINPOINT_CONTENT_CANARY_SLUGS` 必须明确列出完整 slug。
+名单外页面继续使用原正文，非法模式、空名单或错误 slug 会直接停止发布。
+
 ---
 
 ## Secrets 清单

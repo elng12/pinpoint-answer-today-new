@@ -243,6 +243,7 @@ function toLivePuzzleDetail(record: LiveWorkerPuzzleRecord): PuzzleDetail | null
     detailSource: "fallback",
     pageExperienceMode: "light-explainer",
     seoTemplateVersion: "serp-v1",
+    contentTemplateVersion: null,
   };
 }
 
