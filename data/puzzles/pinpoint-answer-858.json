@@ -18,11 +18,11 @@
   "answer": "Words that come before “car”",
   "category": "Words that come before “car”",
   "wordHints": {
-    "Race": "\"Race car\" is a familiar phrase, so it helps reveal the shared word quickly.",
-    "Cable": "\"Cable car\" is common enough to confirm the same missing word without stretching the phrasing.",
-    "Muscle": "Once the shared word is in place, \"Muscle car\" reads like ordinary language instead of a forced compound.",
-    "Rental": "\"Rental car\" is a familiar phrase, so it helps reveal the shared word quickly.",
-    "Plug-in hybrid": "\"Plug-in hybrid car\" is common enough to confirm the same missing word without stretching the phrasing."
+    "Race": "A race car is built or adapted for motor racing. Race describes the vehicle's competitive purpose, rather than an event that all five clues name.",
+    "Cable": "A cable car carries passengers using a moving cable. San Francisco's street-running cars grip a cable beneath the road, so car here need not mean a privately driven automobile.",
+    "Muscle": "A muscle car is a road car known for its powerful engine. Muscle refers to engine performance here, not a body part or a component fitted to every vehicle.",
+    "Rental": "A rental car is hired for temporary use instead of bought. Rental describes the arrangement for using the vehicle, not its engine, shape, or manufacturer.",
+    "Plug-in hybrid": "A plug-in hybrid car combines an electric motor and a fuel-burning engine, with a battery that can be charged from an external power supply. The full clue describes the powertrain and goes before car."
   },
   "spoilerHints": {
     "Race": "Try reading Race as part of a familiar phrase in words that come before “car” instead of as a standalone word.",
@@ -65,27 +65,27 @@
       {
         "clue": "Race",
         "examplePhrase": "Race car",
-        "connectionExplained": "\"Race car\" is a familiar phrase, so it helps reveal the shared word quickly."
+        "connectionExplained": "A race car is built or adapted for motor racing. Race describes the vehicle's competitive purpose, rather than an event that all five clues name."
       },
       {
         "clue": "Cable",
         "examplePhrase": "Cable car",
-        "connectionExplained": "\"Cable car\" is common enough to confirm the same missing word without stretching the phrasing."
+        "connectionExplained": "A cable car carries passengers using a moving cable. San Francisco's street-running cars grip a cable beneath the road, so car here need not mean a privately driven automobile."
       },
       {
         "clue": "Muscle",
         "examplePhrase": "Muscle car",
-        "connectionExplained": "Once the shared word is in place, \"Muscle car\" reads like ordinary language instead of a forced compound."
+        "connectionExplained": "A muscle car is a road car known for its powerful engine. Muscle refers to engine performance here, not a body part or a component fitted to every vehicle."
       },
       {
         "clue": "Rental",
         "examplePhrase": "Rental car",
-        "connectionExplained": "\"Rental car\" is a familiar phrase, so it helps reveal the shared word quickly."
+        "connectionExplained": "A rental car is hired for temporary use instead of bought. Rental describes the arrangement for using the vehicle, not its engine, shape, or manufacturer."
       },
       {
         "clue": "Plug-in hybrid",
         "examplePhrase": "Plug-in hybrid car",
-        "connectionExplained": "\"Plug-in hybrid car\" is common enough to confirm the same missing word without stretching the phrasing."
+        "connectionExplained": "A plug-in hybrid car combines an electric motor and a fuel-burning engine, with a battery that can be charged from an external power supply. The full clue describes the powertrain and goes before car."
       }
     ]
   },
@@ -127,7 +127,7 @@
       "clue": "Race",
       "surfaceMisread": "Race and Cable phrase pairing",
       "resolvedPhraseOrMember": "Race car",
-      "nonObviousWhy": "\"Race car\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "nonObviousWhy": "A race car is built or adapted for motor racing. Race describes the vehicle's competitive purpose, rather than an event that all five clues name.",
       "searchableContext": "Race car",
       "phraseExample": "Race car"
     },
@@ -135,7 +135,7 @@
       "clue": "Cable",
       "surfaceMisread": "Race and Cable phrase pairing",
       "resolvedPhraseOrMember": "Cable car",
-      "nonObviousWhy": "\"Cable car\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "nonObviousWhy": "A cable car carries passengers using a moving cable. San Francisco's street-running cars grip a cable beneath the road, so car here need not mean a privately driven automobile.",
       "searchableContext": "Cable car",
       "phraseExample": "Cable car"
     },
@@ -143,7 +143,7 @@
       "clue": "Muscle",
       "surfaceMisread": "Race and Cable phrase pairing",
       "resolvedPhraseOrMember": "Muscle car",
-      "nonObviousWhy": "Once the shared word is in place, \"Muscle car\" reads like ordinary language instead of a forced compound.",
+      "nonObviousWhy": "A muscle car is a road car known for its powerful engine. Muscle refers to engine performance here, not a body part or a component fitted to every vehicle.",
       "searchableContext": "Muscle car",
       "phraseExample": "Muscle car"
     },
@@ -151,7 +151,7 @@
       "clue": "Rental",
       "surfaceMisread": "Race and Cable phrase pairing",
       "resolvedPhraseOrMember": "Rental car",
-      "nonObviousWhy": "\"Rental car\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "nonObviousWhy": "A rental car is hired for temporary use instead of bought. Rental describes the arrangement for using the vehicle, not its engine, shape, or manufacturer.",
       "searchableContext": "Rental car",
       "phraseExample": "Rental car"
     },
@@ -159,7 +159,7 @@
       "clue": "Plug-in hybrid",
       "surfaceMisread": "Race and Cable phrase pairing",
       "resolvedPhraseOrMember": "Plug-in hybrid car",
-      "nonObviousWhy": "\"Plug-in hybrid car\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "nonObviousWhy": "A plug-in hybrid car combines an electric motor and a fuel-burning engine, with a battery that can be charged from an external power supply. The full clue describes the powertrain and goes before car.",
       "searchableContext": "Plug-in hybrid car",
       "phraseExample": "Plug-in hybrid car"
     }
@@ -213,7 +213,7 @@
       "whyRejected": "Once Plug-in hybrid locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
     }
   ],
-  "setValidationSummary": "Muscle car, Rental car, Plug-in hybrid car show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
-  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping",
+  "setValidationSummary": "Race and Muscle describe purpose or performance; Rental describes temporary use; Cable and Plug-in hybrid describe different ways of moving a vehicle. Their meanings differ, but each clue forms a complete term when car follows it.",
+  "categoryPrecisionNote": "The link is a word placed after every clue, not five interchangeable types of road automobile. Cable car is the useful distinction: a passenger vehicle pulled by a cable still completes the same word pattern.",
   "contentTemplateVersion": "evidence-v1"
 }

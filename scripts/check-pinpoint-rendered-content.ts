@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { puzzleDetailContentSchema, registrySchema } from "../lib/puzzles/schema.shared.mjs";
+import { cleanReasoningText } from "../lib/puzzles/reasoning-article";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -25,6 +26,9 @@ type DetailRecord = {
   pageExperienceMode?: string;
   detailState?: string;
   bodyMode?: string;
+  contentTemplateVersion?: string;
+  answer?: string;
+  clueRows?: { clue: string; resolvedPhraseOrMember: string; nonObviousWhy: string }[];
 };
 
 type Issue = {
@@ -144,6 +148,54 @@ function countClass(markup: string, className: string): number {
 function extractTagText(markup: string, tagName: string): string[] {
   const matches = markup.matchAll(new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)<\\/${tagName}>`, "gi"));
   return Array.from(matches, (match) => stripTags(match[1] ?? ""));
+}
+
+export function checkRenderedContentTemplate(detail: DetailRecord, html: string): string[] {
+  const markup = stripScripts(html);
+  const teachingCardCount = countClass(markup, "legacy-teaches-item");
+  const pageMode = detail.pageExperienceMode ?? (detail.bodyMode === "short" ? "light-explainer" : "full-analysis");
+  const requiredFaqCount = pageMode === "full-analysis" ? 3 : 2;
+  if (detail.contentTemplateVersion !== "evidence-v1") {
+    return teachingCardCount < requiredFaqCount
+      ? [`Rendered teaching item count ${teachingCardCount} is below required ${requiredFaqCount} for ${pageMode}.`]
+      : [];
+  }
+
+  const errors: string[] = [];
+  const blocks = Array.from(markup.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/gi), (match) => match[0])
+    .filter((block) => countClass(block, "legacy-reasoning-block") > 0);
+  const evidenceBlocks = blocks.filter((block) =>
+    extractTagText(block, "h3").includes("How Each Clue Fits"),
+  );
+  const bullets = extractTagText(evidenceBlocks[0] ?? "", "li");
+  const rows = detail.clueRows ?? [];
+  if (evidenceBlocks.length !== 1 || bullets.length !== 5 || rows.length !== 5) {
+    errors.push("Evidence-v1 must render exactly one How Each Clue Fits block with five clue explanations.");
+  }
+  for (const [index, row] of rows.entries()) {
+    const bullet = normalizeForMatch(bullets[index] ?? "");
+    for (const label of ["clue", "resolvedPhraseOrMember", "nonObviousWhy"] as const) {
+      const value = row[label] ?? "";
+      const expected = normalizeForMatch(label === "clue" ? value : cleanReasoningText(value));
+      if (!expected || !` ${bullet} `.includes(` ${expected} `)) {
+        errors.push(`Evidence-v1 clue ${index + 1} is missing its rendered ${label}.`);
+      }
+    }
+  }
+  const reasoningText = stripTags(blocks.join(" "));
+  if (/\b(?:My first|I first|I started|first guess|the trap)\b/i.test(reasoningText)) {
+    errors.push("Evidence-v1 must not render fabricated first-person solving or false-start copy.");
+  }
+  if (teachingCardCount > 0 || stripTags(markup).includes("What This Pinpoint Teaches")) {
+    errors.push("Evidence-v1 must not render the legacy teaching section.");
+  }
+  const lastBlock = blocks.at(-1) ?? "";
+  const answer = normalizeForMatch(detail.answer ?? "");
+  if (countClass(lastBlock, "legacy-reasoning-block-answer") !== 1 || !answer ||
+      !normalizeForMatch(stripTags(lastBlock)).includes(answer)) {
+    errors.push("Evidence-v1 must end its reasoning with the answer confirmation.");
+  }
+  return errors;
 }
 
 function extractHrefValues(markup: string): string[] {
@@ -334,9 +386,6 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
     bodyMarkup.matchAll(/<span class="legacy-reveal-clue-word">([\s\S]*?)<\/span>/g),
     (match) => stripTags(match[1] ?? ""),
   );
-  const teachingCardCount = countClass(bodyMarkup, "legacy-teaches-item");
-  const pageMode = detail.pageExperienceMode ?? (detail.bodyMode === "short" ? "light-explainer" : "full-analysis");
-  const requiredFaqCount = pageMode === "full-analysis" ? 3 : 2;
   const hrefs = new Set(extractHrefValues(bodyMarkup));
   const recentDetailLinkCount = allEntries
     .filter((candidate) => candidate.slug !== entry.slug)
@@ -389,8 +438,8 @@ function checkDetailRendered(entry: RegistryEntry, allEntries: RegistryEntry[]) 
       addIssue(entry.slug, `Rendered page still exposes old template label: ${legacyLabel}.`);
     }
   }
-  if (teachingCardCount < requiredFaqCount) {
-    addIssue(entry.slug, `Rendered teaching item count ${teachingCardCount} is below required ${requiredFaqCount} for ${pageMode}.`);
+  for (const message of checkRenderedContentTemplate({ ...detail, answer: entry.mainAnswer }, html)) {
+    addIssue(entry.slug, message);
   }
   if (!hrefs.has("/puzzles")) {
     addIssue(entry.slug, "Rendered detail page does not link back to /puzzles.");
@@ -458,4 +507,6 @@ function main() {
   console.log("ok: home page links to the latest public Pinpoint detail page");
 }
 
-main();
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main();
+}
