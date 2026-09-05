@@ -400,3 +400,14 @@
 生产配置：`PINPOINT_CONTENT_TEMPLATE_MODE=canary`，名单准确为 `pinpoint-answer-858,pinpoint-answer-859,pinpoint-answer-860`；搜索描述实验仍为 `off`。生产 Worker 保持自动发布开启、未暂停、候选分支和 release queue 保护开启。
 线上验证：release queue 读取准确 `main=78575c8`、Production 状态为 `ready`；Worker health 仍返回 `#857` 的真实题目；正式 summary 仍为 `pinpoint-answer-857 live`，`#857` 详情 HTTP 200 且继续显示旧正文，sitemap 仍包含 `#857`。这证明代码和开关已上线，但没有回写旧页。
 尚未发生：`#858-#860` 都是未来页面，当前尚未生成，不能提前宣称正文页面或 GSC 收录结果成功。下一次正常发布先核对 `#858` 的详情 JSON、页面正文、candidate、Production 和 sitemap，再从发布日起按第 3、7、14 天检查 URL Inspection。
+
+## 2026-09-05 #858 新正文发布检查兼容修复
+
+问题：#858 已生成 `evidence-v1` 候选，但 CI `33951419592` 的真实 HTML 检查仍要求旧教学区至少 3 项，导致候选未发布。新正文有意不显示该区域，前次实现漏掉了这条检查的兼容。
+本轮边界：只修现有渲染检查及其回归，补实 #858 的五条线索解释，并恢复该页发布；不改首页固定 SEO、页面组件、旧页正文、URL、canonical、sitemap 规则、Worker 或三页试验名单。
+修改：旧正文保留原来的 3/2 项教学区要求；`evidence-v1` 改为验证五条线索、对应短语和解释真实出现在指定正文区，拒绝只在脚本数据中出现的内容、旧教学卡片及虚构第一人称解题，并保留最终答案确认。#858 同步更新 `wordHints`、`display.clueTableRows`、`clueRows` 和集合说明，registry 仅更新该页正文修改时间；旧题的正常 live/archived 转换沿用原候选。
+内容依据：Cable 的运行方式核对 [SFMTA](https://www.sfmta.com/blog/how-1906-earthquake-transformed-our-public-transit-system)，Plug-in hybrid 的动力和外部充电方式核对 [美国能源部 AFDC](https://afdc.energy.gov/vehicles/electric-basics-phev)。候选真实五条线索、正式答案和题目日期保持不变；没有将编辑后的解释伪装为 Worker 自动生成的新版本。
+验证：401 条数据校验、lint、类型检查、Pinpoint 守卫和 426 页完整构建通过；401 个真实详情页 HTML、sitemap 和首页最新链接检查通过。回归明确覆盖新旧正文正常输出，以及缺少解释、正文只在 script 中出现、错误区域、旧教学卡片、虚构解题和缺少最终答案等失败情况。
+发布路径：使用包含原候选提交的独立修复 PR，把检查修复和 #858 最终内容一起送入 CI；通过后以保留提交历史的 merge 合并。准确 Production SHA 和公开页面验收完成后，再通过现有候选关闭工具清理已包含的旧候选，不绕过检查直接推 main。
+尚未完成：本记录写入时还未提交、合并或部署；本地通过不代表正式页面已经上线或 Google 已收录。
+下一步：完成 PR、Production 和线上验收；每页从实际上线日起按第 3、7、14 天复查 GSC。14 天是投入复查点，不是 Google 必须恢复的期限。

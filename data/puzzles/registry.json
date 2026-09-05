@@ -1,9 +1,30 @@
 [
   {
+    "puzzleNumber": 858,
+    "slug": "pinpoint-answer-858",
+    "publishDate": "2026-09-05",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Race",
+      "Cable",
+      "Muscle",
+      "Rental",
+      "Plug-in hybrid"
+    ],
+    "mainAnswer": "Words that come before “car”",
+    "category": "Words that come before “car”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "contentTemplateVersion": "evidence-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Race, Cable, Muscle, Rental, Plug-in hybrid - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-05T14:22:50.000Z"
+  },
+  {
     "puzzleNumber": 857,
     "slug": "pinpoint-answer-857",
     "publishDate": "2026-09-04",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Trains",
@@ -17,7 +38,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Trains, Music albums, Adjustable ceiling lights, Olympic stadiums for running, Mud after animals walk in it - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-04T13:37:35.137Z"
+    "updatedAt": "2026-09-05T07:01:44.603Z"
   },
   {
     "puzzleNumber": 856,

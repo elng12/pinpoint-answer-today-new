@@ -42,6 +42,7 @@ import {
 import { getPuzzleBySlug } from "../lib/puzzles/data";
 import { buildReasoningArticleDraft } from "../lib/puzzles/reasoning-article";
 import { resolveWorkerFetchRoute } from "../worker/src/routes/dispatch";
+import { checkRenderedContentTemplate } from "./check-pinpoint-rendered-content";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -4359,6 +4360,42 @@ async function checkEvidenceContentCanaryAssignment() {
     "answer",
     "evidence-v1 must keep the answer confirmation as the final block",
   );
+
+  // HTML fixtures exercise the same template check used on actual build output in CI.
+  const escapeHtml = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const fixtureHtml = draft.blocks.map((block) =>
+    `<article class="legacy-reasoning-block${block.variant === "answer" ? " legacy-reasoning-block-answer" : ""}">` +
+    `<h3>${escapeHtml(block.title ?? "")}</h3>${block.body.map((copy) => `<p>${escapeHtml(copy)}</p>`).join("")}` +
+    `<ul>${(block.bullets ?? []).map((copy) => `<li>${escapeHtml(copy)}</li>`).join("")}</ul></article>`,
+  ).join("");
+  const evidenceDetail = { ...puzzle, contentTemplateVersion: "evidence-v1" };
+  assert.deepEqual(checkRenderedContentTemplate(evidenceDetail, fixtureHtml), []);
+  assert.deepEqual(checkRenderedContentTemplate({
+    ...evidenceDetail,
+    clueRows: evidenceDetail.clueRows.map((row, index) => index === 0
+      ? { ...row, nonObviousWhy: `${row.nonObviousWhy} Use the table below to check the answer.` }
+      : row),
+  }, fixtureHtml), [], "render checks must respect the renderer's existing copy cleanup");
+  const teachingCards = '<div class="legacy-teaches-item"></div>'.repeat(3);
+  assert.deepEqual(checkRenderedContentTemplate({ pageExperienceMode: "full-analysis" }, teachingCards), []);
+  assert.deepEqual(checkRenderedContentTemplate({ bodyMode: "short" }, teachingCards.replace(/<div[^>]*><\/div>/, "")), []);
+  assert.ok(checkRenderedContentTemplate({ pageExperienceMode: "full-analysis" }, "").length > 0,
+    "legacy pages must still require their teaching cards");
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, fixtureHtml.replace(/<li>[\s\S]*?<\/li>/, "")).length > 0,
+    "evidence pages must fail if a clue explanation is removed");
+  const missingExplanation = fixtureHtml.replace(/<li>[\s\S]*?<\/li>/, `<li>${escapeHtml(puzzle.clueRows[0].clue)}: ${escapeHtml(puzzle.clueRows[0].resolvedPhraseOrMember)}</li>`);
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, missingExplanation).length > 0,
+    "a clue and phrase without their explanation must fail");
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, `<script>${fixtureHtml}</script>`).length > 0,
+    "serialized data must never count as rendered evidence");
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, fixtureHtml.replace("How Each Clue Fits", "Other section")).length > 0,
+    "clues elsewhere on the page must not replace the evidence block");
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, fixtureHtml + teachingCards).length > 0,
+    "evidence pages must reject legacy teaching cards");
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, fixtureHtml.replace("<p>", "<p>I started with a guess. ")).length > 0,
+    "evidence pages must reject fabricated solve copy");
+  assert.ok(checkRenderedContentTemplate(evidenceDetail, fixtureHtml.replace(" legacy-reasoning-block-answer", "")).length > 0,
+    "the final answer block must remain present");
 
   const detailSource = await readFile(resolve(ROOT, "components/detail/PuzzleFullAnalysis.tsx"), "utf8");
   const wranglerSource = await readFile(resolve(ROOT, "worker/wrangler.toml"), "utf8");
