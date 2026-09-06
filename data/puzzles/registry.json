@@ -1,9 +1,30 @@
 [
   {
+    "puzzleNumber": 859,
+    "slug": "pinpoint-answer-859",
+    "publishDate": "2026-09-06",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Cardboard",
+      "Leaves",
+      "Banana peels",
+      "Eggshells and egg cartons",
+      "Grass clippings and twigs"
+    ],
+    "mainAnswer": "Things that are composted",
+    "category": "Things that are composted",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "contentTemplateVersion": "evidence-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Cardboard, Leaves, Banana peels, Eggshells and egg cartons, Grass clippings and twigs - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-06T07:02:30.891Z"
+  },
+  {
     "puzzleNumber": 858,
     "slug": "pinpoint-answer-858",
     "publishDate": "2026-09-05",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Race",
@@ -18,7 +39,7 @@
     "seoTemplateVersion": "serp-v1",
     "contentTemplateVersion": "evidence-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Race, Cable, Muscle, Rental, Plug-in hybrid - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-05T14:22:50.000Z"
+    "updatedAt": "2026-09-06T07:02:30.891Z"
   },
   {
     "puzzleNumber": 857,
