@@ -342,6 +342,34 @@ function checkSitemap(publicEntries: RegistryEntry[]) {
   }
 }
 
+export function checkArchiveRenderedLinks(entries: { slug: string }[], html: string): string[] {
+  const markup = stripScripts(html);
+  const main = markup.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] ?? "";
+  const hrefs = new Set(extractHrefValues(main));
+  return entries
+    .filter((entry) => !hrefs.has(detailRoute(entry.slug)))
+    .map((entry) => `Archive HTML is missing public detail link ${detailRoute(entry.slug)}.`);
+}
+
+function checkArchiveBuild(publicEntries: RegistryEntry[]) {
+  const archivePath = resolve(BUILD_APP_DIR, "puzzles.html");
+  if (!existsSync(archivePath)) {
+    addIssue("archive", "Missing prerendered /puzzles HTML. Archive must not render per request.");
+    return;
+  }
+
+  const manifest = readJson(resolve(ROOT, ".next", "prerender-manifest.json")) as {
+    routes: Record<string, { initialRevalidateSeconds?: number | false }>;
+  };
+  const interval = manifest.routes["/puzzles"]?.initialRevalidateSeconds;
+  if (typeof interval !== "number" || interval <= 0 || interval > 86400) {
+    addIssue("archive", "Archive must have a positive revalidation interval of at most one day.");
+  }
+  for (const message of checkArchiveRenderedLinks(publicEntries, readText(archivePath))) {
+    addIssue("archive", message);
+  }
+}
+
 function checkHomeRenderedLinks(publicEntries: RegistryEntry[]) {
   const homePath = resolve(BUILD_APP_DIR, "index.html");
   if (!existsSync(homePath)) {
@@ -495,6 +523,7 @@ function main() {
   const entriesToCheck = publicEntries.slice(0, checkLimit);
   checkSitemap(publicEntries);
   checkHomeRenderedLinks(publicEntries);
+  checkArchiveBuild(publicEntries);
   for (const entry of entriesToCheck) {
     checkDetailRendered(entry, publicEntries);
   }
@@ -505,6 +534,7 @@ function main() {
   console.log(`ok: rendered detail HTML passed for ${limitLabel} public Pinpoint pages`);
   console.log(`ok: sitemap covers ${publicEntries.length} public Pinpoint detail pages with fresh lastmod values`);
   console.log("ok: home page links to the latest public Pinpoint detail page");
+  console.log(`ok: cached archive HTML links to all ${publicEntries.length} public Pinpoint detail pages`);
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

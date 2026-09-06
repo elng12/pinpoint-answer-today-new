@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ArchiveCard } from "@/components/archive/ArchiveCard";
 import type { ArchiveGroup } from "@/lib/puzzles/data";
 import { trackClientEvent } from "@/lib/analytics";
@@ -40,31 +40,38 @@ async function fetchArchiveGroups() {
   return payload.groups;
 }
 
+function ArchiveQuerySync({ onChange }: { onChange: (query: string) => void }) {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q") ?? "";
+
+  useEffect(() => {
+    onChange(query);
+  }, [query, onChange]);
+
+  return null;
+}
+
 export function ArchiveExplorer({
   initialGroups,
   totalCount,
-  initialQuery = "",
 }: {
   initialGroups: ArchiveGroup[];
   totalCount: number;
-  initialQuery?: string;
 }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(() => searchParams.get("q") ?? initialQuery);
+  const [query, setQuery] = useState("");
   const [allGroups, setAllGroups] = useState<ArchiveGroup[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const normalizedQuery = normalizeValue(query);
 
   const handleQueryChange = (value: string) => {
     setQuery(value);
-    const params = new URLSearchParams(searchParams.toString());
+    const url = new URL(window.location.href);
     if (value) {
-      params.set("q", value);
+      url.searchParams.set("q", value);
     } else {
-      params.delete("q");
+      url.searchParams.delete("q");
     }
-    router.replace(`?${params.toString()}`, { scroll: false });
+    window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
   };
   const activeGroups = allGroups ?? initialGroups;
 
@@ -85,7 +92,7 @@ export function ArchiveExplorer({
   const hiddenCount = totalCount - visibleCount;
 
   const ensureAllGroups = async () => {
-    if (allGroups || isLoading) {
+    if (hiddenCount <= 0 || allGroups || isLoading) {
       return;
     }
 
@@ -100,6 +107,10 @@ export function ArchiveExplorer({
 
   return (
     <div className="stack">
+      {/* Only URL synchronization suspends; all puzzle links remain in the server HTML. */}
+      <Suspense fallback={null}>
+        <ArchiveQuerySync onChange={setQuery} />
+      </Suspense>
       <section className="surface" style={{ padding: 28 }}>
         <div className="archive-search-row">
           <label className="archive-search-label" htmlFor="archive-search">
