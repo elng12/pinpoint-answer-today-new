@@ -411,3 +411,39 @@
 发布路径：使用包含原候选提交的独立修复 PR，把检查修复和 #858 最终内容一起送入 CI；通过后以保留提交历史的 merge 合并。准确 Production SHA 和公开页面验收完成后，再通过现有候选关闭工具清理已包含的旧候选，不绕过检查直接推 main。
 尚未完成：本记录写入时还未提交、合并或部署；本地通过不代表正式页面已经上线或 Google 已收录。
 下一步：完成 PR、Production 和线上验收；每页从实际上线日起按第 3、7、14 天复查 GSC。14 天是投入复查点，不是 Google 必须恢复的期限。
+
+## 2026-09-06 归档缓存与浏览器搜索修复（本地完成，未发布）
+
+授权与边界：用户在 CPU 归因调查后明确执行归档缓存修复。本轮只改 `/puzzles` 页面、搜索组件及既有回归测试；不改首页固定 SEO、题目内容、Worker、生产配置、爬虫规则或套餐，不提交、推送或部署，ALPR 不动。
+
+工作区：原目录 `/Users/elng/web/pinpoint-answer-today-new` 仍为 main `57eba3f`，有大量现存未提交改动，全部保留。本次在 `/Users/elng/web/pinpoint-answer-today-new-archive-cache` 的 `codex/archive-cache-search` 分支实现，起点为经 `git ls-remote` 复核的 main `87c1a2da45af12f02c505f156ef483e649f4fa8e`。复用锁文件一致、Next.js 15.5.18 / React 19.2.6 的已安装依赖副本，没有新增依赖或改锁文件。
+
+修改：
+- 页面和 metadata 不再读取服务器 `searchParams`，保留原 `revalidate=86400`、完整归档、结构化数据和 SEO 文案。
+- 搜索使用原生 `history.replaceState`，只在浏览器筛选，不逐字请求服务器；URL 对象负责参数编码并保留路径与片段。
+- 仅将读取 URL 的小组件放进 Suspense，归档卡片不进入空白加载区域。它同步分享地址、刷新、前进后退和站内导航后的查询词；输入框仍即时响应。
+- 已带齐全部题目时，聚焦输入框不再重复抓取 `/api/archive-groups`。
+- 扩展既有 `test:pinpoint-rendered` 和 guardrails 测试：检查可缓存构建产物、有效刷新周期，以及全部公开详情链接确实出现在服务器 HTML 的 main 区域。缺少旧题、仅存在于 script、仅存在于 footer、重复链接掩盖缺失等反例均会失败，没有另建发布流程或 gate。
+
+验证：
+- `npm run lint`、`npm run typecheck`、`npm run test:pinpoint-guardrails` 均通过；构建包含 401 条真实 registry 记录、426 个静态页面，`/puzzles` 明确为静态页面，刷新周期 1 天。
+- 最终构建使用公开环境值 `NEXT_PUBLIC_SITE_URL=https://pinpointanswertoday.app`；随后 `npm run test:pinpoint-rendered` 验证全部 401 个详情页、sitemap、首页最新链接和完整归档 HTML 通过。
+- 首次本地预览使用默认 localhost canonical，HTTP 对照检查正确报错；补入上述本地构建环境值后重新构建，最终 title、description、canonical 与当前正式页逐项相同。没有修改线上环境。对照详见 [metadata-results.json](../output/archive-cache/metadata-results.json)。
+- 本地生产模式下，无查询、数字查询、无结果查询、Unicode/特殊字符查询均返回同一份缓存 HTML，`x-nextjs-cache: HIT`，`s-maxage=86400`，不再是 private/no-store。正式站仍为旧代码，本轮对照仍显示 MISS，不能宣称生产已经降耗。
+- 在 Codex 隔离浏览器验证分享 `q=858`、逐字输入 `600`、大小写和空格线索查询、特殊字符/无结果、Clear、详情导航、后退/前进、刷新以及点击 Archive 清除查询。清空后 401 个题目均可见，未出现脚本弹窗或控制台错误。
+- 最终构建 06:26:11-06:26:42 UTC 的输入和清空测试中，本地代理记录归档页面新增请求 0、归档数据接口请求 0；另有浏览器图标的 304 请求，不能说全浏览器完全没有网络请求。详见 [browser-search-results.json](../output/archive-cache/browser-search-results.json) 和同目录 browser-requests.jsonl。
+- 桌面 1440x900 与手机 320x740 实际截图检查，无横向溢出；手机清空功能通过。已有手机样式将 `flex-basis:320px` 应用于纵向输入布局，导致输入框偏高，本轮未改 CSS，不把这个旧问题算作已修复。临时视口已恢复。
+
+更新验证：在仅监听回环地址的本地测试服务中，原始 401 条数据加入 1 条明确标注的模拟题目；等待现有进程级 registry 缓存 30 秒到期后，调用原 `/api/revalidate`，页面重新生成并命中包含新增链接的缓存。未认证请求返回 401，非法 slug 返回 400，禁用的 live 模式返回 409。未写任何仓库题目 JSON、生产数据或外部索引服务；测试后停止模拟服务并从真实 401 条数据重新构建。该测试证明原刷新通路可用，不证明生产调度已运行或立即刷新保证。可复跑脚本与结果在 [check-runtime.mjs](../output/archive-cache/check-runtime.mjs)、[runtime-results.json](../output/archive-cache/runtime-results.json)，这些本地测试产物不混入提交。
+
+React 复核：保留服务端完整列表，只让 URL 读取延迟到客户端；用稳定的 state setter 同步外部 URL，保留 memoized 筛选，不在 render 中访问 window，不手工管理或遗留全局事件监听器。实现依据为 [Next.js 15 useSearchParams](https://nextjs.org/docs/15/app/api-reference/functions/use-search-params) 和 [原生 History API](https://nextjs.org/docs/app/getting-started/linking-and-navigating#native-history-api)。
+
+状态：业务改动与测试仍未提交。原工作区仅追加本次结果入口，未覆盖其业务改动。可试用 [本地预览](http://127.0.0.1:3016/puzzles)，只监听本机；辅助预览进程 PID 为 57298（内部 Next 端口 3017），模拟更新服务已关闭。
+
+复查：获得发布授权后，先重新核对当时 main 与每日新题，再只提交本次相关文件，经过原 CI 和准确 Production SHA 验收，检查正式缓存命中、搜索和新题更新；用可比时间窗口复查 Vercel CPU，不承诺尚未测得的降耗比例。本地完成不等于上线完成。
+
+## 2026-09-06 归档缓存获准发布
+
+用户明确授权执行提交和发布。发布前远端 main 已推进到 `ab9d8ce95242051f444b778f66b73b63e7bd1e2f`，只新增当天 #859 的数据；独立分支 fast-forward 到该版本，保留本次五个相关文件的改动，不改 #859 或原工作区。未调用会额外部署 Worker、可能提交 GSC sitemap 的 `release:production`，本次仅走已有 PR CI 与 Vercel 网站部署集成。
+
+当前提交的源码已重新通过 lint、类型、既有 SEO/路由/guardrails、402 条真实数据校验和 427 页构建，归档仍是 1 天刷新周期的静态页面。部署及准确 Production SHA 的真实验收尚待 PR 合并后记录；不把上一轮 401 条数据的本地结果冒充今天的新版本。

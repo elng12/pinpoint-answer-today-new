@@ -42,7 +42,7 @@ import {
 import { getPuzzleBySlug } from "../lib/puzzles/data";
 import { buildReasoningArticleDraft } from "../lib/puzzles/reasoning-article";
 import { resolveWorkerFetchRoute } from "../worker/src/routes/dispatch";
-import { checkRenderedContentTemplate } from "./check-pinpoint-rendered-content";
+import { checkArchiveRenderedLinks, checkRenderedContentTemplate } from "./check-pinpoint-rendered-content";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
@@ -4412,6 +4412,22 @@ async function checkEvidenceContentCanaryAssignment() {
   console.log("ok: evidence-only content canary is explicit, bounded, and avoids fabricated solve copy");
 }
 
+function checkArchiveServerLinks() {
+  const entries = [{ slug: "pinpoint-answer-858" }, { slug: "pinpoint-answer-600" }];
+  const links = entries.map(({ slug }) => `<a href="/linkedin-pinpoint-answers/${slug}/">Answer</a>`);
+  const html = `<main>${links.join("")}</main>`;
+  assert.deepEqual(checkArchiveRenderedLinks(entries, html), []);
+  assert.equal(checkArchiveRenderedLinks(entries, `<main>${links[0]}</main>`).length, 1,
+    "older public links must not disappear when the archive becomes cached");
+  assert.equal(checkArchiveRenderedLinks(entries, `<script>${html}</script>`).length, 2,
+    "client payload must not substitute for actual server-rendered archive links");
+  assert.equal(checkArchiveRenderedLinks(entries, `<footer>${links.join("")}</footer>`).length, 2,
+    "footer links must not hide an empty archive");
+  assert.equal(checkArchiveRenderedLinks(entries, `<main>${links[0]}${links[0]}</main>`).length, 1,
+    "duplicate links must not hide a missing public entry");
+  console.log("ok: archive links are checked in server HTML, including older entries");
+}
+
 async function checkProductionReleaseRunsPublicFetchAudit() {
   const releaseSource = await readFile(resolve(ROOT, "scripts/release-production.mjs"), "utf8");
   const packageJson = JSON.parse(await readFile(resolve(ROOT, "package.json"), "utf8")) as {
@@ -4867,6 +4883,7 @@ async function main() {
   await checkClueEvidenceTableStaysHidden();
   await checkSeoDescriptionCanaryAssignment();
   await checkEvidenceContentCanaryAssignment();
+  checkArchiveServerLinks();
   await checkProductionReleaseRunsPublicFetchAudit();
   await checkProductionReleaseRunsValidateDataBeforePush();
   await checkProductionReleaseWorkerHealthFallback();

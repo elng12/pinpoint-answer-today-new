@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { ArchiveExplorer } from "@/components/archive/ArchiveExplorer";
 import { ArchiveHeader } from "@/components/archive/ArchiveHeader";
@@ -9,35 +8,20 @@ import { buildArchiveStructuredData } from "@/lib/seo/archive-structured-data";
 import {
   ARCHIVE_SEO_DESCRIPTION,
   ARCHIVE_SEO_TITLE,
-  buildCanonicalAlternates,
   buildPageMetadata,
 } from "@/lib/seo/metadata";
 
 export const revalidate = 86400;
 
-export async function generateMetadata({
-  searchParams,
-}: {
-  searchParams: Promise<{ q?: string }>;
-}): Promise<Metadata> {
-  const { q } = await searchParams;
-  const metadata = buildPageMetadata({
+export function generateMetadata(): Metadata {
+  return buildPageMetadata({
     title: ARCHIVE_SEO_TITLE,
     description: ARCHIVE_SEO_DESCRIPTION,
     path: routes.archive,
   });
-  if (q) {
-    metadata.alternates = buildCanonicalAlternates(routes.archive);
-  }
-  return metadata;
 }
 
-export default async function ArchivePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ q?: string }>;
-}) {
-  const { q } = await searchParams;
+export default async function ArchivePage() {
   const groups = await getArchiveEntriesGrouped();
   const archiveEntries = groups.flatMap((group) => group.items);
   const structuredDataItems = buildArchiveStructuredData(archiveEntries);
@@ -47,9 +31,7 @@ export default async function ArchivePage({
       <StructuredData items={structuredDataItems} />
       <div className="stack">
         <ArchiveHeader totalCount={archiveEntries.length} />
-        <Suspense>
-          <ArchiveExplorer initialGroups={groups} totalCount={archiveEntries.length} initialQuery={q ?? ""} />
-        </Suspense>
+        <ArchiveExplorer initialGroups={groups} totalCount={archiveEntries.length} />
       </div>
     </main>
   );
