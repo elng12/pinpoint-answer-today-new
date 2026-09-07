@@ -1,9 +1,30 @@
 [
   {
+    "puzzleNumber": 860,
+    "slug": "pinpoint-answer-860",
+    "publishDate": "2026-09-07",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Keycards",
+      "Electric kettles / coffee makers",
+      "Toiletries",
+      "Continental breakfast",
+      "Room service"
+    ],
+    "mainAnswer": "Things associated with hotels",
+    "category": "Things associated with hotels",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "contentTemplateVersion": "evidence-v1",
+    "shortSummary": "At first glance, Keycards, Electric kettles / coffee makers, Toiletries do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-09-07T07:01:28.610Z"
+  },
+  {
     "puzzleNumber": 859,
     "slug": "pinpoint-answer-859",
     "publishDate": "2026-09-06",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Cardboard",
@@ -18,7 +39,7 @@
     "seoTemplateVersion": "serp-v1",
     "contentTemplateVersion": "evidence-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Cardboard, Leaves, Banana peels, Eggshells and egg cartons, Grass clippings and twigs - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-06T07:02:30.891Z"
+    "updatedAt": "2026-09-07T07:01:28.610Z"
   },
   {
     "puzzleNumber": 858,
