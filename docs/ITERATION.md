@@ -447,3 +447,37 @@ React 复核：保留服务端完整列表，只让 URL 读取延迟到客户端
 用户明确授权执行提交和发布。发布前远端 main 已推进到 `ab9d8ce95242051f444b778f66b73b63e7bd1e2f`，只新增当天 #859 的数据；独立分支 fast-forward 到该版本，保留本次五个相关文件的改动，不改 #859 或原工作区。未调用会额外部署 Worker、可能提交 GSC sitemap 的 `release:production`，本次仅走已有 PR CI 与 Vercel 网站部署集成。
 
 当前提交的源码已重新通过 lint、类型、既有 SEO/路由/guardrails、402 条真实数据校验和 427 页构建，归档仍是 1 天刷新周期的静态页面。部署及准确 Production SHA 的真实验收尚待 PR 合并后记录；不把上一轮 401 条数据的本地结果冒充今天的新版本。
+
+## 2026-09-07 开源申请准备（本地完成，未发布）
+
+问题：用户希望使用本项目申请 Codex for Open Source。公开仓库缺少许可证与贡献入口，README 仍称“最小骨架”，3 条 npm 命令依赖维护者电脑上的绝对路径。
+
+授权与边界：用户明确“执行”开源准备。本轮只补开源文档、可选工具入口和相关测试；不改页面、首页固定 SEO、题目数据、Worker、CI 或发布逻辑，不提交、推送、部署或提交申请。
+
+工作区：原目录仍为 main `57eba3f`，所有已有未提交改动保留。本轮以 GitHub API 和本地 `origin/main` 一致的 `c3cd31a1999fd581ec94bc1ae9662f9b46dd7abc` 为起点，在独立工作目录 `/Users/elng/web/pinpoint-answer-today-new-oss-readiness`、分支 `codex/oss-readiness` 完成；未切换或更新原目录的业务文件。`git ls-remote` 长时间无输出后已终止，远程版本使用 GitHub API 核实，不声称 fetch 成功。
+
+修改：
+- 重写英文 README：准确介绍现有站点、无需生产凭据的本地启动、检查命令、维护证据、贡献入口、可选服务与生产操作边界；保留原站验证文件的说明。
+- 新增标准 MIT `LICENSE`，版权署名为 GitHub 维护者 `elng12`；README 明确排除题目数据、源码/测试中转载的题目内容、媒体、字体和商标。许可证仍是未发布的本地拟定方案，正式发布前需维护者确认授权范围及自身有权许可的材料。参考 [MIT 标准文本](https://choosealicense.com/licenses/mit/) 和 [GitHub 许可证说明](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)。没有做全库版权来源审计。
+- 新增 `CONTRIBUTING.md`，说明报错、内容依据、局部修改、验证、凭据保护和贡献流程；不虚构已经开启的私密漏洞上报渠道。
+- 保留 `check:aitdk-density`、`homepage:keyword-audit`、`test:homepage-keyword-audit` 原命令名，通过 `KEYWORD_DENSITY_TOOL_DIR` 指定可选外部工具目录。缺少配置或文件会明确失败；不下载、不复制另一个项目，不把工具缺失计为测试成功。现有使用者需在 shell 中设置此变量，启动器不读取 `.env.local`。
+- 增加启动器的普通回归测试，更新脚本文档与文档索引。`package.json` 补简介和 MIT 元数据；锁文件只增加根包 license 字段，没有依赖版本更新。未增加 CI gate 或发布流程。
+
+验证：
+- 新工作目录 `npm ci --no-audit --no-fund` 成功安装锁定依赖；未导入原工作区的凭据或 `.env.local`。npm 提示部分依赖安装脚本尚未批准，本轮未更改批准设置；实际测试、构建均通过。
+- 启动器 7 项回归全部通过：帮助、3 个入口缺少配置、非法入口、缺少文件/文件类型错误、带空格路径与参数原样转发、子进程错误码和终止信号。使用明确标注的合成工具，不冒充真实关键词引擎结果。
+- 指向现有真实关键词工具后，其完整 fixture 检查通过；density 和 homepage 的直接调用与启动器 JSON 结果一致，仅排除每次调用自然变化的 `timestamp` / `loadedAt`。首次对照因时间字段不同失败，排除时间字段后重跑通过，没有改算法或分析数据。
+- `validate:data` 验证 402 条真实 registry 记录；lint、typecheck、既有 Pinpoint SEO/路由/guardrails 均通过。
+- `npm run build` 成功生成 427 个页面；`test:pinpoint-rendered` 验证全部 402 个公开详情页、sitemap、首页最新链接与完整归档通过。这是本地构建检查，不是生产验收。
+- 按 README 的备用端口启动命令在 `127.0.0.1:3018` 实测：summary 返回 checkout 中的 `#859 live`，首页、归档及 #859 详情均 HTTP 200，HTML 含 main 正文和真实题目引用；不是“今日 #860 已上线”的证明。临时开发服务已停止，未做浏览器交互/视觉验收。
+- README、贡献指南、脚本文档和索引的本地链接存在；所有 npm 命令均不再包含 `/Users/`；JSON 与锁文件 license 一致，`private: true` 保持不变；`git diff --check` 通过。
+
+未做：未改变 GitHub About/网站链接、未提交或上线许可证/文档、未提交申请、未采集使用量或外部采用数据、未修复当日 #860 候选发布失败、未做完整安全或版权审计。README 不声称已被广泛采用或保证入选。
+
+下一步：维护者确认 MIT 代码授权范围后，只提交本轮相关文件，并在 GitHub 验证 README、许可证识别和贡献入口；申请文案仍应以当时真实使用和维护证据为准。
+
+## 2026-09-07 开源准备获准提交
+
+用户在上述本地结果与 MIT 授权范围说明后再次明确“执行”，本轮据此采用现有 MIT 代码授权方案，并仅提交、推送这批文件及建立 PR。题目数据、第三方素材与商标仍不一并授权；不合并 main、不部署、不修改 GitHub About，也不提交申请表。
+
+提交前通过 GitHub API 重新核对：main 仍为 `c3cd31a1999fd581ec94bc1ae9662f9b46dd7abc`，与本轮分支起点一致。原目录的旧改动继续保留；本次只包含 README、LICENSE、贡献指南、包元数据、可选关键词工具启动器和测试、脚本/文档索引及迭代记录。远端 PR、自动检查和许可证识别需在推送后逐项核对，不能以本地检查代替主分支已更新。

@@ -18,7 +18,8 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | Command | Script | Purpose |
 | --- | --- | --- |
 | `npm run test:pinpoint-seo` | `check-pinpoint-seo-builders.ts` | Checks SEO builders, metadata, and structured data behavior. |
-| `npm run test:homepage-keyword-audit` | `/Users/elng/web/关键词密度脚本/check-fixtures.ts` | Checks homepage keyword audit fixtures for tokenizer, stop words, blocked phrases, compare mode, and source-mode conflict behavior. |
+| `npm run test:homepage-keyword-audit` | `run-keyword-tool.mjs fixtures` | Optional external toolkit fixtures; requires `KEYWORD_DENSITY_TOOL_DIR`. |
+| `npm run test:keyword-tool-runner` | `check-keyword-tool-runner.test.mjs` | Tests optional-tool configuration, argument forwarding, and failures with synthetic local fixtures. Does not require the external toolkit. |
 | `npm run test:pinpoint-routing` | `check-routing-regressions.ts` | Checks redirects, middleware, route handling, and legacy routing expectations. |
 | `npm run test:pinpoint-rendered` | `check-pinpoint-rendered-content.ts` | Checks rendered content expectations for Pinpoint pages. |
 | `npm run test:content-kitchen` | `check-content-kitchen-contract.ts` | Checks Content Kitchen data and contract assumptions. |
@@ -59,11 +60,28 @@ Prefer the `npm run ...` commands in `package.json` for routine work. Run indivi
 | `npm run visual:detail` | `capture-detail-screenshots.mjs` | Captures detail page screenshots with Playwright. |
 | `npm run visual:pinpoint-smoke` | `check-pinpoint-visibility-smoke.mjs` | Runs a visual smoke check for Pinpoint page visibility. |
 | `npm run gsc:pinpoint` | `gsc-pinpoint.mjs` | Queries Google Search Console for Pinpoint URLs. |
-| `npm run check:aitdk-density` | `/Users/elng/web/关键词密度脚本/check-aitdk-density.ts` | Prints a fast 1-5 word density table using the same core tokenizer as the keyword audit tool. |
+| `npm run check:aitdk-density` | `run-keyword-tool.mjs density` | Optional external toolkit: prints a fast 1-5 word density table. Requires `KEYWORD_DENSITY_TOOL_DIR`. |
 | `npm run detail:keyword-audit` | `audit-detail-keywords.ts` | Checks detail page keyword order using an AITDK-like ranking pass, plus raw current-issue-number coverage. |
 | `npm run detail:publish-check` | `check-detail-publish.ts` | Runs the production detail-page publish checklist for one slug: live HTTP 200, H1/title, five clues, answer, reasoning, teaching items, old-module absence, summary API, keyword audit, and Vercel Ready status. |
 | `npm run detail:recent-backfill-audit` | `audit-recent-detail-backfill.ts` | Audits the newest N production detail pages before deciding which recent pages need a rewrite. |
-| `npm run homepage:keyword-audit` | `/Users/elng/web/关键词密度脚本/audit-homepage-keywords.ts` | Checks target keyword order first, then homepage keyword density from the standalone keyword-density tool folder. Local result is only a fast estimate; AITDK / TDK stays final. |
+| `npm run homepage:keyword-audit` | `run-keyword-tool.mjs homepage` | Optional external toolkit: checks homepage keyword order and density. Requires `KEYWORD_DENSITY_TOOL_DIR`; not part of normal setup or CI. |
+
+### Optional External Keyword Toolkit
+
+The three keyword-tool commands above preserve the existing maintainer workflow without embedding a personal filesystem path. The toolkit is not included in this repository and is not downloaded automatically. Contributors do not need it to run the site, build it, or run the normal CI checks.
+
+If you already have an authorized copy of the complete toolkit, export its directory in your shell (the wrapper does not read `.env.local`):
+
+```bash
+export KEYWORD_DENSITY_TOOL_DIR="/absolute/path/to/your/keyword-toolkit"
+npm run check:aitdk-density -- --text "pinpoint answer today" --offline-stop-words
+npm run homepage:keyword-audit -- --text "pinpoint answer today" --offline-stop-words
+npm run test:homepage-keyword-audit
+```
+
+The entrypoints are `check-aitdk-density.ts`, `audit-homepage-keywords.ts`, and `check-fixtures.ts`, respectively. Keep the toolkit's supporting modules, fixtures, and config alongside them. The launcher uses this repository's installed `tsx`, preserves the working directory and tool arguments, and propagates nonzero exit codes. An unset directory or missing script is an error, not a skipped successful test.
+
+Only point this variable at code you trust: configuring it authorizes local execution of that toolkit. `--offline-stop-words` uses the toolkit's local stop-word data instead of a network request. Tests for the launcher itself use clearly synthetic tools and do not certify the external analysis results.
 
 ### Detail Publish Check
 
@@ -137,7 +155,7 @@ Strict detail order:
 
 ### Homepage Keyword Audit
 
-Use this for homepage keyword order and density checks:
+After configuring the optional external toolkit above, use this for homepage keyword order and density checks:
 
 ```bash
 npm run homepage:keyword-audit -- --url http://localhost:3004/
@@ -147,7 +165,7 @@ npm run homepage:keyword-audit -- --url http://localhost:3004/ --save
 npm run homepage:keyword-audit -- --before docs/seo-evidence/before.json --after docs/seo-evidence/after.json
 ```
 
-The default config comes from `/Users/elng/web/关键词密度脚本/config/homepage-keyword-density-targets.json`. For another site or another keyword plan, pass `--config <file>`.
+The default config comes from `config/homepage-keyword-density-targets.json` inside the configured toolkit directory. For another site or another keyword plan, pass `--config <file>`.
 
 The first check is whether the target keyword order matches the config. Density is the second check.
 

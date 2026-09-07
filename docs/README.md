@@ -6,6 +6,10 @@ Use this index as the first stop before moving or archiving documents. It groups
 
 ## Project Overview
 
+- [Project overview and local setup](../README.md)
+- [Contribution guide](../CONTRIBUTING.md)
+- [License and content boundary](../README.md#license-and-content-boundary)
+- [Iteration log](ITERATION.md)
 - [Project structure](project-structure.md)
 - [Competitor analysis](competitor-analysis-pinpointanswer-today-2026-04-26.md)
 - [Full audit remediation plan](full-audit-remediation-plan-2026-05-19.md)
