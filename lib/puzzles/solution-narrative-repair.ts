@@ -256,11 +256,64 @@ export function buildRepairedSolutionNarrative(input: {
   ];
 }
 
+const CLUE_WISE_MIN_NOTE_LENGTH = 45;
+const CLUE_WISE_ORDER_WORDS = ["first", "next", "then", "after that", "last"];
+
+function canBuildClueWiseNarrative(rows: ClueRow[]): boolean {
+  return (
+    rows.length >= 3 &&
+    rows.every((row) => asText(row.note).length >= CLUE_WISE_MIN_NOTE_LENGTH)
+  );
+}
+
+function buildClueWiseSolutionNarrative(rows: ClueRow[], answer: string): string[] {
+  const paragraphs = rows.slice(0, 5).map((row, index) => {
+    const orderWord =
+      index === rows.slice(0, 5).length - 1 && index >= 2
+        ? "last"
+        : CLUE_WISE_ORDER_WORDS[index] || "next";
+    return `I tested ${row.clue} ${orderWord}. ${asText(row.note)}`;
+  });
+
+  paragraphs.push(
+    `With all five entries accounted for, the board reads as one concrete set around ${answer} rather than five unrelated guesses.`,
+  );
+
+  return paragraphs;
+}
+
+function narrativeStillOverlapsOverview(
+  detail: RepairablePuzzleDetail,
+  narrative: string[],
+): boolean {
+  const overviewText = Array.isArray(detail.articleBlocks) ? asText(detail.articleBlocks[0]) : "";
+  if (!overviewText) return false;
+  const narrativeText = narrative.map(asText).filter(Boolean).join(" ");
+  return (
+    overlapRatio(overviewText, narrativeText) >= 0.6 ||
+    longestSharedTokenRun(overviewText, narrativeText) >= 7
+  );
+}
+
 export function repairSolutionNarrative<T extends RepairablePuzzleDetail>(input: {
   summary?: RepairablePuzzleSummary;
   detail: T;
 }): SolutionNarrativeRepairResult<T> {
-  const narrative = buildRepairedSolutionNarrative(input);
+  let narrative = buildRepairedSolutionNarrative(input);
+  const answer = answerFor(input.summary, input.detail);
+
+  // The template narrative and a first-person articleBlocks opening can tell the
+  // same false-start story twice (see #860: 71% overlap blocked the CI gate).
+  // When that happens, rebuild from the clue rows so each paragraph carries a
+  // concrete per-clue fact instead of retelling the same solve timeline.
+  if (answer && narrativeStillOverlapsOverview(input.detail, narrative)) {
+    const clues = cluesFor(input.summary, input.detail);
+    const rows = rowsFromDetail(input.detail, clues, answer);
+    if (canBuildClueWiseNarrative(rows)) {
+      narrative = buildClueWiseSolutionNarrative(rows, answer);
+    }
+  }
+
   const nextDetail = {
     ...input.detail,
     solutionNarrative: narrative,
