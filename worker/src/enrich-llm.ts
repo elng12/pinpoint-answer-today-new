@@ -213,7 +213,7 @@ Also include these v2 evidence fields at the root when you can fill them cleanly
 - "faqItems"
 - "uniquenessSignals"
 
-For each clueRows item, include clue, surfaceMisread, resolvedPhraseOrMember, phraseExample, nonObviousWhy, and searchableContext. phraseExample should be a short phrase or example that proves the clue fit, such as "apple tree", "chestnut tree", or "moss on tree bark"; do not simply repeat the clue.
+For each clueRows item, include clue, surfaceMisread, resolvedPhraseOrMember, phraseExample, nonObviousWhy, and searchableContext. phraseExample should be a short phrase or example that proves the clue fit, such as "apple tree", "chestnut tree", or "moss on tree bark"; do not simply repeat the clue. nonObviousWhy must state one concrete real-world detail for that clue (an object, place, process, or term) and must be at least 45 characters; "it fits the category" style lines are rejected.
 
 Hard requirements:
 1. heroIntroSpoilerSafe is the pre-reveal intro shown before the user chooses to reveal the answer.
@@ -230,7 +230,11 @@ Hard requirements:
 12. portableTakeaway must be one short practical lesson the solver can reuse tomorrow.
 13. sections.articleBlocks must contain 8 to 14 short paragraphs.
 14. Most articleBlocks paragraphs should be one sentence. Some can be two sentences. Avoid long blocks.
-15. articleBlocks must include one believable wrong read, one clean turning clue, one explicit answer reveal, and a resolved closing line.
+15. articleBlocks is an editorial "shape of the puzzle" analysis, NOT a solve story:
+   - The first paragraph explains why the clue set misleads: which surface directions look plausible and why the final reading is cleaner.
+   - articleBlocks must NOT use first-person pronouns (I, my, we) and must NOT narrate a guess-then-miss timeline.
+   - Wrong reads may be named (for example "words before box") but only as surface directions the puzzle invites, never as something the writer tried and missed.
+   - The explicit answer reveal belongs to the reveal card and solutionEmergence, not to articleBlocks.
 16. pageExperienceMode should be "full-analysis" for this long-form draft.
 17. wrongGuessCandidates must describe believable nearby reads:
    - if difficultyBand is "obvious", include at least 1 candidate
@@ -252,13 +256,27 @@ Writing rules:
 - Do not sneak the exact answer into heroIntroSpoilerSafe, connectorSummary, turningPoint, difficultyReason, or falseStarts.
 - Make the slots useful enough that a program can build a short article with believable movement.
 - sections.articleBlocks should already read like a short article, not like analysis bullets.
-- overview and solutionEmergence must feel different:
-  - overview explains why the puzzle shape is misleading and why the final read is cleaner than nearby alternatives
-  - solutionEmergence replays one believable solve path in first person
+- Field split (hard rule; violating it fails release checks):
+  - articleBlocks (which feeds overview) explains WHY the puzzle shape misleads and why the final read is cleaner. Editorial voice, no first person, no guess timeline.
+  - solutionEmergence is the ONLY first-person solve timeline on the page.
+  - solutionEmergence must NOT re-explain surface directions that articleBlocks already explains. It references a direction in at most one short clause, then moves on.
+  - The two fields must NOT share sentence skeletons or opening words. If articleBlocks opens "The first clues suggest...", solutionEmergence must NOT open "The first clues suggest..." in any reworded form.
+- solutionEmergence timeline slots (all five required):
+  1. Opening: the first clue's surface read plus ONE concrete wrong guess in 2 to 6 plain words (must equal a wrongGuessCandidates label).
+  2. The miss: what the wrong guess would predict, stated with a real phrase example, and which later clue first weakens it.
+  3. The turn: the exact clue that breaks the guess and the new concrete pairing it reveals (for example "race car" / "cable car").
+  4. The submission: the answer as submitted, plus any wording difference between the guessed label and the official answer when one exists.
+  5. The close: how the remaining clues read as confirmations, with one concrete phrase per clue.
 - The solve path should feel like a human replay:
   - one plausible early read
   - one moment where a later clue weakens that read
   - one turning clue that makes the answer concrete
+- Per-clue fact rule (applies to clueDetails.whyItWorks, clueRows.nonObviousWhy, and faqItems answers):
+  - Every explanation must contain at least one concrete real-world detail (an object, place, process, or term) that belongs to that clue alone — like "the front desk issues one card per room and the same card stops working at checkout".
+  - Never write only "it fits the category", "it confirms the answer", or a reworded version of the category label.
+- FAQ rule:
+  - Every faqItems question must come from a real trap in THIS board: a wrong-guess candidate, a surface ambiguity, or an official-wording difference.
+  - Do not write generic questions like "How difficult was this puzzle?" or "What strategy helps with Pinpoint?".
 - Prefer concrete language:
   - say "I first thought..." not "the board felt broad"
   - say "that theory broke" not "the frame shifted"
@@ -597,22 +615,29 @@ Hard rules:
 3. overview must be at least 45 words.
 4. solutionEmergence must be at least 40 words and use first-person voice.
 5. sections.articleBlocks must contain 8 to 14 short paragraphs that read like a natural article.
-6. seoTitle must include all five clues and not the answer.
-7. seoDescription must include all five clues.
-8. clueDetails must include exactly 5 items.
-9. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
-10. overview must not open with the exact answer text or with "The answer is".
-11. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
-12. Include pageExperienceMode, wrongGuessCandidates, setValidationSummary, and categoryPrecisionNote at the root.
-13. pageExperienceMode should stay "full-analysis" for this long-form repair.
-14. If difficultyBand is "obvious", include at least 1 wrongGuessCandidates item. If difficultyBand is "medium" or "hard", include at least 2. Every item needs label and whyPlausible, and whyRejected when it helps.
-15. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
-16. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
-17. Each clueRows item should include phraseExample, and phraseExample should be a short fit-check phrase/example rather than the clue repeated.
-18. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
-19. turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
-20. Keep the prose natural and article-like, not robotic or overly analytical.
-21. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
+6. Field split (hard rule; violating it fails release checks):
+   - articleBlocks (which feeds overview) explains WHY the puzzle shape misleads and why the final read is cleaner. Editorial voice, no first person (no I, my, we), no guess-then-miss timeline.
+   - solutionEmergence is the ONLY first-person solve timeline on the page and must NOT re-explain surface directions that articleBlocks already explains.
+   - The two fields must NOT share sentence skeletons or opening words.
+7. When the fix list mentions section overlap, rewrite solutionEmergence into the five timeline slots instead of rewording overview: concrete wrong guess -> what it would predict -> the turning clue and its new concrete pairing -> the submitted answer (plus any official-wording difference) -> how the remaining clues confirm, one concrete phrase each.
+8. Every clueDetails.whyItWorks / clueRows.nonObviousWhy / faqItems answer must contain at least one concrete real-world detail (an object, place, process, or term) that belongs to that clue alone. Never write only "it fits the category" or "it confirms the answer".
+9. Every faqItems question must come from a real trap in THIS board: a wrong-guess candidate, a surface ambiguity, or an official-wording difference. No generic questions like "How difficult was this puzzle?".
+10. seoTitle must include all five clues and not the answer.
+11. seoDescription must include all five clues.
+12. clueDetails must include exactly 5 items.
+13. analysis.heroSummary must stay spoiler-safe and must not include the exact answer text.
+14. overview must not open with the exact answer text or with "The answer is".
+15. analysis.llmTemplateVersion must be "${LLM_TEMPLATE_VERSION}".
+16. Include pageExperienceMode, wrongGuessCandidates, setValidationSummary, and categoryPrecisionNote at the root.
+17. pageExperienceMode should stay "full-analysis" for this long-form repair.
+18. If difficultyBand is "obvious", include at least 1 wrongGuessCandidates item. If difficultyBand is "medium" or "hard", include at least 2. Every item needs label and whyPlausible, and whyRejected when it helps.
+19. Include questionType, difficultyBand, solvePath, turningPoint, clueRows, faqItems, and uniquenessSignals.
+20. turningPoint.clue must name a real clue, clueRows must stay in clue order, and at least one faqItems entry must be clue-specific with tiedClue.
+21. Each clueRows item should include phraseExample, and phraseExample should be a short fit-check phrase/example rather than the clue repeated.
+22. wrongGuessCandidates.label must sound like a human's early guess in 2 to 6 plain words. Do not use machine labels like "broader umbrella topic" or "one-clue surface theme".
+23. turningPoint.whyDecisive and turningPoint.whatChangedAfterIt must each be at least 8 words.
+24. Keep the prose natural and article-like, not robotic or overly analytical.
+25. Prefer one believable wrong read, one clear turning clue, and one explicit answer reveal in the body.
 
 Previous JSON:
 ${previousJson}
