@@ -1,128 +1,123 @@
-# New Pinpoint Site Starter
+# Pinpoint Answer Today
 
-这是一个给第二代纯英文站准备的最小骨架。
+An independent website for LinkedIn Pinpoint answers, clue explanations, and a searchable daily archive. The repository contains the Next.js site, structured puzzle data, content checks, and the Cloudflare Worker used by the maintainer's publishing workflow.
 
-## 目标
+[Website](https://pinpointanswertoday.app) | [Contributing](CONTRIBUTING.md) | [Documentation](docs/README.md) | [CI](https://github.com/elng12/pinpoint-answer-today-new/actions/workflows/ci.yml)
 
-- 先把新站的 4 个核心页面立起来
-- 保持结构轻
-- 需要什么能力，再从旧站搬什么模块
+This is a maintained, site-specific application, not a general-purpose publishing framework. It is not affiliated with or endorsed by LinkedIn.
 
-## 当前包含
+## What Is Here
 
-- 首页 `/`
-- 预告页 `/next-pinpoint-preview`
-- 归档页 `/puzzles`
-- 旧归档别名 `/linkedin-pinpoint-answers`（会跳回 `/puzzles`）
-- 详情页 `/linkedin-pinpoint-answers/[slug]`
-- 站点 API：`/api/puzzles/summary`、`/api/health`、`/api/pinpoint/today`
-- 基础信任页
-- `robots` 和 `sitemap`
-- `JSON registry + 每题独立 JSON` 数据结构
-- 基础 GA4 统计接入（沿用旧站环境变量口径）
+- Daily answer pages with progressive hints, clue explanations, and answer reveal.
+- A searchable archive, puzzle detail routes, and preview pages.
+- A JSON registry plus one JSON file per puzzle.
+- Data validation, routing and SEO tests, and checks against built page HTML.
+- A Worker publishing workflow with candidate branches, CI checks, release verification, and operational diagnostics.
 
-## 当前已复用的旧站思路
+The code can be inspected and adapted as an example of maintaining a daily content site. Reusing the full deployment requires your own services and configuration; repository-specific URLs and resources are not a hosted service for forks.
 
-- `answer-reveal` 的核心交互与事件口径
-- `GA4 + gtag` 的基础环境变量命名
-- 详情页 FAQ / 长解释 / 提示块的数据结构
+## Local Quick Start
 
-## 运营备注
-
-- `public/startupranking1371053120245110.html` 是 `Startup Ranking` 认领验证文件。
-- 后续发版时不要删除、改名或移动它，线上需要继续保留 `/startupranking1371053120245110.html`。
-
-## 运行
+Use Node.js 22 or newer and npm. Node 22 also satisfies the Worker toolchain requirement. The lockfile is committed; use `npm ci` rather than updating dependencies during setup.
 
 ```bash
-cd new-pinpoint-site
-npm install
+git clone https://github.com/elng12/pinpoint-answer-today-new.git
+cd pinpoint-answer-today-new
+npm ci
 npm run dev
 ```
 
-如需开启 GA4：
+Open [localhost:3004](http://localhost:3004). If that port is occupied, use `npm run dev -- --port 3018` and open that port instead.
+
+The homepage, archive, and existing detail pages use the repository's bundled puzzle data by default. Basic browsing does not require an AI key, LinkedIn cookies, a Cloudflare account, or a Vercel account. It shows the data in your checkout, not a promise of today's live answer.
+
+`npm ci` runs the existing `prepare` script. In a regular clone, this installs the project's pre-push data-validation hook. Review `scripts/install-hooks.mjs` before installing in a checkout with an existing custom pre-push hook; it writes that hook path.
+
+### Optional Services
+
+You do not need an `.env.local` file for basic browsing. See [.env.example](.env.example) when configuring a specific integration. Keep credentials in an ignored local environment file or your deployment's secret store, never in a commit or issue. Example token values are placeholders, not usable credentials.
+
+| Capability | Additional setup |
+| --- | --- |
+| AI draft generation | Your own AI provider credentials and local admin authentication; see the [Worker guide](worker/README.md). |
+| Contact delivery | Your own feedback webhook. |
+| Analytics | Optional GA4 configuration; disabled by default. |
+| Scheduled publishing | Your own Worker, storage, GitHub authorization, and site deployment. |
+| Keyword-density toolkit | An optional external toolkit directory; see below. |
+
+`/api/health` and `/api/pinpoint/today` are Worker proxies, not offline demo endpoints. Without an override, they target the maintainer's production Worker. Avoid calling them for local smoke tests; `/api/puzzles/summary` reads the normal site data instead. Do not enable remote data or Worker fallback merely to view bundled pages.
+
+## Checks
+
+These checks do not require production credentials:
 
 ```bash
-cp .env.example .env.local
+npm run validate:data
+npm run lint
+npm run typecheck
+npm run test:pinpoint-guardrails
+npm run test:keyword-tool-runner
 ```
 
-然后把 `NEXT_PUBLIC_ENABLE_GA` 改成 `true`，再填入 `NEXT_PUBLIC_GA_ID`。
-
-## 线上健康检查与今日接口
-
-主站域名上这两个接口会代理到 Cloudflare Worker（避免主站切到 Vercel 后出现 404）：
-
-- 健康检查：`/api/health`（代理 Worker `/health`）
-- 今日接口：`/api/pinpoint/today`（代理 Worker `/api/pinpoint/today`）
-
-如果需要切换到 staging/shadow Worker，设置 `.env.local` 的 `PINPOINT_WORKER_HEALTH_URL` 即可。
-
-## 内容回归检查
-
-以后只要改了下面任一类内容，发布前都建议跑一次回归：
-
-- `lib/puzzle-generation.ts`
-- `app/api/admin/generate-draft/route.ts`
-- `lib/puzzles/content-contract.ts`
-- `lib/puzzles/semantic-lint.ts`
-- 发布门槛、自动修补、answer reveal 相关逻辑
-
-常用命令：
+For changes affecting rendered pages, build and check the output:
 
 ```bash
-npm run test:pinpoint-regression
-npm run test:pinpoint-regression:core
-npm run test:pinpoint-regression:all
+npm run build
+npm run test:pinpoint-rendered
 ```
 
-使用建议：
+`build` runs data validation first. Do not bypass a failed check to publish. Use [scripts/README.md](scripts/README.md) for the full command catalog. Broader generation regressions may invoke AI services; read the [regression guide](docs/pinpoint-content-regression-sample-set.md) and configure only your own credentials before using them.
 
-- 日常小改动：先跑 `npm run test:pinpoint-regression`
-- 准备合并或发布前：跑 `npm run test:pinpoint-regression:core`
-- 大改生成器或质检规则：再补跑 `npm run test:pinpoint-regression:all`
+### Optional Keyword Tools
 
-样本集说明见：
-
-- `docs/pinpoint-content-regression-sample-set.md`
-- `docs/pinpoint-content-generation-best-practice-2026-03-17.md`
-
-## 详情页视觉自检（图1基线）
-
-为了避免把详情页“从图1改成图2那种大重排”，改完详情相关组件后建议跑一次截图自检：
+The three commands below use the maintainer's separate keyword-density toolkit. That toolkit is not bundled, automatically downloaded, or required for normal setup, site builds, or CI. If you already have an authorized copy, configure its directory in your shell:
 
 ```bash
-npm run dev
+export KEYWORD_DENSITY_TOOL_DIR="/absolute/path/to/your/keyword-toolkit"
+npm run check:aitdk-density -- --text "pinpoint answer today" --offline-stop-words
+npm run homepage:keyword-audit -- --text "pinpoint answer today" --offline-stop-words
+npm run test:homepage-keyword-audit
 ```
 
-另开一个终端执行：
+The directory must contain `check-aitdk-density.ts`, `audit-homepage-keywords.ts`, or `check-fixtures.ts` for the corresponding command, plus that tool's own supporting files. The wrapper uses this repository's installed `tsx` and preserves arguments and failure exit codes. It does not load `.env.local`; export the variable in the shell. Missing configuration fails with an explanation instead of a misleading success.
 
-```bash
-npm run visual:detail
-```
+These are maintainer-only extras, not a reproducible dependency of this public repository. The separate `detail:keyword-audit` command is implemented inside this repository and does not need the external toolkit.
 
-默认会截 `695/697/698` 三篇详情页，图片输出到 `tmp/visual-baseline/<今天日期>/`。
+## Repository Map
 
-## 正式发布
+| Path | Responsibility |
+| --- | --- |
+| `app/`, `components/` | Pages, API routes, and UI components. |
+| `lib/puzzles/` | Data loading, content structures, and rendering support. |
+| `lib/seo/` | Metadata and structured data. |
+| `data/puzzles/` | Registry and puzzle records; see the content licensing boundary below. |
+| `scripts/` | Validation, tests, and maintainer operations. |
+| `worker/` | Scheduled ingestion and publishing. |
+| `.github/workflows/` | CI and candidate release automation. |
+| `docs/` | Maintainer guides, iteration records, and historical notes. |
 
-如果这次改动会同时影响站点和 `worker/`，不要只做 `git push`。
+## Contributing and Maintenance
 
-现在推荐统一用这条命令收口：
+Bug reports, reproducible test cases, documentation corrections, and focused fixes are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Do not post credentials, cookies, personal data, or sensitive vulnerability details in public issues.
 
-```bash
-npm run release:production
-```
+The maintainer's ongoing work includes reviewing code changes, updating dependencies, investigating failed content checks, and verifying releases. Review the actual [pull requests](https://github.com/elng12/pinpoint-answer-today-new/pulls), [CI runs](https://github.com/elng12/pinpoint-answer-today-new/actions), and [iteration log](docs/ITERATION.md) for evidence. Historical notes describe their own dates and environments; they are not a guarantee of current production health, uptime, external adoption, or search indexing.
 
-这条脚本会按顺序做这些事：
+## Maintainer Operations
 
-- 确认当前分支是 `main`，而且工作区干净
-- 先跑 `test:pinpoint-guardrails`、`typecheck`、`validate:data`、`worker` 的 `typecheck`
-- 推送 `origin/main`
-- 等这次提交对应的 Vercel 部署成功
-- 单独部署生产 Cloudflare Worker
-- 最后检查首页、`/api/puzzles/summary` 和 Worker `/health`
+This section is not part of contributor setup. Production release commands can push commits, deploy services, and perform other external operations. Use them only with explicit authority over the configured resources.
 
-如果你只想先演练不真正发布：
+- [Worker guide](worker/README.md): credentials, environments, and publishing diagnostics.
+- [Scripts guide](scripts/README.md): validation, release, visual checks, and GSC operations.
+- [Detail publish checklist](docs/pinpoint-detail-publish-checklist-2026-05-31.md): post-release verification.
+- [Content generation guide](docs/pinpoint-content-generation-best-practice-2026-03-17.md): generation and review expectations.
+- [Iteration log](docs/ITERATION.md): maintenance history and unresolved verification boundaries.
 
-```bash
-npm run release:production -- --dry-run
-```
+Before deploying a fork, replace the original repository, domain, Worker, storage, notification, and deployment targets with resources you control. Review workflows before enabling Actions or providing secrets. A site deployment does not deploy the Worker automatically.
+
+Keep `public/startupranking1371053120245110.html` in place when maintaining the original site; it is an existing site-verification file, not a credential or a reusable verification claim for forks.
+
+## License and Content Boundary
+
+Original project source code and maintainer-written documentation are available under the [MIT License](LICENSE). Keep existing third-party license and attribution notices when reusing code.
+
+The MIT grant does **not** cover the puzzle dataset under `data/`, puzzle content reproduced in source files, fixtures, or examples, or media and fonts under `public/`. This repository does not grant redistribution rights to those materials; obtain permission or follow their separately applicable licenses before republishing them. Third-party software retains its own license. LinkedIn and Pinpoint names, logos, and other trademarks are not licensed by this project. A code license is not permission to access a third-party account or bypass service restrictions.
