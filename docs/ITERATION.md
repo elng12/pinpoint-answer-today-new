@@ -481,3 +481,19 @@ React 复核：保留服务端完整列表，只让 URL 读取延迟到客户端
 用户在上述本地结果与 MIT 授权范围说明后再次明确“执行”，本轮据此采用现有 MIT 代码授权方案，并仅提交、推送这批文件及建立 PR。题目数据、第三方素材与商标仍不一并授权；不合并 main、不部署、不修改 GitHub About，也不提交申请表。
 
 提交前通过 GitHub API 重新核对：main 仍为 `c3cd31a1999fd581ec94bc1ae9662f9b46dd7abc`，与本轮分支起点一致。原目录的旧改动继续保留；本次只包含 README、LICENSE、贡献指南、包元数据、可选关键词工具启动器和测试、脚本/文档索引及迭代记录。远端 PR、自动检查和许可证识别需在推送后逐项核对，不能以本地检查代替主分支已更新。
+
+## 2026-09-07 #860 重叠事故根治：提示词职责分离 + repair 二次自检（已上线）
+
+授权：用户在研究对手机制后明确"执行"，本轮把对手模板的"槽位填空"机制落进 worker 生成提示词，并堵住 repair 兜底漏检。只改 worker 生成与共享 repair 两层，不动校验器阈值、站点页面、首页 SEO 文案与题目数据。
+
+根因（机器实测，非猜测）：860 当天 worker 产出的 articleBlocks 第一段是第一人称叙事（"I first read the set as 'travel essentials'..."），repair 模板也在讲同一个 false-start 故事，两者重叠 71%，repair 产物无二次自检直接进 JSON，被 CI 内容门槛拦下（issue #200）。对手 pinpointanswer.today 的 858/859/860 三页拆解显示：对手靠固定骨架 + 四幕推理时间线 + 五行短语表格 + 三问易错点 FAQ，每个槽必须填具体事实（brown bin / potassium / calcium 这类具体名词），不靠字数。
+
+改动（独立工作区 /Users/elng/web/pinpoint-answer-today-new-worker-slots，基于 main 99da259b）：
+1. worker/src/enrich-llm.ts：articleBlocks 改为编辑视角"谜题形状分析"（禁第一人称、禁猜错时间线），solutionEmergence 保留为唯一第一人称推理时间线并强制五个槽位（具体错误猜测 → 它预测什么 → 转折线索和新配对 → 提交答案 + 官方措辞差异 → 剩余线索逐个确认）；新增每条线索解释必须含具体世界细节、FAQ 必须出自本题真实陷阱；repair 提示词同步。
+2. lib/puzzles/solution-narrative-repair.ts：repair 产物做二次 overlap 自检，仍 ≥60% 时改用 clueRows 逐条线索事实重建叙事（CLUE_WISE 兜底）。
+
+验证（真实数据回归）：用 860 出事当天的存储 JSON 跑 repair：71% → 43%（人工修复版 38%，同水平），sharedRun 7→2，141 词含第一人称，solvePath.pivot 同步；guardrails 全绿（含 repair 既有断言）；lint/typecheck/validate:data(403 条) 全过；提示词主/repair 均含新规则。
+
+发布：PR #201（CI 全绿）squash 合并 main 05964be；static-page-metadata 刷新 5b2410d 随 main 推送；Vercel 生产部署 success；Worker 生产部署 Version c5c6c337（model deepseek-v4-flash）；worker:health 抓到 09-07 的 860 数据；线上首页与 860 详情页均 HTTP 200。
+
+遗留（未做，下轮处理）：release:production 的 prepublish-gate 被 860 页面 detail:keyword-audit 挡住——`breakfast room` 2 词词组 #15（要求 top 14）、`makers toiletries continental` 3 词 #9（要求 top 8）、`keycards electric kettles coffee` 4 词 #3（要求 #1）、`electric kettles coffee makers` 4 词 #1（要求 #2）。这是 860 上线时 CI 未跑 prepublish-gate 的遗留词序问题，与本轮代码无关；Worker 侧已单独部署完成，站点侧已随 PR 部署，无半上线风险。复查点：2026-09-08 发布窗口看 861 是否一次通过内容门槛与词序审计，并决定是否修 860 词序。
