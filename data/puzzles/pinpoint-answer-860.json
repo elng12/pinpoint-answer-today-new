@@ -1,0 +1,239 @@
+{
+  "puzzleNumber": 860,
+  "slug": "pinpoint-answer-860",
+  "publishDate": "2026-09-07",
+  "isoDate": "2026-09-07",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Keycards",
+    "Electric kettles / coffee makers",
+    "Toiletries",
+    "Continental breakfast",
+    "Room service"
+  ],
+  "answer": "Things associated with hotels",
+  "category": "Things associated with hotels",
+  "wordHints": {
+    "Keycards": "Keycards are the standard way to unlock a hotel room door, so they directly signal the hotel context.",
+    "Electric kettles / coffee makers": "Hotels typically provide either a kettle or a coffee maker in the room for guest convenience, linking the clue to the hotel stay.",
+    "Toiletries": "Hotels supply small bottles of toiletries in the bathroom, a hallmark of hotel hospitality.",
+    "Continental breakfast": "Many hotels include a continental breakfast with pastries, coffee, and fruit, making it a signature hotel service.",
+    "Room service": "Room service is a classic hotel amenity where guests order meals delivered to their room, reinforcing the hotel setting."
+  },
+  "spoilerHints": {
+    "Keycards": "Think about one shared setting or theme in things associated with hotels that can absorb Keycards naturally.",
+    "Electric kettles / coffee makers": "Electric kettles / coffee makers is the clue that turns a loose board into things associated with hotels.",
+    "Toiletries": "Treat Toiletries as one part of things associated with hotels rather than as an isolated reference.",
+    "Continental breakfast": "Think about one shared setting or theme in things associated with hotels that can absorb Continental breakfast naturally.",
+    "Room service": "Room service points to the same world as the others once the frame gets specific enough toward things associated with hotels."
+  },
+  "articleBlocks": [
+    "I first read the set as 'travel essentials'—keycards, toiletries, coffee makers all sound like things you'd want on a trip.",
+    "But then I hit 'continental breakfast' and 'room service'.",
+    "Those aren't things you pack; they're services you receive.",
+    "That contradiction made me rethink the whole list.",
+    "If the clues are a mix of objects and services, they probably point to a location.",
+    "Keycards unlock doors at a hotel.",
+    "Electric kettles or coffee makers sit on the hotel room desk.",
+    "Toiletries appear in the bathroom, often in tiny bottles.",
+    "Continental breakfast shows up in the lobby or dining area each morning.",
+    "Room service brings meals right to your door.",
+    "The answer clicked: things associated with hotels.",
+    "It wasn't a packing list at all—it was a list of what a hotel provides.",
+    "The set is clean because every clue is a standard part of the hotel experience.",
+    "Once I stopped thinking about what I carry and started thinking about what a place offers, the solve felt obvious."
+  ],
+  "solutionNarrative": [
+    "I first read Keycards and Electric kettles / coffee makers too literally and drifted toward travel essentials. Keycards could be read as \"Keycards\", while Electric kettles / coffee makers could be read as \"in-room beverage appliances\", so the board still felt open instead of solved.",
+    "Continental breakfast changed the direction because \"hotel breakfast offering\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.",
+    "I then checked \"Keycards\", \"in-room beverage appliances\", \"Toiletries\", and \"in-room dining delivery\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Keycards, Electric kettles / coffee makers, Toiletries, Continental breakfast, and Room service.",
+    "That left very little room for the earlier false start. The answer was \"Things associated with hotels\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished."
+  ],
+  "lessons": [
+    {
+      "title": "\"Keycards\" and \"Electric kettles / coffee makers\" can look like they belong to different categories at first",
+      "body": "\"Keycards\" and \"Electric kettles / coffee makers\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Continental breakfast\" anchors standard items and services found in a hotel stay",
+      "body": "Continental breakfast organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Continental breakfast\" to re-check \"Keycards\" under standard items and services found in a hotel stay",
+      "body": "When clues mix objects and services, ask what single place provides all of them, rather than forcing a single category like 'things you pack'."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a board centered on the theme of hotels",
+    "fastStrategy": "\"Keycards\" and \"Electric kettles / coffee makers\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Keycards",
+        "examplePhrase": "Keycards",
+        "connectionExplained": "Keycards are the standard way to unlock a hotel room door, so they directly signal the hotel context."
+      },
+      {
+        "clue": "Electric kettles / coffee makers",
+        "examplePhrase": "in-room beverage appliances",
+        "connectionExplained": "Hotels typically provide either a kettle or a coffee maker in the room for guest convenience, linking the clue to the hotel stay."
+      },
+      {
+        "clue": "Toiletries",
+        "examplePhrase": "Toiletries",
+        "connectionExplained": "Hotels supply small bottles of toiletries in the bathroom, a hallmark of hotel hospitality."
+      },
+      {
+        "clue": "Continental breakfast",
+        "examplePhrase": "hotel breakfast offering",
+        "connectionExplained": "Many hotels include a continental breakfast with pastries, coffee, and fruit, making it a signature hotel service."
+      },
+      {
+        "clue": "Room service",
+        "examplePhrase": "in-room dining delivery",
+        "connectionExplained": "Room service is a classic hotel amenity where guests order meals delivered to their room, reinforcing the hotel setting."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Keycards\" and \"Electric kettles / coffee makers\" in LinkedIn Pinpoint #860?",
+      "answer": "The answer is \"Things associated with hotels\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Keycards\" and \"Electric kettles / coffee makers\" connect in LinkedIn Pinpoint #860?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Continental breakfast is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Continental breakfast\" the key clue in LinkedIn Pinpoint #860?",
+      "answer": "Continental breakfast is the turning clue because \"hotel breakfast offering\" makes the shared category frame explicit. It also makes Keycards read cleanly as \"Keycards\". The board feels broad because the clues could fit travel or hospitality in general, but the specific combination—keycards, in-room appliances, toiletries, breakfast, and room service—narrows it to one familiar place."
+    },
+    {
+      "question": "How does \"Keycards\" fit the same category as \"Continental breakfast\" in LinkedIn Pinpoint #860?",
+      "answer": "\"Keycards\" reads as \"Keycards\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Keycards, Electric kettles / coffee makers, and Toiletries do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"travel essentials\" can feel plausible before one clue makes the answer feel concrete. Continental breakfast is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "travel essentials",
+      "vacation amenities"
+    ],
+    "whyFalseStartPlausible": [
+      "Keycards and breakfast are provided by the place, not carried by the traveler, so the set points to a location rather than a packing list.",
+      "vacation amenities feels plausible early on, but it falls apart once continental breakfast demands a more exact reading."
+    ],
+    "breakingClue": "Continental breakfast",
+    "pivot": "I first read Keycards and Electric kettles / coffee makers too literally and drifted toward travel essentials. Keycards could be read as \"Keycards\", while Electric kettles / coffee makers could be read as \"in-room beverage appliances\", so the board still felt open instead of solved.\n\nContinental breakfast changed the direction because \"hotel breakfast offering\" gave me a testable phrase, not just a loose topic. Once that line worked, I had a fixed place to put the repeated word and could go back through the earlier clues with a clearer target.\n\nI then checked \"Keycards\", \"in-room beverage appliances\", \"Toiletries\", and \"in-room dining delivery\". Those checks mattered because each one landed as ordinary wording on its own, so I was not forcing five separate hints into one bag. The board started to behave like one phrase pattern across Keycards, Electric kettles / coffee makers, Toiletries, Continental breakfast, and Room service.\n\nThat left very little room for the earlier false start. The answer was \"Things associated with hotels\", and the last step was simply making sure every clue used that same reading cleanly before treating the solve as finished.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Keycards, Electric kettles / coffee makers, and Toiletries stop feeling disconnected and start looking like they belong together. Once continental breakfast is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board feels broad because the clues could fit travel or hospitality in general, but the specific combination—keycards, in-room appliances, toiletries, breakfast, and room service—narrows it to one familiar place."
+  },
+  "turningPoint": {
+    "clue": "Continental breakfast",
+    "whyDecisive": "Continental breakfast forced the pivot, because it's a service tied to a specific lodging type, not a travel essential.",
+    "whatChangedAfterIt": "Once Continental breakfast landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Keycards",
+      "surfaceMisread": "travel essentials",
+      "resolvedPhraseOrMember": "Keycards",
+      "nonObviousWhy": "Keycards are the standard way to unlock a hotel room door, so they directly signal the hotel context.",
+      "searchableContext": "Keycard is a blend of 'key' and 'card', reflecting the shift from metal keys to plastic cards with magnetic strips or chips.",
+      "phraseExample": "Keycard is a blend of 'key' and 'card', reflecting the shift from metal keys to plastic cards with magnetic strips or chips."
+    },
+    {
+      "clue": "Electric kettles / coffee makers",
+      "surfaceMisread": "travel essentials",
+      "resolvedPhraseOrMember": "in-room beverage appliances",
+      "nonObviousWhy": "Hotels typically provide either a kettle or a coffee maker in the room for guest convenience, linking the clue to the hotel stay.",
+      "searchableContext": "Kettle comes from Old Norse 'ketill', meaning a cauldron, while 'coffee maker' is a modern compound for a device that brews coffee.",
+      "phraseExample": "Kettle comes from Old Norse 'ketill', meaning a cauldron, while 'coffee maker' is a modern compound for a device that brews coffee."
+    },
+    {
+      "clue": "Toiletries",
+      "surfaceMisread": "travel essentials",
+      "resolvedPhraseOrMember": "Toiletries",
+      "nonObviousWhy": "Hotels supply small bottles of toiletries in the bathroom, a hallmark of hotel hospitality.",
+      "searchableContext": "Toiletries derives from 'toilet', which once referred to the act of dressing and grooming, not just the bathroom fixture.",
+      "phraseExample": "Toiletries derives from 'toilet', which once referred to the act of dressing and grooming, not just the bathroom fixture."
+    },
+    {
+      "clue": "Continental breakfast",
+      "surfaceMisread": "travel essentials",
+      "resolvedPhraseOrMember": "hotel breakfast offering",
+      "nonObviousWhy": "Many hotels include a continental breakfast with pastries, coffee, and fruit, making it a signature hotel service.",
+      "searchableContext": "The term 'continental' refers to the European style of a light breakfast, as opposed to a full English or American breakfast.",
+      "phraseExample": "The term 'continental' refers to the European style of a light breakfast, as opposed to a full English or American breakfast."
+    },
+    {
+      "clue": "Room service",
+      "surfaceMisread": "travel essentials",
+      "resolvedPhraseOrMember": "in-room dining delivery",
+      "nonObviousWhy": "Room service is a classic hotel amenity where guests order meals delivered to their room, reinforcing the hotel setting.",
+      "searchableContext": "'Room service' is a straightforward compound meaning service provided to a guest's room, first popularized by hotels in the early 20th century.",
+      "phraseExample": "'Room service' is a straightforward compound meaning service provided to a guest's room, first popularized by hotels in the early 20th century."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Keycards\" and \"Electric kettles / coffee makers\" in LinkedIn Pinpoint #860?",
+      "answer": "The answer is \"Things associated with hotels\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Keycards"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Keycards\" and \"Electric kettles / coffee makers\" connect in LinkedIn Pinpoint #860?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Continental breakfast is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Keycards"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Continental breakfast\" the key clue in LinkedIn Pinpoint #860?",
+      "answer": "Continental breakfast is the turning clue because \"hotel breakfast offering\" makes the shared category frame explicit. It also makes Keycards read cleanly as \"Keycards\". The board feels broad because the clues could fit travel or hospitality in general, but the specific combination—keycards, in-room appliances, toiletries, breakfast, and room service—narrows it to one familiar place.",
+      "tiedClue": "Continental breakfast"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Keycards\" fit the same category as \"Continental breakfast\" in LinkedIn Pinpoint #860?",
+      "answer": "\"Keycards\" reads as \"Keycards\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Keycards"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "Standard items and services found in a hotel stay",
+    "relatedEntities": [
+      "Keycards",
+      "in-room beverage appliances",
+      "Toiletries",
+      "hotel breakfast offering",
+      "in-room dining delivery"
+    ],
+    "doNotRepeatPatterns": [
+      "Standard items and services found in a hotel stay",
+      "\"Keycards\" and \"Electric kettles / coffee makers\" can look like they belong to different categories at first",
+      "\"Continental breakfast\" anchors standard items and services found in a hotel stay",
+      "Use \"Continental breakfast\" to re-check \"Keycards\" under standard items and services found in a hotel stay",
+      "Keycard is a blend of 'key' and 'card', reflecting the shift from metal keys to plastic cards with magnetic strips or chips.",
+      "Kettle comes from Old Norse 'ketill', meaning a cauldron, while 'coffee maker' is a modern compound for a device that brews coffee."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "travel essentials",
+      "whyPlausible": "Keycards and breakfast are provided by the place, not carried by the traveler, so the set points to a location rather than a packing list.",
+      "whyRejected": "Once Continental breakfast lands, the final answer explains the board more cleanly than travel essentials."
+    },
+    {
+      "label": "vacation amenities",
+      "whyPlausible": "vacation amenities feels plausible early on, but it falls apart once continental breakfast demands a more exact reading.",
+      "whyRejected": "Once Continental breakfast lands, the final answer explains the board more cleanly than vacation amenities."
+    }
+  ],
+  "setValidationSummary": "Toiletries, Continental breakfast, Room service keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things associated with hotels",
+  "contentTemplateVersion": "evidence-v1"
+}
