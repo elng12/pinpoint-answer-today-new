@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 861,
+    "slug": "pinpoint-answer-861",
+    "publishDate": "2026-09-08",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Crust",
+      "Mantle",
+      "Core (mostly iron and nickel)",
+      "Tectonic plates",
+      "Magnetic poles (North+South)"
+    ],
+    "mainAnswer": "Parts of the Earth",
+    "category": "Parts of the Earth",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Crust, Mantle, Core (mostly iron and nickel), Tectonic plates, Magnetic poles (North+South) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-08T07:04:26.171Z"
+  },
+  {
     "puzzleNumber": 860,
     "slug": "pinpoint-answer-860",
     "publishDate": "2026-09-07",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Keycards",
@@ -18,7 +38,7 @@
     "seoTemplateVersion": "serp-v1",
     "contentTemplateVersion": "evidence-v1",
     "shortSummary": "At first glance, Keycards, Electric kettles / coffee makers, Toiletries do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-09-07T07:01:28.610Z"
+    "updatedAt": "2026-09-08T07:04:26.171Z"
   },
   {
     "puzzleNumber": 859,
