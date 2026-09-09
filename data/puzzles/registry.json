@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 862,
+    "slug": "pinpoint-answer-862",
+    "publishDate": "2026-09-09",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Iron",
+      "Golden",
+      "Middle",
+      "Voting",
+      "Coming of"
+    ],
+    "mainAnswer": "Words that come before “age”",
+    "category": "Words that come before “age”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Iron, Golden, Middle do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
+    "updatedAt": "2026-09-09T07:02:13.386Z"
+  },
+  {
     "puzzleNumber": 861,
     "slug": "pinpoint-answer-861",
     "publishDate": "2026-09-08",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Crust",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Crust, Mantle, Core (mostly iron and nickel), Tectonic plates, Magnetic poles (North+South) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-08T07:04:26.171Z"
+    "updatedAt": "2026-09-09T07:02:13.386Z"
   },
   {
     "puzzleNumber": 860,
