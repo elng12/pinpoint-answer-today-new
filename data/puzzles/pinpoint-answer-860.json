@@ -234,7 +234,7 @@
       "whyRejected": "Once Continental breakfast lands, the final answer explains the board more cleanly than vacation amenities."
     }
   ],
-  "setValidationSummary": "Toiletries, Continental breakfast, Room service keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
-  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things associated with hotels",
+  "setValidationSummary": "A packing list would not explain a room key issued at check-in or breakfast provided at the property. A restaurant alone would not explain bedroom appliances and bathroom supplies. A hotel stay brings those objects and services together.",
+  "categoryPrecisionNote": "The connection is association with a place, not a claim that every hotel includes all five amenities. Room service and breakfast may cost extra or be unavailable; they still belong to the hotel setting named by the answer.",
   "contentTemplateVersion": "evidence-v1"
 }
