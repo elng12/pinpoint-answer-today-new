@@ -1,5 +1,25 @@
 # Pinpoint Answer Today 迭代记录
 
+## 2026-09-09 三页恢复试验补齐
+
+授权：用户要求完成 #858、#859、#860 三页恢复试验。只补试验页解释并完成正常 PR、CI、生产验收和后续观察；不改变全站模板、首页 SEO、Worker、校验门槛、其他题目或索引设置。
+
+起点：独立 worktree `/Users/elng/web/pinpoint-answer-today-new-recovery`，分支 `codex/pinpoint-three-page-recovery`，基于远程 main `e473d1c0934b565a6983948e7f7273f8771eec4a`。原目录所有未提交改动保留。#858 已有具体五条解释，不再修改。#860 已正式上线，不沿用历史 404 判断。
+
+修改：#859 的 wordHints、display.clueTableRows、clueRows 同步写入五条实际堆肥解释，区分干叶/纸板、果皮、蛋壳/纸蛋盒、草屑/树枝，并补充整组范围。#860 只替换 setValidationSummary 和 categoryPrecisionNote，说明酒店把物品和服务联系起来，但不是每家酒店都提供所有项目。答案、线索、发布时间、registry、URL 和 contentTemplateVersion=evidence-v1 不变。保留不渲染的旧数据字段，避免把本轮扩大为生成器清理。
+
+内容依据：EPA https://www.epa.gov/recycle/composting-home 与 https://www.epa.gov/system/files/documents/2022-12/130-137.pdf 。解释为编辑整理，不冒充真人解题或人工审核凭证。
+
+当前已验证：validate:data（404 条）、lint、typecheck、test:pinpoint-guardrails、build（429 页）、test:pinpoint-rendered（404 详情页及首页/归档/sitemap）、git diff --check 全通过。三页构建 HTML 解码后均实际含五条对应解释，没有旧第一人称解题区和教学卡；临时字符串检查曾因 HTML 的 &#x27; 转义误报，修正解码后通过，未修改产品或门槛。生产生效仍须以 PR 合并后的部署及公开 HTML 为准，不能用本段本地结果替代。
+
+GSC 起始状态（2026-09-09 本任务实时查询）：#858、#860 为 URL is unknown to Google；#859 为 Discovered - currently not indexed；三页 lastCrawlTime 均为空。8 月 10 日至 9 月 6 日的完整全站 page 查询没有这三页的记录；#860 发布时间晚于这个窗口，不能算它在发布后零展示。没有提交收录请求。
+
+观察安排：旧自动化 pinpoint-858-860 经 App update 确认不存在，不把 view 卡片当成有效运行证明。新建当前任务 heartbeat `pinpoint`，每天北京时间 17:00 检查是否到了原检查点。#858：9 月 12/19 日；#859：9 月 13/20 日；#860：9 月 10/14/21 日。9 月 9 日补稿为中途调整，记录真实生产时间，不重置或延长 9 月 21 日终点。错过检查点只能补查并标实际日期。无变化保持安静；收录变化、故障、检查点结论及工具/权限失败才通知。本机和 Codex 须可运行，尚未验收未来触发和通知送达。
+
+最终判断：9 月 21 日按各页真实上线/修订时间、抓取时间、收录和完整日期展示判断；多页收录且多日持续展示才算初步恢复，单页或稀疏数据不足。仍无改善则建议停止主动 SEO 投入；证据缺失标未验证，不宣判域名永久无救。最终报告后暂停自动化，不自动删除网站、归档任务或继续加码。
+
+依赖提示：npm ci 按既有锁文件安装，报告 8 项漏洞（含 1 critical）；本轮未升级依赖或运行 audit fix，不能宣称已解决既有依赖风险。
+
 这个文件是 `new-pinpoint-site` 的长期优化记录。  
 以后每次改发布链、内容模板、SEO、页面结构、Worker 运维，都要在这里留下记录。
 
