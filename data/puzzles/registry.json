@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 865,
+    "slug": "pinpoint-answer-865",
+    "publishDate": "2026-09-12",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Rain",
+      "Tear",
+      "Name",
+      "Mic",
+      "Drag and"
+    ],
+    "mainAnswer": "Words that come before “drop”",
+    "category": "Words that come before “drop”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Rain, Tear, Name, Mic, Drag and - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-12T09:31:50.097Z"
+  },
+  {
     "puzzleNumber": 854,
     "slug": "pinpoint-answer-854",
     "publishDate": "2026-09-01",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Espresso",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "At first glance, Espresso, Renaissance art, Vespa scooters do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-09-02T01:07:50.996Z"
+    "updatedAt": "2026-09-12T09:31:50.097Z"
   },
   {
     "puzzleNumber": 712,
