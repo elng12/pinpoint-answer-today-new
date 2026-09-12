@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(SCRIPT_DIR, "..");
 const REPAIRABLE_CODES = [
+  "overview.tooShort",
   "solutionEmergence.tooShort",
   "sections.overlap",
   "solutionEmergence.genericPivot",

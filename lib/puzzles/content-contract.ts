@@ -1,7 +1,7 @@
 import {
   collectSemanticLintIssues,
   PUBLISH_BLOCKING_SEMANTIC_CODES,
-} from "@/lib/puzzles/semantic-lint";
+} from "./semantic-lint";
 
 export const CONTENT_CONTRACT = {
   overviewMinWords: 65,

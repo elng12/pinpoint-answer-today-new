@@ -139,6 +139,11 @@ function remoteBranchExists(branch) {
 }
 
 function main() {
+  const candidate = readArg("--candidate");
+  if (candidate) {
+    recoverCandidate(candidate, readArg("--failed-sha"));
+    return;
+  }
   const dryRun = hasFlag("--dry-run");
   const requireOriginMain = hasFlag("--require-origin-main");
   const branchOverride = readArg("--branch", "");
@@ -224,6 +229,41 @@ function main() {
     slug,
     changedFiles,
   });
+}
+
+function recoverCandidate(branch, failedSha) {
+  if (!/^pinpoint\/candidate\/\d{4}-\d{2}-\d{2}-pinpoint-answer-\d+$/.test(branch) || !/^[a-f0-9]{40}$/.test(failedSha)) {
+    throw new Error("Candidate recovery requires an exact candidate branch and failed SHA");
+  }
+  ensureCleanWorktree();
+  fetchOriginMain();
+  const trustedHead = currentHeadSha();
+  if (trustedHead !== git(["rev-parse", "origin/main"])) throw new Error("Recovery must start from current main");
+  git(["fetch", "origin", `refs/heads/${branch}:refs/remotes/origin/${branch}`]);
+  const candidateRef = `origin/${branch}`;
+  if (git(["rev-parse", candidateRef]) !== failedSha) return exitOk({ status: "skipped", reason: "candidate has changed" });
+  const base = git(["merge-base", "origin/main", candidateRef]);
+  if (git(["log", "--format=%s", `${base}..${candidateRef}`]).includes("fix: bounded candidate content repair")) {
+    throw new Error("Candidate repair already attempted; manual review required, no unchanged CI retry");
+  }
+  run("node", ["scripts/check-pinpoint-candidate-branch.mjs", "--base", base, "--head", candidateRef, "--branch", branch]);
+  git(["switch", "--detach", candidateRef]);
+  const merge = gitMaybe(["merge", "--no-edit", "origin/main"]);
+  if (merge.status !== 0) {
+    gitMaybe(["merge", "--abort"]);
+    throw new Error("Candidate conflicts with current main; refusing automatic conflict resolution");
+  }
+  run("npm", ["run", "validate:data:auto-repair"], { inherit: true });
+  const changedFiles = git(["diff", "--name-only"]).split(/\r?\n/).filter(Boolean);
+  const slug = branch.match(/(pinpoint-answer-\d+)$/)[1];
+  if (changedFiles.some(file => file !== `data/puzzles/${slug}.json`)) throw new Error("Repair changed data outside the failed puzzle");
+  git(["add", "--", `data/puzzles/${slug}.json`]);
+  git(["commit", "--allow-empty", "-m", `fix: bounded candidate content repair ${slug}`]);
+  run("node", ["scripts/check-pinpoint-candidate-branch.mjs", "--base", "origin/main", "--head", "HEAD", "--branch", branch]);
+  git(["push", "origin", `HEAD:refs/heads/${branch}`], { inherit: true });
+  // GITHUB_TOKEN pushes do not trigger push workflows. Explicitly run all CI checks.
+  run("gh", ["workflow", "run", "ci.yml", "--ref", branch], { inherit: true });
+  exitOk({ status: "candidate_pushed", branch, slug, changedFiles, reason: "one targeted repair; full CI and production verification still required" });
 }
 
 try {

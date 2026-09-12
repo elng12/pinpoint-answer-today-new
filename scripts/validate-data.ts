@@ -3,6 +3,7 @@
 // but are not represented in the Zod-inferred PuzzleDetailContentRecord type.
 // The runtime behavior is correct; the type gaps are schema-only.
 import { readdir, readFile } from "node:fs/promises";
+import { publishedContentIssues } from "../lib/puzzles/published-content-contract";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { validateEvidenceContract } from "../lib/puzzles/evidence-contract.shared.mjs";
@@ -196,42 +197,6 @@ function assertNoRepeatedPublishedLessonTitles() {
   throw new Error(`Published lesson titles must be page-specific; repeated titles found. Samples: ${samples}`);
 }
 
-function normalizeLessonsForContract(lessons: PuzzleDetailContentRecord["lessons"]) {
-  return (lessons || []).map((lesson) => {
-    if (typeof lesson === "string") {
-      const title = getRenderedLessonTitle(lesson);
-      const body = title && lesson.startsWith(`${title}. `)
-        ? lesson.slice(title.length + 2).trim()
-        : lesson;
-      return { title, body };
-    }
-    return {
-      title: typeof lesson?.title === "string" ? lesson.title : "",
-      body: typeof lesson?.body === "string" ? lesson.body : "",
-    };
-  });
-}
-
-function toContractClueDetails(detail: PuzzleDetailContentRecord) {
-  return Array.isArray(detail.clueRows)
-    ? detail.clueRows.map((row) => ({
-        clue: row?.clue,
-        phrase: row?.resolvedPhraseOrMember,
-        explanation: row?.nonObviousWhy,
-      }))
-    : [];
-}
-
-function toContractFaqs(detail: PuzzleDetailContentRecord) {
-  const source = Array.isArray(detail.faqItems) && detail.faqItems.length > 0
-    ? detail.faqItems
-    : detail.faqs;
-  return (source || []).map((faq) => ({
-    question: faq?.question,
-    answer: faq?.answer,
-  }));
-}
-
 function validatePageSeoDescription(entry: PuzzleRegistryEntryRecord) {
   const pageSeoDescription = buildPuzzleSeoDescription(
     entry.puzzleNumber,
@@ -263,27 +228,7 @@ function validatePageSeoDescription(entry: PuzzleRegistryEntryRecord) {
 
 function validatePublishedContentContract(entry: PuzzleRegistryEntryRecord, detail: PuzzleDetailContentRecord, bodyParagraphs: string[]) {
   validatePageSeoDescription(entry);
-  const solutionNarrative = Array.isArray(detail.solutionNarrative) ? detail.solutionNarrative : [];
-  const contractInput = {
-    puzzleNumber: entry.puzzleNumber,
-    bodyMode: detail.bodyMode,
-    locale: "en",
-    rawWords: entry.clues,
-    mainAnswer: entry.mainAnswer,
-    summary: entry.shortSummary,
-    seoTitle: buildPinpointTitle(entry.puzzleNumber, entry.clues),
-    seoDescription: buildPinpointDescription(entry.puzzleNumber, entry.clues),
-    overview: bodyParagraphs[0] || entry.shortSummary,
-    solutionEmergence: solutionNarrative.join(" ") || bodyParagraphs.slice(1, 3).join(" "),
-    articleBlocks: bodyParagraphs,
-    wrongGuesses: detail.wrongGuessCandidates,
-    clueDetails: toContractClueDetails(detail),
-    lessons: normalizeLessonsForContract(detail.lessons),
-    faqs: toContractFaqs(detail),
-    llmTemplateVersion: detail.llmTemplateVersion,
-  };
-  const issues = promotePublishBlockingIssues(validateContentContract(contractInput))
-    .filter((issue) => issue.level === "error");
+  const issues = publishedContentIssues(entry, detail, bodyParagraphs);
   const newBlockingIssues = [];
 
   issues.forEach((issue) => {

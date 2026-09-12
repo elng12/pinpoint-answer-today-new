@@ -612,8 +612,8 @@ Hard rules:
 2. Keep the puzzle data consistent:
    - Clues: ${clues}
    - Answer: ${input.mainAnswer}
-3. overview must be at least 45 words.
-4. solutionEmergence must be at least 40 words and use first-person voice.
+3. overview and the first articleBlocks paragraph must each be at least 65 words.
+4. solutionEmergence must be at least 90 words and use first-person voice.
 5. sections.articleBlocks must contain 8 to 14 short paragraphs that read like a natural article.
 6. Field split (hard rule; violating it fails release checks):
    - articleBlocks (which feeds overview) explains WHY the puzzle shape misleads and why the final read is cleaner. Editorial voice, no first person (no I, my, we), no guess-then-miss timeline.

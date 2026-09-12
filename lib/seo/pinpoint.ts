@@ -1,8 +1,8 @@
 import {
   joinPinpointClues,
   normalizePinpointCluesWithFallback,
-} from "@/lib/seo/pinpoint-text";
-import { CONTENT_CONTRACT } from "@/lib/puzzles/content-contract";
+} from "./pinpoint-text";
+import { CONTENT_CONTRACT } from "../puzzles/content-contract";
 
 function getRequiredClues(words?: Array<string | null | undefined>): string[] {
   return normalizePinpointCluesWithFallback(words ?? [], 5);
