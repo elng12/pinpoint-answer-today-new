@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 865,
+  "slug": "pinpoint-answer-865",
+  "publishDate": "2026-09-12",
+  "isoDate": "2026-09-12",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Rain",
+    "Tear",
+    "Name",
+    "Mic",
+    "Drag and"
+  ],
+  "answer": "Words that come before “drop”",
+  "category": "Words that come before “drop”",
+  "wordHints": {
+    "Rain": "\"Rain drop\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Tear": "\"Tear drop\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Name": "Once the shared word is in place, \"Name drop\" reads like ordinary language instead of a forced compound.",
+    "Mic": "\"Mic drop\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Drag and": "\"Drag and drop\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Rain": "Try reading Rain as part of a familiar phrase in words that come before “drop” instead of as a standalone word.",
+    "Tear": "Tear works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Name": "Look for a natural expression that absorbs Name cleanly before locking the board.",
+    "Mic": "Try reading Mic as part of a familiar phrase in words that come before “drop” instead of as a standalone word.",
+    "Drag and": "Drag and is the clue that makes the phrase pattern in words that come before “drop” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. A nearby read was \"Rain and Tear phrase pairing\". Rain, Tear can support more than one phrase read before Drag and shows where the repeated word belongs. Drag and behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Drag and as an outlier clue\". Drag and can look like the odd clue if the earlier words are read without a shared phrase slot. Once Drag and locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Rain drop\" and \"Tear drop\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Name drop, Mic drop, Drag and drop show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “drop”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “drop”\" fits better than \"Rain and Tear phrase pairing\" or \"Drag and as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Rain and first tried Rain and Tear phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Drag and\" feel exact.",
+    "Once \"Drag and\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Name and Mic as the confirmation round. The strong solve was not just that two clues worked; it was that Rain, Tear, Name, Mic, Drag and could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “drop”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Rain\" and \"Tear\"",
+      "body": "\"Rain\" and \"Tear\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Drag and\" changes the drop pattern from guess to test",
+      "body": "Once \"Drag and\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 865, the drop phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Rain\" and \"Tear\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Rain",
+        "examplePhrase": "Rain drop",
+        "connectionExplained": "\"Rain drop\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Tear",
+        "examplePhrase": "Tear drop",
+        "connectionExplained": "\"Tear drop\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Name",
+        "examplePhrase": "Name drop",
+        "connectionExplained": "Once the shared word is in place, \"Name drop\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Mic",
+        "examplePhrase": "Mic drop",
+        "connectionExplained": "\"Mic drop\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Drag and",
+        "examplePhrase": "Drag and drop",
+        "connectionExplained": "\"Drag and drop\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Rain\" and \"Tear\" in LinkedIn Pinpoint #865?",
+      "answer": "The answer is \"Words that come before “drop”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Rain\" and \"Tear\" connect in LinkedIn Pinpoint #865?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Drag and\" the key clue in LinkedIn Pinpoint #865?",
+      "answer": "\"Drag and\" is the strongest clue because \"Drag and drop\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Rain and Tear phrase pairing",
+      "Drag and as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Rain, Tear can support more than one phrase read before Drag and shows where the repeated word belongs.",
+      "Drag and can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Drag and",
+    "pivot": "I started with Rain and first tried Rain and Tear phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Drag and\" feel exact.\n\nOnce \"Drag and\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Name and Mic as the confirmation round. The strong solve was not just that two clues worked; it was that Rain, Tear, Name, Mic, Drag and could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “drop”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Drag and as an outlier clue\". Drag and can look like the odd clue if the earlier words are read without a shared phrase slot. Once Drag and locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Drag and",
+    "whyDecisive": "Drag and is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Drag and lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Rain",
+      "surfaceMisread": "Rain and Tear phrase pairing",
+      "resolvedPhraseOrMember": "Rain drop",
+      "nonObviousWhy": "\"Rain drop\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Rain drop",
+      "phraseExample": "Rain drop"
+    },
+    {
+      "clue": "Tear",
+      "surfaceMisread": "Rain and Tear phrase pairing",
+      "resolvedPhraseOrMember": "Tear drop",
+      "nonObviousWhy": "\"Tear drop\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Tear drop",
+      "phraseExample": "Tear drop"
+    },
+    {
+      "clue": "Name",
+      "surfaceMisread": "Rain and Tear phrase pairing",
+      "resolvedPhraseOrMember": "Name drop",
+      "nonObviousWhy": "Once the shared word is in place, \"Name drop\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Name drop",
+      "phraseExample": "Name drop"
+    },
+    {
+      "clue": "Mic",
+      "surfaceMisread": "Rain and Tear phrase pairing",
+      "resolvedPhraseOrMember": "Mic drop",
+      "nonObviousWhy": "\"Mic drop\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Mic drop",
+      "phraseExample": "Mic drop"
+    },
+    {
+      "clue": "Drag and",
+      "surfaceMisread": "Rain and Tear phrase pairing",
+      "resolvedPhraseOrMember": "Drag and drop",
+      "nonObviousWhy": "\"Drag and drop\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Drag and drop",
+      "phraseExample": "Drag and drop"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Rain\" and \"Tear\" in LinkedIn Pinpoint #865?",
+      "answer": "The answer is \"Words that come before “drop”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Rain"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Rain\" and \"Tear\" connect in LinkedIn Pinpoint #865?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Rain"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Drag and\" the key clue in LinkedIn Pinpoint #865?",
+      "answer": "\"Drag and\" is the strongest clue because \"Drag and drop\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Drag and"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Rain drop",
+      "Tear drop",
+      "Name drop",
+      "Mic drop",
+      "Drag and drop"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Rain drop",
+      "Tear drop",
+      "Name drop",
+      "Mic drop"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Rain and Tear phrase pairing",
+      "whyPlausible": "Rain, Tear can support more than one phrase read before Drag and shows where the repeated word belongs.",
+      "whyRejected": "Drag and behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Drag and as an outlier clue",
+      "whyPlausible": "Drag and can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Drag and locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Name drop, Mic drop, Drag and drop show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}

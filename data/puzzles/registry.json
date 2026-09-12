@@ -1,9 +1,89 @@
 [
   {
+    "puzzleNumber": 865,
+    "slug": "pinpoint-answer-865",
+    "publishDate": "2026-09-12",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Rain",
+      "Tear",
+      "Name",
+      "Mic",
+      "Drag and"
+    ],
+    "mainAnswer": "Words that come before “drop”",
+    "category": "Words that come before “drop”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Rain, Tear, Name, Mic, Drag and - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-12T09:27:56.000Z"
+  },
+  {
+    "puzzleNumber": 864,
+    "slug": "pinpoint-answer-864",
+    "publishDate": "2026-09-11",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Traps",
+      "Quads",
+      "Lats",
+      "Pecs",
+      "Abs (short for abdominals)"
+    ],
+    "mainAnswer": "Nicknames for different muscles",
+    "category": "Nicknames for different muscles",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Traps, Quads, Lats, Pecs, Abs (short for abdominals) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-12T09:27:56.000Z"
+  },
+  {
+    "puzzleNumber": 863,
+    "slug": "pinpoint-answer-863",
+    "publishDate": "2026-09-10",
+    "status": "archived",
+    "detailState": "fallback_full",
+    "clues": [
+      "Ten",
+      "Timing",
+      "Stranger",
+      "Storm",
+      "Example (no way to show better)"
+    ],
+    "mainAnswer": "Words that come after “perfect”",
+    "category": "Words that come after “perfect”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Ten, Timing, Stranger, Storm, Example (no way to show better) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-12T09:27:56.000Z"
+  },
+  {
+    "puzzleNumber": 862,
+    "slug": "pinpoint-answer-862",
+    "publishDate": "2026-09-09",
+    "status": "archived",
+    "detailState": "published",
+    "clues": [
+      "Iron",
+      "Golden",
+      "Middle",
+      "Voting",
+      "Coming of"
+    ],
+    "mainAnswer": "Words that come before “age”",
+    "category": "Words that come before “age”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Iron, Golden, Middle do not look like one clean set. The solve only tightens once a later clue makes the shared phrase logic much harder to miss.",
+    "updatedAt": "2026-09-09T07:02:13.386Z"
+  },
+  {
     "puzzleNumber": 861,
     "slug": "pinpoint-answer-861",
     "publishDate": "2026-09-08",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Crust",
@@ -17,7 +97,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Crust, Mantle, Core (mostly iron and nickel), Tectonic plates, Magnetic poles (North+South) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-08T07:04:26.171Z"
+    "updatedAt": "2026-09-09T07:02:13.386Z"
   },
   {
     "puzzleNumber": 860,

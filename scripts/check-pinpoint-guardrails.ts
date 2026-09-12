@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { publishedContentIssues } from "../lib/puzzles/published-content-contract";
 import { execFileSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { createServer } from "node:http";
@@ -2941,6 +2942,38 @@ function checkIntermediateStateCommitDetection() {
   console.log("ok: intermediate-state commit detector skips only non-public state-only updates");
 }
 
+async function checkPersistedContentAndPublishStatus() {
+  const workerPath = "../worker/src/index.ts";
+  const worker = await import(workerPath);
+  // Actual #862 candidate paragraphs from 3028f40, not generated test copy.
+  const paragraphs = ["The opening clues Iron, Golden, and Middle immediately suggest historical periods.","Iron Age, Golden Age, and Middle Ages are all standard terms from history class.","That surface direction feels so strong that it can mask the real pattern.","But the set also includes Voting and Coming of, which do not fit as eras.","Voting age is a legal term, not a historical period.","Coming of age is a personal milestone, not an era.","The shift happens when the solver notices that every clue directly precedes the same word.","Iron, Golden, Middle, Voting, and Coming of all form common phrases with 'age'.","The category is not about types of ages, but about a word that follows each clue.","Each phrase is a familiar compound noun or idiom.","The clue set works because it mixes historical terms with legal and social ones.","That mix prevents a single thematic reading from dominating.","The final answer is a simple word that creates five distinct meanings.","The answer was Words that come before age."];
+  const entry = { puzzleNumber: 862, clues: ["Iron", "Golden", "Middle", "Voting", "Coming of"], mainAnswer: "Words that come before age" };
+  assert.ok(publishedContentIssues(entry, { bodyMode: "standard", articleBlocks: paragraphs }).some(issue => issue.code === "overview.tooShort"));
+  const detail = worker.buildPublishedPuzzleDetailRecord({
+    puzzleNumber: 862, slug: "pinpoint-answer-862", puzzleDate: "2026-09-09",
+    words: entry.clues, answer: entry.mainAnswer, sections: { articleBlocks: paragraphs }, analysis: {},
+  });
+  assert.equal(detail.articleBlocks.join(" "), paragraphs.join(" "), "repair only joins original paragraphs, without filler or losing text");
+  assert.ok(!publishedContentIssues(entry, detail).some(issue => issue.code === "overview.tooShort"), "persisted overview matches CI input");
+  assert.ok(publishedContentIssues(entry, { ...detail, articleBlocks: ["Still too short."] }).some(issue => issue.code === "overview.tooShort"), "final guard must reject malformed fallback too");
+  const heartbeat = {
+    startedAt: "2026-09-12T07:00:00Z", outcome: "succeeded", endedAt: "2026-09-12T07:00:01Z",
+    quickPublish: { status: "skipped" }, enrich: { status: "queued", detailState: "validated" },
+  };
+  worker.reconcileCronPublishOutcome(heartbeat, Date.parse("2026-09-12T07:01:00Z"));
+  assert.equal(heartbeat.outcome, "running", "submission is not production success");
+  assert.equal(heartbeat.endedAt, undefined);
+  heartbeat.enrich.status = "failed";
+  worker.reconcileCronPublishOutcome(heartbeat, Date.parse("2026-09-12T07:02:00Z"));
+  assert.equal(heartbeat.outcome, "failed", "async failure replaces earlier fetch success");
+  assert.equal(worker.buildCronHeartbeatAlerts(heartbeat)[0]?.code, "publish.failed");
+  heartbeat.outcome = "running";
+  heartbeat.enrich.status = "published";
+  worker.reconcileCronPublishOutcome(heartbeat, Date.parse("2026-09-12T07:03:00Z"));
+  assert.equal(heartbeat.outcome, "succeeded");
+  console.log("ok: #862 persisted validation and submission/failure/verified status regression");
+}
+
 async function checkWorkerEnrichCommitsOnlyFinalPublicPayload() {
   const workerSource = await readFile(resolve(ROOT, "worker/src/index.ts"), "utf8");
   const start = workerSource.indexOf("async function enrichPublishToSite(");
@@ -3761,6 +3794,10 @@ async function checkMainFailureContentRecoveryCreatesAutoPromotedCandidate() {
       candidateCheckSource.includes("!baseAlreadyPublishesSlug"),
     "candidate checker must allow recovery candidates to change only the detail JSON when main already has the live registry entry",
   );
+  assert.ok(recoveryWorkflow.includes("recover-candidate:") && recoveryWorkflow.includes("--failed-sha"));
+  assert.ok(recoverySource.includes("candidate has changed") && recoverySource.includes("Candidate repair already attempted"));
+  assert.ok(recoverySource.includes("refusing automatic conflict resolution") && recoverySource.includes("Repair changed data outside the failed puzzle"));
+  assert.ok(recoverySource.includes('["workflow", "run", "ci.yml", "--ref", branch]'), "bot pushes require a fresh CI dispatch, not an unchanged rerun");
 
   console.log("ok: failed main content gates recover through an auto-promoted candidate branch");
 }
@@ -4862,6 +4899,7 @@ async function main() {
   await checkPinpointEvidenceV1Guards724Mapping();
   checkReleaseOverrideDryRunSchema();
   checkIntermediateStateCommitDetection();
+  await checkPersistedContentAndPublishStatus();
   await checkWorkerEnrichCommitsOnlyFinalPublicPayload();
   checkReleaseQueuePolicy();
   checkRecoveredCandidatePayloadEquivalence();

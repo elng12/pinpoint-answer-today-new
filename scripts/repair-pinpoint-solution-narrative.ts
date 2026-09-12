@@ -129,7 +129,19 @@ function main() {
   if (!existsSync(detailPath)) throw new Error(`Missing detail file: ${detailPath}`);
 
   const detail = readJson<DetailRecord>(detailPath);
-  const repair = repairSolutionNarrative({ summary: entry, detail });
+  const overviewOnly = args.reason === "overview.tooShort";
+  if (args.reason?.includes("overview.tooShort")) {
+    const paragraphs = [...(detail.articleBlocks ?? [])];
+    let opening = paragraphs.shift() ?? "";
+    const minimum = detail.bodyMode === "short" ? 40 : 65;
+    while (opening.trim().split(/\s+/).filter(Boolean).length < minimum && paragraphs.length) {
+      opening = `${opening} ${paragraphs.shift()}`.trim();
+    }
+    detail.articleBlocks = [opening, ...paragraphs];
+  }
+  const repair = overviewOnly
+    ? { detail, narrative: detail.solutionNarrative ?? [], changedFields: ["articleBlocks"] }
+    : repairSolutionNarrative({ summary: entry, detail });
 
   if (!args.dryRun) {
     writeFileSync(detailPath, `${JSON.stringify(repair.detail, null, 2)}\n`, "utf8");
@@ -147,7 +159,7 @@ function main() {
   if (args.json) {
     console.log(JSON.stringify(result, null, 2));
   } else {
-    console.log(`${args.dryRun ? "Would repair" : "Repaired"} ${entry.slug} solutionNarrative.`);
+    console.log(`${args.dryRun ? "Would repair" : "Repaired"} ${entry.slug}: ${repair.changedFields.join(", ")}.`);
     console.log(`Reason: ${args.reason || "manual"}`);
   }
 }

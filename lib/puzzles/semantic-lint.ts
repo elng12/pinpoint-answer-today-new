@@ -1,5 +1,5 @@
-import { defaultLocale } from "@/i18n.config";
-import { getExactAnswerUsageIssue } from "@/lib/puzzles/answer-usage.shared.mjs";
+import { defaultLocale } from "../../i18n.config";
+import { getExactAnswerUsageIssue } from "./answer-usage.shared.mjs";
 
 export type SemanticLintIssue = {
   code: string;

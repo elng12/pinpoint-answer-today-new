@@ -42,6 +42,7 @@ import {
   type EnrichInput,
 } from "./enrich-llm";
 import { resolveWorkerFetchRoute } from "./routes/dispatch";
+import { publishedContentIssues } from "../../lib/puzzles/published-content-contract";
 
 export interface Env {
   PP_DATA: KVNamespace;
@@ -499,7 +500,7 @@ type WorkerWrongGuessCandidate = {
 };
 
 type EnrichPublishResult = {
-  status: "enriched" | "fallback_full" | "skipped";
+  status: "enriched" | "fallback_full" | "submitted" | "skipped";
   reason?: string;
   puzzleNumber?: number;
   payload?: JsonRecord;
@@ -3665,10 +3666,10 @@ export function buildPublishedPuzzleDetailRecord({
       setValidationSummary,
       categoryPrecisionNote,
     });
-  const articleBlocks = toParagraphs(
+  const articleBlocks = mergeWorkerOverviewArticleBlocks(toParagraphs(
     (sections as Record<string, unknown>).articleBlocks,
     analysisSource,
-  );
+  ));
   const solutionNarrative = toParagraphs(
     sections.solutionEmergence,
     `I started by testing each clue against possible themes. The words ${words.join(", ")} only began to make sense once one shared connector explained the full set.`,
@@ -4120,6 +4121,13 @@ function getPublicFullAnalysisPayloadBlockReason({
     ...providedEvidence,
   });
   const incomingSummary = summarizePublishedPuzzleDetail(detailRecordCandidate);
+  const contentIssues = publishedContentIssues({
+    puzzleNumber, clues: words, mainAnswer: answer,
+    shortSummary: String(enrichedPayload.summary || `Pinpoint #${puzzleNumber}: ${words.join(", ")}. Spoiler-safe hints and the full walkthrough are inside.`),
+  }, detailRecordCandidate);
+  if (contentIssues.length) {
+    return contentIssues.map(issue => `${issue.code} (${issue.field || "content"}): ${issue.message}`).join(" | ");
+  }
   if (!incomingSummary) {
     return "full-analysis payload could not be summarized";
   }
@@ -4279,9 +4287,9 @@ async function publishToNewSiteGitHub(
   doc: Doc,
   enrichedPayload: JsonRecord,
   puzzleNumber: number,
-): Promise<void> {
+): Promise<boolean> {
   const token = String(env.GITHUB_TOKEN_NEW_SITE || "").trim();
-  if (!token) return;
+  if (!token) throw new Error("GITHUB_TOKEN_NEW_SITE missing; nothing submitted");
 
   const repo = String(env.GITHUB_REPO_NEW_SITE || "elng12/pinpoint-answer-today-new").trim();
   const baseBranch = normalizeGitHubBranchName(env.GITHUB_BRANCH_NEW_SITE, "main");
@@ -4934,19 +4942,20 @@ async function publishToNewSiteGitHub(
     if (isPublicState && isPrimaryBranch && newSiteUrl) {
       const pageUrl = `${newSiteUrl}/linkedin-pinpoint-answers/${slug}/`;
       const pageReady = await waitForPublicPage(pageUrl);
-      await runPrimaryPublicAudit(pageReady);
+      const audit = await runPrimaryPublicAudit(pageReady);
       await notifyDailyPublishStatusReport(env, {
         date: puzzleDate,
-        status: detailState === "fallback_full" ? "downgraded" : "published",
+        status: audit?.ok && !audit.deferred ? (detailState === "fallback_full" ? "downgraded" : "published") : "candidate",
         puzzleNumber,
         slug,
         answer,
         clues: words,
         detailUrl: pageUrl,
-        reason: "no content changes; public audit passed",
+        reason: audit?.ok && !audit.deferred ? "no content changes; public audit passed" : "GitHub content exists; production verification pending",
       });
+      return Boolean(audit?.ok && !audit.deferred);
     }
-    return;
+    return false;
   }
 
   const candidateReason = releaseQueueDecision?.reasonCode ?? "candidate-branch-enabled";
@@ -4998,7 +5007,7 @@ async function publishToNewSiteGitHub(
   if (isPublicState && isPrimaryBranch) {
     await notifyDailyPublishStatusReport(env, {
       date: puzzleDate,
-      status: detailState === "fallback_full" ? "downgraded" : "published",
+      status: publicAudit?.ok && !publicAudit.deferred ? (detailState === "fallback_full" ? "downgraded" : "published") : "candidate",
       puzzleNumber,
       slug,
       answer,
@@ -5018,7 +5027,7 @@ async function publishToNewSiteGitHub(
   // ── 4. 飞书通知（每天只发一次，用 KV 去重）──
   const feishuWebhook = String(env.FEISHU_WEBHOOK_URL || "").trim();
   const publishNotifyKey = `notify:publish:${puzzleDate}:${puzzleNumber}`;
-  const shouldSendPublishNotification = isPublicState && isPrimaryBranch && feishuWebhook;
+  const shouldSendPublishNotification = isPublicState && isPrimaryBranch && publicAudit?.ok && !publicAudit.deferred && feishuWebhook;
   const alreadyPublishNotified = shouldSendPublishNotification
     ? await env.PP_DATA.get(publishNotifyKey).then((v) => v !== null).catch(() => false)
     : true;
@@ -5120,6 +5129,7 @@ async function publishToNewSiteGitHub(
   }
 
   console.log(`[new-site] GitHub publish complete for #${puzzleNumber} (${detailState})`);
+  return Boolean(publicAudit?.ok && !publicAudit.deferred && isPrimaryBranch);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -5481,9 +5491,23 @@ async function enrichPublishToSite(
   }
 
   const doneKey = enrichPublishDoneKeyOf(puzzleDate);
+  const submittedKey = `publish:${puzzleDate}:enrich_submitted`;
   const runningKey = enrichPublishRunningKeyOf(puzzleDate);
-  if (await env.PP_DATA.get(doneKey)) {
-    return { status: "skipped", reason: "enrich already done today" };
+  if (await env.PP_DATA.get(doneKey) || await env.PP_DATA.get(submittedKey)) {
+    const puzzleNumber = inferPuzzleNumber((doc as unknown as { puzzleNumber?: unknown }).puzzleNumber, puzzleDate);
+    const audit = await runNewSitePublicPublishAudit({
+      baseUrl: siteBaseUrl, slug: `pinpoint-answer-${puzzleNumber}`, puzzleNumber,
+      answer: requirePublishedAnswer(doc, "enrich verification"), clues: extractWordsFromDoc(doc), pageReady: true,
+    });
+    if (audit.ok && !audit.deferred) {
+      await env.PP_DATA.put(doneKey, new Date().toISOString(), { expirationTtl: 60 * 60 * 24 * 14 });
+      return { status: "skipped", reason: "enrich already done today" };
+    }
+    // Legacy done markers only meant GitHub submission. Never regenerate blindly.
+    await env.PP_DATA.delete(doneKey);
+    await env.PP_DATA.put(submittedKey, new Date().toISOString(), { expirationTtl: 60 * 60 * 24 * 14 });
+    await options.onDetailStateChange?.("validated", "candidate submitted; production verification pending; inspect candidate CI/watchdog");
+    return { status: "submitted", puzzleNumber, reason: `production not verified: ${audit.issues.join(" | ")}` };
   }
   if (await env.PP_DATA.get(runningKey)) {
     return { status: "skipped", reason: "enrich already running" };
@@ -5860,14 +5884,14 @@ async function enrichPublishToSite(
       });
     }
 
-    await publishToNewSiteGitHub(env, puzzleDate, doc, publishedPayload, puzzleNumber);
-    await options.onDetailStateChange?.(publishDetailState);
+    const productionVerified = await publishToNewSiteGitHub(env, puzzleDate, doc, publishedPayload, puzzleNumber);
+    await options.onDetailStateChange?.(productionVerified ? publishDetailState : "validated", productionVerified ? undefined : "candidate submitted; production verification pending");
 
-    await env.PP_DATA.put(doneKey, new Date().toISOString(), {
+    await env.PP_DATA.put(productionVerified ? doneKey : submittedKey, new Date().toISOString(), {
       expirationTtl: 60 * 60 * 24 * 14,
     });
     return {
-      status: publishDetailState === "fallback_full" ? "fallback_full" : "enriched",
+      status: !productionVerified ? "submitted" : publishDetailState === "fallback_full" ? "fallback_full" : "enriched",
       puzzleNumber,
       payload: publishedPayload,
       detailState: publishDetailState,
@@ -6852,6 +6876,11 @@ export function buildCronHeartbeatAlerts(
 }> {
   if (!heartbeat) return [];
 
+  if (heartbeat.enrich.status === "failed") return [{
+    code: "publish.failed", severity: "warning", detailState: "failed", minutesStuck: 0,
+    message: heartbeat.enrich.reason || heartbeat.error || "Publishing failed; inspect candidate CI and release queue",
+  }];
+
   const detailState = heartbeat.enrich.detailState;
   if (detailState !== "generating" && detailState !== "validated") {
     return [];
@@ -6950,7 +6979,25 @@ async function loadCronHeartbeatRuns(env: Env, date: string, limit: number): Pro
   return runs;
 }
 
+export function reconcileCronPublishOutcome(heartbeat: CronHeartbeat, nowMs = Date.now()): void {
+  if (heartbeat.enrich.status === "failed" || heartbeat.quickPublish.status === "failed") {
+    heartbeat.outcome = "failed";
+    heartbeat.error = heartbeat.enrich.reason || heartbeat.quickPublish.reason || "publish failed";
+    heartbeat.endedAt = new Date(nowMs).toISOString();
+    heartbeat.durationMs = nowMs - Date.parse(heartbeat.startedAt);
+  } else if (heartbeat.enrich.status === "queued" && heartbeat.outcome === "succeeded") {
+    heartbeat.outcome = "running";
+    delete heartbeat.endedAt;
+    delete heartbeat.durationMs;
+  } else if (heartbeat.enrich.status === "published" && heartbeat.outcome === "running") {
+    heartbeat.outcome = "succeeded";
+    heartbeat.endedAt = new Date(nowMs).toISOString();
+    heartbeat.durationMs = nowMs - Date.parse(heartbeat.startedAt);
+  }
+}
+
 async function persistCronHeartbeat(env: Env, heartbeat: CronHeartbeat): Promise<void> {
+  reconcileCronPublishOutcome(heartbeat);
   heartbeat.updatedAt = new Date().toISOString();
   const raw = JSON.stringify(heartbeat);
   const ttl = 60 * 60 * 24 * 30;
@@ -8026,7 +8073,7 @@ export default {
             result.enrich = enrichResult;
             manualHeartbeat.enrich = stampHeartbeatStage(
               manualHeartbeat.enrich,
-              isSuccessfulEnrichResult(enrichResult) ? "published" : "skipped",
+              isSuccessfulEnrichResult(enrichResult) ? "published" : enrichResult.status === "submitted" ? "queued" : "skipped",
               enrichResult.reason,
             );
             await persistCronHeartbeat(env, manualHeartbeat);
@@ -8593,6 +8640,9 @@ export default {
                 let payloadForI18n = enrichResult.payload ?? null;
                 if (isSuccessfulEnrichResult(enrichResult)) {
                   heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "published");
+                  await persistCronHeartbeat(env, heartbeat);
+                } else if (enrichResult.status === "submitted") {
+                  heartbeat.enrich = stampHeartbeatStage(heartbeat.enrich, "queued", enrichResult.reason || "candidate submitted; production verification pending");
                   await persistCronHeartbeat(env, heartbeat);
                 } else {
                   heartbeat.enrich = stampHeartbeatStage(

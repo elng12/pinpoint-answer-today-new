@@ -1,0 +1,232 @@
+{
+  "puzzleNumber": 862,
+  "slug": "pinpoint-answer-862",
+  "publishDate": "2026-09-09",
+  "isoDate": "2026-09-09",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Iron",
+    "Golden",
+    "Middle",
+    "Voting",
+    "Coming of"
+  ],
+  "answer": "Words that come before “age”",
+  "category": "Words that come before “age”",
+  "wordHints": {
+    "Iron": "Iron Age is a well-known archaeological period, but the clue alone doesn't force the pattern until combined with others.",
+    "Golden": "Golden Age is a common phrase for a period of prosperity, but again, it could be a standalone reference.",
+    "Middle": "Middle Ages is a standard historical term, reinforcing the 'ages' pattern but not yet revealing the structural link.",
+    "Voting": "Voting age breaks the historical eras pattern, pointing instead to a simple modifier + 'age' structure.",
+    "Coming of": "Coming of age is a phrase where 'age' is the noun, and 'coming of' modifies it, cementing the pattern."
+  },
+  "spoilerHints": {
+    "Iron": "Try reading Iron as part of a familiar phrase in words that come before “age” instead of as a standalone word.",
+    "Golden": "Golden works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Middle": "Look for a natural expression that absorbs Middle cleanly before locking the board.",
+    "Voting": "Try reading Voting as part of a familiar phrase in words that come before “age” instead of as a standalone word.",
+    "Coming of": "Coming of is the clue that makes the phrase pattern in words that come before “age” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The opening clues Iron, Golden, and Middle immediately suggest historical periods. Iron Age, Golden Age, and Middle Ages are all standard terms from history class. That surface direction feels so strong that it can mask the real pattern. But the set also includes Voting and Coming of, which do not fit as eras. Voting age is a legal term, not a historical period. Coming of age is a personal milestone, not an era.",
+    "The shift happens when the solver notices that every clue directly precedes the same word.",
+    "Iron, Golden, Middle, Voting, and Coming of all form common phrases with 'age'.",
+    "The category is not about types of ages, but about a word that follows each clue.",
+    "Each phrase is a familiar compound noun or idiom.",
+    "The clue set works because it mixes historical terms with legal and social ones.",
+    "That mix prevents a single thematic reading from dominating.",
+    "The final answer is a simple word that creates five distinct meanings.",
+    "The answer was Words that come before age."
+  ],
+  "solutionNarrative": [
+    "Iron and Golden first pulled me toward historical eras, so that was the first path I tested. It held together for a moment, but voting never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I let voting lead instead of treating it like an outlier. I tested Iron age and Golden age in my head, and those readings sounded like ordinary language. That moved me from guessing a topic to checking one repeatable word slot.",
+    "Then I used Middle, Voting, and Coming of as the confirmation round. Middle Ages, Voting age, and Coming of age all sounded like phrases people would actually say, so I was no longer relying on the first pair of clues. The answer was Words that come before age."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Iron\" and \"Golden\"",
+      "body": "\"Iron\" and \"Golden\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Voting\" changes the age pattern from guess to test",
+      "body": "Voting organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "For Pinpoint 862, the age phrase test has to work five times",
+      "body": "When clues seem to form a set, check if they all modify the same word—sometimes the link is structural, not thematic."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Iron\" and \"Golden\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Iron",
+        "examplePhrase": "Iron age",
+        "connectionExplained": "Iron Age is a well-known archaeological period, but the clue alone doesn't force the pattern until combined with others."
+      },
+      {
+        "clue": "Golden",
+        "examplePhrase": "Golden age",
+        "connectionExplained": "Golden Age is a common phrase for a period of prosperity, but again, it could be a standalone reference."
+      },
+      {
+        "clue": "Middle",
+        "examplePhrase": "Middle Ages",
+        "connectionExplained": "Middle Ages is a standard historical term, reinforcing the 'ages' pattern but not yet revealing the structural link."
+      },
+      {
+        "clue": "Voting",
+        "examplePhrase": "Voting age",
+        "connectionExplained": "Voting age breaks the historical eras pattern, pointing instead to a simple modifier + 'age' structure."
+      },
+      {
+        "clue": "Coming of",
+        "examplePhrase": "Coming of age",
+        "connectionExplained": "Coming of age is a phrase where 'age' is the noun, and 'coming of' modifies it, cementing the pattern."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Iron\" and \"Golden\" in LinkedIn Pinpoint #862?",
+      "answer": "The answer is \"Words that come before age\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Iron\" and \"Golden\" connect in LinkedIn Pinpoint #862?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language."
+    },
+    {
+      "question": "Why is \"Voting\" the key clue in LinkedIn Pinpoint #862?",
+      "answer": "Voting is the turning clue because \"Voting age\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Iron age and Golden age. The puzzle feels tricky because the first three clues naturally lead to a historical eras interpretation, but the last two clues require a shift to a more grammatical pattern."
+    },
+    {
+      "question": "Why does \"Iron\" also work in LinkedIn Pinpoint #862?",
+      "answer": "\"Iron\" fits because \"Iron age\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"Voting\" opened."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Iron, Golden, and Middle do not immediately line up around one missing word, so the solve starts out looser than it really is. That is why a first read like \"historical eras\" can feel plausible before the missing word finally shows itself. Voting is the clue that finally makes the missing word visible.",
+    "falseStarts": [
+      "historical eras",
+      "stages of life"
+    ],
+    "whyFalseStartPlausible": [
+      "This guess works for Iron, Golden, and Middle, but fails for Voting and Coming of, which are not eras.",
+      "stages of life feels plausible early on, but it falls apart once voting demands a more exact reading."
+    ],
+    "breakingClue": "Voting",
+    "pivot": "The solve turned when I let voting lead instead of treating it like an outlier. I tested Iron age and Golden age in my head, and those readings sounded like ordinary language. That moved me from guessing a topic to checking one repeatable word slot.",
+    "fullBoardConfirmation": "From there, a repeated-word phrase pattern with one missing term explains the board cleanly. Readings like Iron age, Golden age, and Middle Ages stop feeling loose and start sounding exact. Once voting makes the missing word visible, the earlier clues stop feeling loose and start sounding exact. The puzzle feels tricky because the first three clues naturally lead to a historical eras interpretation, but the last two clues require a shift to a more grammatical pattern."
+  },
+  "turningPoint": {
+    "clue": "Voting",
+    "whyDecisive": "The clue 'Voting' forced the pivot because 'voting age' is a common phrase, but it doesn't fit the historical eras read.",
+    "whatChangedAfterIt": "Once Voting made the missing word visible, the earlier clues stopped feeling loose and started sounding exact."
+  },
+  "clueRows": [
+    {
+      "clue": "Iron",
+      "surfaceMisread": "historical eras",
+      "resolvedPhraseOrMember": "Iron age",
+      "nonObviousWhy": "Iron Age is a well-known archaeological period, but the clue alone doesn't force the pattern until combined with others.",
+      "searchableContext": "Iron Age refers to the period when iron became the primary metal for tools and weapons.",
+      "phraseExample": "Iron Age refers to the period when iron became the primary metal for tools and weapons."
+    },
+    {
+      "clue": "Golden",
+      "surfaceMisread": "historical eras",
+      "resolvedPhraseOrMember": "Golden age",
+      "nonObviousWhy": "Golden Age is a common phrase for a period of prosperity, but again, it could be a standalone reference.",
+      "searchableContext": "Golden Age comes from Greek mythology, referring to a mythical era of peace and harmony.",
+      "phraseExample": "Golden Age comes from Greek mythology, referring to a mythical era of peace and harmony."
+    },
+    {
+      "clue": "Middle",
+      "surfaceMisread": "historical eras",
+      "resolvedPhraseOrMember": "Middle Ages",
+      "nonObviousWhy": "Middle Ages is a standard historical term, reinforcing the 'ages' pattern but not yet revealing the structural link.",
+      "searchableContext": "Middle Ages was coined in the Renaissance to describe the period between classical antiquity and the modern era.",
+      "phraseExample": "Middle Ages was coined in the Renaissance to describe the period between classical antiquity and the modern era."
+    },
+    {
+      "clue": "Voting",
+      "surfaceMisread": "historical eras",
+      "resolvedPhraseOrMember": "Voting age",
+      "nonObviousWhy": "Voting age breaks the historical eras pattern, pointing instead to a simple modifier + 'age' structure.",
+      "searchableContext": "Voting age is the legal threshold for suffrage, often 18 in many countries.",
+      "phraseExample": "Voting age is the legal threshold for suffrage, often 18 in many countries."
+    },
+    {
+      "clue": "Coming of",
+      "surfaceMisread": "historical eras",
+      "resolvedPhraseOrMember": "Coming of age",
+      "nonObviousWhy": "Coming of age is a phrase where 'age' is the noun, and 'coming of' modifies it, cementing the pattern.",
+      "searchableContext": "Coming of age traditionally marks the transition from childhood to adulthood.",
+      "phraseExample": "Coming of age traditionally marks the transition from childhood to adulthood."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Iron\" and \"Golden\" in LinkedIn Pinpoint #862?",
+      "answer": "The answer is \"Words that come before age\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Iron"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Iron\" and \"Golden\" connect in LinkedIn Pinpoint #862?",
+      "answer": "The connection is a repeated-word phrase pattern with one missing term. The earlier clues resolve as natural phrase readings, and the last clue confirms the same frame in plain language.",
+      "tiedClue": "Iron"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Voting\" the key clue in LinkedIn Pinpoint #862?",
+      "answer": "Voting is the turning clue because \"Voting age\" is an exact, everyday phrase. With the missing word in place, other clues read cleanly as Iron age and Golden age. The puzzle feels tricky because the first three clues naturally lead to a historical eras interpretation, but the last two clues require a shift to a more grammatical pattern.",
+      "tiedClue": "Voting"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "Why does \"Iron\" also work in LinkedIn Pinpoint #862?",
+      "answer": "\"Iron\" fits because \"Iron age\" is a natural everyday phrase once the missing word is in place. It confirms the same frame that \"Voting\" opened.",
+      "tiedClue": "Iron"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a repeated-word phrase pattern with one missing term",
+    "relatedEntities": [
+      "Iron age",
+      "Golden age",
+      "Middle Ages",
+      "Voting age",
+      "Coming of age"
+    ],
+    "doNotRepeatPatterns": [
+      "a repeated-word phrase pattern with one missing term",
+      "A false start with \"Iron\" and \"Golden\"",
+      "\"Voting\" changes the age pattern from guess to test",
+      "For Pinpoint 862, the age phrase test has to work five times",
+      "Iron Age refers to the period when iron became the primary metal for tools and weapons.",
+      "Golden Age comes from Greek mythology, referring to a mythical era of peace and harmony."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "historical eras",
+      "whyPlausible": "This guess works for Iron, Golden, and Middle, but fails for Voting and Coming of, which are not eras.",
+      "whyRejected": "Once Voting lands, the final answer explains the board more cleanly than historical eras."
+    },
+    {
+      "label": "stages of life",
+      "whyPlausible": "stages of life feels plausible early on, but it falls apart once voting demands a more exact reading.",
+      "whyRejected": "Once Voting lands, the final answer explains the board more cleanly than stages of life."
+    }
+  ],
+  "setValidationSummary": "Middle, Voting, Coming of keep confirming the same shared-word reading, so the board behaves like one exact phrase family instead of a loose early guess.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
