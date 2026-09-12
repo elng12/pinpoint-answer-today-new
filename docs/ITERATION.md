@@ -10,6 +10,13 @@
 
 本地已验证：validate:data 404 条、lint、站点和 Worker typecheck、guardrails（含真实 #862 首段复现与 queued/failed/published 状态回归）、build 429 页、rendered 404 页、Worker dry-run。依赖按锁文件安装，未升级；npm 提示的既有依赖漏洞未顺便修改。尚未以本段声明部署完成，补题和生产验收在完成后追加。
 
+补题本地结果：保留并合入原 #862 候选提交，先运行 validate:data 真实复现 overview.tooShort 11 词失败，再运行现有 auto-repair，405 条通过；只合并原文前六段，无新增正文。随后用 Worker 历史记录恢复 #863/#864/#865 为明确的 fallback_full 页，保留真实日期和线索（#865 是 `Drag and`，不是对手的 `Drag`）。408 条 validate:data 通过，四题共享最终内容检查均无错误；最终 build 433 页、rendered 408 页通过。恢复工具的 .mjs 导入 TypeScript 在 Node 22/26 下报命名导出错误，已改用 createRequire 复用 tsx，并为历史请求增加 20 秒超时。
+
+来源（Worker `/api/pinpoint/today?d=日期`，未取对手答案）：
+- #863，fetchedAt `2026-09-10T12:20:39.817Z`，checksum `sha256:40af6c2fafb13b2a1c65fe2d6485162c0232d734c10711b834aa171fb8cdca83`。
+- #864，fetchedAt `2026-09-11T12:19:27.644Z`，checksum `sha256:8a05f8b54b0f73a5679dbb69bbd8cf88c3f90207f7f7507b5793abc650b12de9`。
+- #865，fetchedAt `2026-09-12T07:25:55.979Z`，checksum `sha256:b31a02f95d49160ee2f3dbaa1ecbe146004d37a17433a41304ce60ca8aa77df5`。
+
 ## 2026-09-09 三页恢复试验补齐
 
 授权：用户要求完成 #858、#859、#860 三页恢复试验。只补试验页解释并完成正常 PR、CI、生产验收和后续观察；不改变全站模板、首页 SEO、Worker、校验门槛、其他题目或索引设置。

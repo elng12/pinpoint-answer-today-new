@@ -79,7 +79,7 @@ async function main() {
   }
 
   console.log(`[auto-repair] validate:data failed with ${reasons.join(", ")}.`);
-  console.log("[auto-repair] Rewriting the latest public puzzle solution narrative, then validating again.");
+  console.log("[auto-repair] Repairing the affected content fields of the latest public puzzle, then validating again.");
   await run(
     "npm",
     [

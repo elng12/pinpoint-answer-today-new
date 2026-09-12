@@ -159,7 +159,7 @@ function main() {
   if (args.json) {
     console.log(JSON.stringify(result, null, 2));
   } else {
-    console.log(`${args.dryRun ? "Would repair" : "Repaired"} ${entry.slug} solutionNarrative.`);
+    console.log(`${args.dryRun ? "Would repair" : "Repaired"} ${entry.slug}: ${repair.changedFields.join(", ")}.`);
     console.log(`Reason: ${args.reason || "manual"}`);
   }
 }

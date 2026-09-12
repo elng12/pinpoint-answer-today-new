@@ -2,8 +2,9 @@ import { spawnSync } from "node:child_process";
 import { existsSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import process from "node:process";
+import { createRequire } from "node:module";
 
-import { buildTemplateFallbackDetailRecord } from "../worker/src/index.ts";
+const { buildTemplateFallbackDetailRecord } = createRequire(import.meta.url)("../worker/src/index.ts");
 
 const WORKER_BASE_URL = "https://pinpoint-worker.2296744453m.workers.dev";
 
@@ -27,7 +28,7 @@ async function main() {
   }
 
   const sourceUrl = `${WORKER_BASE_URL}/api/pinpoint/today?d=${encodeURIComponent(puzzleDate)}`;
-  const result = spawnSync("curl", ["--fail", "--silent", "--show-error", sourceUrl], {
+  const result = spawnSync("curl", ["--fail", "--silent", "--show-error", "--max-time", "20", sourceUrl], {
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
   });

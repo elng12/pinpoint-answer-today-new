@@ -257,6 +257,7 @@ function recoverCandidate(branch, failedSha) {
   const changedFiles = git(["diff", "--name-only"]).split(/\r?\n/).filter(Boolean);
   const slug = branch.match(/(pinpoint-answer-\d+)$/)[1];
   if (changedFiles.some(file => file !== `data/puzzles/${slug}.json`)) throw new Error("Repair changed data outside the failed puzzle");
+  if (!changedFiles.length && base === trustedHead) throw new Error("No targeted content repair was produced; refusing unchanged CI rerun");
   git(["add", "--", `data/puzzles/${slug}.json`]);
   git(["commit", "--allow-empty", "-m", `fix: bounded candidate content repair ${slug}`]);
   run("node", ["scripts/check-pinpoint-candidate-branch.mjs", "--base", "origin/main", "--head", "HEAD", "--branch", branch]);

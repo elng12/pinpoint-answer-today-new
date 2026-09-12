@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 863,
+  "slug": "pinpoint-answer-863",
+  "publishDate": "2026-09-10",
+  "isoDate": "2026-09-10",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Ten",
+    "Timing",
+    "Stranger",
+    "Storm",
+    "Example (no way to show better)"
+  ],
+  "answer": "Words that come after “perfect”",
+  "category": "Words that come after “perfect”",
+  "wordHints": {
+    "Ten": "\"perfect Ten\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Timing": "\"perfect Timing\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Stranger": "Once the shared word is in place, \"perfect Stranger\" reads like ordinary language instead of a forced compound.",
+    "Storm": "\"perfect Storm\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Example (no way to show better)": "\"perfect Example\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Ten": "Try reading Ten as part of a familiar phrase in words that come after “perfect” instead of as a standalone word.",
+    "Timing": "Timing works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Stranger": "Look for a natural expression that absorbs Stranger cleanly before locking the board.",
+    "Storm": "Try reading Storm as part of a familiar phrase in words that come after “perfect” instead of as a standalone word.",
+    "Example (no way to show better)": "Example (no way to show better) is the clue that makes the phrase pattern in words that come after “perfect” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. A nearby read was \"Ten and Timing phrase pairing\". Ten, Timing can support more than one phrase read before Example (no way to show better) shows where the repeated word belongs. Example (no way to show better) behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Example (no way to show better) as an outlier clue\". Example (no way to show better) can look like the odd clue if the earlier words are read without a shared phrase slot. Once Example (no way to show better) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"perfect Ten\" and \"perfect Timing\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "perfect Stranger, perfect Storm, perfect Example show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “perfect”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “perfect”\" fits better than \"Ten and Timing phrase pairing\" or \"Example (no way to show better) as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Ten and first tried Ten and Timing phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Example (no way to show better)\" feel exact.",
+    "Once \"Example (no way to show better)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Stranger and Storm as the confirmation round. The strong solve was not just that two clues worked; it was that Ten, Timing, Stranger, Storm, Example (no way to show better) could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come after “perfect”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Ten\" and \"Timing\"",
+      "body": "\"Ten\" and \"Timing\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Example (no way to show better)\" changes the perfect pattern from guess to test",
+      "body": "Once \"Example (no way to show better)\" lands, place the same word before the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 863, the perfect phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Ten\" and \"Timing\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Ten",
+        "examplePhrase": "perfect Ten",
+        "connectionExplained": "\"perfect Ten\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Timing",
+        "examplePhrase": "perfect Timing",
+        "connectionExplained": "\"perfect Timing\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Stranger",
+        "examplePhrase": "perfect Stranger",
+        "connectionExplained": "Once the shared word is in place, \"perfect Stranger\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Storm",
+        "examplePhrase": "perfect Storm",
+        "connectionExplained": "\"perfect Storm\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Example (no way to show better)",
+        "examplePhrase": "perfect Example",
+        "connectionExplained": "\"perfect Example\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Ten\" and \"Timing\" in LinkedIn Pinpoint #863?",
+      "answer": "The answer is \"Words that come after “perfect”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Ten\" and \"Timing\" connect in LinkedIn Pinpoint #863?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Example (no way to show better)\" the key clue in LinkedIn Pinpoint #863?",
+      "answer": "\"Example (no way to show better)\" is the strongest clue because \"perfect Example\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "falseStarts": [
+      "Ten and Timing phrase pairing",
+      "Example (no way to show better) as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Ten, Timing can support more than one phrase read before Example (no way to show better) shows where the repeated word belongs.",
+      "Example (no way to show better) can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Example (no way to show better)",
+    "pivot": "I started with Ten and first tried Ten and Timing phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Example (no way to show better)\" feel exact.\n\nOnce \"Example (no way to show better)\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Stranger and Storm as the confirmation round. The strong solve was not just that two clues worked; it was that Ten, Timing, Stranger, Storm, Example (no way to show better) could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come after “perfect”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Example (no way to show better) as an outlier clue\". Example (no way to show better) can look like the odd clue if the earlier words are read without a shared phrase slot. Once Example (no way to show better) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Example (no way to show better)",
+    "whyDecisive": "Example (no way to show better) is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Example (no way to show better) lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Ten",
+      "surfaceMisread": "Ten and Timing phrase pairing",
+      "resolvedPhraseOrMember": "perfect Ten",
+      "nonObviousWhy": "\"perfect Ten\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "perfect Ten",
+      "phraseExample": "perfect Ten"
+    },
+    {
+      "clue": "Timing",
+      "surfaceMisread": "Ten and Timing phrase pairing",
+      "resolvedPhraseOrMember": "perfect Timing",
+      "nonObviousWhy": "\"perfect Timing\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "perfect Timing",
+      "phraseExample": "perfect Timing"
+    },
+    {
+      "clue": "Stranger",
+      "surfaceMisread": "Ten and Timing phrase pairing",
+      "resolvedPhraseOrMember": "perfect Stranger",
+      "nonObviousWhy": "Once the shared word is in place, \"perfect Stranger\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "perfect Stranger",
+      "phraseExample": "perfect Stranger"
+    },
+    {
+      "clue": "Storm",
+      "surfaceMisread": "Ten and Timing phrase pairing",
+      "resolvedPhraseOrMember": "perfect Storm",
+      "nonObviousWhy": "\"perfect Storm\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "perfect Storm",
+      "phraseExample": "perfect Storm"
+    },
+    {
+      "clue": "Example (no way to show better)",
+      "surfaceMisread": "Ten and Timing phrase pairing",
+      "resolvedPhraseOrMember": "perfect Example",
+      "nonObviousWhy": "\"perfect Example\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "perfect Example",
+      "phraseExample": "perfect Example"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Ten\" and \"Timing\" in LinkedIn Pinpoint #863?",
+      "answer": "The answer is \"Words that come after “perfect”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Ten"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Ten\" and \"Timing\" connect in LinkedIn Pinpoint #863?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Ten"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Example (no way to show better)\" the key clue in LinkedIn Pinpoint #863?",
+      "answer": "\"Example (no way to show better)\" is the strongest clue because \"perfect Example\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Example (no way to show better)"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "perfect Ten",
+      "perfect Timing",
+      "perfect Stranger",
+      "perfect Storm",
+      "perfect Example"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "perfect Ten",
+      "perfect Timing",
+      "perfect Stranger",
+      "perfect Storm"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Ten and Timing phrase pairing",
+      "whyPlausible": "Ten, Timing can support more than one phrase read before Example (no way to show better) shows where the repeated word belongs.",
+      "whyRejected": "Example (no way to show better) behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Example (no way to show better) as an outlier clue",
+      "whyPlausible": "Example (no way to show better) can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Example (no way to show better) locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "perfect Stranger, perfect Storm, perfect Example show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}
