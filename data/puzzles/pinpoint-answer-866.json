@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 866,
+  "slug": "pinpoint-answer-866",
+  "publishDate": "2026-09-13",
+  "isoDate": "2026-09-13",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Factory",
+    "Inside agent",
+    "Introduce subtly, as an idea",
+    "Tree or shrub",
+    "Put seeds in the ground"
+  ],
+  "answer": "Different definitions of “plant”",
+  "category": "Different definitions of “plant”",
+  "wordHints": {
+    "Factory": "\"Category example: Factory\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Inside agent": "\"Category example: Inside agent\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+    "Introduce subtly, as an idea": "\"Category example: Introduce subtly, as an idea\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+    "Tree or shrub": "\"Category example: Tree or shrub\" fits more cleanly once the board is tested under the same answer as the other clues.",
+    "Put seeds in the ground": "\"Put seeds in the ground\" is the clue that makes the shared answer concrete enough to test across the full board."
+  },
+  "spoilerHints": {
+    "Factory": "Factory should be tested as part of different definitions of “plant”, not as a standalone reference.",
+    "Inside agent": "Keep Inside agent in mind, then see whether Put seeds in the ground supports the same answer.",
+    "Introduce subtly, as an idea": "Introduce subtly, as an idea works best after the board narrows toward different definitions of “plant”.",
+    "Tree or shrub": "Tree or shrub should be tested as part of different definitions of “plant”, not as a standalone reference.",
+    "Put seeds in the ground": "Put seeds in the ground is the clue that makes different definitions of “plant” concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "At first, Factory and Inside agent pointed in a few different directions, so the board still felt wider than one exact category. One tempting read was \"a broader umbrella topic\". Factory, Inside agent can point toward several nearby themes before one clue makes the exact category level visible. Put seeds in the ground is the clue that narrows the board into one category with clearer boundaries.",
+    "Another nearby read was \"a one-clue surface theme\". Early clues often tempt you to overfit the board around one obvious surface similarity. The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first.",
+    "Once I read the set through a category board focused on different, examples like \"Category example: Factory\" and \"Category example: Inside agent\" stopped feeling loose and started landing cleanly.",
+    "Introduce subtly, as an idea, Tree or shrub, Put seeds in the ground keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+    "The answer was \"Different definitions of “plant”\". More precisely, the board resolves as one concrete category with members that stay at the same level of specificity as Different definitions of “plant”, which is why \"Different definitions of “plant”\" fits better than \"a broader umbrella topic\" or \"a one-clue surface theme\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started by testing Factory and Inside agent, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.",
+    "The turn came when I let \"Put seeds in the ground\" lead the solve. After that, Introduce subtly, as an idea and Tree or shrub became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.",
+    "For the final pass, I checked Factory, Inside agent, Introduce subtly, as an idea, Tree or shrub, Put seeds in the ground one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.",
+    "The answer was \"Different definitions of “plant”\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Factory\" and \"Inside agent\" can look like they belong to different categories at first",
+      "body": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer."
+    },
+    {
+      "title": "\"Put seeds in the ground\" is what makes the answer feel concrete instead of broad",
+      "body": "A strong Pinpoint answer should explain why every clue belongs, not just why the words feel loosely related."
+    },
+    {
+      "title": "Re-check the early clues once \"Put seeds in the ground\" sharpens the answer",
+      "body": "Once \"Put seeds in the ground\" lands, go back and test the earlier clues under that same answer before locking it in."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on different",
+    "fastStrategy": "When the opening clues feel broad, wait for the clue that turns one fuzzy theme into a testable answer.",
+    "clueTableRows": [
+      {
+        "clue": "Factory",
+        "examplePhrase": "Category example: Factory",
+        "connectionExplained": "\"Category example: Factory\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Inside agent",
+        "examplePhrase": "Category example: Inside agent",
+        "connectionExplained": "\"Category example: Inside agent\" helps confirm the same answer instead of pulling the board back toward a looser guess."
+      },
+      {
+        "clue": "Introduce subtly, as an idea",
+        "examplePhrase": "Category example: Introduce subtly, as an idea",
+        "connectionExplained": "\"Category example: Introduce subtly, as an idea\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible."
+      },
+      {
+        "clue": "Tree or shrub",
+        "examplePhrase": "Category example: Tree or shrub",
+        "connectionExplained": "\"Category example: Tree or shrub\" fits more cleanly once the board is tested under the same answer as the other clues."
+      },
+      {
+        "clue": "Put seeds in the ground",
+        "examplePhrase": "Category example: Put seeds in the ground",
+        "connectionExplained": "\"Put seeds in the ground\" is the clue that makes the shared answer concrete enough to test across the full board."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Factory\" and \"Inside agent\" in LinkedIn Pinpoint #866?",
+      "answer": "The answer is \"Different definitions of “plant”\". That reading is the first one that explains the whole set without forcing any clue."
+    },
+    {
+      "question": "How do \"Factory\" and \"Inside agent\" connect in LinkedIn Pinpoint #866?",
+      "answer": "The connection is a category board focused on different. The clues read more cleanly once they are tested under that same idea instead of as a loose theme."
+    },
+    {
+      "question": "Why is \"Put seeds in the ground\" the key clue in LinkedIn Pinpoint #866?",
+      "answer": "\"Put seeds in the ground\" is the turning point because it makes the answer concrete enough to test across all five clues."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Factory and Inside agent pointed in a few different directions, so the board still felt wider than one exact category.",
+    "falseStarts": [
+      "a broader umbrella topic",
+      "a one-clue surface theme"
+    ],
+    "whyFalseStartPlausible": [
+      "Factory, Inside agent can point toward several nearby themes before one clue makes the exact category level visible.",
+      "Early clues often tempt you to overfit the board around one obvious surface similarity."
+    ],
+    "breakingClue": "Put seeds in the ground",
+    "pivot": "I started by testing Factory and Inside agent, but that only gave me a loose direction. I initially drifted toward a broader umbrella topic, because the first clues could still fit several nearby ideas. I held the guess until one clue gave me a more specific way to read the list.\n\nThe turn came when I let \"Put seeds in the ground\" lead the solve. After that, Introduce subtly, as an idea and Tree or shrub became the real confirmation check, because they had to fit the same idea without changing the rule or stretching the answer.\n\nFor the final pass, I checked Factory, Inside agent, Introduce subtly, as an idea, Tree or shrub, Put seeds in the ground one by one. The answer worked only if the whole list could stay inside one tight reading, not because one early clue happened to match a broad topic.\n\nThe answer was \"Different definitions of “plant”\".",
+    "fullBoardConfirmation": "Once I read the set through a category board focused on different, examples like \"Category example: Factory\" and \"Category example: Inside agent\" stopped feeling loose and started landing cleanly."
+  },
+  "turningPoint": {
+    "clue": "Put seeds in the ground",
+    "whyDecisive": "Put seeds in the ground is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Put seeds in the ground lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Factory",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Factory",
+      "nonObviousWhy": "\"Category example: Factory\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Category example: Factory",
+      "phraseExample": "Category example: Factory"
+    },
+    {
+      "clue": "Inside agent",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Inside agent",
+      "nonObviousWhy": "\"Category example: Inside agent\" helps confirm the same answer instead of pulling the board back toward a looser guess.",
+      "searchableContext": "Category example: Inside agent",
+      "phraseExample": "Category example: Inside agent"
+    },
+    {
+      "clue": "Introduce subtly, as an idea",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Introduce subtly, as an idea",
+      "nonObviousWhy": "\"Category example: Introduce subtly, as an idea\" belongs in the same set as the rest of the board, which is why the answer sharpens once this pattern becomes visible.",
+      "searchableContext": "Category example: Introduce subtly, as an idea",
+      "phraseExample": "Category example: Introduce subtly, as an idea"
+    },
+    {
+      "clue": "Tree or shrub",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Tree or shrub",
+      "nonObviousWhy": "\"Category example: Tree or shrub\" fits more cleanly once the board is tested under the same answer as the other clues.",
+      "searchableContext": "Category example: Tree or shrub",
+      "phraseExample": "Category example: Tree or shrub"
+    },
+    {
+      "clue": "Put seeds in the ground",
+      "surfaceMisread": "a broader umbrella topic",
+      "resolvedPhraseOrMember": "Category example: Put seeds in the ground",
+      "nonObviousWhy": "\"Put seeds in the ground\" is the clue that makes the shared answer concrete enough to test across the full board.",
+      "searchableContext": "Category example: Put seeds in the ground",
+      "phraseExample": "Category example: Put seeds in the ground"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Factory\" and \"Inside agent\" in LinkedIn Pinpoint #866?",
+      "answer": "The answer is \"Different definitions of “plant”\". That reading is the first one that explains the whole set without forcing any clue.",
+      "tiedClue": "Factory"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Factory\" and \"Inside agent\" connect in LinkedIn Pinpoint #866?",
+      "answer": "The connection is a category board focused on different. The clues read more cleanly once they are tested under that same idea instead of as a loose theme.",
+      "tiedClue": "Factory"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Put seeds in the ground\" the key clue in LinkedIn Pinpoint #866?",
+      "answer": "\"Put seeds in the ground\" is the turning point because it makes the answer concrete enough to test across all five clues.",
+      "tiedClue": "Put seeds in the ground"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a category board focused on different",
+    "relatedEntities": [
+      "Category example: Factory",
+      "Category example: Inside agent",
+      "Category example: Introduce subtly, as an idea",
+      "Category example: Tree or shrub",
+      "Category example: Put seeds in the ground"
+    ],
+    "doNotRepeatPatterns": [
+      "a category board focused on different",
+      "Category example: Factory",
+      "Category example: Inside agent",
+      "Category example: Introduce subtly, as an idea",
+      "Category example: Tree or shrub"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a broader umbrella topic",
+      "whyPlausible": "Factory, Inside agent can point toward several nearby themes before one clue makes the exact category level visible.",
+      "whyRejected": "Put seeds in the ground is the clue that narrows the board into one category with clearer boundaries."
+    },
+    {
+      "label": "a one-clue surface theme",
+      "whyPlausible": "Early clues often tempt you to overfit the board around one obvious surface similarity.",
+      "whyRejected": "The final answer works because it keeps every clue at the same level of specificity, not because one clue happens to fit first."
+    }
+  ],
+  "setValidationSummary": "Introduce subtly, as an idea, Tree or shrub, Put seeds in the ground keep the clues at the same category level, which is what makes the board feel like one exact set instead of a broad umbrella theme.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Different definitions of “plant”"
+}
