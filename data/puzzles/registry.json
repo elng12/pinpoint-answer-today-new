@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 866,
+    "slug": "pinpoint-answer-866",
+    "publishDate": "2026-09-13",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Factory",
+      "Inside agent",
+      "Introduce subtly, as an idea",
+      "Tree or shrub",
+      "Put seeds in the ground"
+    ],
+    "mainAnswer": "Different definitions of “plant”",
+    "category": "Different definitions of “plant”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Factory, Inside agent, Introduce subtly, as an idea, Tree or shrub, Put seeds in the ground - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-13T07:02:20.798Z"
+  },
+  {
     "puzzleNumber": 865,
     "slug": "pinpoint-answer-865",
     "publishDate": "2026-09-12",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Rain",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Rain, Tear, Name, Mic, Drag and - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-12T09:27:56.000Z"
+    "updatedAt": "2026-09-13T07:02:20.798Z"
   },
   {
     "puzzleNumber": 864,
