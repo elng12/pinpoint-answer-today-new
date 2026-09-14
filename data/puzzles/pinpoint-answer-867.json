@@ -1,0 +1,233 @@
+{
+  "puzzleNumber": 867,
+  "slug": "pinpoint-answer-867",
+  "publishDate": "2026-09-14",
+  "isoDate": "2026-09-14",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Tweety Bird",
+    "Pac-Man",
+    "SpongeBob SquarePants",
+    "Bart Simpson",
+    "The Minions (rhymes with Bello!)"
+  ],
+  "answer": "Fictional characters that are yellow",
+  "category": "Fictional characters that are yellow",
+  "wordHints": {
+    "Tweety Bird": "Tweety is specifically a canary, and canaries are small yellow songbirds kept as pets.",
+    "Pac-Man": "Pac-Man's original arcade sprite is a simple yellow circle with a wedge cut out for a mouth.",
+    "SpongeBob SquarePants": "SpongeBob is drawn as a rectangular yellow sea sponge, and his species is literally in his name.",
+    "Bart Simpson": "The Simpsons characters are famously colored yellow to stand out while channel-surfing.",
+    "The Minions (rhymes with Bello!)": "The Minions speak Minionese, and their catchphrase 'Bello!' rhymes with 'yellow.'."
+  },
+  "spoilerHints": {
+    "Tweety Bird": "Tweety Bird should be tested as part of fictional characters that are yellow, not as a standalone reference.",
+    "Pac-Man": "Keep Pac-Man in mind, then see whether The Minions (rhymes with Bello!) supports the same answer.",
+    "SpongeBob SquarePants": "SpongeBob SquarePants works best after the board narrows toward fictional characters that are yellow.",
+    "Bart Simpson": "Bart Simpson should be tested as part of fictional characters that are yellow, not as a standalone reference.",
+    "The Minions (rhymes with Bello!)": "The Minions (rhymes with Bello!) is the clue that makes fictional characters that are yellow concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The first four clues look like a straightforward animation category: Tweety, Pac-Man, SpongeBob, and Bart are all famous cartoon figures. That surface read invites 'cartoon characters' or 'animated icons' as the answer, which feels plausible until the last clue. The Minions clue adds a rhyme hint, 'rhymes with Bello!', which does not fit a genre label like animation or mascots. That hint points to a single word that sounds like 'Bello' and quietly changes the filter from medium to color.",
+    "Once color becomes the filter, every earlier clue snaps into place as a yellow character rather than just a cartoon.",
+    "Tweety is a yellow canary, Pac-Man is a yellow circle, SpongeBob is a yellow sponge, and Bart has yellow skin.",
+    "The Minions themselves are yellow henchmen, so the rhyme hint confirms the color without ever printing the answer.",
+    "The puzzle misleads by stacking five recognizable animation names, which makes the broad category feel complete before the last clue.",
+    "The final reading is cleaner because it uses one shared visual trait that applies to all five clues equally.",
+    "That trait is not just 'yellow things' but specifically fictional characters whose canonical design is yellow.",
+    "The rhyme hint is the only clue that breaks the genre read, and it does so by pointing directly at the color word.",
+    "In hindsight, the set is a tight color category disguised as a list of famous cartoons.",
+    "The answer was Fictional characters that are yellow."
+  ],
+  "solutionNarrative": [
+    "Tweety Bird and Pac-Man first pulled me toward cartoon characters, so that was the first path I tested. It held together for a moment, but spongeBob SquarePants never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating spongeBob SquarePants as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue cartoon characters; I was checking whether Tweety Bird and Pac-Man could survive the same tighter read.",
+    "Then I used SpongeBob SquarePants, Bart Simpson, and The Minions (rhymes with Bello!) as the confirmation round. SpongeBob SquarePants, Bart Simpson, and The Minions (rhymes with Bello!) stayed inside the real category, so the answer felt earned instead of guessed. The answer was Fictional characters that are yellow."
+  ],
+  "lessons": [
+    {
+      "title": "\"Tweety Bird\" and \"Pac-Man\" can look like they belong to different categories at first",
+      "body": "\"Tweety Bird\" and \"Pac-Man\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"SpongeBob SquarePants\" anchors a shared category board with one concrete theme",
+      "body": "SpongeBob SquarePants organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"SpongeBob SquarePants\" to re-check \"Tweety Bird\" under a shared category board with one concrete theme",
+      "body": "When a set of famous characters feels too broad, check for a single shared visual trait like color before settling on a genre label."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on fictional",
+    "fastStrategy": "\"Tweety Bird\" and \"Pac-Man\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Tweety Bird",
+        "examplePhrase": "Tweety Bird",
+        "connectionExplained": "Tweety is specifically a canary, and canaries are small yellow songbirds kept as pets."
+      },
+      {
+        "clue": "Pac-Man",
+        "examplePhrase": "Pac-Man",
+        "connectionExplained": "Pac-Man's original arcade sprite is a simple yellow circle with a wedge cut out for a mouth."
+      },
+      {
+        "clue": "SpongeBob SquarePants",
+        "examplePhrase": "SpongeBob SquarePants",
+        "connectionExplained": "SpongeBob is drawn as a rectangular yellow sea sponge, and his species is literally in his name."
+      },
+      {
+        "clue": "Bart Simpson",
+        "examplePhrase": "Bart Simpson",
+        "connectionExplained": "The Simpsons characters are famously colored yellow to stand out while channel-surfing."
+      },
+      {
+        "clue": "The Minions (rhymes with Bello!)",
+        "examplePhrase": "The Minions (rhymes with Bello!)",
+        "connectionExplained": "The Minions speak Minionese, and their catchphrase 'Bello!' rhymes with 'yellow.'."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Tweety Bird\" and \"Pac-Man\" in LinkedIn Pinpoint #867?",
+      "answer": "The answer is \"Fictional characters that are yellow\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Tweety Bird\" and \"Pac-Man\" connect in LinkedIn Pinpoint #867?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. SpongeBob SquarePants is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"SpongeBob SquarePants\" the key clue in LinkedIn Pinpoint #867?",
+      "answer": "SpongeBob SquarePants is the turning clue because \"SpongeBob SquarePants\" makes the shared category frame explicit. It also makes Tweety Bird read cleanly as \"Tweety Bird\". The clues all look like ordinary cartoon characters, so the obvious category is animation. The rhyme hint on the last clue is easy to miss, and without it the color connection stays hidden."
+    },
+    {
+      "question": "How does \"Tweety Bird\" fit the same category as \"SpongeBob SquarePants\" in LinkedIn Pinpoint #867?",
+      "answer": "\"Tweety Bird\" reads as \"Tweety Bird\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Tweety Bird, Pac-Man, and SpongeBob SquarePants do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"cartoon characters\" can feel plausible before one clue makes the answer feel concrete. SpongeBob SquarePants is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "cartoon characters",
+      "characters with catchphrases"
+    ],
+    "whyFalseStartPlausible": [
+      "That label is too broad because it would also include Mickey Mouse, Bugs Bunny, and many non-yellow characters. The rhyme hint narrows it to color.",
+      "characters with catchphrases feels plausible early on, but it falls apart once spongeBob SquarePants demands a more exact reading."
+    ],
+    "breakingClue": "SpongeBob SquarePants",
+    "pivot": "The solve turned when I stopped treating spongeBob SquarePants as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue cartoon characters; I was checking whether Tweety Bird and Pac-Man could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Tweety Bird, Pac-Man, and SpongeBob SquarePants stop feeling disconnected and start looking like they belong together. Once spongeBob SquarePants is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues all look like ordinary cartoon characters, so the obvious category is animation. The rhyme hint on the last clue is easy to miss, and without it the color connection stays hidden."
+  },
+  "turningPoint": {
+    "clue": "SpongeBob SquarePants",
+    "whyDecisive": "The Minions clue with the rhyme hint forces the shift from cartoon characters to a specific color.",
+    "whatChangedAfterIt": "Once SpongeBob SquarePants landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Tweety Bird",
+      "surfaceMisread": "cartoon characters",
+      "resolvedPhraseOrMember": "Tweety Bird",
+      "nonObviousWhy": "Tweety is specifically a canary, and canaries are small yellow songbirds kept as pets.",
+      "searchableContext": "Tweety was introduced in 1942 and designed as a yellow canary to contrast with Sylvester the cat.",
+      "phraseExample": "Tweety was introduced in 1942 and designed as a yellow canary to contrast with Sylvester the cat."
+    },
+    {
+      "clue": "Pac-Man",
+      "surfaceMisread": "cartoon characters",
+      "resolvedPhraseOrMember": "Pac-Man",
+      "nonObviousWhy": "Pac-Man's original arcade sprite is a simple yellow circle with a wedge cut out for a mouth.",
+      "searchableContext": "Pac-Man was created by Toru Iwatani in 1980, and the yellow color was chosen to stand out on black arcade screens.",
+      "phraseExample": "Pac-Man was created by Toru Iwatani in 1980, and the yellow color was chosen to stand out on black arcade screens."
+    },
+    {
+      "clue": "SpongeBob SquarePants",
+      "surfaceMisread": "cartoon characters",
+      "resolvedPhraseOrMember": "SpongeBob SquarePants",
+      "nonObviousWhy": "SpongeBob is drawn as a rectangular yellow sea sponge, and his species is literally in his name.",
+      "searchableContext": "SpongeBob was created by Stephen Hillenburg, a marine biologist, who chose yellow to make him look like a kitchen sponge.",
+      "phraseExample": "SpongeBob was created by Stephen Hillenburg, a marine biologist, who chose yellow to make him look like a kitchen sponge."
+    },
+    {
+      "clue": "Bart Simpson",
+      "surfaceMisread": "cartoon characters",
+      "resolvedPhraseOrMember": "Bart Simpson",
+      "nonObviousWhy": "The Simpsons characters are famously colored yellow to stand out while channel-surfing.",
+      "searchableContext": "Matt Groening chose yellow for The Simpsons so the characters would be instantly recognizable when flipping channels.",
+      "phraseExample": "Matt Groening chose yellow for The Simpsons so the characters would be instantly recognizable when flipping channels."
+    },
+    {
+      "clue": "The Minions (rhymes with Bello!)",
+      "surfaceMisread": "cartoon characters",
+      "resolvedPhraseOrMember": "The Minions (rhymes with Bello!)",
+      "nonObviousWhy": "The Minions speak Minionese, and their catchphrase 'Bello!' rhymes with 'yellow.'.",
+      "searchableContext": "The Minions were designed as yellow pill-shaped creatures, and their language is a mix of Spanish, French, and gibberish.",
+      "phraseExample": "The Minions were designed as yellow pill-shaped creatures, and their language is a mix of Spanish, French, and gibberish."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Tweety Bird\" and \"Pac-Man\" in LinkedIn Pinpoint #867?",
+      "answer": "The answer is \"Fictional characters that are yellow\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Tweety Bird"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Tweety Bird\" and \"Pac-Man\" connect in LinkedIn Pinpoint #867?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. SpongeBob SquarePants is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Tweety Bird"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"SpongeBob SquarePants\" the key clue in LinkedIn Pinpoint #867?",
+      "answer": "SpongeBob SquarePants is the turning clue because \"SpongeBob SquarePants\" makes the shared category frame explicit. It also makes Tweety Bird read cleanly as \"Tweety Bird\". The clues all look like ordinary cartoon characters, so the obvious category is animation. The rhyme hint on the last clue is easy to miss, and without it the color connection stays hidden.",
+      "tiedClue": "SpongeBob SquarePants"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Tweety Bird\" fit the same category as \"SpongeBob SquarePants\" in LinkedIn Pinpoint #867?",
+      "answer": "\"Tweety Bird\" reads as \"Tweety Bird\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Tweety Bird"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Tweety Bird",
+      "Pac-Man",
+      "SpongeBob SquarePants",
+      "Bart Simpson",
+      "The Minions (rhymes with Bello!)"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Tweety Bird\" and \"Pac-Man\" can look like they belong to different categories at first",
+      "\"SpongeBob SquarePants\" anchors a shared category board with one concrete theme",
+      "Use \"SpongeBob SquarePants\" to re-check \"Tweety Bird\" under a shared category board with one concrete theme",
+      "Tweety was introduced in 1942 and designed as a yellow canary to contrast with Sylvester the cat.",
+      "Pac-Man was created by Toru Iwatani in 1980, and the yellow color was chosen to stand out on black arcade screens."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "cartoon characters",
+      "whyPlausible": "That label is too broad because it would also include Mickey Mouse, Bugs Bunny, and many non-yellow characters. The rhyme hint narrows it to color.",
+      "whyRejected": "Once SpongeBob SquarePants lands, the final answer explains the board more cleanly than cartoon characters."
+    },
+    {
+      "label": "characters with catchphrases",
+      "whyPlausible": "characters with catchphrases feels plausible early on, but it falls apart once spongeBob SquarePants demands a more exact reading.",
+      "whyRejected": "Once SpongeBob SquarePants lands, the final answer explains the board more cleanly than characters with catchphrases."
+    }
+  ],
+  "setValidationSummary": "SpongeBob SquarePants, Bart Simpson, The Minions (rhymes with Bello!) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Fictional characters that are yellow"
+}
