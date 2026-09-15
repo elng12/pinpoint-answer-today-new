@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 868,
+  "slug": "pinpoint-answer-868",
+  "publishDate": "2026-09-15",
+  "isoDate": "2026-09-15",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Robusta",
+    "Arabica",
+    "Cold brew",
+    "Instant",
+    "Decaf"
+  ],
+  "answer": "Words that come before “coffee”",
+  "category": "Words that come before “coffee”",
+  "wordHints": {
+    "Robusta": "\"Robusta coffee\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Arabica": "\"Arabica coffee\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Cold brew": "Once the shared word is in place, \"Cold brew coffee\" reads like ordinary language instead of a forced compound.",
+    "Instant": "\"Instant coffee\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Decaf": "\"Decaf coffee\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Robusta": "Try reading Robusta as part of a familiar phrase in words that come before “coffee” instead of as a standalone word.",
+    "Arabica": "Arabica works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Cold brew": "Cold brew is the clue that makes the phrase pattern in words that come before “coffee” concrete enough to test.",
+    "Instant": "Try reading Instant as part of a familiar phrase in words that come before “coffee” instead of as a standalone word.",
+    "Decaf": "Decaf works better once you test a fixed phrase pattern rather than a broad topic."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. A nearby read was \"Robusta and Arabica phrase pairing\". Robusta, Arabica can support more than one phrase read before Cold brew shows where the repeated word belongs. Cold brew behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Cold brew as an outlier clue\". Cold brew can look like the odd clue if the earlier words are read without a shared phrase slot. Once Cold brew locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Robusta coffee\" and \"Arabica coffee\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Cold brew coffee, Instant coffee, Decaf coffee show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “coffee”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “coffee”\" fits better than \"Robusta and Arabica phrase pairing\" or \"Cold brew as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Robusta and first tried Robusta and Arabica phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Cold brew\" feel exact.",
+    "Once \"Cold brew\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Instant and Decaf as the confirmation round. The strong solve was not just that two clues worked; it was that Robusta, Arabica, Cold brew, Instant, Decaf could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “coffee”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Robusta\" and \"Arabica\"",
+      "body": "\"Robusta\" and \"Arabica\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Cold brew\" changes the coffee pattern from guess to test",
+      "body": "Once \"Cold brew\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 868, the coffee phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Robusta\" and \"Arabica\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Robusta",
+        "examplePhrase": "Robusta coffee",
+        "connectionExplained": "\"Robusta coffee\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Arabica",
+        "examplePhrase": "Arabica coffee",
+        "connectionExplained": "\"Arabica coffee\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Cold brew",
+        "examplePhrase": "Cold brew coffee",
+        "connectionExplained": "Once the shared word is in place, \"Cold brew coffee\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Instant",
+        "examplePhrase": "Instant coffee",
+        "connectionExplained": "\"Instant coffee\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Decaf",
+        "examplePhrase": "Decaf coffee",
+        "connectionExplained": "\"Decaf coffee\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Robusta\" and \"Arabica\" in LinkedIn Pinpoint #868?",
+      "answer": "The answer is \"Words that come before “coffee”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Robusta\" and \"Arabica\" connect in LinkedIn Pinpoint #868?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Cold brew\" the key clue in LinkedIn Pinpoint #868?",
+      "answer": "\"Cold brew\" is the strongest clue because \"Cold brew coffee\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Robusta and Arabica phrase pairing",
+      "Cold brew as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Robusta, Arabica can support more than one phrase read before Cold brew shows where the repeated word belongs.",
+      "Cold brew can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Cold brew",
+    "pivot": "I started with Robusta and first tried Robusta and Arabica phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Cold brew\" feel exact.\n\nOnce \"Cold brew\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Instant and Decaf as the confirmation round. The strong solve was not just that two clues worked; it was that Robusta, Arabica, Cold brew, Instant, Decaf could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “coffee”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Cold brew as an outlier clue\". Cold brew can look like the odd clue if the earlier words are read without a shared phrase slot. Once Cold brew locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Cold brew",
+    "whyDecisive": "Cold brew is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Cold brew lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Robusta",
+      "surfaceMisread": "Robusta and Arabica phrase pairing",
+      "resolvedPhraseOrMember": "Robusta coffee",
+      "nonObviousWhy": "\"Robusta coffee\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Robusta coffee",
+      "phraseExample": "Robusta coffee"
+    },
+    {
+      "clue": "Arabica",
+      "surfaceMisread": "Robusta and Arabica phrase pairing",
+      "resolvedPhraseOrMember": "Arabica coffee",
+      "nonObviousWhy": "\"Arabica coffee\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Arabica coffee",
+      "phraseExample": "Arabica coffee"
+    },
+    {
+      "clue": "Cold brew",
+      "surfaceMisread": "Robusta and Arabica phrase pairing",
+      "resolvedPhraseOrMember": "Cold brew coffee",
+      "nonObviousWhy": "Once the shared word is in place, \"Cold brew coffee\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Cold brew coffee",
+      "phraseExample": "Cold brew coffee"
+    },
+    {
+      "clue": "Instant",
+      "surfaceMisread": "Robusta and Arabica phrase pairing",
+      "resolvedPhraseOrMember": "Instant coffee",
+      "nonObviousWhy": "\"Instant coffee\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Instant coffee",
+      "phraseExample": "Instant coffee"
+    },
+    {
+      "clue": "Decaf",
+      "surfaceMisread": "Robusta and Arabica phrase pairing",
+      "resolvedPhraseOrMember": "Decaf coffee",
+      "nonObviousWhy": "\"Decaf coffee\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Decaf coffee",
+      "phraseExample": "Decaf coffee"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Robusta\" and \"Arabica\" in LinkedIn Pinpoint #868?",
+      "answer": "The answer is \"Words that come before “coffee”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Robusta"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Robusta\" and \"Arabica\" connect in LinkedIn Pinpoint #868?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Robusta"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Cold brew\" the key clue in LinkedIn Pinpoint #868?",
+      "answer": "\"Cold brew\" is the strongest clue because \"Cold brew coffee\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Cold brew"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Robusta coffee",
+      "Arabica coffee",
+      "Cold brew coffee",
+      "Instant coffee",
+      "Decaf coffee"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Robusta coffee",
+      "Arabica coffee",
+      "Cold brew coffee",
+      "Instant coffee"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Robusta and Arabica phrase pairing",
+      "whyPlausible": "Robusta, Arabica can support more than one phrase read before Cold brew shows where the repeated word belongs.",
+      "whyRejected": "Cold brew behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Cold brew as an outlier clue",
+      "whyPlausible": "Cold brew can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Cold brew locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Cold brew coffee, Instant coffee, Decaf coffee show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
