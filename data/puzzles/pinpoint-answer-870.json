@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 870,
+  "slug": "pinpoint-answer-870",
+  "publishDate": "2026-09-17",
+  "isoDate": "2026-09-17",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Nuts",
+    "Bananas",
+    "Cold turkey",
+    "Viral",
+    "The extra mile"
+  ],
+  "answer": "Words that come after “go in common sayings”",
+  "category": "Words that come after “go in common sayings”",
+  "wordHints": {
+    "Nuts": "\"go in common sayings Nuts\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Bananas": "\"go in common sayings Bananas\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Cold turkey": "Once the shared word is in place, \"go in common sayings Cold turkey\" reads like ordinary language instead of a forced compound.",
+    "Viral": "\"go in common sayings Viral\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "The extra mile": "\"go in common sayings The extra mile\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Nuts": "Try reading Nuts as part of a familiar phrase in words that come after “go in common sayings” instead of as a standalone word.",
+    "Bananas": "Bananas works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Cold turkey": "Look for a natural expression that absorbs Cold turkey cleanly before locking the board.",
+    "Viral": "Try reading Viral as part of a familiar phrase in words that come after “go in common sayings” instead of as a standalone word.",
+    "The extra mile": "The extra mile is the clue that makes the phrase pattern in words that come after “go in common sayings” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read. A nearby read was \"Nuts and Bananas phrase pairing\". Nuts, Bananas can support more than one phrase read before The extra mile shows where the repeated word belongs. The extra mile behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"The extra mile as an outlier clue\". The extra mile can look like the odd clue if the earlier words are read without a shared phrase slot. Once The extra mile locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"go in common sayings Nuts\" and \"go in common sayings Bananas\" stop feeling guessed and start reading like ordinary language under familiar phrases and everyday terms built with one shared opening word.",
+    "go in common sayings Cold turkey, go in common sayings Viral, go in common sayings The extra mile show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come after “go in common sayings”\". More precisely, the board resolves as one shared opening word placed before each clue, not a loose topic grouping, which is why \"Words that come after “go in common sayings”\" fits better than \"Nuts and Bananas phrase pairing\" or \"The extra mile as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Nuts and first tried Nuts and Bananas phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"The extra mile\" feel exact.",
+    "Once \"The extra mile\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Cold turkey and Viral as the confirmation round. The strong solve was not just that two clues worked; it was that Nuts, Bananas, Cold turkey, Viral, The extra mile could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come after “go in common sayings”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Nuts\" and \"Bananas\"",
+      "body": "\"Nuts\" and \"Bananas\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"The extra mile\" changes the go in common sayings pattern from guess to test",
+      "body": "Once \"The extra mile\" lands, place the same word before the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 870, the go in common sayings phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases and everyday terms built with one shared opening word",
+    "fastStrategy": "\"Nuts\" and \"Bananas\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Nuts",
+        "examplePhrase": "go in common sayings Nuts",
+        "connectionExplained": "\"go in common sayings Nuts\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Bananas",
+        "examplePhrase": "go in common sayings Bananas",
+        "connectionExplained": "\"go in common sayings Bananas\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Cold turkey",
+        "examplePhrase": "go in common sayings Cold turkey",
+        "connectionExplained": "Once the shared word is in place, \"go in common sayings Cold turkey\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Viral",
+        "examplePhrase": "go in common sayings Viral",
+        "connectionExplained": "\"go in common sayings Viral\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "The extra mile",
+        "examplePhrase": "go in common sayings The extra mile",
+        "connectionExplained": "\"go in common sayings The extra mile\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Nuts\" and \"Bananas\" in LinkedIn Pinpoint #870?",
+      "answer": "The answer is \"Words that come after “go in common sayings”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Nuts\" and \"Bananas\" connect in LinkedIn Pinpoint #870?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"The extra mile\" the key clue in LinkedIn Pinpoint #870?",
+      "answer": "\"The extra mile\" is the strongest clue because \"go in common sayings The extra mile\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which first word belongs before every clue without forcing the read.",
+    "falseStarts": [
+      "Nuts and Bananas phrase pairing",
+      "The extra mile as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Nuts, Bananas can support more than one phrase read before The extra mile shows where the repeated word belongs.",
+      "The extra mile can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "The extra mile",
+    "pivot": "I started with Nuts and first tried Nuts and Bananas phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"The extra mile\" feel exact.\n\nOnce \"The extra mile\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit before the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Cold turkey and Viral as the confirmation round. The strong solve was not just that two clues worked; it was that Nuts, Bananas, Cold turkey, Viral, The extra mile could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come after “go in common sayings”\".",
+    "fullBoardConfirmation": "Another easy trap was \"The extra mile as an outlier clue\". The extra mile can look like the odd clue if the earlier words are read without a shared phrase slot. Once The extra mile locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "The extra mile",
+    "whyDecisive": "The extra mile is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once The extra mile lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Nuts",
+      "surfaceMisread": "Nuts and Bananas phrase pairing",
+      "resolvedPhraseOrMember": "go in common sayings Nuts",
+      "nonObviousWhy": "\"go in common sayings Nuts\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "go in common sayings Nuts",
+      "phraseExample": "go in common sayings Nuts"
+    },
+    {
+      "clue": "Bananas",
+      "surfaceMisread": "Nuts and Bananas phrase pairing",
+      "resolvedPhraseOrMember": "go in common sayings Bananas",
+      "nonObviousWhy": "\"go in common sayings Bananas\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "go in common sayings Bananas",
+      "phraseExample": "go in common sayings Bananas"
+    },
+    {
+      "clue": "Cold turkey",
+      "surfaceMisread": "Nuts and Bananas phrase pairing",
+      "resolvedPhraseOrMember": "go in common sayings Cold turkey",
+      "nonObviousWhy": "Once the shared word is in place, \"go in common sayings Cold turkey\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "go in common sayings Cold turkey",
+      "phraseExample": "go in common sayings Cold turkey"
+    },
+    {
+      "clue": "Viral",
+      "surfaceMisread": "Nuts and Bananas phrase pairing",
+      "resolvedPhraseOrMember": "go in common sayings Viral",
+      "nonObviousWhy": "\"go in common sayings Viral\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "go in common sayings Viral",
+      "phraseExample": "go in common sayings Viral"
+    },
+    {
+      "clue": "The extra mile",
+      "surfaceMisread": "Nuts and Bananas phrase pairing",
+      "resolvedPhraseOrMember": "go in common sayings The extra mile",
+      "nonObviousWhy": "\"go in common sayings The extra mile\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "go in common sayings The extra mile",
+      "phraseExample": "go in common sayings The extra mile"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Nuts\" and \"Bananas\" in LinkedIn Pinpoint #870?",
+      "answer": "The answer is \"Words that come after “go in common sayings”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Nuts"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Nuts\" and \"Bananas\" connect in LinkedIn Pinpoint #870?",
+      "answer": "The connection is familiar phrases and everyday terms built with one shared opening word. The same word fits before every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Nuts"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"The extra mile\" the key clue in LinkedIn Pinpoint #870?",
+      "answer": "\"The extra mile\" is the strongest clue because \"go in common sayings The extra mile\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "The extra mile"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases and everyday terms built with one shared opening word",
+    "relatedEntities": [
+      "go in common sayings Nuts",
+      "go in common sayings Bananas",
+      "go in common sayings Cold turkey",
+      "go in common sayings Viral",
+      "go in common sayings The extra mile"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases and everyday terms built with one shared opening word",
+      "go in common sayings Nuts",
+      "go in common sayings Bananas",
+      "go in common sayings Cold turkey",
+      "go in common sayings Viral"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Nuts and Bananas phrase pairing",
+      "whyPlausible": "Nuts, Bananas can support more than one phrase read before The extra mile shows where the repeated word belongs.",
+      "whyRejected": "The extra mile behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "The extra mile as an outlier clue",
+      "whyPlausible": "The extra mile can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once The extra mile locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "go in common sayings Cold turkey, go in common sayings Viral, go in common sayings The extra mile show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared opening word placed before each clue, not a loose topic grouping"
+}
