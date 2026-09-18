@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 871,
+  "slug": "pinpoint-answer-871",
+  "publishDate": "2026-09-18",
+  "isoDate": "2026-09-18",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Sandy Desert",
+    "Salt Lake",
+    "Rift Valley",
+    "Barrier Reef",
+    "Britain: England+Scotland+Wales"
+  ],
+  "answer": "Geographic place names when preceded by “Great”",
+  "category": "Geographic place names when preceded by “Great”",
+  "wordHints": {
+    "Sandy Desert": "The Great Sandy Desert is a real region in Western Australia, so the clue completes a specific place name when Great is added.",
+    "Salt Lake": "The Great Salt Lake in Utah is a well-known body of water, so the clue becomes a famous place name with Great in front.",
+    "Rift Valley": "The Great Rift Valley is a continuous geographic trench in East Africa, so the clue completes a named feature with Great.",
+    "Barrier Reef": "The Great Barrier Reef off Queensland is the world's largest coral reef system, so the clue becomes a famous named reef with Great.",
+    "Britain: England+Scotland+Wales": "Great Britain is the island containing England, Scotland, and Wales, so the clue completes a well-known name with Great."
+  },
+  "spoilerHints": {
+    "Sandy Desert": "Sandy Desert should be tested as part of geographic place names when preceded by “great”, not as a standalone reference.",
+    "Salt Lake": "Keep Salt Lake in mind, then see whether Britain: England+Scotland+Wales supports the same answer.",
+    "Rift Valley": "Rift Valley works best after the board narrows toward geographic place names when preceded by “great”.",
+    "Barrier Reef": "Barrier Reef should be tested as part of geographic place names when preceded by “great”, not as a standalone reference.",
+    "Britain: England+Scotland+Wales": "Britain: England+Scotland+Wales is the clue that makes geographic place names when preceded by “great” concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "Sandy Desert, Salt Lake, Rift Valley, and Barrier Reef all sound like entries from a physical geography quiz. The first four clues share a rugged, outdoorsy texture, so the board seems to be asking for landforms, ecosystems, or travel destinations. The fifth clue breaks that mood. Britain: England+Scotland+Wales is a political and cultural grouping, not a desert or a reef, so it refuses to sit inside the same bucket as the first four.",
+    "That mismatch is the real shape of the puzzle. One clue is doing a different job, and it is the one that tells you the other four were never really about landforms at all.",
+    "The unifying move is a single adjective. Sandy Desert becomes Great Sandy Desert, a real region in Western Australia.",
+    "Salt Lake becomes Great Salt Lake, the shallow body of water in Utah.",
+    "Rift Valley becomes Great Rift Valley, the trench that runs through East Africa. Barrier Reef becomes Great Barrier Reef, the coral system off Queensland.",
+    "Britain: England+Scotland+Wales becomes Great Britain, the island that holds those three countries but not Northern Ireland.",
+    "The final read is cleaner because the Great prefix is doing all the work. No clue needs a second modifier, a synonym, or a stretch.",
+    "Each one simply needs the same word in front.",
+    "The puzzle is not asking for deserts, lakes, valleys, reefs, or countries in general. It is asking for a specific set of place names that share a famous prefix.",
+    "That precision is what makes the Britain clue decisive. It rules out the natural-feature reading and points to a naming pattern instead.",
+    "The answer was Geographic place names when preceded by Great."
+  ],
+  "solutionNarrative": [
+    "Sandy Desert and Salt Lake first pulled me toward natural landmarks, so that was the first path I tested. It held together for a moment, but sandy Desert never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating sandy Desert as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue natural landmarks; I was checking whether Sandy Desert and Salt Lake could survive the same tighter read.",
+    "Then I used Rift Valley, Barrier Reef, and Britain: England+Scotland+Wales as the confirmation round. Rift Valley, Barrier Reef, and Britain: England+Scotland+Wales stayed inside the real category, so the answer felt earned instead of guessed. The answer was Geographic place names when preceded by Great."
+  ],
+  "lessons": [
+    {
+      "title": "\"Sandy Desert\" and \"Salt Lake\" can look like they belong to different categories at first",
+      "body": "\"Sandy Desert\" and \"Salt Lake\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Sandy Desert\" anchors a shared category board with one concrete theme",
+      "body": "Sandy Desert organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Sandy Desert\" to re-check \"Sandy Desert\" under a shared category board with one concrete theme",
+      "body": "When four clues point to one obvious category, check the odd fifth clue for the real connector."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on geographic",
+    "fastStrategy": "\"Sandy Desert\" and \"Salt Lake\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Sandy Desert",
+        "examplePhrase": "Great Sandy Desert",
+        "connectionExplained": "The Great Sandy Desert is a real region in Western Australia, so the clue completes a specific place name when Great is added."
+      },
+      {
+        "clue": "Salt Lake",
+        "examplePhrase": "Great Salt Lake",
+        "connectionExplained": "The Great Salt Lake in Utah is a well-known body of water, so the clue becomes a famous place name with Great in front."
+      },
+      {
+        "clue": "Rift Valley",
+        "examplePhrase": "Great Rift Valley",
+        "connectionExplained": "The Great Rift Valley is a continuous geographic trench in East Africa, so the clue completes a named feature with Great."
+      },
+      {
+        "clue": "Barrier Reef",
+        "examplePhrase": "Great Barrier Reef",
+        "connectionExplained": "The Great Barrier Reef off Queensland is the world's largest coral reef system, so the clue becomes a famous named reef with Great."
+      },
+      {
+        "clue": "Britain: England+Scotland+Wales",
+        "examplePhrase": "Great Britain",
+        "connectionExplained": "Great Britain is the island containing England, Scotland, and Wales, so the clue completes a well-known name with Great."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Sandy Desert\" and \"Salt Lake\" in LinkedIn Pinpoint #871?",
+      "answer": "The answer is \"Geographic place names when preceded by Great\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Sandy Desert\" and \"Salt Lake\" connect in LinkedIn Pinpoint #871?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Sandy Desert is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Sandy Desert\" the key clue in LinkedIn Pinpoint #871?",
+      "answer": "Sandy Desert is the turning clue because \"Great Sandy Desert\" makes the shared category frame explicit. It also makes Salt Lake read cleanly as \"Great Salt Lake\". The first four clues all look like natural features, so the mind locks onto landforms or travel geography. The Britain clue is the only one that does not fit that surface read, so it feels like an outlier until the Great prefix becomes visible."
+    },
+    {
+      "question": "How does \"Salt Lake\" fit the same category as \"Sandy Desert\" in LinkedIn Pinpoint #871?",
+      "answer": "\"Salt Lake\" reads as \"Great Salt Lake\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Sandy Desert, Salt Lake, and Rift Valley do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"natural landmarks\" can feel plausible before one clue makes the answer feel concrete. Sandy Desert is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "natural landmarks",
+      "famous travel destinations"
+    ],
+    "whyFalseStartPlausible": [
+      "A sandy desert, salt lake, rift valley, and barrier reef are all landforms, but Britain: England+Scotland+Wales is a political grouping, so the set cannot be natural landmarks.",
+      "famous travel destinations feels plausible early on, but it falls apart once sandy Desert demands a more exact reading."
+    ],
+    "breakingClue": "Sandy Desert",
+    "pivot": "The solve turned when I stopped treating sandy Desert as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue natural landmarks; I was checking whether Sandy Desert and Salt Lake could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Sandy Desert, Salt Lake, and Rift Valley stop feeling disconnected and start looking like they belong together. Once sandy Desert is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The first four clues all look like natural features, so the mind locks onto landforms or travel geography. The Britain clue is the only one that does not fit that surface read, so it feels like an outlier until the Great prefix becomes visible."
+  },
+  "turningPoint": {
+    "clue": "Sandy Desert",
+    "whyDecisive": "Sandy Desert is the clue that finally made the answer feel concrete.",
+    "whatChangedAfterIt": "Once Sandy Desert landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Sandy Desert",
+      "surfaceMisread": "natural landmarks",
+      "resolvedPhraseOrMember": "Great Sandy Desert",
+      "nonObviousWhy": "The Great Sandy Desert is a real region in Western Australia, so the clue completes a specific place name when Great is added.",
+      "searchableContext": "From Old English sandig and Latin desertum, meaning abandoned or waste.",
+      "phraseExample": "From Old English sandig and Latin desertum, meaning abandoned or waste."
+    },
+    {
+      "clue": "Salt Lake",
+      "surfaceMisread": "natural landmarks",
+      "resolvedPhraseOrMember": "Great Salt Lake",
+      "nonObviousWhy": "The Great Salt Lake in Utah is a well-known body of water, so the clue becomes a famous place name with Great in front.",
+      "searchableContext": "From Old English sealt and Latin lacus, meaning basin or lake.",
+      "phraseExample": "From Old English sealt and Latin lacus, meaning basin or lake."
+    },
+    {
+      "clue": "Rift Valley",
+      "surfaceMisread": "natural landmarks",
+      "resolvedPhraseOrMember": "Great Rift Valley",
+      "nonObviousWhy": "The Great Rift Valley is a continuous geographic trench in East Africa, so the clue completes a named feature with Great.",
+      "searchableContext": "From Old English rift, meaning split or cleft, and Latin vallis, meaning valley.",
+      "phraseExample": "From Old English rift, meaning split or cleft, and Latin vallis, meaning valley."
+    },
+    {
+      "clue": "Barrier Reef",
+      "surfaceMisread": "natural landmarks",
+      "resolvedPhraseOrMember": "Great Barrier Reef",
+      "nonObviousWhy": "The Great Barrier Reef off Queensland is the world's largest coral reef system, so the clue becomes a famous named reef with Great.",
+      "searchableContext": "From Old French barriere, meaning obstacle, and Old Norse rif, meaning ridge.",
+      "phraseExample": "From Old French barriere, meaning obstacle, and Old Norse rif, meaning ridge."
+    },
+    {
+      "clue": "Britain: England+Scotland+Wales",
+      "surfaceMisread": "natural landmarks",
+      "resolvedPhraseOrMember": "Great Britain",
+      "nonObviousWhy": "Great Britain is the island containing England, Scotland, and Wales, so the clue completes a well-known name with Great.",
+      "searchableContext": "From Latin Britannia, the Roman name for the island.",
+      "phraseExample": "From Latin Britannia, the Roman name for the island."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Sandy Desert\" and \"Salt Lake\" in LinkedIn Pinpoint #871?",
+      "answer": "The answer is \"Geographic place names when preceded by Great\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Sandy Desert"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Sandy Desert\" and \"Salt Lake\" connect in LinkedIn Pinpoint #871?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Sandy Desert is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Sandy Desert"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Sandy Desert\" the key clue in LinkedIn Pinpoint #871?",
+      "answer": "Sandy Desert is the turning clue because \"Great Sandy Desert\" makes the shared category frame explicit. It also makes Salt Lake read cleanly as \"Great Salt Lake\". The first four clues all look like natural features, so the mind locks onto landforms or travel geography. The Britain clue is the only one that does not fit that surface read, so it feels like an outlier until the Great prefix becomes visible.",
+      "tiedClue": "Sandy Desert"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Salt Lake\" fit the same category as \"Sandy Desert\" in LinkedIn Pinpoint #871?",
+      "answer": "\"Salt Lake\" reads as \"Great Salt Lake\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Salt Lake"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Great Sandy Desert",
+      "Great Salt Lake",
+      "Great Rift Valley",
+      "Great Barrier Reef",
+      "Great Britain"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Sandy Desert\" and \"Salt Lake\" can look like they belong to different categories at first",
+      "\"Sandy Desert\" anchors a shared category board with one concrete theme",
+      "Use \"Sandy Desert\" to re-check \"Sandy Desert\" under a shared category board with one concrete theme",
+      "From Old English sandig and Latin desertum, meaning abandoned or waste.",
+      "From Old English sealt and Latin lacus, meaning basin or lake."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "natural landmarks",
+      "whyPlausible": "A sandy desert, salt lake, rift valley, and barrier reef are all landforms, but Britain: England+Scotland+Wales is a political grouping, so the set cannot be natural landmarks.",
+      "whyRejected": "Once Sandy Desert lands, the final answer explains the board more cleanly than natural landmarks."
+    },
+    {
+      "label": "famous travel destinations",
+      "whyPlausible": "famous travel destinations feels plausible early on, but it falls apart once sandy Desert demands a more exact reading.",
+      "whyRejected": "Once Sandy Desert lands, the final answer explains the board more cleanly than famous travel destinations."
+    }
+  ],
+  "setValidationSummary": "Rift Valley, Barrier Reef, Britain: England+Scotland+Wales keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Geographic place names when preceded by Great"
+}

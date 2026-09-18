@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 871,
+    "slug": "pinpoint-answer-871",
+    "publishDate": "2026-09-18",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Sandy Desert",
+      "Salt Lake",
+      "Rift Valley",
+      "Barrier Reef",
+      "Britain: England+Scotland+Wales"
+    ],
+    "mainAnswer": "Geographic place names when preceded by “Great”",
+    "category": "Geographic place names when preceded by “Great”",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Sandy Desert, Salt Lake, Rift Valley do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-09-18T07:02:23.759Z"
+  },
+  {
     "puzzleNumber": 870,
     "slug": "pinpoint-answer-870",
     "publishDate": "2026-09-17",
-    "status": "live",
+    "status": "archived",
     "detailState": "fallback_full",
     "clues": [
       "Nuts",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "Pinpoint Answer Today asks: what links Nuts, Bananas, Cold turkey, Viral, The extra mile - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
-    "updatedAt": "2026-09-17T07:04:33.436Z"
+    "updatedAt": "2026-09-18T07:02:23.759Z"
   },
   {
     "puzzleNumber": 869,
