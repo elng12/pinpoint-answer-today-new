@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 872,
+  "slug": "pinpoint-answer-872",
+  "publishDate": "2026-09-19",
+  "isoDate": "2026-09-19",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "phrase",
+  "difficultyBand": "hard",
+  "clues": [
+    "Power",
+    "Open",
+    "Reliable",
+    "Anonymous",
+    "Go straight to the"
+  ],
+  "answer": "Words that come before “source”",
+  "category": "Words that come before “source”",
+  "wordHints": {
+    "Power": "\"Power source\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Open": "\"Open source\" is common enough to confirm the same missing word without stretching the phrasing.",
+    "Reliable": "Once the shared word is in place, \"Reliable source\" reads like ordinary language instead of a forced compound.",
+    "Anonymous": "\"Anonymous source\" is a familiar phrase, so it helps reveal the shared word quickly.",
+    "Go straight to the": "\"Go straight to the source\" is common enough to confirm the same missing word without stretching the phrasing."
+  },
+  "spoilerHints": {
+    "Power": "Try reading Power as part of a familiar phrase in words that come before “source” instead of as a standalone word.",
+    "Open": "Open works better once you test a fixed phrase pattern rather than a broad topic.",
+    "Reliable": "Look for a natural expression that absorbs Reliable cleanly before locking the board.",
+    "Anonymous": "Try reading Anonymous as part of a familiar phrase in words that come before “source” instead of as a standalone word.",
+    "Go straight to the": "Go straight to the is the clue that makes the phrase pattern in words that come before “source” concrete enough to test."
+  },
+  "articleBlocks": [
+    "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read. A nearby read was \"Power and Open phrase pairing\". Power, Open can support more than one phrase read before Go straight to the shows where the repeated word belongs. Go straight to the behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess.",
+    "Another easy trap was \"Go straight to the as an outlier clue\". Go straight to the can look like the odd clue if the earlier words are read without a shared phrase slot. Once Go straight to the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions.",
+    "Once that phrase appears, examples like \"Power source\" and \"Open source\" stop feeling guessed and start reading like ordinary language under familiar phrases completed by one shared ending word.",
+    "Reliable source, Anonymous source, Go straight to the source show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+    "The answer was \"Words that come before “source”\". More precisely, the board resolves as one shared ending word placed after each clue, not a loose topic grouping, which is why \"Words that come before “source”\" fits better than \"Power and Open phrase pairing\" or \"Go straight to the as an outlier clue\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I started with Power and first tried Power and Open phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Go straight to the\" feel exact.",
+    "Once \"Go straight to the\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.",
+    "Then I used Reliable and Anonymous as the confirmation round. The strong solve was not just that two clues worked; it was that Power, Open, Reliable, Anonymous, Go straight to the could all use the same slot and still sound like ordinary language.",
+    "The answer was \"Words that come before “source”\"."
+  ],
+  "lessons": [
+    {
+      "title": "A false start with \"Power\" and \"Open\"",
+      "body": "\"Power\" and \"Open\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing."
+    },
+    {
+      "title": "\"Go straight to the\" changes the source pattern from guess to test",
+      "body": "Once \"Go straight to the\" lands, place the same word after the other clues and make sure they read naturally right away."
+    },
+    {
+      "title": "For Pinpoint 872, the source phrase test has to work five times",
+      "body": "A good answer should create phrases people actually say, not just words that seem related from a distance."
+    }
+  ],
+  "display": {
+    "connectorSummary": "familiar phrases completed by one shared ending word",
+    "fastStrategy": "\"Power\" and \"Open\" each work in multiple phrase frames, so it is better to wait for a clue that forces one exact missing word before committing.",
+    "clueTableRows": [
+      {
+        "clue": "Power",
+        "examplePhrase": "Power source",
+        "connectionExplained": "\"Power source\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Open",
+        "examplePhrase": "Open source",
+        "connectionExplained": "\"Open source\" is common enough to confirm the same missing word without stretching the phrasing."
+      },
+      {
+        "clue": "Reliable",
+        "examplePhrase": "Reliable source",
+        "connectionExplained": "Once the shared word is in place, \"Reliable source\" reads like ordinary language instead of a forced compound."
+      },
+      {
+        "clue": "Anonymous",
+        "examplePhrase": "Anonymous source",
+        "connectionExplained": "\"Anonymous source\" is a familiar phrase, so it helps reveal the shared word quickly."
+      },
+      {
+        "clue": "Go straight to the",
+        "examplePhrase": "Go straight to the source",
+        "connectionExplained": "\"Go straight to the source\" is common enough to confirm the same missing word without stretching the phrasing."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared word links \"Power\" and \"Open\" in LinkedIn Pinpoint #872?",
+      "answer": "The answer is \"Words that come before “source”\". That reading is the first one that turns all five clues into familiar phrases or common terms."
+    },
+    {
+      "question": "How do \"Power\" and \"Open\" connect in LinkedIn Pinpoint #872?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms."
+    },
+    {
+      "question": "Why is \"Go straight to the\" the key clue in LinkedIn Pinpoint #872?",
+      "answer": "\"Go straight to the\" is the strongest clue because \"Go straight to the source\" points to one exact phrase much faster than the earlier clues do."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "The first clues make it clear this is a shared-word phrase puzzle, but not which ending word belongs after every clue without forcing the read.",
+    "falseStarts": [
+      "Power and Open phrase pairing",
+      "Go straight to the as an outlier clue"
+    ],
+    "whyFalseStartPlausible": [
+      "Power, Open can support more than one phrase read before Go straight to the shows where the repeated word belongs.",
+      "Go straight to the can look like the odd clue if the earlier words are read without a shared phrase slot."
+    ],
+    "breakingClue": "Go straight to the",
+    "pivot": "I started with Power and first tried Power and Open phrase pairing. That was plausible for a moment, because the opening clues were broad enough to support a few loose phrase reads. But none of those guesses made \"Go straight to the\" feel exact.\n\nOnce \"Go straight to the\" clicked, I stopped treating it like an outlier and tested the phrase position directly. The missing word could fit after the earlier clues without forcing them, which changed the solve from a topic guess into a repeatable word-slot check.\n\nThen I used Reliable and Anonymous as the confirmation round. The strong solve was not just that two clues worked; it was that Power, Open, Reliable, Anonymous, Go straight to the could all use the same slot and still sound like ordinary language.\n\nThe answer was \"Words that come before “source”\".",
+    "fullBoardConfirmation": "Another easy trap was \"Go straight to the as an outlier clue\". Go straight to the can look like the odd clue if the earlier words are read without a shared phrase slot. Once Go straight to the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+  },
+  "turningPoint": {
+    "clue": "Go straight to the",
+    "whyDecisive": "Go straight to the is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Go straight to the lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Power",
+      "surfaceMisread": "Power and Open phrase pairing",
+      "resolvedPhraseOrMember": "Power source",
+      "nonObviousWhy": "\"Power source\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Power source",
+      "phraseExample": "Power source"
+    },
+    {
+      "clue": "Open",
+      "surfaceMisread": "Power and Open phrase pairing",
+      "resolvedPhraseOrMember": "Open source",
+      "nonObviousWhy": "\"Open source\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Open source",
+      "phraseExample": "Open source"
+    },
+    {
+      "clue": "Reliable",
+      "surfaceMisread": "Power and Open phrase pairing",
+      "resolvedPhraseOrMember": "Reliable source",
+      "nonObviousWhy": "Once the shared word is in place, \"Reliable source\" reads like ordinary language instead of a forced compound.",
+      "searchableContext": "Reliable source",
+      "phraseExample": "Reliable source"
+    },
+    {
+      "clue": "Anonymous",
+      "surfaceMisread": "Power and Open phrase pairing",
+      "resolvedPhraseOrMember": "Anonymous source",
+      "nonObviousWhy": "\"Anonymous source\" is a familiar phrase, so it helps reveal the shared word quickly.",
+      "searchableContext": "Anonymous source",
+      "phraseExample": "Anonymous source"
+    },
+    {
+      "clue": "Go straight to the",
+      "surfaceMisread": "Power and Open phrase pairing",
+      "resolvedPhraseOrMember": "Go straight to the source",
+      "nonObviousWhy": "\"Go straight to the source\" is common enough to confirm the same missing word without stretching the phrasing.",
+      "searchableContext": "Go straight to the source",
+      "phraseExample": "Go straight to the source"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared word links \"Power\" and \"Open\" in LinkedIn Pinpoint #872?",
+      "answer": "The answer is \"Words that come before “source”\". That reading is the first one that turns all five clues into familiar phrases or common terms.",
+      "tiedClue": "Power"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Power\" and \"Open\" connect in LinkedIn Pinpoint #872?",
+      "answer": "The connection is familiar phrases completed by one shared ending word. The same word fits after every clue to create familiar phrases or everyday terms.",
+      "tiedClue": "Power"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Go straight to the\" the key clue in LinkedIn Pinpoint #872?",
+      "answer": "\"Go straight to the\" is the strongest clue because \"Go straight to the source\" points to one exact phrase much faster than the earlier clues do.",
+      "tiedClue": "Go straight to the"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "familiar phrases completed by one shared ending word",
+    "relatedEntities": [
+      "Power source",
+      "Open source",
+      "Reliable source",
+      "Anonymous source",
+      "Go straight to the source"
+    ],
+    "doNotRepeatPatterns": [
+      "familiar phrases completed by one shared ending word",
+      "Power source",
+      "Open source",
+      "Reliable source",
+      "Anonymous source"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "Power and Open phrase pairing",
+      "whyPlausible": "Power, Open can support more than one phrase read before Go straight to the shows where the repeated word belongs.",
+      "whyRejected": "Go straight to the behaves like a proof clue for one fixed phrase pattern, not just an early two-clue guess."
+    },
+    {
+      "label": "Go straight to the as an outlier clue",
+      "whyPlausible": "Go straight to the can look like the odd clue if the earlier words are read without a shared phrase slot.",
+      "whyRejected": "Once Go straight to the locks the phrase position, the full board resolves under one repeated word instead of five separate definitions."
+    }
+  ],
+  "setValidationSummary": "Reliable source, Anonymous source, Go straight to the source show that the same shared word fits in the same slot across the whole board, so the answer behaves like one complete phrase family instead of a few lucky matches.",
+  "categoryPrecisionNote": "one shared ending word placed after each clue, not a loose topic grouping"
+}
