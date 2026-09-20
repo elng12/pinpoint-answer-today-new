@@ -1,0 +1,229 @@
+{
+  "puzzleNumber": 873,
+  "slug": "pinpoint-answer-873",
+  "publishDate": "2026-09-20",
+  "isoDate": "2026-09-20",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Cargo ships",
+    "Wrestling matches",
+    "Climbing walls",
+    "Bank accounts (after big deposits)",
+    "Phone calls (“please wait!”)"
+  ],
+  "answer": "Things with holds",
+  "category": "Things with holds",
+  "wordHints": {
+    "Cargo ships": "A cargo ship has a large internal space called a cargo hold where goods are stored, so the ship literally has a hold.",
+    "Wrestling matches": "A wrestling match involves applying holds, like a headlock or armbar, to control the opponent, so the match features holds.",
+    "Climbing walls": "A climbing wall is covered with bolted-on grips called holds, which climbers grab to ascend.",
+    "Bank accounts (after big deposits)": "After a big deposit, a bank may place a hold on the funds, preventing withdrawal until the deposit clears.",
+    "Phone calls (“please wait!”)": "A phone call can place you on hold, often signaled by a 'please wait' message and hold music, meaning you are waiting on the line."
+  },
+  "spoilerHints": {
+    "Cargo ships": "Cargo ships should be tested as part of things with holds, not as a standalone reference.",
+    "Wrestling matches": "Keep Wrestling matches in mind, then see whether Bank accounts (after big deposits) supports the same answer.",
+    "Climbing walls": "Climbing walls works best after the board narrows toward things with holds.",
+    "Bank accounts (after big deposits)": "Bank accounts (after big deposits) is the clue that makes things with holds concrete enough to test across the full board.",
+    "Phone calls (“please wait!”)": "Keep Phone calls (“please wait!”) in mind, then see whether Bank accounts (after big deposits) supports the same answer."
+  },
+  "articleBlocks": [
+    "The first clues suggest a theme of waiting or being stuck: cargo ships idle at port, wrestling matches pause between rounds, and climbing walls require patience and grip strength. Bank accounts after big deposits and phone calls with 'please wait' messages reinforce that direction, making 'delays' or 'queues' feel plausible. But climbing walls don't delay anything, and a bank hold is a restriction, not a delay, so the waiting theme starts to crack.",
+    "The real shift comes from noticing that each clue can be followed by the same word: hold.",
+    "A cargo ship has a cargo hold, a wrestling match has wrestling holds, a climbing wall has climbing holds, a bank account can have a hold, and a phone call can put you on hold.",
+    "The puzzle invites you to think about time and waiting, but the final reading is about objects and actions that are called holds.",
+    "That's why 'Things with holds' is cleaner than 'Things that get delayed' – it covers all five clues without forcing any of them.",
+    "The surface directions are strong enough to mislead, but the exact answer resolves every clue with a single concrete noun."
+  ],
+  "solutionNarrative": [
+    "Cargo ships and Wrestling matches first pulled me toward science terms, so that was the first path I tested. It held together for a moment, but bank accounts (after big deposits) never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating bank accounts (after big deposits) as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue science terms; I was checking whether Cargo ships and Wrestling matches could survive the same tighter read.",
+    "Then I used Climbing walls, Bank accounts (after big deposits), and Phone calls (please wait!) as the confirmation round. Climbing walls, Bank accounts (after big deposits), and Phone calls (please wait!) stayed inside the real category, so the answer felt earned instead of guessed. The answer was Things with holds."
+  ],
+  "lessons": [
+    {
+      "title": "\"Cargo ships\" and \"Wrestling matches\" can look like they belong to different categories at first",
+      "body": "\"Cargo ships\" and \"Wrestling matches\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Bank accounts (after big deposits)\" anchors five everyday things that each involve a hold",
+      "body": "Bank accounts (after big deposits) organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Bank accounts (after big deposits)\" to re-check \"Cargo ships\" under five everyday things that each involve a hold",
+      "body": "When a set of clues seems to share a vague theme like waiting, look for a single word that can follow each clue as a concrete noun or phrase."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Cargo ships\" and \"Wrestling matches\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Cargo ships",
+        "examplePhrase": "Cargo hold",
+        "connectionExplained": "A cargo ship has a large internal space called a cargo hold where goods are stored, so the ship literally has a hold."
+      },
+      {
+        "clue": "Wrestling matches",
+        "examplePhrase": "Wrestling hold",
+        "connectionExplained": "A wrestling match involves applying holds, like a headlock or armbar, to control the opponent, so the match features holds."
+      },
+      {
+        "clue": "Climbing walls",
+        "examplePhrase": "Climbing hold",
+        "connectionExplained": "A climbing wall is covered with bolted-on grips called holds, which climbers grab to ascend."
+      },
+      {
+        "clue": "Bank accounts (after big deposits)",
+        "examplePhrase": "Bank hold",
+        "connectionExplained": "After a big deposit, a bank may place a hold on the funds, preventing withdrawal until the deposit clears."
+      },
+      {
+        "clue": "Phone calls (“please wait!”)",
+        "examplePhrase": "Phone hold",
+        "connectionExplained": "A phone call can place you on hold, often signaled by a 'please wait' message and hold music, meaning you are waiting on the line."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Cargo ships\" and \"Wrestling matches\" in LinkedIn Pinpoint #873?",
+      "answer": "The answer is \"Things with holds\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Cargo ships\" and \"Wrestling matches\" connect in LinkedIn Pinpoint #873?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Bank accounts (after big deposits) is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Bank accounts (after big deposits)\" the key clue in LinkedIn Pinpoint #873?",
+      "answer": "Bank accounts (after big deposits) is the turning clue because \"Bank hold\" makes the shared category frame explicit. It also makes Cargo ships read cleanly as \"Cargo hold\". The board feels tricky because the first three clues suggest physical waiting or delay, and the last two add financial and telephone contexts. Only when you notice that each clue can be paired with 'hold' does the set narrow to one clean answer."
+    },
+    {
+      "question": "How does \"Cargo ships\" fit the same category as \"Bank accounts (after big deposits)\" in LinkedIn Pinpoint #873?",
+      "answer": "\"Cargo ships\" reads as \"Cargo hold\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Cargo ships, Wrestling matches, and Climbing walls do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"science terms\" can feel plausible before one clue makes the answer feel concrete. Bank accounts (after big deposits) is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "science terms",
+      "waiting activities"
+    ],
+    "whyFalseStartPlausible": [
+      "Climbing walls don't delay anything, and bank holds are restrictions, not delays. The set breaks apart because 'delay' doesn't cover all five clues.",
+      "waiting activities feels plausible early on, but it falls apart once bank accounts (after big deposits) demands a more exact reading."
+    ],
+    "breakingClue": "Bank accounts (after big deposits)",
+    "pivot": "The solve turned when I stopped treating bank accounts (after big deposits) as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue science terms; I was checking whether Cargo ships and Wrestling matches could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Cargo ships, Wrestling matches, and Climbing walls stop feeling disconnected and start looking like they belong together. Once bank accounts (after big deposits) is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board feels tricky because the first three clues suggest physical waiting or delay, and the last two add financial and telephone contexts. Only when you notice that each clue can be paired with 'hold' does the set narrow to one clean answer."
+  },
+  "turningPoint": {
+    "clue": "Bank accounts (after big deposits)",
+    "whyDecisive": "Bank accounts (after big deposits) introduces a financial hold, which forces a re-read of the other clues as physical or structural holds.",
+    "whatChangedAfterIt": "Once Bank accounts (after big deposits) landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Cargo ships",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Cargo hold",
+      "nonObviousWhy": "A cargo ship has a large internal space called a cargo hold where goods are stored, so the ship literally has a hold.",
+      "searchableContext": "From Old English 'healdan' meaning to keep or contain, later applied to the lower deck of a ship.",
+      "phraseExample": "From Old English 'healdan' meaning to keep or contain, later applied to the lower deck of a ship."
+    },
+    {
+      "clue": "Wrestling matches",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Wrestling hold",
+      "nonObviousWhy": "A wrestling match involves applying holds, like a headlock or armbar, to control the opponent, so the match features holds.",
+      "searchableContext": "From Old English 'healdan' meaning to grasp or keep, used in wrestling since the 19th century.",
+      "phraseExample": "From Old English 'healdan' meaning to grasp or keep, used in wrestling since the 19th century."
+    },
+    {
+      "clue": "Climbing walls",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Climbing hold",
+      "nonObviousWhy": "A climbing wall is covered with bolted-on grips called holds, which climbers grab to ascend.",
+      "searchableContext": "From Old English 'healdan' meaning to grasp, adapted in the 20th century for climbing grips.",
+      "phraseExample": "From Old English 'healdan' meaning to grasp, adapted in the 20th century for climbing grips."
+    },
+    {
+      "clue": "Bank accounts (after big deposits)",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Bank hold",
+      "nonObviousWhy": "After a big deposit, a bank may place a hold on the funds, preventing withdrawal until the deposit clears.",
+      "searchableContext": "From Old English 'healdan' meaning to keep back, used in banking since the 18th century.",
+      "phraseExample": "From Old English 'healdan' meaning to keep back, used in banking since the 18th century."
+    },
+    {
+      "clue": "Phone calls (“please wait!”)",
+      "surfaceMisread": "an early broad guess",
+      "resolvedPhraseOrMember": "Phone hold",
+      "nonObviousWhy": "A phone call can place you on hold, often signaled by a 'please wait' message and hold music, meaning you are waiting on the line.",
+      "searchableContext": "From Old English 'healdan' meaning to keep or detain, applied to telephone waiting since the mid-20th century.",
+      "phraseExample": "From Old English 'healdan' meaning to keep or detain, applied to telephone waiting since the mid-20th century."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Cargo ships\" and \"Wrestling matches\" in LinkedIn Pinpoint #873?",
+      "answer": "The answer is \"Things with holds\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Cargo ships"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Cargo ships\" and \"Wrestling matches\" connect in LinkedIn Pinpoint #873?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Bank accounts (after big deposits) is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Cargo ships"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Bank accounts (after big deposits)\" the key clue in LinkedIn Pinpoint #873?",
+      "answer": "Bank accounts (after big deposits) is the turning clue because \"Bank hold\" makes the shared category frame explicit. It also makes Cargo ships read cleanly as \"Cargo hold\". The board feels tricky because the first three clues suggest physical waiting or delay, and the last two add financial and telephone contexts. Only when you notice that each clue can be paired with 'hold' does the set narrow to one clean answer.",
+      "tiedClue": "Bank accounts (after big deposits)"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Cargo ships\" fit the same category as \"Bank accounts (after big deposits)\" in LinkedIn Pinpoint #873?",
+      "answer": "\"Cargo ships\" reads as \"Cargo hold\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Cargo ships"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "Five everyday things that each involve a hold",
+    "relatedEntities": [
+      "Cargo hold",
+      "Wrestling hold",
+      "Climbing hold",
+      "Bank hold",
+      "Phone hold"
+    ],
+    "doNotRepeatPatterns": [
+      "Five everyday things that each involve a hold",
+      "\"Cargo ships\" and \"Wrestling matches\" can look like they belong to different categories at first",
+      "\"Bank accounts (after big deposits)\" anchors five everyday things that each involve a hold",
+      "Use \"Bank accounts (after big deposits)\" to re-check \"Cargo ships\" under five everyday things that each involve a hold",
+      "From Old English 'healdan' meaning to keep or contain, later applied to the lower deck of a ship.",
+      "From Old English 'healdan' meaning to grasp or keep, used in wrestling since the 19th century."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "science terms",
+      "whyPlausible": "Climbing walls don't delay anything, and bank holds are restrictions, not delays. The set breaks apart because 'delay' doesn't cover all five clues.",
+      "whyRejected": "Once Bank accounts (after big deposits) lands, the final answer explains the board more cleanly than science terms."
+    },
+    {
+      "label": "waiting activities",
+      "whyPlausible": "waiting activities feels plausible early on, but it falls apart once bank accounts (after big deposits) demands a more exact reading.",
+      "whyRejected": "Once Bank accounts (after big deposits) lands, the final answer explains the board more cleanly than waiting activities."
+    }
+  ],
+  "setValidationSummary": "Climbing walls, Bank accounts (after big deposits), Phone calls (“please wait!”) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things with holds"
+}
