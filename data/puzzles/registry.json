@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 874,
+    "slug": "pinpoint-answer-874",
+    "publishDate": "2026-09-21",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Pole",
+      "Kiwi",
+      "Dane",
+      "Thai",
+      "Chilean"
+    ],
+    "mainAnswer": "Common national demonyms (i.e., names for people from a specific country)",
+    "category": "Common national demonyms (i.e., names for people from a specific country)",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Pole, Kiwi, Dane do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-09-21T07:01:47.752Z"
+  },
+  {
     "puzzleNumber": 873,
     "slug": "pinpoint-answer-873",
     "publishDate": "2026-09-20",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Cargo ships",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "At first glance, Cargo ships, Wrestling matches, Climbing walls do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-09-20T07:02:20.802Z"
+    "updatedAt": "2026-09-21T07:01:47.752Z"
   },
   {
     "puzzleNumber": 872,
