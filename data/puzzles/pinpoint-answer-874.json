@@ -1,0 +1,235 @@
+{
+  "puzzleNumber": 874,
+  "slug": "pinpoint-answer-874",
+  "publishDate": "2026-09-21",
+  "isoDate": "2026-09-21",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Pole",
+    "Kiwi",
+    "Dane",
+    "Thai",
+    "Chilean"
+  ],
+  "answer": "Common national demonyms (i.e., names for people from a specific country)",
+  "category": "Common national demonyms (i.e., names for people from a specific country)",
+  "wordHints": {
+    "Pole": "Pole is the standard demonym for a person from Poland, but the word also means a cylindrical post, so the country meaning is easy to overlook.",
+    "Kiwi": "Kiwi is a common nickname for a person from New Zealand, derived from the kiwi bird, which is a national symbol.",
+    "Dane": "Dane is the demonym for a person from Denmark, but in American English it often appears in 'Great Dane' as a dog breed, creating surface noise.",
+    "Thai": "Thai is both the nationality adjective and the demonym noun for a person from Thailand; in the US it is more common on menus than in nationality contexts.",
+    "Chilean": "Chilean is the demonym for a person from Chile, but the word often shows up in food contexts like Chilean sea bass, which is actually Patagonian toothfish."
+  },
+  "spoilerHints": {
+    "Pole": "Pole should be tested as part of common national demonyms (i.e., names for people from a specific country), not as a standalone reference.",
+    "Kiwi": "Keep Kiwi in mind, then see whether Chilean supports the same answer.",
+    "Dane": "Dane works best after the board narrows toward common national demonyms (i.e., names for people from a specific country).",
+    "Thai": "Thai should be tested as part of common national demonyms (i.e., names for people from a specific country), not as a standalone reference.",
+    "Chilean": "Chilean is the clue that makes common national demonyms (i.e., names for people from a specific country) concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The first four clues look like they belong to different worlds: Pole and Kiwi could be fruits or plants, Dane could be a dog, Thai could be a cuisine. That surface spread is the puzzle's main misdirection. Each word has a loud everyday meaning that drowns out the quieter nationality reading. Pole is a stick or a bean. Kiwi is a fruit or a bird.",
+    "Dane is a dog breed. Thai is a menu category.",
+    "Chilean is a wine or a fish.",
+    "None of those directions cover all five clues. The set only locks when every word is read as a person from a specific country.",
+    "The turning point is Thai, because it is almost impossible to read Thai as anything other than a nationality word once the other clues are nearby.",
+    "Once Thai is read as a person from Thailand, Dane stops being a dog and becomes a person from Denmark.",
+    "Pole stops being a stick and becomes a person from Poland. Kiwi stops being a fruit and becomes a New Zealander.",
+    "Chilean stops being a fish and becomes a person from Chile.",
+    "The clean final read is not country names but demonyms: Pole, Kiwi, Dane, Thai, Chilean.",
+    "That precision matters. The answer is not Poland or Denmark or New Zealand.",
+    "It is the person-noun form for each country.",
+    "The puzzle works because every clue is a single word that doubles as an everyday object or food, and the nationality meaning is the less obvious one."
+  ],
+  "solutionNarrative": [
+    "Pole and Kiwi first pulled me toward fruit nicknames, so that was the first path I tested. It held together for a moment, but dane never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating dane as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue fruit nicknames; I was checking whether Pole and Kiwi could survive the same tighter read.",
+    "Then I used Dane, Thai, and Chilean as the confirmation round. Dane, Thai, and Chilean stayed inside the real category, so the answer felt earned instead of guessed. The answer was Common national demonyms (i.e., names for people from a specific country)."
+  ],
+  "lessons": [
+    {
+      "title": "\"Pole\" and \"Kiwi\" can look like they belong to different categories at first",
+      "body": "\"Pole\" and \"Kiwi\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Dane\" anchors a shared category board with one concrete theme",
+      "body": "Dane organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Dane\" to re-check \"Pole\" under a shared category board with one concrete theme",
+      "body": "When a short clue has a common everyday meaning, try the person-noun reading before settling on the object or food."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on common",
+    "fastStrategy": "\"Pole\" and \"Kiwi\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Pole",
+        "examplePhrase": "Pole",
+        "connectionExplained": "Pole is the standard demonym for a person from Poland, but the word also means a cylindrical post, so the country meaning is easy to overlook."
+      },
+      {
+        "clue": "Kiwi",
+        "examplePhrase": "Kiwi",
+        "connectionExplained": "Kiwi is a common nickname for a person from New Zealand, derived from the kiwi bird, which is a national symbol."
+      },
+      {
+        "clue": "Dane",
+        "examplePhrase": "Dane",
+        "connectionExplained": "Dane is the demonym for a person from Denmark, but in American English it often appears in 'Great Dane' as a dog breed, creating surface noise."
+      },
+      {
+        "clue": "Thai",
+        "examplePhrase": "Thai person",
+        "connectionExplained": "Thai is both the nationality adjective and the demonym noun for a person from Thailand; in the US it is more common on menus than in nationality contexts."
+      },
+      {
+        "clue": "Chilean",
+        "examplePhrase": "Chilean person",
+        "connectionExplained": "Chilean is the demonym for a person from Chile, but the word often shows up in food contexts like Chilean sea bass, which is actually Patagonian toothfish."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Pole\" and \"Kiwi\" in LinkedIn Pinpoint #874?",
+      "answer": "The answer is \"Common national demonyms (i.e., names for people from a specific country)\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Pole\" and \"Kiwi\" connect in LinkedIn Pinpoint #874?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Dane is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Dane\" the key clue in LinkedIn Pinpoint #874?",
+      "answer": "Dane is the turning clue because \"Dane\" makes the shared category frame explicit. It also makes Pole read cleanly as \"Pole\". The board feels tricky because four of the five clues have strong everyday meanings that pull toward food, animals, or objects. Only when all five are read as person-nouns does the set lock together."
+    },
+    {
+      "question": "How does \"Pole\" fit the same category as \"Dane\" in LinkedIn Pinpoint #874?",
+      "answer": "\"Pole\" reads as \"Pole\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Pole, Kiwi, and Dane do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"fruit nicknames\" can feel plausible before one clue makes the answer feel concrete. Dane is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "fruit nicknames",
+      "dog breeds"
+    ],
+    "whyFalseStartPlausible": [
+      "Kiwi is a fruit and Pole sounds like pole bean, but Dane, Thai, and Chilean are not fruits, so the fruit reading breaks immediately.",
+      "dog breeds feels plausible early on, but it falls apart once dane demands a more exact reading."
+    ],
+    "breakingClue": "Dane",
+    "pivot": "The solve turned when I stopped treating dane as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue fruit nicknames; I was checking whether Pole and Kiwi could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Pole, Kiwi, and Dane stop feeling disconnected and start looking like they belong together. Once dane is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board feels tricky because four of the five clues have strong everyday meanings that pull toward food, animals, or objects. Only when all five are read as person-nouns does the set lock together."
+  },
+  "turningPoint": {
+    "clue": "Dane",
+    "whyDecisive": "Thai is the clue that forces the pivot because it is unmistakably a nationality word, making Dane and Pole snap into the same person-noun reading.",
+    "whatChangedAfterIt": "Once Dane landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Pole",
+      "surfaceMisread": "fruit nicknames",
+      "resolvedPhraseOrMember": "Pole",
+      "nonObviousWhy": "Pole is the standard demonym for a person from Poland, but the word also means a cylindrical post, so the country meaning is easy to overlook.",
+      "searchableContext": "From Polish Polak, ultimately from Proto-Slavic *polje meaning 'field'.",
+      "phraseExample": "From Polish Polak, ultimately from Proto-Slavic *polje meaning 'field'."
+    },
+    {
+      "clue": "Kiwi",
+      "surfaceMisread": "fruit nicknames",
+      "resolvedPhraseOrMember": "Kiwi",
+      "nonObviousWhy": "Kiwi is a common nickname for a person from New Zealand, derived from the kiwi bird, which is a national symbol.",
+      "searchableContext": "From Maori kiwi, the bird name, later applied to New Zealanders.",
+      "phraseExample": "From Maori kiwi, the bird name, later applied to New Zealanders."
+    },
+    {
+      "clue": "Dane",
+      "surfaceMisread": "fruit nicknames",
+      "resolvedPhraseOrMember": "Dane",
+      "nonObviousWhy": "Dane is the demonym for a person from Denmark, but in American English it often appears in 'Great Dane' as a dog breed, creating surface noise.",
+      "searchableContext": "From Old English Dene, the name of the North Germanic tribe.",
+      "phraseExample": "From Old English Dene, the name of the North Germanic tribe."
+    },
+    {
+      "clue": "Thai",
+      "surfaceMisread": "fruit nicknames",
+      "resolvedPhraseOrMember": "Thai person",
+      "nonObviousWhy": "Thai is both the nationality adjective and the demonym noun for a person from Thailand; in the US it is more common on menus than in nationality contexts.",
+      "searchableContext": "From Thai ไทย (thai), meaning 'free' or 'Thai'.",
+      "phraseExample": "From Thai ไทย (thai), meaning 'free' or 'Thai'."
+    },
+    {
+      "clue": "Chilean",
+      "surfaceMisread": "fruit nicknames",
+      "resolvedPhraseOrMember": "Chilean person",
+      "nonObviousWhy": "Chilean is the demonym for a person from Chile, but the word often shows up in food contexts like Chilean sea bass, which is actually Patagonian toothfish.",
+      "searchableContext": "From Chile + -an, with Chile possibly from Quechua chiri meaning 'cold'.",
+      "phraseExample": "From Chile + -an, with Chile possibly from Quechua chiri meaning 'cold'."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Pole\" and \"Kiwi\" in LinkedIn Pinpoint #874?",
+      "answer": "The answer is \"Common national demonyms (i.e., names for people from a specific country)\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Pole"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Pole\" and \"Kiwi\" connect in LinkedIn Pinpoint #874?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Dane is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Pole"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Dane\" the key clue in LinkedIn Pinpoint #874?",
+      "answer": "Dane is the turning clue because \"Dane\" makes the shared category frame explicit. It also makes Pole read cleanly as \"Pole\". The board feels tricky because four of the five clues have strong everyday meanings that pull toward food, animals, or objects. Only when all five are read as person-nouns does the set lock together.",
+      "tiedClue": "Dane"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Pole\" fit the same category as \"Dane\" in LinkedIn Pinpoint #874?",
+      "answer": "\"Pole\" reads as \"Pole\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Pole"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a shared category board with one concrete theme",
+    "relatedEntities": [
+      "Pole",
+      "Kiwi",
+      "Dane",
+      "Thai person",
+      "Chilean person"
+    ],
+    "doNotRepeatPatterns": [
+      "a shared category board with one concrete theme",
+      "\"Pole\" and \"Kiwi\" can look like they belong to different categories at first",
+      "\"Dane\" anchors a shared category board with one concrete theme",
+      "Use \"Dane\" to re-check \"Pole\" under a shared category board with one concrete theme",
+      "From Polish Polak, ultimately from Proto-Slavic *polje meaning 'field'.",
+      "From Maori kiwi, the bird name, later applied to New Zealanders."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "fruit nicknames",
+      "whyPlausible": "Kiwi is a fruit and Pole sounds like pole bean, but Dane, Thai, and Chilean are not fruits, so the fruit reading breaks immediately.",
+      "whyRejected": "Once Dane lands, the final answer explains the board more cleanly than fruit nicknames."
+    },
+    {
+      "label": "dog breeds",
+      "whyPlausible": "dog breeds feels plausible early on, but it falls apart once dane demands a more exact reading.",
+      "whyRejected": "Once Dane lands, the final answer explains the board more cleanly than dog breeds."
+    }
+  ],
+  "setValidationSummary": "Dane, Thai, Chilean keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Common national demonyms (i.e., names for people from a specific country)"
+}
