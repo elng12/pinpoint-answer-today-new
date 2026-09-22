@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 875,
+    "slug": "pinpoint-answer-875",
+    "publishDate": "2026-09-22",
+    "status": "live",
+    "detailState": "published",
+    "clues": [
+      "Bacon",
+      "Locke",
+      "Confucius",
+      "Plato and Socrates",
+      "Descartes: “I think, therefore I am”"
+    ],
+    "mainAnswer": "Famous philosophers",
+    "category": "Famous philosophers",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "At first glance, Bacon, Locke, Confucius do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
+    "updatedAt": "2026-09-22T07:02:15.870Z"
+  },
+  {
     "puzzleNumber": 874,
     "slug": "pinpoint-answer-874",
     "publishDate": "2026-09-21",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Pole",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "At first glance, Pole, Kiwi, Dane do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-09-21T07:01:47.752Z"
+    "updatedAt": "2026-09-22T07:02:15.870Z"
   },
   {
     "puzzleNumber": 873,
