@@ -1,0 +1,237 @@
+{
+  "puzzleNumber": 875,
+  "slug": "pinpoint-answer-875",
+  "publishDate": "2026-09-22",
+  "isoDate": "2026-09-22",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Bacon",
+    "Locke",
+    "Confucius",
+    "Plato and Socrates",
+    "Descartes: “I think, therefore I am”"
+  ],
+  "answer": "Famous philosophers",
+  "category": "Famous philosophers",
+  "wordHints": {
+    "Bacon": "Francis Bacon is a standard name in philosophy for empiricism and the essay form. He is not just a food word; he is a historical figure who wrote 'Of Studies' and argued for inductive reasoning.",
+    "Locke": "John Locke is a core philosopher of empiricism and political theory. His idea of the mind as a blank slate at birth is taught in introductory courses, and his name appears alongside Bacon in history-of-philosophy chapters.",
+    "Confucius": "Confucius is a Chinese philosopher whose Analects are a foundational text in East Asian philosophy. He is not a random wise man; he is a named teacher whose ideas about ethics and governance are studied in philosophy departments worldwide.",
+    "Plato and Socrates": "Socrates taught Plato, and Plato wrote the dialogues that preserve Socrates' method. They are almost always taught as a pair because Socrates left no writings, making Plato the primary source for his teacher's ideas.",
+    "Descartes: “I think, therefore I am”": "René Descartes is a French philosopher and mathematician who wrote the phrase in French as 'Je pense, donc je suis.' The quote is the most famous line in modern philosophy and instantly identifies him as a philosopher, not just a name."
+  },
+  "spoilerHints": {
+    "Bacon": "Bacon should be tested as part of famous philosophers, not as a standalone reference.",
+    "Locke": "Keep Locke in mind, then see whether Descartes: “I think, therefore I am” supports the same answer.",
+    "Confucius": "Confucius works best after the board narrows toward famous philosophers.",
+    "Plato and Socrates": "Plato and Socrates should be tested as part of famous philosophers, not as a standalone reference.",
+    "Descartes: “I think, therefore I am”": "Descartes: “I think, therefore I am” is the clue that makes famous philosophers concrete enough to test across the full board."
+  },
+  "articleBlocks": [
+    "The board opens with Bacon, and that single word drags the eye toward a kitchen. It is a food before it is a surname, so the first mental image is a frying pan rather than a syllabus. That is the trap: the puzzle leads with the one clue whose everyday meaning is strongest, and it lets the solver build a whole wrong frame before the later names arrive.",
+    "Locke does not immediately correct that frame because it can pass as a brand, a mailbox name, or a bottled-water label. Two clues can sit inside a loose grocery or surname theme without anyone noticing that the set has no real center.",
+    "The surface reading survives longer than it should, which is exactly why the board feels harder than five names ought to feel.",
+    "Confucius is where the surface starts to tear. A Chinese teacher whose Analects anchor East Asian ethics does not belong on a breakfast table, and the solver has to admit the first frame is wobbling.",
+    "The clue is not subtle; it is simply late enough that the earlier misread has already taken hold.",
+    "The paired clue Plato and Socrates is the cleanest structural signal on the board. A teacher and his student, listed together, is a classroom pairing rather than a random pair of Greek names.",
+    "It reads like a unit heading in an introductory course, and that shape is what forces the mental pivot.",
+    "Descartes with the quoted line closes the case. 'I think, therefore I am' is not a stray quotation; it is the standard slogan of modern philosophy, and it identifies a specific French thinker rather than a generic wise man.",
+    "Once that clue lands, the whole set stops looking like a mixed list and starts looking like a reading roster.",
+    "The set is not simply famous people. Famous people would absorb almost any name, and it would not explain why these five sit together.",
+    "The tighter reading is a specific school subject with a standard reading list: empiricists, ancient Greeks, a Chinese teacher, and a French rationalist, all taught in the same introductory survey.",
+    "Bacon and Locke are also scientists and political thinkers, which is why a broader 'famous writers' guess can survive for a moment. But the other three clues pull them firmly into the philosophy roster.",
+    "That is why the final read is cleaner than any umbrella label: it explains every clue at the same level of specificity.",
+    "The answer was Famous philosophers."
+  ],
+  "solutionNarrative": [
+    "Bacon and Locke first pulled me toward breakfast foods, so that was the first path I tested. It held together for a moment, but plato and Socrates never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating plato and Socrates as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue breakfast foods; I was checking whether Bacon and Locke could survive the same tighter read.",
+    "Then I used Confucius, Plato and Socrates, and Descartes: I think, therefore I am as the confirmation round. Confucius, Plato and Socrates, and Descartes: I think, therefore I am stayed inside the real category, so the answer felt earned instead of guessed. The answer was Famous philosophers."
+  ],
+  "lessons": [
+    {
+      "title": "\"Bacon\" and \"Locke\" can look like they belong to different categories at first",
+      "body": "\"Bacon\" and \"Locke\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Plato and Socrates\" anchors names from a standard philosophy roster",
+      "body": "Plato and Socrates organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Plato and Socrates\" to re-check \"Bacon\" under names from a standard philosophy roster",
+      "body": "When a list mixes a food word, a surname, and a quote, check whether the names belong to a school subject before settling on a grocery or pirate theme."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on famous",
+    "fastStrategy": "\"Bacon\" and \"Locke\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Bacon",
+        "examplePhrase": "Francis Bacon",
+        "connectionExplained": "Francis Bacon is a standard name in philosophy for empiricism and the essay form. He is not just a food word; he is a historical figure who wrote 'Of Studies' and argued for inductive reasoning."
+      },
+      {
+        "clue": "Locke",
+        "examplePhrase": "John Locke",
+        "connectionExplained": "John Locke is a core philosopher of empiricism and political theory. His idea of the mind as a blank slate at birth is taught in introductory courses, and his name appears alongside Bacon in history-of-philosophy chapters."
+      },
+      {
+        "clue": "Confucius",
+        "examplePhrase": "Confucius",
+        "connectionExplained": "Confucius is a Chinese philosopher whose Analects are a foundational text in East Asian philosophy. He is not a random wise man; he is a named teacher whose ideas about ethics and governance are studied in philosophy departments worldwide."
+      },
+      {
+        "clue": "Plato and Socrates",
+        "examplePhrase": "Plato and Socrates",
+        "connectionExplained": "Socrates taught Plato, and Plato wrote the dialogues that preserve Socrates' method. They are almost always taught as a pair because Socrates left no writings, making Plato the primary source for his teacher's ideas."
+      },
+      {
+        "clue": "Descartes: “I think, therefore I am”",
+        "examplePhrase": "Descartes",
+        "connectionExplained": "René Descartes is a French philosopher and mathematician who wrote the phrase in French as 'Je pense, donc je suis.' The quote is the most famous line in modern philosophy and instantly identifies him as a philosopher, not just a name."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Bacon\" and \"Locke\" in LinkedIn Pinpoint #875?",
+      "answer": "The answer is \"Famous philosophers\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Bacon\" and \"Locke\" connect in LinkedIn Pinpoint #875?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Plato and Socrates is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Plato and Socrates\" the key clue in LinkedIn Pinpoint #875?",
+      "answer": "Plato and Socrates is the turning clue because \"Plato and Socrates\" makes the shared category frame explicit. It also makes Bacon read cleanly as \"Francis Bacon\". The board feels tricky because the first two clues have strong everyday meanings: Bacon is food and Locke is a common surname. The set only becomes clear when Confucius, Plato and Socrates, and Descartes force a school-subject reading. The mix of a food word, a surname, a Chinese name, a Greek pair, and a French quote makes the category feel less obvious than it is."
+    },
+    {
+      "question": "How does \"Bacon\" fit the same category as \"Plato and Socrates\" in LinkedIn Pinpoint #875?",
+      "answer": "\"Bacon\" reads as \"Francis Bacon\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Bacon, Locke, and Confucius do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"breakfast foods\" can feel plausible before one clue makes the answer feel concrete. Plato and Socrates is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "breakfast foods",
+      "famous historical figures"
+    ],
+    "whyFalseStartPlausible": [
+      "Bacon is a breakfast meat, but Confucius, Plato and Socrates, and Descartes are not foods. The food reading breaks as soon as the second or third clue lands.",
+      "famous historical figures feels plausible early on, but it falls apart once plato and Socrates demands a more exact reading."
+    ],
+    "breakingClue": "Plato and Socrates",
+    "pivot": "The solve turned when I stopped treating plato and Socrates as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue breakfast foods; I was checking whether Bacon and Locke could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Bacon, Locke, and Confucius stop feeling disconnected and start looking like they belong together. Once plato and Socrates is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The board feels tricky because the first two clues have strong everyday meanings: Bacon is food and Locke is a common surname. The set only becomes clear when Confucius, Plato and Socrates, and Descartes force a school-subject reading. The mix of a food word, a surname, a Chinese name, a Greek pair, and a French quote makes the category feel less obvious than it is."
+  },
+  "turningPoint": {
+    "clue": "Plato and Socrates",
+    "whyDecisive": "Plato and Socrates appear as a paired clue, which is a classroom pairing, not a random list.",
+    "whatChangedAfterIt": "Once Plato and Socrates landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Bacon",
+      "surfaceMisread": "breakfast foods",
+      "resolvedPhraseOrMember": "Francis Bacon",
+      "nonObviousWhy": "Francis Bacon is a standard name in philosophy for empiricism and the essay form. He is not just a food word; he is a historical figure who wrote 'Of Studies' and argued for inductive reasoning.",
+      "searchableContext": "The surname Bacon comes from Old French and Old English words for bacon or pork, but the philosopher's name is unrelated to the meat in this context.",
+      "phraseExample": "The surname Bacon comes from Old French and Old English words for bacon or pork, but the philosopher's name is unrelated to the meat in this context."
+    },
+    {
+      "clue": "Locke",
+      "surfaceMisread": "breakfast foods",
+      "resolvedPhraseOrMember": "John Locke",
+      "nonObviousWhy": "John Locke is a core philosopher of empiricism and political theory. His idea of the mind as a blank slate at birth is taught in introductory courses, and his name appears alongside Bacon in history-of-philosophy chapters.",
+      "searchableContext": "Locke is an English surname derived from Old English 'locc,' meaning a lock of hair or an enclosure, but the philosopher's identity is what matters here.",
+      "phraseExample": "Locke is an English surname derived from Old English 'locc,' meaning a lock of hair or an enclosure, but the philosopher's identity is what matters here."
+    },
+    {
+      "clue": "Confucius",
+      "surfaceMisread": "breakfast foods",
+      "resolvedPhraseOrMember": "Confucius",
+      "nonObviousWhy": "Confucius is a Chinese philosopher whose Analects are a foundational text in East Asian philosophy. He is not a random wise man; he is a named teacher whose ideas about ethics and governance are studied in philosophy departments worldwide.",
+      "searchableContext": "Confucius is the Latinized form of Kong Fuzi, meaning Master Kong, which shows how his name entered Western philosophy syllabi.",
+      "phraseExample": "Confucius is the Latinized form of Kong Fuzi, meaning Master Kong, which shows how his name entered Western philosophy syllabi."
+    },
+    {
+      "clue": "Plato and Socrates",
+      "surfaceMisread": "breakfast foods",
+      "resolvedPhraseOrMember": "Plato and Socrates",
+      "nonObviousWhy": "Socrates taught Plato, and Plato wrote the dialogues that preserve Socrates' method. They are almost always taught as a pair because Socrates left no writings, making Plato the primary source for his teacher's ideas.",
+      "searchableContext": "Plato comes from the Greek 'Platon,' meaning broad, and Socrates from 'Sokrates,' meaning safe power, but the pairing is what makes the clue a standard philosophy unit.",
+      "phraseExample": "Plato comes from the Greek 'Platon,' meaning broad, and Socrates from 'Sokrates,' meaning safe power, but the pairing is what makes the clue a standard philosophy unit."
+    },
+    {
+      "clue": "Descartes: “I think, therefore I am”",
+      "surfaceMisread": "breakfast foods",
+      "resolvedPhraseOrMember": "Descartes",
+      "nonObviousWhy": "René Descartes is a French philosopher and mathematician who wrote the phrase in French as 'Je pense, donc je suis.' The quote is the most famous line in modern philosophy and instantly identifies him as a philosopher, not just a name.",
+      "searchableContext": "Descartes is a French surname meaning 'from the cart,' and the Latin version of his quote, 'Cogito, ergo sum,' is still used in philosophy textbooks.",
+      "phraseExample": "Descartes is a French surname meaning 'from the cart,' and the Latin version of his quote, 'Cogito, ergo sum,' is still used in philosophy textbooks."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Bacon\" and \"Locke\" in LinkedIn Pinpoint #875?",
+      "answer": "The answer is \"Famous philosophers\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Bacon"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Bacon\" and \"Locke\" connect in LinkedIn Pinpoint #875?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Plato and Socrates is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Bacon"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Plato and Socrates\" the key clue in LinkedIn Pinpoint #875?",
+      "answer": "Plato and Socrates is the turning clue because \"Plato and Socrates\" makes the shared category frame explicit. It also makes Bacon read cleanly as \"Francis Bacon\". The board feels tricky because the first two clues have strong everyday meanings: Bacon is food and Locke is a common surname. The set only becomes clear when Confucius, Plato and Socrates, and Descartes force a school-subject reading. The mix of a food word, a surname, a Chinese name, a Greek pair, and a French quote makes the category feel less obvious than it is.",
+      "tiedClue": "Plato and Socrates"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Bacon\" fit the same category as \"Plato and Socrates\" in LinkedIn Pinpoint #875?",
+      "answer": "\"Bacon\" reads as \"Francis Bacon\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Bacon"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "Names from a standard philosophy roster",
+    "relatedEntities": [
+      "Francis Bacon",
+      "John Locke",
+      "Confucius",
+      "Plato and Socrates",
+      "Descartes"
+    ],
+    "doNotRepeatPatterns": [
+      "Names from a standard philosophy roster",
+      "\"Bacon\" and \"Locke\" can look like they belong to different categories at first",
+      "\"Plato and Socrates\" anchors names from a standard philosophy roster",
+      "Use \"Plato and Socrates\" to re-check \"Bacon\" under names from a standard philosophy roster",
+      "The surname Bacon comes from Old French and Old English words for bacon or pork, but the philosopher's name is unrelated to the meat in this context.",
+      "Locke is an English surname derived from Old English 'locc,' meaning a lock of hair or an enclosure, but the philosopher's identity is what matters here."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "breakfast foods",
+      "whyPlausible": "Bacon is a breakfast meat, but Confucius, Plato and Socrates, and Descartes are not foods. The food reading breaks as soon as the second or third clue lands.",
+      "whyRejected": "Once Plato and Socrates lands, the final answer explains the board more cleanly than breakfast foods."
+    },
+    {
+      "label": "famous historical figures",
+      "whyPlausible": "famous historical figures feels plausible early on, but it falls apart once plato and Socrates demands a more exact reading.",
+      "whyRejected": "Once Plato and Socrates lands, the final answer explains the board more cleanly than famous historical figures."
+    }
+  ],
+  "setValidationSummary": "Confucius, Plato and Socrates, Descartes: “I think, therefore I am” keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Famous philosophers"
+}
