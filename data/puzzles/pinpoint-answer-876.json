@@ -1,0 +1,234 @@
+{
+  "puzzleNumber": 876,
+  "slug": "pinpoint-answer-876",
+  "publishDate": "2026-09-23",
+  "isoDate": "2026-09-23",
+  "detailState": "published",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "category",
+  "difficultyBand": "hard",
+  "clues": [
+    "Delta",
+    "Doritos",
+    "“Give way” or “Yield” sign",
+    "Rack (for 8-Ball or Snooker)",
+    "Pennant (like this one: 🚩)"
+  ],
+  "answer": "Things shaped like triangles",
+  "category": "Things shaped like triangles",
+  "wordHints": {
+    "Delta": "The uppercase delta is a triangle, so it is literally shaped like a triangle.",
+    "Doritos": "Doritos are triangular in shape, making them a direct example of a thing shaped like a triangle.",
+    "“Give way” or “Yield” sign": "The yield sign is an inverted triangle, so it is shaped like a triangle.",
+    "Rack (for 8-Ball or Snooker)": "The rack used in billiards is a triangle that holds the balls in a triangular formation.",
+    "Pennant (like this one: 🚩)": "A pennant is a triangular flag, so it is shaped like a triangle."
+  },
+  "spoilerHints": {
+    "Delta": "Delta should be tested as part of things shaped like triangles, not as a standalone reference.",
+    "Doritos": "Keep Doritos in mind, then see whether Rack (for 8-Ball or Snooker) supports the same answer.",
+    "“Give way” or “Yield” sign": "“Give way” or “Yield” sign works best after the board narrows toward things shaped like triangles.",
+    "Rack (for 8-Ball or Snooker)": "Rack (for 8-Ball or Snooker) is the clue that makes things shaped like triangles concrete enough to test across the full board.",
+    "Pennant (like this one: 🚩)": "Keep Pennant (like this one: 🚩) in mind, then see whether Rack (for 8-Ball or Snooker) supports the same answer."
+  },
+  "articleBlocks": [
+    "The first clue, Delta, points toward Greek letters or river mouths, while Doritos suggests snacks or brands. Those surface directions pull the mind toward language or food, not geometry. The yield sign and the pool rack are both objects with strong functional identities, so their triangular shape is easy to overlook at first. A pennant is often seen as a flag or a sports symbol, and its triangular form is not the first thing people notice.",
+    "Each clue belongs to a different domain: Greek alphabet, snack food, traffic control, billiards, and flags. That variety makes the shared shape less obvious.",
+    "The puzzle invites guesses like Greek letters or snack brands because Delta and Doritos are strong anchors in those directions.",
+    "But the yield sign and the pool rack do not fit those surface categories, so the mind has to search for another link.",
+    "The pool rack is especially telling because its triangular shape is essential to its function: it arranges the balls in a triangle.",
+    "Similarly, the yield sign is an inverted triangle, and that shape is standardized for recognition.",
+    "Once the shape becomes the focus, Delta, Doritos, the yield sign, the rack, and the pennant all align as triangular objects.",
+    "The answer is not just 'triangles' but 'things shaped like triangles', which emphasizes concrete instances rather than the abstract concept.",
+    "This kind of puzzle rewards looking past what objects are used for and noticing what they look like.",
+    "The final reading is cleaner because it accounts for every clue without forcing any of them into an unrelated category.",
+    "It also shows that a simple geometric property can unite items from completely different walks of life."
+  ],
+  "solutionNarrative": [
+    "Delta and Doritos first pulled me toward greek letters, so that was the first path I tested. It held together for a moment, but delta never really fit it. The more I pushed that first read, the more the board sounded stitched together instead of naturally solved.",
+    "The solve turned when I stopped treating delta as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue greek letters; I was checking whether Delta and Doritos could survive the same tighter read.",
+    "Then I used Give way or Yield sign, Rack (for 8-Ball or Snooker), and Pennant (like this one: 🚩) as the confirmation round. Give way or Yield sign, Rack (for 8-Ball or Snooker), and Pennant (like this one: 🚩) stayed inside the real category, so the answer felt earned instead of guessed. The answer was Things shaped like triangles."
+  ],
+  "lessons": [
+    {
+      "title": "\"Delta\" and \"Doritos\" can look like they belong to different categories at first",
+      "body": "\"Delta\" and \"Doritos\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category."
+    },
+    {
+      "title": "\"Delta\" anchors the common link is a geometric shape",
+      "body": "Delta organizes this board. Once one clue produces a precise natural reading, re-check the earlier clues under that same frame."
+    },
+    {
+      "title": "Use \"Delta\" to re-check \"Delta\" under the common link is a geometric shape",
+      "body": "When clues seem unrelated, look for a simple visual or geometric property that they all share."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a category board focused on things",
+    "fastStrategy": "\"Delta\" and \"Doritos\" both fit several loose themes, so it is often better to wait for a more specific word before locking in a category.",
+    "clueTableRows": [
+      {
+        "clue": "Delta",
+        "examplePhrase": "delta symbol",
+        "connectionExplained": "The uppercase delta is a triangle, so it is literally shaped like a triangle."
+      },
+      {
+        "clue": "Doritos",
+        "examplePhrase": "Doritos",
+        "connectionExplained": "Doritos are triangular in shape, making them a direct example of a thing shaped like a triangle."
+      },
+      {
+        "clue": "“Give way” or “Yield” sign",
+        "examplePhrase": "yield sign",
+        "connectionExplained": "The yield sign is an inverted triangle, so it is shaped like a triangle."
+      },
+      {
+        "clue": "Rack (for 8-Ball or Snooker)",
+        "examplePhrase": "pool ball rack",
+        "connectionExplained": "The rack used in billiards is a triangle that holds the balls in a triangular formation."
+      },
+      {
+        "clue": "Pennant (like this one: 🚩)",
+        "examplePhrase": "triangular pennant",
+        "connectionExplained": "A pennant is a triangular flag, so it is shaped like a triangle."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What final category connects \"Delta\" and \"Doritos\" in LinkedIn Pinpoint #876?",
+      "answer": "The answer is \"Things shaped like triangles\" because that reading explains the full set cleanly, including the final clue."
+    },
+    {
+      "question": "How do \"Delta\" and \"Doritos\" connect in LinkedIn Pinpoint #876?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Delta is what keeps the category reading precise instead of broad."
+    },
+    {
+      "question": "Why is \"Delta\" the key clue in LinkedIn Pinpoint #876?",
+      "answer": "Delta is the turning clue because \"delta symbol\" makes the shared category frame explicit. It also makes Doritos read cleanly as \"Doritos\". The clues come from unrelated categories, so the common shape is not immediately obvious; you have to look past the surface meanings."
+    },
+    {
+      "question": "How does \"Doritos\" fit the same category as \"Delta\" in LinkedIn Pinpoint #876?",
+      "answer": "\"Doritos\" reads as \"Doritos\" under the same answer, so it supports the category instead of pulling toward a broader guess."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "Delta, Doritos, and Give way or Yield sign do not immediately look like the same kind of thing, so the first read can wander in the wrong direction. That is why a first read like \"greek letters\" can feel plausible before one clue makes the answer feel concrete. Delta is the clue that finally breaks that first read and makes the real category feel concrete.",
+    "falseStarts": [
+      "greek letters",
+      "snack brands"
+    ],
+    "whyFalseStartPlausible": [
+      "Delta is a Greek letter, but the other clues like Doritos and yield signs don't fit that category, so it falls apart.",
+      "snack brands feels plausible early on, but it falls apart once delta demands a more exact reading."
+    ],
+    "breakingClue": "Delta",
+    "pivot": "The solve turned when I stopped treating delta as just another clue and asked what kind of thing each clue could really be describing. I was no longer trying to rescue greek letters; I was checking whether Delta and Doritos could survive the same tighter read.",
+    "fullBoardConfirmation": "From there, reading them through one specific category frame explains the board much more cleanly. Entries like Delta, Doritos, and Give way or Yield sign stop feeling disconnected and start looking like they belong together. Once delta is read the right way, the earlier clues stop pulling in different directions and start behaving like parts of the same answer. The clues come from unrelated categories, so the common shape is not immediately obvious; you have to look past the surface meanings."
+  },
+  "turningPoint": {
+    "clue": "Delta",
+    "whyDecisive": "The pool rack clue made me realize the answer was about shape, not the objects themselves.",
+    "whatChangedAfterIt": "Once Delta landed, the earlier clues stopped pulling in different directions and started reinforcing the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Delta",
+      "surfaceMisread": "greek letters",
+      "resolvedPhraseOrMember": "delta symbol",
+      "nonObviousWhy": "The uppercase delta is a triangle, so it is literally shaped like a triangle.",
+      "searchableContext": "From Greek delta, from Phoenician daleth meaning 'door', the shape of which was a triangle.",
+      "phraseExample": "From Greek delta, from Phoenician daleth meaning 'door', the shape of which was a triangle."
+    },
+    {
+      "clue": "Doritos",
+      "surfaceMisread": "greek letters",
+      "resolvedPhraseOrMember": "Doritos",
+      "nonObviousWhy": "Doritos are triangular in shape, making them a direct example of a thing shaped like a triangle.",
+      "searchableContext": "Brand name coined in 1964, from Spanish 'dorito' meaning 'little golden thing'.",
+      "phraseExample": "Brand name coined in 1964, from Spanish 'dorito' meaning 'little golden thing'."
+    },
+    {
+      "clue": "“Give way” or “Yield” sign",
+      "surfaceMisread": "greek letters",
+      "resolvedPhraseOrMember": "yield sign",
+      "nonObviousWhy": "The yield sign is an inverted triangle, so it is shaped like a triangle.",
+      "searchableContext": "The yield sign was first adopted in the United States in 1950, with a triangular shape to be recognizable from the back.",
+      "phraseExample": "The yield sign was first adopted in the United States in 1950, with a triangular shape to be recognizable from the back."
+    },
+    {
+      "clue": "Rack (for 8-Ball or Snooker)",
+      "surfaceMisread": "greek letters",
+      "resolvedPhraseOrMember": "pool ball rack",
+      "nonObviousWhy": "The rack used in billiards is a triangle that holds the balls in a triangular formation.",
+      "searchableContext": "From Middle Dutch 'rac' meaning 'frame', the triangular shape aids in tight packing.",
+      "phraseExample": "From Middle Dutch 'rac' meaning 'frame', the triangular shape aids in tight packing."
+    },
+    {
+      "clue": "Pennant (like this one: 🚩)",
+      "surfaceMisread": "greek letters",
+      "resolvedPhraseOrMember": "triangular pennant",
+      "nonObviousWhy": "A pennant is a triangular flag, so it is shaped like a triangle.",
+      "searchableContext": "From Old French 'penon', a flag, from Latin 'penna' meaning 'feather', referring to a wing-like shape.",
+      "phraseExample": "From Old French 'penon', a flag, from Latin 'penna' meaning 'feather', referring to a wing-like shape."
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What final category connects \"Delta\" and \"Doritos\" in LinkedIn Pinpoint #876?",
+      "answer": "The answer is \"Things shaped like triangles\" because that reading explains the full set cleanly, including the final clue.",
+      "tiedClue": "Delta"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Delta\" and \"Doritos\" connect in LinkedIn Pinpoint #876?",
+      "answer": "The connection is that all 5 clues point back to one specific category instead of a loose umbrella theme. Delta is what keeps the category reading precise instead of broad.",
+      "tiedClue": "Delta"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Delta\" the key clue in LinkedIn Pinpoint #876?",
+      "answer": "Delta is the turning clue because \"delta symbol\" makes the shared category frame explicit. It also makes Doritos read cleanly as \"Doritos\". The clues come from unrelated categories, so the common shape is not immediately obvious; you have to look past the surface meanings.",
+      "tiedClue": "Delta"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How does \"Doritos\" fit the same category as \"Delta\" in LinkedIn Pinpoint #876?",
+      "answer": "\"Doritos\" reads as \"Doritos\" under the same answer, so it supports the category instead of pulling toward a broader guess.",
+      "tiedClue": "Doritos"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "The common link is a geometric shape",
+    "relatedEntities": [
+      "delta symbol",
+      "Doritos",
+      "yield sign",
+      "pool ball rack",
+      "triangular pennant"
+    ],
+    "doNotRepeatPatterns": [
+      "The common link is a geometric shape",
+      "\"Delta\" and \"Doritos\" can look like they belong to different categories at first",
+      "\"Delta\" anchors the common link is a geometric shape",
+      "Use \"Delta\" to re-check \"Delta\" under the common link is a geometric shape",
+      "From Greek delta, from Phoenician daleth meaning 'door', the shape of which was a triangle.",
+      "Brand name coined in 1964, from Spanish 'dorito' meaning 'little golden thing'."
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "greek letters",
+      "whyPlausible": "Delta is a Greek letter, but the other clues like Doritos and yield signs don't fit that category, so it falls apart.",
+      "whyRejected": "Once Delta lands, the final answer explains the board more cleanly than greek letters."
+    },
+    {
+      "label": "snack brands",
+      "whyPlausible": "snack brands feels plausible early on, but it falls apart once delta demands a more exact reading.",
+      "whyRejected": "Once Delta lands, the final answer explains the board more cleanly than snack brands."
+    }
+  ],
+  "setValidationSummary": "“Give way” or “Yield” sign, Rack (for 8-Ball or Snooker), Pennant (like this one: 🚩) keep confirming the same answer, so the board reads like one exact set instead of a broad bucket.",
+  "categoryPrecisionNote": "one concrete category with members that stay at the same level of specificity as Things shaped like triangles"
+}
