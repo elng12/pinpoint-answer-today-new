@@ -1,9 +1,29 @@
 [
   {
+    "puzzleNumber": 877,
+    "slug": "pinpoint-answer-877",
+    "publishDate": "2026-09-24",
+    "status": "live",
+    "detailState": "fallback_full",
+    "clues": [
+      "Iron",
+      "Iron horse (old-style train)",
+      "Sauna",
+      "Pressure cooker",
+      "Tea kettle (when whistling)"
+    ],
+    "mainAnswer": "Things associated with steam",
+    "category": "Things associated with steam",
+    "difficultyLevel": "Moderate",
+    "seoTemplateVersion": "serp-v1",
+    "shortSummary": "Pinpoint Answer Today asks: what links Iron, Iron horse (old-style train), Sauna, Pressure cooker, Tea kettle (when whistling) - and what story do they share? The set starts with a few plausible directions before one clue makes the clean reading hard to miss.",
+    "updatedAt": "2026-09-24T07:02:15.126Z"
+  },
+  {
     "puzzleNumber": 876,
     "slug": "pinpoint-answer-876",
     "publishDate": "2026-09-23",
-    "status": "live",
+    "status": "archived",
     "detailState": "published",
     "clues": [
       "Delta",
@@ -17,7 +37,7 @@
     "difficultyLevel": "Moderate",
     "seoTemplateVersion": "serp-v1",
     "shortSummary": "At first glance, Delta, Doritos, “Give way” or “Yield” sign do not look like one clean set. The solve only tightens once a later clue makes the shared category much harder to miss.",
-    "updatedAt": "2026-09-23T07:01:54.764Z"
+    "updatedAt": "2026-09-24T07:02:15.126Z"
   },
   {
     "puzzleNumber": 875,

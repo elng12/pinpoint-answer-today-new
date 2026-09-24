@@ -1,0 +1,218 @@
+{
+  "puzzleNumber": 877,
+  "slug": "pinpoint-answer-877",
+  "publishDate": "2026-09-24",
+  "isoDate": "2026-09-24",
+  "detailState": "fallback_full",
+  "bodyMode": "standard",
+  "pageExperienceMode": "full-analysis",
+  "questionType": "association",
+  "difficultyBand": "hard",
+  "clues": [
+    "Iron",
+    "Iron horse (old-style train)",
+    "Sauna",
+    "Pressure cooker",
+    "Tea kettle (when whistling)"
+  ],
+  "answer": "Things associated with steam",
+  "category": "Things associated with steam",
+  "wordHints": {
+    "Iron": "\"Iron\" fits naturally once the board is read through steam rather than as a loose general-interest category.",
+    "Iron horse (old-style train)": "\"Iron horse (old-style train)\" is one of the clearest anchors for a steam reading, which is why it helps lock the board into place.",
+    "Sauna": "\"Sauna\" works because it points back to the same steam context that ties the whole board together.",
+    "Pressure cooker": "\"Pressure cooker\" fits naturally once the board is read through steam rather than as a loose general-interest category.",
+    "Tea kettle (when whistling)": "\"Tea kettle (when whistling)\" supports the same steam-based frame as the other clues, so it reads as part of one picture instead of an isolated reference."
+  },
+  "spoilerHints": {
+    "Iron": "Think about one shared setting or theme in things associated with steam that can absorb Iron naturally.",
+    "Iron horse (old-style train)": "Iron horse (old-style train) is the clue that turns a loose board into things associated with steam.",
+    "Sauna": "Treat Sauna as one part of things associated with steam rather than as an isolated reference.",
+    "Pressure cooker": "Think about one shared setting or theme in things associated with steam that can absorb Pressure cooker naturally.",
+    "Tea kettle (when whistling)": "Tea kettle (when whistling) points to the same world as the others once the frame gets specific enough toward things associated with steam."
+  },
+  "articleBlocks": [
+    "At first, Iron and Iron horse (old-style train) can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front. A tempting early label was \"a literal category label\". Iron, Iron horse (old-style train) can look like they should collapse into one tidy dictionary-style group. Iron horse (old-style train) works better as an anchor into one shared world than as proof of a literal category label.",
+    "Another nearby read was \"five unrelated references\". Association boards often mix clue shapes enough to feel scattered before one anchor clue stabilizes the context. Once Iron horse (old-style train) defines the subject, the other clues stop feeling random and start pointing back to the same world.",
+    "From there, a board centered on the theme of steam explains the board more cleanly because the clues start behaving like references inside one shared world, not like five separate trivia facts. Examples like \"Iron connected to steam\" and \"Iron horse connected to steam\" stop feeling disconnected once that context is in place, because they each point back to the same subject from a different angle.",
+    "Sauna, Pressure cooker, Tea kettle (when whistling) all point back to the same subject from different angles, so the board holds together as one shared world rather than five unrelated references.",
+    "The answer was \"Things associated with steam\". More precisely, the board resolves as one shared subject or world viewed from multiple angles rather than a dictionary-style category, which is why \"Things associated with steam\" fits better than \"a literal category label\" or \"five unrelated references\" once the full set is checked."
+  ],
+  "solutionNarrative": [
+    "I first leaned toward a literal category label, but that still treated the board like a literal category and never gave \"Iron horse (old-style train)\" enough weight as an anchor clue.",
+    "The turn came when I let \"Iron horse (old-style train)\" define the context. Once the board had one stable subject behind it, the earlier clues stopped feeling scattered and started behaving like references from the same world.",
+    "For the final pass, I checked Iron, Iron horse (old-style train), Sauna, Pressure cooker, Tea kettle (when whistling) against that subject instead of against a simple object class. That made the connection feel earned, because the clues pointed to one shared context rather than one surface label.",
+    "The answer was \"Things associated with steam\"."
+  ],
+  "lessons": [
+    {
+      "title": "\"Iron\" and \"Iron horse (old-style train)\" can look like they belong to different categories at first",
+      "body": "Association boards often mix clue types, so the right solve can be a common context instead of a tidy dictionary category."
+    },
+    {
+      "title": "\"Iron horse (old-style train)\" is what makes the answer feel concrete instead of broad",
+      "body": "The best association clue is the one that collapses several broad guesses into one testable subject."
+    },
+    {
+      "title": "Validate by context, not by surface similarity",
+      "body": "Once \"Iron horse (old-style train)\" gives you the right subject, make sure the other clues point back to that same world for specific reasons."
+    }
+  ],
+  "display": {
+    "connectorSummary": "a board centered on the theme of steam",
+    "fastStrategy": "Association boards often mix clue types, so the right solve can be a common context instead of a tidy dictionary category.",
+    "clueTableRows": [
+      {
+        "clue": "Iron",
+        "examplePhrase": "Iron connected to steam",
+        "connectionExplained": "\"Iron\" fits naturally once the board is read through steam rather than as a loose general-interest category."
+      },
+      {
+        "clue": "Iron horse (old-style train)",
+        "examplePhrase": "Iron horse connected to steam",
+        "connectionExplained": "\"Iron horse (old-style train)\" is one of the clearest anchors for a steam reading, which is why it helps lock the board into place."
+      },
+      {
+        "clue": "Sauna",
+        "examplePhrase": "Sauna connected to steam",
+        "connectionExplained": "\"Sauna\" works because it points back to the same steam context that ties the whole board together."
+      },
+      {
+        "clue": "Pressure cooker",
+        "examplePhrase": "Pressure cooker connected to steam",
+        "connectionExplained": "\"Pressure cooker\" fits naturally once the board is read through steam rather than as a loose general-interest category."
+      },
+      {
+        "clue": "Tea kettle (when whistling)",
+        "examplePhrase": "Tea kettle connected to steam",
+        "connectionExplained": "\"Tea kettle (when whistling)\" supports the same steam-based frame as the other clues, so it reads as part of one picture instead of an isolated reference."
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "What shared subject links \"Iron\" and \"Iron horse (old-style train)\" in LinkedIn Pinpoint #877?",
+      "answer": "The answer is \"Things associated with steam\". That reading works because the clues all point back to the same subject or context, even if they do not all look like the same kind of clue on first read."
+    },
+    {
+      "question": "How do \"Iron\" and \"Iron horse (old-style train)\" connect in LinkedIn Pinpoint #877?",
+      "answer": "The connection is a board centered on the theme of steam. This board solves better by shared context than by forcing all 5 clues into one literal category label."
+    },
+    {
+      "question": "Why is \"Iron horse (old-style train)\" the key clue in LinkedIn Pinpoint #877?",
+      "answer": "\"Iron horse (old-style train)\" matters most because it gives the board one clear subject to test, which is what lets the remaining clues stop feeling scattered."
+    }
+  ],
+  "solvePath": {
+    "firstRead": "At first, Iron and Iron horse (old-style train) can point toward several broad buckets, because association boards often mix places, objects, and references from the same world instead of presenting one obvious category label up front.",
+    "falseStarts": [
+      "a literal category label",
+      "five unrelated references"
+    ],
+    "whyFalseStartPlausible": [
+      "Iron, Iron horse (old-style train) can look like they should collapse into one tidy dictionary-style group.",
+      "Association boards often mix clue shapes enough to feel scattered before one anchor clue stabilizes the context."
+    ],
+    "breakingClue": "Iron horse (old-style train)",
+    "pivot": "I first leaned toward a literal category label, but that still treated the board like a literal category and never gave \"Iron horse (old-style train)\" enough weight as an anchor clue.\n\nThe turn came when I let \"Iron horse (old-style train)\" define the context. Once the board had one stable subject behind it, the earlier clues stopped feeling scattered and started behaving like references from the same world.\n\nFor the final pass, I checked Iron, Iron horse (old-style train), Sauna, Pressure cooker, Tea kettle (when whistling) against that subject instead of against a simple object class. That made the connection feel earned, because the clues pointed to one shared context rather than one surface label.\n\nThe answer was \"Things associated with steam\".",
+    "fullBoardConfirmation": "Another nearby read was \"five unrelated references\". Association boards often mix clue shapes enough to feel scattered before one anchor clue stabilizes the context. Once Iron horse (old-style train) defines the subject, the other clues stop feeling random and start pointing back to the same world."
+  },
+  "turningPoint": {
+    "clue": "Iron horse (old-style train)",
+    "whyDecisive": "Iron horse (old-style train) is the clue that makes the shared answer concrete enough to test across the full board.",
+    "whatChangedAfterIt": "Once Iron horse (old-style train) lands, the earlier clues stop feeling broad and start reading under the same answer."
+  },
+  "clueRows": [
+    {
+      "clue": "Iron",
+      "surfaceMisread": "a literal category label",
+      "resolvedPhraseOrMember": "Iron connected to steam",
+      "nonObviousWhy": "\"Iron\" fits naturally once the board is read through steam rather than as a loose general-interest category.",
+      "searchableContext": "Iron connected to steam",
+      "phraseExample": "Iron connected to steam"
+    },
+    {
+      "clue": "Iron horse (old-style train)",
+      "surfaceMisread": "a literal category label",
+      "resolvedPhraseOrMember": "Iron horse connected to steam",
+      "nonObviousWhy": "\"Iron horse (old-style train)\" is one of the clearest anchors for a steam reading, which is why it helps lock the board into place.",
+      "searchableContext": "Iron horse connected to steam",
+      "phraseExample": "Iron horse connected to steam"
+    },
+    {
+      "clue": "Sauna",
+      "surfaceMisread": "a literal category label",
+      "resolvedPhraseOrMember": "Sauna connected to steam",
+      "nonObviousWhy": "\"Sauna\" works because it points back to the same steam context that ties the whole board together.",
+      "searchableContext": "Sauna connected to steam",
+      "phraseExample": "Sauna connected to steam"
+    },
+    {
+      "clue": "Pressure cooker",
+      "surfaceMisread": "a literal category label",
+      "resolvedPhraseOrMember": "Pressure cooker connected to steam",
+      "nonObviousWhy": "\"Pressure cooker\" fits naturally once the board is read through steam rather than as a loose general-interest category.",
+      "searchableContext": "Pressure cooker connected to steam",
+      "phraseExample": "Pressure cooker connected to steam"
+    },
+    {
+      "clue": "Tea kettle (when whistling)",
+      "surfaceMisread": "a literal category label",
+      "resolvedPhraseOrMember": "Tea kettle connected to steam",
+      "nonObviousWhy": "\"Tea kettle (when whistling)\" supports the same steam-based frame as the other clues, so it reads as part of one picture instead of an isolated reference.",
+      "searchableContext": "Tea kettle connected to steam",
+      "phraseExample": "Tea kettle connected to steam"
+    }
+  ],
+  "faqItems": [
+    {
+      "intentType": "solve_strategy",
+      "question": "What shared subject links \"Iron\" and \"Iron horse (old-style train)\" in LinkedIn Pinpoint #877?",
+      "answer": "The answer is \"Things associated with steam\". That reading works because the clues all point back to the same subject or context, even if they do not all look like the same kind of clue on first read.",
+      "tiedClue": "Iron"
+    },
+    {
+      "intentType": "solve_strategy",
+      "question": "How do \"Iron\" and \"Iron horse (old-style train)\" connect in LinkedIn Pinpoint #877?",
+      "answer": "The connection is a board centered on the theme of steam. This board solves better by shared context than by forcing all 5 clues into one literal category label.",
+      "tiedClue": "Iron"
+    },
+    {
+      "intentType": "clue_background",
+      "question": "Why is \"Iron horse (old-style train)\" the key clue in LinkedIn Pinpoint #877?",
+      "answer": "\"Iron horse (old-style train)\" matters most because it gives the board one clear subject to test, which is what lets the remaining clues stop feeling scattered.",
+      "tiedClue": "Iron"
+    }
+  ],
+  "uniquenessSignals": {
+    "angle": "a board centered on the theme of steam",
+    "relatedEntities": [
+      "Iron connected to steam",
+      "Iron horse connected to steam",
+      "Sauna connected to steam",
+      "Pressure cooker connected to steam",
+      "Tea kettle connected to steam"
+    ],
+    "doNotRepeatPatterns": [
+      "a board centered on the theme of steam",
+      "Iron connected to steam",
+      "Iron horse connected to steam",
+      "Sauna connected to steam",
+      "Pressure cooker connected to steam"
+    ]
+  },
+  "wrongGuessCandidates": [
+    {
+      "label": "a literal category label",
+      "whyPlausible": "Iron, Iron horse (old-style train) can look like they should collapse into one tidy dictionary-style group.",
+      "whyRejected": "Iron horse (old-style train) works better as an anchor into one shared world than as proof of a literal category label."
+    },
+    {
+      "label": "five unrelated references",
+      "whyPlausible": "Association boards often mix clue shapes enough to feel scattered before one anchor clue stabilizes the context.",
+      "whyRejected": "Once Iron horse (old-style train) defines the subject, the other clues stop feeling random and start pointing back to the same world."
+    }
+  ],
+  "setValidationSummary": "Sauna, Pressure cooker, Tea kettle (when whistling) all point back to the same subject from different angles, so the board holds together as one shared world rather than five unrelated references.",
+  "categoryPrecisionNote": "one shared subject or world viewed from multiple angles rather than a dictionary-style category"
+}
